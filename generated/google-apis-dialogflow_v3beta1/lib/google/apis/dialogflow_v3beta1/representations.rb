@@ -1342,6 +1342,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2AnnotatedMessagePart
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4308,6 +4314,8 @@ module Google
           property :generic_web_service, as: 'genericWebService', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService::Representation
       
           property :name, as: 'name'
+          property :service_directory, as: 'serviceDirectory', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig::Representation
+      
           property :timeout, as: 'timeout'
         end
       end
@@ -4402,6 +4410,15 @@ module Google
           property :merge_behavior, as: 'mergeBehavior'
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generic_web_service, as: 'genericWebService', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1WebhookGenericWebService::Representation
+      
+          property :service, as: 'service'
         end
       end
       
