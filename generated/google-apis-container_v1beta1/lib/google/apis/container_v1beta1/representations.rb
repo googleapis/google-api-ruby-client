@@ -160,12 +160,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DnsConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DailyMaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -997,8 +991,6 @@ module Google
           property :desired_datapath_provider, as: 'desiredDatapathProvider'
           property :desired_default_snat_status, as: 'desiredDefaultSnatStatus', class: Google::Apis::ContainerV1beta1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1beta1::DefaultSnatStatus::Representation
       
-          property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1beta1::DnsConfig, decorator: Google::Apis::ContainerV1beta1::DnsConfig::Representation
-      
           property :desired_image_type, as: 'desiredImageType'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1beta1::IntraNodeVisibilityConfig::Representation
       
@@ -1091,15 +1083,6 @@ module Google
           property :parent, as: 'parent'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
-        end
-      end
-      
-      class DnsConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_dns, as: 'clusterDns'
-          property :cluster_dns_domain, as: 'clusterDnsDomain'
-          property :cluster_dns_scope, as: 'clusterDnsScope'
         end
       end
       
@@ -1410,8 +1393,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :datapath_provider, as: 'datapathProvider'
           property :default_snat_status, as: 'defaultSnatStatus', class: Google::Apis::ContainerV1beta1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1beta1::DefaultSnatStatus::Representation
-      
-          property :dns_config, as: 'dnsConfig', class: Google::Apis::ContainerV1beta1::DnsConfig, decorator: Google::Apis::ContainerV1beta1::DnsConfig::Representation
       
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :enable_l4ilb_subsetting, as: 'enableL4ilbSubsetting'

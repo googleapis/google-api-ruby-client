@@ -1096,11 +1096,6 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DefaultSnatStatus]
         attr_accessor :desired_default_snat_status
       
-        # DNSConfig contains the desired set of options for configuring clusterDNS.
-        # Corresponds to the JSON property `desiredDnsConfig`
-        # @return [Google::Apis::ContainerV1beta1::DnsConfig]
-        attr_accessor :desired_dns_config
-      
         # The desired image type for the node pool. NOTE: Set the "desired_node_pool"
         # field as well.
         # Corresponds to the JSON property `desiredImageType`
@@ -1273,7 +1268,6 @@ module Google
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
-          @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_l4ilb_subsetting_config = args[:desired_l4ilb_subsetting_config] if args.key?(:desired_l4ilb_subsetting_config)
@@ -1498,37 +1492,6 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
-        end
-      end
-      
-      # DNSConfig contains the desired set of options for configuring clusterDNS.
-      class DnsConfig
-        include Google::Apis::Core::Hashable
-      
-        # cluster_dns indicates which in-cluster DNS provider should be used.
-        # Corresponds to the JSON property `clusterDns`
-        # @return [String]
-        attr_accessor :cluster_dns
-      
-        # cluster_dns_domain is the suffix used for all cluster service records.
-        # Corresponds to the JSON property `clusterDnsDomain`
-        # @return [String]
-        attr_accessor :cluster_dns_domain
-      
-        # cluster_dns_scope indicates the scope of access to cluster DNS records.
-        # Corresponds to the JSON property `clusterDnsScope`
-        # @return [String]
-        attr_accessor :cluster_dns_scope
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cluster_dns = args[:cluster_dns] if args.key?(:cluster_dns)
-          @cluster_dns_domain = args[:cluster_dns_domain] if args.key?(:cluster_dns_domain)
-          @cluster_dns_scope = args[:cluster_dns_scope] if args.key?(:cluster_dns_scope)
         end
       end
       
@@ -2621,11 +2584,6 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DefaultSnatStatus]
         attr_accessor :default_snat_status
       
-        # DNSConfig contains the desired set of options for configuring clusterDNS.
-        # Corresponds to the JSON property `dnsConfig`
-        # @return [Google::Apis::ContainerV1beta1::DnsConfig]
-        attr_accessor :dns_config
-      
         # Whether Intra-node visibility is enabled for this cluster. This makes same
         # node pod to pod traffic visible for VPC network.
         # Corresponds to the JSON property `enableIntraNodeVisibility`
@@ -2667,7 +2625,6 @@ module Google
         def update!(**args)
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
-          @dns_config = args[:dns_config] if args.key?(:dns_config)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
           @network = args[:network] if args.key?(:network)
