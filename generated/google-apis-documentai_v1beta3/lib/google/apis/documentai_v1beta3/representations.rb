@@ -1717,6 +1717,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :index, as: 'index'
           property :revision, as: 'revision'
         end
       end
@@ -2206,6 +2207,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :index, as: 'index'
           property :revision, as: 'revision'
         end
       end
@@ -2779,6 +2781,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :index, as: 'index'
           property :revision, as: 'revision'
         end
       end
