@@ -388,7 +388,7 @@ module Google
         attr_accessor :mysql
       
         # The name of this connection profile resource in the form of projects/`project`/
-        # locations/`location`/instances/`instance`.
+        # locations/`location`/connectionProfiles/`instance`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1439,7 +1439,7 @@ module Google
         alias_method :enable_ipv4?, :enable_ipv4
       
         # The resource link for the VPC network from which the Cloud SQL instance is
-        # accessible for private IP. For example, `/projects/myProject/global/networks/
+        # accessible for private IP. For example, `projects/myProject/global/networks/
         # default`. This setting can be updated, but it cannot be removed after it is
         # set.
         # Corresponds to the JSON property `privateNetwork`
