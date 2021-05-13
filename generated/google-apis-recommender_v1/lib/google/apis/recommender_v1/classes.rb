@@ -61,6 +61,11 @@ module Google
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1CostProjection]
         attr_accessor :cost_projection
       
+        # Contains various ways of describing the impact on Security.
+        # Corresponds to the JSON property `securityProjection`
+        # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SecurityProjection]
+        attr_accessor :security_projection
+      
         def initialize(**args)
            update!(**args)
         end
@@ -69,6 +74,7 @@ module Google
         def update!(**args)
           @category = args[:category] if args.key?(:category)
           @cost_projection = args[:cost_projection] if args.key?(:cost_projection)
+          @security_projection = args[:security_projection] if args.key?(:security_projection)
         end
       end
       
@@ -640,6 +646,25 @@ module Google
         def update!(**args)
           @state = args[:state] if args.key?(:state)
           @state_metadata = args[:state_metadata] if args.key?(:state_metadata)
+        end
+      end
+      
+      # Contains various ways of describing the impact on Security.
+      class GoogleCloudRecommenderV1SecurityProjection
+        include Google::Apis::Core::Hashable
+      
+        # Additional security impact details that is provided by the recommender.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,Object>]
+        attr_accessor :details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
         end
       end
       

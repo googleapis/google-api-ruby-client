@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecommenderV1SecurityProjection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommenderV1ValueMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -150,6 +156,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
           property :cost_projection, as: 'costProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1CostProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1CostProjection::Representation
+      
+          property :security_projection, as: 'securityProjection', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SecurityProjection, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1SecurityProjection::Representation
       
         end
       end
@@ -307,6 +315,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state'
           hash :state_metadata, as: 'stateMetadata'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1SecurityProjection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :details, as: 'details'
         end
       end
       
