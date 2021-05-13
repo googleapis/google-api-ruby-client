@@ -295,44 +295,6 @@ module Google
         end
       end
       
-      # Describes a Compute Engine resource that is being managed by a running
-      # pipeline.
-      class ComputeEngine
-        include Google::Apis::Core::Hashable
-      
-        # The names of the disks that were created for this pipeline.
-        # Corresponds to the JSON property `diskNames`
-        # @return [Array<String>]
-        attr_accessor :disk_names
-      
-        # The instance on which the operation is running.
-        # Corresponds to the JSON property `instanceName`
-        # @return [String]
-        attr_accessor :instance_name
-      
-        # The machine type of the instance.
-        # Corresponds to the JSON property `machineType`
-        # @return [String]
-        attr_accessor :machine_type
-      
-        # The availability zone in which the instance resides.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @disk_names = args[:disk_names] if args.key?(:disk_names)
-          @instance_name = args[:instance_name] if args.key?(:instance_name)
-          @machine_type = args[:machine_type] if args.key?(:machine_type)
-          @zone = args[:zone] if args.key?(:zone)
-        end
-      end
-      
       # An event generated when a container is forcibly terminated by the worker.
       # Currently, this only occurs when the container outlives the timeout specified
       # by the user.
@@ -855,110 +817,6 @@ module Google
         end
       end
       
-      # An event that occurred during an Operation.
-      class OperationEvent
-        include Google::Apis::Core::Hashable
-      
-        # Required description of event.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional time of when event finished. An event can have a start time and no
-        # finish time. If an event has a finish time, there must be a start time.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Optional time of when event started.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
-      # Metadata describing an Operation.
-      class OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # This field is deprecated. Use `labels` instead. Optionally provided by the
-        # caller when submitting the request that creates the operation.
-        # Corresponds to the JSON property `clientId`
-        # @return [String]
-        attr_accessor :client_id
-      
-        # The time at which the job was submitted to the Genomics service.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The time at which the job stopped running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Optional event messages that were generated during the job's execution. This
-        # also contains any warnings that were generated during import or export.
-        # Corresponds to the JSON property `events`
-        # @return [Array<Google::Apis::GenomicsV2alpha1::OperationEvent>]
-        attr_accessor :events
-      
-        # Optionally provided by the caller when submitting the request that creates the
-        # operation.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # The Google Cloud Project in which the job is scoped.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        # The original request that started the operation. Note that this will be in
-        # current version of the API. If the operation was started with v1beta2 API and
-        # a GetOperation is performed on v1 API, a v1 request will be returned.
-        # Corresponds to the JSON property `request`
-        # @return [Hash<String,Object>]
-        attr_accessor :request
-      
-        # Runtime metadata on this Operation.
-        # Corresponds to the JSON property `runtimeMetadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :runtime_metadata
-      
-        # The time at which the job began to run.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @client_id = args[:client_id] if args.key?(:client_id)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @events = args[:events] if args.key?(:events)
-          @labels = args[:labels] if args.key?(:labels)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @request = args[:request] if args.key?(:request)
-          @runtime_metadata = args[:runtime_metadata] if args.key?(:runtime_metadata)
-          @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
       # Configuration for a persistent disk to be attached to the VM. See https://
       # cloud.google.com/compute/docs/disks/performance for more information about
       # disk type, size, and performance considerations.
@@ -1175,27 +1033,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Runtime metadata that will be populated in the runtimeMetadata field of the
-      # Operation associated with a RunPipeline execution.
-      class RuntimeMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Describes a Compute Engine resource that is being managed by a running
-        # pipeline.
-        # Corresponds to the JSON property `computeEngine`
-        # @return [Google::Apis::GenomicsV2alpha1::ComputeEngine]
-        attr_accessor :compute_engine
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @compute_engine = args[:compute_engine] if args.key?(:compute_engine)
         end
       end
       
