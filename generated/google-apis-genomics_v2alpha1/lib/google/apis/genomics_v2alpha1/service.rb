@@ -173,16 +173,11 @@ module Google
         #   pipeline is running, this value is NULL. Once the pipeline finishes, the value
         #   is the standard Google error code. * labels.key or labels."key with space"
         #   where key is a label key. * done: If the pipeline is running, this value is
-        #   false. Once the pipeline finishes, the value is true. In v1 and v1alpha2, the
-        #   following filter fields are supported: * projectId: Required. Corresponds to
-        #   OperationMetadata.projectId. * createTime: The time this job was created, in
-        #   seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=`
-        #   and/or `<=` operators. * status: Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `
-        #   CANCELED`. Only one status may be specified. * labels.key where key is a label
-        #   key. Examples: * `projectId = my-project AND createTime >= 1432140000` * `
-        #   projectId = my-project AND createTime >= 1432140000 AND createTime <=
-        #   1432150000 AND status = RUNNING` * `projectId = my-project AND labels.color = *
-        #   ` * `projectId = my-project AND labels.color = red`
+        #   false. Once the pipeline finishes, the value is true. Examples: * `projectId =
+        #   my-project AND createTime >= 1432140000` * `projectId = my-project AND
+        #   createTime >= 1432140000 AND createTime <= 1432150000 AND status = RUNNING` * `
+        #   projectId = my-project AND labels.color = *` * `projectId = my-project AND
+        #   labels.color = red`
         # @param [Fixnum] page_size
         #   The maximum number of results to return. The maximum value is 256.
         # @param [String] page_token

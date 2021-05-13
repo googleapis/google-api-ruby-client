@@ -52,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ComputeEngine
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ContainerKilledEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,18 +148,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationEvent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PersistentDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,12 +185,6 @@ module Google
       end
       
       class RunPipelineResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RuntimeMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -332,16 +308,6 @@ module Google
           property :deadline, as: 'deadline'
           hash :features, as: 'features'
           hash :metadata, as: 'metadata'
-        end
-      end
-      
-      class ComputeEngine
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :disk_names, as: 'diskNames'
-          property :instance_name, as: 'instanceName'
-          property :machine_type, as: 'machineType'
-          property :zone, as: 'zone'
         end
       end
       
@@ -486,31 +452,6 @@ module Google
         end
       end
       
-      class OperationEvent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
-      class OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_id, as: 'clientId'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          collection :events, as: 'events', class: Google::Apis::GenomicsV2alpha1::OperationEvent, decorator: Google::Apis::GenomicsV2alpha1::OperationEvent::Representation
-      
-          hash :labels, as: 'labels'
-          property :project_id, as: 'projectId'
-          hash :request, as: 'request'
-          hash :runtime_metadata, as: 'runtimeMetadata'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
       class PersistentDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -572,14 +513,6 @@ module Google
       class RunPipelineResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class RuntimeMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :compute_engine, as: 'computeEngine', class: Google::Apis::GenomicsV2alpha1::ComputeEngine, decorator: Google::Apis::GenomicsV2alpha1::ComputeEngine::Representation
-      
         end
       end
       
