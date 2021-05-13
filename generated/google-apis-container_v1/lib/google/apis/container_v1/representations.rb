@@ -580,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeAvailableEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -851,6 +857,7 @@ module Google
       
           property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1::DatabaseEncryption, decorator: Google::Apis::ContainerV1::DatabaseEncryption::Representation
       
+          property :desired_datapath_provider, as: 'desiredDatapathProvider'
           property :desired_default_snat_status, as: 'desiredDefaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
       
           property :desired_image_type, as: 'desiredImageType'
@@ -1189,6 +1196,7 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :datapath_provider, as: 'datapathProvider'
           property :default_snat_status, as: 'defaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
       
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
@@ -1710,6 +1718,17 @@ module Google
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1::WorkloadMetadataConfig::Representation
       
           property :zone, as: 'zone'
+        end
+      end
+      
+      class UpgradeAvailableEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :release_channel, as: 'releaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
+      
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
+          property :version, as: 'version'
         end
       end
       
