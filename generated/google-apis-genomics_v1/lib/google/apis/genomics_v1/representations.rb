@@ -22,13 +22,13 @@ module Google
   module Apis
     module GenomicsV1
       
-      class CancelOperationRequest
+      class Accelerator
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ComputeEngine
+      class Action
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,7 +58,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
+      class Disk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -70,31 +70,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExistingDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
+      class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Operation
+      class Mount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationEvent
+      class NfsMount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationMetadata
+      class Network
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PersistentDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Pipeline
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,25 +130,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Resources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunPipelineResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RuntimeMetadata
+      class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Status
+      class ServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class UnexpectedExitStatusEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VirtualMachine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,19 +184,33 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CancelOperationRequest
+      class Accelerator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :type, as: 'type'
         end
       end
       
-      class ComputeEngine
+      class Action
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :disk_names, as: 'diskNames'
-          property :instance_name, as: 'instanceName'
-          property :machine_type, as: 'machineType'
-          property :zone, as: 'zone'
+          collection :commands, as: 'commands'
+          property :credentials, as: 'credentials', class: Google::Apis::GenomicsV1::Secret, decorator: Google::Apis::GenomicsV1::Secret::Representation
+      
+          property :encrypted_environment, as: 'encryptedEnvironment', class: Google::Apis::GenomicsV1::Secret, decorator: Google::Apis::GenomicsV1::Secret::Representation
+      
+          property :entrypoint, as: 'entrypoint'
+          hash :environment, as: 'environment'
+          collection :flags, as: 'flags'
+          property :image_uri, as: 'imageUri'
+          hash :labels, as: 'labels'
+          collection :mounts, as: 'mounts', class: Google::Apis::GenomicsV1::Mount, decorator: Google::Apis::GenomicsV1::Mount::Representation
+      
+          property :name, as: 'name'
+          property :pid_namespace, as: 'pidNamespace'
+          hash :port_mappings, as: 'portMappings'
+          property :timeout, as: 'timeout'
         end
       end
       
@@ -197,9 +247,13 @@ module Google
         end
       end
       
-      class Empty
+      class Disk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :size_gb, as: 'sizeGb'
+          property :source_image, as: 'sourceImage'
+          property :type, as: 'type'
         end
       end
       
@@ -212,6 +266,13 @@ module Google
         end
       end
       
+      class ExistingDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk, as: 'disk'
+        end
+      end
+      
       class FailedEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -220,49 +281,65 @@ module Google
         end
       end
       
-      class ListOperationsResponse
+      class Metadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::GenomicsV1::Operation, decorator: Google::Apis::GenomicsV1::Operation::Representation
-      
-        end
-      end
-      
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          property :error, as: 'error', class: Google::Apis::GenomicsV1::Status, decorator: Google::Apis::GenomicsV1::Status::Representation
-      
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-          hash :response, as: 'response'
-        end
-      end
-      
-      class OperationEvent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
-      class OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :client_id, as: 'clientId'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
-          collection :events, as: 'events', class: Google::Apis::GenomicsV1::OperationEvent, decorator: Google::Apis::GenomicsV1::OperationEvent::Representation
+          collection :events, as: 'events', class: Google::Apis::GenomicsV1::Event, decorator: Google::Apis::GenomicsV1::Event::Representation
       
           hash :labels, as: 'labels'
-          property :project_id, as: 'projectId'
-          hash :request, as: 'request'
-          hash :runtime_metadata, as: 'runtimeMetadata'
+          property :pipeline, as: 'pipeline', class: Google::Apis::GenomicsV1::Pipeline, decorator: Google::Apis::GenomicsV1::Pipeline::Representation
+      
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class Mount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk, as: 'disk'
+          property :path, as: 'path'
+          property :read_only, as: 'readOnly'
+        end
+      end
+      
+      class NfsMount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target, as: 'target'
+        end
+      end
+      
+      class Network
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :subnetwork, as: 'subnetwork'
+          property :use_private_address, as: 'usePrivateAddress'
+        end
+      end
+      
+      class PersistentDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size_gb, as: 'sizeGb'
+          property :source_image, as: 'sourceImage'
+          property :type, as: 'type'
+        end
+      end
+      
+      class Pipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions', class: Google::Apis::GenomicsV1::Action, decorator: Google::Apis::GenomicsV1::Action::Representation
+      
+          property :encrypted_environment, as: 'encryptedEnvironment', class: Google::Apis::GenomicsV1::Secret, decorator: Google::Apis::GenomicsV1::Secret::Representation
+      
+          hash :environment, as: 'environment'
+          property :resources, as: 'resources', class: Google::Apis::GenomicsV1::Resources, decorator: Google::Apis::GenomicsV1::Resources::Representation
+      
+          property :timeout, as: 'timeout'
         end
       end
       
@@ -280,26 +357,36 @@ module Google
         end
       end
       
+      class Resources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+          collection :regions, as: 'regions'
+          property :virtual_machine, as: 'virtualMachine', class: Google::Apis::GenomicsV1::VirtualMachine, decorator: Google::Apis::GenomicsV1::VirtualMachine::Representation
+      
+          collection :zones, as: 'zones'
+        end
+      end
+      
       class RunPipelineResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      class RuntimeMetadata
+      class Secret
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :compute_engine, as: 'computeEngine', class: Google::Apis::GenomicsV1::ComputeEngine, decorator: Google::Apis::GenomicsV1::ComputeEngine::Representation
-      
+          property :cipher_text, as: 'cipherText'
+          property :key_name, as: 'keyName'
         end
       end
       
-      class Status
+      class ServiceAccount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          collection :details, as: 'details'
-          property :message, as: 'message'
+          property :email, as: 'email'
+          collection :scopes, as: 'scopes'
         end
       end
       
@@ -308,6 +395,44 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_id, as: 'actionId'
           property :exit_status, as: 'exitStatus'
+        end
+      end
+      
+      class VirtualMachine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::GenomicsV1::Accelerator, decorator: Google::Apis::GenomicsV1::Accelerator::Representation
+      
+          property :boot_disk_size_gb, as: 'bootDiskSizeGb'
+          property :boot_image, as: 'bootImage'
+          property :cpu_platform, as: 'cpuPlatform'
+          collection :disks, as: 'disks', class: Google::Apis::GenomicsV1::Disk, decorator: Google::Apis::GenomicsV1::Disk::Representation
+      
+          collection :docker_cache_images, as: 'dockerCacheImages'
+          property :enable_stackdriver_monitoring, as: 'enableStackdriverMonitoring'
+          hash :labels, as: 'labels'
+          property :machine_type, as: 'machineType'
+          property :network, as: 'network', class: Google::Apis::GenomicsV1::Network, decorator: Google::Apis::GenomicsV1::Network::Representation
+      
+          property :nvidia_driver_version, as: 'nvidiaDriverVersion'
+          property :preemptible, as: 'preemptible'
+          property :service_account, as: 'serviceAccount', class: Google::Apis::GenomicsV1::ServiceAccount, decorator: Google::Apis::GenomicsV1::ServiceAccount::Representation
+      
+          collection :volumes, as: 'volumes', class: Google::Apis::GenomicsV1::Volume, decorator: Google::Apis::GenomicsV1::Volume::Representation
+      
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :existing_disk, as: 'existingDisk', class: Google::Apis::GenomicsV1::ExistingDisk, decorator: Google::Apis::GenomicsV1::ExistingDisk::Representation
+      
+          property :nfs_mount, as: 'nfsMount', class: Google::Apis::GenomicsV1::NfsMount, decorator: Google::Apis::GenomicsV1::NfsMount::Representation
+      
+          property :persistent_disk, as: 'persistentDisk', class: Google::Apis::GenomicsV1::PersistentDisk, decorator: Google::Apis::GenomicsV1::PersistentDisk::Representation
+      
+          property :volume, as: 'volume'
         end
       end
       

@@ -28,12 +28,6 @@ module Google
       # Version of the Genomics API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
-
-      # See, edit, configure, and delete your Google Cloud Platform data
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View and manage Genomics data
-      AUTH_GENOMICS = 'https://www.googleapis.com/auth/genomics'
     end
   end
 end

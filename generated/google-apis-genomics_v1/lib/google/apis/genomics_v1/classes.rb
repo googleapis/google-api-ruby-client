@@ -22,9 +22,24 @@ module Google
   module Apis
     module GenomicsV1
       
-      # The request message for Operations.CancelOperation.
-      class CancelOperationRequest
+      # Carries information about an accelerator that can be attached to a VM.
+      class Accelerator
         include Google::Apis::Core::Hashable
+      
+        # How many accelerators of this type to attach.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The accelerator type string (for example, "nvidia-tesla-k80"). Only NVIDIA GPU
+        # accelerators are currently supported. If an NVIDIA GPU is attached, the
+        # required runtime libraries will be made available to all containers under `/
+        # usr/local/nvidia`. The driver version to install must be specified using the
+        # NVIDIA driver version parameter on the virtual machine specification. Note
+        # that attaching a GPU increases the worker VM startup time by a few minutes.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -32,33 +47,126 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
-      # Describes a Compute Engine resource that is being managed by a running
-      # pipeline.
-      class ComputeEngine
+      # Specifies a single action that runs a Docker container.
+      class Action
         include Google::Apis::Core::Hashable
       
-        # The names of the disks that were created for this pipeline.
-        # Corresponds to the JSON property `diskNames`
+        # If specified, overrides the `CMD` specified in the container. If the container
+        # also has an `ENTRYPOINT` the values are used as entrypoint arguments.
+        # Otherwise, they are used as a command and arguments to run inside the
+        # container.
+        # Corresponds to the JSON property `commands`
         # @return [Array<String>]
-        attr_accessor :disk_names
+        attr_accessor :commands
       
-        # The instance on which the operation is running.
-        # Corresponds to the JSON property `instanceName`
-        # @return [String]
-        attr_accessor :instance_name
+        # Holds encrypted information that is only decrypted and stored in RAM by the
+        # worker VM when running the pipeline.
+        # Corresponds to the JSON property `credentials`
+        # @return [Google::Apis::GenomicsV1::Secret]
+        attr_accessor :credentials
       
-        # The machine type of the instance.
-        # Corresponds to the JSON property `machineType`
-        # @return [String]
-        attr_accessor :machine_type
+        # Holds encrypted information that is only decrypted and stored in RAM by the
+        # worker VM when running the pipeline.
+        # Corresponds to the JSON property `encryptedEnvironment`
+        # @return [Google::Apis::GenomicsV1::Secret]
+        attr_accessor :encrypted_environment
       
-        # The availability zone in which the instance resides.
-        # Corresponds to the JSON property `zone`
+        # If specified, overrides the `ENTRYPOINT` specified in the container.
+        # Corresponds to the JSON property `entrypoint`
         # @return [String]
-        attr_accessor :zone
+        attr_accessor :entrypoint
+      
+        # The environment to pass into the container. This environment is merged with
+        # values specified in the google.genomics.v2alpha1.Pipeline message, overwriting
+        # any duplicate values. In addition to the values passed here, a few other
+        # values are automatically injected into the environment. These cannot be hidden
+        # or overwritten. `GOOGLE_PIPELINE_FAILED` will be set to "1" if the pipeline
+        # failed because an action has exited with a non-zero status (and did not have
+        # the `IGNORE_EXIT_STATUS` flag set). This can be used to determine if
+        # additional debug or logging actions should execute. `GOOGLE_LAST_EXIT_STATUS`
+        # will be set to the exit status of the last non-background action that executed.
+        # This can be used by workflow engine authors to determine whether an
+        # individual action has succeeded or failed.
+        # Corresponds to the JSON property `environment`
+        # @return [Hash<String,String>]
+        attr_accessor :environment
+      
+        # The set of flags to apply to this action.
+        # Corresponds to the JSON property `flags`
+        # @return [Array<String>]
+        attr_accessor :flags
+      
+        # Required. The URI to pull the container image from. Note that all images
+        # referenced by actions in the pipeline are pulled before the first action runs.
+        # If multiple actions reference the same image, it is only pulled once, ensuring
+        # that the same image is used for all actions in a single pipeline. The image
+        # URI can be either a complete host and image specification (e.g., quay.io/
+        # biocontainers/samtools), a library and image name (e.g., google/cloud-sdk) or
+        # a bare image name ('bash') to pull from the default library. No schema is
+        # required in any of these cases. If the specified image is not public, the
+        # service account specified for the Virtual Machine must have access to pull the
+        # images from GCR, or appropriate credentials must be specified in the google.
+        # genomics.v2alpha1.Action.credentials field.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        # Labels to associate with the action. This field is provided to assist workflow
+        # engine authors in identifying actions (for example, to indicate what sort of
+        # action they perform, such as localization or debugging). They are returned in
+        # the operation metadata, but are otherwise ignored.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # A list of mounts to make available to the action. In addition to the values
+        # specified here, every action has a special virtual disk mounted under `/google`
+        # that contains log files and other operational components. - /google/logs All
+        # logs written during the pipeline execution. - /google/logs/output The combined
+        # standard output and standard error of all actions run as part of the pipeline
+        # execution. - /google/logs/action/*/stdout The complete contents of each
+        # individual action's standard output. - /google/logs/action/*/stderr The
+        # complete contents of each individual action's standard error output.
+        # Corresponds to the JSON property `mounts`
+        # @return [Array<Google::Apis::GenomicsV1::Mount>]
+        attr_accessor :mounts
+      
+        # An optional name for the container. The container hostname will be set to this
+        # name, making it useful for inter-container communication. The name must
+        # contain only upper and lowercase alphanumeric characters and hyphens and
+        # cannot start with a hyphen.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An optional identifier for a PID namespace to run the action inside. Multiple
+        # actions should use the same string to share a namespace. If unspecified, a
+        # separate isolated namespace is used.
+        # Corresponds to the JSON property `pidNamespace`
+        # @return [String]
+        attr_accessor :pid_namespace
+      
+        # A map of containers to host port mappings for this container. If the container
+        # already specifies exposed ports, use the `PUBLISH_EXPOSED_PORTS` flag instead.
+        # The host port number must be less than 65536. If it is zero, an unused random
+        # port is assigned. To determine the resulting port number, consult the `
+        # ContainerStartedEvent` in the operation metadata.
+        # Corresponds to the JSON property `portMappings`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :port_mappings
+      
+        # The maximum amount of time to give the action to complete. If the action fails
+        # to complete before the timeout, it will be terminated and the exit status will
+        # be non-zero. The pipeline will continue or terminate based on the rules
+        # defined by the `ALWAYS_RUN` and `IGNORE_EXIT_STATUS` flags.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
       
         def initialize(**args)
            update!(**args)
@@ -66,10 +174,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @disk_names = args[:disk_names] if args.key?(:disk_names)
-          @instance_name = args[:instance_name] if args.key?(:instance_name)
-          @machine_type = args[:machine_type] if args.key?(:machine_type)
-          @zone = args[:zone] if args.key?(:zone)
+          @commands = args[:commands] if args.key?(:commands)
+          @credentials = args[:credentials] if args.key?(:credentials)
+          @encrypted_environment = args[:encrypted_environment] if args.key?(:encrypted_environment)
+          @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
+          @environment = args[:environment] if args.key?(:environment)
+          @flags = args[:flags] if args.key?(:flags)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @labels = args[:labels] if args.key?(:labels)
+          @mounts = args[:mounts] if args.key?(:mounts)
+          @name = args[:name] if args.key?(:name)
+          @pid_namespace = args[:pid_namespace] if args.key?(:pid_namespace)
+          @port_mappings = args[:port_mappings] if args.key?(:port_mappings)
+          @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
       
@@ -198,13 +315,38 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
-      class Empty
+      # Carries information about a disk that can be attached to a VM. See https://
+      # cloud.google.com/compute/docs/disks/performance for more information about
+      # disk type, size, and performance considerations. Specify either `Volume` or `
+      # Disk`, but not both.
+      class Disk
         include Google::Apis::Core::Hashable
+      
+        # A user-supplied name for the disk. Used when mounting the disk into actions.
+        # The name must contain only upper and lowercase alphanumeric characters and
+        # hyphens and cannot start with a hyphen.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The size, in GB, of the disk to attach. If the size is not specified, a
+        # default is chosen to ensure reasonable I/O performance. If the disk type is
+        # specified as `local-ssd`, multiple local drives are automatically combined to
+        # provide the requested size. Note, however, that each physical SSD is 375GB in
+        # size, and no more than 8 drives can be attached to a single instance.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # An optional image to put on the disk before attaching it to the VM.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
+        # The Compute Engine disk type. If unspecified, `pd-standard` is used.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -212,6 +354,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @source_image = args[:source_image] if args.key?(:source_image)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -248,6 +394,32 @@ module Google
         end
       end
       
+      # Configuration for an existing disk to be attached to the VM.
+      class ExistingDisk
+        include Google::Apis::Core::Hashable
+      
+        # If `disk` contains slashes, the Cloud Life Sciences API assumes that it is a
+        # complete URL for the disk. If `disk` does not contain slashes, the Cloud Life
+        # Sciences API assumes that the disk is a zonal disk and a URL will be generated
+        # of the form `zones//disks/`, where `` is the zone in which the instance is
+        # allocated. The disk must be ext4 formatted. If all `Mount` references to this
+        # disk have the `read_only` flag set to true, the disk will be attached in `read-
+        # only` mode and can be shared with other instances. Otherwise, the disk will be
+        # available for writing but cannot be shared.
+        # Corresponds to the JSON property `disk`
+        # @return [String]
+        attr_accessor :disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk = args[:disk] if args.key?(:disk)
+        end
+      end
+      
       # An event generated when the execution of a pipeline has failed. Note that
       # other events can continue to occur after this event.
       class FailedEvent
@@ -274,167 +446,38 @@ module Google
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
+      # Carries information about the pipeline execution that is returned in the long
+      # running operation's metadata field.
+      class Metadata
         include Google::Apis::Core::Hashable
       
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::GenomicsV1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
-      # This resource represents a long-running operation that is the result of a
-      # network API call.
-      class Operation
-        include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress. If `true`
-        # , the operation is completed, and either `error` or `response` is available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details. You can find out more
-        # about this error model and how to work with it in the [API Design Guide](https:
-        # //cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::GenomicsV1::Status]
-        attr_accessor :error
-      
-        # An OperationMetadata or Metadata object. This will always be returned with the
-        # Operation.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. For example: `operations/CJHU7Oi_ChDrveSpBRjfuL-
-        # qzoWAgEw`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # An Empty object.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @done = args[:done] if args.key?(:done)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @name = args[:name] if args.key?(:name)
-          @response = args[:response] if args.key?(:response)
-        end
-      end
-      
-      # An event that occurred during an Operation.
-      class OperationEvent
-        include Google::Apis::Core::Hashable
-      
-        # Required description of event.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional time of when event finished. An event can have a start time and no
-        # finish time. If an event has a finish time, there must be a start time.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Optional time of when event started.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
-      # Metadata describing an Operation.
-      class OperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # This field is deprecated. Use `labels` instead. Optionally provided by the
-        # caller when submitting the request that creates the operation.
-        # Corresponds to the JSON property `clientId`
-        # @return [String]
-        attr_accessor :client_id
-      
-        # The time at which the job was submitted to the Genomics service.
+        # The time at which the operation was created by the API.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # The time at which the job stopped running.
+        # The time at which execution was completed and resources were cleaned up.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Optional event messages that were generated during the job's execution. This
-        # also contains any warnings that were generated during import or export.
+        # The list of events that have happened so far during the execution of this
+        # operation.
         # Corresponds to the JSON property `events`
-        # @return [Array<Google::Apis::GenomicsV1::OperationEvent>]
+        # @return [Array<Google::Apis::GenomicsV1::Event>]
         attr_accessor :events
       
-        # Optionally provided by the caller when submitting the request that creates the
-        # operation.
+        # The user-defined labels associated with this operation.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The Google Cloud Project in which the job is scoped.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
+        # Specifies a series of actions to execute, expressed as Docker containers.
+        # Corresponds to the JSON property `pipeline`
+        # @return [Google::Apis::GenomicsV1::Pipeline]
+        attr_accessor :pipeline
       
-        # The original request that started the operation. Note that this will be in
-        # current version of the API. If the operation was started with v1beta2 API and
-        # a GetOperation is performed on v1 API, a v1 request will be returned.
-        # Corresponds to the JSON property `request`
-        # @return [Hash<String,Object>]
-        attr_accessor :request
-      
-        # Runtime metadata on this Operation.
-        # Corresponds to the JSON property `runtimeMetadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :runtime_metadata
-      
-        # The time at which the job began to run.
+        # The first time at which resources were allocated to execute the pipeline.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -445,15 +488,193 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @client_id = args[:client_id] if args.key?(:client_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @events = args[:events] if args.key?(:events)
           @labels = args[:labels] if args.key?(:labels)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @request = args[:request] if args.key?(:request)
-          @runtime_metadata = args[:runtime_metadata] if args.key?(:runtime_metadata)
+          @pipeline = args[:pipeline] if args.key?(:pipeline)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Carries information about a particular disk mount inside a container.
+      class Mount
+        include Google::Apis::Core::Hashable
+      
+        # The name of the disk to mount, as specified in the resources section.
+        # Corresponds to the JSON property `disk`
+        # @return [String]
+        attr_accessor :disk
+      
+        # The path to mount the disk inside the container.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # If true, the disk is mounted read-only inside the container.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk = args[:disk] if args.key?(:disk)
+          @path = args[:path] if args.key?(:path)
+          @read_only = args[:read_only] if args.key?(:read_only)
+        end
+      end
+      
+      # Configuration for an `NFSMount` to be attached to the VM.
+      class NfsMount
+        include Google::Apis::Core::Hashable
+      
+        # A target NFS mount. The target must be specified as `address:/mount".
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # VM networking options.
+      class Network
+        include Google::Apis::Core::Hashable
+      
+        # The network name to attach the VM's network interface to. The value will be
+        # prefixed with `global/networks/` unless it contains a `/`, in which case it is
+        # assumed to be a fully specified network resource URL. If unspecified, the
+        # global default network is used.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If the specified network is configured for custom subnet creation, the name of
+        # the subnetwork to attach the instance to must be specified here. The value is
+        # prefixed with `regions/*/subnetworks/` unless it contains a `/`, in which case
+        # it is assumed to be a fully specified subnetwork resource URL. If the `*`
+        # character appears in the value, it is replaced with the region that the
+        # virtual machine has been allocated in.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # If set to true, do not attach a public IP address to the VM. Note that without
+        # a public IP address, additional configuration is required to allow the VM to
+        # access Google services. See https://cloud.google.com/vpc/docs/configure-
+        # private-google-access for more information.
+        # Corresponds to the JSON property `usePrivateAddress`
+        # @return [Boolean]
+        attr_accessor :use_private_address
+        alias_method :use_private_address?, :use_private_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @use_private_address = args[:use_private_address] if args.key?(:use_private_address)
+        end
+      end
+      
+      # Configuration for a persistent disk to be attached to the VM. See https://
+      # cloud.google.com/compute/docs/disks/performance for more information about
+      # disk type, size, and performance considerations.
+      class PersistentDisk
+        include Google::Apis::Core::Hashable
+      
+        # The size, in GB, of the disk to attach. If the size is not specified, a
+        # default is chosen to ensure reasonable I/O performance. If the disk type is
+        # specified as `local-ssd`, multiple local drives are automatically combined to
+        # provide the requested size. Note, however, that each physical SSD is 375GB in
+        # size, and no more than 8 drives can be attached to a single instance.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # An image to put on the disk before attaching it to the VM.
+        # Corresponds to the JSON property `sourceImage`
+        # @return [String]
+        attr_accessor :source_image
+      
+        # The Compute Engine disk type. If unspecified, `pd-standard` is used.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @source_image = args[:source_image] if args.key?(:source_image)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Specifies a series of actions to execute, expressed as Docker containers.
+      class Pipeline
+        include Google::Apis::Core::Hashable
+      
+        # The list of actions to execute, in the order they are specified.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::GenomicsV1::Action>]
+        attr_accessor :actions
+      
+        # Holds encrypted information that is only decrypted and stored in RAM by the
+        # worker VM when running the pipeline.
+        # Corresponds to the JSON property `encryptedEnvironment`
+        # @return [Google::Apis::GenomicsV1::Secret]
+        attr_accessor :encrypted_environment
+      
+        # The environment to pass into every action. Each action can also specify
+        # additional environment variables but cannot delete an entry from this map (
+        # though they can overwrite it with a different value).
+        # Corresponds to the JSON property `environment`
+        # @return [Hash<String,String>]
+        attr_accessor :environment
+      
+        # The system resources for the pipeline run. At least one zone or region must be
+        # specified or the pipeline run will fail.
+        # Corresponds to the JSON property `resources`
+        # @return [Google::Apis::GenomicsV1::Resources]
+        attr_accessor :resources
+      
+        # The maximum amount of time to give the pipeline to complete. This includes the
+        # time spent waiting for a worker to be allocated. If the pipeline fails to
+        # complete before the timeout, it will be cancelled and the error code will be
+        # set to DEADLINE_EXCEEDED. If unspecified, it will default to 7 days.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @encrypted_environment = args[:encrypted_environment] if args.key?(:encrypted_environment)
+          @environment = args[:environment] if args.key?(:environment)
+          @resources = args[:resources] if args.key?(:resources)
+          @timeout = args[:timeout] if args.key?(:timeout)
         end
       end
       
@@ -495,6 +716,46 @@ module Google
         end
       end
       
+      # The system resources for the pipeline run. At least one zone or region must be
+      # specified or the pipeline run will fail.
+      class Resources
+        include Google::Apis::Core::Hashable
+      
+        # The project ID to allocate resources in.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The list of regions allowed for VM allocation. If set, the `zones` field must
+        # not be set.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        # Carries information about a Compute Engine VM resource.
+        # Corresponds to the JSON property `virtualMachine`
+        # @return [Google::Apis::GenomicsV1::VirtualMachine]
+        attr_accessor :virtual_machine
+      
+        # The list of zones allowed for VM allocation. If set, the `regions` field must
+        # not be set.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<String>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @regions = args[:regions] if args.key?(:regions)
+          @virtual_machine = args[:virtual_machine] if args.key?(:virtual_machine)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
       # The response to the RunPipeline method, returned in the operation's result
       # field on success.
       class RunPipelineResponse
@@ -509,16 +770,23 @@ module Google
         end
       end
       
-      # Runtime metadata that will be populated in the runtimeMetadata field of the
-      # Operation associated with a RunPipeline execution.
-      class RuntimeMetadata
+      # Holds encrypted information that is only decrypted and stored in RAM by the
+      # worker VM when running the pipeline.
+      class Secret
         include Google::Apis::Core::Hashable
       
-        # Describes a Compute Engine resource that is being managed by a running
-        # pipeline.
-        # Corresponds to the JSON property `computeEngine`
-        # @return [Google::Apis::GenomicsV1::ComputeEngine]
-        attr_accessor :compute_engine
+        # The value of the cipherText response from the `encrypt` method. This field is
+        # intentionally unaudited.
+        # Corresponds to the JSON property `cipherText`
+        # @return [String]
+        attr_accessor :cipher_text
+      
+        # The name of the Cloud KMS key that will be used to decrypt the secret value.
+        # The VM service account must have the required permissions and authentication
+        # scopes to invoke the `decrypt` method on the specified key.
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
       
         def initialize(**args)
            update!(**args)
@@ -526,36 +794,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @compute_engine = args[:compute_engine] if args.key?(:compute_engine)
+          @cipher_text = args[:cipher_text] if args.key?(:cipher_text)
+          @key_name = args[:key_name] if args.key?(:key_name)
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by [
-      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-      # data: error code, error message, and error details. You can find out more
-      # about this error model and how to work with it in the [API Design Guide](https:
-      # //cloud.google.com/apis/design/errors).
-      class Status
+      # Carries information about a Google Cloud service account.
+      class ServiceAccount
         include Google::Apis::Core::Hashable
       
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # A list of messages that carry the error details. There is a common set of
-        # message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
-        # A developer-facing error message, which should be in English. Any user-facing
-        # error message should be localized and sent in the google.rpc.Status.details
-        # field, or localized by the client.
-        # Corresponds to the JSON property `message`
+        # Email address of the service account. If not specified, the default Compute
+        # Engine service account for the project will be used.
+        # Corresponds to the JSON property `email`
         # @return [String]
-        attr_accessor :message
+        attr_accessor :email
+      
+        # List of scopes to be enabled for this service account on the VM, in addition
+        # to the cloud-platform API scope that will be added by default.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
       
         def initialize(**args)
            update!(**args)
@@ -563,9 +821,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @details = args[:details] if args.key?(:details)
-          @message = args[:message] if args.key?(:message)
+          @email = args[:email] if args.key?(:email)
+          @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
       
@@ -594,6 +851,186 @@ module Google
         def update!(**args)
           @action_id = args[:action_id] if args.key?(:action_id)
           @exit_status = args[:exit_status] if args.key?(:exit_status)
+        end
+      end
+      
+      # Carries information about a Compute Engine VM resource.
+      class VirtualMachine
+        include Google::Apis::Core::Hashable
+      
+        # The list of accelerators to attach to the VM.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::GenomicsV1::Accelerator>]
+        attr_accessor :accelerators
+      
+        # The size of the boot disk, in GB. The boot disk must be large enough to
+        # accommodate all of the Docker images from each action in the pipeline at the
+        # same time. If not specified, a small but reasonable default value is used.
+        # Corresponds to the JSON property `bootDiskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :boot_disk_size_gb
+      
+        # The host operating system image to use. Currently, only Container-Optimized OS
+        # images can be used. The default value is `projects/cos-cloud/global/images/
+        # family/cos-stable`, which selects the latest stable release of Container-
+        # Optimized OS. This option is provided to allow testing against the beta
+        # release of the operating system to ensure that the new version does not
+        # interact negatively with production pipelines. To test a pipeline against the
+        # beta release of Container-Optimized OS, use the value `projects/cos-cloud/
+        # global/images/family/cos-beta`.
+        # Corresponds to the JSON property `bootImage`
+        # @return [String]
+        attr_accessor :boot_image
+      
+        # The CPU platform to request. An instance based on a newer platform can be
+        # allocated, but never one with fewer capabilities. The value of this parameter
+        # must be a valid Compute Engine CPU platform name (such as "Intel Skylake").
+        # This parameter is only useful for carefully optimized work loads where the CPU
+        # platform has a significant impact. For more information about the effect of
+        # this parameter, see https://cloud.google.com/compute/docs/instances/specify-
+        # min-cpu-platform.
+        # Corresponds to the JSON property `cpuPlatform`
+        # @return [String]
+        attr_accessor :cpu_platform
+      
+        # The list of disks to create and attach to the VM. Specify either the `volumes[]
+        # ` field or the `disks[]` field, but not both.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::GenomicsV1::Disk>]
+        attr_accessor :disks
+      
+        # The Compute Engine Disk Images to use as a Docker cache. The disks will be
+        # mounted into the Docker folder in a way that the images present in the cache
+        # will not need to be pulled. The digests of the cached images must match those
+        # of the tags used or the latest version will still be pulled. The root
+        # directory of the ext4 image must contain `image` and `overlay2` directories
+        # copied from the Docker directory of a VM where the desired Docker images have
+        # already been pulled. Any images pulled that are not cached will be stored on
+        # the first cache disk instead of the boot disk. Only a single image is
+        # supported.
+        # Corresponds to the JSON property `dockerCacheImages`
+        # @return [Array<String>]
+        attr_accessor :docker_cache_images
+      
+        # Whether Stackdriver monitoring should be enabled on the VM.
+        # Corresponds to the JSON property `enableStackdriverMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_stackdriver_monitoring
+        alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
+      
+        # Optional set of labels to apply to the VM and any attached disk resources.
+        # These labels must adhere to the [name and value restrictions](https://cloud.
+        # google.com/compute/docs/labeling-resources) on VM labels imposed by Compute
+        # Engine. Labels keys with the prefix 'google-' are reserved for use by Google.
+        # Labels applied at creation time to the VM. Applied on a best-effort basis to
+        # attached disk resources shortly after VM creation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The machine type of the virtual machine to create. Must be the short
+        # name of a standard machine type (such as "n1-standard-1") or a custom machine
+        # type (such as "custom-1-4096", where "1" indicates the number of vCPUs and "
+        # 4096" indicates the memory in MB). See [Creating an instance with a custom
+        # machine type](https://cloud.google.com/compute/docs/instances/creating-
+        # instance-with-custom-machine-type#create) for more specifications on creating
+        # a custom machine type.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # VM networking options.
+        # Corresponds to the JSON property `network`
+        # @return [Google::Apis::GenomicsV1::Network]
+        attr_accessor :network
+      
+        # The NVIDIA driver version to use when attaching an NVIDIA GPU accelerator. The
+        # version specified here must be compatible with the GPU libraries contained in
+        # the container being executed, and must be one of the drivers hosted in the `
+        # nvidia-drivers-us-public` bucket on Google Cloud Storage.
+        # Corresponds to the JSON property `nvidiaDriverVersion`
+        # @return [String]
+        attr_accessor :nvidia_driver_version
+      
+        # If true, allocate a preemptible VM.
+        # Corresponds to the JSON property `preemptible`
+        # @return [Boolean]
+        attr_accessor :preemptible
+        alias_method :preemptible?, :preemptible
+      
+        # Carries information about a Google Cloud service account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [Google::Apis::GenomicsV1::ServiceAccount]
+        attr_accessor :service_account
+      
+        # The list of disks and other storage to create or attach to the VM. Specify
+        # either the `volumes[]` field or the `disks[]` field, but not both.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::GenomicsV1::Volume>]
+        attr_accessor :volumes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
+          @boot_image = args[:boot_image] if args.key?(:boot_image)
+          @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
+          @disks = args[:disks] if args.key?(:disks)
+          @docker_cache_images = args[:docker_cache_images] if args.key?(:docker_cache_images)
+          @enable_stackdriver_monitoring = args[:enable_stackdriver_monitoring] if args.key?(:enable_stackdriver_monitoring)
+          @labels = args[:labels] if args.key?(:labels)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @network = args[:network] if args.key?(:network)
+          @nvidia_driver_version = args[:nvidia_driver_version] if args.key?(:nvidia_driver_version)
+          @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
+      # Carries information about storage that can be attached to a VM. Specify either
+      # `Volume` or `Disk`, but not both.
+      class Volume
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for an existing disk to be attached to the VM.
+        # Corresponds to the JSON property `existingDisk`
+        # @return [Google::Apis::GenomicsV1::ExistingDisk]
+        attr_accessor :existing_disk
+      
+        # Configuration for an `NFSMount` to be attached to the VM.
+        # Corresponds to the JSON property `nfsMount`
+        # @return [Google::Apis::GenomicsV1::NfsMount]
+        attr_accessor :nfs_mount
+      
+        # Configuration for a persistent disk to be attached to the VM. See https://
+        # cloud.google.com/compute/docs/disks/performance for more information about
+        # disk type, size, and performance considerations.
+        # Corresponds to the JSON property `persistentDisk`
+        # @return [Google::Apis::GenomicsV1::PersistentDisk]
+        attr_accessor :persistent_disk
+      
+        # A user-supplied name for the volume. Used when mounting the volume into `
+        # Actions`. The name must contain only upper and lowercase alphanumeric
+        # characters and hyphens and cannot start with a hyphen.
+        # Corresponds to the JSON property `volume`
+        # @return [String]
+        attr_accessor :volume
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @existing_disk = args[:existing_disk] if args.key?(:existing_disk)
+          @nfs_mount = args[:nfs_mount] if args.key?(:nfs_mount)
+          @persistent_disk = args[:persistent_disk] if args.key?(:persistent_disk)
+          @volume = args[:volume] if args.key?(:volume)
         end
       end
       
