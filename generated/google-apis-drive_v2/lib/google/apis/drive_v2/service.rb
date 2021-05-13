@@ -1329,7 +1329,11 @@ module Google
         #   Maximum number of IDs to return.
         # @param [String] space
         #   The space in which the IDs can be used to create new files. Supported values
-        #   are 'drive' and 'appDataFolder'.
+        #   are 'drive' and 'appDataFolder'. (Default: 'drive')
+        # @param [String] type
+        #   The type of items which the IDs can be used for. Supported values are 'files'
+        #   and 'shortcuts'. Note that 'shortcuts' are only supported in the drive 'space'.
+        #   (Default: 'files')
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1349,12 +1353,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_file_ids(max_results: nil, space: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_file_ids(max_results: nil, space: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/generateIds', options)
           command.response_representation = Google::Apis::DriveV2::GeneratedIds::Representation
           command.response_class = Google::Apis::DriveV2::GeneratedIds
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['space'] = space unless space.nil?
+          command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

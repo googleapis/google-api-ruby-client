@@ -3555,12 +3555,13 @@ module Google
         # @return [String]
         attr_accessor :original_filename
       
-        # Whether this revision is pinned to prevent automatic purging. This will only
-        # be populated and can only be modified on files with content stored in Drive,
-        # excluding Docs Editors files. Revisions can also be pinned when they are
-        # created through the drive.files.insert/update/copy by using the pinned query
-        # parameter. Pinned revisions are stored indefinitely using additional storage
-        # quota, up to a maximum of 200 revisions.
+        # Whether this revision is pinned to prevent automatic purging. If not set, the
+        # revision is automatically purged 30 days after newer content is uploaded. This
+        # field can only be modified on files with content stored in Drive, excluding
+        # Docs Editors files. Revisions can also be pinned when they are created through
+        # the drive.files.insert/update/copy by using the pinned query parameter. Pinned
+        # revisions are stored indefinitely using additional storage quota, up to a
+        # maximum of 200 revisions.
         # Corresponds to the JSON property `pinned`
         # @return [Boolean]
         attr_accessor :pinned
