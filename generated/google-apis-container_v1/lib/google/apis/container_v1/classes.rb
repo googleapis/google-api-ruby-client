@@ -948,6 +948,11 @@ module Google
         # @return [Google::Apis::ContainerV1::DatabaseEncryption]
         attr_accessor :desired_database_encryption
       
+        # The desired datapath provider for the cluster.
+        # Corresponds to the JSON property `desiredDatapathProvider`
+        # @return [String]
+        attr_accessor :desired_datapath_provider
+      
         # DefaultSnatStatus contains the desired state of whether default sNAT should be
         # disabled on the cluster.
         # Corresponds to the JSON property `desiredDefaultSnatStatus`
@@ -1096,6 +1101,7 @@ module Google
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
+          @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
@@ -2218,6 +2224,12 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
+        # The desired datapath provider for this cluster. By default, uses the IPTables-
+        # based kube-proxy implementation.
+        # Corresponds to the JSON property `datapathProvider`
+        # @return [String]
+        attr_accessor :datapath_provider
+      
         # DefaultSnatStatus contains the desired state of whether default sNAT should be
         # disabled on the cluster.
         # Corresponds to the JSON property `defaultSnatStatus`
@@ -2257,6 +2269,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @network = args[:network] if args.key?(:network)
@@ -4487,6 +4500,48 @@ module Google
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # UpgradeAvailableEvent is a notification sent to customers when a new available
+      # version is released.
+      class UpgradeAvailableEvent
+        include Google::Apis::Core::Hashable
+      
+        # ReleaseChannel indicates which release channel a cluster is subscribed to.
+        # Release channels are arranged in order of risk. When a cluster is subscribed
+        # to a release channel, Google maintains both the master version and the node
+        # version. Node auto-upgrade defaults to true and cannot be disabled.
+        # Corresponds to the JSON property `releaseChannel`
+        # @return [Google::Apis::ContainerV1::ReleaseChannel]
+        attr_accessor :release_channel
+      
+        # Optional relative path to the resource. For example, the relative path of the
+        # node pool.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # The resource type of the release version.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # The release version available for upgrade.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @release_channel = args[:release_channel] if args.key?(:release_channel)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
