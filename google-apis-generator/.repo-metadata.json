@@ -1,6 +1,5 @@
 {
-  "name": "google-apis-generator",
-  "language": "ruby",
   "distribution-name": "google-apis-generator",
+  "language": "ruby",
   "library_type": "OTHER"
 }
