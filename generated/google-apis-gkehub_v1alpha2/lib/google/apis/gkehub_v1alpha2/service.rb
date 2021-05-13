@@ -161,7 +161,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a new Membership.
+        # Creates a new Membership. **This is currently only supported for GKE clusters
+        # on Google Cloud**. To register other clusters, follow the instructions at
+        # https://cloud.google.com/anthos/multicluster-management/connect/registering-a-
+        # cluster.
         # @param [String] parent
         #   Required. The parent (project and location) where the Memberships will be
         #   created. Specified in the format `projects/*/locations/*`.
@@ -202,7 +205,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes a Membership.
+        # Removes a Membership. **This is currently only supported for GKE clusters on
+        # Google Cloud**. To unregister other clusters, follow the instructions at https:
+        # //cloud.google.com/anthos/multicluster-management/connect/unregistering-a-
+        # cluster.
         # @param [String] name
         #   Required. The Membership resource name in the format `projects/*/locations/*/
         #   memberships/*`.
@@ -233,7 +239,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates the manifest for deployment of the GKE connect agent.
+        # Generates the manifest for deployment of the GKE connect agent. **This method
+        # is used internally by Google-provided libraries.** Most clients should not
+        # need to call this method directly.
         # @param [String] name
         #   Required. The Membership resource name the Agent will associate with, in the
         #   format `projects/*/locations/*/memberships/*`.
