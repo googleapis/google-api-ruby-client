@@ -2346,7 +2346,10 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordCondition]
         attr_accessor :condition
       
-        # Required. Input field(s) to apply the transformation to.
+        # Required. Input field(s) to apply the transformation to. When you have columns
+        # that reference their position within a list, omit the index from the FieldId.
+        # FieldId name matching ignores the index. For example, instead of "contact.nums[
+        # 0].type", use "contact.nums.type".
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :fields
