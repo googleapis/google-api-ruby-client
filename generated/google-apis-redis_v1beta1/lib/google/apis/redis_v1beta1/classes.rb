@@ -322,6 +322,17 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
+        # Maintenance policy for an instance.
+        # Corresponds to the JSON property `maintenancePolicy`
+        # @return [Google::Apis::RedisV1beta1::MaintenancePolicy]
+        attr_accessor :maintenance_policy
+      
+        # Upcoming maintenance schedule. If no maintenance is scheduled, fields are not
+        # populated.
+        # Corresponds to the JSON property `maintenanceSchedule`
+        # @return [Google::Apis::RedisV1beta1::MaintenanceSchedule]
+        attr_accessor :maintenance_schedule
+      
         # Required. Redis memory size in GiB.
         # Corresponds to the JSON property `memorySizeGb`
         # @return [Fixnum]
@@ -421,6 +432,8 @@ module Google
           @host = args[:host] if args.key?(:host)
           @labels = args[:labels] if args.key?(:labels)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
           @name = args[:name] if args.key?(:name)
           @persistence_iam_identity = args[:persistence_iam_identity] if args.key?(:persistence_iam_identity)
@@ -593,6 +606,88 @@ module Google
         end
       end
       
+      # Maintenance policy for an instance.
+      class MaintenancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the policy was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of what this policy is for. Create/Update methods return
+        # INVALID_ARGUMENT if the length is greater than 512.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The time when the policy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. Maintenance window that is applied to resources covered by this
+        # policy. Minimum 1. For the current version, the maximum number of
+        # weekly_window is expected to be one.
+        # Corresponds to the JSON property `weeklyMaintenanceWindow`
+        # @return [Array<Google::Apis::RedisV1beta1::WeeklyMaintenanceWindow>]
+        attr_accessor :weekly_maintenance_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @weekly_maintenance_window = args[:weekly_maintenance_window] if args.key?(:weekly_maintenance_window)
+        end
+      end
+      
+      # Upcoming maintenance schedule. If no maintenance is scheduled, fields are not
+      # populated.
+      class MaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # If the scheduled maintenance can be rescheduled, default is true.
+        # Corresponds to the JSON property `canReschedule`
+        # @return [Boolean]
+        attr_accessor :can_reschedule
+        alias_method :can_reschedule?, :can_reschedule
+      
+        # Output only. The end time of any upcoming scheduled maintenance for this
+        # instance.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The time deadline any schedule start time cannot go beyond,
+        # including reschedule.
+        # Corresponds to the JSON property `scheduleDeadlineTime`
+        # @return [String]
+        attr_accessor :schedule_deadline_time
+      
+        # Output only. The start time of any upcoming scheduled maintenance for this
+        # instance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @schedule_deadline_time = args[:schedule_deadline_time] if args.key?(:schedule_deadline_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -678,6 +773,34 @@ module Google
         end
       end
       
+      # Request for RescheduleMaintenance.
+      class RescheduleMaintenanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as
+        # well.
+        # Corresponds to the JSON property `rescheduleType`
+        # @return [String]
+        attr_accessor :reschedule_type
+      
+        # Optional. Timestamp when the maintenance shall be rescheduled to if
+        # reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example `2012-11-15T16:
+        # 19:00.094Z`.
+        # Corresponds to the JSON property `scheduleTime`
+        # @return [String]
+        attr_accessor :schedule_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reschedule_type = args[:reschedule_type] if args.key?(:reschedule_type)
+          @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -714,6 +837,47 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+        # allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
       
@@ -778,6 +942,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @redis_version = args[:redis_version] if args.key?(:redis_version)
+        end
+      end
+      
+      # Time window in which disruptive maintenance updates occur. Non-disruptive
+      # updates can occur inside or outside this window.
+      class WeeklyMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. The day of week that maintenance updates occur.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Output only. Duration of the maintenance window. The current window is fixed
+        # at 3 hours.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::RedisV1beta1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @duration = args[:duration] if args.key?(:duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
     end
