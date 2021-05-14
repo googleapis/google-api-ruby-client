@@ -196,6 +196,53 @@ module Google
         end
       end
       
+      # Compute the corresponding cursor for a publish or event time in a topic
+      # partition.
+      class ComputeTimeCursorRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The partition for which we should compute the cursor.
+        # Corresponds to the JSON property `partition`
+        # @return [Fixnum]
+        attr_accessor :partition
+      
+        # A target publish or event time. Can be used for seeking to or retrieving the
+        # corresponding cursor.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::PubsubliteV1::TimeTarget]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition = args[:partition] if args.key?(:partition)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # Response containing the cursor corresponding to a publish or event time in a
+      # topic partition.
+      class ComputeTimeCursorResponse
+        include Google::Apis::Core::Hashable
+      
+        # A cursor that describes the position of a message within a topic partition.
+        # Corresponds to the JSON property `cursor`
+        # @return [Google::Apis::PubsubliteV1::Cursor]
+        attr_accessor :cursor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cursor = args[:cursor] if args.key?(:cursor)
+        end
+      end
+      
       # A cursor that describes the position of a message within a topic partition.
       class Cursor
         include Google::Apis::Core::Hashable
@@ -483,6 +530,38 @@ module Google
           @delivery_config = args[:delivery_config] if args.key?(:delivery_config)
           @name = args[:name] if args.key?(:name)
           @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # A target publish or event time. Can be used for seeking to or retrieving the
+      # corresponding cursor.
+      class TimeTarget
+        include Google::Apis::Core::Hashable
+      
+        # Request the cursor of the first message with event time greater than or equal
+        # to `event_time`. If messages are missing an event time, the publish time is
+        # used as a fallback. As event times are user supplied, subsequent messages may
+        # have event times less than `event_time` and should be filtered by the client,
+        # if necessary.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Request the cursor of the first message with publish time greater than or
+        # equal to `publish_time`. All messages thereafter are guaranteed to have
+        # publish times >= `publish_time`.
+        # Corresponds to the JSON property `publishTime`
+        # @return [String]
+        attr_accessor :publish_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @publish_time = args[:publish_time] if args.key?(:publish_time)
         end
       end
       
