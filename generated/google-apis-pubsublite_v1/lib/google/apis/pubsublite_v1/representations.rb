@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComputeTimeCursorRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeTimeCursorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cursor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +137,12 @@ module Google
       end
       
       class Subscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -198,6 +216,23 @@ module Google
           property :message_count, :numeric_string => true, as: 'messageCount'
           property :minimum_event_time, as: 'minimumEventTime'
           property :minimum_publish_time, as: 'minimumPublishTime'
+        end
+      end
+      
+      class ComputeTimeCursorRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partition, :numeric_string => true, as: 'partition'
+          property :target, as: 'target', class: Google::Apis::PubsubliteV1::TimeTarget, decorator: Google::Apis::PubsubliteV1::TimeTarget::Representation
+      
+        end
+      end
+      
+      class ComputeTimeCursorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cursor, as: 'cursor', class: Google::Apis::PubsubliteV1::Cursor, decorator: Google::Apis::PubsubliteV1::Cursor::Representation
+      
         end
       end
       
@@ -290,6 +325,14 @@ module Google
       
           property :name, as: 'name'
           property :topic, as: 'topic'
+        end
+      end
+      
+      class TimeTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
+          property :publish_time, as: 'publishTime'
         end
       end
       
