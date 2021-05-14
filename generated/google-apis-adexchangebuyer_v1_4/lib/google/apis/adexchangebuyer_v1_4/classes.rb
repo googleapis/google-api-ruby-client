@@ -3339,13 +3339,13 @@ module Google
         # @return [String]
         attr_accessor :programmatic_contact
       
-        # The list of app IDs represented in this pubisher profile. Empty if this is a
+        # The list of app IDs represented in this publisher profile. Empty if this is a
         # parent profile. Deprecated in favor of publisher_app.
         # Corresponds to the JSON property `publisherAppIds`
         # @return [Array<Fixnum>]
         attr_accessor :publisher_app_ids
       
-        # The list of apps represented in this pubisher profile. Empty if this is a
+        # The list of apps represented in this publisher profile. Empty if this is a
         # parent profile.
         # Corresponds to the JSON property `publisherApps`
         # @return [Array<Google::Apis::AdexchangebuyerV1_4::MobileApplication>]
