@@ -1024,7 +1024,14 @@ module Google
         # indicates the probability of an item being clicked/purchased given the user's
         # context and history. * `strictFiltering`: Boolean. True by default. If set to
         # false, the service will return generic (unfiltered) popular items instead of
-        # empty if your filter blocks all prediction results.
+        # empty if your filter blocks all prediction results. * `priceRerankLevel`:
+        # String. Default empty. If set to be non-empty, then it needs to be one of `'no-
+        # price-reranking', 'low-price-reranking', 'medium-price-reranking', 'high-price-
+        # reranking'`. This gives request level control and adjust prediction results
+        # based on product price. * `diversityLevel`: String. Default empty. If set to
+        # be non-empty, then it needs to be one of `'no-diversity', 'low-diversity', '
+        # medium-diversity', 'high-diversity', 'auto-diversity'`. This gives request
+        # level control and adjust prediction results based on product category.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params
