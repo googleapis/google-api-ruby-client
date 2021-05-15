@@ -564,6 +564,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :disabled, as: 'disabled'
           property :filter, as: 'filter'
           hash :label_extractors, as: 'labelExtractors'
           property :metric_descriptor, as: 'metricDescriptor', class: Google::Apis::LoggingV2::MetricDescriptor, decorator: Google::Apis::LoggingV2::MetricDescriptor::Representation

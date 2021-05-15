@@ -909,11 +909,15 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :json_payload
       
-        # Optional. A set of user-defined (key, value) data that provides additional
-        # information about the log entry.Cloud Logging truncates label keys that exceed
-        # 512 B and label values that exceed 64 KB upon their associated log entry being
-        # written. The truncation is indicated by an ellipsis at the end of the
-        # character string.
+        # Optional. A map of key, value pairs that provides additional information about
+        # the log entry. The labels can be user-defined or system-defined.User-defined
+        # labels are arbitrary key, value pairs that you can use to classify logs.System-
+        # defined labels are defined by GCP services for platform logs. They have two
+        # components - a service namespace component and the attribute name. For example:
+        # compute.googleapis.com/resource_name.Cloud Logging truncates label keys that
+        # exceed 512 B and label values that exceed 64 KB upon their associated log
+        # entry being written. The truncation is indicated by an ellipsis at the end of
+        # the character string.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -925,12 +929,12 @@ module Google
         # The project number is translated to its corresponding PROJECT_ID internally
         # and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID]
         # must be URL-encoded within log_name. Example: "organizations/1234567890/logs/
-        # cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must be less than
-        # 512 characters long and can only include the following characters: upper and
-        # lower case alphanumeric characters, forward-slash, underscore, hyphen, and
-        # period.For backward compatibility, if log_name begins with a forward-slash,
-        # such as /projects/..., then the log entry is ingested as usual but the forward-
-        # slash is removed. Listing the log entry will not show the leading slash and
+        # cloudresourcemanager.googleapis.com%2Factivity".[LOG_ID] must be less than 512
+        # characters long and can only include the following characters: upper and lower
+        # case alphanumeric characters, forward-slash, underscore, hyphen, and period.
+        # For backward compatibility, if log_name begins with a forward-slash, such as /
+        # projects/..., then the log entry is ingested as usual, but the forward-slash
+        # is removed. Listing the log entry will not show the leading slash and
         # filtering for a log name with a leading slash will never return any results.
         # Corresponds to the JSON property `logName`
         # @return [String]
@@ -1283,6 +1287,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. If set to True, then this metric is disabled and it does not
+        # generate any points.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/
         # advanced_filters) which is used to match log entries. Example: "resource.type=
         # gae_app AND severity>=ERROR" The maximum length of the filter is 20000
@@ -1363,6 +1374,7 @@ module Google
           @bucket_options = args[:bucket_options] if args.key?(:bucket_options)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @filter = args[:filter] if args.key?(:filter)
           @label_extractors = args[:label_extractors] if args.key?(:label_extractors)
           @metric_descriptor = args[:metric_descriptor] if args.key?(:metric_descriptor)
