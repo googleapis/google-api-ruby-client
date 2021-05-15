@@ -35,17 +35,32 @@ module Google
         end
       end
       
-      # DockerImage represents a docker artifact.
+      # DockerImage represents a docker artifact. The following fields are returned as
+      # untyped metadata in the Version resource, using camelcase keys (i.e. metadata.
+      # imageSizeBytes): - imageSizeBytes - mediaType - buildTime
       class DockerImage
         include Google::Apis::Core::Hashable
       
-        # Calculated size of the image.
+        # The time this image was built. This field is returned as the 'metadata.
+        # buildTime' field in the Version resource. The build time is returned to the
+        # client as an RFC 3339 string, which can be easily used with the JavaScript
+        # Date constructor and keeps the Version timestamps returned via OnePlatform
+        # consistent, as JSON marshals google.protobuf.Timestamp into an RFC 3339 string.
+        # (http://google3/cloud/containers/artifacts/metadata/v1beta2/builder/data.go?l=
+        # 158-159&rcl=364878183).
+        # Corresponds to the JSON property `buildTime`
+        # @return [String]
+        attr_accessor :build_time
+      
+        # Calculated size of the image. This field is returned as the 'metadata.
+        # imageSizeBytes' field in the Version resource.
         # Corresponds to the JSON property `imageSizeBytes`
         # @return [Fixnum]
         attr_accessor :image_size_bytes
       
         # Media type of this image, e.g. "application/vnd.docker.distribution.manifest.
-        # v2+json".
+        # v2+json". This field is returned as the 'metadata.mediaType' field in the
+        # Version resource.
         # Corresponds to the JSON property `mediaType`
         # @return [String]
         attr_accessor :media_type
@@ -86,6 +101,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @build_time = args[:build_time] if args.key?(:build_time)
           @image_size_bytes = args[:image_size_bytes] if args.key?(:image_size_bytes)
           @media_type = args[:media_type] if args.key?(:media_type)
           @name = args[:name] if args.key?(:name)

@@ -85,6 +85,7 @@ module Google
       class DockerImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_time, as: 'buildTime'
           property :image_size_bytes, :numeric_string => true, as: 'imageSizeBytes'
           property :media_type, as: 'mediaType'
           property :name, as: 'name'
