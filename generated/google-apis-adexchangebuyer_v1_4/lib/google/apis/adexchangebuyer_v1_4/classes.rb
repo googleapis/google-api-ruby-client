@@ -3284,6 +3284,11 @@ module Google
         # @return [String]
         attr_accessor :exchange
       
+        # 
+        # Corresponds to the JSON property `forecastInventory`
+        # @return [String]
+        attr_accessor :forecast_inventory
+      
         # Link to publisher's Google+ page.
         # Corresponds to the JSON property `googlePlusLink`
         # @return [String]
@@ -3402,6 +3407,7 @@ module Google
           @buyer_pitch_statement = args[:buyer_pitch_statement] if args.key?(:buyer_pitch_statement)
           @direct_contact = args[:direct_contact] if args.key?(:direct_contact)
           @exchange = args[:exchange] if args.key?(:exchange)
+          @forecast_inventory = args[:forecast_inventory] if args.key?(:forecast_inventory)
           @google_plus_link = args[:google_plus_link] if args.key?(:google_plus_link)
           @is_parent = args[:is_parent] if args.key?(:is_parent)
           @is_published = args[:is_published] if args.key?(:is_published)
