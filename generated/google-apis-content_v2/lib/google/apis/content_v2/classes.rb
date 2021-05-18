@@ -8803,10 +8803,8 @@ module Google
       
       # Required product attributes are primarily defined by the products data
       # specification. See the Products Data Specification Help Center article for
-      # information. Some attributes are country-specific, so make sure you select the
-      # appropriate country in the drop-down selector at the top of the page. Product
-      # data. After inserting, updating, or deleting a product, it may take several
-      # minutes before changes take effect.
+      # information. Product data. After inserting, updating, or deleting a product,
+      # it may take several minutes before changes take effect.
       class Product
         include Google::Apis::Core::Hashable
       
@@ -9587,10 +9585,8 @@ module Google
       
         # Required product attributes are primarily defined by the products data
         # specification. See the Products Data Specification Help Center article for
-        # information. Some attributes are country-specific, so make sure you select the
-        # appropriate country in the drop-down selector at the top of the page. Product
-        # data. After inserting, updating, or deleting a product, it may take several
-        # minutes before changes take effect.
+        # information. Product data. After inserting, updating, or deleting a product,
+        # it may take several minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2::Product]
         attr_accessor :product
@@ -9937,10 +9933,8 @@ module Google
       
         # Required product attributes are primarily defined by the products data
         # specification. See the Products Data Specification Help Center article for
-        # information. Some attributes are country-specific, so make sure you select the
-        # appropriate country in the drop-down selector at the top of the page. Product
-        # data. After inserting, updating, or deleting a product, it may take several
-        # minutes before changes take effect.
+        # information. Product data. After inserting, updating, or deleting a product,
+        # it may take several minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2::Product]
         attr_accessor :product
@@ -10013,10 +10007,8 @@ module Google
       
         # Required product attributes are primarily defined by the products data
         # specification. See the Products Data Specification Help Center article for
-        # information. Some attributes are country-specific, so make sure you select the
-        # appropriate country in the drop-down selector at the top of the page. Product
-        # data. After inserting, updating, or deleting a product, it may take several
-        # minutes before changes take effect.
+        # information. Product data. After inserting, updating, or deleting a product,
+        # it may take several minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2::Product]
         attr_accessor :product
