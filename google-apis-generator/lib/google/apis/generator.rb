@@ -78,6 +78,7 @@ module Google
         result.files[File.join(module_path, "service.rb")] = render_template("service.rb", context)
         result.files[result.version_path] = render_template("initial-gem_version.rb", context)
         result.files[File.join(spec_path, "generated_spec.rb")] = render_template("generated_spec.rb", context)
+        result.files[File.join(base_path, ".repo-metadata.json")] = render_template("repo-metadata.json", context)
         result
       end
 
