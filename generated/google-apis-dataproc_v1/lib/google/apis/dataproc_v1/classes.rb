@@ -252,7 +252,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The time when the operation was finished.
+        # The time when the operation finished.
         # Corresponds to the JSON property `doneTime`
         # @return [String]
         attr_accessor :done_time
@@ -793,7 +793,7 @@ module Google
       end
       
       # Confidential Instance Config for clusters using Confidential VMs (https://
-      # cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+      # cloud.google.com/compute/confidential-vm/docs)
       class ConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
       
@@ -1010,7 +1010,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Confidential Instance Config for clusters using Confidential VMs (https://
-        # cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+        # cloud.google.com/compute/confidential-vm/docs)
         # Corresponds to the JSON property `confidentialInstanceConfig`
         # @return [Google::Apis::DataprocV1::ConfidentialInstanceConfig]
         attr_accessor :confidential_instance_config
