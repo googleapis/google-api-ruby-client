@@ -6448,7 +6448,8 @@ module Google
         attr_accessor :customer_shipping_fee
       
         # Required. The delivery postal code, as a continuous string without spaces or
-        # dashes, e.g. "95016".
+        # dashes, e.g. "95016". This field will be anonymized in returned
+        # OrderTrackingSignal creation response.
         # Corresponds to the JSON property `deliveryPostalCode`
         # @return [String]
         attr_accessor :delivery_postal_code
@@ -6491,7 +6492,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::DateTime]
         attr_accessor :order_created_time
       
-        # Required. The ID of the order on the merchant side.
+        # Required. The ID of the order on the merchant side. This field will be hashed
+        # in returned OrderTrackingSignal creation response.
         # Corresponds to the JSON property `orderId`
         # @return [String]
         attr_accessor :order_id
@@ -6589,7 +6591,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # Required. The shipment ID.
+        # Required. The shipment ID. This field will be hashed in returned
+        # OrderTrackingSignal creation response.
         # Corresponds to the JSON property `shipmentId`
         # @return [String]
         attr_accessor :shipment_id
@@ -6677,7 +6680,8 @@ module Google
         attr_accessor :latest_delivery_promise_time
       
         # The origin postal code, as a continuous string without spaces or dashes, e.g. "
-        # 95016".
+        # 95016". This field will be anonymized in returned OrderTrackingSignal creation
+        # response.
         # Corresponds to the JSON property `originPostalCode`
         # @return [String]
         attr_accessor :origin_postal_code
@@ -6688,7 +6692,8 @@ module Google
         # @return [String]
         attr_accessor :origin_region_code
       
-        # Required. The shipment ID.
+        # Required. The shipment ID. This field will be hashed in returned
+        # OrderTrackingSignal creation response.
         # Corresponds to the JSON property `shipmentId`
         # @return [String]
         attr_accessor :shipment_id
@@ -7149,10 +7154,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ID of the line item. This value is assigned by Google when an order is
-        # created.
+        # created. Either lineItemId or productId is required.
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
         attr_accessor :line_item_id
+      
+        # The ID of the product to cancel. This is the REST ID used in the products
+        # service. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
       
         # The quantity of this line item.
         # Corresponds to the JSON property `quantity`
@@ -7166,6 +7177,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
         end
       end
@@ -9696,10 +9708,8 @@ module Google
       
       # Required product attributes are primarily defined by the products data
       # specification. See the Products Data Specification Help Center article for
-      # information. Some attributes are country-specific, so make sure you select the
-      # appropriate country in the drop-down selector at the top of the page. Product
-      # data. After inserting, updating, or deleting a product, it may take several
-      # minutes before changes take effect.
+      # information. Product data. After inserting, updating, or deleting a product,
+      # it may take several minutes before changes take effect.
       class Product
         include Google::Apis::Core::Hashable
       
@@ -10798,17 +10808,15 @@ module Google
         attr_accessor :merchant_id
       
         # The method of the batch entry. Acceptable values are: - "`delete`" - "`get`" -
-        # "`insert`"
+        # "`insert`" - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
         # Required product attributes are primarily defined by the products data
         # specification. See the Products Data Specification Help Center article for
-        # information. Some attributes are country-specific, so make sure you select the
-        # appropriate country in the drop-down selector at the top of the page. Product
-        # data. After inserting, updating, or deleting a product, it may take several
-        # minutes before changes take effect.
+        # information. Product data. After inserting, updating, or deleting a product,
+        # it may take several minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2_1::Product]
         attr_accessor :product
@@ -10818,6 +10826,15 @@ module Google
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
+      
+        # The list of product attributes to be updated. Attributes specified in the
+        # update mask without a value specified in the body will be deleted from the
+        # product. Only top-level product attributes can be updated. If not defined,
+        # product attributes with set values will be updated and other attributes will
+        # stay unchanged. Only defined if the method is `update`.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
       
         def initialize(**args)
            update!(**args)
@@ -10831,6 +10848,7 @@ module Google
           @method_prop = args[:method_prop] if args.key?(:method_prop)
           @product = args[:product] if args.key?(:product)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -10882,10 +10900,8 @@ module Google
       
         # Required product attributes are primarily defined by the products data
         # specification. See the Products Data Specification Help Center article for
-        # information. Some attributes are country-specific, so make sure you select the
-        # appropriate country in the drop-down selector at the top of the page. Product
-        # data. After inserting, updating, or deleting a product, it may take several
-        # minutes before changes take effect.
+        # information. Product data. After inserting, updating, or deleting a product,
+        # it may take several minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2_1::Product]
         attr_accessor :product

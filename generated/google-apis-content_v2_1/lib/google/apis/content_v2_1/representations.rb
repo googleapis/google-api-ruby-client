@@ -4163,6 +4163,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
           property :quantity, as: 'quantity'
         end
       end
@@ -5132,6 +5133,7 @@ module Google
           property :product, as: 'product', class: Google::Apis::ContentV2_1::Product, decorator: Google::Apis::ContentV2_1::Product::Representation
       
           property :product_id, as: 'productId'
+          property :update_mask, as: 'updateMask'
         end
       end
       
