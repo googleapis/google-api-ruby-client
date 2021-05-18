@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaGoogleSignalsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaIosAppDataStream
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -474,6 +480,8 @@ module Google
       
           property :google_ads_link, as: 'googleAdsLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink::Representation
       
+          property :google_signals_settings, as: 'googleSignalsSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleSignalsSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleSignalsSettings::Representation
+      
           property :ios_app_data_stream, as: 'iosAppDataStream', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream::Representation
       
           property :property, as: 'property', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
@@ -605,6 +613,15 @@ module Google
           property :email_address, as: 'emailAddress'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaGoogleSignalsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent, as: 'consent'
+          property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       
