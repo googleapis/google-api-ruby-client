@@ -496,6 +496,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink]
         attr_accessor :google_ads_link
       
+        # Settings values for Google Signals. This is a singleton resource.
+        # Corresponds to the JSON property `googleSignalsSettings`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleSignalsSettings]
+        attr_accessor :google_signals_settings
+      
         # A resource message representing a Google Analytics IOS app stream.
         # Corresponds to the JSON property `iosAppDataStream`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream]
@@ -524,6 +529,7 @@ module Google
           @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
           @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
           @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
+          @google_signals_settings = args[:google_signals_settings] if args.key?(:google_signals_settings)
           @ios_app_data_stream = args[:ios_app_data_stream] if args.key?(:ios_app_data_stream)
           @property = args[:property] if args.key?(:property)
           @web_data_stream = args[:web_data_stream] if args.key?(:web_data_stream)
@@ -1098,6 +1104,38 @@ module Google
           @email_address = args[:email_address] if args.key?(:email_address)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Settings values for Google Signals. This is a singleton resource.
+      class GoogleAnalyticsAdminV1alphaGoogleSignalsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Terms of Service acceptance.
+        # Corresponds to the JSON property `consent`
+        # @return [String]
+        attr_accessor :consent
+      
+        # Output only. Resource name of this setting. Format: properties/`property_id`/
+        # googleSignalsSettings Example: "properties/1000/googleSignalsSettings"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Status of this setting.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent = args[:consent] if args.key?(:consent)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
