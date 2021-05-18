@@ -346,6 +346,8 @@ module Google
         #   The ID of the account for which to list links.
         # @param [Fixnum] max_results
         #   The maximum number of links to return in the response, used for pagination.
+        #   The minimum allowed value is 5 results per page. If provided value is lower
+        #   than 5, it will be automatically increased to 5.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields
@@ -4019,6 +4021,51 @@ module Google
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing product in your Merchant Center account. Only updates
+        # attributes provided in the request.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that contains the product. This account cannot be a
+        #   multi-client account.
+        # @param [String] product_id
+        #   The REST ID of the product for which to update.
+        # @param [Google::Apis::ContentV2_1::Product] product_object
+        # @param [String] update_mask
+        #   The list of product attributes to be updated. Attributes specified in the
+        #   update mask without a value specified in the body will be deleted from the
+        #   product. Only top-level product attributes can be updated. If not defined,
+        #   product attributes with set values will be updated and other attributes will
+        #   stay unchanged.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::Product] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::Product]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_product(merchant_id, product_id, product_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, '{merchantId}/products/{productId}', options)
+          command.request_representation = Google::Apis::ContentV2_1::Product::Representation
+          command.request_object = product_object
+          command.response_representation = Google::Apis::ContentV2_1::Product::Representation
+          command.response_class = Google::Apis::ContentV2_1::Product
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['productId'] = product_id unless product_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
