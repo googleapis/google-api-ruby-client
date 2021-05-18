@@ -286,8 +286,10 @@ module Google
         end
         
         # Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is
-        # migrated, it can be used from either product. SiteVerify requests will be
-        # billed as CreateAssessment calls.
+        # migrated, it can be used from either product. SiteVerify requests are billed
+        # as CreateAssessment calls. You must be authenticated as one of the current
+        # owners of the reCAPTCHA Site Key, and your user must have the reCAPTCHA
+        # Enterprise Admin IAM role in the destination project.
         # @param [String] name
         #   Required. The name of the key to be migrated, in the format "projects/`project`
         #   /keys/`key`".
@@ -326,7 +328,7 @@ module Google
         #   The resource name for the Key in the format "projects/`project`/keys/`key`".
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Key] google_cloud_recaptchaenterprise_v1_key_object
         # @param [String] update_mask
-        #   Optional. The mask to control which field of the key get updated. If the mask
+        #   Optional. The mask to control which fields of the key get updated. If the mask
         #   is not present, all fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
