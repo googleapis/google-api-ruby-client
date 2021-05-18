@@ -1362,6 +1362,7 @@ module Google
           property :buyer_pitch_statement, as: 'buyerPitchStatement'
           property :direct_contact, as: 'directContact'
           property :exchange, as: 'exchange'
+          property :forecast_inventory, as: 'forecastInventory'
           property :google_plus_link, as: 'googlePlusLink'
           property :is_parent, as: 'isParent'
           property :is_published, as: 'isPublished'
