@@ -134,7 +134,7 @@ module Google
           property :scent, as: 'scent'
           property :size, as: 'size'
           property :size_system, as: 'sizeSystem'
-          property :size_type, as: 'sizeType'
+          collection :size_type, as: 'sizeType'
           property :suggested_retail_price, as: 'suggestedRetailPrice', class: Google::Apis::ManufacturersV1::Price, decorator: Google::Apis::ManufacturersV1::Price::Representation
       
           property :target_client_id, as: 'targetClientId'

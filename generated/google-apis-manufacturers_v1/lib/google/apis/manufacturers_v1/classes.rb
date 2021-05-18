@@ -213,7 +213,7 @@ module Google
         # The size type of the product. For more information, see https://support.google.
         # com/manufacturers/answer/6124116#sizetype.
         # Corresponds to the JSON property `sizeType`
-        # @return [String]
+        # @return [Array<String>]
         attr_accessor :size_type
       
         # A price.
