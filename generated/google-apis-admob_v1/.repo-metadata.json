@@ -1,0 +1,7 @@
+{
+    "api_id": "admob:v1",
+    "name_pretty": "AdMob API",
+    "distribution_name": "google-apis-admob_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
