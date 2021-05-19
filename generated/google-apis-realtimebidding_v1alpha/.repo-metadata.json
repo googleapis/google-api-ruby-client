@@ -1,0 +1,7 @@
+{
+    "api_id": "realtimebidding:v1alpha",
+    "name_pretty": "Real-time Bidding API",
+    "distribution_name": "google-apis-realtimebidding_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
