@@ -1,0 +1,7 @@
+{
+    "api_id": "memcache:v1beta2",
+    "name_pretty": "Cloud Memorystore for Memcached API",
+    "distribution_name": "google-apis-memcache_v1beta2",
+    "language": "ruby",
+    "library_type": "REST"
+}
