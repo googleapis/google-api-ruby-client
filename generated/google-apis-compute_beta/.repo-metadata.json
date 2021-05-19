@@ -1,0 +1,7 @@
+{
+    "api_id": "compute:beta",
+    "name_pretty": "Compute Engine API",
+    "distribution_name": "google-apis-compute_beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
