@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudresourcemanager:v3",
+    "name_pretty": "Cloud Resource Manager API",
+    "distribution_name": "google-apis-cloudresourcemanager_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}
