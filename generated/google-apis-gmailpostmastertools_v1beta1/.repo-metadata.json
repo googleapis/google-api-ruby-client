@@ -1,0 +1,7 @@
+{
+    "api_id": "gmailpostmastertools:v1beta1",
+    "name_pretty": "Gmail Postmaster Tools API",
+    "distribution_name": "google-apis-gmailpostmastertools_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
