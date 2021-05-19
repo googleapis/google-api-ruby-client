@@ -1,0 +1,7 @@
+{
+    "api_id": "essentialcontacts:v1",
+    "name_pretty": "Essential Contacts API",
+    "distribution_name": "google-apis-essentialcontacts_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
