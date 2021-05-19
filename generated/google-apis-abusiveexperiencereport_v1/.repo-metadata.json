@@ -1,0 +1,7 @@
+{
+    "api_id": "abusiveexperiencereport:v1",
+    "name_pretty": "Abusive Experience Report API",
+    "distribution_name": "google-apis-abusiveexperiencereport_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
