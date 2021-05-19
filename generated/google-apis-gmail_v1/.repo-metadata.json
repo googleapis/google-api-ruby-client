@@ -1,0 +1,7 @@
+{
+    "api_id": "gmail:v1",
+    "name_pretty": "Gmail API",
+    "distribution_name": "google-apis-gmail_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
