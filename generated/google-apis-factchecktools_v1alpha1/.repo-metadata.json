@@ -1,0 +1,7 @@
+{
+    "api_id": "factchecktools:v1alpha1",
+    "name_pretty": "Fact Check Tools API",
+    "distribution_name": "google-apis-factchecktools_v1alpha1",
+    "language": "ruby",
+    "library_type": "REST"
+}
