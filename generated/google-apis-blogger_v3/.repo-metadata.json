@@ -1,0 +1,7 @@
+{
+    "api_id": "blogger:v3",
+    "name_pretty": "Blogger API v3",
+    "distribution_name": "google-apis-blogger_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}
