@@ -1,0 +1,7 @@
+{
+    "api_id": "admin:datatransfer_v1",
+    "name_pretty": "Admin SDK API",
+    "distribution_name": "google-apis-admin_datatransfer_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
