@@ -16,7 +16,7 @@ module Google
   module Apis
     module ManagedidentitiesV1beta1
       # Version of the google-apis-managedidentities_v1beta1 gem
-      GEM_VERSION = "0.6.0"
+      GEM_VERSION = "0.7.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.2.0"
