@@ -1,0 +1,7 @@
+{
+    "api_id": "apigateway:v1beta",
+    "name_pretty": "API Gateway API",
+    "distribution_name": "google-apis-apigateway_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
