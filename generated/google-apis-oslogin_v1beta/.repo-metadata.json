@@ -1,0 +1,7 @@
+{
+    "api_id": "oslogin:v1beta",
+    "name_pretty": "Cloud OS Login API",
+    "distribution_name": "google-apis-oslogin_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
