@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudidentity:v1",
+    "name_pretty": "Cloud Identity API",
+    "distribution_name": "google-apis-cloudidentity_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
