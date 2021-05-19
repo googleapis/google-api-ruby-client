@@ -1,0 +1,7 @@
+{
+    "api_id": "chromepolicy:v1",
+    "name_pretty": "Chrome Policy API",
+    "distribution_name": "google-apis-chromepolicy_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
