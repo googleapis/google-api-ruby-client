@@ -1,0 +1,7 @@
+{
+    "api_id": "pubsublite:v1",
+    "name_pretty": "Pub/Sub Lite API",
+    "distribution_name": "google-apis-pubsublite_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
