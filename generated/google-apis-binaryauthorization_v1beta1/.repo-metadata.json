@@ -1,0 +1,7 @@
+{
+    "api_id": "binaryauthorization:v1beta1",
+    "name_pretty": "Binary Authorization API",
+    "distribution_name": "google-apis-binaryauthorization_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
