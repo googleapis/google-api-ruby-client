@@ -1,0 +1,7 @@
+{
+    "api_id": "androidmanagement:v1",
+    "name_pretty": "Android Management API",
+    "distribution_name": "google-apis-androidmanagement_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
