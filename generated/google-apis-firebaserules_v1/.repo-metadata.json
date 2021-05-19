@@ -1,0 +1,7 @@
+{
+    "api_id": "firebaserules:v1",
+    "name_pretty": "Firebase Rules API",
+    "distribution_name": "google-apis-firebaserules_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
