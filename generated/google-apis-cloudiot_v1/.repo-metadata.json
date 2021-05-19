@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudiot:v1",
+    "name_pretty": "Cloud IoT API",
+    "distribution_name": "google-apis-cloudiot_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
