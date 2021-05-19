@@ -1,0 +1,7 @@
+{
+    "api_id": "androidpublisher:v3",
+    "name_pretty": "Google Play Android Developer API",
+    "distribution_name": "google-apis-androidpublisher_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}
