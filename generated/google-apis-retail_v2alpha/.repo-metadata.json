@@ -1,0 +1,7 @@
+{
+    "api_id": "retail:v2alpha",
+    "name_pretty": "Retail API",
+    "distribution_name": "google-apis-retail_v2alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
