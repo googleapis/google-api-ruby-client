@@ -1,0 +1,7 @@
+{
+    "api_id": "artifactregistry:v1",
+    "name_pretty": "Artifact Registry API",
+    "distribution_name": "google-apis-artifactregistry_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
