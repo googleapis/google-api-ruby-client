@@ -1,0 +1,7 @@
+{
+    "api_id": "jobs:v3p1beta1",
+    "name_pretty": "Cloud Talent Solution API",
+    "distribution_name": "google-apis-jobs_v3p1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
