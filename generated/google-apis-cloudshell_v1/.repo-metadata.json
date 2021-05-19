@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudshell:v1",
+    "name_pretty": "Cloud Shell API",
+    "distribution_name": "google-apis-cloudshell_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
