@@ -1,0 +1,7 @@
+{
+    "api_id": "bigquerydatatransfer:v1",
+    "name_pretty": "BigQuery Data Transfer API",
+    "distribution_name": "google-apis-bigquerydatatransfer_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
