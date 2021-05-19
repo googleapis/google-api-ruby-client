@@ -1,0 +1,7 @@
+{
+    "api_id": "adexchangebuyer:v1.2",
+    "name_pretty": "Ad Exchange Buyer API",
+    "distribution_name": "google-apis-adexchangebuyer_v1_2",
+    "language": "ruby",
+    "library_type": "REST"
+}
