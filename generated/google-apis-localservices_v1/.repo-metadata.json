@@ -1,0 +1,7 @@
+{
+    "api_id": "localservices:v1",
+    "name_pretty": "Local Services API",
+    "distribution_name": "google-apis-localservices_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
