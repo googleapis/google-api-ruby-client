@@ -1,0 +1,7 @@
+{
+    "api_id": "iap:v1",
+    "name_pretty": "Cloud Identity-Aware Proxy API",
+    "distribution_name": "google-apis-iap_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
