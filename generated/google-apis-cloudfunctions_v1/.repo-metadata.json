@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudfunctions:v1",
+    "name_pretty": "Cloud Functions API",
+    "distribution_name": "google-apis-cloudfunctions_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
