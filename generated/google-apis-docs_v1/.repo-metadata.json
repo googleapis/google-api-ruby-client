@@ -1,0 +1,7 @@
+{
+    "api_id": "docs:v1",
+    "name_pretty": "Google Docs API",
+    "distribution_name": "google-apis-docs_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
