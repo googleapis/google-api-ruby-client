@@ -1,0 +1,7 @@
+{
+    "api_id": "orgpolicy:v2",
+    "name_pretty": "Organization Policy API",
+    "distribution_name": "google-apis-orgpolicy_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
