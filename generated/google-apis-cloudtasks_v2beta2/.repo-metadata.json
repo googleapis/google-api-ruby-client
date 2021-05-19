@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudtasks:v2beta2",
+    "name_pretty": "Cloud Tasks API",
+    "distribution_name": "google-apis-cloudtasks_v2beta2",
+    "language": "ruby",
+    "library_type": "REST"
+}
