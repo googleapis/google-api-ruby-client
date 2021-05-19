@@ -1,0 +1,7 @@
+{
+    "api_id": "eventarc:v1beta1",
+    "name_pretty": "Eventarc API",
+    "distribution_name": "google-apis-eventarc_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
