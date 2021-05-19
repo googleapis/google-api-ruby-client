@@ -1,0 +1,7 @@
+{
+    "api_id": "prod_tt_sasportal:v1alpha1",
+    "name_pretty": "SAS Portal API (Testing)",
+    "distribution_name": "google-apis-prod_tt_sasportal_v1alpha1",
+    "language": "ruby",
+    "library_type": "REST"
+}
