@@ -1,0 +1,7 @@
+{
+    "api_id": "fitness:v1",
+    "name_pretty": "Fitness API",
+    "distribution_name": "google-apis-fitness_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
