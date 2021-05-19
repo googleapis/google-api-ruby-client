@@ -1,0 +1,7 @@
+{
+    "api_id": "driveactivity:v2",
+    "name_pretty": "Drive Activity API",
+    "distribution_name": "google-apis-driveactivity_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
