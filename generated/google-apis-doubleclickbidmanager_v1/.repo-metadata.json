@@ -1,0 +1,7 @@
+{
+    "api_id": "doubleclickbidmanager:v1",
+    "name_pretty": "DoubleClick Bid Manager API",
+    "distribution_name": "google-apis-doubleclickbidmanager_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
