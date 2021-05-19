@@ -1,0 +1,7 @@
+{
+    "api_id": "appengine:v1beta",
+    "name_pretty": "App Engine Admin API",
+    "distribution_name": "google-apis-appengine_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
