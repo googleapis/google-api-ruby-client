@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListPropertiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +269,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -483,6 +495,8 @@ module Google
           property :google_signals_settings, as: 'googleSignalsSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleSignalsSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleSignalsSettings::Representation
       
           property :ios_app_data_stream, as: 'iosAppDataStream', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream::Representation
+      
+          property :measurement_protocol_secret, as: 'measurementProtocolSecret', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret::Representation
       
           property :property, as: 'property', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
       
@@ -718,6 +732,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :measurement_protocol_secrets, as: 'measurementProtocolSecrets', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaListPropertiesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -742,6 +765,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :web_data_streams, as: 'webDataStreams', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :secret_value, as: 'secretValue'
         end
       end
       

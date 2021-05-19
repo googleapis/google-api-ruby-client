@@ -506,6 +506,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream]
         attr_accessor :ios_app_data_stream
       
+        # A secret value used for sending hits to Measurement Protocol.
+        # Corresponds to the JSON property `measurementProtocolSecret`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret]
+        attr_accessor :measurement_protocol_secret
+      
         # A resource message representing a Google Analytics GA4 property.
         # Corresponds to the JSON property `property`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
@@ -531,6 +536,7 @@ module Google
           @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
           @google_signals_settings = args[:google_signals_settings] if args.key?(:google_signals_settings)
           @ios_app_data_stream = args[:ios_app_data_stream] if args.key?(:ios_app_data_stream)
+          @measurement_protocol_secret = args[:measurement_protocol_secret] if args.key?(:measurement_protocol_secret)
           @property = args[:property] if args.key?(:property)
           @web_data_stream = args[:web_data_stream] if args.key?(:web_data_stream)
         end
@@ -1428,6 +1434,32 @@ module Google
         end
       end
       
+      # Response message for ListMeasurementProtocolSecret RPC
+      class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of secrets for the parent stream specified in the request.
+        # Corresponds to the JSON property `measurementProtocolSecrets`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>]
+        attr_accessor :measurement_protocol_secrets
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @measurement_protocol_secrets = args[:measurement_protocol_secrets] if args.key?(:measurement_protocol_secrets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListProperties RPC.
       class GoogleAnalyticsAdminV1alphaListPropertiesResponse
         include Google::Apis::Core::Hashable
@@ -1503,6 +1535,41 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @web_data_streams = args[:web_data_streams] if args.key?(:web_data_streams)
+        end
+      end
+      
+      # A secret value used for sending hits to Measurement Protocol.
+      class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret
+        include Google::Apis::Core::Hashable
+      
+        # Required. Human-readable display name for this secret.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Resource name of this secret. This secret may be a child of any
+        # type of stream. Format: properties/`property`/webDataStreams/`webDataStream`/
+        # measurementProtocolSecrets/`measurementProtocolSecret`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The measurement protocol secret value. Pass this value to the
+        # api_secret field of the Measurement Protocol API when sending hits to this
+        # secret's parent property.
+        # Corresponds to the JSON property `secretValue`
+        # @return [String]
+        attr_accessor :secret_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @secret_value = args[:secret_value] if args.key?(:secret_value)
         end
       end
       
