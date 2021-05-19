@@ -1,0 +1,7 @@
+{
+    "api_id": "recaptchaenterprise:v1",
+    "name_pretty": "reCAPTCHA Enterprise API",
+    "distribution_name": "google-apis-recaptchaenterprise_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
