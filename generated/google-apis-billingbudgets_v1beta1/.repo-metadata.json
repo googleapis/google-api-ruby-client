@@ -1,0 +1,7 @@
+{
+    "api_id": "billingbudgets:v1beta1",
+    "name_pretty": "Cloud Billing Budget API",
+    "distribution_name": "google-apis-billingbudgets_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
