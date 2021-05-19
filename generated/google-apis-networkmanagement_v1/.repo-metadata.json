@@ -1,0 +1,7 @@
+{
+    "api_id": "networkmanagement:v1",
+    "name_pretty": "Network Management API",
+    "distribution_name": "google-apis-networkmanagement_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
