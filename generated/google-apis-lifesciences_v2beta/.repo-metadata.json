@@ -1,0 +1,7 @@
+{
+    "api_id": "lifesciences:v2beta",
+    "name_pretty": "Cloud Life Sciences API",
+    "distribution_name": "google-apis-lifesciences_v2beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
