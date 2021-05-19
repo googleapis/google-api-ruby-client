@@ -1,0 +1,7 @@
+{
+    "api_id": "analyticsreporting:v4",
+    "name_pretty": "Analytics Reporting API",
+    "distribution_name": "google-apis-analyticsreporting_v4",
+    "language": "ruby",
+    "library_type": "REST"
+}
