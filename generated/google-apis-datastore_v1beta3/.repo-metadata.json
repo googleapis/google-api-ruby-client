@@ -1,0 +1,7 @@
+{
+    "api_id": "datastore:v1beta3",
+    "name_pretty": "Cloud Datastore API",
+    "distribution_name": "google-apis-datastore_v1beta3",
+    "language": "ruby",
+    "library_type": "REST"
+}
