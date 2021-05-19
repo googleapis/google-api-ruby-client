@@ -1,0 +1,7 @@
+{
+    "api_id": "doubleclicksearch:v2",
+    "name_pretty": "Search Ads 360 API",
+    "distribution_name": "google-apis-doubleclicksearch_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
