@@ -1,0 +1,7 @@
+{
+    "api_id": "managedidentities:v1",
+    "name_pretty": "Managed Service for Microsoft Active Directory API",
+    "distribution_name": "google-apis-managedidentities_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
