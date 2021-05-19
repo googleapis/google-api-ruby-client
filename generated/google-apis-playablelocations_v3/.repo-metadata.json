@@ -1,0 +1,7 @@
+{
+    "api_id": "playablelocations:v3",
+    "name_pretty": "Playable Locations API",
+    "distribution_name": "google-apis-playablelocations_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}
