@@ -1,0 +1,7 @@
+{
+    "api_id": "chromeuxreport:v1",
+    "name_pretty": "Chrome UX Report API",
+    "distribution_name": "google-apis-chromeuxreport_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
