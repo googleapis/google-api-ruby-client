@@ -1,0 +1,7 @@
+{
+    "api_id": "accessapproval:v1",
+    "name_pretty": "Access Approval API",
+    "distribution_name": "google-apis-accessapproval_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
