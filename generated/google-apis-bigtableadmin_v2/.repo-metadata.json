@@ -1,0 +1,7 @@
+{
+    "api_id": "bigtableadmin:v2",
+    "name_pretty": "Cloud Bigtable Admin API",
+    "distribution_name": "google-apis-bigtableadmin_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
