@@ -1,0 +1,7 @@
+{
+    "api_id": "iamcredentials:v1",
+    "name_pretty": "IAM Service Account Credentials API",
+    "distribution_name": "google-apis-iamcredentials_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
