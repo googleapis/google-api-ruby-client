@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudshell_v1
 
+### v0.5.0 (2021-05-19)
+
+* Unspecified changes
+
 ### v0.4.0 (2021-03-24)
 
 * Regenerated from discovery document revision 20210320
