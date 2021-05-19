@@ -1,0 +1,7 @@
+{
+    "api_id": "firebasestorage:v1beta",
+    "name_pretty": "Cloud Storage for Firebase API",
+    "distribution_name": "google-apis-firebasestorage_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
