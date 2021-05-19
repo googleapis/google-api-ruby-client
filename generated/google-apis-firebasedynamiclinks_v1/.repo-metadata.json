@@ -1,0 +1,7 @@
+{
+    "api_id": "firebasedynamiclinks:v1",
+    "name_pretty": "Firebase Dynamic Links API",
+    "distribution_name": "google-apis-firebasedynamiclinks_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
