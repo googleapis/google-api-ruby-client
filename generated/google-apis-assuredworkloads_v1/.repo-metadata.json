@@ -1,0 +1,7 @@
+{
+    "api_id": "assuredworkloads:v1",
+    "name_pretty": "Assured Workloads API",
+    "distribution_name": "google-apis-assuredworkloads_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
