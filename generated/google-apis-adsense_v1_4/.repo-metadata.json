@@ -1,0 +1,7 @@
+{
+    "api_id": "adsense:v1.4",
+    "name_pretty": "AdSense Management API",
+    "distribution_name": "google-apis-adsense_v1_4",
+    "language": "ruby",
+    "library_type": "REST"
+}
