@@ -1,0 +1,7 @@
+{
+    "api_id": "gamesConfiguration:v1configuration",
+    "name_pretty": "Google Play Game Services Publishing API",
+    "distribution_name": "google-apis-games_configuration_v1configuration",
+    "language": "ruby",
+    "library_type": "REST"
+}
