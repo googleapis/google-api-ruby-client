@@ -1,0 +1,7 @@
+{
+    "api_id": "reseller:v1",
+    "name_pretty": "Google Workspace Reseller API",
+    "distribution_name": "google-apis-reseller_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
