@@ -1,0 +1,7 @@
+{
+    "api_id": "redis:v1",
+    "name_pretty": "Google Cloud Memorystore for Redis API",
+    "distribution_name": "google-apis-redis_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
