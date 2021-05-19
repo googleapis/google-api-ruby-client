@@ -1,0 +1,7 @@
+{
+    "api_id": "analyticsadmin:v1alpha",
+    "name_pretty": "Google Analytics Admin API",
+    "distribution_name": "google-apis-analyticsadmin_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
