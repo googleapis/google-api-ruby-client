@@ -1,0 +1,7 @@
+{
+    "api_id": "logging:v2",
+    "name_pretty": "Cloud Logging API",
+    "distribution_name": "google-apis-logging_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
