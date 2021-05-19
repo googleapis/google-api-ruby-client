@@ -1,0 +1,7 @@
+{
+    "api_id": "dialogflow:v3beta1",
+    "name_pretty": "Dialogflow API",
+    "distribution_name": "google-apis-dialogflow_v3beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
