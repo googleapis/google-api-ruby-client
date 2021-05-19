@@ -1,0 +1,7 @@
+{
+    "api_id": "groupsmigration:v1",
+    "name_pretty": "Groups Migration API",
+    "distribution_name": "google-apis-groupsmigration_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
