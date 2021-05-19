@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudbilling:v1",
+    "name_pretty": "Cloud Billing API",
+    "distribution_name": "google-apis-cloudbilling_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
