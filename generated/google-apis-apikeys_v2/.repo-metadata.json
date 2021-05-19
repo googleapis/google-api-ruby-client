@@ -1,0 +1,7 @@
+{
+    "api_id": "apikeys:v2",
+    "name_pretty": "API Keys API",
+    "distribution_name": "google-apis-apikeys_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
