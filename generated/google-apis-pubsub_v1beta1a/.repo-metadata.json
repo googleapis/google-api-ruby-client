@@ -1,0 +1,7 @@
+{
+    "api_id": "pubsub:v1beta1a",
+    "name_pretty": "Cloud Pub/Sub API",
+    "distribution_name": "google-apis-pubsub_v1beta1a",
+    "language": "ruby",
+    "library_type": "REST"
+}
