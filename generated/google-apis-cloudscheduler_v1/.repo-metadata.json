@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudscheduler:v1",
+    "name_pretty": "Cloud Scheduler API",
+    "distribution_name": "google-apis-cloudscheduler_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
