@@ -1,0 +1,7 @@
+{
+    "api_id": "paymentsresellersubscription:v1",
+    "name_pretty": "Payments Reseller Subscription API",
+    "distribution_name": "google-apis-paymentsresellersubscription_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
