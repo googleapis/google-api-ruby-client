@@ -1,0 +1,7 @@
+{
+    "api_id": "deploymentmanager:v2beta",
+    "name_pretty": "Cloud Deployment Manager V2 API",
+    "distribution_name": "google-apis-deploymentmanager_v2beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
