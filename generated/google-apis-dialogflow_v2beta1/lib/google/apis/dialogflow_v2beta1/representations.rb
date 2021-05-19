@@ -4538,6 +4538,8 @@ module Google
       
           property :event, as: 'event'
           property :intent, as: 'intent'
+          property :match_confidence, as: 'matchConfidence'
+          hash :parameters, as: 'parameters'
           collection :response_messages, as: 'responseMessages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessage::Representation
       
         end

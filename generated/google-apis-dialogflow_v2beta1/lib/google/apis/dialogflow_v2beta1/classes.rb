@@ -7814,7 +7814,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The collection of current Dialogflow CX agent session parameters at the time
-        # of this response.
+        # of this response. Deprecated: Use `parameters` instead.
         # Corresponds to the JSON property `cxSessionParameters`
         # @return [Hash<String,Object>]
         attr_accessor :cx_session_parameters
@@ -7836,6 +7836,20 @@ module Google
         # @return [String]
         attr_accessor :intent
       
+        # The confidence of the match. Values range from 0.0 (completely uncertain) to 1.
+        # 0 (completely certain). This value is for informational purpose only and is
+        # only used to help match the best intent within the classification threshold.
+        # This value may change for the same end-user expression at any time due to a
+        # model retraining or change in implementation.
+        # Corresponds to the JSON property `matchConfidence`
+        # @return [Float]
+        attr_accessor :match_confidence
+      
+        # The collection of current parameters at the time of this response.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
         # Response messages from the automated agent.
         # Corresponds to the JSON property `responseMessages`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ResponseMessage>]
@@ -7851,6 +7865,8 @@ module Google
           @detect_intent_response = args[:detect_intent_response] if args.key?(:detect_intent_response)
           @event = args[:event] if args.key?(:event)
           @intent = args[:intent] if args.key?(:intent)
+          @match_confidence = args[:match_confidence] if args.key?(:match_confidence)
+          @parameters = args[:parameters] if args.key?(:parameters)
           @response_messages = args[:response_messages] if args.key?(:response_messages)
         end
       end
