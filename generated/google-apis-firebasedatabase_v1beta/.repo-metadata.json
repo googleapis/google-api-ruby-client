@@ -1,0 +1,7 @@
+{
+    "api_id": "firebasedatabase:v1beta",
+    "name_pretty": "Firebase Realtime Database Management API",
+    "distribution_name": "google-apis-firebasedatabase_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
