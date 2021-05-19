@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudsearch:v1",
+    "name_pretty": "Cloud Search API",
+    "distribution_name": "google-apis-cloudsearch_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
