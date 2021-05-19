@@ -335,7 +335,7 @@ module Google
       
         # Unique name of the resource. It uses the form: `projects/`project_id|
         # project_number`/locations/`location_id`/instances/`instance_id`` Note: Either
-        # project_id or project_number and be used, but keep it consistent with other
+        # project_id or project_number can be used, but keep it consistent with other
         # APIs (e.g. RescheduleUpdate)
         # Corresponds to the JSON property `name`
         # @return [String]
