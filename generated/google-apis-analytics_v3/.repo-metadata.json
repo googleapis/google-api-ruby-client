@@ -1,0 +1,7 @@
+{
+    "api_id": "analytics:v3",
+    "name_pretty": "Google Analytics API",
+    "distribution_name": "google-apis-analytics_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}
