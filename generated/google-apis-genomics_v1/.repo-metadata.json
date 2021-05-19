@@ -1,0 +1,7 @@
+{
+    "api_id": "genomics:v1",
+    "name_pretty": "Genomics API",
+    "distribution_name": "google-apis-genomics_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
