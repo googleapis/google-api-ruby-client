@@ -1,0 +1,7 @@
+{
+    "api_id": "bigquery:v2",
+    "name_pretty": "BigQuery API",
+    "distribution_name": "google-apis-bigquery_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
