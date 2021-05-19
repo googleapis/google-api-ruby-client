@@ -1,0 +1,7 @@
+{
+    "api_id": "playcustomapp:v1",
+    "name_pretty": "Google Play Custom App Publishing API",
+    "distribution_name": "google-apis-playcustomapp_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
