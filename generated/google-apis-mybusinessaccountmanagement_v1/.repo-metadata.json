@@ -1,0 +1,7 @@
+{
+    "api_id": "mybusinessaccountmanagement:v1",
+    "name_pretty": "My Business Account Management API",
+    "distribution_name": "google-apis-mybusinessaccountmanagement_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
