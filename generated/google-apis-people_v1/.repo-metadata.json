@@ -1,0 +1,7 @@
+{
+    "api_id": "people:v1",
+    "name_pretty": "People API",
+    "distribution_name": "google-apis-people_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
