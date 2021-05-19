@@ -117,6 +117,14 @@ module Google
         # @return [String]
         attr_accessor :issuer
       
+        # Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517).
+        # When this field is set, OIDC discovery will NOT be performed on `issuer`, and
+        # instead OIDC tokens will be validated using this field.
+        # Corresponds to the JSON property `oidcJwks`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :oidc_jwks
+      
         # Output only. The name of the workload identity pool in which `issuer` will be
         # recognized. There is a single Workload Identity Pool per Hub that is shared
         # between all Memberships that belong to that Hub. For a Hub hosted in `
@@ -134,6 +142,7 @@ module Google
         def update!(**args)
           @identity_provider = args[:identity_provider] if args.key?(:identity_provider)
           @issuer = args[:issuer] if args.key?(:issuer)
+          @oidc_jwks = args[:oidc_jwks] if args.key?(:oidc_jwks)
           @workload_identity_pool = args[:workload_identity_pool] if args.key?(:workload_identity_pool)
         end
       end

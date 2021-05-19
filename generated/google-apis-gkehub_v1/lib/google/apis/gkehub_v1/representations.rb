@@ -200,6 +200,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :identity_provider, as: 'identityProvider'
           property :issuer, as: 'issuer'
+          property :oidc_jwks, :base64 => true, as: 'oidcJwks'
           property :workload_identity_pool, as: 'workloadIdentityPool'
         end
       end
