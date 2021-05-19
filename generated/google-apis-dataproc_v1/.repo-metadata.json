@@ -1,0 +1,7 @@
+{
+    "api_id": "dataproc:v1",
+    "name_pretty": "Cloud Dataproc API",
+    "distribution_name": "google-apis-dataproc_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
