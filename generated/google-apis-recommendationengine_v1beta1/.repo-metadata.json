@@ -1,0 +1,7 @@
+{
+    "api_id": "recommendationengine:v1beta1",
+    "name_pretty": "Recommendations AI (Beta)",
+    "distribution_name": "google-apis-recommendationengine_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
