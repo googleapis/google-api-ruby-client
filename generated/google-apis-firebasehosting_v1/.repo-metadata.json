@@ -1,0 +1,7 @@
+{
+    "api_id": "firebasehosting:v1",
+    "name_pretty": "Firebase Hosting API",
+    "distribution_name": "google-apis-firebasehosting_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
