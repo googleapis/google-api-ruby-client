@@ -1,0 +1,7 @@
+{
+    "api_id": "androiddeviceprovisioning:v1",
+    "name_pretty": "Android Device Provisioning Partner API",
+    "distribution_name": "google-apis-androiddeviceprovisioning_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
