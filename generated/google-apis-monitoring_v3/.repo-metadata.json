@@ -1,0 +1,7 @@
+{
+    "api_id": "monitoring:v3",
+    "name_pretty": "Cloud Monitoring API",
+    "distribution_name": "google-apis-monitoring_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}
