@@ -1,0 +1,7 @@
+{
+    "api_id": "calendar:v3",
+    "name_pretty": "Calendar API",
+    "distribution_name": "google-apis-calendar_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}
