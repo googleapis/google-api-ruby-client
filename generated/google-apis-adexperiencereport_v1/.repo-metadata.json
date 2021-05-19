@@ -1,0 +1,7 @@
+{
+    "api_id": "adexperiencereport:v1",
+    "name_pretty": "Ad Experience Report API",
+    "distribution_name": "google-apis-adexperiencereport_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
