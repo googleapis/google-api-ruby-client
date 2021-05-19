@@ -1,0 +1,7 @@
+{
+    "api_id": "content:v2.1",
+    "name_pretty": "Content API for Shopping",
+    "distribution_name": "google-apis-content_v2_1",
+    "language": "ruby",
+    "library_type": "REST"
+}
