@@ -1,0 +1,7 @@
+{
+    "api_id": "container:v1",
+    "name_pretty": "Kubernetes Engine API",
+    "distribution_name": "google-apis-container_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
