@@ -1,0 +1,7 @@
+{
+    "api_id": "books:v1",
+    "name_pretty": "Books API",
+    "distribution_name": "google-apis-books_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
