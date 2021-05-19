@@ -1,0 +1,7 @@
+{
+    "api_id": "admin:reports_v1",
+    "name_pretty": "Admin SDK API",
+    "distribution_name": "google-apis-admin_reports_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
