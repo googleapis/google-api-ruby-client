@@ -1,0 +1,7 @@
+{
+    "api_id": "documentai:v1beta2",
+    "name_pretty": "Cloud Document AI API",
+    "distribution_name": "google-apis-documentai_v1beta2",
+    "language": "ruby",
+    "library_type": "REST"
+}
