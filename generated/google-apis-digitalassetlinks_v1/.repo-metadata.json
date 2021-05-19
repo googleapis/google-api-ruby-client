@@ -1,0 +1,7 @@
+{
+    "api_id": "digitalassetlinks:v1",
+    "name_pretty": "Digital Asset Links API",
+    "distribution_name": "google-apis-digitalassetlinks_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
