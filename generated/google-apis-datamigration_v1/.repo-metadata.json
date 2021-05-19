@@ -1,0 +1,7 @@
+{
+    "api_id": "datamigration:v1",
+    "name_pretty": "Database Migration API",
+    "distribution_name": "google-apis-datamigration_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
