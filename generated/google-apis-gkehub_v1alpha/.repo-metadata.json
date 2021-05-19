@@ -1,0 +1,7 @@
+{
+    "api_id": "gkehub:v1alpha",
+    "name_pretty": "GKE Hub",
+    "distribution_name": "google-apis-gkehub_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
