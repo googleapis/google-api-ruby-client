@@ -1,0 +1,7 @@
+{
+    "api_id": "civicinfo:v2",
+    "name_pretty": "Google Civic Information API",
+    "distribution_name": "google-apis-civicinfo_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
