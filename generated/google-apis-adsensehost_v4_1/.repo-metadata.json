@@ -1,0 +1,7 @@
+{
+    "api_id": "adsensehost:v4.1",
+    "name_pretty": "AdSense Host API",
+    "distribution_name": "google-apis-adsensehost_v4_1",
+    "language": "ruby",
+    "library_type": "REST"
+}
