@@ -1,0 +1,7 @@
+{
+    "api_id": "firestore:v1beta2",
+    "name_pretty": "Cloud Firestore API",
+    "distribution_name": "google-apis-firestore_v1beta2",
+    "language": "ruby",
+    "library_type": "REST"
+}
