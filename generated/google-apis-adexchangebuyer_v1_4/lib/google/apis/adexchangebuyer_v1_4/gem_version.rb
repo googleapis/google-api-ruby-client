@@ -16,7 +16,7 @@ module Google
   module Apis
     module AdexchangebuyerV1_4
       # Version of the google-apis-adexchangebuyer_v1_4 gem
-      GEM_VERSION = "0.3.0"
+      GEM_VERSION = "0.4.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.2.0"
