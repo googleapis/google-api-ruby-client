@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudkms:v1",
+    "name_pretty": "Cloud Key Management Service (KMS) API",
+    "distribution_name": "google-apis-cloudkms_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
