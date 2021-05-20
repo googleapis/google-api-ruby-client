@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsRemotebuildbotResourceUsageIoStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsRemotebuildbotResourceUsageStat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1035,6 +1041,20 @@ module Google
       
           property :memory_usage, as: 'memoryUsage', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildbotResourceUsageStat, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildbotResourceUsageStat::Representation
       
+          property :total_disk_io_stats, as: 'totalDiskIoStats', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildbotResourceUsageIoStats, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildbotResourceUsageIoStats::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsRemotebuildbotResourceUsageIoStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :read_bytes_count, :numeric_string => true, as: 'readBytesCount'
+          property :read_count, :numeric_string => true, as: 'readCount'
+          property :read_time_ms, :numeric_string => true, as: 'readTimeMs'
+          property :write_bytes_count, :numeric_string => true, as: 'writeBytesCount'
+          property :write_count, :numeric_string => true, as: 'writeCount'
+          property :write_time_ms, :numeric_string => true, as: 'writeTimeMs'
         end
       end
       
