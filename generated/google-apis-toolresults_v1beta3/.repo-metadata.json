@@ -1,0 +1,7 @@
+{
+    "api_id": "toolresults:v1beta3",
+    "name_pretty": "Cloud Tool Results API",
+    "distribution_name": "google-apis-toolresults_v1beta3",
+    "language": "ruby",
+    "library_type": "REST"
+}
