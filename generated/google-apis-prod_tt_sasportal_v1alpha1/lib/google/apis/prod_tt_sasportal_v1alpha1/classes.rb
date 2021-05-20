@@ -153,6 +153,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. The FRNs copied from its direct parent.
+        # Corresponds to the JSON property `frns`
+        # @return [Array<String>]
+        attr_accessor :frns
+      
         # Output only. Resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -173,6 +178,7 @@ module Google
           @allowed_billing_modes = args[:allowed_billing_modes] if args.key?(:allowed_billing_modes)
           @default_billing_mode = args[:default_billing_mode] if args.key?(:default_billing_mode)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @frns = args[:frns] if args.key?(:frns)
           @name = args[:name] if args.key?(:name)
           @sas_user_ids = args[:sas_user_ids] if args.key?(:sas_user_ids)
         end
