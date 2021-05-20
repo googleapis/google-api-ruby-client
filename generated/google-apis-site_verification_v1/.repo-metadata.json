@@ -1,0 +1,7 @@
+{
+    "api_id": "siteVerification:v1",
+    "name_pretty": "Google Site Verification API",
+    "distribution_name": "google-apis-site_verification_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
