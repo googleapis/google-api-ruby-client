@@ -54,7 +54,7 @@ module Google
         # @param [String] parent
         #   Required. Name of the organization or project the assets belong to. Format: "
         #   organizations/[organization-number]" (such as "organizations/123"), "projects/[
-        #   project-number]" (such as "projects/my-project-id"), or "projects/[project-id]"
+        #   project-id]" (such as "projects/my-project-id"), or "projects/[project-number]"
         #   (such as "projects/12345").
         # @param [Array<String>, String] asset_types
         #   A list of asset types to take a snapshot for. For example: "compute.googleapis.
