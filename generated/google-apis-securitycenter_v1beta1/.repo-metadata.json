@@ -1,0 +1,7 @@
+{
+    "api_id": "securitycenter:v1beta1",
+    "name_pretty": "Security Command Center API",
+    "distribution_name": "google-apis-securitycenter_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
