@@ -1,0 +1,7 @@
+{
+    "api_id": "translate:v3beta1",
+    "name_pretty": "Cloud Translation API",
+    "distribution_name": "google-apis-translate_v3beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
