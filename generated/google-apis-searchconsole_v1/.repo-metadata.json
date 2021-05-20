@@ -1,0 +1,7 @@
+{
+    "api_id": "searchconsole:v1",
+    "name_pretty": "Google Search Console API",
+    "distribution_name": "google-apis-searchconsole_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
