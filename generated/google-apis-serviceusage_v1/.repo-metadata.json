@@ -1,0 +1,7 @@
+{
+    "api_id": "serviceusage:v1",
+    "name_pretty": "Service Usage API",
+    "distribution_name": "google-apis-serviceusage_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
