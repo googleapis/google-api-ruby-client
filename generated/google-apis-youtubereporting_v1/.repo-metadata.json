@@ -1,0 +1,7 @@
+{
+    "api_id": "youtubereporting:v1",
+    "name_pretty": "YouTube Reporting API",
+    "distribution_name": "google-apis-youtubereporting_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
