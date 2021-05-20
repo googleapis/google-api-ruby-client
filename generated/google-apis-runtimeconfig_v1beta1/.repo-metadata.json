@@ -1,0 +1,7 @@
+{
+    "api_id": "runtimeconfig:v1beta1",
+    "name_pretty": "Cloud Runtime Configuration API",
+    "distribution_name": "google-apis-runtimeconfig_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
