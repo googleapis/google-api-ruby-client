@@ -1,0 +1,7 @@
+{
+    "api_id": "sourcerepo:v1",
+    "name_pretty": "Cloud Source Repositories API",
+    "distribution_name": "google-apis-sourcerepo_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
