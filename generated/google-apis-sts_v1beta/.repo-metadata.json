@@ -1,0 +1,7 @@
+{
+    "api_id": "sts:v1beta",
+    "name_pretty": "Security Token Service API",
+    "distribution_name": "google-apis-sts_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
