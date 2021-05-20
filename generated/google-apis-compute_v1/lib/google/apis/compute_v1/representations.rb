@@ -5194,6 +5194,8 @@ module Google
       class AccessConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_ipv6, as: 'externalIpv6'
+          property :external_ipv6_prefix_length, as: 'externalIpv6PrefixLength'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_ip, as: 'natIP'
@@ -9650,12 +9652,16 @@ module Google
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeV1::AliasIpRange, decorator: Google::Apis::ComputeV1::AliasIpRange::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :ipv6_access_configs, as: 'ipv6AccessConfigs', class: Google::Apis::ComputeV1::AccessConfig, decorator: Google::Apis::ComputeV1::AccessConfig::Representation
+      
+          property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_ip, as: 'networkIP'
           property :nic_type, as: 'nicType'
+          property :stack_type, as: 'stackType'
           property :subnetwork, as: 'subnetwork'
         end
       end
@@ -12664,10 +12670,12 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_flow_logs, as: 'enableFlowLogs'
+          property :external_ipv6_prefix, as: 'externalIpv6Prefix'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_cidr_range, as: 'ipv6CidrRange'
           property :kind, as: 'kind'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::SubnetworkLogConfig, decorator: Google::Apis::ComputeV1::SubnetworkLogConfig::Representation
@@ -12682,6 +12690,7 @@ module Google
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeV1::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeV1::SubnetworkSecondaryRange::Representation
       
           property :self_link, as: 'selfLink'
+          property :stack_type, as: 'stackType'
           property :state, as: 'state'
         end
       end
