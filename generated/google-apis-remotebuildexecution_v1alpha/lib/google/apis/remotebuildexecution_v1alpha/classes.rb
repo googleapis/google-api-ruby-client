@@ -1675,6 +1675,11 @@ module Google
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildbotResourceUsageStat]
         attr_accessor :memory_usage
       
+        # 
+        # Corresponds to the JSON property `totalDiskIoStats`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildbotResourceUsageIoStats]
+        attr_accessor :total_disk_io_stats
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1684,6 +1689,56 @@ module Google
           @cpu_used_percent = args[:cpu_used_percent] if args.key?(:cpu_used_percent)
           @disk_usage = args[:disk_usage] if args.key?(:disk_usage)
           @memory_usage = args[:memory_usage] if args.key?(:memory_usage)
+          @total_disk_io_stats = args[:total_disk_io_stats] if args.key?(:total_disk_io_stats)
+        end
+      end
+      
+      # 
+      class GoogleDevtoolsRemotebuildbotResourceUsageIoStats
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `readBytesCount`
+        # @return [Fixnum]
+        attr_accessor :read_bytes_count
+      
+        # 
+        # Corresponds to the JSON property `readCount`
+        # @return [Fixnum]
+        attr_accessor :read_count
+      
+        # 
+        # Corresponds to the JSON property `readTimeMs`
+        # @return [Fixnum]
+        attr_accessor :read_time_ms
+      
+        # 
+        # Corresponds to the JSON property `writeBytesCount`
+        # @return [Fixnum]
+        attr_accessor :write_bytes_count
+      
+        # 
+        # Corresponds to the JSON property `writeCount`
+        # @return [Fixnum]
+        attr_accessor :write_count
+      
+        # 
+        # Corresponds to the JSON property `writeTimeMs`
+        # @return [Fixnum]
+        attr_accessor :write_time_ms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @read_bytes_count = args[:read_bytes_count] if args.key?(:read_bytes_count)
+          @read_count = args[:read_count] if args.key?(:read_count)
+          @read_time_ms = args[:read_time_ms] if args.key?(:read_time_ms)
+          @write_bytes_count = args[:write_bytes_count] if args.key?(:write_bytes_count)
+          @write_count = args[:write_count] if args.key?(:write_count)
+          @write_time_ms = args[:write_time_ms] if args.key?(:write_time_ms)
         end
       end
       
