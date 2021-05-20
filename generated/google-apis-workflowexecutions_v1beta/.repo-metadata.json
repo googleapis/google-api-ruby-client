@@ -1,0 +1,7 @@
+{
+    "api_id": "workflowexecutions:v1beta",
+    "name_pretty": "Workflow Executions API",
+    "distribution_name": "google-apis-workflowexecutions_v1beta",
+    "language": "ruby",
+    "library_type": "REST"
+}
