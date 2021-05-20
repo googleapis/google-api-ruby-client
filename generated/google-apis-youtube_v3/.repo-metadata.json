@@ -1,0 +1,7 @@
+{
+    "api_id": "youtube:v3",
+    "name_pretty": "YouTube Data API v3",
+    "distribution_name": "google-apis-youtube_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}
