@@ -465,6 +465,19 @@ module Google
       class AccessConfig
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The first IPv6 address of the external IPv6 range associated
+        # with this instance, prefix length is stored in externalIpv6PrefixLength in
+        # ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork
+        # associated with the instance will be allocated dynamically.
+        # Corresponds to the JSON property `externalIpv6`
+        # @return [String]
+        attr_accessor :external_ipv6
+      
+        # [Output Only] The prefix length of the external IPv6 range.
+        # Corresponds to the JSON property `externalIpv6PrefixLength`
+        # @return [Fixnum]
+        attr_accessor :external_ipv6_prefix_length
+      
         # [Output Only] Type of the resource. Always compute#accessConfig for access
         # configs.
         # Corresponds to the JSON property `kind`
@@ -522,6 +535,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @external_ipv6 = args[:external_ipv6] if args.key?(:external_ipv6)
+          @external_ipv6_prefix_length = args[:external_ipv6_prefix_length] if args.key?(:external_ipv6_prefix_length)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
@@ -3240,10 +3255,9 @@ module Google
         # @return [String]
         attr_accessor :session_affinity
       
-        # The backend service timeout has a different meaning depending on the type of
-        # load balancer. For more information see,  Backend service settings The default
-        # is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647
-        # seconds.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # Instead, use maxStreamDuration.
         # Corresponds to the JSON property `timeoutSec`
         # @return [Fixnum]
         attr_accessor :timeout_sec
@@ -4090,7 +4104,10 @@ module Google
         end
       end
       
-      # 
+      # A transient resource used in compute.instances.bulkInsert and compute.
+      # regionInstances.bulkInsert and compute.regionInstances.recommendLocations.
+      # This resource is not persisted anywhere, it is used only for processing the
+      # requests.
       class BulkInsertInstanceResource
         include Google::Apis::Core::Hashable
       
@@ -4276,14 +4293,14 @@ module Google
       class CircuitBreakers
         include Google::Apis::Core::Hashable
       
-        # The maximum number of connections to the backend service. If not specified,
-        # there is no limit.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `maxConnections`
         # @return [Fixnum]
         attr_accessor :max_connections
       
-        # The maximum number of pending requests allowed to the backend service. If not
-        # specified, there is no limit.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `maxPendingRequests`
         # @return [Fixnum]
         attr_accessor :max_pending_requests
@@ -4294,16 +4311,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_requests
       
-        # Maximum requests for a single connection to the backend service. This
-        # parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not
-        # specified, there is no limit. Setting this parameter to 1 will effectively
-        # disable keep alive.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `maxRequestsPerConnection`
         # @return [Fixnum]
         attr_accessor :max_requests_per_connection
       
-        # The maximum number of parallel retries allowed to the backend cluster. If not
-        # specified, the default is 1.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `maxRetries`
         # @return [Fixnum]
         attr_accessor :max_retries
@@ -7932,10 +7947,11 @@ module Google
         attr_accessor :ip_address
       
         # The IP protocol to which this rule applies.
-        # For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
+        # For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and
+        # L3_DEFAULT.
         # The valid IP protocols are different for different load balancing products:
         # - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and
-        # one of TCP, UDP or ALL is valid.
+        # one of TCP, UDP or L3_DEFAULT is valid.
         # - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and
         # only TCP is valid.
         # - Internal HTTP(S) Load Balancing: The load balancing scheme is
@@ -7943,17 +7959,18 @@ module Google
         # - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme
         # is EXTERNAL and only TCP is valid.
         # - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of
-        # TCP or UDP is valid.
+        # TCP, UDP or L3_DEFAULT is valid.
         # Corresponds to the JSON property `IPProtocol`
         # @return [String]
         attr_accessor :ip_protocol
       
-        # This field is used along with the backend_service field for internal load
-        # balancing or with the target field for internal TargetInstance. This field
-        # cannot be used with port or portRange fields.
-        # When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify
-        # this field to allow packets addressed to any ports will be forwarded to the
-        # backends configured with this forwarding rule.
+        # This field is used along with the backend_service field for Internal TCP/UDP
+        # Load Balancing or Network Load Balancing, or with the target field for
+        # internal and external TargetInstance.
+        # You can only use one of ports and port_range, or allPorts. The three are
+        # mutually exclusive.
+        # For TCP, UDP and SCTP traffic, packets addressed to any ports will be
+        # forwarded to the target or backendService.
         # Corresponds to the JSON property `allPorts`
         # @return [Boolean]
         attr_accessor :all_ports
@@ -8115,13 +8132,16 @@ module Google
         # @return [String]
         attr_accessor :network_tier
       
-        # This field can be used only if: * Load balancing scheme is one of EXTERNAL,
-        # INTERNAL_SELF_MANAGED or INTERNAL_MANAGED, and * IPProtocol is one of TCP, UDP,
-        # or SCTP.
+        # This field can be used only if:
+        # - Load balancing scheme is one of EXTERNAL,  INTERNAL_SELF_MANAGED or
+        # INTERNAL_MANAGED
+        # - IPProtocol is one of TCP, UDP, or SCTP.
         # Packets addressed to ports in the specified range will be forwarded to target
-        # or  backend_service. You can only use one of ports, port_range, or allPorts.
-        # The three are mutually exclusive. Forwarding rules with the same [IPAddress,
-        # IPProtocol] pair must have disjoint port ranges.
+        # or  backend_service.
+        # You can only use one of ports, port_range, or allPorts. The three are mutually
+        # exclusive.
+        # Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint
+        # ports.
         # Some types of forwarding target have constraints on the acceptable ports:
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
@@ -8142,8 +8162,8 @@ module Google
         # You can only use one of ports and port_range, or allPorts. The three are
         # mutually exclusive.
         # You can specify a list of up to five ports, which can be non-contiguous.
-        # For Internal TCP/UDP Load Balancing, if you specify allPorts, you should not
-        # specify ports.
+        # Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint
+        # ports.
         # For more information, see [Port specifications](/load-balancing/docs/
         # forwarding-rule-concepts#port_specifications).
         # Corresponds to the JSON property `ports`
@@ -9569,11 +9589,12 @@ module Google
       
         # List of URLs to the HealthCheck resources. Must have at least one HealthCheck,
         # and not more than 10. HealthCheck resources must have portSpecification=
-        # USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be
-        # regional and in the same region. For global HealthCheckService, HealthCheck
-        # must be global. Mix of regional and global HealthChecks is not supported.
-        # Multiple regional HealthChecks must belong to the same region. Regional
-        # HealthChecks</code? must belong to the same region as zones of NEGs.
+        # USE_SERVING_PORT or portSpecification=USE_FIXED_PORT. For regional
+        # HealthCheckService, the HealthCheck must be regional and in the same region.
+        # For global HealthCheckService, HealthCheck must be global. Mix of regional and
+        # global HealthChecks is not supported. Multiple regional HealthChecks must
+        # belong to the same region. Regional HealthChecks must belong to the same
+        # region as zones of NEGs.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
         attr_accessor :health_checks
@@ -10190,6 +10211,9 @@ module Google
       
         # The HTTP status code used to abort the request.
         # The value must be between 200 and 599 inclusive.
+        # For gRPC protocol, the gRPC status code is mapped to HTTP status code
+        # according to this  mapping table. HTTP status 200 is mapped to gRPC status
+        # UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
         # Corresponds to the JSON property `httpStatus`
         # @return [Fixnum]
         attr_accessor :http_status
@@ -10816,8 +10840,8 @@ module Google
         # @return [Google::Apis::ComputeV1::Duration]
         attr_accessor :per_try_timeout
       
-        # Specfies one or more conditions when this retry rule applies. Valid values are:
-        # 
+        # Specifies one or more conditions when this retry rule applies. Valid values
+        # are:
         # - 5xx: Loadbalancer will attempt a retry if the backend service responds with
         # any 5xx response code, or if the backend service does not respond at all,
         # example: disconnects, reset, read timeout, connection failure, and refused
@@ -11474,13 +11498,17 @@ module Google
         # @return [Google::Apis::ComputeV1::InitialStateConfig]
         attr_accessor :shielded_instance_initial_state
       
-        # URL of the source disk used to create this image. This can be a full or valid
-        # partial URL. You must provide either this property or the rawDisk.source
-        # property but not both to create an image. For example, the following are valid
-        # values:
+        # URL of the source disk used to create this image. For example, the following
+        # are valid values:
         # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
         # - projects/project/zones/zone/disks/disk
         # - zones/zone/disks/disk
+        # In order to create an image, you must provide the full or partial URL of one
+        # of the following:
+        # - The rawDisk.source URL
+        # - The sourceDisk URL
+        # - The sourceImage URL
+        # - The sourceSnapshot URL
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
         attr_accessor :source_disk
@@ -11501,10 +11529,10 @@ module Google
         # URL of the source image used to create this image.
         # In order to create an image, you must provide the full or partial URL of one
         # of the following:
-        # - The selfLink URL
-        # - This property
         # - The rawDisk.source URL
         # - The sourceDisk URL
+        # - The sourceImage URL
+        # - The sourceSnapshot URL
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -11525,11 +11553,10 @@ module Google
         # URL of the source snapshot used to create this image.
         # In order to create an image, you must provide the full or partial URL of one
         # of the following:
-        # - The selfLink URL
-        # - This property
-        # - The sourceImage URL
         # - The rawDisk.source URL
         # - The sourceDisk URL
+        # - The sourceImage URL
+        # - The sourceSnapshot URL
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -11623,8 +11650,13 @@ module Google
           # @return [String]
           attr_accessor :sha1_checksum
         
-          # The full Google Cloud Storage URL where the disk image is stored. You must
-          # provide either this property or the sourceDisk property but not both.
+          # The full Google Cloud Storage URL where the disk image is stored.
+          # In order to create an image, you must provide the full or partial URL of one
+          # of the following:
+          # - The rawDisk.source URL
+          # - The sourceDisk URL
+          # - The sourceImage URL
+          # - The sourceSnapshot URL
           # Corresponds to the JSON property `source`
           # @return [String]
           attr_accessor :source
@@ -11995,7 +12027,7 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Sets the scheduling options for an Instance. NextID: 20
+        # Sets the scheduling options for an Instance. NextID: 21
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -12591,6 +12623,13 @@ module Google
         end
       end
       
+      # Whether the instance is a standby. Properties of a standby instance comparing
+      # to the regular instance: ======================================================
+      # =================== | regular | standby =======================================
+      # ================================== managed by IGM? | yes | yes added to the IG?
+      # | yes | yes counts towards IGM's target size? | yes | no taken into account
+      # by Autoscaler? | yes | no receives traffic from LB? | yes | no ================
+      # =========================================================
       # Represents a Managed Instance Group resource.
       # An instance group is a collection of VM instances that you can manage as a
       # single entity. For more information, read Instance groups.
@@ -14616,7 +14655,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 20
+        # Sets the scheduling options for an Instance. NextID: 21
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -17277,7 +17316,7 @@ module Google
       class LocationPolicyLocation
         include Google::Apis::Core::Hashable
       
-        # Preference for a given locaction: ALLOW or DENY.
+        # Preference for a given location: ALLOW or DENY.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
@@ -19338,6 +19377,20 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # An array of IPv6 access configurations for this interface. Currently, only one
+        # IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        # specified, then this instance will have no external IPv6 Internet access.
+        # Corresponds to the JSON property `ipv6AccessConfigs`
+        # @return [Array<Google::Apis::ComputeV1::AccessConfig>]
+        attr_accessor :ipv6_access_configs
+      
+        # [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be
+        # accessed from the Internet. This field is always inherited from its subnetwork.
+        # Valid only if stackType is IPV4_IPV6.
+        # Corresponds to the JSON property `ipv6AccessType`
+        # @return [String]
+        attr_accessor :ipv6_access_type
+      
         # [Output Only] An IPv6 internal network address for this network interface.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
@@ -19381,6 +19434,14 @@ module Google
         # @return [String]
         attr_accessor :nic_type
       
+        # The stack type for this network interface to identify whether the IPv6 feature
+        # is enabled or not. If not specified, IPV4_ONLY will be used.
+        # This field can be both set at instance creation and update network interface
+        # operations.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
         # The URL of the Subnetwork resource for this instance. If the network resource
         # is in legacy mode, do not specify this field. If the network is in auto subnet
         # mode, specifying the subnetwork is optional. If the network is in custom
@@ -19403,12 +19464,15 @@ module Google
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @ipv6_access_configs = args[:ipv6_access_configs] if args.key?(:ipv6_access_configs)
+          @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_ip = args[:network_ip] if args.key?(:network_ip)
           @nic_type = args[:nic_type] if args.key?(:nic_type)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
@@ -29067,7 +29131,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 20
+      # Sets the scheduling options for an Instance. NextID: 21
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -31145,6 +31209,12 @@ module Google
         attr_accessor :enable_flow_logs
         alias_method :enable_flow_logs?, :enable_flow_logs
       
+        # [Output Only] The range of external IPv6 addresses that are owned by this
+        # subnetwork.
+        # Corresponds to the JSON property `externalIpv6Prefix`
+        # @return [String]
+        attr_accessor :external_ipv6_prefix
+      
         # Fingerprint of this resource. A hash of the contents stored in this object.
         # This field is used in optimistic locking. This field will be ignored when
         # inserting a Subnetwork. An up-to-date fingerprint must be provided in order to
@@ -31177,6 +31247,14 @@ module Google
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
+      
+        # The access type of IPv6 address this subnet holds. It's immutable and can only
+        # be specified during creation or the first time the subnet is updated into
+        # IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot
+        # enable direct path.
+        # Corresponds to the JSON property `ipv6AccessType`
+        # @return [String]
+        attr_accessor :ipv6_access_type
       
         # [Output Only] The range of internal IPv6 addresses that are owned by this
         # subnetwork.
@@ -31268,6 +31346,13 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The stack type for this subnet to identify whether the IPv6 feature is enabled
+        # or not. If not specified IPV4_ONLY will be used.
+        # This field can be both set at resource creation time and updated using patch.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
         # [Output Only] The state of the subnetwork, which can be one of the following
         # values: READY: Subnetwork is created and ready to use DRAINING: only
         # applicable to subnetworks that have the purpose set to
@@ -31287,10 +31372,12 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @enable_flow_logs = args[:enable_flow_logs] if args.key?(:enable_flow_logs)
+          @external_ipv6_prefix = args[:external_ipv6_prefix] if args.key?(:external_ipv6_prefix)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @gateway_address = args[:gateway_address] if args.key?(:gateway_address)
           @id = args[:id] if args.key?(:id)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_cidr_range = args[:ipv6_cidr_range] if args.key?(:ipv6_cidr_range)
           @kind = args[:kind] if args.key?(:kind)
           @log_config = args[:log_config] if args.key?(:log_config)
@@ -31303,6 +31390,7 @@ module Google
           @role = args[:role] if args.key?(:role)
           @secondary_ip_ranges = args[:secondary_ip_ranges] if args.key?(:secondary_ip_ranges)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -32575,7 +32663,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # New set of SslCertificate resources to associate with this TargetHttpsProxy
-        # resource. Currently exactly one SslCertificate resource must be specified.
+        # resource. At least one SSL certificate must be specified. Currently, you may
+        # specify up to 15 SSL certificates.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -32710,6 +32799,8 @@ module Google
         # URLs to SslCertificate resources that are used to authenticate connections
         # between users and the load balancer. At least one SSL certificate must be
         # specified. Currently, you may specify up to 15 SSL certificates.
+        # sslCertificates do not apply when the load balancing scheme is set to
+        # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -34050,7 +34141,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # New set of URLs to SslCertificate resources to associate with this
-        # TargetSslProxy. Currently exactly one ssl certificate must be specified.
+        # TargetSslProxy. At least one SSL certificate must be specified. Currently, you
+        # may specify up to 15 SSL certificates.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
@@ -34124,7 +34216,8 @@ module Google
       
         # URLs to SslCertificate resources that are used to authenticate connections to
         # Backends. At least one SSL certificate must be specified. Currently, you may
-        # specify up to 15 SSL certificates.
+        # specify up to 15 SSL certificates. sslCertificates do not apply when the load
+        # balancing scheme is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
         attr_accessor :ssl_certificates
