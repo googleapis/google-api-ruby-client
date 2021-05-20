@@ -1,0 +1,7 @@
+{
+    "api_id": "speech:v1p1beta1",
+    "name_pretty": "Cloud Speech-to-Text API",
+    "distribution_name": "google-apis-speech_v1p1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
