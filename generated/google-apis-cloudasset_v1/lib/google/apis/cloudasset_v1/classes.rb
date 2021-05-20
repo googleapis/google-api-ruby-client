@@ -123,6 +123,26 @@ module Google
         end
       end
       
+      # The response message for resource move analysis.
+      class AnalyzeMoveResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of analyses returned from performing the intended resource move
+        # analysis. The analysis is grouped by different Cloud services.
+        # Corresponds to the JSON property `moveAnalysis`
+        # @return [Array<Google::Apis::CloudassetV1::MoveAnalysis>]
+        attr_accessor :move_analysis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @move_analysis = args[:move_analysis] if args.key?(:move_analysis)
+        end
+      end
+      
       # An asset in Google Cloud. An asset can be any resource in the Google Cloud [
       # resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-
       # platform-resource-hierarchy), a resource outside the Google Cloud resource
@@ -2982,6 +3002,90 @@ module Google
         # Update properties of this object
         def update!(**args)
           @feeds = args[:feeds] if args.key?(:feeds)
+        end
+      end
+      
+      # A message to group the analysis information.
+      class MoveAnalysis
+        include Google::Apis::Core::Hashable
+      
+        # An analysis result including blockers and warnings.
+        # Corresponds to the JSON property `analysis`
+        # @return [Google::Apis::CloudassetV1::MoveAnalysisResult]
+        attr_accessor :analysis
+      
+        # The user friendly display name of the analysis. E.g. IAM, Organization Policy
+        # etc.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::CloudassetV1::Status]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis = args[:analysis] if args.key?(:analysis)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @error = args[:error] if args.key?(:error)
+        end
+      end
+      
+      # An analysis result including blockers and warnings.
+      class MoveAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # Blocking information that would prevent the target resource from moving to the
+        # specified destination at runtime.
+        # Corresponds to the JSON property `blockers`
+        # @return [Array<Google::Apis::CloudassetV1::MoveImpact>]
+        attr_accessor :blockers
+      
+        # Warning information indicating that moving the target resource to the
+        # specified destination might be unsafe. This can include important policy
+        # information and configuration changes, but will not block moves at runtime.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::CloudassetV1::MoveImpact>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blockers = args[:blockers] if args.key?(:blockers)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # A message to group impacts of moving the target resource.
+      class MoveImpact
+        include Google::Apis::Core::Hashable
+      
+        # User friendly impact detail in a free form message.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
         end
       end
       
