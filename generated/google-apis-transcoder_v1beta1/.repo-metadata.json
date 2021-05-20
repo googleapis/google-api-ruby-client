@@ -1,0 +1,7 @@
+{
+    "api_id": "transcoder:v1beta1",
+    "name_pretty": "Transcoder API",
+    "distribution_name": "google-apis-transcoder_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
