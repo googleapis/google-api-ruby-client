@@ -234,8 +234,8 @@ module Google
       
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the WGS84 standard. Values must be
-        # within normalized ranges.
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
         # Corresponds to the JSON property `startCoordinates`
         # @return [Google::Apis::JobsV3p1beta1::LatLng]
         attr_accessor :start_coordinates
@@ -1643,8 +1643,8 @@ module Google
       
       # An object that represents a latitude/longitude pair. This is expressed as a
       # pair of doubles to represent degrees latitude and degrees longitude. Unless
-      # specified otherwise, this must conform to the WGS84 standard. Values must be
-      # within normalized ranges.
+      # specified otherwise, this object must conform to the WGS84 standard. Values
+      # must be within normalized ranges.
       class LatLng
         include Google::Apis::Core::Hashable
       
@@ -1741,8 +1741,8 @@ module Google
       
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the WGS84 standard. Values must be
-        # within normalized ranges.
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::JobsV3p1beta1::LatLng]
         attr_accessor :lat_lng
@@ -1808,8 +1808,8 @@ module Google
       
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the WGS84 standard. Values must be
-        # within normalized ranges.
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::JobsV3p1beta1::LatLng]
         attr_accessor :lat_lng
