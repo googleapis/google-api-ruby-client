@@ -1,0 +1,7 @@
+{
+    "api_id": "texttospeech:v1",
+    "name_pretty": "Cloud Text-to-Speech API",
+    "distribution_name": "google-apis-texttospeech_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
