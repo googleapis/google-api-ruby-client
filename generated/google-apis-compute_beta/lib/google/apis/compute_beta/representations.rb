@@ -5512,6 +5512,8 @@ module Google
       class AccessConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_ipv6, as: 'externalIpv6'
+          property :external_ipv6_prefix_length, as: 'externalIpv6PrefixLength'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_ip, as: 'natIP'
@@ -7313,6 +7315,7 @@ module Google
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
+          property :psc_connection_status, as: 'pscConnectionStatus'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :service_directory_registrations, as: 'serviceDirectoryRegistrations', class: Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration, decorator: Google::Apis::ComputeBeta::ForwardingRuleServiceDirectoryRegistration::Representation
@@ -10234,12 +10237,16 @@ module Google
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeBeta::AliasIpRange, decorator: Google::Apis::ComputeBeta::AliasIpRange::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :ipv6_access_configs, as: 'ipv6AccessConfigs', class: Google::Apis::ComputeBeta::AccessConfig, decorator: Google::Apis::ComputeBeta::AccessConfig::Representation
+      
+          property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_ip, as: 'networkIP'
           property :nic_type, as: 'nicType'
+          property :stack_type, as: 'stackType'
           property :subnetwork, as: 'subnetwork'
         end
       end
@@ -13170,7 +13177,7 @@ module Google
       class ServiceAttachmentsScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :resources, as: 'resources', class: Google::Apis::ComputeBeta::ServiceAttachment, decorator: Google::Apis::ComputeBeta::ServiceAttachment::Representation
+          collection :service_attachments, as: 'serviceAttachments', class: Google::Apis::ComputeBeta::ServiceAttachment, decorator: Google::Apis::ComputeBeta::ServiceAttachment::Representation
       
           property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ServiceAttachmentsScopedList::Warning, decorator: Google::Apis::ComputeBeta::ServiceAttachmentsScopedList::Warning::Representation
       
@@ -13627,10 +13634,12 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_flow_logs, as: 'enableFlowLogs'
+          property :external_ipv6_prefix, as: 'externalIpv6Prefix'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_cidr_range, as: 'ipv6CidrRange'
           property :kind, as: 'kind'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::SubnetworkLogConfig, decorator: Google::Apis::ComputeBeta::SubnetworkLogConfig::Representation
@@ -13645,6 +13654,7 @@ module Google
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeBeta::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeBeta::SubnetworkSecondaryRange::Representation
       
           property :self_link, as: 'selfLink'
+          property :stack_type, as: 'stackType'
           property :state, as: 'state'
         end
       end
