@@ -1,0 +1,7 @@
+{
+    "api_id": "smartdevicemanagement:v1",
+    "name_pretty": "Smart Device Management API",
+    "distribution_name": "google-apis-smartdevicemanagement_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
