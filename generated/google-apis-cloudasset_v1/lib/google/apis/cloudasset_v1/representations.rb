@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzeMoveResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Asset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,6 +430,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MoveAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MoveAnalysisResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MoveImpact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +617,14 @@ module Google
           property :main_analysis, as: 'mainAnalysis', class: Google::Apis::CloudassetV1::IamPolicyAnalysis, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysis::Representation
       
           collection :service_account_impersonation_analysis, as: 'serviceAccountImpersonationAnalysis', class: Google::Apis::CloudassetV1::IamPolicyAnalysis, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysis::Representation
+      
+        end
+      end
+      
+      class AnalyzeMoveResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :move_analysis, as: 'moveAnalysis', class: Google::Apis::CloudassetV1::MoveAnalysis, decorator: Google::Apis::CloudassetV1::MoveAnalysis::Representation
       
         end
       end
@@ -1254,6 +1286,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :feeds, as: 'feeds', class: Google::Apis::CloudassetV1::Feed, decorator: Google::Apis::CloudassetV1::Feed::Representation
       
+        end
+      end
+      
+      class MoveAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis, as: 'analysis', class: Google::Apis::CloudassetV1::MoveAnalysisResult, decorator: Google::Apis::CloudassetV1::MoveAnalysisResult::Representation
+      
+          property :display_name, as: 'displayName'
+          property :error, as: 'error', class: Google::Apis::CloudassetV1::Status, decorator: Google::Apis::CloudassetV1::Status::Representation
+      
+        end
+      end
+      
+      class MoveAnalysisResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blockers, as: 'blockers', class: Google::Apis::CloudassetV1::MoveImpact, decorator: Google::Apis::CloudassetV1::MoveImpact::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::CloudassetV1::MoveImpact, decorator: Google::Apis::CloudassetV1::MoveImpact::Representation
+      
+        end
+      end
+      
+      class MoveImpact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
         end
       end
       

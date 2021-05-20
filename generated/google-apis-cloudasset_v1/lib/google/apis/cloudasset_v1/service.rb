@@ -54,7 +54,7 @@ module Google
         # @param [String] parent
         #   Required. Name of the organization or project the assets belong to. Format: "
         #   organizations/[organization-number]" (such as "organizations/123"), "projects/[
-        #   project-number]" (such as "projects/my-project-id"), or "projects/[project-id]"
+        #   project-id]" (such as "projects/my-project-id"), or "projects/[project-number]"
         #   (such as "projects/12345").
         # @param [Array<String>, String] asset_types
         #   A list of asset types to take a snapshot for. For example: "compute.googleapis.
@@ -493,6 +493,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Analyze moving a resource to a specified destination without kicking off the
+        # actual move. The analysis is best effort depending on the user's permissions
+        # of viewing different hierarchical policies and configurations. The policies
+        # and configuration are subject to change before the actual resource migration
+        # takes place.
+        # @param [String] resource
+        #   Required. Name of the resource to perform the analysis against. Only GCP
+        #   Project are supported as of today. Hence, this can only be Project ID (such as
+        #   "projects/my-project-id") or a Project Number (such as "projects/12345").
+        # @param [String] destination_parent
+        #   Required. Name of the GCP Folder or Organization to reparent the target
+        #   resource. The analysis will be performed against hypothetically moving the
+        #   resource to this specified desitination parent. This can only be a Folder
+        #   number (such as "folders/123") or an Organization number (such as "
+        #   organizations/123").
+        # @param [String] view
+        #   Analysis view indicating what information should be included in the analysis
+        #   response. If unspecified, the default view is FULL.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::AnalyzeMoveResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::AnalyzeMoveResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_move(resource, destination_parent: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:analyzeMove', options)
+          command.response_representation = Google::Apis::CloudassetV1::AnalyzeMoveResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::AnalyzeMoveResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['destinationParent'] = destination_parent unless destination_parent.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Batch gets the update history of assets that overlap a time window. For
         # IAM_POLICY content, this API outputs history when the asset and its attached
         # IAM POLICY both exist. This can create gaps in the output history. Otherwise,
@@ -697,13 +744,15 @@ module Google
         #   expression syntax. If the regular expression does not match any supported
         #   asset type, an INVALID_ARGUMENT error will be returned.
         # @param [String] order_by
-        #   Optional. A comma separated list of fields specifying the sorting order of the
+        #   Optional. A comma-separated list of fields specifying the sorting order of the
         #   results. The default order is ascending. Add " DESC" after the field name to
         #   indicate descending order. Redundant space characters are ignored. Example: "
-        #   location DESC, name". Only string fields in the response are sortable,
-        #   including `name`, `displayName`, `description`, `location`. All the other
-        #   fields such as repeated fields (e.g., `networkTags`), map fields (e.g., `
-        #   labels`) and struct fields (e.g., `additionalAttributes`) are not supported.
+        #   location DESC, name". Only singular primitive fields in the response are
+        #   sortable: * name * assetType * project * displayName * description * location *
+        #   kmsKey * createTime * updateTime * state * parentFullResourceName *
+        #   parentAssetType All the other fields such as repeated fields (e.g., `
+        #   networkTags`), map fields (e.g., `labels`) and struct fields (e.g., `
+        #   additionalAttributes`) are not supported.
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
         #   500 even if a larger value is given. If set to zero, server will pick an
