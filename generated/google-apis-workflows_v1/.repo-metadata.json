@@ -1,0 +1,7 @@
+{
+    "api_id": "workflows:v1",
+    "name_pretty": "Workflows API",
+    "distribution_name": "google-apis-workflows_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
