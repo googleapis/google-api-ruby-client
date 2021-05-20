@@ -1,0 +1,7 @@
+{
+    "api_id": "websecurityscanner:v1",
+    "name_pretty": "Web Security Scanner API",
+    "distribution_name": "google-apis-websecurityscanner_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
