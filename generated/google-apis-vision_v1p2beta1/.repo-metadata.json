@@ -1,0 +1,7 @@
+{
+    "api_id": "vision:v1p2beta1",
+    "name_pretty": "Cloud Vision API",
+    "distribution_name": "google-apis-vision_v1p2beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
