@@ -1,0 +1,7 @@
+{
+    "api_id": "videointelligence:v1p1beta1",
+    "name_pretty": "Cloud Video Intelligence API",
+    "distribution_name": "google-apis-videointelligence_v1p1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
