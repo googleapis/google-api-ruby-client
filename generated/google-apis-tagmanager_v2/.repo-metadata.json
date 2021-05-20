@@ -1,0 +1,7 @@
+{
+    "api_id": "tagmanager:v2",
+    "name_pretty": "Tag Manager API",
+    "distribution_name": "google-apis-tagmanager_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
