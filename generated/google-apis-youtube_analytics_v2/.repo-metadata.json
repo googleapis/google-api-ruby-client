@@ -1,0 +1,7 @@
+{
+    "api_id": "youtubeAnalytics:v2",
+    "name_pretty": "YouTube Analytics API",
+    "distribution_name": "google-apis-youtube_analytics_v2",
+    "language": "ruby",
+    "library_type": "REST"
+}
