@@ -1,0 +1,7 @@
+{
+    "api_id": "sasportal:v1alpha1",
+    "name_pretty": "SAS Portal API",
+    "distribution_name": "google-apis-sasportal_v1alpha1",
+    "language": "ruby",
+    "library_type": "REST"
+}
