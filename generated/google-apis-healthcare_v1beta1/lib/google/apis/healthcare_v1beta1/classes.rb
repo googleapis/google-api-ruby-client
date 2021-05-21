@@ -70,6 +70,12 @@ module Google
         # @return [String]
         attr_accessor :document_content
       
+        # A list of licensed vocabularies to use in the request, in addition to the
+        # default unlicensed vocabularies.
+        # Corresponds to the JSON property `licensedVocabularies`
+        # @return [Array<String>]
+        attr_accessor :licensed_vocabularies
+      
         def initialize(**args)
            update!(**args)
         end
@@ -77,6 +83,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document_content = args[:document_content] if args.key?(:document_content)
+          @licensed_vocabularies = args[:licensed_vocabularies] if args.key?(:licensed_vocabularies)
         end
       end
       
@@ -4269,6 +4276,20 @@ module Google
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
           @request_attributes = args[:request_attributes] if args.key?(:request_attributes)
           @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
+        end
+      end
+      
+      # Response for successful QueryAccessibleData operations. This structure is
+      # included in the response upon operation completion.
+      class QueryAccessibleDataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

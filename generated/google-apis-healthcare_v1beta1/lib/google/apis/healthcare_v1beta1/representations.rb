@@ -784,6 +784,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryAccessibleDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RedactConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -971,6 +977,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document_content, as: 'documentContent'
+          collection :licensed_vocabularies, as: 'licensedVocabularies'
         end
       end
       
@@ -2132,6 +2139,12 @@ module Google
       
           hash :request_attributes, as: 'requestAttributes'
           hash :resource_attributes, as: 'resourceAttributes'
+        end
+      end
+      
+      class QueryAccessibleDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
