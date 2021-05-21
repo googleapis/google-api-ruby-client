@@ -3162,6 +3162,20 @@ module Google
         end
       end
       
+      # Response for successful QueryAccessibleData operations. This structure is
+      # included in the response upon operation completion.
+      class QueryAccessibleDataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Define how to redact sensitive values. Default behaviour is erase. For example,
       # "My name is Jane." becomes "My name is ."
       class RedactConfig
