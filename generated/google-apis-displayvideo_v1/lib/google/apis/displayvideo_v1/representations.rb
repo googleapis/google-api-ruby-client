@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BudgetSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkEditAdvertiserAssignedTargetingOptionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +323,12 @@ module Google
       end
       
       class Campaign
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CampaignBudget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -850,6 +862,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Invoice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeywordAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -988,6 +1006,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListInvoicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLineItemAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1066,6 +1090,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LookupInvoiceCurrencyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManualTrigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1091,6 +1121,18 @@ module Google
       end
       
       class Money
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NativeContentPositionAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NativeContentPositionTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1217,6 +1259,18 @@ module Google
       end
       
       class PerformanceGoalBidStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrismaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrismaCpeCode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1492,6 +1546,7 @@ module Google
       
           property :name, as: 'name'
           property :partner_id, :numeric_string => true, as: 'partnerId'
+          property :prisma_enabled, as: 'prismaEnabled'
           property :serving_config, as: 'servingConfig', class: Google::Apis::DisplayvideoV1::AdvertiserTargetingConfig, decorator: Google::Apis::DisplayvideoV1::AdvertiserTargetingConfig::Representation
       
           property :update_time, as: 'updateTime'
@@ -1681,6 +1736,8 @@ module Google
           property :language_details, as: 'languageDetails', class: Google::Apis::DisplayvideoV1::LanguageAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::LanguageAssignedTargetingOptionDetails::Representation
       
           property :name, as: 'name'
+          property :native_content_position_details, as: 'nativeContentPositionDetails', class: Google::Apis::DisplayvideoV1::NativeContentPositionAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::NativeContentPositionAssignedTargetingOptionDetails::Representation
+      
           property :negative_keyword_list_details, as: 'negativeKeywordListDetails', class: Google::Apis::DisplayvideoV1::NegativeKeywordListAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::NegativeKeywordListAssignedTargetingOptionDetails::Representation
       
           property :on_screen_position_details, as: 'onScreenPositionDetails', class: Google::Apis::DisplayvideoV1::OnScreenPositionAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::OnScreenPositionAssignedTargetingOptionDetails::Representation
@@ -1801,6 +1858,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class BudgetSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_budget_id, as: 'externalBudgetId'
+          property :pre_tax_amount_micros, :numeric_string => true, as: 'preTaxAmountMicros'
+          property :prisma_cpe_code, as: 'prismaCpeCode', class: Google::Apis::DisplayvideoV1::PrismaCpeCode, decorator: Google::Apis::DisplayvideoV1::PrismaCpeCode::Representation
+      
+          property :tax_amount_micros, :numeric_string => true, as: 'taxAmountMicros'
+          property :total_amount_micros, :numeric_string => true, as: 'totalAmountMicros'
         end
       end
       
@@ -1987,6 +2056,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          collection :campaign_budgets, as: 'campaignBudgets', class: Google::Apis::DisplayvideoV1::CampaignBudget, decorator: Google::Apis::DisplayvideoV1::CampaignBudget::Representation
+      
           property :campaign_flight, as: 'campaignFlight', class: Google::Apis::DisplayvideoV1::CampaignFlight, decorator: Google::Apis::DisplayvideoV1::CampaignFlight::Representation
       
           property :campaign_goal, as: 'campaignGoal', class: Google::Apis::DisplayvideoV1::CampaignGoal, decorator: Google::Apis::DisplayvideoV1::CampaignGoal::Representation
@@ -1998,6 +2069,23 @@ module Google
       
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class CampaignBudget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :budget_amount_micros, :numeric_string => true, as: 'budgetAmountMicros'
+          property :budget_id, :numeric_string => true, as: 'budgetId'
+          property :budget_unit, as: 'budgetUnit'
+          property :date_range, as: 'dateRange', class: Google::Apis::DisplayvideoV1::DateRange, decorator: Google::Apis::DisplayvideoV1::DateRange::Representation
+      
+          property :display_name, as: 'displayName'
+          property :external_budget_id, as: 'externalBudgetId'
+          property :external_budget_source, as: 'externalBudgetSource'
+          property :invoice_grouping_id, as: 'invoiceGroupingId'
+          property :prisma_config, as: 'prismaConfig', class: Google::Apis::DisplayvideoV1::PrismaConfig, decorator: Google::Apis::DisplayvideoV1::PrismaConfig::Representation
+      
         end
       end
       
@@ -2885,6 +2973,36 @@ module Google
         end
       end
       
+      class Invoice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :budget_invoice_grouping_id, as: 'budgetInvoiceGroupingId'
+          collection :budget_summaries, as: 'budgetSummaries', class: Google::Apis::DisplayvideoV1::BudgetSummary, decorator: Google::Apis::DisplayvideoV1::BudgetSummary::Representation
+      
+          property :corrected_invoice_id, as: 'correctedInvoiceId'
+          property :currency_code, as: 'currencyCode'
+          property :display_name, as: 'displayName'
+          property :due_date, as: 'dueDate', class: Google::Apis::DisplayvideoV1::Date, decorator: Google::Apis::DisplayvideoV1::Date::Representation
+      
+          property :invoice_id, as: 'invoiceId'
+          property :invoice_type, as: 'invoiceType'
+          property :issue_date, as: 'issueDate', class: Google::Apis::DisplayvideoV1::Date, decorator: Google::Apis::DisplayvideoV1::Date::Representation
+      
+          property :name, as: 'name'
+          property :non_budget_micros, :numeric_string => true, as: 'nonBudgetMicros'
+          property :payments_account_id, as: 'paymentsAccountId'
+          property :payments_profile_id, as: 'paymentsProfileId'
+          property :pdf_url, as: 'pdfUrl'
+          property :purchase_order_number, as: 'purchaseOrderNumber'
+          collection :replaced_invoice_ids, as: 'replacedInvoiceIds'
+          property :service_date_range, as: 'serviceDateRange', class: Google::Apis::DisplayvideoV1::DateRange, decorator: Google::Apis::DisplayvideoV1::DateRange::Representation
+      
+          property :subtotal_amount_micros, :numeric_string => true, as: 'subtotalAmountMicros'
+          property :total_amount_micros, :numeric_string => true, as: 'totalAmountMicros'
+          property :total_tax_amount_micros, :numeric_string => true, as: 'totalTaxAmountMicros'
+        end
+      end
+      
       class KeywordAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3121,6 +3239,15 @@ module Google
         end
       end
       
+      class ListInvoicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :invoices, as: 'invoices', class: Google::Apis::DisplayvideoV1::Invoice, decorator: Google::Apis::DisplayvideoV1::Invoice::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListLineItemAssignedTargetingOptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3239,6 +3366,13 @@ module Google
         end
       end
       
+      class LookupInvoiceCurrencyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+        end
+      end
+      
       class ManualTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3285,6 +3419,21 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class NativeContentPositionAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_position, as: 'contentPosition'
+          property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
+      class NativeContentPositionTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_position, as: 'contentPosition'
         end
       end
       
@@ -3486,6 +3635,25 @@ module Google
           property :max_average_cpm_bid_amount_micros, :numeric_string => true, as: 'maxAverageCpmBidAmountMicros'
           property :performance_goal_amount_micros, :numeric_string => true, as: 'performanceGoalAmountMicros'
           property :performance_goal_type, as: 'performanceGoalType'
+        end
+      end
+      
+      class PrismaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prisma_cpe_code, as: 'prismaCpeCode', class: Google::Apis::DisplayvideoV1::PrismaCpeCode, decorator: Google::Apis::DisplayvideoV1::PrismaCpeCode::Representation
+      
+          property :prisma_type, as: 'prismaType'
+          property :supplier, as: 'supplier'
+        end
+      end
+      
+      class PrismaCpeCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prisma_client_code, as: 'prismaClientCode'
+          property :prisma_estimate_code, as: 'prismaEstimateCode'
+          property :prisma_product_code, as: 'prismaProductCode'
         end
       end
       
@@ -3708,6 +3876,8 @@ module Google
           property :language_details, as: 'languageDetails', class: Google::Apis::DisplayvideoV1::LanguageTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::LanguageTargetingOptionDetails::Representation
       
           property :name, as: 'name'
+          property :native_content_position_details, as: 'nativeContentPositionDetails', class: Google::Apis::DisplayvideoV1::NativeContentPositionTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::NativeContentPositionTargetingOptionDetails::Representation
+      
           property :on_screen_position_details, as: 'onScreenPositionDetails', class: Google::Apis::DisplayvideoV1::OnScreenPositionTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::OnScreenPositionTargetingOptionDetails::Representation
       
           property :operating_system_details, as: 'operatingSystemDetails', class: Google::Apis::DisplayvideoV1::OperatingSystemTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::OperatingSystemTargetingOptionDetails::Representation

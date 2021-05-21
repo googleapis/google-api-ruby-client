@@ -166,6 +166,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :partner_id
       
+        # Whether integration with Mediaocean (Prisma) is enabled. By enabling this: On
+        # behalf of my company, I authorize Mediaocean (Prisma) to send budget segment
+        # plans to Google, and I authorize Google to send corresponding reporting and
+        # invoices from DV360 to Mediaocean for the purposes of budget planning, billing,
+        # and reconciliation for this advertiser.
+        # Corresponds to the JSON property `prismaEnabled`
+        # @return [Boolean]
+        attr_accessor :prisma_enabled
+        alias_method :prisma_enabled?, :prisma_enabled
+      
         # Targeting settings related to ad serving of an advertiser.
         # Corresponds to the JSON property `servingConfig`
         # @return [Google::Apis::DisplayvideoV1::AdvertiserTargetingConfig]
@@ -193,6 +203,7 @@ module Google
           @integration_details = args[:integration_details] if args.key?(:integration_details)
           @name = args[:name] if args.key?(:name)
           @partner_id = args[:partner_id] if args.key?(:partner_id)
+          @prisma_enabled = args[:prisma_enabled] if args.key?(:prisma_enabled)
           @serving_config = args[:serving_config] if args.key?(:serving_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -859,6 +870,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Details for native content position assigned targeting option. This will be
+        # populated in the native_content_position_details field when targeting_type is `
+        # TARGETING_TYPE_NATIVE_CONTENT_POSITION`. Explicitly targeting all options is
+        # not supported. Remove all native content position targeting options to achieve
+        # this effect.
+        # Corresponds to the JSON property `nativeContentPositionDetails`
+        # @return [Google::Apis::DisplayvideoV1::NativeContentPositionAssignedTargetingOptionDetails]
+        attr_accessor :native_content_position_details
+      
         # Targeting details for negative keyword list. This will be populated in the
         # details field of an AssignedTargetingOption when targeting_type is `
         # TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`.
@@ -990,6 +1010,7 @@ module Google
           @keyword_details = args[:keyword_details] if args.key?(:keyword_details)
           @language_details = args[:language_details] if args.key?(:language_details)
           @name = args[:name] if args.key?(:name)
+          @native_content_position_details = args[:native_content_position_details] if args.key?(:native_content_position_details)
           @negative_keyword_list_details = args[:negative_keyword_list_details] if args.key?(:negative_keyword_list_details)
           @on_screen_position_details = args[:on_screen_position_details] if args.key?(:on_screen_position_details)
           @operating_system_details = args[:operating_system_details] if args.key?(:operating_system_details)
@@ -1351,6 +1372,56 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Represents a summarized budget information associated with this invoice.
+      class BudgetSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. External budget id.
+        # Corresponds to the JSON property `externalBudgetId`
+        # @return [String]
+        attr_accessor :external_budget_id
+      
+        # Output only. The pre-tax amount for this budget, in micros of the invoice's
+        # currency. For example if currency_code is `USD`, then 1000000 micros is one US
+        # dollar.
+        # Corresponds to the JSON property `preTaxAmountMicros`
+        # @return [Fixnum]
+        attr_accessor :pre_tax_amount_micros
+      
+        # Google Payments Center supports searching and filtering on the component
+        # fields of this code.
+        # Corresponds to the JSON property `prismaCpeCode`
+        # @return [Google::Apis::DisplayvideoV1::PrismaCpeCode]
+        attr_accessor :prisma_cpe_code
+      
+        # Output only. The tax amount for this budget, in micros of the invoice's
+        # currency. For example if currency_code is `USD`, then 1000000 micros is one US
+        # dollar.
+        # Corresponds to the JSON property `taxAmountMicros`
+        # @return [Fixnum]
+        attr_accessor :tax_amount_micros
+      
+        # Output only. The total amount of charges for this budget, in micros of the
+        # invoice's currency. For example if currency_code is `USD`, then 1000000 micros
+        # is one US dollar.
+        # Corresponds to the JSON property `totalAmountMicros`
+        # @return [Fixnum]
+        attr_accessor :total_amount_micros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_budget_id = args[:external_budget_id] if args.key?(:external_budget_id)
+          @pre_tax_amount_micros = args[:pre_tax_amount_micros] if args.key?(:pre_tax_amount_micros)
+          @prisma_cpe_code = args[:prisma_cpe_code] if args.key?(:prisma_cpe_code)
+          @tax_amount_micros = args[:tax_amount_micros] if args.key?(:tax_amount_micros)
+          @total_amount_micros = args[:total_amount_micros] if args.key?(:total_amount_micros)
         end
       end
       
@@ -1886,6 +1957,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
+        # The list of budgets available to this campaign. Setting no budget gives an
+        # unlimited campaign budget.
+        # Corresponds to the JSON property `campaignBudgets`
+        # @return [Array<Google::Apis::DisplayvideoV1::CampaignBudget>]
+        attr_accessor :campaign_budgets
+      
         # Settings that track the planned spend and duration of a campaign.
         # Corresponds to the JSON property `campaignFlight`
         # @return [Google::Apis::DisplayvideoV1::CampaignFlight]
@@ -1939,6 +2016,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @campaign_budgets = args[:campaign_budgets] if args.key?(:campaign_budgets)
           @campaign_flight = args[:campaign_flight] if args.key?(:campaign_flight)
           @campaign_goal = args[:campaign_goal] if args.key?(:campaign_goal)
           @campaign_id = args[:campaign_id] if args.key?(:campaign_id)
@@ -1947,6 +2025,82 @@ module Google
           @frequency_cap = args[:frequency_cap] if args.key?(:frequency_cap)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Settings that control how the campaign budget is allocated.
+      class CampaignBudget
+        include Google::Apis::Core::Hashable
+      
+        # Required. The budget amount the insertion order will spend for the given
+        # date_range. The amount is in micros. Must be greater than 0. For example,
+        # 500000000 represents 500 standard units of the currency.
+        # Corresponds to the JSON property `budgetAmountMicros`
+        # @return [Fixnum]
+        attr_accessor :budget_amount_micros
+      
+        # The unique ID of the campaign budget. If not included, budget is assumed to be
+        # new.
+        # Corresponds to the JSON property `budgetId`
+        # @return [Fixnum]
+        attr_accessor :budget_id
+      
+        # Required. Immutable. The budget unit specifies whether the budget is currency
+        # based or impression based.
+        # Corresponds to the JSON property `budgetUnit`
+        # @return [String]
+        attr_accessor :budget_unit
+      
+        # A date range.
+        # Corresponds to the JSON property `dateRange`
+        # @return [Google::Apis::DisplayvideoV1::DateRange]
+        attr_accessor :date_range
+      
+        # Required. The display name of the budget. Must be UTF-8 encoded with a maximum
+        # size of 240 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. Must be unique under the campaign. If set, all impressions served
+        # against this budget will include this ID on the invoice if the customer has
+        # opted into budget-segment-level billing.
+        # Corresponds to the JSON property `externalBudgetId`
+        # @return [String]
+        attr_accessor :external_budget_id
+      
+        # Required. The external source of the budget segment.
+        # Corresponds to the JSON property `externalBudgetSource`
+        # @return [String]
+        attr_accessor :external_budget_source
+      
+        # Immutable. If set, all external_budget_id sharing the same invoice_grouping_id
+        # will include this ID on the invoice if the customer has opted into budget-
+        # segment-level billing.
+        # Corresponds to the JSON property `invoiceGroupingId`
+        # @return [String]
+        attr_accessor :invoice_grouping_id
+      
+        # Settings specific to the MediaOcean Prisma tool.
+        # Corresponds to the JSON property `prismaConfig`
+        # @return [Google::Apis::DisplayvideoV1::PrismaConfig]
+        attr_accessor :prisma_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @budget_amount_micros = args[:budget_amount_micros] if args.key?(:budget_amount_micros)
+          @budget_id = args[:budget_id] if args.key?(:budget_id)
+          @budget_unit = args[:budget_unit] if args.key?(:budget_unit)
+          @date_range = args[:date_range] if args.key?(:date_range)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @external_budget_id = args[:external_budget_id] if args.key?(:external_budget_id)
+          @external_budget_source = args[:external_budget_source] if args.key?(:external_budget_source)
+          @invoice_grouping_id = args[:invoice_grouping_id] if args.key?(:invoice_grouping_id)
+          @prisma_config = args[:prisma_config] if args.key?(:prisma_config)
         end
       end
       
@@ -5342,6 +5496,175 @@ module Google
         end
       end
       
+      # A single Invoice.
+      class Invoice
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Budget invoice grouping ID associated with the budget segment in
+        # the insertion order.
+        # Corresponds to the JSON property `budgetInvoiceGroupingId`
+        # @return [String]
+        attr_accessor :budget_invoice_grouping_id
+      
+        # Output only. The list of summarized budget information associated with this
+        # invoice.
+        # Corresponds to the JSON property `budgetSummaries`
+        # @return [Array<Google::Apis::DisplayvideoV1::BudgetSummary>]
+        attr_accessor :budget_summaries
+      
+        # Output only. The originally issued invoice that is being adjusted by this
+        # invoice, if applicable. If there is a corrected invoice, the
+        # replaced_invoice_ids field will be empty. May appear on invoice PDF as `
+        # Reference invoice number`.
+        # Corresponds to the JSON property `correctedInvoiceId`
+        # @return [String]
+        attr_accessor :corrected_invoice_id
+      
+        # Output only. Invoice currency code in ISO 4217 format.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Output only. Display name of the invoice.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `dueDate`
+        # @return [Google::Apis::DisplayvideoV1::Date]
+        attr_accessor :due_date
+      
+        # Output only. The unique ID of the invoice.
+        # Corresponds to the JSON property `invoiceId`
+        # @return [String]
+        attr_accessor :invoice_id
+      
+        # Output only. The type of invoice document.
+        # Corresponds to the JSON property `invoiceType`
+        # @return [String]
+        attr_accessor :invoice_type
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `issueDate`
+        # @return [Google::Apis::DisplayvideoV1::Date]
+        attr_accessor :issue_date
+      
+        # Output only. The resource name of the invoice.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The total amount of costs or adjustments not tied to a particular
+        # budget, in micros of the invoice's currency. For example if currency_code is `
+        # USD`, then 1000000 micros is one US dollar.
+        # Corresponds to the JSON property `nonBudgetMicros`
+        # @return [Fixnum]
+        attr_accessor :non_budget_micros
+      
+        # Output only. The ID of the payments account the invoice belongs to. Appears on
+        # the invoice PDF as `Billing Account Number`.
+        # Corresponds to the JSON property `paymentsAccountId`
+        # @return [String]
+        attr_accessor :payments_account_id
+      
+        # Output only. The ID of the payments profile the invoice belongs to. Appears on
+        # the invoice PDF as `Billing ID`.
+        # Corresponds to the JSON property `paymentsProfileId`
+        # @return [String]
+        attr_accessor :payments_profile_id
+      
+        # Output only. The URL to download a PDF copy of the invoice. Note that this URL
+        # is user specific and requires a valid OAuth 2.0 access token to access. The
+        # access token must be provided in an `Authorization: Bearer` HTTP header and be
+        # authorized for one of the following scopes: * `https://www.googleapis.com/auth/
+        # display-video-mediaplanning` * `https://www.googleapis.com/auth/display-video`
+        # The URL will only be usable for 7 days from when the api is called.
+        # Corresponds to the JSON property `pdfUrl`
+        # @return [String]
+        attr_accessor :pdf_url
+      
+        # Output only. Purchase order number associated with the invoice.
+        # Corresponds to the JSON property `purchaseOrderNumber`
+        # @return [String]
+        attr_accessor :purchase_order_number
+      
+        # Output only. The originally issued invoice(s) that is being cancelled by this
+        # invoice, if applicable. If there are any replaced invoices, the
+        # corrected_invoice_id field will be empty. May appear on invoice PDF as `
+        # Replaced invoice numbers`. Note: There may be multiple replaced invoices due
+        # to consolidation of multiple invoices into a single invoice.
+        # Corresponds to the JSON property `replacedInvoiceIds`
+        # @return [Array<String>]
+        attr_accessor :replaced_invoice_ids
+      
+        # A date range.
+        # Corresponds to the JSON property `serviceDateRange`
+        # @return [Google::Apis::DisplayvideoV1::DateRange]
+        attr_accessor :service_date_range
+      
+        # Output only. The pre-tax subtotal amount, in micros of the invoice's currency.
+        # For example if currency_code is `USD`, then 1000000 micros is one US dollar.
+        # Corresponds to the JSON property `subtotalAmountMicros`
+        # @return [Fixnum]
+        attr_accessor :subtotal_amount_micros
+      
+        # Output only. The invoice total amount, in micros of the invoice's currency.
+        # For example if currency_code is `USD`, then 1000000 micros is one US dollar.
+        # Corresponds to the JSON property `totalAmountMicros`
+        # @return [Fixnum]
+        attr_accessor :total_amount_micros
+      
+        # Output only. The sum of all taxes in invoice, in micros of the invoice's
+        # currency. For example if currency_code is `USD`, then 1000000 micros is one US
+        # dollar.
+        # Corresponds to the JSON property `totalTaxAmountMicros`
+        # @return [Fixnum]
+        attr_accessor :total_tax_amount_micros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @budget_invoice_grouping_id = args[:budget_invoice_grouping_id] if args.key?(:budget_invoice_grouping_id)
+          @budget_summaries = args[:budget_summaries] if args.key?(:budget_summaries)
+          @corrected_invoice_id = args[:corrected_invoice_id] if args.key?(:corrected_invoice_id)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @due_date = args[:due_date] if args.key?(:due_date)
+          @invoice_id = args[:invoice_id] if args.key?(:invoice_id)
+          @invoice_type = args[:invoice_type] if args.key?(:invoice_type)
+          @issue_date = args[:issue_date] if args.key?(:issue_date)
+          @name = args[:name] if args.key?(:name)
+          @non_budget_micros = args[:non_budget_micros] if args.key?(:non_budget_micros)
+          @payments_account_id = args[:payments_account_id] if args.key?(:payments_account_id)
+          @payments_profile_id = args[:payments_profile_id] if args.key?(:payments_profile_id)
+          @pdf_url = args[:pdf_url] if args.key?(:pdf_url)
+          @purchase_order_number = args[:purchase_order_number] if args.key?(:purchase_order_number)
+          @replaced_invoice_ids = args[:replaced_invoice_ids] if args.key?(:replaced_invoice_ids)
+          @service_date_range = args[:service_date_range] if args.key?(:service_date_range)
+          @subtotal_amount_micros = args[:subtotal_amount_micros] if args.key?(:subtotal_amount_micros)
+          @total_amount_micros = args[:total_amount_micros] if args.key?(:total_amount_micros)
+          @total_tax_amount_micros = args[:total_tax_amount_micros] if args.key?(:total_tax_amount_micros)
+        end
+      end
+      
       # Details for assigned keyword targeting option. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_KEYWORD`.
@@ -6142,6 +6465,33 @@ module Google
         end
       end
       
+      # Response message for InvoiceService.ListInvoices.
+      class ListInvoicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of invoices. This list will be absent if empty.
+        # Corresponds to the JSON property `invoices`
+        # @return [Array<Google::Apis::DisplayvideoV1::Invoice>]
+        attr_accessor :invoices
+      
+        # A token to retrieve the next page of results. Pass this value in the [
+        # ListInvoicesRequest.page_token] field in the subsequent call to `ListInvoices`
+        # method to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invoices = args[:invoices] if args.key?(:invoices)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListLineItemAssignedTargetingOptions.
       class ListLineItemAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
@@ -6516,6 +6866,25 @@ module Google
         end
       end
       
+      # Response message for InvoiceService.LookupInvoiceCurrency.
+      class LookupInvoiceCurrencyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Invoice currency code in ISO 4217 format.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+        end
+      end
+      
       # A single manual trigger in Display & Video 360.
       class ManualTrigger
         include Google::Apis::Core::Hashable
@@ -6715,6 +7084,57 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # Details for native content position assigned targeting option. This will be
+      # populated in the native_content_position_details field when targeting_type is `
+      # TARGETING_TYPE_NATIVE_CONTENT_POSITION`. Explicitly targeting all options is
+      # not supported. Remove all native content position targeting options to achieve
+      # this effect.
+      class NativeContentPositionAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The content position.
+        # Corresponds to the JSON property `contentPosition`
+        # @return [String]
+        attr_accessor :content_position
+      
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+        # Corresponds to the JSON property `targetingOptionId`
+        # @return [String]
+        attr_accessor :targeting_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_position = args[:content_position] if args.key?(:content_position)
+          @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
+        end
+      end
+      
+      # Represents a targetable native content position. This will be populated in the
+      # native_content_position_details field when targeting_type is `
+      # TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+      class NativeContentPositionTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The content position.
+        # Corresponds to the JSON property `contentPosition`
+        # @return [String]
+        attr_accessor :content_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_position = args[:content_position] if args.key?(:content_position)
         end
       end
       
@@ -7531,6 +7951,70 @@ module Google
         end
       end
       
+      # Settings specific to the MediaOcean Prisma tool.
+      class PrismaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Google Payments Center supports searching and filtering on the component
+        # fields of this code.
+        # Corresponds to the JSON property `prismaCpeCode`
+        # @return [Google::Apis::DisplayvideoV1::PrismaCpeCode]
+        attr_accessor :prisma_cpe_code
+      
+        # Required. The Prisma type.
+        # Corresponds to the JSON property `prismaType`
+        # @return [String]
+        attr_accessor :prisma_type
+      
+        # Required. The entity allocated this budget (DSP, site, etc.).
+        # Corresponds to the JSON property `supplier`
+        # @return [String]
+        attr_accessor :supplier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prisma_cpe_code = args[:prisma_cpe_code] if args.key?(:prisma_cpe_code)
+          @prisma_type = args[:prisma_type] if args.key?(:prisma_type)
+          @supplier = args[:supplier] if args.key?(:supplier)
+        end
+      end
+      
+      # Google Payments Center supports searching and filtering on the component
+      # fields of this code.
+      class PrismaCpeCode
+        include Google::Apis::Core::Hashable
+      
+        # The Prisma client code.
+        # Corresponds to the JSON property `prismaClientCode`
+        # @return [String]
+        attr_accessor :prisma_client_code
+      
+        # The Prisma estimate code.
+        # Corresponds to the JSON property `prismaEstimateCode`
+        # @return [String]
+        attr_accessor :prisma_estimate_code
+      
+        # The Prisma product code.
+        # Corresponds to the JSON property `prismaProductCode`
+        # @return [String]
+        attr_accessor :prisma_product_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prisma_client_code = args[:prisma_client_code] if args.key?(:prisma_client_code)
+          @prisma_estimate_code = args[:prisma_estimate_code] if args.key?(:prisma_estimate_code)
+          @prisma_product_code = args[:prisma_product_code] if args.key?(:prisma_product_code)
+        end
+      end
+      
       # Targeting details for proximity location list. This will be populated in the
       # details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
@@ -8258,6 +8742,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Represents a targetable native content position. This will be populated in the
+        # native_content_position_details field when targeting_type is `
+        # TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+        # Corresponds to the JSON property `nativeContentPositionDetails`
+        # @return [Google::Apis::DisplayvideoV1::NativeContentPositionTargetingOptionDetails]
+        attr_accessor :native_content_position_details
+      
         # Represents a targetable on screen position, which could be used by display and
         # video ads. This will be populated in the on_screen_position_details field when
         # targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`.
@@ -8349,6 +8840,7 @@ module Google
           @household_income_details = args[:household_income_details] if args.key?(:household_income_details)
           @language_details = args[:language_details] if args.key?(:language_details)
           @name = args[:name] if args.key?(:name)
+          @native_content_position_details = args[:native_content_position_details] if args.key?(:native_content_position_details)
           @on_screen_position_details = args[:on_screen_position_details] if args.key?(:on_screen_position_details)
           @operating_system_details = args[:operating_system_details] if args.key?(:operating_system_details)
           @parental_status_details = args[:parental_status_details] if args.key?(:parental_status_details)

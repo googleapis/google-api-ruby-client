@@ -1809,6 +1809,88 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # List invoices for an advertiser.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser to list invoices for.
+        # @param [String] issue_month
+        #   Required. Month for which invoices are needed in the format YYYYMM.
+        # @param [String] loi_sapin_invoice_type
+        #   Select type of invoice to query for Loi Sapin advertisers. Otherwise its
+        #   ignored.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of [ListInvoicesResponse.next_page_token] returned from the
+        #   previous call to `ListInvoice` method. If not specified, the first page of
+        #   results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListInvoicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListInvoicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_invoices(advertiser_id, issue_month: nil, loi_sapin_invoice_type: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/invoices', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListInvoicesResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListInvoicesResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['issueMonth'] = issue_month unless issue_month.nil?
+          command.query['loiSapinInvoiceType'] = loi_sapin_invoice_type unless loi_sapin_invoice_type.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lookup invoice currency for an advertiser.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser to lookup currency for.
+        # @param [String] invoice_month
+        #   Month for which currency is needed in the format YYYYMM. If not set Api would
+        #   return currency based on current settings.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::LookupInvoiceCurrencyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::LookupInvoiceCurrencyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_advertiser_invoice_invoice_currency(advertiser_id, invoice_month: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/invoices:lookupInvoiceCurrency', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::LookupInvoiceCurrencyResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::LookupInvoiceCurrencyResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['invoiceMonth'] = invoice_month unless invoice_month.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Bulk edits targeting options under a single line item. The operation will
         # delete the assigned targeting options provided in
         # BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then
