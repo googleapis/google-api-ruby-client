@@ -44,6 +44,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Represents whether a bucket is being moved to a new location, in
+        # which case reconciling is set to true.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
         def initialize(**args)
            update!(**args)
         end
@@ -51,6 +58,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
         end
       end
       

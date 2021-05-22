@@ -62,6 +62,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
         end
       end
       
