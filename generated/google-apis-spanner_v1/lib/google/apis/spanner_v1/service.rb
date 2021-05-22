@@ -1262,6 +1262,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Request a specific scan with Database-specific data for Cloud Key Visualizer.
+        # @param [String] name
+        #   Required. The unique name of the scan containing the requested information,
+        #   specific to the Database service implementing this interface.
+        # @param [String] end_time
+        #   The upper bound for the time range to retrieve Scan data for.
+        # @param [String] start_time
+        #   These fields restrict the Database-specific information returned in the `Scan.
+        #   data` field. If a `View` is provided that does not include the `Scan.data`
+        #   field, these are ignored. This range of time must be entirely contained within
+        #   the defined time range of the targeted scan. The lower bound for the time
+        #   range to retrieve Scan data for.
+        # @param [String] view
+        #   Specifies which parts of the Scan should be returned in the response. Note, if
+        #   left unspecified, the FULL view is assumed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Scan] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Scan]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance_database_scans(name, end_time: nil, start_time: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/scans', options)
+          command.response_representation = Google::Apis::SpannerV1::Scan::Representation
+          command.response_class = Google::Apis::SpannerV1::Scan
+          command.params['name'] = name unless name.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists Cloud Spanner databases.
         # @param [String] parent
         #   Required. The instance whose databases should be listed. Values are of the
@@ -2325,6 +2370,52 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Return available scans given a Database-specific resource name.
+        # @param [String] parent
+        #   Required. The unique name of the parent resource, specific to the Database
+        #   service implementing this interface.
+        # @param [String] filter
+        #   A filter expression to restrict the results based on information present in
+        #   the available Scan collection. The filter applies to all fields within the
+        #   Scan message except for `data`.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous List request, if any.
+        # @param [String] view
+        #   Specifies which parts of the Scan should be returned in the response. Note,
+        #   only the SUMMARY view (the default) is currently supported for ListScans.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::ListScansResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::ListScansResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_scans(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}', options)
+          command.response_representation = Google::Apis::SpannerV1::ListScansResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::ListScansResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

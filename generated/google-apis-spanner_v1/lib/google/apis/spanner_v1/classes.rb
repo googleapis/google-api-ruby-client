@@ -746,6 +746,45 @@ module Google
         end
       end
       
+      # A message representing context for a KeyRangeInfo, including a label, value,
+      # unit, and severity.
+      class ContextValue
+        include Google::Apis::Core::Hashable
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `label`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :label
+      
+        # The severity of this context.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The unit of the context value.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # The value for the context.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @severity = args[:severity] if args.key?(:severity)
+          @unit = args[:unit] if args.key?(:unit)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Metadata type for the operation returned by CreateBackup.
       class CreateBackupMetadata
         include Google::Apis::Core::Hashable
@@ -1033,6 +1072,85 @@ module Google
         def update!(**args)
           @key_set = args[:key_set] if args.key?(:key_set)
           @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # A message representing a derived metric.
+      class DerivedMetric
+        include Google::Apis::Core::Hashable
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `denominator`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :denominator
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `numerator`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :numerator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @denominator = args[:denominator] if args.key?(:denominator)
+          @numerator = args[:numerator] if args.key?(:numerator)
+        end
+      end
+      
+      # A message representing the key visualizer diagnostic messages.
+      class DiagnosticMessage
+        include Google::Apis::Core::Hashable
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `info`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :info
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `metric`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :metric
+      
+        # Whether this message is specific only for the current metric. By default
+        # Diagnostics are shown for all metrics, regardless which metric is the
+        # currently selected metric in the UI. However occasionally a metric will
+        # generate so many messages that the resulting visual clutter becomes
+        # overwhelming. In this case setting this to true, will show the diagnostic
+        # messages for that metric only if it is the currently selected metric.
+        # Corresponds to the JSON property `metricSpecific`
+        # @return [Boolean]
+        attr_accessor :metric_specific
+        alias_method :metric_specific?, :metric_specific
+      
+        # The severity of the diagnostic message.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `shortMessage`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :short_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @info = args[:info] if args.key?(:info)
+          @metric = args[:metric] if args.key?(:metric)
+          @metric_specific = args[:metric_specific] if args.key?(:metric_specific)
+          @severity = args[:severity] if args.key?(:severity)
+          @short_message = args[:short_message] if args.key?(:short_message)
         end
       end
       
@@ -1454,6 +1572,49 @@ module Google
         end
       end
       
+      # A message representing a (sparse) collection of hot keys for specific key
+      # buckets.
+      class IndexedHotKey
+        include Google::Apis::Core::Hashable
+      
+        # A (sparse) mapping from key bucket index to the index of the specific hot row
+        # key for that key bucket. The index of the hot row key can be translated to the
+        # actual row key via the ScanData.VisualizationData.indexed_keys repeated field.
+        # Corresponds to the JSON property `sparseHotKeys`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :sparse_hot_keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sparse_hot_keys = args[:sparse_hot_keys] if args.key?(:sparse_hot_keys)
+        end
+      end
+      
+      # A message representing a (sparse) collection of KeyRangeInfos for specific key
+      # buckets.
+      class IndexedKeyRangeInfos
+        include Google::Apis::Core::Hashable
+      
+        # A (sparse) mapping from key bucket index to the KeyRangeInfos for that key
+        # bucket.
+        # Corresponds to the JSON property `keyRangeInfos`
+        # @return [Hash<String,Google::Apis::SpannerV1::KeyRangeInfos>]
+        attr_accessor :key_range_infos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_range_infos = args[:key_range_infos] if args.key?(:key_range_infos)
+        end
+      end
+      
       # An isolated set of Cloud Spanner resources on which databases can be hosted.
       class Instance
         include Google::Apis::Core::Hashable
@@ -1639,6 +1800,97 @@ module Google
           @end_open = args[:end_open] if args.key?(:end_open)
           @start_closed = args[:start_closed] if args.key?(:start_closed)
           @start_open = args[:start_open] if args.key?(:start_open)
+        end
+      end
+      
+      # A message representing information for a key range (possibly one key).
+      class KeyRangeInfo
+        include Google::Apis::Core::Hashable
+      
+        # The list of context values for this key range.
+        # Corresponds to the JSON property `contextValues`
+        # @return [Array<Google::Apis::SpannerV1::ContextValue>]
+        attr_accessor :context_values
+      
+        # The index of the end key in indexed_keys.
+        # Corresponds to the JSON property `endKeyIndex`
+        # @return [Fixnum]
+        attr_accessor :end_key_index
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `info`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :info
+      
+        # The number of keys this range covers.
+        # Corresponds to the JSON property `keysCount`
+        # @return [Fixnum]
+        attr_accessor :keys_count
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `metric`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :metric
+      
+        # The index of the start key in indexed_keys.
+        # Corresponds to the JSON property `startKeyIndex`
+        # @return [Fixnum]
+        attr_accessor :start_key_index
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `unit`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :unit
+      
+        # The value of the metric.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_values = args[:context_values] if args.key?(:context_values)
+          @end_key_index = args[:end_key_index] if args.key?(:end_key_index)
+          @info = args[:info] if args.key?(:info)
+          @keys_count = args[:keys_count] if args.key?(:keys_count)
+          @metric = args[:metric] if args.key?(:metric)
+          @start_key_index = args[:start_key_index] if args.key?(:start_key_index)
+          @unit = args[:unit] if args.key?(:unit)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A message representing a list of specific information for multiple key ranges.
+      class KeyRangeInfos
+        include Google::Apis::Core::Hashable
+      
+        # The list individual KeyRangeInfos.
+        # Corresponds to the JSON property `infos`
+        # @return [Array<Google::Apis::SpannerV1::KeyRangeInfo>]
+        attr_accessor :infos
+      
+        # The total size of the list of all KeyRangeInfos. This may be larger than the
+        # number of repeated messages above. If that is the case, this number may be
+        # used to determine how many are not being shown.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @infos = args[:infos] if args.key?(:infos)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -1879,6 +2131,32 @@ module Google
         end
       end
       
+      # Response method from the ListScans method.
+      class ListScansResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Available scans based on the list query parameters.
+        # Corresponds to the JSON property `scans`
+        # @return [Array<Google::Apis::SpannerV1::Scan>]
+        attr_accessor :scans
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @scans = args[:scans] if args.key?(:scans)
+        end
+      end
+      
       # The response for ListSessions.
       class ListSessionsResponse
         include Google::Apis::Core::Hashable
@@ -1902,6 +2180,179 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @sessions = args[:sessions] if args.key?(:sessions)
+        end
+      end
+      
+      # A message representing a user-facing string whose value may need to be
+      # translated before being displayed.
+      class LocalizedString
+        include Google::Apis::Core::Hashable
+      
+        # A map of arguments used when creating the localized message. Keys represent
+        # parameter names which may be used by the localized version when substituting
+        # dynamic values.
+        # Corresponds to the JSON property `args`
+        # @return [Hash<String,String>]
+        attr_accessor :args
+      
+        # The canonical English version of this message. If no token is provided or the
+        # front-end has no message associated with the token, this text will be
+        # displayed as-is.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The token identifying the message, e.g. 'METRIC_READ_CPU'. This should be
+        # unique within the service.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @message = args[:message] if args.key?(:message)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
+      # A message representing the actual monitoring data, values for each key bucket
+      # over time, of a metric.
+      class Metric
+        include Google::Apis::Core::Hashable
+      
+        # The aggregation function used to aggregate each key bucket
+        # Corresponds to the JSON property `aggregation`
+        # @return [String]
+        attr_accessor :aggregation
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `category`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :category
+      
+        # A message representing a derived metric.
+        # Corresponds to the JSON property `derived`
+        # @return [Google::Apis::SpannerV1::DerivedMetric]
+        attr_accessor :derived
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `displayLabel`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :display_label
+      
+        # Whether the metric has any non-zero data.
+        # Corresponds to the JSON property `hasNonzeroData`
+        # @return [Boolean]
+        attr_accessor :has_nonzero_data
+        alias_method :has_nonzero_data?, :has_nonzero_data
+      
+        # The value that is considered hot for the metric. On a per metric basis hotness
+        # signals high utilization and something that might potentially be a cause for
+        # concern by the end user. hot_value is used to calibrate and scale visual color
+        # scales.
+        # Corresponds to the JSON property `hotValue`
+        # @return [Float]
+        attr_accessor :hot_value
+      
+        # The (sparse) mapping from time index to an IndexedHotKey message, representing
+        # those time intervals for which there are hot keys.
+        # Corresponds to the JSON property `indexedHotKeys`
+        # @return [Hash<String,Google::Apis::SpannerV1::IndexedHotKey>]
+        attr_accessor :indexed_hot_keys
+      
+        # The (sparse) mapping from time interval index to an IndexedKeyRangeInfos
+        # message, representing those time intervals for which there are informational
+        # messages concerning key ranges.
+        # Corresponds to the JSON property `indexedKeyRangeInfos`
+        # @return [Hash<String,Google::Apis::SpannerV1::IndexedKeyRangeInfos>]
+        attr_accessor :indexed_key_range_infos
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `info`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :info
+      
+        # A message representing a matrix of floats.
+        # Corresponds to the JSON property `matrix`
+        # @return [Google::Apis::SpannerV1::MetricMatrix]
+        attr_accessor :matrix
+      
+        # A message representing a user-facing string whose value may need to be
+        # translated before being displayed.
+        # Corresponds to the JSON property `unit`
+        # @return [Google::Apis::SpannerV1::LocalizedString]
+        attr_accessor :unit
+      
+        # Whether the metric is visible to the end user.
+        # Corresponds to the JSON property `visible`
+        # @return [Boolean]
+        attr_accessor :visible
+        alias_method :visible?, :visible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation = args[:aggregation] if args.key?(:aggregation)
+          @category = args[:category] if args.key?(:category)
+          @derived = args[:derived] if args.key?(:derived)
+          @display_label = args[:display_label] if args.key?(:display_label)
+          @has_nonzero_data = args[:has_nonzero_data] if args.key?(:has_nonzero_data)
+          @hot_value = args[:hot_value] if args.key?(:hot_value)
+          @indexed_hot_keys = args[:indexed_hot_keys] if args.key?(:indexed_hot_keys)
+          @indexed_key_range_infos = args[:indexed_key_range_infos] if args.key?(:indexed_key_range_infos)
+          @info = args[:info] if args.key?(:info)
+          @matrix = args[:matrix] if args.key?(:matrix)
+          @unit = args[:unit] if args.key?(:unit)
+          @visible = args[:visible] if args.key?(:visible)
+        end
+      end
+      
+      # A message representing a matrix of floats.
+      class MetricMatrix
+        include Google::Apis::Core::Hashable
+      
+        # The rows of the matrix.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::SpannerV1::MetricMatrixRow>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # A message representing a row of a matrix of floats.
+      class MetricMatrixRow
+        include Google::Apis::Core::Hashable
+      
+        # The columns of the row.
+        # Corresponds to the JSON property `cols`
+        # @return [Array<Float>]
+        attr_accessor :cols
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cols = args[:cols] if args.key?(:cols)
         end
       end
       
@@ -2513,6 +2964,55 @@ module Google
         end
       end
       
+      # A message representing a key prefix node in the key prefix hierarchy. for eg.
+      # Bigtable keyspaces are lexicographically ordered mappings of keys to values.
+      # Keys often have a shared prefix structure where users use the keys to organize
+      # data. Eg ///employee In this case Keysight will possibly use one node for a
+      # company and reuse it for all employees that fall under the company. Doing so
+      # improves legibility in the UI.
+      class PrefixNode
+        include Google::Apis::Core::Hashable
+      
+        # Whether this corresponds to a data_source name.
+        # Corresponds to the JSON property `dataSourceNode`
+        # @return [Boolean]
+        attr_accessor :data_source_node
+        alias_method :data_source_node?, :data_source_node
+      
+        # The depth in the prefix hierarchy.
+        # Corresponds to the JSON property `depth`
+        # @return [Fixnum]
+        attr_accessor :depth
+      
+        # The index of the end key bucket of the range that this node spans.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # The index of the start key bucket of the range that this node spans.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # The string represented by the prefix node.
+        # Corresponds to the JSON property `word`
+        # @return [String]
+        attr_accessor :word
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_node = args[:data_source_node] if args.key?(:data_source_node)
+          @depth = args[:depth] if args.key?(:depth)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @word = args[:word] if args.key?(:word)
+        end
+      end
+      
       # Query optimizer configuration.
       class QueryOptions
         include Google::Apis::Core::Hashable
@@ -3101,6 +3601,87 @@ module Google
         # Update properties of this object
         def update!(**args)
           @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
+        end
+      end
+      
+      # Scan is a structure which describes Cloud Key Visualizer scan information.
+      class Scan
+        include Google::Apis::Core::Hashable
+      
+        # Additional information provided by the implementer.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,Object>]
+        attr_accessor :details
+      
+        # The upper bound for when the scan is defined.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The unique name of the scan, specific to the Database service implementing
+        # this interface.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # ScanData contains Cloud Key Visualizer scan data used by the caller to
+        # construct a visualization.
+        # Corresponds to the JSON property `scanData`
+        # @return [Google::Apis::SpannerV1::ScanData]
+        attr_accessor :scan_data
+      
+        # A range of time (inclusive) for when the scan is defined. The lower bound for
+        # when the scan is defined.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @scan_data = args[:scan_data] if args.key?(:scan_data)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # ScanData contains Cloud Key Visualizer scan data used by the caller to
+      # construct a visualization.
+      class ScanData
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Key Visualizer scan data. The range of time this information covers is
+        # captured via the above time range fields. Note, this field is not available to
+        # the ListScans method.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::SpannerV1::VisualizationData]
+        attr_accessor :data
+      
+        # The upper bound for when the contained data is defined.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # A range of time (inclusive) for when the contained data is defined. The lower
+        # bound for when the contained data is defined.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -4127,6 +4708,84 @@ module Google
         def update!(**args)
           @field_mask = args[:field_mask] if args.key?(:field_mask)
           @instance = args[:instance] if args.key?(:instance)
+        end
+      end
+      
+      # 
+      class VisualizationData
+        include Google::Apis::Core::Hashable
+      
+        # The token signifying the end of a data_source.
+        # Corresponds to the JSON property `dataSourceEndToken`
+        # @return [String]
+        attr_accessor :data_source_end_token
+      
+        # The token delimiting a datasource name from the rest of a key in a data_source.
+        # Corresponds to the JSON property `dataSourceSeparatorToken`
+        # @return [String]
+        attr_accessor :data_source_separator_token
+      
+        # The list of messages (info, alerts, ...)
+        # Corresponds to the JSON property `diagnosticMessages`
+        # @return [Array<Google::Apis::SpannerV1::DiagnosticMessage>]
+        attr_accessor :diagnostic_messages
+      
+        # We discretize the entire keyspace into buckets. Assuming each bucket has an
+        # inclusive keyrange and covers keys from k(i) ... k(n). In this case k(n) would
+        # be an end key for a given range. end_key_string is the collection of all such
+        # end keys
+        # Corresponds to the JSON property `endKeyStrings`
+        # @return [Array<String>]
+        attr_accessor :end_key_strings
+      
+        # Whether this scan contains PII.
+        # Corresponds to the JSON property `hasPii`
+        # @return [Boolean]
+        attr_accessor :has_pii
+        alias_method :has_pii?, :has_pii
+      
+        # Keys of key ranges that contribute significantly to a given metric Can be
+        # thought of as heavy hitters.
+        # Corresponds to the JSON property `indexedKeys`
+        # @return [Array<String>]
+        attr_accessor :indexed_keys
+      
+        # The token delimiting the key prefixes.
+        # Corresponds to the JSON property `keySeparator`
+        # @return [String]
+        attr_accessor :key_separator
+      
+        # The unit for the key: e.g. 'key' or 'chunk'.
+        # Corresponds to the JSON property `keyUnit`
+        # @return [String]
+        attr_accessor :key_unit
+      
+        # The list of data objects for each metric.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::SpannerV1::Metric>]
+        attr_accessor :metrics
+      
+        # The list of extracted key prefix nodes used in the key prefix hierarchy.
+        # Corresponds to the JSON property `prefixNodes`
+        # @return [Array<Google::Apis::SpannerV1::PrefixNode>]
+        attr_accessor :prefix_nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_end_token = args[:data_source_end_token] if args.key?(:data_source_end_token)
+          @data_source_separator_token = args[:data_source_separator_token] if args.key?(:data_source_separator_token)
+          @diagnostic_messages = args[:diagnostic_messages] if args.key?(:diagnostic_messages)
+          @end_key_strings = args[:end_key_strings] if args.key?(:end_key_strings)
+          @has_pii = args[:has_pii] if args.key?(:has_pii)
+          @indexed_keys = args[:indexed_keys] if args.key?(:indexed_keys)
+          @key_separator = args[:key_separator] if args.key?(:key_separator)
+          @key_unit = args[:key_unit] if args.key?(:key_unit)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @prefix_nodes = args[:prefix_nodes] if args.key?(:prefix_nodes)
         end
       end
       

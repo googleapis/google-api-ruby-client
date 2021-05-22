@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContextValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateBackupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,18 @@ module Google
       end
       
       class Delete
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DerivedMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiagnosticMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +214,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IndexedHotKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IndexedKeyRangeInfos
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +239,18 @@ module Google
       end
       
       class KeyRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KeyRangeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KeyRangeInfos
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,7 +304,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListScansResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSessionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalizedString
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Metric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricMatrix
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricMatrixRow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +413,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrefixNode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -431,6 +509,18 @@ module Google
       end
       
       class RollbackRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Scan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScanData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -527,6 +617,12 @@ module Google
       end
       
       class UpdateInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VisualizationData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -640,6 +736,17 @@ module Google
         end
       end
       
+      class ContextValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :severity, as: 'severity'
+          property :unit, as: 'unit'
+          property :value, as: 'value'
+        end
+      end
+      
       class CreateBackupMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -719,6 +826,30 @@ module Google
           property :key_set, as: 'keySet', class: Google::Apis::SpannerV1::KeySet, decorator: Google::Apis::SpannerV1::KeySet::Representation
       
           property :table, as: 'table'
+        end
+      end
+      
+      class DerivedMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :denominator, as: 'denominator', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :numerator, as: 'numerator', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+        end
+      end
+      
+      class DiagnosticMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :info, as: 'info', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :metric, as: 'metric', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :metric_specific, as: 'metricSpecific'
+          property :severity, as: 'severity'
+          property :short_message, as: 'shortMessage', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
         end
       end
       
@@ -829,6 +960,21 @@ module Google
         end
       end
       
+      class IndexedHotKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :sparse_hot_keys, as: 'sparseHotKeys'
+        end
+      end
+      
+      class IndexedKeyRangeInfos
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :key_range_infos, as: 'keyRangeInfos', class: Google::Apis::SpannerV1::KeyRangeInfos, decorator: Google::Apis::SpannerV1::KeyRangeInfos::Representation
+      
+        end
+      end
+      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -859,6 +1005,33 @@ module Google
           collection :end_open, as: 'endOpen'
           collection :start_closed, as: 'startClosed'
           collection :start_open, as: 'startOpen'
+        end
+      end
+      
+      class KeyRangeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :context_values, as: 'contextValues', class: Google::Apis::SpannerV1::ContextValue, decorator: Google::Apis::SpannerV1::ContextValue::Representation
+      
+          property :end_key_index, as: 'endKeyIndex'
+          property :info, as: 'info', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :keys_count, :numeric_string => true, as: 'keysCount'
+          property :metric, as: 'metric', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :start_key_index, as: 'startKeyIndex'
+          property :unit, as: 'unit', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :value, as: 'value'
+        end
+      end
+      
+      class KeyRangeInfos
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :infos, as: 'infos', class: Google::Apis::SpannerV1::KeyRangeInfo, decorator: Google::Apis::SpannerV1::KeyRangeInfo::Representation
+      
+          property :total_size, as: 'totalSize'
         end
       end
       
@@ -940,12 +1113,71 @@ module Google
         end
       end
       
+      class ListScansResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :scans, as: 'scans', class: Google::Apis::SpannerV1::Scan, decorator: Google::Apis::SpannerV1::Scan::Representation
+      
+        end
+      end
+      
       class ListSessionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :sessions, as: 'sessions', class: Google::Apis::SpannerV1::Session, decorator: Google::Apis::SpannerV1::Session::Representation
       
+        end
+      end
+      
+      class LocalizedString
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :args, as: 'args'
+          property :message, as: 'message'
+          property :token, as: 'token'
+        end
+      end
+      
+      class Metric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation, as: 'aggregation'
+          property :category, as: 'category', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :derived, as: 'derived', class: Google::Apis::SpannerV1::DerivedMetric, decorator: Google::Apis::SpannerV1::DerivedMetric::Representation
+      
+          property :display_label, as: 'displayLabel', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :has_nonzero_data, as: 'hasNonzeroData'
+          property :hot_value, as: 'hotValue'
+          hash :indexed_hot_keys, as: 'indexedHotKeys', class: Google::Apis::SpannerV1::IndexedHotKey, decorator: Google::Apis::SpannerV1::IndexedHotKey::Representation
+      
+          hash :indexed_key_range_infos, as: 'indexedKeyRangeInfos', class: Google::Apis::SpannerV1::IndexedKeyRangeInfos, decorator: Google::Apis::SpannerV1::IndexedKeyRangeInfos::Representation
+      
+          property :info, as: 'info', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :matrix, as: 'matrix', class: Google::Apis::SpannerV1::MetricMatrix, decorator: Google::Apis::SpannerV1::MetricMatrix::Representation
+      
+          property :unit, as: 'unit', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
+      
+          property :visible, as: 'visible'
+        end
+      end
+      
+      class MetricMatrix
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rows, as: 'rows', class: Google::Apis::SpannerV1::MetricMatrixRow, decorator: Google::Apis::SpannerV1::MetricMatrixRow::Representation
+      
+        end
+      end
+      
+      class MetricMatrixRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cols, as: 'cols'
         end
       end
       
@@ -1090,6 +1322,17 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PrefixNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_node, as: 'dataSourceNode'
+          property :depth, as: 'depth'
+          property :end_index, as: 'endIndex'
+          property :start_index, as: 'startIndex'
+          property :word, as: 'word'
         end
       end
       
@@ -1247,6 +1490,28 @@ module Google
         end
       end
       
+      class Scan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :details, as: 'details'
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :scan_data, as: 'scanData', class: Google::Apis::SpannerV1::ScanData, decorator: Google::Apis::SpannerV1::ScanData::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ScanData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::SpannerV1::VisualizationData, decorator: Google::Apis::SpannerV1::VisualizationData::Representation
+      
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class Session
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1392,6 +1657,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :field_mask, as: 'fieldMask'
           property :instance, as: 'instance', class: Google::Apis::SpannerV1::Instance, decorator: Google::Apis::SpannerV1::Instance::Representation
+      
+        end
+      end
+      
+      class VisualizationData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_end_token, as: 'dataSourceEndToken'
+          property :data_source_separator_token, as: 'dataSourceSeparatorToken'
+          collection :diagnostic_messages, as: 'diagnosticMessages', class: Google::Apis::SpannerV1::DiagnosticMessage, decorator: Google::Apis::SpannerV1::DiagnosticMessage::Representation
+      
+          collection :end_key_strings, as: 'endKeyStrings'
+          property :has_pii, as: 'hasPii'
+          collection :indexed_keys, as: 'indexedKeys'
+          property :key_separator, as: 'keySeparator'
+          property :key_unit, as: 'keyUnit'
+          collection :metrics, as: 'metrics', class: Google::Apis::SpannerV1::Metric, decorator: Google::Apis::SpannerV1::Metric::Representation
+      
+          collection :prefix_nodes, as: 'prefixNodes', class: Google::Apis::SpannerV1::PrefixNode, decorator: Google::Apis::SpannerV1::PrefixNode::Representation
       
         end
       end
