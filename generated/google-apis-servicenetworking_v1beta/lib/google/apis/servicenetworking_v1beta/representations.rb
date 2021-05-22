@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartialDeleteConnectionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PeeredDnsDomain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1085,6 +1091,12 @@ module Google
           property :name, as: 'name'
           collection :subpages, as: 'subpages', class: Google::Apis::ServicenetworkingV1beta::Page, decorator: Google::Apis::ServicenetworkingV1beta::Page::Representation
       
+        end
+      end
+      
+      class PartialDeleteConnectionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
