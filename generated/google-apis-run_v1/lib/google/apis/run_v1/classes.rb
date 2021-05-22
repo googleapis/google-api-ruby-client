@@ -316,7 +316,7 @@ module Google
         # referenced Secret will be projected into the volume as a file whose name is
         # the key and content is the value. If specified, the listed keys will be
         # projected into the specified paths, and unlisted keys will not be present. If
-        # a key is specified which is not present in the Secret, the volume setup will
+        # a key is specified that is not present in the Secret, the volume setup will
         # error unless it is marked optional.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::RunV1::KeyToPath>]
@@ -889,7 +889,7 @@ module Google
         # @return [Google::Apis::RunV1::ConfigMapKeySelector]
         attr_accessor :config_map_key_ref
       
-        # Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+        # Cloud Run fully managed: supported Cloud Run for Anthos: supported
         # SecretKeySelector selects a key of a Secret.
         # Corresponds to the JSON property `secretKeyRef`
         # @return [Google::Apis::RunV1::SecretKeySelector]
@@ -2375,7 +2375,7 @@ module Google
         end
       end
       
-      # Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+      # Cloud Run fully managed: supported Cloud Run for Anthos: supported
       # SecretKeySelector selects a key of a Secret.
       class SecretKeySelector
         include Google::Apis::Core::Hashable
@@ -2454,7 +2454,7 @@ module Google
         # key-value pair in the Data field of the referenced Secret will be projected
         # into the volume as a file whose name is the key and content is the value. If
         # specified, the listed keys will be projected into the specified paths, and
-        # unlisted keys will not be present. If a key is specified which is not present
+        # unlisted keys will not be present. If a key is specified that is not present
         # in the Secret, the volume setup will error unless it is marked optional.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::RunV1::KeyToPath>]
