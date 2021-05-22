@@ -744,7 +744,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_audiences
       
-        # Required. The OIDC issuer URL.
+        # Required. The OIDC issuer URL. Must be an HTTPS endpoint.
         # Corresponds to the JSON property `issuerUri`
         # @return [String]
         attr_accessor :issuer_uri
