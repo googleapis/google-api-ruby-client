@@ -122,6 +122,11 @@ module Google
         # @return [String]
         attr_accessor :address
       
+        # Output only. The timestamp when the endpoint was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Optional. Metadata for the endpoint. This data can be consumed by service
         # clients. Restrictions: * The entire metadata dictionary may contain up to 512
         # characters, spread accoss all key-value pairs. Metadata that goes beyond this
@@ -162,6 +167,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Output only. The timestamp when the endpoint was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -169,10 +179,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @address = args[:address] if args.key?(:address)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @port = args[:port] if args.key?(:port)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -429,6 +441,11 @@ module Google
       class Namespace
         include Google::Apis::Core::Hashable
       
+        # Output only. The timestamp when the namespace was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Optional. Resource labels associated with this namespace. No more than 64 user
         # labels can be associated with a given resource. Label keys and values can be
         # no longer than 63 characters.
@@ -442,14 +459,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The timestamp when the namespace was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -608,6 +632,11 @@ module Google
       class Service
         include Google::Apis::Core::Hashable
       
+        # Output only. The timestamp when the service was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Output only. Endpoints associated with this service. Returned on LookupService.
         # ResolveService. Control plane clients should use RegistrationService.
         # ListEndpoints.
@@ -641,15 +670,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The timestamp when the service was last updated. Note: endpoints
+        # being created/deleted/updated within the service are not considered service
+        # updates for the purpose of this timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
