@@ -156,10 +156,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
+          property :create_time, as: 'createTime'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :network, as: 'network'
           property :port, as: 'port'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -238,8 +240,10 @@ module Google
       class Namespace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -272,10 +276,12 @@ module Google
       class Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           collection :endpoints, as: 'endpoints', class: Google::Apis::ServicedirectoryV1beta1::Endpoint, decorator: Google::Apis::ServicedirectoryV1beta1::Endpoint::Representation
       
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
