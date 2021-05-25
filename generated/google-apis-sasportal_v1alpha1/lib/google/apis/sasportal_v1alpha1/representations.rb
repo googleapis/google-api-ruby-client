@@ -278,6 +278,7 @@ module Google
           collection :allowed_billing_modes, as: 'allowedBillingModes'
           property :default_billing_mode, as: 'defaultBillingMode'
           property :display_name, as: 'displayName'
+          collection :frns, as: 'frns'
           property :name, as: 'name'
           collection :sas_user_ids, as: 'sasUserIds'
         end
