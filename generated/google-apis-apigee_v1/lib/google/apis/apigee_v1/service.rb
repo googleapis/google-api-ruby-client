@@ -653,12 +653,12 @@ module Google
         # collection of API resources combined with quota settings and metadata that you
         # can use to deliver customized and productized API bundles to your developer
         # community. This metadata can include: - Scope - Environments - API proxies -
-        # Extensible profile API products enable you repackage APIs on-the-fly, without
+        # Extensible profile API products enable you repackage APIs on the fly, without
         # having to do any additional coding or configuration. Apigee recommends that
         # you start with a simple API product including only required elements. You then
         # provision credentials to apps to enable them to start testing your APIs. After
         # you have authentication and authorization working against a simple API product,
-        # you can iterate to create finer grained API products, defining different sets
+        # you can iterate to create finer-grained API products, defining different sets
         # of API resources for each API product. **WARNING:** - If you don't specify an
         # API proxy in the request body, *any* app associated with the product can make
         # calls to *any* API in your entire organization. - If you don't specify an
@@ -771,9 +771,9 @@ module Google
         end
         
         # Lists all API product names for an organization. Filter the list by passing an
-        # `attributename` and `attibutevalue`. The limit on the number of API products
-        # returned by the API is 1000. You can paginate the list of API products
-        # returned using the `startKey` and `count` query parameters.
+        # `attributename` and `attibutevalue`. The maximum number of API products
+        # returned is 1000. You can paginate the list of API products returned using the
+        # `startKey` and `count` query parameters.
         # @param [String] parent
         #   Required. Name of the organization. Use the following structure in your
         #   request: `organizations/`org``
@@ -828,7 +828,7 @@ module Google
         # Updates an existing API product. You must include all required values, whether
         # or not you are updating them, as well as any optional values that you are
         # updating. The API product name required in the request URL is the internal
-        # name of the product, not the Display Name. While they may be the same, it
+        # name of the product, not the display name. While they may be the same, it
         # depends on whether the API product was created via UI or API. View the list of
         # API products to identify their internal names.
         # @param [String] name
@@ -2641,12 +2641,12 @@ module Google
         
         # Creates a custom consumer key and secret for a developer app. This is
         # particularly useful if you want to migrate existing consumer keys and secrets
-        # to Apigee hybrid from another system. Consumer keys and secrets can contain
-        # letters, numbers, underscores, and hyphens. No other special characters are
-        # allowed. To avoid service disruptions, a consumer key and secret should not
-        # exceed 2 KBs each. **Note**: When creating the consumer key and secret, an
-        # association to API products will not be made. Therefore, you should not
-        # specify the associated API products in your request. Instead, use the
+        # to Apigee from another system. Consumer keys and secrets can contain letters,
+        # numbers, underscores, and hyphens. No other special characters are allowed. To
+        # avoid service disruptions, a consumer key and secret should not exceed 2 KBs
+        # each. **Note**: When creating the consumer key and secret, an association to
+        # API products will not be made. Therefore, you should not specify the
+        # associated API products in your request. Instead, use the
         # UpdateDeveloperAppKey API to make the association after the consumer key and
         # secret are created. If a consumer key and secret already exist, you can keep
         # them or delete them using the DeleteDeveloperAppKey API.
@@ -2720,7 +2720,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns details for a consumer key for a developer app, including the key and
+        # Gets details for a consumer key for a developer app, including the key and
         # secret value, associated API products, and other information.
         # @param [String] name
         #   Name of the developer app key. Use the following structure in your request: `
@@ -2868,11 +2868,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Approve or revoke an app's consumer key. After a consumer key is approved, the
-        # app can use it to access APIs. A consumer key that is revoked or pending
-        # cannot be used to access an API. Any access tokens associated with a revoked
-        # consumer key will remain active. However, Apigee hybrid checks the status of
-        # the consumer key and if set to `revoked` will not allow access to the API.
+        # Approves or revokes the consumer key for an API product. After a consumer key
+        # is approved, the app can use it to access APIs. A consumer key that is revoked
+        # or pending cannot be used to access an API. Any access tokens associated with
+        # a revoked consumer key will remain active. However, Apigee checks the status
+        # of the consumer key and if set to `revoked` will not allow access to the API.
         # @param [String] name
         #   Name of the API product in the developer app key in the following format: `
         #   organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key`/
@@ -2910,12 +2910,12 @@ module Google
         
         # Creates a custom consumer key and secret for a developer app. This is
         # particularly useful if you want to migrate existing consumer keys and secrets
-        # to Apigee hybrid from another system. Consumer keys and secrets can contain
-        # letters, numbers, underscores, and hyphens. No other special characters are
-        # allowed. To avoid service disruptions, a consumer key and secret should not
-        # exceed 2 KBs each. **Note**: When creating the consumer key and secret, an
-        # association to API products will not be made. Therefore, you should not
-        # specify the associated API products in your request. Instead, use the
+        # to Apigee from another system. Consumer keys and secrets can contain letters,
+        # numbers, underscores, and hyphens. No other special characters are allowed. To
+        # avoid service disruptions, a consumer key and secret should not exceed 2 KBs
+        # each. **Note**: When creating the consumer key and secret, an association to
+        # API products will not be made. Therefore, you should not specify the
+        # associated API products in your request. Instead, use the
         # UpdateDeveloperAppKey API to make the association after the consumer key and
         # secret are created. If a consumer key and secret already exist, you can keep
         # them or delete them using the DeleteDeveloperAppKey API.
@@ -4281,6 +4281,10 @@ module Google
         #   GenerateDeployChangeReport) may be used to examine routing changes before
         #   issuing the deployment request, and its response will indicate if a sequenced
         #   rollout is recommended for the deployment.
+        # @param [String] service_account
+        #   Google Cloud IAM service account. The service account represents the identity
+        #   of the deployed proxy, and determines what permissions it has. The format must
+        #   be ``ACCOUNT_ID`@`PROJECT`.iam.gserviceaccount.com`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4298,13 +4302,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deploy_organization_environment_api_revision(name, override: nil, sequenced_rollout: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def deploy_organization_environment_api_revision(name, override: nil, sequenced_rollout: nil, service_account: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}/deployments', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment
           command.params['name'] = name unless name.nil?
           command.query['override'] = override unless override.nil?
           command.query['sequencedRollout'] = sequenced_rollout unless sequenced_rollout.nil?
+          command.query['serviceAccount'] = service_account unless service_account.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5896,6 +5901,10 @@ module Google
         #   replace other deployed revisions. By default, `override` is `false` and the
         #   deployment is rejected if other revisions of the shared flow are deployed in
         #   the environment.
+        # @param [String] service_account
+        #   Google Cloud IAM service account. The service account represents the identity
+        #   of the deployed proxy, and determines what permissions it has. The format must
+        #   be ``ACCOUNT_ID`@`PROJECT`.iam.gserviceaccount.com`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5913,12 +5922,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deploy_organization_environment_sharedflow_revision(name, override: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def deploy_organization_environment_sharedflow_revision(name, override: nil, service_account: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}/deployments', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment
           command.params['name'] = name unless name.nil?
           command.query['override'] = override unless override.nil?
+          command.query['serviceAccount'] = service_account unless service_account.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

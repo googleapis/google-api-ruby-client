@@ -2044,6 +2044,12 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>]
         attr_accessor :route_conflicts
       
+        # The full resource name of Cloud IAM Service Account that this deployment is
+        # using, eg, `projects/-/serviceAccounts/`email``.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Current state of the deployment. This field is not populated in List APIs.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2063,6 +2069,7 @@ module Google
           @pods = args[:pods] if args.key?(:pods)
           @revision = args[:revision] if args.key?(:revision)
           @route_conflicts = args[:route_conflicts] if args.key?(:route_conflicts)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -3196,20 +3203,20 @@ module Google
         end
       end
       
-      # GraphQLOperation represents the pairing of graphQL operation types and the
-      # graphQL operation name.
+      # Represents the pairing of GraphQL operation types and the GraphQL operation
+      # name.
       class GoogleCloudApigeeV1GraphQlOperation
         include Google::Apis::Core::Hashable
       
-        # GraphQL operation name, along with operation type which will be used to
-        # associate quotas with. If no name is specified, the quota will be applied to
-        # all graphQL operations irrespective of their operation names in the payload.
+        # GraphQL operation name. The name and operation type will be used to apply
+        # quotas. If no name is specified, the quota will be applied to all GraphQL
+        # operations irrespective of their operation names in the payload.
         # Corresponds to the JSON property `operation`
         # @return [String]
         attr_accessor :operation
       
-        # Required. `query`, `mutation` and `subscription` are the three operation types
-        # offered by graphQL. Currently we support only `query` and `mutation`.
+        # Required. GraphQL operation types. Valid values include `query` or `mutation`.
+        # **Note**: Apigee does not currently support `subscription` types.
         # Corresponds to the JSON property `operationTypes`
         # @return [Array<String>]
         attr_accessor :operation_types
@@ -3225,13 +3232,13 @@ module Google
         end
       end
       
-      # GraphQLOperationConfig binds the resources in a proxy or remote service with
-      # the graphQL operation and its associated quota enforcement.
+      # Binds the resources in a proxy or remote service with the GraphQL operation
+      # and its associated quota enforcement.
       class GoogleCloudApigeeV1GraphQlOperationConfig
         include Google::Apis::Core::Hashable
       
-        # Required. API proxy endpoint or remote service name with which the graphQL
-        # operation, and quota are associated.
+        # Required. Name of the API proxy endpoint or remote service with which the
+        # GraphQL operation and quota are associated.
         # Corresponds to the JSON property `apiSource`
         # @return [String]
         attr_accessor :api_source
@@ -3241,20 +3248,19 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
         attr_accessor :attributes
       
-        # Required. List of graphQL name/Operation type pairs for the proxy/remote
-        # service, upon which quota will applied. If GraphQLOperation operation has only
-        # the operation type(s), that would imply that quota will be applied on all
-        # graphQL requests irrespective of the graphQL name. **Note**: Currently, we can
-        # specify only a single GraphQLOperation. Specifying more than one will result
-        # in failure of the operation.
+        # Required. List of GraphQL name/operation type pairs for the proxy or remote
+        # service to which quota will be applied. If only operation types are specified,
+        # the quota will be applied to all GraphQL requests irrespective of the GraphQL
+        # name. **Note**: Currently, you can specify only a single GraphQLOperation.
+        # Specifying more than one will cause the operation to fail.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphQlOperation>]
         attr_accessor :operations
       
-        # Quota contains the essential parameters needed that can be applied on a proxy/
-        # remote service, resources and methods combination associated with this API
-        # product. While setting of Quota is optional, setting it prevents requests from
-        # exceeding the provisioned parameters.
+        # Quota contains the essential parameters needed that can be applied on the
+        # resources, methods, API source combination associated with this API product.
+        # While Quota is optional, setting it prevents requests from exceeding the
+        # provisioned parameters.
         # Corresponds to the JSON property `quota`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota]
         attr_accessor :quota
@@ -3278,8 +3284,8 @@ module Google
       class GoogleCloudApigeeV1GraphQlOperationGroup
         include Google::Apis::Core::Hashable
       
-        # Flag that specifes whether the configuration is for Apigee API proxy or a
-        # remote service. Valid values are `proxy` or `remoteservice`. Defaults to `
+        # Flag that specifies whether the configuration is for Apigee API proxy or a
+        # remote service. Valid values include `proxy` or `remoteservice`. Defaults to `
         # proxy`. Set to `proxy` when Apigee API proxies are associated with the API
         # product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are
         # associated with the API product.
@@ -4365,8 +4371,8 @@ module Google
         end
       end
       
-      # Operation represents the pairing of REST resource path and the actions (verbs)
-      # allowed on the resource path.
+      # Represents the pairing of REST resource path and the actions (verbs) allowed
+      # on the resource path.
       class GoogleCloudApigeeV1Operation
         include Google::Apis::Core::Hashable
       
@@ -4376,8 +4382,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :methods_prop
       
-        # Required. resource represents REST resource path associated with the proxy/
-        # remote service.
+        # Required. REST resource path associated with the API proxy or remote service.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -4393,13 +4398,13 @@ module Google
         end
       end
       
-      # OperationConfig binds the resources in a proxy or remote service with the
-      # allowed REST methods and its associated quota enforcement.
+      # Binds the resources in an API proxy or remote service with the allowed REST
+      # methods and associated quota enforcement.
       class GoogleCloudApigeeV1OperationConfig
         include Google::Apis::Core::Hashable
       
-        # Required. API proxy or remote service name with which the resources, methods,
-        # and quota are associated.
+        # Required. Name of the API proxy or remote service with which the resources,
+        # methods, and quota are associated.
         # Corresponds to the JSON property `apiSource`
         # @return [String]
         attr_accessor :api_source
@@ -4409,18 +4414,18 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
         attr_accessor :attributes
       
-        # List of resource/method pairs for the proxy/remote service, upon which quota
-        # will applied. **Note**: Currently, you can specify only a single resource/
-        # method pair. The call will fail if more than one resource/method pair is
-        # provided.
+        # List of resource/method pairs for the API proxy or remote service to which
+        # quota will applied. **Note**: Currently, you can specify only a single
+        # resource/method pair. The call will fail if more than one resource/method pair
+        # is provided.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Operation>]
         attr_accessor :operations
       
-        # Quota contains the essential parameters needed that can be applied on a proxy/
-        # remote service, resources and methods combination associated with this API
-        # product. While setting of Quota is optional, setting it prevents requests from
-        # exceeding the provisioned parameters.
+        # Quota contains the essential parameters needed that can be applied on the
+        # resources, methods, API source combination associated with this API product.
+        # While Quota is optional, setting it prevents requests from exceeding the
+        # provisioned parameters.
         # Corresponds to the JSON property `quota`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota]
         attr_accessor :quota
@@ -4444,7 +4449,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Flag that specifes whether the configuration is for Apigee API proxy or a
-        # remote service. Valid values are `proxy` or `remoteservice`. Defaults to `
+        # remote service. Valid values include `proxy` or `remoteservice`. Defaults to `
         # proxy`. Set to `proxy` when Apigee API proxies are associated with the API
         # product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are
         # associated with the API product.
@@ -5205,10 +5210,10 @@ module Google
         end
       end
       
-      # Quota contains the essential parameters needed that can be applied on a proxy/
-      # remote service, resources and methods combination associated with this API
-      # product. While setting of Quota is optional, setting it prevents requests from
-      # exceeding the provisioned parameters.
+      # Quota contains the essential parameters needed that can be applied on the
+      # resources, methods, API source combination associated with this API product.
+      # While Quota is optional, setting it prevents requests from exceeding the
+      # provisioned parameters.
       class GoogleCloudApigeeV1Quota
         include Google::Apis::Core::Hashable
       
