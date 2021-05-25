@@ -46,8 +46,6 @@ module Google
         # client as an RFC 3339 string, which can be easily used with the JavaScript
         # Date constructor and keeps the Version timestamps returned via OnePlatform
         # consistent, as JSON marshals google.protobuf.Timestamp into an RFC 3339 string.
-        # (http://google3/cloud/containers/artifacts/metadata/v1beta2/builder/data.go?l=
-        # 158-159&rcl=364878183).
         # Corresponds to the JSON property `buildTime`
         # @return [String]
         attr_accessor :build_time
