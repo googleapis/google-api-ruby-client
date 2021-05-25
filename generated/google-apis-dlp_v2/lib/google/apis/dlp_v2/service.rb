@@ -1195,6 +1195,8 @@ module Google
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to ListJobTriggers.
         #   `order_by` field must not change for subsequent calls.
+        # @param [String] type
+        #   The type of jobs. Will use `DlpJobType.INSPECT` if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1212,7 +1214,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_job_triggers(parent, filter: nil, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_job_triggers(parent, filter: nil, location_id: nil, order_by: nil, page_size: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/jobTriggers', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse
@@ -1222,6 +1224,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2678,6 +2681,8 @@ module Google
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to ListJobTriggers.
         #   `order_by` field must not change for subsequent calls.
+        # @param [String] type
+        #   The type of jobs. Will use `DlpJobType.INSPECT` if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2695,7 +2700,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_job_triggers(parent, filter: nil, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_job_triggers(parent, filter: nil, location_id: nil, order_by: nil, page_size: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/jobTriggers', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse
@@ -2705,6 +2710,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3850,6 +3856,8 @@ module Google
         # @param [String] page_token
         #   Page token to continue retrieval. Comes from previous call to ListJobTriggers.
         #   `order_by` field must not change for subsequent calls.
+        # @param [String] type
+        #   The type of jobs. Will use `DlpJobType.INSPECT` if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3867,7 +3875,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_job_triggers(parent, filter: nil, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_job_triggers(parent, filter: nil, location_id: nil, order_by: nil, page_size: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/jobTriggers', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse
@@ -3877,6 +3885,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
