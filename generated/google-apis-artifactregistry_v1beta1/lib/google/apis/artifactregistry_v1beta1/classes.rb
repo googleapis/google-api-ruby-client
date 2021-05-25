@@ -179,7 +179,8 @@ module Google
         attr_accessor :hashes
       
         # The name of the file, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/files/a/b/c.txt".
+        # repositories/repo1/files/a%2Fb%2Fc.txt". If the file ID part contains slashes,
+        # they are escaped.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -544,7 +545,8 @@ module Google
         attr_accessor :display_name
       
         # The name of the package, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/packages/pkg1".
+        # repositories/repo1/packages/pkg1". If the package ID part contains slashes,
+        # the slashes are escaped.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -804,7 +806,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the tag, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/packages/pkg1/tags/tag1".
+        # repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts
+        # contain slashes, the slashes are escaped.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -883,7 +886,8 @@ module Google
         attr_accessor :description
       
         # The name of the version, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/packages/pkg1/versions/art1".
+        # repositories/repo1/packages/pkg1/versions/art1". If the package or version ID
+        # parts contain slashes, the slashes are escaped.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

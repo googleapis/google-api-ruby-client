@@ -795,7 +795,8 @@ module Google
         # Updates a tag.
         # @param [String] name
         #   The name of the tag, for example: "projects/p1/locations/us-central1/
-        #   repositories/repo1/packages/pkg1/tags/tag1".
+        #   repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts
+        #   contain slashes, the slashes are escaped.
         # @param [Google::Apis::ArtifactregistryV1beta1::Tag] tag_object
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see
