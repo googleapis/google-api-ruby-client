@@ -1193,7 +1193,8 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # Text translated into the target language.
+        # Text translated into the target language. If an error occurs during
+        # translation, this field might be excluded from the response.
         # Corresponds to the JSON property `translatedText`
         # @return [String]
         attr_accessor :translated_text
