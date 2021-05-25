@@ -1036,12 +1036,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleLongrunningCancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleLongrunningListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2911,12 +2905,6 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
-        end
-      end
-      
-      class GoogleLongrunningCancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
