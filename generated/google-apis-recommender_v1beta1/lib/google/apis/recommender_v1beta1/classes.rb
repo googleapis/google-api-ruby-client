@@ -381,7 +381,7 @@ module Google
       class GoogleCloudRecommenderV1beta1Operation
         include Google::Apis::Core::Hashable
       
-        # Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', '
+        # Type of this operation. Contains one of 'add', 'remove', 'replace', 'move', '
         # copy', 'test' and 'custom' operations. This field is case-insensitive and
         # always populated.
         # Corresponds to the JSON property `action`
