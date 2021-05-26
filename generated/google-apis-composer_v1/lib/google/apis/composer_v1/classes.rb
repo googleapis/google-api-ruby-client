@@ -51,6 +51,38 @@ module Google
         end
       end
       
+      # Message containing information about the result of an upgrade check operation.
+      class CheckUpgradeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Url for a docker build log of an upgraded image.
+        # Corresponds to the JSON property `buildLogUri`
+        # @return [String]
+        attr_accessor :build_log_uri
+      
+        # Output only. Whether build has succeeded or failed on modules conflicts.
+        # Corresponds to the JSON property `containsPypiModulesConflict`
+        # @return [String]
+        attr_accessor :contains_pypi_modules_conflict
+      
+        # Output only. Extract from a docker image build log containing information
+        # about pypi modules conflicts.
+        # Corresponds to the JSON property `pypiConflictBuildLogExtract`
+        # @return [String]
+        attr_accessor :pypi_conflict_build_log_extract
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_log_uri = args[:build_log_uri] if args.key?(:build_log_uri)
+          @contains_pypi_modules_conflict = args[:contains_pypi_modules_conflict] if args.key?(:contains_pypi_modules_conflict)
+          @pypi_conflict_build_log_extract = args[:pypi_conflict_build_log_extract] if args.key?(:pypi_conflict_build_log_extract)
+        end
+      end
+      
       # The configuration of Cloud SQL instance that is used by the Apache Airflow
       # software.
       class DatabaseConfig
