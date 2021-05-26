@@ -2969,6 +2969,33 @@ module Google
         end
       end
       
+      # Request message to pause serving for finalized deals.
+      class PauseProposalDealsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The external_deal_id's of the deals to be paused. If empty, all the deals in
+        # the proposal will be paused.
+        # Corresponds to the JSON property `externalDealIds`
+        # @return [Array<String>]
+        attr_accessor :external_deal_ids
+      
+        # The reason why the deals are being paused. This human readable message will be
+        # displayed in the seller's UI. (Max length: 1000 unicode code units.)
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_deal_ids = args[:external_deal_ids] if args.key?(:external_deal_ids)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
       # Request message to pause serving for an already-finalized proposal.
       class PauseProposalRequest
         include Google::Apis::Core::Hashable
@@ -3616,6 +3643,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @association = args[:association] if args.key?(:association)
+        end
+      end
+      
+      # Request message to resume (unpause) serving for already-finalized deals.
+      class ResumeProposalDealsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The external_deal_id's of the deals to resume. If empty, all the deals in the
+        # proposal will be resumed.
+        # Corresponds to the JSON property `externalDealIds`
+        # @return [Array<String>]
+        attr_accessor :external_deal_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_deal_ids = args[:external_deal_ids] if args.key?(:external_deal_ids)
         end
       end
       
