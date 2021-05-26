@@ -478,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PauseProposalDealsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PauseProposalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -551,6 +557,12 @@ module Google
       end
       
       class RemoveDealAssociationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeProposalDealsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1480,6 +1492,14 @@ module Google
         end
       end
       
+      class PauseProposalDealsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :external_deal_ids, as: 'externalDealIds'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class PauseProposalRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1643,6 +1663,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :association, as: 'association', class: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation, decorator: Google::Apis::Adexchangebuyer2V2beta1::CreativeDealAssociation::Representation
       
+        end
+      end
+      
+      class ResumeProposalDealsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :external_deal_ids, as: 'externalDealIds'
         end
       end
       

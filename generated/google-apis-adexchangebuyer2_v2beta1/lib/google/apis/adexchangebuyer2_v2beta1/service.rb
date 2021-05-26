@@ -852,6 +852,90 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Update given deals to pause serving. This method will set the `
+        # DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all
+        # listed deals in the request. Currently, this method only applies to PG and PD
+        # deals. For PA deals, please call accounts.proposals.pause endpoint. It is a no-
+        # op to pause already-paused deals. It is an error to call PauseProposalDeals
+        # for deals which are not part of the proposal of proposal_id or which are not
+        # finalized or renegotiating.
+        # @param [String] account_id
+        #   Account ID of the buyer.
+        # @param [String] proposal_id
+        #   The proposal_id of the proposal containing the deals.
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::PauseProposalDealsRequest] pause_proposal_deals_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Proposal] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Proposal]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def pause_finalized_proposal_proposal_deals(account_id, proposal_id, pause_proposal_deals_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::PauseProposalDealsRequest::Representation
+          command.request_object = pause_proposal_deals_request_object
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Proposal::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Proposal
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['proposalId'] = proposal_id unless proposal_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update given deals to resume serving. This method will set the `
+        # DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all
+        # listed deals in the request. Currently, this method only applies to PG and PD
+        # deals. For PA deals, please call accounts.proposals.resume endpoint. It is a
+        # no-op to resume already-running deals. It is an error to call
+        # ResumeProposalDeals for deals which are not part of the proposal of
+        # proposal_id or which are not finalized or renegotiating.
+        # @param [String] account_id
+        #   Account ID of the buyer.
+        # @param [String] proposal_id
+        #   The proposal_id of the proposal containing the deals.
+        # @param [Google::Apis::Adexchangebuyer2V2beta1::ResumeProposalDealsRequest] resume_proposal_deals_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Adexchangebuyer2V2beta1::Proposal] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::Proposal]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_finalized_proposal_proposal_deals(account_id, proposal_id, resume_proposal_deals_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume', options)
+          command.request_representation = Google::Apis::Adexchangebuyer2V2beta1::ResumeProposalDealsRequest::Representation
+          command.request_object = resume_proposal_deals_request_object
+          command.response_representation = Google::Apis::Adexchangebuyer2V2beta1::Proposal::Representation
+          command.response_class = Google::Apis::Adexchangebuyer2V2beta1::Proposal
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.params['proposalId'] = proposal_id unless proposal_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the requested product by ID.
         # @param [String] account_id
         #   Account ID of the buyer.
