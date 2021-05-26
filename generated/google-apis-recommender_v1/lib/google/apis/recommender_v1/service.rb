@@ -80,8 +80,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists insights for a Cloud project. Requires the recommender.*.list IAM
-        # permission for the specified insight type.
+        # Lists insights for the specified Cloud Resource. Requires the recommender.*.
+        # list IAM permission for the specified insight type.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
@@ -207,8 +207,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists recommendations for a Cloud project. Requires the recommender.*.list IAM
-        # permission for the specified recommender.
+        # Lists recommendations for the specified Cloud Resource. Requires the
+        # recommender.*.list IAM permission for the specified recommender.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
@@ -413,8 +413,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists insights for a Cloud project. Requires the recommender.*.list IAM
-        # permission for the specified insight type.
+        # Lists insights for the specified Cloud Resource. Requires the recommender.*.
+        # list IAM permission for the specified insight type.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
@@ -540,8 +540,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists recommendations for a Cloud project. Requires the recommender.*.list IAM
-        # permission for the specified recommender.
+        # Lists recommendations for the specified Cloud Resource. Requires the
+        # recommender.*.list IAM permission for the specified recommender.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
@@ -746,8 +746,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists insights for a Cloud project. Requires the recommender.*.list IAM
-        # permission for the specified insight type.
+        # Lists insights for the specified Cloud Resource. Requires the recommender.*.
+        # list IAM permission for the specified insight type.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
@@ -873,8 +873,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists recommendations for a Cloud project. Requires the recommender.*.list IAM
-        # permission for the specified recommender.
+        # Lists recommendations for the specified Cloud Resource. Requires the
+        # recommender.*.list IAM permission for the specified recommender.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
@@ -1079,8 +1079,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists insights for a Cloud project. Requires the recommender.*.list IAM
-        # permission for the specified insight type.
+        # Lists insights for the specified Cloud Resource. Requires the recommender.*.
+        # list IAM permission for the specified insight type.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
@@ -1206,8 +1206,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists recommendations for a Cloud project. Requires the recommender.*.list IAM
-        # permission for the specified recommender.
+        # Lists recommendations for the specified Cloud Resource. Requires the
+        # recommender.*.list IAM permission for the specified recommender.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
