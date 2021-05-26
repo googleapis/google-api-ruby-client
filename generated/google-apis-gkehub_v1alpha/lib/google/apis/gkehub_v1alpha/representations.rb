@@ -502,6 +502,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gatekeeper_audit, as: 'gatekeeperAudit'
           property :gatekeeper_controller_manager_state, as: 'gatekeeperControllerManagerState'
+          property :gatekeeper_mutation, as: 'gatekeeperMutation'
         end
       end
       
@@ -621,6 +622,7 @@ module Google
           property :enabled, as: 'enabled'
           collection :exemptable_namespaces, as: 'exemptableNamespaces'
           property :log_denies_enabled, as: 'logDeniesEnabled'
+          property :mutation_enabled, as: 'mutationEnabled'
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
           property :template_library_installed, as: 'templateLibraryInstalled'
         end
