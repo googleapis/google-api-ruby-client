@@ -92,6 +92,45 @@ module Google
         end
       end
       
+      # Represents a result from running a test case in an agent environment.
+      class GoogleCloudDialogflowCxV3ContinuousTestResult
+        include Google::Apis::Core::Hashable
+      
+        # The resource name for the continuous test result. Format: `projects//locations/
+        # /agents//environments//continuousTestResults/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The result of this continuous test run, i.e. whether all the tests in this
+        # continuous test run pass or not.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        # Time when the continuous testing run starts.
+        # Corresponds to the JSON property `runTime`
+        # @return [String]
+        attr_accessor :run_time
+      
+        # A list of individual test case results names in this continuous test run.
+        # Corresponds to the JSON property `testCaseResults`
+        # @return [Array<String>]
+        attr_accessor :test_case_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @result = args[:result] if args.key?(:result)
+          @run_time = args[:run_time] if args.key?(:run_time)
+          @test_case_results = args[:test_case_results] if args.key?(:test_case_results)
+        end
+      end
+      
       # One interaction between a human and virtual agent. The human provides some
       # input and the virtual agent provides a response.
       class GoogleCloudDialogflowCxV3ConversationTurn
@@ -1770,6 +1809,45 @@ module Google
         end
       end
       
+      # Metadata returned for the Environments.RunContinuousTest long running
+      # operation.
+      class GoogleCloudDialogflowCxV3RunContinuousTestMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The test errors.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3TestError>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # The response message for Environments.RunContinuousTest.
+      class GoogleCloudDialogflowCxV3RunContinuousTestResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a result from running a test case in an agent environment.
+        # Corresponds to the JSON property `continuousTestResult`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ContinuousTestResult]
+        attr_accessor :continuous_test_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @continuous_test_result = args[:continuous_test_result] if args.key?(:continuous_test_result)
+        end
+      end
+      
       # Metadata returned for the TestCases.RunTestCase long running operation.
       class GoogleCloudDialogflowCxV3RunTestCaseMetadata
         include Google::Apis::Core::Hashable
@@ -2747,6 +2825,45 @@ module Google
           @intent_coverage = args[:intent_coverage] if args.key?(:intent_coverage)
           @route_group_coverage = args[:route_group_coverage] if args.key?(:route_group_coverage)
           @transition_coverage = args[:transition_coverage] if args.key?(:transition_coverage)
+        end
+      end
+      
+      # Represents a result from running a test case in an agent environment.
+      class GoogleCloudDialogflowCxV3beta1ContinuousTestResult
+        include Google::Apis::Core::Hashable
+      
+        # The resource name for the continuous test result. Format: `projects//locations/
+        # /agents//environments//continuousTestResults/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The result of this continuous test run, i.e. whether all the tests in this
+        # continuous test run pass or not.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        # Time when the continuous testing run starts.
+        # Corresponds to the JSON property `runTime`
+        # @return [String]
+        attr_accessor :run_time
+      
+        # A list of individual test case results names in this continuous test run.
+        # Corresponds to the JSON property `testCaseResults`
+        # @return [Array<String>]
+        attr_accessor :test_case_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @result = args[:result] if args.key?(:result)
+          @run_time = args[:run_time] if args.key?(:run_time)
+          @test_case_results = args[:test_case_results] if args.key?(:test_case_results)
         end
       end
       
@@ -4834,6 +4951,32 @@ module Google
         end
       end
       
+      # The response message for Environments.ListTestCaseResults.
+      class GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of continuous test results.
+        # Corresponds to the JSON property `continuousTestResults`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ContinuousTestResult>]
+        attr_accessor :continuous_test_results
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @continuous_test_results = args[:continuous_test_results] if args.key?(:continuous_test_results)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for EntityTypes.ListEntityTypes.
       class GoogleCloudDialogflowCxV3beta1ListEntityTypesResponse
         include Google::Apis::Core::Hashable
@@ -6345,6 +6488,58 @@ module Google
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
           @restore_option = args[:restore_option] if args.key?(:restore_option)
+        end
+      end
+      
+      # Metadata returned for the Environments.RunContinuousTest long running
+      # operation.
+      class GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The test errors.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestError>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # The request message for Environments.RunContinuousTest.
+      class GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for Environments.RunContinuousTest.
+      class GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a result from running a test case in an agent environment.
+        # Corresponds to the JSON property `continuousTestResult`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ContinuousTestResult]
+        attr_accessor :continuous_test_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @continuous_test_result = args[:continuous_test_result] if args.key?(:continuous_test_result)
         end
       end
       
@@ -9844,6 +10039,13 @@ module Google
         attr_accessor :all_required_params_present
         alias_method :all_required_params_present?, :all_required_params_present
       
+        # Indicates whether the conversational query triggers a cancellation for slot
+        # filling.
+        # Corresponds to the JSON property `cancelsSlotFilling`
+        # @return [Boolean]
+        attr_accessor :cancels_slot_filling
+        alias_method :cancels_slot_filling?, :cancels_slot_filling
+      
         # Free-form diagnostic information for the associated detect intent request. The
         # fields of this data can change without notice, so you should not write code
         # that depends on its structure. The data may contain: - webhook call latency -
@@ -9964,6 +10166,7 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @all_required_params_present = args[:all_required_params_present] if args.key?(:all_required_params_present)
+          @cancels_slot_filling = args[:cancels_slot_filling] if args.key?(:cancels_slot_filling)
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
           @fulfillment_messages = args[:fulfillment_messages] if args.key?(:fulfillment_messages)
           @fulfillment_text = args[:fulfillment_text] if args.key?(:fulfillment_text)
@@ -12791,6 +12994,13 @@ module Google
         attr_accessor :all_required_params_present
         alias_method :all_required_params_present?, :all_required_params_present
       
+        # Indicates whether the conversational query triggers a cancellation for slot
+        # filling.
+        # Corresponds to the JSON property `cancelsSlotFilling`
+        # @return [Boolean]
+        attr_accessor :cancels_slot_filling
+        alias_method :cancels_slot_filling?, :cancels_slot_filling
+      
         # Free-form diagnostic information for the associated detect intent request. The
         # fields of this data can change without notice, so you should not write code
         # that depends on its structure. The data may contain: - webhook call latency -
@@ -12916,6 +13126,7 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @all_required_params_present = args[:all_required_params_present] if args.key?(:all_required_params_present)
+          @cancels_slot_filling = args[:cancels_slot_filling] if args.key?(:cancels_slot_filling)
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
           @fulfillment_messages = args[:fulfillment_messages] if args.key?(:fulfillment_messages)
           @fulfillment_text = args[:fulfillment_text] if args.key?(:fulfillment_text)
