@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DefaultSnatStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeConfigDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeKubeletConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +443,12 @@ module Google
       end
       
       class NodePoolAutoscaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodePoolDefaults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -712,6 +730,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WindowsVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WindowsVersions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadCertificates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -925,6 +955,8 @@ module Google
           property :node_config, as: 'nodeConfig', class: Google::Apis::ContainerV1beta1::NodeConfig, decorator: Google::Apis::ContainerV1beta1::NodeConfig::Representation
       
           property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
+          property :node_pool_defaults, as: 'nodePoolDefaults', class: Google::Apis::ContainerV1beta1::NodePoolDefaults, decorator: Google::Apis::ContainerV1beta1::NodePoolDefaults::Representation
+      
           collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1beta1::NodePool, decorator: Google::Apis::ContainerV1beta1::NodePool::Representation
       
           property :notification_config, as: 'notificationConfig', class: Google::Apis::ContainerV1beta1::NotificationConfig, decorator: Google::Apis::ContainerV1beta1::NotificationConfig::Representation
@@ -1116,6 +1148,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_name, as: 'keyName'
           property :state, as: 'state'
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -1481,6 +1522,12 @@ module Google
         end
       end
       
+      class NodeConfigDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class NodeKubeletConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1552,6 +1599,14 @@ module Google
           property :enabled, as: 'enabled'
           property :max_node_count, as: 'maxNodeCount'
           property :min_node_count, as: 'minNodeCount'
+        end
+      end
+      
+      class NodePoolDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_config_defaults, as: 'nodeConfigDefaults', class: Google::Apis::ContainerV1beta1::NodeConfigDefaults, decorator: Google::Apis::ContainerV1beta1::NodeConfigDefaults::Representation
+      
         end
       end
       
@@ -1738,6 +1793,8 @@ module Google
           collection :valid_image_types, as: 'validImageTypes'
           collection :valid_master_versions, as: 'validMasterVersions'
           collection :valid_node_versions, as: 'validNodeVersions'
+          hash :windows_version_maps, as: 'windowsVersionMaps', class: Google::Apis::ContainerV1beta1::WindowsVersions, decorator: Google::Apis::ContainerV1beta1::WindowsVersions::Representation
+      
         end
       end
       
@@ -2052,6 +2109,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class WindowsVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_type, as: 'imageType'
+          property :os_version, as: 'osVersion'
+          property :support_end_date, as: 'supportEndDate', class: Google::Apis::ContainerV1beta1::Date, decorator: Google::Apis::ContainerV1beta1::Date::Representation
+      
+        end
+      end
+      
+      class WindowsVersions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :windows_versions, as: 'windowsVersions', class: Google::Apis::ContainerV1beta1::WindowsVersion, decorator: Google::Apis::ContainerV1beta1::WindowsVersion::Representation
+      
         end
       end
       
