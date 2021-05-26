@@ -11586,7 +11586,8 @@ module Google
         # @return [String]
         attr_accessor :unit
       
-        # Required. The weight represented as a number.
+        # Required. The weight represented as a number. The weight can have a maximum
+        # precision of four decimal places.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
