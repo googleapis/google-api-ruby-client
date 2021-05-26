@@ -4035,11 +4035,11 @@ module Google
         #   The REST ID of the product for which to update.
         # @param [Google::Apis::ContentV2_1::Product] product_object
         # @param [String] update_mask
-        #   The list of product attributes to be updated. Attributes specified in the
-        #   update mask without a value specified in the body will be deleted from the
-        #   product. Only top-level product attributes can be updated. If not defined,
-        #   product attributes with set values will be updated and other attributes will
-        #   stay unchanged.
+        #   The comma-separated list of product attributes to be updated. Example: `"title,
+        #   salePrice"`. Attributes specified in the update mask without a value specified
+        #   in the body will be deleted from the product. Only top-level product
+        #   attributes can be updated. If not defined, product attributes with set values
+        #   will be updated and other attributes will stay unchanged.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4523,7 +4523,8 @@ module Google
         #   Required. The id of the region to update.
         # @param [Google::Apis::ContentV2_1::Region] region_object
         # @param [String] update_mask
-        #   Optional. The field mask indicating the fields to update.
+        #   Optional. The comma-separated field mask indicating the fields to update.
+        #   Example: `"displayName,postalCodeArea.regionCode"`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

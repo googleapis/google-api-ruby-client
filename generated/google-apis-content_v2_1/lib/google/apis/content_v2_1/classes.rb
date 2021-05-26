@@ -10827,11 +10827,12 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # The list of product attributes to be updated. Attributes specified in the
-        # update mask without a value specified in the body will be deleted from the
-        # product. Only top-level product attributes can be updated. If not defined,
-        # product attributes with set values will be updated and other attributes will
-        # stay unchanged. Only defined if the method is `update`.
+        # The comma-separated list of product attributes to be updated. Example: `"title,
+        # salePrice"`. Attributes specified in the update mask without a value specified
+        # in the body will be deleted from the product. Only top-level product
+        # attributes can be updated. If not defined, product attributes with set values
+        # will be updated and other attributes will stay unchanged. Only defined if the
+        # method is `update`.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -14772,7 +14773,8 @@ module Google
         # @return [String]
         attr_accessor :unit
       
-        # Required. The weight represented as a number.
+        # Required. The weight represented as a number. The weight can have a maximum
+        # precision of four decimal places.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
