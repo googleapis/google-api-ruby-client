@@ -787,6 +787,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_ipv4_cidr_size
       
+        # Subset of Nodepool message that has defaults.
+        # Corresponds to the JSON property `nodePoolDefaults`
+        # @return [Google::Apis::ContainerV1beta1::NodePoolDefaults]
+        attr_accessor :node_pool_defaults
+      
         # The node pools associated with this cluster. This field should not be set if "
         # node_config" or "initial_node_count" are specified.
         # Corresponds to the JSON property `nodePools`
@@ -956,6 +961,7 @@ module Google
           @network_policy = args[:network_policy] if args.key?(:network_policy)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
+          @node_pool_defaults = args[:node_pool_defaults] if args.key?(:node_pool_defaults)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @pod_security_policy_config = args[:pod_security_policy_config] if args.key?(:pod_security_policy_config)
@@ -1582,6 +1588,47 @@ module Google
         def update!(**args)
           @key_name = args[:key_name] if args.key?(:key_name)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -2959,6 +3006,19 @@ module Google
         end
       end
       
+      # Subset of NodeConfig message that has defaults.
+      class NodeConfigDefaults
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Node kubelet configs.
       class NodeKubeletConfig
         include Google::Apis::Core::Hashable
@@ -3282,6 +3342,25 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # Subset of Nodepool message that has defaults.
+      class NodePoolDefaults
+        include Google::Apis::Core::Hashable
+      
+        # Subset of NodeConfig message that has defaults.
+        # Corresponds to the JSON property `nodeConfigDefaults`
+        # @return [Google::Apis::ContainerV1beta1::NodeConfigDefaults]
+        attr_accessor :node_config_defaults
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_config_defaults = args[:node_config_defaults] if args.key?(:node_config_defaults)
         end
       end
       
@@ -3958,6 +4037,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :valid_node_versions
       
+        # Maps of Kubernetes version and supported Windows server versions.
+        # Corresponds to the JSON property `windowsVersionMaps`
+        # @return [Hash<String,Google::Apis::ContainerV1beta1::WindowsVersions>]
+        attr_accessor :windows_version_maps
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3970,6 +4054,7 @@ module Google
           @valid_image_types = args[:valid_image_types] if args.key?(:valid_image_types)
           @valid_master_versions = args[:valid_master_versions] if args.key?(:valid_master_versions)
           @valid_node_versions = args[:valid_node_versions] if args.key?(:valid_node_versions)
+          @windows_version_maps = args[:windows_version_maps] if args.key?(:windows_version_maps)
         end
       end
       
@@ -5335,6 +5420,63 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Windows server version.
+      class WindowsVersion
+        include Google::Apis::Core::Hashable
+      
+        # Windows server image type
+        # Corresponds to the JSON property `imageType`
+        # @return [String]
+        attr_accessor :image_type
+      
+        # Windows server build number
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `supportEndDate`
+        # @return [Google::Apis::ContainerV1beta1::Date]
+        attr_accessor :support_end_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_type = args[:image_type] if args.key?(:image_type)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @support_end_date = args[:support_end_date] if args.key?(:support_end_date)
+        end
+      end
+      
+      # Windows server versions.
+      class WindowsVersions
+        include Google::Apis::Core::Hashable
+      
+        # List of Windows server versions.
+        # Corresponds to the JSON property `windowsVersions`
+        # @return [Array<Google::Apis::ContainerV1beta1::WindowsVersion>]
+        attr_accessor :windows_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @windows_versions = args[:windows_versions] if args.key?(:windows_versions)
         end
       end
       
