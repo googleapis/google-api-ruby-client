@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ContinuousTestResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3ConversationTurn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3ListEntityTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -647,6 +659,24 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3RestoreAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3RunContinuousTestMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3RunContinuousTestRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3RunContinuousTestResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -946,6 +976,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ContinuousTestResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ConversationTurn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1229,6 +1265,18 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ResponseMessageText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2311,6 +2359,16 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3ContinuousTestResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :result, as: 'result'
+          property :run_time, as: 'runTime'
+          collection :test_case_results, as: 'testCaseResults'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3ConversationTurn
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2882,6 +2940,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :continuous_test_results, as: 'continuousTestResults', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ContinuousTestResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ContinuousTestResult::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3ListEntityTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3282,6 +3349,28 @@ module Google
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
           property :restore_option, as: 'restoreOption'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3RunContinuousTestMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TestError, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3TestError::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3RunContinuousTestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3RunContinuousTestResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :continuous_test_result, as: 'continuousTestResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ContinuousTestResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ContinuousTestResult::Representation
+      
         end
       end
       
@@ -3763,6 +3852,16 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1ContinuousTestResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :result, as: 'result'
+          property :run_time, as: 'runTime'
+          collection :test_case_results, as: 'testCaseResults'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ConversationTurn
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4221,6 +4320,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_playback_interruption, as: 'allowPlaybackInterruption'
           collection :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1TestError, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1TestError::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :continuous_test_result, as: 'continuousTestResult', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ContinuousTestResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ContinuousTestResult::Representation
+      
         end
       end
       
@@ -4945,6 +5060,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :all_required_params_present, as: 'allRequiredParamsPresent'
+          property :cancels_slot_filling, as: 'cancelsSlotFilling'
           hash :diagnostic_info, as: 'diagnosticInfo'
           collection :fulfillment_messages, as: 'fulfillmentMessages', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2IntentMessage, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2IntentMessage::Representation
       
@@ -5740,6 +5856,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :all_required_params_present, as: 'allRequiredParamsPresent'
+          property :cancels_slot_filling, as: 'cancelsSlotFilling'
           hash :diagnostic_info, as: 'diagnosticInfo'
           collection :fulfillment_messages, as: 'fulfillmentMessages', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1IntentMessage, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1IntentMessage::Representation
       
