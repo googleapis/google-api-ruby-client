@@ -524,6 +524,11 @@ module Google
         # @return [String]
         attr_accessor :gatekeeper_controller_manager_state
       
+        # Status of the pod serving the mutation webhook.
+        # Corresponds to the JSON property `gatekeeperMutation`
+        # @return [String]
+        attr_accessor :gatekeeper_mutation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -532,6 +537,7 @@ module Google
         def update!(**args)
           @gatekeeper_audit = args[:gatekeeper_audit] if args.key?(:gatekeeper_audit)
           @gatekeeper_controller_manager_state = args[:gatekeeper_controller_manager_state] if args.key?(:gatekeeper_controller_manager_state)
+          @gatekeeper_mutation = args[:gatekeeper_mutation] if args.key?(:gatekeeper_mutation)
         end
       end
       
@@ -920,6 +926,12 @@ module Google
         attr_accessor :log_denies_enabled
         alias_method :log_denies_enabled?, :log_denies_enabled
       
+        # Enable users to try out mutation for PolicyController.
+        # Corresponds to the JSON property `mutationEnabled`
+        # @return [Boolean]
+        attr_accessor :mutation_enabled
+        alias_method :mutation_enabled?, :mutation_enabled
+      
         # Enables the ability to use Constraint Templates that reference to objects
         # other than the object currently being evaluated.
         # Corresponds to the JSON property `referentialRulesEnabled`
@@ -943,6 +955,7 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @exemptable_namespaces = args[:exemptable_namespaces] if args.key?(:exemptable_namespaces)
           @log_denies_enabled = args[:log_denies_enabled] if args.key?(:log_denies_enabled)
+          @mutation_enabled = args[:mutation_enabled] if args.key?(:mutation_enabled)
           @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
           @template_library_installed = args[:template_library_installed] if args.key?(:template_library_installed)
         end
