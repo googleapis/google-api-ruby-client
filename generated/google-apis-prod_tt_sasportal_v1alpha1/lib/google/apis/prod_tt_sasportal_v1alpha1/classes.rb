@@ -1028,6 +1028,13 @@ module Google
       class SasPortalSetPolicyRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Set the field as true when we would like to disable the onboarding
+        # notification.
+        # Corresponds to the JSON property `disableNotification`
+        # @return [Boolean]
+        attr_accessor :disable_notification
+        alias_method :disable_notification?, :disable_notification
+      
         # Defines an access control policy to the resources.
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalPolicy]
@@ -1045,6 +1052,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_notification = args[:disable_notification] if args.key?(:disable_notification)
           @policy = args[:policy] if args.key?(:policy)
           @resource = args[:resource] if args.key?(:resource)
         end
