@@ -353,6 +353,8 @@ module Google
       class ResourceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :container, as: 'container'
+          property :location, as: 'location'
           property :name, as: 'name'
           property :permission, as: 'permission'
           property :type, as: 'type'

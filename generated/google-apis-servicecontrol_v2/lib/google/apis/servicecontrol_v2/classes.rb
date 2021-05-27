@@ -938,6 +938,21 @@ module Google
       class ResourceInfo
         include Google::Apis::Core::Hashable
       
+        # Optional. The identifier of the container of this resource. For Google Cloud
+        # APIs, the resource container must be one of the following formats: - `projects/
+        # ` - `folders/` - `organizations/` For the policy enforcement on the container
+        # level (VPCSC and Location Policy check), this field takes precedence on the
+        # container extracted from name when presents.
+        # Corresponds to the JSON property `container`
+        # @return [String]
+        attr_accessor :container
+      
+        # Optional. The location of the resource. The value must be a valid zone, region
+        # or multiregion. For example: "europe-west4" or "northamerica-northeast1-a"
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # The name of the resource referenced in the request.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -960,6 +975,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @container = args[:container] if args.key?(:container)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @permission = args[:permission] if args.key?(:permission)
           @type = args[:type] if args.key?(:type)
