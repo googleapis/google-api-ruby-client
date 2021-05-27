@@ -486,6 +486,32 @@ module Google
         end
       end
       
+      # An indication that the compliance checks in the associated ComplianceNote were
+      # not satisfied for particular resources or a specified reason.
+      class ComplianceOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `nonComplianceReason`
+        # @return [String]
+        attr_accessor :non_compliance_reason
+      
+        # 
+        # Corresponds to the JSON property `nonCompliantFiles`
+        # @return [Array<Google::Apis::OndemandscanningV1beta1::NonCompliantFile>]
+        attr_accessor :non_compliant_files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @non_compliance_reason = args[:non_compliance_reason] if args.key?(:non_compliance_reason)
+          @non_compliant_files = args[:non_compliant_files] if args.key?(:non_compliant_files)
+        end
+      end
+      
       # The period during which some deployable was active in a runtime.
       class DeploymentOccurrence
         include Google::Apis::Core::Hashable
@@ -949,6 +975,39 @@ module Google
         end
       end
       
+      # Details about files that caused a compliance check to fail.
+      class NonCompliantFile
+        include Google::Apis::Core::Hashable
+      
+        # Command to display the non-compliant files.
+        # Corresponds to the JSON property `displayCommand`
+        # @return [String]
+        attr_accessor :display_command
+      
+        # display_command is a single command that can be used to display a list of non
+        # compliant files. When there is no such command, we can also iterate a list of
+        # non compliant file using 'path'. Empty if `display_command` is set.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Explains why a file is non compliant for a CIS check.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_command = args[:display_command] if args.key?(:display_command)
+          @path = args[:path] if args.key?(:path)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
       # An instance of an analysis type that has been found on a resource.
       class Occurrence
         include Google::Apis::Core::Hashable
@@ -968,6 +1027,12 @@ module Google
         # Corresponds to the JSON property `build`
         # @return [Google::Apis::OndemandscanningV1beta1::BuildOccurrence]
         attr_accessor :build
+      
+        # An indication that the compliance checks in the associated ComplianceNote were
+        # not satisfied for particular resources or a specified reason.
+        # Corresponds to the JSON property `compliance`
+        # @return [Google::Apis::OndemandscanningV1beta1::ComplianceOccurrence]
+        attr_accessor :compliance
       
         # Output only. The time this occurrence was created.
         # Corresponds to the JSON property `createTime`
@@ -1053,6 +1118,7 @@ module Google
         def update!(**args)
           @attestation = args[:attestation] if args.key?(:attestation)
           @build = args[:build] if args.key?(:build)
+          @compliance = args[:compliance] if args.key?(:compliance)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deployment = args[:deployment] if args.key?(:deployment)
           @discovery = args[:discovery] if args.key?(:discovery)
