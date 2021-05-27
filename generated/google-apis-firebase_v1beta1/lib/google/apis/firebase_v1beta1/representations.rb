@@ -224,8 +224,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :location_id, as: 'locationId'
-          property :region_code, as: 'regionCode'
-          property :time_zone, as: 'timeZone'
         end
       end
       
