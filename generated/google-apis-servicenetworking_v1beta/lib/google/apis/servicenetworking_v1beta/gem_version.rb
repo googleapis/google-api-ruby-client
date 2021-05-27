@@ -16,13 +16,13 @@ module Google
   module Apis
     module ServicenetworkingV1beta
       # Version of the google-apis-servicenetworking_v1beta gem
-      GEM_VERSION = "0.8.0"
+      GEM_VERSION = "0.9.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.2.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20210519"
+      REVISION = "20210525"
     end
   end
 end
