@@ -35,24 +35,6 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # Deprecated. Instead, to link a Project with a Google Analytics account, call [`
-        # AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add
-        # Firebase resources to the GCP `Project`. The region code (CLDR) that the
-        # account will use for Google Analytics data For example: US, GB, or DE In Java,
-        # use `com.google.i18n.identifiers.RegionCode`.
-        # Corresponds to the JSON property `regionCode`
-        # @return [String]
-        attr_accessor :region_code
-      
-        # Deprecated. Instead, to link a Project with a Google Analytics account, call [`
-        # AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add
-        # Firebase resources to the GCP `Project`. The time zone that the account will
-        # use for Google Analytics data. For example: America/Los_Angeles or Africa/
-        # Abidjan
-        # Corresponds to the JSON property `timeZone`
-        # @return [String]
-        attr_accessor :time_zone
-      
         def initialize(**args)
            update!(**args)
         end
@@ -60,8 +42,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @location_id = args[:location_id] if args.key?(:location_id)
-          @region_code = args[:region_code] if args.key?(:region_code)
-          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
