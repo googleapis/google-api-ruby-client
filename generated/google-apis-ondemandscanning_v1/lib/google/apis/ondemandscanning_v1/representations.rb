@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComplianceOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeploymentOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonCompliantFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -421,6 +433,15 @@ module Google
         end
       end
       
+      class ComplianceOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :non_compliance_reason, as: 'nonComplianceReason'
+          collection :non_compliant_files, as: 'nonCompliantFiles', class: Google::Apis::OndemandscanningV1::NonCompliantFile, decorator: Google::Apis::OndemandscanningV1::NonCompliantFile::Representation
+      
+        end
+      end
+      
       class DeploymentOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -559,12 +580,23 @@ module Google
         end
       end
       
+      class NonCompliantFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_command, as: 'displayCommand'
+          property :path, as: 'path'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class Occurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attestation, as: 'attestation', class: Google::Apis::OndemandscanningV1::AttestationOccurrence, decorator: Google::Apis::OndemandscanningV1::AttestationOccurrence::Representation
       
           property :build, as: 'build', class: Google::Apis::OndemandscanningV1::BuildOccurrence, decorator: Google::Apis::OndemandscanningV1::BuildOccurrence::Representation
+      
+          property :compliance, as: 'compliance', class: Google::Apis::OndemandscanningV1::ComplianceOccurrence, decorator: Google::Apis::OndemandscanningV1::ComplianceOccurrence::Representation
       
           property :create_time, as: 'createTime'
           property :deployment, as: 'deployment', class: Google::Apis::OndemandscanningV1::DeploymentOccurrence, decorator: Google::Apis::OndemandscanningV1::DeploymentOccurrence::Representation
