@@ -353,12 +353,6 @@ module Google
         # @return [String]
         attr_accessor :jwt_audience
       
-        # Minimum deadline in seconds needed for this method. Calls having deadline
-        # value lower than this will be rejected.
-        # Corresponds to the JSON property `minDeadline`
-        # @return [Float]
-        attr_accessor :min_deadline
-      
         # The number of seconds to wait for the completion of a long running operation.
         # The default is no deadline.
         # Corresponds to the JSON property `operationDeadline`
@@ -399,7 +393,6 @@ module Google
           @deadline = args[:deadline] if args.key?(:deadline)
           @disable_auth = args[:disable_auth] if args.key?(:disable_auth)
           @jwt_audience = args[:jwt_audience] if args.key?(:jwt_audience)
-          @min_deadline = args[:min_deadline] if args.key?(:min_deadline)
           @operation_deadline = args[:operation_deadline] if args.key?(:operation_deadline)
           @path_translation = args[:path_translation] if args.key?(:path_translation)
           @protocol = args[:protocol] if args.key?(:protocol)
