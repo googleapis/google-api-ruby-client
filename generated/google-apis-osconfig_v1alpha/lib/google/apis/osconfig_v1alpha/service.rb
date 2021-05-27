@@ -298,8 +298,9 @@ module Google
         # the OS policy assignment. This method returns a long running operation (LRO)
         # that contains the rollout details. The rollout can be cancelled by cancelling
         # the LRO. For more information, see [Method: projects.locations.
-        # osPolicyAssignments.operations.cancel](/compute/docs/osconfig/rest/v1alpha/
-        # projects.locations.osPolicyAssignments.operations/cancel).
+        # osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/
+        # osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel)
+        # .
         # @param [String] parent
         #   Required. The parent resource name in the form: projects/`project`/locations/`
         #   location`
@@ -344,9 +345,9 @@ module Google
         # contains the rollout details. The rollout can be cancelled by cancelling the
         # LRO. If the LRO completes and is not cancelled, all revisions associated with
         # the OS policy assignment are deleted. For more information, see [Method:
-        # projects.locations.osPolicyAssignments.operations.cancel](/compute/docs/
-        # osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel)
-        # .
+        # projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.
+        # com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.
+        # operations/cancel).
         # @param [String] name
         #   Required. The name of the OS policy assignment to be deleted
         # @param [String] fields
@@ -490,8 +491,9 @@ module Google
         # the OS policy assignment. This method returns a long running operation (LRO)
         # that contains the rollout details. The rollout can be cancelled by cancelling
         # the LRO. For more information, see [Method: projects.locations.
-        # osPolicyAssignments.operations.cancel](/compute/docs/osconfig/rest/v1alpha/
-        # projects.locations.osPolicyAssignments.operations/cancel).
+        # osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/
+        # osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel)
+        # .
         # @param [String] name
         #   Resource name. Format: `projects/`project_number`/locations/`location`/
         #   osPolicyAssignments/`os_policy_assignment_id`` This field is ignored when you

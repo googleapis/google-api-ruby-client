@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OsPolicyResourceComplianceExecResourceOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OsPolicyResourceConfigStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -682,8 +688,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :config_steps, as: 'configSteps', class: Google::Apis::OsconfigV1alpha::OsPolicyResourceConfigStep, decorator: Google::Apis::OsconfigV1alpha::OsPolicyResourceConfigStep::Representation
       
+          property :exec_resource_output, as: 'execResourceOutput', class: Google::Apis::OsconfigV1alpha::OsPolicyResourceComplianceExecResourceOutput, decorator: Google::Apis::OsconfigV1alpha::OsPolicyResourceComplianceExecResourceOutput::Representation
+      
           property :os_policy_resource_id, as: 'osPolicyResourceId'
           property :state, as: 'state'
+        end
+      end
+      
+      class OsPolicyResourceComplianceExecResourceOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforcement_output, :base64 => true, as: 'enforcementOutput'
         end
       end
       
@@ -712,6 +727,7 @@ module Google
           property :file, as: 'file', class: Google::Apis::OsconfigV1alpha::OsPolicyResourceFile, decorator: Google::Apis::OsconfigV1alpha::OsPolicyResourceFile::Representation
       
           property :interpreter, as: 'interpreter'
+          property :output_file_path, as: 'outputFilePath'
           property :script, as: 'script'
         end
       end
