@@ -177,8 +177,8 @@ module Google
       # have multiple OS policies. As a result, multiple OS policies could be applied
       # to a single VM. You can use this API resource to determine both the compliance
       # state of your VM as well as the compliance state of an individual OS policy.
-      # For more information, see [View compliance](/compute/docs/os-configuration-
-      # management/view-compliance).
+      # For more information, see [View compliance](https://cloud.google.com/compute/
+      # docs/os-configuration-management/view-compliance).
       class InstanceOsPoliciesCompliance
         include Google::Apis::Core::Hashable
       
@@ -293,8 +293,8 @@ module Google
       # This API resource represents the available inventory data for a Compute Engine
       # virtual machine (VM) instance at a given point in time. You can use this API
       # resource to determine the inventory data of your VM. For more information, see
-      # [Information provided by OS inventory management](/compute/docs/instances/os-
-      # inventory-management#data-collected).
+      # [Information provided by OS inventory management](https://cloud.google.com/
+      # compute/docs/instances/os-inventory-management#data-collected).
       class Inventory
         include Google::Apis::Core::Hashable
       
@@ -917,8 +917,8 @@ module Google
       # policy is used to define the desired state configuration for a Compute Engine
       # VM instance through a set of configuration resources that provide capabilities
       # such as installing or removing software packages, or executing a script. For
-      # more information, see [OS policy and OS policy assignment](/compute/docs/os-
-      # configuration-management/working-with-os-policies).
+      # more information, see [OS policy and OS policy assignment](https://cloud.
+      # google.com/compute/docs/os-configuration-management/working-with-os-policies).
       class OsPolicyAssignment
         include Google::Apis::Core::Hashable
       
@@ -1268,6 +1268,11 @@ module Google
         # @return [Array<Google::Apis::OsconfigV1alpha::OsPolicyResourceConfigStep>]
         attr_accessor :config_steps
       
+        # ExecResource specific output.
+        # Corresponds to the JSON property `execResourceOutput`
+        # @return [Google::Apis::OsconfigV1alpha::OsPolicyResourceComplianceExecResourceOutput]
+        attr_accessor :exec_resource_output
+      
         # The id of the OS policy resource.
         # Corresponds to the JSON property `osPolicyResourceId`
         # @return [String]
@@ -1285,8 +1290,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config_steps = args[:config_steps] if args.key?(:config_steps)
+          @exec_resource_output = args[:exec_resource_output] if args.key?(:exec_resource_output)
           @os_policy_resource_id = args[:os_policy_resource_id] if args.key?(:os_policy_resource_id)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # ExecResource specific output.
+      class OsPolicyResourceComplianceExecResourceOutput
+        include Google::Apis::Core::Hashable
+      
+        # Output from Enforcement phase output file (if run). Output size is limited to
+        # 100K bytes.
+        # Corresponds to the JSON property `enforcementOutput`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :enforcement_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enforcement_output = args[:enforcement_output] if args.key?(:enforcement_output)
         end
       end
       
@@ -1378,6 +1405,14 @@ module Google
         # @return [String]
         attr_accessor :interpreter
       
+        # Only recorded for enforce Exec. Path to an output file (that is created by
+        # this Exec) whose content will be recorded in OSPolicyResourceCompliance after
+        # a successful run. Absence or failure to read this file will result in this
+        # ExecResource being non-compliant. Output file size is limited to 100K bytes.
+        # Corresponds to the JSON property `outputFilePath`
+        # @return [String]
+        attr_accessor :output_file_path
+      
         # An inline script. The size of the script is limited to 1024 characters.
         # Corresponds to the JSON property `script`
         # @return [String]
@@ -1392,6 +1427,7 @@ module Google
           @args = args[:args] if args.key?(:args)
           @file = args[:file] if args.key?(:file)
           @interpreter = args[:interpreter] if args.key?(:interpreter)
+          @output_file_path = args[:output_file_path] if args.key?(:output_file_path)
           @script = args[:script] if args.key?(:script)
         end
       end
@@ -1579,8 +1615,8 @@ module Google
       class OsPolicyResourcePackageResource
         include Google::Apis::Core::Hashable
       
-        # A package managed by APT. install: `apt-get update && apt-get -y install [name]
-        # ` remove: `apt-get -y remove [name]`
+        # A package managed by APT. - install: `apt-get update && apt-get -y install [
+        # name]` - remove: `apt-get -y remove [name]`
         # Corresponds to the JSON property `apt`
         # @return [Google::Apis::OsconfigV1alpha::OsPolicyResourcePackageResourceApt]
         attr_accessor :apt
@@ -1595,7 +1631,7 @@ module Google
         # @return [String]
         attr_accessor :desired_state
       
-        # A package managed by GooGet. install: `googet -noconfirm install package`
+        # A package managed by GooGet. - install: `googet -noconfirm install package` -
         # remove: `googet -noconfirm remove package`
         # Corresponds to the JSON property `googet`
         # @return [Google::Apis::OsconfigV1alpha::OsPolicyResourcePackageResourceGooGet]
@@ -1611,13 +1647,13 @@ module Google
         # @return [Google::Apis::OsconfigV1alpha::OsPolicyResourcePackageResourceRpm]
         attr_accessor :rpm
       
-        # A package managed by YUM. install: `yum -y install package` remove: `yum -y
-        # remove package`
+        # A package managed by YUM. - install: `yum -y install package` - remove: `yum -
+        # y remove package`
         # Corresponds to the JSON property `yum`
         # @return [Google::Apis::OsconfigV1alpha::OsPolicyResourcePackageResourceYum]
         attr_accessor :yum
       
-        # A package managed by Zypper. install: `zypper -y install package` remove: `
+        # A package managed by Zypper. - install: `zypper -y install package` - remove: `
         # zypper -y rm package`
         # Corresponds to the JSON property `zypper`
         # @return [Google::Apis::OsconfigV1alpha::OsPolicyResourcePackageResourceZypper]
@@ -1640,8 +1676,8 @@ module Google
         end
       end
       
-      # A package managed by APT. install: `apt-get update && apt-get -y install [name]
-      # ` remove: `apt-get -y remove [name]`
+      # A package managed by APT. - install: `apt-get update && apt-get -y install [
+      # name]` - remove: `apt-get -y remove [name]`
       class OsPolicyResourcePackageResourceApt
         include Google::Apis::Core::Hashable
       
@@ -1664,8 +1700,9 @@ module Google
       class OsPolicyResourcePackageResourceDeb
         include Google::Apis::Core::Hashable
       
-        # Whether dependencies should also be installed. install when false: `dpkg -i
-        # package` install when true: `apt-get update && apt-get -y install package.deb`
+        # Whether dependencies should also be installed. - install when false: `dpkg -i
+        # package` - install when true: `apt-get update && apt-get -y install package.
+        # deb`
         # Corresponds to the JSON property `pullDeps`
         # @return [Boolean]
         attr_accessor :pull_deps
@@ -1687,7 +1724,7 @@ module Google
         end
       end
       
-      # A package managed by GooGet. install: `googet -noconfirm install package`
+      # A package managed by GooGet. - install: `googet -noconfirm install package` -
       # remove: `googet -noconfirm remove package`
       class OsPolicyResourcePackageResourceGooGet
         include Google::Apis::Core::Hashable
@@ -1712,8 +1749,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Additional properties to use during installation. This should be in the format
-        # of Property=Setting. Appended to the defaults of "ACTION=INSTALL REBOOT=
-        # ReallySuppress".
+        # of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=
+        # ReallySuppress`.
         # Corresponds to the JSON property `properties`
         # @return [Array<String>]
         attr_accessor :properties
@@ -1738,9 +1775,9 @@ module Google
       class OsPolicyResourcePackageResourceRpm
         include Google::Apis::Core::Hashable
       
-        # Whether dependencies should also be installed. install when false: `rpm --
-        # upgrade --replacepkgs package.rpm` install when true: `yum -y install package.
-        # rpm` or `zypper -y install package.rpm`
+        # Whether dependencies should also be installed. - install when false: `rpm --
+        # upgrade --replacepkgs package.rpm` - install when true: `yum -y install
+        # package.rpm` or `zypper -y install package.rpm`
         # Corresponds to the JSON property `pullDeps`
         # @return [Boolean]
         attr_accessor :pull_deps
@@ -1762,8 +1799,8 @@ module Google
         end
       end
       
-      # A package managed by YUM. install: `yum -y install package` remove: `yum -y
-      # remove package`
+      # A package managed by YUM. - install: `yum -y install package` - remove: `yum -
+      # y remove package`
       class OsPolicyResourcePackageResourceYum
         include Google::Apis::Core::Hashable
       
@@ -1782,7 +1819,7 @@ module Google
         end
       end
       
-      # A package managed by Zypper. install: `zypper -y install package` remove: `
+      # A package managed by Zypper. - install: `zypper -y install package` - remove: `
       # zypper -y rm package`
       class OsPolicyResourcePackageResourceZypper
         include Google::Apis::Core::Hashable
@@ -1807,7 +1844,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a single apt package repository. These will be added to a repo file
-        # that will be managed at /etc/apt/sources.list.d/google_osconfig.list.
+        # that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`.
         # Corresponds to the JSON property `apt`
         # @return [Google::Apis::OsconfigV1alpha::OsPolicyResourceRepositoryResourceAptRepository]
         attr_accessor :apt
@@ -1844,7 +1881,7 @@ module Google
       end
       
       # Represents a single apt package repository. These will be added to a repo file
-      # that will be managed at /etc/apt/sources.list.d/google_osconfig.list.
+      # that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`.
       class OsPolicyResourceRepositoryResourceAptRepository
         include Google::Apis::Core::Hashable
       
@@ -1864,8 +1901,8 @@ module Google
         # @return [String]
         attr_accessor :distribution
       
-        # URI of the key file for this repository. The agent maintains a keyring at /etc/
-        # apt/trusted.gpg.d/osconfig_agent_managed.gpg.
+        # URI of the key file for this repository. The agent maintains a keyring at `/
+        # etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
         # Corresponds to the JSON property `gpgKey`
         # @return [String]
         attr_accessor :gpg_key
@@ -2100,8 +2137,8 @@ module Google
       
       # This API resource represents the vulnerability report for a specified Compute
       # Engine virtual machine (VM) instance at a given point in time. For more
-      # information, see [Vulnerability reports](/compute/docs/instances/os-inventory-
-      # management#vulnerability-reports).
+      # information, see [Vulnerability reports](https://cloud.google.com/compute/docs/
+      # instances/os-inventory-management#vulnerability-reports).
       class VulnerabilityReport
         include Google::Apis::Core::Hashable
       
