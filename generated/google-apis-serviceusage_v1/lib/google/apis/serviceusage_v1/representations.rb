@@ -625,7 +625,6 @@ module Google
           property :deadline, as: 'deadline'
           property :disable_auth, as: 'disableAuth'
           property :jwt_audience, as: 'jwtAudience'
-          property :min_deadline, as: 'minDeadline'
           property :operation_deadline, as: 'operationDeadline'
           property :path_translation, as: 'pathTranslation'
           property :protocol, as: 'protocol'
