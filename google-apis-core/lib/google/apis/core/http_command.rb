@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/core/opentelemetry'
+require 'opentelemetry'
 require 'addressable/uri'
 require 'addressable/template'
 require 'google/apis/options'
@@ -28,6 +28,7 @@ module Google
       class HttpCommand
         include Logging
 
+        OTEL_TRACER = OpenTelemetry.tracer_provider.tracer('Google::Apis::Core::HttpCommand', Google::Apis::Core::VERSION)
         RETRIABLE_ERRORS = [Google::Apis::ServerError, Google::Apis::RateLimitError, Google::Apis::TransmissionError]
 
         begin
@@ -98,23 +99,25 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute(client)
           prepare!
-          opentelemetry_begin_span
           opencensus_begin_span
           begin
-            Retriable.retriable tries: options.retries + 1,
-                                base_interval: 1,
-                                multiplier: 2,
-                                on: RETRIABLE_ERRORS do |try|
-              # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
-              # auth to be re-attempted without having to retry all sorts of other failures like
-              # NotFound, etc
-              auth_tries = (try == 1 && authorization_refreshable? ? 2 : 1)
-              Retriable.retriable tries: auth_tries,
-                                  on: [Google::Apis::AuthorizationError, Signet::AuthorizationError, Signet::RemoteServerError, Signet::UnexpectedStatusError],
-                                  on_retry: proc { |*| refresh_authorization } do
-                execute_once(client).tap do |result|
-                  if block_given?
-                    yield result, nil
+            url_host = url.host.to_s
+            OTEL_TRACER.in_span(url_host) do
+              Retriable.retriable tries: options.retries + 1,
+                                  base_interval: 1,
+                                  multiplier: 2,
+                                  on: RETRIABLE_ERRORS do |try|
+                # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
+                # auth to be re-attempted without having to retry all sorts of other failures like
+                # NotFound, etc
+                auth_tries = (try == 1 && authorization_refreshable? ? 2 : 1)
+                Retriable.retriable tries: auth_tries,
+                                    on: [Google::Apis::AuthorizationError, Signet::AuthorizationError, Signet::RemoteServerError, Signet::UnexpectedStatusError],
+                                    on_retry: proc { |*| refresh_authorization } do
+                  execute_once(client).tap do |result|
+                    if block_given?
+                      yield result, nil
+                    end
                   end
                 end
               end
@@ -127,7 +130,6 @@ module Google
             end
           end
         ensure
-          opentelemetry_end_span
           opencensus_end_span
           @http_res = nil
           release!
@@ -358,46 +360,7 @@ module Google
           http_res.inspect
         end
 
-        def opentelemetry_begin_span
-          return unless Google::Apis::Core::OpenTelemetry.instance.installed?
-          return if @opentelemetry_span
-
-          attributes = {
-            'http.host' => url.host.to_s,
-            'http.method' => method.to_s,
-            'http.target' => url.path.to_s,
-            'peer.service' => url.host.to_s
-          }
-
-          @opentelemetry_span = Google::Apis::Core::OpenTelemetry.instance.tracer.start_span(url.host.to_s, attributes: attributes)
-        rescue StandardError => e
-          # Log exceptions and continue, so OpenTelemetry failures don't cause
-          # the entire request to fail.
-          logger.debug("Error opening OpenTelemetry span: #{e}")
-        end
-
-        def opentelemetry_end_span
-          return unless Google::Apis::Core::OpenTelemetry.instance.installed?
-          return unless @opentelemetry_span
-
-          if @http_res
-            status_code = @http_res.status.to_i
-            @opentelemetry_span.set_attribute('http.status_code', status_code)
-            @opentelemetry_span.status = ::OpenTelemetry::Trace::Status.http_to_status(
-              status_code
-            )
-          end
-
-          @opentelemetry_span.finish
-          @opentelemetry_span = nil
-        rescue StandardError => e
-          # Log exceptions and continue, so failures don't cause leaks by
-          # aborting cleanup.
-          logger.debug("Error finishing OpenTelemetry span: #{e}")
-        end
-
         def opencensus_begin_span
-          return if Google::Apis::Core::OpenTelemetry.instance.installed?
           return unless OPENCENSUS_AVAILABLE && options.use_opencensus
           return if @opencensus_span
           return unless OpenCensus::Trace.span_context
@@ -423,7 +386,6 @@ module Google
         end
 
         def opencensus_end_span
-          return if Google::Apis::Core::OpenTelemetry.instance.installed?
           return unless OPENCENSUS_AVAILABLE
           return unless @opencensus_span
           return unless OpenCensus::Trace.span_context
