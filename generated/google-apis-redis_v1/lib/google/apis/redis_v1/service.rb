@@ -476,6 +476,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Reschedule maintenance for a given instance in a given project and location.
+        # @param [String] name
+        #   Required. Redis instance resource name using the form: `projects/`project_id`/
+        #   locations/`location_id`/instances/`instance_id`` where `location_id` refers to
+        #   a GCP region.
+        # @param [Google::Apis::RedisV1::RescheduleMaintenanceRequest] reschedule_maintenance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RedisV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RedisV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reschedule_instance_maintenance(name, reschedule_maintenance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:rescheduleMaintenance', options)
+          command.request_representation = Google::Apis::RedisV1::RescheduleMaintenanceRequest::Representation
+          command.request_object = reschedule_maintenance_request_object
+          command.response_representation = Google::Apis::RedisV1::Operation::Representation
+          command.response_class = Google::Apis::RedisV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Upgrades Redis instance to the newer Redis version specified in the request.
         # @param [String] name
         #   Required. Redis instance resource name using the form: `projects/`project_id`/

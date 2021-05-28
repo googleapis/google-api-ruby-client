@@ -118,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenancePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,7 +142,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RescheduleMaintenanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeOfDay
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -143,6 +167,12 @@ module Google
       end
       
       class UpgradeInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WeeklyMaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +269,10 @@ module Google
           property :host, as: 'host'
           hash :labels, as: 'labels'
           property :location_id, as: 'locationId'
+          property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::RedisV1::MaintenancePolicy, decorator: Google::Apis::RedisV1::MaintenancePolicy::Representation
+      
+          property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::RedisV1::MaintenanceSchedule, decorator: Google::Apis::RedisV1::MaintenanceSchedule::Representation
+      
           property :memory_size_gb, as: 'memorySizeGb'
           property :name, as: 'name'
           property :persistence_iam_identity, as: 'persistenceIamIdentity'
@@ -301,6 +335,27 @@ module Google
         end
       end
       
+      class MaintenancePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :update_time, as: 'updateTime'
+          collection :weekly_maintenance_window, as: 'weeklyMaintenanceWindow', class: Google::Apis::RedisV1::WeeklyMaintenanceWindow, decorator: Google::Apis::RedisV1::WeeklyMaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class MaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_reschedule, as: 'canReschedule'
+          property :end_time, as: 'endTime'
+          property :schedule_deadline_time, as: 'scheduleDeadlineTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -321,12 +376,30 @@ module Google
         end
       end
       
+      class RescheduleMaintenanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reschedule_type, as: 'rescheduleType'
+          property :schedule_time, as: 'scheduleTime'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
         end
       end
       
@@ -345,6 +418,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :redis_version, as: 'redisVersion'
+        end
+      end
+      
+      class WeeklyMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :duration, as: 'duration'
+          property :start_time, as: 'startTime', class: Google::Apis::RedisV1::TimeOfDay, decorator: Google::Apis::RedisV1::TimeOfDay::Representation
+      
         end
       end
     end
