@@ -4024,6 +4024,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdvancedOptionsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyAssociation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5991,9 +5997,11 @@ module Google
           property :bucket_name, as: 'bucketName'
           property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicy, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicy::Representation
       
+          property :compression_mode, as: 'compressionMode'
           property :creation_timestamp, as: 'creationTimestamp'
           collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
+          property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCdn'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
@@ -6088,6 +6096,7 @@ module Google
       
           property :circuit_breakers, as: 'circuitBreakers', class: Google::Apis::ComputeBeta::CircuitBreakers, decorator: Google::Apis::ComputeBeta::CircuitBreakers::Representation
       
+          property :compression_mode, as: 'compressionMode'
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeBeta::ConnectionDraining, decorator: Google::Apis::ComputeBeta::ConnectionDraining::Representation
       
           property :connection_tracking_policy, as: 'connectionTrackingPolicy', class: Google::Apis::ComputeBeta::BackendServiceConnectionTrackingPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceConnectionTrackingPolicy::Representation
@@ -6098,6 +6107,7 @@ module Google
           collection :custom_request_headers, as: 'customRequestHeaders'
           collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
+          property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCDN'
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeBeta::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceFailoverPolicy::Representation
       
@@ -12837,6 +12847,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :location_hint, as: 'locationHint'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :maintenance_interval, as: 'maintenanceInterval'
@@ -12886,6 +12897,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adaptive_protection_config, as: 'adaptiveProtectionConfig', class: Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyAdaptiveProtectionConfig::Representation
       
+          property :advanced_options_config, as: 'advancedOptionsConfig', class: Google::Apis::ComputeBeta::SecurityPolicyAdvancedOptionsConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyAdvancedOptionsConfig::Representation
+      
           collection :associations, as: 'associations', class: Google::Apis::ComputeBeta::SecurityPolicyAssociation, decorator: Google::Apis::ComputeBeta::SecurityPolicyAssociation::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -12920,6 +12933,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
           property :rule_visibility, as: 'ruleVisibility'
+        end
+      end
+      
+      class SecurityPolicyAdvancedOptionsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_parsing, as: 'jsonParsing'
+          property :log_level, as: 'logLevel'
         end
       end
       
