@@ -60,7 +60,8 @@ module Google
         #   Optional. Specifies the maximum number of members to return for each group.
         #   Defaults to 0 if not set, which will return zero members.
         # @param [Array<String>, String] resource_names
-        #   Required. The resource names of the contact groups to get.
+        #   Required. The resource names of the contact groups to get. There is a maximum
+        #   of 200 resource names.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -739,8 +740,8 @@ module Google
         #   specify `people/me`. - To get information about a google account, specify `
         #   people/`account_id``. - To get information about a contact, specify the
         #   resource name that identifies the contact as returned by [`people.connections.
-        #   list`](/people/api/rest/v1/people.connections/list). You can include up to 200
-        #   resource names in one request.
+        #   list`](/people/api/rest/v1/people.connections/list). There is a maximum of 200
+        #   resource names.
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to
         #   READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
