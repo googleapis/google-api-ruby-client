@@ -4630,6 +4630,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdvancedOptionsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyAssociation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6382,6 +6388,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          property :numa_node_count, as: 'numaNodeCount'
           property :threads_per_core, as: 'threadsPerCore'
           property :visible_core_count, as: 'visibleCoreCount'
         end
@@ -6754,6 +6761,7 @@ module Google
           property :bucket_name, as: 'bucketName'
           property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeAlpha::BackendBucketCdnPolicy, decorator: Google::Apis::ComputeAlpha::BackendBucketCdnPolicy::Representation
       
+          property :compression_mode, as: 'compressionMode'
           property :creation_timestamp, as: 'creationTimestamp'
           collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
@@ -6853,6 +6861,7 @@ module Google
       
           property :circuit_breakers, as: 'circuitBreakers', class: Google::Apis::ComputeAlpha::CircuitBreakers, decorator: Google::Apis::ComputeAlpha::CircuitBreakers::Representation
       
+          property :compression_mode, as: 'compressionMode'
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeAlpha::ConnectionDraining, decorator: Google::Apis::ComputeAlpha::ConnectionDraining::Representation
       
           property :connection_tracking_policy, as: 'connectionTrackingPolicy', class: Google::Apis::ComputeAlpha::BackendServiceConnectionTrackingPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceConnectionTrackingPolicy::Representation
@@ -11769,6 +11778,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'ipAddress'
+          property :ip_allocation_mode, as: 'ipAllocationMode'
           property :subnetwork, as: 'subnetwork'
           property :vlan, as: 'vlan'
         end
@@ -11918,6 +11928,8 @@ module Google
           property :node_template, as: 'nodeTemplate'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeAlpha::ShareSettings, decorator: Google::Apis::ComputeAlpha::ShareSettings::Representation
+      
           property :size, as: 'size'
           property :status, as: 'status'
           property :zone, as: 'zone'
@@ -14687,6 +14699,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :availability_domain, as: 'availabilityDomain'
+          property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :latency_tolerant, as: 'latencyTolerant'
           property :location_hint, as: 'locationHint'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
@@ -14807,6 +14820,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adaptive_protection_config, as: 'adaptiveProtectionConfig', class: Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfig::Representation
       
+          property :advanced_options_config, as: 'advancedOptionsConfig', class: Google::Apis::ComputeAlpha::SecurityPolicyAdvancedOptionsConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAdvancedOptionsConfig::Representation
+      
           collection :associations, as: 'associations', class: Google::Apis::ComputeAlpha::SecurityPolicyAssociation, decorator: Google::Apis::ComputeAlpha::SecurityPolicyAssociation::Representation
       
           property :cloud_armor_config, as: 'cloudArmorConfig', class: Google::Apis::ComputeAlpha::SecurityPolicyCloudArmorConfig, decorator: Google::Apis::ComputeAlpha::SecurityPolicyCloudArmorConfig::Representation
@@ -14846,6 +14861,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
           property :rule_visibility, as: 'ruleVisibility'
+        end
+      end
+      
+      class SecurityPolicyAdvancedOptionsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_parsing, as: 'jsonParsing'
+          property :log_level, as: 'logLevel'
         end
       end
       

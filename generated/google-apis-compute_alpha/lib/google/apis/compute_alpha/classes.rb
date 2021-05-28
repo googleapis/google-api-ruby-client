@@ -685,7 +685,8 @@ module Google
         # reserved for Cloud NAT.
         # - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are
         # reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect
-        # configuration. These addresses are regional resources.
+        # configuration. These addresses are regional resources. Not currently available
+        # publicly.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -1104,6 +1105,11 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
+        # The number of vNUMA nodes.
+        # Corresponds to the JSON property `numaNodeCount`
+        # @return [Fixnum]
+        attr_accessor :numa_node_count
+      
         # The number of threads per physical core. To disable simultaneous
         # multithreading (SMT) set this to 1. If unset, the maximum number of threads
         # supported per core by the underlying processor is assumed.
@@ -1126,6 +1132,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @numa_node_count = args[:numa_node_count] if args.key?(:numa_node_count)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
           @visible_core_count = args[:visible_core_count] if args.key?(:visible_core_count)
         end
@@ -2826,6 +2833,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::BackendBucketCdnPolicy]
         attr_accessor :cdn_policy
       
+        # Compress text responses using Brotli or gzip compression, based on the client?
+        # s Accept-Encoding header.
+        # Corresponds to the JSON property `compressionMode`
+        # @return [String]
+        attr_accessor :compression_mode
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -2892,6 +2905,7 @@ module Google
         def update!(**args)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
+          @compression_mode = args[:compression_mode] if args.key?(:compression_mode)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @custom_response_headers = args[:custom_response_headers] if args.key?(:custom_response_headers)
           @description = args[:description] if args.key?(:description)
@@ -3299,6 +3313,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CircuitBreakers]
         attr_accessor :circuit_breakers
       
+        # Compress text responses using Brotli or gzip compression, based on the client?
+        # s Accept-Encoding header.
+        # Corresponds to the JSON property `compressionMode`
+        # @return [String]
+        attr_accessor :compression_mode
+      
         # Message containing connection draining configuration.
         # Corresponds to the JSON property `connectionDraining`
         # @return [Google::Apis::ComputeAlpha::ConnectionDraining]
@@ -3578,6 +3598,7 @@ module Google
           @backends = args[:backends] if args.key?(:backends)
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
           @circuit_breakers = args[:circuit_breakers] if args.key?(:circuit_breakers)
+          @compression_mode = args[:compression_mode] if args.key?(:compression_mode)
           @connection_draining = args[:connection_draining] if args.key?(:connection_draining)
           @connection_tracking_policy = args[:connection_tracking_policy] if args.key?(:connection_tracking_policy)
           @consistent_hash = args[:consistent_hash] if args.key?(:consistent_hash)
@@ -4844,8 +4865,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :predefined_names
       
-        # Secure tags to apply to this instance. These can be later modified by the
-        # update method. Maximum number of secure tags allowed is 50.
+        # DEPRECATED: Please use instance_properties.secure_tag instead. Secure tags to
+        # apply to this instance. These can be later modified by the update method.
+        # Maximum number of secure tags allowed is 50.
         # Corresponds to the JSON property `secureTags`
         # @return [Array<String>]
         attr_accessor :secure_tags
@@ -7714,6 +7736,10 @@ module Google
         attr_accessor :id
       
         # List of interfaces for this external VPN gateway.
+        # If your peer-side gateway is an on-premises gateway and non-AWS cloud
+        # providers? gateway, at most two interfaces can be provided for an external VPN
+        # gateway. If your peer side is an AWS virtual private gateway, four interfaces
+        # should be provided for an external VPN gateway.
         # Corresponds to the JSON property `interfaces`
         # @return [Array<Google::Apis::ComputeAlpha::ExternalVpnGatewayInterface>]
         attr_accessor :interfaces
@@ -7789,8 +7815,9 @@ module Google
       
         # The numeric ID of this interface. The allowed input values for this id for
         # different redundancy types of external VPN gateway:
-        # SINGLE_IP_INTERNALLY_REDUNDANT - 0 TWO_IPS_REDUNDANCY - 0, 1
-        # FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
+        # - SINGLE_IP_INTERNALLY_REDUNDANT - 0
+        # - TWO_IPS_REDUNDANCY - 0, 1
+        # - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -8920,7 +8947,7 @@ module Google
         # - If the value is a percent, then the calculated value is percent/100 *
         # targetSize. For example, the calculated value of a 80% of a managed instance
         # group with 150 instances would be (80/100 * 150) = 120 VM instances. If there
-        # is a remainder, the number is rounded up.
+        # is a remainder, the number is rounded.
         # Corresponds to the JSON property `calculated`
         # @return [Fixnum]
         attr_accessor :calculated
@@ -17431,8 +17458,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
       
-        # Secure tags to apply to this instance. Maximum number of secure tags allowed
-        # is 50.
+        # [Input Only] Secure tags to apply to this instance. Maximum number of secure
+        # tags allowed is 50.
         # Corresponds to the JSON property `secureTags`
         # @return [Array<String>]
         attr_accessor :secure_tags
@@ -18892,15 +18919,18 @@ module Google
         # @return [String]
         attr_accessor :edge_availability_domain
       
-        # Indicates the user-supplied encryption option of this interconnect attachment:
-        # - NONE is the default value, which means that the attachment carries
-        # unencrypted traffic. VMs can send traffic to, or receive traffic from, this
-        # type of attachment.
-        # - IPSEC indicates that the attachment carries only traffic encrypted by an
-        # IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to,
-        # or receive traffic from, such an attachment. To use IPsec-encrypted Cloud
-        # Interconnect, create the attachment using this option.
-        # Not currently available in all Interconnect locations.
+        # Indicates the user-supplied encryption option of this VLAN attachment (
+        # interconnectAttachment). Can only be specified at attachment creation for
+        # PARTNER or DEDICATED attachments. Possible values are:
+        # - NONE - This is the default value, which means that the VLAN attachment
+        # carries unencrypted traffic. VMs are able to send traffic to, or receive
+        # traffic from, such a VLAN attachment.
+        # - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted
+        # by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs
+        # cannot directly send traffic to, or receive traffic from, such a VLAN
+        # attachment. To use IPsec-encrypted Cloud Interconnect, the VLAN attachment
+        # must be created with this option.
+        # Not currently available publicly.
         # Corresponds to the JSON property `encryption`
         # @return [String]
         attr_accessor :encryption
@@ -18924,19 +18954,19 @@ module Google
         # @return [String]
         attr_accessor :interconnect
       
-        # URL of addresses that have been reserved for the interconnect attachment, Used
-        # only for interconnect attachment that has the encryption option as IPSEC. The
-        # addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway
-        # over the interconnect attachment, if the attachment is configured to use an
-        # RFC 1918 IP address, then the VPN gateway's IP address will be allocated from
-        # the IP address range specified here. For example, if the HA VPN gateway's
-        # interface 0 is paired to this interconnect attachment, then an RFC 1918 IP
+        # List of URL of addresses that have been reserved for the VLAN attachment. Used
+        # only for the VLAN attachment that has the encryption option as IPSEC. The
+        # addresses must be regional internal IP address ranges. When creating an HA VPN
+        # gateway over the VLAN attachment, if the attachment is configured to use a
+        # regional internal IP address, then the VPN gateway's IP address is allocated
+        # from the IP address range specified here. For example, if the HA VPN gateway's
+        # interface 0 is paired to this VLAN attachment, then a regional internal IP
         # address for the VPN gateway interface 0 will be allocated from the IP address
-        # specified for this interconnect attachment. If this field is not specified for
-        # interconnect attachment that has encryption option as IPSEC, later on when
-        # creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's
-        # IP address will be allocated from regional external IP address pool.
-        # Not currently available in all Interconnect locations.
+        # specified for this VLAN attachment. If this field is not specified when
+        # creating the VLAN attachment, then later on when creating an HA VPN gateway on
+        # this VLAN attachment, the HA VPN gateway's IP address is allocated from the
+        # regional external IP address pool.
+        # Not currently available publicly.
         # Corresponds to the JSON property `ipsecInternalAddresses`
         # @return [Array<String>]
         attr_accessor :ipsec_internal_addresses
@@ -24078,9 +24108,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An IPv4 internal IP address to assign to the instance for this subinterface.
+        # If specified, ip_allocation_mode should be set to ALLOCATE_IP.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # 
+        # Corresponds to the JSON property `ipAllocationMode`
+        # @return [String]
+        attr_accessor :ip_allocation_mode
       
         # If specified, this subnetwork must belong to the same network as that of the
         # network interface. If not specified the subnet of network interface will be
@@ -24106,6 +24142,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ip_allocation_mode = args[:ip_allocation_mode] if args.key?(:ip_allocation_mode)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @vlan = args[:vlan] if args.key?(:vlan)
         end
@@ -24689,6 +24726,11 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # The share setting for reservations and sole tenancy node groups.
+        # Corresponds to the JSON property `shareSettings`
+        # @return [Google::Apis::ComputeAlpha::ShareSettings]
+        attr_accessor :share_settings
+      
         # [Output Only] The total number of nodes in the node group.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
@@ -24724,6 +24766,7 @@ module Google
           @node_template = args[:node_template] if args.key?(:node_template)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @share_settings = args[:share_settings] if args.key?(:share_settings)
           @size = args[:size] if args.key?(:size)
           @status = args[:status] if args.key?(:status)
           @zone = args[:zone] if args.key?(:zone)
@@ -31907,7 +31950,10 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Corresponds to the label values of a reservation resource.
+        # Corresponds to the label values of a reservation resource. This can be either
+        # a name to a reservation in the same project or "projects/different-project/
+        # reservations/some-reservation-name" to target a shared reservation in the same
+        # zone but in a different project.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -33756,9 +33802,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Field to indicate if a router is dedicated to use with encrypted Interconnect
-        # Attachment (IPsec-encrypted Cloud Interconnect feature).
-        # Not currently available in all Interconnect locations.
+        # Indicates if a router is dedicated for use with encrypted VLAN attachments (
+        # interconnectAttachments).
+        # Not currently available publicly.
         # Corresponds to the JSON property `encryptedInterconnectRouter`
         # @return [Boolean]
         attr_accessor :encrypted_interconnect_router
@@ -34025,7 +34071,6 @@ module Google
       
         # The interval in seconds between BGP keepalive messages that are sent to the
         # peer.
-        # Not currently available publicly.
         # Hold time is three times the interval at which keepalive messages are sent,
         # and the hold time is the maximum number of seconds allowed to elapse between
         # successive keepalive messages that BGP receives from a peer.
@@ -34094,7 +34139,6 @@ module Google
         attr_accessor :bfd
       
         # The status of the BGP peer connection.
-        # Not currently available publicly.
         # If set to FALSE, any active session with the peer is terminated and all
         # associated routing information is removed. If set to TRUE, the peer connection
         # can be established with routing information. The default is TRUE.
@@ -35509,6 +35553,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :availability_domain
       
+        # Specify the time in seconds for host error detection, the value must be within
+        # the range of [90, 330] with the increment of 30, if unset, the default
+        # behavior of host error recovery will be used.
+        # Corresponds to the JSON property `hostErrorTimeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :host_error_timeout_seconds
+      
         # Defines whether the instance is tolerant of higher cpu latency. This can only
         # be set during instance creation, or when the instance is not currently running.
         # It must not be set if the preemptible option is also set.
@@ -35572,6 +35623,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+          @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @latency_tolerant = args[:latency_tolerant] if args.key?(:latency_tolerant)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
@@ -35934,6 +35986,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyAdaptiveProtectionConfig]
         attr_accessor :adaptive_protection_config
       
+        # 
+        # Corresponds to the JSON property `advancedOptionsConfig`
+        # @return [Google::Apis::ComputeAlpha::SecurityPolicyAdvancedOptionsConfig]
+        attr_accessor :advanced_options_config
+      
         # A list of associations that belong to this policy.
         # Corresponds to the JSON property `associations`
         # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyAssociation>]
@@ -36072,6 +36129,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adaptive_protection_config = args[:adaptive_protection_config] if args.key?(:adaptive_protection_config)
+          @advanced_options_config = args[:advanced_options_config] if args.key?(:advanced_options_config)
           @associations = args[:associations] if args.key?(:associations)
           @cloud_armor_config = args[:cloud_armor_config] if args.key?(:cloud_armor_config)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -36137,6 +36195,31 @@ module Google
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
           @rule_visibility = args[:rule_visibility] if args.key?(:rule_visibility)
+        end
+      end
+      
+      # 
+      class SecurityPolicyAdvancedOptionsConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `jsonParsing`
+        # @return [String]
+        attr_accessor :json_parsing
+      
+        # 
+        # Corresponds to the JSON property `logLevel`
+        # @return [String]
+        attr_accessor :log_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_parsing = args[:json_parsing] if args.key?(:json_parsing)
+          @log_level = args[:log_level] if args.key?(:log_level)
         end
       end
       
@@ -44728,7 +44811,9 @@ module Google
         # requests. If the number of results is larger than maxResults, use the
         # nextPageToken as a value for the query parameter pageToken in the next list
         # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
+        # continue paging through the results. In special cases listUsable may return 0
+        # subnetworks and nextPageToken which still should be used to get the next page
+        # of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -45188,7 +45273,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # A list of interfaces on this VPN gateway.
+        # The list of VPN interfaces associated with this VPN gateway.
         # Corresponds to the JSON property `vpnInterfaces`
         # @return [Array<Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface>]
         attr_accessor :vpn_interfaces
@@ -45581,21 +45666,30 @@ module Google
       class VpnGatewayVpnGatewayInterface
         include Google::Apis::Core::Hashable
       
-        # The numeric ID of this VPN gateway interface.
+        # [Output Only] Numeric identifier for this VPN interface associated with the
+        # VPN gateway.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # URL of the interconnect attachment resource. When the value of this field is
-        # present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect;
-        # all Egress or Ingress traffic for this VPN Gateway interface will go through
-        # the specified interconnect attachment resource.
-        # Not currently available in all Interconnect locations.
+        # URL of the VLAN attachment (interconnectAttachment) resource for this VPN
+        # gateway interface. When the value of this field is present, the VPN gateway is
+        # used for IPsec-encrypted Cloud Interconnect; all egress or ingress traffic for
+        # this VPN gateway interface goes through the specified VLAN attachment resource.
+        # Not currently available publicly.
         # Corresponds to the JSON property `interconnectAttachment`
         # @return [String]
         attr_accessor :interconnect_attachment
       
-        # [Output Only] The external IP address for this VPN gateway interface.
+        # [Output Only] IP address for this VPN interface associated with the VPN
+        # gateway. The IP address could be either a regional external IP address or a
+        # regional internal IP address. The two IP addresses for a VPN gateway must be
+        # all regional external or regional internal IP addresses. There cannot be a mix
+        # of regional external IP addresses and regional internal IP addresses. For
+        # IPsec-encrypted Cloud Interconnect, the IP addresses for both interfaces could
+        # either be regional internal IP addresses or regional external IP addresses.
+        # For regular (non IPsec-encrypted Cloud Interconnect) HA VPN tunnels, the IP
+        # address must be a regional external IP address.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address

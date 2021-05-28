@@ -12787,8 +12787,9 @@ module Google
         #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
         # @param [Array<String>, String] secure_tags
-        #   Secure tags to apply to this instance. These can be later modified by the
-        #   update method. Maximum number of secure tags allowed is 50.
+        #   DEPRECATED: Please use resource.secure_tag instead. Secure tags to apply to
+        #   this instance. These can be later modified by the update method. Maximum
+        #   number of secure tags allowed is 50.
         # @param [String] source_instance_template
         #   Specifies instance template to create the instance.
         #   This field is optional. It can be a full or partial URL. For example, the
@@ -14284,8 +14285,8 @@ module Google
         # @param [Google::Apis::ComputeAlpha::Instance] instance_object
         # @param [Boolean] clear_secure_tag
         #   Whether to clear secure tags from the instance.
-        #   This property is mutually exclusive with the secure_tag property; you can only
-        #   specify one or the other, but not both.
+        #   This property if set to true will clear secure tags regardless of the resource.
+        #   secure_tags.
         # @param [String] minimal_action
         #   Specifies the action to take when updating an instance even if the updated
         #   properties do not require it. If not specified, then Compute Engine acts based
@@ -14307,8 +14308,8 @@ module Google
         #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
         # @param [Array<String>, String] secure_tags
-        #   Secure tags to apply to this instance. Maximum number of secure tags allowed
-        #   is 50.
+        #   DEPRECATED: Please use resource.secure_tag instead. Secure tags to apply to
+        #   this instance. Maximum number of secure tags allowed is 50.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
