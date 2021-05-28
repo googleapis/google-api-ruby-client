@@ -1196,8 +1196,8 @@ module Google
         attr_accessor :owned_by_me
         alias_method :owned_by_me?, :owned_by_me
       
-        # The owners of the file. Currently, only certain legacy files may have more
-        # than one owner. Not populated for items in shared drives.
+        # The owner of this file. Only certain legacy files may have more than one owner.
+        # This field isn't populated for items in shared drives.
         # Corresponds to the JSON property `owners`
         # @return [Array<Google::Apis::DriveV3::User>]
         attr_accessor :owners
