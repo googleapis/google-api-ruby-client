@@ -227,8 +227,8 @@ module Google
         attr_accessor :start_time
       
         # Required. The type of the alert. This is output only after alert is created.
-        # For a list of available alert types see [Google Workspace Alert types](/admin-
-        # sdk/alertcenter/reference/alert-types).
+        # For a list of available alert types see [Google Workspace Alert types](https://
+        # developers.google.com/admin-sdk/alertcenter/reference/alert-types).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1107,7 +1107,8 @@ module Google
       end
       
       # Settings for callback notifications. For more details see [Google Workspace
-      # Alert Notification](/admin-sdk/alertcenter/guides/notifications).
+      # Alert Notification](https://developers.google.com/admin-sdk/alertcenter/guides/
+      # notifications).
       class Notification
         include Google::Apis::Core::Hashable
       
