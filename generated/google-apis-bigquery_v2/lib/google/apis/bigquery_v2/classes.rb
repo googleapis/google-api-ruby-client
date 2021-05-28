@@ -7338,6 +7338,14 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # True if the column names are explicitly specified. For example by using the '
+        # CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's
+        # standard SQL: https://cloud.google.com/bigquery/sql-reference/
+        # Corresponds to the JSON property `useExplicitColumnNames`
+        # @return [Boolean]
+        attr_accessor :use_explicit_column_names
+        alias_method :use_explicit_column_names?, :use_explicit_column_names
+      
         # Specifies whether to use BigQuery's legacy SQL for this view. The default
         # value is true. If set to false, the view will use BigQuery's standard SQL:
         # https://cloud.google.com/bigquery/sql-reference/ Queries and views that
@@ -7359,6 +7367,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query = args[:query] if args.key?(:query)
+          @use_explicit_column_names = args[:use_explicit_column_names] if args.key?(:use_explicit_column_names)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @user_defined_function_resources = args[:user_defined_function_resources] if args.key?(:user_defined_function_resources)
         end
