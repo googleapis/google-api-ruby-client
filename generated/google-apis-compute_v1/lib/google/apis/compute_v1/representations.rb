@@ -3856,6 +3856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdvancedOptionsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -11919,6 +11925,7 @@ module Google
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeV1::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeV1::RouterAdvertisedIpRange::Representation
       
           property :asn, as: 'asn'
+          property :keepalive_interval, as: 'keepaliveInterval'
         end
       end
       
@@ -11930,6 +11937,7 @@ module Google
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeV1::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeV1::RouterAdvertisedIpRange::Representation
       
           property :advertised_route_priority, as: 'advertisedRoutePriority'
+          property :enable, as: 'enable'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
           property :management_type, as: 'managementType'
@@ -12196,6 +12204,8 @@ module Google
       class SecurityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_options_config, as: 'advancedOptionsConfig', class: Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfig::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -12205,6 +12215,14 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::SecurityPolicyRule, decorator: Google::Apis::ComputeV1::SecurityPolicyRule::Representation
       
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SecurityPolicyAdvancedOptionsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_parsing, as: 'jsonParsing'
+          property :log_level, as: 'logLevel'
         end
       end
       
