@@ -2033,7 +2033,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :owner_names
       
-        # The owner(s) of this file. Not populated for items in shared drives.
+        # The owner of this file. Only certain legacy files may have more than one owner.
+        # This field isn't populated for items in shared drives.
         # Corresponds to the JSON property `owners`
         # @return [Array<Google::Apis::DriveV2::User>]
         attr_accessor :owners
