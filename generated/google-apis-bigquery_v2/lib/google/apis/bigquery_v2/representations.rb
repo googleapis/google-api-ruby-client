@@ -2638,6 +2638,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query, as: 'query'
+          property :use_explicit_column_names, as: 'useExplicitColumnNames'
           property :use_legacy_sql, as: 'useLegacySql'
           collection :user_defined_function_resources, as: 'userDefinedFunctionResources', class: Google::Apis::BigqueryV2::UserDefinedFunctionResource, decorator: Google::Apis::BigqueryV2::UserDefinedFunctionResource::Representation
       
