@@ -350,8 +350,8 @@ module Google
       
         # The URL the bot should redirect the user to after they have completed an
         # authorization or configuration flow outside of Google Chat. See the [
-        # Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p) for
-        # more information.
+        # Authorizing access to 3p services guide](/chat/how-tos/auth-3p) for more
+        # information.
         # Corresponds to the JSON property `configCompleteRedirectUrl`
         # @return [String]
         attr_accessor :config_complete_redirect_url
