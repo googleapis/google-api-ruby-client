@@ -3187,10 +3187,10 @@ module Google
         # is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/
         # logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
-        #   Required. The resource name for the CMEK settings to update. "projects/[
-        #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
-        #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
-        #   cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the
+        #   Required. The resource name for the CMEK settings to update. < "projects/
+        #   PROJECT_ID/cmekSettings" "organizations/ORGANIZATION_ID/cmekSettings" "
+        #   billingAccounts/BILLING_ACCOUNT_ID/cmekSettings" "folders/FOLDER_ID/
+        #   cmekSettings"Example: "organizations/12345/cmekSettings".Note: CMEK for the
         #   Logs Router can currently only be configured for GCP organizations. Once
         #   configured, it applies to all projects and folders in the GCP organization.
         # @param [Google::Apis::LoggingV2::CmekSettings] cmek_settings_object
@@ -5825,10 +5825,10 @@ module Google
         # is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/
         # logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
-        #   Required. The resource name for the CMEK settings to update. "projects/[
-        #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
-        #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
-        #   cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the
+        #   Required. The resource name for the CMEK settings to update. < "projects/
+        #   PROJECT_ID/cmekSettings" "organizations/ORGANIZATION_ID/cmekSettings" "
+        #   billingAccounts/BILLING_ACCOUNT_ID/cmekSettings" "folders/FOLDER_ID/
+        #   cmekSettings"Example: "organizations/12345/cmekSettings".Note: CMEK for the
         #   Logs Router can currently only be configured for GCP organizations. Once
         #   configured, it applies to all projects and folders in the GCP organization.
         # @param [Google::Apis::LoggingV2::CmekSettings] cmek_settings_object
