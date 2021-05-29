@@ -1175,8 +1175,7 @@ module Google
       
         # The list of experiments to enable. This field should be used for SDK related
         # experiments and not for service related experiments. The proper field for
-        # service related experiments is service_options. For more details see the
-        # rationale at go/user-specified-service-options.
+        # service related experiments is service_options.
         # Corresponds to the JSON property `experiments`
         # @return [Array<String>]
         attr_accessor :experiments
@@ -1212,8 +1211,7 @@ module Google
       
         # The list of service options to enable. This field should be used for service
         # related experiments only. These experiments, when graduating to GA, should be
-        # replaced by dedicated fields or become default (i.e. always on). For more
-        # details see the rationale at go/user-specified-service-options.
+        # replaced by dedicated fields or become default (i.e. always on).
         # Corresponds to the JSON property `serviceOptions`
         # @return [Array<String>]
         attr_accessor :service_options
@@ -1511,6 +1509,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_workers
       
+        # Docker registry location of container image to use for the 'worker harness.
+        # Default is the container for the version of the SDK. Note this field is only
+        # valid for portable pipelines.
+        # Corresponds to the JSON property `sdkContainerImage`
+        # @return [String]
+        attr_accessor :sdk_container_image
+      
         # The email address of the service account to run the job as.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
@@ -1579,6 +1584,7 @@ module Google
           @max_workers = args[:max_workers] if args.key?(:max_workers)
           @network = args[:network] if args.key?(:network)
           @num_workers = args[:num_workers] if args.key?(:num_workers)
+          @sdk_container_image = args[:sdk_container_image] if args.key?(:sdk_container_image)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @staging_location = args[:staging_location] if args.key?(:staging_location)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)

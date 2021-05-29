@@ -1391,6 +1391,7 @@ module Google
           property :max_workers, as: 'maxWorkers'
           property :network, as: 'network'
           property :num_workers, as: 'numWorkers'
+          property :sdk_container_image, as: 'sdkContainerImage'
           property :service_account_email, as: 'serviceAccountEmail'
           property :staging_location, as: 'stagingLocation'
           property :subnetwork, as: 'subnetwork'
