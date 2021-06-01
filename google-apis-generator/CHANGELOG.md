@@ -1,5 +1,12 @@
 # Release History
 
+## [0.3.0](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-generator/v0.2.0...google-apis-generator/v0.3.0) (2021-06-01)
+
+
+### Features
+
+* Include repo-metadata.json in generated libraries ([91b0f2c](https://www.github.com/googleapis/google-api-ruby-client/commit/91b0f2c17d76fedf8aa3f7c905c424fe8b64a970))
+
 ## [0.2.0](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-generator/v0.1.2...v0.2.0) (2021-03-07)
 
 ### Features
