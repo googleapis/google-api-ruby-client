@@ -1629,6 +1629,19 @@ module Google
         end
       end
       
+      # Response on issuing a command. This is currently empty as a placeholder.
+      class IssueCommandResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Keyed app state reported by the app.
       class KeyedAppState
         include Google::Apis::Core::Hashable
