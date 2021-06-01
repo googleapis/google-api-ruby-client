@@ -4925,6 +4925,7 @@ module Google
           property :item_group_id, as: 'itemGroupId'
           property :kind, as: 'kind'
           property :link, as: 'link'
+          property :link_template, as: 'linkTemplate'
           property :loyalty_points, as: 'loyaltyPoints', class: Google::Apis::ContentV2_1::LoyaltyPoints, decorator: Google::Apis::ContentV2_1::LoyaltyPoints::Representation
       
           property :material, as: 'material'
@@ -4933,10 +4934,13 @@ module Google
           property :min_energy_efficiency_class, as: 'minEnergyEfficiencyClass'
           property :min_handling_time, :numeric_string => true, as: 'minHandlingTime'
           property :mobile_link, as: 'mobileLink'
+          property :mobile_link_template, as: 'mobileLinkTemplate'
           property :mpn, as: 'mpn'
           property :multipack, :numeric_string => true, as: 'multipack'
           property :offer_id, as: 'offerId'
           property :pattern, as: 'pattern'
+          property :pickup_method, as: 'pickupMethod'
+          property :pickup_sla, as: 'pickupSla'
           property :price, as: 'price', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           collection :product_details, as: 'productDetails', class: Google::Apis::ContentV2_1::ProductProductDetail, decorator: Google::Apis::ContentV2_1::ProductProductDetail::Representation

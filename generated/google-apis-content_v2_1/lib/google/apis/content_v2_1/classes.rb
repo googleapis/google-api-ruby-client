@@ -6306,14 +6306,15 @@ module Google
         # Turkish Post) - "`eub`" (ePacket) - "`chukou1`" (Chukou1 Logistics) - "`bestex`
         # " (Best Express) - "`canada post`" (Canada Post) - "`purolator`" (Purolator) -
         # "`canpar`" (Canpar) - "`india post`" (India Post) - "`blue dart`" (Blue Dart) -
-        # "`delhivery`" (Delhivery) - "`dtdc`" (DTDC) - "`tpc india`" (TPC India)
-        # Supported carriers for FR are: - "`la poste`" (La Poste) *automatic status
-        # updates * - "`colissimo`" (Colissimo by La Poste) *automatic status updates* -
-        # "`ups`" (United Parcel Service) *automatic status updates * - "`chronopost`" (
-        # Chronopost by La Poste) - "`gls`" (General Logistics Systems France) - "`dpd`"
-        # (DPD Group by GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`" (
-        # Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`
-        # db schenker`" (DB Schenker) - "`aramex`" (Aramex)
+        # "`delhivery`" (Delhivery) - "`dtdc`" (DTDC) - "`tpc india`" (TPC India) - "`
+        # lso`" (Lone Star Overnight) - "`tww`" (Team Worldwide) Supported carriers for
+        # FR are: - "`la poste`" (La Poste) *automatic status updates * - "`colissimo`" (
+        # Colissimo by La Poste) *automatic status updates* - "`ups`" (United Parcel
+        # Service) *automatic status updates * - "`chronopost`" (Chronopost by La Poste)
+        # - "`gls`" (General Logistics Systems France) - "`dpd`" (DPD Group by GeoPost) -
+        # "`bpost`" (Belgian Post Group) - "`colis prive`" (Colis Privé) - "`boxtal`" (
+        # Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db schenker`" (DB Schenker) -
+        # "`aramex`" (Aramex)
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -9954,6 +9955,11 @@ module Google
         # @return [String]
         attr_accessor :link
       
+        # Link template for merchant hosted local storefront.
+        # Corresponds to the JSON property `linkTemplate`
+        # @return [String]
+        attr_accessor :link_template
+      
         # Loyalty points that users receive after purchasing the item. Japan only.
         # Corresponds to the JSON property `loyaltyPoints`
         # @return [Google::Apis::ContentV2_1::LoyaltyPoints]
@@ -9989,6 +9995,12 @@ module Google
         # @return [String]
         attr_accessor :mobile_link
       
+        # Link template for merchant hosted local storefront optimized for mobile
+        # devices.
+        # Corresponds to the JSON property `mobileLinkTemplate`
+        # @return [String]
+        attr_accessor :mobile_link_template
+      
         # Manufacturer Part Number (MPN) of the item.
         # Corresponds to the JSON property `mpn`
         # @return [String]
@@ -10012,6 +10024,19 @@ module Google
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
+      
+        # The pick up option for the item. Acceptable values are: - "`buy`" - "`reserve`"
+        # - "`ship to store`" - "`not supported`"
+        # Corresponds to the JSON property `pickupMethod`
+        # @return [String]
+        attr_accessor :pickup_method
+      
+        # Item store pickup timeline. Acceptable values are: - "`same day`" - "`next day`
+        # " - "`2-day`" - "`3-day`" - "`4-day`" - "`5-day`" - "`6-day`" - "`7-day`" - "`
+        # multi-week`"
+        # Corresponds to the JSON property `pickupSla`
+        # @return [String]
+        attr_accessor :pickup_sla
       
         # Price of the item.
         # Corresponds to the JSON property `price`
@@ -10207,6 +10232,7 @@ module Google
           @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
           @kind = args[:kind] if args.key?(:kind)
           @link = args[:link] if args.key?(:link)
+          @link_template = args[:link_template] if args.key?(:link_template)
           @loyalty_points = args[:loyalty_points] if args.key?(:loyalty_points)
           @material = args[:material] if args.key?(:material)
           @max_energy_efficiency_class = args[:max_energy_efficiency_class] if args.key?(:max_energy_efficiency_class)
@@ -10214,10 +10240,13 @@ module Google
           @min_energy_efficiency_class = args[:min_energy_efficiency_class] if args.key?(:min_energy_efficiency_class)
           @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
           @mobile_link = args[:mobile_link] if args.key?(:mobile_link)
+          @mobile_link_template = args[:mobile_link_template] if args.key?(:mobile_link_template)
           @mpn = args[:mpn] if args.key?(:mpn)
           @multipack = args[:multipack] if args.key?(:multipack)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @pattern = args[:pattern] if args.key?(:pattern)
+          @pickup_method = args[:pickup_method] if args.key?(:pickup_method)
+          @pickup_sla = args[:pickup_sla] if args.key?(:pickup_sla)
           @price = args[:price] if args.key?(:price)
           @product_details = args[:product_details] if args.key?(:product_details)
           @product_highlights = args[:product_highlights] if args.key?(:product_highlights)
