@@ -711,7 +711,7 @@ module Google
         end
         
         # Update the version of a CryptoKey that will be used in Encrypt. Returns an
-        # error if called on an asymmetric key.
+        # error if called on a key whose purpose is not ENCRYPT_DECRYPT.
         # @param [String] name
         #   Required. The resource name of the CryptoKey to update.
         # @param [Google::Apis::CloudkmsV1::UpdateCryptoKeyPrimaryVersionRequest] update_crypto_key_primary_version_request_object
