@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IssueCommandResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeyedAppState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -829,6 +835,12 @@ module Google
           collection :fan_speeds, as: 'fanSpeeds'
           collection :gpu_temperatures, as: 'gpuTemperatures'
           collection :skin_temperatures, as: 'skinTemperatures'
+        end
+      end
+      
+      class IssueCommandResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
