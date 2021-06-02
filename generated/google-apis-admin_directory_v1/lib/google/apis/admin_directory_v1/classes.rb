@@ -3623,7 +3623,7 @@ module Google
         attr_accessor :agreed_to_terms
         alias_method :agreed_to_terms?, :agreed_to_terms
       
-        # Output only. List of the user's alias email addresses.
+        # Output only. A list of the user's alias email addresses.
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]
         attr_accessor :aliases
