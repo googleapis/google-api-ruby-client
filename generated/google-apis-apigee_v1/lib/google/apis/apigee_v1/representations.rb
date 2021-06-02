@@ -1619,7 +1619,6 @@ module Google
           property :revision, as: 'revision'
           collection :route_conflicts, as: 'routeConflicts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict::Representation
       
-          property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
         end
       end

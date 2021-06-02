@@ -2044,12 +2044,6 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>]
         attr_accessor :route_conflicts
       
-        # The full resource name of Cloud IAM Service Account that this deployment is
-        # using, eg, `projects/-/serviceAccounts/`email``.
-        # Corresponds to the JSON property `serviceAccount`
-        # @return [String]
-        attr_accessor :service_account
-      
         # Current state of the deployment. This field is not populated in List APIs.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2069,7 +2063,6 @@ module Google
           @pods = args[:pods] if args.key?(:pods)
           @revision = args[:revision] if args.key?(:revision)
           @route_conflicts = args[:route_conflicts] if args.key?(:route_conflicts)
-          @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
         end
       end
