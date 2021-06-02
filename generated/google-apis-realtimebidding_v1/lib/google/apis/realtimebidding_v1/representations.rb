@@ -696,6 +696,7 @@ module Google
           property :price_display_text, as: 'priceDisplayText'
           property :star_rating, as: 'starRating'
           property :video_url, as: 'videoUrl'
+          property :video_vast_xml, as: 'videoVastXml'
         end
       end
       
