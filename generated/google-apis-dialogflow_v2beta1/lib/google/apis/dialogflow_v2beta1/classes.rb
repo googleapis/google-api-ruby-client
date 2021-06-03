@@ -161,6 +161,12 @@ module Google
       class GoogleCloudDialogflowCxV3ConversationTurnUserInput
         include Google::Apis::Core::Hashable
       
+        # Whether sentiment analysis is enabled.
+        # Corresponds to the JSON property `enableSentimentAnalysis`
+        # @return [Boolean]
+        attr_accessor :enable_sentiment_analysis
+        alias_method :enable_sentiment_analysis?, :enable_sentiment_analysis
+      
         # Parameters that need to be injected into the conversation during intent
         # detection.
         # Corresponds to the JSON property `injectedParameters`
@@ -188,6 +194,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_sentiment_analysis = args[:enable_sentiment_analysis] if args.key?(:enable_sentiment_analysis)
           @injected_parameters = args[:injected_parameters] if args.key?(:injected_parameters)
           @input = args[:input] if args.key?(:input)
           @is_webhook_enabled = args[:is_webhook_enabled] if args.key?(:is_webhook_enabled)
@@ -2679,6 +2686,12 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput
         include Google::Apis::Core::Hashable
       
+        # Whether sentiment analysis is enabled.
+        # Corresponds to the JSON property `enableSentimentAnalysis`
+        # @return [Boolean]
+        attr_accessor :enable_sentiment_analysis
+        alias_method :enable_sentiment_analysis?, :enable_sentiment_analysis
+      
         # Parameters that need to be injected into the conversation during intent
         # detection.
         # Corresponds to the JSON property `injectedParameters`
@@ -2706,6 +2719,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_sentiment_analysis = args[:enable_sentiment_analysis] if args.key?(:enable_sentiment_analysis)
           @injected_parameters = args[:injected_parameters] if args.key?(:injected_parameters)
           @input = args[:input] if args.key?(:input)
           @is_webhook_enabled = args[:is_webhook_enabled] if args.key?(:is_webhook_enabled)
