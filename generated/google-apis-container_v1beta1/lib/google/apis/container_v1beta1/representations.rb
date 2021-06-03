@@ -824,6 +824,7 @@ module Google
           property :boot_disk_kms_key, as: 'bootDiskKmsKey'
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
+          property :image_type, as: 'imageType'
           property :management, as: 'management', class: Google::Apis::ContainerV1beta1::NodeManagement, decorator: Google::Apis::ContainerV1beta1::NodeManagement::Representation
       
           property :min_cpu_platform, as: 'minCpuPlatform'
