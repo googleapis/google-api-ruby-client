@@ -520,6 +520,7 @@ module Google
       class SasPortalSetPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_notification, as: 'disableNotification'
           property :policy, as: 'policy', class: Google::Apis::SasportalV1alpha1::SasPortalPolicy, decorator: Google::Apis::SasportalV1alpha1::SasPortalPolicy::Representation
       
           property :resource, as: 'resource'
