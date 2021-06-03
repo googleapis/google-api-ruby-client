@@ -2369,9 +2369,15 @@ module Google
         end
       end
       
-      # Request message for review document method.
+      # Request message for review document method. Next Id: 5.
       class GoogleCloudDocumentaiV1ReviewDocumentRequest
         include Google::Apis::Core::Hashable
+      
+        # Whether the validation should be performed on the ad-hoc review request.
+        # Corresponds to the JSON property `enableSchemaValidation`
+        # @return [Boolean]
+        attr_accessor :enable_schema_validation
+        alias_method :enable_schema_validation?, :enable_schema_validation
       
         # Document represents the canonical document resource in Document Understanding
         # AI. It is an interchange format that provides insights into documents and
@@ -2387,6 +2393,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_schema_validation = args[:enable_schema_validation] if args.key?(:enable_schema_validation)
           @inline_document = args[:inline_document] if args.key?(:inline_document)
         end
       end
@@ -5965,6 +5972,91 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The long running operation metadata for delete processor method.
+      class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The long running operation metadata for disable processor method.
+      class GoogleCloudDocumentaiV1beta3DisableProcessorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for the disable processor method. Intentionally empty proto
+      # for adding fields in future.
+      class GoogleCloudDocumentaiV1beta3DisableProcessorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The long running operation metadata for enable processor method.
+      class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for the enable processor method. Intentionally empty proto
+      # for adding fields in future.
+      class GoogleCloudDocumentaiV1beta3EnableProcessorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
