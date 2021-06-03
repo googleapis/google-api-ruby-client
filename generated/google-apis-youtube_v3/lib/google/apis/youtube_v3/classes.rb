@@ -6761,6 +6761,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `featuredPart`
+        # @return [Boolean]
+        attr_accessor :featured_part
+        alias_method :featured_part?, :featured_part
+      
+        # 
         # Corresponds to the JSON property `gaia`
         # @return [Fixnum]
         attr_accessor :gaia
@@ -6781,6 +6787,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @featured_part = args[:featured_part] if args.key?(:featured_part)
           @gaia = args[:gaia] if args.key?(:gaia)
           @id = args[:id] if args.key?(:id)
           @snippet = args[:snippet] if args.key?(:snippet)
