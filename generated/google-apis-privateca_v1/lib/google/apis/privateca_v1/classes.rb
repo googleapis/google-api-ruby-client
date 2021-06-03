@@ -22,6 +22,104 @@ module Google
   module Apis
     module PrivatecaV1
       
+      # URLs where a CertificateAuthority will publish content.
+      class AccessUrls
+        include Google::Apis::Core::Hashable
+      
+        # The URL where this CertificateAuthority's CA certificate is published. This
+        # will only be set for CAs that have been activated.
+        # Corresponds to the JSON property `caCertificateAccessUrl`
+        # @return [String]
+        attr_accessor :ca_certificate_access_url
+      
+        # The URLs where this CertificateAuthority's CRLs are published. This will only
+        # be set for CAs that have been activated.
+        # Corresponds to the JSON property `crlAccessUrls`
+        # @return [Array<String>]
+        attr_accessor :crl_access_urls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certificate_access_url = args[:ca_certificate_access_url] if args.key?(:ca_certificate_access_url)
+          @crl_access_urls = args[:crl_access_urls] if args.key?(:crl_access_urls)
+        end
+      end
+      
+      # Request message for CertificateAuthorityService.ActivateCertificateAuthority.
+      class ActivateCertificateAuthorityRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The signed CA certificate issued from
+        # FetchCertificateAuthorityCsrResponse.pem_csr.
+        # Corresponds to the JSON property `pemCaCertificate`
+        # @return [String]
+        attr_accessor :pem_ca_certificate
+      
+        # Optional. An ID to identify requests. Specify a unique request ID so that if
+        # you must retry your request, the server will know to ignore the request if it
+        # has already been completed. The server will guarantee that for at least 60
+        # minutes since the first request. For example, consider a situation where you
+        # make an initial request and t he request times out. If you make the request
+        # again with the same request ID, the server can check if original operation
+        # with the same request ID was received, and if so, will ignore the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Describes a subordinate CA's issuers. This is either a resource name to a
+        # known issuing CertificateAuthority, or a PEM issuer certificate chain.
+        # Corresponds to the JSON property `subordinateConfig`
+        # @return [Google::Apis::PrivatecaV1::SubordinateConfig]
+        attr_accessor :subordinate_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem_ca_certificate = args[:pem_ca_certificate] if args.key?(:pem_ca_certificate)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @subordinate_config = args[:subordinate_config] if args.key?(:subordinate_config)
+        end
+      end
+      
+      # Describes a "type" of key that may be used in a Certificate issued from a
+      # CaPool. Note that a single AllowedKeyType may refer to either a fully-
+      # qualified key algorithm, such as RSA 4096, or a family of key algorithms, such
+      # as any RSA key.
+      class AllowedKeyType
+        include Google::Apis::Core::Hashable
+      
+        # Describes an Elliptic Curve key that may be used in a Certificate issued from
+        # a CaPool.
+        # Corresponds to the JSON property `ellipticCurve`
+        # @return [Google::Apis::PrivatecaV1::EcKeyType]
+        attr_accessor :elliptic_curve
+      
+        # Describes an RSA key that may be used in a Certificate issued from a CaPool.
+        # Corresponds to the JSON property `rsa`
+        # @return [Google::Apis::PrivatecaV1::RsaKeyType]
+        attr_accessor :rsa
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @elliptic_curve = args[:elliptic_curve] if args.key?(:elliptic_curve)
+          @rsa = args[:rsa] if args.key?(:rsa)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -164,6 +262,86 @@ module Google
         end
       end
       
+      # Describes values that are relevant in a CA certificate.
+      class CaOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Refers to the "CA" X.509 extension, which is a boolean value. When
+        # this value is missing, the extension will be omitted from the CA certificate.
+        # Corresponds to the JSON property `isCa`
+        # @return [Boolean]
+        attr_accessor :is_ca
+        alias_method :is_ca?, :is_ca
+      
+        # Optional. Refers to the path length restriction X.509 extension. For a CA
+        # certificate, this value describes the depth of subordinate CA certificates
+        # that are allowed. If this value is less than 0, the request will fail. If this
+        # value is missing, the max path length will be omitted from the CA certificate.
+        # Corresponds to the JSON property `maxIssuerPathLength`
+        # @return [Fixnum]
+        attr_accessor :max_issuer_path_length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_ca = args[:is_ca] if args.key?(:is_ca)
+          @max_issuer_path_length = args[:max_issuer_path_length] if args.key?(:max_issuer_path_length)
+        end
+      end
+      
+      # A CaPool represents a group of CertificateAuthorities that form a trust anchor.
+      # A CaPool can be used to manage issuance policies for one or more
+      # CertificateAuthority resources and to rotate CA certificates in and out of the
+      # trust anchor.
+      class CaPool
+        include Google::Apis::Core::Hashable
+      
+        # Defines controls over all certificate issuance within a CaPool.
+        # Corresponds to the JSON property `issuancePolicy`
+        # @return [Google::Apis::PrivatecaV1::IssuancePolicy]
+        attr_accessor :issuance_policy
+      
+        # Optional. Labels with user-defined metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name for this CaPool in the format `projects/*/
+        # locations/*/caPools/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Options relating to the publication of each CertificateAuthority's CA
+        # certificate and CRLs and their inclusion as extensions in issued Certificates.
+        # The options set here apply to certificates issued by any CertificateAuthority
+        # in the CaPool.
+        # Corresponds to the JSON property `publishingOptions`
+        # @return [Google::Apis::PrivatecaV1::PublishingOptions]
+        attr_accessor :publishing_options
+      
+        # Required. Immutable. The Tier of this CaPool.
+        # Corresponds to the JSON property `tier`
+        # @return [String]
+        attr_accessor :tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issuance_policy = args[:issuance_policy] if args.key?(:issuance_policy)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @publishing_options = args[:publishing_options] if args.key?(:publishing_options)
+          @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -174,6 +352,662 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class CertChain
+        include Google::Apis::Core::Hashable
+      
+        # The certificates that form the CA chain, from leaf to root order.
+        # Corresponds to the JSON property `certificates`
+        # @return [Array<String>]
+        attr_accessor :certificates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificates = args[:certificates] if args.key?(:certificates)
+        end
+      end
+      
+      # A Certificate corresponds to a signed X.509 certificate issued by a
+      # CertificateAuthority.
+      class Certificate
+        include Google::Apis::Core::Hashable
+      
+        # A CertificateDescription describes an X.509 certificate or CSR that has been
+        # issued, as an alternative to using ASN.1 / X.509.
+        # Corresponds to the JSON property `certificateDescription`
+        # @return [Google::Apis::PrivatecaV1::CertificateDescription]
+        attr_accessor :certificate_description
+      
+        # Immutable. The resource name for a CertificateTemplate used to issue this
+        # certificate, in the format `projects/*/locations/*/certificateTemplates/*`. If
+        # this is specified, the caller must have the necessary permission to use this
+        # template. If this is omitted, no template will be used. This template must be
+        # in the same location as the Certificate.
+        # Corresponds to the JSON property `certificateTemplate`
+        # @return [String]
+        attr_accessor :certificate_template
+      
+        # A CertificateConfig describes an X.509 certificate or CSR that is to be
+        # created, as an alternative to using ASN.1.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::PrivatecaV1::CertificateConfig]
+        attr_accessor :config
+      
+        # Output only. The time at which this Certificate was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The resource name of the issuing CertificateAuthority in the
+        # format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        # Corresponds to the JSON property `issuerCertificateAuthority`
+        # @return [String]
+        attr_accessor :issuer_certificate_authority
+      
+        # Optional. Labels with user-defined metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Immutable. The desired lifetime of a certificate. Used to create the
+        # "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        # Note that the lifetime may be truncated if it would extend past the life of
+        # any certificate authority in the issuing chain.
+        # Corresponds to the JSON property `lifetime`
+        # @return [String]
+        attr_accessor :lifetime
+      
+        # Output only. The resource name for this Certificate in the format `projects/*/
+        # locations/*/caPools/*/certificates/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The pem-encoded, signed X.509 certificate.
+        # Corresponds to the JSON property `pemCertificate`
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        # Output only. The chain that may be used to verify the X.509 certificate.
+        # Expected to be in issuer-to-root order according to RFC 5246.
+        # Corresponds to the JSON property `pemCertificateChain`
+        # @return [Array<String>]
+        attr_accessor :pem_certificate_chain
+      
+        # Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        # Corresponds to the JSON property `pemCsr`
+        # @return [String]
+        attr_accessor :pem_csr
+      
+        # Describes fields that are relavent to the revocation of a Certificate.
+        # Corresponds to the JSON property `revocationDetails`
+        # @return [Google::Apis::PrivatecaV1::RevocationDetails]
+        attr_accessor :revocation_details
+      
+        # Immutable. Specifies how the Certificate's identity fields are to be decided.
+        # If this is omitted, the `DEFAULT` subject mode will be used.
+        # Corresponds to the JSON property `subjectMode`
+        # @return [String]
+        attr_accessor :subject_mode
+      
+        # Output only. The time at which this Certificate was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_description = args[:certificate_description] if args.key?(:certificate_description)
+          @certificate_template = args[:certificate_template] if args.key?(:certificate_template)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @issuer_certificate_authority = args[:issuer_certificate_authority] if args.key?(:issuer_certificate_authority)
+          @labels = args[:labels] if args.key?(:labels)
+          @lifetime = args[:lifetime] if args.key?(:lifetime)
+          @name = args[:name] if args.key?(:name)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+          @pem_certificate_chain = args[:pem_certificate_chain] if args.key?(:pem_certificate_chain)
+          @pem_csr = args[:pem_csr] if args.key?(:pem_csr)
+          @revocation_details = args[:revocation_details] if args.key?(:revocation_details)
+          @subject_mode = args[:subject_mode] if args.key?(:subject_mode)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A CertificateAuthority represents an individual Certificate Authority. A
+      # CertificateAuthority can be used to create Certificates.
+      class CertificateAuthority
+        include Google::Apis::Core::Hashable
+      
+        # URLs where a CertificateAuthority will publish content.
+        # Corresponds to the JSON property `accessUrls`
+        # @return [Google::Apis::PrivatecaV1::AccessUrls]
+        attr_accessor :access_urls
+      
+        # Output only. A structured description of this CertificateAuthority's CA
+        # certificate and its issuers. Ordered as self-to-root.
+        # Corresponds to the JSON property `caCertificateDescriptions`
+        # @return [Array<Google::Apis::PrivatecaV1::CertificateDescription>]
+        attr_accessor :ca_certificate_descriptions
+      
+        # A CertificateConfig describes an X.509 certificate or CSR that is to be
+        # created, as an alternative to using ASN.1.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::PrivatecaV1::CertificateConfig]
+        attr_accessor :config
+      
+        # Output only. The time at which this CertificateAuthority was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time at which this CertificateAuthority was soft deleted, if
+        # it is in the DELETED state.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. The time at which this CertificateAuthority will be permanently
+        # purged, if it is in the DELETED state.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Immutable. The name of a Cloud Storage bucket where this CertificateAuthority
+        # will publish content, such as the CA certificate and CRLs. This must be a
+        # bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.
+        # googleapis.com`). For example, to use a bucket named `my-bucket`, you would
+        # simply specify `my-bucket`. If not specified, a managed bucket will be created.
+        # Corresponds to the JSON property `gcsBucket`
+        # @return [String]
+        attr_accessor :gcs_bucket
+      
+        # A Cloud KMS key configuration that a CertificateAuthority will use.
+        # Corresponds to the JSON property `keySpec`
+        # @return [Google::Apis::PrivatecaV1::KeyVersionSpec]
+        attr_accessor :key_spec
+      
+        # Optional. Labels with user-defined metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The desired lifetime of the CA certificate. Used to create the "
+        # not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        # Corresponds to the JSON property `lifetime`
+        # @return [String]
+        attr_accessor :lifetime
+      
+        # Output only. The resource name for this CertificateAuthority in the format `
+        # projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. This CertificateAuthority's certificate chain, including the
+        # current CertificateAuthority's certificate. Ordered such that the root issuer
+        # is the final element (consistent with RFC 5246). For a self-signed CA, this
+        # will only list the current CertificateAuthority's certificate.
+        # Corresponds to the JSON property `pemCaCertificates`
+        # @return [Array<String>]
+        attr_accessor :pem_ca_certificates
+      
+        # Output only. The State for this CertificateAuthority.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Describes a subordinate CA's issuers. This is either a resource name to a
+        # known issuing CertificateAuthority, or a PEM issuer certificate chain.
+        # Corresponds to the JSON property `subordinateConfig`
+        # @return [Google::Apis::PrivatecaV1::SubordinateConfig]
+        attr_accessor :subordinate_config
+      
+        # Output only. The CaPool.Tier of the CaPool that includes this
+        # CertificateAuthority.
+        # Corresponds to the JSON property `tier`
+        # @return [String]
+        attr_accessor :tier
+      
+        # Required. Immutable. The Type of this CertificateAuthority.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The time at which this CertificateAuthority was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_urls = args[:access_urls] if args.key?(:access_urls)
+          @ca_certificate_descriptions = args[:ca_certificate_descriptions] if args.key?(:ca_certificate_descriptions)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
+          @key_spec = args[:key_spec] if args.key?(:key_spec)
+          @labels = args[:labels] if args.key?(:labels)
+          @lifetime = args[:lifetime] if args.key?(:lifetime)
+          @name = args[:name] if args.key?(:name)
+          @pem_ca_certificates = args[:pem_ca_certificates] if args.key?(:pem_ca_certificates)
+          @state = args[:state] if args.key?(:state)
+          @subordinate_config = args[:subordinate_config] if args.key?(:subordinate_config)
+          @tier = args[:tier] if args.key?(:tier)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A CertificateConfig describes an X.509 certificate or CSR that is to be
+      # created, as an alternative to using ASN.1.
+      class CertificateConfig
+        include Google::Apis::Core::Hashable
+      
+        # A PublicKey describes a public key.
+        # Corresponds to the JSON property `publicKey`
+        # @return [Google::Apis::PrivatecaV1::PublicKey]
+        attr_accessor :public_key
+      
+        # These values are used to create the distinguished name and subject alternative
+        # name fields in an X.509 certificate.
+        # Corresponds to the JSON property `subjectConfig`
+        # @return [Google::Apis::PrivatecaV1::SubjectConfig]
+        attr_accessor :subject_config
+      
+        # An X509Parameters is used to describe certain fields of an X.509 certificate,
+        # such as the key usage fields, fields specific to CA certificates, certificate
+        # policy extensions and custom extensions.
+        # Corresponds to the JSON property `x509Config`
+        # @return [Google::Apis::PrivatecaV1::X509Parameters]
+        attr_accessor :x509_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_key = args[:public_key] if args.key?(:public_key)
+          @subject_config = args[:subject_config] if args.key?(:subject_config)
+          @x509_config = args[:x509_config] if args.key?(:x509_config)
+        end
+      end
+      
+      # A CertificateDescription describes an X.509 certificate or CSR that has been
+      # issued, as an alternative to using ASN.1 / X.509.
+      class CertificateDescription
+        include Google::Apis::Core::Hashable
+      
+        # Describes lists of issuer CA certificate URLs that appear in the "Authority
+        # Information Access" extension in the certificate.
+        # Corresponds to the JSON property `aiaIssuingCertificateUrls`
+        # @return [Array<String>]
+        attr_accessor :aia_issuing_certificate_urls
+      
+        # A KeyId identifies a specific public key, usually by hashing the public key.
+        # Corresponds to the JSON property `authorityKeyId`
+        # @return [Google::Apis::PrivatecaV1::KeyId]
+        attr_accessor :authority_key_id
+      
+        # A group of fingerprints for the x509 certificate.
+        # Corresponds to the JSON property `certFingerprint`
+        # @return [Google::Apis::PrivatecaV1::CertificateFingerprint]
+        attr_accessor :cert_fingerprint
+      
+        # Describes a list of locations to obtain CRL information, i.e. the
+        # DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#
+        # section-4.2.1.13
+        # Corresponds to the JSON property `crlDistributionPoints`
+        # @return [Array<String>]
+        attr_accessor :crl_distribution_points
+      
+        # A PublicKey describes a public key.
+        # Corresponds to the JSON property `publicKey`
+        # @return [Google::Apis::PrivatecaV1::PublicKey]
+        attr_accessor :public_key
+      
+        # These values describe fields in an issued X.509 certificate such as the
+        # distinguished name, subject alternative names, serial number, and lifetime.
+        # Corresponds to the JSON property `subjectDescription`
+        # @return [Google::Apis::PrivatecaV1::SubjectDescription]
+        attr_accessor :subject_description
+      
+        # A KeyId identifies a specific public key, usually by hashing the public key.
+        # Corresponds to the JSON property `subjectKeyId`
+        # @return [Google::Apis::PrivatecaV1::KeyId]
+        attr_accessor :subject_key_id
+      
+        # An X509Parameters is used to describe certain fields of an X.509 certificate,
+        # such as the key usage fields, fields specific to CA certificates, certificate
+        # policy extensions and custom extensions.
+        # Corresponds to the JSON property `x509Description`
+        # @return [Google::Apis::PrivatecaV1::X509Parameters]
+        attr_accessor :x509_description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aia_issuing_certificate_urls = args[:aia_issuing_certificate_urls] if args.key?(:aia_issuing_certificate_urls)
+          @authority_key_id = args[:authority_key_id] if args.key?(:authority_key_id)
+          @cert_fingerprint = args[:cert_fingerprint] if args.key?(:cert_fingerprint)
+          @crl_distribution_points = args[:crl_distribution_points] if args.key?(:crl_distribution_points)
+          @public_key = args[:public_key] if args.key?(:public_key)
+          @subject_description = args[:subject_description] if args.key?(:subject_description)
+          @subject_key_id = args[:subject_key_id] if args.key?(:subject_key_id)
+          @x509_description = args[:x509_description] if args.key?(:x509_description)
+        end
+      end
+      
+      # Describes a set of X.509 extensions that may be part of some certificate
+      # issuance controls.
+      class CertificateExtensionConstraints
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A set of ObjectIds identifying custom X.509 extensions. Will be
+        # combined with known_extensions to determine the full set of X.509 extensions.
+        # Corresponds to the JSON property `additionalExtensions`
+        # @return [Array<Google::Apis::PrivatecaV1::ObjectIdProp>]
+        attr_accessor :additional_extensions
+      
+        # Optional. A set of named X.509 extensions. Will be combined with
+        # additional_extensions to determine the full set of X.509 extensions.
+        # Corresponds to the JSON property `knownExtensions`
+        # @return [Array<String>]
+        attr_accessor :known_extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_extensions = args[:additional_extensions] if args.key?(:additional_extensions)
+          @known_extensions = args[:known_extensions] if args.key?(:known_extensions)
+        end
+      end
+      
+      # A group of fingerprints for the x509 certificate.
+      class CertificateFingerprint
+        include Google::Apis::Core::Hashable
+      
+        # The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+        # Corresponds to the JSON property `sha256Hash`
+        # @return [String]
+        attr_accessor :sha256_hash
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sha256_hash = args[:sha256_hash] if args.key?(:sha256_hash)
+        end
+      end
+      
+      # Describes constraints on a Certificate's Subject and SubjectAltNames.
+      class CertificateIdentityConstraints
+        include Google::Apis::Core::Hashable
+      
+        # Required. If this is true, the SubjectAltNames extension may be copied from a
+        # certificate request into the signed certificate. Otherwise, the requested
+        # SubjectAltNames will be discarded.
+        # Corresponds to the JSON property `allowSubjectAltNamesPassthrough`
+        # @return [Boolean]
+        attr_accessor :allow_subject_alt_names_passthrough
+        alias_method :allow_subject_alt_names_passthrough?, :allow_subject_alt_names_passthrough
+      
+        # Required. If this is true, the Subject field may be copied from a certificate
+        # request into the signed certificate. Otherwise, the requested Subject will be
+        # discarded.
+        # Corresponds to the JSON property `allowSubjectPassthrough`
+        # @return [Boolean]
+        attr_accessor :allow_subject_passthrough
+        alias_method :allow_subject_passthrough?, :allow_subject_passthrough
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `celExpression`
+        # @return [Google::Apis::PrivatecaV1::Expr]
+        attr_accessor :cel_expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_subject_alt_names_passthrough = args[:allow_subject_alt_names_passthrough] if args.key?(:allow_subject_alt_names_passthrough)
+          @allow_subject_passthrough = args[:allow_subject_passthrough] if args.key?(:allow_subject_passthrough)
+          @cel_expression = args[:cel_expression] if args.key?(:cel_expression)
+        end
+      end
+      
+      # A CertificateRevocationList corresponds to a signed X.509 certificate
+      # Revocation List (CRL). A CRL contains the serial numbers of certificates that
+      # should no longer be trusted.
+      class CertificateRevocationList
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The location where 'pem_crl' can be accessed.
+        # Corresponds to the JSON property `accessUrl`
+        # @return [String]
+        attr_accessor :access_url
+      
+        # Output only. The time at which this CertificateRevocationList was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Labels with user-defined metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name for this CertificateRevocationList in the
+        # format `projects/*/locations/*/caPools/*certificateAuthorities/*/
+        # certificateRevocationLists/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The PEM-encoded X.509 CRL.
+        # Corresponds to the JSON property `pemCrl`
+        # @return [String]
+        attr_accessor :pem_crl
+      
+        # Output only. The revision ID of this CertificateRevocationList. A new revision
+        # is committed whenever a new CRL is published. The format is an 8-character
+        # hexadecimal string.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # Output only. The revoked serial numbers that appear in pem_crl.
+        # Corresponds to the JSON property `revokedCertificates`
+        # @return [Array<Google::Apis::PrivatecaV1::RevokedCertificate>]
+        attr_accessor :revoked_certificates
+      
+        # Output only. The CRL sequence number that appears in pem_crl.
+        # Corresponds to the JSON property `sequenceNumber`
+        # @return [Fixnum]
+        attr_accessor :sequence_number
+      
+        # Output only. The State for this CertificateRevocationList.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which this CertificateRevocationList was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_url = args[:access_url] if args.key?(:access_url)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @pem_crl = args[:pem_crl] if args.key?(:pem_crl)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @revoked_certificates = args[:revoked_certificates] if args.key?(:revoked_certificates)
+          @sequence_number = args[:sequence_number] if args.key?(:sequence_number)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A CertificateTemplate refers to a managed template for certificate issuance.
+      class CertificateTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which this CertificateTemplate was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of scenarios this template is intended
+        # for.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Describes constraints on a Certificate's Subject and SubjectAltNames.
+        # Corresponds to the JSON property `identityConstraints`
+        # @return [Google::Apis::PrivatecaV1::CertificateIdentityConstraints]
+        attr_accessor :identity_constraints
+      
+        # Optional. Labels with user-defined metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name for this CertificateTemplate in the format `
+        # projects/*/locations/*/certificateTemplates/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Describes a set of X.509 extensions that may be part of some certificate
+        # issuance controls.
+        # Corresponds to the JSON property `passthroughExtensions`
+        # @return [Google::Apis::PrivatecaV1::CertificateExtensionConstraints]
+        attr_accessor :passthrough_extensions
+      
+        # An X509Parameters is used to describe certain fields of an X.509 certificate,
+        # such as the key usage fields, fields specific to CA certificates, certificate
+        # policy extensions and custom extensions.
+        # Corresponds to the JSON property `predefinedValues`
+        # @return [Google::Apis::PrivatecaV1::X509Parameters]
+        attr_accessor :predefined_values
+      
+        # Output only. The time at which this CertificateTemplate was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @identity_constraints = args[:identity_constraints] if args.key?(:identity_constraints)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @passthrough_extensions = args[:passthrough_extensions] if args.key?(:passthrough_extensions)
+          @predefined_values = args[:predefined_values] if args.key?(:predefined_values)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for CertificateAuthorityService.DisableCertificateAuthority.
+      class DisableCertificateAuthorityRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An ID to identify requests. Specify a unique request ID so that if
+        # you must retry your request, the server will know to ignore the request if it
+        # has already been completed. The server will guarantee that for at least 60
+        # minutes since the first request. For example, consider a situation where you
+        # make an initial request and t he request times out. If you make the request
+        # again with the same request ID, the server can check if original operation
+        # with the same request ID was received, and if so, will ignore the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Describes an Elliptic Curve key that may be used in a Certificate issued from
+      # a CaPool.
+      class EcKeyType
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A signature algorithm that must be used. If this is omitted, any EC-
+        # based signature algorithm will be allowed.
+        # Corresponds to the JSON property `signatureAlgorithm`
+        # @return [String]
+        attr_accessor :signature_algorithm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signature_algorithm = args[:signature_algorithm] if args.key?(:signature_algorithm)
         end
       end
       
@@ -191,6 +1025,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for CertificateAuthorityService.EnableCertificateAuthority.
+      class EnableCertificateAuthorityRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An ID to identify requests. Specify a unique request ID so that if
+        # you must retry your request, the server will know to ignore the request if it
+        # has already been completed. The server will guarantee that for at least 60
+        # minutes since the first request. For example, consider a situation where you
+        # make an initial request and t he request times out. If you make the request
+        # again with the same request ID, the server can check if original operation
+        # with the same request ID was received, and if so, will ignore the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
@@ -245,6 +1107,548 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common
+      # OIDs that could be specified as an extended key usage value.
+      class ExtendedKeyUsageOptions
+        include Google::Apis::Core::Hashable
+      
+        # Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client
+        # authentication", though regularly used for non-WWW TLS.
+        # Corresponds to the JSON property `clientAuth`
+        # @return [Boolean]
+        attr_accessor :client_auth
+        alias_method :client_auth?, :client_auth
+      
+        # Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of
+        # downloadable executable code client authentication".
+        # Corresponds to the JSON property `codeSigning`
+        # @return [Boolean]
+        attr_accessor :code_signing
+        alias_method :code_signing?, :code_signing
+      
+        # Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email
+        # protection".
+        # Corresponds to the JSON property `emailProtection`
+        # @return [Boolean]
+        attr_accessor :email_protection
+        alias_method :email_protection?, :email_protection
+      
+        # Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP
+        # responses".
+        # Corresponds to the JSON property `ocspSigning`
+        # @return [Boolean]
+        attr_accessor :ocsp_signing
+        alias_method :ocsp_signing?, :ocsp_signing
+      
+        # Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server
+        # authentication", though regularly used for non-WWW TLS.
+        # Corresponds to the JSON property `serverAuth`
+        # @return [Boolean]
+        attr_accessor :server_auth
+        alias_method :server_auth?, :server_auth
+      
+        # Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the
+        # hash of an object to a time".
+        # Corresponds to the JSON property `timeStamping`
+        # @return [Boolean]
+        attr_accessor :time_stamping
+        alias_method :time_stamping?, :time_stamping
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_auth = args[:client_auth] if args.key?(:client_auth)
+          @code_signing = args[:code_signing] if args.key?(:code_signing)
+          @email_protection = args[:email_protection] if args.key?(:email_protection)
+          @ocsp_signing = args[:ocsp_signing] if args.key?(:ocsp_signing)
+          @server_auth = args[:server_auth] if args.key?(:server_auth)
+          @time_stamping = args[:time_stamping] if args.key?(:time_stamping)
+        end
+      end
+      
+      # Request message for CertificateAuthorityService.FetchCaCerts.
+      class FetchCaCertsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An ID to identify requests. Specify a unique request ID so that if
+        # you must retry your request, the server will know to ignore the request if it
+        # has already been completed. The server will guarantee that for at least 60
+        # minutes since the first request. For example, consider a situation where you
+        # make an initial request and t he request times out. If you make the request
+        # again with the same request ID, the server can check if original operation
+        # with the same request ID was received, and if so, will ignore the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Response message for CertificateAuthorityService.FetchCaCerts.
+      class FetchCaCertsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The PEM encoded CA certificate chains of all ACTIVE CertificateAuthority
+        # resources in this CaPool.
+        # Corresponds to the JSON property `caCerts`
+        # @return [Array<Google::Apis::PrivatecaV1::CertChain>]
+        attr_accessor :ca_certs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certs = args[:ca_certs] if args.key?(:ca_certs)
+        end
+      end
+      
+      # Response message for CertificateAuthorityService.FetchCertificateAuthorityCsr.
+      class FetchCertificateAuthorityCsrResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The PEM-encoded signed certificate signing request (CSR).
+        # Corresponds to the JSON property `pemCsr`
+        # @return [String]
+        attr_accessor :pem_csr
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem_csr = args[:pem_csr] if args.key?(:pem_csr)
+        end
+      end
+      
+      # IssuanceModes specifies the allowed ways in which Certificates may be
+      # requested from this CaPool.
+      class IssuanceModes
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When true, allows callers to create Certificates by specifying a
+        # CertificateConfig.
+        # Corresponds to the JSON property `allowConfigBasedIssuance`
+        # @return [Boolean]
+        attr_accessor :allow_config_based_issuance
+        alias_method :allow_config_based_issuance?, :allow_config_based_issuance
+      
+        # Optional. When true, allows callers to create Certificates by specifying a CSR.
+        # Corresponds to the JSON property `allowCsrBasedIssuance`
+        # @return [Boolean]
+        attr_accessor :allow_csr_based_issuance
+        alias_method :allow_csr_based_issuance?, :allow_csr_based_issuance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_config_based_issuance = args[:allow_config_based_issuance] if args.key?(:allow_config_based_issuance)
+          @allow_csr_based_issuance = args[:allow_csr_based_issuance] if args.key?(:allow_csr_based_issuance)
+        end
+      end
+      
+      # Defines controls over all certificate issuance within a CaPool.
+      class IssuancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # IssuanceModes specifies the allowed ways in which Certificates may be
+        # requested from this CaPool.
+        # Corresponds to the JSON property `allowedIssuanceModes`
+        # @return [Google::Apis::PrivatecaV1::IssuanceModes]
+        attr_accessor :allowed_issuance_modes
+      
+        # Optional. If any AllowedKeyType is specified, then the certificate request's
+        # public key must match one of the key types listed here. Otherwise, any key may
+        # be used.
+        # Corresponds to the JSON property `allowedKeyTypes`
+        # @return [Array<Google::Apis::PrivatecaV1::AllowedKeyType>]
+        attr_accessor :allowed_key_types
+      
+        # An X509Parameters is used to describe certain fields of an X.509 certificate,
+        # such as the key usage fields, fields specific to CA certificates, certificate
+        # policy extensions and custom extensions.
+        # Corresponds to the JSON property `baselineValues`
+        # @return [Google::Apis::PrivatecaV1::X509Parameters]
+        attr_accessor :baseline_values
+      
+        # Describes constraints on a Certificate's Subject and SubjectAltNames.
+        # Corresponds to the JSON property `identityConstraints`
+        # @return [Google::Apis::PrivatecaV1::CertificateIdentityConstraints]
+        attr_accessor :identity_constraints
+      
+        # Optional. The maximum lifetime allowed for issued Certificates. Note that if
+        # the issuing CertificateAuthority expires before a Certificate's requested
+        # maximum_lifetime, the effective lifetime will be explicitly truncated to match
+        # it.
+        # Corresponds to the JSON property `maximumLifetime`
+        # @return [String]
+        attr_accessor :maximum_lifetime
+      
+        # Describes a set of X.509 extensions that may be part of some certificate
+        # issuance controls.
+        # Corresponds to the JSON property `passthroughExtensions`
+        # @return [Google::Apis::PrivatecaV1::CertificateExtensionConstraints]
+        attr_accessor :passthrough_extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_issuance_modes = args[:allowed_issuance_modes] if args.key?(:allowed_issuance_modes)
+          @allowed_key_types = args[:allowed_key_types] if args.key?(:allowed_key_types)
+          @baseline_values = args[:baseline_values] if args.key?(:baseline_values)
+          @identity_constraints = args[:identity_constraints] if args.key?(:identity_constraints)
+          @maximum_lifetime = args[:maximum_lifetime] if args.key?(:maximum_lifetime)
+          @passthrough_extensions = args[:passthrough_extensions] if args.key?(:passthrough_extensions)
+        end
+      end
+      
+      # A KeyId identifies a specific public key, usually by hashing the public key.
+      class KeyId
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The value of this KeyId encoded in lowercase hexadecimal. This is
+        # most likely the 160 bit SHA-1 hash of the public key.
+        # Corresponds to the JSON property `keyId`
+        # @return [String]
+        attr_accessor :key_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_id = args[:key_id] if args.key?(:key_id)
+        end
+      end
+      
+      # A KeyUsage describes key usage values that may appear in an X.509 certificate.
+      class KeyUsage
+        include Google::Apis::Core::Hashable
+      
+        # KeyUsage.KeyUsageOptions corresponds to the key usage values described in
+        # https://tools.ietf.org/html/rfc5280#section-4.2.1.3.
+        # Corresponds to the JSON property `baseKeyUsage`
+        # @return [Google::Apis::PrivatecaV1::KeyUsageOptions]
+        attr_accessor :base_key_usage
+      
+        # KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common
+        # OIDs that could be specified as an extended key usage value.
+        # Corresponds to the JSON property `extendedKeyUsage`
+        # @return [Google::Apis::PrivatecaV1::ExtendedKeyUsageOptions]
+        attr_accessor :extended_key_usage
+      
+        # Used to describe extended key usages that are not listed in the KeyUsage.
+        # ExtendedKeyUsageOptions message.
+        # Corresponds to the JSON property `unknownExtendedKeyUsages`
+        # @return [Array<Google::Apis::PrivatecaV1::ObjectIdProp>]
+        attr_accessor :unknown_extended_key_usages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_key_usage = args[:base_key_usage] if args.key?(:base_key_usage)
+          @extended_key_usage = args[:extended_key_usage] if args.key?(:extended_key_usage)
+          @unknown_extended_key_usages = args[:unknown_extended_key_usages] if args.key?(:unknown_extended_key_usages)
+        end
+      end
+      
+      # KeyUsage.KeyUsageOptions corresponds to the key usage values described in
+      # https://tools.ietf.org/html/rfc5280#section-4.2.1.3.
+      class KeyUsageOptions
+        include Google::Apis::Core::Hashable
+      
+        # The key may be used to sign certificates.
+        # Corresponds to the JSON property `certSign`
+        # @return [Boolean]
+        attr_accessor :cert_sign
+        alias_method :cert_sign?, :cert_sign
+      
+        # The key may be used for cryptographic commitments. Note that this may also be
+        # referred to as "non-repudiation".
+        # Corresponds to the JSON property `contentCommitment`
+        # @return [Boolean]
+        attr_accessor :content_commitment
+        alias_method :content_commitment?, :content_commitment
+      
+        # The key may be used sign certificate revocation lists.
+        # Corresponds to the JSON property `crlSign`
+        # @return [Boolean]
+        attr_accessor :crl_sign
+        alias_method :crl_sign?, :crl_sign
+      
+        # The key may be used to encipher data.
+        # Corresponds to the JSON property `dataEncipherment`
+        # @return [Boolean]
+        attr_accessor :data_encipherment
+        alias_method :data_encipherment?, :data_encipherment
+      
+        # The key may be used to decipher only.
+        # Corresponds to the JSON property `decipherOnly`
+        # @return [Boolean]
+        attr_accessor :decipher_only
+        alias_method :decipher_only?, :decipher_only
+      
+        # The key may be used for digital signatures.
+        # Corresponds to the JSON property `digitalSignature`
+        # @return [Boolean]
+        attr_accessor :digital_signature
+        alias_method :digital_signature?, :digital_signature
+      
+        # The key may be used to encipher only.
+        # Corresponds to the JSON property `encipherOnly`
+        # @return [Boolean]
+        attr_accessor :encipher_only
+        alias_method :encipher_only?, :encipher_only
+      
+        # The key may be used in a key agreement protocol.
+        # Corresponds to the JSON property `keyAgreement`
+        # @return [Boolean]
+        attr_accessor :key_agreement
+        alias_method :key_agreement?, :key_agreement
+      
+        # The key may be used to encipher other keys.
+        # Corresponds to the JSON property `keyEncipherment`
+        # @return [Boolean]
+        attr_accessor :key_encipherment
+        alias_method :key_encipherment?, :key_encipherment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cert_sign = args[:cert_sign] if args.key?(:cert_sign)
+          @content_commitment = args[:content_commitment] if args.key?(:content_commitment)
+          @crl_sign = args[:crl_sign] if args.key?(:crl_sign)
+          @data_encipherment = args[:data_encipherment] if args.key?(:data_encipherment)
+          @decipher_only = args[:decipher_only] if args.key?(:decipher_only)
+          @digital_signature = args[:digital_signature] if args.key?(:digital_signature)
+          @encipher_only = args[:encipher_only] if args.key?(:encipher_only)
+          @key_agreement = args[:key_agreement] if args.key?(:key_agreement)
+          @key_encipherment = args[:key_encipherment] if args.key?(:key_encipherment)
+        end
+      end
+      
+      # A Cloud KMS key configuration that a CertificateAuthority will use.
+      class KeyVersionSpec
+        include Google::Apis::Core::Hashable
+      
+        # The algorithm to use for creating a managed Cloud KMS key for a for a
+        # simplified experience. All managed keys will be have their ProtectionLevel as `
+        # HSM`.
+        # Corresponds to the JSON property `algorithm`
+        # @return [String]
+        attr_accessor :algorithm
+      
+        # The resource name for an existing Cloud KMS CryptoKeyVersion in the format `
+        # projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This
+        # option enables full flexibility in the key's capabilities and properties.
+        # Corresponds to the JSON property `cloudKmsKeyVersion`
+        # @return [String]
+        attr_accessor :cloud_kms_key_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @cloud_kms_key_version = args[:cloud_kms_key_version] if args.key?(:cloud_kms_key_version)
+        end
+      end
+      
+      # Response message for CertificateAuthorityService.ListCaPools.
+      class ListCaPoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of CaPools.
+        # Corresponds to the JSON property `caPools`
+        # @return [Array<Google::Apis::PrivatecaV1::CaPool>]
+        attr_accessor :ca_pools
+      
+        # A token to retrieve next page of results. Pass this value in
+        # ListCertificateAuthoritiesRequest.next_page_token to retrieve the next page of
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of locations (e.g. "us-west1") that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_pools = args[:ca_pools] if args.key?(:ca_pools)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for CertificateAuthorityService.ListCertificateAuthorities.
+      class ListCertificateAuthoritiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of CertificateAuthorities.
+        # Corresponds to the JSON property `certificateAuthorities`
+        # @return [Array<Google::Apis::PrivatecaV1::CertificateAuthority>]
+        attr_accessor :certificate_authorities
+      
+        # A token to retrieve next page of results. Pass this value in
+        # ListCertificateAuthoritiesRequest.next_page_token to retrieve the next page of
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of locations (e.g. "us-west1") that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_authorities = args[:certificate_authorities] if args.key?(:certificate_authorities)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for CertificateAuthorityService.
+      # ListCertificateRevocationLists.
+      class ListCertificateRevocationListsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of CertificateRevocationLists.
+        # Corresponds to the JSON property `certificateRevocationLists`
+        # @return [Array<Google::Apis::PrivatecaV1::CertificateRevocationList>]
+        attr_accessor :certificate_revocation_lists
+      
+        # A token to retrieve next page of results. Pass this value in
+        # ListCertificateRevocationListsRequest.next_page_token to retrieve the next
+        # page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of locations (e.g. "us-west1") that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_revocation_lists = args[:certificate_revocation_lists] if args.key?(:certificate_revocation_lists)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for CertificateAuthorityService.ListCertificateTemplates.
+      class ListCertificateTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of CertificateTemplates.
+        # Corresponds to the JSON property `certificateTemplates`
+        # @return [Array<Google::Apis::PrivatecaV1::CertificateTemplate>]
+        attr_accessor :certificate_templates
+      
+        # A token to retrieve next page of results. Pass this value in
+        # ListCertificateTemplatesRequest.next_page_token to retrieve the next page of
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of locations (e.g. "us-west1") that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_templates = args[:certificate_templates] if args.key?(:certificate_templates)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for CertificateAuthorityService.ListCertificates.
+      class ListCertificatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Certificates.
+        # Corresponds to the JSON property `certificates`
+        # @return [Array<Google::Apis::PrivatecaV1::Certificate>]
+        attr_accessor :certificates
+      
+        # A token to retrieve next page of results. Pass this value in
+        # ListCertificatesRequest.next_page_token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of locations (e.g. "us-west1") that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificates = args[:certificates] if args.key?(:certificates)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -342,6 +1746,27 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # An ObjectId specifies an object identifier (OID). These provide context and
+      # describe types in ASN.1 messages.
+      class ObjectIdProp
+        include Google::Apis::Core::Hashable
+      
+        # Required. The parts of an OID path. The most significant parts of the path
+        # come first.
+        # Corresponds to the JSON property `objectIdPath`
+        # @return [Array<Fixnum>]
+        attr_accessor :object_id_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_path = args[:object_id_path] if args.key?(:object_id_path)
         end
       end
       
@@ -556,6 +1981,72 @@ module Google
         end
       end
       
+      # A PublicKey describes a public key.
+      class PublicKey
+        include Google::Apis::Core::Hashable
+      
+        # Required. The format of the public key.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Required. A public key. The padding and encoding must match with the `
+        # KeyFormat` value specified for the `format` field.
+        # Corresponds to the JSON property `key`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
+      # Options relating to the publication of each CertificateAuthority's CA
+      # certificate and CRLs and their inclusion as extensions in issued Certificates.
+      # The options set here apply to certificates issued by any CertificateAuthority
+      # in the CaPool.
+      class PublishingOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When true, publishes each CertificateAuthority's CA certificate and
+        # includes its URL in the "Authority Information Access" X.509 extension in all
+        # issued Certificates. If this is false, the CA certificate will not be
+        # published and the corresponding X.509 extension will not be written in issued
+        # certificates.
+        # Corresponds to the JSON property `publishCaCert`
+        # @return [Boolean]
+        attr_accessor :publish_ca_cert
+        alias_method :publish_ca_cert?, :publish_ca_cert
+      
+        # Optional. When true, publishes each CertificateAuthority's CRL and includes
+        # its URL in the "CRL Distribution Points" X.509 extension in all issued
+        # Certificates. If this is false, CRLs will not be published and the
+        # corresponding X.509 extension will not be written in issued certificates. CRLs
+        # will expire 7 days from their creation. However, we will rebuild daily. CRLs
+        # are also rebuilt shortly after a certificate is revoked.
+        # Corresponds to the JSON property `publishCrl`
+        # @return [Boolean]
+        attr_accessor :publish_crl
+        alias_method :publish_crl?, :publish_crl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publish_ca_cert = args[:publish_ca_cert] if args.key?(:publish_ca_cert)
+          @publish_crl = args[:publish_crl] if args.key?(:publish_crl)
+        end
+      end
+      
       # Operation metadata returned by the CLH during resource state reconciliation.
       class ReconciliationOperationMetadata
         include Google::Apis::Core::Hashable
@@ -579,6 +2070,126 @@ module Google
         def update!(**args)
           @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
           @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
+        end
+      end
+      
+      # Describes fields that are relavent to the revocation of a Certificate.
+      class RevocationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Indicates why a Certificate was revoked.
+        # Corresponds to the JSON property `revocationState`
+        # @return [String]
+        attr_accessor :revocation_state
+      
+        # The time at which this Certificate was revoked.
+        # Corresponds to the JSON property `revocationTime`
+        # @return [String]
+        attr_accessor :revocation_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revocation_state = args[:revocation_state] if args.key?(:revocation_state)
+          @revocation_time = args[:revocation_time] if args.key?(:revocation_time)
+        end
+      end
+      
+      # Request message for CertificateAuthorityService.RevokeCertificate.
+      class RevokeCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The RevocationReason for revoking this certificate.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Optional. An ID to identify requests. Specify a unique request ID so that if
+        # you must retry your request, the server will know to ignore the request if it
+        # has already been completed. The server will guarantee that for at least 60
+        # minutes since the first request. For example, consider a situation where you
+        # make an initial request and t he request times out. If you make the request
+        # again with the same request ID, the server can check if original operation
+        # with the same request ID was received, and if so, will ignore the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Describes a revoked Certificate.
+      class RevokedCertificate
+        include Google::Apis::Core::Hashable
+      
+        # The resource name for the Certificate in the format `projects/*/locations/*/
+        # caPools/*/certificates/*`.
+        # Corresponds to the JSON property `certificate`
+        # @return [String]
+        attr_accessor :certificate
+      
+        # The serial number of the Certificate.
+        # Corresponds to the JSON property `hexSerialNumber`
+        # @return [String]
+        attr_accessor :hex_serial_number
+      
+        # The reason the Certificate was revoked.
+        # Corresponds to the JSON property `revocationReason`
+        # @return [String]
+        attr_accessor :revocation_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @hex_serial_number = args[:hex_serial_number] if args.key?(:hex_serial_number)
+          @revocation_reason = args[:revocation_reason] if args.key?(:revocation_reason)
+        end
+      end
+      
+      # Describes an RSA key that may be used in a Certificate issued from a CaPool.
+      class RsaKeyType
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum allowed RSA modulus size, in bits. If this is not set,
+        # or if set to zero, the service will not enforce an explicit upper bound on RSA
+        # modulus sizes.
+        # Corresponds to the JSON property `maxModulusSize`
+        # @return [Fixnum]
+        attr_accessor :max_modulus_size
+      
+        # Optional. The minimum allowed RSA modulus size, in bits. If this is not set,
+        # or if set to zero, the service-level min RSA modulus size will continue to
+        # apply.
+        # Corresponds to the JSON property `minModulusSize`
+        # @return [Fixnum]
+        attr_accessor :min_modulus_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_modulus_size = args[:max_modulus_size] if args.key?(:max_modulus_size)
+          @min_modulus_size = args[:min_modulus_size] if args.key?(:min_modulus_size)
         end
       end
       
@@ -674,6 +2285,246 @@ module Google
         end
       end
       
+      # Subject describes parts of a distinguished name that, in turn, describes the
+      # subject of the certificate.
+      class Subject
+        include Google::Apis::Core::Hashable
+      
+        # The "common name" of the subject.
+        # Corresponds to the JSON property `commonName`
+        # @return [String]
+        attr_accessor :common_name
+      
+        # The country code of the subject.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # The locality or city of the subject.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # The organization of the subject.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
+        # The organizational_unit of the subject.
+        # Corresponds to the JSON property `organizationalUnit`
+        # @return [String]
+        attr_accessor :organizational_unit
+      
+        # The postal code of the subject.
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # The province, territory, or regional state of the subject.
+        # Corresponds to the JSON property `province`
+        # @return [String]
+        attr_accessor :province
+      
+        # The street address of the subject.
+        # Corresponds to the JSON property `streetAddress`
+        # @return [String]
+        attr_accessor :street_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_name = args[:common_name] if args.key?(:common_name)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @locality = args[:locality] if args.key?(:locality)
+          @organization = args[:organization] if args.key?(:organization)
+          @organizational_unit = args[:organizational_unit] if args.key?(:organizational_unit)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @province = args[:province] if args.key?(:province)
+          @street_address = args[:street_address] if args.key?(:street_address)
+        end
+      end
+      
+      # SubjectAltNames corresponds to a more modern way of listing what the asserted
+      # identity is in a certificate (i.e., compared to the "common name" in the
+      # distinguished name).
+      class SubjectAltNames
+        include Google::Apis::Core::Hashable
+      
+        # Contains additional subject alternative name values.
+        # Corresponds to the JSON property `customSans`
+        # @return [Array<Google::Apis::PrivatecaV1::X509Extension>]
+        attr_accessor :custom_sans
+      
+        # Contains only valid, fully-qualified host names.
+        # Corresponds to the JSON property `dnsNames`
+        # @return [Array<String>]
+        attr_accessor :dns_names
+      
+        # Contains only valid RFC 2822 E-mail addresses.
+        # Corresponds to the JSON property `emailAddresses`
+        # @return [Array<String>]
+        attr_accessor :email_addresses
+      
+        # Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        # Corresponds to the JSON property `ipAddresses`
+        # @return [Array<String>]
+        attr_accessor :ip_addresses
+      
+        # Contains only valid RFC 3986 URIs.
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_sans = args[:custom_sans] if args.key?(:custom_sans)
+          @dns_names = args[:dns_names] if args.key?(:dns_names)
+          @email_addresses = args[:email_addresses] if args.key?(:email_addresses)
+          @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
+          @uris = args[:uris] if args.key?(:uris)
+        end
+      end
+      
+      # These values are used to create the distinguished name and subject alternative
+      # name fields in an X.509 certificate.
+      class SubjectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Subject describes parts of a distinguished name that, in turn, describes the
+        # subject of the certificate.
+        # Corresponds to the JSON property `subject`
+        # @return [Google::Apis::PrivatecaV1::Subject]
+        attr_accessor :subject
+      
+        # SubjectAltNames corresponds to a more modern way of listing what the asserted
+        # identity is in a certificate (i.e., compared to the "common name" in the
+        # distinguished name).
+        # Corresponds to the JSON property `subjectAltName`
+        # @return [Google::Apis::PrivatecaV1::SubjectAltNames]
+        attr_accessor :subject_alt_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @subject = args[:subject] if args.key?(:subject)
+          @subject_alt_name = args[:subject_alt_name] if args.key?(:subject_alt_name)
+        end
+      end
+      
+      # These values describe fields in an issued X.509 certificate such as the
+      # distinguished name, subject alternative names, serial number, and lifetime.
+      class SubjectDescription
+        include Google::Apis::Core::Hashable
+      
+        # The serial number encoded in lowercase hexadecimal.
+        # Corresponds to the JSON property `hexSerialNumber`
+        # @return [String]
+        attr_accessor :hex_serial_number
+      
+        # For convenience, the actual lifetime of an issued certificate. Corresponds to '
+        # not_after_time' - 'not_before_time'.
+        # Corresponds to the JSON property `lifetime`
+        # @return [String]
+        attr_accessor :lifetime
+      
+        # The time at which the certificate expires.
+        # Corresponds to the JSON property `notAfterTime`
+        # @return [String]
+        attr_accessor :not_after_time
+      
+        # The time at which the certificate becomes valid.
+        # Corresponds to the JSON property `notBeforeTime`
+        # @return [String]
+        attr_accessor :not_before_time
+      
+        # Subject describes parts of a distinguished name that, in turn, describes the
+        # subject of the certificate.
+        # Corresponds to the JSON property `subject`
+        # @return [Google::Apis::PrivatecaV1::Subject]
+        attr_accessor :subject
+      
+        # SubjectAltNames corresponds to a more modern way of listing what the asserted
+        # identity is in a certificate (i.e., compared to the "common name" in the
+        # distinguished name).
+        # Corresponds to the JSON property `subjectAltName`
+        # @return [Google::Apis::PrivatecaV1::SubjectAltNames]
+        attr_accessor :subject_alt_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hex_serial_number = args[:hex_serial_number] if args.key?(:hex_serial_number)
+          @lifetime = args[:lifetime] if args.key?(:lifetime)
+          @not_after_time = args[:not_after_time] if args.key?(:not_after_time)
+          @not_before_time = args[:not_before_time] if args.key?(:not_before_time)
+          @subject = args[:subject] if args.key?(:subject)
+          @subject_alt_name = args[:subject_alt_name] if args.key?(:subject_alt_name)
+        end
+      end
+      
+      # Describes a subordinate CA's issuers. This is either a resource name to a
+      # known issuing CertificateAuthority, or a PEM issuer certificate chain.
+      class SubordinateConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. This can refer to a CertificateAuthority in the same project that
+        # was used to create a subordinate CertificateAuthority. This field is used for
+        # information and usability purposes only. The resource name is in the format `
+        # projects/*/locations/*/caPools/*/certificateAuthorities/*`.
+        # Corresponds to the JSON property `certificateAuthority`
+        # @return [String]
+        attr_accessor :certificate_authority
+      
+        # This message describes a subordinate CA's issuer certificate chain. This
+        # wrapper exists for compatibility reasons.
+        # Corresponds to the JSON property `pemIssuerChain`
+        # @return [Google::Apis::PrivatecaV1::SubordinateConfigChain]
+        attr_accessor :pem_issuer_chain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_authority = args[:certificate_authority] if args.key?(:certificate_authority)
+          @pem_issuer_chain = args[:pem_issuer_chain] if args.key?(:pem_issuer_chain)
+        end
+      end
+      
+      # This message describes a subordinate CA's issuer certificate chain. This
+      # wrapper exists for compatibility reasons.
+      class SubordinateConfigChain
+        include Google::Apis::Core::Hashable
+      
+        # Required. Expected to be in leaf-to-root order according to RFC 5246.
+        # Corresponds to the JSON property `pemCertificates`
+        # @return [Array<String>]
+        attr_accessor :pem_certificates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem_certificates = args[:pem_certificates] if args.key?(:pem_certificates)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -711,6 +2562,119 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Request message for CertificateAuthorityService.UndeleteCertificateAuthority.
+      class UndeleteCertificateAuthorityRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An ID to identify requests. Specify a unique request ID so that if
+        # you must retry your request, the server will know to ignore the request if it
+        # has already been completed. The server will guarantee that for at least 60
+        # minutes since the first request. For example, consider a situation where you
+        # make an initial request and t he request times out. If you make the request
+        # again with the same request ID, the server can check if original operation
+        # with the same request ID was received, and if so, will ignore the second
+        # request. This prevents clients from accidentally creating duplicate
+        # commitments. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # An X509Extension specifies an X.509 extension, which may be used in different
+      # parts of X.509 objects like certificates, CSRs, and CRLs.
+      class X509Extension
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether or not this extension is critical (i.e., if the
+        # client does not know how to handle this extension, the client should consider
+        # this to be an error).
+        # Corresponds to the JSON property `critical`
+        # @return [Boolean]
+        attr_accessor :critical
+        alias_method :critical?, :critical
+      
+        # An ObjectId specifies an object identifier (OID). These provide context and
+        # describe types in ASN.1 messages.
+        # Corresponds to the JSON property `objectId`
+        # @return [Google::Apis::PrivatecaV1::ObjectIdProp]
+        attr_accessor :object_id_prop
+      
+        # Required. The value of this X.509 extension.
+        # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @critical = args[:critical] if args.key?(:critical)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # An X509Parameters is used to describe certain fields of an X.509 certificate,
+      # such as the key usage fields, fields specific to CA certificates, certificate
+      # policy extensions and custom extensions.
+      class X509Parameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Describes custom X.509 extensions.
+        # Corresponds to the JSON property `additionalExtensions`
+        # @return [Array<Google::Apis::PrivatecaV1::X509Extension>]
+        attr_accessor :additional_extensions
+      
+        # Optional. Describes Online Certificate Status Protocol (OCSP) endpoint
+        # addresses that appear in the "Authority Information Access" extension in the
+        # certificate.
+        # Corresponds to the JSON property `aiaOcspServers`
+        # @return [Array<String>]
+        attr_accessor :aia_ocsp_servers
+      
+        # Describes values that are relevant in a CA certificate.
+        # Corresponds to the JSON property `caOptions`
+        # @return [Google::Apis::PrivatecaV1::CaOptions]
+        attr_accessor :ca_options
+      
+        # A KeyUsage describes key usage values that may appear in an X.509 certificate.
+        # Corresponds to the JSON property `keyUsage`
+        # @return [Google::Apis::PrivatecaV1::KeyUsage]
+        attr_accessor :key_usage
+      
+        # Optional. Describes the X.509 certificate policy object identifiers, per https:
+        # //tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        # Corresponds to the JSON property `policyIds`
+        # @return [Array<Google::Apis::PrivatecaV1::ObjectIdProp>]
+        attr_accessor :policy_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_extensions = args[:additional_extensions] if args.key?(:additional_extensions)
+          @aia_ocsp_servers = args[:aia_ocsp_servers] if args.key?(:aia_ocsp_servers)
+          @ca_options = args[:ca_options] if args.key?(:ca_options)
+          @key_usage = args[:key_usage] if args.key?(:key_usage)
+          @policy_ids = args[:policy_ids] if args.key?(:policy_ids)
         end
       end
     end
