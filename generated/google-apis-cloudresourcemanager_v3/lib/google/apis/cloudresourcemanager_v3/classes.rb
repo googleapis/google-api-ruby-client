@@ -828,8 +828,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A possibly paginated list of TagBindings for the specified TagValue or
-        # resource.
+        # A possibly paginated list of TagBindings for the specified resource.
         # Corresponds to the JSON property `tagBindings`
         # @return [Array<Google::Apis::CloudresourcemanagerV3::TagBinding>]
         attr_accessor :tag_bindings
