@@ -2382,6 +2382,7 @@ module Google
       class GoogleCloudDialogflowCxV3ConversationTurnUserInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_sentiment_analysis, as: 'enableSentimentAnalysis'
           hash :injected_parameters, as: 'injectedParameters'
           property :input, as: 'input', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3QueryInput::Representation
       
@@ -3875,6 +3876,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_sentiment_analysis, as: 'enableSentimentAnalysis'
           hash :injected_parameters, as: 'injectedParameters'
           property :input, as: 'input', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1QueryInput, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1QueryInput::Representation
       

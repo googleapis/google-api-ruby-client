@@ -379,6 +379,12 @@ module Google
       class GoogleCloudDialogflowCxV3ConversationTurnUserInput
         include Google::Apis::Core::Hashable
       
+        # Whether sentiment analysis is enabled.
+        # Corresponds to the JSON property `enableSentimentAnalysis`
+        # @return [Boolean]
+        attr_accessor :enable_sentiment_analysis
+        alias_method :enable_sentiment_analysis?, :enable_sentiment_analysis
+      
         # Parameters that need to be injected into the conversation during intent
         # detection.
         # Corresponds to the JSON property `injectedParameters`
@@ -406,6 +412,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_sentiment_analysis = args[:enable_sentiment_analysis] if args.key?(:enable_sentiment_analysis)
           @injected_parameters = args[:injected_parameters] if args.key?(:injected_parameters)
           @input = args[:input] if args.key?(:input)
           @is_webhook_enabled = args[:is_webhook_enabled] if args.key?(:is_webhook_enabled)
@@ -3356,11 +3363,11 @@ module Google
         alias_method :analyze_query_text_sentiment?, :analyze_query_text_sentiment
       
         # The unique identifier of the page to override the current page in the session.
-        # Format: `projects//locations//agents//pages/`. If `current_page` is specified,
-        # the previous state of the session will be ignored by Dialogflow, including the
-        # previous page and the previous session parameters. In most cases, current_page
-        # and parameters should be configured together to direct a session to a specific
-        # state.
+        # Format: `projects//locations//agents//flows//pages/`. If `current_page` is
+        # specified, the previous state of the session will be ignored by Dialogflow,
+        # including the previous page and the previous session parameters. In most cases,
+        # current_page and parameters should be configured together to direct a session
+        # to a specific state.
         # Corresponds to the JSON property `currentPage`
         # @return [String]
         attr_accessor :current_page
@@ -5763,6 +5770,12 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput
         include Google::Apis::Core::Hashable
       
+        # Whether sentiment analysis is enabled.
+        # Corresponds to the JSON property `enableSentimentAnalysis`
+        # @return [Boolean]
+        attr_accessor :enable_sentiment_analysis
+        alias_method :enable_sentiment_analysis?, :enable_sentiment_analysis
+      
         # Parameters that need to be injected into the conversation during intent
         # detection.
         # Corresponds to the JSON property `injectedParameters`
@@ -5790,6 +5803,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_sentiment_analysis = args[:enable_sentiment_analysis] if args.key?(:enable_sentiment_analysis)
           @injected_parameters = args[:injected_parameters] if args.key?(:injected_parameters)
           @input = args[:input] if args.key?(:input)
           @is_webhook_enabled = args[:is_webhook_enabled] if args.key?(:is_webhook_enabled)
