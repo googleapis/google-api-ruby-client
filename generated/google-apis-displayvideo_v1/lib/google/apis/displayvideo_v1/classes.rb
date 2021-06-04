@@ -166,11 +166,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :partner_id
       
-        # Whether integration with Mediaocean (Prisma) is enabled. By enabling this: On
-        # behalf of my company, I authorize Mediaocean (Prisma) to send budget segment
-        # plans to Google, and I authorize Google to send corresponding reporting and
-        # invoices from DV360 to Mediaocean for the purposes of budget planning, billing,
-        # and reconciliation for this advertiser.
+        # Whether integration with Mediaocean (Prisma) is enabled. By enabling this, you
+        # agree to the following: On behalf of my company, I authorize Mediaocean (
+        # Prisma) to send budget segment plans to Google, and I authorize Google to send
+        # corresponding reporting and invoices from DV360 to Mediaocean for the purposes
+        # of budget planning, billing, and reconciliation for this advertiser.
         # Corresponds to the JSON property `prismaEnabled`
         # @return [Boolean]
         attr_accessor :prisma_enabled
@@ -1375,18 +1375,19 @@ module Google
         end
       end
       
-      # Represents a summarized budget information associated with this invoice.
+      # Summarized information of an individual campaign budget.
       class BudgetSummary
         include Google::Apis::Core::Hashable
       
-        # Output only. External budget id.
+        # Corresponds to the external_budget_id of a campaign budget. If the value is
+        # not set in the campaign budget, this field will be empty.
         # Corresponds to the JSON property `externalBudgetId`
         # @return [String]
         attr_accessor :external_budget_id
       
-        # Output only. The pre-tax amount for this budget, in micros of the invoice's
-        # currency. For example if currency_code is `USD`, then 1000000 micros is one US
-        # dollar.
+        # The sum of charges made under this budget before taxes, in micros of the
+        # invoice's currency. For example, if currency_code is `USD`, then 1000000
+        # represents one US dollar.
         # Corresponds to the JSON property `preTaxAmountMicros`
         # @return [Fixnum]
         attr_accessor :pre_tax_amount_micros
@@ -1397,16 +1398,16 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::PrismaCpeCode]
         attr_accessor :prisma_cpe_code
       
-        # Output only. The tax amount for this budget, in micros of the invoice's
-        # currency. For example if currency_code is `USD`, then 1000000 micros is one US
-        # dollar.
+        # The amount of tax applied to charges under this budget, in micros of the
+        # invoice's currency. For example, if currency_code is `USD`, then 1000000
+        # represents one US dollar.
         # Corresponds to the JSON property `taxAmountMicros`
         # @return [Fixnum]
         attr_accessor :tax_amount_micros
       
-        # Output only. The total amount of charges for this budget, in micros of the
-        # invoice's currency. For example if currency_code is `USD`, then 1000000 micros
-        # is one US dollar.
+        # The total sum of charges made under this budget, including tax, in micros of
+        # the invoice's currency. For example, if currency_code is `USD`, then 1000000
+        # represents one US dollar.
         # Corresponds to the JSON property `totalAmountMicros`
         # @return [Fixnum]
         attr_accessor :total_amount_micros
@@ -1957,8 +1958,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # The list of budgets available to this campaign. Setting no budget gives an
-        # unlimited campaign budget.
+        # The list of budgets available to this campaign. If this field is not set, the
+        # campaign uses an unlimited budget.
         # Corresponds to the JSON property `campaignBudgets`
         # @return [Array<Google::Apis::DisplayvideoV1::CampaignBudget>]
         attr_accessor :campaign_budgets
@@ -2032,21 +2033,22 @@ module Google
       class CampaignBudget
         include Google::Apis::Core::Hashable
       
-        # Required. The budget amount the insertion order will spend for the given
-        # date_range. The amount is in micros. Must be greater than 0. For example,
-        # 500000000 represents 500 standard units of the currency.
+        # Required. The total amount the linked insertion order segments can budget. The
+        # amount is in micros. Must be greater than 0. For example, 500000000 represents
+        # 500 standard units of the currency.
         # Corresponds to the JSON property `budgetAmountMicros`
         # @return [Fixnum]
         attr_accessor :budget_amount_micros
       
-        # The unique ID of the campaign budget. If not included, budget is assumed to be
-        # new.
+        # The unique ID of the campaign budget. Assigned by the system. Do not set for
+        # new budgets. Must be included when updating or adding budgets to
+        # campaign_budgets. Otherwise, a new ID will be generated and assigned.
         # Corresponds to the JSON property `budgetId`
         # @return [Fixnum]
         attr_accessor :budget_id
       
-        # Required. Immutable. The budget unit specifies whether the budget is currency
-        # based or impression based.
+        # Required. Immutable. Specifies whether the budget is measured in currency or
+        # impressions.
         # Corresponds to the JSON property `budgetUnit`
         # @return [String]
         attr_accessor :budget_unit
@@ -2062,26 +2064,28 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Immutable. Must be unique under the campaign. If set, all impressions served
-        # against this budget will include this ID on the invoice if the customer has
-        # opted into budget-segment-level billing.
+        # Immutable. The ID identifying this budget to the external source. If this
+        # field is set and the invoice detail level of the corresponding billing profile
+        # is set to "Budget level PO", all impressions served against this budget will
+        # include this ID on the invoice. Must be unique under the campaign.
         # Corresponds to the JSON property `externalBudgetId`
         # @return [String]
         attr_accessor :external_budget_id
       
-        # Required. The external source of the budget segment.
+        # Required. The external source of the budget.
         # Corresponds to the JSON property `externalBudgetSource`
         # @return [String]
         attr_accessor :external_budget_source
       
-        # Immutable. If set, all external_budget_id sharing the same invoice_grouping_id
-        # will include this ID on the invoice if the customer has opted into budget-
-        # segment-level billing.
+        # Immutable. The ID used to group budgets to be included the same invoice. If
+        # this field is set and the invoice level of the corresponding billing profile
+        # is set to "Budget invoice grouping ID", all external_budget_id sharing the
+        # same invoice_grouping_id will be grouped in the same invoice.
         # Corresponds to the JSON property `invoiceGroupingId`
         # @return [String]
         attr_accessor :invoice_grouping_id
       
-        # Settings specific to the MediaOcean Prisma tool.
+        # Settings specific to the Mediaocean Prisma tool.
         # Corresponds to the JSON property `prismaConfig`
         # @return [Google::Apis::DisplayvideoV1::PrismaConfig]
         attr_accessor :prisma_config
@@ -5040,7 +5044,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :budget_amount_micros
       
-        # The ID of the campaign budget linked to this insertion order budget segment.
+        # The budget_id of the campaign budget that this insertion order budget segment
+        # is a part of.
         # Corresponds to the JSON property `campaignBudgetId`
         # @return [Fixnum]
         attr_accessor :campaign_budget_id
@@ -5496,36 +5501,37 @@ module Google
         end
       end
       
-      # A single Invoice.
+      # A single invoice.
       class Invoice
         include Google::Apis::Core::Hashable
       
-        # Output only. Budget invoice grouping ID associated with the budget segment in
-        # the insertion order.
+        # The budget grouping ID for this invoice. This field will only be set if the
+        # invoice level of the corresponding billing profile was set to "Budget invoice
+        # grouping ID".
         # Corresponds to the JSON property `budgetInvoiceGroupingId`
         # @return [String]
         attr_accessor :budget_invoice_grouping_id
       
-        # Output only. The list of summarized budget information associated with this
-        # invoice.
+        # The list of summarized information for each budget associated with this
+        # invoice. This field will only be set if the invoice detail level of the
+        # corresponding billing profile was set to "Budget level PO".
         # Corresponds to the JSON property `budgetSummaries`
         # @return [Array<Google::Apis::DisplayvideoV1::BudgetSummary>]
         attr_accessor :budget_summaries
       
-        # Output only. The originally issued invoice that is being adjusted by this
-        # invoice, if applicable. If there is a corrected invoice, the
-        # replaced_invoice_ids field will be empty. May appear on invoice PDF as `
-        # Reference invoice number`.
+        # The ID of the original invoice being adjusted by this invoice, if applicable.
+        # May appear on the invoice PDF as `Reference invoice number`. If
+        # replaced_invoice_ids is set, this field will be empty.
         # Corresponds to the JSON property `correctedInvoiceId`
         # @return [String]
         attr_accessor :corrected_invoice_id
       
-        # Output only. Invoice currency code in ISO 4217 format.
+        # The currency used in the invoice in ISO 4217 format.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
       
-        # Output only. Display name of the invoice.
+        # The display name of the invoice.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -5542,12 +5548,12 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::Date]
         attr_accessor :due_date
       
-        # Output only. The unique ID of the invoice.
+        # The unique ID of the invoice.
         # Corresponds to the JSON property `invoiceId`
         # @return [String]
         attr_accessor :invoice_id
       
-        # Output only. The type of invoice document.
+        # The type of invoice document.
         # Corresponds to the JSON property `invoiceType`
         # @return [String]
         attr_accessor :invoice_type
@@ -5564,50 +5570,51 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::Date]
         attr_accessor :issue_date
       
-        # Output only. The resource name of the invoice.
+        # The resource name of the invoice.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The total amount of costs or adjustments not tied to a particular
-        # budget, in micros of the invoice's currency. For example if currency_code is `
-        # USD`, then 1000000 micros is one US dollar.
+        # The total amount of costs or adjustments not tied to a particular budget, in
+        # micros of the invoice's currency. For example, if currency_code is `USD`, then
+        # 1000000 represents one US dollar.
         # Corresponds to the JSON property `nonBudgetMicros`
         # @return [Fixnum]
         attr_accessor :non_budget_micros
       
-        # Output only. The ID of the payments account the invoice belongs to. Appears on
-        # the invoice PDF as `Billing Account Number`.
+        # The ID of the payments account the invoice belongs to. Appears on the invoice
+        # PDF as `Billing Account Number`.
         # Corresponds to the JSON property `paymentsAccountId`
         # @return [String]
         attr_accessor :payments_account_id
       
-        # Output only. The ID of the payments profile the invoice belongs to. Appears on
-        # the invoice PDF as `Billing ID`.
+        # The ID of the payments profile the invoice belongs to. Appears on the invoice
+        # PDF as `Billing ID`.
         # Corresponds to the JSON property `paymentsProfileId`
         # @return [String]
         attr_accessor :payments_profile_id
       
-        # Output only. The URL to download a PDF copy of the invoice. Note that this URL
-        # is user specific and requires a valid OAuth 2.0 access token to access. The
-        # access token must be provided in an `Authorization: Bearer` HTTP header and be
-        # authorized for one of the following scopes: * `https://www.googleapis.com/auth/
-        # display-video-mediaplanning` * `https://www.googleapis.com/auth/display-video`
-        # The URL will only be usable for 7 days from when the api is called.
+        # The URL to download a PDF copy of the invoice. This URL is user specific and
+        # requires a valid OAuth 2.0 access token to access. The access token must be
+        # provided in an `Authorization: Bearer` HTTP header and be authorized for one
+        # of the following scopes: * `https://www.googleapis.com/auth/display-video-
+        # mediaplanning` * `https://www.googleapis.com/auth/display-video` The URL will
+        # be valid for 7 days after retrieval of this invoice object or until this
+        # invoice is retrieved again.
         # Corresponds to the JSON property `pdfUrl`
         # @return [String]
         attr_accessor :pdf_url
       
-        # Output only. Purchase order number associated with the invoice.
+        # Purchase order number associated with the invoice.
         # Corresponds to the JSON property `purchaseOrderNumber`
         # @return [String]
         attr_accessor :purchase_order_number
       
-        # Output only. The originally issued invoice(s) that is being cancelled by this
-        # invoice, if applicable. If there are any replaced invoices, the
-        # corrected_invoice_id field will be empty. May appear on invoice PDF as `
-        # Replaced invoice numbers`. Note: There may be multiple replaced invoices due
-        # to consolidation of multiple invoices into a single invoice.
+        # The ID(s) of any originally issued invoice that is being cancelled by this
+        # invoice, if applicable. Multiple invoices may be listed if those invoices are
+        # being consolidated into a single invoice. May appear on invoice PDF as `
+        # Replaced invoice numbers`. If corrected_invoice_id is set, this field will be
+        # empty.
         # Corresponds to the JSON property `replacedInvoiceIds`
         # @return [Array<String>]
         attr_accessor :replaced_invoice_ids
@@ -5617,21 +5624,20 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::DateRange]
         attr_accessor :service_date_range
       
-        # Output only. The pre-tax subtotal amount, in micros of the invoice's currency.
-        # For example if currency_code is `USD`, then 1000000 micros is one US dollar.
+        # The pre-tax subtotal amount, in micros of the invoice's currency. For example,
+        # if currency_code is `USD`, then 1000000 represents one US dollar.
         # Corresponds to the JSON property `subtotalAmountMicros`
         # @return [Fixnum]
         attr_accessor :subtotal_amount_micros
       
-        # Output only. The invoice total amount, in micros of the invoice's currency.
-        # For example if currency_code is `USD`, then 1000000 micros is one US dollar.
+        # The invoice total amount, in micros of the invoice's currency. For example, if
+        # currency_code is `USD`, then 1000000 represents one US dollar.
         # Corresponds to the JSON property `totalAmountMicros`
         # @return [Fixnum]
         attr_accessor :total_amount_micros
       
-        # Output only. The sum of all taxes in invoice, in micros of the invoice's
-        # currency. For example if currency_code is `USD`, then 1000000 micros is one US
-        # dollar.
+        # The sum of all taxes in invoice, in micros of the invoice's currency. For
+        # example, if currency_code is `USD`, then 1000000 represents one US dollar.
         # Corresponds to the JSON property `totalTaxAmountMicros`
         # @return [Fixnum]
         attr_accessor :total_tax_amount_micros
@@ -6465,7 +6471,7 @@ module Google
         end
       end
       
-      # Response message for InvoiceService.ListInvoices.
+      # 
       class ListInvoicesResponse
         include Google::Apis::Core::Hashable
       
@@ -6474,9 +6480,10 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV1::Invoice>]
         attr_accessor :invoices
       
-        # A token to retrieve the next page of results. Pass this value in the [
-        # ListInvoicesRequest.page_token] field in the subsequent call to `ListInvoices`
-        # method to retrieve the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListInvoices` method to retrieve
+        # the next page of results. This token will be absent if there are no more
+        # invoices to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6866,11 +6873,11 @@ module Google
         end
       end
       
-      # Response message for InvoiceService.LookupInvoiceCurrency.
+      # 
       class LookupInvoiceCurrencyResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. Invoice currency code in ISO 4217 format.
+        # Currency used by the advertiser in ISO 4217 format.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
@@ -7951,7 +7958,7 @@ module Google
         end
       end
       
-      # Settings specific to the MediaOcean Prisma tool.
+      # Settings specific to the Mediaocean Prisma tool.
       class PrismaConfig
         include Google::Apis::Core::Hashable
       
