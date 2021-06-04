@@ -182,7 +182,7 @@ module Google
         # The metrics that should be included in the response. If none are specified
         # then any metrics found will be returned. Allowed values: ["
         # first_contentful_paint", "first_input_delay", "largest_contentful_paint", "
-        # cumulative_layout_shift"]
+        # cumulative_layout_shift", "experimental_uncapped_cumulative_layout_shift"]
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
