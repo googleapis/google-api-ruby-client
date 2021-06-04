@@ -1416,6 +1416,7 @@ module Google
           property :connection_id, as: 'connectionId'
           property :csv_options, as: 'csvOptions', class: Google::Apis::BigqueryV2::CsvOptions, decorator: Google::Apis::BigqueryV2::CsvOptions::Representation
       
+          collection :decimal_target_types, as: 'decimalTargetTypes'
           property :google_sheets_options, as: 'googleSheetsOptions', class: Google::Apis::BigqueryV2::GoogleSheetsOptions, decorator: Google::Apis::BigqueryV2::GoogleSheetsOptions::Representation
       
           property :hive_partitioning_options, as: 'hivePartitioningOptions', class: Google::Apis::BigqueryV2::HivePartitioningOptions, decorator: Google::Apis::BigqueryV2::HivePartitioningOptions::Representation
@@ -1760,7 +1761,7 @@ module Google
           property :start_time, :numeric_string => true, as: 'startTime'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
-          property :transaction_info_template, as: 'transactionInfoTemplate', class: Google::Apis::BigqueryV2::TransactionInfo, decorator: Google::Apis::BigqueryV2::TransactionInfo::Representation
+          property :transaction_info, as: 'transactionInfo', class: Google::Apis::BigqueryV2::TransactionInfo, decorator: Google::Apis::BigqueryV2::TransactionInfo::Representation
       
         end
         
@@ -1790,6 +1791,7 @@ module Google
       
           property :ddl_target_table, as: 'ddlTargetTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
+          property :dml_stats, as: 'dmlStats'
           property :estimated_bytes_processed, :numeric_string => true, as: 'estimatedBytesProcessed'
           property :model_training, as: 'modelTraining', class: Google::Apis::BigqueryV2::BigQueryModelTraining, decorator: Google::Apis::BigqueryV2::BigQueryModelTraining::Representation
       
@@ -2089,6 +2091,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_hit, as: 'cacheHit'
+          property :dml_stats, as: 'dmlStats'
           collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProto::Representation
       
           property :job_complete, as: 'jobComplete'
