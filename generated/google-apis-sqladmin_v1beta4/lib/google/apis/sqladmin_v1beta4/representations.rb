@@ -847,6 +847,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query_insights_enabled, as: 'queryInsightsEnabled'
+          property :query_plans_per_minute, as: 'queryPlansPerMinute'
           property :query_string_length, as: 'queryStringLength'
           property :record_application_tags, as: 'recordApplicationTags'
           property :record_client_address, as: 'recordClientAddress'
