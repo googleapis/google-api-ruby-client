@@ -2313,6 +2313,27 @@ module Google
         # @return [Google::Apis::BigqueryV2::CsvOptions]
         attr_accessor :csv_options
       
+        # [Optional] Defines the list of possible SQL data types to which the source
+        # decimal values are converted. This list and the precision and the scale
+        # parameters of the decimal field determine the target type. In the order of
+        # NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified
+        # list and if it supports the precision and the scale. STRING supports all
+        # precision and scale values. If none of the listed types supports the precision
+        # and the scale, the type supporting the widest range in the specified list is
+        # picked, and if a value exceeds the supported range when reading the data, an
+        # error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "
+        # BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC
+        # (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot
+        # hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (
+        # error if value exeeds supported range). This field cannot contain duplicate
+        # types. The order of the types in this field is ignored. For example, ["
+        # BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC
+        # always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for
+        # ORC and ["NUMERIC"] for the other file formats.
+        # Corresponds to the JSON property `decimalTargetTypes`
+        # @return [Array<String>]
+        attr_accessor :decimal_target_types
+      
         # [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
         # Corresponds to the JSON property `googleSheetsOptions`
         # @return [Google::Apis::BigqueryV2::GoogleSheetsOptions]
@@ -2390,6 +2411,7 @@ module Google
           @compression = args[:compression] if args.key?(:compression)
           @connection_id = args[:connection_id] if args.key?(:connection_id)
           @csv_options = args[:csv_options] if args.key?(:csv_options)
+          @decimal_target_types = args[:decimal_target_types] if args.key?(:decimal_target_types)
           @google_sheets_options = args[:google_sheets_options] if args.key?(:google_sheets_options)
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
@@ -3066,24 +3088,23 @@ module Google
         # @return [String]
         attr_accessor :create_disposition
       
-        # Defines the list of possible SQL data types to which the source decimal values
-        # are converted. This list and the precision and the scale parameters of the
-        # decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([
-        # Preview](/products/#product-launch-stages)), and STRING, a type is picked if
-        # it is in the specified list and if it supports the precision and the scale.
-        # STRING supports all precision and scale values. If none of the listed types
-        # supports the precision and the scale, the type supporting the widest range in
-        # the specified list is picked, and if a value exceeds the supported range when
-        # reading the data, an error will be thrown. Example: Suppose the value of this
-        # field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) ->
-        # NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,
-        # 10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) ->
-        # BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range).
-        # This field cannot contain duplicate types. The order of the types in this
-        # field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["
-        # NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
-        # Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file
-        # formats.
+        # [Optional] Defines the list of possible SQL data types to which the source
+        # decimal values are converted. This list and the precision and the scale
+        # parameters of the decimal field determine the target type. In the order of
+        # NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified
+        # list and if it supports the precision and the scale. STRING supports all
+        # precision and scale values. If none of the listed types supports the precision
+        # and the scale, the type supporting the widest range in the specified list is
+        # picked, and if a value exceeds the supported range when reading the data, an
+        # error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "
+        # BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC
+        # (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot
+        # hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (
+        # error if value exeeds supported range). This field cannot contain duplicate
+        # types. The order of the types in this field is ignored. For example, ["
+        # BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC
+        # always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for
+        # ORC and ["NUMERIC"] for the other file formats.
         # Corresponds to the JSON property `decimalTargetTypes`
         # @return [Array<String>]
         attr_accessor :decimal_target_types
@@ -3848,9 +3869,9 @@ module Google
       
         # [Output-only] [Alpha] Information of the multi-statement transaction if this
         # job is part of one.
-        # Corresponds to the JSON property `transactionInfoTemplate`
+        # Corresponds to the JSON property `transactionInfo`
         # @return [Google::Apis::BigqueryV2::TransactionInfo]
-        attr_accessor :transaction_info_template
+        attr_accessor :transaction_info
       
         def initialize(**args)
            update!(**args)
@@ -3875,7 +3896,7 @@ module Google
           @start_time = args[:start_time] if args.key?(:start_time)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
-          @transaction_info_template = args[:transaction_info_template] if args.key?(:transaction_info_template)
+          @transaction_info = args[:transaction_info] if args.key?(:transaction_info)
         end
         
         # 
@@ -3965,6 +3986,12 @@ module Google
         # Corresponds to the JSON property `ddlTargetTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :ddl_target_table
+      
+        # [Output-only] Detailed statistics for DML statements Present only for DML
+        # statements INSERT, UPDATE, DELETE or TRUNCATE.
+        # Corresponds to the JSON property `dmlStats`
+        # @return [Object]
+        attr_accessor :dml_stats
       
         # [Output-only] The original estimate of bytes processed for the job.
         # Corresponds to the JSON property `estimatedBytesProcessed`
@@ -4096,6 +4123,7 @@ module Google
           @ddl_target_routine = args[:ddl_target_routine] if args.key?(:ddl_target_routine)
           @ddl_target_row_access_policy = args[:ddl_target_row_access_policy] if args.key?(:ddl_target_row_access_policy)
           @ddl_target_table = args[:ddl_target_table] if args.key?(:ddl_target_table)
+          @dml_stats = args[:dml_stats] if args.key?(:dml_stats)
           @estimated_bytes_processed = args[:estimated_bytes_processed] if args.key?(:estimated_bytes_processed)
           @model_training = args[:model_training] if args.key?(:model_training)
           @model_training_current_iteration = args[:model_training_current_iteration] if args.key?(:model_training_current_iteration)
@@ -5167,6 +5195,12 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
+        # [Output-only] Detailed statistics for DML statements Present only for DML
+        # statements INSERT, UPDATE, DELETE or TRUNCATE.
+        # Corresponds to the JSON property `dmlStats`
+        # @return [Object]
+        attr_accessor :dml_stats
+      
         # [Output-only] The first errors or warnings encountered during the running of
         # the job. The final message includes the number of errors that caused the
         # process to stop. Errors here do not necessarily mean that the job has
@@ -5243,6 +5277,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
+          @dml_stats = args[:dml_stats] if args.key?(:dml_stats)
           @errors = args[:errors] if args.key?(:errors)
           @job_complete = args[:job_complete] if args.key?(:job_complete)
           @job_reference = args[:job_reference] if args.key?(:job_reference)
@@ -5874,12 +5909,13 @@ module Google
       class SnapshotDefinition
         include Google::Apis::Core::Hashable
       
-        # [Required] Reference describing the ID of the table that is snapshotted.
+        # [Required] Reference describing the ID of the table that was snapshot.
         # Corresponds to the JSON property `baseTableReference`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :base_table_reference
       
-        # [Required] The time at which the base table was snapshot.
+        # [Required] The time at which the base table was snapshot. This value is
+        # reported in the JSON response using RFC3339 format.
         # Corresponds to the JSON property `snapshotTime`
         # @return [DateTime]
         attr_accessor :snapshot_time
