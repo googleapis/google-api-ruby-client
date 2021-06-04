@@ -1809,23 +1809,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List invoices for an advertiser.
+        # Lists invoices posted for an advertiser in a given month. Invoices generated
+        # by billing profiles with a "Partner" invoice level are not retrievable through
+        # this method.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list invoices for.
         # @param [String] issue_month
-        #   Required. Month for which invoices are needed in the format YYYYMM.
+        #   The month to list the invoices for. If not set, the request will retrieve
+        #   invoices for the previous month. Must be in the format YYYYMM.
         # @param [String] loi_sapin_invoice_type
-        #   Select type of invoice to query for Loi Sapin advertisers. Otherwise its
-        #   ignored.
+        #   Select type of invoice to retrieve for Loi Sapin advertisers. Only applicable
+        #   to Loi Sapin advertisers. Will be ignored otherwise.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
         #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
         #   specified.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
-        #   this is the value of [ListInvoicesResponse.next_page_token] returned from the
-        #   previous call to `ListInvoice` method. If not specified, the first page of
-        #   results will be returned.
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListInvoices` method. If not specified, the first page of results will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1857,12 +1860,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lookup invoice currency for an advertiser.
+        # Retrieves the invoice currency used by an advertiser in a given month.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to lookup currency for.
         # @param [String] invoice_month
-        #   Month for which currency is needed in the format YYYYMM. If not set Api would
-        #   return currency based on current settings.
+        #   Month for which the currency is needed. If not set, the request will return
+        #   existing currency settings for the advertiser. Must be in the format YYYYMM.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
