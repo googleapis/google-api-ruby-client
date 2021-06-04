@@ -920,6 +920,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_id, as: 'instanceId'
           property :instance_name, as: 'instanceName'
+          property :public_ecies_key, as: 'publicEciesKey'
           property :public_key, as: 'publicKey'
         end
       end
