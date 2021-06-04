@@ -1552,7 +1552,12 @@ module Google
         # @return [String]
         attr_accessor :instance_name
       
-        # The public key used for sharing data with this instance.
+        # The public ECIES key used for sharing data with this instance.
+        # Corresponds to the JSON property `publicEciesKey`
+        # @return [String]
+        attr_accessor :public_ecies_key
+      
+        # The public RSA key used for sharing data with this instance.
         # Corresponds to the JSON property `publicKey`
         # @return [String]
         attr_accessor :public_key
@@ -1565,6 +1570,7 @@ module Google
         def update!(**args)
           @instance_id = args[:instance_id] if args.key?(:instance_id)
           @instance_name = args[:instance_name] if args.key?(:instance_name)
+          @public_ecies_key = args[:public_ecies_key] if args.key?(:public_ecies_key)
           @public_key = args[:public_key] if args.key?(:public_key)
         end
       end
