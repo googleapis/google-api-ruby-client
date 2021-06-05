@@ -1322,6 +1322,12 @@ module Google
       class OsPolicyResourceConfigStep
         include Google::Apis::Core::Hashable
       
+        # An error message recorded during the execution of this step. Only populated
+        # when outcome is FAILED.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
         # Outcome of the configuration step.
         # Corresponds to the JSON property `outcome`
         # @return [String]
@@ -1338,6 +1344,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
           @outcome = args[:outcome] if args.key?(:outcome)
           @type = args[:type] if args.key?(:type)
         end
