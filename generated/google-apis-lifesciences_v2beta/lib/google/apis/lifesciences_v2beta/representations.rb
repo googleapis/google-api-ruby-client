@@ -562,6 +562,7 @@ module Google
       
           property :nvidia_driver_version, as: 'nvidiaDriverVersion'
           property :preemptible, as: 'preemptible'
+          property :reservation, as: 'reservation'
           property :service_account, as: 'serviceAccount', class: Google::Apis::LifesciencesV2beta::ServiceAccount, decorator: Google::Apis::LifesciencesV2beta::ServiceAccount::Representation
       
           collection :volumes, as: 'volumes', class: Google::Apis::LifesciencesV2beta::Volume, decorator: Google::Apis::LifesciencesV2beta::Volume::Representation
