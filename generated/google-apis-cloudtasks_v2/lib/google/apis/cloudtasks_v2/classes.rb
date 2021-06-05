@@ -931,7 +931,7 @@ module Google
         # @return [Google::Apis::CloudtasksV2::StackdriverLoggingConfig]
         attr_accessor :stackdriver_logging_config
       
-        # Output only. The state of the queue. `state` can only be changed by called
+        # Output only. The state of the queue. `state` can only be changed by calling
         # PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.
         # com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to
         # change `state`.
