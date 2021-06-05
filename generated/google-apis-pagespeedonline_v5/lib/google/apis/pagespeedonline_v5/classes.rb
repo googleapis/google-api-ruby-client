@@ -27,6 +27,11 @@ module Google
       class AuditRefs
         include Google::Apis::Core::Hashable
       
+        # The conventional acronym for the audit/metric.
+        # Corresponds to the JSON property `acronym`
+        # @return [String]
+        attr_accessor :acronym
+      
         # The category group that the audit belongs to (optional).
         # Corresponds to the JSON property `group`
         # @return [String]
@@ -36,6 +41,11 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Any audit IDs closely relevant to this one.
+        # Corresponds to the JSON property `relevantAudits`
+        # @return [Array<String>]
+        attr_accessor :relevant_audits
       
         # The weight this audit's score has on the overall category score.
         # Corresponds to the JSON property `weight`
@@ -48,8 +58,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acronym = args[:acronym] if args.key?(:acronym)
           @group = args[:group] if args.key?(:group)
           @id = args[:id] if args.key?(:id)
+          @relevant_audits = args[:relevant_audits] if args.key?(:relevant_audits)
           @weight = args[:weight] if args.key?(:weight)
         end
       end
@@ -283,6 +295,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # The unit of the numeric_value field. Used to format the numeric value for
+        # display.
+        # Corresponds to the JSON property `numericUnit`
+        # @return [String]
+        attr_accessor :numeric_unit
+      
         # A numeric value that has a meaning specific to the audit, e.g. the number of
         # nodes in the DOM or the timestamp of a specific load event. More information
         # can be found in the audit details, if present.
@@ -322,6 +340,7 @@ module Google
           @error_message = args[:error_message] if args.key?(:error_message)
           @explanation = args[:explanation] if args.key?(:explanation)
           @id = args[:id] if args.key?(:id)
+          @numeric_unit = args[:numeric_unit] if args.key?(:numeric_unit)
           @numeric_value = args[:numeric_value] if args.key?(:numeric_value)
           @score = args[:score] if args.key?(:score)
           @score_display_mode = args[:score_display_mode] if args.key?(:score_display_mode)
@@ -623,6 +642,13 @@ module Google
         # @return [String]
         attr_accessor :audit_group_expand_tooltip
       
+        # Text link pointing to the Lighthouse scoring calculator. This link immediately
+        # follows a sentence stating the performance score is calculated from the perf
+        # metrics.
+        # Corresponds to the JSON property `calculatorLink`
+        # @return [String]
+        attr_accessor :calculator_link
+      
         # The label for the initial request in a critical request chain.
         # Corresponds to the JSON property `crcInitialNavigation`
         # @return [String]
@@ -632,6 +658,52 @@ module Google
         # Corresponds to the JSON property `crcLongestDurationLabel`
         # @return [String]
         attr_accessor :crc_longest_duration_label
+      
+        # Option in a dropdown menu that copies the Lighthouse JSON object to the system
+        # clipboard.
+        # Corresponds to the JSON property `dropdownCopyJSON`
+        # @return [String]
+        attr_accessor :dropdown_copy_json
+      
+        # Option in a dropdown menu that toggles the themeing of the report between
+        # Light(default) and Dark themes.
+        # Corresponds to the JSON property `dropdownDarkTheme`
+        # @return [String]
+        attr_accessor :dropdown_dark_theme
+      
+        # Option in a dropdown menu that opens a full Lighthouse report in a print
+        # dialog.
+        # Corresponds to the JSON property `dropdownPrintExpanded`
+        # @return [String]
+        attr_accessor :dropdown_print_expanded
+      
+        # Option in a dropdown menu that opens a small, summary report in a print dialog.
+        # Corresponds to the JSON property `dropdownPrintSummary`
+        # @return [String]
+        attr_accessor :dropdown_print_summary
+      
+        # Option in a dropdown menu that saves the current report as a new GitHub Gist.
+        # Corresponds to the JSON property `dropdownSaveGist`
+        # @return [String]
+        attr_accessor :dropdown_save_gist
+      
+        # Option in a dropdown menu that saves the Lighthouse report HTML locally to the
+        # system as a '.html' file.
+        # Corresponds to the JSON property `dropdownSaveHTML`
+        # @return [String]
+        attr_accessor :dropdown_save_html
+      
+        # Option in a dropdown menu that saves the Lighthouse JSON object to the local
+        # system as a '.json' file.
+        # Corresponds to the JSON property `dropdownSaveJSON`
+        # @return [String]
+        attr_accessor :dropdown_save_json
+      
+        # Option in a dropdown menu that opens the current report in the Lighthouse
+        # Viewer Application.
+        # Corresponds to the JSON property `dropdownViewer`
+        # @return [String]
+        attr_accessor :dropdown_viewer
       
         # The label shown next to an audit or metric that has had an error.
         # Corresponds to the JSON property `errorLabel`
@@ -643,12 +715,17 @@ module Google
         # @return [String]
         attr_accessor :error_missing_audit_info
       
+        # Label for button to create an issue against the Lighthouse GitHub project.
+        # Corresponds to the JSON property `footerIssue`
+        # @return [String]
+        attr_accessor :footer_issue
+      
         # The title of the lab data performance category.
         # Corresponds to the JSON property `labDataTitle`
         # @return [String]
         attr_accessor :lab_data_title
       
-        # The disclaimer shown under performance explaning that the network can vary.
+        # The disclaimer shown under performance explaining that the network can vary.
         # Corresponds to the JSON property `lsPerformanceCategoryDescription`
         # @return [String]
         attr_accessor :ls_performance_category_description
@@ -678,10 +755,128 @@ module Google
         # @return [String]
         attr_accessor :passed_audits_group_title
       
+        # Descriptive explanation for emulation setting when emulating a generic desktop
+        # form factor, as opposed to a mobile-device like form factor.
+        # Corresponds to the JSON property `runtimeDesktopEmulation`
+        # @return [String]
+        attr_accessor :runtime_desktop_emulation
+      
+        # Descriptive explanation for emulation setting when emulating a Nexus 5X mobile
+        # device.
+        # Corresponds to the JSON property `runtimeMobileEmulation`
+        # @return [String]
+        attr_accessor :runtime_mobile_emulation
+      
+        # Descriptive explanation for emulation setting when no device emulation is set.
+        # Corresponds to the JSON property `runtimeNoEmulation`
+        # @return [String]
+        attr_accessor :runtime_no_emulation
+      
+        # Label for a row in a table that shows the version of the Axe library used
+        # Corresponds to the JSON property `runtimeSettingsAxeVersion`
+        # @return [String]
+        attr_accessor :runtime_settings_axe_version
+      
+        # Label for a row in a table that shows the estimated CPU power of the machine
+        # running Lighthouse. Example row values: 532, 1492, 783.
+        # Corresponds to the JSON property `runtimeSettingsBenchmark`
+        # @return [String]
+        attr_accessor :runtime_settings_benchmark
+      
+        # Label for a row in a table that describes the CPU throttling conditions that
+        # were used during a Lighthouse run, if any.
+        # Corresponds to the JSON property `runtimeSettingsCPUThrottling`
+        # @return [String]
+        attr_accessor :runtime_settings_cpu_throttling
+      
+        # Label for a row in a table that shows in what tool Lighthouse is being run (e.
+        # g. The lighthouse CLI, Chrome DevTools, Lightrider, WebPageTest, etc).
+        # Corresponds to the JSON property `runtimeSettingsChannel`
+        # @return [String]
+        attr_accessor :runtime_settings_channel
+      
+        # Label for a row in a table that describes the kind of device that was emulated
+        # for the Lighthouse run. Example values for row elements: 'No Emulation', '
+        # Emulated Desktop', etc.
+        # Corresponds to the JSON property `runtimeSettingsDevice`
+        # @return [String]
+        attr_accessor :runtime_settings_device
+      
+        # Label for a row in a table that shows the time at which a Lighthouse run was
+        # conducted; formatted as a timestamp, e.g. Jan 1, 1970 12:00 AM UTC.
+        # Corresponds to the JSON property `runtimeSettingsFetchTime`
+        # @return [String]
+        attr_accessor :runtime_settings_fetch_time
+      
+        # Label for a row in a table that describes the network throttling conditions
+        # that were used during a Lighthouse run, if any.
+        # Corresponds to the JSON property `runtimeSettingsNetworkThrottling`
+        # @return [String]
+        attr_accessor :runtime_settings_network_throttling
+      
+        # Title of the Runtime settings table in a Lighthouse report. Runtime settings
+        # are the environment configurations that a specific report used at auditing
+        # time.
+        # Corresponds to the JSON property `runtimeSettingsTitle`
+        # @return [String]
+        attr_accessor :runtime_settings_title
+      
+        # Label for a row in a table that shows the User Agent that was detected on the
+        # Host machine that ran Lighthouse.
+        # Corresponds to the JSON property `runtimeSettingsUA`
+        # @return [String]
+        attr_accessor :runtime_settings_ua
+      
+        # Label for a row in a table that shows the User Agent that was used to send out
+        # all network requests during the Lighthouse run.
+        # Corresponds to the JSON property `runtimeSettingsUANetwork`
+        # @return [String]
+        attr_accessor :runtime_settings_ua_network
+      
+        # Label for a row in a table that shows the URL that was audited during a
+        # Lighthouse run.
+        # Corresponds to the JSON property `runtimeSettingsUrl`
+        # @return [String]
+        attr_accessor :runtime_settings_url
+      
+        # Descriptive explanation for a runtime setting that is set to an unknown value.
+        # Corresponds to the JSON property `runtimeUnknown`
+        # @return [String]
+        attr_accessor :runtime_unknown
+      
         # The label that explains the score gauges scale (0-49, 50-89, 90-100).
         # Corresponds to the JSON property `scorescaleLabel`
         # @return [String]
         attr_accessor :scorescale_label
+      
+        # Label preceding a radio control for filtering the list of audits. The radio
+        # choices are various performance metrics (FCP, LCP, TBT), and if chosen, the
+        # audits in the report are hidden if they are not relevant to the selected
+        # metric.
+        # Corresponds to the JSON property `showRelevantAudits`
+        # @return [String]
+        attr_accessor :show_relevant_audits
+      
+        # The label for the button to show only a few lines of a snippet
+        # Corresponds to the JSON property `snippetCollapseButtonLabel`
+        # @return [String]
+        attr_accessor :snippet_collapse_button_label
+      
+        # The label for the button to show all lines of a snippet
+        # Corresponds to the JSON property `snippetExpandButtonLabel`
+        # @return [String]
+        attr_accessor :snippet_expand_button_label
+      
+        # This label is for a filter checkbox above a table of items
+        # Corresponds to the JSON property `thirdPartyResourcesLabel`
+        # @return [String]
+        attr_accessor :third_party_resources_label
+      
+        # Descriptive explanation for environment throttling that was provided by the
+        # runtime environment instead of provided by Lighthouse throttling.
+        # Corresponds to the JSON property `throttlingProvided`
+        # @return [String]
+        attr_accessor :throttling_provided
       
         # The label shown preceding important warnings that may have invalidated an
         # entire report.
@@ -693,6 +888,16 @@ module Google
         # Corresponds to the JSON property `varianceDisclaimer`
         # @return [String]
         attr_accessor :variance_disclaimer
+      
+        # Label for a button that opens the Treemap App
+        # Corresponds to the JSON property `viewTreemapLabel`
+        # @return [String]
+        attr_accessor :view_treemap_label
+      
+        # The heading that is shown above a list of audits that have warnings
+        # Corresponds to the JSON property `warningAuditsGroupTitle`
+        # @return [String]
+        attr_accessor :warning_audits_group_title
       
         # The label shown above a bulleted list of warnings.
         # Corresponds to the JSON property `warningHeader`
@@ -706,10 +911,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit_group_expand_tooltip = args[:audit_group_expand_tooltip] if args.key?(:audit_group_expand_tooltip)
+          @calculator_link = args[:calculator_link] if args.key?(:calculator_link)
           @crc_initial_navigation = args[:crc_initial_navigation] if args.key?(:crc_initial_navigation)
           @crc_longest_duration_label = args[:crc_longest_duration_label] if args.key?(:crc_longest_duration_label)
+          @dropdown_copy_json = args[:dropdown_copy_json] if args.key?(:dropdown_copy_json)
+          @dropdown_dark_theme = args[:dropdown_dark_theme] if args.key?(:dropdown_dark_theme)
+          @dropdown_print_expanded = args[:dropdown_print_expanded] if args.key?(:dropdown_print_expanded)
+          @dropdown_print_summary = args[:dropdown_print_summary] if args.key?(:dropdown_print_summary)
+          @dropdown_save_gist = args[:dropdown_save_gist] if args.key?(:dropdown_save_gist)
+          @dropdown_save_html = args[:dropdown_save_html] if args.key?(:dropdown_save_html)
+          @dropdown_save_json = args[:dropdown_save_json] if args.key?(:dropdown_save_json)
+          @dropdown_viewer = args[:dropdown_viewer] if args.key?(:dropdown_viewer)
           @error_label = args[:error_label] if args.key?(:error_label)
           @error_missing_audit_info = args[:error_missing_audit_info] if args.key?(:error_missing_audit_info)
+          @footer_issue = args[:footer_issue] if args.key?(:footer_issue)
           @lab_data_title = args[:lab_data_title] if args.key?(:lab_data_title)
           @ls_performance_category_description = args[:ls_performance_category_description] if args.key?(:ls_performance_category_description)
           @manual_audits_group_title = args[:manual_audits_group_title] if args.key?(:manual_audits_group_title)
@@ -717,9 +932,31 @@ module Google
           @opportunity_resource_column_label = args[:opportunity_resource_column_label] if args.key?(:opportunity_resource_column_label)
           @opportunity_savings_column_label = args[:opportunity_savings_column_label] if args.key?(:opportunity_savings_column_label)
           @passed_audits_group_title = args[:passed_audits_group_title] if args.key?(:passed_audits_group_title)
+          @runtime_desktop_emulation = args[:runtime_desktop_emulation] if args.key?(:runtime_desktop_emulation)
+          @runtime_mobile_emulation = args[:runtime_mobile_emulation] if args.key?(:runtime_mobile_emulation)
+          @runtime_no_emulation = args[:runtime_no_emulation] if args.key?(:runtime_no_emulation)
+          @runtime_settings_axe_version = args[:runtime_settings_axe_version] if args.key?(:runtime_settings_axe_version)
+          @runtime_settings_benchmark = args[:runtime_settings_benchmark] if args.key?(:runtime_settings_benchmark)
+          @runtime_settings_cpu_throttling = args[:runtime_settings_cpu_throttling] if args.key?(:runtime_settings_cpu_throttling)
+          @runtime_settings_channel = args[:runtime_settings_channel] if args.key?(:runtime_settings_channel)
+          @runtime_settings_device = args[:runtime_settings_device] if args.key?(:runtime_settings_device)
+          @runtime_settings_fetch_time = args[:runtime_settings_fetch_time] if args.key?(:runtime_settings_fetch_time)
+          @runtime_settings_network_throttling = args[:runtime_settings_network_throttling] if args.key?(:runtime_settings_network_throttling)
+          @runtime_settings_title = args[:runtime_settings_title] if args.key?(:runtime_settings_title)
+          @runtime_settings_ua = args[:runtime_settings_ua] if args.key?(:runtime_settings_ua)
+          @runtime_settings_ua_network = args[:runtime_settings_ua_network] if args.key?(:runtime_settings_ua_network)
+          @runtime_settings_url = args[:runtime_settings_url] if args.key?(:runtime_settings_url)
+          @runtime_unknown = args[:runtime_unknown] if args.key?(:runtime_unknown)
           @scorescale_label = args[:scorescale_label] if args.key?(:scorescale_label)
+          @show_relevant_audits = args[:show_relevant_audits] if args.key?(:show_relevant_audits)
+          @snippet_collapse_button_label = args[:snippet_collapse_button_label] if args.key?(:snippet_collapse_button_label)
+          @snippet_expand_button_label = args[:snippet_expand_button_label] if args.key?(:snippet_expand_button_label)
+          @third_party_resources_label = args[:third_party_resources_label] if args.key?(:third_party_resources_label)
+          @throttling_provided = args[:throttling_provided] if args.key?(:throttling_provided)
           @toplevel_warnings_message = args[:toplevel_warnings_message] if args.key?(:toplevel_warnings_message)
           @variance_disclaimer = args[:variance_disclaimer] if args.key?(:variance_disclaimer)
+          @view_treemap_label = args[:view_treemap_label] if args.key?(:view_treemap_label)
+          @warning_audits_group_title = args[:warning_audits_group_title] if args.key?(:warning_audits_group_title)
           @warning_header = args[:warning_header] if args.key?(:warning_header)
         end
       end
