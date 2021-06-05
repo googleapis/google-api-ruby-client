@@ -705,6 +705,7 @@ module Google
       class OsPolicyResourceConfigStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
           property :outcome, as: 'outcome'
           property :type, as: 'type'
         end
