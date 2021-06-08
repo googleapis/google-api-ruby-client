@@ -215,8 +215,8 @@ module Google
       
         # Required. A unique identifier for the system that reported the alert. This is
         # output only after alert is created. Supported sources are any of the following:
-        # * Google Operations * Mobile device management * Gmail phishing * Domain wide
-        # takeout * State sponsored attack * Google identity
+        # * Google Operations * Mobile device management * Gmail phishing * Data Loss
+        # Prevention * Domain wide takeout * State sponsored attack * Google identity
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
