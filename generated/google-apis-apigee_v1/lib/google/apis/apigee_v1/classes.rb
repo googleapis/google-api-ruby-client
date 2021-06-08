@@ -2227,7 +2227,7 @@ module Google
         end
       end
       
-      # 
+      # NEXT ID: 9
       class GoogleCloudApigeeV1DeploymentConfig
         include Google::Apis::Core::Hashable
       
@@ -2258,6 +2258,12 @@ module Google
         # @return [String]
         attr_accessor :proxy_uid
       
+        # The service account identity associated with this deployment. If non-empty,
+        # will be in the following format: `projects/-/serviceAccounts/`account_email``
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Unique ID. The ID will only change if the deployment is deleted and recreated.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -2274,6 +2280,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @proxy_uid = args[:proxy_uid] if args.key?(:proxy_uid)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
