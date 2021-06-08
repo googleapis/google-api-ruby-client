@@ -1676,6 +1676,7 @@ module Google
           property :location, as: 'location'
           property :name, as: 'name'
           property :proxy_uid, as: 'proxyUid'
+          property :service_account, as: 'serviceAccount'
           property :uid, as: 'uid'
         end
       end
