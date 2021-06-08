@@ -1626,7 +1626,8 @@ module Google
         attr_accessor :obfuscated_external_profile_id
       
         # The order id of the latest recurring order associated with the purchase of the
-        # subscription.
+        # subscription. If the subscription was canceled because payment was declined,
+        # this will be the order id from the payment declined order.
         # Corresponds to the JSON property `orderId`
         # @return [String]
         attr_accessor :order_id
