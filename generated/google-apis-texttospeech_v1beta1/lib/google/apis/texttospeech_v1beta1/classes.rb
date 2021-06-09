@@ -201,7 +201,7 @@ module Google
         attr_accessor :audio_content
       
         # A link between a position in the original request input and a corresponding
-        # time in the output audio. It's only supported via of SSML input.
+        # time in the output audio. It's only supported via `` of SSML input.
         # Corresponds to the JSON property `timepoints`
         # @return [Array<Google::Apis::TexttospeechV1beta1::Timepoint>]
         attr_accessor :timepoints
@@ -223,7 +223,7 @@ module Google
       class Timepoint
         include Google::Apis::Core::Hashable
       
-        # Timepoint name as received from the client within tag.
+        # Timepoint name as received from the client within `` tag.
         # Corresponds to the JSON property `markName`
         # @return [String]
         attr_accessor :mark_name
