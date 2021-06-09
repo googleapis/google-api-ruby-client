@@ -831,11 +831,11 @@ module Google
         end
       end
       
-      # A G Suite Domain membership.
+      # A Google Workspace Domain membership.
       class DomainMembership
         include Google::Apis::Core::Hashable
       
-        # True if the person is in the viewer's G Suite domain.
+        # True if the person is in the viewer's Google Workspace domain.
         # Corresponds to the JSON property `inViewerDomain`
         # @return [Boolean]
         attr_accessor :in_viewer_domain
@@ -1481,7 +1481,7 @@ module Google
         # @return [Google::Apis::PeopleV1::ContactGroupMembership]
         attr_accessor :contact_group_membership
       
-        # A G Suite Domain membership.
+        # A Google Workspace Domain membership.
         # Corresponds to the JSON property `domainMembership`
         # @return [Google::Apis::PeopleV1::DomainMembership]
         attr_accessor :domain_membership
