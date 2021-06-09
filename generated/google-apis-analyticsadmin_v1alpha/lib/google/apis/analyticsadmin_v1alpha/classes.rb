@@ -990,12 +990,6 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Maximum user access to the GA4 property allowed to admins of the linked
-        # Firebase project.
-        # Corresponds to the JSON property `maximumUserAccess`
-        # @return [String]
-        attr_accessor :maximum_user_access
-      
         # Output only. Example format: properties/1234/firebaseLinks/5678
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1017,7 +1011,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
-          @maximum_user_access = args[:maximum_user_access] if args.key?(:maximum_user_access)
           @name = args[:name] if args.key?(:name)
           @project = args[:project] if args.key?(:project)
         end
