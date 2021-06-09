@@ -603,7 +603,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
-          property :maximum_user_access, as: 'maximumUserAccess'
           property :name, as: 'name'
           property :project, as: 'project'
         end
