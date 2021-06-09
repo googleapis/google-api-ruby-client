@@ -1090,6 +1090,12 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageParagraph>]
         attr_accessor :paragraphs
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance]
+        attr_accessor :provenance
+      
         # A list of visually detected tables on the page.
         # Corresponds to the JSON property `tables`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageTable>]
@@ -1127,6 +1133,7 @@ module Google
           @lines = args[:lines] if args.key?(:lines)
           @page_number = args[:page_number] if args.key?(:page_number)
           @paragraphs = args[:paragraphs] if args.key?(:paragraphs)
+          @provenance = args[:provenance] if args.key?(:provenance)
           @tables = args[:tables] if args.key?(:tables)
           @tokens = args[:tokens] if args.key?(:tokens)
           @transforms = args[:transforms] if args.key?(:transforms)
@@ -1180,7 +1187,9 @@ module Google
         attr_accessor :layout_type
       
         # Required. Index into the Document.pages element, for example using Document.
-        # pages to locate the related page element.
+        # pages to locate the related page element. This field is skipped when its value
+        # is the default 0. See https://developers.google.com/protocol-buffers/docs/
+        # proto3#json.
         # Corresponds to the JSON property `page`
         # @return [Fixnum]
         attr_accessor :page
@@ -1308,6 +1317,12 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>]
         attr_accessor :name_detected_languages
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance]
+        attr_accessor :provenance
+      
         # A list of detected languages for value together with confidence.
         # Corresponds to the JSON property `valueDetectedLanguages`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>]
@@ -1329,6 +1344,7 @@ module Google
           @field_name = args[:field_name] if args.key?(:field_name)
           @field_value = args[:field_value] if args.key?(:field_value)
           @name_detected_languages = args[:name_detected_languages] if args.key?(:name_detected_languages)
+          @provenance = args[:provenance] if args.key?(:provenance)
           @value_detected_languages = args[:value_detected_languages] if args.key?(:value_detected_languages)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
@@ -2369,7 +2385,7 @@ module Google
         end
       end
       
-      # Request message for review document method. Next Id: 5.
+      # Request message for review document method. Next Id: 6.
       class GoogleCloudDocumentaiV1ReviewDocumentRequest
         include Google::Apis::Core::Hashable
       
@@ -2387,6 +2403,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document]
         attr_accessor :inline_document
       
+        # The priority of the human review task.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2395,6 +2416,7 @@ module Google
         def update!(**args)
           @enable_schema_validation = args[:enable_schema_validation] if args.key?(:enable_schema_validation)
           @inline_document = args[:inline_document] if args.key?(:inline_document)
+          @priority = args[:priority] if args.key?(:priority)
         end
       end
       
@@ -2848,6 +2870,12 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageParagraph>]
         attr_accessor :paragraphs
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance]
+        attr_accessor :provenance
+      
         # A list of visually detected tables on the page.
         # Corresponds to the JSON property `tables`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageTable>]
@@ -2885,6 +2913,7 @@ module Google
           @lines = args[:lines] if args.key?(:lines)
           @page_number = args[:page_number] if args.key?(:page_number)
           @paragraphs = args[:paragraphs] if args.key?(:paragraphs)
+          @provenance = args[:provenance] if args.key?(:provenance)
           @tables = args[:tables] if args.key?(:tables)
           @tokens = args[:tokens] if args.key?(:tokens)
           @transforms = args[:transforms] if args.key?(:transforms)
@@ -2938,7 +2967,9 @@ module Google
         attr_accessor :layout_type
       
         # Required. Index into the Document.pages element, for example using Document.
-        # pages to locate the related page element.
+        # pages to locate the related page element. This field is skipped when its value
+        # is the default 0. See https://developers.google.com/protocol-buffers/docs/
+        # proto3#json.
         # Corresponds to the JSON property `page`
         # @return [Fixnum]
         attr_accessor :page
@@ -3066,6 +3097,12 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>]
         attr_accessor :name_detected_languages
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance]
+        attr_accessor :provenance
+      
         # A list of detected languages for value together with confidence.
         # Corresponds to the JSON property `valueDetectedLanguages`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>]
@@ -3087,6 +3124,7 @@ module Google
           @field_name = args[:field_name] if args.key?(:field_name)
           @field_value = args[:field_value] if args.key?(:field_value)
           @name_detected_languages = args[:name_detected_languages] if args.key?(:name_detected_languages)
+          @provenance = args[:provenance] if args.key?(:provenance)
           @value_detected_languages = args[:value_detected_languages] if args.key?(:value_detected_languages)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
@@ -4556,6 +4594,12 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageParagraph>]
         attr_accessor :paragraphs
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance]
+        attr_accessor :provenance
+      
         # A list of visually detected tables on the page.
         # Corresponds to the JSON property `tables`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageTable>]
@@ -4593,6 +4637,7 @@ module Google
           @lines = args[:lines] if args.key?(:lines)
           @page_number = args[:page_number] if args.key?(:page_number)
           @paragraphs = args[:paragraphs] if args.key?(:paragraphs)
+          @provenance = args[:provenance] if args.key?(:provenance)
           @tables = args[:tables] if args.key?(:tables)
           @tokens = args[:tokens] if args.key?(:tokens)
           @transforms = args[:transforms] if args.key?(:transforms)
@@ -4646,7 +4691,9 @@ module Google
         attr_accessor :layout_type
       
         # Required. Index into the Document.pages element, for example using Document.
-        # pages to locate the related page element.
+        # pages to locate the related page element. This field is skipped when its value
+        # is the default 0. See https://developers.google.com/protocol-buffers/docs/
+        # proto3#json.
         # Corresponds to the JSON property `page`
         # @return [Fixnum]
         attr_accessor :page
@@ -4774,6 +4821,12 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>]
         attr_accessor :name_detected_languages
       
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance]
+        attr_accessor :provenance
+      
         # A list of detected languages for value together with confidence.
         # Corresponds to the JSON property `valueDetectedLanguages`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>]
@@ -4795,6 +4848,7 @@ module Google
           @field_name = args[:field_name] if args.key?(:field_name)
           @field_value = args[:field_value] if args.key?(:field_value)
           @name_detected_languages = args[:name_detected_languages] if args.key?(:name_detected_languages)
+          @provenance = args[:provenance] if args.key?(:provenance)
           @value_detected_languages = args[:value_detected_languages] if args.key?(:value_detected_languages)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
