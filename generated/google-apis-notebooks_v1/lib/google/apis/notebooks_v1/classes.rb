@@ -1970,7 +1970,7 @@ module Google
         attr_accessor :description
       
         # Output only. Display name used for UI purposes. Name can only contain
-        # alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+        # alphanumeric characters, hyphens '-', and underscores '_'.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
