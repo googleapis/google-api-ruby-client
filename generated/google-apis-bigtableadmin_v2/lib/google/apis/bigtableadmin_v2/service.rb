@@ -1571,14 +1571,14 @@ module Google
         end
         
         # Create a new table by restoring from a completed backup. The new table must be
-        # in the same instance as the instance containing the backup. The returned table
+        # in the same project as the instance containing the backup. The returned table
         # long-running operation can be used to track the progress of the operation, and
         # to cancel it. The metadata field type is RestoreTableMetadata. The response
         # type is Table, if successful.
         # @param [String] parent
         #   Required. The name of the instance in which to create the restored table. This
-        #   instance must be the parent of the source backup. Values are of the form `
-        #   projects//instances/`.
+        #   instance must be in the same project as the source backup. Values are of the
+        #   form `projects//instances/`.
         # @param [Google::Apis::BigtableadminV2::RestoreTableRequest] restore_table_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
