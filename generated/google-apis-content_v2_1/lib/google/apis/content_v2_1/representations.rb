@@ -3568,9 +3568,26 @@ module Google
       class Metrics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :aos, as: 'aos'
+          property :aov_micros, as: 'aovMicros'
           property :clicks, :numeric_string => true, as: 'clicks'
           property :ctr, as: 'ctr'
+          property :days_to_ship, as: 'daysToShip'
           property :impressions, :numeric_string => true, as: 'impressions'
+          property :item_days_to_ship, as: 'itemDaysToShip'
+          property :item_fill_rate, as: 'itemFillRate'
+          property :ordered_item_sales_micros, :numeric_string => true, as: 'orderedItemSalesMicros'
+          property :ordered_items, :numeric_string => true, as: 'orderedItems'
+          property :orders, :numeric_string => true, as: 'orders'
+          property :rejected_items, :numeric_string => true, as: 'rejectedItems'
+          property :return_rate, as: 'returnRate'
+          property :returned_items, :numeric_string => true, as: 'returnedItems'
+          property :returns_micros, :numeric_string => true, as: 'returnsMicros'
+          property :shipped_item_sales_micros, :numeric_string => true, as: 'shippedItemSalesMicros'
+          property :shipped_items, :numeric_string => true, as: 'shippedItems'
+          property :shipped_orders, :numeric_string => true, as: 'shippedOrders'
+          property :unshipped_items, as: 'unshippedItems'
+          property :unshipped_orders, as: 'unshippedOrders'
         end
       end
       
@@ -5802,10 +5819,30 @@ module Google
       class Segments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :brand, as: 'brand'
+          property :category_l1, as: 'categoryL1'
+          property :category_l2, as: 'categoryL2'
+          property :category_l3, as: 'categoryL3'
+          property :category_l4, as: 'categoryL4'
+          property :category_l5, as: 'categoryL5'
+          property :currency_code, as: 'currencyCode'
+          property :custom_label0, as: 'customLabel0'
+          property :custom_label1, as: 'customLabel1'
+          property :custom_label2, as: 'customLabel2'
+          property :custom_label3, as: 'customLabel3'
+          property :custom_label4, as: 'customLabel4'
           property :date, as: 'date', class: Google::Apis::ContentV2_1::Date, decorator: Google::Apis::ContentV2_1::Date::Representation
       
           property :offer_id, as: 'offerId'
+          property :product_type_l1, as: 'productTypeL1'
+          property :product_type_l2, as: 'productTypeL2'
+          property :product_type_l3, as: 'productTypeL3'
+          property :product_type_l4, as: 'productTypeL4'
+          property :product_type_l5, as: 'productTypeL5'
           property :program, as: 'program'
+          property :title, as: 'title'
+          property :week, as: 'week', class: Google::Apis::ContentV2_1::Date, decorator: Google::Apis::ContentV2_1::Date::Representation
+      
         end
       end
       

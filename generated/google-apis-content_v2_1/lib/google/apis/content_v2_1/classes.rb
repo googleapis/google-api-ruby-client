@@ -4824,6 +4824,22 @@ module Google
       class Metrics
         include Google::Apis::Core::Hashable
       
+        # Average order size - the average number of items in an order. **This metric
+        # cannot be segmented by product dimensions.**
+        # Corresponds to the JSON property `aos`
+        # @return [Float]
+        attr_accessor :aos
+      
+        # Average order value - the average value (total price of items) of all placed
+        # orders. The currency of the returned value is stored in the currency_code
+        # segment. If this metric is selected, 'segments.currency_code' is automatically
+        # added to the SELECT clause in the search query (unless it is explicitly
+        # selected by the user) and the currency_code segment is populated in the
+        # response. **This metric cannot be segmented by product dimensions.**
+        # Corresponds to the JSON property `aovMicros`
+        # @return [Float]
+        attr_accessor :aov_micros
+      
         # Number of clicks.
         # Corresponds to the JSON property `clicks`
         # @return [Fixnum]
@@ -4835,10 +4851,118 @@ module Google
         # @return [Float]
         attr_accessor :ctr
       
+        # Average number of days between an order being placed and the order being fully
+        # shipped, reported on the last shipment date. **This metric cannot be segmented
+        # by product dimensions.**
+        # Corresponds to the JSON property `daysToShip`
+        # @return [Float]
+        attr_accessor :days_to_ship
+      
         # Number of times merchant's products are shown.
         # Corresponds to the JSON property `impressions`
         # @return [Fixnum]
         attr_accessor :impressions
+      
+        # Average number of days between an item being ordered and the item being
+        # Corresponds to the JSON property `itemDaysToShip`
+        # @return [Float]
+        attr_accessor :item_days_to_ship
+      
+        # Percentage of shipped items in relation to all finalized items (shipped or
+        # rejected by the merchant; unshipped items are not taken into account),
+        # reported on the order date. Item fill rate is lowered by merchant rejections.
+        # Corresponds to the JSON property `itemFillRate`
+        # @return [Float]
+        attr_accessor :item_fill_rate
+      
+        # Total price of ordered items. Excludes shipping, taxes (US only), and customer
+        # cancellations that happened within 30 minutes of placing the order. The
+        # currency of the returned value is stored in the currency_code segment. If this
+        # metric is selected, 'segments.currency_code' is automatically added to the
+        # SELECT clause in the search query (unless it is explicitly selected by the
+        # user) and the currency_code segment is populated in the response.
+        # Corresponds to the JSON property `orderedItemSalesMicros`
+        # @return [Fixnum]
+        attr_accessor :ordered_item_sales_micros
+      
+        # Number of ordered items. Excludes customer cancellations that happened within
+        # 30 minutes of placing the order.
+        # Corresponds to the JSON property `orderedItems`
+        # @return [Fixnum]
+        attr_accessor :ordered_items
+      
+        # Number of placed orders. Excludes customer cancellations that happened within
+        # 30 minutes of placing the order. **This metric cannot be segmented by product
+        # dimensions.**
+        # Corresponds to the JSON property `orders`
+        # @return [Fixnum]
+        attr_accessor :orders
+      
+        # Number of ordered items canceled by the merchant, reported on the order date.
+        # Corresponds to the JSON property `rejectedItems`
+        # @return [Fixnum]
+        attr_accessor :rejected_items
+      
+        # Total price of returned items divided by the total price of shipped items,
+        # reported on the order date. If this metric is selected, 'segments.
+        # currency_code' is automatically added to the SELECT clause in the search query
+        # (unless it is explicitly selected by the user) and the currency_code segment
+        # is populated in the response.
+        # Corresponds to the JSON property `returnRate`
+        # @return [Float]
+        attr_accessor :return_rate
+      
+        # Number of ordered items sent back for return, reported on the date when the
+        # merchant accepted the return.
+        # Corresponds to the JSON property `returnedItems`
+        # @return [Fixnum]
+        attr_accessor :returned_items
+      
+        # Total price of ordered items sent back for return, reported on the date when
+        # the merchant accepted the return. The currency of the returned value is stored
+        # in the currency_code segment. If this metric is selected, 'segments.
+        # currency_code' is automatically added to the SELECT clause in the search query
+        # (unless it is explicitly selected by the user) and the currency_code segment
+        # is populated in the response.
+        # Corresponds to the JSON property `returnsMicros`
+        # @return [Fixnum]
+        attr_accessor :returns_micros
+      
+        # Total price of shipped items, reported on the order date. Excludes shipping
+        # and taxes (US only). The currency of the returned value is stored in the
+        # currency_code segment. If this metric is selected, 'segments.currency_code' is
+        # automatically added to the SELECT clause in the search query (unless it is
+        # explicitly selected by the user) and the currency_code segment is populated in
+        # the response.
+        # Corresponds to the JSON property `shippedItemSalesMicros`
+        # @return [Fixnum]
+        attr_accessor :shipped_item_sales_micros
+      
+        # Number of shipped items, reported on the shipment date.
+        # Corresponds to the JSON property `shippedItems`
+        # @return [Fixnum]
+        attr_accessor :shipped_items
+      
+        # Number of fully shipped orders, reported on the last shipment date. **This
+        # metric cannot be segmented by product dimensions.**
+        # Corresponds to the JSON property `shippedOrders`
+        # @return [Fixnum]
+        attr_accessor :shipped_orders
+      
+        # Number of ordered items not shipped up until the end of the queried day. If a
+        # multi-day period is specified in the search query, the returned value is the
+        # average number of unshipped items over the days in the queried period.
+        # Corresponds to the JSON property `unshippedItems`
+        # @return [Float]
+        attr_accessor :unshipped_items
+      
+        # Number of orders not shipped or partially shipped up until the end of the
+        # queried day. If a multi-day period is specified in the search query, the
+        # returned value is the average number of unshipped orders over the days in the
+        # queried period. **This metric cannot be segmented by product dimensions.**
+        # Corresponds to the JSON property `unshippedOrders`
+        # @return [Float]
+        attr_accessor :unshipped_orders
       
         def initialize(**args)
            update!(**args)
@@ -4846,9 +4970,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @aos = args[:aos] if args.key?(:aos)
+          @aov_micros = args[:aov_micros] if args.key?(:aov_micros)
           @clicks = args[:clicks] if args.key?(:clicks)
           @ctr = args[:ctr] if args.key?(:ctr)
+          @days_to_ship = args[:days_to_ship] if args.key?(:days_to_ship)
           @impressions = args[:impressions] if args.key?(:impressions)
+          @item_days_to_ship = args[:item_days_to_ship] if args.key?(:item_days_to_ship)
+          @item_fill_rate = args[:item_fill_rate] if args.key?(:item_fill_rate)
+          @ordered_item_sales_micros = args[:ordered_item_sales_micros] if args.key?(:ordered_item_sales_micros)
+          @ordered_items = args[:ordered_items] if args.key?(:ordered_items)
+          @orders = args[:orders] if args.key?(:orders)
+          @rejected_items = args[:rejected_items] if args.key?(:rejected_items)
+          @return_rate = args[:return_rate] if args.key?(:return_rate)
+          @returned_items = args[:returned_items] if args.key?(:returned_items)
+          @returns_micros = args[:returns_micros] if args.key?(:returns_micros)
+          @shipped_item_sales_micros = args[:shipped_item_sales_micros] if args.key?(:shipped_item_sales_micros)
+          @shipped_items = args[:shipped_items] if args.key?(:shipped_items)
+          @shipped_orders = args[:shipped_orders] if args.key?(:shipped_orders)
+          @unshipped_items = args[:unshipped_items] if args.key?(:unshipped_items)
+          @unshipped_orders = args[:unshipped_orders] if args.key?(:unshipped_orders)
         end
       end
       
@@ -9955,7 +10096,7 @@ module Google
         # @return [String]
         attr_accessor :link
       
-        # Link template for merchant hosted local storefront.
+        # URL template for merchant hosted local storefront.
         # Corresponds to the JSON property `linkTemplate`
         # @return [String]
         attr_accessor :link_template
@@ -9995,8 +10136,7 @@ module Google
         # @return [String]
         attr_accessor :mobile_link
       
-        # Link template for merchant hosted local storefront optimized for mobile
-        # devices.
+        # URL template for merchant hosted local storefront optimized for mobile devices.
         # Corresponds to the JSON property `mobileLinkTemplate`
         # @return [String]
         attr_accessor :mobile_link_template
@@ -13204,6 +13344,68 @@ module Google
       class Segments
         include Google::Apis::Core::Hashable
       
+        # Brand of the product.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # Product category (1st level) in Google's product taxonomy.
+        # Corresponds to the JSON property `categoryL1`
+        # @return [String]
+        attr_accessor :category_l1
+      
+        # Product category (2nd level) in Google's product taxonomy.
+        # Corresponds to the JSON property `categoryL2`
+        # @return [String]
+        attr_accessor :category_l2
+      
+        # Product category (3rd level) in Google's product taxonomy.
+        # Corresponds to the JSON property `categoryL3`
+        # @return [String]
+        attr_accessor :category_l3
+      
+        # Product category (4th level) in Google's product taxonomy.
+        # Corresponds to the JSON property `categoryL4`
+        # @return [String]
+        attr_accessor :category_l4
+      
+        # Product category (5th level) in Google's product taxonomy.
+        # Corresponds to the JSON property `categoryL5`
+        # @return [String]
+        attr_accessor :category_l5
+      
+        # Currency in which price metrics are represented, e.g., if you select `
+        # ordered_item_sales_micros`, the returned value will be represented by this
+        # currency.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Custom label 0 for custom grouping of products.
+        # Corresponds to the JSON property `customLabel0`
+        # @return [String]
+        attr_accessor :custom_label0
+      
+        # Custom label 1 for custom grouping of products.
+        # Corresponds to the JSON property `customLabel1`
+        # @return [String]
+        attr_accessor :custom_label1
+      
+        # Custom label 2 for custom grouping of products.
+        # Corresponds to the JSON property `customLabel2`
+        # @return [String]
+        attr_accessor :custom_label2
+      
+        # Custom label 3 for custom grouping of products.
+        # Corresponds to the JSON property `customLabel3`
+        # @return [String]
+        attr_accessor :custom_label3
+      
+        # Custom label 4 for custom grouping of products.
+        # Corresponds to the JSON property `customLabel4`
+        # @return [String]
+        attr_accessor :custom_label4
+      
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
@@ -13221,10 +13423,52 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
+        # Product category (1st level) in merchant's own product taxonomy.
+        # Corresponds to the JSON property `productTypeL1`
+        # @return [String]
+        attr_accessor :product_type_l1
+      
+        # Product category (2nd level) in merchant's own product taxonomy.
+        # Corresponds to the JSON property `productTypeL2`
+        # @return [String]
+        attr_accessor :product_type_l2
+      
+        # Product category (3rd level) in merchant's own product taxonomy.
+        # Corresponds to the JSON property `productTypeL3`
+        # @return [String]
+        attr_accessor :product_type_l3
+      
+        # Product category (4th level) in merchant's own product taxonomy.
+        # Corresponds to the JSON property `productTypeL4`
+        # @return [String]
+        attr_accessor :product_type_l4
+      
+        # Product category (5th level) in merchant's own product taxonomy.
+        # Corresponds to the JSON property `productTypeL5`
+        # @return [String]
+        attr_accessor :product_type_l5
+      
         # Program to which metrics apply, e.g., Free Product Listing.
         # Corresponds to the JSON property `program`
         # @return [String]
         attr_accessor :program
+      
+        # Title of the product.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `week`
+        # @return [Google::Apis::ContentV2_1::Date]
+        attr_accessor :week
       
         def initialize(**args)
            update!(**args)
@@ -13232,9 +13476,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @brand = args[:brand] if args.key?(:brand)
+          @category_l1 = args[:category_l1] if args.key?(:category_l1)
+          @category_l2 = args[:category_l2] if args.key?(:category_l2)
+          @category_l3 = args[:category_l3] if args.key?(:category_l3)
+          @category_l4 = args[:category_l4] if args.key?(:category_l4)
+          @category_l5 = args[:category_l5] if args.key?(:category_l5)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @custom_label0 = args[:custom_label0] if args.key?(:custom_label0)
+          @custom_label1 = args[:custom_label1] if args.key?(:custom_label1)
+          @custom_label2 = args[:custom_label2] if args.key?(:custom_label2)
+          @custom_label3 = args[:custom_label3] if args.key?(:custom_label3)
+          @custom_label4 = args[:custom_label4] if args.key?(:custom_label4)
           @date = args[:date] if args.key?(:date)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @product_type_l1 = args[:product_type_l1] if args.key?(:product_type_l1)
+          @product_type_l2 = args[:product_type_l2] if args.key?(:product_type_l2)
+          @product_type_l3 = args[:product_type_l3] if args.key?(:product_type_l3)
+          @product_type_l4 = args[:product_type_l4] if args.key?(:product_type_l4)
+          @product_type_l5 = args[:product_type_l5] if args.key?(:product_type_l5)
           @program = args[:program] if args.key?(:program)
+          @title = args[:title] if args.key?(:title)
+          @week = args[:week] if args.key?(:week)
         end
       end
       
