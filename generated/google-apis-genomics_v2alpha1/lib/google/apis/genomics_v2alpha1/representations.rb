@@ -575,6 +575,7 @@ module Google
       
           property :nvidia_driver_version, as: 'nvidiaDriverVersion'
           property :preemptible, as: 'preemptible'
+          property :reservation, as: 'reservation'
           property :service_account, as: 'serviceAccount', class: Google::Apis::GenomicsV2alpha1::ServiceAccount, decorator: Google::Apis::GenomicsV2alpha1::ServiceAccount::Representation
       
           collection :volumes, as: 'volumes', class: Google::Apis::GenomicsV2alpha1::Volume, decorator: Google::Apis::GenomicsV2alpha1::Volume::Representation

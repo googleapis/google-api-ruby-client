@@ -1289,6 +1289,12 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # If specified, the VM will only be allocated inside the matching reservation.
+        # It will fail if the VM parameters don't match the reservation.
+        # Corresponds to the JSON property `reservation`
+        # @return [String]
+        attr_accessor :reservation
+      
         # Carries information about a Google Cloud service account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::GenomicsV2alpha1::ServiceAccount]
@@ -1318,6 +1324,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @nvidia_driver_version = args[:nvidia_driver_version] if args.key?(:nvidia_driver_version)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @reservation = args[:reservation] if args.key?(:reservation)
           @service_account = args[:service_account] if args.key?(:service_account)
           @volumes = args[:volumes] if args.key?(:volumes)
         end
