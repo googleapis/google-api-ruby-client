@@ -1,0 +1,7 @@
+{
+    "api_id": "keep:v1",
+    "name_pretty": "Google Keep API",
+    "distribution_name": "google-apis-keep_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
