@@ -2656,6 +2656,41 @@ module Google
         end
       end
       
+      # A message representing the message types used by a long-running operation.
+      # Example: rpc Export(ExportRequest) returns (google.longrunning.Operation) `
+      # option (google.longrunning.operation_info) = ` response_type: "ExportResponse"
+      # metadata_type: "ExportMetadata" `; `
+      class OperationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. The message name of the metadata type for this long-running
+        # operation. If the response is in a different package from the rpc, a fully-
+        # qualified message name must be used (e.g. `google.protobuf.Struct`). Note:
+        # Altering this value constitutes a breaking change.
+        # Corresponds to the JSON property `metadataType`
+        # @return [String]
+        attr_accessor :metadata_type
+      
+        # Required. The message name of the primary return type for this long-running
+        # operation. This type will be used to deserialize the LRO's response. If the
+        # response is in a different package from the rpc, a fully-qualified message
+        # name must be used (e.g. `google.protobuf.Struct`). Note: Altering this value
+        # constitutes a breaking change.
+        # Corresponds to the JSON property `responseType`
+        # @return [String]
+        attr_accessor :response_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_type = args[:metadata_type] if args.key?(:metadata_type)
+          @response_type = args[:response_type] if args.key?(:response_type)
+        end
+      end
+      
       # The metadata associated with a long running operation resource.
       class OperationMetadata
         include Google::Apis::Core::Hashable
