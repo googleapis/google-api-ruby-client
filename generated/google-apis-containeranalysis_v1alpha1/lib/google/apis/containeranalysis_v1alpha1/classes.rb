@@ -458,6 +458,31 @@ module Google
         end
       end
       
+      # A compliance check that is a CIS benchmark.
+      class CisBenchmark
+        include Google::Apis::Core::Hashable
+      
+        # The profile level of this CIS benchmark check.
+        # Corresponds to the JSON property `profileLevel`
+        # @return [Fixnum]
+        attr_accessor :profile_level
+      
+        # The severity level of this CIS benchmark check.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @profile_level = args[:profile_level] if args.key?(:profile_level)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # Command describes a step performed as part of the build pipeline.
       class Command
         include Google::Apis::Core::Hashable
@@ -507,6 +532,116 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @wait_for = args[:wait_for] if args.key?(:wait_for)
+        end
+      end
+      
+      # ComplianceNote encapsulates all information about a specific compliance check.
+      class ComplianceNote
+        include Google::Apis::Core::Hashable
+      
+        # A compliance check that is a CIS benchmark.
+        # Corresponds to the JSON property `cisBenchmark`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::CisBenchmark]
+        attr_accessor :cis_benchmark
+      
+        # A description about this compliance check.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A rationale for the existence of this compliance check.
+        # Corresponds to the JSON property `rationale`
+        # @return [String]
+        attr_accessor :rationale
+      
+        # A description of remediation steps if the compliance check fails.
+        # Corresponds to the JSON property `remediation`
+        # @return [String]
+        attr_accessor :remediation
+      
+        # Serialized scan instructions with a predefined format.
+        # Corresponds to the JSON property `scanInstructions`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :scan_instructions
+      
+        # The title that identifies this compliance check.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The OS and config versions the benchmark applies to.
+        # Corresponds to the JSON property `version`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::ComplianceVersion>]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cis_benchmark = args[:cis_benchmark] if args.key?(:cis_benchmark)
+          @description = args[:description] if args.key?(:description)
+          @rationale = args[:rationale] if args.key?(:rationale)
+          @remediation = args[:remediation] if args.key?(:remediation)
+          @scan_instructions = args[:scan_instructions] if args.key?(:scan_instructions)
+          @title = args[:title] if args.key?(:title)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # An indication that the compliance checks in the associated ComplianceNote were
+      # not satisfied for particular resources or a specified reason.
+      class ComplianceOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # The reason for non compliance of these files.
+        # Corresponds to the JSON property `nonComplianceReason`
+        # @return [String]
+        attr_accessor :non_compliance_reason
+      
+        # A list of files which are violating compliance checks.
+        # Corresponds to the JSON property `nonCompliantFiles`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::NonCompliantFile>]
+        attr_accessor :non_compliant_files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @non_compliance_reason = args[:non_compliance_reason] if args.key?(:non_compliance_reason)
+          @non_compliant_files = args[:non_compliant_files] if args.key?(:non_compliant_files)
+        end
+      end
+      
+      # Describes the CIS benchmark version that is applicable to a given OS and os
+      # version.
+      class ComplianceVersion
+        include Google::Apis::Core::Hashable
+      
+        # The CPE URI (https://cpe.mitre.org/specification/) this benchmark is
+        # applicable to.
+        # Corresponds to the JSON property `cpeUri`
+        # @return [String]
+        attr_accessor :cpe_uri
+      
+        # The version of the benchmark. This is set to the version of the OS-specific
+        # CIS document the benchmark is defined in.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1515,6 +1650,39 @@ module Google
         end
       end
       
+      # Details about files that caused a compliance check to fail.
+      class NonCompliantFile
+        include Google::Apis::Core::Hashable
+      
+        # Command to display the non-compliant files.
+        # Corresponds to the JSON property `displayCommand`
+        # @return [String]
+        attr_accessor :display_command
+      
+        # display_command is a single command that can be used to display a list of non
+        # compliant files. When there is no such command, we can also iterate a list of
+        # non compliant file using 'path'. Empty if `display_command` is set.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Explains why a file is non compliant for a CIS check.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_command = args[:display_command] if args.key?(:display_command)
+          @path = args[:path] if args.key?(:path)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
       # Provides a detailed description of a `Note`.
       class Note
         include Google::Apis::Core::Hashable
@@ -1543,6 +1711,11 @@ module Google
         # Corresponds to the JSON property `buildType`
         # @return [Google::Apis::ContaineranalysisV1alpha1::BuildType]
         attr_accessor :build_type
+      
+        # ComplianceNote encapsulates all information about a specific compliance check.
+        # Corresponds to the JSON property `compliance`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ComplianceNote]
+        attr_accessor :compliance
       
         # Output only. The time this note was created. This field can be used as a
         # filter in list requests.
@@ -1629,6 +1802,7 @@ module Google
           @attestation_authority = args[:attestation_authority] if args.key?(:attestation_authority)
           @base_image = args[:base_image] if args.key?(:base_image)
           @build_type = args[:build_type] if args.key?(:build_type)
+          @compliance = args[:compliance] if args.key?(:compliance)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deployable = args[:deployable] if args.key?(:deployable)
           @discovery = args[:discovery] if args.key?(:discovery)
@@ -1665,6 +1839,12 @@ module Google
         # Corresponds to the JSON property `buildDetails`
         # @return [Google::Apis::ContaineranalysisV1alpha1::BuildDetails]
         attr_accessor :build_details
+      
+        # An indication that the compliance checks in the associated ComplianceNote were
+        # not satisfied for particular resources or a specified reason.
+        # Corresponds to the JSON property `compliance`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::ComplianceOccurrence]
+        attr_accessor :compliance
       
         # Output only. The time this `Occurrence` was created.
         # Corresponds to the JSON property `createTime`
@@ -1754,6 +1934,7 @@ module Google
         def update!(**args)
           @attestation = args[:attestation] if args.key?(:attestation)
           @build_details = args[:build_details] if args.key?(:build_details)
+          @compliance = args[:compliance] if args.key?(:compliance)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deployment = args[:deployment] if args.key?(:deployment)
           @derived_image = args[:derived_image] if args.key?(:derived_image)
