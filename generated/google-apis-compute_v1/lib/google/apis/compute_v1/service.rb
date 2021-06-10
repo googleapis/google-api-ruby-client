@@ -3583,7 +3583,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the policies that have been configured for the specified project.
+        # Lists all the policies that have been configured for the specified folder or
+        # organization.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
