@@ -231,6 +231,800 @@ module Google
         end
       end
       
+      # CommonFeatureSpec contains Hub-wide configuration information
+      class CommonFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
+        # feature.
+        # Corresponds to the JSON property `multiclusteringress`
+        # @return [Google::Apis::GkehubV1::MultiClusterIngressFeatureSpec]
+        attr_accessor :multiclusteringress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
+        end
+      end
+      
+      # CommonFeatureState contains Hub-wide Feature status information.
+      class CommonFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # FeatureState describes the high-level state of a Feature. It may be used to
+        # describe a Feature's state at the environ-level, or per-membershop, depending
+        # on the context.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::FeatureState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Configuration for Config Sync
+      class ConfigManagementConfigSync
+        include Google::Apis::Core::Hashable
+      
+        # Git repo configuration for a single cluster.
+        # Corresponds to the JSON property `git`
+        # @return [Google::Apis::GkehubV1::ConfigManagementGitConfig]
+        attr_accessor :git
+      
+        # Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured”
+        # mode.
+        # Corresponds to the JSON property `sourceFormat`
+        # @return [String]
+        attr_accessor :source_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @git = args[:git] if args.key?(:git)
+          @source_format = args[:source_format] if args.key?(:source_format)
+        end
+      end
+      
+      # The state of ConfigSync's deployment on a cluster
+      class ConfigManagementConfigSyncDeploymentState
+        include Google::Apis::Core::Hashable
+      
+        # Deployment state of the git-sync pod
+        # Corresponds to the JSON property `gitSync`
+        # @return [String]
+        attr_accessor :git_sync
+      
+        # Deployment state of the importer pod
+        # Corresponds to the JSON property `importer`
+        # @return [String]
+        attr_accessor :importer
+      
+        # Deployment state of the monitor pod
+        # Corresponds to the JSON property `monitor`
+        # @return [String]
+        attr_accessor :monitor
+      
+        # Deployment state of reconciler-manager pod
+        # Corresponds to the JSON property `reconcilerManager`
+        # @return [String]
+        attr_accessor :reconciler_manager
+      
+        # Deployment state of root-reconciler
+        # Corresponds to the JSON property `rootReconciler`
+        # @return [String]
+        attr_accessor :root_reconciler
+      
+        # Deployment state of the syncer pod
+        # Corresponds to the JSON property `syncer`
+        # @return [String]
+        attr_accessor :syncer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @git_sync = args[:git_sync] if args.key?(:git_sync)
+          @importer = args[:importer] if args.key?(:importer)
+          @monitor = args[:monitor] if args.key?(:monitor)
+          @reconciler_manager = args[:reconciler_manager] if args.key?(:reconciler_manager)
+          @root_reconciler = args[:root_reconciler] if args.key?(:root_reconciler)
+          @syncer = args[:syncer] if args.key?(:syncer)
+        end
+      end
+      
+      # State information for ConfigSync
+      class ConfigManagementConfigSyncState
+        include Google::Apis::Core::Hashable
+      
+        # The state of ConfigSync's deployment on a cluster
+        # Corresponds to the JSON property `deploymentState`
+        # @return [Google::Apis::GkehubV1::ConfigManagementConfigSyncDeploymentState]
+        attr_accessor :deployment_state
+      
+        # State indicating an ACM's progress syncing configurations to a cluster
+        # Corresponds to the JSON property `syncState`
+        # @return [Google::Apis::GkehubV1::ConfigManagementSyncState]
+        attr_accessor :sync_state
+      
+        # Specific versioning information pertaining to ConfigSync's Pods
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::GkehubV1::ConfigManagementConfigSyncVersion]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_state = args[:deployment_state] if args.key?(:deployment_state)
+          @sync_state = args[:sync_state] if args.key?(:sync_state)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Specific versioning information pertaining to ConfigSync's Pods
+      class ConfigManagementConfigSyncVersion
+        include Google::Apis::Core::Hashable
+      
+        # Version of the deployed git-sync pod
+        # Corresponds to the JSON property `gitSync`
+        # @return [String]
+        attr_accessor :git_sync
+      
+        # Version of the deployed importer pod
+        # Corresponds to the JSON property `importer`
+        # @return [String]
+        attr_accessor :importer
+      
+        # Version of the deployed monitor pod
+        # Corresponds to the JSON property `monitor`
+        # @return [String]
+        attr_accessor :monitor
+      
+        # Version of the deployed reconciler-manager pod
+        # Corresponds to the JSON property `reconcilerManager`
+        # @return [String]
+        attr_accessor :reconciler_manager
+      
+        # Version of the deployed reconciler container in root-reconciler pod
+        # Corresponds to the JSON property `rootReconciler`
+        # @return [String]
+        attr_accessor :root_reconciler
+      
+        # Version of the deployed syncer pod
+        # Corresponds to the JSON property `syncer`
+        # @return [String]
+        attr_accessor :syncer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @git_sync = args[:git_sync] if args.key?(:git_sync)
+          @importer = args[:importer] if args.key?(:importer)
+          @monitor = args[:monitor] if args.key?(:monitor)
+          @reconciler_manager = args[:reconciler_manager] if args.key?(:reconciler_manager)
+          @root_reconciler = args[:root_reconciler] if args.key?(:root_reconciler)
+          @syncer = args[:syncer] if args.key?(:syncer)
+        end
+      end
+      
+      # Model for a config file in the git repo with an associated Sync error
+      class ConfigManagementErrorResource
+        include Google::Apis::Core::Hashable
+      
+        # A Kubernetes object's GVK
+        # Corresponds to the JSON property `resourceGvk`
+        # @return [Google::Apis::GkehubV1::ConfigManagementGroupVersionKind]
+        attr_accessor :resource_gvk
+      
+        # Metadata name of the resource that is causing an error
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Namespace of the resource that is causing an error
+        # Corresponds to the JSON property `resourceNamespace`
+        # @return [String]
+        attr_accessor :resource_namespace
+      
+        # Path in the git repo of the erroneous config
+        # Corresponds to the JSON property `sourcePath`
+        # @return [String]
+        attr_accessor :source_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_gvk = args[:resource_gvk] if args.key?(:resource_gvk)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @resource_namespace = args[:resource_namespace] if args.key?(:resource_namespace)
+          @source_path = args[:source_path] if args.key?(:source_path)
+        end
+      end
+      
+      # State of Policy Controller installation.
+      class ConfigManagementGatekeeperDeploymentState
+        include Google::Apis::Core::Hashable
+      
+        # Status of gatekeeper-audit deployment.
+        # Corresponds to the JSON property `gatekeeperAudit`
+        # @return [String]
+        attr_accessor :gatekeeper_audit
+      
+        # Status of gatekeeper-controller-manager pod.
+        # Corresponds to the JSON property `gatekeeperControllerManagerState`
+        # @return [String]
+        attr_accessor :gatekeeper_controller_manager_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gatekeeper_audit = args[:gatekeeper_audit] if args.key?(:gatekeeper_audit)
+          @gatekeeper_controller_manager_state = args[:gatekeeper_controller_manager_state] if args.key?(:gatekeeper_controller_manager_state)
+        end
+      end
+      
+      # Git repo configuration for a single cluster.
+      class ConfigManagementGitConfig
+        include Google::Apis::Core::Hashable
+      
+        # The GCP Service Account Email used for auth when secret_type is
+        # gcpServiceAccount.
+        # Corresponds to the JSON property `gcpServiceAccountEmail`
+        # @return [String]
+        attr_accessor :gcp_service_account_email
+      
+        # URL for the HTTPS proxy to be used when communicating with the Git repo.
+        # Corresponds to the JSON property `httpsProxy`
+        # @return [String]
+        attr_accessor :https_proxy
+      
+        # The path within the Git repository that represents the top level of the repo
+        # to sync. Default: the root directory of the repository.
+        # Corresponds to the JSON property `policyDir`
+        # @return [String]
+        attr_accessor :policy_dir
+      
+        # Type of secret configured for access to the Git repo.
+        # Corresponds to the JSON property `secretType`
+        # @return [String]
+        attr_accessor :secret_type
+      
+        # The branch of the repository to sync from. Default: master.
+        # Corresponds to the JSON property `syncBranch`
+        # @return [String]
+        attr_accessor :sync_branch
+      
+        # The URL of the Git repository to use as the source of truth.
+        # Corresponds to the JSON property `syncRepo`
+        # @return [String]
+        attr_accessor :sync_repo
+      
+        # Git revision (tag or hash) to check out. Default HEAD.
+        # Corresponds to the JSON property `syncRev`
+        # @return [String]
+        attr_accessor :sync_rev
+      
+        # Period in seconds between consecutive syncs. Default: 15.
+        # Corresponds to the JSON property `syncWaitSecs`
+        # @return [Fixnum]
+        attr_accessor :sync_wait_secs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcp_service_account_email = args[:gcp_service_account_email] if args.key?(:gcp_service_account_email)
+          @https_proxy = args[:https_proxy] if args.key?(:https_proxy)
+          @policy_dir = args[:policy_dir] if args.key?(:policy_dir)
+          @secret_type = args[:secret_type] if args.key?(:secret_type)
+          @sync_branch = args[:sync_branch] if args.key?(:sync_branch)
+          @sync_repo = args[:sync_repo] if args.key?(:sync_repo)
+          @sync_rev = args[:sync_rev] if args.key?(:sync_rev)
+          @sync_wait_secs = args[:sync_wait_secs] if args.key?(:sync_wait_secs)
+        end
+      end
+      
+      # A Kubernetes object's GVK
+      class ConfigManagementGroupVersionKind
+        include Google::Apis::Core::Hashable
+      
+        # Kubernetes Group
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Kubernetes Kind
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Kubernetes Version
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @kind = args[:kind] if args.key?(:kind)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for Hierarchy Controller
+      class ConfigManagementHierarchyControllerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether hierarchical resource quota is enabled in this cluster.
+        # Corresponds to the JSON property `enableHierarchicalResourceQuota`
+        # @return [Boolean]
+        attr_accessor :enable_hierarchical_resource_quota
+        alias_method :enable_hierarchical_resource_quota?, :enable_hierarchical_resource_quota
+      
+        # Whether pod tree labels are enabled in this cluster.
+        # Corresponds to the JSON property `enablePodTreeLabels`
+        # @return [Boolean]
+        attr_accessor :enable_pod_tree_labels
+        alias_method :enable_pod_tree_labels?, :enable_pod_tree_labels
+      
+        # Whether Hierarchy Controller is enabled in this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_hierarchical_resource_quota = args[:enable_hierarchical_resource_quota] if args.key?(:enable_hierarchical_resource_quota)
+          @enable_pod_tree_labels = args[:enable_pod_tree_labels] if args.key?(:enable_pod_tree_labels)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Deployment state for Hierarchy Controller
+      class ConfigManagementHierarchyControllerDeploymentState
+        include Google::Apis::Core::Hashable
+      
+        # The deployment state for Hierarchy Controller extension (e.g. v0.7.0-hc.1)
+        # Corresponds to the JSON property `extension`
+        # @return [String]
+        attr_accessor :extension
+      
+        # The deployment state for open source HNC (e.g. v0.7.0-hc.0)
+        # Corresponds to the JSON property `hnc`
+        # @return [String]
+        attr_accessor :hnc
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extension = args[:extension] if args.key?(:extension)
+          @hnc = args[:hnc] if args.key?(:hnc)
+        end
+      end
+      
+      # State for Hierarchy Controller
+      class ConfigManagementHierarchyControllerState
+        include Google::Apis::Core::Hashable
+      
+        # Deployment state for Hierarchy Controller
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::ConfigManagementHierarchyControllerDeploymentState]
+        attr_accessor :state
+      
+        # Version for Hierarchy Controller
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::GkehubV1::ConfigManagementHierarchyControllerVersion]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Version for Hierarchy Controller
+      class ConfigManagementHierarchyControllerVersion
+        include Google::Apis::Core::Hashable
+      
+        # Version for Hierarchy Controller extension
+        # Corresponds to the JSON property `extension`
+        # @return [String]
+        attr_accessor :extension
+      
+        # Version for open source HNC
+        # Corresponds to the JSON property `hnc`
+        # @return [String]
+        attr_accessor :hnc
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extension = args[:extension] if args.key?(:extension)
+          @hnc = args[:hnc] if args.key?(:hnc)
+        end
+      end
+      
+      # Errors pertaining to the installation of ACM
+      class ConfigManagementInstallError
+        include Google::Apis::Core::Hashable
+      
+        # A string representing the user facing error message
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
+      # **Anthos Config Management**: Configuration for a single cluster. Intended to
+      # parallel the ConfigManagement CR.
+      class ConfigManagementMembershipSpec
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Config Sync
+        # Corresponds to the JSON property `configSync`
+        # @return [Google::Apis::GkehubV1::ConfigManagementConfigSync]
+        attr_accessor :config_sync
+      
+        # Configuration for Hierarchy Controller
+        # Corresponds to the JSON property `hierarchyController`
+        # @return [Google::Apis::GkehubV1::ConfigManagementHierarchyControllerConfig]
+        attr_accessor :hierarchy_controller
+      
+        # Configuration for Policy Controller
+        # Corresponds to the JSON property `policyController`
+        # @return [Google::Apis::GkehubV1::ConfigManagementPolicyController]
+        attr_accessor :policy_controller
+      
+        # Version of ACM installed.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_sync = args[:config_sync] if args.key?(:config_sync)
+          @hierarchy_controller = args[:hierarchy_controller] if args.key?(:hierarchy_controller)
+          @policy_controller = args[:policy_controller] if args.key?(:policy_controller)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # **Anthos Config Management**: State for a single cluster.
+      class ConfigManagementMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # The user-defined name for the cluster used by ClusterSelectors to group
+        # clusters together. This should match Membership's membership_name, unless the
+        # user installed ACM on the cluster manually prior to enabling the ACM hub
+        # feature. Unique within a Anthos Config Management installation.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # State information for ConfigSync
+        # Corresponds to the JSON property `configSyncState`
+        # @return [Google::Apis::GkehubV1::ConfigManagementConfigSyncState]
+        attr_accessor :config_sync_state
+      
+        # State for Hierarchy Controller
+        # Corresponds to the JSON property `hierarchyControllerState`
+        # @return [Google::Apis::GkehubV1::ConfigManagementHierarchyControllerState]
+        attr_accessor :hierarchy_controller_state
+      
+        # **Anthos Config Management**: Configuration for a single cluster. Intended to
+        # parallel the ConfigManagement CR.
+        # Corresponds to the JSON property `membershipSpec`
+        # @return [Google::Apis::GkehubV1::ConfigManagementMembershipSpec]
+        attr_accessor :membership_spec
+      
+        # State information for an ACM's Operator
+        # Corresponds to the JSON property `operatorState`
+        # @return [Google::Apis::GkehubV1::ConfigManagementOperatorState]
+        attr_accessor :operator_state
+      
+        # State for PolicyControllerState.
+        # Corresponds to the JSON property `policyControllerState`
+        # @return [Google::Apis::GkehubV1::ConfigManagementPolicyControllerState]
+        attr_accessor :policy_controller_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @config_sync_state = args[:config_sync_state] if args.key?(:config_sync_state)
+          @hierarchy_controller_state = args[:hierarchy_controller_state] if args.key?(:hierarchy_controller_state)
+          @membership_spec = args[:membership_spec] if args.key?(:membership_spec)
+          @operator_state = args[:operator_state] if args.key?(:operator_state)
+          @policy_controller_state = args[:policy_controller_state] if args.key?(:policy_controller_state)
+        end
+      end
+      
+      # State information for an ACM's Operator
+      class ConfigManagementOperatorState
+        include Google::Apis::Core::Hashable
+      
+        # The state of the Operator's deployment
+        # Corresponds to the JSON property `deploymentState`
+        # @return [String]
+        attr_accessor :deployment_state
+      
+        # Install errors.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::GkehubV1::ConfigManagementInstallError>]
+        attr_accessor :errors
+      
+        # The semenatic version number of the operator
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_state = args[:deployment_state] if args.key?(:deployment_state)
+          @errors = args[:errors] if args.key?(:errors)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for Policy Controller
+      class ConfigManagementPolicyController
+        include Google::Apis::Core::Hashable
+      
+        # Sets the interval for Policy Controller Audit Scans (in seconds). When set to
+        # 0, this disables audit functionality altogether.
+        # Corresponds to the JSON property `auditIntervalSeconds`
+        # @return [Fixnum]
+        attr_accessor :audit_interval_seconds
+      
+        # Enables the installation of Policy Controller. If false, the rest of
+        # PolicyController fields take no effect.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The set of namespaces that are excluded from Policy Controller checks.
+        # Namespaces do not need to currently exist on the cluster.
+        # Corresponds to the JSON property `exemptableNamespaces`
+        # @return [Array<String>]
+        attr_accessor :exemptable_namespaces
+      
+        # Logs all denies and dry run failures.
+        # Corresponds to the JSON property `logDeniesEnabled`
+        # @return [Boolean]
+        attr_accessor :log_denies_enabled
+        alias_method :log_denies_enabled?, :log_denies_enabled
+      
+        # Enables the ability to use Constraint Templates that reference to objects
+        # other than the object currently being evaluated.
+        # Corresponds to the JSON property `referentialRulesEnabled`
+        # @return [Boolean]
+        attr_accessor :referential_rules_enabled
+        alias_method :referential_rules_enabled?, :referential_rules_enabled
+      
+        # Installs the default template library along with Policy Controller.
+        # Corresponds to the JSON property `templateLibraryInstalled`
+        # @return [Boolean]
+        attr_accessor :template_library_installed
+        alias_method :template_library_installed?, :template_library_installed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audit_interval_seconds = args[:audit_interval_seconds] if args.key?(:audit_interval_seconds)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @exemptable_namespaces = args[:exemptable_namespaces] if args.key?(:exemptable_namespaces)
+          @log_denies_enabled = args[:log_denies_enabled] if args.key?(:log_denies_enabled)
+          @referential_rules_enabled = args[:referential_rules_enabled] if args.key?(:referential_rules_enabled)
+          @template_library_installed = args[:template_library_installed] if args.key?(:template_library_installed)
+        end
+      end
+      
+      # State for PolicyControllerState.
+      class ConfigManagementPolicyControllerState
+        include Google::Apis::Core::Hashable
+      
+        # State of Policy Controller installation.
+        # Corresponds to the JSON property `deploymentState`
+        # @return [Google::Apis::GkehubV1::ConfigManagementGatekeeperDeploymentState]
+        attr_accessor :deployment_state
+      
+        # The build version of Gatekeeper Policy Controller is using.
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::GkehubV1::ConfigManagementPolicyControllerVersion]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_state = args[:deployment_state] if args.key?(:deployment_state)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The build version of Gatekeeper Policy Controller is using.
+      class ConfigManagementPolicyControllerVersion
+        include Google::Apis::Core::Hashable
+      
+        # The gatekeeper image tag that is composed of ACM version, git tag, build
+        # number.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # An ACM created error representing a problem syncing configurations
+      class ConfigManagementSyncError
+        include Google::Apis::Core::Hashable
+      
+        # An ACM defined error code
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A description of the error
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # A list of config(s) associated with the error, if any
+        # Corresponds to the JSON property `errorResources`
+        # @return [Array<Google::Apis::GkehubV1::ConfigManagementErrorResource>]
+        attr_accessor :error_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @error_resources = args[:error_resources] if args.key?(:error_resources)
+        end
+      end
+      
+      # State indicating an ACM's progress syncing configurations to a cluster
+      class ConfigManagementSyncState
+        include Google::Apis::Core::Hashable
+      
+        # Sync status code
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A list of errors resulting from problematic configs. This list will be
+        # truncated after 100 errors, although it is unlikely for that many errors to
+        # simultaneously exist.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::GkehubV1::ConfigManagementSyncError>]
+        attr_accessor :errors
+      
+        # Token indicating the state of the importer.
+        # Corresponds to the JSON property `importToken`
+        # @return [String]
+        attr_accessor :import_token
+      
+        # Timestamp of when ACM last successfully synced the repo The time format is
+        # specified in https://golang.org/pkg/time/#Time.String This field is being
+        # deprecated. Use last_sync_time instead. (b/154053616)
+        # Corresponds to the JSON property `lastSync`
+        # @return [String]
+        attr_accessor :last_sync
+      
+        # Timestamp type of when ACM last successfully synced the repo
+        # Corresponds to the JSON property `lastSyncTime`
+        # @return [String]
+        attr_accessor :last_sync_time
+      
+        # Token indicating the state of the repo.
+        # Corresponds to the JSON property `sourceToken`
+        # @return [String]
+        attr_accessor :source_token
+      
+        # Token indicating the state of the syncer.
+        # Corresponds to the JSON property `syncToken`
+        # @return [String]
+        attr_accessor :sync_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @errors = args[:errors] if args.key?(:errors)
+          @import_token = args[:import_token] if args.key?(:import_token)
+          @last_sync = args[:last_sync] if args.key?(:last_sync)
+          @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
+          @source_token = args[:source_token] if args.key?(:source_token)
+          @sync_token = args[:sync_token] if args.key?(:sync_token)
+        end
+      end
+      
       # ConnectAgentResource represents a Kubernetes resource manifest for Connect
       # Agent deployment.
       class ConnectAgentResource
@@ -326,6 +1120,151 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Feature represents the settings and status of any Hub Feature.
+      class Feature
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the Feature resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the Feature resource was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # GCP labels for this Feature.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Membership-specific configuration for this Feature. If this Feature
+        # does not support any per-Membership configuration, this field may be unused.
+        # The keys indicate which Membership the configuration is for, in the form:
+        # projects/`p`/locations/`l`/memberships/`m` Where `p` is the project, `l` is a
+        # valid location and `m` is a valid Membership in this project at that location.
+        # `p` WILL match the Feature's project. `p` will always be returned as the
+        # project number, but the project ID is also accepted during input. If the same
+        # Membership is specified in the map twice (using the project ID form, and the
+        # project number form), exactly ONE of the entries will be saved, with no
+        # guarantees as to which. For this reason, it is recommended the same format be
+        # used for all entries when mutating a Feature.
+        # Corresponds to the JSON property `membershipSpecs`
+        # @return [Hash<String,Google::Apis::GkehubV1::MembershipFeatureSpec>]
+        attr_accessor :membership_specs
+      
+        # Output only. Membership-specific Feature status. If this Feature does report
+        # any per-Membership status, this field may be unused. The keys indicate which
+        # Membership the state is for, in the form: projects/`p`/locations/`l`/
+        # memberships/`m` Where `p` is the project number, `l` is a valid location and `
+        # m` is a valid Membership in this project at that location. `p` MUST match the
+        # Feature's project number.
+        # Corresponds to the JSON property `membershipStates`
+        # @return [Hash<String,Google::Apis::GkehubV1::MembershipFeatureState>]
+        attr_accessor :membership_states
+      
+        # Output only. The full, unique name of this Feature resource in the format `
+        # projects/*/locations/*/features/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # FeatureResourceState describes the state of a Feature *resource* in the GkeHub
+        # API. See `FeatureState` for the "running state" of the Feature in the Hub and
+        # across Memberships.
+        # Corresponds to the JSON property `resourceState`
+        # @return [Google::Apis::GkehubV1::FeatureResourceState]
+        attr_accessor :resource_state
+      
+        # CommonFeatureSpec contains Hub-wide configuration information
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::GkehubV1::CommonFeatureSpec]
+        attr_accessor :spec
+      
+        # CommonFeatureState contains Hub-wide Feature status information.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::CommonFeatureState]
+        attr_accessor :state
+      
+        # Output only. When the Feature resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @membership_specs = args[:membership_specs] if args.key?(:membership_specs)
+          @membership_states = args[:membership_states] if args.key?(:membership_states)
+          @name = args[:name] if args.key?(:name)
+          @resource_state = args[:resource_state] if args.key?(:resource_state)
+          @spec = args[:spec] if args.key?(:spec)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # FeatureResourceState describes the state of a Feature *resource* in the GkeHub
+      # API. See `FeatureState` for the "running state" of the Feature in the Hub and
+      # across Memberships.
+      class FeatureResourceState
+        include Google::Apis::Core::Hashable
+      
+        # The current state of the Feature resource in the Hub API.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # FeatureState describes the high-level state of a Feature. It may be used to
+      # describe a Feature's state at the environ-level, or per-membershop, depending
+      # on the context.
+      class FeatureState
+        include Google::Apis::Core::Hashable
+      
+        # The high-level, machine-readable status of this Feature.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A human-readable description of the current status.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The time this status and any related Feature-specific details were updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -463,6 +1402,32 @@ module Google
           @node_provider_id = args[:node_provider_id] if args.key?(:node_provider_id)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
+        end
+      end
+      
+      # Response message for the `GkeHub.ListFeatures` method.
+      class ListFeaturesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the `ListFeatures` method.
+        # The value of an empty string means that there are no more resources to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of matching Features
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::GkehubV1::Feature>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
         end
       end
       
@@ -726,6 +1691,55 @@ module Google
         end
       end
       
+      # MembershipFeatureSpec contains configuration information for a single
+      # Membership.
+      class MembershipFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # **Anthos Config Management**: Configuration for a single cluster. Intended to
+        # parallel the ConfigManagement CR.
+        # Corresponds to the JSON property `configmanagement`
+        # @return [Google::Apis::GkehubV1::ConfigManagementMembershipSpec]
+        attr_accessor :configmanagement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+        end
+      end
+      
+      # MembershipFeatureState contains Feature status information for a single
+      # Membership.
+      class MembershipFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # **Anthos Config Management**: State for a single cluster.
+        # Corresponds to the JSON property `configmanagement`
+        # @return [Google::Apis::GkehubV1::ConfigManagementMembershipState]
+        attr_accessor :configmanagement
+      
+        # FeatureState describes the high-level state of a Feature. It may be used to
+        # describe a Feature's state at the environ-level, or per-membershop, depending
+        # on the context.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::GkehubV1::FeatureState]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # MembershipState describes the state of a Membership resource.
       class MembershipState
         include Google::Apis::Core::Hashable
@@ -742,6 +1756,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
+      # feature.
+      class MultiClusterIngressFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # Fully-qualified Membership name which hosts the MultiClusterIngress CRD.
+        # Example: `projects/foo-proj/locations/global/memberships/bar`
+        # Corresponds to the JSON property `configMembership`
+        # @return [String]
+        attr_accessor :config_membership
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_membership = args[:config_membership] if args.key?(:config_membership)
         end
       end
       
