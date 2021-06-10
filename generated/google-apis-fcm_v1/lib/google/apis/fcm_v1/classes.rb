@@ -373,8 +373,8 @@ module Google
         # HTTP request headers defined in Apple Push Notification Service. Refer to [
         # APNs request headers](https://developer.apple.com/documentation/
         # usernotifications/setting_up_a_remote_notification_server/
-        # sending_notification_requests_to_apns) for supported headers, e.g. "apns-
-        # priority": "10".
+        # sending_notification_requests_to_apns) for supported headers such as `apns-
+        # expiration` and `apns-priority`.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers
@@ -383,7 +383,9 @@ module Google
         # payload. See [Payload Key Reference](https://developer.apple.com/documentation/
         # usernotifications/setting_up_a_remote_notification_server/
         # generating_a_remote_notification). If present, it overrides google.firebase.
-        # fcm.v1.Notification.title and google.firebase.fcm.v1.Notification.body.
+        # fcm.v1.Notification.title and google.firebase.fcm.v1.Notification.body. The
+        # backend sets a default value for `apns-expiration` of 30 days and a default
+        # value for `apns-priority` of 10 if not explicitly set.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -632,8 +634,11 @@ module Google
         # @return [String]
         attr_accessor :condition
       
-        # Input only. Arbitrary key/value payload. The key should not be a reserved word
-        # ("from", "message_type", or any word starting with "google" or "gcm").
+        # Input only. Arbitrary key/value payload, which must be UTF-8 encoded. The key
+        # should not be a reserved word ("from", "message_type", or any word starting
+        # with "google" or "gcm"). When sending payloads containing only data fields to
+        # iOS devices, only normal priority (`"apns-priority": "5"`) is allowed in [`
+        # ApnsConfig`](/docs/reference/fcm/rest/v1/projects.messages#apnsconfig).
         # Corresponds to the JSON property `data`
         # @return [Hash<String,String>]
         attr_accessor :data
