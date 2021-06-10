@@ -655,8 +655,10 @@ module Google
         # @return [Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings]
         attr_accessor :maintenance_settings
       
-        # Unique name of the resource. It uses the form: `projects/`project_id`/
-        # locations/`location_id`/instances/`instance_id``
+        # Unique name of the resource. It uses the form: `projects/`project_id|
+        # project_number`/locations/`location_id`/instances/`instance_id`` Note: Either
+        # project_id or project_number can be used, but keep it consistent with other
+        # APIs (e.g. RescheduleUpdate)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1003,13 +1005,6 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         include Google::Apis::Core::Hashable
       
-        # SloEligibility is a tuple containing eligibility value: true if an instance is
-        # eligible for SLO calculation or false if it should be excluded from all SLO-
-        # related calculations along with a user-defined reason.
-        # Corresponds to the JSON property `eligibility`
-        # @return [Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility]
-        attr_accessor :eligibility
-      
         # List of SLO exclusion windows. When multiple entries in the list match (
         # matching the exclusion time-window against current time point) the exclusion
         # reason used in the first matching entry will be published. It is not needed to
@@ -1050,7 +1045,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @eligibility = args[:eligibility] if args.key?(:eligibility)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @nodes = args[:nodes] if args.key?(:nodes)
           @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
