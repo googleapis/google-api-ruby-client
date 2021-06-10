@@ -3395,11 +3395,12 @@ module Google
         attr_accessor :self_link
       
         # Type of session affinity to use. The default is NONE.
-        # When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the
-        # possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO.
-        # * For all other load balancers that use loadBalancingScheme=EXTERNAL, the
-        # possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use
-        # GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
+        # When the loadBalancingScheme is EXTERNAL:
+        # * For Network Load Balancing, the possible values are NONE, CLIENT_IP,
+        # CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that
+        # use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or
+        # GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP,
+        # HTTP2, or HTTPS.
         # When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP,
         # CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
         # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED,
@@ -3412,7 +3413,8 @@ module Google
         attr_accessor :session_affinity
       
         # Subsetting configuration for this BackendService. Currently this is applicable
-        # only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        # only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and
+        # Traffic Director.
         # Corresponds to the JSON property `subsetting`
         # @return [Google::Apis::ComputeBeta::Subsetting]
         attr_accessor :subsetting
@@ -17831,8 +17833,10 @@ module Google
         # - ACTIVE: This outage notification is active. The event could be in the past,
         # present, or future. See start_time and end_time for scheduling.
         # - CANCELLED: The outage associated with this notification was cancelled before
-        # the outage was due to start. Note that the versions of this enum prefixed with
-        # "NS_" have been deprecated in favor of the unprefixed values.
+        # the outage was due to start.
+        # - COMPLETED: The outage associated with this notification is complete.  Note
+        # that the versions of this enum prefixed with "NS_" have been deprecated in
+        # favor of the unprefixed values.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -29895,7 +29899,7 @@ module Google
         # @return [String]
         attr_accessor :redundant_interface
       
-        # The URL of the subnetwork resource that this interface belongs to, which must
+        # The URI of the subnetwork resource that this interface belongs to, which must
         # be in the same region as the Cloud Router. When you establish a BGP session to
         # a VM instance using this interface, the VM instance must belong to the same
         # subnetwork as the subnetwork specified here.
@@ -34744,7 +34748,8 @@ module Google
       end
       
       # Subsetting configuration for this BackendService. Currently this is applicable
-      # only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+      # only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and
+      # Traffic Director.
       class Subsetting
         include Google::Apis::Core::Hashable
       
