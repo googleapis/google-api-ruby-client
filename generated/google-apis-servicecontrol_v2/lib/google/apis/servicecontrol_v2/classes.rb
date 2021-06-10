@@ -1073,8 +1073,11 @@ module Google
         # @return [Google::Apis::ServicecontrolV2::FirstPartyPrincipal]
         attr_accessor :first_party_principal
       
-        # A string representing the principal_subject associated with the identity. See
-        # go/3pical for more info on how principal_subject is formatted.
+        # A string representing the principal_subject associated with the identity. For
+        # most identities, the format will be `principal://iam.googleapis.com/`identity
+        # pool name`/subject/`subject)` except for some GKE identities (GKE_WORKLOAD,
+        # FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy format `
+        # serviceAccount:`identity pool name`[`subject`]`
         # Corresponds to the JSON property `principalSubject`
         # @return [String]
         attr_accessor :principal_subject
