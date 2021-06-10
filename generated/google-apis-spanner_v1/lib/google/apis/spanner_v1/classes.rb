@@ -1672,6 +1672,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_count
       
+        # The number of processing units allocated to this instance. At most one of
+        # processing_units or node_count should be present in the message. This may be
+        # zero in API responses for instances that are not yet in state `READY`.
+        # Corresponds to the JSON property `processingUnits`
+        # @return [Fixnum]
+        attr_accessor :processing_units
+      
         # Output only. The current instance state. For CreateInstance, the state must be
         # either omitted or set to `CREATING`. For UpdateInstance, the state must be
         # either omitted or set to `READY`.
@@ -1691,6 +1698,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @node_count = args[:node_count] if args.key?(:node_count)
+          @processing_units = args[:processing_units] if args.key?(:processing_units)
           @state = args[:state] if args.key?(:state)
         end
       end

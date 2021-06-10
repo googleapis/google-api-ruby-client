@@ -984,6 +984,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :node_count, as: 'nodeCount'
+          property :processing_units, as: 'processingUnits'
           property :state, as: 'state'
         end
       end
