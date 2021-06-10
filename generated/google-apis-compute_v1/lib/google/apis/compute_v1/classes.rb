@@ -3240,11 +3240,12 @@ module Google
         attr_accessor :self_link
       
         # Type of session affinity to use. The default is NONE.
-        # When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the
-        # possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO.
-        # * For all other load balancers that use loadBalancingScheme=EXTERNAL, the
-        # possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use
-        # GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
+        # When the loadBalancingScheme is EXTERNAL:
+        # * For Network Load Balancing, the possible values are NONE, CLIENT_IP,
+        # CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that
+        # use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or
+        # GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP,
+        # HTTP2, or HTTPS.
         # When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP,
         # CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
         # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED,
@@ -16868,8 +16869,10 @@ module Google
         # - ACTIVE: This outage notification is active. The event could be in the past,
         # present, or future. See start_time and end_time for scheduling.
         # - CANCELLED: The outage associated with this notification was cancelled before
-        # the outage was due to start. Note that the versions of this enum prefixed with
-        # "NS_" have been deprecated in favor of the unprefixed values.
+        # the outage was due to start.
+        # - COMPLETED: The outage associated with this notification is complete.  Note
+        # that the versions of this enum prefixed with "NS_" have been deprecated in
+        # favor of the unprefixed values.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
