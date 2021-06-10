@@ -82,7 +82,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CisBenchmark
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Command
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComplianceNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComplianceOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComplianceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -269,6 +293,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonCompliantFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -532,6 +562,14 @@ module Google
         end
       end
       
+      class CisBenchmark
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :profile_level, as: 'profileLevel'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class Command
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -541,6 +579,38 @@ module Google
           property :id, as: 'id'
           property :name, as: 'name'
           collection :wait_for, as: 'waitFor'
+        end
+      end
+      
+      class ComplianceNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cis_benchmark, as: 'cisBenchmark', class: Google::Apis::ContaineranalysisV1alpha1::CisBenchmark, decorator: Google::Apis::ContaineranalysisV1alpha1::CisBenchmark::Representation
+      
+          property :description, as: 'description'
+          property :rationale, as: 'rationale'
+          property :remediation, as: 'remediation'
+          property :scan_instructions, :base64 => true, as: 'scanInstructions'
+          property :title, as: 'title'
+          collection :version, as: 'version', class: Google::Apis::ContaineranalysisV1alpha1::ComplianceVersion, decorator: Google::Apis::ContaineranalysisV1alpha1::ComplianceVersion::Representation
+      
+        end
+      end
+      
+      class ComplianceOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :non_compliance_reason, as: 'nonComplianceReason'
+          collection :non_compliant_files, as: 'nonCompliantFiles', class: Google::Apis::ContaineranalysisV1alpha1::NonCompliantFile, decorator: Google::Apis::ContaineranalysisV1alpha1::NonCompliantFile::Representation
+      
+        end
+      end
+      
+      class ComplianceVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpe_uri, as: 'cpeUri'
+          property :version, as: 'version'
         end
       end
       
@@ -841,6 +911,15 @@ module Google
         end
       end
       
+      class NonCompliantFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_command, as: 'displayCommand'
+          property :path, as: 'path'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class Note
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -849,6 +928,8 @@ module Google
           property :base_image, as: 'baseImage', class: Google::Apis::ContaineranalysisV1alpha1::Basis, decorator: Google::Apis::ContaineranalysisV1alpha1::Basis::Representation
       
           property :build_type, as: 'buildType', class: Google::Apis::ContaineranalysisV1alpha1::BuildType, decorator: Google::Apis::ContaineranalysisV1alpha1::BuildType::Representation
+      
+          property :compliance, as: 'compliance', class: Google::Apis::ContaineranalysisV1alpha1::ComplianceNote, decorator: Google::Apis::ContaineranalysisV1alpha1::ComplianceNote::Representation
       
           property :create_time, as: 'createTime'
           property :deployable, as: 'deployable', class: Google::Apis::ContaineranalysisV1alpha1::Deployable, decorator: Google::Apis::ContaineranalysisV1alpha1::Deployable::Representation
@@ -878,6 +959,8 @@ module Google
           property :attestation, as: 'attestation', class: Google::Apis::ContaineranalysisV1alpha1::Attestation, decorator: Google::Apis::ContaineranalysisV1alpha1::Attestation::Representation
       
           property :build_details, as: 'buildDetails', class: Google::Apis::ContaineranalysisV1alpha1::BuildDetails, decorator: Google::Apis::ContaineranalysisV1alpha1::BuildDetails::Representation
+      
+          property :compliance, as: 'compliance', class: Google::Apis::ContaineranalysisV1alpha1::ComplianceOccurrence, decorator: Google::Apis::ContaineranalysisV1alpha1::ComplianceOccurrence::Representation
       
           property :create_time, as: 'createTime'
           property :deployment, as: 'deployment', class: Google::Apis::ContaineranalysisV1alpha1::Deployment, decorator: Google::Apis::ContaineranalysisV1alpha1::Deployment::Representation
