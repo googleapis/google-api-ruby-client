@@ -3559,11 +3559,12 @@ module Google
         attr_accessor :self_link_with_id
       
         # Type of session affinity to use. The default is NONE.
-        # When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the
-        # possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO.
-        # * For all other load balancers that use loadBalancingScheme=EXTERNAL, the
-        # possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use
-        # GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
+        # When the loadBalancingScheme is EXTERNAL:
+        # * For Network Load Balancing, the possible values are NONE, CLIENT_IP,
+        # CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that
+        # use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or
+        # GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP,
+        # HTTP2, or HTTPS.
         # When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP,
         # CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
         # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED,
@@ -3576,7 +3577,8 @@ module Google
         attr_accessor :session_affinity
       
         # Subsetting configuration for this BackendService. Currently this is applicable
-        # only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        # only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and
+        # Traffic Director.
         # Corresponds to the JSON property `subsetting`
         # @return [Google::Apis::ComputeAlpha::Subsetting]
         attr_accessor :subsetting
@@ -20247,8 +20249,10 @@ module Google
         # - ACTIVE: This outage notification is active. The event could be in the past,
         # present, or future. See start_time and end_time for scheduling.
         # - CANCELLED: The outage associated with this notification was cancelled before
-        # the outage was due to start. Note that the versions of this enum prefixed with
-        # "NS_" have been deprecated in favor of the unprefixed values.
+        # the outage was due to start.
+        # - COMPLETED: The outage associated with this notification is complete.  Note
+        # that the versions of this enum prefixed with "NS_" have been deprecated in
+        # favor of the unprefixed values.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -21094,6 +21098,11 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::LocationPolicyLocation>]
         attr_accessor :locations
       
+        # Strategy for distributing VMs across zones in a region.
+        # Corresponds to the JSON property `targetShape`
+        # @return [String]
+        attr_accessor :target_shape
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21101,6 +21110,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @target_shape = args[:target_shape] if args.key?(:target_shape)
         end
       end
       
@@ -31510,6 +31520,105 @@ module Google
         end
       end
       
+      # A transient resource used in compute.regionInstances.recommendLocations. This
+      # resource is not saved anywhere and used only to process the request.
+      class RegionInstancesRecommendLocationsResource
+        include Google::Apis::Core::Hashable
+      
+        # Specification of named homogeneous instance sets to find location for.
+        # Keys of this map are arbitrary (but must be different), defined by the caller
+        # used only in the response. They must follow RFC 1035 name standard.
+        # Specifically, they must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
+        # Values are trimmed BulkInsertInstanceResource messages, without the following
+        # fields:
+        # - min_count
+        # - predefined_name
+        # - name_pattern
+        # - per_instance_properties
+        # - instance
+        # - secure_tag
+        # - location_policy
+        # Corresponds to the JSON property `instanceSpecs`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::BulkInsertInstanceResource>]
+        attr_accessor :instance_specs
+      
+        # Configuration for location policy among multiple possible locations (e.g.
+        # preferences for zone selection among zones in a single region).
+        # Corresponds to the JSON property `locationPolicy`
+        # @return [Google::Apis::ComputeAlpha::LocationPolicy]
+        attr_accessor :location_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_specs = args[:instance_specs] if args.key?(:instance_specs)
+          @location_policy = args[:location_policy] if args.key?(:location_policy)
+        end
+      end
+      
+      # Response for for compute.regionInstances.recommendLocations.
+      class RegionInstancesRecommendLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Instance count recommendations, keys are instance spec names.
+        # Corresponds to the JSON property `recommendedLocations`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::RegionInstancesRecommendLocationsResponseRecommendationsForInstanceSpecs>]
+        attr_accessor :recommended_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recommended_locations = args[:recommended_locations] if args.key?(:recommended_locations)
+        end
+      end
+      
+      # Instance count recommendation for a single zone.
+      class RegionInstancesRecommendLocationsResponseRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # Count of instances recommended.
+        # Corresponds to the JSON property `instanceCount`
+        # @return [Fixnum]
+        attr_accessor :instance_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_count = args[:instance_count] if args.key?(:instance_count)
+        end
+      end
+      
+      # Instance count recommendations for a single instance specification.
+      class RegionInstancesRecommendLocationsResponseRecommendationsForInstanceSpecs
+        include Google::Apis::Core::Hashable
+      
+        # Instance count recommendations, keys are zone names.
+        # Corresponds to the JSON property `locations`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::RegionInstancesRecommendLocationsResponseRecommendation>]
+        attr_accessor :locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+        end
+      end
+      
       # 
       class RegionInstantSnapshotsExportRequest
         include Google::Apis::Core::Hashable
@@ -33350,6 +33459,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ResourceStatusScheduling]
         attr_accessor :scheduling
       
+        # 
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::ComputeAlpha::ResourceStatusUpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -33357,6 +33471,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
       
@@ -33380,6 +33495,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+        end
+      end
+      
+      # 
+      class ResourceStatusUpcomingMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the maintenance can be customer triggered. See go/sf-ctm-design
+        # for more details
+        # Corresponds to the JSON property `canReschedule`
+        # @return [Boolean]
+        attr_accessor :can_reschedule
+        alias_method :can_reschedule?, :can_reschedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
         end
       end
       
@@ -34398,7 +34534,7 @@ module Google
         # @return [String]
         attr_accessor :redundant_interface
       
-        # The URL of the subnetwork resource that this interface belongs to, which must
+        # The URI of the subnetwork resource that this interface belongs to, which must
         # be in the same region as the Cloud Router. When you establish a BGP session to
         # a VM instance using this interface, the VM instance must belong to the same
         # subnetwork as the subnetwork specified here.
@@ -40188,7 +40324,8 @@ module Google
       end
       
       # Subsetting configuration for this BackendService. Currently this is applicable
-      # only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+      # only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and
+      # Traffic Director.
       class Subsetting
         include Google::Apis::Core::Hashable
       

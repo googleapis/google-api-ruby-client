@@ -4012,6 +4012,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionInstancesRecommendLocationsResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstancesRecommendLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstancesRecommendLocationsResponseRecommendation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstancesRecommendLocationsResponseRecommendationsForInstanceSpecs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstantSnapshotsExportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4313,6 +4337,12 @@ module Google
       end
       
       class ResourceStatusScheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceStatusUpcomingMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11030,6 +11060,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :locations, as: 'locations', class: Google::Apis::ComputeAlpha::LocationPolicyLocation, decorator: Google::Apis::ComputeAlpha::LocationPolicyLocation::Representation
       
+          property :target_shape, as: 'targetShape'
         end
       end
       
@@ -13701,6 +13732,39 @@ module Google
         end
       end
       
+      class RegionInstancesRecommendLocationsResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_specs, as: 'instanceSpecs', class: Google::Apis::ComputeAlpha::BulkInsertInstanceResource, decorator: Google::Apis::ComputeAlpha::BulkInsertInstanceResource::Representation
+      
+          property :location_policy, as: 'locationPolicy', class: Google::Apis::ComputeAlpha::LocationPolicy, decorator: Google::Apis::ComputeAlpha::LocationPolicy::Representation
+      
+        end
+      end
+      
+      class RegionInstancesRecommendLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :recommended_locations, as: 'recommendedLocations', class: Google::Apis::ComputeAlpha::RegionInstancesRecommendLocationsResponseRecommendationsForInstanceSpecs, decorator: Google::Apis::ComputeAlpha::RegionInstancesRecommendLocationsResponseRecommendationsForInstanceSpecs::Representation
+      
+        end
+      end
+      
+      class RegionInstancesRecommendLocationsResponseRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_count, as: 'instanceCount'
+        end
+      end
+      
+      class RegionInstancesRecommendLocationsResponseRecommendationsForInstanceSpecs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :locations, as: 'locations', class: Google::Apis::ComputeAlpha::RegionInstancesRecommendLocationsResponseRecommendation, decorator: Google::Apis::ComputeAlpha::RegionInstancesRecommendLocationsResponseRecommendation::Representation
+      
+        end
+      end
+      
       class RegionInstantSnapshotsExportRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14205,6 +14269,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::ResourceStatusScheduling, decorator: Google::Apis::ComputeAlpha::ResourceStatusScheduling::Representation
       
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeAlpha::ResourceStatusUpcomingMaintenance, decorator: Google::Apis::ComputeAlpha::ResourceStatusUpcomingMaintenance::Representation
+      
         end
       end
       
@@ -14212,6 +14278,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain, as: 'availabilityDomain'
+        end
+      end
+      
+      class ResourceStatusUpcomingMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_reschedule, as: 'canReschedule'
         end
       end
       
