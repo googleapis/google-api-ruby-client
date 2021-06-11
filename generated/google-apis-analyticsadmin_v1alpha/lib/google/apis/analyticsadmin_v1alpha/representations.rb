@@ -622,8 +622,8 @@ module Google
           property :ads_personalization_enabled, as: 'adsPersonalizationEnabled'
           property :can_manage_clients, as: 'canManageClients'
           property :create_time, as: 'createTime'
+          property :creator_email_address, as: 'creatorEmailAddress'
           property :customer_id, as: 'customerId'
-          property :email_address, as: 'emailAddress'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
