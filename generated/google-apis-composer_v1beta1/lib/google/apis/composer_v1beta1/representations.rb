@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckUpgradeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckUpgradeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -165,6 +177,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :value, as: 'value'
+        end
+      end
+      
+      class CheckUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_version, as: 'imageVersion'
+        end
+      end
+      
+      class CheckUpgradeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_log_uri, as: 'buildLogUri'
+          property :contains_pypi_modules_conflict, as: 'containsPypiModulesConflict'
+          property :pypi_conflict_build_log_extract, as: 'pypiConflictBuildLogExtract'
         end
       end
       
