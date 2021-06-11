@@ -1068,16 +1068,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Email address of the user that created the link. An empty string
+        # will be returned if the email address can't be retrieved.
+        # Corresponds to the JSON property `creatorEmailAddress`
+        # @return [String]
+        attr_accessor :creator_email_address
+      
         # Immutable. Google Ads customer ID.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
-      
-        # Output only. Email address of the user that created the link. An empty string
-        # will be returned if the email address can't be retrieved.
-        # Corresponds to the JSON property `emailAddress`
-        # @return [String]
-        attr_accessor :email_address
       
         # Output only. Format: properties/`propertyId`/googleAdsLinks/`googleAdsLinkId`
         # Note: googleAdsLinkId is not the Google Ads customer ID.
@@ -1099,8 +1099,8 @@ module Google
           @ads_personalization_enabled = args[:ads_personalization_enabled] if args.key?(:ads_personalization_enabled)
           @can_manage_clients = args[:can_manage_clients] if args.key?(:can_manage_clients)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @creator_email_address = args[:creator_email_address] if args.key?(:creator_email_address)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
-          @email_address = args[:email_address] if args.key?(:email_address)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
