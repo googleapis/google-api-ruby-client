@@ -88,7 +88,7 @@ module Google
         #   accepts strings like "displayName=tokyo", and is documented in more detail in [
         #   AIP-160](https://google.aip.dev/160).
         # @param [Fixnum] page_size
-        #   The maximum number of results to return. If not set, the service will select a
+        #   The maximum number of results to return. If not set, the service selects a
         #   default.
         # @param [String] page_token
         #   A page token received from the `next_page_token` field in the response. Send
@@ -597,6 +597,87 @@ module Google
           command.response_representation = Google::Apis::ManagedidentitiesV1::Operation::Representation
           command.response_class = Google::Apis::ManagedidentitiesV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single sqlIntegration.
+        # @param [String] name
+        #   Required. SQLIntegration resource name using the form: `projects/`project_id`/
+        #   locations/global/domains/`domain`/sqlIntegrations/`name``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1::SqlIntegration] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1::SqlIntegration]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_global_domain_sql_integration(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1::SqlIntegration::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1::SqlIntegration
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists SqlIntegrations in a given domain.
+        # @param [String] parent
+        #   Required. The resource name of the SqlIntegrations using the form: `projects/`
+        #   project_id`/locations/global/domains/*`
+        # @param [String] filter
+        #   Optional. Filter specifying constraints of a list operation. For example, `
+        #   SqlIntegration.name="sql"`.
+        # @param [String] order_by
+        #   Optional. Specifies the ordering of results following syntax at https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 1000 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response'ANIZATIONs next_page_token to determine if there are more instances
+        #   left to be queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous List request, if
+        #   any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1::ListSqlIntegrationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1::ListSqlIntegrationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_global_domain_sql_integrations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/sqlIntegrations', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1::ListSqlIntegrationsResponse::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1::ListSqlIntegrationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

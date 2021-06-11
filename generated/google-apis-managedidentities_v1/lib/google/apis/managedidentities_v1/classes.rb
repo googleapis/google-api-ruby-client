@@ -641,8 +641,10 @@ module Google
         # @return [Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings]
         attr_accessor :maintenance_settings
       
-        # Unique name of the resource. It uses the form: `projects/`project_id`/
-        # locations/`location_id`/instances/`instance_id``
+        # Unique name of the resource. It uses the form: `projects/`project_id|
+        # project_number`/locations/`location_id`/instances/`instance_id`` Note: Either
+        # project_id or project_number can be used, but keep it consistent with other
+        # APIs (e.g. RescheduleUpdate)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -989,13 +991,6 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         include Google::Apis::Core::Hashable
       
-        # SloEligibility is a tuple containing eligibility value: true if an instance is
-        # eligible for SLO calculation or false if it should be excluded from all SLO-
-        # related calculations along with a user-defined reason.
-        # Corresponds to the JSON property `eligibility`
-        # @return [Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility]
-        attr_accessor :eligibility
-      
         # List of SLO exclusion windows. When multiple entries in the list match (
         # matching the exclusion time-window against current time point) the exclusion
         # reason used in the first matching entry will be published. It is not needed to
@@ -1036,7 +1031,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @eligibility = args[:eligibility] if args.key?(:eligibility)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @nodes = args[:nodes] if args.key?(:nodes)
           @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
@@ -1123,6 +1117,39 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # ListSqlIntegrationsResponse is the response message for ListSqlIntegrations
+      # method.
+      class ListSqlIntegrationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of SQLIntegrations of a domain.
+        # Corresponds to the JSON property `sqlIntegrations`
+        # @return [Array<Google::Apis::ManagedidentitiesV1::SqlIntegration>]
+        attr_accessor :sql_integrations
+      
+        # A list of locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sql_integrations = args[:sql_integrations] if args.key?(:sql_integrations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1599,6 +1626,52 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # Represents the Sql instance integrated with AD.
+      class SqlIntegration
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time sql integration was created. Synthetic field is
+        # populated automatically by CCFE.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The unique name of the sql integration in the form of `projects/`project_id`/
+        # locations/global/domains/`domain_name`/sqlIntegrations/`sql_integration``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The full resource name of an integrated sql instance
+        # Corresponds to the JSON property `sqlInstance`
+        # @return [String]
+        attr_accessor :sql_instance
+      
+        # Output only. The current state of the sql integration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time sql integration was updated. Synthetic field is
+        # populated automatically by CCFE.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @sql_instance = args[:sql_instance] if args.key?(:sql_instance)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

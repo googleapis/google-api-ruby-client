@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSqlIntegrationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +239,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlIntegration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -512,8 +524,6 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :eligibility, as: 'eligibility', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility::Representation
-      
           collection :exclusions, as: 'exclusions', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
       
           collection :nodes, as: 'nodes', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata::Representation
@@ -549,6 +559,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ManagedidentitiesV1::Operation, decorator: Google::Apis::ManagedidentitiesV1::Operation::Representation
       
+        end
+      end
+      
+      class ListSqlIntegrationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sql_integrations, as: 'sqlIntegrations', class: Google::Apis::ManagedidentitiesV1::SqlIntegration, decorator: Google::Apis::ManagedidentitiesV1::SqlIntegration::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -658,6 +678,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::ManagedidentitiesV1::Policy, decorator: Google::Apis::ManagedidentitiesV1::Policy::Representation
       
+        end
+      end
+      
+      class SqlIntegration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :sql_instance, as: 'sqlInstance'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
