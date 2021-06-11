@@ -51,6 +51,70 @@ module Google
         end
       end
       
+      # Request to check whether image upgrade will succeed.
+      class CheckUpgradeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The version of the software running in the environment. This encapsulates both
+        # the version of Cloud Composer functionality and the version of Apache Airflow.
+        # It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-
+        # airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also
+        # checks if the provided version is supported and denies the request for an
+        # unsupported version. The Cloud Composer portion of the version is a [semantic
+        # version](https://semver.org) or `latest`. When the patch version is omitted,
+        # the current Cloud Composer patch version is selected. When `latest` is
+        # provided instead of an explicit version number, the server replaces `latest`
+        # with the current Cloud Composer version and stores that version number in the
+        # same field. The portion of the image version that follows `airflow-` is an
+        # official Apache Airflow repository [release name](https://github.com/apache/
+        # incubator-airflow/releases). See also [Version List] (/composer/docs/concepts/
+        # versioning/composer-versions).
+        # Corresponds to the JSON property `imageVersion`
+        # @return [String]
+        attr_accessor :image_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_version = args[:image_version] if args.key?(:image_version)
+        end
+      end
+      
+      # Message containing information about the result of an upgrade check operation.
+      class CheckUpgradeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Url for a docker build log of an upgraded image.
+        # Corresponds to the JSON property `buildLogUri`
+        # @return [String]
+        attr_accessor :build_log_uri
+      
+        # Output only. Whether build has succeeded or failed on modules conflicts.
+        # Corresponds to the JSON property `containsPypiModulesConflict`
+        # @return [String]
+        attr_accessor :contains_pypi_modules_conflict
+      
+        # Output only. Extract from a docker image build log containing information
+        # about pypi modules conflicts.
+        # Corresponds to the JSON property `pypiConflictBuildLogExtract`
+        # @return [String]
+        attr_accessor :pypi_conflict_build_log_extract
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_log_uri = args[:build_log_uri] if args.key?(:build_log_uri)
+          @contains_pypi_modules_conflict = args[:contains_pypi_modules_conflict] if args.key?(:contains_pypi_modules_conflict)
+          @pypi_conflict_build_log_extract = args[:pypi_conflict_build_log_extract] if args.key?(:pypi_conflict_build_log_extract)
+        end
+      end
+      
       # The configuration of Cloud SQL instance that is used by the Apache Airflow
       # software.
       class DatabaseConfig
