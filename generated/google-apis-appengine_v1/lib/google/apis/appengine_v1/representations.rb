@@ -1208,6 +1208,7 @@ module Google
       class VpcAccessConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_setting, as: 'egressSetting'
           property :name, as: 'name'
         end
       end
