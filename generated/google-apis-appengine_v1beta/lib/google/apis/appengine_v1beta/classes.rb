@@ -3098,6 +3098,12 @@ module Google
       class VpcAccessConnector
         include Google::Apis::Core::Hashable
       
+        # The egress setting for the connector, controlling what traffic is diverted
+        # through it.
+        # Corresponds to the JSON property `egressSetting`
+        # @return [String]
+        attr_accessor :egress_setting
+      
         # Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/
         # us-central1/connectors/c1.
         # Corresponds to the JSON property `name`
@@ -3110,6 +3116,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @egress_setting = args[:egress_setting] if args.key?(:egress_setting)
           @name = args[:name] if args.key?(:name)
         end
       end
