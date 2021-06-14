@@ -790,6 +790,43 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Updates an existing assignment. Only the `priority` field can be updated.
+        # @param [String] name
+        #   Output only. Name of the resource. E.g.: `projects/myproject/locations/US/
+        #   reservations/team1-prod/assignments/123`.
+        # @param [Google::Apis::BigqueryreservationV1beta1::Assignment] assignment_object
+        # @param [String] update_mask
+        #   Standard field mask for the set of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryreservationV1beta1::Assignment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryreservationV1beta1::Assignment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_reservation_assignment(name, assignment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::BigqueryreservationV1beta1::Assignment::Representation
+          command.request_object = assignment_object
+          command.response_representation = Google::Apis::BigqueryreservationV1beta1::Assignment::Representation
+          command.response_class = Google::Apis::BigqueryreservationV1beta1::Assignment
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
