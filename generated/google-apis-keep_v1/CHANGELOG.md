@@ -1,5 +1,9 @@
 # Release history for google-apis-keep_v1
 
+### v0.2.0 (2021-06-15)
+
+* Regenerated from discovery document revision 20210608
+
 ### v0.1.0 (2021-06-09)
 
 * Regenerated from discovery document revision 20210528
