@@ -376,14 +376,18 @@ module Google
         #   false` without quotes. The following field and operator combinations are
         #   supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=
         #   `, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<
-        #   `, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since
-        #   epoch or an RFC3339 string. Examples: `event_time = "2019-06-10T16:07:18-07:00"
-        #   ` `event_time = 1560208038000` security_marks.marks: `=`, `:`
-        #   source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `
-        #   source_properties.size = 100` is a valid filter string. Use a partial match on
-        #   the empty string to filter based on a property existing: `source_properties.
-        #   my_property : ""` Use a negated partial match on the empty string to filter
-        #   based on a property not existing: `-source_properties.my_property : ""`
+        #   `, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
+        #   string. Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
+        #   1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
+        #   security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `
+        #   <=` For example, `source_properties.size = 100` is a valid filter string. Use
+        #   a partial match on the empty string to filter based on a property existing: `
+        #   source_properties.my_property : ""` Use a negated partial match on the empty
+        #   string to filter based on a property not existing: `-source_properties.
+        #   my_property : ""` * resource: * resource.name: `=`, `:` * resource.parent_name:
+        #   `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`
+        #   , `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
+        #   resource.folders.resource_folder: `=`, `:`
         # @param [String] order_by
         #   Expression that defines what fields and order to use for sorting. The string
         #   value should follow SQL syntax: comma separated list of fields. For example: "
@@ -1569,14 +1573,18 @@ module Google
         #   false` without quotes. The following field and operator combinations are
         #   supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=
         #   `, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<
-        #   `, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since
-        #   epoch or an RFC3339 string. Examples: `event_time = "2019-06-10T16:07:18-07:00"
-        #   ` `event_time = 1560208038000` security_marks.marks: `=`, `:`
-        #   source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `
-        #   source_properties.size = 100` is a valid filter string. Use a partial match on
-        #   the empty string to filter based on a property existing: `source_properties.
-        #   my_property : ""` Use a negated partial match on the empty string to filter
-        #   based on a property not existing: `-source_properties.my_property : ""`
+        #   `, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
+        #   string. Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
+        #   1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
+        #   security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `
+        #   <=` For example, `source_properties.size = 100` is a valid filter string. Use
+        #   a partial match on the empty string to filter based on a property existing: `
+        #   source_properties.my_property : ""` Use a negated partial match on the empty
+        #   string to filter based on a property not existing: `-source_properties.
+        #   my_property : ""` * resource: * resource.name: `=`, `:` * resource.parent_name:
+        #   `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`
+        #   , `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
+        #   resource.folders.resource_folder: `=`, `:`
         # @param [String] order_by
         #   Expression that defines what fields and order to use for sorting. The string
         #   value should follow SQL syntax: comma separated list of fields. For example: "
@@ -2082,14 +2090,18 @@ module Google
         #   false` without quotes. The following field and operator combinations are
         #   supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=
         #   `, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<
-        #   `, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since
-        #   epoch or an RFC3339 string. Examples: `event_time = "2019-06-10T16:07:18-07:00"
-        #   ` `event_time = 1560208038000` security_marks.marks: `=`, `:`
-        #   source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `
-        #   source_properties.size = 100` is a valid filter string. Use a partial match on
-        #   the empty string to filter based on a property existing: `source_properties.
-        #   my_property : ""` Use a negated partial match on the empty string to filter
-        #   based on a property not existing: `-source_properties.my_property : ""`
+        #   `, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
+        #   string. Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
+        #   1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
+        #   security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `
+        #   <=` For example, `source_properties.size = 100` is a valid filter string. Use
+        #   a partial match on the empty string to filter based on a property existing: `
+        #   source_properties.my_property : ""` Use a negated partial match on the empty
+        #   string to filter based on a property not existing: `-source_properties.
+        #   my_property : ""` * resource: * resource.name: `=`, `:` * resource.parent_name:
+        #   `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`
+        #   , `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
+        #   resource.folders.resource_folder: `=`, `:`
         # @param [String] order_by
         #   Expression that defines what fields and order to use for sorting. The string
         #   value should follow SQL syntax: comma separated list of fields. For example: "
