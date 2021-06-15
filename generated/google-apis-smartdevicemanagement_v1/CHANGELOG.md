@@ -1,5 +1,10 @@
 # Release history for google-apis-smartdevicemanagement_v1
 
+### v0.5.0 (2021-06-15)
+
+* Regenerated from discovery document revision 20210604
+* Regenerated using generator version 0.3.0
+
 ### v0.4.0 (2021-05-20)
 
 * Regenerated using generator version 0.2.0

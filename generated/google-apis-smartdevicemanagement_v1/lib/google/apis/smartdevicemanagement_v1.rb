@@ -32,6 +32,9 @@ module Google
 
       # See and/or control the devices that you selected
       AUTH_SDM_SERVICE = 'https://www.googleapis.com/auth/sdm.service'
+
+      # See and control the Nest thermostats that you select
+      AUTH_SDM_THERMOSTAT_SERVICE = 'https://www.googleapis.com/auth/sdm.thermostat.service'
     end
   end
 end
