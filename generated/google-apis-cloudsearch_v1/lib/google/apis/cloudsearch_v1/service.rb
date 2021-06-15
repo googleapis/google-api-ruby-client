@@ -868,13 +868,13 @@ module Google
         end
         
         # The Cloud Search Query API provides the search method, which returns the most
-        # relevant results from a user query. The results can come from G Suite Apps,
-        # such as Gmail or Google Drive, or they can come from data that you have
+        # relevant results from a user query. The results can come from Google Workspace
+        # apps, such as Gmail or Google Drive, or they can come from data that you have
         # indexed from a third party. **Note:** This API requires a standard end user
         # account to execute. A service account can't perform Query API requests
-        # directly; to use a service account to perform queries, set up [G Suite domain-
-        # wide delegation of authority](https://developers.google.com/cloud-search/docs/
-        # guides/delegation/).
+        # directly; to use a service account to perform queries, set up [Google
+        # Workspace domain-wide delegation of authority](https://developers.google.com/
+        # cloud-search/docs/guides/delegation/).
         # @param [Google::Apis::CloudsearchV1::SearchRequest] search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -906,9 +906,9 @@ module Google
         
         # Provides suggestions for autocompleting the query. **Note:** This API requires
         # a standard end user account to execute. A service account can't perform Query
-        # API requests directly; to use a service account to perform queries, set up [G
-        # Suite domain-wide delegation of authority](https://developers.google.com/cloud-
-        # search/docs/guides/delegation/).
+        # API requests directly; to use a service account to perform queries, set up [
+        # Google Workspace domain-wide delegation of authority](https://developers.
+        # google.com/cloud-search/docs/guides/delegation/).
         # @param [Google::Apis::CloudsearchV1::SuggestRequest] suggest_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -941,7 +941,7 @@ module Google
         # Returns list of sources that user can use for Search and Suggest APIs. **Note:*
         # * This API requires a standard end user account to execute. A service account
         # can't perform Query API requests directly; to use a service account to perform
-        # queries, set up [G Suite domain-wide delegation of authority](https://
+        # queries, set up [Google Workspace domain-wide delegation of authority](https://
         # developers.google.com/cloud-search/docs/guides/delegation/).
         # @param [String] page_token
         #   Number of sources to return in the response.
