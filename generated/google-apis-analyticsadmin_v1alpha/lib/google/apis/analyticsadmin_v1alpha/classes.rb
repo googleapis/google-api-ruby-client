@@ -608,6 +608,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. If set to true, this conversion event refers to a custom event.
+        # If set to false, this conversion event refers to a default event in GA.
+        # Default events typically have special meaning in GA. Default events are
+        # usually created for you by the GA system, but in some cases can be created by
+        # property admins. Custom events count towards the maximum number of custom
+        # conversion events that may be created per property.
+        # Corresponds to the JSON property `custom`
+        # @return [Boolean]
+        attr_accessor :custom
+        alias_method :custom?, :custom
+      
         # Immutable. The event name for this conversion event. Examples: 'click', '
         # purchase'
         # Corresponds to the JSON property `eventName`
@@ -634,6 +645,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom = args[:custom] if args.key?(:custom)
           @event_name = args[:event_name] if args.key?(:event_name)
           @is_deletable = args[:is_deletable] if args.key?(:is_deletable)
           @name = args[:name] if args.key?(:name)
