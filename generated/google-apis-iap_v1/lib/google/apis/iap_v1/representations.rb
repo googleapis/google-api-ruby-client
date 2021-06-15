@@ -176,6 +176,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_denied_page_uri, as: 'accessDeniedPageUri'
+          property :generate_troubleshooting_uri, as: 'generateTroubleshootingUri'
         end
       end
       
