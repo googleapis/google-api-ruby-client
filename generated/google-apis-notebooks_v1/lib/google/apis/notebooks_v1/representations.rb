@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IsInstanceUpgradeableResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateInstanceConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateShieldedInstanceConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -578,6 +590,14 @@ module Google
       
           property :vm_image, as: 'vmImage', class: Google::Apis::NotebooksV1::VmImage, decorator: Google::Apis::NotebooksV1::VmImage::Representation
       
+        end
+      end
+      
+      class InstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_health_monitoring, as: 'enableHealthMonitoring'
+          property :notebook_upgrade_schedule, as: 'notebookUpgradeSchedule'
         end
       end
       
@@ -967,6 +987,14 @@ module Google
       class TriggerScheduleRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateInstanceConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::NotebooksV1::InstanceConfig, decorator: Google::Apis::NotebooksV1::InstanceConfig::Representation
+      
         end
       end
       
