@@ -262,7 +262,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :accessible_track_ids
       
-        # This feature is not generally available yet.
+        # Controls the auto-update mode for the app.
         # Corresponds to the JSON property `autoUpdateMode`
         # @return [String]
         attr_accessor :auto_update_mode
@@ -840,6 +840,13 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationReport>]
         attr_accessor :application_reports
       
+        # The password requirements currently applied to the device. The applied
+        # requirements may be slightly different from those specified in
+        # passwordPolicies in some cases. fieldPath is set based on passwordPolicies.
+        # Corresponds to the JSON property `appliedPasswordPolicies`
+        # @return [Array<Google::Apis::AndroidmanagementV1::PasswordRequirements>]
+        attr_accessor :applied_password_policies
+      
         # The name of the policy currently applied to the device.
         # Corresponds to the JSON property `appliedPolicyName`
         # @return [String]
@@ -1041,6 +1048,7 @@ module Google
         def update!(**args)
           @api_level = args[:api_level] if args.key?(:api_level)
           @application_reports = args[:application_reports] if args.key?(:application_reports)
+          @applied_password_policies = args[:applied_password_policies] if args.key?(:applied_password_policies)
           @applied_policy_name = args[:applied_policy_name] if args.key?(:applied_policy_name)
           @applied_policy_version = args[:applied_policy_version] if args.key?(:applied_policy_version)
           @applied_state = args[:applied_state] if args.key?(:applied_state)
@@ -2603,6 +2611,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :android_device_policy_tracks
       
+        # Deprecated. Use autoUpdateMode instead.When autoUpdateMode is set to
+        # AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, this field has no effect.
         # The app auto update policy, which controls when automatic app updates can be
         # applied.
         # Corresponds to the JSON property `appAutoUpdatePolicy`

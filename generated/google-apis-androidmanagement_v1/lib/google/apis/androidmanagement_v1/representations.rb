@@ -669,6 +669,8 @@ module Google
           property :api_level, as: 'apiLevel'
           collection :application_reports, as: 'applicationReports', class: Google::Apis::AndroidmanagementV1::ApplicationReport, decorator: Google::Apis::AndroidmanagementV1::ApplicationReport::Representation
       
+          collection :applied_password_policies, as: 'appliedPasswordPolicies', class: Google::Apis::AndroidmanagementV1::PasswordRequirements, decorator: Google::Apis::AndroidmanagementV1::PasswordRequirements::Representation
+      
           property :applied_policy_name, as: 'appliedPolicyName'
           property :applied_policy_version, :numeric_string => true, as: 'appliedPolicyVersion'
           property :applied_state, as: 'appliedState'
