@@ -812,8 +812,8 @@ module Google
       
         # The name of the dataset resource to create and write the redacted data to. *
         # The destination dataset must not exist. * The destination dataset must be in
-        # the same project and location as the source dataset. De-identifying data
-        # across multiple projects or locations is not supported.
+        # the same location as the source dataset. De-identifying data across multiple
+        # locations is not supported.
         # Corresponds to the JSON property `destinationDataset`
         # @return [String]
         attr_accessor :destination_dataset
@@ -843,8 +843,8 @@ module Google
         # The name of the DICOM store to create and write the redacted data to. For
         # example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         # dicomStores/`dicom_store_id``. * The destination dataset must exist. * The
-        # source dataset and destination dataset must both reside in the same project.
-        # De-identifying data across multiple projects is not supported. * The
+        # source dataset and destination dataset must both reside in the same location.
+        # De-identifying data across multiple locations is not supported. * The
         # destination DICOM store must not exist. * The caller must have the necessary
         # permissions to create the destination DICOM store.
         # Corresponds to the JSON property `destinationStore`
@@ -882,8 +882,8 @@ module Google
         # The name of the FHIR store to create and write the redacted data to. For
         # example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         # fhirStores/`fhir_store_id``. * The destination dataset must exist. * The
-        # source dataset and destination dataset must both reside in the same project.
-        # De-identifying data across multiple projects is not supported. * The
+        # source dataset and destination dataset must both reside in the same location.
+        # De-identifying data across multiple locations is not supported. * The
         # destination FHIR store must exist. * The caller must have the healthcare.
         # fhirResources.update permission to write to the destination FHIR store.
         # Corresponds to the JSON property `destinationStore`
