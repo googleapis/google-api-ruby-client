@@ -34,6 +34,13 @@ module Google
         # @return [String]
         attr_accessor :access_denied_page_uri
       
+        # Whether to generate a troubleshooting URL on access denied events to this
+        # application.
+        # Corresponds to the JSON property `generateTroubleshootingUri`
+        # @return [Boolean]
+        attr_accessor :generate_troubleshooting_uri
+        alias_method :generate_troubleshooting_uri?, :generate_troubleshooting_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -41,6 +48,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_denied_page_uri = args[:access_denied_page_uri] if args.key?(:access_denied_page_uri)
+          @generate_troubleshooting_uri = args[:generate_troubleshooting_uri] if args.key?(:generate_troubleshooting_uri)
         end
       end
       
