@@ -522,6 +522,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :custom, as: 'custom'
           property :event_name, as: 'eventName'
           property :is_deletable, as: 'isDeletable'
           property :name, as: 'name'
