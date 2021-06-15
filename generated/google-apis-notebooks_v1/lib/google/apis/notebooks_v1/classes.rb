@@ -891,6 +891,33 @@ module Google
         end
       end
       
+      # Notebook instance configurations that can be updated.
+      class InstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Verifies core internal services are running. More info: go/notebooks-health
+        # Corresponds to the JSON property `enableHealthMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_health_monitoring
+        alias_method :enable_health_monitoring?, :enable_health_monitoring
+      
+        # Cron expression in UTC timezone, used to schedule instance auto upgrade.
+        # Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+        # Corresponds to the JSON property `notebookUpgradeSchedule`
+        # @return [String]
+        attr_accessor :notebook_upgrade_schedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_health_monitoring = args[:enable_health_monitoring] if args.key?(:enable_health_monitoring)
+          @notebook_upgrade_schedule = args[:notebook_upgrade_schedule] if args.key?(:notebook_upgrade_schedule)
+        end
+      end
+      
       # Response for checking if a notebook instance is upgradeable.
       class IsInstanceUpgradeableResponse
         include Google::Apis::Core::Hashable
@@ -2384,6 +2411,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for updating instance configurations.
+      class UpdateInstanceConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Notebook instance configurations that can be updated.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::NotebooksV1::InstanceConfig]
+        attr_accessor :config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
         end
       end
       
