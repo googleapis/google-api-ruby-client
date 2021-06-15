@@ -28,6 +28,9 @@ module Google
       # Version of the Google Keep API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
+
+      # See, edit, create and permanently delete all your Google Keep data
+      AUTH_KEEP = 'https://www.googleapis.com/auth/keep'
     end
   end
 end
