@@ -84,10 +84,11 @@ module Google
         # list IAM permission for the specified insight type.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
-        #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
-        #   INSIGHT_TYPE_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]
-        #   /insightTypes/[INSIGHT_TYPE_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/
-        #   insightTypes/[INSIGHT_TYPE_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[
+        #   formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
+        #   INSIGHT_TYPE_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[
+        #   INSIGHT_TYPE_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
+        #   insightTypes/[INSIGHT_TYPE_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/
+        #   insightTypes/[INSIGHT_TYPE_ID]` * `organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP
         #   Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
         #   supported insight types: https://cloud.google.com/recommender/docs/insights/
@@ -211,10 +212,11 @@ module Google
         # recommender.*.list IAM permission for the specified recommender.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
-        #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
-        #   RECOMMENDER_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[
+        #   formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]` * `organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION here refers to GCP Locations:
         #   https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported
         #   recommenders: https://cloud.google.com/recommender/docs/recommenders.
@@ -417,10 +419,11 @@ module Google
         # list IAM permission for the specified insight type.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
-        #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
-        #   INSIGHT_TYPE_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]
-        #   /insightTypes/[INSIGHT_TYPE_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/
-        #   insightTypes/[INSIGHT_TYPE_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[
+        #   formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
+        #   INSIGHT_TYPE_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[
+        #   INSIGHT_TYPE_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
+        #   insightTypes/[INSIGHT_TYPE_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/
+        #   insightTypes/[INSIGHT_TYPE_ID]` * `organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP
         #   Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
         #   supported insight types: https://cloud.google.com/recommender/docs/insights/
@@ -544,10 +547,11 @@ module Google
         # recommender.*.list IAM permission for the specified recommender.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
-        #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
-        #   RECOMMENDER_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[
+        #   formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]` * `organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION here refers to GCP Locations:
         #   https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported
         #   recommenders: https://cloud.google.com/recommender/docs/recommenders.
@@ -750,10 +754,11 @@ module Google
         # list IAM permission for the specified insight type.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
-        #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
-        #   INSIGHT_TYPE_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]
-        #   /insightTypes/[INSIGHT_TYPE_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/
-        #   insightTypes/[INSIGHT_TYPE_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[
+        #   formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
+        #   INSIGHT_TYPE_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[
+        #   INSIGHT_TYPE_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
+        #   insightTypes/[INSIGHT_TYPE_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/
+        #   insightTypes/[INSIGHT_TYPE_ID]` * `organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP
         #   Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
         #   supported insight types: https://cloud.google.com/recommender/docs/insights/
@@ -877,10 +882,11 @@ module Google
         # recommender.*.list IAM permission for the specified recommender.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
-        #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
-        #   RECOMMENDER_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[
+        #   formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]` * `organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION here refers to GCP Locations:
         #   https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported
         #   recommenders: https://cloud.google.com/recommender/docs/recommenders.
@@ -1083,10 +1089,11 @@ module Google
         # list IAM permission for the specified insight type.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
-        #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
-        #   INSIGHT_TYPE_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]
-        #   /insightTypes/[INSIGHT_TYPE_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/
-        #   insightTypes/[INSIGHT_TYPE_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[
+        #   formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
+        #   INSIGHT_TYPE_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[
+        #   INSIGHT_TYPE_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
+        #   insightTypes/[INSIGHT_TYPE_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/
+        #   insightTypes/[INSIGHT_TYPE_ID]` * `organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP
         #   Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
         #   supported insight types: https://cloud.google.com/recommender/docs/insights/
@@ -1210,10 +1217,11 @@ module Google
         # recommender.*.list IAM permission for the specified recommender.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
-        #   formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
-        #   RECOMMENDER_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/
-        #   recommenders/[RECOMMENDER_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[
+        #   formats: * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]` * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]` * `folders/[FOLDER_ID]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]` * `organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION here refers to GCP Locations:
         #   https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported
         #   recommenders: https://cloud.google.com/recommender/docs/recommenders.
