@@ -2431,13 +2431,15 @@ module Google
         # @return [String]
         attr_accessor :hex_serial_number
       
-        # For convenience, the actual lifetime of an issued certificate. Corresponds to '
-        # not_after_time' - 'not_before_time'.
+        # For convenience, the actual lifetime of an issued certificate.
         # Corresponds to the JSON property `lifetime`
         # @return [String]
         attr_accessor :lifetime
       
-        # The time at which the certificate expires.
+        # The time after which the certificate is expired. Per RFC 5280, the validity
+        # period for a certificate is the period of time from not_before_time through
+        # not_after_time, inclusive. Corresponds to 'not_before_time' + 'lifetime' - 1
+        # second.
         # Corresponds to the JSON property `notAfterTime`
         # @return [String]
         attr_accessor :not_after_time
