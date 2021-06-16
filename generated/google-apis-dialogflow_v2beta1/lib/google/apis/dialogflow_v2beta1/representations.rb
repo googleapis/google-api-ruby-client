@@ -2627,6 +2627,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
+          property :return_partial_responses, as: 'returnPartialResponses'
           collection :set_parameter_actions, as: 'setParameterActions', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction::Representation
       
           property :tag, as: 'tag'
@@ -3338,6 +3339,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
+          property :return_partial_responses, as: 'returnPartialResponses'
           collection :set_parameter_actions, as: 'setParameterActions', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction::Representation
       
           property :tag, as: 'tag'
@@ -4624,6 +4626,8 @@ module Google
       class GoogleCloudDialogflowV2beta1AutomatedAgentReply
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_cancellation, as: 'allowCancellation'
+          property :automated_agent_reply_type, as: 'automatedAgentReplyType'
           hash :cx_session_parameters, as: 'cxSessionParameters'
           property :detect_intent_response, as: 'detectIntentResponse', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentResponse::Representation
       
