@@ -37,10 +37,10 @@ module Google
         # @return [String]
         attr_accessor :avatar_uri
       
-        # Immutable. The default language of the agent as a language tag. See [Language
-        # Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a
-        # list of the currently supported language codes. This field cannot be set by
-        # the Agents.UpdateAgent method.
+        # Required. Immutable. The default language of the agent as a language tag. See [
+        # Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/
+        # language) for a list of the currently supported language codes. This field
+        # cannot be set by the Agents.UpdateAgent method.
         # Corresponds to the JSON property `defaultLanguageCode`
         # @return [String]
         attr_accessor :default_language_code
@@ -590,6 +590,14 @@ module Google
       class GoogleCloudDialogflowCxV3DetectIntentResponse
         include Google::Apis::Core::Hashable
       
+        # Indicates whether the partial response can be cancelled when a later response
+        # arrives. e.g. if the agent specified some music as partial response, it can be
+        # cancelled.
+        # Corresponds to the JSON property `allowCancellation`
+        # @return [Boolean]
+        attr_accessor :allow_cancellation
+        alias_method :allow_cancellation?, :allow_cancellation
+      
         # The audio data bytes encoded as specified in the request. Note: The output
         # audio is generated based on the values of default platform text responses
         # found in the `query_result.response_messages` field. If multiple default text
@@ -619,16 +627,23 @@ module Google
         # @return [String]
         attr_accessor :response_id
       
+        # Response type.
+        # Corresponds to the JSON property `responseType`
+        # @return [String]
+        attr_accessor :response_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @allow_cancellation = args[:allow_cancellation] if args.key?(:allow_cancellation)
           @output_audio = args[:output_audio] if args.key?(:output_audio)
           @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
           @query_result = args[:query_result] if args.key?(:query_result)
           @response_id = args[:response_id] if args.key?(:response_id)
+          @response_type = args[:response_type] if args.key?(:response_type)
         end
       end
       
@@ -1749,6 +1764,18 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3ResponseMessage>]
         attr_accessor :messages
       
+        # Whether Dialogflow should return currently queued fulfillment response
+        # messages in streaming APIs. If a webhook is specified, it happens before
+        # Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API.
+        # Responses are still queued and returned once in non-streaming API. 2) The flag
+        # can be enabled in any fulfillment but only the first 3 partial responses will
+        # be returned. You may only want to apply it to fulfillments that have slow
+        # webhooks.
+        # Corresponds to the JSON property `returnPartialResponses`
+        # @return [Boolean]
+        attr_accessor :return_partial_responses
+        alias_method :return_partial_responses?, :return_partial_responses
+      
         # Set parameter values before executing the webhook.
         # Corresponds to the JSON property `setParameterActions`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>]
@@ -1773,6 +1800,7 @@ module Google
         def update!(**args)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @messages = args[:messages] if args.key?(:messages)
+          @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
           @tag = args[:tag] if args.key?(:tag)
           @webhook = args[:webhook] if args.key?(:webhook)
@@ -4098,8 +4126,8 @@ module Google
       
         # DLP inspect template name. Use this template to define inspect base settings.
         # If empty, we use the default DLP inspect config. The template name will have
-        # one of the following formats: `projects/PROJECT_ID/inspectTemplates/
-        # TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        # one of the following formats: `projects//inspectTemplates/` OR `projects//
+        # locations//inspectTemplates/` OR `organizations//inspectTemplates/`
         # Corresponds to the JSON property `inspectTemplate`
         # @return [String]
         attr_accessor :inspect_template
@@ -6297,6 +6325,18 @@ module Google
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1ResponseMessage>]
         attr_accessor :messages
       
+        # Whether Dialogflow should return currently queued fulfillment response
+        # messages in streaming APIs. If a webhook is specified, it happens before
+        # Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API.
+        # Responses are still queued and returned once in non-streaming API. 2) The flag
+        # can be enabled in any fulfillment but only the first 3 partial responses will
+        # be returned. You may only want to apply it to fulfillments that have slow
+        # webhooks.
+        # Corresponds to the JSON property `returnPartialResponses`
+        # @return [Boolean]
+        attr_accessor :return_partial_responses
+        alias_method :return_partial_responses?, :return_partial_responses
+      
         # Set parameter values before executing the webhook.
         # Corresponds to the JSON property `setParameterActions`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>]
@@ -6321,6 +6361,7 @@ module Google
         def update!(**args)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @messages = args[:messages] if args.key?(:messages)
+          @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
           @tag = args[:tag] if args.key?(:tag)
           @webhook = args[:webhook] if args.key?(:webhook)
