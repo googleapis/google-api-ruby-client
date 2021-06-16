@@ -128,6 +128,49 @@ module Google
         end
       end
       
+      # Certificate used to configure LDAPS.
+      class Certificate
+        include Google::Apis::Core::Hashable
+      
+        # The certificate expire time.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Certificate used to configure LDAPS.
+        # Corresponds to the JSON property `issuingCertificate`
+        # @return [Google::Apis::ManagedidentitiesV1::Certificate]
+        attr_accessor :issuing_certificate
+      
+        # The certificate subject.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # The additional hostnames for the domain.
+        # Corresponds to the JSON property `subjectAlternativeName`
+        # @return [Array<String>]
+        attr_accessor :subject_alternative_name
+      
+        # The certificate thumbprint which uniquely identifies the certificate.
+        # Corresponds to the JSON property `thumbprint`
+        # @return [String]
+        attr_accessor :thumbprint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @issuing_certificate = args[:issuing_certificate] if args.key?(:issuing_certificate)
+          @subject = args[:subject] if args.key?(:subject)
+          @subject_alternative_name = args[:subject_alternative_name] if args.key?(:subject_alternative_name)
+          @thumbprint = args[:thumbprint] if args.key?(:thumbprint)
+        end
+      end
+      
       # Time window specified for daily operations.
       class DailyCycle
         include Google::Apis::Core::Hashable
@@ -1035,6 +1078,76 @@ module Google
           @nodes = args[:nodes] if args.key?(:nodes)
           @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
           @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
+      # LDAPSSettings represents the ldaps settings for domain resource. LDAP is the
+      # Lightweight Directory Access Protocol, defined in https://tools.ietf.org/html/
+      # rfc4511. The settings object configures LDAP over SSL/TLS, whether it is over
+      # port 636 or the StartTLS operation. If LDAPSSettings is being changed, it will
+      # be placed into the UPDATING state, which indicates that the resource is being
+      # reconciled. At this point, Get will reflect an intermediate state.
+      class LdapsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Certificate used to configure LDAPS.
+        # Corresponds to the JSON property `certificate`
+        # @return [Google::Apis::ManagedidentitiesV1::Certificate]
+        attr_accessor :certificate
+      
+        # Input only. The password used to encrypt the uploaded pfx certificate.
+        # Corresponds to the JSON property `certificatePassword`
+        # @return [String]
+        attr_accessor :certificate_password
+      
+        # Input only. The uploaded PKCS12-formatted certificate to configure LDAPS with.
+        # It will enable the domain controllers in this domain to accept LDAPS
+        # connections (either LDAP over SSL/TLS or the StartTLS operation). A valid
+        # certificate chain must form a valid x.509 certificate chain (or be comprised
+        # of a single self-signed certificate. It must be encrypted with either: 1)
+        # PBES2 + PBKDF2 + AES256 encryption and SHA256 PRF; or 2) pbeWithSHA1And3-
+        # KeyTripleDES-CBC Private key must be included for the leaf / single self-
+        # signed certificate. Note: For a fqdn your-example-domain.com, the wildcard
+        # fqdn is *.your-example-domain.com. Specifically the leaf certificate must have:
+        # - Either a blank subject or a subject with CN matching the wildcard fqdn. -
+        # Exactly two SANs - the fqdn and wildcard fqdn. - Encipherment and digital key
+        # signature key usages. - Server authentication extended key usage (OID=1.3.6.1.
+        # 5.5.7.3.1) - Private key must be in one of the following formats: RSA, ECDSA,
+        # ED25519. - Private key must have appropriate key length: 2048 for RSA, 256 for
+        # ECDSA - Signature algorithm of the leaf certificate cannot be MD2, MD5 or SHA1.
+        # Corresponds to the JSON property `certificatePfx`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :certificate_pfx
+      
+        # The resource name of the LDAPS settings. Uses the form: `projects/`project`/
+        # locations/`location`/domains/`domain``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of this LDAPS settings.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @certificate_password = args[:certificate_password] if args.key?(:certificate_password)
+          @certificate_pfx = args[:certificate_pfx] if args.key?(:certificate_pfx)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
