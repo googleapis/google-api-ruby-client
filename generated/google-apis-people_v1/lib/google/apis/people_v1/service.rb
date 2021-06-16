@@ -370,8 +370,11 @@ module Google
         #   Optional. A sync token, received from a previous `ListOtherContacts` call.
         #   Provide this to retrieve only the resources changed since the last request.
         #   Sync requests that specify `sync_token` have an additional rate limit. When
-        #   syncing, all other parameters provided to `ListOtherContacts` must match the
-        #   call that provided the sync token.
+        #   the `syncToken` is specified, resources deleted since the last sync will be
+        #   returned as a person with [`PersonMetadata.deleted`](/people/api/rest/v1/
+        #   people#Person.PersonMetadata.FIELDS.deleted) set to true. When the `syncToken`
+        #   is specified, all other parameters provided to `ListOtherContacts` must match
+        #   the call that provided the sync token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1103,7 +1106,10 @@ module Google
         # @param [String] sync_token
         #   Optional. A sync token, received from a previous `ListConnections` call.
         #   Provide this to retrieve only the resources changed since the last request.
-        #   When syncing, all other parameters provided to `ListConnections` except `
+        #   When the `syncToken` is specified, resources deleted since the last sync will
+        #   be returned as a person with [`PersonMetadata.deleted`](/people/api/rest/v1/
+        #   people#Person.PersonMetadata.FIELDS.deleted) set to true. When the `syncToken`
+        #   is specified, all other parameters provided to `ListConnections` except `
         #   page_size` and `page_token` must match the initial call that provided the sync
         #   token. Sync tokens expire after seven days, after which a full sync request
         #   without a `sync_token` should be made.
