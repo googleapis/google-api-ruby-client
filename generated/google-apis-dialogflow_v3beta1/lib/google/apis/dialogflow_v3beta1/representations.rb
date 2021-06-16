@@ -2471,6 +2471,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
+          property :return_partial_responses, as: 'returnPartialResponses'
           collection :set_parameter_actions, as: 'setParameterActions', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction::Representation
       
           property :tag, as: 'tag'
@@ -3157,12 +3158,14 @@ module Google
       class GoogleCloudDialogflowCxV3beta1DetectIntentResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_cancellation, as: 'allowCancellation'
           property :output_audio, :base64 => true, as: 'outputAudio'
           property :output_audio_config, as: 'outputAudioConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1OutputAudioConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1OutputAudioConfig::Representation
       
           property :query_result, as: 'queryResult', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1QueryResult::Representation
       
           property :response_id, as: 'responseId'
+          property :response_type, as: 'responseType'
         end
       end
       
@@ -3458,6 +3461,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
+          property :return_partial_responses, as: 'returnPartialResponses'
           collection :set_parameter_actions, as: 'setParameterActions', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction::Representation
       
           property :tag, as: 'tag'
