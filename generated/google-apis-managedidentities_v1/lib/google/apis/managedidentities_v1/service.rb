@@ -337,6 +337,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the domain ldaps settings.
+        # @param [String] name
+        #   Required. The domain resource name using the form: `projects/`project_id`/
+        #   locations/global/domains/`domain_name``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1::LdapsSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1::LdapsSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_global_domain_ldapssettings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/ldapssettings', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1::LdapsSettings::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1::LdapsSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists domains in a project.
         # @param [String] parent
         #   Required. The resource name of the domain location using the form: `projects/`
@@ -394,7 +425,7 @@ module Google
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
         #   field. The elements of the repeated paths field may only include fields from
-        #   Domain: * `labels` * `locations` * `authorized_networks`
+        #   Domain: * `labels` * `locations` * `authorized_networks` * `audit_logs_enabled`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -562,6 +593,45 @@ module Google
           command.response_representation = Google::Apis::ManagedidentitiesV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::ManagedidentitiesV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patches a single ldaps settings.
+        # @param [String] name
+        #   The resource name of the LDAPS settings. Uses the form: `projects/`project`/
+        #   locations/`location`/domains/`domain``.
+        # @param [Google::Apis::ManagedidentitiesV1::LdapsSettings] ldaps_settings_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field. For the `FieldMask` definition, see https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_global_domain_ldapssettings(name, ldaps_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}/ldapssettings', options)
+          command.request_representation = Google::Apis::ManagedidentitiesV1::LdapsSettings::Representation
+          command.request_object = ldaps_settings_object
+          command.response_representation = Google::Apis::ManagedidentitiesV1::Operation::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

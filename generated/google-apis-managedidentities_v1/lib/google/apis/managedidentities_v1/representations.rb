@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Certificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DailyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,12 @@ module Google
       end
       
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LdapsSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -319,6 +331,18 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Certificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :issuing_certificate, as: 'issuingCertificate', class: Google::Apis::ManagedidentitiesV1::Certificate, decorator: Google::Apis::ManagedidentitiesV1::Certificate::Representation
+      
+          property :subject, as: 'subject'
+          collection :subject_alternative_name, as: 'subjectAlternativeName'
+          property :thumbprint, as: 'thumbprint'
         end
       end
       
@@ -531,6 +555,19 @@ module Google
           property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
       
           property :tier, as: 'tier'
+        end
+      end
+      
+      class LdapsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate, as: 'certificate', class: Google::Apis::ManagedidentitiesV1::Certificate, decorator: Google::Apis::ManagedidentitiesV1::Certificate::Representation
+      
+          property :certificate_password, as: 'certificatePassword'
+          property :certificate_pfx, :base64 => true, as: 'certificatePfx'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
