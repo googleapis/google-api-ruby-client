@@ -688,6 +688,18 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessage>]
         attr_accessor :messages
       
+        # Whether Dialogflow should return currently queued fulfillment response
+        # messages in streaming APIs. If a webhook is specified, it happens before
+        # Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API.
+        # Responses are still queued and returned once in non-streaming API. 2) The flag
+        # can be enabled in any fulfillment but only the first 3 partial responses will
+        # be returned. You may only want to apply it to fulfillments that have slow
+        # webhooks.
+        # Corresponds to the JSON property `returnPartialResponses`
+        # @return [Boolean]
+        attr_accessor :return_partial_responses
+        alias_method :return_partial_responses?, :return_partial_responses
+      
         # Set parameter values before executing the webhook.
         # Corresponds to the JSON property `setParameterActions`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>]
@@ -712,6 +724,7 @@ module Google
         def update!(**args)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @messages = args[:messages] if args.key?(:messages)
+          @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
           @tag = args[:tag] if args.key?(:tag)
           @webhook = args[:webhook] if args.key?(:webhook)
@@ -3213,6 +3226,18 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessage>]
         attr_accessor :messages
       
+        # Whether Dialogflow should return currently queued fulfillment response
+        # messages in streaming APIs. If a webhook is specified, it happens before
+        # Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API.
+        # Responses are still queued and returned once in non-streaming API. 2) The flag
+        # can be enabled in any fulfillment but only the first 3 partial responses will
+        # be returned. You may only want to apply it to fulfillments that have slow
+        # webhooks.
+        # Corresponds to the JSON property `returnPartialResponses`
+        # @return [Boolean]
+        attr_accessor :return_partial_responses
+        alias_method :return_partial_responses?, :return_partial_responses
+      
         # Set parameter values before executing the webhook.
         # Corresponds to the JSON property `setParameterActions`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction>]
@@ -3237,6 +3262,7 @@ module Google
         def update!(**args)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @messages = args[:messages] if args.key?(:messages)
+          @return_partial_responses = args[:return_partial_responses] if args.key?(:return_partial_responses)
           @set_parameter_actions = args[:set_parameter_actions] if args.key?(:set_parameter_actions)
           @tag = args[:tag] if args.key?(:tag)
           @webhook = args[:webhook] if args.key?(:webhook)
@@ -7991,6 +8017,19 @@ module Google
       class GoogleCloudDialogflowV2beta1AutomatedAgentReply
         include Google::Apis::Core::Hashable
       
+        # Indicates whether the partial automated agent reply is interruptible when a
+        # later reply message arrives. e.g. if the agent specified some music as partial
+        # response, it can be cancelled.
+        # Corresponds to the JSON property `allowCancellation`
+        # @return [Boolean]
+        attr_accessor :allow_cancellation
+        alias_method :allow_cancellation?, :allow_cancellation
+      
+        # AutomatedAgentReply type.
+        # Corresponds to the JSON property `automatedAgentReplyType`
+        # @return [String]
+        attr_accessor :automated_agent_reply_type
+      
         # The collection of current Dialogflow CX agent session parameters at the time
         # of this response. Deprecated: Use `parameters` instead.
         # Corresponds to the JSON property `cxSessionParameters`
@@ -8039,6 +8078,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_cancellation = args[:allow_cancellation] if args.key?(:allow_cancellation)
+          @automated_agent_reply_type = args[:automated_agent_reply_type] if args.key?(:automated_agent_reply_type)
           @cx_session_parameters = args[:cx_session_parameters] if args.key?(:cx_session_parameters)
           @detect_intent_response = args[:detect_intent_response] if args.key?(:detect_intent_response)
           @event = args[:event] if args.key?(:event)
