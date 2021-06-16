@@ -562,6 +562,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceExternalIPsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetAddonsConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1459,6 +1465,8 @@ module Google
           property :enable_l4ilb_subsetting, as: 'enableL4ilbSubsetting'
           property :network, as: 'network'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
+          property :service_external_ips_config, as: 'serviceExternalIpsConfig', class: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig::Representation
+      
           property :subnetwork, as: 'subnetwork'
         end
       end
@@ -1796,6 +1804,13 @@ module Google
           collection :valid_node_versions, as: 'validNodeVersions'
           hash :windows_version_maps, as: 'windowsVersionMaps', class: Google::Apis::ContainerV1beta1::WindowsVersions, decorator: Google::Apis::ContainerV1beta1::WindowsVersions::Representation
       
+        end
+      end
+      
+      class ServiceExternalIPsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
