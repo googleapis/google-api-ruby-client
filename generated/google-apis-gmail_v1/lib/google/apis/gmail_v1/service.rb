@@ -265,7 +265,8 @@ module Google
         # @param [Boolean] include_spam_trash
         #   Include drafts from `SPAM` and `TRASH` in the results.
         # @param [Fixnum] max_results
-        #   Maximum number of drafts to return.
+        #   Maximum number of drafts to return. This field defaults to 100. The maximum
+        #   allowed value for this field is 500.
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
         # @param [String] q
@@ -405,7 +406,8 @@ module Google
         # @param [String] label_id
         #   Only return messages with a label matching the ID.
         # @param [Fixnum] max_results
-        #   The maximum number of history records to return.
+        #   Maximum number of history records to return. This field defaults to 100. The
+        #   maximum allowed value for this field is 500.
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
         # @param [Fixnum] start_history_id
@@ -920,7 +922,8 @@ module Google
         # @param [Array<String>, String] label_ids
         #   Only return messages with labels that match all of the specified label IDs.
         # @param [Fixnum] max_results
-        #   Maximum number of messages to return.
+        #   Maximum number of messages to return. This field defaults to 100. The maximum
+        #   allowed value for this field is 500.
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
         # @param [String] q
@@ -2417,7 +2420,8 @@ module Google
         # @param [Array<String>, String] label_ids
         #   Only return threads with labels that match all of the specified label IDs.
         # @param [Fixnum] max_results
-        #   Maximum number of threads to return.
+        #   Maximum number of threads to return. This field defaults to 100. The maximum
+        #   allowed value for this field is 500.
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
         # @param [String] q
