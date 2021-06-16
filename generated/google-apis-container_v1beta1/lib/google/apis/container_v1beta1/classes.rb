@@ -2705,6 +2705,11 @@ module Google
         # @return [String]
         attr_accessor :private_ipv6_google_access
       
+        # Config to block services with externalIPs field.
+        # Corresponds to the JSON property `serviceExternalIpsConfig`
+        # @return [Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig]
+        attr_accessor :service_external_ips_config
+      
         # Output only. The relative name of the Google Compute Engine [subnetwork](https:
         # //cloud.google.com/compute/docs/vpc) to which the cluster is connected.
         # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
@@ -2725,6 +2730,7 @@ module Google
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
           @network = args[:network] if args.key?(:network)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
+          @service_external_ips_config = args[:service_external_ips_config] if args.key?(:service_external_ips_config)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
@@ -4061,6 +4067,26 @@ module Google
           @valid_master_versions = args[:valid_master_versions] if args.key?(:valid_master_versions)
           @valid_node_versions = args[:valid_node_versions] if args.key?(:valid_node_versions)
           @windows_version_maps = args[:windows_version_maps] if args.key?(:windows_version_maps)
+        end
+      end
+      
+      # Config to block services with externalIPs field.
+      class ServiceExternalIPsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether Services with ExternalIPs field are allowed or not.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
