@@ -2501,6 +2501,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3ResponseMessage::Representation
       
+          property :return_partial_responses, as: 'returnPartialResponses'
           collection :set_parameter_actions, as: 'setParameterActions', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3FulfillmentSetParameterAction::Representation
       
           property :tag, as: 'tag'
@@ -3212,6 +3213,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
       
+          property :return_partial_responses, as: 'returnPartialResponses'
           collection :set_parameter_actions, as: 'setParameterActions', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction::Representation
       
           property :tag, as: 'tag'
@@ -3856,6 +3858,8 @@ module Google
       class GoogleCloudDialogflowV2AutomatedAgentReply
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_cancellation, as: 'allowCancellation'
+          property :automated_agent_reply_type, as: 'automatedAgentReplyType'
           property :detect_intent_response, as: 'detectIntentResponse', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentResponse, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentResponse::Representation
       
         end
