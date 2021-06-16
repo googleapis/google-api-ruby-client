@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Certificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DailyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LdapsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDomainsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +179,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPeeringsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -203,6 +221,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Peering
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -319,6 +343,18 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Certificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :issuing_certificate, as: 'issuingCertificate', class: Google::Apis::ManagedidentitiesV1alpha1::Certificate, decorator: Google::Apis::ManagedidentitiesV1alpha1::Certificate::Representation
+      
+          property :subject, as: 'subject'
+          collection :subject_alternative_name, as: 'subjectAlternativeName'
+          property :thumbprint, as: 'thumbprint'
         end
       end
       
@@ -535,6 +571,19 @@ module Google
         end
       end
       
+      class LdapsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate, as: 'certificate', class: Google::Apis::ManagedidentitiesV1alpha1::Certificate, decorator: Google::Apis::ManagedidentitiesV1alpha1::Certificate::Representation
+      
+          property :certificate_password, as: 'certificatePassword'
+          property :certificate_pfx, :base64 => true, as: 'certificatePfx'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class ListDomainsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -560,6 +609,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ManagedidentitiesV1alpha1::Operation, decorator: Google::Apis::ManagedidentitiesV1alpha1::Operation::Representation
       
+        end
+      end
+      
+      class ListPeeringsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :peerings, as: 'peerings', class: Google::Apis::ManagedidentitiesV1alpha1::Peering, decorator: Google::Apis::ManagedidentitiesV1alpha1::Peering::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -630,6 +689,20 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class Peering
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorized_network, as: 'authorizedNetwork'
+          property :create_time, as: 'createTime'
+          property :domain_resource, as: 'domainResource'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :status_message, as: 'statusMessage'
+          property :update_time, as: 'updateTime'
         end
       end
       
