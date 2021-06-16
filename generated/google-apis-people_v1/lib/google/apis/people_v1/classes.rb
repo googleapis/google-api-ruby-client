@@ -2133,7 +2133,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. True if the person resource has been deleted. Populated only for [
-        # `connections.list`](/people/api/rest/v1/people.connections/list) requests that
+        # `connections.list`](/people/api/rest/v1/people.connections/list) and [`
+        # otherContacts.list`](/people/api/rest/v1/otherContacts/list) requests that
         # include a sync token.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
