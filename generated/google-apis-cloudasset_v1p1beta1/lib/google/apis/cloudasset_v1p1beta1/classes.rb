@@ -182,7 +182,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The map from roles to their included permission matching the permission query (
-        # e.g. containing `policy.role.permissions:`). A sample role string: "roles/
+        # e.g. containing `policy.role.permissions:`). Example role string: "roles/
         # compute.instanceAdmin". The roles can also be found in the returned `policy`
         # bindings. Note that the map is populated only if requesting with a permission
         # query.
@@ -1678,7 +1678,7 @@ module Google
         end
       end
       
-      # The result for a IAM Policy search.
+      # The result for an IAM policy search.
       class IamPolicySearchResult
         include Google::Apis::Core::Hashable
       
@@ -1718,11 +1718,11 @@ module Google
         # @return [Google::Apis::CloudassetV1p1beta1::Policy]
         attr_accessor :policy
       
-        # The project that the associated GCP resource belongs to, in the form of `
-        # projects/`project_number``. If an IAM policy is set on a resource (like VM
-        # instance, Cloud Storage bucket), the project field will indicate the project
-        # that contains the resource. If an IAM policy is set on a folder or orgnization,
-        # the project field will be empty.
+        # The project that the associated Google Cloud resource belongs to, in the form
+        # of `projects/`project_number``. If an IAM policy is set on a resource -- such
+        # as a Compute Engine instance or a Cloud Storage bucket -- the project field
+        # will indicate the project that contains the resource. If an IAM policy is set
+        # on a folder or orgnization, the project field will be empty.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
@@ -1746,11 +1746,11 @@ module Google
         end
       end
       
-      # IAM permissions
+      # IAM permissions.
       class Permissions
         include Google::Apis::Core::Hashable
       
-        # A list of permissions. A sample permission string: "compute.disk.get".
+        # A list of permissions. Example permission string: "compute.disk.get".
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
