@@ -2776,10 +2776,35 @@ module Google
       class IamPolicySearchResult
         include Google::Apis::Core::Hashable
       
+        # The type of the resource associated with this IAM policy. Example: `compute.
+        # googleapis.com/Disk`. To search against the `asset_type`: * specify the `
+        # asset_types` field in your search request.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
         # Explanation about the IAM policy search result.
         # Corresponds to the JSON property `explanation`
         # @return [Google::Apis::CloudassetV1::Explanation]
         attr_accessor :explanation
+      
+        # The folder(s) that the IAM policy belongs to, in the form of folders/`
+        # FOLDER_NUMBER`. This field is available when the IAM policy belongs to one or
+        # more folders. To search against `folders`: * use a field query. Example: `
+        # folders:(123 OR 456)` * use a free text query. Example: `123` * specify the `
+        # scope` field as this folder in your search request.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<String>]
+        attr_accessor :folders
+      
+        # The organization that the IAM policy belongs to, in the form of organizations/`
+        # ORGANIZATION_NUMBER`. This field is available when the IAM policy belongs to
+        # an organization. To search against `organization`: * use a field query.
+        # Example: `organization:123` * use a free text query. Example: `123` * specify
+        # the `scope` field as this organization in your search request.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
@@ -2838,7 +2863,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
           @explanation = args[:explanation] if args.key?(:explanation)
+          @folders = args[:folders] if args.key?(:folders)
+          @organization = args[:organization] if args.key?(:organization)
           @policy = args[:policy] if args.key?(:policy)
           @project = args[:project] if args.key?(:project)
           @resource = args[:resource] if args.key?(:resource)

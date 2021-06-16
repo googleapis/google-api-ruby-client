@@ -650,6 +650,26 @@ module Google
         #   bar") * projects/`PROJECT_NUMBER` (e.g., "projects/12345678") * folders/`
         #   FOLDER_NUMBER` (e.g., "folders/1234567") * organizations/`ORGANIZATION_NUMBER`
         #   (e.g., "organizations/123456")
+        # @param [Array<String>, String] asset_types
+        #   Optional. A list of asset types that the IAM policies are attached to. If
+        #   empty, it will search the IAM policies that are attached to all the [
+        #   searchable asset types](https://cloud.google.com/asset-inventory/docs/
+        #   supported-asset-types#searchable_asset_types). Regular expressions are also
+        #   supported. For example: * "compute.googleapis.com.*" snapshots IAM policies
+        #   attached to asset type starts with "compute.googleapis.com". * ".*Instance"
+        #   snapshots IAM policies attached to asset type ends with "Instance". * ".*
+        #   Instance.*" snapshots IAM policies attached to asset type contains "Instance".
+        #   See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
+        #   expression syntax. If the regular expression does not match any supported
+        #   asset type, an INVALID_ARGUMENT error will be returned.
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields specifying the sorting order of the
+        #   results. The default order is ascending. Add " DESC" after the field name to
+        #   indicate descending order. Redundant space characters are ignored. Example: "
+        #   assetType DESC, resource". Only singular primitive fields in the response are
+        #   sortable: * resource * assetType * project All the other fields such as
+        #   repeated fields (e.g., `folders`) and non-primitive fields (e.g., `policy`)
+        #   are not supported.
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
         #   500 even if a larger value is given. If set to zero, server will pick an
@@ -688,7 +708,10 @@ module Google
         #   IAM policy bindings that contain "Important" as a word in any of the
         #   searchable fields (except for the included permissions). * `resource:(
         #   instance1 OR instance2) policy:amy` to find IAM policy bindings that are set
-        #   on resources "instance1" or "instance2" and also specify user "amy".
+        #   on resources "instance1" or "instance2" and also specify user "amy". * `roles:
+        #   roles/compute.admin` to find IAM policy bindings that specify the Compute
+        #   Admin role. * `memberTypes:user` to find IAM policy bindings that contain the "
+        #   user" member type.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -706,11 +729,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_all_iam_policies(scope, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_all_iam_policies(scope, asset_types: nil, order_by: nil, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+scope}:searchAllIamPolicies', options)
           command.response_representation = Google::Apis::CloudassetV1::SearchAllIamPoliciesResponse::Representation
           command.response_class = Google::Apis::CloudassetV1::SearchAllIamPoliciesResponse
           command.params['scope'] = scope unless scope.nil?
+          command.query['assetTypes'] = asset_types unless asset_types.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['query'] = query unless query.nil?
