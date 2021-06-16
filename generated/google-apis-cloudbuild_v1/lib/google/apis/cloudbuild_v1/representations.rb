@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunBuildTriggerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SmtpDelivery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,12 @@ module Google
       end
       
       class Warning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebhookConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -442,9 +454,12 @@ module Google
           property :name, as: 'name'
           property :pubsub_config, as: 'pubsubConfig', class: Google::Apis::CloudbuildV1::PubsubConfig, decorator: Google::Apis::CloudbuildV1::PubsubConfig::Representation
       
+          property :resource_name, as: 'resourceName'
           hash :substitutions, as: 'substitutions'
           collection :tags, as: 'tags'
           property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
+      
+          property :webhook_config, as: 'webhookConfig', class: Google::Apis::CloudbuildV1::WebhookConfig, decorator: Google::Apis::CloudbuildV1::WebhookConfig::Representation
       
         end
       end
@@ -693,6 +708,16 @@ module Google
         end
       end
       
+      class RunBuildTriggerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+          property :source, as: 'source', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
+      
+          property :trigger_id, as: 'triggerId'
+        end
+      end
+      
       class SmtpDelivery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -814,6 +839,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :priority, as: 'priority'
           property :text, as: 'text'
+        end
+      end
+      
+      class WebhookConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :secret, as: 'secret'
+          property :state, as: 'state'
         end
       end
     end
