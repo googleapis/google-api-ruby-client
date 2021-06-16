@@ -977,6 +977,12 @@ module Google
         # @return [Google::Apis::ContainerV1::IntraNodeVisibilityConfig]
         attr_accessor :desired_intra_node_visibility_config
       
+        # ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer
+        # subsetting on this cluster.
+        # Corresponds to the JSON property `desiredL4ilbSubsettingConfig`
+        # @return [Google::Apis::ContainerV1::IlbSubsettingConfig]
+        attr_accessor :desired_l4ilb_subsetting_config
+      
         # The desired list of Google Compute Engine [zones](https://cloud.google.com/
         # compute/docs/zones#available) in which the cluster's nodes should be located.
         # This list must always include the cluster's primary zone. Warning: changing
@@ -1111,6 +1117,7 @@ module Google
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
+          @desired_l4ilb_subsetting_config = args[:desired_l4ilb_subsetting_config] if args.key?(:desired_l4ilb_subsetting_config)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
@@ -1624,6 +1631,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer
+      # subsetting on this cluster.
+      class IlbSubsettingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enables l4 ILB subsetting for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -2249,6 +2277,12 @@ module Google
         attr_accessor :enable_intra_node_visibility
         alias_method :enable_intra_node_visibility?, :enable_intra_node_visibility
       
+        # Whether L4ILB Subsetting is enabled for this cluster.
+        # Corresponds to the JSON property `enableL4ilbSubsetting`
+        # @return [Boolean]
+        attr_accessor :enable_l4ilb_subsetting
+        alias_method :enable_l4ilb_subsetting?, :enable_l4ilb_subsetting
+      
         # Output only. The relative name of the Google Compute Engine network(https://
         # cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the
         # cluster is connected. Example: projects/my-project/global/networks/my-network
@@ -2278,6 +2312,7 @@ module Google
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
+          @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
           @network = args[:network] if args.key?(:network)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)

@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IlbSubsettingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IpAllocationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -864,6 +870,8 @@ module Google
           property :desired_image_type, as: 'desiredImageType'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1::IntraNodeVisibilityConfig::Representation
       
+          property :desired_l4ilb_subsetting_config, as: 'desiredL4ilbSubsettingConfig', class: Google::Apis::ContainerV1::IlbSubsettingConfig, decorator: Google::Apis::ContainerV1::IlbSubsettingConfig::Representation
+      
           collection :desired_locations, as: 'desiredLocations'
           property :desired_logging_service, as: 'desiredLoggingService'
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
@@ -1037,6 +1045,13 @@ module Google
         end
       end
       
+      class IlbSubsettingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class IpAllocationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1201,6 +1216,7 @@ module Google
           property :default_snat_status, as: 'defaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
       
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
+          property :enable_l4ilb_subsetting, as: 'enableL4ilbSubsetting'
           property :network, as: 'network'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :subnetwork, as: 'subnetwork'
