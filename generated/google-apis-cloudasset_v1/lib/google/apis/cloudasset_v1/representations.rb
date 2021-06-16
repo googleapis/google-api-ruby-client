@@ -1230,8 +1230,11 @@ module Google
       class IamPolicySearchResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_type, as: 'assetType'
           property :explanation, as: 'explanation', class: Google::Apis::CloudassetV1::Explanation, decorator: Google::Apis::CloudassetV1::Explanation::Representation
       
+          collection :folders, as: 'folders'
+          property :organization, as: 'organization'
           property :policy, as: 'policy', class: Google::Apis::CloudassetV1::Policy, decorator: Google::Apis::CloudassetV1::Policy::Representation
       
           property :project, as: 'project'
