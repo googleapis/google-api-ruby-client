@@ -1142,6 +1142,12 @@ module Google
         # @return [Google::Apis::DriveV3::User]
         attr_accessor :last_modifying_user
       
+        # Contains details about the link URLs that clients are using to refer to this
+        # item.
+        # Corresponds to the JSON property `linkShareMetadata`
+        # @return [Google::Apis::DriveV3::File::LinkShareMetadata]
+        attr_accessor :link_share_metadata
+      
         # The MD5 checksum for the content of the file. This is only applicable to files
         # with binary content in Google Drive.
         # Corresponds to the JSON property `md5Checksum`
@@ -1234,6 +1240,11 @@ module Google
         # Corresponds to the JSON property `quotaBytesUsed`
         # @return [Fixnum]
         attr_accessor :quota_bytes_used
+      
+        # A key needed to access the item via a shared link.
+        # Corresponds to the JSON property `resourceKey`
+        # @return [String]
+        attr_accessor :resource_key
       
         # Whether the file has been shared. Not populated for items in shared drives.
         # Corresponds to the JSON property `shared`
@@ -1390,6 +1401,7 @@ module Google
           @is_app_authorized = args[:is_app_authorized] if args.key?(:is_app_authorized)
           @kind = args[:kind] if args.key?(:kind)
           @last_modifying_user = args[:last_modifying_user] if args.key?(:last_modifying_user)
+          @link_share_metadata = args[:link_share_metadata] if args.key?(:link_share_metadata)
           @md5_checksum = args[:md5_checksum] if args.key?(:md5_checksum)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @modified_by_me = args[:modified_by_me] if args.key?(:modified_by_me)
@@ -1404,6 +1416,7 @@ module Google
           @permissions = args[:permissions] if args.key?(:permissions)
           @properties = args[:properties] if args.key?(:properties)
           @quota_bytes_used = args[:quota_bytes_used] if args.key?(:quota_bytes_used)
+          @resource_key = args[:resource_key] if args.key?(:resource_key)
           @shared = args[:shared] if args.key?(:shared)
           @shared_with_me_time = args[:shared_with_me_time] if args.key?(:shared_with_me_time)
           @sharing_user = args[:sharing_user] if args.key?(:sharing_user)
@@ -1460,6 +1473,13 @@ module Google
           # @return [Boolean]
           attr_accessor :can_change_copy_requires_writer_permission
           alias_method :can_change_copy_requires_writer_permission?, :can_change_copy_requires_writer_permission
+        
+          # Whether the current user can change the securityUpdateEnabled field on link
+          # share metadata.
+          # Corresponds to the JSON property `canChangeSecurityUpdateEnabled`
+          # @return [Boolean]
+          attr_accessor :can_change_security_update_enabled
+          alias_method :can_change_security_update_enabled?, :can_change_security_update_enabled
         
           # Deprecated
           # Corresponds to the JSON property `canChangeViewersCanCopyContent`
@@ -1673,6 +1693,7 @@ module Google
             @can_add_folder_from_another_drive = args[:can_add_folder_from_another_drive] if args.key?(:can_add_folder_from_another_drive)
             @can_add_my_drive_parent = args[:can_add_my_drive_parent] if args.key?(:can_add_my_drive_parent)
             @can_change_copy_requires_writer_permission = args[:can_change_copy_requires_writer_permission] if args.key?(:can_change_copy_requires_writer_permission)
+            @can_change_security_update_enabled = args[:can_change_security_update_enabled] if args.key?(:can_change_security_update_enabled)
             @can_change_viewers_can_copy_content = args[:can_change_viewers_can_copy_content] if args.key?(:can_change_viewers_can_copy_content)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
@@ -1934,6 +1955,34 @@ module Google
           end
         end
         
+        # Contains details about the link URLs that clients are using to refer to this
+        # item.
+        class LinkShareMetadata
+          include Google::Apis::Core::Hashable
+        
+          # Whether the file is eligible for security update.
+          # Corresponds to the JSON property `securityUpdateEligible`
+          # @return [Boolean]
+          attr_accessor :security_update_eligible
+          alias_method :security_update_eligible?, :security_update_eligible
+        
+          # Whether the security update is enabled for this file.
+          # Corresponds to the JSON property `securityUpdateEnabled`
+          # @return [Boolean]
+          attr_accessor :security_update_enabled
+          alias_method :security_update_enabled?, :security_update_enabled
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @security_update_eligible = args[:security_update_eligible] if args.key?(:security_update_eligible)
+            @security_update_enabled = args[:security_update_enabled] if args.key?(:security_update_enabled)
+          end
+        end
+        
         # Shortcut file details. Only populated for shortcut files, which have the
         # mimeType field set to application/vnd.google-apps.shortcut.
         class ShortcutDetails
@@ -1951,6 +2000,11 @@ module Google
           # @return [String]
           attr_accessor :target_mime_type
         
+          # The ResourceKey for the target file.
+          # Corresponds to the JSON property `targetResourceKey`
+          # @return [String]
+          attr_accessor :target_resource_key
+        
           def initialize(**args)
              update!(**args)
           end
@@ -1959,6 +2013,7 @@ module Google
           def update!(**args)
             @target_id = args[:target_id] if args.key?(:target_id)
             @target_mime_type = args[:target_mime_type] if args.key?(:target_mime_type)
+            @target_resource_key = args[:target_resource_key] if args.key?(:target_resource_key)
           end
         end
         

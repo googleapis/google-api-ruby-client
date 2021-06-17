@@ -151,6 +151,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class LinkShareMetadata
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class ShortcutDetails
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -535,6 +541,8 @@ module Google
           property :kind, as: 'kind'
           property :last_modifying_user, as: 'lastModifyingUser', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
+          property :link_share_metadata, as: 'linkShareMetadata', class: Google::Apis::DriveV3::File::LinkShareMetadata, decorator: Google::Apis::DriveV3::File::LinkShareMetadata::Representation
+      
           property :md5_checksum, as: 'md5Checksum'
           property :mime_type, as: 'mimeType'
           property :modified_by_me, as: 'modifiedByMe'
@@ -553,6 +561,7 @@ module Google
       
           hash :properties, as: 'properties'
           property :quota_bytes_used, :numeric_string => true, as: 'quotaBytesUsed'
+          property :resource_key, as: 'resourceKey'
           property :shared, as: 'shared'
           property :shared_with_me_time, as: 'sharedWithMeTime', type: DateTime
       
@@ -590,6 +599,7 @@ module Google
             property :can_add_folder_from_another_drive, as: 'canAddFolderFromAnotherDrive'
             property :can_add_my_drive_parent, as: 'canAddMyDriveParent'
             property :can_change_copy_requires_writer_permission, as: 'canChangeCopyRequiresWriterPermission'
+            property :can_change_security_update_enabled, as: 'canChangeSecurityUpdateEnabled'
             property :can_change_viewers_can_copy_content, as: 'canChangeViewersCanCopyContent'
             property :can_comment, as: 'canComment'
             property :can_copy, as: 'canCopy'
@@ -677,11 +687,20 @@ module Google
           end
         end
         
+        class LinkShareMetadata
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :security_update_eligible, as: 'securityUpdateEligible'
+            property :security_update_enabled, as: 'securityUpdateEnabled'
+          end
+        end
+        
         class ShortcutDetails
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :target_id, as: 'targetId'
             property :target_mime_type, as: 'targetMimeType'
+            property :target_resource_key, as: 'targetResourceKey'
           end
         end
         
