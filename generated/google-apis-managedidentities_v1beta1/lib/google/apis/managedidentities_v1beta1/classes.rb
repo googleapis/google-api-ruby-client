@@ -126,6 +126,49 @@ module Google
         end
       end
       
+      # Certificate used to configure LDAPS.
+      class Certificate
+        include Google::Apis::Core::Hashable
+      
+        # The certificate expire time.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Certificate used to configure LDAPS.
+        # Corresponds to the JSON property `issuingCertificate`
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Certificate]
+        attr_accessor :issuing_certificate
+      
+        # The certificate subject.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # The additional hostnames for the domain.
+        # Corresponds to the JSON property `subjectAlternativeName`
+        # @return [Array<String>]
+        attr_accessor :subject_alternative_name
+      
+        # The certificate thumbprint which uniquely identifies the certificate.
+        # Corresponds to the JSON property `thumbprint`
+        # @return [String]
+        attr_accessor :thumbprint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @issuing_certificate = args[:issuing_certificate] if args.key?(:issuing_certificate)
+          @subject = args[:subject] if args.key?(:subject)
+          @subject_alternative_name = args[:subject_alternative_name] if args.key?(:subject_alternative_name)
+          @thumbprint = args[:thumbprint] if args.key?(:thumbprint)
+        end
+      end
+      
       # Time window specified for daily operations.
       class DailyCycle
         include Google::Apis::Core::Hashable
@@ -1042,6 +1085,76 @@ module Google
         end
       end
       
+      # LDAPSSettings represents the ldaps settings for domain resource. LDAP is the
+      # Lightweight Directory Access Protocol, defined in https://tools.ietf.org/html/
+      # rfc4511. The settings object configures LDAP over SSL/TLS, whether it is over
+      # port 636 or the StartTLS operation. If LDAPSSettings is being changed, it will
+      # be placed into the UPDATING state, which indicates that the resource is being
+      # reconciled. At this point, Get will reflect an intermediate state.
+      class LdapsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Certificate used to configure LDAPS.
+        # Corresponds to the JSON property `certificate`
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Certificate]
+        attr_accessor :certificate
+      
+        # Input only. The password used to encrypt the uploaded pfx certificate.
+        # Corresponds to the JSON property `certificatePassword`
+        # @return [String]
+        attr_accessor :certificate_password
+      
+        # Input only. The uploaded PKCS12-formatted certificate to configure LDAPS with.
+        # It will enable the domain controllers in this domain to accept LDAPS
+        # connections (either LDAP over SSL/TLS or the StartTLS operation). A valid
+        # certificate chain must form a valid x.509 certificate chain (or be comprised
+        # of a single self-signed certificate. It must be encrypted with either: 1)
+        # PBES2 + PBKDF2 + AES256 encryption and SHA256 PRF; or 2) pbeWithSHA1And3-
+        # KeyTripleDES-CBC Private key must be included for the leaf / single self-
+        # signed certificate. Note: For a fqdn your-example-domain.com, the wildcard
+        # fqdn is *.your-example-domain.com. Specifically the leaf certificate must have:
+        # - Either a blank subject or a subject with CN matching the wildcard fqdn. -
+        # Exactly two SANs - the fqdn and wildcard fqdn. - Encipherment and digital key
+        # signature key usages. - Server authentication extended key usage (OID=1.3.6.1.
+        # 5.5.7.3.1) - Private key must be in one of the following formats: RSA, ECDSA,
+        # ED25519. - Private key must have appropriate key length: 2048 for RSA, 256 for
+        # ECDSA - Signature algorithm of the leaf certificate cannot be MD2, MD5 or SHA1.
+        # Corresponds to the JSON property `certificatePfx`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :certificate_pfx
+      
+        # The resource name of the LDAPS settings. Uses the form: `projects/`project`/
+        # locations/`location`/domains/`domain``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of this LDAPS settings.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @certificate_password = args[:certificate_password] if args.key?(:certificate_password)
+          @certificate_pfx = args[:certificate_pfx] if args.key?(:certificate_pfx)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Response message for ListDomains
       class ListDomainsResponse
         include Google::Apis::Core::Hashable
@@ -1121,6 +1234,38 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # ListPeeringsResponse is the response message for ListPeerings method.
+      class ListPeeringsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of Managed Identities Service Peerings in the project.
+        # Corresponds to the JSON property `peerings`
+        # @return [Array<Google::Apis::ManagedidentitiesV1beta1::Peering>]
+        attr_accessor :peerings
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @peerings = args[:peerings] if args.key?(:peerings)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1409,6 +1554,75 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Represents a Managed Microsoft Identities Peering.
+      class Peering
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full names of the Google Compute Engine [networks](/compute/docs/
+        # networks-and-firewalls#networks) to which the instance is connected. Caller
+        # needs to make sure that CIDR subnets do not overlap between networks, else
+        # peering creation will fail.
+        # Corresponds to the JSON property `authorizedNetwork`
+        # @return [String]
+        attr_accessor :authorized_network
+      
+        # Output only. The time the instance was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Full domain resource path for the Managed AD Domain involved in
+        # peering. The resource path should be in the form: `projects/`project_id`/
+        # locations/global/domains/`domain_name``
+        # Corresponds to the JSON property `domainResource`
+        # @return [String]
+        attr_accessor :domain_resource
+      
+        # Optional. Resource labels to represent user provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Unique name of the peering in this scope including projects and
+        # location using the form: `projects/`project_id`/locations/global/peerings/`
+        # peering_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of this Peering.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Additional information about the current status of this peering,
+        # if available.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @domain_resource = args[:domain_resource] if args.key?(:domain_resource)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
