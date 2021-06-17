@@ -1317,8 +1317,8 @@ module Google
         # existence of a key. Boolean expressions (AND/OR/NOT) are supported up to 3
         # levels of nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum
         # of 100 comparisons or functions are allowed in the expression. The expression
-        # must be < 6000 bytes in length. Sample Query: `(LOWER(driving_license)="class \
-        # "a\"" OR EMPTY(driving_license)) AND driving_years > 10`
+        # must be < 10000 bytes in length. Sample Query: `(LOWER(driving_license)="class
+        # \"a\"" OR EMPTY(driving_license)) AND driving_years > 10`
         # Corresponds to the JSON property `customAttributeFilter`
         # @return [String]
         attr_accessor :custom_attribute_filter
@@ -2316,35 +2316,37 @@ module Google
         # company_display_name: histogram by [Job.company_display_name. *
         # employment_type: histogram by Job.employment_types, for example, "FULL_TIME", "
         # PART_TIME". * company_size: histogram by CompanySize, for example, "SMALL", "
-        # MEDIUM", "BIG". * publish_time_in_month: histogram by the Job.
-        # posting_publish_time in months. Must specify list of numeric buckets in spec. *
-        # publish_time_in_year: histogram by the Job.posting_publish_time in years.
-        # Must specify list of numeric buckets in spec. * degree_types: histogram by the
-        # Job.degree_types, for example, "Bachelors", "Masters". * job_level: histogram
-        # by the Job.job_level, for example, "Entry Level". * country: histogram by the
-        # country code of jobs, for example, "US", "FR". * admin1: histogram by the
-        # admin1 code of jobs, which is a global placeholder referring to the state,
-        # province, or the particular term a country uses to define the geographic
-        # structure below the country level, for example, "CA", "IL". * city: histogram
-        # by a combination of the "city name, admin1 code". For example, "Mountain View,
-        # CA", "New York, NY". * admin1_country: histogram by a combination of the "
-        # admin1 code, country", for example, "CA, US", "IL, US". * city_coordinate:
-        # histogram by the city center's GPS coordinates (latitude and longitude), for
-        # example, 37.4038522,-122.0987765. Since the coordinates of a city center can
-        # change, customers may need to refresh them periodically. * locale: histogram
-        # by the Job.language_code, for example, "en-US", "fr-FR". * language: histogram
-        # by the language subtag of the Job.language_code, for example, "en", "fr". *
-        # category: histogram by the JobCategory, for example, "COMPUTER_AND_IT", "
-        # HEALTHCARE". * base_compensation_unit: histogram by the CompensationInfo.
-        # CompensationUnit of base salary, for example, "WEEKLY", "MONTHLY". *
-        # base_compensation: histogram by the base salary. Must specify list of numeric
-        # buckets to group results by. * annualized_base_compensation: histogram by the
-        # base annualized salary. Must specify list of numeric buckets to group results
-        # by. * annualized_total_compensation: histogram by the total annualized salary.
-        # Must specify list of numeric buckets to group results by. *
-        # string_custom_attribute: histogram by string Job.custom_attributes. Values can
-        # be accessed via square bracket notations like string_custom_attribute["key1"].
-        # * numeric_custom_attribute: histogram by numeric Job.custom_attributes. Values
+        # MEDIUM", "BIG". * publish_time_in_day: histogram by the Job.
+        # posting_publish_time in days. Must specify list of numeric buckets in spec. *
+        # publish_time_in_month: histogram by the Job.posting_publish_time in months.
+        # Must specify list of numeric buckets in spec. * publish_time_in_year:
+        # histogram by the Job.posting_publish_time in years. Must specify list of
+        # numeric buckets in spec. * degree_types: histogram by the Job.degree_types,
+        # for example, "Bachelors", "Masters". * job_level: histogram by the Job.
+        # job_level, for example, "Entry Level". * country: histogram by the country
+        # code of jobs, for example, "US", "FR". * admin1: histogram by the admin1 code
+        # of jobs, which is a global placeholder referring to the state, province, or
+        # the particular term a country uses to define the geographic structure below
+        # the country level, for example, "CA", "IL". * city: histogram by a combination
+        # of the "city name, admin1 code". For example, "Mountain View, CA", "New York,
+        # NY". * admin1_country: histogram by a combination of the "admin1 code, country"
+        # , for example, "CA, US", "IL, US". * city_coordinate: histogram by the city
+        # center's GPS coordinates (latitude and longitude), for example, 37.4038522,-
+        # 122.0987765. Since the coordinates of a city center can change, customers may
+        # need to refresh them periodically. * locale: histogram by the Job.
+        # language_code, for example, "en-US", "fr-FR". * language: histogram by the
+        # language subtag of the Job.language_code, for example, "en", "fr". * category:
+        # histogram by the JobCategory, for example, "COMPUTER_AND_IT", "HEALTHCARE". *
+        # base_compensation_unit: histogram by the CompensationInfo.CompensationUnit of
+        # base salary, for example, "WEEKLY", "MONTHLY". * base_compensation: histogram
+        # by the base salary. Must specify list of numeric buckets to group results by. *
+        # annualized_base_compensation: histogram by the base annualized salary. Must
+        # specify list of numeric buckets to group results by. *
+        # annualized_total_compensation: histogram by the total annualized salary. Must
+        # specify list of numeric buckets to group results by. * string_custom_attribute:
+        # histogram by string Job.custom_attributes. Values can be accessed via square
+        # bracket notations like string_custom_attribute["key1"]. *
+        # numeric_custom_attribute: histogram by numeric Job.custom_attributes. Values
         # can be accessed via square bracket notations like numeric_custom_attribute["
         # key1"]. Must specify list of numeric buckets to group results by. Example
         # expressions: * `count(admin1)` * `count(base_compensation, [bucket(1000, 10000)
