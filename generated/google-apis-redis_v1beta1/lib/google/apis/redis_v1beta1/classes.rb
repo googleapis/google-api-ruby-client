@@ -957,7 +957,7 @@ module Google
         attr_accessor :day
       
         # Output only. Duration of the maintenance window. The current window is fixed
-        # at 3 hours.
+        # at 1 hour.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
