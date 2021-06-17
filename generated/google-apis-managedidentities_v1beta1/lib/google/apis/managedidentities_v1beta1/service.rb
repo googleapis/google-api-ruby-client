@@ -337,6 +337,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the domain ldaps settings.
+        # @param [String] name
+        #   Required. The domain resource name using the form: `projects/`project_id`/
+        #   locations/global/domains/`domain_name``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::LdapsSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::LdapsSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_global_domain_ldapssettings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}/ldapssettings', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::LdapsSettings::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::LdapsSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists domains in a project.
         # @param [String] parent
         #   Required. The resource name of the domain location using the form: `projects/`
@@ -562,6 +593,45 @@ module Google
           command.response_representation = Google::Apis::ManagedidentitiesV1beta1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::ManagedidentitiesV1beta1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patches a single ldaps settings.
+        # @param [String] name
+        #   The resource name of the LDAPS settings. Uses the form: `projects/`project`/
+        #   locations/`location`/domains/`domain``.
+        # @param [Google::Apis::ManagedidentitiesV1beta1::LdapsSettings] ldaps_settings_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field. For the `FieldMask` definition, see https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_global_domain_ldapssettings(name, ldaps_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}/ldapssettings', options)
+          command.request_representation = Google::Apis::ManagedidentitiesV1beta1::LdapsSettings::Representation
+          command.request_object = ldaps_settings_object
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -833,6 +903,105 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Peering for Managed AD instance.
+        # @param [String] parent
+        #   Required. Resource project name and location using the form: `projects/`
+        #   project_id`/locations/global`
+        # @param [Google::Apis::ManagedidentitiesV1beta1::Peering] peering_object
+        # @param [String] peering_id
+        #   Required. Peering Id, unique name to identify peering.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_global_peering(parent, peering_object = nil, peering_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/peerings', options)
+          command.request_representation = Google::Apis::ManagedidentitiesV1beta1::Peering::Representation
+          command.request_object = peering_object
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['peeringId'] = peering_id unless peering_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes identified Peering.
+        # @param [String] name
+        #   Required. Peering resource name using the form: `projects/`project_id`/
+        #   locations/global/peerings/`peering_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_global_peering(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Peering.
+        # @param [String] name
+        #   Required. Peering resource name using the form: `projects/`project_id`/
+        #   locations/global/domains/`peering_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Peering] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Peering]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_global_peering(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Peering::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Peering
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -869,6 +1038,96 @@ module Google
           command.response_class = Google::Apis::ManagedidentitiesV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Peerings in a given project.
+        # @param [String] parent
+        #   Required. The resource name of the domain location using the form: `projects/`
+        #   project_id`/locations/global`
+        # @param [String] filter
+        #   Optional. Filter specifying constraints of a list operation. For example, `
+        #   peering.authoized_network ="/projects/myprojectid"`.
+        # @param [String] order_by
+        #   Optional. Specifies the ordering of results following syntax at https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 1000 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous List request, if
+        #   any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::ListPeeringsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::ListPeeringsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_global_peerings(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/peerings', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::ListPeeringsResponse::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::ListPeeringsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the labels for specified Peering.
+        # @param [String] name
+        #   Output only. Unique name of the peering in this scope including projects and
+        #   location using the form: `projects/`project_id`/locations/global/peerings/`
+        #   peering_id``.
+        # @param [Google::Apis::ManagedidentitiesV1beta1::Peering] peering_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field. The elements of the repeated paths field may only include these fields
+        #   from Peering: * `labels`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_global_peering(name, peering_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedidentitiesV1beta1::Peering::Representation
+          command.request_object = peering_object
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
