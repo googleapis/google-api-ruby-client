@@ -473,6 +473,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Details about the previous subscription that this new subscription upgrades/
+        # downgrades from.
+        # Corresponds to the JSON property `upgradeDowngradeDetails`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails]
+        attr_accessor :upgrade_downgrade_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -492,6 +498,7 @@ module Google
           @service_location = args[:service_location] if args.key?(:service_location)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_downgrade_details = args[:upgrade_downgrade_details] if args.key?(:upgrade_downgrade_details)
         end
       end
       
@@ -511,6 +518,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Details about the previous subscription that this new subscription upgrades/
+      # downgrades from.
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the billing cycle spec for the new upgraded/downgraded
+        # subscription.
+        # Corresponds to the JSON property `billingCycleSpec`
+        # @return [String]
+        attr_accessor :billing_cycle_spec
+      
+        # Required. The previous subscription id to be replaced. This is not the full
+        # resource name, use the subscription_id segment only.
+        # Corresponds to the JSON property `previousSubscriptionId`
+        # @return [String]
+        attr_accessor :previous_subscription_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_cycle_spec = args[:billing_cycle_spec] if args.key?(:billing_cycle_spec)
+          @previous_subscription_id = args[:previous_subscription_id] if args.key?(:previous_subscription_id)
         end
       end
       

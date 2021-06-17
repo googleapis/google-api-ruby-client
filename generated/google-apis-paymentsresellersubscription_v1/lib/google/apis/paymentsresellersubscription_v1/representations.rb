@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -265,6 +271,8 @@ module Google
       
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+          property :upgrade_downgrade_details, as: 'upgradeDowngradeDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails::Representation
+      
         end
       end
       
@@ -272,6 +280,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reason, as: 'reason'
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_cycle_spec, as: 'billingCycleSpec'
+          property :previous_subscription_id, as: 'previousSubscriptionId'
         end
       end
       
