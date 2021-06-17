@@ -1976,6 +1976,12 @@ module Google
         # @return [DateTime]
         attr_accessor :last_viewed_by_me_date
       
+        # Contains details about the link URLs that clients are using to refer to this
+        # item.
+        # Corresponds to the JSON property `linkShareMetadata`
+        # @return [Google::Apis::DriveV2::File::LinkShareMetadata]
+        attr_accessor :link_share_metadata
+      
         # Deprecated.
         # Corresponds to the JSON property `markedViewedByMeDate`
         # @return [DateTime]
@@ -2069,6 +2075,11 @@ module Google
         # Corresponds to the JSON property `quotaBytesUsed`
         # @return [Fixnum]
         attr_accessor :quota_bytes_used
+      
+        # A key needed to access the item via a shared link.
+        # Corresponds to the JSON property `resourceKey`
+        # @return [String]
+        attr_accessor :resource_key
       
         # A link back to this file.
         # Corresponds to the JSON property `selfLink`
@@ -2230,6 +2241,7 @@ module Google
           @last_modifying_user = args[:last_modifying_user] if args.key?(:last_modifying_user)
           @last_modifying_user_name = args[:last_modifying_user_name] if args.key?(:last_modifying_user_name)
           @last_viewed_by_me_date = args[:last_viewed_by_me_date] if args.key?(:last_viewed_by_me_date)
+          @link_share_metadata = args[:link_share_metadata] if args.key?(:link_share_metadata)
           @marked_viewed_by_me_date = args[:marked_viewed_by_me_date] if args.key?(:marked_viewed_by_me_date)
           @md5_checksum = args[:md5_checksum] if args.key?(:md5_checksum)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
@@ -2245,6 +2257,7 @@ module Google
           @permissions = args[:permissions] if args.key?(:permissions)
           @properties = args[:properties] if args.key?(:properties)
           @quota_bytes_used = args[:quota_bytes_used] if args.key?(:quota_bytes_used)
+          @resource_key = args[:resource_key] if args.key?(:resource_key)
           @self_link = args[:self_link] if args.key?(:self_link)
           @shareable = args[:shareable] if args.key?(:shareable)
           @shared = args[:shared] if args.key?(:shared)
@@ -2306,6 +2319,13 @@ module Google
           # @return [Boolean]
           attr_accessor :can_change_restricted_download
           alias_method :can_change_restricted_download?, :can_change_restricted_download
+        
+          # Whether the current user can change the securityUpdateEnabled field on link
+          # share metadata.
+          # Corresponds to the JSON property `canChangeSecurityUpdateEnabled`
+          # @return [Boolean]
+          attr_accessor :can_change_security_update_enabled
+          alias_method :can_change_security_update_enabled?, :can_change_security_update_enabled
         
           # Whether the current user can comment on this file.
           # Corresponds to the JSON property `canComment`
@@ -2514,6 +2534,7 @@ module Google
             @can_add_my_drive_parent = args[:can_add_my_drive_parent] if args.key?(:can_add_my_drive_parent)
             @can_change_copy_requires_writer_permission = args[:can_change_copy_requires_writer_permission] if args.key?(:can_change_copy_requires_writer_permission)
             @can_change_restricted_download = args[:can_change_restricted_download] if args.key?(:can_change_restricted_download)
+            @can_change_security_update_enabled = args[:can_change_security_update_enabled] if args.key?(:can_change_security_update_enabled)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
             @can_copy = args[:can_copy] if args.key?(:can_copy)
             @can_delete = args[:can_delete] if args.key?(:can_delete)
@@ -2798,6 +2819,34 @@ module Google
           end
         end
         
+        # Contains details about the link URLs that clients are using to refer to this
+        # item.
+        class LinkShareMetadata
+          include Google::Apis::Core::Hashable
+        
+          # Whether the file is eligible for security update.
+          # Corresponds to the JSON property `securityUpdateEligible`
+          # @return [Boolean]
+          attr_accessor :security_update_eligible
+          alias_method :security_update_eligible?, :security_update_eligible
+        
+          # Whether the security update is enabled for this file.
+          # Corresponds to the JSON property `securityUpdateEnabled`
+          # @return [Boolean]
+          attr_accessor :security_update_enabled
+          alias_method :security_update_enabled?, :security_update_enabled
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @security_update_eligible = args[:security_update_eligible] if args.key?(:security_update_eligible)
+            @security_update_enabled = args[:security_update_enabled] if args.key?(:security_update_enabled)
+          end
+        end
+        
         # Shortcut file details. Only populated for shortcut files, which have the
         # mimeType field set to application/vnd.google-apps.shortcut.
         class ShortcutDetails
@@ -2815,6 +2864,11 @@ module Google
           # @return [String]
           attr_accessor :target_mime_type
         
+          # The ResourceKey for the target file.
+          # Corresponds to the JSON property `targetResourceKey`
+          # @return [String]
+          attr_accessor :target_resource_key
+        
           def initialize(**args)
              update!(**args)
           end
@@ -2823,6 +2877,7 @@ module Google
           def update!(**args)
             @target_id = args[:target_id] if args.key?(:target_id)
             @target_mime_type = args[:target_mime_type] if args.key?(:target_mime_type)
+            @target_resource_key = args[:target_resource_key] if args.key?(:target_resource_key)
           end
         end
         
