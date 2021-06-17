@@ -164,15 +164,15 @@ module Google
         # Lists the field configuration and metadata for this database. Currently,
         # FirestoreAdmin.ListFields only supports listing fields that have been
         # explicitly overridden. To issue this query, call FirestoreAdmin.ListFields
-        # with the filter set to `indexConfig.usesAncestorConfig:false`.
+        # with the filter set to `indexConfig.usesAncestorConfig:false` .
         # @param [String] parent
         #   Required. A parent name of the form `projects/`project_id`/databases/`
         #   database_id`/collectionGroups/`collection_id``
         # @param [String] filter
         #   The filter to apply to list results. Currently, FirestoreAdmin.ListFields only
         #   supports listing fields that have been explicitly overridden. To issue this
-        #   query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.
-        #   usesAncestorConfig:false`.
+        #   query, call FirestoreAdmin.ListFields with a filter that includes `indexConfig.
+        #   usesAncestorConfig:false` .
         # @param [Fixnum] page_size
         #   The number of results to return.
         # @param [String] page_token
