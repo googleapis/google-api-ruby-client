@@ -785,6 +785,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. The time when the metadata import finished.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # Immutable. The relative resource name of the metadata import, of the form:
         # projects/`project_number`/locations/`location_id`/services/`service_id`/
         # metadataImports/`metadata_import_id`.
@@ -811,6 +816,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_dump = args[:database_dump] if args.key?(:database_dump)
           @description = args[:description] if args.key?(:description)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
