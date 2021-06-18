@@ -552,6 +552,38 @@ module Google
         end
       end
       
+      # Contains metadata for longrunning operation for the edit Metrics Scope
+      # endpoints.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time when the batch request was received.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Current state of the batch operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time when the operation result was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A protocol buffer option, which can be attached to a message, field,
       # enumeration, etc.
       class Option
