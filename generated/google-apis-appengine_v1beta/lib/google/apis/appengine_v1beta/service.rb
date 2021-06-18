@@ -123,7 +123,7 @@ module Google
         #   myapp.
         # @param [Google::Apis::AppengineV1beta::Application] application_object
         # @param [String] update_mask
-        #   Standard field mask for the set of fields to be updated.
+        #   Required. Standard field mask for the set of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -574,7 +574,7 @@ module Google
         #   Part of `name`. See documentation of `appsId`.
         # @param [Google::Apis::AppengineV1beta::DomainMapping] domain_mapping_object
         # @param [String] update_mask
-        #   Standard field mask for the set of fields to be updated.
+        #   Required. Standard field mask for the set of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1107,7 +1107,7 @@ module Google
         #   examples, see Migrating and Splitting Traffic (https://cloud.google.com/
         #   appengine/docs/admin-api/migrating-splitting-traffic).
         # @param [String] update_mask
-        #   Standard field mask for the set of fields to be updated.
+        #   Required. Standard field mask for the set of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
