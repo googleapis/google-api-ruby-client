@@ -147,7 +147,7 @@ module Google
         # represents a Google-managed entity such as a Google user or a Google Group. If
         # specified, the `EntityKey` represents an external-identity-mapped group. The
         # namespace must correspond to an identity source created in Admin Console and
-        # must be in the form of `identitysources/`identity_source_id`.
+        # must be in the form of `identitysources/`identity_source_id``.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
