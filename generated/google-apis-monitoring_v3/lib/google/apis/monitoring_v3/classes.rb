@@ -2929,6 +2929,38 @@ module Google
         end
       end
       
+      # Contains metadata for longrunning operation for the edit Metrics Scope
+      # endpoints.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time when the batch request was received.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Current state of the batch operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time when the operation result was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A protocol buffer option, which can be attached to a message, field,
       # enumeration, etc.
       class Option
@@ -3328,6 +3360,16 @@ module Google
         # @return [Google::Apis::MonitoringV3::Telemetry]
         attr_accessor :telemetry
       
+        # Labels which have been used to annotate the service. Label keys must start
+        # with a letter. Label keys and values may contain lowercase letters, numbers,
+        # underscores, and dashes. Label keys and values have a maximum length of 63
+        # characters, and must be less than 128 bytes in size. Up to 64 label entries
+        # may be stored. For labels which do not have a semantic value, the empty string
+        # may be supplied for the label value.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3343,6 +3385,7 @@ module Google
           @mesh_istio = args[:mesh_istio] if args.key?(:mesh_istio)
           @name = args[:name] if args.key?(:name)
           @telemetry = args[:telemetry] if args.key?(:telemetry)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       
@@ -3449,6 +3492,16 @@ module Google
         # @return [Google::Apis::MonitoringV3::ServiceLevelIndicator]
         attr_accessor :service_level_indicator
       
+        # Labels which have been used to annotate the service-level objective. Label
+        # keys must start with a letter. Label keys and values may contain lowercase
+        # letters, numbers, underscores, and dashes. Label keys and values have a
+        # maximum length of 63 characters, and must be less than 128 bytes in size. Up
+        # to 64 label entries may be stored. For labels which do not have a semantic
+        # value, the empty string may be supplied for the label value.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3461,6 +3514,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @rolling_period = args[:rolling_period] if args.key?(:rolling_period)
           @service_level_indicator = args[:service_level_indicator] if args.key?(:service_level_indicator)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       
