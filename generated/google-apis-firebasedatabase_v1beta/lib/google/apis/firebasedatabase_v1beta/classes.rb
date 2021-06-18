@@ -35,7 +35,6 @@ module Google
       
         # The fully qualified resource name of the database instance, in the form: `
         # projects/`project-number`/locations/`location-id`/instances/`database-id``.
-        # Currently the only supported location is 'us-central1'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
