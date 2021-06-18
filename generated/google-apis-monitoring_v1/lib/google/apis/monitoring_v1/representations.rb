@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Option
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +358,15 @@ module Google
           property :columns, as: 'columns'
           collection :tiles, as: 'tiles', class: Google::Apis::MonitoringV1::Tile, decorator: Google::Apis::MonitoringV1::Tile::Representation
       
+        end
+      end
+      
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
