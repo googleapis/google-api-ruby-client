@@ -1399,8 +1399,8 @@ module Google
         # existence of a key. Boolean expressions (AND/OR/NOT) are supported up to 3
         # levels of nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum
         # of 100 comparisons or functions are allowed in the expression. The expression
-        # must be < 6000 bytes in length. Sample Query: `(LOWER(driving_license)="class \
-        # "a\"" OR EMPTY(driving_license)) AND driving_years > 10`
+        # must be < 10000 bytes in length. Sample Query: `(LOWER(driving_license)="class
+        # \"a\"" OR EMPTY(driving_license)) AND driving_years > 10`
         # Corresponds to the JSON property `customAttributeFilter`
         # @return [String]
         attr_accessor :custom_attribute_filter
