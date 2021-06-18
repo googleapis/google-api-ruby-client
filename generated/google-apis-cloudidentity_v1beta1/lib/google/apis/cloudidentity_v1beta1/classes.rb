@@ -752,7 +752,7 @@ module Google
         # represents a Google-managed entity such as a Google user or a Google Group. If
         # specified, the `EntityKey` represents an external-identity-mapped group. The
         # namespace must correspond to an identity source created in Admin Console and
-        # must be in the form of `identitysources/`identity_source_id`.
+        # must be in the form of `identitysources/`identity_source_id``.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
@@ -2290,12 +2290,23 @@ module Google
       class WipeDeviceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies if a user is able to factory reset a device after a Device
+        # Wipe. On iOS, this is called "Activation Lock", while on Android, this is
+        # known as "Factory Reset Protection". If true, this protection will be removed
+        # from the device, so that a user can successfully factory reset. If false, the
+        # setting is untouched on the device.
+        # Corresponds to the JSON property `removeResetLock`
+        # @return [Boolean]
+        attr_accessor :remove_reset_lock
+        alias_method :remove_reset_lock?, :remove_reset_lock
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @remove_reset_lock = args[:remove_reset_lock] if args.key?(:remove_reset_lock)
         end
       end
       
