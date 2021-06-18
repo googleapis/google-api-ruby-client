@@ -712,13 +712,6 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         include Google::Apis::Core::Hashable
       
-        # SloEligibility is a tuple containing eligibility value: true if an instance is
-        # eligible for SLO calculation or false if it should be excluded from all SLO-
-        # related calculations along with a user-defined reason.
-        # Corresponds to the JSON property `eligibility`
-        # @return [Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility]
-        attr_accessor :eligibility
-      
         # List of SLO exclusion windows. When multiple entries in the list match (
         # matching the exclusion time-window against current time point) the exclusion
         # reason used in the first matching entry will be published. It is not needed to
@@ -759,7 +752,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @eligibility = args[:eligibility] if args.key?(:eligibility)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @nodes = args[:nodes] if args.key?(:nodes)
           @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
