@@ -439,7 +439,7 @@ module Google
         #   certificate ID will be automatically populated. Only applicable if
         #   ssl_settings.certificate_id is specified in the update mask.
         # @param [String] update_mask
-        #   Standard field mask for the set of fields to be updated.
+        #   Required. Standard field mask for the set of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
