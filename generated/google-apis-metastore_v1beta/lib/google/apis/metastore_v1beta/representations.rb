@@ -435,6 +435,7 @@ module Google
           property :database_dump, as: 'databaseDump', class: Google::Apis::MetastoreV1beta::DatabaseDump, decorator: Google::Apis::MetastoreV1beta::DatabaseDump::Representation
       
           property :description, as: 'description'
+          property :end_time, as: 'endTime'
           property :name, as: 'name'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
