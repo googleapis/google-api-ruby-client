@@ -360,7 +360,7 @@ module Google
         # @param [String] read_mask
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
-        #   are: * emailAddresses * names * phoneNumbers
+        #   are: * emailAddresses * metadata * names * phoneNumbers
         # @param [Boolean] request_sync_token
         #   Optional. Whether the response should include `next_sync_token`, which can be
         #   used to get all changes since the last request. For subsequent sync requests
@@ -423,7 +423,7 @@ module Google
         # @param [String] read_mask
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
-        #   are: * emailAddresses * names * phoneNumbers
+        #   are: * emailAddresses * metadata * names * phoneNumbers
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
