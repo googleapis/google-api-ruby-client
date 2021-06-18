@@ -1058,7 +1058,7 @@ module Google
         #   represents a Google-managed entity such as a Google user or a Google Group. If
         #   specified, the `EntityKey` represents an external-identity-mapped group. The
         #   namespace must correspond to an identity source created in Admin Console and
-        #   must be in the form of `identitysources/`identity_source_id`.
+        #   must be in the form of `identitysources/`identity_source_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1094,7 +1094,7 @@ module Google
         # @param [Google::Apis::CloudidentityV1beta1::Group] group_object
         # @param [String] update_mask
         #   Required. The fully-qualified names of fields to update. May only contain the
-        #   following fields: `display_name`, `description`.
+        #   following fields: `display_name`, `description`, `labels`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1426,7 +1426,7 @@ module Google
         #   represents a Google-managed entity such as a Google user or a Google Group. If
         #   specified, the `EntityKey` represents an external-identity-mapped group. The
         #   namespace must correspond to an identity source created in Admin Console and
-        #   must be in the form of `identitysources/`identity_source_id`.
+        #   must be in the form of `identitysources/`identity_source_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -1025,6 +1025,7 @@ module Google
       class WipeDeviceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :remove_reset_lock, as: 'removeResetLock'
         end
       end
       
