@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Option
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1297,6 +1303,15 @@ module Google
         end
       end
       
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Option
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1409,6 +1424,7 @@ module Google
           property :name, as: 'name'
           property :telemetry, as: 'telemetry', class: Google::Apis::MonitoringV3::Telemetry, decorator: Google::Apis::MonitoringV3::Telemetry::Representation
       
+          hash :user_labels, as: 'userLabels'
         end
       end
       
@@ -1434,6 +1450,7 @@ module Google
           property :rolling_period, as: 'rollingPeriod'
           property :service_level_indicator, as: 'serviceLevelIndicator', class: Google::Apis::MonitoringV3::ServiceLevelIndicator, decorator: Google::Apis::MonitoringV3::ServiceLevelIndicator::Representation
       
+          hash :user_labels, as: 'userLabels'
         end
       end
       
