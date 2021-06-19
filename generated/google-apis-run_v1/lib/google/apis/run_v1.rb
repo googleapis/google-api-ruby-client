@@ -22,7 +22,8 @@ module Google
     # Cloud Run Admin API
     #
     # Deploy and manage user provided container images that scale automatically
-    # based on HTTP traffic.
+    # based on incoming requets. The Cloud Run Admin API follows the Knative Serving
+    # API specification.
     #
     # @see https://cloud.google.com/run/
     module RunV1
