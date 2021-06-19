@@ -1225,6 +1225,11 @@ module Google
         # @return [String]
         attr_accessor :package
       
+        # The type of package: os, maven, go, etc.
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
+      
         # 
         # Corresponds to the JSON property `unused`
         # @return [String]
@@ -1245,6 +1250,7 @@ module Google
           @os = args[:os] if args.key?(:os)
           @os_version = args[:os_version] if args.key?(:os_version)
           @package = args[:package] if args.key?(:package)
+          @package_type = args[:package_type] if args.key?(:package_type)
           @unused = args[:unused] if args.key?(:unused)
           @version = args[:version] if args.key?(:version)
         end
