@@ -639,6 +639,7 @@ module Google
           property :os, as: 'os'
           property :os_version, as: 'osVersion'
           property :package, as: 'package'
+          property :package_type, as: 'packageType'
           property :unused, as: 'unused'
           property :version, as: 'version'
         end
