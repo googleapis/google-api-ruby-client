@@ -1844,6 +1844,37 @@ module Google
       end
       
       # 
+      class DmlStatistics
+        include Google::Apis::Core::Hashable
+      
+        # Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
+        # Corresponds to the JSON property `deletedRowCount`
+        # @return [Fixnum]
+        attr_accessor :deleted_row_count
+      
+        # Number of inserted Rows. Populated by DML INSERT and MERGE statements.
+        # Corresponds to the JSON property `insertedRowCount`
+        # @return [Fixnum]
+        attr_accessor :inserted_row_count
+      
+        # Number of updated Rows. Populated by DML UPDATE and MERGE statements.
+        # Corresponds to the JSON property `updatedRowCount`
+        # @return [Fixnum]
+        attr_accessor :updated_row_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deleted_row_count = args[:deleted_row_count] if args.key?(:deleted_row_count)
+          @inserted_row_count = args[:inserted_row_count] if args.key?(:inserted_row_count)
+          @updated_row_count = args[:updated_row_count] if args.key?(:updated_row_count)
+        end
+      end
+      
+      # 
       class EncryptionConfiguration
         include Google::Apis::Core::Hashable
       
@@ -3845,9 +3876,9 @@ module Google
         attr_accessor :script_statistics
       
         # [Output-only] [Preview] Information of the session if this job is part of one.
-        # Corresponds to the JSON property `sessionInfoTemplate`
+        # Corresponds to the JSON property `sessionInfo`
         # @return [Google::Apis::BigqueryV2::SessionInfo]
-        attr_accessor :session_info_template
+        attr_accessor :session_info
       
         # [Output-only] Start time of this job, in milliseconds since the epoch. This
         # field will be present when the job transitions from the PENDING state to
@@ -3892,7 +3923,7 @@ module Google
           @reservation_id = args[:reservation_id] if args.key?(:reservation_id)
           @row_level_security_statistics = args[:row_level_security_statistics] if args.key?(:row_level_security_statistics)
           @script_statistics = args[:script_statistics] if args.key?(:script_statistics)
-          @session_info_template = args[:session_info_template] if args.key?(:session_info_template)
+          @session_info = args[:session_info] if args.key?(:session_info)
           @start_time = args[:start_time] if args.key?(:start_time)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
@@ -3990,7 +4021,7 @@ module Google
         # [Output-only] Detailed statistics for DML statements Present only for DML
         # statements INSERT, UPDATE, DELETE or TRUNCATE.
         # Corresponds to the JSON property `dmlStats`
-        # @return [Object]
+        # @return [Google::Apis::BigqueryV2::DmlStatistics]
         attr_accessor :dml_stats
       
         # [Output-only] The original estimate of bytes processed for the job.
@@ -5198,7 +5229,7 @@ module Google
         # [Output-only] Detailed statistics for DML statements Present only for DML
         # statements INSERT, UPDATE, DELETE or TRUNCATE.
         # Corresponds to the JSON property `dmlStats`
-        # @return [Object]
+        # @return [Google::Apis::BigqueryV2::DmlStatistics]
         attr_accessor :dml_stats
       
         # [Output-only] The first errors or warnings encountered during the running of
