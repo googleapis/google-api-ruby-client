@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DmlStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EncryptionConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1300,6 +1306,15 @@ module Google
         end
       end
       
+      class DmlStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deleted_row_count, :numeric_string => true, as: 'deletedRowCount'
+          property :inserted_row_count, :numeric_string => true, as: 'insertedRowCount'
+          property :updated_row_count, :numeric_string => true, as: 'updatedRowCount'
+        end
+      end
+      
       class EncryptionConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1756,7 +1771,7 @@ module Google
       
           property :script_statistics, as: 'scriptStatistics', class: Google::Apis::BigqueryV2::ScriptStatistics, decorator: Google::Apis::BigqueryV2::ScriptStatistics::Representation
       
-          property :session_info_template, as: 'sessionInfoTemplate', class: Google::Apis::BigqueryV2::SessionInfo, decorator: Google::Apis::BigqueryV2::SessionInfo::Representation
+          property :session_info, as: 'sessionInfo', class: Google::Apis::BigqueryV2::SessionInfo, decorator: Google::Apis::BigqueryV2::SessionInfo::Representation
       
           property :start_time, :numeric_string => true, as: 'startTime'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
@@ -1791,7 +1806,8 @@ module Google
       
           property :ddl_target_table, as: 'ddlTargetTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
-          property :dml_stats, as: 'dmlStats'
+          property :dml_stats, as: 'dmlStats', class: Google::Apis::BigqueryV2::DmlStatistics, decorator: Google::Apis::BigqueryV2::DmlStatistics::Representation
+      
           property :estimated_bytes_processed, :numeric_string => true, as: 'estimatedBytesProcessed'
           property :model_training, as: 'modelTraining', class: Google::Apis::BigqueryV2::BigQueryModelTraining, decorator: Google::Apis::BigqueryV2::BigQueryModelTraining::Representation
       
@@ -2091,7 +2107,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_hit, as: 'cacheHit'
-          property :dml_stats, as: 'dmlStats'
+          property :dml_stats, as: 'dmlStats', class: Google::Apis::BigqueryV2::DmlStatistics, decorator: Google::Apis::BigqueryV2::DmlStatistics::Representation
+      
           collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProto::Representation
       
           property :job_complete, as: 'jobComplete'
