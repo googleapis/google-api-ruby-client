@@ -1,0 +1,7 @@
+{
+    "api_id": "datacatalog:v1",
+    "name_pretty": "Google Cloud Data Catalog API",
+    "distribution_name": "google-apis-datacatalog_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
