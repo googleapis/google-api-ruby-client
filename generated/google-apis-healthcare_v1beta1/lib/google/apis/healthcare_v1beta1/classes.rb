@@ -4284,12 +4284,19 @@ module Google
       class QueryAccessibleDataResponse
         include Google::Apis::Core::Hashable
       
+        # List of files, each of which contains a list of data_id(s) that are consented
+        # for a specified use in the request.
+        # Corresponds to the JSON property `gcsUris`
+        # @return [Array<String>]
+        attr_accessor :gcs_uris
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @gcs_uris = args[:gcs_uris] if args.key?(:gcs_uris)
         end
       end
       

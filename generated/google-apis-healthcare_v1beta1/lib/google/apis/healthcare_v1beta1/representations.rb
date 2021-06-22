@@ -2145,6 +2145,7 @@ module Google
       class QueryAccessibleDataResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gcs_uris, as: 'gcsUris'
         end
       end
       
