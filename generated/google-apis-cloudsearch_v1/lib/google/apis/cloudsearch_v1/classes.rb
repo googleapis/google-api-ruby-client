@@ -1044,7 +1044,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Number of results that match the bucket value. Counts are only returned for
-        # searches when count accuracy is ensured. Can be empty.
+        # searches when count accuracy is ensured. Cloud Search does not guarantee facet
+        # counts for any query and facet counts might be present only intermittently,
+        # even for identical queries. Do not build dependencies on facet count existence;
+        # instead use facet ount percentages which are always returned.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
