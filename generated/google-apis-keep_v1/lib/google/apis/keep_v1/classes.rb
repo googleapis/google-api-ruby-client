@@ -237,7 +237,7 @@ module Google
         end
       end
       
-      # The response when listing a page of notes (see KeepService documentation).
+      # The response when listing a page of notes.
       class ListNotesResponse
         include Google::Apis::Core::Hashable
       
@@ -298,15 +298,15 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Output only. If this note has been trashed, when that happened. If trashed,
-        # the note will eventually be deleted. If the note is not trashed, this is not
-        # set (and the trashed field is false).
+        # Output only. When this note was trashed. If `trashed`, the note is eventually
+        # deleted. If the note is not trashed, this field is not set (and the trashed
+        # field is `false`).
         # Corresponds to the JSON property `trashTime`
         # @return [String]
         attr_accessor :trash_time
       
-        # Output only. True if this note has been trashed. If trashed, the note will
-        # eventually be deleted.
+        # Output only. `true` if this note has been trashed. If trashed, the note is
+        # eventually deleted.
         # Corresponds to the JSON property `trashed`
         # @return [Boolean]
         attr_accessor :trashed
@@ -347,9 +347,9 @@ module Google
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # The email associated with the member. If set on create, the email field in the
-        # User or Group message must either be empty or match this field. On read, may
-        # be unset if the member does not have an associated email.
+        # The email associated with the member. If set on create, the `email` field in
+        # the `User` or `Group` message must either be empty or match this field. On
+        # read, may be unset if the member does not have an associated email.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
