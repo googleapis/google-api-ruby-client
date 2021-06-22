@@ -5892,6 +5892,49 @@ module Google
         end
       end
       
+      # Runtime configuration for the organization. Response for GetRuntimeConfig.
+      class GoogleCloudApigeeV1RuntimeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage bucket used for uploading Analytics records.
+        # Corresponds to the JSON property `analyticsBucket`
+        # @return [String]
+        attr_accessor :analytics_bucket
+      
+        # Name of the resource in the following format: `organizations/`org`/
+        # runtimeConfig`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Tenant project ID associated with the Apigee organization. The
+        # tenant project is used to host Google-managed resources that are dedicated to
+        # this Apigee organization. Clients have limited access to resources within the
+        # tenant project used to support Apigee runtime instances. Access to the tenant
+        # project is managed using SetSyncAuthorization. It can be empty if the tenant
+        # project hasn't been created yet.
+        # Corresponds to the JSON property `tenantProjectId`
+        # @return [String]
+        attr_accessor :tenant_project_id
+      
+        # Cloud Storage bucket used for uploading Trace records.
+        # Corresponds to the JSON property `traceBucket`
+        # @return [String]
+        attr_accessor :trace_bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analytics_bucket = args[:analytics_bucket] if args.key?(:analytics_bucket)
+          @name = args[:name] if args.key?(:name)
+          @tenant_project_id = args[:tenant_project_id] if args.key?(:tenant_project_id)
+          @trace_bucket = args[:trace_bucket] if args.key?(:trace_bucket)
+        end
+      end
+      
       # NEXT ID: 8 RuntimeTraceConfig defines the configurations for distributed trace
       # in an environment.
       class GoogleCloudApigeeV1RuntimeTraceConfig
