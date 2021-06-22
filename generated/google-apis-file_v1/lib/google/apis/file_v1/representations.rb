@@ -390,8 +390,6 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :eligibility, as: 'eligibility', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility::Representation
-      
           collection :exclusions, as: 'exclusions', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
       
           collection :nodes, as: 'nodes', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata::Representation
