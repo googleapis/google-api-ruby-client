@@ -22,7 +22,8 @@ module Google
     module KeepV1
       # Google Keep API
       #
-      # Allows clients to create, read, and write their Google Keep Notes.
+      # This API is an enterprise-only API used to create and manage the Keep notes
+      #  within your domain, including resolving issues identified by CASB software.
       #
       # @example
       #    require 'google/apis/keep_v1'
@@ -195,10 +196,10 @@ module Google
         # ListNotes return consistent results in the face of concurrent changes, or
         # signals that it cannot with an ABORTED error.
         # @param [String] filter
-        #   Filter for list results. If no filter is supplied, the "-trashed" filter is
-        #   applied by default. Valid fields to filter by are: - `create_time` - `
-        #   update_time` - `trash_time` - `trashed` Filter syntax follows the Google AIP
-        #   filtering spec: https://aip.dev/160
+        #   Filter for list results. If no filter is supplied, the `trashed` filter is
+        #   applied by default. Valid fields to filter by are: `create_time`, `update_time`
+        #   , `trash_time`, and `trashed`. Filter syntax follows the [Google AIP filtering
+        #   spec](https://aip.dev/160).
         # @param [Fixnum] page_size
         #   The maximum number of results to return.
         # @param [String] page_token
@@ -232,7 +233,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates one or more permission on the note. Only permissions with the `WRITER`
+        # Creates one or more permissions on the note. Only permissions with the `WRITER`
         # role may be created. If adding any permission fails, then the entire request
         # fails and no changes are made.
         # @param [String] parent
