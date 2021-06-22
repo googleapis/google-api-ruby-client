@@ -883,6 +883,11 @@ module Google
         # @return [String]
         attr_accessor :node_id
       
+        # PerSliSloEligibility is a mapping from an SLI name to eligibility.
+        # Corresponds to the JSON property `perSliEligibility`
+        # @return [Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility]
+        attr_accessor :per_sli_eligibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -892,6 +897,7 @@ module Google
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @location = args[:location] if args.key?(:location)
           @node_id = args[:node_id] if args.key?(:node_id)
+          @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
         end
       end
       
