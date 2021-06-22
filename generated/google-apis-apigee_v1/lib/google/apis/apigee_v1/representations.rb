@@ -868,6 +868,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1RuntimeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1RuntimeTraceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2667,6 +2673,16 @@ module Google
           property :environment, as: 'environment'
           property :receiver, as: 'receiver'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RuntimeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_bucket, as: 'analyticsBucket'
+          property :name, as: 'name'
+          property :tenant_project_id, as: 'tenantProjectId'
+          property :trace_bucket, as: 'traceBucket'
         end
       end
       
