@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleSearchIdeahubV1alphaTopicState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleSearchIdeahubV1alphaAvailableLocale
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -108,6 +114,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :mid, as: 'mid'
+        end
+      end
+      
+      class GoogleSearchIdeahubV1alphaTopicState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dismissed, as: 'dismissed'
+          property :name, as: 'name'
+          property :saved, as: 'saved'
         end
       end
     end

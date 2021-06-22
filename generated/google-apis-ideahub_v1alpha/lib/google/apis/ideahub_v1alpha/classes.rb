@@ -190,6 +190,40 @@ module Google
           @mid = args[:mid] if args.key?(:mid)
         end
       end
+      
+      # Represents topic state specific to a web property.
+      class GoogleSearchIdeahubV1alphaTopicState
+        include Google::Apis::Core::Hashable
+      
+        # Whether the topic is dismissed.
+        # Corresponds to the JSON property `dismissed`
+        # @return [Boolean]
+        attr_accessor :dismissed
+        alias_method :dismissed?, :dismissed
+      
+        # Unique identifier for the topic state. Format: platforms/`platform`/properties/
+        # `property`/topicStates/`topic_state`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Whether the topic is saved.
+        # Corresponds to the JSON property `saved`
+        # @return [Boolean]
+        attr_accessor :saved
+        alias_method :saved?, :saved
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dismissed = args[:dismissed] if args.key?(:dismissed)
+          @name = args[:name] if args.key?(:name)
+          @saved = args[:saved] if args.key?(:saved)
+        end
+      end
     end
   end
 end

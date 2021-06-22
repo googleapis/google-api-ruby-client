@@ -55,7 +55,15 @@ module Google
         # @param [String] creator_platform_id
         #   Identifies the platform account (blog/site/etc.) for which to fetch Ideas.
         # @param [String] filter
-        #   Filter semantics described below.
+        #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
+        #   more restrictions. * Restrictions are implicitly combined, as if the `AND`
+        #   operator was always used. The `OR` operator is currently unsupported. *
+        #   Supported functions: - `saved(bool)`: If set to true, fetches only saved ideas.
+        #   Can't be simultaneously used with `dismissed(bool)`. The `false` value is
+        #   currently unsupported. - `dismissed(bool)`: If set to true, fetches only
+        #   dismissed ideas. Can't be simultaneously used with `saved(bool)`. The `false`
+        #   value is currently unsupported. Examples: * `saved(true)` * `dismissed(true)`
+        #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Order semantics described below.
         # @param [Fixnum] page_size
@@ -145,7 +153,15 @@ module Google
         # @param [String] creator_platform_id
         #   Identifies the platform account (blog/site/etc.) for which to fetch Ideas.
         # @param [String] filter
-        #   Filter semantics described below.
+        #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
+        #   more restrictions. * Restrictions are implicitly combined, as if the `AND`
+        #   operator was always used. The `OR` operator is currently unsupported. *
+        #   Supported functions: - `saved(bool)`: If set to true, fetches only saved ideas.
+        #   Can't be simultaneously used with `dismissed(bool)`. The `false` value is
+        #   currently unsupported. - `dismissed(bool)`: If set to true, fetches only
+        #   dismissed ideas. Can't be simultaneously used with `saved(bool)`. The `false`
+        #   value is currently unsupported. Examples: * `saved(true)` * `dismissed(true)`
+        #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Order semantics described below.
         # @param [Fixnum] page_size
@@ -223,6 +239,43 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a topic state resource.
+        # @param [String] name
+        #   Unique identifier for the topic state. Format: platforms/`platform`/properties/
+        #   `property`/topicStates/`topic_state`
+        # @param [Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaTopicState] google_search_ideahub_v1alpha_topic_state_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaTopicState] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaTopicState]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_platform_property_topic_state(name, google_search_ideahub_v1alpha_topic_state_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaTopicState::Representation
+          command.request_object = google_search_ideahub_v1alpha_topic_state_object
+          command.response_representation = Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaTopicState::Representation
+          command.response_class = Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaTopicState
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
