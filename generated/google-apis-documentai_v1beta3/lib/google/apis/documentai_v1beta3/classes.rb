@@ -6315,11 +6315,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The schema defines the output of the processed document by a processor.
-        # Corresponds to the JSON property `schema`
-        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Schema]
-        attr_accessor :schema
-      
         # The type of the processor, e.g, "invoice_parsing".
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -6335,7 +6330,6 @@ module Google
           @available_locations = args[:available_locations] if args.key?(:available_locations)
           @category = args[:category] if args.key?(:category)
           @name = args[:name] if args.key?(:name)
-          @schema = args[:schema] if args.key?(:schema)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -6489,105 +6483,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
-        end
-      end
-      
-      # The schema defines the output of the processed document by a processor.
-      class GoogleCloudDocumentaiV1beta3Schema
-        include Google::Apis::Core::Hashable
-      
-        # Description of the schema.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Display name to show to users.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Entity types of the schema.
-        # Corresponds to the JSON property `entityTypes`
-        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaEntityType>]
-        attr_accessor :entity_types
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @entity_types = args[:entity_types] if args.key?(:entity_types)
-        end
-      end
-      
-      # EntityType is the wrapper of a label of the corresponding model with detailed
-      # attributes and limitations for entity-based processors. Multiple types can
-      # also compose a dependency tree to represent nested types.
-      class GoogleCloudDocumentaiV1beta3SchemaEntityType
-        include Google::Apis::Core::Hashable
-      
-        # Type of the entity. It must be one of the following: `document` - the entity
-        # represents a classification of a logical document. `object` - if the entity
-        # has properties it is likely an object (or or a document.) `datetime` - the
-        # entity is a date or time value. `money` - the entity represents a money value
-        # amount. `number` - the entity is a number - integer or floating point. `string`
-        # - the entity is a string value. `boolean` - the entity is a boolean value. `
-        # address` - the entity is a location address.
-        # Corresponds to the JSON property `baseType`
-        # @return [String]
-        attr_accessor :base_type
-      
-        # Description of the entity type.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # If specified, lists all the possible values for this entity.
-        # Corresponds to the JSON property `enumValues`
-        # @return [Array<String>]
-        attr_accessor :enum_values
-      
-        # Occurrence type limits the number of times an entity type appears in the
-        # document.
-        # Corresponds to the JSON property `occurrenceType`
-        # @return [String]
-        attr_accessor :occurrence_type
-      
-        # Describing the nested structure of an entity. An EntityType may consist of
-        # several other EntityTypes. For example, in a document there can be an
-        # EntityType 'ID', which consists of EntityType 'name' and 'address', with
-        # corresponding attributes, such as TEXT for both types and ONCE for occurrence
-        # types.
-        # Corresponds to the JSON property `properties`
-        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaEntityType>]
-        attr_accessor :properties
-      
-        # Source of this entity type.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # Name of the type. It must be unique within the set of same level types.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @base_type = args[:base_type] if args.key?(:base_type)
-          @description = args[:description] if args.key?(:description)
-          @enum_values = args[:enum_values] if args.key?(:enum_values)
-          @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
-          @properties = args[:properties] if args.key?(:properties)
-          @source = args[:source] if args.key?(:source)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
