@@ -112,7 +112,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates/updates the specified agent.
+        # Creates/updates the specified agent. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project of this agent. Format: `projects/` or `projects//
         #   locations/`
@@ -149,7 +151,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports the specified agent to a ZIP file. Operation
+        # Exports the specified agent to a ZIP file.
         # @param [String] parent
         #   Required. The project that the agent to export is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -258,9 +260,9 @@ module Google
         # the import, the imported draft agent will be trained automatically (unless
         # disabled in agent settings). However, once the import is done, training may
         # not be completed yet. Please call TrainAgent and wait for the operation it
-        # returns in order to train explicitly. Operation An operation which tracks when
-        # importing is complete. It only tracks when the draft agent is updated not when
-        # it is done training.
+        # returns in order to train explicitly. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to import is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -299,9 +301,9 @@ module Google
         # are deleted. After the restore, the restored draft agent will be trained
         # automatically (unless disabled in agent settings). However, once the restore
         # is done, training may not be completed yet. Please call TrainAgent and wait
-        # for the operation it returns in order to train explicitly. Operation An
-        # operation which tracks when restoring is complete. It only tracks when the
-        # draft agent is updated not when it is done training.
+        # for the operation it returns in order to train explicitly. Note: You should
+        # always train an agent prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to restore is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -377,7 +379,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Trains the specified agent. Operation
+        # Trains the specified agent. Note: You should always train an agent prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to train is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -450,7 +454,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes entity types in the specified agent. Operation
+        # Deletes entity types in the specified agent. Note: You should always train an
+        # agent prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Supported
         #   formats: - `projects//agent`, - `projects//locations//agent`.
@@ -484,7 +490,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates/Creates multiple entity types in the specified agent. Operation
+        # Updates/Creates multiple entity types in the specified agent. Note: You should
+        # always train an agent prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to update or create entity types in. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -518,7 +526,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an entity type in the specified agent.
+        # Creates an entity type in the specified agent. Note: You should always train
+        # an agent prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The agent to create a entity type for. Supported formats: - `
         #   projects//agent` - `projects//locations//agent`
@@ -558,7 +568,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified entity type.
+        # Deletes the specified entity type. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] name
         #   Required. The name of the entity type to delete. Supported formats: - `
         #   projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -670,7 +682,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified entity type.
+        # Updates the specified entity type. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] name
         #   The unique identifier of the entity type. Required for EntityTypes.
         #   UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported
@@ -715,7 +729,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates multiple new entities in the specified entity type. Operation
+        # Creates multiple new entities in the specified entity type. Note: You should
+        # always train an agent prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to create entities in. Supported formats:
         #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -749,7 +765,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes entities in the specified entity type. Operation
+        # Deletes entities in the specified entity type. Note: You should always train
+        # an agent prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to delete entries for. Supported formats:
         #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -785,7 +803,9 @@ module Google
         
         # Updates or creates multiple entities in the specified entity type. This method
         # does not affect entities in the entity type that aren't explicitly specified
-        # in the request. Operation
+        # in the request. Note: You should always train an agent prior to sending it
+        # queries. See the [training documentation](https://cloud.google.com/dialogflow/
+        # es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to update or create entities in.
         #   Supported formats: - `projects//agent/entityTypes/` - `projects//locations//
@@ -1591,7 +1611,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes intents in the specified agent. Operation
+        # Deletes intents in the specified agent. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -1625,7 +1647,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates/Creates multiple intents in the specified agent. Operation
+        # Updates/Creates multiple intents in the specified agent. Note: You should
+        # always train an agent prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to update or create intents in. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -1659,7 +1683,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an intent in the specified agent.
+        # Creates an intent in the specified agent. Note: You should always train an
+        # agent prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The agent to create a intent for. Supported formats: - `projects//
         #   agent` - `projects//locations//agent`
@@ -1702,7 +1728,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified intent and its direct or indirect followup intents.
+        # Deletes the specified intent and its direct or indirect followup intents. Note:
+        # You should always train an agent prior to sending it queries. See the [
+        # training documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] name
         #   Required. The name of the intent to delete. If this intent has direct or
         #   indirect followup intents, we also delete them. Supported formats: - `projects/
@@ -1824,7 +1852,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified intent.
+        # Updates the specified intent. Note: You should always train an agent prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] name
         #   Optional. The unique identifier of this intent. Required for Intents.
         #   UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `
@@ -3728,13 +3758,13 @@ module Google
         # 2020-09-01. Retrieves suggestions for live agents. This method should be used
         # by human agent client software to fetch auto generated suggestions in real-
         # time, while the conversation with an end user is in progress. The
-        # functionality is implemented in terms of the [list pagination](/apis/design/
-        # design_patterns#list_pagination) design pattern. The client app should use the
-        # `next_page_token` field to fetch the next batch of suggestions. `suggestions`
-        # are sorted by `create_time` in descending order. To fetch latest suggestion,
-        # just set `page_size` to 1. To fetch new suggestions without duplication, send
-        # request with filter `create_time_epoch_microseconds > [first item's
-        # create_time of previous request]` and empty page_token.
+        # functionality is implemented in terms of the [list pagination](https://cloud.
+        # google.com/apis/design/design_patterns#list_pagination) design pattern. The
+        # client app should use the `next_page_token` field to fetch the next batch of
+        # suggestions. `suggestions` are sorted by `create_time` in descending order. To
+        # fetch latest suggestion, just set `page_size` to 1. To fetch new suggestions
+        # without duplication, send request with filter `create_time_epoch_microseconds >
+        # [first item's create_time of previous request]` and empty page_token.
         # @param [String] parent
         #   Required. The name of the participant to fetch suggestions for. Format: `
         #   projects//locations//conversations//participants/`.
@@ -4419,7 +4449,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates/updates the specified agent.
+        # Creates/updates the specified agent. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project of this agent. Format: `projects/` or `projects//
         #   locations/`
@@ -4456,7 +4488,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports the specified agent to a ZIP file. Operation
+        # Exports the specified agent to a ZIP file.
         # @param [String] parent
         #   Required. The project that the agent to export is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -4565,9 +4597,9 @@ module Google
         # the import, the imported draft agent will be trained automatically (unless
         # disabled in agent settings). However, once the import is done, training may
         # not be completed yet. Please call TrainAgent and wait for the operation it
-        # returns in order to train explicitly. Operation An operation which tracks when
-        # importing is complete. It only tracks when the draft agent is updated not when
-        # it is done training.
+        # returns in order to train explicitly. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to import is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -4606,9 +4638,9 @@ module Google
         # are deleted. After the restore, the restored draft agent will be trained
         # automatically (unless disabled in agent settings). However, once the restore
         # is done, training may not be completed yet. Please call TrainAgent and wait
-        # for the operation it returns in order to train explicitly. Operation An
-        # operation which tracks when restoring is complete. It only tracks when the
-        # draft agent is updated not when it is done training.
+        # for the operation it returns in order to train explicitly. Note: You should
+        # always train an agent prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to restore is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -4684,7 +4716,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Trains the specified agent. Operation
+        # Trains the specified agent. Note: You should always train an agent prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to train is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -4757,7 +4791,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes entity types in the specified agent. Operation
+        # Deletes entity types in the specified agent. Note: You should always train an
+        # agent prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Supported
         #   formats: - `projects//agent`, - `projects//locations//agent`.
@@ -4791,7 +4827,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates/Creates multiple entity types in the specified agent. Operation
+        # Updates/Creates multiple entity types in the specified agent. Note: You should
+        # always train an agent prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to update or create entity types in. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -4825,7 +4863,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an entity type in the specified agent.
+        # Creates an entity type in the specified agent. Note: You should always train
+        # an agent prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The agent to create a entity type for. Supported formats: - `
         #   projects//agent` - `projects//locations//agent`
@@ -4865,7 +4905,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified entity type.
+        # Deletes the specified entity type. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] name
         #   Required. The name of the entity type to delete. Supported formats: - `
         #   projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -4977,7 +5019,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified entity type.
+        # Updates the specified entity type. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] name
         #   The unique identifier of the entity type. Required for EntityTypes.
         #   UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported
@@ -5022,7 +5066,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates multiple new entities in the specified entity type. Operation
+        # Creates multiple new entities in the specified entity type. Note: You should
+        # always train an agent prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to create entities in. Supported formats:
         #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -5056,7 +5102,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes entities in the specified entity type. Operation
+        # Deletes entities in the specified entity type. Note: You should always train
+        # an agent prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to delete entries for. Supported formats:
         #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -5092,7 +5140,9 @@ module Google
         
         # Updates or creates multiple entities in the specified entity type. This method
         # does not affect entities in the entity type that aren't explicitly specified
-        # in the request. Operation
+        # in the request. Note: You should always train an agent prior to sending it
+        # queries. See the [training documentation](https://cloud.google.com/dialogflow/
+        # es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to update or create entities in.
         #   Supported formats: - `projects//agent/entityTypes/` - `projects//locations//
@@ -5898,7 +5948,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes intents in the specified agent. Operation
+        # Deletes intents in the specified agent. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -5932,7 +5984,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates/Creates multiple intents in the specified agent. Operation
+        # Updates/Creates multiple intents in the specified agent. Note: You should
+        # always train an agent prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to update or create intents in. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -5966,7 +6020,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an intent in the specified agent.
+        # Creates an intent in the specified agent. Note: You should always train an
+        # agent prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The agent to create a intent for. Supported formats: - `projects//
         #   agent` - `projects//locations//agent`
@@ -6009,7 +6065,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified intent and its direct or indirect followup intents.
+        # Deletes the specified intent and its direct or indirect followup intents. Note:
+        # You should always train an agent prior to sending it queries. See the [
+        # training documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] name
         #   Required. The name of the intent to delete. If this intent has direct or
         #   indirect followup intents, we also delete them. Supported formats: - `projects/
@@ -6131,7 +6189,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified intent.
+        # Updates the specified intent. Note: You should always train an agent prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] name
         #   Optional. The unique identifier of this intent. Required for Intents.
         #   UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `
