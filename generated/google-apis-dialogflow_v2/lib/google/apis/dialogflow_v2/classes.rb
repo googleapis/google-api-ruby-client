@@ -1067,9 +1067,9 @@ module Google
         # letters, digits and the symbols '-' and '_'. International characters are
         # allowed, including letters from unicase alphabets. Keys must start with a
         # letter. Keys and values can be no longer than 63 characters and no more than
-        # 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently
-        # allowed Dialogflow defined labels include: * sys.head * sys.contextual The
-        # above labels do not require value. "sys.head" means the intent is a head
+        # 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently
+        # allowed Dialogflow defined labels include: * sys-head * sys-contextual The
+        # above labels do not require value. "sys-head" means the intent is a head
         # intent. "sys.contextual" means the intent is a contextual intent.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -6566,7 +6566,7 @@ module Google
       class GoogleCloudDialogflowV2Environment
         include Google::Apis::Core::Hashable
       
-        # Optional. The agent version loaded into this environment. Supported formats: -
+        # Required. The agent version loaded into this environment. Supported formats: -
         # `projects//agent/versions/` - `projects//locations//agent/versions/`
         # Corresponds to the JSON property `agentVersion`
         # @return [String]
