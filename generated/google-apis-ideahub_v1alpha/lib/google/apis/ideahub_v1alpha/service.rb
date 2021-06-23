@@ -59,11 +59,12 @@ module Google
         #   more restrictions. * Restrictions are implicitly combined, as if the `AND`
         #   operator was always used. The `OR` operator is currently unsupported. *
         #   Supported functions: - `saved(bool)`: If set to true, fetches only saved ideas.
-        #   Can't be simultaneously used with `dismissed(bool)`. The `false` value is
-        #   currently unsupported. - `dismissed(bool)`: If set to true, fetches only
+        #   If set to false, fetches all except saved ideas. Can't be simultaneously used
+        #   with `dismissed(bool)`. - `dismissed(bool)`: If set to true, fetches only
         #   dismissed ideas. Can't be simultaneously used with `saved(bool)`. The `false`
-        #   value is currently unsupported. Examples: * `saved(true)` * `dismissed(true)`
-        #   The length of this field should be no more than 500 characters.
+        #   value is currently unsupported. Examples: * `saved(true)` * `saved(false)` * `
+        #   dismissed(true)` The length of this field should be no more than 500
+        #   characters.
         # @param [String] order_by
         #   Order semantics described below.
         # @param [Fixnum] page_size
@@ -157,11 +158,12 @@ module Google
         #   more restrictions. * Restrictions are implicitly combined, as if the `AND`
         #   operator was always used. The `OR` operator is currently unsupported. *
         #   Supported functions: - `saved(bool)`: If set to true, fetches only saved ideas.
-        #   Can't be simultaneously used with `dismissed(bool)`. The `false` value is
-        #   currently unsupported. - `dismissed(bool)`: If set to true, fetches only
+        #   If set to false, fetches all except saved ideas. Can't be simultaneously used
+        #   with `dismissed(bool)`. - `dismissed(bool)`: If set to true, fetches only
         #   dismissed ideas. Can't be simultaneously used with `saved(bool)`. The `false`
-        #   value is currently unsupported. Examples: * `saved(true)` * `dismissed(true)`
-        #   The length of this field should be no more than 500 characters.
+        #   value is currently unsupported. Examples: * `saved(true)` * `saved(false)` * `
+        #   dismissed(true)` The length of this field should be no more than 500
+        #   characters.
         # @param [String] order_by
         #   Order semantics described below.
         # @param [Fixnum] page_size
