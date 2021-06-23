@@ -1067,9 +1067,9 @@ module Google
         # letters, digits and the symbols '-' and '_'. International characters are
         # allowed, including letters from unicase alphabets. Keys must start with a
         # letter. Keys and values can be no longer than 63 characters and no more than
-        # 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently
-        # allowed Dialogflow defined labels include: * sys.head * sys.contextual The
-        # above labels do not require value. "sys.head" means the intent is a head
+        # 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently
+        # allowed Dialogflow defined labels include: * sys-head * sys-contextual The
+        # above labels do not require value. "sys-head" means the intent is a head
         # intent. "sys.contextual" means the intent is a contextual intent.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -6662,10 +6662,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # DLP inspect template name. Use this template to define inspect base settings.
-        # If empty, we use the default DLP inspect config. The template name will have
-        # one of the following formats: `projects//inspectTemplates/` OR `projects//
-        # locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        # [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this
+        # template to define inspect base settings. If empty, we use the default DLP
+        # inspect config. The template name will have one of the following formats: `
+        # projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `
+        # organizations//inspectTemplates/`
         # Corresponds to the JSON property `inspectTemplate`
         # @return [String]
         attr_accessor :inspect_template
