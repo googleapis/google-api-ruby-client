@@ -522,7 +522,10 @@ module Google
         attr_accessor :metadata
       
         # The contact group name set by the group owner or a system provided name for
-        # system groups.
+        # system groups. For [`contactGroups.create`](/people/api/rest/v1/contactGroups/
+        # create) or [`contactGroups.update`](/people/api/rest/v1/contactGroups/update)
+        # the name must be unique to the users contact groups. Attempting to create a
+        # group with a duplicate name will return a HTTP 409 error.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

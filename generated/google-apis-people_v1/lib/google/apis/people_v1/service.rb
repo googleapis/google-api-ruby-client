@@ -91,7 +91,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new contact group owned by the authenticated user.
+        # Create a new contact group owned by the authenticated user. Created contact
+        # group names must be unique to the users contact groups. Attempting to create a
+        # group with a duplicate name will return a HTTP 409 error.
         # @param [Google::Apis::PeopleV1::CreateContactGroupRequest] create_contact_group_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -244,6 +246,9 @@ module Google
         end
         
         # Update the name of an existing contact group owned by the authenticated user.
+        # Updated contact group names must be unique to the users contact groups.
+        # Attempting to create a group with a duplicate name will return a HTTP 409
+        # error.
         # @param [String] resource_name
         #   The resource name for the contact group, assigned by the server. An ASCII
         #   string, in the form of `contactGroups/`contact_group_id``.
