@@ -860,6 +860,7 @@ module Google
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           property :trial_id, as: 'trialId'
+          hash :web_access_uris, as: 'webAccessUris'
         end
       end
       
@@ -1203,6 +1204,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :args, as: 'args'
+          property :enable_web_access, as: 'enableWebAccess'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::MlV1::GoogleCloudMlV1EncryptionConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1EncryptionConfig::Representation
       
           property :evaluator_config, as: 'evaluatorConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
@@ -1249,6 +1251,7 @@ module Google
           property :is_hyperparameter_tuning_job, as: 'isHyperparameterTuningJob'
           collection :trials, as: 'trials', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput::Representation
       
+          hash :web_access_uris, as: 'webAccessUris'
         end
       end
       
