@@ -246,6 +246,25 @@ module Google
         end
       end
       
+      # Fields specific for BigQuery routines.
+      class GoogleCloudDatacatalogV1BigQueryRoutineSpec
+        include Google::Apis::Core::Hashable
+      
+        # Paths of the imported libraries.
+        # Corresponds to the JSON property `importedLibraries`
+        # @return [Array<String>]
+        attr_accessor :imported_libraries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @imported_libraries = args[:imported_libraries] if args.key?(:imported_libraries)
+        end
+      end
+      
       # Describes a BigQuery table.
       class GoogleCloudDatacatalogV1BigQueryTableSpec
         include Google::Apis::Core::Hashable
@@ -486,6 +505,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specification that applies to a routine. Valid only for entries with the `
+        # ROUTINE` type.
+        # Corresponds to the JSON property `routineSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpec]
+        attr_accessor :routine_spec
+      
         # Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Schema]
@@ -548,6 +573,7 @@ module Google
           @integrated_system = args[:integrated_system] if args.key?(:integrated_system)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
           @name = args[:name] if args.key?(:name)
+          @routine_spec = args[:routine_spec] if args.key?(:routine_spec)
           @schema = args[:schema] if args.key?(:schema)
           @source_system_timestamps = args[:source_system_timestamps] if args.key?(:source_system_timestamps)
           @type = args[:type] if args.key?(:type)
@@ -1066,6 +1092,91 @@ module Google
         # Update properties of this object
         def update!(**args)
           @serialized_taxonomy = args[:serialized_taxonomy] if args.key?(:serialized_taxonomy)
+        end
+      end
+      
+      # Specification that applies to a routine. Valid only for entries with the `
+      # ROUTINE` type.
+      class GoogleCloudDatacatalogV1RoutineSpec
+        include Google::Apis::Core::Hashable
+      
+        # Fields specific for BigQuery routines.
+        # Corresponds to the JSON property `bigqueryRoutineSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BigQueryRoutineSpec]
+        attr_accessor :bigquery_routine_spec
+      
+        # The body of the routine.
+        # Corresponds to the JSON property `definitionBody`
+        # @return [String]
+        attr_accessor :definition_body
+      
+        # The language the routine is written in. The exact value depends on the source
+        # system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT`
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # Return type of the argument. The exact value depends on the source system and
+        # the language.
+        # Corresponds to the JSON property `returnType`
+        # @return [String]
+        attr_accessor :return_type
+      
+        # Arguments of the routine.
+        # Corresponds to the JSON property `routineArguments`
+        # @return [Array<Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpecArgument>]
+        attr_accessor :routine_arguments
+      
+        # The type of the routine.
+        # Corresponds to the JSON property `routineType`
+        # @return [String]
+        attr_accessor :routine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_routine_spec = args[:bigquery_routine_spec] if args.key?(:bigquery_routine_spec)
+          @definition_body = args[:definition_body] if args.key?(:definition_body)
+          @language = args[:language] if args.key?(:language)
+          @return_type = args[:return_type] if args.key?(:return_type)
+          @routine_arguments = args[:routine_arguments] if args.key?(:routine_arguments)
+          @routine_type = args[:routine_type] if args.key?(:routine_type)
+        end
+      end
+      
+      # Input or output argument of a function or stored procedure.
+      class GoogleCloudDatacatalogV1RoutineSpecArgument
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether the argument is input or output.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # The name of the argument. A return argument of a function might not have a
+        # name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Type of the argument. The exact value depends on the source system and the
+        # language.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
