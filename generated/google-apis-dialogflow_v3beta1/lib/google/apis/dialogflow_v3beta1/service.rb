@@ -50,7 +50,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates an agent in the specified location.
+        # Creates an agent in the specified location. Note: You should always train a
+        # flow prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/cx/docs/concept/training).
         # @param [String] parent
         #   Required. The location to create a agent for. Format: `projects//locations/`.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Agent] google_cloud_dialogflow_cx_v3beta1_agent_object
@@ -250,7 +252,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified agent.
+        # Updates the specified agent. Note: You should always train a flow prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   The unique identifier of the agent. Required for the Agents.UpdateAgent method.
         #   Agents.CreateAgent populates the name automatically. Format: `projects//
@@ -291,7 +295,9 @@ module Google
         
         # Restores the specified agent from a binary file. Replaces the current agent
         # with a new one. Note that all existing resources in agent (e.g. intents,
-        # entity types, flows) will be removed.
+        # entity types, flows) will be removed. Note: You should always train a flow
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   Required. The name of the agent to restore into. Format: `projects//locations//
         #   agents/`.
@@ -401,7 +407,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified entity type.
+        # Deletes the specified entity type. Note: You should always train a flow prior
+        # to sending it queries. See the [training documentation](https://cloud.google.
+        # com/dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   Required. The name of the entity type to delete. Format: `projects//locations//
         #   agents//entityTypes/`.
@@ -525,7 +533,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified entity type.
+        # Updates the specified entity type. Note: You should always train a flow prior
+        # to sending it queries. See the [training documentation](https://cloud.google.
+        # com/dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   The unique identifier of the entity type. Required for EntityTypes.
         #   UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
@@ -1399,7 +1409,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a flow in the specified agent.
+        # Creates a flow in the specified agent. Note: You should always train a flow
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/cx/docs/concept/training).
         # @param [String] parent
         #   Required. The agent to create a flow for. Format: `projects//locations//agents/
         #   `.
@@ -1592,7 +1604,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Imports the specified flow to the specified agent from a binary file.
+        # Imports the specified flow to the specified agent from a binary file. Note:
+        # You should always train a flow prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
         # @param [String] parent
         #   Required. The agent to import the flow into. Format: `projects//locations//
         #   agents/`.
@@ -1674,7 +1688,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified flow.
+        # Updates the specified flow. Note: You should always train a flow prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   The unique identifier of the flow. Format: `projects//locations//agents//flows/
         #   `.
@@ -1722,7 +1738,9 @@ module Google
         end
         
         # Trains the specified flow. Note that only the flow in 'draft' environment is
-        # trained.
+        # trained. Note: You should always train a flow prior to sending it queries. See
+        # the [training documentation](https://cloud.google.com/dialogflow/cx/docs/
+        # concept/training).
         # @param [String] name
         #   Required. The flow to train. Format: `projects//locations//agents//flows/`.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TrainFlowRequest] google_cloud_dialogflow_cx_v3beta1_train_flow_request_object
@@ -2031,7 +2049,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an TransitionRouteGroup in the specified flow.
+        # Creates an TransitionRouteGroup in the specified flow. Note: You should always
+        # train a flow prior to sending it queries. See the [training documentation](
+        # https://cloud.google.com/dialogflow/cx/docs/concept/training).
         # @param [String] parent
         #   Required. The flow to create an TransitionRouteGroup for. Format: `projects//
         #   locations//agents//flows/`.
@@ -2073,7 +2093,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TransitionRouteGroup.
+        # Deletes the specified TransitionRouteGroup. Note: You should always train a
+        # flow prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   Required. The name of the TransitionRouteGroup to delete. Format: `projects//
         #   locations//agents//flows//transitionRouteGroups/`.
@@ -2198,7 +2220,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified TransitionRouteGroup.
+        # Updates the specified TransitionRouteGroup. Note: You should always train a
+        # flow prior to sending it queries. See the [training documentation](https://
+        # cloud.google.com/dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   The unique identifier of the transition route group. TransitionRouteGroups.
         #   CreateTransitionRouteGroup populates the name automatically. Format: `projects/
@@ -2450,7 +2474,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an intent in the specified agent.
+        # Creates an intent in the specified agent. Note: You should always train a flow
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/cx/docs/concept/training).
         # @param [String] parent
         #   Required. The agent to create an intent for. Format: `projects//locations//
         #   agents/`.
@@ -2491,7 +2517,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified intent.
+        # Deletes the specified intent. Note: You should always train a flow prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   Required. The name of the intent to delete. Format: `projects//locations//
         #   agents//intents/`.
@@ -2608,7 +2636,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified intent.
+        # Updates the specified intent. Note: You should always train a flow prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   The unique identifier of the intent. Required for the Intents.UpdateIntent
         #   method. Intents.CreateIntent populates the name automatically. Format: `
