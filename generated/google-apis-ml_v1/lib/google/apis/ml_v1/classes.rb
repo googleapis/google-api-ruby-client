@@ -1208,6 +1208,13 @@ module Google
         # @return [String]
         attr_accessor :trial_id
       
+        # The web URIs for the training job. Currently for debug terminal access to the
+        # job. Only set for in-progress hyperparameter tuning trials with web access
+        # enabled.
+        # Corresponds to the JSON property `webAccessUris`
+        # @return [Hash<String,String>]
+        attr_accessor :web_access_uris
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1223,6 +1230,7 @@ module Google
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @trial_id = args[:trial_id] if args.key?(:trial_id)
+          @web_access_uris = args[:web_access_uris] if args.key?(:web_access_uris)
         end
       end
       
@@ -2605,6 +2613,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :args
       
+        # Optional. Whether to enable web access for the training job.
+        # Corresponds to the JSON property `enableWebAccess`
+        # @return [Boolean]
+        attr_accessor :enable_web_access
+        alias_method :enable_web_access?, :enable_web_access
+      
         # Represents a custom encryption key configuration that can be applied to a
         # resource.
         # Corresponds to the JSON property `encryptionConfig`
@@ -2808,6 +2822,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @args = args[:args] if args.key?(:args)
+          @enable_web_access = args[:enable_web_access] if args.key?(:enable_web_access)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @evaluator_config = args[:evaluator_config] if args.key?(:evaluator_config)
           @evaluator_count = args[:evaluator_count] if args.key?(:evaluator_count)
@@ -2881,6 +2896,12 @@ module Google
         # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1HyperparameterOutput>]
         attr_accessor :trials
       
+        # Output only. The web URIs for the training job. Currently for debug terminal
+        # access to the job.
+        # Corresponds to the JSON property `webAccessUris`
+        # @return [Hash<String,String>]
+        attr_accessor :web_access_uris
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2894,6 +2915,7 @@ module Google
           @is_built_in_algorithm_job = args[:is_built_in_algorithm_job] if args.key?(:is_built_in_algorithm_job)
           @is_hyperparameter_tuning_job = args[:is_hyperparameter_tuning_job] if args.key?(:is_hyperparameter_tuning_job)
           @trials = args[:trials] if args.key?(:trials)
+          @web_access_uris = args[:web_access_uris] if args.key?(:web_access_uris)
         end
       end
       
