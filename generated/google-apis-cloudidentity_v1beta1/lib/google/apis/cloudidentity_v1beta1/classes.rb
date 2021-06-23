@@ -650,6 +650,25 @@ module Google
         end
       end
       
+      # DSA public key information.
+      class DsaPublicKeyInfo
+        include Google::Apis::Core::Hashable
+      
+        # Key size in bits (size of parameter P)
+        # Corresponds to the JSON property `keySize`
+        # @return [Fixnum]
+        attr_accessor :key_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_size = args[:key_size] if args.key?(:key_size)
+        end
+      end
+      
       # Dynamic group metadata like queries and status.
       class DynamicGroupMetadata
         include Google::Apis::Core::Hashable
@@ -1456,6 +1475,11 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Optional. The POSIX groups associated with the `Group`.
+        # Corresponds to the JSON property `posixGroups`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::PosixGroup>]
+        attr_accessor :posix_groups
+      
         # Output only. The time when the `Group` was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1476,6 +1500,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
+          @posix_groups = args[:posix_groups] if args.key?(:posix_groups)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1529,6 +1554,83 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @relation_type = args[:relation_type] if args.key?(:relation_type)
           @roles = args[:roles] if args.key?(:roles)
+        end
+      end
+      
+      # Signing validation key.
+      class IdpSigningKey
+        include Google::Apis::Core::Hashable
+      
+        # DSA public key information.
+        # Corresponds to the JSON property `dsaKeyInfo`
+        # @return [Google::Apis::CloudidentityV1beta1::DsaPublicKeyInfo]
+        attr_accessor :dsa_key_info
+      
+        # Output only. [Resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the key.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # RSA public key information.
+        # Corresponds to the JSON property `rsaKeyInfo`
+        # @return [Google::Apis::CloudidentityV1beta1::RsaPublicKeyInfo]
+        attr_accessor :rsa_key_info
+      
+        # Output only. When the key data was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dsa_key_info = args[:dsa_key_info] if args.key?(:dsa_key_info)
+          @name = args[:name] if args.key?(:name)
+          @rsa_key_info = args[:rsa_key_info] if args.key?(:rsa_key_info)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A SAML 2.0 (https://www.oasis-open.org/standards#samlv2.0) federation between
+      # a Google enterprise customer and a SAML IDP.
+      class InboundSamlSsoProfile
+        include Google::Apis::Core::Hashable
+      
+        # Human-readable name of the SAML SSO profile.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # SAML IDP configuration.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Google::Apis::CloudidentityV1beta1::SamlIdpConfig]
+        attr_accessor :idp_config
+      
+        # Output only. [Resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the SAML SSO profile.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # SAML SP configuration.
+        # Corresponds to the JSON property `spConfig`
+        # @return [Google::Apis::CloudidentityV1beta1::SamlSpConfig]
+        attr_accessor :sp_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @name = args[:name] if args.key?(:name)
+          @sp_config = args[:sp_config] if args.key?(:sp_config)
         end
       end
       
@@ -2062,6 +2164,128 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # POSIX Group definition to represent a group in a POSIX compliant system.
+      class PosixGroup
+        include Google::Apis::Core::Hashable
+      
+        # GID of the POSIX group.
+        # Corresponds to the JSON property `gid`
+        # @return [Fixnum]
+        attr_accessor :gid
+      
+        # Name of the POSIX group.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # System identifier for which group name and gid apply to. If not specified it
+        # will default to empty value.
+        # Corresponds to the JSON property `systemId`
+        # @return [String]
+        attr_accessor :system_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gid = args[:gid] if args.key?(:gid)
+          @name = args[:name] if args.key?(:name)
+          @system_id = args[:system_id] if args.key?(:system_id)
+        end
+      end
+      
+      # RSA public key information.
+      class RsaPublicKeyInfo
+        include Google::Apis::Core::Hashable
+      
+        # Key size in bits (size of the modulus).
+        # Corresponds to the JSON property `keySize`
+        # @return [Fixnum]
+        attr_accessor :key_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_size = args[:key_size] if args.key?(:key_size)
+        end
+      end
+      
+      # SAML IDP configuration.
+      class SamlIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Change password URL. Users will be sent to this URL when changing their
+        # passwords at myaccount.google.com. This takes precedence over the customer-
+        # level change password URL. Must use HTTPS.
+        # Corresponds to the JSON property `changePasswordUri`
+        # @return [String]
+        attr_accessor :change_password_uri
+      
+        # Required. The SAML Entity ID of the IDP.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # Logout redirect URL/Sign-out page URL. When a user clicks the sign out link on
+        # a Google page, they will be redirected to this URL. This is pure redirect with
+        # no attached SAML LogoutRequest (SAML Single Logout is currently not supported).
+        # Must use HTTPS.
+        # Corresponds to the JSON property `logoutRedirectUri`
+        # @return [String]
+        attr_accessor :logout_redirect_uri
+      
+        # Required. SingleSignOnService endpoint location/Sign-in page URL. This is the
+        # URL where the AuthnRequest will be sent. Must use HTTPS. Currently assumed to
+        # accept the HTTP-Redirect binding.
+        # Corresponds to the JSON property `singleSignOnServiceUri`
+        # @return [String]
+        attr_accessor :single_sign_on_service_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_password_uri = args[:change_password_uri] if args.key?(:change_password_uri)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @logout_redirect_uri = args[:logout_redirect_uri] if args.key?(:logout_redirect_uri)
+          @single_sign_on_service_uri = args[:single_sign_on_service_uri] if args.key?(:single_sign_on_service_uri)
+        end
+      end
+      
+      # SAML SP configuration.
+      class SamlSpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The SAML Assertion Consumer Service (ACS) URL to be used for IDP-
+        # initiated login. Currently assumed to accept Response messages via the HTTP-
+        # POST binding.
+        # Corresponds to the JSON property `assertionConsumerServiceUri`
+        # @return [String]
+        attr_accessor :assertion_consumer_service_uri
+      
+        # Output only. The SAML Entity ID for this SP.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assertion_consumer_service_uri = args[:assertion_consumer_service_uri] if args.key?(:assertion_consumer_service_uri)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
         end
       end
       
