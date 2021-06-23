@@ -523,8 +523,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :custom, as: 'custom'
+          property :deletable, as: 'deletable'
           property :event_name, as: 'eventName'
-          property :is_deletable, as: 'isDeletable'
           property :name, as: 'name'
         end
       end
