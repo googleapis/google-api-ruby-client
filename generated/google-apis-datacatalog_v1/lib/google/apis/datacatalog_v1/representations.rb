@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1BigQueryRoutineSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1BigQueryTableSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,18 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1ReplaceTaxonomyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1RoutineSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1RoutineSpecArgument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -390,6 +408,13 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1BigQueryRoutineSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :imported_libraries, as: 'importedLibraries'
+        end
+      end
+      
       class GoogleCloudDatacatalogV1BigQueryTableSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -454,6 +479,8 @@ module Google
           property :integrated_system, as: 'integratedSystem'
           property :linked_resource, as: 'linkedResource'
           property :name, as: 'name'
+          property :routine_spec, as: 'routineSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpec::Representation
+      
           property :schema, as: 'schema', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Schema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Schema::Representation
       
           property :source_system_timestamps, as: 'sourceSystemTimestamps', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps::Representation
@@ -629,6 +656,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :serialized_taxonomy, as: 'serializedTaxonomy', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SerializedTaxonomy, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SerializedTaxonomy::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1RoutineSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_routine_spec, as: 'bigqueryRoutineSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BigQueryRoutineSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BigQueryRoutineSpec::Representation
+      
+          property :definition_body, as: 'definitionBody'
+          property :language, as: 'language'
+          property :return_type, as: 'returnType'
+          collection :routine_arguments, as: 'routineArguments', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpecArgument, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpecArgument::Representation
+      
+          property :routine_type, as: 'routineType'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1RoutineSpecArgument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
