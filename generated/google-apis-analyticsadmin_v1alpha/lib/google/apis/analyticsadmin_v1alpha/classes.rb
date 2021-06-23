@@ -619,18 +619,18 @@ module Google
         attr_accessor :custom
         alias_method :custom?, :custom
       
+        # Output only. If set, this event can currently be deleted via
+        # DeleteConversionEvent.
+        # Corresponds to the JSON property `deletable`
+        # @return [Boolean]
+        attr_accessor :deletable
+        alias_method :deletable?, :deletable
+      
         # Immutable. The event name for this conversion event. Examples: 'click', '
         # purchase'
         # Corresponds to the JSON property `eventName`
         # @return [String]
         attr_accessor :event_name
-      
-        # Output only. If set, this event can currently be deleted via
-        # DeleteConversionEvent.
-        # Corresponds to the JSON property `isDeletable`
-        # @return [Boolean]
-        attr_accessor :is_deletable
-        alias_method :is_deletable?, :is_deletable
       
         # Output only. Resource name of this conversion event. Format: properties/`
         # property`/conversionEvents/`conversion_event`
@@ -646,8 +646,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom = args[:custom] if args.key?(:custom)
+          @deletable = args[:deletable] if args.key?(:deletable)
           @event_name = args[:event_name] if args.key?(:event_name)
-          @is_deletable = args[:is_deletable] if args.key?(:is_deletable)
           @name = args[:name] if args.key?(:name)
         end
       end
