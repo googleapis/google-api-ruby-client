@@ -2996,7 +2996,7 @@ module Google
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
         #   The *part* parameter specifies the superChatEvent resource parts that the API
-        #   response will include. Supported values are id and snippet.
+        #   response will include. This parameter is currently not supported.
         # @param [String] hl
         #   Return rendered funding amounts in specified language.
         # @param [Fixnum] max_results
