@@ -1,5 +1,9 @@
 # Release history for google-apis-realtimebidding_v1
 
+### v0.6.0 (2021-06-24)
+
+* Unspecified changes
+
 ### v0.5.0 (2021-06-02)
 
 * Regenerated from discovery document revision 20210529
