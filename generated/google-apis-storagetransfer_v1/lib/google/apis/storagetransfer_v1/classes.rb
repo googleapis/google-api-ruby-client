@@ -294,16 +294,16 @@ module Google
       class GcsData
         include Google::Apis::Core::Hashable
       
-        # Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://
-        # cloud.google.com/storage/docs/naming#requirements)).
+        # Required. Cloud Storage bucket name. Must meet [Bucket Name Requirements](/
+        # storage/docs/naming#requirements).
         # Corresponds to the JSON property `bucketName`
         # @return [String]
         attr_accessor :bucket_name
       
         # Root path to transfer objects. Must be an empty string or full path name that
         # ends with a '/'. This field is treated as an object prefix. As such, it should
-        # generally not begin with a '/'. (must meet Object Name Requirements](https://
-        # cloud.google.com/storage/docs/naming#objectnames)).
+        # generally not begin with a '/'. The root path value must meet [Object Name
+        # Requirements](/storage/docs/naming#objectnames).
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -354,12 +354,11 @@ module Google
       # object fetched, the object will not be transferred. * If the specified MD5
       # does not match the MD5 computed from the transferred bytes, the object
       # transfer will fail. * Ensure that each URL you specify is publicly accessible.
-      # For example, in Cloud Storage you can [share an object publicly] (https://
-      # cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it.
-      # * Storage Transfer Service obeys `robots.txt` rules and requires the source
-      # HTTP server to support `Range` requests and to return a `Content-Length`
-      # header in each response. * ObjectConditions have no effect when filtering
-      # objects to transfer.
+      # For example, in Cloud Storage you can [share an object publicly] (/storage/
+      # docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
+      # Service obeys `robots.txt` rules and requires the source HTTP server to
+      # support `Range` requests and to return a `Content-Length` header in each
+      # response. * ObjectConditions have no effect when filtering objects to transfer.
       class HttpData
         include Google::Apis::Core::Hashable
       
@@ -1212,12 +1211,11 @@ module Google
         # object fetched, the object will not be transferred. * If the specified MD5
         # does not match the MD5 computed from the transferred bytes, the object
         # transfer will fail. * Ensure that each URL you specify is publicly accessible.
-        # For example, in Cloud Storage you can [share an object publicly] (https://
-        # cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it.
-        # * Storage Transfer Service obeys `robots.txt` rules and requires the source
-        # HTTP server to support `Range` requests and to return a `Content-Length`
-        # header in each response. * ObjectConditions have no effect when filtering
-        # objects to transfer.
+        # For example, in Cloud Storage you can [share an object publicly] (/storage/
+        # docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
+        # Service obeys `robots.txt` rules and requires the source HTTP server to
+        # support `Range` requests and to return a `Content-Length` header in each
+        # response. * ObjectConditions have no effect when filtering objects to transfer.
         # Corresponds to the JSON property `httpDataSource`
         # @return [Google::Apis::StoragetransferV1::HttpData]
         attr_accessor :http_data_source
