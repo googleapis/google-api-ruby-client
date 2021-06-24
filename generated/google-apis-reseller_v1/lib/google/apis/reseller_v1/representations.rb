@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrimaryAdmin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RenewalSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -135,11 +141,21 @@ module Google
           property :customer_domain, as: 'customerDomain'
           property :customer_domain_verified, as: 'customerDomainVerified'
           property :customer_id, as: 'customerId'
+          property :customer_type, as: 'customerType'
           property :kind, as: 'kind'
           property :phone_number, as: 'phoneNumber'
           property :postal_address, as: 'postalAddress', class: Google::Apis::ResellerV1::Address, decorator: Google::Apis::ResellerV1::Address::Representation
       
+          property :primary_admin, as: 'primaryAdmin', class: Google::Apis::ResellerV1::PrimaryAdmin, decorator: Google::Apis::ResellerV1::PrimaryAdmin::Representation
+      
           property :resource_ui_url, as: 'resourceUiUrl'
+        end
+      end
+      
+      class PrimaryAdmin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_email, as: 'primaryEmail'
         end
       end
       
