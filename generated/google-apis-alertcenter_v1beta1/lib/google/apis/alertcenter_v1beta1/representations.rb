@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OutOfDomainForwarding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PhishingSpike
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -624,6 +630,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_pubsub_topic, as: 'cloudPubsubTopic', class: Google::Apis::AlertcenterV1beta1::CloudPubsubTopic, decorator: Google::Apis::AlertcenterV1beta1::CloudPubsubTopic::Representation
       
+        end
+      end
+      
+      class OutOfDomainForwarding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actor_email, as: 'actorEmail'
+          property :enable_time, as: 'enableTime'
+          property :forwardee_email, as: 'forwardeeEmail'
+          property :ip_address, as: 'ipAddress'
         end
       end
       

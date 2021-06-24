@@ -1129,6 +1129,44 @@ module Google
         end
       end
       
+      # An alert that gets triggered when a user enables autoforwarding to an email
+      # which is outside of its domain
+      class OutOfDomainForwarding
+        include Google::Apis::Core::Hashable
+      
+        # Email of the actor who triggered the alert.
+        # Corresponds to the JSON property `actorEmail`
+        # @return [String]
+        attr_accessor :actor_email
+      
+        # The time the email forwarding was enabled
+        # Corresponds to the JSON property `enableTime`
+        # @return [String]
+        attr_accessor :enable_time
+      
+        # Email to which emails are being forwarded
+        # Corresponds to the JSON property `forwardeeEmail`
+        # @return [String]
+        attr_accessor :forwardee_email
+      
+        # IP address of the user while enabling forwarding
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor_email = args[:actor_email] if args.key?(:actor_email)
+          @enable_time = args[:enable_time] if args.key?(:enable_time)
+          @forwardee_email = args[:forwardee_email] if args.key?(:forwardee_email)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+        end
+      end
+      
       # Alert for a spike in user reported phishing. *Warning*: This type has been
       # deprecated. Use [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/
       # MailPhishing) instead.
