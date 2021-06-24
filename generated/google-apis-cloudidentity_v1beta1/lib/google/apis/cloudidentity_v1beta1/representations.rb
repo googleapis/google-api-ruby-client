@@ -118,12 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DsaPublicKeyInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DynamicGroupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,18 +232,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IdpSigningKey
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InboundSamlSsoProfile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class IsInvitableUserResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,24 +335,6 @@ module Google
       end
       
       class PosixGroup
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RsaPublicKeyInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SamlIdpConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SamlSpConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -614,13 +578,6 @@ module Google
         end
       end
       
-      class DsaPublicKeyInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :key_size, as: 'keySize'
-        end
-      end
-      
       class DynamicGroupMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -844,30 +801,6 @@ module Google
         end
       end
       
-      class IdpSigningKey
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dsa_key_info, as: 'dsaKeyInfo', class: Google::Apis::CloudidentityV1beta1::DsaPublicKeyInfo, decorator: Google::Apis::CloudidentityV1beta1::DsaPublicKeyInfo::Representation
-      
-          property :name, as: 'name'
-          property :rsa_key_info, as: 'rsaKeyInfo', class: Google::Apis::CloudidentityV1beta1::RsaPublicKeyInfo, decorator: Google::Apis::CloudidentityV1beta1::RsaPublicKeyInfo::Representation
-      
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class InboundSamlSsoProfile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :idp_config, as: 'idpConfig', class: Google::Apis::CloudidentityV1beta1::SamlIdpConfig, decorator: Google::Apis::CloudidentityV1beta1::SamlIdpConfig::Representation
-      
-          property :name, as: 'name'
-          property :sp_config, as: 'spConfig', class: Google::Apis::CloudidentityV1beta1::SamlSpConfig, decorator: Google::Apis::CloudidentityV1beta1::SamlSpConfig::Representation
-      
-        end
-      end
-      
       class IsInvitableUserResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1035,31 +968,6 @@ module Google
           property :gid, :numeric_string => true, as: 'gid'
           property :name, as: 'name'
           property :system_id, as: 'systemId'
-        end
-      end
-      
-      class RsaPublicKeyInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :key_size, as: 'keySize'
-        end
-      end
-      
-      class SamlIdpConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :change_password_uri, as: 'changePasswordUri'
-          property :entity_id, as: 'entityId'
-          property :logout_redirect_uri, as: 'logoutRedirectUri'
-          property :single_sign_on_service_uri, as: 'singleSignOnServiceUri'
-        end
-      end
-      
-      class SamlSpConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :assertion_consumer_service_uri, as: 'assertionConsumerServiceUri'
-          property :entity_id, as: 'entityId'
         end
       end
       
