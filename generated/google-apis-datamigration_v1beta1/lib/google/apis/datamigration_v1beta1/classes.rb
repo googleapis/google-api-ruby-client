@@ -1358,7 +1358,7 @@ module Google
         # @return [Array<Google::Apis::DatamigrationV1beta1::SqlAclEntry>]
         attr_accessor :authorized_networks
       
-        # Whether the instance should be assigned an IPv4 address or not.
+        # Whether the instance is assigned a public IP address or not.
         # Corresponds to the JSON property `enableIpv4`
         # @return [Boolean]
         attr_accessor :enable_ipv4
