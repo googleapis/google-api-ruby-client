@@ -22,7 +22,7 @@ module Google
   module Apis
     module VaultV1
       
-      # Count number for each account.
+      # The results count for each account.
       class AccountCount
         include Google::Apis::Core::Hashable
       
@@ -31,7 +31,7 @@ module Google
         # @return [Google::Apis::VaultV1::UserInfo]
         attr_accessor :account
       
-        # The number of artifacts found for this account.
+        # The number of results (messages or files) found for this account.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -72,7 +72,7 @@ module Google
         end
       end
       
-      # Accounts to search
+      # The accounts to search
       class AccountInfo
         include Google::Apis::Core::Hashable
       
@@ -91,17 +91,16 @@ module Google
         end
       end
       
-      # A status detailing the status of each account creation, and the HeldAccount,
-      # if successful.
+      # The status of each account creation, and the **HeldAccount**, if successful.
       class AddHeldAccountResult
         include Google::Apis::Core::Hashable
       
-        # An account being held in a particular hold. This structure is immutable. This
-        # can be either a single user or a google group, depending on the corpus. To
-        # work with Vault resources, the account must have the [required Vault
-        # privileges] (https://support.google.com/vault/answer/2799699) and access to
-        # the matter. To access a matter, the account must have created the matter, have
-        # the matter shared with them, or have the **View All Matters** privilege.
+        # An account covered by a hold. This structure is immutable. It can be an
+        # individual account or a Google Group, depending on the service. To work with
+        # Vault resources, the account must have the [required Vault privileges] (https:/
+        # /support.google.com/vault/answer/2799699) and access to the matter. To access
+        # a matter, the account must have created the matter, have the matter shared
+        # with them, or have the **View All Matters** privilege.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::VaultV1::HeldAccount]
         attr_accessor :account
@@ -131,14 +130,14 @@ module Google
       class AddHeldAccountsRequest
         include Google::Apis::Core::Hashable
       
-        # Account IDs to identify which accounts to add. Only account_ids or only emails
-        # should be specified, but not both.
+        # A comma-separated list of the account IDs of the accounts to add to the hold.
+        # Specify either **emails** or **account_ids**, but not both.
         # Corresponds to the JSON property `accountIds`
         # @return [Array<String>]
         attr_accessor :account_ids
       
-        # Emails to identify which accounts to add. Only emails or only account_ids
-        # should be specified, but not both.
+        # A comma-separated list of the emails of the accounts to add to the hold.
+        # Specify either **emails** or **account_ids**, but not both.
         # Corresponds to the JSON property `emails`
         # @return [Array<String>]
         attr_accessor :emails
@@ -174,26 +173,26 @@ module Google
       end
       
       # Add an account with the permission specified. The role cannot be owner. If an
-      # account already has a role in the matter, it will be overwritten.
+      # account already has a role in the matter, the existing role is overwritten.
       class AddMatterPermissionsRequest
         include Google::Apis::Core::Hashable
       
-        # Only relevant if send_emails is true. True to CC requestor in the email
-        # message. False to not CC requestor.
+        # Only relevant if **sendEmails** is **true**. To CC the requestor in the email
+        # message, set to **true**. To not CC requestor, set to **false**.
         # Corresponds to the JSON property `ccMe`
         # @return [Boolean]
         attr_accessor :cc_me
         alias_method :cc_me?, :cc_me
       
-        # Currently each matter only has one owner, and all others are collaborators.
-        # When an account is purged, its corresponding MatterPermission resources cease
-        # to exist.
+        # Users can be matter owners or collaborators. Each matter has only one owner.
+        # All others users who can access the matter are collaborators. When an account
+        # is purged, its corresponding MatterPermission resources cease to exist.
         # Corresponds to the JSON property `matterPermission`
         # @return [Google::Apis::VaultV1::MatterPermission]
         attr_accessor :matter_permission
       
-        # True to send notification email to the added account. False to not send
-        # notification email.
+        # To send a notification email to the added account, set to **true**. To not
+        # send a notification email, set to **false**.
         # Corresponds to the JSON property `sendEmails`
         # @return [Boolean]
         attr_accessor :send_emails
@@ -260,13 +259,15 @@ module Google
         end
       end
       
-      # An export file on cloud storage
+      # The export file in Cloud Storage
       class CloudStorageFile
         include Google::Apis::Core::Hashable
       
-        # The cloud storage bucket name of this export file. Can be used in cloud
-        # storage JSON/XML API, but not to list the bucket contents. Instead, you can
-        # get individual export files by object name.
+        # The name of the Cloud Storage bucket for the export file. You can use this
+        # value in the [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/
+        # docs/apis), but not to list the bucket contents. Instead, you can [get
+        # individual export files](https://cloud.google.com/storage/docs/json_api/v1/
+        # objects/get) by object name.
         # Corresponds to the JSON property `bucketName`
         # @return [String]
         attr_accessor :bucket_name
@@ -276,13 +277,14 @@ module Google
         # @return [String]
         attr_accessor :md5_hash
       
-        # The cloud storage object name of this export file. Can be used in cloud
-        # storage JSON/XML API.
+        # The name of the Cloud Storage object for the export file. You can use this
+        # value in the [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/
+        # docs/apis).
         # Corresponds to the JSON property `objectName`
         # @return [String]
         attr_accessor :object_name
       
-        # The size of the export file.
+        # The export file size.
         # Corresponds to the JSON property `size`
         # @return [Fixnum]
         attr_accessor :size
@@ -300,11 +302,11 @@ module Google
         end
       end
       
-      # Export sink for cloud storage files.
+      # Export sink for Cloud Storage files.
       class CloudStorageSink
         include Google::Apis::Core::Hashable
       
-        # Output only. The exported files on cloud storage.
+        # Output only. The exported files in Cloud Storage.
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::VaultV1::CloudStorageFile>]
         attr_accessor :files
@@ -319,11 +321,11 @@ module Google
         end
       end
       
-      # Corpus specific queries.
+      # Service-specific options for holds.
       class CorpusQuery
         include Google::Apis::Core::Hashable
       
-        # Query options for Drive holds.
+        # Options for Drive holds.
         # Corresponds to the JSON property `driveQuery`
         # @return [Google::Apis::VaultV1::HeldDriveQuery]
         attr_accessor :drive_query
@@ -333,17 +335,17 @@ module Google
         # @return [Google::Apis::VaultV1::HeldGroupsQuery]
         attr_accessor :groups_query
       
-        # Query options for hangouts chat holds.
+        # Options for Chat holds.
         # Corresponds to the JSON property `hangoutsChatQuery`
         # @return [Google::Apis::VaultV1::HeldHangoutsChatQuery]
         attr_accessor :hangouts_chat_query
       
-        # Query options for mail holds.
+        # Query options for Gmail holds.
         # Corresponds to the JSON property `mailQuery`
         # @return [Google::Apis::VaultV1::HeldMailQuery]
         attr_accessor :mail_query
       
-        # Query options for Voice holds.
+        # Options for Voice holds.
         # Corresponds to the JSON property `voiceQuery`
         # @return [Google::Apis::VaultV1::HeldVoiceQuery]
         attr_accessor :voice_query
@@ -376,7 +378,7 @@ module Google
         # @return [String]
         attr_accessor :matter_id
       
-        # A query definition relevant for search & export.
+        # The query definition used for search and export.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::VaultV1::Query]
         attr_accessor :query
@@ -403,12 +405,12 @@ module Google
       class CountArtifactsRequest
         include Google::Apis::Core::Hashable
       
-        # A query definition relevant for search & export.
+        # The query definition used for search and export.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::VaultV1::Query]
         attr_accessor :query
       
-        # Specifies the granularity of the count result returned in response.
+        # Sets the granularity of the count results.
         # Corresponds to the JSON property `view`
         # @return [String]
         attr_accessor :view
@@ -433,12 +435,12 @@ module Google
         # @return [Google::Apis::VaultV1::GroupsCountResult]
         attr_accessor :groups_count_result
       
-        # Mail specific count metrics.
+        # Gmail and classic Hangouts-specific count metrics.
         # Corresponds to the JSON property `mailCountResult`
         # @return [Google::Apis::VaultV1::MailCountResult]
         attr_accessor :mail_count_result
       
-        # Total count of artifacts. For mail and groups, artifacts refers to messages.
+        # Total count of messages.
         # Corresponds to the JSON property `totalCount`
         # @return [Fixnum]
         attr_accessor :total_count
@@ -455,12 +457,12 @@ module Google
         end
       end
       
-      # The options for Drive export.
+      # Options for Drive exports.
       class DriveExportOptions
         include Google::Apis::Core::Hashable
       
-        # Set to true to include access level information for users with indirect access
-        # to files.
+        # To include access level information for users with [indirect access](https://
+        # support.google.com/vault/answer/6099459#metadata) to files, set to **true**.
         # Corresponds to the JSON property `includeAccessInfo`
         # @return [Boolean]
         attr_accessor :include_access_info
@@ -476,11 +478,11 @@ module Google
         end
       end
       
-      # Drive search advanced options
+      # Additional options for Drive search
       class DriveOptions
         include Google::Apis::Core::Hashable
       
-        # Set to true to include shared drive.
+        # Set to **true** to include shared drives.
         # Corresponds to the JSON property `includeSharedDrives`
         # @return [Boolean]
         attr_accessor :include_shared_drives
@@ -492,8 +494,9 @@ module Google
         attr_accessor :include_team_drives
         alias_method :include_team_drives?, :include_team_drives
       
-        # Search the versions of the Drive file as of the reference date. These
-        # timestamps are in GMT and rounded down to the given date.
+        # Search the current version of the Drive file, but export the contents of the
+        # last version saved before 12:00 AM UTC on the specified date. Enter the date
+        # in UTC.
         # Corresponds to the JSON property `versionDate`
         # @return [String]
         attr_accessor :version_date
@@ -527,14 +530,14 @@ module Google
         end
       end
       
-      # An export To work with Vault resources, the account must have the [required
-      # Vault privileges] (https://support.google.com/vault/answer/2799699) and access
+      # An export. To work with Vault resources, the account must have the [required
+      # Vault privileges](https://support.google.com/vault/answer/2799699) and access
       # to the matter. To access a matter, the account must have created the matter,
       # have the matter shared with them, or have the **View All Matters** privilege.
       class Export
         include Google::Apis::Core::Hashable
       
-        # Export sink for cloud storage files.
+        # Export sink for Cloud Storage files.
         # Corresponds to the JSON property `cloudStorageSink`
         # @return [Google::Apis::VaultV1::CloudStorageSink]
         attr_accessor :cloud_storage_sink
@@ -544,7 +547,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Export advanced options
+        # Additional options for exports
         # Corresponds to the JSON property `exportOptions`
         # @return [Google::Apis::VaultV1::ExportOptions]
         attr_accessor :export_options
@@ -564,7 +567,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A query definition relevant for search & export.
+        # The query definition used for search and export.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::VaultV1::Query]
         attr_accessor :query
@@ -574,12 +577,12 @@ module Google
         # @return [Google::Apis::VaultV1::UserInfo]
         attr_accessor :requester
       
-        # Stats of an export.
+        # Progress information for an export.
         # Corresponds to the JSON property `stats`
         # @return [Google::Apis::VaultV1::ExportStats]
         attr_accessor :stats
       
-        # Output only. The export status.
+        # Output only. The status of the export.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -603,36 +606,36 @@ module Google
         end
       end
       
-      # Export advanced options
+      # Additional options for exports
       class ExportOptions
         include Google::Apis::Core::Hashable
       
-        # The options for Drive export.
+        # Options for Drive exports.
         # Corresponds to the JSON property `driveOptions`
         # @return [Google::Apis::VaultV1::DriveExportOptions]
         attr_accessor :drive_options
       
-        # The options for groups export.
+        # Options for Groups exports.
         # Corresponds to the JSON property `groupsOptions`
         # @return [Google::Apis::VaultV1::GroupsExportOptions]
         attr_accessor :groups_options
       
-        # The options for hangouts chat export.
+        # Options for Chat exports.
         # Corresponds to the JSON property `hangoutsChatOptions`
         # @return [Google::Apis::VaultV1::HangoutsChatExportOptions]
         attr_accessor :hangouts_chat_options
       
-        # The options for mail export.
+        # Options for Gmail exports.
         # Corresponds to the JSON property `mailOptions`
         # @return [Google::Apis::VaultV1::MailExportOptions]
         attr_accessor :mail_options
       
-        # The requested export location.
+        # The requested data region for the export.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # The options for voice export.
+        # The options for Voice exports.
         # Corresponds to the JSON property `voiceOptions`
         # @return [Google::Apis::VaultV1::VoiceExportOptions]
         attr_accessor :voice_options
@@ -652,11 +655,11 @@ module Google
         end
       end
       
-      # Stats of an export.
+      # Progress information for an export.
       class ExportStats
         include Google::Apis::Core::Hashable
       
-        # The number of documents already processed by the export.
+        # The number of messages or files already processed for export.
         # Corresponds to the JSON property `exportedArtifactCount`
         # @return [Fixnum]
         attr_accessor :exported_artifact_count
@@ -666,7 +669,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_in_bytes
       
-        # The number of documents to be exported.
+        # The number of messages or files to be exported.
         # Corresponds to the JSON property `totalArtifactCount`
         # @return [Fixnum]
         attr_accessor :total_artifact_count
@@ -702,9 +705,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :matching_accounts_count
       
-        # When data scope is HELD_DATA in the request Query, these accounts in the
-        # request are not queried because they are not on hold. For other data scope,
-        # this field is not set.
+        # When **DataScope** is **HELD_DATA**, these accounts in the request are not
+        # queried because they are not on hold. For other data scope, this field is not
+        # set.
         # Corresponds to the JSON property `nonQueryableAccounts`
         # @return [Array<String>]
         attr_accessor :non_queryable_accounts
@@ -728,11 +731,11 @@ module Google
         end
       end
       
-      # The options for groups export.
+      # Options for Groups exports.
       class GroupsExportOptions
         include Google::Apis::Core::Hashable
       
-        # The export format for groups export.
+        # The file format for exported messages.
         # Corresponds to the JSON property `exportFormat`
         # @return [String]
         attr_accessor :export_format
@@ -747,11 +750,11 @@ module Google
         end
       end
       
-      # The options for hangouts chat export.
+      # Options for Chat exports.
       class HangoutsChatExportOptions
         include Google::Apis::Core::Hashable
       
-        # The export format for hangouts chat export.
+        # The file format for exported messages.
         # Corresponds to the JSON property `exportFormat`
         # @return [String]
         attr_accessor :export_format
@@ -766,11 +769,12 @@ module Google
         end
       end
       
-      # Accounts to search
+      # The Chat spaces to search
       class HangoutsChatInfo
         include Google::Apis::Core::Hashable
       
-        # A set of rooms to search.
+        # A list of Chat spaces IDs, as provided by the [Chat API](https://developers.
+        # google.com/hangouts/chat).
         # Corresponds to the JSON property `roomId`
         # @return [Array<String>]
         attr_accessor :room_id
@@ -785,11 +789,12 @@ module Google
         end
       end
       
-      # Hangouts chat search advanced options
+      # Additional options for Google Chat search
       class HangoutsChatOptions
         include Google::Apis::Core::Hashable
       
-        # Set to true to include rooms.
+        # For searches by account or organizational unit, set to **true** to include
+        # rooms.
         # Corresponds to the JSON property `includeRooms`
         # @return [Boolean]
         attr_accessor :include_rooms
@@ -805,22 +810,23 @@ module Google
         end
       end
       
-      # An account being held in a particular hold. This structure is immutable. This
-      # can be either a single user or a google group, depending on the corpus. To
-      # work with Vault resources, the account must have the [required Vault
-      # privileges] (https://support.google.com/vault/answer/2799699) and access to
-      # the matter. To access a matter, the account must have created the matter, have
-      # the matter shared with them, or have the **View All Matters** privilege.
+      # An account covered by a hold. This structure is immutable. It can be an
+      # individual account or a Google Group, depending on the service. To work with
+      # Vault resources, the account must have the [required Vault privileges] (https:/
+      # /support.google.com/vault/answer/2799699) and access to the matter. To access
+      # a matter, the account must have created the matter, have the matter shared
+      # with them, or have the **View All Matters** privilege.
       class HeldAccount
         include Google::Apis::Core::Hashable
       
-        # The account's ID as provided by the Admin SDK.
+        # The account ID, as provided by the [Admin SDK](https://developers.google.com/
+        # admin-sdk/).
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
       
         # The primary email address of the account. If used as an input, this takes
-        # precedence over account ID.
+        # precedence over **accountId**.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -854,17 +860,17 @@ module Google
         end
       end
       
-      # Query options for Drive holds.
+      # Options for Drive holds.
       class HeldDriveQuery
         include Google::Apis::Core::Hashable
       
-        # If true, include files in shared drives in the hold.
+        # To include files in shared drives in the hold, set to **true**.
         # Corresponds to the JSON property `includeSharedDriveFiles`
         # @return [Boolean]
         attr_accessor :include_shared_drive_files
         alias_method :include_shared_drive_files?, :include_shared_drive_files
       
-        # If true, include files in Team Drives in the hold.
+        # To include files in Team Drives in the hold, set to **true**.
         # Corresponds to the JSON property `includeTeamDriveFiles`
         # @return [Boolean]
         attr_accessor :include_team_drive_files
@@ -885,19 +891,20 @@ module Google
       class HeldGroupsQuery
         include Google::Apis::Core::Hashable
       
-        # The end time range for the search query. These timestamps are in GMT and
-        # rounded down to the start of the given date.
+        # The end time for the query. Specify in GMT. The value is rounded to 12 AM on
+        # the specified date.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The start time range for the search query. These timestamps are in GMT and
-        # rounded down to the start of the given date.
+        # The start time for the query. Specify in GMT. The value is rounded to 12 AM on
+        # the specified date.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # The search terms for the hold.
+        # The [search operators](https://support.google.com/vault/answer/2474474) used
+        # to refine the messages covered by the hold.
         # Corresponds to the JSON property `terms`
         # @return [String]
         attr_accessor :terms
@@ -914,11 +921,11 @@ module Google
         end
       end
       
-      # Query options for hangouts chat holds.
+      # Options for Chat holds.
       class HeldHangoutsChatQuery
         include Google::Apis::Core::Hashable
       
-        # If true, include rooms the user has participated in.
+        # To include messages in Chat spaces the user was a member of, set to **true**.
         # Corresponds to the JSON property `includeRooms`
         # @return [Boolean]
         attr_accessor :include_rooms
@@ -934,23 +941,24 @@ module Google
         end
       end
       
-      # Query options for mail holds.
+      # Query options for Gmail holds.
       class HeldMailQuery
         include Google::Apis::Core::Hashable
       
-        # The end time range for the search query. These timestamps are in GMT and
-        # rounded down to the start of the given date.
+        # The end time for the query. Specify in GMT. The value is rounded to 12 AM on
+        # the specified date.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The start time range for the search query. These timestamps are in GMT and
-        # rounded down to the start of the given date.
+        # The start time for the query. Specify in GMT. The value is rounded to 12 AM on
+        # the specified date.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # The search terms for the hold.
+        # The [search operators](https://support.google.com/vault/answer/2474474) used
+        # to refine the messages covered by the hold.
         # Corresponds to the JSON property `terms`
         # @return [String]
         attr_accessor :terms
@@ -967,17 +975,17 @@ module Google
         end
       end
       
-      # A organizational unit being held in a particular hold. This structure is
-      # immutable.
+      # The organizational unit covered by a hold. This structure is immutable.
       class HeldOrgUnit
         include Google::Apis::Core::Hashable
       
-        # When the org unit was put on hold. This property is immutable.
+        # When the organizational unit was put on hold. This property is immutable.
         # Corresponds to the JSON property `holdTime`
         # @return [String]
         attr_accessor :hold_time
       
-        # The org unit's immutable ID as provided by the Admin SDK.
+        # The organizational unit's immutable ID as provided by the [Admin SDK](https://
+        # developers.google.com/admin-sdk/).
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
@@ -993,12 +1001,12 @@ module Google
         end
       end
       
-      # Query options for Voice holds.
+      # Options for Voice holds.
       class HeldVoiceQuery
         include Google::Apis::Core::Hashable
       
-        # Data covered by this rule. Should be non-empty. Order does not matter and
-        # duplicates will be ignored.
+        # A list of data types covered by the hold. Should be non-empty. Order does not
+        # matter and duplicates are ignored.
         # Corresponds to the JSON property `coveredData`
         # @return [Array<String>]
         attr_accessor :covered_data
@@ -1013,23 +1021,22 @@ module Google
         end
       end
       
-      # Represents a hold within Vault. A hold restricts purging of artifacts based on
-      # the combination of the query and accounts restrictions. A hold can be
-      # configured to either apply to an explicitly configured set of accounts, or can
-      # be applied to all members of an organizational unit. To work with Vault
-      # resources, the account must have the [required Vault privileges] (https://
-      # support.google.com/vault/answer/2799699) and access to the matter. To access a
-      # matter, the account must have created the matter, have the matter shared with
-      # them, or have the **View All Matters** privilege.
+      # A hold. A hold prevents the specified Google Workspace service from purging
+      # data for specific accounts or all members of an organizational unit. To work
+      # with Vault resources, the account must have the [required Vault privileges] (
+      # https://support.google.com/vault/answer/2799699) and access to the matter. To
+      # access a matter, the account must have created the matter, have the matter
+      # shared with them, or have the **View All Matters** privilege.
       class Hold
         include Google::Apis::Core::Hashable
       
-        # If set, the hold applies to the enumerated accounts and org_unit must be empty.
+        # If set, the hold applies to the specified accounts and **orgUnit** must be
+        # empty.
         # Corresponds to the JSON property `accounts`
         # @return [Array<Google::Apis::VaultV1::HeldAccount>]
         attr_accessor :accounts
       
-        # The corpus to be searched.
+        # The service to be searched.
         # Corresponds to the JSON property `corpus`
         # @return [String]
         attr_accessor :corpus
@@ -1044,13 +1051,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A organizational unit being held in a particular hold. This structure is
-        # immutable.
+        # The organizational unit covered by a hold. This structure is immutable.
         # Corresponds to the JSON property `orgUnit`
         # @return [Google::Apis::VaultV1::HeldOrgUnit]
         attr_accessor :org_unit
       
-        # Corpus specific queries.
+        # Service-specific options for holds.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::VaultV1::CorpusQuery]
         attr_accessor :query
@@ -1076,7 +1082,7 @@ module Google
         end
       end
       
-      # The holds for a matter.
+      # The exports for a matter.
       class ListExportsResponse
         include Google::Apis::Core::Hashable
       
@@ -1101,7 +1107,7 @@ module Google
         end
       end
       
-      # Returns a list of held accounts for a hold.
+      # Returns a list of the accounts covered by a hold.
       class ListHeldAccountsResponse
         include Google::Apis::Core::Hashable
       
@@ -1206,7 +1212,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of output saved queries.
+        # List of saved queries.
         # Corresponds to the JSON property `savedQueries`
         # @return [Array<Google::Apis::VaultV1::SavedQuery>]
         attr_accessor :saved_queries
@@ -1222,11 +1228,11 @@ module Google
         end
       end
       
-      # Mail specific count metrics.
+      # Gmail and classic Hangouts-specific count metrics.
       class MailCountResult
         include Google::Apis::Core::Hashable
       
-        # Error occurred when querying these accounts.
+        # Errors occurred when querying these accounts.
         # Corresponds to the JSON property `accountCountErrors`
         # @return [Array<Google::Apis::VaultV1::AccountCountError>]
         attr_accessor :account_count_errors
@@ -1241,9 +1247,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :matching_accounts_count
       
-        # When data scope is HELD_DATA in the request Query, these accounts in the
-        # request are not queried because they are not on hold. For other data scope,
-        # this field is not set.
+        # When **DataScope** is **HELD_DATA**, the number of accounts in the request
+        # that are not queried because they are not on hold. For other data scopes, this
+        # field is not set.
         # Corresponds to the JSON property `nonQueryableAccounts`
         # @return [Array<String>]
         attr_accessor :non_queryable_accounts
@@ -1267,16 +1273,16 @@ module Google
         end
       end
       
-      # The options for mail export.
+      # Options for Gmail exports.
       class MailExportOptions
         include Google::Apis::Core::Hashable
       
-        # The export file format.
+        # The file format for exported messages.
         # Corresponds to the JSON property `exportFormat`
         # @return [String]
         attr_accessor :export_format
       
-        # Set to true to export confidential mode content.
+        # To export confidential mode content, set to **true**.
         # Corresponds to the JSON property `showConfidentialModeContent`
         # @return [Boolean]
         attr_accessor :show_confidential_mode_content
@@ -1293,11 +1299,11 @@ module Google
         end
       end
       
-      # Mail search advanced options
+      # Additional options for Gmail search
       class MailOptions
         include Google::Apis::Core::Hashable
       
-        # Set to true to exclude drafts.
+        # Set to **true** to exclude drafts.
         # Corresponds to the JSON property `excludeDrafts`
         # @return [Boolean]
         attr_accessor :exclude_drafts
@@ -1321,19 +1327,19 @@ module Google
       class Matter
         include Google::Apis::Core::Hashable
       
-        # The description of the matter.
+        # An optional description for the matter.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The matter ID which is generated by the server. Should be blank when creating
-        # a new matter.
+        # The matter ID, which is generated by the server. Leave blank when creating a
+        # matter.
         # Corresponds to the JSON property `matterId`
         # @return [String]
         attr_accessor :matter_id
       
-        # List of users and access to the matter. Currently there is no programmer
-        # defined limit on the number of permissions a matter can have.
+        # Lists the users and their permission for the matter. Currently there is no
+        # programmer defined limit on the number of permissions a matter can have.
         # Corresponds to the JSON property `matterPermissions`
         # @return [Array<Google::Apis::VaultV1::MatterPermission>]
         attr_accessor :matter_permissions
@@ -1362,18 +1368,19 @@ module Google
         end
       end
       
-      # Currently each matter only has one owner, and all others are collaborators.
-      # When an account is purged, its corresponding MatterPermission resources cease
-      # to exist.
+      # Users can be matter owners or collaborators. Each matter has only one owner.
+      # All others users who can access the matter are collaborators. When an account
+      # is purged, its corresponding MatterPermission resources cease to exist.
       class MatterPermission
         include Google::Apis::Core::Hashable
       
-        # The account ID, as provided by Admin SDK.
+        # The account ID, as provided by the [Admin SDK](https://developers.google.com/
+        # admin-sdk/).
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
       
-        # The user's role in this matter.
+        # The user's role for the matter.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1451,11 +1458,12 @@ module Google
         end
       end
       
-      # Org Unit to search
+      # The organizational unit to search
       class OrgUnitInfo
         include Google::Apis::Core::Hashable
       
-        # Org unit to search, as provided by the Admin SDK Directory API.
+        # The name of the organizational unit to search, as provided by the [Admin SDK
+        # Directory API](https://developers.google.com/admin-sdk/directory/).
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
@@ -1470,60 +1478,59 @@ module Google
         end
       end
       
-      # A query definition relevant for search & export.
+      # The query definition used for search and export.
       class Query
         include Google::Apis::Core::Hashable
       
-        # Accounts to search
+        # The accounts to search
         # Corresponds to the JSON property `accountInfo`
         # @return [Google::Apis::VaultV1::AccountInfo]
         attr_accessor :account_info
       
-        # The corpus to search.
+        # The Google Workspace service to search.
         # Corresponds to the JSON property `corpus`
         # @return [String]
         attr_accessor :corpus
       
-        # The data source to search from.
+        # The data source to search.
         # Corresponds to the JSON property `dataScope`
         # @return [String]
         attr_accessor :data_scope
       
-        # Drive search advanced options
+        # Additional options for Drive search
         # Corresponds to the JSON property `driveOptions`
         # @return [Google::Apis::VaultV1::DriveOptions]
         attr_accessor :drive_options
       
-        # The end time range for the search query. These timestamps are in GMT and
-        # rounded down to the start of the given date.
+        # The end time for the search query. Specify in GMT. The value is rounded to 12
+        # AM on the specified date.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Accounts to search
+        # The Chat spaces to search
         # Corresponds to the JSON property `hangoutsChatInfo`
         # @return [Google::Apis::VaultV1::HangoutsChatInfo]
         attr_accessor :hangouts_chat_info
       
-        # Hangouts chat search advanced options
+        # Additional options for Google Chat search
         # Corresponds to the JSON property `hangoutsChatOptions`
         # @return [Google::Apis::VaultV1::HangoutsChatOptions]
         attr_accessor :hangouts_chat_options
       
-        # Mail search advanced options
+        # Additional options for Gmail search
         # Corresponds to the JSON property `mailOptions`
         # @return [Google::Apis::VaultV1::MailOptions]
         attr_accessor :mail_options
       
-        # The search method to use. This field is similar to the search_method field but
-        # is introduced to support shared drives. It supports all search method types.
-        # In case the search_method is TEAM_DRIVE the response of this field will be
-        # SHARED_DRIVE only.
+        # The entity to search. This field replaces **searchMethod** to support shared
+        # drives. When **searchMethod** is **TEAM_DRIVE**, the response of this field is
+        # **SHARED_DRIVE**.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
-        # Org Unit to search
+        # The organizational unit to search
         # Corresponds to the JSON property `orgUnitInfo`
         # @return [Google::Apis::VaultV1::OrgUnitInfo]
         attr_accessor :org_unit_info
@@ -1533,13 +1540,13 @@ module Google
         # @return [String]
         attr_accessor :search_method
       
-        # Shared drives to search
+        # The shared drives to search
         # Corresponds to the JSON property `sharedDriveInfo`
         # @return [Google::Apis::VaultV1::SharedDriveInfo]
         attr_accessor :shared_drive_info
       
-        # The start time range for the search query. These timestamps are in GMT and
-        # rounded down to the start of the given date.
+        # The start time for the search query. Specify in GMT. The value is rounded to
+        # 12 AM on the specified date.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -1549,18 +1556,22 @@ module Google
         # @return [Google::Apis::VaultV1::TeamDriveInfo]
         attr_accessor :team_drive_info
       
-        # The corpus-specific search operators used to generate search results.
+        # Service-specific [search operators](https://support.google.com/vault/answer/
+        # 2474474) to filter search results.
         # Corresponds to the JSON property `terms`
         # @return [String]
         attr_accessor :terms
       
         # The time zone name. It should be an IANA TZ name, such as "America/Los_Angeles"
-        # . For more information, see Time Zone.
+        # . For a list of time zone names, see [Time Zone](https://en.wikipedia.org/wiki/
+        # List_of_tz_database_time_zones). For more information about how Vault uses
+        # time zones, see [the Vault help center](https://support.google.com/vault/
+        # answer/6092995#time).
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
       
-        # Voice search options
+        # Additional options for Voice search
         # Corresponds to the JSON property `voiceOptions`
         # @return [Google::Apis::VaultV1::VoiceOptions]
         attr_accessor :voice_options
@@ -1595,7 +1606,7 @@ module Google
       class RemoveHeldAccountsRequest
         include Google::Apis::Core::Hashable
       
-        # Account IDs to identify HeldAccounts to remove.
+        # The account IDs of the accounts to remove from the hold.
         # Corresponds to the JSON property `accountIds`
         # @return [Array<String>]
         attr_accessor :account_ids
@@ -1614,8 +1625,8 @@ module Google
       class RemoveHeldAccountsResponse
         include Google::Apis::Core::Hashable
       
-        # A list of statuses for deleted accounts. Results have the same order as the
-        # request.
+        # A list of statuses for the deleted accounts. Results have the same order as
+        # the request.
         # Corresponds to the JSON property `statuses`
         # @return [Array<Google::Apis::VaultV1::Status>]
         attr_accessor :statuses
@@ -1685,31 +1696,32 @@ module Google
         end
       end
       
-      # Definition of the saved query. To work with Vault resources, the account must
-      # have the [required Vault privileges] (https://support.google.com/vault/answer/
-      # 2799699) and access to the matter. To access a matter, the account must have
-      # created the matter, have the matter shared with them, or have the **View All
-      # Matters** privilege.
+      # The definition of a saved query. To work with Vault resources, the account
+      # must have the [required Vault privileges](https://support.google.com/vault/
+      # answer/2799699) and access to the matter. To access a matter, the account must
+      # have created the matter, have the matter shared with them, or have the **View
+      # All Matters** privilege.
       class SavedQuery
         include Google::Apis::Core::Hashable
       
-        # Output only. The server generated timestamp at which saved query was created.
+        # Output only. The server-generated timestamp when the saved query was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Name of the saved query.
+        # The name of the saved query.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. The matter ID of the associated matter. The server does not look
-        # at this field during create and always uses matter id in the URL.
+        # Output only. The matter ID of the matter the saved query is saved in. The
+        # server does not use this field during create and always uses matter ID in the
+        # URL.
         # Corresponds to the JSON property `matterId`
         # @return [String]
         attr_accessor :matter_id
       
-        # A query definition relevant for search & export.
+        # The query definition used for search and export.
         # Corresponds to the JSON property `query`
         # @return [Google::Apis::VaultV1::Query]
         attr_accessor :query
@@ -1733,11 +1745,12 @@ module Google
         end
       end
       
-      # Shared drives to search
+      # The shared drives to search
       class SharedDriveInfo
         include Google::Apis::Core::Hashable
       
-        # List of Shared drive IDs, as provided by Drive API.
+        # A list of shared drive IDs, as provided by the [Drive API](https://developers.
+        # google.com/drive).
         # Corresponds to the JSON property `sharedDriveIds`
         # @return [Array<String>]
         attr_accessor :shared_drive_ids
@@ -1795,7 +1808,8 @@ module Google
       class TeamDriveInfo
         include Google::Apis::Core::Hashable
       
-        # List of Team Drive IDs, as provided by Drive API.
+        # List of Team Drive IDs, as provided by the [Drive API](https://developers.
+        # google.com/drive).
         # Corresponds to the JSON property `teamDriveIds`
         # @return [Array<String>]
         attr_accessor :team_drive_ids
@@ -1848,11 +1862,11 @@ module Google
         end
       end
       
-      # The options for voice export.
+      # The options for Voice exports.
       class VoiceExportOptions
         include Google::Apis::Core::Hashable
       
-        # The export format for voice export.
+        # The file format for exported text messages.
         # Corresponds to the JSON property `exportFormat`
         # @return [String]
         attr_accessor :export_format
@@ -1867,7 +1881,7 @@ module Google
         end
       end
       
-      # Voice search options
+      # Additional options for Voice search
       class VoiceOptions
         include Google::Apis::Core::Hashable
       
