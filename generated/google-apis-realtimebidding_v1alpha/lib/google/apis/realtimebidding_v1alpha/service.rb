@@ -52,6 +52,77 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Activates an existing bidding function. An activated function is available for
+        # invocation for the server-side TURTLEDOVE simulations.
+        # @param [String] name
+        #   Required. The name of the bidding function to activate. Format: `bidders/`
+        #   bidder_account_id`/biddingFunction/`bidding_function_name``
+        # @param [Google::Apis::RealtimebiddingV1alpha::ActivateBiddingFunctionRequest] activate_bidding_function_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1alpha::BiddingFunction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1alpha::BiddingFunction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def activate_bidding_function(name, activate_bidding_function_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:activate', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1alpha::ActivateBiddingFunctionRequest::Representation
+          command.request_object = activate_bidding_function_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1alpha::BiddingFunction::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1alpha::BiddingFunction
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Archives an existing bidding function. An archived function will not be
+        # available for function invocation for the server-side TURTLEDOVE simulations
+        # unless it is activated.
+        # @param [String] name
+        #   Required. The name of the bidding function to archive. Format: `bidders/`
+        #   bidder_account_id`/biddingFunction/`bidding_function_name``
+        # @param [Google::Apis::RealtimebiddingV1alpha::ArchiveBiddingFunctionRequest] archive_bidding_function_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1alpha::BiddingFunction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1alpha::BiddingFunction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def archive_bidding_function(name, archive_bidding_function_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:archive', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1alpha::ArchiveBiddingFunctionRequest::Representation
+          command.request_object = archive_bidding_function_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1alpha::BiddingFunction::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1alpha::BiddingFunction
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new bidding function.
         # @param [String] parent
         #   Required. The name of the bidder for which to create the bidding function.

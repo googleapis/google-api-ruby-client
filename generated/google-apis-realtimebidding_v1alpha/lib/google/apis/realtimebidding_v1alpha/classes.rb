@@ -22,6 +22,32 @@ module Google
   module Apis
     module RealtimebiddingV1alpha
       
+      # The request to activate a bidding function.
+      class ActivateBiddingFunctionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A request to archive a bidding function.
+      class ArchiveBiddingFunctionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The bidding function to be executed as part of the TURTLEDOVE simulation
       # experiment bidding flow.
       class BiddingFunction
@@ -38,6 +64,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The state of the bidding function.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # The type of the bidding function to be created.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -51,6 +82,7 @@ module Google
         def update!(**args)
           @bidding_function = args[:bidding_function] if args.key?(:bidding_function)
           @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
         end
       end
