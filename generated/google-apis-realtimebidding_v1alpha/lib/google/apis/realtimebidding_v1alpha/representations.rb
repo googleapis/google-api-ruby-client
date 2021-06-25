@@ -22,6 +22,18 @@ module Google
   module Apis
     module RealtimebiddingV1alpha
       
+      class ActivateBiddingFunctionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArchiveBiddingFunctionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BiddingFunction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,11 +46,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActivateBiddingFunctionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ArchiveBiddingFunctionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class BiddingFunction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bidding_function, as: 'biddingFunction'
           property :name, as: 'name'
+          property :state, as: 'state'
           property :type, as: 'type'
         end
       end
