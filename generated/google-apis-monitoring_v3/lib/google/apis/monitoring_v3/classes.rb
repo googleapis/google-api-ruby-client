@@ -3360,16 +3360,6 @@ module Google
         # @return [Google::Apis::MonitoringV3::Telemetry]
         attr_accessor :telemetry
       
-        # Labels which have been used to annotate the service. Label keys must start
-        # with a letter. Label keys and values may contain lowercase letters, numbers,
-        # underscores, and dashes. Label keys and values have a maximum length of 63
-        # characters, and must be less than 128 bytes in size. Up to 64 label entries
-        # may be stored. For labels which do not have a semantic value, the empty string
-        # may be supplied for the label value.
-        # Corresponds to the JSON property `userLabels`
-        # @return [Hash<String,String>]
-        attr_accessor :user_labels
-      
         def initialize(**args)
            update!(**args)
         end
@@ -3385,7 +3375,6 @@ module Google
           @mesh_istio = args[:mesh_istio] if args.key?(:mesh_istio)
           @name = args[:name] if args.key?(:name)
           @telemetry = args[:telemetry] if args.key?(:telemetry)
-          @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
       
