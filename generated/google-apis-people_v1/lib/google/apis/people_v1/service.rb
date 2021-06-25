@@ -365,7 +365,7 @@ module Google
         # @param [String] read_mask
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
-        #   are: * emailAddresses * metadata * names * phoneNumbers
+        #   are: * emailAddresses * metadata * names * phoneNumbers * photos
         # @param [Boolean] request_sync_token
         #   Optional. Whether the response should include `next_sync_token`, which can be
         #   used to get all changes since the last request. For subsequent sync requests
@@ -419,7 +419,7 @@ module Google
         # people/v1/other-contacts#search_the_users_other_contacts
         # @param [Fixnum] page_size
         #   Optional. The number of results to return. Defaults to 10 if field is not set,
-        #   or set to 0. Values greater than 10 will be capped to 10.
+        #   or set to 0. Values greater than 30 will be capped to 30.
         # @param [String] query
         #   Required. The plain-text query for the request. The query is used to match
         #   prefix phrases of the fields on a person. For example, a person with name "foo
@@ -858,7 +858,7 @@ module Google
         # google.com/people/v1/contacts#search_the_users_contacts
         # @param [Fixnum] page_size
         #   Optional. The number of results to return. Defaults to 10 if field is not set,
-        #   or set to 0. Values greater than 10 will be capped to 10.
+        #   or set to 0. Values greater than 30 will be capped to 30.
         # @param [String] query
         #   Required. The plain-text query for the request. The query is used to match
         #   prefix phrases of the fields on a person. For example, a person with name "foo
