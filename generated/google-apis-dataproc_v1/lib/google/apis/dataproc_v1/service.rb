@@ -1388,7 +1388,8 @@ module Google
         
         # Updates a cluster in a project. The returned Operation.metadata will be
         # ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/
-        # google.cloud.dataproc.v1#clusteroperationmetadata).
+        # google.cloud.dataproc.v1#clusteroperationmetadata). The cluster must be in a
+        # RUNNING state or an error is returned.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
