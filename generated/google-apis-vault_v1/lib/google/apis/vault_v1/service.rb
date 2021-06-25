@@ -23,7 +23,7 @@ module Google
       # G Suite Vault API
       #
       # Retention and eDiscovery for Google Workspace. To work with Vault resources,
-      #  the account must have the [required Vault privileges] (https://support.google.
+      #  the account must have the [required Vault privileges](https://support.google.
       #  com/vault/answer/2799699) and access to the matter. To access a matter, the
       #  account must have created the matter, have the matter shared with them, or
       #  have the **View All Matters** privilege. For example, to download an export,
@@ -88,7 +88,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Closes the specified matter. Returns matter with updated state.
+        # Closes the specified matter. Returns the matter with updated state.
         # @param [String] matter_id
         #   The matter ID.
         # @param [Google::Apis::VaultV1::CloseMatterRequest] close_matter_request_object
@@ -121,8 +121,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Counts the artifacts within the context of a matter and returns a detailed
-        # breakdown of metrics.
+        # Counts the accounts processed by the specified query.
         # @param [String] matter_id
         #   The matter ID.
         # @param [Google::Apis::VaultV1::CountArtifactsRequest] count_artifacts_request_object
@@ -155,7 +154,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new matter with the given name and description. The initial state is
+        # Creates a matter with the given name and description. The initial state is
         # open, and the owner is the method caller. Returns the created matter with
         # default view.
         # @param [Google::Apis::VaultV1::Matter] matter_object
@@ -187,7 +186,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified matter. Returns matter with updated state.
+        # Deletes the specified matter. Returns the matter with updated state.
         # @param [String] matter_id
         #   The matter ID
         # @param [String] fields
@@ -221,7 +220,7 @@ module Google
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] view
-        #   Specifies which parts of the Matter to return in the response.
+        #   Specifies how much information about the matter to return in the response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -250,16 +249,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists matters the user has access to.
+        # Lists matters the requestor has access to.
         # @param [Fixnum] page_size
         #   The number of matters to return in the response. Default and maximum are 100.
         # @param [String] page_token
         #   The pagination token as returned in the response.
         # @param [String] state
-        #   If set, list only matters with that specific state. The default is listing
-        #   matters of all states.
+        #   If set, lists only matters with the specified state. The default lists matters
+        #   of all states.
         # @param [String] view
-        #   Specifies which parts of the matter to return in response.
+        #   Specifies how much information about the matter to return in response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -323,7 +322,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Reopens the specified matter. Returns matter with updated state.
+        # Reopens the specified matter. Returns the matter with updated state.
         # @param [String] matter_id
         #   The matter ID.
         # @param [Google::Apis::VaultV1::ReopenMatterRequest] reopen_matter_request_object
@@ -356,7 +355,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes the specified matter. Returns matter with updated state.
+        # Undeletes the specified matter. Returns the matter with updated state.
         # @param [String] matter_id
         #   The matter ID.
         # @param [Google::Apis::VaultV1::UndeleteMatterRequest] undelete_matter_request_object
@@ -424,7 +423,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an Export.
+        # Creates an export.
         # @param [String] matter_id
         #   The matter ID.
         # @param [Google::Apis::VaultV1::Export] export_object
@@ -457,7 +456,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an Export.
+        # Deletes an export.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] export_id
@@ -490,7 +489,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an Export.
+        # Gets an export.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] export_id
@@ -523,7 +522,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Exports.
+        # Lists details about the exports in the specified matter.
         # @param [String] matter_id
         #   The matter ID.
         # @param [Fixnum] page_size
@@ -559,8 +558,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds HeldAccounts to a hold. Returns a list of accounts that have been
-        # successfully added. Accounts can only be added to an existing account-based
+        # Adds accounts to a hold. Returns a list of accounts that have been
+        # successfully added. Accounts can be added only to an existing account-based
         # hold.
         # @param [String] matter_id
         #   The matter ID.
@@ -597,7 +596,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a hold in the given matter.
+        # Creates a hold in the specified matter.
         # @param [String] matter_id
         #   The matter ID.
         # @param [Google::Apis::VaultV1::Hold] hold_object
@@ -630,7 +629,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes a hold by ID. This will release any HeldAccounts on this Hold.
+        # Removes the specified hold and releases the accounts or organizational unit
+        # covered by the hold. If the data is not preserved by another hold or retention
+        # rule, it might be purged.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -663,13 +664,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a hold by ID.
+        # Gets the specified hold.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
         #   The hold ID.
         # @param [String] view
-        #   Specifies which parts of the Hold to return.
+        #   The amount of detail to return for a hold.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -699,18 +700,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists holds within a matter. An empty page token in ListHoldsResponse denotes
-        # no more holds to list.
+        # Lists the holds in a matter.
         # @param [String] matter_id
         #   The matter ID.
         # @param [Fixnum] page_size
         #   The number of holds to return in the response, between 0 and 100 inclusive.
-        #   Leaving this empty, or as 0, is the same as page_size = 100.
+        #   Leaving this empty, or as 0, is the same as **page_size** = 100.
         # @param [String] page_token
         #   The pagination token as returned in the response. An empty token means start
         #   from the beginning.
         # @param [String] view
-        #   Specifies which parts of the Hold to return.
+        #   The amount of detail to return for a hold.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -741,9 +741,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes HeldAccounts from a hold. Returns a list of statuses in the same order
-        # as the request. If this request leaves the hold with no held accounts, the
-        # hold will not apply to any accounts.
+        # Removes the specified accounts from a hold. Returns a list of statuses in the
+        # same order as the request.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -779,9 +778,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the OU and/or query parameters of a hold. You cannot add accounts to a
-        # hold that covers an OU, nor can you add OUs to a hold that covers individual
-        # accounts. Accounts listed in the hold will be ignored.
+        # Updates the scope (organizational unit or accounts) and query parameters of a
+        # hold. You cannot add accounts to a hold that covers an organizational unit,
+        # nor can you add organizational units to a hold that covers individual accounts.
+        # If you try, the unsupported values are ignored.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -817,9 +817,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a HeldAccount to a hold. Accounts can only be added to a hold that has no
-        # held_org_unit set. Attempting to add an account to an OU-based hold will
-        # result in an error.
+        # Adds an account to a hold. Accounts can be added only to a hold that does not
+        # have an organizational unit set. If you try to add an account to an
+        # organizational unit-based hold, an error is returned.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -855,8 +855,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes a HeldAccount from a hold. If this request leaves the hold with no
-        # held accounts, the hold will not apply to any accounts.
+        # Removes an account from a hold.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -892,8 +891,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists HeldAccounts for a hold. This will only list individually specified held
-        # accounts. If the hold is on an OU, then use Admin SDK to enumerate its members.
+        # Lists the accounts covered by a hold. This can list only individually-
+        # specified accounts covered by the hold. If the hold covers an organizational
+        # unit, use the [Admin SDK](https://developers.google.com/admin-sdk/). to list
+        # the members of the organizational unit on hold.
         # @param [String] matter_id
         #   The matter ID.
         # @param [String] hold_id
@@ -928,7 +929,7 @@ module Google
         
         # Creates a saved query.
         # @param [String] matter_id
-        #   The matter ID of the parent matter for which the saved query is to be created.
+        #   The ID of the matter to create the saved query in.
         # @param [Google::Apis::VaultV1::SavedQuery] saved_query_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -959,11 +960,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a saved query by Id.
+        # Deletes the specified saved query.
         # @param [String] matter_id
-        #   The matter ID of the parent matter for which the saved query is to be deleted.
+        #   The ID of the matter to delete the saved query from.
         # @param [String] saved_query_id
-        #   ID of the saved query to be deleted.
+        #   ID of the saved query to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -992,12 +993,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a saved query by Id.
+        # Retrieves the specified saved query.
         # @param [String] matter_id
-        #   The matter ID of the parent matter for which the saved query is to be
-        #   retrieved.
+        #   The ID of the matter to get the saved query from.
         # @param [String] saved_query_id
-        #   ID of the saved query to be retrieved.
+        #   ID of the saved query to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1026,11 +1026,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists saved queries within a matter. An empty page token in
-        # ListSavedQueriesResponse denotes no more saved queries to list.
+        # Lists the saved queries in a matter.
         # @param [String] matter_id
-        #   The matter ID of the parent matter for which the saved queries are to be
-        #   retrieved.
+        #   The ID of the matter to get the saved queries for.
         # @param [Fixnum] page_size
         #   The maximum number of saved queries to return.
         # @param [String] page_token
