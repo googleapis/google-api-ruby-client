@@ -353,6 +353,7 @@ module Google
       class SasPortalDeviceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :antenna_model, as: 'antennaModel'
         end
       end
       
