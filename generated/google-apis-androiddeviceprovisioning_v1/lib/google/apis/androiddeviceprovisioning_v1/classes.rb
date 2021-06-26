@@ -130,6 +130,21 @@ module Google
         # @return [String]
         attr_accessor :company_name
       
+        # Input only. The preferred locale of the customer represented as a BCP47
+        # language code. This field is validated on input and requests containing
+        # unsupported language codes will be rejected. Supported language codes: Arabic (
+        # ar) Chinese (Hong Kong) (zh-HK) Chinese (Simplified) (zh-CN) Chinese (
+        # Traditional) (zh-TW) Czech (cs) Danish (da) Dutch (nl) English (UK) (en-GB)
+        # English (US) (en-US) Filipino (fil) Finnish (fi) French (fr) German (de)
+        # Hebrew (iw) Hindi (hi) Hungarian (hu) Indonesian (id) Italian (it) Japanese (
+        # ja) Korean (ko) Norwegian (Bokmal) (no) Polish (pl) Portuguese (Brazil) (pt-BR)
+        # Portuguese (Portugal) (pt-PT) Russian (ru) Spanish (es) Spanish (Latin
+        # America) (es-419) Swedish (sv) Thai (th) Turkish (tr) Ukrainian (uk)
+        # Vietnamese (vi)
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         # Output only. The API resource name of the company. The resource name is one of
         # the following formats: * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `
         # partners/[PARTNER_ID]/vendors/[VENDOR_ID]` * `partners/[PARTNER_ID]/vendors/[
@@ -139,12 +154,21 @@ module Google
         attr_accessor :name
       
         # Required. Input only. Email address of customer's users in the owner role. At
-        # least one `owner_email` is required. Each email address must be associated
-        # with a Google Account. Owners share the same access as admins but can also add,
-        # delete, and edit your organization's portal users.
+        # least one `owner_email` is required. Owners share the same access as admins
+        # but can also add, delete, and edit your organization's portal users.
         # Corresponds to the JSON property `ownerEmails`
         # @return [Array<String>]
         attr_accessor :owner_emails
+      
+        # Input only. If set to true, welcome email will not be sent to the customer. It
+        # is recommended to skip the welcome email if devices will be claimed with
+        # additional DEVICE_PROTECTION service, as the customer will receive separate
+        # emails at device claim time. This field is ignored if this is not a Zero-touch
+        # customer.
+        # Corresponds to the JSON property `skipWelcomeEmail`
+        # @return [Boolean]
+        attr_accessor :skip_welcome_email
+        alias_method :skip_welcome_email?, :skip_welcome_email
       
         # Output only. Whether any user from the company has accepted the latest Terms
         # of Service (ToS). See TermsStatus.
@@ -161,8 +185,10 @@ module Google
           @admin_emails = args[:admin_emails] if args.key?(:admin_emails)
           @company_id = args[:company_id] if args.key?(:company_id)
           @company_name = args[:company_name] if args.key?(:company_name)
+          @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @owner_emails = args[:owner_emails] if args.key?(:owner_emails)
+          @skip_welcome_email = args[:skip_welcome_email] if args.key?(:skip_welcome_email)
           @terms_status = args[:terms_status] if args.key?(:terms_status)
         end
       end

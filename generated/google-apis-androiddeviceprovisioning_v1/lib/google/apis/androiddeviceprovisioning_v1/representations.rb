@@ -296,8 +296,10 @@ module Google
           collection :admin_emails, as: 'adminEmails'
           property :company_id, :numeric_string => true, as: 'companyId'
           property :company_name, as: 'companyName'
+          property :language_code, as: 'languageCode'
           property :name, as: 'name'
           collection :owner_emails, as: 'ownerEmails'
+          property :skip_welcome_email, as: 'skipWelcomeEmail'
           property :terms_status, as: 'termsStatus'
         end
       end
