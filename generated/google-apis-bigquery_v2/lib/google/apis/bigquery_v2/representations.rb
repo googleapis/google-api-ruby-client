@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BiEngineReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BiEngineStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryModelTraining
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,12 +310,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Explanation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,12 +347,6 @@ module Google
       end
       
       class GetServiceAccountResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GlobalExplanation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -996,6 +996,23 @@ module Google
         end
       end
       
+      class BiEngineReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
+      end
+      
+      class BiEngineStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bi_engine_mode, as: 'biEngineMode'
+          collection :bi_engine_reasons, as: 'biEngineReasons', class: Google::Apis::BigqueryV2::BiEngineReason, decorator: Google::Apis::BigqueryV2::BiEngineReason::Representation
+      
+        end
+      end
+      
       class BigQueryModelTraining
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1403,14 +1420,6 @@ module Google
         end
       end
       
-      class Explanation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :attribution, as: 'attribution'
-          property :feature_name, as: 'featureName'
-        end
-      end
-      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1499,15 +1508,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :kind, as: 'kind'
-        end
-      end
-      
-      class GlobalExplanation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :class_label, as: 'classLabel'
-          collection :explanations, as: 'explanations', class: Google::Apis::BigqueryV2::Explanation, decorator: Google::Apis::BigqueryV2::Explanation::Representation
-      
         end
       end
       
@@ -1792,6 +1792,8 @@ module Google
       class JobStatistics2
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bi_engine_statistics, as: 'biEngineStatistics', class: Google::Apis::BigqueryV2::BiEngineStatistics, decorator: Google::Apis::BigqueryV2::BiEngineStatistics::Representation
+      
           property :billing_tier, as: 'billingTier'
           property :cache_hit, as: 'cacheHit'
           property :ddl_affected_row_access_policy_count, :numeric_string => true, as: 'ddlAffectedRowAccessPolicyCount'
@@ -2628,8 +2630,6 @@ module Google
           property :data_split_result, as: 'dataSplitResult', class: Google::Apis::BigqueryV2::DataSplitResult, decorator: Google::Apis::BigqueryV2::DataSplitResult::Representation
       
           property :evaluation_metrics, as: 'evaluationMetrics', class: Google::Apis::BigqueryV2::EvaluationMetrics, decorator: Google::Apis::BigqueryV2::EvaluationMetrics::Representation
-      
-          collection :global_explanations, as: 'globalExplanations', class: Google::Apis::BigqueryV2::GlobalExplanation, decorator: Google::Apis::BigqueryV2::GlobalExplanation::Representation
       
           collection :results, as: 'results', class: Google::Apis::BigqueryV2::IterationResult, decorator: Google::Apis::BigqueryV2::IterationResult::Representation
       

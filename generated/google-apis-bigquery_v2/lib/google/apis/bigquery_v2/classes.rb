@@ -538,6 +538,60 @@ module Google
       end
       
       # 
+      class BiEngineReason
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] High-level BI Engine reason for partial or disabled acceleration.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # [Output-only] Free form human-readable reason for partial or disabled
+        # acceleration.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # 
+      class BiEngineStatistics
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] Specifies which mode of BI Engine acceleration was performed (if
+        # any).
+        # Corresponds to the JSON property `biEngineMode`
+        # @return [String]
+        attr_accessor :bi_engine_mode
+      
+        # In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory
+        # reasons as to why BI Engine could not accelerate. In case the full query was
+        # accelerated, this field is not populated.
+        # Corresponds to the JSON property `biEngineReasons`
+        # @return [Array<Google::Apis::BigqueryV2::BiEngineReason>]
+        attr_accessor :bi_engine_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bi_engine_mode = args[:bi_engine_mode] if args.key?(:bi_engine_mode)
+          @bi_engine_reasons = args[:bi_engine_reasons] if args.key?(:bi_engine_reasons)
+        end
+      end
+      
+      # 
       class BigQueryModelTraining
         include Google::Apis::Core::Hashable
       
@@ -2231,32 +2285,6 @@ module Google
         end
       end
       
-      # Explanation for a single feature.
-      class Explanation
-        include Google::Apis::Core::Hashable
-      
-        # Attribution of feature.
-        # Corresponds to the JSON property `attribution`
-        # @return [Float]
-        attr_accessor :attribution
-      
-        # Full name of the feature. For non-numerical features, will be formatted like ..
-        # Overall size of feature name will always be truncated to first 120 characters.
-        # Corresponds to the JSON property `featureName`
-        # @return [String]
-        attr_accessor :feature_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attribution = args[:attribution] if args.key?(:attribution)
-          @feature_name = args[:feature_name] if args.key?(:feature_name)
-        end
-      end
-      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -2652,34 +2680,6 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # Global explanations containing the top most important features after training.
-      class GlobalExplanation
-        include Google::Apis::Core::Hashable
-      
-        # Class label for this set of global explanations. Will be empty/null for binary
-        # logistic and linear regression models. Sorted alphabetically in descending
-        # order.
-        # Corresponds to the JSON property `classLabel`
-        # @return [String]
-        attr_accessor :class_label
-      
-        # A list of the top global explanations. Sorted by absolute value of attribution
-        # in descending order.
-        # Corresponds to the JSON property `explanations`
-        # @return [Array<Google::Apis::BigqueryV2::Explanation>]
-        attr_accessor :explanations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @class_label = args[:class_label] if args.key?(:class_label)
-          @explanations = args[:explanations] if args.key?(:explanations)
         end
       end
       
@@ -3960,6 +3960,11 @@ module Google
       class JobStatistics2
         include Google::Apis::Core::Hashable
       
+        # BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
+        # Corresponds to the JSON property `biEngineStatistics`
+        # @return [Google::Apis::BigqueryV2::BiEngineStatistics]
+        attr_accessor :bi_engine_statistics
+      
         # [Output-only] Billing tier for the job.
         # Corresponds to the JSON property `billingTier`
         # @return [Fixnum]
@@ -4145,6 +4150,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bi_engine_statistics = args[:bi_engine_statistics] if args.key?(:bi_engine_statistics)
           @billing_tier = args[:billing_tier] if args.key?(:billing_tier)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @ddl_affected_row_access_policy_count = args[:ddl_affected_row_access_policy_count] if args.key?(:ddl_affected_row_access_policy_count)
@@ -7307,13 +7313,6 @@ module Google
         # @return [Google::Apis::BigqueryV2::EvaluationMetrics]
         attr_accessor :evaluation_metrics
       
-        # Global explanations for important features of the model. For multi-class
-        # models, there is one entry for each label class. For other models, there is
-        # only one entry in the list.
-        # Corresponds to the JSON property `globalExplanations`
-        # @return [Array<Google::Apis::BigqueryV2::GlobalExplanation>]
-        attr_accessor :global_explanations
-      
         # Output of each iteration run, results.size() <= max_iterations.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::BigqueryV2::IterationResult>]
@@ -7337,7 +7336,6 @@ module Google
         def update!(**args)
           @data_split_result = args[:data_split_result] if args.key?(:data_split_result)
           @evaluation_metrics = args[:evaluation_metrics] if args.key?(:evaluation_metrics)
-          @global_explanations = args[:global_explanations] if args.key?(:global_explanations)
           @results = args[:results] if args.key?(:results)
           @start_time = args[:start_time] if args.key?(:start_time)
           @training_options = args[:training_options] if args.key?(:training_options)
