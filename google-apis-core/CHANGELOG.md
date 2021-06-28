@@ -1,7 +1,10 @@
 # Release History
 
-## [0.3.0](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-core/v0.2.1...v0.3.0) (2021-03-07)
+## 0.4.0 (2021-06-28)
 
+* Expanded googleauth dependency to include future 1.x versions
+
+## [0.3.0](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-core/v0.2.1...v0.3.0) (2021-03-07)
 
 ### Features
 
