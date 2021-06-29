@@ -104,10 +104,9 @@ module Google
         #   Optional. Get supported languages of this model. The format depends on model
         #   type: - AutoML Translation models: `projects/`project-number-or-id`/locations/`
         #   location-id`/models/`model-id`` - General (built-in) models: `projects/`
-        #   project-number-or-id`/locations/`location-id`/models/general/nmt`, `projects/`
-        #   project-number-or-id`/locations/`location-id`/models/general/base` Returns
+        #   project-number-or-id`/locations/`location-id`/models/general/nmt`, Returns
         #   languages supported by the specified model. If missing, we get supported
-        #   languages of Google general base (PBMT) model.
+        #   languages of Google general NMT model.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -345,10 +344,9 @@ module Google
         #   Optional. Get supported languages of this model. The format depends on model
         #   type: - AutoML Translation models: `projects/`project-number-or-id`/locations/`
         #   location-id`/models/`model-id`` - General (built-in) models: `projects/`
-        #   project-number-or-id`/locations/`location-id`/models/general/nmt`, `projects/`
-        #   project-number-or-id`/locations/`location-id`/models/general/base` Returns
+        #   project-number-or-id`/locations/`location-id`/models/general/nmt`, Returns
         #   languages supported by the specified model. If missing, we get supported
-        #   languages of Google general base (PBMT) model.
+        #   languages of Google general NMT model.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
