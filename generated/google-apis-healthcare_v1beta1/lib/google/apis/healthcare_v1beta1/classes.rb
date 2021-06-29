@@ -677,6 +677,36 @@ module Google
         end
       end
       
+      # Request to configure the search parameters for the specified FHIR store.
+      class ConfigureSearchRequest
+        include Google::Apis::Core::Hashable
+      
+        # The canonical URLs of the search parameters that are intended to be used for
+        # the FHIR store. See https://www.hl7.org/fhir/references.html#canonical for
+        # explanation on FHIR canonical urls
+        # Corresponds to the JSON property `canonicalUrls`
+        # @return [Array<String>]
+        attr_accessor :canonical_urls
+      
+        # If `validate_only` is set to true, the method will compile all the search
+        # parameters without actually setting the search config for the store and
+        # triggering the reindex.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_urls = args[:canonical_urls] if args.key?(:canonical_urls)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Represents a user's consent.
       class Consent
         include Google::Apis::Core::Hashable
@@ -2007,6 +2037,11 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::NotificationConfig]
         attr_accessor :notification_config
       
+        # Contains the configuration for FHIR search.
+        # Corresponds to the JSON property `searchConfig`
+        # @return [Google::Apis::HealthcareV1beta1::SearchConfig]
+        attr_accessor :search_config
+      
         # A list of streaming configs that configure the destinations of streaming
         # export for every resource mutation in this FHIR store. Each store is allowed
         # to have up to 10 streaming configs. After a new config is added, the next
@@ -2048,6 +2083,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @search_config = args[:search_config] if args.key?(:search_config)
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
           @validation_config = args[:validation_config] if args.key?(:validation_config)
           @version = args[:version] if args.key?(:version)
@@ -4632,6 +4668,56 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @error = args[:error] if args.key?(:error)
+        end
+      end
+      
+      # Contains the configuration for FHIR search.
+      class SearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # A list of search parameters in this FHIR store that are used to configure this
+        # FHIR store.
+        # Corresponds to the JSON property `searchParameters`
+        # @return [Array<Google::Apis::HealthcareV1beta1::SearchParameter>]
+        attr_accessor :search_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @search_parameters = args[:search_parameters] if args.key?(:search_parameters)
+        end
+      end
+      
+      # Contains the versioned name and the URL for one SearchParameter.
+      class SearchParameter
+        include Google::Apis::Core::Hashable
+      
+        # The canonical url of the search parameter resource.
+        # Corresponds to the JSON property `canonicalUrl`
+        # @return [String]
+        attr_accessor :canonical_url
+      
+        # The versioned name of the search parameter resource. The format is projects/`
+        # project-id`/locations/`location`/datasets/`dataset-id`/fhirStores/`fhirStore-
+        # id`/fhir/SearchParameter/`resource-id`/_history/`version-id` For fhir stores
+        # with disable_resource_versioning=true, the format is projects/`project-id`/
+        # locations/`location`/datasets/`dataset-id`/fhirStores/`fhirStore-id`/fhir/
+        # SearchParameter/`resource-id`/
+        # Corresponds to the JSON property `parameter`
+        # @return [String]
+        attr_accessor :parameter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_url = args[:canonical_url] if args.key?(:canonical_url)
+          @parameter = args[:parameter] if args.key?(:parameter)
         end
       end
       
