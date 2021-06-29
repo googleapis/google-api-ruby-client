@@ -435,12 +435,19 @@ module Google
       class SasPortalDeviceMetadata
         include Google::Apis::Core::Hashable
       
+        # If populated, the Antenna Model Pattern to use. Format is: RecordCreatorId:
+        # PatternId
+        # Corresponds to the JSON property `antennaModel`
+        # @return [String]
+        attr_accessor :antenna_model
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @antenna_model = args[:antenna_model] if args.key?(:antenna_model)
         end
       end
       
