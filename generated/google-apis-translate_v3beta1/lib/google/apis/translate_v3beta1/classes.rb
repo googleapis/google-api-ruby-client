@@ -81,8 +81,7 @@ module Google
         # AutoML Translation model. The value format depends on model type: - AutoML
         # Translation models: `projects/`project-number-or-id`/locations/`location-id`/
         # models/`model-id`` - General (built-in) models: `projects/`project-number-or-
-        # id`/locations/`location-id`/models/general/nmt`, `projects/`project-number-or-
-        # id`/locations/`location-id`/models/general/base` If the map is empty or a
+        # id`/locations/`location-id`/models/general/nmt`, If the map is empty or a
         # specific model is not requested for a language pair, then default google model
         # (nmt) is used.
         # Corresponds to the JSON property `models`
@@ -154,8 +153,7 @@ module Google
         # AutoML Translation model. The value format depends on model type: - AutoML
         # Translation models: `projects/`project-number-or-id`/locations/`location-id`/
         # models/`model-id`` - General (built-in) models: `projects/`project-number-or-
-        # id`/locations/`location-id`/models/general/nmt`, `projects/`project-number-or-
-        # id`/locations/`location-id`/models/general/base` If the map is empty or a
+        # id`/locations/`location-id`/models/general/nmt`, If the map is empty or a
         # specific model is not requested for a language pair, then default google model
         # (nmt) is used.
         # Corresponds to the JSON property `models`
@@ -952,8 +950,7 @@ module Google
         # Optional. The `model` type requested for this translation. The format depends
         # on model type: - AutoML Translation models: `projects/`project-number-or-id`/
         # locations/`location-id`/models/`model-id`` - General (built-in) models: `
-        # projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`, `
-        # projects/`project-number-or-id`/locations/`location-id`/models/general/base`
+        # projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`,
         # If not provided, the default Google model (NMT) will be used for translation.
         # Corresponds to the JSON property `model`
         # @return [String]
@@ -1098,11 +1095,10 @@ module Google
         # Optional. The `model` type requested for this translation. The format depends
         # on model type: - AutoML Translation models: `projects/`project-number-or-id`/
         # locations/`location-id`/models/`model-id`` - General (built-in) models: `
-        # projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`, `
-        # projects/`project-number-or-id`/locations/`location-id`/models/general/base`
+        # projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`,
         # For global (non-regionalized) requests, use `location-id` `global`. For
         # example, `projects/`project-number-or-id`/locations/global/models/general/nmt`.
-        # If missing, the system decides which google base model to use.
+        # If not provided, the default Google model (NMT) will be used
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
