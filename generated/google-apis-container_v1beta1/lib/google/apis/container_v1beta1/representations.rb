@@ -1023,6 +1023,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1beta1::AddonsConfig, decorator: Google::Apis::ContainerV1beta1::AddonsConfig::Representation
       
+          property :desired_authenticator_groups_config, as: 'desiredAuthenticatorGroupsConfig', class: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig::Representation
+      
           property :desired_autopilot, as: 'desiredAutopilot', class: Google::Apis::ContainerV1beta1::Autopilot, decorator: Google::Apis::ContainerV1beta1::Autopilot::Representation
       
           property :desired_binary_authorization, as: 'desiredBinaryAuthorization', class: Google::Apis::ContainerV1beta1::BinaryAuthorization, decorator: Google::Apis::ContainerV1beta1::BinaryAuthorization::Representation
