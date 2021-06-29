@@ -1353,7 +1353,8 @@ module Google
         attr_accessor :storage_source
       
         # Location of the source manifest in Google Cloud Storage. This feature is in
-        # Preview.
+        # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
+        # builders/tree/master/gcs-fetcher).
         # Corresponds to the JSON property `storageSourceManifest`
         # @return [Google::Apis::CloudbuildV1alpha1::StorageSourceManifest]
         attr_accessor :storage_source_manifest
@@ -1397,7 +1398,8 @@ module Google
         attr_accessor :resolved_storage_source
       
         # Location of the source manifest in Google Cloud Storage. This feature is in
-        # Preview.
+        # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
+        # builders/tree/master/gcs-fetcher).
         # Corresponds to the JSON property `resolvedStorageSourceManifest`
         # @return [Google::Apis::CloudbuildV1alpha1::StorageSourceManifest]
         attr_accessor :resolved_storage_source_manifest
@@ -1490,7 +1492,8 @@ module Google
       end
       
       # Location of the source manifest in Google Cloud Storage. This feature is in
-      # Preview.
+      # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
+      # builders/tree/master/gcs-fetcher).
       class StorageSourceManifest
         include Google::Apis::Core::Hashable
       
