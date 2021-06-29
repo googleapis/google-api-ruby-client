@@ -31,7 +31,7 @@ module Google
       #    Keep = Google::Apis::KeepV1 # Alias the module
       #    service = Keep::KeepService.new
       #
-      # @see https://support.google.com/keep
+      # @see https://developers.google.com/keep/api
       class KeepService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

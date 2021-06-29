@@ -24,7 +24,7 @@ module Google
     # This API is an enterprise-only API used to create and manage the Keep notes
     # within your domain, including resolving issues identified by CASB software.
     #
-    # @see https://support.google.com/keep
+    # @see https://developers.google.com/keep/api
     module KeepV1
       # Version of the Google Keep API this client connects to.
       # This is NOT the gem version.
