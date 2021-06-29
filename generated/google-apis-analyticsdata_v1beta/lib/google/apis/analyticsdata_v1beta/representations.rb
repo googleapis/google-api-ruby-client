@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MinuteRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NumericFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -564,6 +570,15 @@ module Google
         end
       end
       
+      class MinuteRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_minutes_ago, as: 'endMinutesAgo'
+          property :name, as: 'name'
+          property :start_minutes_ago, as: 'startMinutesAgo'
+        end
+      end
+      
       class NumericFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -738,6 +753,8 @@ module Google
           property :metric_filter, as: 'metricFilter', class: Google::Apis::AnalyticsdataV1beta::FilterExpression, decorator: Google::Apis::AnalyticsdataV1beta::FilterExpression::Representation
       
           collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsdataV1beta::Metric, decorator: Google::Apis::AnalyticsdataV1beta::Metric::Representation
+      
+          collection :minute_ranges, as: 'minuteRanges', class: Google::Apis::AnalyticsdataV1beta::MinuteRange, decorator: Google::Apis::AnalyticsdataV1beta::MinuteRange::Representation
       
           collection :order_bys, as: 'orderBys', class: Google::Apis::AnalyticsdataV1beta::OrderBy, decorator: Google::Apis::AnalyticsdataV1beta::OrderBy::Representation
       

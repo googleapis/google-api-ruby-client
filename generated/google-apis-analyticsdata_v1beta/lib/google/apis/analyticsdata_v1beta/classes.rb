@@ -900,6 +900,53 @@ module Google
         end
       end
       
+      # A contiguous set of minutes: startMinutesAgo, startMinutesAgo + 1, ...,
+      # endMinutesAgo. Requests are allowed up to 2 minute ranges.
+      class MinuteRange
+        include Google::Apis::Core::Hashable
+      
+        # The inclusive end minute for the query as a number of minutes before now.
+        # Cannot be before `startMinutesAgo`. For example, `"endMinutesAgo": 15`
+        # specifies the report should include event data from prior to 15 minutes ago.
+        # If unspecified, `endMinutesAgo` is defaulted to 0. Standard Analytics
+        # properties can request any minute in the last 30 minutes of event data (`
+        # endMinutesAgo <= 29`), and 360 Analytics properties can request any minute in
+        # the last 60 minutes of event data (`endMinutesAgo <= 59`).
+        # Corresponds to the JSON property `endMinutesAgo`
+        # @return [Fixnum]
+        attr_accessor :end_minutes_ago
+      
+        # Assigns a name to this minute range. The dimension `dateRange` is valued to
+        # this name in a report response. If set, cannot begin with `date_range_` or `
+        # RESERVED_`. If not set, minute ranges are named by their zero based index in
+        # the request: `date_range_0`, `date_range_1`, etc.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The inclusive start minute for the query as a number of minutes before now.
+        # For example, `"startMinutesAgo": 29` specifies the report should include event
+        # data from 29 minutes ago and after. Cannot be after `endMinutesAgo`. If
+        # unspecified, `startMinutesAgo` is defaulted to 29. Standard Analytics
+        # properties can request up to the last 30 minutes of event data (`
+        # startMinutesAgo <= 29`), and 360 Analytics properties can request up to the
+        # last 60 minutes of event data (`startMinutesAgo <= 59`).
+        # Corresponds to the JSON property `startMinutesAgo`
+        # @return [Fixnum]
+        attr_accessor :start_minutes_ago
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_minutes_ago = args[:end_minutes_ago] if args.key?(:end_minutes_ago)
+          @name = args[:name] if args.key?(:name)
+          @start_minutes_ago = args[:start_minutes_ago] if args.key?(:start_minutes_ago)
+        end
+      end
+      
       # Filters for numeric or date values.
       class NumericFilter
         include Google::Apis::Core::Hashable
@@ -1507,6 +1554,15 @@ module Google
         # @return [Array<Google::Apis::AnalyticsdataV1beta::Metric>]
         attr_accessor :metrics
       
+        # The minute ranges of event data to read. If unspecified, one minute range for
+        # the last 30 minutes will be used. If multiple minute ranges are requested,
+        # each response row will contain a zero based minute range index. If two minute
+        # ranges overlap, the event data for the overlapping minutes is included in the
+        # response rows for both minute ranges.
+        # Corresponds to the JSON property `minuteRanges`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::MinuteRange>]
+        attr_accessor :minute_ranges
+      
         # Specifies how rows are ordered in the response.
         # Corresponds to the JSON property `orderBys`
         # @return [Array<Google::Apis::AnalyticsdataV1beta::OrderBy>]
@@ -1531,6 +1587,7 @@ module Google
           @metric_aggregations = args[:metric_aggregations] if args.key?(:metric_aggregations)
           @metric_filter = args[:metric_filter] if args.key?(:metric_filter)
           @metrics = args[:metrics] if args.key?(:metrics)
+          @minute_ranges = args[:minute_ranges] if args.key?(:minute_ranges)
           @order_bys = args[:order_bys] if args.key?(:order_bys)
           @return_property_quota = args[:return_property_quota] if args.key?(:return_property_quota)
         end
