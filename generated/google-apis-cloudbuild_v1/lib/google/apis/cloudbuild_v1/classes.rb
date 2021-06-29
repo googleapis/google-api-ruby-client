@@ -596,6 +596,14 @@ module Google
       class BuildTrigger
         include Google::Apis::Core::Hashable
       
+        # Autodetect build configuration. The following precedence is used (case
+        # insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4.
+        # Dockerfile Currently only available for GitHub App Triggers.
+        # Corresponds to the JSON property `autodetect`
+        # @return [Boolean]
+        attr_accessor :autodetect
+        alias_method :autodetect?, :autodetect
+      
         # A build resource in the Cloud Build API. At a high level, a `Build` describes
         # where to find source code, how to build it (for example, the builder image to
         # run on the source), and where to store the built artifacts. Fields can include
@@ -718,6 +726,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autodetect = args[:autodetect] if args.key?(:autodetect)
           @build = args[:build] if args.key?(:build)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -1811,7 +1820,8 @@ module Google
         attr_accessor :storage_source
       
         # Location of the source manifest in Google Cloud Storage. This feature is in
-        # Preview.
+        # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
+        # builders/tree/master/gcs-fetcher).
         # Corresponds to the JSON property `storageSourceManifest`
         # @return [Google::Apis::CloudbuildV1::StorageSourceManifest]
         attr_accessor :storage_source_manifest
@@ -1855,7 +1865,8 @@ module Google
         attr_accessor :resolved_storage_source
       
         # Location of the source manifest in Google Cloud Storage. This feature is in
-        # Preview.
+        # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
+        # builders/tree/master/gcs-fetcher).
         # Corresponds to the JSON property `resolvedStorageSourceManifest`
         # @return [Google::Apis::CloudbuildV1::StorageSourceManifest]
         attr_accessor :resolved_storage_source_manifest
@@ -1948,7 +1959,8 @@ module Google
       end
       
       # Location of the source manifest in Google Cloud Storage. This feature is in
-      # Preview.
+      # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
+      # builders/tree/master/gcs-fetcher).
       class StorageSourceManifest
         include Google::Apis::Core::Hashable
       
