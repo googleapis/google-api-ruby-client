@@ -1016,7 +1016,7 @@ module Google
         attr_accessor :action
       
         # Type of the link between the two accounts. Acceptable values are: - "`
-        # channelPartner`" - "`eCommercePlatform`"
+        # channelPartner`" - "`eCommercePlatform`" - "`paymentServiceProvider`"
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -1027,7 +1027,8 @@ module Google
         attr_accessor :linked_account_id
       
         # Provided services. Acceptable values are: - "`shoppingAdsProductManagement`" -
-        # "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
+        # "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`
+        # paymentProcessing`"
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
