@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigureSearchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Consent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -862,6 +868,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1146,6 +1164,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class ConfigureSearchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :canonical_urls, as: 'canonicalUrls'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -1515,6 +1541,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1beta1::NotificationConfig, decorator: Google::Apis::HealthcareV1beta1::NotificationConfig::Representation
+      
+          property :search_config, as: 'searchConfig', class: Google::Apis::HealthcareV1beta1::SearchConfig, decorator: Google::Apis::HealthcareV1beta1::SearchConfig::Representation
       
           collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1beta1::StreamConfig, decorator: Google::Apis::HealthcareV1beta1::StreamConfig::Representation
       
@@ -2246,6 +2274,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, as: 'data'
           property :error, as: 'error'
+        end
+      end
+      
+      class SearchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :search_parameters, as: 'searchParameters', class: Google::Apis::HealthcareV1beta1::SearchParameter, decorator: Google::Apis::HealthcareV1beta1::SearchParameter::Representation
+      
+        end
+      end
+      
+      class SearchParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_url, as: 'canonicalUrl'
+          property :parameter, as: 'parameter'
         end
       end
       
