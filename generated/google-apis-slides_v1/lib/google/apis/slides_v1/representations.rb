@@ -1821,6 +1821,7 @@ module Google
       class SlideProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_skipped, as: 'isSkipped'
           property :layout_object_id, as: 'layoutObjectId'
           property :master_object_id, as: 'masterObjectId'
           property :notes_page, as: 'notesPage', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation

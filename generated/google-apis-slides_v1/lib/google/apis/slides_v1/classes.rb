@@ -3530,6 +3530,12 @@ module Google
       class SlideProperties
         include Google::Apis::Core::Hashable
       
+        # Whether the slide is skipped in the presentation mode. Defaults to false.
+        # Corresponds to the JSON property `isSkipped`
+        # @return [Boolean]
+        attr_accessor :is_skipped
+        alias_method :is_skipped?, :is_skipped
+      
         # The object ID of the layout that this slide is based on. This property is read-
         # only.
         # Corresponds to the JSON property `layoutObjectId`
@@ -3553,6 +3559,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @is_skipped = args[:is_skipped] if args.key?(:is_skipped)
           @layout_object_id = args[:layout_object_id] if args.key?(:layout_object_id)
           @master_object_id = args[:master_object_id] if args.key?(:master_object_id)
           @notes_page = args[:notes_page] if args.key?(:notes_page)
