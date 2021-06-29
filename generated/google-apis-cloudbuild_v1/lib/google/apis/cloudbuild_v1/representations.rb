@@ -439,6 +439,7 @@ module Google
       class BuildTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autodetect, as: 'autodetect'
           property :build, as: 'build', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation
       
           property :create_time, as: 'createTime'
