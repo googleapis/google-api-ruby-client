@@ -16,13 +16,13 @@ module Google
   module Apis
     module AnalyticsdataV1beta
       # Version of the google-apis-analyticsdata_v1beta gem
-      GEM_VERSION = "0.4.0"
+      GEM_VERSION = "0.5.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.3.0"
+      GENERATOR_VERSION = "0.4.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20210403"
+      REVISION = "20210625"
     end
   end
 end
