@@ -1,5 +1,9 @@
 # Release History
 
+## 0.4.0 (2021-06-28)
+
+* Update core dependency to require at least 0.4 and allow 1.x versions
+
 ## [0.3.0](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-generator/v0.2.0...google-apis-generator/v0.3.0) (2021-06-01)
 
 
