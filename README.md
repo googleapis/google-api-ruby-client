@@ -30,11 +30,11 @@ files.items.each do |file|
 end
 
 # Upload a file
-metadata = Google::Apis::DriveV3::File.new(title: 'My document')
-metadata = drive.insert_file(metadata, upload_source: 'test.txt', content_type: 'text/plain')
+metadata = Google::Apis::DriveV3::File.new(name: 'test.txt')
+metadata = drive.create_file(metadata, upload_source: '/tmp/test.txt', content_type: 'text/plain')
 
 # Download a file
-drive.get_file(metadata.id, download_dest: '/tmp/myfile.txt')
+drive.get_file(metadata.id, download_dest: '/tmp/downloaded-test.txt')
 ```
 
 Following is another example using the Content API (Google Merchant Center), provided by the `google-apis-content_v2` gem:
