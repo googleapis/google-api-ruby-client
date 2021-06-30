@@ -209,7 +209,11 @@ module Google
       
       # An app's DeviceCheck configuration object. This configuration is used by
       # ExchangeDeviceCheckToken to validate device tokens issued to apps by
-      # DeviceCheck.
+      # DeviceCheck. It also controls certain properties of the returned App Check
+      # token, such as its ttl. Note that the Team ID registered with your app is used
+      # as part of the validation process. Please register it via the Firebase Console
+      # or programmatically via the [Firebase Management Service](https://firebase.
+      # google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps/patch).
       class GoogleFirebaseAppcheckV1betaDeviceCheckConfig
         include Google::Apis::Core::Hashable
       
@@ -324,7 +328,8 @@ module Google
         end
       end
       
-      # Response message for ExchangeAppAttestAttestation
+      # Response message for ExchangeAppAttestAttestation and
+      # ExchangeAppAttestDebugAttestation
       class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse
         include Google::Apis::Core::Hashable
       
@@ -601,7 +606,8 @@ module Google
       
       # An app's reCAPTCHA v3 configuration object. This configuration is used by
       # ExchangeRecaptchaToken to validate reCAPTCHA tokens issued to apps by
-      # reCAPTCHA v3.
+      # reCAPTCHA v3. It also controls certain properties of the returned App Check
+      # token, such as its ttl.
       class GoogleFirebaseAppcheckV1betaRecaptchaConfig
         include Google::Apis::Core::Hashable
       
