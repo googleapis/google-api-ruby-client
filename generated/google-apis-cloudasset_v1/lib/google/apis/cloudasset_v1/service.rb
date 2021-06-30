@@ -816,6 +816,20 @@ module Google
         #   to find Cloud resources that contain "Important" as a word in any of the
         #   searchable fields and are also located in the "us-west1" region or the "global"
         #   location.
+        # @param [String] read_mask
+        #   Optional. A comma-separated list of fields specifying which fields to be
+        #   returned in ResourceSearchResult. Only '*' or combination of top level fields
+        #   can be specified. Field names of both snake_case and camelCase are supported.
+        #   Examples: `"*"`, `"name,location"`, `"name,versionedResources"`. The read_mask
+        #   paths must be valid field paths listed but not limited to (both snake_case and
+        #   camelCase are supported): * name * asset_type or assetType * project *
+        #   display_name or displayName * description * location * labels * network_tags
+        #   or networkTags * kms_key or kmsKey * create_time or createTime * update_time
+        #   or updateTime * state * additional_attributes or additionalAttributes *
+        #   versioned_resources or versionedResources If read_mask is not specified, all
+        #   fields except versionedResources will be returned. If only '*' is specified,
+        #   all fields including versionedResources will be returned. Any invalid field
+        #   path will trigger INVALID_ARGUMENT error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -833,7 +847,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_all_resources(scope, asset_types: nil, order_by: nil, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_all_resources(scope, asset_types: nil, order_by: nil, page_size: nil, page_token: nil, query: nil, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+scope}:searchAllResources', options)
           command.response_representation = Google::Apis::CloudassetV1::SearchAllResourcesResponse::Representation
           command.response_class = Google::Apis::CloudassetV1::SearchAllResourcesResponse
@@ -843,6 +857,7 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['query'] = query unless query.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

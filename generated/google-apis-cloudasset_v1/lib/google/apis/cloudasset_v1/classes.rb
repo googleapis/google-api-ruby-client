@@ -3755,6 +3755,15 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Versioned resource representations of this resource. This is repeated because
+        # there could be multiple versions of resource representations during version
+        # migration. This `versioned_resources` field is not searchable. Some attributes
+        # of the resource representations are exposed in `additional_attributes` field,
+        # so as to allow users to search on them.
+        # Corresponds to the JSON property `versionedResources`
+        # @return [Array<Google::Apis::CloudassetV1::VersionedResource>]
+        attr_accessor :versioned_resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3778,6 +3787,7 @@ module Google
           @project = args[:project] if args.key?(:project)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @versioned_resources = args[:versioned_resources] if args.key?(:versioned_resources)
         end
       end
       
@@ -4112,6 +4122,40 @@ module Google
         def update!(**args)
           @architecture = args[:architecture] if args.key?(:architecture)
           @package_name = args[:package_name] if args.key?(:package_name)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Resource representation as defined by the corresponding service providing the
+      # resource for a given API version.
+      class VersionedResource
+        include Google::Apis::Core::Hashable
+      
+        # JSON representation of the resource as defined by the corresponding service
+        # providing this resource. Example: If the resource is an instance provided by
+        # Compute Engine, this field will contain the JSON representation of the
+        # instance as defined by Compute Engine: `https://cloud.google.com/compute/docs/
+        # reference/rest/v1/instances`. You can find the resource definition for each
+        # supported resource type in this table: `https://cloud.google.com/asset-
+        # inventory/docs/supported-asset-types#searchable_asset_types`
+        # Corresponds to the JSON property `resource`
+        # @return [Hash<String,Object>]
+        attr_accessor :resource
+      
+        # API version of the resource. Example: If the resource is an instance provided
+        # by Compute Engine v1 API as defined in `https://cloud.google.com/compute/docs/
+        # reference/rest/v1/instances`, version will be "v1".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
           @version = args[:version] if args.key?(:version)
         end
       end
