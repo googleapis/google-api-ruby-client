@@ -1,0 +1,7 @@
+{
+    "api_id": "networksecurity:v1beta1",
+    "name_pretty": "Network Security API",
+    "distribution_name": "google-apis-networksecurity_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
