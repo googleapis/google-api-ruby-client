@@ -562,6 +562,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VersionedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WindowsQuickFixEngineeringPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1434,6 +1440,8 @@ module Google
           property :project, as: 'project'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+          collection :versioned_resources, as: 'versionedResources', class: Google::Apis::CloudassetV1::VersionedResource, decorator: Google::Apis::CloudassetV1::VersionedResource::Representation
+      
         end
       end
       
@@ -1529,6 +1537,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :architecture, as: 'architecture'
           property :package_name, as: 'packageName'
+          property :version, as: 'version'
+        end
+      end
+      
+      class VersionedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource, as: 'resource'
           property :version, as: 'version'
         end
       end
