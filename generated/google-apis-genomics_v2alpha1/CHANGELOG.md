@@ -1,5 +1,9 @@
 # Release history for google-apis-genomics_v2alpha1
 
+### v0.10.0 (2021-06-30)
+
+* Regenerated using generator version 0.4.0
+
 ### v0.9.0 (2021-06-24)
 
 * Unspecified changes
