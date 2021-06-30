@@ -9178,7 +9178,7 @@ module Google
       class GoogleCloudDialogflowV2beta1Environment
         include Google::Apis::Core::Hashable
       
-        # Required. The agent version loaded into this environment. Supported formats: -
+        # Optional. The agent version loaded into this environment. Supported formats: -
         # `projects//agent/versions/` - `projects//locations//agent/versions/`
         # Corresponds to the JSON property `agentVersion`
         # @return [String]
