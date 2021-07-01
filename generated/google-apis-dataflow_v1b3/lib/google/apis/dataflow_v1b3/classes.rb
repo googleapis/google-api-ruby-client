@@ -165,8 +165,7 @@ module Google
         # @return [String]
         attr_accessor :time
       
-        # A short and friendly name for the worker pool this event refers to, populated
-        # from the value of PoolStageRelation::user_pool_name.
+        # A short and friendly name for the worker pool this event refers to.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
