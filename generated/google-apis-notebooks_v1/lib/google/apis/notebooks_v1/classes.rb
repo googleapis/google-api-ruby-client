@@ -393,6 +393,11 @@ module Google
         # @return [Google::Apis::NotebooksV1::ExecutionTemplate]
         attr_accessor :execution_template
       
+        # Output only. The URI of the external job used to execute the notebook.
+        # Corresponds to the JSON property `jobUri`
+        # @return [String]
+        attr_accessor :job_uri
+      
         # Output only. The resource name of the execute. Format: `projects/`project_id`/
         # locations/`location`/execution/`execution_id`
         # Corresponds to the JSON property `name`
@@ -424,6 +429,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @execution_template = args[:execution_template] if args.key?(:execution_template)
+          @job_uri = args[:job_uri] if args.key?(:job_uri)
           @name = args[:name] if args.key?(:name)
           @output_notebook_file = args[:output_notebook_file] if args.key?(:output_notebook_file)
           @state = args[:state] if args.key?(:state)

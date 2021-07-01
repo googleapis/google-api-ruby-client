@@ -21,9 +21,9 @@ module Google
   module Apis
     # Notebooks API
     #
-    # AI Platform Notebooks API is used to manage notebook resources in Google Cloud.
+    # Notebooks API is used to manage notebook resources in Google Cloud.
     #
-    # @see https://cloud.google.com/ai-platform/notebooks/docs/
+    # @see https://cloud.google.com/notebooks/docs/
     module NotebooksV1
       # Version of the Notebooks API this client connects to.
       # This is NOT the gem version.
