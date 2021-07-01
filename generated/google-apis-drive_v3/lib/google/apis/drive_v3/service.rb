@@ -665,7 +665,7 @@ module Google
         
         # Lists the user's shared drives.
         # @param [Fixnum] page_size
-        #   Maximum number of shared drives to return.
+        #   Maximum number of shared drives to return per page.
         # @param [String] page_token
         #   Page token for shared drives.
         # @param [String] q
