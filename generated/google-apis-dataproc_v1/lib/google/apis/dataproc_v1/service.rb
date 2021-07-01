@@ -1080,13 +1080,13 @@ module Google
         #   Required. The Dataproc region in which to handle the request.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
         # @param [String] request_id
-        #   Optional. A unique id used to identify the request. If the server receives two
+        #   Optional. A unique ID used to identify the request. If the server receives two
         #   CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
         #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with
         #   the same id, then the second request will be ignored and the first google.
         #   longrunning.Operation created and stored in the backend is returned.It is
         #   recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/
-        #   Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        #   Universally_unique_identifier).The ID must contain only letters (a-z, A-Z),
         #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] fields
@@ -1134,13 +1134,13 @@ module Google
         #   Optional. Specifying the cluster_uuid means the RPC should fail (with error
         #   NOT_FOUND) if cluster with specified UUID does not exist.
         # @param [String] request_id
-        #   Optional. A unique id used to identify the request. If the server receives two
+        #   Optional. A unique ID used to identify the request. If the server receives two
         #   DeleteClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
         #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.DeleteClusterRequest)s with
         #   the same id, then the second request will be ignored and the first google.
         #   longrunning.Operation created and stored in the backend is returned.It is
         #   recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/
-        #   Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        #   Universally_unique_identifier).The ID must contain only letters (a-z, A-Z),
         #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] fields
@@ -1407,13 +1407,13 @@ module Google
         #   buffers/docs/proto3#json)).Only supported on Dataproc image versions 1.2 and
         #   higher.
         # @param [String] request_id
-        #   Optional. A unique id used to identify the request. If the server receives two
+        #   Optional. A unique ID used to identify the request. If the server receives two
         #   UpdateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
         #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.UpdateClusterRequest)s with
         #   the same id, then the second request will be ignored and the first google.
         #   longrunning.Operation created and stored in the backend is returned.It is
         #   recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/
-        #   Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        #   Universally_unique_identifier).The ID must contain only letters (a-z, A-Z),
         #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         #   characters.
         # @param [String] update_mask
@@ -1459,6 +1459,45 @@ module Google
           command.query['gracefulDecommissionTimeout'] = graceful_decommission_timeout unless graceful_decommission_timeout.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Repairs a cluster.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
+        # @param [String] region
+        #   Required. The Dataproc region in which to handle the request.
+        # @param [String] cluster_name
+        #   Required. The cluster name.
+        # @param [Google::Apis::DataprocV1::RepairClusterRequest] repair_cluster_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def repair_cluster(project_id, region, cluster_name, repair_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:repair', options)
+          command.request_representation = Google::Apis::DataprocV1::RepairClusterRequest::Representation
+          command.request_object = repair_cluster_request_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['clusterName'] = cluster_name unless cluster_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

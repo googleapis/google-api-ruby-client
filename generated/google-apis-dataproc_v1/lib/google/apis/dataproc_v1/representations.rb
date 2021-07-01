@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RepairClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReservationAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1265,6 +1271,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :regexes, as: 'regexes'
+        end
+      end
+      
+      class RepairClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uuid, as: 'clusterUuid'
+          property :request_id, as: 'requestId'
         end
       end
       
