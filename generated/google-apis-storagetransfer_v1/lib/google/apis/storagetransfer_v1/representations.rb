@@ -211,6 +211,7 @@ module Google
       
           property :bucket_name, as: 'bucketName'
           property :path, as: 'path'
+          property :role_arn, as: 'roleArn'
         end
       end
       
@@ -283,6 +284,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_email, as: 'accountEmail'
+          property :subject_id, as: 'subjectId'
         end
       end
       
