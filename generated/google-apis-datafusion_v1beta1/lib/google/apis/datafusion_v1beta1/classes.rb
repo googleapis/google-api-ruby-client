@@ -41,6 +41,39 @@ module Google
         end
       end
       
+      # Request message to create dns peering.
+      class AddDnsPeeringRequest
+        include Google::Apis::Core::Hashable
+      
+        # DNS peering configuration. These configurations are used to create DNS peering
+        # with the customer Cloud DNS.
+        # Corresponds to the JSON property `dnsPeering`
+        # @return [Google::Apis::DatafusionV1beta1::DnsPeering]
+        attr_accessor :dns_peering
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_peering = args[:dns_peering] if args.key?(:dns_peering)
+        end
+      end
+      
+      # Response message for set dns peering method.
+      class AddDnsPeeringResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -196,6 +229,72 @@ module Google
         end
       end
       
+      # The crypto key configuration. This field is used by the Customer-managed
+      # encryption keys (CMEK) feature.
+      class CryptoKeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the key which is used to encrypt/decrypt customer data. For key in
+        # Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/
+        # */cryptoKeys/*`.
+        # Corresponds to the JSON property `keyReference`
+        # @return [String]
+        attr_accessor :key_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_reference = args[:key_reference] if args.key?(:key_reference)
+        end
+      end
+      
+      # DNS peering configuration. These configurations are used to create DNS peering
+      # with the customer Cloud DNS.
+      class DnsPeering
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional description of the dns zone.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Name of the dns.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Optional. Optional target network to which dns peering should happen.
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [String]
+        attr_accessor :target_network
+      
+        # Optional. Optional target project to which dns peering should happen.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        # Required. Name of the zone.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @domain = args[:domain] if args.key?(:domain)
+          @target_network = args[:target_network] if args.key?(:target_network)
+          @target_project = args[:target_project] if args.key?(:target_project)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -267,6 +366,63 @@ module Google
         end
       end
       
+      # IAMPolicy encapsulates the IAM policy name, definition and status of policy
+      # fetching.
+      class IamPolicy
+        include Google::Apis::Core::Hashable
+      
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members` to a single `role`. Members can be
+        # user accounts, service accounts, Google groups, and domains (such as G Suite).
+        # A `role` is a named list of permissions; each `role` can be an IAM predefined
+        # role or a user-created custom role. For some types of Google Cloud resources,
+        # a `binding` can also specify a `condition`, which is a logical expression that
+        # allows access to a resource only if the expression evaluates to `true`. A
+        # condition can add constraints based on attributes of the request, the resource,
+        # or both. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+        # title": "expirable access", "description": "Does not grant access after Sep
+        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+        # members: - user:mike@example.com - group:admins@example.com - domain:google.
+        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+        # roles/resourcemanager.organizationViewer condition: title: expirable access
+        # description: Does not grant access after Sep 2020 expression: request.time <
+        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # description of IAM and its features, see the [IAM documentation](https://cloud.
+        # google.com/iam/docs/).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::DatafusionV1beta1::Policy]
+        attr_accessor :policy
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DatafusionV1beta1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # Represents a Data Fusion instance.
       class Instance
         include Google::Apis::Core::Hashable
@@ -291,6 +447,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # The crypto key configuration. This field is used by the Customer-managed
+        # encryption keys (CMEK) feature.
+        # Corresponds to the JSON property `cryptoKeyConfig`
+        # @return [Google::Apis::DatafusionV1beta1::CryptoKeyConfig]
+        attr_accessor :crypto_key_config
       
         # User-managed service account to set on Dataproc when Cloud Data Fusion creates
         # Dataproc to run data processing pipelines. This allows users to have fine-
@@ -433,6 +595,7 @@ module Google
           @api_endpoint = args[:api_endpoint] if args.key?(:api_endpoint)
           @available_version = args[:available_version] if args.key?(:available_version)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_config = args[:crypto_key_config] if args.key?(:crypto_key_config)
           @dataproc_service_account = args[:dataproc_service_account] if args.key?(:dataproc_service_account)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -480,6 +643,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_versions = args[:available_versions] if args.key?(:available_versions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # List dns peering response.
+      class ListDnsPeeringsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of dns peering configs.
+        # Corresponds to the JSON property `dnsPeerings`
+        # @return [Array<Google::Apis::DatafusionV1beta1::DnsPeering>]
+        attr_accessor :dns_peerings
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_peerings = args[:dns_peerings] if args.key?(:dns_peerings)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -537,6 +726,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # List namespaces response.
+      class ListNamespacesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of namespaces
+        # Corresponds to the JSON property `namespaces`
+        # @return [Array<Google::Apis::DatafusionV1beta1::Namespace>]
+        attr_accessor :namespaces
+      
+        # Token to retrieve the next page of results or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespaces = args[:namespaces] if args.key?(:namespaces)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -609,6 +824,32 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents the information of a namespace
+      class Namespace
+        include Google::Apis::Core::Hashable
+      
+        # IAMPolicy encapsulates the IAM policy name, definition and status of policy
+        # fetching.
+        # Corresponds to the JSON property `iamPolicy`
+        # @return [Google::Apis::DatafusionV1beta1::IamPolicy]
+        attr_accessor :iam_policy
+      
+        # Name of the given namespace.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_policy = args[:iam_policy] if args.key?(:iam_policy)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -855,6 +1096,38 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Request message to remove dns peering.
+      class RemoveDnsPeeringRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The zone to be removed.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Response message for set dns peering method.
+      class RemoveDnsPeeringResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
