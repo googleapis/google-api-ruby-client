@@ -76,6 +76,14 @@ module Google
         # @return [String]
         attr_accessor :path
       
+        # Input only. Role arn to support temporary credentials via
+        # AssumeRoleWithWebIdentity. When role arn is provided, transfer service will
+        # fetch temporary credentials for the session using AssumeRoleWithWebIdentity
+        # call for the provided role using the [GoogleServiceAccount] for this project.
+        # Corresponds to the JSON property `roleArn`
+        # @return [String]
+        attr_accessor :role_arn
+      
         def initialize(**args)
            update!(**args)
         end
@@ -85,6 +93,7 @@ module Google
           @aws_access_key = args[:aws_access_key] if args.key?(:aws_access_key)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @path = args[:path] if args.key?(:path)
+          @role_arn = args[:role_arn] if args.key?(:role_arn)
         end
       end
       
@@ -141,9 +150,12 @@ module Google
       class AzureCredentials
         include Google::Apis::Core::Hashable
       
-        # Required. Azure shared access signature. (see [Grant limited access to Azure
-        # Storage resources using shared access signatures (SAS)](https://docs.microsoft.
-        # com/en-us/azure/storage/common/storage-sas-overview)).
+        # Required. Azure shared access signature (SAS). *Note:*Copying data from Azure
+        # Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-
+        # stages). During Preview, if you are copying data from ADLS Gen 2, you must use
+        # an account SAS. For more information about SAS, see [Grant limited access to
+        # Azure Storage resources using shared access signatures (SAS)](https://docs.
+        # microsoft.com/en-us/azure/storage/common/storage-sas-overview).
         # Corresponds to the JSON property `sasToken`
         # @return [String]
         attr_accessor :sas_token
@@ -328,6 +340,11 @@ module Google
         # @return [String]
         attr_accessor :account_email
       
+        # Unique identifier for the service account.
+        # Corresponds to the JSON property `subjectId`
+        # @return [String]
+        attr_accessor :subject_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -335,6 +352,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_email = args[:account_email] if args.key?(:account_email)
+          @subject_id = args[:subject_id] if args.key?(:subject_id)
         end
       end
       
