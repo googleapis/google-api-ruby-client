@@ -249,7 +249,7 @@ module Google
         end
       end
       
-      # A Google Cloud Redis instance.
+      # A Google Cloud Redis instance. next id = 30
       class Instance
         include Google::Apis::Core::Hashable
       
