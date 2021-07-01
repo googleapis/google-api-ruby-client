@@ -39,6 +39,7 @@ module Google
           property :custom_reply_to, as: 'customReplyTo'
           property :custom_roles_enabled_for_settings_to_be_merged, as: 'customRolesEnabledForSettingsToBeMerged'
           property :default_message_deny_notification_text, as: 'defaultMessageDenyNotificationText'
+          property :default_sender, as: 'default_sender'
           property :description, as: 'description'
           property :email, as: 'email'
           property :enable_collaborative_inbox, as: 'enableCollaborativeInbox'
