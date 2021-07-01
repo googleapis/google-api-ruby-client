@@ -1,7 +1,8 @@
 # Release history for google-apis-groupssettings_v1
 
-### v0.5.0 (2021-06-29)
+### v0.5.0 (2021-07-01)
 
+* Regenerated from discovery document revision 20210624
 * Regenerated using generator version 0.4.0
 
 ### v0.4.0 (2021-06-24)

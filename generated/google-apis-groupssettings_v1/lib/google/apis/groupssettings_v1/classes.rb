@@ -99,6 +99,13 @@ module Google
         # @return [String]
         attr_accessor :default_message_deny_notification_text
       
+        # Default sender for members who can post messages as the group. Possible values
+        # are: - `DEFAULT_SELF`: By default messages will be sent from the user - `GROUP`
+        # : By default messages will be sent from the group
+        # Corresponds to the JSON property `default_sender`
+        # @return [String]
+        attr_accessor :default_sender
+      
         # Description of the group. This property value may be an empty string if no
         # group description has been entered. If entered, the maximum group description
         # is no more than 300 characters.
@@ -659,6 +666,7 @@ module Google
           @custom_reply_to = args[:custom_reply_to] if args.key?(:custom_reply_to)
           @custom_roles_enabled_for_settings_to_be_merged = args[:custom_roles_enabled_for_settings_to_be_merged] if args.key?(:custom_roles_enabled_for_settings_to_be_merged)
           @default_message_deny_notification_text = args[:default_message_deny_notification_text] if args.key?(:default_message_deny_notification_text)
+          @default_sender = args[:default_sender] if args.key?(:default_sender)
           @description = args[:description] if args.key?(:description)
           @email = args[:email] if args.key?(:email)
           @enable_collaborative_inbox = args[:enable_collaborative_inbox] if args.key?(:enable_collaborative_inbox)
