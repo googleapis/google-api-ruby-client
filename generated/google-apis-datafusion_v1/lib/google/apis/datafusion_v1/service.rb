@@ -95,7 +95,7 @@ module Google
         # @param [Boolean] include_unrevealed_locations
         #   If true, the returned list will include locations which are not yet revealed.
         # @param [Fixnum] page_size
-        #   The maximum number of results to return. If not set, the service will select a
+        #   The maximum number of results to return. If not set, the service selects a
         #   default.
         # @param [String] page_token
         #   A page token received from the `next_page_token` field in the response. Send

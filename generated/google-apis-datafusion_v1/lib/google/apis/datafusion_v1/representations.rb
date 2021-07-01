@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CryptoKeyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -201,6 +207,13 @@ module Google
         end
       end
       
+      class CryptoKeyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_reference, as: 'keyReference'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -226,6 +239,8 @@ module Google
           collection :available_version, as: 'availableVersion', class: Google::Apis::DatafusionV1::Version, decorator: Google::Apis::DatafusionV1::Version::Representation
       
           property :create_time, as: 'createTime'
+          property :crypto_key_config, as: 'cryptoKeyConfig', class: Google::Apis::DatafusionV1::CryptoKeyConfig, decorator: Google::Apis::DatafusionV1::CryptoKeyConfig::Representation
+      
           property :dataproc_service_account, as: 'dataprocServiceAccount'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
