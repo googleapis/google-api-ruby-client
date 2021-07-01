@@ -95,7 +95,7 @@ module Google
         # @param [Boolean] include_unrevealed_locations
         #   If true, the returned list will include locations which are not yet revealed.
         # @param [Fixnum] page_size
-        #   The maximum number of results to return. If not set, the service will select a
+        #   The maximum number of results to return. If not set, the service selects a
         #   default.
         # @param [String] page_token
         #   A page token received from the `next_page_token` field in the response. Send
@@ -536,6 +536,109 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Add DNS peering on the given resource.
+        # @param [String] parent
+        #   The resource on which DNS peering will be created.
+        # @param [Google::Apis::DatafusionV1beta1::AddDnsPeeringRequest] add_dns_peering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatafusionV1beta1::AddDnsPeeringResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatafusionV1beta1::AddDnsPeeringResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_dns_peering(parent, add_dns_peering_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/dnsPeerings:add', options)
+          command.request_representation = Google::Apis::DatafusionV1beta1::AddDnsPeeringRequest::Representation
+          command.request_object = add_dns_peering_request_object
+          command.response_representation = Google::Apis::DatafusionV1beta1::AddDnsPeeringResponse::Representation
+          command.response_class = Google::Apis::DatafusionV1beta1::AddDnsPeeringResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List DNS peering for a given resource.
+        # @param [String] parent
+        #   Required. The resource on which dns peering will be listed.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.
+        # @param [String] page_token
+        #   The next_page_token value to use if there are additional results to retrieve
+        #   for this list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatafusionV1beta1::ListDnsPeeringsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatafusionV1beta1::ListDnsPeeringsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_instance_dns_peerings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dnsPeerings:list', options)
+          command.response_representation = Google::Apis::DatafusionV1beta1::ListDnsPeeringsResponse::Representation
+          command.response_class = Google::Apis::DatafusionV1beta1::ListDnsPeeringsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Remove DNS peering on the given resource.
+        # @param [String] parent
+        #   The resource on which DNS peering will be removed.
+        # @param [Google::Apis::DatafusionV1beta1::RemoveDnsPeeringRequest] remove_dns_peering_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatafusionV1beta1::RemoveDnsPeeringResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatafusionV1beta1::RemoveDnsPeeringResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_dns_peering(parent, remove_dns_peering_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/dnsPeerings:remove', options)
+          command.request_representation = Google::Apis::DatafusionV1beta1::RemoveDnsPeeringRequest::Representation
+          command.request_object = remove_dns_peering_request_object
+          command.response_representation = Google::Apis::DatafusionV1beta1::RemoveDnsPeeringResponse::Representation
+          command.response_class = Google::Apis::DatafusionV1beta1::RemoveDnsPeeringResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -572,6 +675,48 @@ module Google
           command.response_class = Google::Apis::DatafusionV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List namespaces in a given instance
+        # @param [String] parent
+        #   Required. The instance to list its namespaces.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.
+        # @param [String] page_token
+        #   The next_page_token value to use if there are additional results to retrieve
+        #   for this list request.
+        # @param [String] view
+        #   By default, only basic information about a namespace is returned (e.g. name).
+        #   When `NAMESPACE_VIEW_FULL` is specified, additional information associated
+        #   with a namespace gets returned (e.g. IAM policy set on the namespace)
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatafusionV1beta1::ListNamespacesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatafusionV1beta1::ListNamespacesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_instance_namespaces(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/namespaces', options)
+          command.response_representation = Google::Apis::DatafusionV1beta1::ListNamespacesResponse::Representation
+          command.response_class = Google::Apis::DatafusionV1beta1::ListNamespacesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
