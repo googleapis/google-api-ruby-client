@@ -499,6 +499,7 @@ module Google
           property :display_name, as: 'displayName'
           property :execution_template, as: 'executionTemplate', class: Google::Apis::NotebooksV1::ExecutionTemplate, decorator: Google::Apis::NotebooksV1::ExecutionTemplate::Representation
       
+          property :job_uri, as: 'jobUri'
           property :name, as: 'name'
           property :output_notebook_file, as: 'outputNotebookFile'
           property :state, as: 'state'

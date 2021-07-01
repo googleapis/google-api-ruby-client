@@ -22,7 +22,7 @@ module Google
     module NotebooksV1
       # Notebooks API
       #
-      # AI Platform Notebooks API is used to manage notebook resources in Google Cloud.
+      # Notebooks API is used to manage notebook resources in Google Cloud.
       #
       # @example
       #    require 'google/apis/notebooks_v1'
@@ -30,7 +30,7 @@ module Google
       #    Notebooks = Google::Apis::NotebooksV1 # Alias the module
       #    service = Notebooks::AIPlatformNotebooksService.new
       #
-      # @see https://cloud.google.com/ai-platform/notebooks/docs/
+      # @see https://cloud.google.com/notebooks/docs/
       class AIPlatformNotebooksService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
