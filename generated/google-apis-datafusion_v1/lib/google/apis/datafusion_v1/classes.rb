@@ -202,6 +202,28 @@ module Google
         end
       end
       
+      # The crypto key configuration. This field is used by the Customer-managed
+      # encryption keys (CMEK) feature.
+      class CryptoKeyConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the key which is used to encrypt/decrypt customer data. For key in
+        # Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/
+        # */cryptoKeys/*`.
+        # Corresponds to the JSON property `keyReference`
+        # @return [String]
+        attr_accessor :key_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_reference = args[:key_reference] if args.key?(:key_reference)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -298,6 +320,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The crypto key configuration. This field is used by the Customer-managed
+        # encryption keys (CMEK) feature.
+        # Corresponds to the JSON property `cryptoKeyConfig`
+        # @return [Google::Apis::DatafusionV1::CryptoKeyConfig]
+        attr_accessor :crypto_key_config
+      
         # User-managed service account to set on Dataproc when Cloud Data Fusion creates
         # Dataproc to run data processing pipelines. This allows users to have fine-
         # grained access control on Dataproc's accesses to cloud resources.
@@ -340,8 +368,8 @@ module Google
         attr_accessor :gcs_bucket
       
         # The resource labels for instance to use to annotate any related underlying
-        # resources such as GCE VMs. The character '=' is not allowed to be used within
-        # the labels.
+        # resources such as Compute Engine VMs. The character '=' is not allowed to be
+        # used within the labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -439,6 +467,7 @@ module Google
           @api_endpoint = args[:api_endpoint] if args.key?(:api_endpoint)
           @available_version = args[:available_version] if args.key?(:available_version)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_config = args[:crypto_key_config] if args.key?(:crypto_key_config)
           @dataproc_service_account = args[:dataproc_service_account] if args.key?(:dataproc_service_account)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -720,7 +749,7 @@ module Google
       class OperationMetadata
         include Google::Apis::Core::Hashable
       
-        # Map to hold any additonal status info for the operation If there is an
+        # Map to hold any additional status info for the operation If there is an
         # accelerator being enabled/disabled/deleted, this will be populated with
         # accelerator name as key and status as ENABLING, DISABLING or DELETING
         # Corresponds to the JSON property `additionalStatus`
