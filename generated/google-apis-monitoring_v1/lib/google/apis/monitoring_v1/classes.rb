@@ -116,6 +116,26 @@ module Google
         end
       end
       
+      # A chart that displays alert policy data.
+      class AlertChart
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the alert policy. The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A chart axis.
       class Axis
         include Google::Apis::Core::Hashable
@@ -1292,6 +1312,11 @@ module Google
       class Widget
         include Google::Apis::Core::Hashable
       
+        # A chart that displays alert policy data.
+        # Corresponds to the JSON property `alertChart`
+        # @return [Google::Apis::MonitoringV1::AlertChart]
+        attr_accessor :alert_chart
+      
         # A generic empty message that you can re-use to avoid defining duplicated empty
         # messages in your APIs. A typical example is to use it as the request or the
         # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1328,6 +1353,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alert_chart = args[:alert_chart] if args.key?(:alert_chart)
           @blank = args[:blank] if args.key?(:blank)
           @scorecard = args[:scorecard] if args.key?(:scorecard)
           @text = args[:text] if args.key?(:text)

@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlertChart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Axis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +239,13 @@ module Google
           property :cross_series_reducer, as: 'crossSeriesReducer'
           collection :group_by_fields, as: 'groupByFields'
           property :per_series_aligner, as: 'perSeriesAligner'
+        end
+      end
+      
+      class AlertChart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -548,6 +561,8 @@ module Google
       class Widget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_chart, as: 'alertChart', class: Google::Apis::MonitoringV1::AlertChart, decorator: Google::Apis::MonitoringV1::AlertChart::Representation
+      
           property :blank, as: 'blank', class: Google::Apis::MonitoringV1::Empty, decorator: Google::Apis::MonitoringV1::Empty::Representation
       
           property :scorecard, as: 'scorecard', class: Google::Apis::MonitoringV1::Scorecard, decorator: Google::Apis::MonitoringV1::Scorecard::Representation
