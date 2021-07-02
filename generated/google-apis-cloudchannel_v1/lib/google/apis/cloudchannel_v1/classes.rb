@@ -511,17 +511,17 @@ module Google
       
         # The customer account's contact email. Required for entitlements that create
         # admin.google.com accounts, and serves as the customer's username for those
-        # accounts.
+        # accounts. Use this email to invite Team customers.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # The customer account contact's first name.
+        # The customer account contact's first name. Optional for Team customers.
         # Corresponds to the JSON property `firstName`
         # @return [String]
         attr_accessor :first_name
       
-        # The customer account contact's last name.
+        # The customer account contact's last name. Optional for Team customers.
         # Corresponds to the JSON property `lastName`
         # @return [String]
         attr_accessor :last_name
@@ -590,7 +590,8 @@ module Google
         # Secondary contact email. You need to provide an alternate email to create
         # different domains if a primary contact email already exists. Users will
         # receive a notification with credentials when you create an admin.google.com
-        # account. Secondary emails are also recovery email addresses.
+        # account. Secondary emails are also recovery email addresses. Alternate emails
+        # are optional when you create Team customers.
         # Corresponds to the JSON property `alternateEmail`
         # @return [String]
         attr_accessor :alternate_email
