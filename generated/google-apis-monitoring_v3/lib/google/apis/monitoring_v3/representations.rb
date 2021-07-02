@@ -1424,6 +1424,7 @@ module Google
           property :name, as: 'name'
           property :telemetry, as: 'telemetry', class: Google::Apis::MonitoringV3::Telemetry, decorator: Google::Apis::MonitoringV3::Telemetry::Representation
       
+          hash :user_labels, as: 'userLabels'
         end
       end
       
