@@ -139,9 +139,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Used by partners to cancel a subscription service by the end of the current
-        # billing cycle for their customers. It should be called directly by the partner
-        # using service accounts.
+        # Used by partners to cancel a subscription service either immediately or by the
+        # end of the current billing cycle for their customers. It should be called
+        # directly by the partner using service accounts.
         # @param [String] name
         #   Required. The name of the subscription resource to be cancelled. It will have
         #   the format of "partners/`partner_id`/subscriptions/`subscription_id`"
