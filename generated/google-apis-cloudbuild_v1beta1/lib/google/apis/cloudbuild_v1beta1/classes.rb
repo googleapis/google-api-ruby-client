@@ -402,6 +402,13 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Details about how a build should be executed on a `WorkerPool`. See [running
+        # builds in a custom worker pool](https://cloud.google.com/build/docs/custom-
+        # workers/run-builds-in-custom-worker-pool) for more information.
+        # Corresponds to the JSON property `pool`
+        # @return [Google::Apis::CloudbuildV1beta1::PoolOption]
+        attr_accessor :pool
+      
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
@@ -436,9 +443,7 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1beta1::Volume>]
         attr_accessor :volumes
       
-        # Option to specify a `WorkerPool` for the build. Format: projects/`project`/
-        # locations/`location`/workerPools/`workerPool` This field is in beta and is
-        # available only to restricted users.
+        # This field deprecated; please use `pool.name` instead.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
@@ -455,6 +460,7 @@ module Google
           @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
           @logging = args[:logging] if args.key?(:logging)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @pool = args[:pool] if args.key?(:pool)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
@@ -634,6 +640,70 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata for the `CreateWorkerPool` operation.
+      class CreateWorkerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the `WorkerPool` to create. Format: `projects/`project`/
+        # locations/`location`/workerPools/`worker_pool``.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # Metadata for the `DeleteWorkerPool` operation.
+      class DeleteWorkerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the `WorkerPool` being deleted. Format: `projects/`
+        # project`/locations/`location`/workerPools/`worker_pool``.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end
       
@@ -1045,6 +1115,29 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Details about how a build should be executed on a `WorkerPool`. See [running
+      # builds in a custom worker pool](https://cloud.google.com/build/docs/custom-
+      # workers/run-builds-in-custom-worker-pool) for more information.
+      class PoolOption
+        include Google::Apis::Core::Hashable
+      
+        # The `WorkerPool` resource to execute the build on. You must have `cloudbuild.
+        # workerpools.use` on the project hosting the WorkerPool. Format projects/`
+        # project`/locations/`location`/workerPools/`workerPoolId`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1540,6 +1633,38 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Metadata for the `UpdateWorkerPool` operation.
+      class UpdateWorkerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the `WorkerPool` being updated. Format: `projects/`
+        # project`/locations/`location`/workerPools/`worker_pool``.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end
       
