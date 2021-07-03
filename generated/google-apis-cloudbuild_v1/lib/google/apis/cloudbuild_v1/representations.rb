@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateWorkerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteWorkerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWorkerPoolsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Notification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +203,18 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PoolOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivatePoolV1Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateWorkerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +353,18 @@ module Google
       end
       
       class WebhookConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerPool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -404,6 +458,8 @@ module Google
           property :log_streaming_option, as: 'logStreamingOption'
           property :logging, as: 'logging'
           property :machine_type, as: 'machineType'
+          property :pool, as: 'pool', class: Google::Apis::CloudbuildV1::PoolOption, decorator: Google::Apis::CloudbuildV1::PoolOption::Representation
+      
           property :requested_verify_option, as: 'requestedVerifyOption'
           collection :secret_env, as: 'secretEnv'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
@@ -490,6 +546,24 @@ module Google
         end
       end
       
+      class CreateWorkerPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class DeleteWorkerPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :worker_pool, as: 'workerPool'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -567,6 +641,23 @@ module Google
         end
       end
       
+      class ListWorkerPoolsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :worker_pools, as: 'workerPools', class: Google::Apis::CloudbuildV1::WorkerPool, decorator: Google::Apis::CloudbuildV1::WorkerPool::Representation
+      
+        end
+      end
+      
+      class NetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :egress_option, as: 'egressOption'
+          property :peered_network, as: 'peeredNetwork'
+        end
+      end
+      
       class Notification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -635,6 +726,23 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class PoolOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class PrivatePoolV1Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_config, as: 'networkConfig', class: Google::Apis::CloudbuildV1::NetworkConfig, decorator: Google::Apis::CloudbuildV1::NetworkConfig::Representation
+      
+          property :worker_config, as: 'workerConfig', class: Google::Apis::CloudbuildV1::WorkerConfig, decorator: Google::Apis::CloudbuildV1::WorkerConfig::Representation
+      
         end
       end
       
@@ -827,6 +935,15 @@ module Google
         end
       end
       
+      class UpdateWorkerPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :worker_pool, as: 'workerPool'
+        end
+      end
+      
       class Volume
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -848,6 +965,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :secret, as: 'secret'
           property :state, as: 'state'
+        end
+      end
+      
+      class WorkerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :machine_type, as: 'machineType'
+        end
+      end
+      
+      class WorkerPool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :private_pool_v1_config, as: 'privatePoolV1Config', class: Google::Apis::CloudbuildV1::PrivatePoolV1Config, decorator: Google::Apis::CloudbuildV1::PrivatePoolV1Config::Representation
+      
+          property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
     end
