@@ -1021,6 +1021,7 @@ module Google
           property :metric, as: 'metric', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
       
           property :start_key_index, as: 'startKeyIndex'
+          property :time_offset, as: 'timeOffset'
           property :unit, as: 'unit', class: Google::Apis::SpannerV1::LocalizedString, decorator: Google::Apis::SpannerV1::LocalizedString::Representation
       
           property :value, as: 'value'

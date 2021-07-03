@@ -1847,6 +1847,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_key_index
       
+        # The time offset. This is the time since the start of the time interval.
+        # Corresponds to the JSON property `timeOffset`
+        # @return [String]
+        attr_accessor :time_offset
+      
         # A message representing a user-facing string whose value may need to be
         # translated before being displayed.
         # Corresponds to the JSON property `unit`
@@ -1870,6 +1875,7 @@ module Google
           @keys_count = args[:keys_count] if args.key?(:keys_count)
           @metric = args[:metric] if args.key?(:metric)
           @start_key_index = args[:start_key_index] if args.key?(:start_key_index)
+          @time_offset = args[:time_offset] if args.key?(:time_offset)
           @unit = args[:unit] if args.key?(:unit)
           @value = args[:value] if args.key?(:value)
         end
