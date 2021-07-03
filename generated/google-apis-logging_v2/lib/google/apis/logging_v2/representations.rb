@@ -34,7 +34,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CmekSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopyLogEntriesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopyLogEntriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopyLogEntriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -119,6 +143,12 @@ module Google
       end
       
       class ListMonitoredResourceDescriptorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestLog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +275,12 @@ module Google
       end
       
       class SourceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -300,12 +342,48 @@ module Google
         end
       end
       
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CmekSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
           property :name, as: 'name'
           property :service_account_id, as: 'serviceAccountId'
+        end
+      end
+      
+      class CopyLogEntriesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancellation_requested, as: 'cancellationRequested'
+          property :end_time, as: 'endTime'
+          property :progress, as: 'progress'
+          property :request, as: 'request', class: Google::Apis::LoggingV2::CopyLogEntriesRequest, decorator: Google::Apis::LoggingV2::CopyLogEntriesRequest::Representation
+      
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :writer_identity, as: 'writerIdentity'
+        end
+      end
+      
+      class CopyLogEntriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :filter, as: 'filter'
+          property :name, as: 'name'
+        end
+      end
+      
+      class CopyLogEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :log_entries_copied_count, :numeric_string => true, as: 'logEntriesCopiedCount'
         end
       end
       
@@ -440,6 +518,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :resource_descriptors, as: 'resourceDescriptors', class: Google::Apis::LoggingV2::MonitoredResourceDescriptor, decorator: Google::Apis::LoggingV2::MonitoredResourceDescriptor::Representation
+      
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::LoggingV2::Operation, decorator: Google::Apis::LoggingV2::Operation::Representation
       
         end
       end
@@ -664,6 +751,18 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::LoggingV2::Status, decorator: Google::Apis::LoggingV2::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
       class RequestLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -719,6 +818,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :repository, as: 'repository'
           property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

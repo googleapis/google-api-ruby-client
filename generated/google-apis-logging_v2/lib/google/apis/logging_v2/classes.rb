@@ -115,6 +115,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Describes the customer-managed encryption key (CMEK) settings associated with
       # a project, folder, organization, billing account, or flexible resource.Note:
       # CMEK for the Logs Router can currently only be configured for GCP
@@ -167,6 +180,117 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @name = args[:name] if args.key?(:name)
           @service_account_id = args[:service_account_id] if args.key?(:service_account_id)
+        end
+      end
+      
+      # Metadata for CopyLogEntries long running operations.
+      class CopyLogEntriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Identifies whether the user has requested cancellation of the operation.
+        # Corresponds to the JSON property `cancellationRequested`
+        # @return [Boolean]
+        attr_accessor :cancellation_requested
+        alias_method :cancellation_requested?, :cancellation_requested
+      
+        # The end time of an operation.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Estimated progress of the operation (0 - 100%).
+        # Corresponds to the JSON property `progress`
+        # @return [Fixnum]
+        attr_accessor :progress
+      
+        # The parameters to CopyLogEntries.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::LoggingV2::CopyLogEntriesRequest]
+        attr_accessor :request
+      
+        # The create time of an operation.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # State of an operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The IAM identity of a service account that must be granted access to the
+        # destination. If the service account is not granted permission to the
+        # destination within an hour, the operation will be cancelled. Example: "
+        # serviceAccount:foo@bar.com"
+        # Corresponds to the JSON property `writerIdentity`
+        # @return [String]
+        attr_accessor :writer_identity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellation_requested = args[:cancellation_requested] if args.key?(:cancellation_requested)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @progress = args[:progress] if args.key?(:progress)
+          @request = args[:request] if args.key?(:request)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
+        end
+      end
+      
+      # The parameters to CopyLogEntries.
+      class CopyLogEntriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Destination to which to copy logs.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Optional. A filter specifying which log entries to copy. The filter must be no
+        # more than 20k characters. An empty filter matches all log entries.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Required. Bucket from which to copy logs. e.g. "projects/my-project/locations/
+        # my-location/buckets/my-source-bucket
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @filter = args[:filter] if args.key?(:filter)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response type for CopyLogEntries long running operations.
+      class CopyLogEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of log entries copied.
+        # Corresponds to the JSON property `logEntriesCopiedCount`
+        # @return [Fixnum]
+        attr_accessor :log_entries_copied_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @log_entries_copied_count = args[:log_entries_copied_count] if args.key?(:log_entries_copied_count)
         end
       end
       
@@ -701,6 +825,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @resource_descriptors = args[:resource_descriptors] if args.key?(:resource_descriptors)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::LoggingV2::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
@@ -1874,6 +2023,68 @@ module Google
         end
       end
       
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is false, it means the operation is still in progress. If true,
+        # the operation is completed, and either error or response is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The Status type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by gRPC
+        # (https://github.com/grpc). Each Status message contains three pieces of data:
+        # error code, error message, and error details.You can find out more about this
+        # error model and how to work with it in the API Design Guide (https://cloud.
+        # google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::LoggingV2::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the name should be
+        # a resource name ending with operations/`unique_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as Delete, the response is google.
+        # protobuf.Empty. If the original method is standard Get/Create/Update, the
+        # response should be the resource. For other methods, the response should have
+        # the type XxxResponse, where Xxx is the original method name. For example, if
+        # the original method name is TakeSnapshot(), the inferred response type is
+        # TakeSnapshotResponse.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
       # Complete log information about a single HTTP request to an App Engine
       # application.
       class RequestLog
@@ -2166,6 +2377,45 @@ module Google
         def update!(**args)
           @repository = args[:repository] if args.key?(:repository)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
+      # The Status type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by gRPC
+      # (https://github.com/grpc). Each Status message contains three pieces of data:
+      # error code, error message, and error details.You can find out more about this
+      # error model and how to work with it in the API Design Guide (https://cloud.
+      # google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
