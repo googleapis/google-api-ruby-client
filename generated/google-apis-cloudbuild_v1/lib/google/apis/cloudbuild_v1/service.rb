@@ -885,6 +885,205 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a `WorkerPool`.
+        # @param [String] parent
+        #   Required. The parent resource where this worker pool will be created. Format: `
+        #   projects/`project`/locations/`location``.
+        # @param [Google::Apis::CloudbuildV1::WorkerPool] worker_pool_object
+        # @param [Boolean] validate_only
+        #   If set, validate the request and preview the response, but do not actually
+        #   post it.
+        # @param [String] worker_pool_id
+        #   Required. Immutable. The ID to use for the `WorkerPool`, which will become the
+        #   final component of the resource name. This value should be 1-63 characters,
+        #   and valid characters are /a-z-/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_worker_pool(parent, worker_pool_object = nil, validate_only: nil, worker_pool_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/workerPools', options)
+          command.request_representation = Google::Apis::CloudbuildV1::WorkerPool::Representation
+          command.request_object = worker_pool_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['workerPoolId'] = worker_pool_id unless worker_pool_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a `WorkerPool`.
+        # @param [String] name
+        #   Required. The name of the `WorkerPool` to delete. Format: `projects/`project`/
+        #   locations/`workerPool`/workerPools/`workerPool``.
+        # @param [Boolean] allow_missing
+        #   If set to true, and the `WorkerPool` is not found, the request will succeed
+        #   but no action will be taken on the server.
+        # @param [String] etag
+        #   Optional. If this is provided, it must match the server's etag on the
+        #   workerpool for the request to be processed.
+        # @param [Boolean] validate_only
+        #   If set, validate the request and preview the response, but do not actually
+        #   post it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_worker_pool(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns details of a `WorkerPool`.
+        # @param [String] name
+        #   Required. The name of the `WorkerPool` to retrieve. Format: `projects/`project`
+        #   /locations/`location`/workerPools/`workerPool``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::WorkerPool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::WorkerPool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_worker_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::WorkerPool::Representation
+          command.response_class = Google::Apis::CloudbuildV1::WorkerPool
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists `WorkerPool`s.
+        # @param [String] parent
+        #   Required. The parent of the collection of `WorkerPools`. Format: `projects/`
+        #   project`/locations/location`.
+        # @param [Fixnum] page_size
+        #   The maximum number of `WorkerPool`s to return. The service may return fewer
+        #   than this value. If omitted, the server will use a sensible default.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListWorkerPools` call. Provide this to
+        #   retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::ListWorkerPoolsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::ListWorkerPoolsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_worker_pools(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/workerPools', options)
+          command.response_representation = Google::Apis::CloudbuildV1::ListWorkerPoolsResponse::Representation
+          command.response_class = Google::Apis::CloudbuildV1::ListWorkerPoolsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a `WorkerPool`.
+        # @param [String] name
+        #   Output only. The resource name of the `WorkerPool`, with format `projects/`
+        #   project`/locations/`location`/workerPools/`worker_pool``. The value of ``
+        #   worker_pool`` is provided by `worker_pool_id` in `CreateWorkerPool` request
+        #   and the value of ``location`` is determined by the endpoint accessed.
+        # @param [Google::Apis::CloudbuildV1::WorkerPool] worker_pool_object
+        # @param [String] update_mask
+        #   A mask specifying which fields in `worker_pool` to update.
+        # @param [Boolean] validate_only
+        #   If set, validate the request and preview the response, but do not actually
+        #   post it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_worker_pool(name, worker_pool_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudbuildV1::WorkerPool::Representation
+          command.request_object = worker_pool_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new `BuildTrigger`. This API is experimental.
         # @param [String] project_id
         #   Required. ID of the project for which to configure automatic builds.

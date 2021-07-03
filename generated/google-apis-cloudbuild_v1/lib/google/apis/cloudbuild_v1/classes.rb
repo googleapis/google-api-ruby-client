@@ -402,6 +402,13 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Details about how a build should be executed on a `WorkerPool`. See [running
+        # builds in a custom worker pool](https://cloud.google.com/build/docs/custom-
+        # workers/run-builds-in-custom-worker-pool) for more information.
+        # Corresponds to the JSON property `pool`
+        # @return [Google::Apis::CloudbuildV1::PoolOption]
+        attr_accessor :pool
+      
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
@@ -436,9 +443,7 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1::Volume>]
         attr_accessor :volumes
       
-        # Option to specify a `WorkerPool` for the build. Format: projects/`project`/
-        # locations/`location`/workerPools/`workerPool` This field is in beta and is
-        # available only to restricted users.
+        # This field deprecated; please use `pool.name` instead.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
@@ -455,6 +460,7 @@ module Google
           @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
           @logging = args[:logging] if args.key?(:logging)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @pool = args[:pool] if args.key?(:pool)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
@@ -824,6 +830,70 @@ module Google
         end
       end
       
+      # Metadata for the `CreateWorkerPool` operation.
+      class CreateWorkerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the `WorkerPool` to create. Format: `projects/`project`/
+        # locations/`location`/workerPools/`worker_pool``.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # Metadata for the `DeleteWorkerPool` operation.
+      class DeleteWorkerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the `WorkerPool` being deleted. Format: `projects/`
+        # project`/locations/`location`/workerPools/`worker_pool``.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1081,6 +1151,64 @@ module Google
         end
       end
       
+      # Response containing existing `WorkerPools`.
+      class ListWorkerPoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Continuation token used to page through large result sets. Provide this value
+        # in a subsequent ListWorkerPoolsRequest to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # `WorkerPools` for the specified project.
+        # Corresponds to the JSON property `workerPools`
+        # @return [Array<Google::Apis::CloudbuildV1::WorkerPool>]
+        attr_accessor :worker_pools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @worker_pools = args[:worker_pools] if args.key?(:worker_pools)
+        end
+      end
+      
+      # Defines the network configuration for the pool.
+      class NetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Option to configure network egress for the workers.
+        # Corresponds to the JSON property `egressOption`
+        # @return [String]
+        attr_accessor :egress_option
+      
+        # Required. Immutable. The network definition that the workers are peered to. If
+        # this section is left empty, the workers will be peered to `WorkerPool.
+        # project_id` on the service producer network. Must be in the format `projects/`
+        # project`/global/networks/`network``, where ``project`` is a project number,
+        # such as `12345`, and ``network`` is the name of a VPC network in the project.
+        # See [Understanding network configuration options](https://cloud.google.com/
+        # cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#
+        # understanding_the_network_configuration_options)
+        # Corresponds to the JSON property `peeredNetwork`
+        # @return [String]
+        attr_accessor :peered_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_option = args[:egress_option] if args.key?(:egress_option)
+          @peered_network = args[:peered_network] if args.key?(:peered_network)
+        end
+      end
+      
       # Notification is the container which holds the data that is relevant to this
       # particular notification.
       class Notification
@@ -1332,6 +1460,54 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Details about how a build should be executed on a `WorkerPool`. See [running
+      # builds in a custom worker pool](https://cloud.google.com/build/docs/custom-
+      # workers/run-builds-in-custom-worker-pool) for more information.
+      class PoolOption
+        include Google::Apis::Core::Hashable
+      
+        # The `WorkerPool` resource to execute the build on. You must have `cloudbuild.
+        # workerpools.use` on the project hosting the WorkerPool. Format projects/`
+        # project`/locations/`location`/workerPools/`workerPoolId`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Configuration for a V1 `PrivatePool`.
+      class PrivatePoolV1Config
+        include Google::Apis::Core::Hashable
+      
+        # Defines the network configuration for the pool.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::CloudbuildV1::NetworkConfig]
+        attr_accessor :network_config
+      
+        # Defines the configuration to be used for creating workers in the pool.
+        # Corresponds to the JSON property `workerConfig`
+        # @return [Google::Apis::CloudbuildV1::WorkerConfig]
+        attr_accessor :worker_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_config = args[:network_config] if args.key?(:network_config)
+          @worker_config = args[:worker_config] if args.key?(:worker_config)
         end
       end
       
@@ -2020,6 +2196,38 @@ module Google
         end
       end
       
+      # Metadata for the `UpdateWorkerPool` operation.
+      class UpdateWorkerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the `WorkerPool` being updated. Format: `projects/`
+        # project`/locations/`location`/workerPools/`worker_pool``.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
       # Volume describes a Docker container volume which is mounted into build steps
       # in order to persist files across build step execution.
       class Volume
@@ -2099,6 +2307,123 @@ module Google
         def update!(**args)
           @secret = args[:secret] if args.key?(:secret)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Defines the configuration to be used for creating workers in the pool.
+      class WorkerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Size of the disk attached to the worker, in GB. See [Worker pool config file](
+        # https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-
+        # file). Specify a value of up to 1000. If `0` is specified, Cloud Build will
+        # use a standard disk size.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Machine type of a worker, such as `e2-medium`. See [Worker pool config file](
+        # https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-
+        # file). If left blank, Cloud Build will use a sensible default.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+        end
+      end
+      
+      # Configuration for a `WorkerPool`. Cloud Build owns and maintains a pool of
+      # workers for general use and have no access to a project's private network. By
+      # default, builds submitted to Cloud Build will use a worker from this pool. If
+      # your build needs access to resources on a private network, create and use a `
+      # WorkerPool` to run your builds. Private `WorkerPool`s give your builds access
+      # to any single VPC network that you administer, including any on-prem resources
+      # connected to that VPC network. For an overview of custom worker pools, see [
+      # Custom workers overview](https://cloud.google.com/cloud-build/docs/custom-
+      # workers/custom-workers-overview).
+      class WorkerPool
+        include Google::Apis::Core::Hashable
+      
+        # User specified annotations. See https://google.aip.dev/128#annotations for
+        # more details such as format and size limitations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Time at which the request to create the `WorkerPool` was received.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Time at which the request to delete the `WorkerPool` was received.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # A user-specified, human-readable name for the `WorkerPool`. If provided, this
+        # value must be 1-63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Checksum computed by the server. May be sent on update and delete
+        # requests to ensure that the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name of the `WorkerPool`, with format `projects/`
+        # project`/locations/`location`/workerPools/`worker_pool``. The value of ``
+        # worker_pool`` is provided by `worker_pool_id` in `CreateWorkerPool` request
+        # and the value of ``location`` is determined by the endpoint accessed.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for a V1 `PrivatePool`.
+        # Corresponds to the JSON property `privatePoolV1Config`
+        # @return [Google::Apis::CloudbuildV1::PrivatePoolV1Config]
+        attr_accessor :private_pool_v1_config
+      
+        # Output only. `WorkerPool` state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A unique identifier for the `WorkerPool`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Time at which the request to update the `WorkerPool` was received.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @private_pool_v1_config = args[:private_pool_v1_config] if args.key?(:private_pool_v1_config)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
     end
