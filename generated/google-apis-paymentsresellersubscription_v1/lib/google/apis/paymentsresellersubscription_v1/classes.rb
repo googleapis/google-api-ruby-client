@@ -392,7 +392,7 @@ module Google
       class GoogleCloudPaymentsResellerSubscriptionV1Subscription
         include Google::Apis::Core::Hashable
       
-        # Describes the details of a cancelled subscription.
+        # Describes the details of a cancelled or cancelling subscription.
         # Corresponds to the JSON property `cancellationDetails`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails]
         attr_accessor :cancellation_details
@@ -434,6 +434,13 @@ module Google
         # @return [String]
         attr_accessor :partner_user_token
       
+        # Output only. Describes the processing state of the subscription. See more
+        # details at [the lifecycle of a subscription](/payments/reseller/subscription/
+        # reference/index/Receive.Notifications#payments-subscription-lifecycle).
+        # Corresponds to the JSON property `processingState`
+        # @return [String]
+        attr_accessor :processing_state
+      
         # Required. Resource name that identifies one or more subscription products. The
         # format will be 'partners/`partner_id`/products/`product_id`'.
         # Corresponds to the JSON property `products`
@@ -460,7 +467,7 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Location]
         attr_accessor :service_location
       
-        # Output only. Descibes the state of the subscription. See more details at [the
+        # Output only. Describes the state of the subscription. See more details at [the
         # lifecycle of a subscription](/payments/reseller/subscription/reference/index/
         # Receive.Notifications#payments-subscription-lifecycle).
         # Corresponds to the JSON property `state`
@@ -492,6 +499,7 @@ module Google
           @free_trial_end_time = args[:free_trial_end_time] if args.key?(:free_trial_end_time)
           @name = args[:name] if args.key?(:name)
           @partner_user_token = args[:partner_user_token] if args.key?(:partner_user_token)
+          @processing_state = args[:processing_state] if args.key?(:processing_state)
           @products = args[:products] if args.key?(:products)
           @promotions = args[:promotions] if args.key?(:promotions)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
@@ -502,7 +510,7 @@ module Google
         end
       end
       
-      # Describes the details of a cancelled subscription.
+      # Describes the details of a cancelled or cancelling subscription.
       class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails
         include Google::Apis::Core::Hashable
       

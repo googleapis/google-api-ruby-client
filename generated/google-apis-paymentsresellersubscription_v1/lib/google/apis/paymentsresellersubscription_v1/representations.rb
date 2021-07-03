@@ -264,6 +264,7 @@ module Google
           property :free_trial_end_time, as: 'freeTrialEndTime'
           property :name, as: 'name'
           property :partner_user_token, as: 'partnerUserToken'
+          property :processing_state, as: 'processingState'
           collection :products, as: 'products'
           collection :promotions, as: 'promotions'
           property :redirect_uri, as: 'redirectUri'
