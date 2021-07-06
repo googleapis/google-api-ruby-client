@@ -97,11 +97,22 @@ module Google
         # @return [String]
         attr_accessor :contains_pypi_modules_conflict
       
+        # Composer image for which the build was happening.
+        # Corresponds to the JSON property `imageVersion`
+        # @return [String]
+        attr_accessor :image_version
+      
         # Output only. Extract from a docker image build log containing information
         # about pypi modules conflicts.
         # Corresponds to the JSON property `pypiConflictBuildLogExtract`
         # @return [String]
         attr_accessor :pypi_conflict_build_log_extract
+      
+        # Pypi dependencies specified in the environment configuration, at the time when
+        # the build was triggered.
+        # Corresponds to the JSON property `pypiDependencies`
+        # @return [Hash<String,String>]
+        attr_accessor :pypi_dependencies
       
         def initialize(**args)
            update!(**args)
@@ -111,7 +122,9 @@ module Google
         def update!(**args)
           @build_log_uri = args[:build_log_uri] if args.key?(:build_log_uri)
           @contains_pypi_modules_conflict = args[:contains_pypi_modules_conflict] if args.key?(:contains_pypi_modules_conflict)
+          @image_version = args[:image_version] if args.key?(:image_version)
           @pypi_conflict_build_log_extract = args[:pypi_conflict_build_log_extract] if args.key?(:pypi_conflict_build_log_extract)
+          @pypi_dependencies = args[:pypi_dependencies] if args.key?(:pypi_dependencies)
         end
       end
       
@@ -309,6 +322,13 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::EncryptionConfig]
         attr_accessor :encryption_config
       
+        # Optional. The size of the Cloud Composer environment. This field is supported
+        # for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and
+        # newer.
+        # Corresponds to the JSON property `environmentSize`
+        # @return [String]
+        attr_accessor :environment_size
+      
         # Output only. The Kubernetes Engine cluster used to run this environment.
         # Corresponds to the JSON property `gkeCluster`
         # @return [String]
@@ -356,6 +376,13 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::WebServerNetworkAccessControl]
         attr_accessor :web_server_network_access_control
       
+        # The Kubernetes workloads configuration for GKE cluster associated with the
+        # Cloud Composer environment. Supported for Cloud Composer environments in
+        # versions composer-2.*.*-airflow-*.*.* and newer.
+        # Corresponds to the JSON property `workloadsConfig`
+        # @return [Google::Apis::ComposerV1beta1::WorkloadsConfig]
+        attr_accessor :workloads_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -366,6 +393,7 @@ module Google
           @dag_gcs_prefix = args[:dag_gcs_prefix] if args.key?(:dag_gcs_prefix)
           @database_config = args[:database_config] if args.key?(:database_config)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @environment_size = args[:environment_size] if args.key?(:environment_size)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @node_config = args[:node_config] if args.key?(:node_config)
@@ -374,6 +402,7 @@ module Google
           @software_config = args[:software_config] if args.key?(:software_config)
           @web_server_config = args[:web_server_config] if args.key?(:web_server_config)
           @web_server_network_access_control = args[:web_server_network_access_control] if args.key?(:web_server_network_access_control)
+          @workloads_config = args[:workloads_config] if args.key?(:workloads_config)
         end
       end
       
@@ -700,7 +729,7 @@ module Google
       
         # Optional. The Google Cloud Platform Service Account to be used by the
         # workloads. If a service account is not specified, the "default" Compute Engine
-        # service account is used. Cannot be updated .
+        # service account is used. Cannot be updated.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -899,6 +928,22 @@ module Google
       class PrivateEnvironmentConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The CIDR block from which IP range for Cloud Composer Network in
+        # tenant project will be reserved. Needs to be disjoint from
+        # private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block.
+        # This field is supported for Cloud Composer environments in versions composer-2.
+        # *.*-airflow-*.*.* and newer.
+        # Corresponds to the JSON property `cloudComposerNetworkIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :cloud_composer_network_ipv4_cidr_block
+      
+        # Output only. The IP range reserved for the tenant project's Cloud Composer
+        # network. This field is supported for Cloud Composer environments in versions
+        # composer-2.*.*-airflow-*.*.* and newer.
+        # Corresponds to the JSON property `cloudComposerNetworkIpv4ReservedRange`
+        # @return [String]
+        attr_accessor :cloud_composer_network_ipv4_reserved_range
+      
         # Optional. The CIDR block from which IP range in tenant project will be
         # reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
         # Corresponds to the JSON property `cloudSqlIpv4CidrBlock`
@@ -937,6 +982,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_composer_network_ipv4_cidr_block = args[:cloud_composer_network_ipv4_cidr_block] if args.key?(:cloud_composer_network_ipv4_cidr_block)
+          @cloud_composer_network_ipv4_reserved_range = args[:cloud_composer_network_ipv4_reserved_range] if args.key?(:cloud_composer_network_ipv4_reserved_range)
           @cloud_sql_ipv4_cidr_block = args[:cloud_sql_ipv4_cidr_block] if args.key?(:cloud_sql_ipv4_cidr_block)
           @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
@@ -955,6 +1002,44 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Configuration for resources used by Airflow schedulers.
+      class SchedulerResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of schedulers.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Optional. CPU request and limit for a single Airflow scheduler replica.
+        # Corresponds to the JSON property `cpu`
+        # @return [Float]
+        attr_accessor :cpu
+      
+        # Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
+        # Corresponds to the JSON property `memoryGb`
+        # @return [Float]
+        attr_accessor :memory_gb
+      
+        # Optional. Storage (GB) request and limit for a single Airflow scheduler
+        # replica.
+        # Corresponds to the JSON property `storageGb`
+        # @return [Float]
+        attr_accessor :storage_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+          @storage_gb = args[:storage_gb] if args.key?(:storage_gb)
         end
       end
       
@@ -1116,6 +1201,113 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_ip_ranges = args[:allowed_ip_ranges] if args.key?(:allowed_ip_ranges)
+        end
+      end
+      
+      # Configuration for resources used by Airflow web server.
+      class WebServerResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. CPU request and limit for Airflow web server.
+        # Corresponds to the JSON property `cpu`
+        # @return [Float]
+        attr_accessor :cpu
+      
+        # Optional. Memory (GB) request and limit for Airflow web server.
+        # Corresponds to the JSON property `memoryGb`
+        # @return [Float]
+        attr_accessor :memory_gb
+      
+        # Optional. Storage (GB) request and limit for Airflow web server.
+        # Corresponds to the JSON property `storageGb`
+        # @return [Float]
+        attr_accessor :storage_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+          @storage_gb = args[:storage_gb] if args.key?(:storage_gb)
+        end
+      end
+      
+      # Configuration for resources used by Airflow workers.
+      class WorkerResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. CPU request and limit for a single Airflow worker replica.
+        # Corresponds to the JSON property `cpu`
+        # @return [Float]
+        attr_accessor :cpu
+      
+        # Optional. Maximum number of workers for autoscaling.
+        # Corresponds to the JSON property `maxCount`
+        # @return [Fixnum]
+        attr_accessor :max_count
+      
+        # Optional. Memory (GB) request and limit for a single Airflow worker replica.
+        # Corresponds to the JSON property `memoryGb`
+        # @return [Float]
+        attr_accessor :memory_gb
+      
+        # Optional. Minimum number of workers for autoscaling.
+        # Corresponds to the JSON property `minCount`
+        # @return [Fixnum]
+        attr_accessor :min_count
+      
+        # Optional. Storage (GB) request and limit for a single Airflow worker replica.
+        # Corresponds to the JSON property `storageGb`
+        # @return [Float]
+        attr_accessor :storage_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu = args[:cpu] if args.key?(:cpu)
+          @max_count = args[:max_count] if args.key?(:max_count)
+          @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+          @min_count = args[:min_count] if args.key?(:min_count)
+          @storage_gb = args[:storage_gb] if args.key?(:storage_gb)
+        end
+      end
+      
+      # The Kubernetes workloads configuration for GKE cluster associated with the
+      # Cloud Composer environment. Supported for Cloud Composer environments in
+      # versions composer-2.*.*-airflow-*.*.* and newer.
+      class WorkloadsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for resources used by Airflow schedulers.
+        # Corresponds to the JSON property `scheduler`
+        # @return [Google::Apis::ComposerV1beta1::SchedulerResource]
+        attr_accessor :scheduler
+      
+        # Configuration for resources used by Airflow web server.
+        # Corresponds to the JSON property `webServer`
+        # @return [Google::Apis::ComposerV1beta1::WebServerResource]
+        attr_accessor :web_server
+      
+        # Configuration for resources used by Airflow workers.
+        # Corresponds to the JSON property `worker`
+        # @return [Google::Apis::ComposerV1beta1::WorkerResource]
+        attr_accessor :worker
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scheduler = args[:scheduler] if args.key?(:scheduler)
+          @web_server = args[:web_server] if args.key?(:web_server)
+          @worker = args[:worker] if args.key?(:worker)
         end
       end
     end
