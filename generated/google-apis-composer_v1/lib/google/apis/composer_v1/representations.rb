@@ -167,7 +167,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build_log_uri, as: 'buildLogUri'
           property :contains_pypi_modules_conflict, as: 'containsPypiModulesConflict'
+          property :image_version, as: 'imageVersion'
           property :pypi_conflict_build_log_extract, as: 'pypiConflictBuildLogExtract'
+          hash :pypi_dependencies, as: 'pypiDependencies'
         end
       end
       
