@@ -1,0 +1,7 @@
+{
+    "api_id": "baremetalsolution:v1alpha1",
+    "name_pretty": "Bare Metal Solution API",
+    "distribution_name": "google-apis-baremetalsolution_v1alpha1",
+    "language": "ruby",
+    "library_type": "REST"
+}
