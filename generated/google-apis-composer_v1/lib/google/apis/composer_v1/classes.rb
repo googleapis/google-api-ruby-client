@@ -65,11 +65,22 @@ module Google
         # @return [String]
         attr_accessor :contains_pypi_modules_conflict
       
+        # Composer image for which the build was happening.
+        # Corresponds to the JSON property `imageVersion`
+        # @return [String]
+        attr_accessor :image_version
+      
         # Output only. Extract from a docker image build log containing information
         # about pypi modules conflicts.
         # Corresponds to the JSON property `pypiConflictBuildLogExtract`
         # @return [String]
         attr_accessor :pypi_conflict_build_log_extract
+      
+        # Pypi dependencies specified in the environment configuration, at the time when
+        # the build was triggered.
+        # Corresponds to the JSON property `pypiDependencies`
+        # @return [Hash<String,String>]
+        attr_accessor :pypi_dependencies
       
         def initialize(**args)
            update!(**args)
@@ -79,7 +90,9 @@ module Google
         def update!(**args)
           @build_log_uri = args[:build_log_uri] if args.key?(:build_log_uri)
           @contains_pypi_modules_conflict = args[:contains_pypi_modules_conflict] if args.key?(:contains_pypi_modules_conflict)
+          @image_version = args[:image_version] if args.key?(:image_version)
           @pypi_conflict_build_log_extract = args[:pypi_conflict_build_log_extract] if args.key?(:pypi_conflict_build_log_extract)
+          @pypi_dependencies = args[:pypi_dependencies] if args.key?(:pypi_dependencies)
         end
       end
       
