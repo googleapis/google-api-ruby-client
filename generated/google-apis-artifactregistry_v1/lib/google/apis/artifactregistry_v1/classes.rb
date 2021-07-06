@@ -22,6 +22,58 @@ module Google
   module Apis
     module ArtifactregistryV1
       
+      # A detailed representation of an Apt artifact. Information in the record is
+      # derived from the archive's control file. See https://www.debian.org/doc/debian-
+      # policy/ch-controlfields.html
+      class AptArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Operating system architecture of the artifact.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Output only. Repository component of the artifact.
+        # Corresponds to the JSON property `component`
+        # @return [String]
+        attr_accessor :component
+      
+        # Output only. Contents of the artifact's control metadata file.
+        # Corresponds to the JSON property `controlFile`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :control_file
+      
+        # Output only. The Artifact Registry resource name of the artifact.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The Apt package name of the artifact.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Output only. An artifact is a binary or source package.
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @component = args[:component] if args.key?(:component)
+          @control_file = args[:control_file] if args.key?(:control_file)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @package_type = args[:package_type] if args.key?(:package_type)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -123,6 +175,168 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Error information explaining why a package was not imported.
+      class ImportAptArtifactsErrorInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ArtifactregistryV1::Status]
+        attr_accessor :error
+      
+        # Google Cloud Storage location where the artifacts currently reside.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ArtifactregistryV1::ImportAptArtifactsGcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # Google Cloud Storage location where the artifacts currently reside.
+      class ImportAptArtifactsGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
+        # Supports URI wildcards for matching multiple objects from a single URI.
+        # Corresponds to the JSON property `useWildcards`
+        # @return [Boolean]
+        attr_accessor :use_wildcards
+        alias_method :use_wildcards?, :use_wildcards
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uris = args[:uris] if args.key?(:uris)
+          @use_wildcards = args[:use_wildcards] if args.key?(:use_wildcards)
+        end
+      end
+      
+      # The response message from importing artifacts.
+      class ImportAptArtifactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Apt artifacts updated.
+        # Corresponds to the JSON property `aptArtifacts`
+        # @return [Array<Google::Apis::ArtifactregistryV1::AptArtifact>]
+        attr_accessor :apt_artifacts
+      
+        # Detailed error info for packages that were not imported.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::ArtifactregistryV1::ImportAptArtifactsErrorInfo>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apt_artifacts = args[:apt_artifacts] if args.key?(:apt_artifacts)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # Error information explaining why a package was not imported.
+      class ImportYumArtifactsErrorInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ArtifactregistryV1::Status]
+        attr_accessor :error
+      
+        # Google Cloud Storage location where the artifacts currently reside.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ArtifactregistryV1::ImportYumArtifactsGcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # Google Cloud Storage location where the artifacts currently reside.
+      class ImportYumArtifactsGcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
+        # Supports URI wildcards for matching multiple objects from a single URI.
+        # Corresponds to the JSON property `useWildcards`
+        # @return [Boolean]
+        attr_accessor :use_wildcards
+        alias_method :use_wildcards?, :use_wildcards
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uris = args[:uris] if args.key?(:uris)
+          @use_wildcards = args[:use_wildcards] if args.key?(:use_wildcards)
+        end
+      end
+      
+      # The response message from importing artifacts.
+      class ImportYumArtifactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Detailed error info for packages that were not imported.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::ArtifactregistryV1::ImportYumArtifactsErrorInfo>]
+        attr_accessor :errors
+      
+        # The yum artifacts updated.
+        # Corresponds to the JSON property `yumArtifacts`
+        # @return [Array<Google::Apis::ArtifactregistryV1::YumArtifact>]
+        attr_accessor :yum_artifacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @yum_artifacts = args[:yum_artifacts] if args.key?(:yum_artifacts)
         end
       end
       
@@ -363,6 +577,123 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The response to upload an artifact.
+      class UploadAptArtifactMediaResponse
+        include Google::Apis::Core::Hashable
+      
+        # This resource represents a long-running operation that is the result of a
+        # network API call.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The response of the completed artifact upload operation. This response is
+      # contained in the Operation and available to users.
+      class UploadAptArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Apt artifacts updated.
+        # Corresponds to the JSON property `aptArtifacts`
+        # @return [Array<Google::Apis::ArtifactregistryV1::AptArtifact>]
+        attr_accessor :apt_artifacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apt_artifacts = args[:apt_artifacts] if args.key?(:apt_artifacts)
+        end
+      end
+      
+      # The response to upload an artifact.
+      class UploadYumArtifactMediaResponse
+        include Google::Apis::Core::Hashable
+      
+        # This resource represents a long-running operation that is the result of a
+        # network API call.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ArtifactregistryV1::Operation]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The response of the completed artifact upload operation. This response is
+      # contained in the Operation and available to users.
+      class UploadYumArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Apt artifacts updated.
+        # Corresponds to the JSON property `yumArtifacts`
+        # @return [Array<Google::Apis::ArtifactregistryV1::YumArtifact>]
+        attr_accessor :yum_artifacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @yum_artifacts = args[:yum_artifacts] if args.key?(:yum_artifacts)
+        end
+      end
+      
+      # A detailed representation of a Yum artifact.
+      class YumArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Operating system architecture of the artifact.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Output only. The Artifact Registry resource name of the artifact.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The yum package name of the artifact.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Output only. An artifact is a binary or source package.
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @package_type = args[:package_type] if args.key?(:package_type)
         end
       end
     end
