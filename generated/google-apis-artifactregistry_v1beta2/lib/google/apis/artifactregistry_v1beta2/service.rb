@@ -482,6 +482,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Imports Apt artifacts. The returned Operation will complete once the resources
+        # are imported. Package, Version, and File resources are created based on the
+        # imported artifacts. Imported artifacts that conflict with existing resources
+        # are ignored.
+        # @param [String] parent
+        #   The name of the parent resource where the artifacts will be imported.
+        # @param [Google::Apis::ArtifactregistryV1beta2::ImportAptArtifactsRequest] import_apt_artifacts_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1beta2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1beta2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_apt_artifacts(parent, import_apt_artifacts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta2/{+parent}/aptArtifacts:import', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1beta2::ImportAptArtifactsRequest::Representation
+          command.request_object = import_apt_artifacts_request_object
+          command.response_representation = Google::Apis::ArtifactregistryV1beta2::Operation::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1beta2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a file.
         # @param [String] name
         #   The name of the file to retrieve.
@@ -937,6 +973,42 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports Yum (RPM) artifacts. The returned Operation will complete once the
+        # resources are imported. Package, Version, and File resources are created based
+        # on the imported artifacts. Imported artifacts that conflict with existing
+        # resources are ignored.
+        # @param [String] parent
+        #   The name of the parent resource where the artifacts will be imported.
+        # @param [Google::Apis::ArtifactregistryV1beta2::ImportYumArtifactsRequest] import_yum_artifacts_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1beta2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1beta2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_yum_artifacts(parent, import_yum_artifacts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta2/{+parent}/yumArtifacts:import', options)
+          command.request_representation = Google::Apis::ArtifactregistryV1beta2::ImportYumArtifactsRequest::Representation
+          command.request_object = import_yum_artifacts_request_object
+          command.response_representation = Google::Apis::ArtifactregistryV1beta2::Operation::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1beta2::Operation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

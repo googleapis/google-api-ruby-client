@@ -22,6 +22,12 @@ module Google
   module Apis
     module ArtifactregistryV1beta2
       
+      class AptArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,54 @@ module Google
       end
       
       class HashProp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportAptArtifactsErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportAptArtifactsGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportAptArtifactsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportAptArtifactsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportYumArtifactsErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportYumArtifactsGcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportYumArtifactsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportYumArtifactsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,10 +208,52 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadAptArtifactMediaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadAptArtifactResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadYumArtifactMediaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadYumArtifactResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class YumArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AptArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :component, as: 'component'
+          property :control_file, :base64 => true, as: 'controlFile'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+          property :package_type, as: 'packageType'
+        end
       end
       
       class Binding
@@ -204,6 +300,78 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
           property :value, :base64 => true, as: 'value'
+        end
+      end
+      
+      class ImportAptArtifactsErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ArtifactregistryV1beta2::Status, decorator: Google::Apis::ArtifactregistryV1beta2::Status::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ArtifactregistryV1beta2::ImportAptArtifactsGcsSource, decorator: Google::Apis::ArtifactregistryV1beta2::ImportAptArtifactsGcsSource::Representation
+      
+        end
+      end
+      
+      class ImportAptArtifactsGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :uris, as: 'uris'
+          property :use_wildcards, as: 'useWildcards'
+        end
+      end
+      
+      class ImportAptArtifactsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ArtifactregistryV1beta2::ImportAptArtifactsGcsSource, decorator: Google::Apis::ArtifactregistryV1beta2::ImportAptArtifactsGcsSource::Representation
+      
+        end
+      end
+      
+      class ImportAptArtifactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apt_artifacts, as: 'aptArtifacts', class: Google::Apis::ArtifactregistryV1beta2::AptArtifact, decorator: Google::Apis::ArtifactregistryV1beta2::AptArtifact::Representation
+      
+          collection :errors, as: 'errors', class: Google::Apis::ArtifactregistryV1beta2::ImportAptArtifactsErrorInfo, decorator: Google::Apis::ArtifactregistryV1beta2::ImportAptArtifactsErrorInfo::Representation
+      
+        end
+      end
+      
+      class ImportYumArtifactsErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ArtifactregistryV1beta2::Status, decorator: Google::Apis::ArtifactregistryV1beta2::Status::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ArtifactregistryV1beta2::ImportYumArtifactsGcsSource, decorator: Google::Apis::ArtifactregistryV1beta2::ImportYumArtifactsGcsSource::Representation
+      
+        end
+      end
+      
+      class ImportYumArtifactsGcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :uris, as: 'uris'
+          property :use_wildcards, as: 'useWildcards'
+        end
+      end
+      
+      class ImportYumArtifactsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::ArtifactregistryV1beta2::ImportYumArtifactsGcsSource, decorator: Google::Apis::ArtifactregistryV1beta2::ImportYumArtifactsGcsSource::Representation
+      
+        end
+      end
+      
+      class ImportYumArtifactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::ArtifactregistryV1beta2::ImportYumArtifactsErrorInfo, decorator: Google::Apis::ArtifactregistryV1beta2::ImportYumArtifactsErrorInfo::Representation
+      
+          collection :yum_artifacts, as: 'yumArtifacts', class: Google::Apis::ArtifactregistryV1beta2::YumArtifact, decorator: Google::Apis::ArtifactregistryV1beta2::YumArtifact::Representation
+      
         end
       end
       
@@ -365,6 +533,38 @@ module Google
         end
       end
       
+      class UploadAptArtifactMediaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation', class: Google::Apis::ArtifactregistryV1beta2::Operation, decorator: Google::Apis::ArtifactregistryV1beta2::Operation::Representation
+      
+        end
+      end
+      
+      class UploadAptArtifactResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apt_artifacts, as: 'aptArtifacts', class: Google::Apis::ArtifactregistryV1beta2::AptArtifact, decorator: Google::Apis::ArtifactregistryV1beta2::AptArtifact::Representation
+      
+        end
+      end
+      
+      class UploadYumArtifactMediaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation', class: Google::Apis::ArtifactregistryV1beta2::Operation, decorator: Google::Apis::ArtifactregistryV1beta2::Operation::Representation
+      
+        end
+      end
+      
+      class UploadYumArtifactResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :yum_artifacts, as: 'yumArtifacts', class: Google::Apis::ArtifactregistryV1beta2::YumArtifact, decorator: Google::Apis::ArtifactregistryV1beta2::YumArtifact::Representation
+      
+        end
+      end
+      
       class Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -375,6 +575,16 @@ module Google
           collection :related_tags, as: 'relatedTags', class: Google::Apis::ArtifactregistryV1beta2::Tag, decorator: Google::Apis::ArtifactregistryV1beta2::Tag::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class YumArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+          property :package_type, as: 'packageType'
         end
       end
     end
