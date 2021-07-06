@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchedulerResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SoftwareConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,24 @@ module Google
       end
       
       class WebServerNetworkAccessControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebServerResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -192,7 +216,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build_log_uri, as: 'buildLogUri'
           property :contains_pypi_modules_conflict, as: 'containsPypiModulesConflict'
+          property :image_version, as: 'imageVersion'
           property :pypi_conflict_build_log_extract, as: 'pypiConflictBuildLogExtract'
+          hash :pypi_dependencies, as: 'pypiDependencies'
         end
       end
       
@@ -248,6 +274,7 @@ module Google
       
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ComposerV1beta1::EncryptionConfig, decorator: Google::Apis::ComposerV1beta1::EncryptionConfig::Representation
       
+          property :environment_size, as: 'environmentSize'
           property :gke_cluster, as: 'gkeCluster'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComposerV1beta1::MaintenanceWindow, decorator: Google::Apis::ComposerV1beta1::MaintenanceWindow::Representation
       
@@ -261,6 +288,8 @@ module Google
           property :web_server_config, as: 'webServerConfig', class: Google::Apis::ComposerV1beta1::WebServerConfig, decorator: Google::Apis::ComposerV1beta1::WebServerConfig::Representation
       
           property :web_server_network_access_control, as: 'webServerNetworkAccessControl', class: Google::Apis::ComposerV1beta1::WebServerNetworkAccessControl, decorator: Google::Apis::ComposerV1beta1::WebServerNetworkAccessControl::Representation
+      
+          property :workloads_config, as: 'workloadsConfig', class: Google::Apis::ComposerV1beta1::WorkloadsConfig, decorator: Google::Apis::ComposerV1beta1::WorkloadsConfig::Representation
       
         end
       end
@@ -378,6 +407,8 @@ module Google
       class PrivateEnvironmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_composer_network_ipv4_cidr_block, as: 'cloudComposerNetworkIpv4CidrBlock'
+          property :cloud_composer_network_ipv4_reserved_range, as: 'cloudComposerNetworkIpv4ReservedRange'
           property :cloud_sql_ipv4_cidr_block, as: 'cloudSqlIpv4CidrBlock'
           property :enable_private_environment, as: 'enablePrivateEnvironment'
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ComposerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ComposerV1beta1::PrivateClusterConfig::Representation
@@ -390,6 +421,16 @@ module Google
       class RestartWebServerRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SchedulerResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :cpu, as: 'cpu'
+          property :memory_gb, as: 'memoryGb'
+          property :storage_gb, as: 'storageGb'
         end
       end
       
@@ -424,6 +465,38 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_ip_ranges, as: 'allowedIpRanges', class: Google::Apis::ComposerV1beta1::AllowedIpRange, decorator: Google::Apis::ComposerV1beta1::AllowedIpRange::Representation
+      
+        end
+      end
+      
+      class WebServerResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu, as: 'cpu'
+          property :memory_gb, as: 'memoryGb'
+          property :storage_gb, as: 'storageGb'
+        end
+      end
+      
+      class WorkerResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu, as: 'cpu'
+          property :max_count, as: 'maxCount'
+          property :memory_gb, as: 'memoryGb'
+          property :min_count, as: 'minCount'
+          property :storage_gb, as: 'storageGb'
+        end
+      end
+      
+      class WorkloadsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scheduler, as: 'scheduler', class: Google::Apis::ComposerV1beta1::SchedulerResource, decorator: Google::Apis::ComposerV1beta1::SchedulerResource::Representation
+      
+          property :web_server, as: 'webServer', class: Google::Apis::ComposerV1beta1::WebServerResource, decorator: Google::Apis::ComposerV1beta1::WebServerResource::Representation
+      
+          property :worker, as: 'worker', class: Google::Apis::ComposerV1beta1::WorkerResource, decorator: Google::Apis::ComposerV1beta1::WorkerResource::Representation
       
         end
       end
