@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlertStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppEngine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MeshIstio
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +431,12 @@ module Google
       end
       
       class NotificationChannelDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationRateLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -629,6 +647,8 @@ module Google
       class AlertPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_strategy, as: 'alertStrategy', class: Google::Apis::MonitoringV3::AlertStrategy, decorator: Google::Apis::MonitoringV3::AlertStrategy::Representation
+      
           property :combiner, as: 'combiner'
           collection :conditions, as: 'conditions', class: Google::Apis::MonitoringV3::Condition, decorator: Google::Apis::MonitoringV3::Condition::Representation
       
@@ -644,6 +664,14 @@ module Google
           collection :notification_channels, as: 'notificationChannels'
           hash :user_labels, as: 'userLabels'
           property :validity, as: 'validity', class: Google::Apis::MonitoringV3::Status, decorator: Google::Apis::MonitoringV3::Status::Representation
+      
+        end
+      end
+      
+      class AlertStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :notification_rate_limit, as: 'notificationRateLimit', class: Google::Apis::MonitoringV3::NotificationRateLimit, decorator: Google::Apis::MonitoringV3::NotificationRateLimit::Representation
       
         end
       end
@@ -761,6 +789,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :condition_absent, as: 'conditionAbsent', class: Google::Apis::MonitoringV3::MetricAbsence, decorator: Google::Apis::MonitoringV3::MetricAbsence::Representation
+      
+          property :condition_matched_log, as: 'conditionMatchedLog', class: Google::Apis::MonitoringV3::LogMatch, decorator: Google::Apis::MonitoringV3::LogMatch::Representation
       
           property :condition_monitoring_query_language, as: 'conditionMonitoringQueryLanguage', class: Google::Apis::MonitoringV3::MonitoringQueryLanguageCondition, decorator: Google::Apis::MonitoringV3::MonitoringQueryLanguageCondition::Representation
       
@@ -1142,6 +1172,14 @@ module Google
         end
       end
       
+      class LogMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          hash :label_extractors, as: 'labelExtractors'
+        end
+      end
+      
       class MeshIstio
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1300,6 +1338,13 @@ module Google
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           property :type, as: 'type'
+        end
+      end
+      
+      class NotificationRateLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :period, as: 'period'
         end
       end
       
