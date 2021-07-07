@@ -76,10 +76,13 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Input only. Role arn to support temporary credentials via
-        # AssumeRoleWithWebIdentity. When role arn is provided, transfer service will
-        # fetch temporary credentials for the session using AssumeRoleWithWebIdentity
-        # call for the provided role using the [GoogleServiceAccount] for this project.
+        # Input only. The Amazon Resource Name (ARN) of the role to support temporary
+        # credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs,
+        # see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/
+        # reference_identifiers.html#identifiers-arns). When a role ARN is provided,
+        # Transfer Service fetches temporary credentials for the session using a `
+        # AssumeRoleWithWebIdentity` call for the provided role using the
+        # GoogleServiceAccount for this project.
         # Corresponds to the JSON property `roleArn`
         # @return [String]
         attr_accessor :role_arn
@@ -281,8 +284,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :error_count
       
-        # Error samples. At most 5 error log entries will be recorded for a given error
-        # code for a single transfer operation.
+        # Error samples. At most 5 error log entries are recorded for a given error code
+        # for a single transfer operation.
         # Corresponds to the JSON property `errorLogEntries`
         # @return [Array<Google::Apis::StoragetransferV1::ErrorLogEntry>]
         attr_accessor :error_log_entries
@@ -369,14 +372,14 @@ module Google
       # following in mind: * When an object located at `http(s)://hostname:port/` is
       # transferred to a data sink, the name of the object at the data sink is `/`. *
       # If the specified size of an object does not match the actual size of the
-      # object fetched, the object will not be transferred. * If the specified MD5
-      # does not match the MD5 computed from the transferred bytes, the object
-      # transfer will fail. * Ensure that each URL you specify is publicly accessible.
-      # For example, in Cloud Storage you can [share an object publicly] (/storage/
-      # docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
-      # Service obeys `robots.txt` rules and requires the source HTTP server to
-      # support `Range` requests and to return a `Content-Length` header in each
-      # response. * ObjectConditions have no effect when filtering objects to transfer.
+      # object fetched, the object is not transferred. * If the specified MD5 does not
+      # match the MD5 computed from the transferred bytes, the object transfer fails. *
+      # Ensure that each URL you specify is publicly accessible. For example, in
+      # Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#
+      # _sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.
+      # txt` rules and requires the source HTTP server to support `Range` requests and
+      # to return a `Content-Length` header in each response. * ObjectConditions have
+      # no effect when filtering objects to transfer.
       class HttpData
         include Google::Apis::Core::Hashable
       
@@ -447,13 +450,13 @@ module Google
         end
       end
       
-      # Specification to configure notifications published to Cloud Pub/Sub.
-      # Notifications will be published to the customer-provided topic using the
-      # following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType
-      # values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`:
-      # the project_id of the `TransferOperation` * `"transferJobName"`: the
+      # Specification to configure notifications published to Pub/Sub. Notifications
+      # are published to the customer-provided topic using the following `
+      # PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"
+      # payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the
+      # project_id of the `TransferOperation` * `"transferJobName"`: the
       # transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the
-      # name of the `TransferOperation` The `PubsubMessage.data` will contain a
+      # name of the `TransferOperation` The `PubsubMessage.data` contains a
       # TransferOperation resource formatted according to the specified `PayloadFormat`
       # .
       class NotificationConfig
@@ -470,9 +473,9 @@ module Google
         # @return [String]
         attr_accessor :payload_format
       
-        # Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish
+        # Required. The `Topic.name` of the Pub/Sub topic to which to publish
         # notifications. Must be of the format: `projects/`project`/topics/`topic``. Not
-        # matching this format will result in an INVALID_ARGUMENT error.
+        # matching this format results in an INVALID_ARGUMENT error.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -489,12 +492,12 @@ module Google
         end
       end
       
-      # Conditions that determine which objects will be transferred. Applies only to
-      # Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last
-      # modification time" refers to the time of the last change to the object's
-      # content or metadata — specifically, this is the `updated` property of Cloud
-      # Storage objects, the `LastModified` field of S3 objects, and the `Last-
-      # Modified` header of Azure blobs.
+      # Conditions that determine which objects are transferred. Applies only to Cloud
+      # Data Sources such as S3, Azure, and Cloud Storage. The "last modification time"
+      # refers to the time of the last change to the object's content or metadata —
+      # specifically, this is the `updated` property of Cloud Storage objects, the `
+      # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
+      # blobs.
       class ObjectConditions
         include Google::Apis::Core::Hashable
       
@@ -541,7 +544,7 @@ module Google
         attr_accessor :include_prefixes
       
         # If specified, only objects with a "last modification time" before this
-        # timestamp and objects that don't have a "last modification time" will be
+        # timestamp and objects that don't have a "last modification time" are
         # transferred.
         # Corresponds to the JSON property `lastModifiedBefore`
         # @return [String]
@@ -986,25 +989,24 @@ module Google
       
         # A unique name (within the transfer project) assigned when the job is created.
         # If this field is empty in a CreateTransferJobRequest, Storage Transfer Service
-        # will assign a unique name. Otherwise, the specified name is used as the unique
+        # assigns a unique name. Otherwise, the specified name is used as the unique
         # name for this job. If the specified name is in use by a job, the creation
         # request fails with an ALREADY_EXISTS error. This name must start with `"
         # transferJobs/"` prefix and end with a letter or a number, and should be no
         # more than 128 characters. This name must not start with 'transferJobs/OPI'. '
         # transferJobs/OPI' is a reserved prefix. Example: `"transferJobs/^(?!OPI)[A-Za-
-        # z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT
-        # error.
+        # z0-9-._~]*[A-Za-z0-9]$"` Invalid job names fail with an INVALID_ARGUMENT error.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Specification to configure notifications published to Cloud Pub/Sub.
-        # Notifications will be published to the customer-provided topic using the
-        # following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType
-        # values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`:
-        # the project_id of the `TransferOperation` * `"transferJobName"`: the
+        # Specification to configure notifications published to Pub/Sub. Notifications
+        # are published to the customer-provided topic using the following `
+        # PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"
+        # payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the
+        # project_id of the `TransferOperation` * `"transferJobName"`: the
         # transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the
-        # name of the `TransferOperation` The `PubsubMessage.data` will contain a
+        # name of the `TransferOperation` The `PubsubMessage.data` contains a
         # TransferOperation resource formatted according to the specified `PayloadFormat`
         # .
         # Corresponds to the JSON property `notificationConfig`
@@ -1079,13 +1081,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Specification to configure notifications published to Cloud Pub/Sub.
-        # Notifications will be published to the customer-provided topic using the
-        # following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType
-        # values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`:
-        # the project_id of the `TransferOperation` * `"transferJobName"`: the
+        # Specification to configure notifications published to Pub/Sub. Notifications
+        # are published to the customer-provided topic using the following `
+        # PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"
+        # payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the
+        # project_id of the `TransferOperation` * `"transferJobName"`: the
         # transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the
-        # name of the `TransferOperation` The `PubsubMessage.data` will contain a
+        # name of the `TransferOperation` The `PubsubMessage.data` contains a
         # TransferOperation resource formatted according to the specified `PayloadFormat`
         # .
         # Corresponds to the JSON property `notificationConfig`
@@ -1157,8 +1159,8 @@ module Google
       
         # When to overwrite objects that already exist in the sink. The default is that
         # only objects that are different from the source are ovewritten. If true, all
-        # objects in the sink whose name matches an object in the source will be
-        # overwritten with the source object.
+        # objects in the sink whose name matches an object in the source are overwritten
+        # with the source object.
         # Corresponds to the JSON property `overwriteObjectsAlreadyExistingInSink`
         # @return [Boolean]
         attr_accessor :overwrite_objects_already_existing_in_sink
@@ -1226,24 +1228,24 @@ module Google
         # following in mind: * When an object located at `http(s)://hostname:port/` is
         # transferred to a data sink, the name of the object at the data sink is `/`. *
         # If the specified size of an object does not match the actual size of the
-        # object fetched, the object will not be transferred. * If the specified MD5
-        # does not match the MD5 computed from the transferred bytes, the object
-        # transfer will fail. * Ensure that each URL you specify is publicly accessible.
-        # For example, in Cloud Storage you can [share an object publicly] (/storage/
-        # docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
-        # Service obeys `robots.txt` rules and requires the source HTTP server to
-        # support `Range` requests and to return a `Content-Length` header in each
-        # response. * ObjectConditions have no effect when filtering objects to transfer.
+        # object fetched, the object is not transferred. * If the specified MD5 does not
+        # match the MD5 computed from the transferred bytes, the object transfer fails. *
+        # Ensure that each URL you specify is publicly accessible. For example, in
+        # Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#
+        # _sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.
+        # txt` rules and requires the source HTTP server to support `Range` requests and
+        # to return a `Content-Length` header in each response. * ObjectConditions have
+        # no effect when filtering objects to transfer.
         # Corresponds to the JSON property `httpDataSource`
         # @return [Google::Apis::StoragetransferV1::HttpData]
         attr_accessor :http_data_source
       
-        # Conditions that determine which objects will be transferred. Applies only to
-        # Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last
-        # modification time" refers to the time of the last change to the object's
-        # content or metadata — specifically, this is the `updated` property of Cloud
-        # Storage objects, the `LastModified` field of S3 objects, and the `Last-
-        # Modified` header of Azure blobs.
+        # Conditions that determine which objects are transferred. Applies only to Cloud
+        # Data Sources such as S3, Azure, and Cloud Storage. The "last modification time"
+        # refers to the time of the last change to the object's content or metadata —
+        # specifically, this is the `updated` property of Cloud Storage objects, the `
+        # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
+        # blobs.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
         attr_accessor :object_conditions
