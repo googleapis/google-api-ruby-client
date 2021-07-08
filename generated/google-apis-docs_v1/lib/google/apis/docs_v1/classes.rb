@@ -3169,6 +3169,12 @@ module Google
         # @return [Google::Apis::DocsV1::Person]
         attr_accessor :person
       
+        # A link to a Google resource (e.g., a file in Drive, a YouTube video, a
+        # Calendar event, etc.).
+        # Corresponds to the JSON property `richLink`
+        # @return [Google::Apis::DocsV1::RichLink]
+        attr_accessor :rich_link
+      
         # The zero-based start index of this paragraph element, in UTF-16 code units.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
@@ -3194,6 +3200,7 @@ module Google
           @inline_object_element = args[:inline_object_element] if args.key?(:inline_object_element)
           @page_break = args[:page_break] if args.key?(:page_break)
           @person = args[:person] if args.key?(:person)
+          @rich_link = args[:rich_link] if args.key?(:rich_link)
           @start_index = args[:start_index] if args.key?(:start_index)
           @text_run = args[:text_run] if args.key?(:text_run)
         end
@@ -4250,6 +4257,104 @@ module Google
           @blue = args[:blue] if args.key?(:blue)
           @green = args[:green] if args.key?(:green)
           @red = args[:red] if args.key?(:red)
+        end
+      end
+      
+      # A link to a Google resource (e.g., a file in Drive, a YouTube video, a
+      # Calendar event, etc.).
+      class RichLink
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ID of this link.
+        # Corresponds to the JSON property `richLinkId`
+        # @return [String]
+        attr_accessor :rich_link_id
+      
+        # Properties specific to a RichLink.
+        # Corresponds to the JSON property `richLinkProperties`
+        # @return [Google::Apis::DocsV1::RichLinkProperties]
+        attr_accessor :rich_link_properties
+      
+        # IDs for suggestions that remove this link from the document. A RichLink might
+        # have multiple deletion IDs if, for example, multiple users suggest to delete
+        # it. If empty, then this person link isn't suggested for deletion.
+        # Corresponds to the JSON property `suggestedDeletionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_deletion_ids
+      
+        # IDs for suggestions that insert this link into the document. A RichLink might
+        # have multiple insertion IDs if it is a nested suggested change (a suggestion
+        # within a suggestion made by a different user, for example). If empty, then
+        # this person link isn't a suggested insertion.
+        # Corresponds to the JSON property `suggestedInsertionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_insertion_ids
+      
+        # The suggested text style changes to this RichLink, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedTextStyleChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
+        attr_accessor :suggested_text_style_changes
+      
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
+        # Corresponds to the JSON property `textStyle`
+        # @return [Google::Apis::DocsV1::TextStyle]
+        attr_accessor :text_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rich_link_id = args[:rich_link_id] if args.key?(:rich_link_id)
+          @rich_link_properties = args[:rich_link_properties] if args.key?(:rich_link_properties)
+          @suggested_deletion_ids = args[:suggested_deletion_ids] if args.key?(:suggested_deletion_ids)
+          @suggested_insertion_ids = args[:suggested_insertion_ids] if args.key?(:suggested_insertion_ids)
+          @suggested_text_style_changes = args[:suggested_text_style_changes] if args.key?(:suggested_text_style_changes)
+          @text_style = args[:text_style] if args.key?(:text_style)
+        end
+      end
+      
+      # Properties specific to a RichLink.
+      class RichLinkProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The [MIME type](https://developers.google.com/drive/api/v3/mime-
+        # types) of the RichLink, if there is one (i.e., when it is a file in Drive).
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Output only. The title of the RichLink as displayed in the link. This title
+        # matches the title of the linked resource at the time of the insertion or last
+        # update of the link. This field is always present.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Output only. The URI to the RichLink. This is always present.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       

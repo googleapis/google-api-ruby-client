@@ -622,6 +622,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RichLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RichLinkProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SectionBreak
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1810,6 +1822,8 @@ module Google
       
           property :person, as: 'person', class: Google::Apis::DocsV1::Person, decorator: Google::Apis::DocsV1::Person::Representation
       
+          property :rich_link, as: 'richLink', class: Google::Apis::DocsV1::RichLink, decorator: Google::Apis::DocsV1::RichLink::Representation
+      
           property :start_index, as: 'startIndex'
           property :text_run, as: 'textRun', class: Google::Apis::DocsV1::TextRun, decorator: Google::Apis::DocsV1::TextRun::Representation
       
@@ -2097,6 +2111,30 @@ module Google
           property :blue, as: 'blue'
           property :green, as: 'green'
           property :red, as: 'red'
+        end
+      end
+      
+      class RichLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rich_link_id, as: 'richLinkId'
+          property :rich_link_properties, as: 'richLinkProperties', class: Google::Apis::DocsV1::RichLinkProperties, decorator: Google::Apis::DocsV1::RichLinkProperties::Representation
+      
+          collection :suggested_deletion_ids, as: 'suggestedDeletionIds'
+          collection :suggested_insertion_ids, as: 'suggestedInsertionIds'
+          hash :suggested_text_style_changes, as: 'suggestedTextStyleChanges', class: Google::Apis::DocsV1::SuggestedTextStyle, decorator: Google::Apis::DocsV1::SuggestedTextStyle::Representation
+      
+          property :text_style, as: 'textStyle', class: Google::Apis::DocsV1::TextStyle, decorator: Google::Apis::DocsV1::TextStyle::Representation
+      
+        end
+      end
+      
+      class RichLinkProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mime_type, as: 'mimeType'
+          property :title, as: 'title'
+          property :uri, as: 'uri'
         end
       end
       
