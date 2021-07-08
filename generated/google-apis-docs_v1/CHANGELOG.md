@@ -1,5 +1,9 @@
 # Release history for google-apis-docs_v1
 
+### v0.9.0 (2021-07-08)
+
+* Regenerated from discovery document revision 20210707
+
 ### v0.8.0 (2021-06-29)
 
 * Regenerated using generator version 0.4.0
