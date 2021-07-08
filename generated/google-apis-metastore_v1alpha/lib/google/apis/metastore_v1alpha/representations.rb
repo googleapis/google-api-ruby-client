@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportMetadataRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -292,6 +298,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key, as: 'kmsKey'
         end
       end
       
@@ -530,6 +543,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_gcs_uri, as: 'artifactGcsUri'
           property :create_time, as: 'createTime'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::MetastoreV1alpha::EncryptionConfig, decorator: Google::Apis::MetastoreV1alpha::EncryptionConfig::Representation
+      
           property :endpoint_uri, as: 'endpointUri'
           property :hive_metastore_config, as: 'hiveMetastoreConfig', class: Google::Apis::MetastoreV1alpha::HiveMetastoreConfig, decorator: Google::Apis::MetastoreV1alpha::HiveMetastoreConfig::Representation
       
