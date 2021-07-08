@@ -32,6 +32,9 @@ module Google
 
       # See, edit, create and permanently delete all your Google Keep data
       AUTH_KEEP = 'https://www.googleapis.com/auth/keep'
+
+      # View all your Google Keep data
+      AUTH_KEEP_READONLY = 'https://www.googleapis.com/auth/keep.readonly'
     end
   end
 end
