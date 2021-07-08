@@ -292,6 +292,27 @@ module Google
         end
       end
       
+      # Encryption settings for the service.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified customer provided Cloud KMS key name to use for customer
+        # data encryption, in the following form:projects/`project_number`/locations/`
+        # location_id`/keyRings/`key_ring_id`/cryptoKeys/`crypto_key_id`.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+        end
+      end
+      
       # Request message for DataprocMetastore.ExportMetadata.
       class ExportMetadataRequest
         include Google::Apis::Core::Hashable
@@ -1205,6 +1226,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Encryption settings for the service.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::MetastoreV1beta::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Output only. The URI of the endpoint used to access the metastore service.
         # Corresponds to the JSON property `endpointUri`
         # @return [String]
@@ -1295,6 +1321,7 @@ module Google
         def update!(**args)
           @artifact_gcs_uri = args[:artifact_gcs_uri] if args.key?(:artifact_gcs_uri)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
           @hive_metastore_config = args[:hive_metastore_config] if args.key?(:hive_metastore_config)
           @labels = args[:labels] if args.key?(:labels)
