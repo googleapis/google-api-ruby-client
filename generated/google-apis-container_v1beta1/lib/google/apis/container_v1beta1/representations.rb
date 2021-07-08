@@ -1068,6 +1068,8 @@ module Google
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
       
+          property :desired_service_external_ips_config, as: 'desiredServiceExternalIpsConfig', class: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig::Representation
+      
           property :desired_shielded_nodes, as: 'desiredShieldedNodes', class: Google::Apis::ContainerV1beta1::ShieldedNodes, decorator: Google::Apis::ContainerV1beta1::ShieldedNodes::Representation
       
           property :desired_tpu_config, as: 'desiredTpuConfig', class: Google::Apis::ContainerV1beta1::TpuConfig, decorator: Google::Apis::ContainerV1beta1::TpuConfig::Representation

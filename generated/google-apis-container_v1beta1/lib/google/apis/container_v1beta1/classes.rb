@@ -1236,6 +1236,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
         attr_accessor :desired_resource_usage_export_config
       
+        # Config to block services with externalIPs field.
+        # Corresponds to the JSON property `desiredServiceExternalIpsConfig`
+        # @return [Google::Apis::ContainerV1beta1::ServiceExternalIPsConfig]
+        attr_accessor :desired_service_external_ips_config
+      
         # Configuration of Shielded Nodes feature.
         # Corresponds to the JSON property `desiredShieldedNodes`
         # @return [Google::Apis::ContainerV1beta1::ShieldedNodes]
@@ -1297,6 +1302,7 @@ module Google
           @desired_private_ipv6_google_access = args[:desired_private_ipv6_google_access] if args.key?(:desired_private_ipv6_google_access)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
+          @desired_service_external_ips_config = args[:desired_service_external_ips_config] if args.key?(:desired_service_external_ips_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_tpu_config = args[:desired_tpu_config] if args.key?(:desired_tpu_config)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
