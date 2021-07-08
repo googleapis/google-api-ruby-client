@@ -589,7 +589,10 @@ module Google
         # @return [String]
         attr_accessor :object_id_prop
       
-        # The ID of the Google Sheets spreadsheet that contains the chart.
+        # The ID of the Google Sheets spreadsheet that contains the chart. You might
+        # need to add a resource key to the HTTP header for a subset of old files. For
+        # more information, see [Access link-shared files using resource keys](https://
+        # developers.google.com/drive/api/v3/resource-keys).
         # Corresponds to the JSON property `spreadsheetId`
         # @return [String]
         attr_accessor :spreadsheet_id
@@ -771,7 +774,10 @@ module Google
         # The video source's unique identifier for this video. e.g. For YouTube video
         # https://www.youtube.com/watch?v=7U3axjORYZ0, the ID is 7U3axjORYZ0. For a
         # Google Drive video https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-
-        # q6Hi5Q the ID is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q.
+        # q6Hi5Q the ID is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q. To access a Google Drive
+        # video file, you might need to add a resource key to the HTTP header for a
+        # subset of old files. For more information, see [Access link-shared files using
+        # resource keys](https://developers.google.com/drive/api/v3/resource-keys).
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -894,8 +900,8 @@ module Google
       
         # The object ID of the page or page element to delete. If after a delete
         # operation a group contains only 1 or no page elements, the group is also
-        # deleted. If a placeholder is deleted on a layout, any empty inheriting shapes
-        # are also deleted.
+        # deleted. If a placeholder is deleted on a layout, any empty inheriting
+        # placeholders are also deleted.
         # Corresponds to the JSON property `objectId`
         # @return [String]
         attr_accessor :object_id_prop
@@ -1138,7 +1144,7 @@ module Google
         # The object IDs of the objects to group. Only page elements can be grouped.
         # There should be at least two page elements on the same page that are not
         # already in another group. Some page elements, such as videos, tables and
-        # placeholder shapes cannot be grouped.
+        # placeholders cannot be grouped.
         # Corresponds to the JSON property `childrenObjectIds`
         # @return [Array<String>]
         attr_accessor :children_object_ids
