@@ -208,6 +208,39 @@ module Google
         end
       end
       
+      # Specification for the BigQuery connection.
+      class GoogleCloudDatacatalogV1BigQueryConnectionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification for the BigQuery connection to a Cloud SQL instance.
+        # Corresponds to the JSON property `cloudSql`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec]
+        attr_accessor :cloud_sql
+      
+        # The type of the BigQuery connection.
+        # Corresponds to the JSON property `connectionType`
+        # @return [String]
+        attr_accessor :connection_type
+      
+        # True if there are credentials attached to the BigQuery connection; false
+        # otherwise.
+        # Corresponds to the JSON property `hasCredential`
+        # @return [Boolean]
+        attr_accessor :has_credential
+        alias_method :has_credential?, :has_credential
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_sql = args[:cloud_sql] if args.key?(:cloud_sql)
+          @connection_type = args[:connection_type] if args.key?(:connection_type)
+          @has_credential = args[:has_credential] if args.key?(:has_credential)
+        end
+      end
+      
       # Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name
       # pattern. For more information, see [Introduction to partitioned tables] (https:
       # //cloud.google.com/bigquery/docs/partitioned-tables#
@@ -293,6 +326,37 @@ module Google
           @table_source_type = args[:table_source_type] if args.key?(:table_source_type)
           @table_spec = args[:table_spec] if args.key?(:table_spec)
           @view_spec = args[:view_spec] if args.key?(:view_spec)
+        end
+      end
+      
+      # Specification for the BigQuery connection to a Cloud SQL instance.
+      class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Database name.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Cloud SQL instance ID in the format of `project:location:instance`.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # Type of the Cloud SQL database.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -391,6 +455,26 @@ module Google
         end
       end
       
+      # Specification that applies to a data source connection. Valid only for entries
+      # with the `DATA_SOURCE_CONNECTION` type.
+      class GoogleCloudDatacatalogV1DataSourceConnectionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specification for the BigQuery connection.
+        # Corresponds to the JSON property `bigqueryConnectionSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BigQueryConnectionSpec]
+        attr_accessor :bigquery_connection_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_connection_spec = args[:bigquery_connection_spec] if args.key?(:bigquery_connection_spec)
+        end
+      end
+      
       # Specification that applies to a table resource. Valid only for entries with
       # the `TABLE` type.
       class GoogleCloudDatacatalogV1DatabaseTableSpec
@@ -438,6 +522,12 @@ module Google
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSource]
         attr_accessor :data_source
       
+        # Specification that applies to a data source connection. Valid only for entries
+        # with the `DATA_SOURCE_CONNECTION` type.
+        # Corresponds to the JSON property `dataSourceConnectionSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSourceConnectionSpec]
+        attr_accessor :data_source_connection_spec
+      
         # Specification that applies to a table resource. Valid only for entries with
         # the `TABLE` type.
         # Corresponds to the JSON property `databaseTableSpec`
@@ -483,6 +573,13 @@ module Google
         # Corresponds to the JSON property `integratedSystem`
         # @return [String]
         attr_accessor :integrated_system
+      
+        # Cloud labels attached to the entry. In Data Catalog, you can create and modify
+        # labels attached only to custom entries. Synced entries have unmodifiable
+        # labels that come from the source system.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
       
         # The resource this metadata entry refers to. For Google Cloud Platform
         # resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.
@@ -565,12 +662,14 @@ module Google
           @bigquery_date_sharded_spec = args[:bigquery_date_sharded_spec] if args.key?(:bigquery_date_sharded_spec)
           @bigquery_table_spec = args[:bigquery_table_spec] if args.key?(:bigquery_table_spec)
           @data_source = args[:data_source] if args.key?(:data_source)
+          @data_source_connection_spec = args[:data_source_connection_spec] if args.key?(:data_source_connection_spec)
           @database_table_spec = args[:database_table_spec] if args.key?(:database_table_spec)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
           @gcs_fileset_spec = args[:gcs_fileset_spec] if args.key?(:gcs_fileset_spec)
           @integrated_system = args[:integrated_system] if args.key?(:integrated_system)
+          @labels = args[:labels] if args.key?(:labels)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
           @name = args[:name] if args.key?(:name)
           @routine_spec = args[:routine_spec] if args.key?(:routine_spec)
@@ -1281,6 +1380,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_project_ids
       
+        # Optional. If `true`, include public tag templates in the search results. By
+        # default, they are included only if you have explicit permissions on them to
+        # view them. For example, if you are the owner. Other scope fields, for example,
+        # ``include_org_ids``, still restrict the returned public tag templates and at
+        # least one of them is required.
+        # Corresponds to the JSON property `includePublicTagTemplates`
+        # @return [Boolean]
+        attr_accessor :include_public_tag_templates
+        alias_method :include_public_tag_templates?, :include_public_tag_templates
+      
         # Optional. The list of locations to search within. If empty, all locations are
         # searched. Returns an error if any location in the list isn't one of the [
         # Supported regions](https://cloud.google.com/data-catalog/docs/concepts/regions#
@@ -1301,6 +1410,7 @@ module Google
           @include_gcp_public_datasets = args[:include_gcp_public_datasets] if args.key?(:include_gcp_public_datasets)
           @include_org_ids = args[:include_org_ids] if args.key?(:include_org_ids)
           @include_project_ids = args[:include_project_ids] if args.key?(:include_project_ids)
+          @include_public_tag_templates = args[:include_public_tag_templates] if args.key?(:include_public_tag_templates)
           @restricted_locations = args[:restricted_locations] if args.key?(:restricted_locations)
         end
       end
@@ -1717,6 +1827,23 @@ module Google
         # @return [Hash<String,Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TagTemplateField>]
         attr_accessor :fields
       
+        # Indicates whether this is a public tag template. Every user has view access to
+        # a *public* tag template by default. This means that: * Every user can use this
+        # tag template to tag an entry. * If an entry is tagged using the tag template,
+        # the tag is always shown in the response to ``ListTags`` called on the entry. *
+        # To get the template using the GetTagTemplate method, you need view access
+        # either on the project or the organization the tag template resides in but no
+        # other permission is needed. * Operations on the tag template other than
+        # viewing (for example, editing IAM policies) follow standard IAM structures.
+        # Tags created with a public tag template are referred to as public tags. You
+        # can search for a public tag by value with a simple search query instead of
+        # using a ``tag:`` predicate. Public tag templates may not appear in search
+        # results depending on scope, see: include_public_tag_templates
+        # Corresponds to the JSON property `isPubliclyReadable`
+        # @return [Boolean]
+        attr_accessor :is_publicly_readable
+        alias_method :is_publicly_readable?, :is_publicly_readable
+      
         # The resource name of the tag template in URL format. Note: The tag template
         # itself and its child resources might not be stored in the location specified
         # in its name.
@@ -1732,6 +1859,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fields = args[:fields] if args.key?(:fields)
+          @is_publicly_readable = args[:is_publicly_readable] if args.key?(:is_publicly_readable)
           @name = args[:name] if args.key?(:name)
         end
       end

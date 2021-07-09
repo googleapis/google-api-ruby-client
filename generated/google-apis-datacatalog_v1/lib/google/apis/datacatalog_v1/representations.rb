@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1BigQueryConnectionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1BigQueryDateShardedSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1ColumnSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1DataSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1DataSourceConnectionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -399,6 +417,16 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1BigQueryConnectionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_sql, as: 'cloudSql', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec::Representation
+      
+          property :connection_type, as: 'connectionType'
+          property :has_credential, as: 'hasCredential'
+        end
+      end
+      
       class GoogleCloudDatacatalogV1BigQueryDateShardedSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -423,6 +451,15 @@ module Google
       
           property :view_spec, as: 'viewSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ViewSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ViewSpec::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :instance_id, as: 'instanceId'
+          property :type, as: 'type'
         end
       end
       
@@ -453,6 +490,14 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1DataSourceConnectionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_connection_spec, as: 'bigqueryConnectionSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BigQueryConnectionSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BigQueryConnectionSpec::Representation
+      
+        end
+      end
+      
       class GoogleCloudDatacatalogV1DatabaseTableSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -469,6 +514,8 @@ module Google
       
           property :data_source, as: 'dataSource', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSource, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSource::Representation
       
+          property :data_source_connection_spec, as: 'dataSourceConnectionSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSourceConnectionSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSourceConnectionSpec::Representation
+      
           property :database_table_spec, as: 'databaseTableSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatabaseTableSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DatabaseTableSpec::Representation
       
           property :description, as: 'description'
@@ -477,6 +524,7 @@ module Google
           property :gcs_fileset_spec, as: 'gcsFilesetSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFilesetSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFilesetSpec::Representation
       
           property :integrated_system, as: 'integratedSystem'
+          hash :labels, as: 'labels'
           property :linked_resource, as: 'linkedResource'
           property :name, as: 'name'
           property :routine_spec, as: 'routineSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpec::Representation
@@ -708,6 +756,7 @@ module Google
           property :include_gcp_public_datasets, as: 'includeGcpPublicDatasets'
           collection :include_org_ids, as: 'includeOrgIds'
           collection :include_project_ids, as: 'includeProjectIds'
+          property :include_public_tag_templates, as: 'includePublicTagTemplates'
           collection :restricted_locations, as: 'restrictedLocations'
         end
       end
@@ -813,6 +862,7 @@ module Google
           property :display_name, as: 'displayName'
           hash :fields, as: 'fields', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TagTemplateField, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TagTemplateField::Representation
       
+          property :is_publicly_readable, as: 'isPubliclyReadable'
           property :name, as: 'name'
         end
       end
