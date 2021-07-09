@@ -875,7 +875,8 @@ module Google
         # Deletes the specified agent environment.
         # @param [String] name
         #   Required. The name of the environment to delete. / Format: - `projects//agent/
-        #   environments/` - `projects//locations//agent/environments/`
+        #   environments/` - `projects//locations//agent/environments/` The environment ID
+        #   for the default environment is `-`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -906,7 +907,8 @@ module Google
         # Retrieves the specified agent environment.
         # @param [String] name
         #   Required. The name of the environment. Supported formats: - `projects//agent/
-        #   environments/` - `projects//locations//agent/environments/`
+        #   environments/` - `projects//locations//agent/environments/` The environment ID
+        #   for the default environment is `-`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -938,7 +940,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the environment to retrieve history for. Supported
         #   formats: - `projects//agent/environments/` - `projects//locations//agent/
-        #   environments/`
+        #   environments/` The environment ID for the default environment is `-`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -973,7 +975,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the list of all non-draft environments of the specified agent.
+        # Returns the list of all non-default environments of the specified agent.
         # @param [String] parent
         #   Required. The agent to list all environments from. Format: - `projects//agent`
         #   - `projects//locations//agent`
@@ -1015,22 +1017,22 @@ module Google
         # agent versions into the environment. When an environment is pointed to a new
         # agent version by setting `environment.agent_version`, the environment is
         # temporarily set to the `LOADING` state. During that time, the environment
-        # keeps on serving the previous version of the agent. After the new agent
+        # continues serving the previous version of the agent. After the new agent
         # version is done loading, the environment is set back to the `RUNNING` state.
-        # You can use "-" as Environment ID in environment name to update version in "
-        # draft" environment. WARNING: this will negate all recent changes to draft and
-        # can't be undone. You may want to save the draft to a version before calling
-        # this function.
+        # You can use "-" as Environment ID in environment name to update an agent
+        # version in the default environment. WARNING: this will negate all recent
+        # changes to the draft agent and can't be undone. You may want to save the draft
+        # agent to a version before calling this method.
         # @param [String] name
         #   Output only. The unique identifier of this agent environment. Supported
         #   formats: - `projects//agent/environments/` - `projects//locations//agent/
-        #   environments/`
+        #   environments/` The environment ID for the default environment is `-`.
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment] google_cloud_dialogflow_v2_environment_object
         # @param [Boolean] allow_load_to_draft_and_discard_changes
-        #   Optional. This field is used to prevent accidental overwrite of the draft
+        #   Optional. This field is used to prevent accidental overwrite of the default
         #   environment, which is an operation that cannot be undone. To confirm that the
         #   caller desires this overwrite, this field must be explicitly set to true when
-        #   updating the draft environment (environment ID = `-`).
+        #   updating the default environment (environment ID = `-`).
         # @param [String] update_mask
         #   Required. The mask to control which fields get updated.
         # @param [String] fields
@@ -4827,7 +4829,8 @@ module Google
         # Deletes the specified agent environment.
         # @param [String] name
         #   Required. The name of the environment to delete. / Format: - `projects//agent/
-        #   environments/` - `projects//locations//agent/environments/`
+        #   environments/` - `projects//locations//agent/environments/` The environment ID
+        #   for the default environment is `-`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4858,7 +4861,8 @@ module Google
         # Retrieves the specified agent environment.
         # @param [String] name
         #   Required. The name of the environment. Supported formats: - `projects//agent/
-        #   environments/` - `projects//locations//agent/environments/`
+        #   environments/` - `projects//locations//agent/environments/` The environment ID
+        #   for the default environment is `-`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4890,7 +4894,7 @@ module Google
         # @param [String] parent
         #   Required. The name of the environment to retrieve history for. Supported
         #   formats: - `projects//agent/environments/` - `projects//locations//agent/
-        #   environments/`
+        #   environments/` The environment ID for the default environment is `-`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and at most 1000.
@@ -4925,7 +4929,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the list of all non-draft environments of the specified agent.
+        # Returns the list of all non-default environments of the specified agent.
         # @param [String] parent
         #   Required. The agent to list all environments from. Format: - `projects//agent`
         #   - `projects//locations//agent`
@@ -4967,22 +4971,22 @@ module Google
         # agent versions into the environment. When an environment is pointed to a new
         # agent version by setting `environment.agent_version`, the environment is
         # temporarily set to the `LOADING` state. During that time, the environment
-        # keeps on serving the previous version of the agent. After the new agent
+        # continues serving the previous version of the agent. After the new agent
         # version is done loading, the environment is set back to the `RUNNING` state.
-        # You can use "-" as Environment ID in environment name to update version in "
-        # draft" environment. WARNING: this will negate all recent changes to draft and
-        # can't be undone. You may want to save the draft to a version before calling
-        # this function.
+        # You can use "-" as Environment ID in environment name to update an agent
+        # version in the default environment. WARNING: this will negate all recent
+        # changes to the draft agent and can't be undone. You may want to save the draft
+        # agent to a version before calling this method.
         # @param [String] name
         #   Output only. The unique identifier of this agent environment. Supported
         #   formats: - `projects//agent/environments/` - `projects//locations//agent/
-        #   environments/`
+        #   environments/` The environment ID for the default environment is `-`.
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment] google_cloud_dialogflow_v2_environment_object
         # @param [Boolean] allow_load_to_draft_and_discard_changes
-        #   Optional. This field is used to prevent accidental overwrite of the draft
+        #   Optional. This field is used to prevent accidental overwrite of the default
         #   environment, which is an operation that cannot be undone. To confirm that the
         #   caller desires this overwrite, this field must be explicitly set to true when
-        #   updating the draft environment (environment ID = `-`).
+        #   updating the default environment (environment ID = `-`).
         # @param [String] update_mask
         #   Required. The mask to control which fields get updated.
         # @param [String] fields

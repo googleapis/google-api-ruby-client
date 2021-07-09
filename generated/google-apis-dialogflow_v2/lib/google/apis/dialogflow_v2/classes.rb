@@ -6592,7 +6592,7 @@ module Google
       
         # Output only. The unique identifier of this agent environment. Supported
         # formats: - `projects//agent/environments/` - `projects//locations//agent/
-        # environments/`
+        # environments/` The environment ID for the default environment is `-`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6648,7 +6648,7 @@ module Google
       
         # Output only. The name of the environment this history is for. Supported
         # formats: - `projects//agent/environments/` - `projects//locations//agent/
-        # environments/`
+        # environments/` The environment ID for the default environment is `-`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
