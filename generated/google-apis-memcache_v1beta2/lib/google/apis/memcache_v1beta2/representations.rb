@@ -400,6 +400,8 @@ module Google
       
           property :location, as: 'location'
           property :node_id, as: 'nodeId'
+          property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
+      
         end
       end
       
