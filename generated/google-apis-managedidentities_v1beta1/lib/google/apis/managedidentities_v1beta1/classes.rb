@@ -1508,12 +1508,12 @@ module Google
       class OperationMetadata
         include Google::Apis::Core::Hashable
       
-        # [Output only] API version used to start the operation.
+        # Output only. API version used to start the operation.
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
       
-        # [Output only] Identifies whether the user has requested cancellation of the
+        # Output only. Identifies whether the user has requested cancellation of the
         # operation. Operations that have successfully been cancelled have Operation.
         # error value with a google.rpc.Status.code of 1, corresponding to `Code.
         # CANCELLED`.
@@ -1522,27 +1522,27 @@ module Google
         attr_accessor :cancel_requested
         alias_method :cancel_requested?, :cancel_requested
       
-        # [Output only] The time the operation was created.
+        # Output only. The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # [Output only] The time the operation finished running.
+        # Output only. The time the operation finished running.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # [Output only] Human-readable status of the operation, if any.
+        # Output only. Human-readable status of the operation, if any.
         # Corresponds to the JSON property `statusDetail`
         # @return [String]
         attr_accessor :status_detail
       
-        # [Output only] Server-defined resource path for the target of the operation.
+        # Output only. Server-defined resource path for the target of the operation.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
       
-        # [Output only] Name of the verb executed by the operation.
+        # Output only. Name of the verb executed by the operation.
         # Corresponds to the JSON property `verb`
         # @return [String]
         attr_accessor :verb
@@ -1857,8 +1857,7 @@ module Google
       class SqlIntegration
         include Google::Apis::Core::Hashable
       
-        # Output only. The time sql integration was created. Synthetic field is
-        # populated automatically by CCFE.
+        # Output only. The time sql integration was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1879,8 +1878,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. The time sql integration was updated. Synthetic field is
-        # populated automatically by CCFE.
+        # Output only. The time sql integration was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
