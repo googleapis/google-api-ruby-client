@@ -200,6 +200,8 @@ module Google
         # @param [Google::Apis::TpuV1alpha1::Node] node_object
         # @param [String] node_id
         #   The unqualified resource name.
+        # @param [String] request_id
+        #   Idempotent request UUID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -217,7 +219,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_node(parent, node_object = nil, node_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_node(parent, node_object = nil, node_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1alpha1/{+parent}/nodes', options)
           command.request_representation = Google::Apis::TpuV1alpha1::Node::Representation
           command.request_object = node_object
@@ -225,6 +227,7 @@ module Google
           command.response_class = Google::Apis::TpuV1alpha1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['nodeId'] = node_id unless node_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -233,6 +236,8 @@ module Google
         # Deletes a node.
         # @param [String] name
         #   Required. The resource name.
+        # @param [String] request_id
+        #   Idempotent request UUID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -250,11 +255,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_node(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_node(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::TpuV1alpha1::Operation::Representation
           command.response_class = Google::Apis::TpuV1alpha1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
