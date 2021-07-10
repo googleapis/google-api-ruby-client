@@ -388,6 +388,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin, as: 'admin'
+          property :audit_logs_enabled, as: 'auditLogsEnabled'
           collection :authorized_networks, as: 'authorizedNetworks'
           property :create_time, as: 'createTime'
           property :fqdn, as: 'fqdn'

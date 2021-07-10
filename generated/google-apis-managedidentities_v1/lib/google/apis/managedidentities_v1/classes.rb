@@ -322,6 +322,13 @@ module Google
         # @return [String]
         attr_accessor :admin
       
+        # Optional. Configuration for audit logs. True if audit logs are enabled, else
+        # false. Default is audit logs disabled.
+        # Corresponds to the JSON property `auditLogsEnabled`
+        # @return [Boolean]
+        attr_accessor :audit_logs_enabled
+        alias_method :audit_logs_enabled?, :audit_logs_enabled
+      
         # Optional. The full names of the Google Compute Engine [networks](/compute/docs/
         # networks-and-firewalls#networks) the domain instance is connected to. Networks
         # can be added using UpdateDomain. The domain is only available on networks
@@ -396,6 +403,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @admin = args[:admin] if args.key?(:admin)
+          @audit_logs_enabled = args[:audit_logs_enabled] if args.key?(:audit_logs_enabled)
           @authorized_networks = args[:authorized_networks] if args.key?(:authorized_networks)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
@@ -1101,7 +1109,7 @@ module Google
         # @return [Google::Apis::ManagedidentitiesV1::Certificate]
         attr_accessor :certificate
       
-        # Input only. The password used to encrypt the uploaded pfx certificate.
+        # Input only. The password used to encrypt the uploaded PFX certificate.
         # Corresponds to the JSON property `certificatePassword`
         # @return [String]
         attr_accessor :certificate_password
@@ -1472,12 +1480,12 @@ module Google
       class OperationMetadata
         include Google::Apis::Core::Hashable
       
-        # [Output only] API version used to start the operation.
+        # Output only. API version used to start the operation.
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
       
-        # [Output only] Identifies whether the user has requested cancellation of the
+        # Output only. Identifies whether the user has requested cancellation of the
         # operation. Operations that have successfully been cancelled have Operation.
         # error value with a google.rpc.Status.code of 1, corresponding to `Code.
         # CANCELLED`.
@@ -1486,27 +1494,27 @@ module Google
         attr_accessor :cancel_requested
         alias_method :cancel_requested?, :cancel_requested
       
-        # [Output only] The time the operation was created.
+        # Output only. The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # [Output only] The time the operation finished running.
+        # Output only. The time the operation finished running.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # [Output only] Human-readable status of the operation, if any.
+        # Output only. Human-readable status of the operation, if any.
         # Corresponds to the JSON property `statusDetail`
         # @return [String]
         attr_accessor :status_detail
       
-        # [Output only] Server-defined resource path for the target of the operation.
+        # Output only. Server-defined resource path for the target of the operation.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
       
-        # [Output only] Name of the verb executed by the operation.
+        # Output only. Name of the verb executed by the operation.
         # Corresponds to the JSON property `verb`
         # @return [String]
         attr_accessor :verb
@@ -1748,34 +1756,32 @@ module Google
         end
       end
       
-      # Represents the Sql instance integrated with AD.
+      # Represents the SQL instance integrated with Managed AD.
       class SqlIntegration
         include Google::Apis::Core::Hashable
       
-        # Output only. The time sql integration was created. Synthetic field is
-        # populated automatically by CCFE.
+        # Output only. The time the SQL integration was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # The unique name of the sql integration in the form of `projects/`project_id`/
+        # The unique name of the SQL integration in the form of `projects/`project_id`/
         # locations/global/domains/`domain_name`/sqlIntegrations/`sql_integration``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The full resource name of an integrated sql instance
+        # The full resource name of an integrated SQL instance
         # Corresponds to the JSON property `sqlInstance`
         # @return [String]
         attr_accessor :sql_instance
       
-        # Output only. The current state of the sql integration.
+        # Output only. The current state of the SQL integration.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. The time sql integration was updated. Synthetic field is
-        # populated automatically by CCFE.
+        # Output only. The time the SQL integration was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
