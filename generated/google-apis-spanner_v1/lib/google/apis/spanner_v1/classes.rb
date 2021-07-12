@@ -980,6 +980,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The read-write region which contains the database's leader
+        # replicas. This is the same as the value of default_leader database option set
+        # using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not
+        # explicitly set, this is empty.
+        # Corresponds to the JSON property `defaultLeader`
+        # @return [String]
+        attr_accessor :default_leader
+      
         # Output only. Earliest timestamp at which older versions of the data can be
         # read. This value is continuously updated by Cloud Spanner and becomes stale
         # the moment it is queried. If you are using this value to recover data, make
@@ -1036,6 +1044,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @default_leader = args[:default_leader] if args.key?(:default_leader)
           @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
@@ -1713,6 +1722,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Allowed values of the “default_leader” schema option for databases in
+        # instances that use this instance configuration.
+        # Corresponds to the JSON property `leaderOptions`
+        # @return [Array<String>]
+        attr_accessor :leader_options
+      
         # A unique identifier for the instance configuration. Values are of the form `
         # projects//instanceConfigs/a-z*`
         # Corresponds to the JSON property `name`
@@ -1732,6 +1747,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @leader_options = args[:leader_options] if args.key?(:leader_options)
           @name = args[:name] if args.key?(:name)
           @replicas = args[:replicas] if args.key?(:replicas)
         end
@@ -3319,7 +3335,8 @@ module Google
         # requests where it's not applicable (e.g. CommitRequest). Legal characters for `
         # request_tag` values are all printable characters (ASCII 32 - 126) and the
         # length of a request_tag is limited to 50 characters. Values that exceed this
-        # limit are truncated.
+        # limit are truncated. Any leading underscore (_) characters will be removed
+        # from the string.
         # Corresponds to the JSON property `requestTag`
         # @return [String]
         attr_accessor :request_tag
@@ -3331,7 +3348,8 @@ module Google
         # transaction, transaction_tag will be ignored. Legal characters for `
         # transaction_tag` values are all printable characters (ASCII 32 - 126) and the
         # length of a transaction_tag is limited to 50 characters. Values that exceed
-        # this limit are truncated.
+        # this limit are truncated. Any leading underscore (_) characters will be
+        # removed from the string.
         # Corresponds to the JSON property `transactionTag`
         # @return [String]
         attr_accessor :transaction_tag

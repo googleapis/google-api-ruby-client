@@ -807,6 +807,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :default_leader, as: 'defaultLeader'
           property :earliest_version_time, as: 'earliestVersionTime'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::EncryptionConfig, decorator: Google::Apis::SpannerV1::EncryptionConfig::Representation
       
@@ -993,6 +994,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          collection :leader_options, as: 'leaderOptions'
           property :name, as: 'name'
           collection :replicas, as: 'replicas', class: Google::Apis::SpannerV1::ReplicaInfo, decorator: Google::Apis::SpannerV1::ReplicaInfo::Representation
       
