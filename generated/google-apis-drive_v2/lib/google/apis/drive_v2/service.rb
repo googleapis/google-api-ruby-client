@@ -2492,8 +2492,13 @@ module Google
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] transfer_ownership
-        #   Whether changing a role to 'owner' downgrades the current owners to writers.
-        #   Does nothing if the specified role is not 'owner'.
+        #   Whether to transfer ownership to the specified user and downgrade the current
+        #   owner to a writer. This parameter is required as an acknowledgement of the
+        #   side effect. File owners can only transfer ownership of files existing on My
+        #   Drive. Files existing in a shared drive are owned by the organization that
+        #   owns that shared drive. Ownership transfers are not supported for files and
+        #   folders in shared drives. Organizers of a shared drive can move items from
+        #   that shared drive into their My Drive which transfers the ownership to them.
         # @param [Boolean] use_domain_admin_access
         #   Issue the request as a domain administrator; if set to true, then the
         #   requester will be granted access if the file ID parameter refers to a shared
