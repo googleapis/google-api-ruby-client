@@ -3011,6 +3011,11 @@ module Google
         # @return [Google::Apis::SlidesV1::UpdateShapePropertiesRequest]
         attr_accessor :update_shape_properties
       
+        # Updates the properties of a Slide.
+        # Corresponds to the JSON property `updateSlideProperties`
+        # @return [Google::Apis::SlidesV1::UpdateSlidePropertiesRequest]
+        attr_accessor :update_slide_properties
+      
         # Updates the position of slides in the presentation.
         # Corresponds to the JSON property `updateSlidesPosition`
         # @return [Google::Apis::SlidesV1::UpdateSlidesPositionRequest]
@@ -3088,6 +3093,7 @@ module Google
           @update_page_properties = args[:update_page_properties] if args.key?(:update_page_properties)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
           @update_shape_properties = args[:update_shape_properties] if args.key?(:update_shape_properties)
+          @update_slide_properties = args[:update_slide_properties] if args.key?(:update_slide_properties)
           @update_slides_position = args[:update_slides_position] if args.key?(:update_slides_position)
           @update_table_border_properties = args[:update_table_border_properties] if args.key?(:update_table_border_properties)
           @update_table_cell_properties = args[:update_table_cell_properties] if args.key?(:update_table_cell_properties)
@@ -4720,6 +4726,42 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @shape_properties = args[:shape_properties] if args.key?(:shape_properties)
+        end
+      end
+      
+      # Updates the properties of a Slide.
+      class UpdateSlidePropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fields that should be updated. At least one field must be specified. The
+        # root 'slideProperties' is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field. For example to update
+        # whether a slide is skipped, set `fields` to `"isSkipped"`. To reset a property
+        # to its default value, include its field name in the field mask but leave the
+        # field itself unset.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The object ID of the slide the update is applied to.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # The properties of Page that are only relevant for pages with page_type SLIDE.
+        # Corresponds to the JSON property `slideProperties`
+        # @return [Google::Apis::SlidesV1::SlideProperties]
+        attr_accessor :slide_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @slide_properties = args[:slide_properties] if args.key?(:slide_properties)
         end
       end
       
