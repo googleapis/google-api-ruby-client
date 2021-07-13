@@ -2084,6 +2084,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pubsub_topic, as: 'pubsubTopic'
+          property :send_for_bulk_import, as: 'sendForBulkImport'
         end
       end
       
