@@ -748,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateSlidePropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateSlidesPositionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1670,6 +1676,8 @@ module Google
       
           property :update_shape_properties, as: 'updateShapeProperties', class: Google::Apis::SlidesV1::UpdateShapePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateShapePropertiesRequest::Representation
       
+          property :update_slide_properties, as: 'updateSlideProperties', class: Google::Apis::SlidesV1::UpdateSlidePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateSlidePropertiesRequest::Representation
+      
           property :update_slides_position, as: 'updateSlidesPosition', class: Google::Apis::SlidesV1::UpdateSlidesPositionRequest, decorator: Google::Apis::SlidesV1::UpdateSlidesPositionRequest::Representation
       
           property :update_table_border_properties, as: 'updateTableBorderProperties', class: Google::Apis::SlidesV1::UpdateTableBorderPropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateTableBorderPropertiesRequest::Representation
@@ -2161,6 +2169,16 @@ module Google
           property :fields, as: 'fields'
           property :object_id_prop, as: 'objectId'
           property :shape_properties, as: 'shapeProperties', class: Google::Apis::SlidesV1::ShapeProperties, decorator: Google::Apis::SlidesV1::ShapeProperties::Representation
+      
+        end
+      end
+      
+      class UpdateSlidePropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
+          property :object_id_prop, as: 'objectId'
+          property :slide_properties, as: 'slideProperties', class: Google::Apis::SlidesV1::SlideProperties, decorator: Google::Apis::SlidesV1::SlideProperties::Representation
       
         end
       end
