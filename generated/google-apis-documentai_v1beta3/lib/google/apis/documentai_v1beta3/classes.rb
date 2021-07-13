@@ -294,12 +294,18 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse
         include Google::Apis::Core::Hashable
       
+        # The Cloud Storage URI containing the output artifacts.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
         end
       end
       

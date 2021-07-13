@@ -1302,6 +1302,7 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
         end
       end
       
