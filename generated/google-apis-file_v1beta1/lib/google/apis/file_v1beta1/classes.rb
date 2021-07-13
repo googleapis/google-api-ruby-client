@@ -271,7 +271,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :capacity_gb
       
-        # The name of the file share (must be 16 characters or less).
+        # The name of the file share (must be 32 characters or less for High Scale SSD
+        # tier, 16 characters or less for all other tiers).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -543,6 +544,11 @@ module Google
         # @return [String]
         attr_accessor :node_id
       
+        # PerSliSloEligibility is a mapping from an SLI name to eligibility.
+        # Corresponds to the JSON property `perSliEligibility`
+        # @return [Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility]
+        attr_accessor :per_sli_eligibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -552,6 +558,7 @@ module Google
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @location = args[:location] if args.key?(:location)
           @node_id = args[:node_id] if args.key?(:node_id)
+          @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
         end
       end
       
@@ -1085,6 +1092,12 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
+        # The network connect mode of the Filestore instance. If not provided, the
+        # connect mode defaults to DIRECT_PEERING.
+        # Corresponds to the JSON property `connectMode`
+        # @return [String]
+        attr_accessor :connect_mode
+      
         # Output only. IPv4 addresses in the format `octet 1`.`octet 2`.`octet 3`.`octet
         # 4` or IPv6 addresses in the format `block 1`:`block 2`:`block 3`:`block 4`:`
         # block 5`:`block 6`:`block 7`:`block 8`.
@@ -1120,6 +1133,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connect_mode = args[:connect_mode] if args.key?(:connect_mode)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @modes = args[:modes] if args.key?(:modes)
           @network = args[:network] if args.key?(:network)
@@ -1248,12 +1262,12 @@ module Google
       class OperationMetadata
         include Google::Apis::Core::Hashable
       
-        # [Output only] API version used to start the operation.
+        # Output only. API version used to start the operation.
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
       
-        # [Output only] Identifies whether the user has requested cancellation of the
+        # Output only. Identifies whether the user has requested cancellation of the
         # operation. Operations that have successfully been cancelled have Operation.
         # error value with a google.rpc.Status.code of 1, corresponding to `Code.
         # CANCELLED`.
@@ -1262,27 +1276,27 @@ module Google
         attr_accessor :cancel_requested
         alias_method :cancel_requested?, :cancel_requested
       
-        # [Output only] The time the operation was created.
+        # Output only. The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # [Output only] The time the operation finished running.
+        # Output only. The time the operation finished running.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # [Output only] Human-readable status of the operation, if any.
+        # Output only. Human-readable status of the operation, if any.
         # Corresponds to the JSON property `statusDetail`
         # @return [String]
         attr_accessor :status_detail
       
-        # [Output only] Server-defined resource path for the target of the operation.
+        # Output only. Server-defined resource path for the target of the operation.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
       
-        # [Output only] Name of the verb executed by the operation.
+        # Output only. Name of the verb executed by the operation.
         # Corresponds to the JSON property `verb`
         # @return [String]
         attr_accessor :verb
