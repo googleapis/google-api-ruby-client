@@ -23,7 +23,7 @@ module Google
     #
     # The Google Tasks API lets you manage your tasks and task lists.
     #
-    # @see 
+    # @see https://developers.google.com/tasks/
     module TasksV1
       # Version of the Tasks API this client connects to.
       # This is NOT the gem version.
