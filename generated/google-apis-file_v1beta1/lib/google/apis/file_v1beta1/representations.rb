@@ -350,6 +350,8 @@ module Google
       
           property :location, as: 'location'
           property :node_id, as: 'nodeId'
+          property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
+      
         end
       end
       
@@ -495,6 +497,7 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connect_mode, as: 'connectMode'
           collection :ip_addresses, as: 'ipAddresses'
           collection :modes, as: 'modes'
           property :network, as: 'network'
