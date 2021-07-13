@@ -3945,6 +3945,13 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic
       
+        # Indicates whether or not to send Pub/Sub notifications on bulk import. Only
+        # supported for DICOM imports.
+        # Corresponds to the JSON property `sendForBulkImport`
+        # @return [Boolean]
+        attr_accessor :send_for_bulk_import
+        alias_method :send_for_bulk_import?, :send_for_bulk_import
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3952,6 +3959,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @send_for_bulk_import = args[:send_for_bulk_import] if args.key?(:send_for_bulk_import)
         end
       end
       
