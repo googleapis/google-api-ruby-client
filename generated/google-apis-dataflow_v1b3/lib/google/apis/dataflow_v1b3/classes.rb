@@ -1462,6 +1462,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :additional_user_labels
       
+        # Worker disk size, in gigabytes.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
         # Whether to enable Streaming Engine for the job.
         # Corresponds to the JSON property `enableStreamingEngine`
         # @return [Boolean]
@@ -1490,6 +1495,11 @@ module Google
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
+      
+        # The maximum number of workers to cap scaling at.
+        # Corresponds to the JSON property `maxNumWorkers`
+        # @return [Fixnum]
+        attr_accessor :max_num_workers
       
         # The maximum number of Google Compute Engine instances to be made available to
         # your pipeline during execution, from 1 to 1000.
@@ -1575,11 +1585,13 @@ module Google
         def update!(**args)
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
           @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @enable_streaming_engine = args[:enable_streaming_engine] if args.key?(:enable_streaming_engine)
           @flexrs_goal = args[:flexrs_goal] if args.key?(:flexrs_goal)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @max_num_workers = args[:max_num_workers] if args.key?(:max_num_workers)
           @max_workers = args[:max_workers] if args.key?(:max_workers)
           @network = args[:network] if args.key?(:network)
           @num_workers = args[:num_workers] if args.key?(:num_workers)
