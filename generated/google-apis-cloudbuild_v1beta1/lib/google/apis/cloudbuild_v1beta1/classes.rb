@@ -403,8 +403,8 @@ module Google
         attr_accessor :machine_type
       
         # Details about how a build should be executed on a `WorkerPool`. See [running
-        # builds in a custom worker pool](https://cloud.google.com/build/docs/custom-
-        # workers/run-builds-in-custom-worker-pool) for more information.
+        # builds in a private pool](https://cloud.google.com/build/docs/private-pools/
+        # run-builds-in-private-pool) for more information.
         # Corresponds to the JSON property `pool`
         # @return [Google::Apis::CloudbuildV1beta1::PoolOption]
         attr_accessor :pool
@@ -1119,8 +1119,8 @@ module Google
       end
       
       # Details about how a build should be executed on a `WorkerPool`. See [running
-      # builds in a custom worker pool](https://cloud.google.com/build/docs/custom-
-      # workers/run-builds-in-custom-worker-pool) for more information.
+      # builds in a private pool](https://cloud.google.com/build/docs/private-pools/
+      # run-builds-in-private-pool) for more information.
       class PoolOption
         include Google::Apis::Core::Hashable
       
@@ -1557,7 +1557,7 @@ module Google
         attr_accessor :generation
       
         # Google Cloud Storage object containing the source. This object must be a
-        # gzipped archive file (`.tar.gz`) containing source to build.
+        # zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
