@@ -28,6 +28,12 @@ module Google
       class Account
         include Google::Apis::Core::Hashable
       
+        # How the account is managed. Acceptable values are: - "`manual`" - "`automatic`"
+        # 
+        # Corresponds to the JSON property `accountManagement`
+        # @return [String]
+        attr_accessor :account_management
+      
         # Linked Ads accounts that are active or pending approval. To create a new link
         # request, add a new link with status `active` to the list. It will remain in a `
         # pending` state until approved or rejected either in the Ads interface or
@@ -116,6 +122,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_management = args[:account_management] if args.key?(:account_management)
           @ads_links = args[:ads_links] if args.key?(:ads_links)
           @adult_content = args[:adult_content] if args.key?(:adult_content)
           @automatic_label_ids = args[:automatic_label_ids] if args.key?(:automatic_label_ids)
@@ -465,6 +472,12 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::AccountStatusAccountLevelIssue>]
         attr_accessor :account_level_issues
       
+        # How the account is managed. Acceptable values are: - "`manual`" - "`automatic`"
+        # 
+        # Corresponds to the JSON property `accountManagement`
+        # @return [String]
+        attr_accessor :account_management
+      
         # Identifies what kind of resource this is. Value: the fixed string "`content#
         # accountStatus`"
         # Corresponds to the JSON property `kind`
@@ -491,6 +504,7 @@ module Google
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
           @account_level_issues = args[:account_level_issues] if args.key?(:account_level_issues)
+          @account_management = args[:account_management] if args.key?(:account_management)
           @kind = args[:kind] if args.key?(:kind)
           @products = args[:products] if args.key?(:products)
           @website_claimed = args[:website_claimed] if args.key?(:website_claimed)
@@ -14865,8 +14879,10 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::UnitInvoiceAdditionalCharge>]
         attr_accessor :additional_charges
       
-        # [required] Pre-tax or post-tax price of the unit depending on the locality of
-        # the order.
+        # [required] Pre-tax or post-tax price of one unit depending on the locality of
+        # the order. *Note:* Invoicing works on a per unit basis. The `unitPrice` is the
+        # price of a single unit, and will be multiplied by the number of entries in `
+        # shipmentUnitId`.
         # Corresponds to the JSON property `unitPrice`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :unit_price
@@ -14892,7 +14908,9 @@ module Google
       class UnitInvoiceAdditionalCharge
         include Google::Apis::Core::Hashable
       
-        # [required] Amount of the additional charge.
+        # [required] Amount of the additional charge per unit. *Note:* Invoicing works
+        # on a per unit bases. The `additionalChargeAmount` is the amount charged per
+        # unit, and will be multiplied by the number of entries in `shipmentUnitID`.
         # Corresponds to the JSON property `additionalChargeAmount`
         # @return [Google::Apis::ContentV2_1::Amount]
         attr_accessor :additional_charge_amount

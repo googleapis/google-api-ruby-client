@@ -301,6 +301,9 @@ module Google
         #   given ID.
         # @param [Fixnum] max_results
         #   The maximum number of accounts to return in the response, used for paging.
+        # @param [String] name
+        #   If set, only the accounts with the given name (case sensitive) will be
+        #   returned.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] view
@@ -323,13 +326,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_accounts(merchant_id, label: nil, max_results: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_accounts(merchant_id, label: nil, max_results: nil, name: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, '{merchantId}/accounts', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['label'] = label unless label.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['name'] = name unless name.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -843,6 +847,9 @@ module Google
         # @param [Fixnum] max_results
         #   The maximum number of account statuses to return in the response, used for
         #   paging.
+        # @param [String] name
+        #   If set, only the accounts with the given name (case sensitive) will be
+        #   returned.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields
@@ -862,13 +869,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_accountstatuses(merchant_id, destinations: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_accountstatuses(merchant_id, destinations: nil, max_results: nil, name: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, '{merchantId}/accountstatuses', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountstatusesListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountstatusesListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['destinations'] = destinations unless destinations.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['name'] = name unless name.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

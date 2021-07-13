@@ -2215,6 +2215,7 @@ module Google
       class Account
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_management, as: 'accountManagement'
           collection :ads_links, as: 'adsLinks', class: Google::Apis::ContentV2_1::AccountAdsLink, decorator: Google::Apis::ContentV2_1::AccountAdsLink::Representation
       
           property :adult_content, as: 'adultContent'
@@ -2329,6 +2330,7 @@ module Google
           property :account_id, as: 'accountId'
           collection :account_level_issues, as: 'accountLevelIssues', class: Google::Apis::ContentV2_1::AccountStatusAccountLevelIssue, decorator: Google::Apis::ContentV2_1::AccountStatusAccountLevelIssue::Representation
       
+          property :account_management, as: 'accountManagement'
           property :kind, as: 'kind'
           collection :products, as: 'products', class: Google::Apis::ContentV2_1::AccountStatusProducts, decorator: Google::Apis::ContentV2_1::AccountStatusProducts::Representation
       
