@@ -154,12 +154,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PreviewConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Redirect
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -422,14 +416,6 @@ module Google
         end
       end
       
-      class PreviewConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :active, as: 'active'
-          property :expire_time, as: 'expireTime'
-        end
-      end
-      
       class Redirect
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -529,8 +515,6 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
-          property :preview, as: 'preview', class: Google::Apis::FirebasehostingV1beta1::PreviewConfig, decorator: Google::Apis::FirebasehostingV1beta1::PreviewConfig::Representation
-      
           property :status, as: 'status'
           property :version_bytes, :numeric_string => true, as: 'versionBytes'
         end
