@@ -1945,8 +1945,8 @@ module Google
         # expire an access token in less than 180 seconds.
         # @param [String] parent
         #   Required. Email address of the developer for which attributes are being
-        #   updated in the following format: `organizations/`org`/developers/`
-        #   developer_email``
+        #   updated. Use the following structure in your request: `organizations/`org`/
+        #   developers/`developer_email``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attributes] google_cloud_apigee_v1_attributes_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2148,16 +2148,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the status of a developer. Valid values are `active` or `inactive`. A
-        # developer is `active` by default. If you set a developer's status to `inactive`
-        # , the API keys assigned to the developer apps are no longer valid even though
-        # the API keys are set to `approved`. Inactive developers can still sign in to
-        # the developer portal and create apps; however, any new API keys generated
-        # during app creation won't work. If successful, the API call returns the
-        # following HTTP status code: `204 No Content`
+        # Sets the status of a developer. A developer is `active` by default. If you set
+        # a developer's status to `inactive`, the API keys assigned to the developer
+        # apps are no longer valid even though the API keys are set to `approved`.
+        # Inactive developers can still sign in to the developer portal and create apps;
+        # however, any new API keys generated during app creation won't work. To set the
+        # status of a developer, set the `action` query parameter to `active` or `
+        # inactive`, and the `Content-Type` header to `application/octet-stream`. If
+        # successful, the API call returns the following HTTP status code: `204 No
+        # Content`
         # @param [String] name
-        #   Required. Email address of the developer. Use the following structure in your
-        #   request: `organizations/`org`/developers/`developer_email``
+        #   Required. Name of the developer. Use the following structure in your request: `
+        #   organizations/`org`/developers/`developer_id``
         # @param [String] action
         #   Status of the developer. Valid values are `active` and `inactive`.
         # @param [String] fields
@@ -3049,8 +3051,9 @@ module Google
         
         # Returns a list of all developer attributes.
         # @param [String] parent
-        #   Required. Email address of the developer for which attributes are being listed
-        #   in the following format: `organizations/`org`/developers/`developer_email``
+        #   Required. Email address of the developer for which attributes are being listed.
+        #   Use the following structure in your request: `organizations/`org`/developers/`
+        #   developer_email``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
