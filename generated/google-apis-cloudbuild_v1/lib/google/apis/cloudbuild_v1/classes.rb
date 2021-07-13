@@ -403,8 +403,8 @@ module Google
         attr_accessor :machine_type
       
         # Details about how a build should be executed on a `WorkerPool`. See [running
-        # builds in a custom worker pool](https://cloud.google.com/build/docs/custom-
-        # workers/run-builds-in-custom-worker-pool) for more information.
+        # builds in a private pool](https://cloud.google.com/build/docs/private-pools/
+        # run-builds-in-private-pool) for more information.
         # Corresponds to the JSON property `pool`
         # @return [Google::Apis::CloudbuildV1::PoolOption]
         attr_accessor :pool
@@ -1192,8 +1192,7 @@ module Google
         # project`/global/networks/`network``, where ``project`` is a project number,
         # such as `12345`, and ``network`` is the name of a VPC network in the project.
         # See [Understanding network configuration options](https://cloud.google.com/
-        # cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#
-        # understanding_the_network_configuration_options)
+        # build/docs/private-pools/set-up-private-pool-environment)
         # Corresponds to the JSON property `peeredNetwork`
         # @return [String]
         attr_accessor :peered_network
@@ -1464,8 +1463,8 @@ module Google
       end
       
       # Details about how a build should be executed on a `WorkerPool`. See [running
-      # builds in a custom worker pool](https://cloud.google.com/build/docs/custom-
-      # workers/run-builds-in-custom-worker-pool) for more information.
+      # builds in a private pool](https://cloud.google.com/build/docs/private-pools/
+      # run-builds-in-private-pool) for more information.
       class PoolOption
         include Google::Apis::Core::Hashable
       
@@ -2117,7 +2116,7 @@ module Google
         attr_accessor :generation
       
         # Google Cloud Storage object containing the source. This object must be a
-        # gzipped archive file (`.tar.gz`) containing source to build.
+        # zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
@@ -2315,16 +2314,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Size of the disk attached to the worker, in GB. See [Worker pool config file](
-        # https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-
-        # file). Specify a value of up to 1000. If `0` is specified, Cloud Build will
+        # https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-
+        # schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will
         # use a standard disk size.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
         # Machine type of a worker, such as `e2-medium`. See [Worker pool config file](
-        # https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-
-        # file). If left blank, Cloud Build will use a sensible default.
+        # https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-
+        # schema). If left blank, Cloud Build will use a sensible default.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -2346,9 +2345,9 @@ module Google
       # your build needs access to resources on a private network, create and use a `
       # WorkerPool` to run your builds. Private `WorkerPool`s give your builds access
       # to any single VPC network that you administer, including any on-prem resources
-      # connected to that VPC network. For an overview of custom worker pools, see [
-      # Custom workers overview](https://cloud.google.com/cloud-build/docs/custom-
-      # workers/custom-workers-overview).
+      # connected to that VPC network. For an overview of private pools, see [Private
+      # pools overview](https://cloud.google.com/build/docs/private-pools/private-
+      # pools-overview).
       class WorkerPool
         include Google::Apis::Core::Hashable
       
