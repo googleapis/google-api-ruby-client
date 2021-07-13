@@ -788,6 +788,7 @@ module Google
           property :industry_category, as: 'industryCategory'
           property :name, as: 'name'
           property :parent, as: 'parent'
+          property :service_level, as: 'serviceLevel'
           property :time_zone, as: 'timeZone'
           property :update_time, as: 'updateTime'
         end

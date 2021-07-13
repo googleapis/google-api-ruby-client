@@ -1630,6 +1630,11 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Output only. The Google Analytics service level that applies to this property.
+        # Corresponds to the JSON property `serviceLevel`
+        # @return [String]
+        attr_accessor :service_level
+      
         # Required. Reporting Time Zone, used as the day boundary for reports,
         # regardless of where the data originates. If the time zone honors DST,
         # Analytics will automatically adjust for the changes. NOTE: Changing the time
@@ -1658,6 +1663,7 @@ module Google
           @industry_category = args[:industry_category] if args.key?(:industry_category)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
+          @service_level = args[:service_level] if args.key?(:service_level)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
