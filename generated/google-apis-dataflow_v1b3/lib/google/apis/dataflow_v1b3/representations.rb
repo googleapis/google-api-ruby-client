@@ -1383,11 +1383,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_experiments, as: 'additionalExperiments'
           hash :additional_user_labels, as: 'additionalUserLabels'
+          property :disk_size_gb, as: 'diskSizeGb'
           property :enable_streaming_engine, as: 'enableStreamingEngine'
           property :flexrs_goal, as: 'flexrsGoal'
           property :ip_configuration, as: 'ipConfiguration'
           property :kms_key_name, as: 'kmsKeyName'
           property :machine_type, as: 'machineType'
+          property :max_num_workers, as: 'maxNumWorkers'
           property :max_workers, as: 'maxWorkers'
           property :network, as: 'network'
           property :num_workers, as: 'numWorkers'
