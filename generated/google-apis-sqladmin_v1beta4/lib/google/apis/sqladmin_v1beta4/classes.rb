@@ -124,7 +124,7 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # Reserved for future use.
+        # (Postgres only) Whether point in time recovery is enabled.
         # Corresponds to the JSON property `pointInTimeRecoveryEnabled`
         # @return [Boolean]
         attr_accessor :point_in_time_recovery_enabled
@@ -421,7 +421,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :pitr_timestamp_ms
       
-        # Reserved for future use.
+        # Timestamp, if specified, identifies the time to which the source instance is
+        # cloned.
         # Corresponds to the JSON property `pointInTime`
         # @return [String]
         attr_accessor :point_in_time
@@ -437,6 +438,56 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
           @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
+        end
+      end
+      
+      # Connect settings retrieval response.
+      class ConnectSettings
+        include Google::Apis::Core::Hashable
+      
+        # **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server
+        # that is not managed by Google. This property is read-only; use the **tier**
+        # property in the **settings** object to determine the database type.
+        # Corresponds to the JSON property `backendType`
+        # @return [String]
+        attr_accessor :backend_type
+      
+        # The database engine type and version. The **databaseVersion** field cannot be
+        # changed after instance creation. MySQL instances: **MYSQL_8_0**, **MYSQL_5_7**
+        # (default), or **MYSQL_5_6**. PostgreSQL instances: **POSTGRES_9_6**, **
+        # POSTGRES_10**, **POSTGRES_11** or **POSTGRES_12** (default). SQL Server
+        # instances: **SQLSERVER_2017_STANDARD** (default), **SQLSERVER_2017_ENTERPRISE**
+        # , **SQLSERVER_2017_EXPRESS**, or **SQLSERVER_2017_WEB**.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
+        # The assigned IP addresses for the instance.
+        # Corresponds to the JSON property `ipAddresses`
+        # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
+        attr_accessor :ip_addresses
+      
+        # This is always `sql#connectSettings`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # SslCerts Resource
+        # Corresponds to the JSON property `serverCaCert`
+        # @return [Google::Apis::SqladminV1beta4::SslCert]
+        attr_accessor :server_ca_cert
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_type = args[:backend_type] if args.key?(:backend_type)
+          @database_version = args[:database_version] if args.key?(:database_version)
+          @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
+          @kind = args[:kind] if args.key?(:kind)
+          @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
         end
       end
       
@@ -1315,6 +1366,56 @@ module Google
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Ephemeral certificate creation request.
+      class GenerateEphemeralCertRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Access token to include in the signed certificate.
+        # Corresponds to the JSON property `access_token`
+        # @return [String]
+        attr_accessor :access_token
+      
+        # PEM encoded public key to include in the signed certificate.
+        # Corresponds to the JSON property `public_key`
+        # @return [String]
+        attr_accessor :public_key
+      
+        # Optional. Optional snapshot read timestamp to trade freshness for performance.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_token = args[:access_token] if args.key?(:access_token)
+          @public_key = args[:public_key] if args.key?(:public_key)
+          @read_time = args[:read_time] if args.key?(:read_time)
+        end
+      end
+      
+      # Ephemeral certificate creation request.
+      class GenerateEphemeralCertResponse
+        include Google::Apis::Core::Hashable
+      
+        # SslCerts Resource
+        # Corresponds to the JSON property `ephemeralCert`
+        # @return [Google::Apis::SqladminV1beta4::SslCert]
+        attr_accessor :ephemeral_cert
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ephemeral_cert = args[:ephemeral_cert] if args.key?(:ephemeral_cert)
         end
       end
       
@@ -2715,6 +2816,11 @@ module Google
         attr_accessor :can_reschedule
         alias_method :can_reschedule?, :can_reschedule
       
+        # Maintenance cannot be rescheduled to start beyond this deadline.
+        # Corresponds to the JSON property `scheduleDeadlineTime`
+        # @return [String]
+        attr_accessor :schedule_deadline_time
+      
         # The start time of any upcoming scheduled maintenance for this instance.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -2728,6 +2834,7 @@ module Google
         def update!(**args)
           @can_defer = args[:can_defer] if args.key?(:can_defer)
           @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
+          @schedule_deadline_time = args[:schedule_deadline_time] if args.key?(:schedule_deadline_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
