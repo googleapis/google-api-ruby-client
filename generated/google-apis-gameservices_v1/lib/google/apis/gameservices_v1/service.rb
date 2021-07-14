@@ -1195,6 +1195,13 @@ module Google
         #   Required. The name of the game server cluster to retrieve, in the following
         #   form: `projects/`project`/locations/`location`/realms/`realm-id`/
         #   gameServerClusters/`cluster``.
+        # @param [String] view
+        #   Optional. View for the returned GameServerCluster objects. When `FULL` is
+        #   specified, the `cluster_state` field is also returned in the GameServerCluster
+        #   object, which includes the state of the referenced Kubernetes cluster such as
+        #   versions and provider info. The default/unset value is
+        #   GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not return the
+        #   `cluster_state` field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1212,11 +1219,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_realm_game_server_cluster(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_realm_game_server_cluster(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::GameservicesV1::GameServerCluster::Representation
           command.response_class = Google::Apis::GameservicesV1::GameServerCluster
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1239,6 +1247,13 @@ module Google
         # @param [String] page_token
         #   Optional. The next_page_token value returned from a previous List request, if
         #   any.
+        # @param [String] view
+        #   Optional. View for the returned GameServerCluster objects. When `FULL` is
+        #   specified, the `cluster_state` field is also returned in the GameServerCluster
+        #   object, which includes the state of the referenced Kubernetes cluster such as
+        #   versions and provider info. The default/unset value is
+        #   GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not return the
+        #   `cluster_state` field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1256,7 +1271,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_realm_game_server_clusters(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_realm_game_server_clusters(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/gameServerClusters', options)
           command.response_representation = Google::Apis::GameservicesV1::ListGameServerClustersResponse::Representation
           command.response_class = Google::Apis::GameservicesV1::ListGameServerClustersResponse
@@ -1265,6 +1280,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1320,6 +1336,9 @@ module Google
         #   Required. The ID of the game server cluster resource to be created.
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview.
+        # @param [String] view
+        #   Optional. This field is deprecated, preview will always return
+        #   KubernetesClusterState.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1337,7 +1356,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def preview_project_location_realm_game_server_cluster_create(parent, game_server_cluster_object = nil, game_server_cluster_id: nil, preview_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def preview_project_location_realm_game_server_cluster_create(parent, game_server_cluster_object = nil, game_server_cluster_id: nil, preview_time: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/gameServerClusters:previewCreate', options)
           command.request_representation = Google::Apis::GameservicesV1::GameServerCluster::Representation
           command.request_object = game_server_cluster_object
@@ -1346,6 +1365,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['gameServerClusterId'] = game_server_cluster_id unless game_server_cluster_id.nil?
           command.query['previewTime'] = preview_time unless preview_time.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

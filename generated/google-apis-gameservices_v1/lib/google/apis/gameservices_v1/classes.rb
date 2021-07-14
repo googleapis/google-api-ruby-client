@@ -672,6 +672,11 @@ module Google
       class GameServerCluster
         include Google::Apis::Core::Hashable
       
+        # The state of the Kubernetes cluster.
+        # Corresponds to the JSON property `clusterState`
+        # @return [Google::Apis::GameservicesV1::KubernetesClusterState]
+        attr_accessor :cluster_state
+      
         # The game server cluster connection information.
         # Corresponds to the JSON property `connectionInfo`
         # @return [Google::Apis::GameservicesV1::GameServerClusterConnectionInfo]
@@ -717,6 +722,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_state = args[:cluster_state] if args.key?(:cluster_state)
           @connection_info = args[:connection_info] if args.key?(:connection_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -968,6 +974,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
+        end
+      end
+      
+      # The state of the Kubernetes cluster.
+      class KubernetesClusterState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The version of Agones currently installed in the registered
+        # Kubernetes cluster.
+        # Corresponds to the JSON property `agonesVersionInstalled`
+        # @return [String]
+        attr_accessor :agones_version_installed
+      
+        # Output only. The version of Agones that is targeted to be installed in the
+        # cluster.
+        # Corresponds to the JSON property `agonesVersionTargeted`
+        # @return [String]
+        attr_accessor :agones_version_targeted
+      
+        # Output only. The state for the installed versions of Agones/Kubernetes.
+        # Corresponds to the JSON property `installationState`
+        # @return [String]
+        attr_accessor :installation_state
+      
+        # Output only. The version of Kubernetes that is currently used in the
+        # registered Kubernetes cluster (as detected by the Cloud Game Servers service).
+        # Corresponds to the JSON property `kubernetesVersionInstalled`
+        # @return [String]
+        attr_accessor :kubernetes_version_installed
+      
+        # Output only. The cloud provider type reported by the first node's providerID
+        # in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that
+        # support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. The detailed error message for the installed versions of Agones/
+        # Kubernetes.
+        # Corresponds to the JSON property `versionInstalledErrorMessage`
+        # @return [String]
+        attr_accessor :version_installed_error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agones_version_installed = args[:agones_version_installed] if args.key?(:agones_version_installed)
+          @agones_version_targeted = args[:agones_version_targeted] if args.key?(:agones_version_targeted)
+          @installation_state = args[:installation_state] if args.key?(:installation_state)
+          @kubernetes_version_installed = args[:kubernetes_version_installed] if args.key?(:kubernetes_version_installed)
+          @provider = args[:provider] if args.key?(:provider)
+          @version_installed_error_message = args[:version_installed_error_message] if args.key?(:version_installed_error_message)
         end
       end
       
@@ -1538,6 +1599,11 @@ module Google
       class PreviewCreateGameServerClusterResponse
         include Google::Apis::Core::Hashable
       
+        # The state of the Kubernetes cluster.
+        # Corresponds to the JSON property `clusterState`
+        # @return [Google::Apis::GameservicesV1::KubernetesClusterState]
+        attr_accessor :cluster_state
+      
         # The ETag of the game server cluster.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -1554,6 +1620,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_state = args[:cluster_state] if args.key?(:cluster_state)
           @etag = args[:etag] if args.key?(:etag)
           @target_state = args[:target_state] if args.key?(:target_state)
         end
