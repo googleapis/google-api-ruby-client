@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttachedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -656,6 +662,15 @@ module Google
           property :service_perimeter, as: 'servicePerimeter', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AttachedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_type, as: 'assetType'
+          collection :versioned_resources, as: 'versionedResources', class: Google::Apis::CloudassetV1::VersionedResource, decorator: Google::Apis::CloudassetV1::VersionedResource::Representation
+      
         end
       end
       
@@ -1425,6 +1440,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :additional_attributes, as: 'additionalAttributes'
           property :asset_type, as: 'assetType'
+          collection :attached_resources, as: 'attachedResources', class: Google::Apis::CloudassetV1::AttachedResource, decorator: Google::Apis::CloudassetV1::AttachedResource::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'

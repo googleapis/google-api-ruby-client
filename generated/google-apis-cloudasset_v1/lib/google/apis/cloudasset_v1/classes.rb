@@ -282,6 +282,37 @@ module Google
         end
       end
       
+      # Attached resource representation, which is defined by the corresponding
+      # service provider. It represents an attached resource's payload.
+      class AttachedResource
+        include Google::Apis::Core::Hashable
+      
+        # The type of this attached resource. Example: `osconfig.googleapis.com/
+        # Inventory` You can find the supported attached asset types of each resource in
+        # this table: `https://cloud.google.com/asset-inventory/docs/supported-asset-
+        # types#searchable_asset_types`
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        # Versioned resource representations of this attached resource. This is repeated
+        # because there could be multiple versions of the attached resource
+        # representations during version migration.
+        # Corresponds to the JSON property `versionedResources`
+        # @return [Array<Google::Apis::CloudassetV1::VersionedResource>]
+        attr_accessor :versioned_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @versioned_resources = args[:versioned_resources] if args.key?(:versioned_resources)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -3605,6 +3636,15 @@ module Google
         # @return [String]
         attr_accessor :asset_type
       
+        # Attached resources of this resource. For example, an OSConfig Inventory is an
+        # attached resource of a Compute Instance. This field is repeated because a
+        # resource could have multiple attached resources. This `attached_resources`
+        # field is not searchable. Some attributes of the attached resources are exposed
+        # in `additional_attributes` field, so as to allow users to search on them.
+        # Corresponds to the JSON property `attachedResources`
+        # @return [Array<Google::Apis::CloudassetV1::AttachedResource>]
+        attr_accessor :attached_resources
+      
         # The create timestamp of this resource, at which the resource was created. The
         # granularity is in seconds. Timestamp.nanos will always be 0. This field is
         # available only when the resource's proto contains it. To search against `
@@ -3772,6 +3812,7 @@ module Google
         def update!(**args)
           @additional_attributes = args[:additional_attributes] if args.key?(:additional_attributes)
           @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @attached_resources = args[:attached_resources] if args.key?(:attached_resources)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
