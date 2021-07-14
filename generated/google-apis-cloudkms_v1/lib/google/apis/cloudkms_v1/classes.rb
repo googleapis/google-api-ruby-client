@@ -44,7 +44,7 @@ module Google
         # checksum. Note: This field is defined as int64 for reasons of compatibility
         # across different languages. However, it is a non-negative integer, which will
         # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-        # that support this type. NOTE: This field is in Beta.
+        # that support this type.
         # Corresponds to the JSON property `ciphertextCrc32c`
         # @return [Fixnum]
         attr_accessor :ciphertext_crc32c
@@ -79,8 +79,7 @@ module Google
         # issue in your computation of the CRC32C checksum. Note: This field is defined
         # as int64 for reasons of compatibility across different languages. However, it
         # is a non-negative integer, which will never exceed 2^32-1, and can be safely
-        # downconverted to uint32 in languages that support this type. NOTE: This field
-        # is in Beta.
+        # downconverted to uint32 in languages that support this type.
         # Corresponds to the JSON property `plaintextCrc32c`
         # @return [Fixnum]
         attr_accessor :plaintext_crc32c
@@ -97,7 +96,7 @@ module Google
         # ciphertext_crc32c was left unset or that it was not delivered to
         # KeyManagementService. If you've set AsymmetricDecryptRequest.ciphertext_crc32c
         # but this field is still false, discard the response and perform a limited
-        # number of retries. NOTE: This field is in Beta.
+        # number of retries.
         # Corresponds to the JSON property `verifiedCiphertextCrc32c`
         # @return [Boolean]
         attr_accessor :verified_ciphertext_crc32c
@@ -135,8 +134,7 @@ module Google
         # computation of the CRC32C checksum. Note: This field is defined as int64 for
         # reasons of compatibility across different languages. However, it is a non-
         # negative integer, which will never exceed 2^32-1, and can be safely
-        # downconverted to uint32 in languages that support this type. NOTE: This field
-        # is in Beta.
+        # downconverted to uint32 in languages that support this type.
         # Corresponds to the JSON property `digestCrc32c`
         # @return [Fixnum]
         attr_accessor :digest_crc32c
@@ -157,8 +155,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The resource name of the CryptoKeyVersion used for signing. Check this field
-        # to verify that the intended resource was used for signing. NOTE: This field is
-        # in Beta.
+        # to verify that the intended resource was used for signing.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -183,8 +180,7 @@ module Google
         # computation of the CRC32C checksum. Note: This field is defined as int64 for
         # reasons of compatibility across different languages. However, it is a non-
         # negative integer, which will never exceed 2^32-1, and can be safely
-        # downconverted to uint32 in languages that support this type. NOTE: This field
-        # is in Beta.
+        # downconverted to uint32 in languages that support this type.
         # Corresponds to the JSON property `signatureCrc32c`
         # @return [Fixnum]
         attr_accessor :signature_crc32c
@@ -195,7 +191,7 @@ module Google
         # AsymmetricSignRequest.digest_crc32c was left unset or that it was not
         # delivered to KeyManagementService. If you've set AsymmetricSignRequest.
         # digest_crc32c but this field is still false, discard the response and perform
-        # a limited number of retries. NOTE: This field is in Beta.
+        # a limited number of retries.
         # Corresponds to the JSON property `verifiedDigestCrc32c`
         # @return [Boolean]
         attr_accessor :verified_digest_crc32c
@@ -630,8 +626,7 @@ module Google
         # computation of the CRC32C checksum. Note: This field is defined as int64 for
         # reasons of compatibility across different languages. However, it is a non-
         # negative integer, which will never exceed 2^32-1, and can be safely
-        # downconverted to uint32 in languages that support this type. NOTE: This field
-        # is in Beta.
+        # downconverted to uint32 in languages that support this type.
         # Corresponds to the JSON property `additionalAuthenticatedDataCrc32c`
         # @return [Fixnum]
         attr_accessor :additional_authenticated_data_crc32c
@@ -652,7 +647,7 @@ module Google
         # the CRC32C checksum. Note: This field is defined as int64 for reasons of
         # compatibility across different languages. However, it is a non-negative
         # integer, which will never exceed 2^32-1, and can be safely downconverted to
-        # uint32 in languages that support this type. NOTE: This field is in Beta.
+        # uint32 in languages that support this type.
         # Corresponds to the JSON property `ciphertextCrc32c`
         # @return [Fixnum]
         attr_accessor :ciphertext_crc32c
@@ -691,7 +686,7 @@ module Google
         # This field is defined as int64 for reasons of compatibility across different
         # languages. However, it is a non-negative integer, which will never exceed 2^32-
         # 1, and can be safely downconverted to uint32 in languages that support this
-        # type. NOTE: This field is in Beta.
+        # type.
         # Corresponds to the JSON property `plaintextCrc32c`
         # @return [Fixnum]
         attr_accessor :plaintext_crc32c
@@ -792,8 +787,7 @@ module Google
         # computation of the CRC32C checksum. Note: This field is defined as int64 for
         # reasons of compatibility across different languages. However, it is a non-
         # negative integer, which will never exceed 2^32-1, and can be safely
-        # downconverted to uint32 in languages that support this type. NOTE: This field
-        # is in Beta.
+        # downconverted to uint32 in languages that support this type.
         # Corresponds to the JSON property `additionalAuthenticatedDataCrc32c`
         # @return [Fixnum]
         attr_accessor :additional_authenticated_data_crc32c
@@ -818,7 +812,7 @@ module Google
         # the CRC32C checksum. Note: This field is defined as int64 for reasons of
         # compatibility across different languages. However, it is a non-negative
         # integer, which will never exceed 2^32-1, and can be safely downconverted to
-        # uint32 in languages that support this type. NOTE: This field is in Beta.
+        # uint32 in languages that support this type.
         # Corresponds to the JSON property `plaintextCrc32c`
         # @return [Fixnum]
         attr_accessor :plaintext_crc32c
@@ -855,7 +849,7 @@ module Google
         # checksum. Note: This field is defined as int64 for reasons of compatibility
         # across different languages. However, it is a non-negative integer, which will
         # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-        # that support this type. NOTE: This field is in Beta.
+        # that support this type.
         # Corresponds to the JSON property `ciphertextCrc32c`
         # @return [Fixnum]
         attr_accessor :ciphertext_crc32c
@@ -877,8 +871,7 @@ module Google
         # indicates either that EncryptRequest.additional_authenticated_data_crc32c was
         # left unset or that it was not delivered to KeyManagementService. If you've set
         # EncryptRequest.additional_authenticated_data_crc32c but this field is still
-        # false, discard the response and perform a limited number of retries. NOTE:
-        # This field is in Beta.
+        # false, discard the response and perform a limited number of retries.
         # Corresponds to the JSON property `verifiedAdditionalAuthenticatedDataCrc32c`
         # @return [Boolean]
         attr_accessor :verified_additional_authenticated_data_crc32c
@@ -890,7 +883,7 @@ module Google
         # either that EncryptRequest.plaintext_crc32c was left unset or that it was not
         # delivered to KeyManagementService. If you've set EncryptRequest.
         # plaintext_crc32c but this field is still false, discard the response and
-        # perform a limited number of retries. NOTE: This field is in Beta.
+        # perform a limited number of retries.
         # Corresponds to the JSON property `verifiedPlaintextCrc32c`
         # @return [Boolean]
         attr_accessor :verified_plaintext_crc32c
