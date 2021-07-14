@@ -300,6 +300,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :operation_groups, as: 'operationGroups', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1OperationGroup, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1OperationGroup::Representation
       
+          hash :overview, as: 'overview'
         end
       end
       
