@@ -442,6 +442,7 @@ module Google
           property :image_version, as: 'imageVersion'
           hash :pypi_packages, as: 'pypiPackages'
           property :python_version, as: 'pythonVersion'
+          property :scheduler_count, as: 'schedulerCount'
         end
       end
       
