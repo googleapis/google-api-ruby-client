@@ -371,6 +371,9 @@ module Google
         #   used to get all changes since the last request. For subsequent sync requests
         #   use the `sync_token` param instead. Initial sync requests that specify `
         #   request_sync_token` have an additional rate limit.
+        # @param [Array<String>, String] sources
+        #   Optional. A mask of what source types to return. Defaults to
+        #   READ_SOURCE_TYPE_CONTACT if not set.
         # @param [String] sync_token
         #   Optional. A sync token, received from a previous `ListOtherContacts` call.
         #   Provide this to retrieve only the resources changed since the last request.
@@ -397,7 +400,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_other_contacts(page_size: nil, page_token: nil, read_mask: nil, request_sync_token: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_other_contacts(page_size: nil, page_token: nil, read_mask: nil, request_sync_token: nil, sources: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/otherContacts', options)
           command.response_representation = Google::Apis::PeopleV1::ListOtherContactsResponse::Representation
           command.response_class = Google::Apis::PeopleV1::ListOtherContactsResponse
@@ -405,6 +408,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['readMask'] = read_mask unless read_mask.nil?
           command.query['requestSyncToken'] = request_sync_token unless request_sync_token.nil?
+          command.query['sources'] = sources unless sources.nil?
           command.query['syncToken'] = sync_token unless sync_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
