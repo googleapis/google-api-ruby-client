@@ -59,7 +59,9 @@ module Google
         # @param [String] user_key
         #   Represents the profile ID or the user email for which the data should be
         #   filtered. Can be `all` for all information, or `userKey` for a user's unique
-        #   Google Workspace profile ID or their primary email address.
+        #   Google Workspace profile ID or their primary email address. Must not be a
+        #   deleted user. For a deleted user, call `users.list` in Directory API with `
+        #   showDeleted=true`, then use the returned `ID` as the `userKey`.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
         # @param [String] actor_ip_address
@@ -127,7 +129,7 @@ module Google
         #   returned.
         # @param [String] group_id_filter
         #   Comma separated group ids (obfuscated) on which user activities are filtered,
-        #   i.e, the response will contain activities for only those users that are a part
+        #   i.e. the response will contain activities for only those users that are a part
         #   of at least one of the group ids mentioned here. Format: "id:abc123,id:xyz456"
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
@@ -193,7 +195,9 @@ module Google
         # @param [String] user_key
         #   Represents the profile ID or the user email for which the data should be
         #   filtered. Can be `all` for all information, or `userKey` for a user's unique
-        #   Google Workspace profile ID or their primary email address.
+        #   Google Workspace profile ID or their primary email address. Must not be a
+        #   deleted user. For a deleted user, call `users.list` in Directory API with `
+        #   showDeleted=true`, then use the returned `ID` as the `userKey`.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
         # @param [Google::Apis::AdminReportsV1::Channel] channel_object
@@ -262,7 +266,7 @@ module Google
         #   returned.
         # @param [String] group_id_filter
         #   Comma separated group ids (obfuscated) on which user activities are filtered,
-        #   i.e, the response will contain activities for only those users that are a part
+        #   i.e. the response will contain activities for only those users that are a part
         #   of at least one of the group ids mentioned here. Format: "id:abc123,id:xyz456"
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
@@ -504,7 +508,9 @@ module Google
         # @param [String] user_key
         #   Represents the profile ID or the user email for which the data should be
         #   filtered. Can be `all` for all information, or `userKey` for a user's unique
-        #   Google Workspace profile ID or their primary email address.
+        #   Google Workspace profile ID or their primary email address. Must not be a
+        #   deleted user. For a deleted user, call `users.list` in Directory API with `
+        #   showDeleted=true`, then use the returned `ID` as the `userKey`.
         # @param [String] date
         #   Represents the date the usage occurred. The timestamp is in the ISO 8601
         #   format, yyyy-mm-dd. We recommend you use your account's time zone for this.
@@ -527,7 +533,7 @@ module Google
         #   or equal to'. It is URL-encoded (%3E=).
         # @param [String] group_id_filter
         #   Comma separated group ids (obfuscated) on which user activities are filtered,
-        #   i.e, the response will contain activities for only those users that are a part
+        #   i.e. the response will contain activities for only those users that are a part
         #   of at least one of the group ids mentioned here. Format: "id:abc123,id:xyz456"
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
