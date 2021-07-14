@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaChangeHistoryChange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +263,18 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -375,6 +423,20 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_video360_advertiser_link, as: 'displayVideo360AdvertiserLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink::Representation
+      
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -463,6 +525,12 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaChangeHistoryChange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -487,6 +555,10 @@ module Google
           property :custom_dimension, as: 'customDimension', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension::Representation
       
           property :custom_metric, as: 'customMetric', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric::Representation
+      
+          property :display_video360_advertiser_link, as: 'displayVideo360AdvertiserLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink::Representation
+      
+          property :display_video360_advertiser_link_proposal, as: 'displayVideo360AdvertiserLinkProposal', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal::Representation
       
           property :firebase_link, as: 'firebaseLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink::Representation
       
@@ -582,6 +654,33 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ads_personalization_enabled, as: 'adsPersonalizationEnabled'
+          property :advertiser_display_name, as: 'advertiserDisplayName'
+          property :advertiser_id, as: 'advertiserId'
+          property :campaign_data_sharing_enabled, as: 'campaignDataSharingEnabled'
+          property :cost_data_sharing_enabled, as: 'costDataSharingEnabled'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ads_personalization_enabled, as: 'adsPersonalizationEnabled'
+          property :advertiser_display_name, as: 'advertiserDisplayName'
+          property :advertiser_id, as: 'advertiserId'
+          property :campaign_data_sharing_enabled, as: 'campaignDataSharingEnabled'
+          property :cost_data_sharing_enabled, as: 'costDataSharingEnabled'
+          property :link_proposal_status_details, as: 'linkProposalStatusDetails', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails::Representation
+      
+          property :name, as: 'name'
+          property :validation_email, as: 'validationEmail'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -651,6 +750,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :link_proposal_initiating_product, as: 'linkProposalInitiatingProduct'
+          property :link_proposal_state, as: 'linkProposalState'
+          property :requestor_email, as: 'requestorEmail'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -700,6 +808,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :custom_metrics, as: 'customMetrics', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :display_video360_advertiser_link_proposals, as: 'displayVideo360AdvertiserLinkProposals', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :display_video360_advertiser_links, as: 'displayVideo360AdvertiserLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

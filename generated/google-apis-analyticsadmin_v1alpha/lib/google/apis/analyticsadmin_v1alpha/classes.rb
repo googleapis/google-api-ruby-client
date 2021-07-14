@@ -168,6 +168,38 @@ module Google
         end
       end
       
+      # Request message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.
+      class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.
+      class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse
+        include Google::Apis::Core::Hashable
+      
+        # A link between a GA4 property and a Display & Video 360 advertiser.
+        # Corresponds to the JSON property `displayVideo360AdvertiserLink`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink]
+        attr_accessor :display_video360_advertiser_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_video360_advertiser_link = args[:display_video360_advertiser_link] if args.key?(:display_video360_advertiser_link)
+        end
+      end
+      
       # Request message for ArchiveCustomDimension RPC.
       class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
         include Google::Apis::Core::Hashable
@@ -417,6 +449,19 @@ module Google
         end
       end
       
+      # Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC.
+      class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A description of a change to a single Google Analytics resource.
       class GoogleAnalyticsAdminV1alphaChangeHistoryChange
         include Google::Apis::Core::Hashable
@@ -486,6 +531,19 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric]
         attr_accessor :custom_metric
       
+        # A link between a GA4 property and a Display & Video 360 advertiser.
+        # Corresponds to the JSON property `displayVideo360AdvertiserLink`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink]
+        attr_accessor :display_video360_advertiser_link
+      
+        # A proposal for a link between an GA4 property and a Display & Video 360
+        # advertiser. A proposal is converted to a DisplayVideo360AdvertiserLink once
+        # approved. Google Analytics admins approve inbound proposals while Display &
+        # Video 360 admins approve outbound proposals.
+        # Corresponds to the JSON property `displayVideo360AdvertiserLinkProposal`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal]
+        attr_accessor :display_video360_advertiser_link_proposal
+      
         # A link between an GA4 property and a Firebase project.
         # Corresponds to the JSON property `firebaseLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink]
@@ -532,6 +590,8 @@ module Google
           @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
           @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
           @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
+          @display_video360_advertiser_link = args[:display_video360_advertiser_link] if args.key?(:display_video360_advertiser_link)
+          @display_video360_advertiser_link_proposal = args[:display_video360_advertiser_link_proposal] if args.key?(:display_video360_advertiser_link_proposal)
           @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
           @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
           @google_signals_settings = args[:google_signals_settings] if args.key?(:google_signals_settings)
@@ -886,6 +946,148 @@ module Google
         end
       end
       
+      # A link between a GA4 property and a Display & Video 360 advertiser.
+      class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
+        include Google::Apis::Core::Hashable
+      
+        # Enables personalized advertising features with this integration. If this field
+        # is not set on create/update, it will be defaulted to true.
+        # Corresponds to the JSON property `adsPersonalizationEnabled`
+        # @return [Boolean]
+        attr_accessor :ads_personalization_enabled
+        alias_method :ads_personalization_enabled?, :ads_personalization_enabled
+      
+        # Output only. The display name of the Display & Video 360 Advertiser.
+        # Corresponds to the JSON property `advertiserDisplayName`
+        # @return [String]
+        attr_accessor :advertiser_display_name
+      
+        # Immutable. The Display & Video 360 Advertiser's advertiser ID.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [String]
+        attr_accessor :advertiser_id
+      
+        # Immutable. Enables the import of campaign data from Display & Video 360 into
+        # the GA4 property. After link creation, this can only be updated from the
+        # Display & Video 360 product. If this field is not set on create, it will be
+        # defaulted to true.
+        # Corresponds to the JSON property `campaignDataSharingEnabled`
+        # @return [Boolean]
+        attr_accessor :campaign_data_sharing_enabled
+        alias_method :campaign_data_sharing_enabled?, :campaign_data_sharing_enabled
+      
+        # Immutable. Enables the import of cost data from Display & Video 360 into the
+        # GA4 property. This can only be enabled if campaign_data_import_enabled is
+        # enabled. After link creation, this can only be updated from the Display &
+        # Video 360 product. If this field is not set on create, it will be defaulted to
+        # true.
+        # Corresponds to the JSON property `costDataSharingEnabled`
+        # @return [Boolean]
+        attr_accessor :cost_data_sharing_enabled
+        alias_method :cost_data_sharing_enabled?, :cost_data_sharing_enabled
+      
+        # Output only. The resource name for this DisplayVideo360AdvertiserLink resource.
+        # Format: properties/`propertyId`/displayVideo360AdvertiserLinks/`linkId` Note:
+        # linkId is not the Display & Video 360 Advertiser ID
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ads_personalization_enabled = args[:ads_personalization_enabled] if args.key?(:ads_personalization_enabled)
+          @advertiser_display_name = args[:advertiser_display_name] if args.key?(:advertiser_display_name)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @campaign_data_sharing_enabled = args[:campaign_data_sharing_enabled] if args.key?(:campaign_data_sharing_enabled)
+          @cost_data_sharing_enabled = args[:cost_data_sharing_enabled] if args.key?(:cost_data_sharing_enabled)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A proposal for a link between an GA4 property and a Display & Video 360
+      # advertiser. A proposal is converted to a DisplayVideo360AdvertiserLink once
+      # approved. Google Analytics admins approve inbound proposals while Display &
+      # Video 360 admins approve outbound proposals.
+      class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Enables personalized advertising features with this integration. If
+        # this field is not set on create, it will be defaulted to true.
+        # Corresponds to the JSON property `adsPersonalizationEnabled`
+        # @return [Boolean]
+        attr_accessor :ads_personalization_enabled
+        alias_method :ads_personalization_enabled?, :ads_personalization_enabled
+      
+        # Output only. The display name of the Display & Video Advertiser. Only
+        # populated for proposals that originated from Display & Video 360.
+        # Corresponds to the JSON property `advertiserDisplayName`
+        # @return [String]
+        attr_accessor :advertiser_display_name
+      
+        # Immutable. The Display & Video 360 Advertiser's advertiser ID.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [String]
+        attr_accessor :advertiser_id
+      
+        # Immutable. Enables the import of campaign data from Display & Video 360. If
+        # this field is not set on create, it will be defaulted to true.
+        # Corresponds to the JSON property `campaignDataSharingEnabled`
+        # @return [Boolean]
+        attr_accessor :campaign_data_sharing_enabled
+        alias_method :campaign_data_sharing_enabled?, :campaign_data_sharing_enabled
+      
+        # Immutable. Enables the import of cost data from Display & Video 360. This can
+        # only be enabled if campaign_data_import_enabled is enabled. If this field is
+        # not set on create, it will be defaulted to true.
+        # Corresponds to the JSON property `costDataSharingEnabled`
+        # @return [Boolean]
+        attr_accessor :cost_data_sharing_enabled
+        alias_method :cost_data_sharing_enabled?, :cost_data_sharing_enabled
+      
+        # Status information for a link proposal.
+        # Corresponds to the JSON property `linkProposalStatusDetails`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails]
+        attr_accessor :link_proposal_status_details
+      
+        # Output only. The resource name for this DisplayVideo360AdvertiserLinkProposal
+        # resource. Format: properties/`propertyId`/
+        # displayVideo360AdvertiserLinkProposals/`proposalId` Note: proposalId is not
+        # the Display & Video 360 Advertiser ID
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Input only. On a proposal being sent to Display & Video 360, this field must
+        # be set to the email address of an admin on the target advertiser. This is used
+        # to verify that the Google Analytics admin is aware of at least one admin on
+        # the Display & Video 360 Advertiser. This does not restrict approval of the
+        # proposal to a single user. Any admin on the Display & Video 360 Advertiser may
+        # approve the proposal.
+        # Corresponds to the JSON property `validationEmail`
+        # @return [String]
+        attr_accessor :validation_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ads_personalization_enabled = args[:ads_personalization_enabled] if args.key?(:ads_personalization_enabled)
+          @advertiser_display_name = args[:advertiser_display_name] if args.key?(:advertiser_display_name)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @campaign_data_sharing_enabled = args[:campaign_data_sharing_enabled] if args.key?(:campaign_data_sharing_enabled)
+          @cost_data_sharing_enabled = args[:cost_data_sharing_enabled] if args.key?(:cost_data_sharing_enabled)
+          @link_proposal_status_details = args[:link_proposal_status_details] if args.key?(:link_proposal_status_details)
+          @name = args[:name] if args.key?(:name)
+          @validation_email = args[:validation_email] if args.key?(:validation_email)
+        end
+      end
+      
       # Singleton resource under a WebDataStream, configuring measurement of
       # additional site interactions and content.
       class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
@@ -1204,6 +1406,37 @@ module Google
         end
       end
       
+      # Status information for a link proposal.
+      class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The source of this proposal.
+        # Corresponds to the JSON property `linkProposalInitiatingProduct`
+        # @return [String]
+        attr_accessor :link_proposal_initiating_product
+      
+        # Output only. The state of this proposal.
+        # Corresponds to the JSON property `linkProposalState`
+        # @return [String]
+        attr_accessor :link_proposal_state
+      
+        # Output only. The email address of the user that proposed this linkage.
+        # Corresponds to the JSON property `requestorEmail`
+        # @return [String]
+        attr_accessor :requestor_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @link_proposal_initiating_product = args[:link_proposal_initiating_product] if args.key?(:link_proposal_initiating_product)
+          @link_proposal_state = args[:link_proposal_state] if args.key?(:link_proposal_state)
+          @requestor_email = args[:requestor_email] if args.key?(:requestor_email)
+        end
+      end
+      
       # Response message for ListAccountSummaries RPC.
       class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse
         include Google::Apis::Core::Hashable
@@ -1356,6 +1589,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_metrics = args[:custom_metrics] if args.key?(:custom_metrics)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListDisplayVideo360AdvertiserLinkProposals RPC.
+      class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of DisplayVideo360AdvertiserLinkProposals.
+        # Corresponds to the JSON property `displayVideo360AdvertiserLinkProposals`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>]
+        attr_accessor :display_video360_advertiser_link_proposals
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_video360_advertiser_link_proposals = args[:display_video360_advertiser_link_proposals] if args.key?(:display_video360_advertiser_link_proposals)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListDisplayVideo360AdvertiserLinks RPC.
+      class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of DisplayVideo360AdvertiserLinks.
+        # Corresponds to the JSON property `displayVideo360AdvertiserLinks`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>]
+        attr_accessor :display_video360_advertiser_links
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_video360_advertiser_links = args[:display_video360_advertiser_links] if args.key?(:display_video360_advertiser_links)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
