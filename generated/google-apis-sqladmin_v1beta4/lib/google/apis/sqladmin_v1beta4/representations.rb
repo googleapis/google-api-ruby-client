@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Database
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,18 @@ module Google
       end
       
       class ListFlagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateEphemeralCertRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateEphemeralCertResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -585,6 +603,19 @@ module Google
         end
       end
       
+      class ConnectSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_type, as: 'backendType'
+          property :database_version, as: 'databaseVersion'
+          collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1beta4::IpMapping, decorator: Google::Apis::SqladminV1beta4::IpMapping::Representation
+      
+          property :kind, as: 'kind'
+          property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
+      
+        end
+      end
+      
       class Database
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -800,6 +831,23 @@ module Google
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Flag, decorator: Google::Apis::SqladminV1beta4::Flag::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class GenerateEphemeralCertRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'access_token'
+          property :public_key, as: 'public_key'
+          property :read_time, as: 'readTime'
+        end
+      end
+      
+      class GenerateEphemeralCertResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ephemeral_cert, as: 'ephemeralCert', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
+      
         end
       end
       
@@ -1188,6 +1236,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_defer, as: 'canDefer'
           property :can_reschedule, as: 'canReschedule'
+          property :schedule_deadline_time, as: 'scheduleDeadlineTime'
           property :start_time, as: 'startTime'
         end
       end

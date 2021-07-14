@@ -159,12 +159,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all backup runs associated with a given instance and configuration in
-        # the reverse chronological order of the backup initiation time.
+        # Lists all backup runs associated with the project or a given instance and
+        # configuration in the reverse chronological order of the backup initiation time.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
-        #   Cloud SQL instance ID. This does not include the project ID.
+        #   Cloud SQL instance ID, or "-" for all instances. This does not include the
+        #   project ID.
         # @param [Fixnum] max_results
         #   Maximum number of backup runs per response.
         # @param [String] page_token
@@ -195,6 +196,80 @@ module Google
           command.params['instance'] = instance unless instance.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates a short-lived X509 certificate containing the provided public key
+        # and signed by a private key specific to the target instance. Users may use the
+        # certificate to authenticate as themselves when connecting to the database.
+        # @param [String] project
+        #   Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::GenerateEphemeralCertRequest] generate_ephemeral_cert_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::GenerateEphemeralCertResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::GenerateEphemeralCertResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_connect_ephemeral_cert(project, instance, generate_ephemeral_cert_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}:generateEphemeralCert', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::GenerateEphemeralCertRequest::Representation
+          command.request_object = generate_ephemeral_cert_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::GenerateEphemeralCertResponse::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::GenerateEphemeralCertResponse
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves connect settings about a Cloud SQL instance.
+        # @param [String] project
+        #   Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] read_time
+        #   Optional. Optional snapshot read timestamp to trade freshness for performance.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::ConnectSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::ConnectSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_connect(project, instance, read_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'sql/v1beta4/projects/{project}/instances/{instance}/connectSettings', options)
+          command.response_representation = Google::Apis::SqladminV1beta4::ConnectSettings::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::ConnectSettings
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['readTime'] = read_time unless read_time.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
