@@ -1,0 +1,7 @@
+{
+    "api_id": "mybusinessnotifications:v1",
+    "name_pretty": "My Business Notifications API",
+    "distribution_name": "google-apis-mybusinessnotifications_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
