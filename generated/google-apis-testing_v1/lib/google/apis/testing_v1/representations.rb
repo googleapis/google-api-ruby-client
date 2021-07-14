@@ -543,6 +543,7 @@ module Google
           property :max_steps, as: 'maxSteps'
           collection :robo_directives, as: 'roboDirectives', class: Google::Apis::TestingV1::RoboDirective, decorator: Google::Apis::TestingV1::RoboDirective::Representation
       
+          property :robo_mode, as: 'roboMode'
           property :robo_script, as: 'roboScript', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
           collection :starting_intents, as: 'startingIntents', class: Google::Apis::TestingV1::RoboStartingIntent, decorator: Google::Apis::TestingV1::RoboStartingIntent::Representation
