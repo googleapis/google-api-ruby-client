@@ -28,7 +28,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaAppAttestConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaAttestationTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -41,6 +53,12 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaSafetyNetConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -180,11 +204,27 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppcheckV1betaAppAttestConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
       class GoogleFirebaseAppcheckV1betaAttestationTokenResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attestation_token, as: 'attestationToken'
           property :ttl, as: 'ttl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig::Representation
+      
         end
       end
       
@@ -200,6 +240,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaConfig::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig::Representation
       
         end
       end
@@ -237,6 +285,7 @@ module Google
           property :name, as: 'name'
           property :private_key, as: 'privateKey'
           property :private_key_set, as: 'privateKeySet'
+          property :token_ttl, as: 'tokenTtl'
         end
       end
       
@@ -352,6 +401,15 @@ module Google
           property :name, as: 'name'
           property :site_secret, as: 'siteSecret'
           property :site_secret_set, as: 'siteSecretSet'
+          property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaSafetyNetConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :token_ttl, as: 'tokenTtl'
         end
       end
       

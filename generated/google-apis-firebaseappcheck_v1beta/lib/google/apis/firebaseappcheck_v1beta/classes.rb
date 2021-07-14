@@ -52,6 +52,40 @@ module Google
         end
       end
       
+      # An app's App Attest configuration object. This configuration controls certain
+      # properties of the App Check token returned by ExchangeAppAttestAttestation and
+      # ExchangeAppAttestAttestation, such as its ttl. Note that the Team ID
+      # registered with your app is used as part of the validation process. Please
+      # register it via the Firebase Console or programmatically via the [Firebase
+      # Management Service](https://firebase.google.com/docs/projects/api/reference/
+      # rest/v1beta1/projects.iosApps/patch).
+      class GoogleFirebaseAppcheckV1betaAppAttestConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The relative resource name of the App Attest configuration object,
+        # in the format: ``` projects/`project_number`/apps/`app_id`/appAttestConfig ```
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies the duration for which App Check tokens exchanged from App Attest
+        # artifacts will be valid. If unset, a default value of 1 hour is assumed. Must
+        # be between 30 minutes and 7 days, inclusive.
+        # Corresponds to the JSON property `tokenTtl`
+        # @return [String]
+        attr_accessor :token_ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
+        end
+      end
+      
       # Encapsulates an *App Check token*, which are used to access Firebase services
       # protected by App Check.
       class GoogleFirebaseAppcheckV1betaAttestationTokenResponse
@@ -82,6 +116,25 @@ module Google
         end
       end
       
+      # Response message for the BatchGetAppAttestConfigs method.
+      class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # AppAttestConfigs retrieved.
+        # Corresponds to the JSON property `configs`
+        # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig>]
+        attr_accessor :configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configs = args[:configs] if args.key?(:configs)
+        end
+      end
+      
       # Response message for the BatchGetDeviceCheckConfigs method.
       class GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse
         include Google::Apis::Core::Hashable
@@ -108,6 +161,25 @@ module Google
         # RecaptchaConfigs retrieved.
         # Corresponds to the JSON property `configs`
         # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaConfig>]
+        attr_accessor :configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configs = args[:configs] if args.key?(:configs)
+        end
+      end
+      
+      # Response message for the BatchGetSafetyNetConfigs method.
+      class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # SafetyNetConfigs retrieved.
+        # Corresponds to the JSON property `configs`
+        # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig>]
         attr_accessor :configs
       
         def initialize(**args)
@@ -245,6 +317,13 @@ module Google
         attr_accessor :private_key_set
         alias_method :private_key_set?, :private_key_set
       
+        # Specifies the duration for which App Check tokens exchanged from DeviceCheck
+        # tokens will be valid. If unset, a default value of 1 hour is assumed. Must be
+        # between 30 minutes and 7 days, inclusive.
+        # Corresponds to the JSON property `tokenTtl`
+        # @return [String]
+        attr_accessor :token_ttl
+      
         def initialize(**args)
            update!(**args)
         end
@@ -255,6 +334,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @private_key = args[:private_key] if args.key?(:private_key)
           @private_key_set = args[:private_key_set] if args.key?(:private_key_set)
+          @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
         end
       end
       
@@ -632,6 +712,13 @@ module Google
         attr_accessor :site_secret_set
         alias_method :site_secret_set?, :site_secret_set
       
+        # Specifies the duration for which App Check tokens exchanged from reCAPTCHA
+        # tokens will be valid. If unset, a default value of 1 day is assumed. Must be
+        # between 30 minutes and 7 days, inclusive.
+        # Corresponds to the JSON property `tokenTtl`
+        # @return [String]
+        attr_accessor :token_ttl
+      
         def initialize(**args)
            update!(**args)
         end
@@ -641,6 +728,41 @@ module Google
           @name = args[:name] if args.key?(:name)
           @site_secret = args[:site_secret] if args.key?(:site_secret)
           @site_secret_set = args[:site_secret_set] if args.key?(:site_secret_set)
+          @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
+        end
+      end
+      
+      # An app's SafetyNet configuration object. This configuration controls certain
+      # properties of the App Check token returned by ExchangeSafetyNetToken, such as
+      # its ttl. Note that your registered SHA-256 certificate fingerprints are used
+      # to validate tokens issued by SafetyNet; please register them via the Firebase
+      # Console or programmatically via the [Firebase Management Service](https://
+      # firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.
+      # androidApps.sha/create).
+      class GoogleFirebaseAppcheckV1betaSafetyNetConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The relative resource name of the SafetyNet configuration object, in
+        # the format: ``` projects/`project_number`/apps/`app_id`/safetyNetConfig ```
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies the duration for which App Check tokens exchanged from SafetyNet
+        # tokens will be valid. If unset, a default value of 1 hour is assumed. Must be
+        # between 30 minutes and 7 days, inclusive.
+        # Corresponds to the JSON property `tokenTtl`
+        # @return [String]
+        attr_accessor :token_ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
         end
       end
       
