@@ -28,6 +28,12 @@ module Google
       # Version of the Cloud SQL Admin API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
+
+      # See, edit, configure, and delete your Google Cloud Platform data
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Manage your Google SQL Service instances
+      AUTH_SQLSERVICE_ADMIN = 'https://www.googleapis.com/auth/sqlservice.admin'
     end
   end
 end
