@@ -1144,8 +1144,8 @@ module Google
       
         # Optional. Membership-specific configuration for this Feature. If this Feature
         # does not support any per-Membership configuration, this field may be unused.
-        # The keys indicate which Membership the configuration is for, in the form:
-        # projects/`p`/locations/`l`/memberships/`m` Where `p` is the project, `l` is a
+        # The keys indicate which Membership the configuration is for, in the form: `
+        # projects/`p`/locations/`l`/memberships/`m`` Where `p` is the project, `l` is a
         # valid location and `m` is a valid Membership in this project at that location.
         # `p` WILL match the Feature's project. `p` will always be returned as the
         # project number, but the project ID is also accepted during input. If the same
@@ -1159,8 +1159,8 @@ module Google
       
         # Output only. Membership-specific Feature status. If this Feature does report
         # any per-Membership status, this field may be unused. The keys indicate which
-        # Membership the state is for, in the form: projects/`p`/locations/`l`/
-        # memberships/`m` Where `p` is the project number, `l` is a valid location and `
+        # Membership the state is for, in the form: `projects/`p`/locations/`l`/
+        # memberships/`m`` Where `p` is the project number, `l` is a valid location and `
         # m` is a valid Membership in this project at that location. `p` MUST match the
         # Feature's project number.
         # Corresponds to the JSON property `membershipStates`
@@ -1293,6 +1293,13 @@ module Google
       class GkeCluster
         include Google::Apis::Core::Hashable
       
+        # Output only. If cluster_missing is set then it denotes that the GKE cluster no
+        # longer exists in the GKE Control Plane.
+        # Corresponds to the JSON property `clusterMissing`
+        # @return [Boolean]
+        attr_accessor :cluster_missing
+        alias_method :cluster_missing?, :cluster_missing
+      
         # Immutable. Self-link of the GCP resource for the GKE cluster. For example: //
         # container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-
         # cluster Zonal clusters are also supported.
@@ -1306,6 +1313,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_missing = args[:cluster_missing] if args.key?(:cluster_missing)
           @resource_link = args[:resource_link] if args.key?(:resource_link)
         end
       end

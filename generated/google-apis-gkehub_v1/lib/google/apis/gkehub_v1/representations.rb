@@ -712,6 +712,7 @@ module Google
       class GkeCluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_missing, as: 'clusterMissing'
           property :resource_link, as: 'resourceLink'
         end
       end
