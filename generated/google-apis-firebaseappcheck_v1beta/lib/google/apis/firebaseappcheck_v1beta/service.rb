@@ -400,6 +400,115 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the AppAttestConfigs for the specified list of apps atomically.
+        # @param [String] parent
+        #   Required. The parent project name shared by all AppAttestConfigs being
+        #   retrieved, in the format ``` projects/`project_number` ``` The parent
+        #   collection in the `name` field of any resource being retrieved must match this
+        #   field, or the entire batch fails.
+        # @param [Array<String>, String] names
+        #   Required. The relative resource names of the AppAttestConfigs to retrieve, in
+        #   the format ``` projects/`project_number`/apps/`app_id`/appAttestConfig ``` A
+        #   maximum of 100 objects can be retrieved in a batch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_app_app_attest_config_get(parent, names: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/apps/-/appAttestConfig:batchGet', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['names'] = names unless names.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the AppAttestConfig for the specified app.
+        # @param [String] name
+        #   Required. The relative resource name of the AppAttestConfig, in the format: ```
+        #   projects/`project_number`/apps/`app_id`/appAttestConfig ```
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_app_app_attest_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the AppAttestConfig for the specified app. While this configuration is
+        # incomplete or invalid, the app will be unable to exchange AppAttest tokens for
+        # App Check tokens.
+        # @param [String] name
+        #   Required. The relative resource name of the App Attest configuration object,
+        #   in the format: ``` projects/`project_number`/apps/`app_id`/appAttestConfig ```
+        # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig] google_firebase_appcheck_v1beta_app_attest_config_object
+        # @param [String] update_mask
+        #   Required. A comma-separated list of names of fields in the AppAttestConfig
+        #   Gets to update. Example: `token_ttl`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_app_app_attest_config(name, google_firebase_appcheck_v1beta_app_attest_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig::Representation
+          command.request_object = google_firebase_appcheck_v1beta_app_attest_config_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppAttestConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new DebugToken for the specified app. For security reasons, after
         # the creation operation completes, the `token` field cannot be updated or
         # retrieved, but you can revoke the debug token using DeleteDebugToken. Each app
@@ -808,6 +917,115 @@ module Google
           command.request_object = google_firebase_appcheck_v1beta_recaptcha_config_object
           command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaConfig::Representation
           command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the SafetyNetConfigs for the specified list of apps atomically.
+        # @param [String] parent
+        #   Required. The parent project name shared by all SafetyNetConfigs being
+        #   retrieved, in the format ``` projects/`project_number` ``` The parent
+        #   collection in the `name` field of any resource being retrieved must match this
+        #   field, or the entire batch fails.
+        # @param [Array<String>, String] names
+        #   Required. The relative resource names of the SafetyNetConfigs to retrieve, in
+        #   the format ``` projects/`project_number`/apps/`app_id`/safetyNetConfig ``` A
+        #   maximum of 100 objects can be retrieved in a batch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_app_safety_net_config_get(parent, names: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/apps/-/safetyNetConfig:batchGet', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['names'] = names unless names.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the SafetyNetConfig for the specified app.
+        # @param [String] name
+        #   Required. The relative resource name of the SafetyNetConfig, in the format: ```
+        #   projects/`project_number`/apps/`app_id`/safetyNetConfig ```
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_app_safety_net_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the SafetyNetConfig for the specified app. While this configuration is
+        # incomplete or invalid, the app will be unable to exchange SafetyNet tokens for
+        # App Check tokens.
+        # @param [String] name
+        #   Required. The relative resource name of the SafetyNet configuration object, in
+        #   the format: ``` projects/`project_number`/apps/`app_id`/safetyNetConfig ```
+        # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig] google_firebase_appcheck_v1beta_safety_net_config_object
+        # @param [String] update_mask
+        #   Required. A comma-separated list of names of fields in the SafetyNetConfig
+        #   Gets to update. Example: `token_ttl`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_app_safety_net_config(name, google_firebase_appcheck_v1beta_safety_net_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig::Representation
+          command.request_object = google_firebase_appcheck_v1beta_safety_net_config_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
