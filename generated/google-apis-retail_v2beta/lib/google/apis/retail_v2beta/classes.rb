@@ -1738,7 +1738,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A list of products to update/create. Each product must have a valid
-        # Product.id. Recommended max of 10k items.
+        # Product.id. Recommended max of 100 items.
         # Corresponds to the JSON property `products`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProduct>]
         attr_accessor :products
