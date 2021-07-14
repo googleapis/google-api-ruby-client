@@ -3307,6 +3307,41 @@ module Google
         end
       end
       
+      # Default options to interpret user query.
+      class QueryInterpretationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Set this flag to disable supplemental results retrieval, setting a flag here
+        # will not retrieve supplemental results for queries associated with a given
+        # search application. If this flag is set to True, it will take precedence over
+        # the option set at Query level. For the default value of False, query level
+        # flag will set the correct interpretation for supplemental results.
+        # Corresponds to the JSON property `forceDisableSupplementalResults`
+        # @return [Boolean]
+        attr_accessor :force_disable_supplemental_results
+        alias_method :force_disable_supplemental_results?, :force_disable_supplemental_results
+      
+        # Enable this flag to turn off all internal optimizations like natural language (
+        # NL) interpretation of queries, supplemental results retrieval, and usage of
+        # synonyms including custom ones. If this flag is set to True, it will take
+        # precedence over the option set at Query level. For the default value of False,
+        # query level flag will set the correct interpretation for verbatim mode.
+        # Corresponds to the JSON property `forceVerbatimMode`
+        # @return [Boolean]
+        attr_accessor :force_verbatim_mode
+        alias_method :force_verbatim_mode?, :force_verbatim_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force_disable_supplemental_results = args[:force_disable_supplemental_results] if args.key?(:force_disable_supplemental_results)
+          @force_verbatim_mode = args[:force_verbatim_mode] if args.key?(:force_verbatim_mode)
+        end
+      end
+      
       # Options to interpret user query.
       class QueryInterpretationOptions
         include Google::Apis::Core::Hashable
@@ -3318,6 +3353,14 @@ module Google
         # @return [Boolean]
         attr_accessor :disable_nl_interpretation
         alias_method :disable_nl_interpretation?, :disable_nl_interpretation
+      
+        # Use this flag to disable supplemental results for a query. Supplemental
+        # results setting chosen at SearchApplication level will take precedence if set
+        # to True.
+        # Corresponds to the JSON property `disableSupplementalResults`
+        # @return [Boolean]
+        attr_accessor :disable_supplemental_results
+        alias_method :disable_supplemental_results?, :disable_supplemental_results
       
         # Enable this flag to turn off all internal optimizations like natural language (
         # NL) interpretation of queries, supplemental result retrieval, and usage of
@@ -3335,6 +3378,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_nl_interpretation = args[:disable_nl_interpretation] if args.key?(:disable_nl_interpretation)
+          @disable_supplemental_results = args[:disable_supplemental_results] if args.key?(:disable_supplemental_results)
           @enable_verbatim_mode = args[:enable_verbatim_mode] if args.key?(:enable_verbatim_mode)
         end
       end
@@ -3906,6 +3950,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :operation_ids
       
+        # Default options to interpret user query.
+        # Corresponds to the JSON property `queryInterpretationConfig`
+        # @return [Google::Apis::CloudsearchV1::QueryInterpretationConfig]
+        attr_accessor :query_interpretation_config
+      
         # Scoring configurations for a source while processing a Search or Suggest
         # request.
         # Corresponds to the JSON property `scoringConfig`
@@ -3930,6 +3979,7 @@ module Google
           @enable_audit_log = args[:enable_audit_log] if args.key?(:enable_audit_log)
           @name = args[:name] if args.key?(:name)
           @operation_ids = args[:operation_ids] if args.key?(:operation_ids)
+          @query_interpretation_config = args[:query_interpretation_config] if args.key?(:query_interpretation_config)
           @scoring_config = args[:scoring_config] if args.key?(:scoring_config)
           @source_config = args[:source_config] if args.key?(:source_config)
         end
