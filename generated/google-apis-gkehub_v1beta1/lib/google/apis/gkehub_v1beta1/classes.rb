@@ -381,6 +381,13 @@ module Google
       class GkeCluster
         include Google::Apis::Core::Hashable
       
+        # Output only. If cluster_missing is set then it denotes that the GKE cluster no
+        # longer exists in the GKE Control Plane.
+        # Corresponds to the JSON property `clusterMissing`
+        # @return [Boolean]
+        attr_accessor :cluster_missing
+        alias_method :cluster_missing?, :cluster_missing
+      
         # Immutable. Self-link of the GCP resource for the GKE cluster. For example: //
         # container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-
         # cluster Zonal clusters are also supported.
@@ -394,6 +401,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_missing = args[:cluster_missing] if args.key?(:cluster_missing)
           @resource_link = args[:resource_link] if args.key?(:resource_link)
         end
       end
