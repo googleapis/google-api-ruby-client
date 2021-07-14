@@ -616,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryInterpretationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryInterpretationOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1917,10 +1923,19 @@ module Google
         end
       end
       
+      class QueryInterpretationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force_disable_supplemental_results, as: 'forceDisableSupplementalResults'
+          property :force_verbatim_mode, as: 'forceVerbatimMode'
+        end
+      end
+      
       class QueryInterpretationOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_nl_interpretation, as: 'disableNlInterpretation'
+          property :disable_supplemental_results, as: 'disableSupplementalResults'
           property :enable_verbatim_mode, as: 'enableVerbatimMode'
         end
       end
@@ -2097,6 +2112,8 @@ module Google
           property :enable_audit_log, as: 'enableAuditLog'
           property :name, as: 'name'
           collection :operation_ids, as: 'operationIds'
+          property :query_interpretation_config, as: 'queryInterpretationConfig', class: Google::Apis::CloudsearchV1::QueryInterpretationConfig, decorator: Google::Apis::CloudsearchV1::QueryInterpretationConfig::Representation
+      
           property :scoring_config, as: 'scoringConfig', class: Google::Apis::CloudsearchV1::ScoringConfig, decorator: Google::Apis::CloudsearchV1::ScoringConfig::Representation
       
           collection :source_config, as: 'sourceConfig', class: Google::Apis::CloudsearchV1::SourceConfig, decorator: Google::Apis::CloudsearchV1::SourceConfig::Representation
