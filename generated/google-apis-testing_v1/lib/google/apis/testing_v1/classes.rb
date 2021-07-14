@@ -428,6 +428,12 @@ module Google
         # @return [Array<Google::Apis::TestingV1::RoboDirective>]
         attr_accessor :robo_directives
       
+        # The mode in which Robo should run. Most clients should allow the server to
+        # populate this field automatically.
+        # Corresponds to the JSON property `roboMode`
+        # @return [String]
+        attr_accessor :robo_mode
+      
         # A reference to a file, used for user inputs.
         # Corresponds to the JSON property `roboScript`
         # @return [Google::Apis::TestingV1::FileReference]
@@ -453,6 +459,7 @@ module Google
           @max_depth = args[:max_depth] if args.key?(:max_depth)
           @max_steps = args[:max_steps] if args.key?(:max_steps)
           @robo_directives = args[:robo_directives] if args.key?(:robo_directives)
+          @robo_mode = args[:robo_mode] if args.key?(:robo_mode)
           @robo_script = args[:robo_script] if args.key?(:robo_script)
           @starting_intents = args[:starting_intents] if args.key?(:starting_intents)
         end
