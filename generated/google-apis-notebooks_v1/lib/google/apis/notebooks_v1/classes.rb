@@ -368,6 +368,31 @@ module Google
         end
       end
       
+      # The definition of an Event for a managed / semi-managed notebook instance.
+      class Event
+        include Google::Apis::Core::Hashable
+      
+        # Event report time.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        # Event type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @report_time = args[:report_time] if args.key?(:report_time)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # The definition of a single executed notebook.
       class Execution
         include Google::Apis::Core::Hashable
@@ -509,7 +534,8 @@ module Google
         # @return [String]
         attr_accessor :params_yaml_file
       
-        # Required. Scale tier of the hardware used for notebook execution.
+        # Required. Scale tier of the hardware used for notebook execution. DEPRECATED
+        # Will be discontinued. As right now only CUSTOM is supported.
         # Corresponds to the JSON property `scaleTier`
         # @return [String]
         attr_accessor :scale_tier
@@ -797,6 +823,11 @@ module Google
         # @return [String]
         attr_accessor :proxy_uri
       
+        # Reservation Affinity for consuming Zonal reservation.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::NotebooksV1::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         # The service account on this instance, giving access to other Google Cloud
         # services. You can use any service account within the same project, but you
         # must have the service account user permission to use the instance. If not
@@ -885,6 +916,7 @@ module Google
           @no_remove_data_disk = args[:no_remove_data_disk] if args.key?(:no_remove_data_disk)
           @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
           @proxy_uri = args[:proxy_uri] if args.key?(:proxy_uri)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -1651,6 +1683,63 @@ module Google
         end
       end
       
+      # Request for reporting a Managed Notebook Event.
+      class ReportRuntimeEventRequest
+        include Google::Apis::Core::Hashable
+      
+        # The definition of an Event for a managed / semi-managed notebook instance.
+        # Corresponds to the JSON property `event`
+        # @return [Google::Apis::NotebooksV1::Event]
+        attr_accessor :event
+      
+        # Required. The VM hardware token for authenticating the VM. https://cloud.
+        # google.com/compute/docs/instances/verifying-instance-identity
+        # Corresponds to the JSON property `vmId`
+        # @return [String]
+        attr_accessor :vm_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event = args[:event] if args.key?(:event)
+          @vm_id = args[:vm_id] if args.key?(:vm_id)
+        end
+      end
+      
+      # Reservation Affinity for consuming Zonal reservation.
+      class ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Type of reservation to consume
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Optional. Corresponds to the label key of reservation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Corresponds to the label values of reservation resource.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Request for reseting a notebook instance
       class ResetInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1935,13 +2024,13 @@ module Google
         attr_accessor :enable_health_monitoring
         alias_method :enable_health_monitoring?, :enable_health_monitoring
       
-        # Runtime will automatically shutdown after idle_shutdown_time. Default: False
+        # Runtime will automatically shutdown after idle_shutdown_time. Default: True
         # Corresponds to the JSON property `idleShutdown`
         # @return [Boolean]
         attr_accessor :idle_shutdown
         alias_method :idle_shutdown?, :idle_shutdown
       
-        # Time in minutes to wait before shuting down runtime. Default: 90 minutes
+        # Time in minutes to wait before shuting down runtime. Default: 180 minutes
         # Corresponds to the JSON property `idleShutdownTimeout`
         # @return [Fixnum]
         attr_accessor :idle_shutdown_timeout

@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Event
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Execution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,18 @@ module Google
       end
       
       class ReportInstanceInfoRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportRuntimeEventRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -491,6 +509,14 @@ module Google
         end
       end
       
+      class Event
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :report_time, as: 'reportTime'
+          property :type, as: 'type'
+        end
+      end
+      
       class Execution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -579,6 +605,8 @@ module Google
           property :no_remove_data_disk, as: 'noRemoveDataDisk'
           property :post_startup_script, as: 'postStartupScript'
           property :proxy_uri, as: 'proxyUri'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::NotebooksV1::ReservationAffinity, decorator: Google::Apis::NotebooksV1::ReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
           collection :service_account_scopes, as: 'serviceAccountScopes'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::NotebooksV1::ShieldedInstanceConfig, decorator: Google::Apis::NotebooksV1::ShieldedInstanceConfig::Representation
@@ -770,6 +798,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :metadata, as: 'metadata'
           property :vm_id, as: 'vmId'
+        end
+      end
+      
+      class ReportRuntimeEventRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event, as: 'event', class: Google::Apis::NotebooksV1::Event, decorator: Google::Apis::NotebooksV1::Event::Representation
+      
+          property :vm_id, as: 'vmId'
+        end
+      end
+      
+      class ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
         end
       end
       
