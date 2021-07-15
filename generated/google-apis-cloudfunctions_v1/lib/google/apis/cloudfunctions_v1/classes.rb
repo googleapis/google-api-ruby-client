@@ -327,6 +327,16 @@ module Google
         # @return [String]
         attr_accessor :runtime
       
+        # Secret environment variables configuration.
+        # Corresponds to the JSON property `secretEnvironmentVariables`
+        # @return [Array<Google::Apis::CloudfunctionsV1::SecretEnvVar>]
+        attr_accessor :secret_environment_variables
+      
+        # Secret volumes configuration.
+        # Corresponds to the JSON property `secretVolumes`
+        # @return [Array<Google::Apis::CloudfunctionsV1::SecretVolume>]
+        attr_accessor :secret_volumes
+      
         # The email of the function's service account. If empty, defaults to ``
         # project_id`@appspot.gserviceaccount.com`.
         # Corresponds to the JSON property `serviceAccountEmail`
@@ -417,6 +427,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @runtime = args[:runtime] if args.key?(:runtime)
+          @secret_environment_variables = args[:secret_environment_variables] if args.key?(:secret_environment_variables)
+          @secret_volumes = args[:secret_volumes] if args.key?(:secret_volumes)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @source_archive_url = args[:source_archive_url] if args.key?(:source_archive_url)
           @source_repository = args[:source_repository] if args.key?(:source_repository)
@@ -1026,6 +1038,127 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Configuration for a secret environment variable. It has the information
+      # necessary to fetch the secret value from secret manager and expose it as an
+      # environment variable. Secret value is not a part of the configuration. Secret
+      # values are only fetched when a new clone starts.
+      class SecretEnvVar
+        include Google::Apis::Core::Hashable
+      
+        # Name of the environment variable.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Project whose secret manager data is being referenced. Cross project secrets
+        # are not supported.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Name of the secret in secret manager (not the full resource name).
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
+        # Version of the secret (version number or the string 'latest'). It is
+        # recommended to use a numeric version for secret environment variables as any
+        # updates to the secret value is not reflected until new clones start.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @secret = args[:secret] if args.key?(:secret)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for a single version.
+      class SecretVersion
+        include Google::Apis::Core::Hashable
+      
+        # Relative path of the file under the mount path where the secret value for this
+        # version will be fetched and made available. For example, setting the
+        # mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret
+        # value file at `/etc/secrets/secret_foo`.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Version of the secret (version number or the string 'latest'). It is
+        # preferrable to use `latest` version with secret volumes as secret value
+        # changes are reflected immediately.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for a secret volume. It has the information necessary to fetch
+      # the secret value from secret manager and make it available as files mounted at
+      # the requested paths within the application container. Secret value is not a
+      # part of the configuration. Every filesystem read operation performs a lookup
+      # in secret manager to retrieve the secret value.
+      class SecretVolume
+        include Google::Apis::Core::Hashable
+      
+        # The path within the container to mount the secret volume. For example, setting
+        # the mount_path as `/etc/secrets` would mount the secret value files under the `
+        # /etc/secrets` directory. This directory will also be completely shadowed and
+        # unavailable to mount any other secrets. Recommended mount paths: /etc/secrets
+        # Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
+        # Corresponds to the JSON property `mountPath`
+        # @return [String]
+        attr_accessor :mount_path
+      
+        # Project whose secret manager data is being referenced. Cross project secrets
+        # are not supported.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Name of the secret in secret manager (not the full resource name).
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
+        # List of secret versions to mount for this secret. If empty, the `latest`
+        # version of the secret will be made available in a file named after the secret
+        # under the mount point.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::CloudfunctionsV1::SecretVersion>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mount_path = args[:mount_path] if args.key?(:mount_path)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @secret = args[:secret] if args.key?(:secret)
+          @versions = args[:versions] if args.key?(:versions)
         end
       end
       

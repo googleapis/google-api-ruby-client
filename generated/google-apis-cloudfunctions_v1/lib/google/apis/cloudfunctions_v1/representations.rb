@@ -154,6 +154,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecretEnvVar
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretVolume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -247,6 +265,10 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :runtime, as: 'runtime'
+          collection :secret_environment_variables, as: 'secretEnvironmentVariables', class: Google::Apis::CloudfunctionsV1::SecretEnvVar, decorator: Google::Apis::CloudfunctionsV1::SecretEnvVar::Representation
+      
+          collection :secret_volumes, as: 'secretVolumes', class: Google::Apis::CloudfunctionsV1::SecretVolume, decorator: Google::Apis::CloudfunctionsV1::SecretVolume::Representation
+      
           property :service_account_email, as: 'serviceAccountEmail'
           property :source_archive_url, as: 'sourceArchiveUrl'
           property :source_repository, as: 'sourceRepository', class: Google::Apis::CloudfunctionsV1::SourceRepository, decorator: Google::Apis::CloudfunctionsV1::SourceRepository::Representation
@@ -406,6 +428,35 @@ module Google
       class Retry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SecretEnvVar
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :project_id, as: 'projectId'
+          property :secret, as: 'secret'
+          property :version, as: 'version'
+        end
+      end
+      
+      class SecretVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :version, as: 'version'
+        end
+      end
+      
+      class SecretVolume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mount_path, as: 'mountPath'
+          property :project_id, as: 'projectId'
+          property :secret, as: 'secret'
+          collection :versions, as: 'versions', class: Google::Apis::CloudfunctionsV1::SecretVersion, decorator: Google::Apis::CloudfunctionsV1::SecretVersion::Representation
+      
         end
       end
       
