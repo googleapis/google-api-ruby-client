@@ -53,14 +53,18 @@ module Google
         # Creates an enterprise. This is the last step in the enterprise signup flow.
         # @param [Google::Apis::AndroidmanagementV1::Enterprise] enterprise_object
         # @param [Boolean] agreement_accepted
-        #   This feature is not generally available yet. Whether the managed Google Play
-        #   Agreement is presented and agreed.
+        #   Whether the enterprise admin has seen and agreed to the managed Google Play
+        #   Agreement (https://www.android.com/enterprise/terms/). Always set this to true
+        #   when creating an EMM-managed enterprise. Do not create the enterprise until
+        #   the admin has viewed and accepted the agreement.
         # @param [String] enterprise_token
-        #   The enterprise token appended to the callback URL.
+        #   The enterprise token appended to the callback URL. Only set this when creating
+        #   a customer-managed enterprise.
         # @param [String] project_id
         #   The ID of the Google Cloud Platform project which will own the enterprise.
         # @param [String] signup_url_name
-        #   The name of the SignupUrl used to sign up for the enterprise.
+        #   The name of the SignupUrl used to sign up for the enterprise. Only set this
+        #   when creating a customer-managed enterprise.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -93,10 +97,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This feature is not generally available yet. Deletes an enterprise.
+        # Deletes an enterprise. Only available for EMM-managed enterprises.
         # @param [String] name
-        #   This feature is not generally available yet. The name of the enterprise in the
-        #   form enterprises/`enterpriseId`.
+        #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -154,20 +157,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This feature is not generally available yet. Lists enterprises that are
-        # managed by an EMM. Only partial views are returned.
+        # Lists EMM-managed enterprises. Only BASIC fields are returned.
         # @param [Fixnum] page_size
-        #   This feature is not generally available yet. The requested page size. The
-        #   actual page size may be fixed to a min or max value.
+        #   The requested page size. The actual page size may be fixed to a min or max
+        #   value.
         # @param [String] page_token
-        #   This feature is not generally available yet. A token identifying a page of
-        #   results returned by the server.
+        #   A token identifying a page of results returned by the server.
         # @param [String] project_id
-        #   Required. This feature is not generally available yet. The ID of the Cloud
-        #   project of the EMM the enterprises belongs to.
+        #   Required. The Cloud project ID of the EMM managing the enterprises.
         # @param [String] view
-        #   This feature is not generally available yet. View that specify that partial
-        #   response should be returned.
+        #   Specifies which Enterprise fields to return. This method only supports BASIC.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
