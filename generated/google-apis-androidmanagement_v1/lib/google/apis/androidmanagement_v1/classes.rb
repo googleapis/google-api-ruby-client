@@ -1798,18 +1798,16 @@ module Google
         end
       end
       
-      # This feature is not generally available yet. Response to a request to list
-      # enterprises.
+      # Response to a request to list enterprises.
       class ListEnterprisesResponse
         include Google::Apis::Core::Hashable
       
-        # This feature is not generally available yet. The list of enterprises.
+        # The list of enterprises.
         # Corresponds to the JSON property `enterprises`
         # @return [Array<Google::Apis::AndroidmanagementV1::Enterprise>]
         attr_accessor :enterprises
       
-        # This feature is not generally available yet. If there are more results, a
-        # token to retrieve next page of results.
+        # If there are more results, a token to retrieve next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
