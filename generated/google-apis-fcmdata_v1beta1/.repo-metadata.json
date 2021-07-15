@@ -1,0 +1,7 @@
+{
+    "api_id": "fcmdata:v1beta1",
+    "name_pretty": "Firebase Cloud Messaging Data API",
+    "distribution_name": "google-apis-fcmdata_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
