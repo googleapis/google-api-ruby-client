@@ -844,6 +844,7 @@ module Google
           property :enum_value, as: 'enumValue', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TagFieldEnumValue, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1TagFieldEnumValue::Representation
       
           property :order, as: 'order'
+          property :richtext_value, as: 'richtextValue'
           property :string_value, as: 'stringValue'
           property :timestamp_value, as: 'timestampValue'
         end

@@ -1752,6 +1752,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :order
       
+        # The value of a tag field with a rich text type. The maximum length is 10 MiB
+        # as this value holds HTML descriptions including encoded images. The maximum
+        # length of the text without images is 100 KiB.
+        # Corresponds to the JSON property `richtextValue`
+        # @return [String]
+        attr_accessor :richtext_value
+      
         # The value of a tag field with a string type. The maximum length is 2000 UTF-8
         # characters.
         # Corresponds to the JSON property `stringValue`
@@ -1774,6 +1781,7 @@ module Google
           @double_value = args[:double_value] if args.key?(:double_value)
           @enum_value = args[:enum_value] if args.key?(:enum_value)
           @order = args[:order] if args.key?(:order)
+          @richtext_value = args[:richtext_value] if args.key?(:richtext_value)
           @string_value = args[:string_value] if args.key?(:string_value)
           @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
         end
