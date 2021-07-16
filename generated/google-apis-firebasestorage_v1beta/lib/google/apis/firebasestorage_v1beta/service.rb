@@ -53,8 +53,7 @@ module Google
         # Links a Google Cloud Storage bucket to a Firebase project.
         # @param [String] bucket
         #   Required. Resource name of the bucket, mirrors the ID of the underlying Google
-        #   Cloud Storage bucket. Because bucket resource names are unique across projects,
-        #   you may omit the project number, `projects/-/buckets/`bucket_id``.
+        #   Cloud Storage bucket, `projects/`project_number`/buckets/`bucket_id``.
         # @param [Google::Apis::FirebasestorageV1beta::AddFirebaseRequest] add_firebase_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -88,8 +87,7 @@ module Google
         # Gets a single linked storage bucket.
         # @param [String] name
         #   Required. Resource name of the bucket, mirrors the ID of the underlying Google
-        #   Cloud Storage bucket. Because bucket resource names are unique across projects,
-        #   you may omit the project number, `projects/-/buckets/`bucket_id``.
+        #   Cloud Storage bucket, `projects/`project_number`/buckets/`bucket_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -160,8 +158,7 @@ module Google
         # Unlinks a linked Google Cloud Storage bucket from a Firebase project.
         # @param [String] bucket
         #   Required. Resource name of the bucket, mirrors the ID of the underlying Google
-        #   Cloud Storage bucket. Because bucket resource names are unique across projects,
-        #   you may omit the project number, `projects/-/buckets/`bucket_id``.
+        #   Cloud Storage bucket, `projects/`project_number`/buckets/`bucket_id``.
         # @param [Google::Apis::FirebasestorageV1beta::RemoveFirebaseRequest] remove_firebase_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
