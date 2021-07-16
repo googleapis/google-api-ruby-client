@@ -309,6 +309,10 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the project associated with the Secrets, in the
         #   format `projects/*`.
+        # @param [String] filter
+        #   Optional. Filter string, adhering to the rules in [List-operation filtering](
+        #   https://cloud.google.com/secret-manager/docs/filtering). List only secrets
+        #   matching the filter. If filter is empty, all secrets are listed.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to be returned in a single page. If
         #   set to 0, the server decides the number of results to return. If the number is
@@ -333,11 +337,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_secrets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_secrets(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/secrets', options)
           command.response_representation = Google::Apis::SecretmanagerV1::ListSecretsResponse::Representation
           command.response_class = Google::Apis::SecretmanagerV1::ListSecretsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -630,6 +635,11 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the Secret associated with the SecretVersions
         #   to list, in the format `projects/*/secrets/*`.
+        # @param [String] filter
+        #   Optional. Filter string, adhering to the rules in [List-operation filtering](
+        #   https://cloud.google.com/secret-manager/docs/filtering). List only secret
+        #   versions matching the filter. If filter is empty, all secret versions are
+        #   listed.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to be returned in a single page. If
         #   set to 0, the server decides the number of results to return. If the number is
@@ -654,11 +664,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_secret_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_secret_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/versions', options)
           command.response_representation = Google::Apis::SecretmanagerV1::ListSecretVersionsResponse::Representation
           command.response_class = Google::Apis::SecretmanagerV1::ListSecretVersionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
