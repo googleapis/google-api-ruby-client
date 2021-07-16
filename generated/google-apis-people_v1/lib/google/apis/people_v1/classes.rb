@@ -1934,12 +1934,9 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::CoverPhoto>]
         attr_accessor :cover_photos
       
-        # The person's email addresses. For [`connections.list`](/people/api/rest/v1/
-        # people.connections/list), [`otherContacts.list`](/people/api/rest/v1/
-        # otherContacts/list), and [`people.listDirectoryPeople`](/people/api/rest/v1/
-        # people/listDirectoryPeople) the number of email addresses is limited to 100.
-        # If a Person has more email addresses the entire set can be obtained by calling
-        # ['people.get'](/people/api/rest/v1/people/get).
+        # The person's email addresses. For `people.connections.list` and `otherContacts.
+        # list` the number of email addresses is limited to 100. If a Person has more
+        # email addresses the entire set can be obtained by calling GetPeople.
         # Corresponds to the JSON property `emailAddresses`
         # @return [Array<Google::Apis::PeopleV1::EmailAddress>]
         attr_accessor :email_addresses
@@ -2025,12 +2022,9 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Organization>]
         attr_accessor :organizations
       
-        # The person's phone numbers. For [`connections.list`](/people/api/rest/v1/
-        # people.connections/list), [`otherContacts.list`](/people/api/rest/v1/
-        # otherContacts/list), and [`people.listDirectoryPeople`](/people/api/rest/v1/
-        # people/listDirectoryPeople) the number of phone numbers is limited to 100. If
-        # a Person has more phone numbers the entire set can be obtained by calling ['
-        # people.get'](/people/api/rest/v1/people/get).
+        # The person's phone numbers. For `people.connections.list` and `otherContacts.
+        # list` the number of phone numbers is limited to 100. If a Person has more
+        # phone numbers the entire set can be obtained by calling GetPeople.
         # Corresponds to the JSON property `phoneNumbers`
         # @return [Array<Google::Apis::PeopleV1::PhoneNumber>]
         attr_accessor :phone_numbers
@@ -2145,10 +2139,8 @@ module Google
       class PersonMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. True if the person resource has been deleted. Populated only for [
-        # `connections.list`](/people/api/rest/v1/people.connections/list) and [`
-        # otherContacts.list`](/people/api/rest/v1/otherContacts/list) requests that
-        # include a sync token.
+        # Output only. True if the person resource has been deleted. Populated only for `
+        # people.connections.list` and `otherContacts.list` sync requests.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
@@ -2166,10 +2158,9 @@ module Google
         attr_accessor :object_type
       
         # Output only. Any former resource names this person has had. Populated only for
-        # [`connections.list`](/people/api/rest/v1/people.connections/list) requests
-        # that include a sync token. The resource name may change when adding or
-        # removing fields that link a contact and profile such as a verified email,
-        # verified phone number, or profile URL.
+        # `people.connections.list` requests that include a sync token. The resource
+        # name may change when adding or removing fields that link a contact and profile
+        # such as a verified email, verified phone number, or profile URL.
         # Corresponds to the JSON property `previousResourceNames`
         # @return [Array<String>]
         attr_accessor :previous_resource_names
