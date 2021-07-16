@@ -39,6 +39,11 @@ module Google
       class Bucket
         include Google::Apis::Core::Hashable
       
+        # Output only. Location of the storage bucket.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # Resource name of the bucket.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -57,6 +62,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
         end
@@ -76,6 +82,68 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata for MigrateLocationDestructively LRO.
+      class GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time the LRO was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the LRO was last updated.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # The current state of the migration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Metadata for MigrateLocationDestructively LRO.
+      class GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time the LRO was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the LRO was last updated.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # The current state of the migration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
