@@ -674,8 +674,9 @@ module Google
         # @return [Google::Apis::MonitoringV3::MetricAbsence]
         attr_accessor :condition_absent
       
-        # A condition type that checks whether a log message from any project monitored
-        # by the alert policy’s workspace satisfies the given filter.
+        # A condition type that checks whether a log message in the scoping project (
+        # https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given
+        # filter. Logs from other projects in the metrics scope are not evaluated.
         # Corresponds to the JSON property `conditionMatchedLog`
         # @return [Google::Apis::MonitoringV3::LogMatch]
         attr_accessor :condition_matched_log
@@ -2162,8 +2163,9 @@ module Google
         end
       end
       
-      # A condition type that checks whether a log message from any project monitored
-      # by the alert policy’s workspace satisfies the given filter.
+      # A condition type that checks whether a log message in the scoping project (
+      # https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given
+      # filter. Logs from other projects in the metrics scope are not evaluated.
       class LogMatch
         include Google::Apis::Core::Hashable
       
@@ -2646,7 +2648,8 @@ module Google
         # Required. The monitored resource type. This field must match the type field of
         # a MonitoredResourceDescriptor object. For example, the type of a Compute
         # Engine VM instance is gce_instance. For a list of types, see Monitoring
-        # resource types and Logging resource types.
+        # resource types (https://cloud.google.com/monitoring/api/resources) and Logging
+        # resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3124,28 +3127,30 @@ module Google
       
         # A closed time interval. It extends from the start time to the end time, and
         # includes both: [startTime, endTime]. Valid time intervals depend on the
-        # MetricKind of the metric value. The end time must not be earlier than the
-        # start time. When writing data points, the start time must not be more than 25
-        # hours in the past and the end time must not be more than five minutes in the
-        # future. For GAUGE metrics, the startTime value is technically optional; if no
-        # value is specified, the start time defaults to the value of the end time, and
-        # the interval represents a single point in time. If both start and end times
-        # are specified, they must be identical. Such an interval is valid only for
-        # GAUGE metrics, which are point-in-time measurements. The end time of a new
+        # MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.
+        # metricDescriptors#MetricKind) of the metric value. The end time must not be
+        # earlier than the start time. When writing data points, the start time must not
+        # be more than 25 hours in the past and the end time must not be more than five
+        # minutes in the future. For GAUGE metrics, the startTime value is technically
+        # optional; if no value is specified, the start time defaults to the value of
+        # the end time, and the interval represents a single point in time. If both
+        # start and end times are specified, they must be identical. Such an interval is
+        # valid only for GAUGE metrics, which are point-in-time measurements. The end
+        # time of a new interval must be at least a millisecond after the end time of
+        # the previous interval. For DELTA metrics, the start time and end time must
+        # specify a non-zero interval, with subsequent points specifying contiguous and
+        # non-overlapping intervals. For DELTA metrics, the start time of the next
         # interval must be at least a millisecond after the end time of the previous
-        # interval. For DELTA metrics, the start time and end time must specify a non-
-        # zero interval, with subsequent points specifying contiguous and non-
-        # overlapping intervals. For DELTA metrics, the start time of the next interval
-        # must be at least a millisecond after the end time of the previous interval.
-        # For CUMULATIVE metrics, the start time and end time must specify a a non-zero
-        # interval, with subsequent points specifying the same start time and increasing
-        # end times, until an event resets the cumulative value to zero and sets a new
-        # start time for the following points. The new start time must be at least a
-        # millisecond after the end time of the previous interval. The start time of a
-        # new interval must be at least a millisecond after the end time of the previous
-        # interval because intervals are closed. If the start time of a new interval is
-        # the same as the end time of the previous interval, then data written at the
-        # new start time could overwrite data written at the previous end time.
+        # interval. For CUMULATIVE metrics, the start time and end time must specify a a
+        # non-zero interval, with subsequent points specifying the same start time and
+        # increasing end times, until an event resets the cumulative value to zero and
+        # sets a new start time for the following points. The new start time must be at
+        # least a millisecond after the end time of the previous interval. The start
+        # time of a new interval must be at least a millisecond after the end time of
+        # the previous interval because intervals are closed. If the start time of a new
+        # interval is the same as the end time of the previous interval, then data
+        # written at the new start time could overwrite data written at the previous end
+        # time.
         # Corresponds to the JSON property `interval`
         # @return [Google::Apis::MonitoringV3::TimeInterval]
         attr_accessor :interval
@@ -3174,28 +3179,30 @@ module Google
       
         # A closed time interval. It extends from the start time to the end time, and
         # includes both: [startTime, endTime]. Valid time intervals depend on the
-        # MetricKind of the metric value. The end time must not be earlier than the
-        # start time. When writing data points, the start time must not be more than 25
-        # hours in the past and the end time must not be more than five minutes in the
-        # future. For GAUGE metrics, the startTime value is technically optional; if no
-        # value is specified, the start time defaults to the value of the end time, and
-        # the interval represents a single point in time. If both start and end times
-        # are specified, they must be identical. Such an interval is valid only for
-        # GAUGE metrics, which are point-in-time measurements. The end time of a new
+        # MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.
+        # metricDescriptors#MetricKind) of the metric value. The end time must not be
+        # earlier than the start time. When writing data points, the start time must not
+        # be more than 25 hours in the past and the end time must not be more than five
+        # minutes in the future. For GAUGE metrics, the startTime value is technically
+        # optional; if no value is specified, the start time defaults to the value of
+        # the end time, and the interval represents a single point in time. If both
+        # start and end times are specified, they must be identical. Such an interval is
+        # valid only for GAUGE metrics, which are point-in-time measurements. The end
+        # time of a new interval must be at least a millisecond after the end time of
+        # the previous interval. For DELTA metrics, the start time and end time must
+        # specify a non-zero interval, with subsequent points specifying contiguous and
+        # non-overlapping intervals. For DELTA metrics, the start time of the next
         # interval must be at least a millisecond after the end time of the previous
-        # interval. For DELTA metrics, the start time and end time must specify a non-
-        # zero interval, with subsequent points specifying contiguous and non-
-        # overlapping intervals. For DELTA metrics, the start time of the next interval
-        # must be at least a millisecond after the end time of the previous interval.
-        # For CUMULATIVE metrics, the start time and end time must specify a a non-zero
-        # interval, with subsequent points specifying the same start time and increasing
-        # end times, until an event resets the cumulative value to zero and sets a new
-        # start time for the following points. The new start time must be at least a
-        # millisecond after the end time of the previous interval. The start time of a
-        # new interval must be at least a millisecond after the end time of the previous
-        # interval because intervals are closed. If the start time of a new interval is
-        # the same as the end time of the previous interval, then data written at the
-        # new start time could overwrite data written at the previous end time.
+        # interval. For CUMULATIVE metrics, the start time and end time must specify a a
+        # non-zero interval, with subsequent points specifying the same start time and
+        # increasing end times, until an event resets the cumulative value to zero and
+        # sets a new start time for the following points. The new start time must be at
+        # least a millisecond after the end time of the previous interval. The start
+        # time of a new interval must be at least a millisecond after the end time of
+        # the previous interval because intervals are closed. If the start time of a new
+        # interval is the same as the end time of the previous interval, then data
+        # written at the new start time could overwrite data written at the previous end
+        # time.
         # Corresponds to the JSON property `timeInterval`
         # @return [Google::Apis::MonitoringV3::TimeInterval]
         attr_accessor :time_interval
@@ -3734,28 +3741,30 @@ module Google
       
       # A closed time interval. It extends from the start time to the end time, and
       # includes both: [startTime, endTime]. Valid time intervals depend on the
-      # MetricKind of the metric value. The end time must not be earlier than the
-      # start time. When writing data points, the start time must not be more than 25
-      # hours in the past and the end time must not be more than five minutes in the
-      # future. For GAUGE metrics, the startTime value is technically optional; if no
-      # value is specified, the start time defaults to the value of the end time, and
-      # the interval represents a single point in time. If both start and end times
-      # are specified, they must be identical. Such an interval is valid only for
-      # GAUGE metrics, which are point-in-time measurements. The end time of a new
+      # MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.
+      # metricDescriptors#MetricKind) of the metric value. The end time must not be
+      # earlier than the start time. When writing data points, the start time must not
+      # be more than 25 hours in the past and the end time must not be more than five
+      # minutes in the future. For GAUGE metrics, the startTime value is technically
+      # optional; if no value is specified, the start time defaults to the value of
+      # the end time, and the interval represents a single point in time. If both
+      # start and end times are specified, they must be identical. Such an interval is
+      # valid only for GAUGE metrics, which are point-in-time measurements. The end
+      # time of a new interval must be at least a millisecond after the end time of
+      # the previous interval. For DELTA metrics, the start time and end time must
+      # specify a non-zero interval, with subsequent points specifying contiguous and
+      # non-overlapping intervals. For DELTA metrics, the start time of the next
       # interval must be at least a millisecond after the end time of the previous
-      # interval. For DELTA metrics, the start time and end time must specify a non-
-      # zero interval, with subsequent points specifying contiguous and non-
-      # overlapping intervals. For DELTA metrics, the start time of the next interval
-      # must be at least a millisecond after the end time of the previous interval.
-      # For CUMULATIVE metrics, the start time and end time must specify a a non-zero
-      # interval, with subsequent points specifying the same start time and increasing
-      # end times, until an event resets the cumulative value to zero and sets a new
-      # start time for the following points. The new start time must be at least a
-      # millisecond after the end time of the previous interval. The start time of a
-      # new interval must be at least a millisecond after the end time of the previous
-      # interval because intervals are closed. If the start time of a new interval is
-      # the same as the end time of the previous interval, then data written at the
-      # new start time could overwrite data written at the previous end time.
+      # interval. For CUMULATIVE metrics, the start time and end time must specify a a
+      # non-zero interval, with subsequent points specifying the same start time and
+      # increasing end times, until an event resets the cumulative value to zero and
+      # sets a new start time for the following points. The new start time must be at
+      # least a millisecond after the end time of the previous interval. The start
+      # time of a new interval must be at least a millisecond after the end time of
+      # the previous interval because intervals are closed. If the start time of a new
+      # interval is the same as the end time of the previous interval, then data
+      # written at the new start time could overwrite data written at the previous end
+      # time.
       class TimeInterval
         include Google::Apis::Core::Hashable
       
