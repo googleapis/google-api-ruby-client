@@ -26,7 +26,8 @@ module Google
       #  associated with a Workspace, with a few exceptions as noted on the individual
       #  method pages. The table entries below are presented in alphabetical order, not
       #  in order of common use. For explanations of the concepts found in the table
-      #  entries, read the Cloud Monitoring documentation.
+      #  entries, read the Cloud Monitoring documentation (https://cloud.google.com/
+      #  monitoring/docs).
       #
       # @example
       #    require 'google/apis/monitoring_v1'
@@ -53,10 +54,43 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV1::Operation::Representation
+          command.response_class = Google::Apis::MonitoringV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new custom dashboard. For examples on how you can use this API to
-        # create dashboards, see Managing dashboards by API. This method requires the
-        # monitoring.dashboards.create permission on the specified project. For more
-        # information about permissions, see Cloud Identity and Access Management.
+        # create dashboards, see Managing dashboards by API (https://cloud.google.com/
+        # monitoring/dashboards/api-dashboard). This method requires the monitoring.
+        # dashboards.create permission on the specified project. For more information
+        # about permissions, see Cloud Identity and Access Management (https://cloud.
+        # google.com/iam).
         # @param [String] parent
         #   Required. The project on which to execute the request. The format is: projects/
         #   [PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard
