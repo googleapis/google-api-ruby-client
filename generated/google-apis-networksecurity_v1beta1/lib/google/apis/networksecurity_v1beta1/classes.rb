@@ -889,8 +889,8 @@ module Google
       class MtlsPolicy
         include Google::Apis::Core::Hashable
       
-        # Required. Defines the mechanism to obtain the Certificate Authority
-        # certificate to validate the client certificate.
+        # Defines the mechanism to obtain the Certificate Authority certificate to
+        # validate the client certificate.
         # Corresponds to the JSON property `clientValidationCa`
         # @return [Array<Google::Apis::NetworksecurityV1beta1::ValidationCa>]
         attr_accessor :client_validation_ca
@@ -1064,11 +1064,11 @@ module Google
       class ServerTlsPolicy
         include Google::Apis::Core::Hashable
       
-        # Optional. Determines if server allows plaintext connections. If set to true,
-        # server allows plain text connections. By default, it is set to false. This
-        # setting is not exclusive of other encryption modes. For example, if allow_open
-        # and mtls_policy are set, server allows both plain text and mTLS connections.
-        # See documentation of other encryption modes to confirm compatibility.
+        # Determines if server allows plaintext connections. If set to true, server
+        # allows plain text connections. By default, it is set to false. This setting is
+        # not exclusive of other encryption modes. For example, if `allow_open` and `
+        # mtls_policy` are set, server allows both plain text and mTLS connections. See
+        # documentation of other encryption modes to confirm compatibility.
         # Corresponds to the JSON property `allowOpen`
         # @return [Boolean]
         attr_accessor :allow_open
@@ -1079,12 +1079,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Free-text description of the resource.
+        # Free-text description of the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. Set of label tags associated with the resource.
+        # Set of label tags associated with the resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
