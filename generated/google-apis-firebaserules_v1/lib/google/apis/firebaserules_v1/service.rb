@@ -102,14 +102,13 @@ module Google
         # developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced
         # by Firebase Rules-enabled services. More than one `Release` may be 'live'
         # concurrently. Consider the following three `Release` names for `projects/foo`
-        # and the `Ruleset` to which they refer. Release Name | Ruleset Name ------------
-        # --------------------|------------- projects/foo/releases/prod | projects/foo/
-        # rulesets/uuid123 projects/foo/releases/prod/beta | projects/foo/rulesets/
-        # uuid123 projects/foo/releases/prod/v23 | projects/foo/rulesets/uuid456 The
-        # table reflects the `Ruleset` rollout in progress. The `prod` and `prod/beta`
-        # releases refer to the same `Ruleset`. However, `prod/v23` refers to a new `
-        # Ruleset`. The `Ruleset` reference for a `Release` may be updated using the
-        # UpdateRelease method.
+        # and the `Ruleset` to which they refer. Release Name -> Ruleset Name * projects/
+        # foo/releases/prod -> projects/foo/rulesets/uuid123 * projects/foo/releases/
+        # prod/beta -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/v23 ->
+        # projects/foo/rulesets/uuid456 The relationships reflect a `Ruleset` rollout in
+        # progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`.
+        # However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `
+        # Release` may be updated using the UpdateRelease method.
         # @param [String] name
         #   Required. Resource name for the project which owns this `Release`. Format: `
         #   projects/`project_id``
