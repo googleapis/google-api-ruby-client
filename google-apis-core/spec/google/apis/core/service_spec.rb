@@ -355,8 +355,25 @@ EOF
 
       let(:items) { service.fetch_all { |token| responses[token] } }
 
+      let(:responses2) do
+        data = {}
+        data[nil] = OpenStruct.new(
+          next_page_token: 'p1', alt_page_token: 'p2', items: ['a', 'b', 'c'], alt_items: [1, 2, 3], singular: 'foo', hash_: { 'foo' => 1, 'bar' => 2 })
+        data['p1'] = OpenStruct.new(
+          next_page_token: 'p2', items: ['d', 'e', 'f'], alt_items: [4, 5, 6], singular: 'bar', hash_: nil)
+        data['p2'] = OpenStruct.new(
+          next_page_token: '', alt_page_token: nil, items: ['g', 'h', 'i'], alt_items: [7, 8, 9], singular: 'baz', hash_: { 'baz' => 3 })
+        data
+      end
+
+      let(:items2) { service.fetch_all { |token| responses2[token] } }
+
       it 'should fetch pages until next page token is nil' do
         expect(items).to contain_exactly('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i')
+      end
+
+      it 'should fetch pages until next page token is empty' do
+        expect(items2).to contain_exactly('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i')
       end
 
       it 'should stop on repeated page token' do
