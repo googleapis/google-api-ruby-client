@@ -82,7 +82,7 @@ module Google
             end
             break if @max && item_count >= @max
             next_page_token = @last_result.send(@response_page_token_field)
-            break if next_page_token.nil? || next_page_token == page_token
+            break if next_page_token.to_s.empty? || next_page_token == page_token
             page_token = next_page_token
           end
         end
