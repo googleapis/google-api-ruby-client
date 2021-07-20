@@ -2375,6 +2375,14 @@ module Google
         # @return [String]
         attr_accessor :max_wait_time
       
+        # Optional. Job scheduling will be based on this priority, which in the range [0,
+        # 1000]. The bigger the number, the higher the priority. Default to 0 if not
+        # set. If there are multiple jobs requesting same type of accelerators, the high
+        # priority job will be scheduled prior to ones with low priority.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2383,6 +2391,7 @@ module Google
         def update!(**args)
           @max_running_time = args[:max_running_time] if args.key?(:max_running_time)
           @max_wait_time = args[:max_wait_time] if args.key?(:max_wait_time)
+          @priority = args[:priority] if args.key?(:priority)
         end
       end
       
