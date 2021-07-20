@@ -94,7 +94,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FailureInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV2OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -167,6 +179,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -323,6 +341,8 @@ module Google
       
           property :build_trigger_id, as: 'buildTriggerId'
           property :create_time, as: 'createTime'
+          property :failure_info, as: 'failureInfo', class: Google::Apis::CloudbuildV1beta1::FailureInfo, decorator: Google::Apis::CloudbuildV1beta1::FailureInfo::Representation
+      
           property :finish_time, as: 'finishTime'
           property :id, as: 'id'
           collection :images, as: 'images'
@@ -448,11 +468,32 @@ module Google
         end
       end
       
+      class FailureInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          property :type, as: 'type'
+        end
+      end
+      
       class FileHashes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::CloudbuildV1beta1::HashProp, decorator: Google::Apis::CloudbuildV1beta1::HashProp::Representation
       
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV2OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
@@ -562,6 +603,19 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :cancel_requested, as: 'cancelRequested'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :status_detail, as: 'statusDetail'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       

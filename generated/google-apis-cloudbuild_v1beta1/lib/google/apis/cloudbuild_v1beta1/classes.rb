@@ -151,6 +151,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # A fatal problem encountered during the execution of the build.
+        # Corresponds to the JSON property `failureInfo`
+        # @return [Google::Apis::CloudbuildV1beta1::FailureInfo]
+        attr_accessor :failure_info
+      
         # Output only. Time at which execution of the build was finished. The difference
         # between finish_time and start_time is the duration of the build's execution.
         # Corresponds to the JSON property `finishTime`
@@ -300,6 +305,7 @@ module Google
           @available_secrets = args[:available_secrets] if args.key?(:available_secrets)
           @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_info = args[:failure_info] if args.key?(:failure_info)
           @finish_time = args[:finish_time] if args.key?(:finish_time)
           @id = args[:id] if args.key?(:id)
           @images = args[:images] if args.key?(:images)
@@ -724,6 +730,31 @@ module Google
         end
       end
       
+      # A fatal problem encountered during the execution of the build.
+      class FailureInfo
+        include Google::Apis::Core::Hashable
+      
+        # Explains the failure issue in more detail using hard-coded text.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # The name of the failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Container message for hashes of byte content of files, used in
       # SourceProvenance messages to verify integrity of source input to the build.
       class FileHashes
@@ -741,6 +772,65 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class GoogleDevtoolsCloudbuildV2OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
         end
       end
       
@@ -1115,6 +1205,65 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
         end
       end
       
