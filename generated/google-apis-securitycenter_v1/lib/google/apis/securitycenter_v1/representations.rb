@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Indicator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAssetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -393,6 +399,9 @@ module Google
           property :create_time, as: 'createTime'
           property :event_time, as: 'eventTime'
           property :external_uri, as: 'externalUri'
+          property :finding_class, as: 'findingClass'
+          property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1::Indicator, decorator: Google::Apis::SecuritycenterV1::Indicator::Representation
+      
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :resource_name, as: 'resourceName'
@@ -593,6 +602,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy_blob, as: 'policyBlob'
+        end
+      end
+      
+      class Indicator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domains, as: 'domains'
+          collection :ip_addresses, as: 'ipAddresses'
         end
       end
       
