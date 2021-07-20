@@ -1005,7 +1005,7 @@ module Google
         # Lists `WorkerPool`s.
         # @param [String] parent
         #   Required. The parent of the collection of `WorkerPools`. Format: `projects/`
-        #   project`/locations/location`.
+        #   project`/locations/`location``.
         # @param [Fixnum] page_size
         #   The maximum number of `WorkerPool`s to return. The service may return fewer
         #   than this value. If omitted, the server will use a sensible default.
