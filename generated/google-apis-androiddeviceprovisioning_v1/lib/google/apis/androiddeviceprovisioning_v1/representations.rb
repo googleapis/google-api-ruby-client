@@ -405,6 +405,7 @@ module Google
       class DeviceClaim
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_service, as: 'additionalService'
           property :owner_company_id, :numeric_string => true, as: 'ownerCompanyId'
           property :reseller_id, :numeric_string => true, as: 'resellerId'
           property :section_type, as: 'sectionType'
