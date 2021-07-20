@@ -880,7 +880,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_managed_zone_rrset(project, managed_zone, resource_record_set_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_resource_record_set(project, managed_zone, resource_record_set_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'dns/v1/projects/{project}/managedZones/{managedZone}/rrsets', options)
           command.request_representation = Google::Apis::DnsV1::ResourceRecordSet::Representation
           command.request_object = resource_record_set_object
@@ -924,7 +924,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_managed_zone_rrset(project, managed_zone, name, type, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_resource_record_set(project, managed_zone, name, type, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', options)
           command.response_representation = Google::Apis::DnsV1::ResourceRecordSetsDeleteResponse::Representation
           command.response_class = Google::Apis::DnsV1::ResourceRecordSetsDeleteResponse
@@ -968,55 +968,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_managed_zone_rrset(project, managed_zone, name, type, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_resource_record_set(project, managed_zone, name, type, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', options)
-          command.response_representation = Google::Apis::DnsV1::ResourceRecordSet::Representation
-          command.response_class = Google::Apis::DnsV1::ResourceRecordSet
-          command.params['project'] = project unless project.nil?
-          command.params['managedZone'] = managed_zone unless managed_zone.nil?
-          command.params['name'] = name unless name.nil?
-          command.params['type'] = type unless type.nil?
-          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Applies a partial update to an existing ResourceRecordSet.
-        # @param [String] project
-        #   Identifies the project addressed by this request.
-        # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed zone
-        #   name or ID.
-        # @param [String] name
-        #   Fully qualified domain name.
-        # @param [String] type
-        #   RRSet type.
-        # @param [Google::Apis::DnsV1::ResourceRecordSet] resource_record_set_object
-        # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier specified by the
-        #   client. Must be unique for operation resources in the Operations collection.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DnsV1::ResourceRecordSet] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DnsV1::ResourceRecordSet]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_managed_zone_rrset(project, managed_zone, name, type, resource_record_set_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', options)
-          command.request_representation = Google::Apis::DnsV1::ResourceRecordSet::Representation
-          command.request_object = resource_record_set_object
           command.response_representation = Google::Apis::DnsV1::ResourceRecordSet::Representation
           command.response_class = Google::Apis::DnsV1::ResourceRecordSet
           command.params['project'] = project unless project.nil?
@@ -1074,6 +1027,53 @@ module Google
           command.query['name'] = name unless name.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['type'] = type unless type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Applies a partial update to an existing ResourceRecordSet.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] managed_zone
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or ID.
+        # @param [String] name
+        #   Fully qualified domain name.
+        # @param [String] type
+        #   RRSet type.
+        # @param [Google::Apis::DnsV1::ResourceRecordSet] resource_record_set_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::ResourceRecordSet] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::ResourceRecordSet]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_resource_record_set(project, managed_zone, name, type, resource_record_set_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', options)
+          command.request_representation = Google::Apis::DnsV1::ResourceRecordSet::Representation
+          command.request_object = resource_record_set_object
+          command.response_representation = Google::Apis::DnsV1::ResourceRecordSet::Representation
+          command.response_class = Google::Apis::DnsV1::ResourceRecordSet
+          command.params['project'] = project unless project.nil?
+          command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.params['name'] = name unless name.nil?
+          command.params['type'] = type unless type.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
