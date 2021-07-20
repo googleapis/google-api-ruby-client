@@ -1,5 +1,9 @@
 # Release History
 
+## 0.4.1 (2021-07-19)
+
+* FIX: Prevent duplicated pagination when a response returns an empty string as the next page token.
+
 ## 0.4.0 (2021-06-28)
 
 * Expanded googleauth dependency to include future 1.x versions
