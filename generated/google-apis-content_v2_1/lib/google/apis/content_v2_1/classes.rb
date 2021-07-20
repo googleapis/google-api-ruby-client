@@ -28,8 +28,8 @@ module Google
       class Account
         include Google::Apis::Core::Hashable
       
-        # How the account is managed. Acceptable values are: - "`manual`" - "`automatic`"
-        # 
+        # Output only. How the account is managed. Acceptable values are: - "`manual`" -
+        # "`automatic`"
         # Corresponds to the JSON property `accountManagement`
         # @return [String]
         attr_accessor :account_management
@@ -76,7 +76,7 @@ module Google
         attr_accessor :id
       
         # Identifies what kind of resource this is. Value: the fixed string "`content#
-        # account`"
+        # account`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -719,8 +719,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountTax".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountTax`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -882,8 +882,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::AccountIdentifier>]
         attr_accessor :account_identifiers
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountsAuthInfoResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountsAuthInfoResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -903,8 +903,8 @@ module Google
       class AccountsClaimWebsiteResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountsClaimWebsiteResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountsClaimWebsiteResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1069,8 +1069,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::AccountsCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountsCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountsCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1178,8 +1178,8 @@ module Google
       class AccountsLinkResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountsLinkResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountsLinkResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1198,8 +1198,8 @@ module Google
       class AccountsListLinksResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountsListLinksResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountsListLinksResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1230,8 +1230,8 @@ module Google
       class AccountsListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountsListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountsListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1281,8 +1281,8 @@ module Google
       class AccountsUpdateLabelsResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountsUpdateLabelsResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountsUpdateLabelsResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1369,8 +1369,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::AccountstatusesCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountstatusesCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountstatusesCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1422,8 +1422,8 @@ module Google
       class AccountstatusesListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountstatusesListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountstatusesListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1521,8 +1521,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::AccounttaxCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accounttaxCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accounttaxCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1580,8 +1580,8 @@ module Google
       class AccounttaxListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accounttaxListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accounttaxListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2672,8 +2672,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::DatafeedsCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # datafeedsCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # datafeedsCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2724,8 +2724,8 @@ module Google
       class DatafeedsFetchNowResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # datafeedsFetchNowResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # datafeedsFetchNowResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2744,8 +2744,8 @@ module Google
       class DatafeedsListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # datafeedsListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # datafeedsListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2853,8 +2853,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::DatafeedstatusesCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # datafeedstatusesCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # datafeedstatusesCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2906,8 +2906,8 @@ module Google
       class DatafeedstatusesListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # datafeedstatusesListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # datafeedstatusesListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3878,8 +3878,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::LiasettingsCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liasettingsCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liasettingsCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3960,8 +3960,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::GmbAccountsGmbAccount>]
         attr_accessor :gmb_accounts
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liasettingsGetAccessibleGmbAccountsResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liasettingsGetAccessibleGmbAccountsResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3982,8 +3982,8 @@ module Google
       class LiasettingsListPosDataProvidersResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liasettingsListPosDataProvidersResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liasettingsListPosDataProvidersResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4008,8 +4008,8 @@ module Google
       class LiasettingsListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liasettingsListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liasettingsListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4040,8 +4040,8 @@ module Google
       class LiasettingsRequestGmbAccessResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liasettingsRequestGmbAccessResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liasettingsRequestGmbAccessResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4060,8 +4060,8 @@ module Google
       class LiasettingsRequestInventoryVerificationResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liasettingsRequestInventoryVerificationResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liasettingsRequestInventoryVerificationResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4080,8 +4080,8 @@ module Google
       class LiasettingsSetInventoryVerificationContactResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liasettingsSetInventoryVerificationContactResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liasettingsSetInventoryVerificationContactResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4100,8 +4100,8 @@ module Google
       class LiasettingsSetPosDataProviderResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liasettingsSetPosDataProviderResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liasettingsSetPosDataProviderResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4568,8 +4568,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::LocalinventoryCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # localinventoryCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # localinventoryCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -6961,8 +6961,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderinvoicesCreateChargeInvoiceResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # orderinvoicesCreateChargeInvoiceResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7035,8 +7035,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderinvoicesCreateRefundInvoiceResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # orderinvoicesCreateRefundInvoiceResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7133,8 +7133,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::OrderReportDisbursement>]
         attr_accessor :disbursements
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderreportsListDisbursementsResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # orderreportsListDisbursementsResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7160,8 +7160,8 @@ module Google
       class OrderreportsListTransactionsResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderreportsListTransactionsResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # orderreportsListTransactionsResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7218,8 +7218,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderreturnsAcknowledgeResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # orderreturnsAcknowledgeResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7282,8 +7282,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderreturnsCreateOrderReturnResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # orderreturnsCreateOrderReturnResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7343,8 +7343,8 @@ module Google
       class OrderreturnsListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderreturnsListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # orderreturnsListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7447,8 +7447,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderreturnsProcessResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # orderreturnsProcessResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7598,8 +7598,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersAcknowledgeResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersAcknowledgeResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7619,8 +7619,8 @@ module Google
       class OrdersAdvanceTestOrderResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersAdvanceTestOrderResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersAdvanceTestOrderResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7698,8 +7698,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersCancelLineItemResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersCancelLineItemResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7759,8 +7759,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersCancelResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersCancelResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7800,8 +7800,8 @@ module Google
       class OrdersCancelTestOrderByCustomerResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersCancelTestOrderByCustomerResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersCancelTestOrderByCustomerResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7857,8 +7857,8 @@ module Google
       class OrdersCreateTestOrderResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersCreateTestOrderResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersCreateTestOrderResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7902,8 +7902,8 @@ module Google
       class OrdersCreateTestReturnResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersCreateTestReturnResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersCreateTestReturnResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8091,8 +8091,8 @@ module Google
       class OrdersGetByMerchantOrderIdResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersGetByMerchantOrderIdResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersGetByMerchantOrderIdResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8118,8 +8118,8 @@ module Google
       class OrdersGetTestOrderTemplateResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersGetTestOrderTemplateResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersGetTestOrderTemplateResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8219,8 +8219,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersInStoreRefundLineItemResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersInStoreRefundLineItemResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8240,8 +8240,8 @@ module Google
       class OrdersListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8328,8 +8328,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersRefundItemResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersRefundItemResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8402,8 +8402,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersRefundOrderResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersRefundOrderResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8480,8 +8480,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersRejectReturnLineItemResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersRejectReturnLineItemResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8577,8 +8577,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersReturnRefundLineItemResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersReturnRefundLineItemResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8643,8 +8643,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersSetLineItemMetadataResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersSetLineItemMetadataResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8709,8 +8709,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersShipLineItemsResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersShipLineItemsResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8785,8 +8785,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersUpdateLineItemShippingDetailsResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersUpdateLineItemShippingDetailsResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8837,8 +8837,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersUpdateMerchantOrderIdResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersUpdateMerchantOrderIdResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8944,8 +8944,8 @@ module Google
         # @return [String]
         attr_accessor :execution_status
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # ordersUpdateShipmentResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # ordersUpdateShipmentResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9146,8 +9146,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::PosCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # posCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # posCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9419,8 +9419,8 @@ module Google
         # @return [String]
         attr_accessor :item_id
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # posInventoryResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # posInventoryResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9473,8 +9473,8 @@ module Google
       class PosListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # posListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # posListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9659,8 +9659,8 @@ module Google
         # @return [String]
         attr_accessor :item_id
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # posSaleResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # posSaleResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -10981,7 +10981,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # The Content API feed id.
+        # The Content API Supplemental Feed ID. If present then product insertion or
+        # deletion applies to a supplemental feed instead of primary Content API feed.
         # Corresponds to the JSON property `feedId`
         # @return [Fixnum]
         attr_accessor :feed_id
@@ -11046,8 +11047,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ProductsCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # productsCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # productsCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -11108,8 +11109,8 @@ module Google
       class ProductsListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # productsListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # productsListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -11215,8 +11216,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ProductstatusesCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # productstatusesCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # productstatusesCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -11275,8 +11276,8 @@ module Google
       class ProductstatusesListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # productstatusesListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # productstatusesListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -11596,8 +11597,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::CustomAttribute>]
         attr_accessor :custom_attributes
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # regionalInventory".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # regionalInventory`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -11712,8 +11713,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::RegionalinventoryCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # regionalinventoryCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # regionalinventoryCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -11743,8 +11744,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # regionalinventoryCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # regionalinventoryCustomBatchResponseEntry`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -13027,8 +13028,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ReturnaddressCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # returnaddressCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # returnaddressCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -13086,8 +13087,8 @@ module Google
       class ReturnaddressListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # returnaddressListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # returnaddressListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -13187,8 +13188,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ReturnpolicyCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # returnpolicyCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # returnpolicyCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -13246,8 +13247,8 @@ module Google
       class ReturnpolicyListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # returnpolicyListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # returnpolicyListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -13894,8 +13895,8 @@ module Google
       class SettlementreportsListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # settlementreportsListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # settlementreportsListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -13926,8 +13927,8 @@ module Google
       class SettlementtransactionsListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # settlementtransactionsListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # settlementtransactionsListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -14164,8 +14165,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ShippingsettingsCustomBatchResponseEntry>]
         attr_accessor :entries
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # shippingsettingsCustomBatchResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # shippingsettingsCustomBatchResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -14229,8 +14230,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::CarriersCarrier>]
         attr_accessor :carriers
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # shippingsettingsGetSupportedCarriersResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # shippingsettingsGetSupportedCarriersResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -14255,8 +14256,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::HolidaysHoliday>]
         attr_accessor :holidays
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # shippingsettingsGetSupportedHolidaysResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # shippingsettingsGetSupportedHolidaysResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -14276,8 +14277,8 @@ module Google
       class ShippingsettingsGetSupportedPickupServicesResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # shippingsettingsGetSupportedPickupServicesResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # shippingsettingsGetSupportedPickupServicesResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -14302,8 +14303,8 @@ module Google
       class ShippingsettingsListResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # shippingsettingsListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # shippingsettingsListResponse`".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
