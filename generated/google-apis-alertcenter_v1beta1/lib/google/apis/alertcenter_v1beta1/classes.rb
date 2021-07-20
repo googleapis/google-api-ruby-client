@@ -831,7 +831,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :attachments_sha256_hash
       
-        # The date the malicious email was sent.
+        # The date of the event related to this email.
         # Corresponds to the JSON property `date`
         # @return [String]
         attr_accessor :date
