@@ -1131,6 +1131,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_running_time, as: 'maxRunningTime'
           property :max_wait_time, as: 'maxWaitTime'
+          property :priority, as: 'priority'
         end
       end
       
