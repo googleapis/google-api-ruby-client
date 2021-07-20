@@ -389,6 +389,19 @@ module Google
         # @return [String]
         attr_accessor :external_uri
       
+        # The class of the finding.
+        # Corresponds to the JSON property `findingClass`
+        # @return [String]
+        attr_accessor :finding_class
+      
+        # Represents what's commonly known as an Indicator of compromise (IoC) in
+        # computer forensics. This is an artifact observed on a network or in an
+        # operating system that, with high confidence, indicates a computer intrusion.
+        # Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+        # Corresponds to the JSON property `indicator`
+        # @return [Google::Apis::SecuritycenterV1::Indicator]
+        attr_accessor :indicator
+      
         # The relative resource name of this finding. See: https://cloud.google.com/apis/
         # design/resource_names#relative_resource_name Example: "organizations/`
         # organization_id`/sources/`source_id`/findings/`finding_id`"
@@ -451,6 +464,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @event_time = args[:event_time] if args.key?(:event_time)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
+          @finding_class = args[:finding_class] if args.key?(:finding_class)
+          @indicator = args[:indicator] if args.key?(:indicator)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
@@ -1304,6 +1319,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy_blob = args[:policy_blob] if args.key?(:policy_blob)
+        end
+      end
+      
+      # Represents what's commonly known as an Indicator of compromise (IoC) in
+      # computer forensics. This is an artifact observed on a network or in an
+      # operating system that, with high confidence, indicates a computer intrusion.
+      # Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+      class Indicator
+        include Google::Apis::Core::Hashable
+      
+        # List of domains associated to the Finding.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # List of ip addresses associated to the Finding.
+        # Corresponds to the JSON property `ipAddresses`
+        # @return [Array<String>]
+        attr_accessor :ip_addresses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] if args.key?(:domains)
+          @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
         end
       end
       
