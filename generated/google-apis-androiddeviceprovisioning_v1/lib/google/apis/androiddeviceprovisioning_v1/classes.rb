@@ -543,6 +543,11 @@ module Google
       class DeviceClaim
         include Google::Apis::Core::Hashable
       
+        # The Additional service registered for the device.
+        # Corresponds to the JSON property `additionalService`
+        # @return [String]
+        attr_accessor :additional_service
+      
         # The ID of the Customer that purchased the device.
         # Corresponds to the JSON property `ownerCompanyId`
         # @return [Fixnum]
@@ -576,6 +581,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_service = args[:additional_service] if args.key?(:additional_service)
           @owner_company_id = args[:owner_company_id] if args.key?(:owner_company_id)
           @reseller_id = args[:reseller_id] if args.key?(:reseller_id)
           @section_type = args[:section_type] if args.key?(:section_type)
