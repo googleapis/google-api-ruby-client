@@ -271,7 +271,7 @@ module Google
         # The specification for generating an AdMob Mediation report. For example, the
         # specification to get observed ECPM sliced by ad source and app for the 'US'
         # and 'CN' countries can look like the following example: ` "date_range": ` "
-        # start_date": `"year": 2018, "month": 9, "day": 1`, "end_date": `"year": 2018, "
+        # start_date": `"year": 2021, "month": 9, "day": 1`, "end_date": `"year": 2021, "
         # month": 9, "day": 30` `, "dimensions": ["AD_SOURCE", "APP", "COUNTRY"], "
         # metrics": ["OBSERVED_ECPM"], "dimension_filters": [ ` "dimension": "COUNTRY", "
         # matches_any": `"values": [`"value": "US", "value": "CN"`]` ` ], "
@@ -279,7 +279,7 @@ module Google
         # localization_settings": ` "currency_code": "USD", "language_code": "en-US" ` `
         # For a better understanding, you can treat the preceding specification like the
         # following pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM
-        # MEDIATION_REPORT WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30' AND
+        # MEDIATION_REPORT WHERE DATE >= '2021-09-01' AND DATE <= '2021-09-30' AND
         # COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC;
         # Corresponds to the JSON property `reportSpec`
         # @return [Google::Apis::AdmobV1::MediationReportSpec]
@@ -344,7 +344,7 @@ module Google
         # The specification for generating an AdMob Network report. For example, the
         # specification to get clicks and estimated earnings for only the 'US' and 'CN'
         # countries can look like the following example: ` 'date_range': ` 'start_date':
-        # `'year': 2018, 'month': 9, 'day': 1`, 'end_date': `'year': 2018, 'month': 9, '
+        # `'year': 2021, 'month': 9, 'day': 1`, 'end_date': `'year': 2021, 'month': 9, '
         # day': 30` `, 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', '
         # ESTIMATED_EARNINGS'], 'dimension_filters': [ ` 'dimension': 'COUNTRY', '
         # matches_any': `'values': [`'value': 'US', 'value': 'CN'`]` ` ], '
@@ -352,8 +352,8 @@ module Google
         # , order: 'DESCENDING'` ], 'localization_settings': ` 'currency_code': 'USD', '
         # language_code': 'en-US' ` ` For a better understanding, you can treat the
         # preceding specification like the following pseudo SQL: SELECT DATE, APP,
-        # COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >= '2018-09-
-        # 01' AND DATE <= '2018-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP,
+        # COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >= '2021-09-
+        # 01' AND DATE <= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP,
         # COUNTRY ORDER BY APP ASC, CLICKS DESC;
         # Corresponds to the JSON property `reportSpec`
         # @return [Google::Apis::AdmobV1::NetworkReportSpec]
@@ -521,7 +521,7 @@ module Google
       # The specification for generating an AdMob Mediation report. For example, the
       # specification to get observed ECPM sliced by ad source and app for the 'US'
       # and 'CN' countries can look like the following example: ` "date_range": ` "
-      # start_date": `"year": 2018, "month": 9, "day": 1`, "end_date": `"year": 2018, "
+      # start_date": `"year": 2021, "month": 9, "day": 1`, "end_date": `"year": 2021, "
       # month": 9, "day": 30` `, "dimensions": ["AD_SOURCE", "APP", "COUNTRY"], "
       # metrics": ["OBSERVED_ECPM"], "dimension_filters": [ ` "dimension": "COUNTRY", "
       # matches_any": `"values": [`"value": "US", "value": "CN"`]` ` ], "
@@ -529,7 +529,7 @@ module Google
       # localization_settings": ` "currency_code": "USD", "language_code": "en-US" ` `
       # For a better understanding, you can treat the preceding specification like the
       # following pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM
-      # MEDIATION_REPORT WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30' AND
+      # MEDIATION_REPORT WHERE DATE >= '2021-09-01' AND DATE <= '2021-09-30' AND
       # COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC;
       class MediationReportSpec
         include Google::Apis::Core::Hashable
@@ -660,7 +660,7 @@ module Google
       # The specification for generating an AdMob Network report. For example, the
       # specification to get clicks and estimated earnings for only the 'US' and 'CN'
       # countries can look like the following example: ` 'date_range': ` 'start_date':
-      # `'year': 2018, 'month': 9, 'day': 1`, 'end_date': `'year': 2018, 'month': 9, '
+      # `'year': 2021, 'month': 9, 'day': 1`, 'end_date': `'year': 2021, 'month': 9, '
       # day': 30` `, 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', '
       # ESTIMATED_EARNINGS'], 'dimension_filters': [ ` 'dimension': 'COUNTRY', '
       # matches_any': `'values': [`'value': 'US', 'value': 'CN'`]` ` ], '
@@ -668,8 +668,8 @@ module Google
       # , order: 'DESCENDING'` ], 'localization_settings': ` 'currency_code': 'USD', '
       # language_code': 'en-US' ` ` For a better understanding, you can treat the
       # preceding specification like the following pseudo SQL: SELECT DATE, APP,
-      # COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >= '2018-09-
-      # 01' AND DATE <= '2018-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP,
+      # COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >= '2021-09-
+      # 01' AND DATE <= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP,
       # COUNTRY ORDER BY APP ASC, CLICKS DESC;
       class NetworkReportSpec
         include Google::Apis::Core::Hashable
