@@ -3894,7 +3894,8 @@ module Google
         # @param [String] product_id
         #   The REST ID of the product.
         # @param [Fixnum] feed_id
-        #   The Content API Supplemental Feed ID.
+        #   The Content API Supplemental Feed ID. If present then product deletion applies
+        #   to the data in a supplemental feed. If absent, entire product will be deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3964,7 +3965,8 @@ module Google
         #   multi-client account.
         # @param [Google::Apis::ContentV2_1::Product] product_object
         # @param [Fixnum] feed_id
-        #   The Content API Supplemental Feed ID.
+        #   The Content API Supplemental Feed ID. If present then product insertion
+        #   applies to the data in a supplemental feed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
