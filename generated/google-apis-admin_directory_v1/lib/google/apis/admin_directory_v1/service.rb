@@ -32,7 +32,7 @@ module Google
       #    Admin = Google::Apis::AdminDirectoryV1 # Alias the module
       #    service = Admin::DirectoryService.new
       #
-      # @see http://developers.google.com/admin-sdk/
+      # @see https://developers.google.com/admin-sdk/
       class DirectoryService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -51,7 +51,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Delete an ASP issued by a user.
+        # Deletes an ASP issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.
@@ -83,7 +83,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get information about an ASP issued by a user.
+        # Gets information about an ASP issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.
@@ -117,7 +117,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the ASPs issued by a user.
+        # Lists the ASPs issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.
@@ -148,7 +148,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Stop watching resources through this channel.
+        # Stops watching resources through this channel.
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -323,7 +323,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Move or insert multiple Chrome OS devices to an organizational unit. You can
+        # Moves or inserts multiple Chrome OS devices to an organizational unit. You can
         # move up to 50 devices at once.
         # @param [String] customer_id
         #   Immutable ID of the Google Workspace account
@@ -551,7 +551,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch Customers via Apiary Patch Orchestration
+        # Patches a customer.
         # @param [String] customer_key
         #   Id of the customer to be updated
         # @param [Google::Apis::AdminDirectoryV1::Customer] customer_object
@@ -1259,7 +1259,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all groups of a domain or of a user given a userKey (paginated)
+        # Retrieves all groups of a domain or of a user given a userKey (paginated).
         # @param [String] customer
         #   The unique ID for the customer's Google Workspace account. In case of a multi-
         #   domain account, to fetch all groups for a customer, fill this field instead of
@@ -2312,7 +2312,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches a building via Apiary Patch Orchestration.
+        # Patches a building.
         # @param [String] customer
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
@@ -2554,7 +2554,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches a calendar resource via Apiary Patch Orchestration.
+        # Patches a calendar resource.
         # @param [String] customer
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
@@ -2773,7 +2773,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches a feature via Apiary Patch Orchestration.
+        # Patches a feature.
         # @param [String] customer
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
@@ -2916,7 +2916,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve a role assignment.
+        # Retrieves a role assignment.
         # @param [String] customer
         #   Immutable ID of the Google Workspace account.
         # @param [String] role_assignment_id
@@ -3159,7 +3159,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch role via Apiary Patch Orchestration
+        # Patches a role.
         # @param [String] customer
         #   Immutable ID of the Google Workspace account.
         # @param [String] role_id
@@ -3231,7 +3231,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete schema
+        # Deletes a schema.
         # @param [String] customer_id
         #   Immutable ID of the Google Workspace account.
         # @param [String] schema_key
@@ -3262,7 +3262,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve schema
+        # Retrieves a schema.
         # @param [String] customer_id
         #   Immutable ID of the Google Workspace account.
         # @param [String] schema_key
@@ -3295,7 +3295,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create schema.
+        # Creates a schema.
         # @param [String] customer_id
         #   Immutable ID of the Google Workspace account.
         # @param [Google::Apis::AdminDirectoryV1::Schema] schema_object
@@ -3328,7 +3328,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve all schemas for a customer
+        # Retrieves all schemas for a customer.
         # @param [String] customer_id
         #   Immutable ID of the Google Workspace account.
         # @param [String] fields
@@ -3358,7 +3358,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch Schema via Apiary Patch Orchestration
+        # Patches a schema.
         # @param [String] customer_id
         #   Immutable ID of the Google Workspace account.
         # @param [String] schema_key
@@ -3394,7 +3394,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update schema
+        # Updates a schema.
         # @param [String] customer_id
         #   Immutable ID of the Google Workspace account.
         # @param [String] schema_key
@@ -3430,7 +3430,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete all access tokens issued by a user for an application.
+        # Deletes all access tokens issued by a user for an application.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.
@@ -3462,7 +3462,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get information about an access token issued by a user.
+        # Gets information about an access token issued by a user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.
@@ -3527,7 +3527,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Turn off 2-Step Verification for user.
+        # Turns off 2-Step Verification for user.
         # @param [String] user_key
         #   Identifies the user in the API request. The value can be the user's primary
         #   email address, alias email address, or unique user ID.
@@ -3802,8 +3802,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sign a user out of all web and device sessions and reset their sign-in cookies.
-        # User will have to sign in by authenticating again.
+        # Signs a user out of all web and device sessions and reset their sign-in
+        # cookies. User will have to sign in by authenticating again.
         # @param [String] user_key
         #   Identifies the target user in the API request. The value can be the user's
         #   primary email address, alias email address, or unique user ID.
@@ -3899,7 +3899,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Watch for changes in users list
+        # Watches for changes in users list.
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
         # @param [String] custom_field_mask
         #   Comma-separated list of schema names. All fields from these schemas are
@@ -4071,7 +4071,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Watch for changes in users list.
+        # Watches for changes in users list.
         # @param [String] user_key
         #   Email or immutable ID of the user
         # @param [Google::Apis::AdminDirectoryV1::Channel] channel_object
@@ -4236,7 +4236,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generate new backup verification codes for the user.
+        # Generates new backup verification codes for the user.
         # @param [String] user_key
         #   Email or immutable ID of the user
         # @param [String] fields
@@ -4264,7 +4264,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Invalidate the current backup verification codes for the user.
+        # Invalidates the current backup verification codes for the user.
         # @param [String] user_key
         #   Email or immutable ID of the user
         # @param [String] fields
