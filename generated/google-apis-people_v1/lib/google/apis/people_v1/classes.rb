@@ -1005,8 +1005,7 @@ module Google
       class FieldMetadata
         include Google::Apis::Core::Hashable
       
-        # True if the field is the primary field; false if the field is a secondary
-        # field.
+        # True if the field is the primary field for the person.
         # Corresponds to the JSON property `primary`
         # @return [Boolean]
         attr_accessor :primary
@@ -1016,6 +1015,12 @@ module Google
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::PeopleV1::Source]
         attr_accessor :source
+      
+        # True if the field is the primary field for the source.
+        # Corresponds to the JSON property `sourcePrimary`
+        # @return [Boolean]
+        attr_accessor :source_primary
+        alias_method :source_primary?, :source_primary
       
         # Output only. True if the field is verified; false if the field is unverified.
         # A verified field is typically a name, email address, phone number, or website
@@ -1033,6 +1038,7 @@ module Google
         def update!(**args)
           @primary = args[:primary] if args.key?(:primary)
           @source = args[:source] if args.key?(:source)
+          @source_primary = args[:source_primary] if args.key?(:source_primary)
           @verified = args[:verified] if args.key?(:verified)
         end
       end
