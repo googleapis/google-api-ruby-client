@@ -54,6 +54,12 @@ module Google
       class ActionResponse
         include Google::Apis::Core::Hashable
       
+        # Contains dialog if present as well as the ActionStatus for the request sent
+        # from user.
+        # Corresponds to the JSON property `dialogAction`
+        # @return [Google::Apis::ChatV1::DialogAction]
+        attr_accessor :dialog_action
+      
         # The type of bot response.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -70,8 +76,40 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dialog_action = args[:dialog_action] if args.key?(:dialog_action)
           @type = args[:type] if args.key?(:type)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # ActionStatus represents status of a request from the bot developer's side. In
+      # specific, for each request a bot gets, the bot developer will set both fields
+      # below in relation to what the response status and message related to status
+      # should be.
+      class ActionStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status code.
+        # Corresponds to the JSON property `statusCode`
+        # @return [String]
+        attr_accessor :status_code
+      
+        # This message will be the corresponding string to the above status_code. If
+        # unset, an appropriate generic message based on the status_code will be shown
+        # to the user. If this field is set then the message will be surfaced to the
+        # user for both successes and errors.
+        # Corresponds to the JSON property `userFacingMessage`
+        # @return [String]
+        attr_accessor :user_facing_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status_code = args[:status_code] if args.key?(:status_code)
+          @user_facing_message = args[:user_facing_message] if args.key?(:user_facing_message)
         end
       end
       
@@ -338,6 +376,94 @@ module Google
         end
       end
       
+      # Represents a color in the RGBA color space. This representation is designed
+      # for simplicity of conversion to/from color representations in various
+      # languages over compactness. For example, the fields of this representation can
+      # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+      # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+      # method in iOS; and, with just a little work, it can be easily formatted into a
+      # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+      # information about the absolute color space that should be used to interpret
+      # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+      # applications should assume the sRGB color space. When color equality needs to
+      # be decided, implementations, unless documented otherwise, treat two colors as
+      # equal if all their red, green, blue, and alpha values each differ by at most
+      # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+      # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+      # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+      # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+      # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+      # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+      # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+      # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+      # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+      # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+      # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+      # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+      # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+      # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+      # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+      # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+      # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+      # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+      # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+      # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+      # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+      # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+      # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+      # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+      # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+      # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+      # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+      # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+      # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+      # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+      # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+      # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+      # / ...
+      class Color
+        include Google::Apis::Core::Hashable
+      
+        # The fraction of this color that should be applied to the pixel. That is, the
+        # final pixel color is defined by the equation: `pixel color = alpha * (this
+        # color) + (1.0 - alpha) * (background color)` This means that a value of 1.0
+        # corresponds to a solid color, whereas a value of 0.0 corresponds to a
+        # completely transparent color. This uses a wrapper message rather than a simple
+        # float scalar so that it is possible to distinguish between a default value and
+        # the value being unset. If omitted, this color object is rendered as a solid
+        # color (as if the alpha value had been explicitly given a value of 1.0).
+        # Corresponds to the JSON property `alpha`
+        # @return [Float]
+        attr_accessor :alpha
+      
+        # The amount of blue in the color as a value in the interval [0, 1].
+        # Corresponds to the JSON property `blue`
+        # @return [Float]
+        attr_accessor :blue
+      
+        # The amount of green in the color as a value in the interval [0, 1].
+        # Corresponds to the JSON property `green`
+        # @return [Float]
+        attr_accessor :green
+      
+        # The amount of red in the color as a value in the interval [0, 1].
+        # Corresponds to the JSON property `red`
+        # @return [Float]
+        attr_accessor :red
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alpha = args[:alpha] if args.key?(:alpha)
+          @blue = args[:blue] if args.key?(:blue)
+          @green = args[:green] if args.key?(:green)
+          @red = args[:red] if args.key?(:red)
+        end
+      end
+      
       # Google Chat events.
       class DeprecatedEvent
         include Google::Apis::Core::Hashable
@@ -413,6 +539,71 @@ module Google
         end
       end
       
+      # Wrapper around the card body of the dialog.
+      class Dialog
+        include Google::Apis::Core::Hashable
+      
+        # A card is a UI element that can contain UI widgets such as text and images.
+        # For more information, see Cards . For example, the following JSON creates a
+        # card that has a header with the name, position, icons, and link for a contact,
+        # followed by a section with contact information like email and phone number. ```
+        # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
+        # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
+        # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
+        # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
+        # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
+        # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
+        # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
+        # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
+        # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
+        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
+        # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
+        # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
+        # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+        # Corresponds to the JSON property `body`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Contains dialog if present as well as the ActionStatus for the request sent
+      # from user.
+      class DialogAction
+        include Google::Apis::Core::Hashable
+      
+        # ActionStatus represents status of a request from the bot developer's side. In
+        # specific, for each request a bot gets, the bot developer will set both fields
+        # below in relation to what the response status and message related to status
+        # should be.
+        # Corresponds to the JSON property `actionStatus`
+        # @return [Google::Apis::ChatV1::ActionStatus]
+        attr_accessor :action_status
+      
+        # Wrapper around the card body of the dialog.
+        # Corresponds to the JSON property `dialog`
+        # @return [Google::Apis::ChatV1::Dialog]
+        attr_accessor :dialog
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_status = args[:action_status] if args.key?(:action_status)
+          @dialog = args[:dialog] if args.key?(:dialog)
+        end
+      end
+      
       # A reference to the data of a drive attachment.
       class DriveDataRef
         include Google::Apis::Core::Hashable
@@ -475,6 +666,1286 @@ module Google
         def update!(**args)
           @action_method_name = args[:action_method_name] if args.key?(:action_method_name)
           @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # An action that describes the behavior when the form is submitted. For example,
+      # an Apps Script can be invoked to handle the form.
+      class GoogleAppsCardV1Action
+        include Google::Apis::Core::Hashable
+      
+        # Apps Script function to invoke when the containing element is clicked/
+        # activated.
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # 
+        # Corresponds to the JSON property `loadIndicator`
+        # @return [String]
+        attr_accessor :load_indicator
+      
+        # List of action parameters.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1ActionParameter>]
+        attr_accessor :parameters
+      
+        # Indicates whether form values persist after the action. The default value is `
+        # false`. If `true`, form values remain after the action is triggered. When
+        # using [LoadIndicator.NONE](workspace/add-ons/reference/rpc/google.apps.card.v1#
+        # loadindicator) for actions, `persist_values` = `true`is recommended, as it
+        # ensures that any changes made by the user after form or on change actions are
+        # sent to the server are not overwritten by the response. If `false`, the form
+        # values are cleared when the action is triggered. When `persist_values` is set
+        # to `false`, it is strongly recommended that the card use [LoadIndicator.
+        # SPINNER](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+        # for all actions, as this locks the UI to ensure no changes are made by the
+        # user while the action is being processed.
+        # Corresponds to the JSON property `persistValues`
+        # @return [Boolean]
+        attr_accessor :persist_values
+        alias_method :persist_values?, :persist_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function = args[:function] if args.key?(:function)
+          @load_indicator = args[:load_indicator] if args.key?(:load_indicator)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @persist_values = args[:persist_values] if args.key?(:persist_values)
+        end
+      end
+      
+      # List of string parameters to supply when the action method is invoked. For
+      # example, consider three snooze buttons: snooze now, snooze 1 day, snooze next
+      # week. You might use action method = snooze(), passing the snooze type and
+      # snooze time in the list of string parameters.
+      class GoogleAppsCardV1ActionParameter
+        include Google::Apis::Core::Hashable
+      
+        # The name of the parameter for the action script.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value of the parameter.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents the complete border style applied to widgets.
+      class GoogleAppsCardV1BorderStyle
+        include Google::Apis::Core::Hashable
+      
+        # The corner radius for the border.
+        # Corresponds to the JSON property `cornerRadius`
+        # @return [Fixnum]
+        attr_accessor :corner_radius
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `strokeColor`
+        # @return [Google::Apis::ChatV1::Color]
+        attr_accessor :stroke_color
+      
+        # The border type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @corner_radius = args[:corner_radius] if args.key?(:corner_radius)
+          @stroke_color = args[:stroke_color] if args.key?(:stroke_color)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A button. Can be a text button or an image button.
+      class GoogleAppsCardV1Button
+        include Google::Apis::Core::Hashable
+      
+        # The alternative text used for accessibility. Has no effect when an icon is set;
+        # use `icon.alt_text` instead.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness. For example, the fields of this representation can
+        # be trivially provided to the constructor of `java.awt.Color` in Java; it can
+        # also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha`
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS `rgba()` string in JavaScript. This reference page doesn't carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications should assume the sRGB color space. When color equality needs to
+        # be decided, implementations, unless documented otherwise, treat two colors as
+        # equal if all their red, green, blue, and alpha values each differ by at most
+        # 1e-5. Example (Java): import com.google.type.Color; // ... public static java.
+        # awt.Color fromProto(Color protocolor) ` float alpha = protocolor.hasAlpha() ?
+        # protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.
+        # getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); ` public static
+        # Color toProto(java.awt.Color color) ` float red = (float) color.getRed();
+        # float green = (float) color.getGreen(); float blue = (float) color.getBlue();
+        # float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .
+        # setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue /
+        # denominator); int alpha = color.getAlpha(); if (alpha != 255) ` result.
+        # setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .
+        # build()); ` return resultBuilder.build(); ` // ... Example (iOS / Obj-C): // ..
+        # . static UIColor* fromProto(Color* protocolor) ` float red = [protocolor red];
+        # float green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
+        # alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
+        # nil) ` alpha = [alpha_wrapper value]; ` return [UIColor colorWithRed:red green:
+        # green blue:blue alpha:alpha]; ` static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&
+        # blue alpha:&alpha]) ` return nil; ` Color* result = [[Color alloc] init]; [
+        # result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <
+        # = 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; ` [result
+        # autorelease]; return result; ` // ... Example (JavaScript): // ... var
+        # protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString
+        # = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
+        # resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) ` resultBuilder.
+        # push('0'); ` resultBuilder.push(hexString); return resultBuilder.join(''); `; /
+        # / ...
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::ChatV1::Color]
+        attr_accessor :color
+      
+        # If true, the button is displayed in a disabled state and doesn't respond to
+        # user actions.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # The icon image.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
+        attr_accessor :icon
+      
+        # The action to perform when the button is clicked.
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
+        attr_accessor :on_click
+      
+        # The text of the button.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @color = args[:color] if args.key?(:color)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @icon = args[:icon] if args.key?(:icon)
+          @on_click = args[:on_click] if args.key?(:on_click)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A list of buttons layed out horizontally.
+      class GoogleAppsCardV1ButtonList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `buttons`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Button>]
+        attr_accessor :buttons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buttons = args[:buttons] if args.key?(:buttons)
+        end
+      end
+      
+      # A card is a UI element that can contain UI widgets such as text and images.
+      # For more information, see Cards . For example, the following JSON creates a
+      # card that has a header with the name, position, icons, and link for a contact,
+      # followed by a section with contact information like email and phone number. ```
+      # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
+      # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
+      # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
+      # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
+      # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
+      # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
+      # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
+      # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
+      # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
+      # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+      # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
+      # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
+      # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
+      # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+      class GoogleAppsCardV1Card
+        include Google::Apis::Core::Hashable
+      
+        # The actions of this card. They are added to a card's generated toolbar menu.
+        # For example, the following JSON constructs a card action menu with Settings
+        # and Send Feedback options: ``` "card_actions": [ ` "actionLabel": "Setting", "
+        # onClick": ` "action": ` "functionName": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "SETTING" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` `
+        # `, ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https:
+        # //example.com/feedback" ` ` ` ] ```
+        # Corresponds to the JSON property `cardActions`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1CardAction>]
+        attr_accessor :card_actions
+      
+        # The display style for peekCardHeader.
+        # Corresponds to the JSON property `displayStyle`
+        # @return [String]
+        attr_accessor :display_style
+      
+        # A persistent (sticky) footer that is added to the bottom of the card.
+        # Corresponds to the JSON property `fixedFooter`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardFixedFooter]
+        attr_accessor :fixed_footer
+      
+        # The header of the card. A header usually contains a title and an image.
+        # Corresponds to the JSON property `header`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
+        attr_accessor :header
+      
+        # Name of the card, which is used as a identifier for the card in card
+        # navigation.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # When displaying contextual content, the peek card header acts as a placeholder
+        # so that the user can navigate forward between the homepage cards and the
+        # contextual cards.
+        # Corresponds to the JSON property `peekCardHeader`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
+        attr_accessor :peek_card_header
+      
+        # Sections are separated by a line divider.
+        # Corresponds to the JSON property `sections`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Section>]
+        attr_accessor :sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @card_actions = args[:card_actions] if args.key?(:card_actions)
+          @display_style = args[:display_style] if args.key?(:display_style)
+          @fixed_footer = args[:fixed_footer] if args.key?(:fixed_footer)
+          @header = args[:header] if args.key?(:header)
+          @name = args[:name] if args.key?(:name)
+          @peek_card_header = args[:peek_card_header] if args.key?(:peek_card_header)
+          @sections = args[:sections] if args.key?(:sections)
+        end
+      end
+      
+      # A card action is the action associated with the card. For example, an invoice
+      # card might include actions such as delete invoice, email invoice, or open the
+      # invoice in a browser.
+      class GoogleAppsCardV1CardAction
+        include Google::Apis::Core::Hashable
+      
+        # The label that displays as the action menu item.
+        # Corresponds to the JSON property `actionLabel`
+        # @return [String]
+        attr_accessor :action_label
+      
+        # The onclick action for this action item.
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
+        attr_accessor :on_click
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_label = args[:action_label] if args.key?(:action_label)
+          @on_click = args[:on_click] if args.key?(:on_click)
+        end
+      end
+      
+      # A persistent (sticky) footer that is added to the bottom of the card.
+      class GoogleAppsCardV1CardFixedFooter
+        include Google::Apis::Core::Hashable
+      
+        # A button. Can be a text button or an image button.
+        # Corresponds to the JSON property `primaryButton`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
+        attr_accessor :primary_button
+      
+        # A button. Can be a text button or an image button.
+        # Corresponds to the JSON property `secondaryButton`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
+        attr_accessor :secondary_button
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_button = args[:primary_button] if args.key?(:primary_button)
+          @secondary_button = args[:secondary_button] if args.key?(:secondary_button)
+        end
+      end
+      
+      # 
+      class GoogleAppsCardV1CardHeader
+        include Google::Apis::Core::Hashable
+      
+        # The alternative text of this image which is used for accessibility.
+        # Corresponds to the JSON property `imageAltText`
+        # @return [String]
+        attr_accessor :image_alt_text
+      
+        # The image's type.
+        # Corresponds to the JSON property `imageType`
+        # @return [String]
+        attr_accessor :image_type
+      
+        # The URL of the image in the card header.
+        # Corresponds to the JSON property `imageUrl`
+        # @return [String]
+        attr_accessor :image_url
+      
+        # The subtitle of the card header.
+        # Corresponds to the JSON property `subtitle`
+        # @return [String]
+        attr_accessor :subtitle
+      
+        # The title of the card header. The title must be specified. The header has a
+        # fixed height: if both a title and subtitle are specified, each takes up one
+        # line. If only the title is specified, it takes up both lines.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_alt_text = args[:image_alt_text] if args.key?(:image_alt_text)
+          @image_type = args[:image_type] if args.key?(:image_type)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @subtitle = args[:subtitle] if args.key?(:subtitle)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # The widget that lets users to specify a date and time.
+      class GoogleAppsCardV1DateTimePicker
+        include Google::Apis::Core::Hashable
+      
+        # The label for the field that displays to the user.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The name of the text input that's used in formInput, and uniquely identifies
+        # this input.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `onChangeAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :on_change_action
+      
+        # The number representing the time zone offset from UTC, in minutes. If set, the
+        # `value_ms_epoch` is displayed in the specified time zone. If not set, it uses
+        # the user's time zone setting on the client side.
+        # Corresponds to the JSON property `timezoneOffsetDate`
+        # @return [Fixnum]
+        attr_accessor :timezone_offset_date
+      
+        # The type of the date/time picker.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The value to display as the default value before user input or previous user
+        # input. It is represented in milliseconds (Epoch time). For `DATE_AND_TIME`
+        # type, the full epoch value is used. For `DATE_ONLY` type, only date of the
+        # epoch time is used. For `TIME_ONLY` type, only time of the epoch time is used.
+        # For example, you can set epoch time to `3 * 60 * 60 * 1000` to represent 3am.
+        # Corresponds to the JSON property `valueMsEpoch`
+        # @return [Fixnum]
+        attr_accessor :value_ms_epoch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @name = args[:name] if args.key?(:name)
+          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @timezone_offset_date = args[:timezone_offset_date] if args.key?(:timezone_offset_date)
+          @type = args[:type] if args.key?(:type)
+          @value_ms_epoch = args[:value_ms_epoch] if args.key?(:value_ms_epoch)
+        end
+      end
+      
+      # A widget that displays text with optional decorations such as a label above or
+      # below the text, an icon in front of the text, a selection widget or a button
+      # after the text.
+      class GoogleAppsCardV1DecoratedText
+        include Google::Apis::Core::Hashable
+      
+        # The formatted text label that shows below the main text.
+        # Corresponds to the JSON property `bottomLabel`
+        # @return [String]
+        attr_accessor :bottom_label
+      
+        # A button. Can be a text button or an image button.
+        # Corresponds to the JSON property `button`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
+        attr_accessor :button
+      
+        # An icon displayed after the text.
+        # Corresponds to the JSON property `endIcon`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
+        attr_accessor :end_icon
+      
+        # Deprecated in favor of start_icon.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
+        attr_accessor :icon
+      
+        # Only the top and bottom label and content region are clickable.
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
+        attr_accessor :on_click
+      
+        # The icon displayed in front of the text.
+        # Corresponds to the JSON property `startIcon`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
+        attr_accessor :start_icon
+      
+        # A switch widget can be clicked to change its state or trigger an action.
+        # Corresponds to the JSON property `switchControl`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1SwitchControl]
+        attr_accessor :switch_control
+      
+        # Required. The main widget formatted text. See Text formatting for details.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # The formatted text label that shows above the main text.
+        # Corresponds to the JSON property `topLabel`
+        # @return [String]
+        attr_accessor :top_label
+      
+        # The wrap text setting. If `true`, the text is wrapped and displayed in
+        # multiline. Otherwise, the text is truncated.
+        # Corresponds to the JSON property `wrapText`
+        # @return [Boolean]
+        attr_accessor :wrap_text
+        alias_method :wrap_text?, :wrap_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bottom_label = args[:bottom_label] if args.key?(:bottom_label)
+          @button = args[:button] if args.key?(:button)
+          @end_icon = args[:end_icon] if args.key?(:end_icon)
+          @icon = args[:icon] if args.key?(:icon)
+          @on_click = args[:on_click] if args.key?(:on_click)
+          @start_icon = args[:start_icon] if args.key?(:start_icon)
+          @switch_control = args[:switch_control] if args.key?(:switch_control)
+          @text = args[:text] if args.key?(:text)
+          @top_label = args[:top_label] if args.key?(:top_label)
+          @wrap_text = args[:wrap_text] if args.key?(:wrap_text)
+        end
+      end
+      
+      # A divider that appears in between widgets.
+      class GoogleAppsCardV1Divider
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Represents a Grid widget that displays items in a configurable grid layout.
+      class GoogleAppsCardV1Grid
+        include Google::Apis::Core::Hashable
+      
+        # Represents the complete border style applied to widgets.
+        # Corresponds to the JSON property `borderStyle`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1BorderStyle]
+        attr_accessor :border_style
+      
+        # The number of columns to display in the grid. A default value is used if this
+        # field isn't specified, and that default value is different depending on where
+        # the grid is shown (dialog versus companion).
+        # Corresponds to the JSON property `columnCount`
+        # @return [Fixnum]
+        attr_accessor :column_count
+      
+        # The items to display in the grid.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1GridItem>]
+        attr_accessor :items
+      
+        # This callback is reused by each individual grid item, but with the item's
+        # identifier and index in the items list added to the callback's parameters.
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
+        attr_accessor :on_click
+      
+        # The text that displays in the grid header.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @border_style = args[:border_style] if args.key?(:border_style)
+          @column_count = args[:column_count] if args.key?(:column_count)
+          @items = args[:items] if args.key?(:items)
+          @on_click = args[:on_click] if args.key?(:on_click)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Represents a single item in the grid layout.
+      class GoogleAppsCardV1GridItem
+        include Google::Apis::Core::Hashable
+      
+        # A user-specified identifier for this grid item. This identifier is returned in
+        # the parent Grid's onClick callback parameters.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The image that displays in the grid item.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ImageComponent]
+        attr_accessor :image
+      
+        # The layout to use for the grid item.
+        # Corresponds to the JSON property `layout`
+        # @return [String]
+        attr_accessor :layout
+      
+        # The grid item's subtitle.
+        # Corresponds to the JSON property `subtitle`
+        # @return [String]
+        attr_accessor :subtitle
+      
+        # The horizontal alignment of the grid item's text.
+        # Corresponds to the JSON property `textAlignment`
+        # @return [String]
+        attr_accessor :text_alignment
+      
+        # The grid item's title.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @image = args[:image] if args.key?(:image)
+          @layout = args[:layout] if args.key?(:layout)
+          @subtitle = args[:subtitle] if args.key?(:subtitle)
+          @text_alignment = args[:text_alignment] if args.key?(:text_alignment)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # 
+      class GoogleAppsCardV1Icon
+        include Google::Apis::Core::Hashable
+      
+        # The description of the icon, used for accessibility. The default value is
+        # provided if you don't specify one.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # The icon specified by a URL.
+        # Corresponds to the JSON property `iconUrl`
+        # @return [String]
+        attr_accessor :icon_url
+      
+        # The crop style applied to the image. In some cases, applying a `CIRCLE` crop
+        # causes the image to be drawn larger than a standard icon.
+        # Corresponds to the JSON property `imageType`
+        # @return [String]
+        attr_accessor :image_type
+      
+        # The icon specified by the string name of a list of known icons
+        # Corresponds to the JSON property `knownIcon`
+        # @return [String]
+        attr_accessor :known_icon
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @image_type = args[:image_type] if args.key?(:image_type)
+          @known_icon = args[:known_icon] if args.key?(:known_icon)
+        end
+      end
+      
+      # An image that is specified by a URL and can have an onClick action.
+      class GoogleAppsCardV1Image
+        include Google::Apis::Core::Hashable
+      
+        # The alternative text of this image, used for accessibility.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # An image URL.
+        # Corresponds to the JSON property `imageUrl`
+        # @return [String]
+        attr_accessor :image_url
+      
+        # 
+        # Corresponds to the JSON property `onClick`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
+        attr_accessor :on_click
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @image_url = args[:image_url] if args.key?(:image_url)
+          @on_click = args[:on_click] if args.key?(:on_click)
+        end
+      end
+      
+      # 
+      class GoogleAppsCardV1ImageComponent
+        include Google::Apis::Core::Hashable
+      
+        # The accessibility label for the image.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # Represents the complete border style applied to widgets.
+        # Corresponds to the JSON property `borderStyle`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1BorderStyle]
+        attr_accessor :border_style
+      
+        # Represents the crop style applied to an image.
+        # Corresponds to the JSON property `cropStyle`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ImageCropStyle]
+        attr_accessor :crop_style
+      
+        # The image URL.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @border_style = args[:border_style] if args.key?(:border_style)
+          @crop_style = args[:crop_style] if args.key?(:crop_style)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+        end
+      end
+      
+      # Represents the crop style applied to an image.
+      class GoogleAppsCardV1ImageCropStyle
+        include Google::Apis::Core::Hashable
+      
+        # The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.
+        # Corresponds to the JSON property `aspectRatio`
+        # @return [Float]
+        attr_accessor :aspect_ratio
+      
+        # The crop type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aspect_ratio = args[:aspect_ratio] if args.key?(:aspect_ratio)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class GoogleAppsCardV1OnClick
+        include Google::Apis::Core::Hashable
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :action
+      
+        # A card is a UI element that can contain UI widgets such as text and images.
+        # For more information, see Cards . For example, the following JSON creates a
+        # card that has a header with the name, position, icons, and link for a contact,
+        # followed by a section with contact information like email and phone number. ```
+        # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
+        # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
+        # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
+        # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
+        # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
+        # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
+        # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
+        # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
+        # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
+        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
+        # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
+        # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
+        # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
+        # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+        # Corresponds to the JSON property `card`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
+        attr_accessor :card
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `openDynamicLinkAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :open_dynamic_link_action
+      
+        # If specified, this onClick triggers an open link action.
+        # Corresponds to the JSON property `openLink`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1OpenLink]
+        attr_accessor :open_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @card = args[:card] if args.key?(:card)
+          @open_dynamic_link_action = args[:open_dynamic_link_action] if args.key?(:open_dynamic_link_action)
+          @open_link = args[:open_link] if args.key?(:open_link)
+        end
+      end
+      
+      # 
+      class GoogleAppsCardV1OpenLink
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `onClose`
+        # @return [String]
+        attr_accessor :on_close
+      
+        # 
+        # Corresponds to the JSON property `openAs`
+        # @return [String]
+        attr_accessor :open_as
+      
+        # The URL to open.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @on_close = args[:on_close] if args.key?(:on_close)
+          @open_as = args[:open_as] if args.key?(:open_as)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # A section contains a collection of widgets that are rendered vertically in the
+      # order that they are specified. Across all platforms, cards have a narrow fixed
+      # width, so there is currently no need for layout properties, for example, float.
+      class GoogleAppsCardV1Section
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether this section is collapsible. If a section is collapsible,
+        # the description must be given.
+        # Corresponds to the JSON property `collapsible`
+        # @return [Boolean]
+        attr_accessor :collapsible
+        alias_method :collapsible?, :collapsible
+      
+        # The header of the section. Formatted text is supported.
+        # Corresponds to the JSON property `header`
+        # @return [String]
+        attr_accessor :header
+      
+        # The number of uncollapsible widgets. For example, when a section contains five
+        # widgets and the `numUncollapsibleWidget` is set to `2`, the first two widgets
+        # are always shown and the last three are collapsed as default. The `
+        # numUncollapsibleWidget` is taken into account only when collapsible is set to `
+        # true`.
+        # Corresponds to the JSON property `uncollapsibleWidgetsCount`
+        # @return [Fixnum]
+        attr_accessor :uncollapsible_widgets_count
+      
+        # A section must contain at least 1 widget.
+        # Corresponds to the JSON property `widgets`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Widget>]
+        attr_accessor :widgets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collapsible = args[:collapsible] if args.key?(:collapsible)
+          @header = args[:header] if args.key?(:header)
+          @uncollapsible_widgets_count = args[:uncollapsible_widgets_count] if args.key?(:uncollapsible_widgets_count)
+          @widgets = args[:widgets] if args.key?(:widgets)
+        end
+      end
+      
+      # A widget that creates a UI item (for example, a drop-down list) with options
+      # for users to select.
+      class GoogleAppsCardV1SelectionInput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem>]
+        attr_accessor :items
+      
+        # The label displayed ahead of the switch control.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The name of the text input which is used in formInput.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `onChangeAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :on_change_action
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @label = args[:label] if args.key?(:label)
+          @name = args[:name] if args.key?(:name)
+          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The item in the switch control. A radio button, at most one of the items is
+      # selected.
+      class GoogleAppsCardV1SelectionItem
+        include Google::Apis::Core::Hashable
+      
+        # If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the first
+        # selected item is treated as selected and the ones after are ignored.
+        # Corresponds to the JSON property `selected`
+        # @return [Boolean]
+        attr_accessor :selected
+        alias_method :selected?, :selected
+      
+        # The text to be displayed.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # The value associated with this item. The client should use this as a form
+        # input value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @selected = args[:selected] if args.key?(:selected)
+          @text = args[:text] if args.key?(:text)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A suggestion item. Only supports text for now.
+      class GoogleAppsCardV1SuggestionItem
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A container wrapping elements necessary for showing suggestion items used in
+      # text input autocomplete.
+      class GoogleAppsCardV1Suggestions
+        include Google::Apis::Core::Hashable
+      
+        # A list of suggestions items which will be used in are used in autocomplete.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1SuggestionItem>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # 
+      class GoogleAppsCardV1SwitchControl
+        include Google::Apis::Core::Hashable
+      
+        # The control type, either switch or checkbox.
+        # Corresponds to the JSON property `controlType`
+        # @return [String]
+        attr_accessor :control_type
+      
+        # The name of the switch widget that's used in formInput.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `onChangeAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :on_change_action
+      
+        # If the switch is selected.
+        # Corresponds to the JSON property `selected`
+        # @return [Boolean]
+        attr_accessor :selected
+        alias_method :selected?, :selected
+      
+        # The value is what is passed back in the callback.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_type = args[:control_type] if args.key?(:control_type)
+          @name = args[:name] if args.key?(:name)
+          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @selected = args[:selected] if args.key?(:selected)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A text input is a UI item where users can input text. A text input can also
+      # have an onChange action and suggestions.
+      class GoogleAppsCardV1TextInput
+        include Google::Apis::Core::Hashable
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `autoCompleteAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :auto_complete_action
+      
+        # The hint text.
+        # Corresponds to the JSON property `hintText`
+        # @return [String]
+        attr_accessor :hint_text
+      
+        # A container wrapping elements necessary for showing suggestion items used in
+        # text input autocomplete.
+        # Corresponds to the JSON property `initialSuggestions`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Suggestions]
+        attr_accessor :initial_suggestions
+      
+        # At least one of label and hintText must be specified.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The name of the text input which is used in formInput.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
+        # Corresponds to the JSON property `onChangeAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :on_change_action
+      
+        # The style of the text, for example, a single line or multiple lines.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The default value when there is no input from the user.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_complete_action = args[:auto_complete_action] if args.key?(:auto_complete_action)
+          @hint_text = args[:hint_text] if args.key?(:hint_text)
+          @initial_suggestions = args[:initial_suggestions] if args.key?(:initial_suggestions)
+          @label = args[:label] if args.key?(:label)
+          @name = args[:name] if args.key?(:name)
+          @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A paragraph of text that supports formatting. See [Text formatting](workspace/
+      # add-ons/concepts/widgets#text_formatting") for details.
+      class GoogleAppsCardV1TextParagraph
+        include Google::Apis::Core::Hashable
+      
+        # The text that's shown in the widget.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A widget is a UI element that presents texts, images, etc.
+      class GoogleAppsCardV1Widget
+        include Google::Apis::Core::Hashable
+      
+        # A list of buttons layed out horizontally.
+        # Corresponds to the JSON property `buttonList`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
+        attr_accessor :button_list
+      
+        # The widget that lets users to specify a date and time.
+        # Corresponds to the JSON property `dateTimePicker`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker]
+        attr_accessor :date_time_picker
+      
+        # A widget that displays text with optional decorations such as a label above or
+        # below the text, an icon in front of the text, a selection widget or a button
+        # after the text.
+        # Corresponds to the JSON property `decoratedText`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1DecoratedText]
+        attr_accessor :decorated_text
+      
+        # A divider that appears in between widgets.
+        # Corresponds to the JSON property `divider`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Divider]
+        attr_accessor :divider
+      
+        # Represents a Grid widget that displays items in a configurable grid layout.
+        # Corresponds to the JSON property `grid`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Grid]
+        attr_accessor :grid
+      
+        # The horizontal alignment of this widget.
+        # Corresponds to the JSON property `horizontalAlignment`
+        # @return [String]
+        attr_accessor :horizontal_alignment
+      
+        # An image that is specified by a URL and can have an onClick action.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
+        attr_accessor :image
+      
+        # A widget that creates a UI item (for example, a drop-down list) with options
+        # for users to select.
+        # Corresponds to the JSON property `selectionInput`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
+        attr_accessor :selection_input
+      
+        # A text input is a UI item where users can input text. A text input can also
+        # have an onChange action and suggestions.
+        # Corresponds to the JSON property `textInput`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextInput]
+        attr_accessor :text_input
+      
+        # A paragraph of text that supports formatting. See [Text formatting](workspace/
+        # add-ons/concepts/widgets#text_formatting") for details.
+        # Corresponds to the JSON property `textParagraph`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
+        attr_accessor :text_paragraph
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @button_list = args[:button_list] if args.key?(:button_list)
+          @date_time_picker = args[:date_time_picker] if args.key?(:date_time_picker)
+          @decorated_text = args[:decorated_text] if args.key?(:decorated_text)
+          @divider = args[:divider] if args.key?(:divider)
+          @grid = args[:grid] if args.key?(:grid)
+          @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
+          @image = args[:image] if args.key?(:image)
+          @selection_input = args[:selection_input] if args.key?(:selection_input)
+          @text_input = args[:text_input] if args.key?(:text_input)
+          @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
         end
       end
       
