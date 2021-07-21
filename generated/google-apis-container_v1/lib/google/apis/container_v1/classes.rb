@@ -2818,7 +2818,7 @@ module Google
         alias_method :enabled?, :enabled
       
         # Maximum number of nodes in the NodePool. Must be >= min_node_count. There has
-        # to enough quota to scale up the cluster.
+        # to be enough quota to scale up the cluster.
         # Corresponds to the JSON property `maxNodeCount`
         # @return [Fixnum]
         attr_accessor :max_node_count
