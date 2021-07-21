@@ -1218,23 +1218,23 @@ module Google
       class LocalDisk
         include Google::Apis::Core::Hashable
       
-        # Output only. Specifies whether the disk will be auto-deleted when the instance
-        # is deleted (but not when the disk is detached from the instance).
+        # Optional. Output only. Specifies whether the disk will be auto-deleted when
+        # the instance is deleted (but not when the disk is detached from the instance).
         # Corresponds to the JSON property `autoDelete`
         # @return [Boolean]
         attr_accessor :auto_delete
         alias_method :auto_delete?, :auto_delete
       
-        # Output only. Indicates that this is a boot disk. The virtual machine will use
-        # the first partition of the disk for its root filesystem.
+        # Optional. Output only. Indicates that this is a boot disk. The virtual machine
+        # will use the first partition of the disk for its root filesystem.
         # Corresponds to the JSON property `boot`
         # @return [Boolean]
         attr_accessor :boot
         alias_method :boot?, :boot
       
-        # Output only. Specifies a unique device name of your choice that is reflected
-        # into the /dev/disk/by-id/google-* tree of a Linux operating system running
-        # within the instance. This name can be used to reference the device for
+        # Optional. Output only. Specifies a unique device name of your choice that is
+        # reflected into the /dev/disk/by-id/google-* tree of a Linux operating system
+        # running within the instance. This name can be used to reference the device for
         # mounting, resizing, and so on, from within the instance. If not specified, the
         # server chooses a default device name to apply to this disk, in the form
         # persistent-disk-x, where x is a number assigned by Google Compute Engine. This
@@ -1250,14 +1250,14 @@ module Google
         # @return [Array<Google::Apis::NotebooksV1::RuntimeGuestOsFeature>]
         attr_accessor :guest_os_features
       
-        # Output only. [Output Only] A zero-based index to this disk, where 0 is
-        # reserved for the boot disk. If you have many disks attached to an instance,
-        # each disk would have a unique index number.
+        # Output only. A zero-based index to this disk, where 0 is reserved for the boot
+        # disk. If you have many disks attached to an instance, each disk would have a
+        # unique index number.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
       
-        # [Input Only] Specifies the parameters for a new disk that will be created
+        # Input only. Specifies the parameters for a new disk that will be created
         # alongside the new instance. Use initialization parameters to create boot disks
         # or local SSDs attached to the new runtime. This property is mutually exclusive
         # with the source property; you can only define one or the other, but not both.
@@ -1281,7 +1281,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Output only. [Output Only] Any valid publicly visible licenses.
+        # Output only. Any valid publicly visible licenses.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
         attr_accessor :licenses
@@ -1325,7 +1325,7 @@ module Google
         end
       end
       
-      # [Input Only] Specifies the parameters for a new disk that will be created
+      # Input only. Specifies the parameters for a new disk that will be created
       # alongside the new instance. Use initialization parameters to create boot disks
       # or local SSDs attached to the new runtime. This property is mutually exclusive
       # with the source property; you can only define one or the other, but not both.
@@ -1811,16 +1811,15 @@ module Google
         attr_accessor :metrics
       
         # Output only. The resource name of the runtime. Format: `projects/`project`/
-        # locations/`location`/runtimes/`runtime``
+        # locations/`location`/runtimes/`runtimeId``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Specifies the selection and config of software inside the runtime. / The
+        # Specifies the selection and configuration of software inside the runtime. The
         # properties to set on runtime. Properties keys are specified in `key:value`
-        # format, for example: * idle_shutdown: idle_shutdown=true *
-        # idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health:
-        # report-system-health=true
+        # format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `
+        # report-system-health: true`
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::NotebooksV1::RuntimeSoftwareConfig]
         attr_accessor :software_config
@@ -1920,15 +1919,19 @@ module Google
         end
       end
       
-      # A list of features to enable on the guest operating system. Applicable only
-      # for bootable images. Read Enabling guest operating system features to see a
-      # list of available options. Guest OS features for boot disk.
+      # Optional. A list of features to enable on the guest operating system.
+      # Applicable only for bootable images. Read [Enabling guest operating system
+      # features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-
+      # private-images#guest-os-features) to see a list of available options. Guest OS
+      # features for boot disk.
       class RuntimeGuestOsFeature
         include Google::Apis::Core::Hashable
       
-        # The ID of a supported feature. Read Enabling guest operating system features
-        # to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED
-        # MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        # The ID of a supported feature. Read [Enabling guest operating system features](
+        # https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-
+        # images#guest-os-features) to see a list of available options. Valid values: *
+        # FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE *
+        # VIRTIO_SCSI_MULTIQUEUE * WINDOWS
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1963,7 +1966,8 @@ module Google
       end
       
       # A set of Shielded Instance options. Check [Images using supported Shielded VM
-      # features] Not all combinations are valid.
+      # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+      # vm). Not all combinations are valid.
       class RuntimeShieldedInstanceConfig
         include Google::Apis::Core::Hashable
       
@@ -2004,11 +2008,10 @@ module Google
         end
       end
       
-      # Specifies the selection and config of software inside the runtime. / The
+      # Specifies the selection and configuration of software inside the runtime. The
       # properties to set on runtime. Properties keys are specified in `key:value`
-      # format, for example: * idle_shutdown: idle_shutdown=true *
-      # idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health:
-      # report-system-health=true
+      # format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `
+      # report-system-health: true`
       class RuntimeSoftwareConfig
         include Google::Apis::Core::Hashable
       
@@ -2776,7 +2779,8 @@ module Google
         attr_accessor :nic_type
       
         # A set of Shielded Instance options. Check [Images using supported Shielded VM
-        # features] Not all combinations are valid.
+        # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
+        # vm). Not all combinations are valid.
         # Corresponds to the JSON property `shieldedInstanceConfig`
         # @return [Google::Apis::NotebooksV1::RuntimeShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
