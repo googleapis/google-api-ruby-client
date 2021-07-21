@@ -452,7 +452,7 @@ module Google
         # method implements the google.longrunning.Operation, which allows you to track
         # the operation status. We recommend intervals of at least 2 seconds with
         # exponential backoff retry to poll the operation result. The metadata contains
-        # the request to help callers to map responses to requests.
+        # the metadata for the long-running operation.
         # @param [String] scope
         #   Required. The relative name of the root asset. Only resources and IAM policies
         #   within the scope will be analyzed. This can only be an organization number (
