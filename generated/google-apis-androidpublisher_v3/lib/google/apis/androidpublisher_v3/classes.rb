@@ -206,7 +206,7 @@ module Google
         end
       end
       
-      # Information about a bundle. The resource for BundlesService.
+      # Information about an app bundle. The resource for BundlesService.
       class Bundle
         include Google::Apis::Core::Hashable
       
@@ -240,11 +240,11 @@ module Google
         end
       end
       
-      # Response listing all bundles.
+      # Response listing all app bundles.
       class BundlesListResponse
         include Google::Apis::Core::Hashable
       
-        # All bundles.
+        # All app bundles.
         # Corresponds to the JSON property `bundles`
         # @return [Array<Google::Apis::AndroidpublisherV3::Bundle>]
         attr_accessor :bundles

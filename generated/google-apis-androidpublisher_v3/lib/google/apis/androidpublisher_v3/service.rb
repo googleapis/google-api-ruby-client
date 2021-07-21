@@ -375,9 +375,9 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [Boolean] ack_bundle_installation_warning
-        #   Must be set to true if the bundle installation may trigger a warning on user
-        #   devices (for example, if installation size may be over a threshold, typically
-        #   100 MB).
+        #   Must be set to true if the app bundle installation may trigger a warning on
+        #   user devices (for example, if installation size may be over a threshold,
+        #   typically 100 MB).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
