@@ -25,7 +25,7 @@ module Google
     # resources like user, groups etc. It also provides audit and usage reports of
     # domain.
     #
-    # @see http://developers.google.com/admin-sdk/
+    # @see https://developers.google.com/admin-sdk/
     module AdminDatatransferV1
       # Version of the Admin SDK API this client connects to.
       # This is NOT the gem version.
