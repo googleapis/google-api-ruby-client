@@ -829,7 +829,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Immutable. The type for the custom metric's value.
+        # Required. The type for the custom metric's value.
         # Corresponds to the JSON property `measurementUnit`
         # @return [String]
         attr_accessor :measurement_unit
