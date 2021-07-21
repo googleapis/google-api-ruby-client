@@ -32,7 +32,7 @@ module Google
       #    Admin = Google::Apis::AdminDatatransferV1 # Alias the module
       #    service = Admin::DataTransferService.new
       #
-      # @see http://developers.google.com/admin-sdk/
+      # @see https://developers.google.com/admin-sdk/
       class DataTransferService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
