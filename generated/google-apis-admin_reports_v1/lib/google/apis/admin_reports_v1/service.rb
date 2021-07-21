@@ -32,7 +32,7 @@ module Google
       #    Admin = Google::Apis::AdminReportsV1 # Alias the module
       #    service = Admin::ReportsService.new
       #
-      # @see http://developers.google.com/admin-sdk/
+      # @see https://developers.google.com/admin-sdk/
       class ReportsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
