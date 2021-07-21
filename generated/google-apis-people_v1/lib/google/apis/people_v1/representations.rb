@@ -736,6 +736,7 @@ module Google
           property :primary, as: 'primary'
           property :source, as: 'source', class: Google::Apis::PeopleV1::Source, decorator: Google::Apis::PeopleV1::Source::Representation
       
+          property :source_primary, as: 'sourcePrimary'
           property :verified, as: 'verified'
         end
       end
