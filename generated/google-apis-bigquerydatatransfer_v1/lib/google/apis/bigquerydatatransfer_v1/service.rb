@@ -478,7 +478,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns information about all data transfers in the project.
+        # Returns information about all transfer configs owned by a project in the
+        # specified location.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned: `
         #   projects/`project_id`` or `projects/`project_id`/locations/`location_id``
@@ -948,7 +949,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns information about all data transfers in the project.
+        # Returns information about all transfer configs owned by a project in the
+        # specified location.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned: `
         #   projects/`project_id`` or `projects/`project_id`/locations/`location_id``
