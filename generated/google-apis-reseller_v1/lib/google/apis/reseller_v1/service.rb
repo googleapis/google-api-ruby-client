@@ -50,7 +50,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Get a customer account. Use this operation to see a customer account already
+        # Gets a customer account. Use this operation to see a customer account already
         # in your reseller management, or to see the minimal account information for an
         # existing customer that you do not manage. For more information about the API
         # response for existing customers, see [retrieving a customer account](/admin-
@@ -87,7 +87,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Order a new customer's account. Before ordering a new customer account,
+        # Orders a new customer's account. Before ordering a new customer account,
         # establish whether the customer account already exists using the [`customers.
         # get`](/admin-sdk/reseller/v1/reference/customers/get) If the customer account
         # exists as a direct Google account or as a resold customer account from another
@@ -138,7 +138,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a customer account's settings. This method supports patch semantics.
+        # Updates a customer account's settings. This method supports patch semantics.
+        # You cannot update `customerType` via the Reseller API, but a `"team"` customer
+        # can verify their domain and become `customerType = "domain"`. For more
+        # information, see [Verify your domain to unlock Essentials features](https://
+        # support.google.com/a/answer/9122284).
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
         #   If using the domain name, we do not recommend using a `customerId` as a key
@@ -174,9 +178,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a customer account's settings. For more information, see [update a
-        # customer's settings](/admin-sdk/reseller/v1/how-tos/manage_customers#
-        # update_customer).
+        # Updates a customer account's settings. You cannot update `customerType` via
+        # the Reseller API, but a `"team"` customer can verify their domain and become `
+        # customerType = "domain"`. For more information, see [update a customer's
+        # settings](/admin-sdk/reseller/v1/how-tos/manage_customers#update_customer).
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
         #   If using the domain name, we do not recommend using a `customerId` as a key
@@ -342,7 +347,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a subscription plan. Use this method to update a plan for a 30-day
+        # Updates a subscription plan. Use this method to update a plan for a 30-day
         # trial or a flexible plan subscription to an annual commitment plan with
         # monthly or yearly payments. How a plan is updated differs depending on the
         # plan and the products. For more information, see the description in [manage
@@ -390,9 +395,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a user license's renewal settings. This is applicable for accounts with
-        # annual commitment plans only. For more information, see the description in [
-        # manage subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
+        # Updates a user license's renewal settings. This is applicable for accounts
+        # with annual commitment plans only. For more information, see the description
+        # in [manage subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
         # update_renewal).
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
@@ -436,7 +441,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a subscription's user license settings. For more information about
+        # Updates a subscription's user license settings. For more information about
         # updating an annual commitment plan or a flexible plan subscription’s licenses,
         # see [Manage Subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
         # update_subscription_seat).
@@ -482,7 +487,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancel, suspend, or transfer a subscription to direct.
+        # Cancels, suspends, or transfers a subscription to direct.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
         #   If using the domain name, we do not recommend using a `customerId` as a key
@@ -524,7 +529,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a specific subscription. The `subscriptionId` can be found using the [
+        # Gets a specific subscription. The `subscriptionId` can be found using the [
         # Retrieve all reseller subscriptions](/admin-sdk/reseller/v1/how-tos/
         # manage_subscriptions#get_all_subscriptions) method. For more information about
         # retrieving a specific subscription, see the information descrived in [manage
@@ -569,7 +574,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create or transfer a subscription. Create a subscription for a customer's
+        # Creates or transfer a subscription. Create a subscription for a customer's
         # account that you ordered using the [Order a new customer account](/admin-sdk/
         # reseller/v1/reference/customers/insert.html) method. For more information
         # about creating a subscription for different payment plans, see [manage
@@ -623,7 +628,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List of subscriptions managed by the reseller. The list can be all
+        # Lists of subscriptions managed by the reseller. The list can be all
         # subscriptions, all of a customer's subscriptions, or all of a customer's
         # transferable subscriptions. Optionally, this method can filter the response by
         # a `customerNamePrefix`. For more information, see [manage subscriptions](/

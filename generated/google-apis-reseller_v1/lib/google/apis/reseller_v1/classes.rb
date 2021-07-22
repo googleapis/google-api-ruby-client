@@ -167,8 +167,9 @@ module Google
       
         # Like the "Customer email" in the reseller tools, this email is the secondary
         # contact used if something happens to the customer's service such as service
-        # outage or a security issue. This property is required when creating a new
-        # customer and should not use the same domain as `customerDomain`.
+        # outage or a security issue. This property is required when creating a new "
+        # domain" customer and should not use the same domain as `customerDomain`. The `
+        # alternateEmail` field is not necessary to create a "team" customer.
         # Corresponds to the JSON property `alternateEmail`
         # @return [String]
         attr_accessor :alternate_email
@@ -193,7 +194,10 @@ module Google
         # @return [String]
         attr_accessor :customer_id
       
-        # The type of the customer (DOMAIN or TEAM), default is DOMAIN.
+        # Identifies the type of the customer. Acceptable values include: * `domain`:
+        # Implies a domain-verified customer (default). * `team`: Implies an email-
+        # verified customer. For more information, see [managed teams](https://support.
+        # google.com/a/users/answer/9939479).
         # Corresponds to the JSON property `customerType`
         # @return [String]
         attr_accessor :customer_type
@@ -251,8 +255,11 @@ module Google
       class PrimaryAdmin
         include Google::Apis::Core::Hashable
       
-        # Primary admin's domained email This email's domain will be used to create TEAM
-        # customer
+        # The business email of the primary administrator of the customer. The email
+        # verification link is sent to this email address at the time of customer
+        # creation. Primary administrators have access to the customer's Admin Console,
+        # including the ability to invite and evict users and manage the administrative
+        # needs of the customer.
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
         attr_accessor :primary_email
@@ -630,9 +637,9 @@ module Google
         class TransferInfo
           include Google::Apis::Core::Hashable
         
-          # Sku id of the current resold subscription. This is populated only when
-          # customer has subscription with legacy sku and the subscription resource is
-          # populated with recommeded sku for transfer in.
+          # The `skuId` of the current resold subscription. This is populated only when
+          # the customer has a subscription with a legacy SKU and the subscription
+          # resource is populated with the `skuId` of the SKU recommended for the transfer.
           # Corresponds to the JSON property `currentLegacySkuId`
           # @return [String]
           attr_accessor :current_legacy_sku_id
