@@ -1,5 +1,9 @@
 # Release history for google-apis-reseller_v1
 
+### v0.8.0 (2021-07-22)
+
+* Regenerated from discovery document revision 20210720
+
 ### v0.7.0 (2021-06-29)
 
 * Regenerated using generator version 0.4.0
