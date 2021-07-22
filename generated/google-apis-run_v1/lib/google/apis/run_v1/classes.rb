@@ -757,8 +757,8 @@ module Google
         # @return [Array<Google::Apis::RunV1::ResourceRecord>]
         attr_accessor :resource_records
       
-        # Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the
-        # URL that will serve the traffic of the DomainMapping. +optional
+        # Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported
+        # Holds the URL that will serve the traffic of the DomainMapping.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -2014,7 +2014,7 @@ module Google
       class RevisionSpec
         include Google::Apis::Core::Hashable
       
-        # (Optional) ContainerConcurrency specifies the maximum allowed in-flight (
+        # Optional. ContainerConcurrency specifies the maximum allowed in-flight (
         # concurrent) requests per container instance of the Revision. Cloud Run fully
         # managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults
         # to 0, which means concurrency to the application is not limited, and the
@@ -2092,8 +2092,8 @@ module Google
         # @return [String]
         attr_accessor :image_digest
       
-        # Specifies the generated logging url for this particular revision based on the
-        # revision url template specified in the controller's config. +optional
+        # Optional. Specifies the generated logging url for this particular revision
+        # based on the revision url template specified in the controller's config.
         # Corresponds to the JSON property `logUrl`
         # @return [String]
         attr_accessor :log_url
@@ -2898,10 +2898,10 @@ module Google
         # @return [String]
         attr_accessor :configuration_name
       
-        # LatestRevision may be optionally provided to indicate that the latest ready
+        # Optional. LatestRevision may be provided to indicate that the latest ready
         # Revision of the Configuration should be used for this traffic target. When
         # provided LatestRevision must be true if RevisionName is empty; it must be
-        # false when RevisionName is non-empty. +optional
+        # false when RevisionName is non-empty.
         # Corresponds to the JSON property `latestRevision`
         # @return [Boolean]
         attr_accessor :latest_revision
@@ -2921,8 +2921,8 @@ module Google
         # @return [String]
         attr_accessor :revision_name
       
-        # Tag is optionally used to expose a dedicated url for referencing this target
-        # exclusively. +optional
+        # Optional. Tag is used to expose a dedicated url for referencing this target
+        # exclusively.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
