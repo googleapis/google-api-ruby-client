@@ -22,12 +22,6 @@ module Google
   module Apis
     module RunV1alpha1
       
-      class Capabilities
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ConfigMapEnvSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,12 +94,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Handler
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InstanceSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,12 +107,6 @@ module Google
       end
       
       class InstanceTemplateSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class IntOrString
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,12 +137,6 @@ module Google
       end
       
       class KeyToPath
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Lifecycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,19 +178,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Quantity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ResourceRequirements
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SeLinuxOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,24 +220,10 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class VolumeDevice
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class VolumeMount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Capabilities
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :add, as: 'add'
-          collection :drop, as: 'drop'
-        end
       end
       
       class ConfigMapEnvSource
@@ -319,8 +269,6 @@ module Google
       
           property :image, as: 'image'
           property :image_pull_policy, as: 'imagePullPolicy'
-          property :lifecycle, as: 'lifecycle', class: Google::Apis::RunV1alpha1::Lifecycle, decorator: Google::Apis::RunV1alpha1::Lifecycle::Representation
-      
           property :liveness_probe, as: 'livenessProbe', class: Google::Apis::RunV1alpha1::Probe, decorator: Google::Apis::RunV1alpha1::Probe::Representation
       
           property :name, as: 'name'
@@ -332,13 +280,10 @@ module Google
       
           property :security_context, as: 'securityContext', class: Google::Apis::RunV1alpha1::SecurityContext, decorator: Google::Apis::RunV1alpha1::SecurityContext::Representation
       
-          property :stdin, as: 'stdin'
-          property :stdin_once, as: 'stdinOnce'
+          property :startup_probe, as: 'startupProbe', class: Google::Apis::RunV1alpha1::Probe, decorator: Google::Apis::RunV1alpha1::Probe::Representation
+      
           property :termination_message_path, as: 'terminationMessagePath'
           property :termination_message_policy, as: 'terminationMessagePolicy'
-          property :tty, as: 'tty'
-          collection :volume_devices, as: 'volumeDevices', class: Google::Apis::RunV1alpha1::VolumeDevice, decorator: Google::Apis::RunV1alpha1::VolumeDevice::Representation
-      
           collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::RunV1alpha1::VolumeMount, decorator: Google::Apis::RunV1alpha1::VolumeMount::Representation
       
           property :working_dir, as: 'workingDir'
@@ -349,8 +294,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_port, as: 'containerPort'
-          property :host_ip, as: 'hostIP'
-          property :host_port, as: 'hostPort'
           property :name, as: 'name'
           property :protocol, as: 'protocol'
         end
@@ -407,8 +350,6 @@ module Google
           collection :http_headers, as: 'httpHeaders', class: Google::Apis::RunV1alpha1::HttpHeader, decorator: Google::Apis::RunV1alpha1::HttpHeader::Representation
       
           property :path, as: 'path'
-          property :port, as: 'port', class: Google::Apis::RunV1alpha1::IntOrString, decorator: Google::Apis::RunV1alpha1::IntOrString::Representation
-      
           property :scheme, as: 'scheme'
         end
       end
@@ -418,18 +359,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
-        end
-      end
-      
-      class Handler
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :exec, as: 'exec', class: Google::Apis::RunV1alpha1::ExecAction, decorator: Google::Apis::RunV1alpha1::ExecAction::Representation
-      
-          property :http_get, as: 'httpGet', class: Google::Apis::RunV1alpha1::HttpGetAction, decorator: Google::Apis::RunV1alpha1::HttpGetAction::Representation
-      
-          property :tcp_socket, as: 'tcpSocket', class: Google::Apis::RunV1alpha1::TcpSocketAction, decorator: Google::Apis::RunV1alpha1::TcpSocketAction::Representation
-      
         end
       end
       
@@ -465,15 +394,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::InstanceSpec, decorator: Google::Apis::RunV1alpha1::InstanceSpec::Representation
       
-        end
-      end
-      
-      class IntOrString
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :int_val, as: 'intVal'
-          property :str_val, as: 'strVal'
-          property :type, as: 'type'
         end
       end
       
@@ -539,16 +459,6 @@ module Google
           property :key, as: 'key'
           property :mode, as: 'mode'
           property :path, as: 'path'
-        end
-      end
-      
-      class Lifecycle
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :post_start, as: 'postStart', class: Google::Apis::RunV1alpha1::Handler, decorator: Google::Apis::RunV1alpha1::Handler::Representation
-      
-          property :pre_stop, as: 'preStop', class: Google::Apis::RunV1alpha1::Handler, decorator: Google::Apis::RunV1alpha1::Handler::Representation
-      
         end
       end
       
@@ -619,20 +529,17 @@ module Google
       class Probe
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :exec, as: 'exec', class: Google::Apis::RunV1alpha1::ExecAction, decorator: Google::Apis::RunV1alpha1::ExecAction::Representation
+      
           property :failure_threshold, as: 'failureThreshold'
-          property :handler, as: 'handler', class: Google::Apis::RunV1alpha1::Handler, decorator: Google::Apis::RunV1alpha1::Handler::Representation
+          property :http_get, as: 'httpGet', class: Google::Apis::RunV1alpha1::HttpGetAction, decorator: Google::Apis::RunV1alpha1::HttpGetAction::Representation
       
           property :initial_delay_seconds, as: 'initialDelaySeconds'
           property :period_seconds, as: 'periodSeconds'
           property :success_threshold, as: 'successThreshold'
-          property :timeout_seconds, as: 'timeoutSeconds'
-        end
-      end
+          property :tcp_socket, as: 'tcpSocket', class: Google::Apis::RunV1alpha1::TcpSocketAction, decorator: Google::Apis::RunV1alpha1::TcpSocketAction::Representation
       
-      class Quantity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :string, as: 'string'
+          property :timeout_seconds, as: 'timeoutSeconds'
         end
       end
       
@@ -640,21 +547,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :limits, as: 'limits'
-          hash :limits_in_map, as: 'limitsInMap', class: Google::Apis::RunV1alpha1::Quantity, decorator: Google::Apis::RunV1alpha1::Quantity::Representation
-      
           hash :requests, as: 'requests'
-          hash :requests_in_map, as: 'requestsInMap', class: Google::Apis::RunV1alpha1::Quantity, decorator: Google::Apis::RunV1alpha1::Quantity::Representation
-      
-        end
-      end
-      
-      class SeLinuxOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :level, as: 'level'
-          property :role, as: 'role'
-          property :type, as: 'type'
-          property :user, as: 'user'
         end
       end
       
@@ -693,16 +586,7 @@ module Google
       class SecurityContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :allow_privilege_escalation, as: 'allowPrivilegeEscalation'
-          property :capabilities, as: 'capabilities', class: Google::Apis::RunV1alpha1::Capabilities, decorator: Google::Apis::RunV1alpha1::Capabilities::Representation
-      
-          property :privileged, as: 'privileged'
-          property :read_only_root_filesystem, as: 'readOnlyRootFilesystem'
-          property :run_as_group, as: 'runAsGroup'
-          property :run_as_non_root, as: 'runAsNonRoot'
           property :run_as_user, as: 'runAsUser'
-          property :se_linux_options, as: 'seLinuxOptions', class: Google::Apis::RunV1alpha1::SeLinuxOptions, decorator: Google::Apis::RunV1alpha1::SeLinuxOptions::Representation
-      
         end
       end
       
@@ -710,8 +594,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host, as: 'host'
-          property :port, as: 'port', class: Google::Apis::RunV1alpha1::IntOrString, decorator: Google::Apis::RunV1alpha1::IntOrString::Representation
-      
+          property :port, as: 'port'
         end
       end
       
@@ -726,19 +609,10 @@ module Google
         end
       end
       
-      class VolumeDevice
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :device_path, as: 'devicePath'
-          property :name, as: 'name'
-        end
-      end
-      
       class VolumeMount
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mount_path, as: 'mountPath'
-          property :mount_propagation, as: 'mountPropagation'
           property :name, as: 'name'
           property :read_only, as: 'readOnly'
           property :sub_path, as: 'subPath'
