@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Entry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCustomClassesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TranscriptNormalization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TranscriptOutputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -222,6 +234,15 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Entry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_sensitive, as: 'caseSensitive'
+          property :replace, as: 'replace'
+          property :search, as: 'search'
         end
       end
       
@@ -353,6 +374,8 @@ module Google
           property :sample_rate_hertz, as: 'sampleRateHertz'
           collection :speech_contexts, as: 'speechContexts', class: Google::Apis::SpeechV1p1beta1::SpeechContext, decorator: Google::Apis::SpeechV1p1beta1::SpeechContext::Representation
       
+          property :transcript_normalization, as: 'transcriptNormalization', class: Google::Apis::SpeechV1p1beta1::TranscriptNormalization, decorator: Google::Apis::SpeechV1p1beta1::TranscriptNormalization::Representation
+      
           property :use_enhanced, as: 'useEnhanced'
         end
       end
@@ -445,6 +468,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TranscriptNormalization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entries, as: 'entries', class: Google::Apis::SpeechV1p1beta1::Entry, decorator: Google::Apis::SpeechV1p1beta1::Entry::Representation
+      
         end
       end
       

@@ -52,9 +52,9 @@ module Google
         # @return [Google::Apis::SpeechV1p1beta1::CustomClass]
         attr_accessor :custom_class
       
-        # The ID to use for the custom class, which will become the final component of
-        # the custom class' resource name. This value should be 4-63 characters, and
-        # valid characters are /a-z-/.
+        # Required. The ID to use for the custom class, which will become the final
+        # component of the custom class' resource name. This value should be 4-63
+        # characters, and valid characters are /a-z-/.
         # Corresponds to the JSON property `customClassId`
         # @return [String]
         attr_accessor :custom_class_id
@@ -80,9 +80,9 @@ module Google
         # @return [Google::Apis::SpeechV1p1beta1::PhraseSet]
         attr_accessor :phrase_set
       
-        # The ID to use for the phrase set, which will become the final component of the
-        # phrase set's resource name. This value should be 4-63 characters, and valid
-        # characters are /a-z-/.
+        # Required. The ID to use for the phrase set, which will become the final
+        # component of the phrase set's resource name. This value should be 4-63
+        # characters, and valid characters are /a-z-/.
         # Corresponds to the JSON property `phraseSetId`
         # @return [String]
         attr_accessor :phrase_set_id
@@ -146,6 +146,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A single replacement configuration.
+      class Entry
+        include Google::Apis::Core::Hashable
+      
+        # Whether the search is case sensitive.
+        # Corresponds to the JSON property `caseSensitive`
+        # @return [Boolean]
+        attr_accessor :case_sensitive
+        alias_method :case_sensitive?, :case_sensitive
+      
+        # What to replace with. Max length is 100 characters.
+        # Corresponds to the JSON property `replace`
+        # @return [String]
+        attr_accessor :replace
+      
+        # What to replace. Max length is 100 characters.
+        # Corresponds to the JSON property `search`
+        # @return [String]
+        attr_accessor :search
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @replace = args[:replace] if args.key?(:replace)
+          @search = args[:search] if args.key?(:search)
         end
       end
       
@@ -716,6 +748,14 @@ module Google
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechContext>]
         attr_accessor :speech_contexts
       
+        # Transcription normalization configuration. Use transcription normalization to
+        # automatically replace parts of the transcript with phrases of your choosing.
+        # For StreamingRecognize, this normalization only applies to stable partial
+        # transcripts (stability > 0.8) and final transcripts.
+        # Corresponds to the JSON property `transcriptNormalization`
+        # @return [Google::Apis::SpeechV1p1beta1::TranscriptNormalization]
+        attr_accessor :transcript_normalization
+      
         # Set to true to use an enhanced model for speech recognition. If `use_enhanced`
         # is set to true and the `model` field is not set, then an appropriate enhanced
         # model is chosen if an enhanced model exists for the audio. If `use_enhanced`
@@ -752,6 +792,7 @@ module Google
           @profanity_filter = args[:profanity_filter] if args.key?(:profanity_filter)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @speech_contexts = args[:speech_contexts] if args.key?(:speech_contexts)
+          @transcript_normalization = args[:transcript_normalization] if args.key?(:transcript_normalization)
           @use_enhanced = args[:use_enhanced] if args.key?(:use_enhanced)
         end
       end
@@ -1116,6 +1157,28 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Transcription normalization configuration. Use transcription normalization to
+      # automatically replace parts of the transcript with phrases of your choosing.
+      # For StreamingRecognize, this normalization only applies to stable partial
+      # transcripts (stability > 0.8) and final transcripts.
+      class TranscriptNormalization
+        include Google::Apis::Core::Hashable
+      
+        # A single replacement configuration.
+        # Corresponds to the JSON property `entries`
+        # @return [Google::Apis::SpeechV1p1beta1::Entry]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
         end
       end
       
