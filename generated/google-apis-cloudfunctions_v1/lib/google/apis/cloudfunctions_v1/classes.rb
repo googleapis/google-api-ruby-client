@@ -217,7 +217,7 @@ module Google
       end
       
       # Describes a Cloud Function that contains user computation executed in response
-      # to an event. It encapsulate function and triggers configurations.
+      # to an event. It encapsulate function and triggers configurations. Next tag: 35
       class CloudFunction
         include Google::Apis::Core::Hashable
       
@@ -1053,8 +1053,10 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Project whose secret manager data is being referenced. Cross project secrets
-        # are not supported.
+        # Project identifier (preferrably project number but can also be the project ID)
+        # of the project that contains the secret. If not set, it will be populated with
+        # the function's project assuming that the secret exists in the same project as
+        # of the function.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1131,8 +1133,10 @@ module Google
         # @return [String]
         attr_accessor :mount_path
       
-        # Project whose secret manager data is being referenced. Cross project secrets
-        # are not supported.
+        # Project identifier (preferrably project number but can also be the project ID)
+        # of the project that contains the secret. If not set, it will be populated with
+        # the function's project assuming that the secret exists in the same project as
+        # of the function.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
