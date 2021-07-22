@@ -361,8 +361,10 @@ module Google
         # is specified, resources deleted since the last sync will be returned as a
         # person with `PersonMetadata.deleted` set to true. When the `page_token` or `
         # sync_token` is specified, all other request parameters must match the first
-        # call. See example usage at [List the user's other contacts that have changed](/
-        # people/v1/other-contacts#list_the_users_other_contacts_that_have_changed).
+        # call. Writes may have a propagation delay of several minutes for sync requests.
+        # Incremental syncs are not intended for read-after-write use cases. See
+        # example usage at [List the user's other contacts that have changed](/people/v1/
+        # other-contacts#list_the_users_other_contacts_that_have_changed).
         # @param [Fixnum] page_size
         #   Optional. The number of "Other contacts" to include in the response. Valid
         #   values are between 1 and 1000, inclusive. Defaults to 100 if not set or set to
@@ -798,8 +800,10 @@ module Google
         # user's domain directory. When the `sync_token` is specified, resources deleted
         # since the last sync will be returned as a person with `PersonMetadata.deleted`
         # set to true. When the `page_token` or `sync_token` is specified, all other
-        # request parameters must match the first call. See example usage at [List the
-        # directory people that have changed](/people/v1/directory#
+        # request parameters must match the first call. Writes may have a propagation
+        # delay of several minutes for sync requests. Incremental syncs are not intended
+        # for read-after-write use cases. See example usage at [List the directory
+        # people that have changed](/people/v1/directory#
         # list_the_directory_people_that_have_changed).
         # @param [Array<String>, String] merge_sources
         #   Optional. Additional data to merge into the directory sources if they are
@@ -1088,8 +1092,10 @@ module Google
         # quota is fixed and can not be increased. When the `sync_token` is specified,
         # resources deleted since the last sync will be returned as a person with `
         # PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is
-        # specified, all other request parameters must match the first call. See example
-        # usage at [List the user's contacts that have changed](/people/v1/contacts#
+        # specified, all other request parameters must match the first call. Writes may
+        # have a propagation delay of several minutes for sync requests. Incremental
+        # syncs are not intended for read-after-write use cases. See example usage at [
+        # List the user's contacts that have changed](/people/v1/contacts#
         # list_the_users_contacts_that_have_changed).
         # @param [String] resource_name
         #   Required. The resource name to return connections for. Only `people/me` is
