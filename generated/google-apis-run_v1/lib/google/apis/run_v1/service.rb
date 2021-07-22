@@ -23,8 +23,8 @@ module Google
       # Cloud Run Admin API
       #
       # Deploy and manage user provided container images that scale automatically
-      #  based on incoming requets. The Cloud Run Admin API follows the Knative Serving
-      #  API specification.
+      #  based on incoming requests. The Cloud Run Admin API follows the Knative
+      #  Serving API specification.
       #
       # @example
       #    require 'google/apis/run_v1'
@@ -123,7 +123,7 @@ module Google
         #   The namespace from which the configurations should be listed. For Cloud Run (
         #   fully managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -134,7 +134,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -295,7 +295,7 @@ module Google
         #   The namespace from which the domain mappings should be listed. For Cloud Run (
         #   fully managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -306,7 +306,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -429,7 +429,7 @@ module Google
         #   The namespace from which the revisions should be listed. For Cloud Run (fully
         #   managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -440,7 +440,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -517,7 +517,7 @@ module Google
         #   The namespace from which the routes should be listed. For Cloud Run (fully
         #   managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -528,7 +528,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -690,7 +690,7 @@ module Google
         #   The namespace from which the services should be listed. For Cloud Run (fully
         #   managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -701,7 +701,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -934,7 +934,7 @@ module Google
         #   The namespace from which the configurations should be listed. For Cloud Run (
         #   fully managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -945,7 +945,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -1106,7 +1106,7 @@ module Google
         #   The namespace from which the domain mappings should be listed. For Cloud Run (
         #   fully managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -1117,7 +1117,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -1240,7 +1240,7 @@ module Google
         #   The namespace from which the revisions should be listed. For Cloud Run (fully
         #   managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -1251,7 +1251,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -1328,7 +1328,7 @@ module Google
         #   The namespace from which the routes should be listed. For Cloud Run (fully
         #   managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -1339,7 +1339,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -1542,7 +1542,7 @@ module Google
         #   The namespace from which the services should be listed. For Cloud Run (fully
         #   managed), replace `namespace_id` with the project ID or number.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name. Send
         #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
@@ -1553,7 +1553,7 @@ module Google
         #   Allows to filter resources based on a label. Supported operations are =, !=,
         #   exists, in, and notIn.
         # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
+        #   Optional. The maximum number of records that should be returned.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
