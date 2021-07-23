@@ -3425,7 +3425,7 @@ module Google
         # @param [String] targeting_type
         #   Required. Identifies the type of this assigned targeting option. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
-        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [Google::Apis::DisplayvideoV1::AssignedTargetingOption] assigned_targeting_option_object
         # @param [String] fields
@@ -3464,7 +3464,7 @@ module Google
         # @param [String] targeting_type
         #   Required. Identifies the type of this assigned targeting option. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
-        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [String] assigned_targeting_option_id
         #   Required. The ID of the assigned targeting option to delete.
@@ -3503,7 +3503,7 @@ module Google
         # @param [String] targeting_type
         #   Required. Identifies the type of this assigned targeting option. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
-        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [String] assigned_targeting_option_id
         #   Required. An identifier unique to the targeting type in this advertiser that
@@ -3543,7 +3543,7 @@ module Google
         # @param [String] targeting_type
         #   Required. Identifies the type of assigned targeting options to list. Supported
         #   targeting types: * `TARGETING_TYPE_CHANNEL` * `
-        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
+        #   TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `
         #   TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
         # @param [String] filter
         #   Allows filtering by assigned targeting option properties. Supported syntax: *
@@ -5556,7 +5556,8 @@ module Google
         # Searches for targeting options of a given type based on the given search terms.
         # @param [String] targeting_type
         #   Required. The type of targeting options to retrieve. Accepted values are: * `
-        #   TARGETING_TYPE_GEO_REGION`
+        #   TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_POI` * `
+        #   TARGETING_TYPE_BUSINESS_CHAIN`
         # @param [Google::Apis::DisplayvideoV1::SearchTargetingOptionsRequest] search_targeting_options_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

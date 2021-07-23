@@ -322,6 +322,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BusinessChainAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BusinessChainSearchTerms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BusinessChainTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Campaign
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1162,6 +1180,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OmidAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OmidTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OnScreenPositionAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1259,6 +1289,24 @@ module Google
       end
       
       class PerformanceGoalBidStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PoiAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PoiSearchTerms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PoiTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1698,6 +1746,8 @@ module Google
       
           property :browser_details, as: 'browserDetails', class: Google::Apis::DisplayvideoV1::BrowserAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::BrowserAssignedTargetingOptionDetails::Representation
       
+          property :business_chain_details, as: 'businessChainDetails', class: Google::Apis::DisplayvideoV1::BusinessChainAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::BusinessChainAssignedTargetingOptionDetails::Representation
+      
           property :carrier_and_isp_details, as: 'carrierAndIspDetails', class: Google::Apis::DisplayvideoV1::CarrierAndIspAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::CarrierAndIspAssignedTargetingOptionDetails::Representation
       
           property :category_details, as: 'categoryDetails', class: Google::Apis::DisplayvideoV1::CategoryAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::CategoryAssignedTargetingOptionDetails::Representation
@@ -1740,11 +1790,15 @@ module Google
       
           property :negative_keyword_list_details, as: 'negativeKeywordListDetails', class: Google::Apis::DisplayvideoV1::NegativeKeywordListAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::NegativeKeywordListAssignedTargetingOptionDetails::Representation
       
+          property :omid_details, as: 'omidDetails', class: Google::Apis::DisplayvideoV1::OmidAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::OmidAssignedTargetingOptionDetails::Representation
+      
           property :on_screen_position_details, as: 'onScreenPositionDetails', class: Google::Apis::DisplayvideoV1::OnScreenPositionAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::OnScreenPositionAssignedTargetingOptionDetails::Representation
       
           property :operating_system_details, as: 'operatingSystemDetails', class: Google::Apis::DisplayvideoV1::OperatingSystemAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::OperatingSystemAssignedTargetingOptionDetails::Representation
       
           property :parental_status_details, as: 'parentalStatusDetails', class: Google::Apis::DisplayvideoV1::ParentalStatusAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ParentalStatusAssignedTargetingOptionDetails::Representation
+      
+          property :poi_details, as: 'poiDetails', class: Google::Apis::DisplayvideoV1::PoiAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::PoiAssignedTargetingOptionDetails::Representation
       
           property :proximity_location_list_details, as: 'proximityLocationListDetails', class: Google::Apis::DisplayvideoV1::ProximityLocationListAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ProximityLocationListAssignedTargetingOptionDetails::Representation
       
@@ -2049,6 +2103,33 @@ module Google
           collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class BusinessChainAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :proximity_radius_amount, as: 'proximityRadiusAmount'
+          property :proximity_radius_unit, as: 'proximityRadiusUnit'
+          property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
+      class BusinessChainSearchTerms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :business_chain, as: 'businessChain'
+          property :region, as: 'region'
+        end
+      end
+      
+      class BusinessChainTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :business_chain, as: 'businessChain'
+          property :geo_region, as: 'geoRegion'
+          property :geo_region_type, as: 'geoRegionType'
         end
       end
       
@@ -3478,6 +3559,21 @@ module Google
         end
       end
       
+      class OmidAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :omid, as: 'omid'
+          property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
+      class OmidTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :omid, as: 'omid'
+        end
+      end
+      
       class OnScreenPositionAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3638,6 +3734,34 @@ module Google
         end
       end
       
+      class PoiAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+          property :proximity_radius_amount, as: 'proximityRadiusAmount'
+          property :proximity_radius_unit, as: 'proximityRadiusUnit'
+          property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
+      class PoiSearchTerms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :poi_query, as: 'poiQuery'
+        end
+      end
+      
+      class PoiTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+        end
+      end
+      
       class PrismaConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3768,10 +3892,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :business_chain_search_terms, as: 'businessChainSearchTerms', class: Google::Apis::DisplayvideoV1::BusinessChainSearchTerms, decorator: Google::Apis::DisplayvideoV1::BusinessChainSearchTerms::Representation
+      
           property :geo_region_search_terms, as: 'geoRegionSearchTerms', class: Google::Apis::DisplayvideoV1::GeoRegionSearchTerms, decorator: Google::Apis::DisplayvideoV1::GeoRegionSearchTerms::Representation
       
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
+          property :poi_search_terms, as: 'poiSearchTerms', class: Google::Apis::DisplayvideoV1::PoiSearchTerms, decorator: Google::Apis::DisplayvideoV1::PoiSearchTerms::Representation
+      
         end
       end
       
@@ -3849,6 +3977,8 @@ module Google
       
           property :browser_details, as: 'browserDetails', class: Google::Apis::DisplayvideoV1::BrowserTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::BrowserTargetingOptionDetails::Representation
       
+          property :business_chain_details, as: 'businessChainDetails', class: Google::Apis::DisplayvideoV1::BusinessChainTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::BusinessChainTargetingOptionDetails::Representation
+      
           property :carrier_and_isp_details, as: 'carrierAndIspDetails', class: Google::Apis::DisplayvideoV1::CarrierAndIspTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::CarrierAndIspTargetingOptionDetails::Representation
       
           property :category_details, as: 'categoryDetails', class: Google::Apis::DisplayvideoV1::CategoryTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::CategoryTargetingOptionDetails::Representation
@@ -3878,11 +4008,15 @@ module Google
           property :name, as: 'name'
           property :native_content_position_details, as: 'nativeContentPositionDetails', class: Google::Apis::DisplayvideoV1::NativeContentPositionTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::NativeContentPositionTargetingOptionDetails::Representation
       
+          property :omid_details, as: 'omidDetails', class: Google::Apis::DisplayvideoV1::OmidTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::OmidTargetingOptionDetails::Representation
+      
           property :on_screen_position_details, as: 'onScreenPositionDetails', class: Google::Apis::DisplayvideoV1::OnScreenPositionTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::OnScreenPositionTargetingOptionDetails::Representation
       
           property :operating_system_details, as: 'operatingSystemDetails', class: Google::Apis::DisplayvideoV1::OperatingSystemTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::OperatingSystemTargetingOptionDetails::Representation
       
           property :parental_status_details, as: 'parentalStatusDetails', class: Google::Apis::DisplayvideoV1::ParentalStatusTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::ParentalStatusTargetingOptionDetails::Representation
+      
+          property :poi_details, as: 'poiDetails', class: Google::Apis::DisplayvideoV1::PoiTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::PoiTargetingOptionDetails::Representation
       
           property :sensitive_category_details, as: 'sensitiveCategoryDetails', class: Google::Apis::DisplayvideoV1::SensitiveCategoryTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::SensitiveCategoryTargetingOptionDetails::Representation
       
