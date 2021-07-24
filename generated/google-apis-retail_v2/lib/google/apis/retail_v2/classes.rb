@@ -279,6 +279,129 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the AddFulfillmentPlaces operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # AddFulfillmentPlaces method.
+      class GoogleCloudRetailV2AddFulfillmentPlacesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for AddFulfillmentPlaces method.
+      class GoogleCloudRetailV2AddFulfillmentPlacesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The time when the fulfillment updates are issued, used to prevent out-of-order
+        # updates on fulfillment information. If not provided, the internal system time
+        # will be used.
+        # Corresponds to the JSON property `addTime`
+        # @return [String]
+        attr_accessor :add_time
+      
+        # If set to true, and the Product is not found, the fulfillment information will
+        # still be processed and retained for at most 1 day and processed once the
+        # Product is created. If set to false, an INVALID_ARGUMENT error is returned if
+        # the Product is not found.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Required. The IDs for this type, such as the store IDs for "pickup-in-store"
+        # or the region IDs for "same-day-delivery" to be added for this type. Duplicate
+        # IDs will be automatically ignored. At least 1 value is required, and a maximum
+        # of 2000 values are allowed. Each value must be a string with a length limit of
+        # 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "
+        # REGION-2". Otherwise, an INVALID_ARGUMENT error is returned. If the total
+        # number of place IDs exceeds 2000 for this type after adding, then the update
+        # will be rejected.
+        # Corresponds to the JSON property `placeIds`
+        # @return [Array<String>]
+        attr_accessor :place_ids
+      
+        # Required. The fulfillment type, including commonly used types (such as pickup
+        # in store and same day delivery), and custom types. Supported values: * "pickup-
+        # in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "
+        # custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-
+        # type-5" If this field is set to an invalid value other than these, an
+        # INVALID_ARGUMENT error is returned. This field directly corresponds to Product.
+        # fulfillment_info.type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_time = args[:add_time] if args.key?(:add_time)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @place_ids = args[:place_ids] if args.key?(:place_ids)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
+      # is no meaningful response populated from the AddFulfillmentPlaces method.
+      class GoogleCloudRetailV2AddFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # An intended audience of the Product for whom it's sold.
+      class GoogleCloudRetailV2Audience
+        include Google::Apis::Core::Hashable
+      
+        # The age groups of the audience. Strongly encouraged to use the standard values:
+        # "newborn" (up to 3 months old), "infant" (3–12 months old), "toddler" (1–5
+        # years old), "kids" (5–13 years old), "adult" (typically teens or older). At
+        # most 5 values are allowed. Each value must be a UTF-8 encoded string with a
+        # length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is
+        # returned. Google Merchant Center property [age_group](https://support.google.
+        # com/merchants/answer/6324463). Schema.org property [Product.audience.
+        # suggestedMinAge](https://schema.org/suggestedMinAge) and [Product.audience.
+        # suggestedMaxAge](https://schema.org/suggestedMaxAge).
+        # Corresponds to the JSON property `ageGroups`
+        # @return [Array<String>]
+        attr_accessor :age_groups
+      
+        # The genders of the audience. Strongly encouraged to use the standard values: "
+        # male", "female", "unisex". At most 5 values are allowed. Each value must be a
+        # UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+        # INVALID_ARGUMENT error is returned. Google Merchant Center property [gender](
+        # https://support.google.com/merchants/answer/6324479). Schema.org property [
+        # Product.audience.suggestedGender](https://schema.org/suggestedGender).
+        # Corresponds to the JSON property `genders`
+        # @return [Array<String>]
+        attr_accessor :genders
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @age_groups = args[:age_groups] if args.key?(:age_groups)
+          @genders = args[:genders] if args.key?(:genders)
+        end
+      end
+      
       # BigQuery source import data from.
       class GoogleCloudRetailV2BigQuerySource
         include Google::Apis::Core::Hashable
@@ -289,8 +412,7 @@ module Google
         # Importing catalog data from Merchant Center](https://cloud.google.com/retail/
         # recommendations-ai/docs/upload-catalog#mc). Supported values for user events
         # imports: * `user_event` (default): One JSON UserEvent per line. * `
-        # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719?
-        # hl=en.
+        # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -307,6 +429,18 @@ module Google
         # Corresponds to the JSON property `gcsStagingDir`
         # @return [String]
         attr_accessor :gcs_staging_dir
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `partitionDate`
+        # @return [Google::Apis::RetailV2::GoogleTypeDate]
+        attr_accessor :partition_date
       
         # The project ID (can be project # or ID) that the BigQuery source is in with a
         # length limit of 128 characters. If not specified, inherits the project ID from
@@ -330,6 +464,7 @@ module Google
           @data_schema = args[:data_schema] if args.key?(:data_schema)
           @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
           @gcs_staging_dir = args[:gcs_staging_dir] if args.key?(:gcs_staging_dir)
+          @partition_date = args[:partition_date] if args.key?(:partition_date)
           @project_id = args[:project_id] if args.key?(:project_id)
           @table_id = args[:table_id] if args.key?(:table_id)
         end
@@ -369,9 +504,196 @@ module Google
         end
       end
       
+      # The color information of a Product.
+      class GoogleCloudRetailV2ColorInfo
+        include Google::Apis::Core::Hashable
+      
+        # The standard color families. Strongly recommended to use the following
+        # standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "
+        # Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is
+        # expected to have only 1 color family. May consider using single "Mixed"
+        # instead of multiple values. A maximum of 5 values are allowed. Each value must
+        # be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+        # INVALID_ARGUMENT error is returned. Google Merchant Center property [color](
+        # https://support.google.com/merchants/answer/6324487). Schema.org property [
+        # Product.color](https://schema.org/color).
+        # Corresponds to the JSON property `colorFamilies`
+        # @return [Array<String>]
+        attr_accessor :color_families
+      
+        # The color display names, which may be different from standard color family
+        # names, such as the color aliases used in the website frontend. Normally it is
+        # expected to have only 1 color. May consider using single "Mixed" instead of
+        # multiple values. A maximum of 5 colors are allowed. Each value must be a UTF-8
+        # encoded string with a length limit of 128 characters. Otherwise, an
+        # INVALID_ARGUMENT error is returned. Google Merchant Center property [color](
+        # https://support.google.com/merchants/answer/6324487). Schema.org property [
+        # Product.color](https://schema.org/color).
+        # Corresponds to the JSON property `colors`
+        # @return [Array<String>]
+        attr_accessor :colors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @color_families = args[:color_families] if args.key?(:color_families)
+          @colors = args[:colors] if args.key?(:colors)
+        end
+      end
+      
+      # Response of the auto-complete query.
+      class GoogleCloudRetailV2CompleteQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # A unique complete token. This should be included in the SearchRequest
+        # resulting from this completion, which enables accurate attribution of complete
+        # model performance.
+        # Corresponds to the JSON property `attributionToken`
+        # @return [String]
+        attr_accessor :attribution_token
+      
+        # Results of the matching suggestions. The result list is ordered and the first
+        # result is top suggestion.
+        # Corresponds to the JSON property `completionResults`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2CompleteQueryResponseCompletionResult>]
+        attr_accessor :completion_results
+      
+        # Matched recent searches of this user. This field is a restricted feature.
+        # Contact Retail Support (retail-search-support@google.com) if you are
+        # interested in enabling it. This feature is only available when
+        # CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The
+        # recent searches satisfy the follow rules: * They are ordered from latest to
+        # oldest. * They are matched with CompleteQueryRequest.query case insensitively.
+        # * They are transformed to lower cases. * They are UTF-8 safe. Recent searches
+        # are deduplicated. More recent searches will be reserved when duplication
+        # happens.
+        # Corresponds to the JSON property `recentSearchResults`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult>]
+        attr_accessor :recent_search_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
+          @completion_results = args[:completion_results] if args.key?(:completion_results)
+          @recent_search_results = args[:recent_search_results] if args.key?(:recent_search_results)
+        end
+      end
+      
+      # Resource that represents completion results.
+      class GoogleCloudRetailV2CompleteQueryResponseCompletionResult
+        include Google::Apis::Core::Hashable
+      
+        # Additional custom attributes ingested through BigQuery.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute>]
+        attr_accessor :attributes
+      
+        # The suggestion for the query.
+        # Corresponds to the JSON property `suggestion`
+        # @return [String]
+        attr_accessor :suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @suggestion = args[:suggestion] if args.key?(:suggestion)
+        end
+      end
+      
+      # Recent search of this user.
+      class GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # The recent search query.
+        # Corresponds to the JSON property `recentSearch`
+        # @return [String]
+        attr_accessor :recent_search
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recent_search = args[:recent_search] if args.key?(:recent_search)
+        end
+      end
+      
+      # The input config source for completion data.
+      class GoogleCloudRetailV2CompletionDataInputConfig
+        include Google::Apis::Core::Hashable
+      
+        # BigQuery source import data from.
+        # Corresponds to the JSON property `bigQuerySource`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2BigQuerySource]
+        attr_accessor :big_query_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_query_source = args[:big_query_source] if args.key?(:big_query_source)
+        end
+      end
+      
+      # Detailed completion information including completion attribution token and
+      # clicked completion info.
+      class GoogleCloudRetailV2CompletionDetail
+        include Google::Apis::Core::Hashable
+      
+        # Completion attribution token in CompleteQueryResponse.attribution_token.
+        # Corresponds to the JSON property `completionAttributionToken`
+        # @return [String]
+        attr_accessor :completion_attribution_token
+      
+        # End user selected CompleteQueryResponse.CompletionResult.suggestion position,
+        # starting from 0.
+        # Corresponds to the JSON property `selectedPosition`
+        # @return [Fixnum]
+        attr_accessor :selected_position
+      
+        # End user selected CompleteQueryResponse.CompletionResult.suggestion.
+        # Corresponds to the JSON property `selectedSuggestion`
+        # @return [String]
+        attr_accessor :selected_suggestion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_attribution_token = args[:completion_attribution_token] if args.key?(:completion_attribution_token)
+          @selected_position = args[:selected_position] if args.key?(:selected_position)
+          @selected_suggestion = args[:selected_suggestion] if args.key?(:selected_suggestion)
+        end
+      end
+      
       # A custom attribute that is not explicitly modeled in Product.
       class GoogleCloudRetailV2CustomAttribute
         include Google::Apis::Core::Hashable
+      
+        # If true, custom attribute values are indexed, so that it can be filtered,
+        # faceted or boosted in SearchService.Search. This field is ignored in a
+        # UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and
+        # SearchRequest.boost_spec for more details.
+        # Corresponds to the JSON property `indexable`
+        # @return [Boolean]
+        attr_accessor :indexable
+        alias_method :indexable?, :indexable
       
         # The numerical values of this custom attribute. For example, `[2.3, 15.4]` when
         # the key is "lengths_cm". At most 400 values are allowed.Otherwise, an
@@ -380,6 +702,14 @@ module Google
         # Corresponds to the JSON property `numbers`
         # @return [Array<Float>]
         attr_accessor :numbers
+      
+        # If true, custom attribute values are searchable by text queries in
+        # SearchService.Search. This field is ignored in a UserEvent. Only set if type
+        # text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `searchable`
+        # @return [Boolean]
+        attr_accessor :searchable
+        alias_method :searchable?, :searchable
       
         # The textual values of this custom attribute. For example, `["yellow", "green"]`
         # when the key is "color". At most 400 values are allowed. Empty values are not
@@ -397,8 +727,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @indexable = args[:indexable] if args.key?(:indexable)
           @numbers = args[:numbers] if args.key?(:numbers)
+          @searchable = args[:searchable] if args.key?(:searchable)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Fulfillment information, such as the store IDs for in-store pickup or region
+      # IDs for different shipping methods.
+      class GoogleCloudRetailV2FulfillmentInfo
+        include Google::Apis::Core::Hashable
+      
+        # The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-
+        # in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A
+        # maximum of 2000 values are allowed. Each value must be a string with a length
+        # limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1"
+        # or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `placeIds`
+        # @return [Array<String>]
+        attr_accessor :place_ids
+      
+        # The fulfillment type, including commonly used types (such as pickup in store
+        # and same day delivery), and custom types. Customers have to map custom types
+        # to their display names before rendering UI. Supported values: * "pickup-in-
+        # store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-
+        # type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5"
+        # If this field is set to an invalid value other than these, an
+        # INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @place_ids = args[:place_ids] if args.key?(:place_ids)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -412,8 +780,7 @@ module Google
         # Importing catalog data from Merchant Center](https://cloud.google.com/retail/
         # recommendations-ai/docs/upload-catalog#mc). Supported values for user events
         # imports: * `user_event` (default): One JSON UserEvent per line. * `
-        # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719?
-        # hl=en.
+        # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -437,6 +804,38 @@ module Google
         def update!(**args)
           @data_schema = args[:data_schema] if args.key?(:data_schema)
           @input_uris = args[:input_uris] if args.key?(:input_uris)
+        end
+      end
+      
+      # Response message of CatalogService.GetDefaultBranch.
+      class GoogleCloudRetailV2GetDefaultBranchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Full resource name of the branch id currently set as default branch.
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # This corresponds to SetDefaultBranchRequest.note field, when this branch was
+        # set as default.
+        # Corresponds to the JSON property `note`
+        # @return [String]
+        attr_accessor :note
+      
+        # The time when this branch is set to default.
+        # Corresponds to the JSON property `setTime`
+        # @return [String]
+        attr_accessor :set_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch = args[:branch] if args.key?(:branch)
+          @note = args[:note] if args.key?(:note)
+          @set_time = args[:set_time] if args.key?(:set_time)
         end
       end
       
@@ -477,6 +876,55 @@ module Google
         end
       end
       
+      # Request message for ImportCompletionData methods.
+      class GoogleCloudRetailV2ImportCompletionDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # The input config source for completion data.
+        # Corresponds to the JSON property `inputConfig`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionDataInputConfig]
+        attr_accessor :input_config
+      
+        # Pub/Sub topic for receiving notification. If this field is set, when the
+        # import is finished, a notification will be sent to specified Pub/Sub topic.
+        # The message data will be JSON string of a Operation. Format of the Pub/Sub
+        # topic is `projects/`project`/topics/`topic``.
+        # Corresponds to the JSON property `notificationPubsubTopic`
+        # @return [String]
+        attr_accessor :notification_pubsub_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_config = args[:input_config] if args.key?(:input_config)
+          @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
+        end
+      end
+      
+      # Response of the ImportCompletionDataRequest. If the long running operation is
+      # done, this message is returned by the google.longrunning.Operations.response
+      # field if the operation is successful.
+      class GoogleCloudRetailV2ImportCompletionDataResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::RetailV2::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+        end
+      end
+      
       # Configuration of destination for Import related errors.
       class GoogleCloudRetailV2ImportErrorsConfig
         include Google::Apis::Core::Hashable
@@ -513,6 +961,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :failure_count
       
+        # Pub/Sub topic for receiving notification. If this field is set, when the
+        # import is finished, a notification will be sent to specified Pub/Sub topic.
+        # The message data will be JSON string of a Operation. Format of the Pub/Sub
+        # topic is `projects/`project`/topics/`topic``.
+        # Corresponds to the JSON property `notificationPubsubTopic`
+        # @return [String]
+        attr_accessor :notification_pubsub_topic
+      
+        # Id of the request / operation. This is parroting back the requestId that was
+        # passed in the request.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         # Count of entries that were processed successfully.
         # Corresponds to the JSON property `successCount`
         # @return [Fixnum]
@@ -532,6 +994,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
+          @request_id = args[:request_id] if args.key?(:request_id)
           @success_count = args[:success_count] if args.key?(:success_count)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -551,6 +1015,30 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2ProductInputConfig]
         attr_accessor :input_config
       
+        # Pub/Sub topic for receiving notification. If this field is set, when the
+        # import is finished, a notification will be sent to specified Pub/Sub topic.
+        # The message data will be JSON string of a Operation. Format of the Pub/Sub
+        # topic is `projects/`project`/topics/`topic``. Only supported when
+        # ImportProductsRequest.reconciliation_mode is set to `FULL`.
+        # Corresponds to the JSON property `notificationPubsubTopic`
+        # @return [String]
+        attr_accessor :notification_pubsub_topic
+      
+        # The mode of reconciliation between existing products and the products to be
+        # imported. Defaults to ReconciliationMode.INCREMENTAL.
+        # Corresponds to the JSON property `reconciliationMode`
+        # @return [String]
+        attr_accessor :reconciliation_mode
+      
+        # Unique identifier provided by client, within the ancestor dataset scope.
+        # Ensures idempotency and used for request deduplication. Server-generated if
+        # unspecified. Up to 128 characters long and must match the pattern: "[a-zA-Z0-
+        # 9_]+". This is returned as Operation.name in ImportMetadata. Only supported
+        # when ImportProductsRequest.reconciliation_mode is set to `FULL`.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         # Indicates which fields in the provided imported 'products' to update. If not
         # set, will by default update all fields.
         # Corresponds to the JSON property `updateMask`
@@ -565,6 +1053,9 @@ module Google
         def update!(**args)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
           @input_config = args[:input_config] if args.key?(:input_config)
+          @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
+          @reconciliation_mode = args[:reconciliation_mode] if args.key?(:reconciliation_mode)
+          @request_id = args[:request_id] if args.key?(:request_id)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
@@ -655,6 +1146,43 @@ module Google
         end
       end
       
+      # A floating point interval.
+      class GoogleCloudRetailV2Interval
+        include Google::Apis::Core::Hashable
+      
+        # Exclusive upper bound.
+        # Corresponds to the JSON property `exclusiveMaximum`
+        # @return [Float]
+        attr_accessor :exclusive_maximum
+      
+        # Exclusive lower bound.
+        # Corresponds to the JSON property `exclusiveMinimum`
+        # @return [Float]
+        attr_accessor :exclusive_minimum
+      
+        # Inclusive upper bound.
+        # Corresponds to the JSON property `maximum`
+        # @return [Float]
+        attr_accessor :maximum
+      
+        # Inclusive lower bound.
+        # Corresponds to the JSON property `minimum`
+        # @return [Float]
+        attr_accessor :minimum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclusive_maximum = args[:exclusive_maximum] if args.key?(:exclusive_maximum)
+          @exclusive_minimum = args[:exclusive_minimum] if args.key?(:exclusive_minimum)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @minimum = args[:minimum] if args.key?(:minimum)
+        end
+      end
+      
       # Response for CatalogService.ListCatalogs method.
       class GoogleCloudRetailV2ListCatalogsResponse
         include Google::Apis::Core::Hashable
@@ -678,6 +1206,32 @@ module Google
         def update!(**args)
           @catalogs = args[:catalogs] if args.key?(:catalogs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ProductService.ListProducts method.
+      class GoogleCloudRetailV2ListProductsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as ListProductsRequest.page_token to retrieve the
+        # next page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The Products.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2Product>]
+        attr_accessor :products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @products = args[:products] if args.key?(:products)
         end
       end
       
@@ -866,7 +1420,9 @@ module Google
       
         # The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-
         # currency-codes.html). If this field is an unrecognizable currency code, an
-        # INVALID_ARGUMENT error is returned.
+        # INVALID_ARGUMENT error is returned. The Product.Type.VARIANT Products with the
+        # same Product.primary_product_id must share the same currency_code. Otherwise,
+        # a FAILED_PRECONDITION error is returned.
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
@@ -884,6 +1440,29 @@ module Google
         # @return [Float]
         attr_accessor :price
       
+        # The timestamp when the price starts to be effective. This can be set as a
+        # future timestamp, and the price is only used for search after
+        # price_effective_time. If so, the original_price must be set and original_price
+        # is used before price_effective_time. Do not set if price is always effective
+        # because it will cause additional latency during search.
+        # Corresponds to the JSON property `priceEffectiveTime`
+        # @return [String]
+        attr_accessor :price_effective_time
+      
+        # The timestamp when the price stops to be effective. The price is used for
+        # search before price_expire_time. If this field is set, the original_price must
+        # be set and original_price is used after price_expire_time. Do not set if price
+        # is always effective because it will cause additional latency during search.
+        # Corresponds to the JSON property `priceExpireTime`
+        # @return [String]
+        attr_accessor :price_expire_time
+      
+        # The price range of all variant Product having the same Product.
+        # primary_product_id.
+        # Corresponds to the JSON property `priceRange`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2PriceInfoPriceRange]
+        attr_accessor :price_range
+      
         def initialize(**args)
            update!(**args)
         end
@@ -892,6 +1471,35 @@ module Google
         def update!(**args)
           @cost = args[:cost] if args.key?(:cost)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @original_price = args[:original_price] if args.key?(:original_price)
+          @price = args[:price] if args.key?(:price)
+          @price_effective_time = args[:price_effective_time] if args.key?(:price_effective_time)
+          @price_expire_time = args[:price_expire_time] if args.key?(:price_expire_time)
+          @price_range = args[:price_range] if args.key?(:price_range)
+        end
+      end
+      
+      # The price range of all variant Product having the same Product.
+      # primary_product_id.
+      class GoogleCloudRetailV2PriceInfoPriceRange
+        include Google::Apis::Core::Hashable
+      
+        # A floating point interval.
+        # Corresponds to the JSON property `originalPrice`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2Interval]
+        attr_accessor :original_price
+      
+        # A floating point interval.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2Interval]
+        attr_accessor :price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @original_price = args[:original_price] if args.key?(:original_price)
           @price = args[:price] if args.key?(:price)
         end
@@ -914,10 +1522,18 @@ module Google
         # :[8.1, 6.4]` ``. This field needs to pass all below criteria, otherwise an
         # INVALID_ARGUMENT error is returned: * Max entries count: 200 by default; 100
         # for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit
-        # of 128 characters.
+        # of 128 characters. * Max indexable entries count: 200 by default; 40 for Type.
+        # VARIANT. * Max searchable entries count: 30. * For indexable attribute, the
+        # key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or
+        # KEY_1_LIKE_THIS.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute>]
         attr_accessor :attributes
+      
+        # An intended audience of the Product for whom it's sold.
+        # Corresponds to the JSON property `audience`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2Audience]
+        attr_accessor :audience
       
         # The online availability of the Product. Default to Availability.IN_STOCK.
         # Google Merchant Center Property [availability](https://support.google.com/
@@ -932,10 +1548,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :available_quantity
       
-        # The timestamp when this Product becomes available for recommendation.
+        # The timestamp when this Product becomes available for SearchService.Search.
         # Corresponds to the JSON property `availableTime`
         # @return [String]
         attr_accessor :available_time
+      
+        # The brands of the product. A maximum of 30 brands are allowed. Each brand must
+        # be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise,
+        # an INVALID_ARGUMENT error is returned. Google Merchant Center property [brand](
+        # https://support.google.com/merchants/answer/6324351). Schema.org property [
+        # Product.brand](https://schema.org/brand).
+        # Corresponds to the JSON property `brands`
+        # @return [Array<String>]
+        attr_accessor :brands
       
         # Product categories. This field is repeated for supporting one product
         # belonging to several parallel categories. Strongly recommended using the full
@@ -957,6 +1582,29 @@ module Google
         # @return [Array<String>]
         attr_accessor :categories
       
+        # The id of the collection members when type is Type.COLLECTION. Should not set
+        # it for other types. A maximum of 1000 values are allowed. Otherwise, an
+        # INVALID_ARGUMENT error is return.
+        # Corresponds to the JSON property `collectionMemberIds`
+        # @return [Array<String>]
+        attr_accessor :collection_member_ids
+      
+        # The color information of a Product.
+        # Corresponds to the JSON property `colorInfo`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2ColorInfo]
+        attr_accessor :color_info
+      
+        # The condition of the product. Strongly encouraged to use the standard values: "
+        # new", "refurbished", "used". A maximum of 5 values are allowed per Product.
+        # Each value must be a UTF-8 encoded string with a length limit of 128
+        # characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant
+        # Center property [condition](https://support.google.com/merchants/answer/
+        # 6324469). Schema.org property [Offer.itemCondition](https://schema.org/
+        # itemCondition).
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<String>]
+        attr_accessor :conditions
+      
         # Product description. This field must be a UTF-8 encoded string with a length
         # limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         # Google Merchant Center property [description](https://support.google.com/
@@ -965,6 +1613,34 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # The timestamp when this product becomes unavailable for SearchService.Search.
+        # If it is set, the Product is not available for SearchService.Search after
+        # expire_time. However, the product can still be retrieved by ProductService.
+        # GetProduct and ProductService.ListProducts. Google Merchant Center property [
+        # expiration_date](https://support.google.com/merchants/answer/6324499).
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Fulfillment information, such as the store IDs for in-store pickup or region
+        # IDs for different shipping methods. All the elements must have distinct
+        # FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `fulfillmentInfo`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2FulfillmentInfo>]
+        attr_accessor :fulfillment_info
+      
+        # The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8
+        # encoded string with a length limit of 128 characters. Otherwise, an
+        # INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](
+        # https://support.google.com/merchants/answer/6324461). Schema.org property [
+        # Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/
+        # gtin8) or [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](
+        # https://schema.org/gtin13) or [Product.gtin14](https://schema.org/gtin14). If
+        # the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
       
         # Immutable. Product identifier, which is the final component of name. For
         # example, this field is "id_1", if name is `projects/*/locations/global/
@@ -985,12 +1661,42 @@ module Google
         # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2Image>]
         attr_accessor :images
       
+        # Language of the title/description and other string attributes. Use language
+        # tags defined by BCP 47. For product prediction, this field is ignored and the
+        # model automatically detects the text language. The Product can include text in
+        # different languages, but duplicating Products to provide text in multiple
+        # languages can result in degraded model performance. For product search this
+        # field is in use. It defaults to "en-US" if unset.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The material of the product. For example, "leather", "wooden". A maximum of 5
+        # values are allowed. Each value must be a UTF-8 encoded string with a length
+        # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Google Merchant Center property [material](https://support.google.com/
+        # merchants/answer/6324410). Schema.org property [Product.material](https://
+        # schema.org/material).
+        # Corresponds to the JSON property `materials`
+        # @return [Array<String>]
+        attr_accessor :materials
+      
         # Immutable. Full resource name of the product, such as `projects/*/locations/
         # global/catalogs/default_catalog/branches/default_branch/products/product_id`.
         # The branch ID must be "default_branch".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The pattern or graphic print of the product. For example, "striped", "polka
+        # dot", "paisley". A maximum of 5 values are allowed per Product. Each value
+        # must be a UTF-8 encoded string with a length limit of 128 characters.
+        # Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center
+        # property [pattern](https://support.google.com/merchants/answer/6324483).
+        # Schema.org property [Product.pattern](https://schema.org/pattern).
+        # Corresponds to the JSON property `patterns`
+        # @return [Array<String>]
+        attr_accessor :patterns
       
         # The price information of a Product.
         # Corresponds to the JSON property `priceInfo`
@@ -1009,6 +1715,57 @@ module Google
         # Corresponds to the JSON property `primaryProductId`
         # @return [String]
         attr_accessor :primary_product_id
+      
+        # The promotions applied to the product. A maximum of 10 values are allowed per
+        # Product.
+        # Corresponds to the JSON property `promotions`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2Promotion>]
+        attr_accessor :promotions
+      
+        # The timestamp when the product is published by the retailer for the first time,
+        # which indicates the freshness of the products. Note that this field is
+        # different from available_time, given it purely describes product freshness
+        # regardless of when it is available on search and recommendation.
+        # Corresponds to the JSON property `publishTime`
+        # @return [String]
+        attr_accessor :publish_time
+      
+        # The rating of a Product.
+        # Corresponds to the JSON property `rating`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2Rating]
+        attr_accessor :rating
+      
+        # Indicates which fields in the Products are returned in SearchResponse.
+        # Supported fields for all types: * audience * availability * brands *
+        # color_info * conditions * gtin * materials * name * patterns * price_info *
+        # rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.
+        # COLLECTION: * categories * description * images Supported fields only for Type.
+        # VARIANT: * Only the first image in images To mark attributes as retrievable,
+        # include paths of the form "attributes.key" where "key" is the key of a custom
+        # attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION,
+        # the following fields are always returned in SearchResponse by default: * name
+        # For Type.VARIANT, the following fields are always returned in by default: *
+        # name * color_info Maximum number of paths is 20. Otherwise, an
+        # INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `retrievableFields`
+        # @return [String]
+        attr_accessor :retrievable_fields
+      
+        # The size of the product. To represent different size systems or size types,
+        # consider using this format: [[[size_system:]size_type:]size_value]. For
+        # example, in "US:MENS:M", "US" represents size system; "MENS" represents size
+        # type; "M" represents size value. In "GIRLS:27", size system is empty; "GIRLS"
+        # represents size type; "27" represents size value. In "32 inches", both size
+        # system and size type are empty, while size value is "32 inches". A maximum of
+        # 20 values are allowed per Product. Each value must be a UTF-8 encoded string
+        # with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is
+        # returned. Google Merchant Center property [size](https://support.google.com/
+        # merchants/answer/6324492), [size_type](https://support.google.com/merchants/
+        # answer/6324497) and [size_system](https://support.google.com/merchants/answer/
+        # 6324502). Schema.org property [Product.size](https://schema.org/size).
+        # Corresponds to the JSON property `sizes`
+        # @return [Array<String>]
+        attr_accessor :sizes
       
         # Custom tags associated with the product. At most 250 values are allowed per
         # Product. This value must be a UTF-8 encoded string with a length limit of 1,
@@ -1029,6 +1786,16 @@ module Google
         # @return [String]
         attr_accessor :title
       
+        # Input only. The TTL (time to live) of the product. If it is set, expire_time
+        # is set as current timestamp plus ttl. The derived expire_time is returned in
+        # the output and ttl is left blank when retrieving the Product. If it is set,
+        # the product is not available for SearchService.Search after current timestamp
+        # plus ttl. However, the product can still be retrieved by ProductService.
+        # GetProduct and ProductService.ListProducts.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
         # Immutable. The type of the product. Default to Catalog.product_level_config.
         # ingestion_product_type if unset.
         # Corresponds to the JSON property `type`
@@ -1046,6 +1813,15 @@ module Google
         # @return [String]
         attr_accessor :uri
       
+        # Output only. Product variants grouped together on primary product which share
+        # similar product attributes. It's automatically grouped by primary_product_id
+        # for all the product variants. Only populated for Type.PRIMARY Products. Note:
+        # This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field
+        # in API requests.
+        # Corresponds to the JSON property `variants`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2Product>]
+        attr_accessor :variants
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1053,20 +1829,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @audience = args[:audience] if args.key?(:audience)
           @availability = args[:availability] if args.key?(:availability)
           @available_quantity = args[:available_quantity] if args.key?(:available_quantity)
           @available_time = args[:available_time] if args.key?(:available_time)
+          @brands = args[:brands] if args.key?(:brands)
           @categories = args[:categories] if args.key?(:categories)
+          @collection_member_ids = args[:collection_member_ids] if args.key?(:collection_member_ids)
+          @color_info = args[:color_info] if args.key?(:color_info)
+          @conditions = args[:conditions] if args.key?(:conditions)
           @description = args[:description] if args.key?(:description)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @fulfillment_info = args[:fulfillment_info] if args.key?(:fulfillment_info)
+          @gtin = args[:gtin] if args.key?(:gtin)
           @id = args[:id] if args.key?(:id)
           @images = args[:images] if args.key?(:images)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @materials = args[:materials] if args.key?(:materials)
           @name = args[:name] if args.key?(:name)
+          @patterns = args[:patterns] if args.key?(:patterns)
           @price_info = args[:price_info] if args.key?(:price_info)
           @primary_product_id = args[:primary_product_id] if args.key?(:primary_product_id)
+          @promotions = args[:promotions] if args.key?(:promotions)
+          @publish_time = args[:publish_time] if args.key?(:publish_time)
+          @rating = args[:rating] if args.key?(:rating)
+          @retrievable_fields = args[:retrievable_fields] if args.key?(:retrievable_fields)
+          @sizes = args[:sizes] if args.key?(:sizes)
           @tags = args[:tags] if args.key?(:tags)
           @title = args[:title] if args.key?(:title)
+          @ttl = args[:ttl] if args.key?(:ttl)
           @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
+          @variants = args[:variants] if args.key?(:variants)
         end
       end
       
@@ -1194,6 +1988,29 @@ module Google
         end
       end
       
+      # Promotion information.
+      class GoogleCloudRetailV2Promotion
+        include Google::Apis::Core::Hashable
+      
+        # ID of the promotion. For example, "free gift". The value value must be a UTF-8
+        # encoded string with a length limit of 128 characters, and match the pattern: a-
+        # zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an
+        # INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion]
+        # (https://support.google.com/merchants/answer/7050148).
+        # Corresponds to the JSON property `promotionId`
+        # @return [String]
+        attr_accessor :promotion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @promotion_id = args[:promotion_id] if args.key?(:promotion_id)
+        end
+      end
+      
       # A transaction represents the entire purchase transaction.
       class GoogleCloudRetailV2PurchaseTransaction
         include Google::Apis::Core::Hashable
@@ -1314,6 +2131,44 @@ module Google
         end
       end
       
+      # The rating of a Product.
+      class GoogleCloudRetailV2Rating
+        include Google::Apis::Core::Hashable
+      
+        # The average rating of the Product. The rating is scaled at 1-5. Otherwise, an
+        # INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `averageRating`
+        # @return [Float]
+        attr_accessor :average_rating
+      
+        # The total number of ratings. This value is independent of the value of
+        # rating_histogram. This value must be nonnegative. Otherwise, an
+        # INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `ratingCount`
+        # @return [Fixnum]
+        attr_accessor :rating_count
+      
+        # List of rating counts per rating value (index = rating - 1). The list is empty
+        # if there is no rating. If the list is non-empty, its size is always 5.
+        # Otherwise, an INVALID_ARGUMENT error is returned. For example, [41, 14, 13, 47,
+        # 303]. It means that the Product got 41 ratings with 1 star, 14 ratings with 2
+        # star, and so on.
+        # Corresponds to the JSON property `ratingHistogram`
+        # @return [Array<Fixnum>]
+        attr_accessor :rating_histogram
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_rating = args[:average_rating] if args.key?(:average_rating)
+          @rating_count = args[:rating_count] if args.key?(:rating_count)
+          @rating_histogram = args[:rating_histogram] if args.key?(:rating_histogram)
+        end
+      end
+      
       # Metadata for RejoinUserEvents method.
       class GoogleCloudRetailV2RejoinUserEventsMetadata
         include Google::Apis::Core::Hashable
@@ -1368,6 +2223,853 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the RemoveFulfillmentPlaces operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # RemoveFulfillmentPlaces method.
+      class GoogleCloudRetailV2RemoveFulfillmentPlacesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for RemoveFulfillmentPlaces method.
+      class GoogleCloudRetailV2RemoveFulfillmentPlacesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, and the Product is not found, the fulfillment information will
+        # still be processed and retained for at most 1 day and processed once the
+        # Product is created. If set to false, an INVALID_ARGUMENT error is returned if
+        # the Product is not found.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Required. The IDs for this type, such as the store IDs for "pickup-in-store"
+        # or the region IDs for "same-day-delivery", to be removed for this type. At
+        # least 1 value is required, and a maximum of 2000 values are allowed. Each
+        # value must be a string with a length limit of 10 characters, matching the
+        # pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an
+        # INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `placeIds`
+        # @return [Array<String>]
+        attr_accessor :place_ids
+      
+        # The time when the fulfillment updates are issued, used to prevent out-of-order
+        # updates on fulfillment information. If not provided, the internal system time
+        # will be used.
+        # Corresponds to the JSON property `removeTime`
+        # @return [String]
+        attr_accessor :remove_time
+      
+        # Required. The fulfillment type, including commonly used types (such as pickup
+        # in store and same day delivery), and custom types. Supported values: * "pickup-
+        # in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "
+        # custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-
+        # type-5" If this field is set to an invalid value other than these, an
+        # INVALID_ARGUMENT error is returned. This field directly corresponds to Product.
+        # fulfillment_info.type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @place_ids = args[:place_ids] if args.key?(:place_ids)
+          @remove_time = args[:remove_time] if args.key?(:remove_time)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
+      # is no meaningful response populated from the RemoveFulfillmentPlaces method.
+      class GoogleCloudRetailV2RemoveFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for SearchService.Search method.
+      class GoogleCloudRetailV2SearchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Boost specification to boost certain items.
+        # Corresponds to the JSON property `boostSpec`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpec]
+        attr_accessor :boost_spec
+      
+        # The branch resource name, such as `projects/*/locations/global/catalogs/
+        # default_catalog/branches/0`. Use "default_branch" as the branch ID or leave
+        # this field empty, to search products under the default branch.
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # The filter applied to every search request when quality improvement such as
+        # query expansion is needed. For example, if a query does not have enough
+        # results, an expanded query with SearchRequest.canonical_filter will be
+        # returned as a supplement of the original query. This field is strongly
+        # recommended to achieve high search quality. See SearchRequest.filter for more
+        # details about filter syntax.
+        # Corresponds to the JSON property `canonicalFilter`
+        # @return [String]
+        attr_accessor :canonical_filter
+      
+        # The specifications of dynamically generated facets.
+        # Corresponds to the JSON property `dynamicFacetSpec`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestDynamicFacetSpec]
+        attr_accessor :dynamic_facet_spec
+      
+        # Facet specifications for faceted search. If empty, no facets are returned. A
+        # maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is
+        # returned.
+        # Corresponds to the JSON property `facetSpecs`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestFacetSpec>]
+        attr_accessor :facet_specs
+      
+        # The filter syntax consists of an expression language for constructing a
+        # predicate from one or more fields of the products being filtered. Filter
+        # expression is case-sensitive. See more details at this [user guide](/retail/
+        # private/docs/filter-and-order#filter). If this field is unrecognizable, an
+        # INVALID_ARGUMENT is returned.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # A 0-indexed integer that specifies the current offset (that is, starting
+        # result location, amongst the Products deemed by the API as relevant) in search
+        # results. This field is only considered if page_token is unset. If this field
+        # is negative, an INVALID_ARGUMENT is returned.
+        # Corresponds to the JSON property `offset`
+        # @return [Fixnum]
+        attr_accessor :offset
+      
+        # The order in which products are returned. Products can be ordered by a field
+        # in an Product object. Leave it unset if ordered by relevance. OrderBy
+        # expression is case-sensitive. See more details at this [user guide](/retail/
+        # private/docs/filter-and-order#order). If this field is unrecognizable, an
+        # INVALID_ARGUMENT is returned.
+        # Corresponds to the JSON property `orderBy`
+        # @return [String]
+        attr_accessor :order_by
+      
+        # The categories associated with a category page. Required for category
+        # navigation queries to achieve good search quality. The format should be the
+        # same as UserEvent.page_categories; To represent full path of category, use '>'
+        # sign to separate different hierarchies. If '>' is part of the category name,
+        # please replace it with other character(s). Category pages include special
+        # pages such as sales or promotions. For instance, a special sale page may have
+        # the category hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"].
+        # Corresponds to the JSON property `pageCategories`
+        # @return [Array<String>]
+        attr_accessor :page_categories
+      
+        # Maximum number of Products to return. If unspecified, defaults to a reasonable
+        # value. The maximum allowed value is 120. Values above 120 will be coerced to
+        # 120. If this field is negative, an INVALID_ARGUMENT is returned.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # A page token SearchResponse.next_page_token, received from a previous
+        # SearchService.Search call. Provide this to retrieve the subsequent page. When
+        # paginating, all other parameters provided to SearchService.Search must match
+        # the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is
+        # returned.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Raw search query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Specification to determine under which conditions query expansion should occur.
+        # Corresponds to the JSON property `queryExpansionSpec`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestQueryExpansionSpec]
+        attr_accessor :query_expansion_spec
+      
+        # Information of an end user.
+        # Corresponds to the JSON property `userInfo`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2UserInfo]
+        attr_accessor :user_info
+      
+        # The keys to fetch and rollup the matching variant Products attributes. The
+        # attributes from all the matching variant Products are merged and de-duplicated.
+        # Notice that rollup variant Products attributes will lead to extra query
+        # latency. Maximum number of keys is 10. For Product.fulfillment_info, a
+        # fulfillment type and a fulfillment ID must be provided in the format of "
+        # fulfillmentType.filfillmentId". E.g., in "pickupInStore.store123", "
+        # pickupInStore" is fulfillment type and "store123" is the store ID. Supported
+        # keys are: * colorFamilies * price * originalPrice * discount * attributes.key,
+        # where key is any key in the Product.attributes map. * pickupInStore.id, where
+        # id is any FulfillmentInfo.ids for type FulfillmentInfo.Type.PICKUP_IN_STORE. *
+        # shipToStore.id, where id is any FulfillmentInfo.ids for type FulfillmentInfo.
+        # Type.SHIP_TO_STORE. * sameDayDelivery.id, where id is any FulfillmentInfo.ids
+        # for type FulfillmentInfo.Type.SAME_DAY_DELIVERY. * nextDayDelivery.id, where
+        # id is any FulfillmentInfo.ids for type FulfillmentInfo.Type.NEXT_DAY_DELIVERY.
+        # * customFulfillment1.id, where id is any FulfillmentInfo.ids for type
+        # FulfillmentInfo.Type.CUSTOM_TYPE_1. * customFulfillment2.id, where id is any
+        # FulfillmentInfo.ids for type FulfillmentInfo.Type.CUSTOM_TYPE_2. *
+        # customFulfillment3.id, where id is any FulfillmentInfo.ids for type
+        # FulfillmentInfo.Type.CUSTOM_TYPE_3. * customFulfillment4.id, where id is any
+        # FulfillmentInfo.ids for type FulfillmentInfo.Type.CUSTOM_TYPE_4. *
+        # customFulfillment5.id, where id is any FulfillmentInfo.ids for type
+        # FulfillmentInfo.Type.CUSTOM_TYPE_5. If this field is set to an invalid value
+        # other than these, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `variantRollupKeys`
+        # @return [Array<String>]
+        attr_accessor :variant_rollup_keys
+      
+        # Required. A unique identifier for tracking visitors. For example, this could
+        # be implemented with an HTTP cookie, which should be able to uniquely identify
+        # a visitor on a single device. This unique identifier should not change if the
+        # visitor logs in or out of the website. The field must be a UTF-8 encoded
+        # string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost_spec = args[:boost_spec] if args.key?(:boost_spec)
+          @branch = args[:branch] if args.key?(:branch)
+          @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
+          @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
+          @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
+          @filter = args[:filter] if args.key?(:filter)
+          @offset = args[:offset] if args.key?(:offset)
+          @order_by = args[:order_by] if args.key?(:order_by)
+          @page_categories = args[:page_categories] if args.key?(:page_categories)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @query = args[:query] if args.key?(:query)
+          @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
+          @user_info = args[:user_info] if args.key?(:user_info)
+          @variant_rollup_keys = args[:variant_rollup_keys] if args.key?(:variant_rollup_keys)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
+        end
+      end
+      
+      # Boost specification to boost certain items.
+      class GoogleCloudRetailV2SearchRequestBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Condition boost specifications. If a product matches multiple conditions in
+        # the specifictions, boost scores from these specifications are all applied and
+        # combined in a non-linear way. Maximum number of specifications is 10.
+        # Corresponds to the JSON property `conditionBoostSpecs`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec>]
+        attr_accessor :condition_boost_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition_boost_specs = args[:condition_boost_specs] if args.key?(:condition_boost_specs)
+        end
+      end
+      
+      # Boost applies to products which match a condition.
+      class GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec
+        include Google::Apis::Core::Hashable
+      
+        # Strength of the condition boost, which should be in [-1, 1]. Negative boost
+        # means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion.
+        # However, it does not necessarily mean that the boosted item will be the top
+        # result at all times, nor that other items will be excluded. Results could
+        # still be shown even when none of them matches the condition. And results that
+        # are significantly more relevant to the search query can still trump your
+        # heavily favored but irrelevant items. Setting to -1.0 gives the item a big
+        # demotion. However, results that are deeply relevant might still be shown. The
+        # item will have an upstream battle to get a fairly high ranking, but it is not
+        # blocked out completely. Setting to 0.0 means no boost applied. The boosting
+        # condition is ignored.
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # An expression which specifies a boost condition. The syntax and supported
+        # fields are the same as a filter expression. See SearchRequest.filter for
+        # detail syntax and limitations. Examples: * To boost products with product ID "
+        # product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "
+        # product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # The specifications of dynamically generated facets.
+      class GoogleCloudRetailV2SearchRequestDynamicFacetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+        end
+      end
+      
+      # A facet specification to perform faceted search.
+      class GoogleCloudRetailV2SearchRequestFacetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Enables dynamic position for this facet. If set to true, the position of this
+        # facet among all facets in the response is determined by Google Retail Search.
+        # It will be ordered together with dynamic facets if dynamic facets is enabled.
+        # If set to false, the position of this facet in the response will be the same
+        # as in the request, and it will be ranked before the facets with dynamic
+        # position enable and all dynamic facets. For example, you may always want to
+        # have rating facet returned in the response, but it's not necessarily to always
+        # display the rating facet at the top. In that case, you can set
+        # enable_dynamic_position to true so that the position of rating facet in
+        # response will be determined by Google Retail Search. Another example, assuming
+        # you have the following facets in the request: * "rating",
+        # enable_dynamic_position = true * "price", enable_dynamic_position = false * "
+        # brands", enable_dynamic_position = false And also you have a dynamic facets
+        # enable, which will generate a facet 'gender'. Then the final order of the
+        # facets in the response can be ("price", "brands", "rating", "gender") or ("
+        # price", "brands", "gender", "rating") depends on how Google Retail Search
+        # orders "gender" and "rating" facets. However, notice that "price" and "brands"
+        # will always be ranked at 1st and 2nd position since their
+        # enable_dynamic_position are false.
+        # Corresponds to the JSON property `enableDynamicPosition`
+        # @return [Boolean]
+        attr_accessor :enable_dynamic_position
+        alias_method :enable_dynamic_position?, :enable_dynamic_position
+      
+        # List of keys to exclude when faceting. By default, FacetKey.key is not
+        # excluded from the filter unless it is listed in this field. For example,
+        # suppose there are 100 products with color facet "Red" and 200 products with
+        # color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")"
+        # and have "colorFamilies" as FacetKey.key will by default return the "Red" with
+        # count 100. If this field contains "colorFamilies", then the query returns both
+        # the "Red" with count 100 and "Blue" with count 200, because the "colorFamilies"
+        # key is now excluded from the filter. A maximum of 100 values are allowed.
+        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `excludedFilterKeys`
+        # @return [Array<String>]
+        attr_accessor :excluded_filter_keys
+      
+        # Specifies how a facet is computed.
+        # Corresponds to the JSON property `facetKey`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestFacetSpecFacetKey]
+        attr_accessor :facet_key
+      
+        # Maximum of facet values that should be returned for this facet. If unspecified,
+        # defaults to 20. The maximum allowed value is 300. Values above 300 will be
+        # coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+        # Corresponds to the JSON property `limit`
+        # @return [Fixnum]
+        attr_accessor :limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_dynamic_position = args[:enable_dynamic_position] if args.key?(:enable_dynamic_position)
+          @excluded_filter_keys = args[:excluded_filter_keys] if args.key?(:excluded_filter_keys)
+          @facet_key = args[:facet_key] if args.key?(:facet_key)
+          @limit = args[:limit] if args.key?(:limit)
+        end
+      end
+      
+      # Specifies how a facet is computed.
+      class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey
+        include Google::Apis::Core::Hashable
+      
+        # Only get facet values that contains the given strings. For example, suppose "
+        # categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe".
+        # If set "contains" to "Shoe", the "categories" facet will give only "Women >
+        # Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+        # Corresponds to the JSON property `contains`
+        # @return [Array<String>]
+        attr_accessor :contains
+      
+        # Set only if values should be bucketized into intervals. Must be set for facets
+        # with numerical values. Must not be set for facet with text values. Maximum
+        # number of intervals is 30.
+        # Corresponds to the JSON property `intervals`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2Interval>]
+        attr_accessor :intervals
+      
+        # Required. Supported textual and numerical facet keys in Product object, over
+        # which the facet values are computed. Facet key is case-sensitive. Allowed
+        # facet keys when FacetKey.query is not specified: * textual_field = *# The
+        # Product.brands. * "brands"; *# The Product.categories. * "categories"; *# The
+        # Audience.genders. * | "genders"; *# The Audience.age_groups. * | "ageGroups"; *
+        # # The Product.availability. Value is one of * *# "IN_STOCK", "OUT_OF_STOCK",
+        # PREORDER", "BACKORDER". * | "availability"; *# The ColorInfo.color_families. *
+        # | "colorFamilies"; *# The ColorInfo.colors. * | "colors"; *# The Product.sizes.
+        # * | "sizes"; *# The Product.materials. * | "materials"; *# The Product.
+        # patterns. * | "patterns"; *# The Product.conditions. * | "conditions"; *# The
+        # textual custom attribute in Product object. Key can * *# be any key in the
+        # Product.attributes map * *# if the attribute values are textual. * *# map. * |
+        # "attributes.key"; *# The FulfillmentInfo.ids for type *# FulfillmentInfo.Type.
+        # PICKUP_IN_STORE. * | "pickupInStore"; *# The FulfillmentInfo.ids for type *#
+        # FulfillmentInfo.Type.SHIP_TO_STORE. * | "shipToStore"; *# The FulfillmentInfo.
+        # ids for type *# FulfillmentInfo.Type.SAME_DAY_DELIVERY. * | "sameDayDelivery";
+        # *# The FulfillmentInfo.ids for type *# FulfillmentInfo.Type.NEXT_DAY_DELIVERY.
+        # * | "nextDayDelivery"; *# The FulfillmentInfo.ids for type *# FulfillmentInfo.
+        # Type.CUSTOM_TYPE_1. * | "customFulfillment1"; *# The FulfillmentInfo.ids for
+        # type *# FulfillmentInfo.Type.CUSTOM_TYPE_2. * | "customFulfillment2"; *# The
+        # FulfillmentInfo.ids for type *# FulfillmentInfo.Type.CUSTOM_TYPE_3. * | "
+        # customFulfillment3"; *# The FulfillmentInfo.ids for type *# FulfillmentInfo.
+        # Type.CUSTOM_TYPE_4. * | "customFulfillment4"; *# The FulfillmentInfo.ids for
+        # type *# FulfillmentInfo.Type.CUSTOM_TYPE_5. * | "customFulfillment5"; *
+        # numerical_field = *# The PriceInfo.price. * "price"; *# The discount. Computed
+        # by (original_price-price)/price * "discount"; *# The Rating.average_rating. * "
+        # rating"; *# The Rating.rating_count. * "ratingCount"; *# The numerical custom
+        # attribute in Product object. Key can * *# be any key in the Product.attributes
+        # map * *# if the attribute values are numerical. * | "attributes.key";
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The order in which Facet.values are returned. Allowed values are: * "count
+        # desc", which means order by Facet.FacetValue.count descending. * "value desc",
+        # which means order by Facet.FacetValue.value descending. Only applies to
+        # textual facets. If not set, textual values are sorted in [natural order](https:
+        # //en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in
+        # the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.ids are
+        # sorted in the order given by FacetSpec.FacetKey.restricted_values.
+        # Corresponds to the JSON property `orderBy`
+        # @return [String]
+        attr_accessor :order_by
+      
+        # Only get facet values that start with the given string prefix. For example,
+        # suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men
+        # > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "
+        # Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum
+        # is 10.
+        # Corresponds to the JSON property `prefixes`
+        # @return [Array<String>]
+        attr_accessor :prefixes
+      
+        # The query that is used to compute facet for the given facet key. When provided,
+        # it will override the default behavior of facet computation. The query syntax
+        # is the same as a filter expression. See SearchRequest.filter for detail syntax
+        # and limitations. Notice that there is no limitation on FacetKey.key when query
+        # is specified. In the response, FacetValue.value will be always "1" and
+        # FacetValue.count will be the number of results that matches the query. For
+        # example, you can set a customized facet for "shipToStore", where FacetKey.key
+        # is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"
+        # IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the
+        # products that are both in stock and ship to store "123".
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Only get facet for the given restricted values. For example, when using "
+        # pickupInStore" as key and set restricted values to ["store123", "store456"],
+        # only facets for "store123" and "store456" are returned. Only supported on
+        # textual fields and fulfillments. Maximum is 20. Must be set for the
+        # fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery *
+        # nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3
+        # * customFulfillment4 * customFulfillment5
+        # Corresponds to the JSON property `restrictedValues`
+        # @return [Array<String>]
+        attr_accessor :restricted_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contains = args[:contains] if args.key?(:contains)
+          @intervals = args[:intervals] if args.key?(:intervals)
+          @key = args[:key] if args.key?(:key)
+          @order_by = args[:order_by] if args.key?(:order_by)
+          @prefixes = args[:prefixes] if args.key?(:prefixes)
+          @query = args[:query] if args.key?(:query)
+          @restricted_values = args[:restricted_values] if args.key?(:restricted_values)
+        end
+      end
+      
+      # Specification to determine under which conditions query expansion should occur.
+      class GoogleCloudRetailV2SearchRequestQueryExpansionSpec
+        include Google::Apis::Core::Hashable
+      
+        # The condition under which query expansion should occur. Default to Condition.
+        # DISABLED.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+        end
+      end
+      
+      # Response message for SearchService.Search method.
+      class GoogleCloudRetailV2SearchResponse
+        include Google::Apis::Core::Hashable
+      
+        # A unique search token. This should be included in the UserEvent logs resulting
+        # from this search, which enables accurate attribution of search model
+        # performance.
+        # Corresponds to the JSON property `attributionToken`
+        # @return [String]
+        attr_accessor :attribution_token
+      
+        # If spell correction applies, the corrected query. Otherwise, empty.
+        # Corresponds to the JSON property `correctedQuery`
+        # @return [String]
+        attr_accessor :corrected_query
+      
+        # Results of facets requested by user.
+        # Corresponds to the JSON property `facets`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseFacet>]
+        attr_accessor :facets
+      
+        # A token that can be sent as SearchRequest.page_token to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Information describing query expansion including whether expansion has
+        # occurred.
+        # Corresponds to the JSON property `queryExpansionInfo`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseQueryExpansionInfo]
+        attr_accessor :query_expansion_info
+      
+        # The URI of a customer-defined redirect page. If redirect action is triggered,
+        # no search will be performed, and only redirect_uri and attribution_token will
+        # be set in the response.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        # A list of matched items. The order represents the ranking.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseSearchResult>]
+        attr_accessor :results
+      
+        # The estimated total count of matched items irrespective of pagination. The
+        # count of results returned by pagination may be less than the total_size that
+        # matches.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
+          @corrected_query = args[:corrected_query] if args.key?(:corrected_query)
+          @facets = args[:facets] if args.key?(:facets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @query_expansion_info = args[:query_expansion_info] if args.key?(:query_expansion_info)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @results = args[:results] if args.key?(:results)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # A facet result.
+      class GoogleCloudRetailV2SearchResponseFacet
+        include Google::Apis::Core::Hashable
+      
+        # Whether the facet is dynamically generated.
+        # Corresponds to the JSON property `dynamicFacet`
+        # @return [Boolean]
+        attr_accessor :dynamic_facet
+        alias_method :dynamic_facet?, :dynamic_facet
+      
+        # The key for this facet. E.g., "colorFamilies" or "price" or "attributes.attr1".
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The facet values for this field.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseFacetFacetValue>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_facet = args[:dynamic_facet] if args.key?(:dynamic_facet)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A facet value which contains value names and their count.
+      class GoogleCloudRetailV2SearchResponseFacetFacetValue
+        include Google::Apis::Core::Hashable
+      
+        # Number of items that have this facet value.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # A floating point interval.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2Interval]
+        attr_accessor :interval
+      
+        # Text value of a facet, such as "Black" for facet "colorFamilies".
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @interval = args[:interval] if args.key?(:interval)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Information describing query expansion including whether expansion has
+      # occurred.
+      class GoogleCloudRetailV2SearchResponseQueryExpansionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Bool describing whether query expansion has occurred.
+        # Corresponds to the JSON property `expandedQuery`
+        # @return [Boolean]
+        attr_accessor :expanded_query
+        alias_method :expanded_query?, :expanded_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expanded_query = args[:expanded_query] if args.key?(:expanded_query)
+        end
+      end
+      
+      # Represents the search results.
+      class GoogleCloudRetailV2SearchResponseSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Product.id of the searched Product.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The count of matched variant Products.
+        # Corresponds to the JSON property `matchingVariantCount`
+        # @return [Fixnum]
+        attr_accessor :matching_variant_count
+      
+        # If a variant Product matches the search query, this map indicates which
+        # Product fields are matched. The key is the Product.name, the value is a field
+        # mask of the matched Product fields. If matched attributes cannot be determined,
+        # this map will be empty. For example, a key "sku1" with field mask "products.
+        # color_info" indicates there is a match between "sku1" ColorInfo and the query.
+        # Corresponds to the JSON property `matchingVariantFields`
+        # @return [Hash<String,String>]
+        attr_accessor :matching_variant_fields
+      
+        # Product captures all metadata information of items to be recommended or
+        # searched.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2Product]
+        attr_accessor :product
+      
+        # The rollup matching variant Product attributes. The key is one of the
+        # SearchRequest.variant_rollup_keys. The values are the merged and de-duplicated
+        # Product attributes. Notice that the rollup values are respect filter. For
+        # example, when filtering by "colorFamilies:ANY(\"red\")" and rollup "
+        # colorFamilies", only "red" is returned. For textual and numerical attributes,
+        # the rollup values is a list of string or double values with type google.
+        # protobuf.ListValue. For example, if there are two variants with colors "red"
+        # and "blue", the rollup values are ` key: "colorFamilies" value ` list_value `
+        # values ` string_value: "red" ` values ` string_value: "blue" ` ` ` ` For
+        # Product.fulfillment_info, the rollup values is a double value with type google.
+        # protobuf.Value. For example, `key: "pickupInStore.store1" value ` number_value:
+        # 10 `` means a there are 10 variants in this product are available in the
+        # store "store1".
+        # Corresponds to the JSON property `variantRollupValues`
+        # @return [Hash<String,Object>]
+        attr_accessor :variant_rollup_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @matching_variant_count = args[:matching_variant_count] if args.key?(:matching_variant_count)
+          @matching_variant_fields = args[:matching_variant_fields] if args.key?(:matching_variant_fields)
+          @product = args[:product] if args.key?(:product)
+          @variant_rollup_values = args[:variant_rollup_values] if args.key?(:variant_rollup_values)
+        end
+      end
+      
+      # Request message to set a specified branch as new default_branch.
+      class GoogleCloudRetailV2SetDefaultBranchRequest
+        include Google::Apis::Core::Hashable
+      
+        # The final component of the resource name of a branch. This field must be one
+        # of "0", "1" or "2". Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `branchId`
+        # @return [String]
+        attr_accessor :branch_id
+      
+        # Some note on this request, this can be retrieved by CatalogService.
+        # GetDefaultBranch before next valid default branch set occurs. This field must
+        # be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise,
+        # an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `note`
+        # @return [String]
+        attr_accessor :note
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch_id = args[:branch_id] if args.key?(:branch_id)
+          @note = args[:note] if args.key?(:note)
+        end
+      end
+      
+      # Metadata related to the progress of the SetInventory operation. Currently
+      # empty because there is no meaningful metadata populated from the SetInventory
+      # method.
+      class GoogleCloudRetailV2SetInventoryMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for SetInventory method.
+      class GoogleCloudRetailV2SetInventoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, and the Product with name Product.name is not found, the
+        # inventory update will still be processed and retained for at most 1 day until
+        # the Product is created. If set to false, an INVALID_ARGUMENT error is returned
+        # if the Product is not found.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Product captures all metadata information of items to be recommended or
+        # searched.
+        # Corresponds to the JSON property `inventory`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2Product]
+        attr_accessor :inventory
+      
+        # Indicates which inventory fields in the provided Product to update. If not set
+        # or set with empty paths, all inventory fields will be updated. If an
+        # unsupported or unknown field is provided, an INVALID_ARGUMENT error is
+        # returned and the entire update will be ignored.
+        # Corresponds to the JSON property `setMask`
+        # @return [String]
+        attr_accessor :set_mask
+      
+        # The time when the request is issued, used to prevent out-of-order updates on
+        # inventory fields with the last update time recorded. If not provided, the
+        # internal system time will be used.
+        # Corresponds to the JSON property `setTime`
+        # @return [String]
+        attr_accessor :set_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @inventory = args[:inventory] if args.key?(:inventory)
+          @set_mask = args[:set_mask] if args.key?(:set_mask)
+          @set_time = args[:set_time] if args.key?(:set_time)
+        end
+      end
+      
+      # Response of the SetInventoryRequest. Currently empty because there is no
+      # meaningful response populated from the SetInventory method.
+      class GoogleCloudRetailV2SetInventoryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # UserEvent captures all metadata information Retail API needs to know about how
       # end users interact with customers' website.
       class GoogleCloudRetailV2UserEvent
@@ -1386,13 +3088,14 @@ module Google
         # Highly recommended for user events that are the result of PredictionService.
         # Predict. This field enables accurate attribution of recommendation model
         # performance. The value must be a valid PredictResponse.attribution_token for
-        # user events that are the result of PredictionService.Predict. This token
-        # enables us to accurately attribute page view or purchase back to the event and
-        # the particular predict response containing this clicked/purchased product. If
-        # user clicks on product K in the recommendation results, pass PredictResponse.
-        # attribution_token as a URL parameter to product K's page. When recording
-        # events on product K's page, log the PredictResponse.attribution_token to this
-        # field.
+        # user events that are the result of PredictionService.Predict. The value must
+        # be a valid SearchResponse.attribution_token for user events that are the
+        # result of SearchService.Search. This token enables us to accurately attribute
+        # page view or purchase back to the event and the particular predict response
+        # containing this clicked/purchased product. If user clicks on product K in the
+        # recommendation results, pass PredictResponse.attribution_token as a URL
+        # parameter to product K's page. When recording events on product K's page, log
+        # the PredictResponse.attribution_token to this field.
         # Corresponds to the JSON property `attributionToken`
         # @return [String]
         attr_accessor :attribution_token
@@ -1404,6 +3107,12 @@ module Google
         # Corresponds to the JSON property `cartId`
         # @return [String]
         attr_accessor :cart_id
+      
+        # Detailed completion information including completion attribution token and
+        # clicked completion info.
+        # Corresponds to the JSON property `completionDetail`
+        # @return [Google::Apis::RetailV2::GoogleCloudRetailV2CompletionDetail]
+        attr_accessor :completion_detail
       
         # Only required for UserEventService.ImportUserEvents method. Timestamp of when
         # the user event happened.
@@ -1430,6 +3139,34 @@ module Google
         # Corresponds to the JSON property `experimentIds`
         # @return [Array<String>]
         attr_accessor :experiment_ids
+      
+        # The filter syntax consists of an expression language for constructing a
+        # predicate from one or more fields of the products being filtered. See
+        # SearchRequest.filter for definition and syntax. The value must be a UTF-8
+        # encoded string with a length limit of 1,000 characters. Otherwise, an
+        # INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # An integer that specifies the current offset for pagination (the 0-indexed
+        # starting location, amongst the products deemed by the API as relevant). See
+        # SearchRequest.offset for definition. If this field is negative, an
+        # INVALID_ARGUMENT is returned. This can only be set for `search` events. Other
+        # event types should not set this field. Otherwise, an INVALID_ARGUMENT error is
+        # returned.
+        # Corresponds to the JSON property `offset`
+        # @return [Fixnum]
+        attr_accessor :offset
+      
+        # The order in which products are returned. See SearchRequest.order_by for
+        # definition and syntax. The value must be a UTF-8 encoded string with a length
+        # limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # This can only be set for `search` events. Other event types should not set
+        # this field. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `orderBy`
+        # @return [String]
+        attr_accessor :order_by
       
         # The categories associated with a category page. To represent full path of
         # category, use '>' sign to separate different hierarchies. If '>' is part of
@@ -1479,14 +3216,23 @@ module Google
         # @return [String]
         attr_accessor :referrer_uri
       
-        # The user's search query. The value must be a UTF-8 encoded string with a
-        # length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is
-        # returned. At least one of search_query or page_categories is required for `
-        # search` events. Other event types should not set this field. Otherwise, an
-        # INVALID_ARGUMENT error is returned.
+        # The user's search query. See SearchRequest.query for definition. The value
+        # must be a UTF-8 encoded string with a length limit of 5,000 characters.
+        # Otherwise, an INVALID_ARGUMENT error is returned. At least one of search_query
+        # or page_categories is required for `search` events. Other event types should
+        # not set this field. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `searchQuery`
         # @return [String]
         attr_accessor :search_query
+      
+        # A unique identifier for tracking a visitor session with a length limit of 128
+        # bytes. A session is an aggregation of an end user behavior in a time span. A
+        # general guideline to populate the sesion_id: 1. If user has no activity for 30
+        # min, a new session_id should be assigned. 2. The session_id should be unique
+        # across users, suggest use uuid or add visitor_id as prefix.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
       
         # Complete URL (window.location.href) of the user's current page. When using the
         # client side event reporting with JavaScript pixel and Google Tag Manager, this
@@ -1521,15 +3267,20 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @cart_id = args[:cart_id] if args.key?(:cart_id)
+          @completion_detail = args[:completion_detail] if args.key?(:completion_detail)
           @event_time = args[:event_time] if args.key?(:event_time)
           @event_type = args[:event_type] if args.key?(:event_type)
           @experiment_ids = args[:experiment_ids] if args.key?(:experiment_ids)
+          @filter = args[:filter] if args.key?(:filter)
+          @offset = args[:offset] if args.key?(:offset)
+          @order_by = args[:order_by] if args.key?(:order_by)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
           @page_view_id = args[:page_view_id] if args.key?(:page_view_id)
           @product_details = args[:product_details] if args.key?(:product_details)
           @purchase_transaction = args[:purchase_transaction] if args.key?(:purchase_transaction)
           @referrer_uri = args[:referrer_uri] if args.key?(:referrer_uri)
           @search_query = args[:search_query] if args.key?(:search_query)
+          @session_id = args[:session_id] if args.key?(:session_id)
           @uri = args[:uri] if args.key?(:uri)
           @user_info = args[:user_info] if args.key?(:user_info)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
@@ -1628,7 +3379,7 @@ module Google
         attr_accessor :direct_user_request
         alias_method :direct_user_request?, :direct_user_request
       
-        # The end user's IP address. Required for getting SearchRespons.
+        # The end user's IP address. Required for getting SearchResponse.
         # sponsored_results. This field is used to extract location information for
         # personalization. This field must be either an IPv4 address (e.g. "104.133.9.80"
         # ) or an IPv6 address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334").
@@ -1639,7 +3390,7 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # User agent as included in the HTTP header. Required for getting SearchRespons.
+        # User agent as included in the HTTP header. Required for getting SearchResponse.
         # sponsored_results. The field must be a UTF-8 encoded string with a length
         # limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         # This should not be set when using the client side event reporting with GTM or
@@ -1666,6 +3417,35 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Metadata related to the progress of the AddFulfillmentPlaces operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # AddFulfillmentPlaces method.
+      class GoogleCloudRetailV2alphaAddFulfillmentPlacesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
+      # is no meaningful response populated from the AddFulfillmentPlaces method.
+      class GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1771,6 +3551,27 @@ module Google
         end
       end
       
+      # Response of the ImportCompletionDataRequest. If the long running operation is
+      # done, this message is returned by the google.longrunning.Operations.response
+      # field if the operation is successful.
+      class GoogleCloudRetailV2alphaImportCompletionDataResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::RetailV2::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+        end
+      end
+      
       # Configuration of destination for Import related errors.
       class GoogleCloudRetailV2alphaImportErrorsConfig
         include Google::Apis::Core::Hashable
@@ -1807,6 +3608,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :failure_count
       
+        # Pub/Sub topic for receiving notification. If this field is set, when the
+        # import is finished, a notification will be sent to specified Pub/Sub topic.
+        # The message data will be JSON string of a Operation. Format of the Pub/Sub
+        # topic is `projects/`project`/topics/`topic``.
+        # Corresponds to the JSON property `notificationPubsubTopic`
+        # @return [String]
+        attr_accessor :notification_pubsub_topic
+      
+        # Id of the request / operation. This is parroting back the requestId that was
+        # passed in the request.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         # Count of entries that were processed successfully.
         # Corresponds to the JSON property `successCount`
         # @return [Fixnum]
@@ -1826,6 +3641,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
+          @request_id = args[:request_id] if args.key?(:request_id)
           @success_count = args[:success_count] if args.key?(:success_count)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1959,6 +3776,64 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the RemoveFulfillmentPlaces operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # RemoveFulfillmentPlaces method.
+      class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
+      # is no meaningful response populated from the RemoveFulfillmentPlaces method.
+      class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the SetInventory operation. Currently
+      # empty because there is no meaningful metadata populated from the SetInventory
+      # method.
+      class GoogleCloudRetailV2alphaSetInventoryMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the SetInventoryRequest. Currently empty because there is no
+      # meaningful response populated from the SetInventory method.
+      class GoogleCloudRetailV2alphaSetInventoryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A summary of import result. The UserEventImportSummary summarizes the import
       # status for user events.
       class GoogleCloudRetailV2alphaUserEventImportSummary
@@ -1983,6 +3858,35 @@ module Google
         def update!(**args)
           @joined_events_count = args[:joined_events_count] if args.key?(:joined_events_count)
           @unjoined_events_count = args[:unjoined_events_count] if args.key?(:unjoined_events_count)
+        end
+      end
+      
+      # Metadata related to the progress of the AddFulfillmentPlaces operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # AddFulfillmentPlaces method.
+      class GoogleCloudRetailV2betaAddFulfillmentPlacesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
+      # is no meaningful response populated from the AddFulfillmentPlaces method.
+      class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2088,6 +3992,27 @@ module Google
         end
       end
       
+      # Response of the ImportCompletionDataRequest. If the long running operation is
+      # done, this message is returned by the google.longrunning.Operations.response
+      # field if the operation is successful.
+      class GoogleCloudRetailV2betaImportCompletionDataResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sample of errors encountered while processing the request.
+        # Corresponds to the JSON property `errorSamples`
+        # @return [Array<Google::Apis::RetailV2::GoogleRpcStatus>]
+        attr_accessor :error_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_samples = args[:error_samples] if args.key?(:error_samples)
+        end
+      end
+      
       # Configuration of destination for Import related errors.
       class GoogleCloudRetailV2betaImportErrorsConfig
         include Google::Apis::Core::Hashable
@@ -2124,6 +4049,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :failure_count
       
+        # Pub/Sub topic for receiving notification. If this field is set, when the
+        # import is finished, a notification will be sent to specified Pub/Sub topic.
+        # The message data will be JSON string of a Operation. Format of the Pub/Sub
+        # topic is `projects/`project`/topics/`topic``.
+        # Corresponds to the JSON property `notificationPubsubTopic`
+        # @return [String]
+        attr_accessor :notification_pubsub_topic
+      
+        # Id of the request / operation. This is parroting back the requestId that was
+        # passed in the request.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         # Count of entries that were processed successfully.
         # Corresponds to the JSON property `successCount`
         # @return [Fixnum]
@@ -2143,6 +4082,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
+          @request_id = args[:request_id] if args.key?(:request_id)
           @success_count = args[:success_count] if args.key?(:success_count)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2273,6 +4214,64 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rejoined_user_events_count = args[:rejoined_user_events_count] if args.key?(:rejoined_user_events_count)
+        end
+      end
+      
+      # Metadata related to the progress of the RemoveFulfillmentPlaces operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # RemoveFulfillmentPlaces method.
+      class GoogleCloudRetailV2betaRemoveFulfillmentPlacesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
+      # is no meaningful response populated from the RemoveFulfillmentPlaces method.
+      class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the SetInventory operation. Currently
+      # empty because there is no meaningful metadata populated from the SetInventory
+      # method.
+      class GoogleCloudRetailV2betaSetInventoryMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the SetInventoryRequest. Currently empty because there is no
+      # meaningful response populated from the SetInventory method.
+      class GoogleCloudRetailV2betaSetInventoryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2443,6 +4442,47 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class GoogleTypeDate
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
     end
