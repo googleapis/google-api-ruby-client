@@ -544,6 +544,98 @@ module Google
         end
       end
       
+      # Response for the ListMetricsScopesByMonitoredProject method.
+      class ListMetricsScopesByMonitoredProjectResponse
+        include Google::Apis::Core::Hashable
+      
+        # A set of all metrics scopes that the specified monitored project has been
+        # added to.
+        # Corresponds to the JSON property `metricsScopes`
+        # @return [Array<Google::Apis::MonitoringV1::MetricsScope>]
+        attr_accessor :metrics_scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics_scopes = args[:metrics_scopes] if args.key?(:metrics_scopes)
+        end
+      end
+      
+      # Represents a Metrics Scope (https://cloud.google.com/monitoring/settings#
+      # concept-scope) in Cloud Monitoring, which specifies one or more Google
+      # projects and zero or more AWS accounts to monitor together.
+      class MetricsScope
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when this Metrics Scope was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The list of projects monitored by this Metrics Scope.
+        # Corresponds to the JSON property `monitoredProjects`
+        # @return [Array<Google::Apis::MonitoringV1::MonitoredProject>]
+        attr_accessor :monitored_projects
+      
+        # Immutable. The resource name of the Monitoring Metrics Scope. On input, the
+        # resource name can be specified with the scoping project ID or number. On
+        # output, the resource name is specified with the scoping project number.
+        # Example: locations/global/metricsScopes/`SCOPING_PROJECT_ID_OR_NUMBER`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time when this Metrics Scope record was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @monitored_projects = args[:monitored_projects] if args.key?(:monitored_projects)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A project being monitored (https://cloud.google.com/monitoring/settings/
+      # multiple-projects#create-multi) by a Metrics Scope.
+      class MonitoredProject
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when this MonitoredProject was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Immutable. The resource name of the MonitoredProject. On input, the resource
+        # name includes the scoping project ID and monitored project ID. On output, it
+        # contains the equivalent project numbers. Example: locations/global/
+        # metricsScopes/`SCOPING_PROJECT_ID_OR_NUMBER`/projects/`
+        # MONITORED_PROJECT_ID_OR_NUMBER`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A mosaic layout divides the available space into a grid of blocks, and
       # overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid
       # blocks and can be placed at arbitrary locations in the grid.
