@@ -6339,7 +6339,8 @@ module Google
         
         # Analyze heathcare entity in a document. Its response includes the recognized
         # entity mentions and the relationships between them. AnalyzeEntities uses
-        # context aware models to detect entities.
+        # context aware models to detect entities. This method can only analyze
+        # documents written in English.
         # @param [String] nlp_service
         #   The resource name of the service of the form: "projects/`project_id`/locations/
         #   `location_id`/services/nlp".
