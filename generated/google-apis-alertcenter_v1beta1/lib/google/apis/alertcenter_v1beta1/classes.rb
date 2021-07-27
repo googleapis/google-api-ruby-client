@@ -423,6 +423,51 @@ module Google
         end
       end
       
+      # An outage incident reported by Google for a Google Workspace (formerly G Suite)
+      # application.
+      class AppsOutage
+        include Google::Apis::Core::Hashable
+      
+        # Link to the outage event in Google Workspace Status Dashboard
+        # Corresponds to the JSON property `dashboardUri`
+        # @return [String]
+        attr_accessor :dashboard_uri
+      
+        # Timestamp by which the next update shall be provided.
+        # Corresponds to the JSON property `nextUpdateTime`
+        # @return [String]
+        attr_accessor :next_update_time
+      
+        # List of products impacted by the outage.
+        # Corresponds to the JSON property `products`
+        # @return [Array<String>]
+        attr_accessor :products
+      
+        # Timestamp of the outage expected or confirmed resolution. (Used only when
+        # known).
+        # Corresponds to the JSON property `resolutionTime`
+        # @return [String]
+        attr_accessor :resolution_time
+      
+        # Current outage status.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dashboard_uri = args[:dashboard_uri] if args.key?(:dashboard_uri)
+          @next_update_time = args[:next_update_time] if args.key?(:next_update_time)
+          @products = args[:products] if args.key?(:products)
+          @resolution_time = args[:resolution_time] if args.key?(:resolution_time)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # Attachment with application-specific information about an alert.
       class Attachment
         include Google::Apis::Core::Hashable
@@ -1126,44 +1171,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_pubsub_topic = args[:cloud_pubsub_topic] if args.key?(:cloud_pubsub_topic)
-        end
-      end
-      
-      # An alert that gets triggered when a user enables autoforwarding to an email
-      # which is outside of its domain
-      class OutOfDomainForwarding
-        include Google::Apis::Core::Hashable
-      
-        # Email of the actor who triggered the alert.
-        # Corresponds to the JSON property `actorEmail`
-        # @return [String]
-        attr_accessor :actor_email
-      
-        # The time the email forwarding was enabled
-        # Corresponds to the JSON property `enableTime`
-        # @return [String]
-        attr_accessor :enable_time
-      
-        # Email to which emails are being forwarded
-        # Corresponds to the JSON property `forwardeeEmail`
-        # @return [String]
-        attr_accessor :forwardee_email
-      
-        # IP address of the user while enabling forwarding
-        # Corresponds to the JSON property `ipAddress`
-        # @return [String]
-        attr_accessor :ip_address
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @actor_email = args[:actor_email] if args.key?(:actor_email)
-          @enable_time = args[:enable_time] if args.key?(:enable_time)
-          @forwardee_email = args[:forwardee_email] if args.key?(:forwardee_email)
-          @ip_address = args[:ip_address] if args.key?(:ip_address)
         end
       end
       
