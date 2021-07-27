@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppsOutage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,12 +215,6 @@ module Google
       end
       
       class Notification
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OutOfDomainForwarding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -407,6 +407,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alert_details, :base64 => true, as: 'alertDetails'
           property :name, as: 'name'
+        end
+      end
+      
+      class AppsOutage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dashboard_uri, as: 'dashboardUri'
+          property :next_update_time, as: 'nextUpdateTime'
+          collection :products, as: 'products'
+          property :resolution_time, as: 'resolutionTime'
+          property :status, as: 'status'
         end
       end
       
@@ -630,16 +641,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_pubsub_topic, as: 'cloudPubsubTopic', class: Google::Apis::AlertcenterV1beta1::CloudPubsubTopic, decorator: Google::Apis::AlertcenterV1beta1::CloudPubsubTopic::Representation
       
-        end
-      end
-      
-      class OutOfDomainForwarding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :actor_email, as: 'actorEmail'
-          property :enable_time, as: 'enableTime'
-          property :forwardee_email, as: 'forwardeeEmail'
-          property :ip_address, as: 'ipAddress'
         end
       end
       
