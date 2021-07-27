@@ -3210,6 +3210,94 @@ module Google
         end
       end
       
+      # Response message for GetFreeListingsProgramStatus.
+      class FreeListingsProgramStatus
+        include Google::Apis::Core::Hashable
+      
+        # Status of the program in each region. Regions with the same status and review
+        # eligibility are grouped together in `regionCodes`.
+        # Corresponds to the JSON property `regionStatuses`
+        # @return [Array<Google::Apis::ContentV2_1::FreeListingsProgramStatusRegionStatus>]
+        attr_accessor :region_statuses
+      
+        # If program is successfully onboarded for at least one region.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_statuses = args[:region_statuses] if args.key?(:region_statuses)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Status of program and region.
+      class FreeListingsProgramStatusRegionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It
+        # will be present when `eligibility_status` is `WARNING`. Date will be provided
+        # in ISO 8601 format i.e. YYYY-MM-DD
+        # Corresponds to the JSON property `disapprovalDate`
+        # @return [String]
+        attr_accessor :disapproval_date
+      
+        # Eligibility status of the standard free listing program.
+        # Corresponds to the JSON property `eligibilityStatus`
+        # @return [String]
+        attr_accessor :eligibility_status
+      
+        # Eligibility status of the enhanced free listing program.
+        # Corresponds to the JSON property `enhancedEligibilityStatus`
+        # @return [String]
+        attr_accessor :enhanced_eligibility_status
+      
+        # Reason if a program in a given country is not eligible for review. Populated
+        # only if `review_eligibility_status` is `INELIGIBLE`.
+        # Corresponds to the JSON property `ineligibilityReason`
+        # @return [String]
+        attr_accessor :ineligibility_reason
+      
+        # The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-
+        # 1_alpha-2) codes for all the regions with the same `eligibilityStatus` and `
+        # reviewEligibility`.
+        # Corresponds to the JSON property `regionCodes`
+        # @return [Array<String>]
+        attr_accessor :region_codes
+      
+        # If a program in a given country is eligible for review. It will be present
+        # only if eligibility status is `DISAPPROVED`.
+        # Corresponds to the JSON property `reviewEligibilityStatus`
+        # @return [String]
+        attr_accessor :review_eligibility_status
+      
+        # These issues will be evaluated in review process. Fix all the issues before
+        # requesting the review.
+        # Corresponds to the JSON property `reviewIssues`
+        # @return [Array<String>]
+        attr_accessor :review_issues
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disapproval_date = args[:disapproval_date] if args.key?(:disapproval_date)
+          @eligibility_status = args[:eligibility_status] if args.key?(:eligibility_status)
+          @enhanced_eligibility_status = args[:enhanced_eligibility_status] if args.key?(:enhanced_eligibility_status)
+          @ineligibility_reason = args[:ineligibility_reason] if args.key?(:ineligibility_reason)
+          @region_codes = args[:region_codes] if args.key?(:region_codes)
+          @review_eligibility_status = args[:review_eligibility_status] if args.key?(:review_eligibility_status)
+          @review_issues = args[:review_issues] if args.key?(:review_issues)
+        end
+      end
+      
       # 
       class GmbAccounts
         include Google::Apis::Core::Hashable
@@ -12355,6 +12443,67 @@ module Google
         end
       end
       
+      # Request message for the RequestPhoneVerification method.
+      class RequestPhoneVerificationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) (for
+        # example, en-US). Language code is used to provide localized `SMS` and `
+        # PHONE_CALL`. Default language used is en-US if not provided.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Phone number to be verified.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Required. Two letter country code for the phone number, for example `CA` for
+        # Canadian numbers. See the [ISO 3166-1 alpha-2](https://wikipedia.org/wiki/
+        # ISO_3166-1_alpha-2#Officially_assigned_code_elements) officially assigned
+        # codes.
+        # Corresponds to the JSON property `phoneRegionCode`
+        # @return [String]
+        attr_accessor :phone_region_code
+      
+        # Verification method to receive verification code.
+        # Corresponds to the JSON property `phoneVerificationMethod`
+        # @return [String]
+        attr_accessor :phone_verification_method
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @phone_region_code = args[:phone_region_code] if args.key?(:phone_region_code)
+          @phone_verification_method = args[:phone_verification_method] if args.key?(:phone_verification_method)
+        end
+      end
+      
+      # Response message for the RequestPhoneVerification method.
+      class RequestPhoneVerificationResponse
+        include Google::Apis::Core::Hashable
+      
+        # The verification ID to use in subsequent calls to `verifyphonenumber`.
+        # Corresponds to the JSON property `verificationId`
+        # @return [String]
+        attr_accessor :verification_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @verification_id = args[:verification_id] if args.key?(:verification_id)
+        end
+      end
+      
       # Request message for the RequestReviewProgram method.
       class RequestReviewBuyOnGoogleProgramRequest
         include Google::Apis::Core::Hashable
@@ -12365,6 +12514,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for the RequestReviewFreeListings Program method.
+      class RequestReviewFreeListingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        # of the country for which review is to be requested.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Request message for the RequestReviewShoppingAds program method.
+      class RequestReviewShoppingAdsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        # of the country for which review is to be requested.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
       
@@ -13308,7 +13497,9 @@ module Google
         attr_accessor :page_token
       
         # Required. Query that defines performance metrics to retrieve and dimensions
-        # according to which the metrics are to be segmented.
+        # according to which the metrics are to be segmented. For details on how to
+        # construct your query, see the [Query Language guide](https://developers.google.
+        # com/shopping-content/guides/reports/query-language/overview).
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -13365,27 +13556,37 @@ module Google
         # @return [String]
         attr_accessor :brand
       
-        # Product category (1st level) in Google's product taxonomy.
+        # [Product category (1st level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in Google's product
+        # taxonomy.
         # Corresponds to the JSON property `categoryL1`
         # @return [String]
         attr_accessor :category_l1
       
-        # Product category (2nd level) in Google's product taxonomy.
+        # [Product category (2nd level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in Google's product
+        # taxonomy.
         # Corresponds to the JSON property `categoryL2`
         # @return [String]
         attr_accessor :category_l2
       
-        # Product category (3rd level) in Google's product taxonomy.
+        # [Product category (3rd level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in Google's product
+        # taxonomy.
         # Corresponds to the JSON property `categoryL3`
         # @return [String]
         attr_accessor :category_l3
       
-        # Product category (4th level) in Google's product taxonomy.
+        # [Product category (4th level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in Google's product
+        # taxonomy.
         # Corresponds to the JSON property `categoryL4`
         # @return [String]
         attr_accessor :category_l4
       
-        # Product category (5th level) in Google's product taxonomy.
+        # [Product category (5th level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in Google's product
+        # taxonomy.
         # Corresponds to the JSON property `categoryL5`
         # @return [String]
         attr_accessor :category_l5
@@ -13439,27 +13640,37 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # Product category (1st level) in merchant's own product taxonomy.
+        # [Product type (1st level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in merchant's own
+        # product taxonomy.
         # Corresponds to the JSON property `productTypeL1`
         # @return [String]
         attr_accessor :product_type_l1
       
-        # Product category (2nd level) in merchant's own product taxonomy.
+        # [Product type (2nd level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in merchant's own
+        # product taxonomy.
         # Corresponds to the JSON property `productTypeL2`
         # @return [String]
         attr_accessor :product_type_l2
       
-        # Product category (3rd level) in merchant's own product taxonomy.
+        # [Product type (3rd level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in merchant's own
+        # product taxonomy.
         # Corresponds to the JSON property `productTypeL3`
         # @return [String]
         attr_accessor :product_type_l3
       
-        # Product category (4th level) in merchant's own product taxonomy.
+        # [Product type (4th level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in merchant's own
+        # product taxonomy.
         # Corresponds to the JSON property `productTypeL4`
         # @return [String]
         attr_accessor :product_type_l4
       
-        # Product category (5th level) in merchant's own product taxonomy.
+        # [Product type (5th level)](https://developers.google.com/shopping-content/
+        # guides/reports/segmentation#category_and_product_type) in merchant's own
+        # product taxonomy.
         # Corresponds to the JSON property `productTypeL5`
         # @return [String]
         attr_accessor :product_type_l5
@@ -14331,6 +14542,88 @@ module Google
         end
       end
       
+      # Response message for GetShoppingAdsProgramStatus.
+      class ShoppingAdsProgramStatus
+        include Google::Apis::Core::Hashable
+      
+        # Status of the program in each region. Regions with the same status and review
+        # eligibility are grouped together in `regionCodes`.
+        # Corresponds to the JSON property `regionStatuses`
+        # @return [Array<Google::Apis::ContentV2_1::ShoppingAdsProgramStatusRegionStatus>]
+        attr_accessor :region_statuses
+      
+        # If program is successfully onboarded for at least one region.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_statuses = args[:region_statuses] if args.key?(:region_statuses)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Status of program and region.
+      class ShoppingAdsProgramStatusRegionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It
+        # will be present when `eligibility_status` is `WARNING`. Date will be provided
+        # in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format i.e. YYYY-MM-DD
+        # Corresponds to the JSON property `disapprovalDate`
+        # @return [String]
+        attr_accessor :disapproval_date
+      
+        # Eligibility status of the Shopping Ads program.
+        # Corresponds to the JSON property `eligibilityStatus`
+        # @return [String]
+        attr_accessor :eligibility_status
+      
+        # Reason if a program in a given country is not eligible for review. Populated
+        # only if `review_eligibility_status` is `INELIGIBLE`.
+        # Corresponds to the JSON property `ineligibilityReason`
+        # @return [String]
+        attr_accessor :ineligibility_reason
+      
+        # The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-
+        # 1_alpha-2) codes for all the regions with the same `eligibilityStatus` and `
+        # reviewEligibility`.
+        # Corresponds to the JSON property `regionCodes`
+        # @return [Array<String>]
+        attr_accessor :region_codes
+      
+        # If a program in a given country is eligible for review. It will be present
+        # only if eligibility status is `DISAPPROVED`.
+        # Corresponds to the JSON property `reviewEligibilityStatus`
+        # @return [String]
+        attr_accessor :review_eligibility_status
+      
+        # These issues will be evaluated in review process. Fix all the issues before
+        # requesting the review.
+        # Corresponds to the JSON property `reviewIssues`
+        # @return [Array<String>]
+        attr_accessor :review_issues
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disapproval_date = args[:disapproval_date] if args.key?(:disapproval_date)
+          @eligibility_status = args[:eligibility_status] if args.key?(:eligibility_status)
+          @ineligibility_reason = args[:ineligibility_reason] if args.key?(:ineligibility_reason)
+          @region_codes = args[:region_codes] if args.key?(:region_codes)
+          @review_eligibility_status = args[:review_eligibility_status] if args.key?(:review_eligibility_status)
+          @review_issues = args[:review_issues] if args.key?(:review_issues)
+        end
+      end
+      
       # 
       class Table
         include Google::Apis::Core::Hashable
@@ -15013,6 +15306,56 @@ module Google
           @no_shipping = args[:no_shipping] if args.key?(:no_shipping)
           @price_percentage = args[:price_percentage] if args.key?(:price_percentage)
           @subtable_name = args[:subtable_name] if args.key?(:subtable_name)
+        end
+      end
+      
+      # Request message for the VerifyPhoneNumber method.
+      class VerifyPhoneNumberRequest
+        include Google::Apis::Core::Hashable
+      
+        # Verification method used to receive verification code.
+        # Corresponds to the JSON property `phoneVerificationMethod`
+        # @return [String]
+        attr_accessor :phone_verification_method
+      
+        # The verification code that was sent to the phone number for validation.
+        # Corresponds to the JSON property `verificationCode`
+        # @return [String]
+        attr_accessor :verification_code
+      
+        # The verification ID returned by `requestphoneverification`.
+        # Corresponds to the JSON property `verificationId`
+        # @return [String]
+        attr_accessor :verification_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_verification_method = args[:phone_verification_method] if args.key?(:phone_verification_method)
+          @verification_code = args[:verification_code] if args.key?(:verification_code)
+          @verification_id = args[:verification_id] if args.key?(:verification_id)
+        end
+      end
+      
+      # Response message for the VerifyPhoneNumber method.
+      class VerifyPhoneNumberResponse
+        include Google::Apis::Core::Hashable
+      
+        # Verified phone number if verification is successful.
+        # Corresponds to the JSON property `verifiedPhoneNumber`
+        # @return [String]
+        attr_accessor :verified_phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @verified_phone_number = args[:verified_phone_number] if args.key?(:verified_phone_number)
         end
       end
       

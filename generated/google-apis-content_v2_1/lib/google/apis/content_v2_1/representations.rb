@@ -502,6 +502,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FreeListingsProgramStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FreeListingsProgramStatusRegionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GmbAccounts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1810,7 +1822,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequestPhoneVerificationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestPhoneVerificationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestReviewBuyOnGoogleProgramRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestReviewFreeListingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestReviewShoppingAdsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2104,6 +2140,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShoppingAdsProgramStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShoppingAdsProgramStatusRegionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Table
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2195,6 +2243,18 @@ module Google
       end
       
       class Value
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerifyPhoneNumberRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerifyPhoneNumberResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3072,6 +3132,28 @@ module Google
           collection :errors, as: 'errors', class: Google::Apis::ContentV2_1::Error, decorator: Google::Apis::ContentV2_1::Error::Representation
       
           property :message, as: 'message'
+        end
+      end
+      
+      class FreeListingsProgramStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :region_statuses, as: 'regionStatuses', class: Google::Apis::ContentV2_1::FreeListingsProgramStatusRegionStatus, decorator: Google::Apis::ContentV2_1::FreeListingsProgramStatusRegionStatus::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class FreeListingsProgramStatusRegionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disapproval_date, as: 'disapprovalDate'
+          property :eligibility_status, as: 'eligibilityStatus'
+          property :enhanced_eligibility_status, as: 'enhancedEligibilityStatus'
+          property :ineligibility_reason, as: 'ineligibilityReason'
+          collection :region_codes, as: 'regionCodes'
+          property :review_eligibility_status, as: 'reviewEligibilityStatus'
+          collection :review_issues, as: 'reviewIssues'
         end
       end
       
@@ -5529,9 +5611,40 @@ module Google
         end
       end
       
+      class RequestPhoneVerificationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :phone_number, as: 'phoneNumber'
+          property :phone_region_code, as: 'phoneRegionCode'
+          property :phone_verification_method, as: 'phoneVerificationMethod'
+        end
+      end
+      
+      class RequestPhoneVerificationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :verification_id, as: 'verificationId'
+        end
+      end
+      
       class RequestReviewBuyOnGoogleProgramRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RequestReviewFreeListingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class RequestReviewShoppingAdsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region_code, as: 'regionCode'
         end
       end
       
@@ -6078,6 +6191,27 @@ module Google
         end
       end
       
+      class ShoppingAdsProgramStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :region_statuses, as: 'regionStatuses', class: Google::Apis::ContentV2_1::ShoppingAdsProgramStatusRegionStatus, decorator: Google::Apis::ContentV2_1::ShoppingAdsProgramStatusRegionStatus::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class ShoppingAdsProgramStatusRegionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disapproval_date, as: 'disapprovalDate'
+          property :eligibility_status, as: 'eligibilityStatus'
+          property :ineligibility_reason, as: 'ineligibilityReason'
+          collection :region_codes, as: 'regionCodes'
+          property :review_eligibility_status, as: 'reviewEligibilityStatus'
+          collection :review_issues, as: 'reviewIssues'
+        end
+      end
+      
       class Table
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6268,6 +6402,22 @@ module Google
           property :no_shipping, as: 'noShipping'
           property :price_percentage, as: 'pricePercentage'
           property :subtable_name, as: 'subtableName'
+        end
+      end
+      
+      class VerifyPhoneNumberRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phone_verification_method, as: 'phoneVerificationMethod'
+          property :verification_code, as: 'verificationCode'
+          property :verification_id, as: 'verificationId'
+        end
+      end
+      
+      class VerifyPhoneNumberResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :verified_phone_number, as: 'verifiedPhoneNumber'
         end
       end
       
