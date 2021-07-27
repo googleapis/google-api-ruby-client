@@ -54,6 +54,140 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Returns a specific Metrics Scope.
+        # @param [String] name
+        #   Required. The resource name of the Metrics Scope. Example: locations/global/
+        #   metricsScopes/`SCOPING_PROJECT_ID_OR_NUMBER`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::MetricsScope] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::MetricsScope]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location_global_metrics_scope(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV1::MetricsScope::Representation
+          command.response_class = Google::Apis::MonitoringV1::MetricsScope
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of every Metrics Scope that a specific MonitoredProject has
+        # been added to. The metrics scope representing the specified monitored project
+        # will always be the first entry in the response.
+        # @param [String] monitored_resource_container
+        #   Required. The resource name of the Monitored Project being requested. Example:
+        #   projects/`MONITORED_PROJECT_ID_OR_NUMBER`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::ListMetricsScopesByMonitoredProjectResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::ListMetricsScopesByMonitoredProjectResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_location_global_metrics_scope_metric_scopes_by_monitored_project(monitored_resource_container: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/locations/global/metricsScopes:listMetricScopesByMonitoredProject', options)
+          command.response_representation = Google::Apis::MonitoringV1::ListMetricsScopesByMonitoredProjectResponse::Representation
+          command.response_class = Google::Apis::MonitoringV1::ListMetricsScopesByMonitoredProjectResponse
+          command.query['monitoredResourceContainer'] = monitored_resource_container unless monitored_resource_container.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a MonitoredProject with the given project ID to the specified Metrics
+        # Scope.
+        # @param [String] parent
+        #   Required. The resource name of the existing Metrics Scope that will monitor
+        #   this project. Example: locations/global/metricsScopes/`
+        #   SCOPING_PROJECT_ID_OR_NUMBER`
+        # @param [Google::Apis::MonitoringV1::MonitoredProject] monitored_project_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_location_global_metrics_scope_project(parent, monitored_project_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/projects', options)
+          command.request_representation = Google::Apis::MonitoringV1::MonitoredProject::Representation
+          command.request_object = monitored_project_object
+          command.response_representation = Google::Apis::MonitoringV1::Operation::Representation
+          command.response_class = Google::Apis::MonitoringV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a MonitoredProject from the specified Metrics Scope.
+        # @param [String] name
+        #   Required. The resource name of the MonitoredProject. Example: locations/global/
+        #   metricsScopes/`SCOPING_PROJECT_ID_OR_NUMBER`/projects/`
+        #   MONITORED_PROJECT_ID_OR_NUMBER`Authorization requires the following Google IAM
+        #   (https://cloud.google.com/iam) permissions on both the Metrics Scope and on
+        #   the MonitoredProject: monitoring.metricsScopes.link
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_location_global_metrics_scope_project(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV1::Operation::Representation
+          command.response_class = Google::Apis::MonitoringV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name

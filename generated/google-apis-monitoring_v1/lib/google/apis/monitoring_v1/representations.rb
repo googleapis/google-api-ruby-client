@@ -106,6 +106,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMetricsScopesByMonitoredProjectResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricsScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MonitoredProject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MosaicLayout
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -374,6 +392,33 @@ module Google
           collection :dashboards, as: 'dashboards', class: Google::Apis::MonitoringV1::Dashboard, decorator: Google::Apis::MonitoringV1::Dashboard::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMetricsScopesByMonitoredProjectResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics_scopes, as: 'metricsScopes', class: Google::Apis::MonitoringV1::MetricsScope, decorator: Google::Apis::MonitoringV1::MetricsScope::Representation
+      
+        end
+      end
+      
+      class MetricsScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :monitored_projects, as: 'monitoredProjects', class: Google::Apis::MonitoringV1::MonitoredProject, decorator: Google::Apis::MonitoringV1::MonitoredProject::Representation
+      
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MonitoredProject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
         end
       end
       
