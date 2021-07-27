@@ -384,6 +384,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Request verification code to start phone verification.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the managing account. If this parameter is not the same as
+        #   accountId, then this account must be a multi-client account and accountId must
+        #   be the ID of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   Required. The ID of the account.
+        # @param [Google::Apis::ContentV2_1::RequestPhoneVerificationRequest] request_phone_verification_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::RequestPhoneVerificationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::RequestPhoneVerificationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def requestphoneverification_account(merchant_id, account_id, request_phone_verification_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/accounts/{accountId}/requestphoneverification', options)
+          command.request_representation = Google::Apis::ContentV2_1::RequestPhoneVerificationRequest::Representation
+          command.request_object = request_phone_verification_request_object
+          command.response_representation = Google::Apis::ContentV2_1::RequestPhoneVerificationResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::RequestPhoneVerificationResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a Merchant Center account. Any fields that are not provided are
         # deleted from the resource.
         # @param [Fixnum] merchant_id
@@ -452,6 +490,44 @@ module Google
           command.request_object = accounts_update_labels_request_object
           command.response_representation = Google::Apis::ContentV2_1::AccountsUpdateLabelsResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountsUpdateLabelsResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Validates verification code to verify phone number for the account.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the managing account. If this parameter is not the same as
+        #   accountId, then this account must be a multi-client account and accountId must
+        #   be the ID of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   Required. The ID of the account.
+        # @param [Google::Apis::ContentV2_1::VerifyPhoneNumberRequest] verify_phone_number_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::VerifyPhoneNumberResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::VerifyPhoneNumberResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def verifyphonenumber_account(merchant_id, account_id, verify_phone_number_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/accounts/{accountId}/verifyphonenumber', options)
+          command.request_representation = Google::Apis::ContentV2_1::VerifyPhoneNumberRequest::Representation
+          command.request_object = verify_phone_number_request_object
+          command.response_representation = Google::Apis::ContentV2_1::VerifyPhoneNumberResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::VerifyPhoneNumberResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1887,6 +1963,68 @@ module Google
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the status and review eligibility for the free listing program.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::FreeListingsProgramStatus] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::FreeListingsProgramStatus]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_freelistingsprogram(merchant_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, '{merchantId}/freelistingsprogram', options)
+          command.response_representation = Google::Apis::ContentV2_1::FreeListingsProgramStatus::Representation
+          command.response_class = Google::Apis::ContentV2_1::FreeListingsProgramStatus
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests a review for Free Listings program in the provided region. Important:
+        # This method is only whitelisted for selected merchants.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [Google::Apis::ContentV2_1::RequestReviewFreeListingsRequest] request_review_free_listings_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def requestreview_freelistingsprogram(merchant_id, request_review_free_listings_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/freelistingsprogram/requestreview', options)
+          command.request_representation = Google::Apis::ContentV2_1::RequestReviewFreeListingsRequest::Representation
+          command.request_object = request_review_free_listings_request_object
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5687,6 +5825,67 @@ module Google
           command.response_class = Google::Apis::ContentV2_1::ShippingSettings
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the status and review eligibility for the Shopping Ads program.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::ShoppingAdsProgramStatus] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::ShoppingAdsProgramStatus]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_shoppingadsprogram(merchant_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, '{merchantId}/shoppingadsprogram', options)
+          command.response_representation = Google::Apis::ContentV2_1::ShoppingAdsProgramStatus::Representation
+          command.response_class = Google::Apis::ContentV2_1::ShoppingAdsProgramStatus
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests a review for Shopping Ads program in the provided country.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [Google::Apis::ContentV2_1::RequestReviewShoppingAdsRequest] request_review_shopping_ads_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def requestreview_shoppingadsprogram(merchant_id, request_review_shopping_ads_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/shoppingadsprogram/requestreview', options)
+          command.request_representation = Google::Apis::ContentV2_1::RequestReviewShoppingAdsRequest::Representation
+          command.request_object = request_review_shopping_ads_request_object
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
