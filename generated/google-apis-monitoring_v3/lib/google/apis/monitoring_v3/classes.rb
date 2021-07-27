@@ -995,8 +995,8 @@ module Google
       # A DistributionCut defines a TimeSeries and thresholds used for measuring good
       # service and total service. The TimeSeries must have ValueType = DISTRIBUTION
       # and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service
-      # will be the count of values x in the Distribution such that range.min <= x <
-      # range.max.
+      # will be the estimated count of values in the Distribution that fall within the
+      # specified min and max.
       class DistributionCut
         include Google::Apis::Core::Hashable
       
@@ -1007,9 +1007,9 @@ module Google
         # @return [String]
         attr_accessor :distribution_filter
       
-        # Range of numerical values, inclusive of min and exclusive of max. If the open
-        # range "< range.max" is desired, set range.min = -infinity. If the open range ">
-        # = range.min" is desired, set range.max = infinity.
+        # Range of numerical values within min and max. If the open range "< range.max"
+        # is desired, set range.min = -infinity. If the open range ">= range.min" is
+        # desired, set range.max = infinity.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::MonitoringV3::GoogleMonitoringV3Range]
         attr_accessor :range
@@ -1365,9 +1365,9 @@ module Google
         end
       end
       
-      # Range of numerical values, inclusive of min and exclusive of max. If the open
-      # range "< range.max" is desired, set range.min = -infinity. If the open range ">
-      # = range.min" is desired, set range.max = infinity.
+      # Range of numerical values within min and max. If the open range "< range.max"
+      # is desired, set range.min = -infinity. If the open range ">= range.min" is
+      # desired, set range.max = infinity.
       class GoogleMonitoringV3Range
         include Google::Apis::Core::Hashable
       
@@ -2496,14 +2496,14 @@ module Google
       end
       
       # A MetricRange is used when each window is good when the value x of a single
-      # TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must
+      # TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must
       # have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
       class MetricRange
         include Google::Apis::Core::Hashable
       
-        # Range of numerical values, inclusive of min and exclusive of max. If the open
-        # range "< range.max" is desired, set range.min = -infinity. If the open range ">
-        # = range.min" is desired, set range.max = infinity.
+        # Range of numerical values within min and max. If the open range "< range.max"
+        # is desired, set range.min = -infinity. If the open range ">= range.min" is
+        # desired, set range.max = infinity.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::MonitoringV3::GoogleMonitoringV3Range]
         attr_accessor :range
@@ -3330,8 +3330,8 @@ module Google
         # A DistributionCut defines a TimeSeries and thresholds used for measuring good
         # service and total service. The TimeSeries must have ValueType = DISTRIBUTION
         # and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service
-        # will be the count of values x in the Distribution such that range.min <= x <
-        # range.max.
+        # will be the estimated count of values in the Distribution that fall within the
+        # specified min and max.
         # Corresponds to the JSON property `distributionCut`
         # @return [Google::Apis::MonitoringV3::DistributionCut]
         attr_accessor :distribution_cut
@@ -4351,14 +4351,14 @@ module Google
         attr_accessor :good_total_ratio_threshold
       
         # A MetricRange is used when each window is good when the value x of a single
-        # TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must
+        # TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must
         # have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
         # Corresponds to the JSON property `metricMeanInRange`
         # @return [Google::Apis::MonitoringV3::MetricRange]
         attr_accessor :metric_mean_in_range
       
         # A MetricRange is used when each window is good when the value x of a single
-        # TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must
+        # TimeSeries satisfies range.min <= x <= range.max. The provided TimeSeries must
         # have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
         # Corresponds to the JSON property `metricSumInRange`
         # @return [Google::Apis::MonitoringV3::MetricRange]
