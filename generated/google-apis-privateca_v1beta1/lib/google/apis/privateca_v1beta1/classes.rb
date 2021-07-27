@@ -2375,10 +2375,10 @@ module Google
       class SubordinateConfig
         include Google::Apis::Core::Hashable
       
-        # Required. This can refer to a CertificateAuthority in the same project that
-        # was used to create a subordinate CertificateAuthority. This field is used for
-        # information and usability purposes only. The resource name is in the format `
-        # projects/*/locations/*/certificateAuthorities/*`.
+        # Required. This can refer to a CertificateAuthority that was used to create a
+        # subordinate CertificateAuthority. This field is used for information and
+        # usability purposes only. The resource name is in the format `projects/*/
+        # locations/*/certificateAuthorities/*`.
         # Corresponds to the JSON property `certificateAuthority`
         # @return [String]
         attr_accessor :certificate_authority
