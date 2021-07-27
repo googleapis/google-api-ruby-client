@@ -283,9 +283,10 @@ module Google
         attr_accessor :timeout
       
         # Output only. Stores timing information for phases of the build. Valid keys are:
-        # * BUILD: time to execute all build steps * PUSH: time to push all specified
-        # images. * FETCHSOURCE: time to fetch source. If the build does not specify
-        # source or images, these keys will not be included.
+        # * BUILD: time to execute all build steps. * PUSH: time to push all specified
+        # images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up
+        # build. If the build does not specify source or images, these keys will not be
+        # included.
         # Corresponds to the JSON property `timing`
         # @return [Hash<String,Google::Apis::CloudbuildV1::TimeSpan>]
         attr_accessor :timing
@@ -659,7 +660,7 @@ module Google
         attr_accessor :filter
       
         # GitHubEventsConfig describes the configuration of a trigger that creates a
-        # build whenever a GitHub event is received. This message is experimental.
+        # build whenever a GitHub event is received.
         # Corresponds to the JSON property `github`
         # @return [Google::Apis::CloudbuildV1::GitHubEventsConfig]
         attr_accessor :github
@@ -710,6 +711,15 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
+        # Optional. The service account used for all user-controlled operations
+        # including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild.
+        # If no service account is set, then the standard Cloud Build service account ([
+        # PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format: `
+        # projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT_ID_OR_EMAIL``
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # GitRepoSource describes a repo and ref of a code repository.
         # Corresponds to the JSON property `sourceToBuild`
         # @return [Google::Apis::CloudbuildV1::GitRepoSource]
@@ -757,6 +767,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @pubsub_config = args[:pubsub_config] if args.key?(:pubsub_config)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @source_to_build = args[:source_to_build] if args.key?(:source_to_build)
           @substitutions = args[:substitutions] if args.key?(:substitutions)
           @tags = args[:tags] if args.key?(:tags)
@@ -842,6 +853,38 @@ module Google
         end
       end
       
+      # Metadata for `CreateGithubEnterpriseConfig` operation.
+      class CreateGitHubEnterpriseConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitHubEnterprise to be created. Format: `projects/`
+        # project`/locations/`location`/githubEnterpriseConfigs/`id``.
+        # Corresponds to the JSON property `githubEnterpriseConfig`
+        # @return [String]
+        attr_accessor :github_enterprise_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
       # Metadata for the `CreateWorkerPool` operation.
       class CreateWorkerPoolOperationMetadata
         include Google::Apis::Core::Hashable
@@ -871,6 +914,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # Metadata for `DeleteGitHubEnterpriseConfig` operation.
+      class DeleteGitHubEnterpriseConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitHubEnterprise to be deleted. Format: `projects/`
+        # project`/locations/`location`/githubEnterpriseConfigs/`id``.
+        # Corresponds to the JSON property `githubEnterpriseConfig`
+        # @return [String]
+        attr_accessor :github_enterprise_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
         end
       end
       
@@ -968,10 +1043,158 @@ module Google
         end
       end
       
+      # GitHubEnterpriseConfig represents a configuration for a GitHub Enterprise
+      # server.
+      class GitHubEnterpriseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The GitHub app id of the Cloud Build app on the GitHub Enterprise
+        # server.
+        # Corresponds to the JSON property `appId`
+        # @return [Fixnum]
+        attr_accessor :app_id
+      
+        # Output only. Time when the installation was associated with the project.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Name to display for this config.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The URL of the github enterprise host the configuration is for.
+        # Corresponds to the JSON property `hostUrl`
+        # @return [String]
+        attr_accessor :host_url
+      
+        # Optional. The full resource name for the GitHubEnterpriseConfig For example: "
+        # projects/`$project_id`/githubEnterpriseConfig/`$config_id`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The network to be used when reaching out to the GitHub Enterprise
+        # server. The VPC network must be enabled for private service connection. This
+        # should be set if the GitHub Enterprise server is hosted on-premises and not
+        # reachable by public internet. If this field is left empty, no network peering
+        # will occur and calls to the GitHub Enterprise server will be made over the
+        # public internet. Must be in the format `projects/`project`/global/networks/`
+        # network``, where `project` is a project number or id and `network` is the name
+        # of a VPC network in the project.
+        # Corresponds to the JSON property `peeredNetwork`
+        # @return [String]
+        attr_accessor :peered_network
+      
+        # GitHubEnterpriseSecrets represents the names of all necessary secrets in
+        # Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+        # Corresponds to the JSON property `secrets`
+        # @return [Google::Apis::CloudbuildV1::GitHubEnterpriseSecrets]
+        attr_accessor :secrets
+      
+        # Optional. SSL certificate to use for requests to GitHub Enterprise.
+        # Corresponds to the JSON property `sslCa`
+        # @return [String]
+        attr_accessor :ssl_ca
+      
+        # The key that should be attached to webhook calls to the ReceiveWebhook
+        # endpoint.
+        # Corresponds to the JSON property `webhookKey`
+        # @return [String]
+        attr_accessor :webhook_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @host_url = args[:host_url] if args.key?(:host_url)
+          @name = args[:name] if args.key?(:name)
+          @peered_network = args[:peered_network] if args.key?(:peered_network)
+          @secrets = args[:secrets] if args.key?(:secrets)
+          @ssl_ca = args[:ssl_ca] if args.key?(:ssl_ca)
+          @webhook_key = args[:webhook_key] if args.key?(:webhook_key)
+        end
+      end
+      
+      # GitHubEnterpriseSecrets represents the names of all necessary secrets in
+      # Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
+      class GitHubEnterpriseSecrets
+        include Google::Apis::Core::Hashable
+      
+        # The resource name for the OAuth client ID secret in Secret Manager.
+        # Corresponds to the JSON property `oauthClientIdName`
+        # @return [String]
+        attr_accessor :oauth_client_id_name
+      
+        # The resource name for the OAuth client ID secret version in Secret Manager.
+        # Corresponds to the JSON property `oauthClientIdVersionName`
+        # @return [String]
+        attr_accessor :oauth_client_id_version_name
+      
+        # The resource name for the OAuth secret in Secret Manager.
+        # Corresponds to the JSON property `oauthSecretName`
+        # @return [String]
+        attr_accessor :oauth_secret_name
+      
+        # The resource name for the OAuth secret secret version in Secret Manager.
+        # Corresponds to the JSON property `oauthSecretVersionName`
+        # @return [String]
+        attr_accessor :oauth_secret_version_name
+      
+        # The resource name for the private key secret.
+        # Corresponds to the JSON property `privateKeyName`
+        # @return [String]
+        attr_accessor :private_key_name
+      
+        # The resource name for the private key secret version.
+        # Corresponds to the JSON property `privateKeyVersionName`
+        # @return [String]
+        attr_accessor :private_key_version_name
+      
+        # The resource name for the webhook secret in Secret Manager.
+        # Corresponds to the JSON property `webhookSecretName`
+        # @return [String]
+        attr_accessor :webhook_secret_name
+      
+        # The resource name for the webhook secret secret version in Secret Manager.
+        # Corresponds to the JSON property `webhookSecretVersionName`
+        # @return [String]
+        attr_accessor :webhook_secret_version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_client_id_name = args[:oauth_client_id_name] if args.key?(:oauth_client_id_name)
+          @oauth_client_id_version_name = args[:oauth_client_id_version_name] if args.key?(:oauth_client_id_version_name)
+          @oauth_secret_name = args[:oauth_secret_name] if args.key?(:oauth_secret_name)
+          @oauth_secret_version_name = args[:oauth_secret_version_name] if args.key?(:oauth_secret_version_name)
+          @private_key_name = args[:private_key_name] if args.key?(:private_key_name)
+          @private_key_version_name = args[:private_key_version_name] if args.key?(:private_key_version_name)
+          @webhook_secret_name = args[:webhook_secret_name] if args.key?(:webhook_secret_name)
+          @webhook_secret_version_name = args[:webhook_secret_version_name] if args.key?(:webhook_secret_version_name)
+        end
+      end
+      
       # GitHubEventsConfig describes the configuration of a trigger that creates a
-      # build whenever a GitHub event is received. This message is experimental.
+      # build whenever a GitHub event is received.
       class GitHubEventsConfig
         include Google::Apis::Core::Hashable
+      
+        # Optional. The resource name of the github enterprise config that should be
+        # applied to this installation. For example: "projects/`$project_id`/
+        # githubEnterpriseConfig/`$config_id`"
+        # Corresponds to the JSON property `enterpriseConfigResourceName`
+        # @return [String]
+        attr_accessor :enterprise_config_resource_name
       
         # The installationID that emits the GitHub event.
         # Corresponds to the JSON property `installationId`
@@ -1006,6 +1229,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enterprise_config_resource_name = args[:enterprise_config_resource_name] if args.key?(:enterprise_config_resource_name)
           @installation_id = args[:installation_id] if args.key?(:installation_id)
           @name = args[:name] if args.key?(:name)
           @owner = args[:owner] if args.key?(:owner)
@@ -1275,6 +1499,25 @@ module Google
         def update!(**args)
           @builds = args[:builds] if args.key?(:builds)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # RPC response object returned by ListGithubEnterpriseConfigs RPC method.
+      class ListGithubEnterpriseConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of GitHubEnterpriseConfigs
+        # Corresponds to the JSON property `configs`
+        # @return [Array<Google::Apis::CloudbuildV1::GitHubEnterpriseConfig>]
+        attr_accessor :configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configs = args[:configs] if args.key?(:configs)
         end
       end
       
@@ -1693,6 +1936,38 @@ module Google
         def update!(**args)
           @network_config = args[:network_config] if args.key?(:network_config)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
+        end
+      end
+      
+      # Metadata for `ProcessAppManifestCallback` operation.
+      class ProcessAppManifestCallbackOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitHubEnterprise to be created. Format: `projects/`
+        # project`/locations/`location`/githubEnterpriseConfigs/`id``.
+        # Corresponds to the JSON property `githubEnterpriseConfig`
+        # @return [String]
+        attr_accessor :github_enterprise_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
         end
       end
       
@@ -2378,6 +2653,38 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Metadata for `UpdateGitHubEnterpriseConfig` operation.
+      class UpdateGitHubEnterpriseConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitHubEnterprise to be updated. Format: `projects/`
+        # project`/locations/`location`/githubEnterpriseConfigs/`id``.
+        # Corresponds to the JSON property `githubEnterpriseConfig`
+        # @return [String]
+        attr_accessor :github_enterprise_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
         end
       end
       

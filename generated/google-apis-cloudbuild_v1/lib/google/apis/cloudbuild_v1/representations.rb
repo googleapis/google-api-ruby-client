@@ -88,7 +88,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateGitHubEnterpriseConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateWorkerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteGitHubEnterpriseConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -113,6 +125,18 @@ module Google
       end
       
       class FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GitHubEnterpriseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GitHubEnterpriseSecrets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -167,6 +191,12 @@ module Google
       end
       
       class ListBuildsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGithubEnterpriseConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +269,12 @@ module Google
       end
       
       class PrivatePoolV1Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProcessAppManifestCallbackOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -353,6 +389,12 @@ module Google
       end
       
       class TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateGitHubEnterpriseConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -538,6 +580,7 @@ module Google
           property :pubsub_config, as: 'pubsubConfig', class: Google::Apis::CloudbuildV1::PubsubConfig, decorator: Google::Apis::CloudbuildV1::PubsubConfig::Representation
       
           property :resource_name, as: 'resourceName'
+          property :service_account, as: 'serviceAccount'
           property :source_to_build, as: 'sourceToBuild', class: Google::Apis::CloudbuildV1::GitRepoSource, decorator: Google::Apis::CloudbuildV1::GitRepoSource::Representation
       
           hash :substitutions, as: 'substitutions'
@@ -574,12 +617,30 @@ module Google
         end
       end
       
+      class CreateGitHubEnterpriseConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
+        end
+      end
+      
       class CreateWorkerPoolOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class DeleteGitHubEnterpriseConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
         end
       end
       
@@ -614,9 +675,40 @@ module Google
         end
       end
       
+      class GitHubEnterpriseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, :numeric_string => true, as: 'appId'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :host_url, as: 'hostUrl'
+          property :name, as: 'name'
+          property :peered_network, as: 'peeredNetwork'
+          property :secrets, as: 'secrets', class: Google::Apis::CloudbuildV1::GitHubEnterpriseSecrets, decorator: Google::Apis::CloudbuildV1::GitHubEnterpriseSecrets::Representation
+      
+          property :ssl_ca, as: 'sslCa'
+          property :webhook_key, as: 'webhookKey'
+        end
+      end
+      
+      class GitHubEnterpriseSecrets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_client_id_name, as: 'oauthClientIdName'
+          property :oauth_client_id_version_name, as: 'oauthClientIdVersionName'
+          property :oauth_secret_name, as: 'oauthSecretName'
+          property :oauth_secret_version_name, as: 'oauthSecretVersionName'
+          property :private_key_name, as: 'privateKeyName'
+          property :private_key_version_name, as: 'privateKeyVersionName'
+          property :webhook_secret_name, as: 'webhookSecretName'
+          property :webhook_secret_version_name, as: 'webhookSecretVersionName'
+        end
+      end
+      
       class GitHubEventsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enterprise_config_resource_name, as: 'enterpriseConfigResourceName'
           property :installation_id, :numeric_string => true, as: 'installationId'
           property :name, as: 'name'
           property :owner, as: 'owner'
@@ -696,6 +788,14 @@ module Google
           collection :builds, as: 'builds', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGithubEnterpriseConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configs, as: 'configs', class: Google::Apis::CloudbuildV1::GitHubEnterpriseConfig, decorator: Google::Apis::CloudbuildV1::GitHubEnterpriseConfig::Representation
+      
         end
       end
       
@@ -814,6 +914,15 @@ module Google
       
           property :worker_config, as: 'workerConfig', class: Google::Apis::CloudbuildV1::WorkerConfig, decorator: Google::Apis::CloudbuildV1::WorkerConfig::Representation
       
+        end
+      end
+      
+      class ProcessAppManifestCallbackOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
         end
       end
       
@@ -1003,6 +1112,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class UpdateGitHubEnterpriseConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
         end
       end
       
