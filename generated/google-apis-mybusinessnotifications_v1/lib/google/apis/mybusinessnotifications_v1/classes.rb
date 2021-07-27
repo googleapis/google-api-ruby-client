@@ -29,7 +29,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The resource name this setting is for. This is of the form `accounts/
-        # `account_id`/notifications/setting`.
+        # `account_id`/notificationSetting`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

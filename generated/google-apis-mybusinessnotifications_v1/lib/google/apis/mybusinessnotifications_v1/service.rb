@@ -88,7 +88,7 @@ module Google
         # notification_types
         # @param [String] name
         #   Required. The resource name this setting is for. This is of the form `accounts/
-        #   `account_id`/notifications/setting`.
+        #   `account_id`/notificationSetting`.
         # @param [Google::Apis::MybusinessnotificationsV1::NotificationSetting] notification_setting_object
         # @param [String] update_mask
         #   Required. The specific fields that should be updated. The only editable field
