@@ -76,7 +76,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateGitHubEnterpriseConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateWorkerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteGitHubEnterpriseConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProcessAppManifestCallbackOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepoSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +287,12 @@ module Google
       end
       
       class TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateGitHubEnterpriseConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -444,12 +468,30 @@ module Google
         end
       end
       
+      class CreateGitHubEnterpriseConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
+        end
+      end
+      
       class CreateWorkerPoolOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class DeleteGitHubEnterpriseConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
         end
       end
       
@@ -628,6 +670,15 @@ module Google
         end
       end
       
+      class ProcessAppManifestCallbackOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
+        end
+      end
+      
       class RepoSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -761,6 +812,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class UpdateGitHubEnterpriseConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
         end
       end
       

@@ -283,9 +283,10 @@ module Google
         attr_accessor :timeout
       
         # Output only. Stores timing information for phases of the build. Valid keys are:
-        # * BUILD: time to execute all build steps * PUSH: time to push all specified
-        # images. * FETCHSOURCE: time to fetch source. If the build does not specify
-        # source or images, these keys will not be included.
+        # * BUILD: time to execute all build steps. * PUSH: time to push all specified
+        # images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up
+        # build. If the build does not specify source or images, these keys will not be
+        # included.
         # Corresponds to the JSON property `timing`
         # @return [Hash<String,Google::Apis::CloudbuildV1alpha1::TimeSpan>]
         attr_accessor :timing
@@ -649,6 +650,38 @@ module Google
         end
       end
       
+      # Metadata for `CreateGithubEnterpriseConfig` operation.
+      class CreateGitHubEnterpriseConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitHubEnterprise to be created. Format: `projects/`
+        # project`/locations/`location`/githubEnterpriseConfigs/`id``.
+        # Corresponds to the JSON property `githubEnterpriseConfig`
+        # @return [String]
+        attr_accessor :github_enterprise_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
       # Metadata for the `CreateWorkerPool` operation.
       class CreateWorkerPoolOperationMetadata
         include Google::Apis::Core::Hashable
@@ -678,6 +711,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # Metadata for `DeleteGitHubEnterpriseConfig` operation.
+      class DeleteGitHubEnterpriseConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitHubEnterprise to be deleted. Format: `projects/`
+        # project`/locations/`location`/githubEnterpriseConfigs/`id``.
+        # Corresponds to the JSON property `githubEnterpriseConfig`
+        # @return [String]
+        attr_accessor :github_enterprise_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
         end
       end
       
@@ -1300,6 +1365,38 @@ module Google
         end
       end
       
+      # Metadata for `ProcessAppManifestCallback` operation.
+      class ProcessAppManifestCallbackOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitHubEnterprise to be created. Format: `projects/`
+        # project`/locations/`location`/githubEnterpriseConfigs/`id``.
+        # Corresponds to the JSON property `githubEnterpriseConfig`
+        # @return [String]
+        attr_accessor :github_enterprise_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
       # Location of the source in a Google Cloud Source Repository.
       class RepoSource
         include Google::Apis::Core::Hashable
@@ -1792,6 +1889,38 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Metadata for `UpdateGitHubEnterpriseConfig` operation.
+      class UpdateGitHubEnterpriseConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitHubEnterprise to be updated. Format: `projects/`
+        # project`/locations/`location`/githubEnterpriseConfigs/`id``.
+        # Corresponds to the JSON property `githubEnterpriseConfig`
+        # @return [String]
+        attr_accessor :github_enterprise_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
         end
       end
       
