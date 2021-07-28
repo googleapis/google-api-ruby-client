@@ -22,6 +22,51 @@ module Google
   module Apis
     module ApigeeV1
       
+      # Describes why a bundle is invalid. Intended for use in error details.
+      class EdgeConfigstoreBundleBadBundle
+        include Google::Apis::Core::Hashable
+      
+        # Describes all precondition violations.
+        # Corresponds to the JSON property `violations`
+        # @return [Array<Google::Apis::ApigeeV1::EdgeConfigstoreBundleBadBundleViolation>]
+        attr_accessor :violations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @violations = args[:violations] if args.key?(:violations)
+        end
+      end
+      
+      # A message type used to describe a single bundle validation error.
+      class EdgeConfigstoreBundleBadBundleViolation
+        include Google::Apis::Core::Hashable
+      
+        # A description of why the bundle is invalid and how to fix it.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The filename (including relative path from the bundle root) in which the error
+        # occurred.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @filename = args[:filename] if args.key?(:filename)
+        end
+      end
+      
       # Message that represents an arbitrary HTTP body. It should only be used for
       # payload formats that can't be represented as JSON, such as raw binary or an
       # HTML page. This message can be used both in streaming and non-streaming API
@@ -589,7 +634,12 @@ module Google
       class GoogleCloudApigeeV1ApiProxy
         include Google::Apis::Core::Hashable
       
-        # The id of the most recently created revision for this api proxy.
+        # User labels applied to this API Proxy.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The id of the most recently created revision for this api proxy.
         # Corresponds to the JSON property `latestRevisionId`
         # @return [String]
         attr_accessor :latest_revision_id
@@ -599,12 +649,12 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EntityMetadata]
         attr_accessor :meta_data
       
-        # Name of the API proxy.
+        # Output only. Name of the API proxy.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # List of revisons defined for the API proxy.
+        # Output only. List of revisons defined for the API proxy.
         # Corresponds to the JSON property `revision`
         # @return [Array<String>]
         attr_accessor :revision
@@ -615,6 +665,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
           @latest_revision_id = args[:latest_revision_id] if args.key?(:latest_revision_id)
           @meta_data = args[:meta_data] if args.key?(:meta_data)
           @name = args[:name] if args.key?(:name)
@@ -2044,6 +2095,12 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>]
         attr_accessor :route_conflicts
       
+        # The full resource name of Cloud IAM Service Account that this deployment is
+        # using, eg, `projects/-/serviceAccounts/`email``.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Current state of the deployment. This field is not populated in List APIs.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2063,6 +2120,7 @@ module Google
           @pods = args[:pods] if args.key?(:pods)
           @revision = args[:revision] if args.key?(:revision)
           @route_conflicts = args[:route_conflicts] if args.key?(:route_conflicts)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
         end
       end

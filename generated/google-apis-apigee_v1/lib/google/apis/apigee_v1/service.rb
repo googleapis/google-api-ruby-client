@@ -4315,6 +4315,10 @@ module Google
         #   GenerateDeployChangeReport) may be used to examine routing changes before
         #   issuing the deployment request, and its response will indicate if a sequenced
         #   rollout is recommended for the deployment.
+        # @param [String] service_account
+        #   Google Cloud IAM service account. The service account represents the identity
+        #   of the deployed proxy, and determines what permissions it has. The format must
+        #   be ``ACCOUNT_ID`@`PROJECT`.iam.gserviceaccount.com`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4332,13 +4336,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deploy_organization_environment_api_revision(name, override: nil, sequenced_rollout: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def deploy_organization_environment_api_revision(name, override: nil, sequenced_rollout: nil, service_account: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}/deployments', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment
           command.params['name'] = name unless name.nil?
           command.query['override'] = override unless override.nil?
           command.query['sequencedRollout'] = sequenced_rollout unless sequenced_rollout.nil?
+          command.query['serviceAccount'] = service_account unless service_account.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5930,6 +5935,10 @@ module Google
         #   replace other deployed revisions. By default, `override` is `false` and the
         #   deployment is rejected if other revisions of the shared flow are deployed in
         #   the environment.
+        # @param [String] service_account
+        #   Google Cloud IAM service account. The service account represents the identity
+        #   of the deployed proxy, and determines what permissions it has. The format must
+        #   be ``ACCOUNT_ID`@`PROJECT`.iam.gserviceaccount.com`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5947,12 +5956,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deploy_organization_environment_sharedflow_revision(name, override: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def deploy_organization_environment_sharedflow_revision(name, override: nil, service_account: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}/deployments', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment
           command.params['name'] = name unless name.nil?
           command.query['override'] = override unless override.nil?
+          command.query['serviceAccount'] = service_account unless service_account.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
