@@ -119,6 +119,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Services that are restoring from the backup.
+        # Corresponds to the JSON property `restoringServices`
+        # @return [Array<String>]
+        attr_accessor :restoring_services
+      
         # A managed metastore service that serves metadata queries.
         # Corresponds to the JSON property `serviceRevision`
         # @return [Google::Apis::MetastoreV1beta::Service]
@@ -139,6 +144,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)
+          @restoring_services = args[:restoring_services] if args.key?(:restoring_services)
           @service_revision = args[:service_revision] if args.key?(:service_revision)
           @state = args[:state] if args.key?(:state)
         end
