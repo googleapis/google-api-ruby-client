@@ -1846,7 +1846,11 @@ module Google
         # Tags created with a public tag template are referred to as public tags. You
         # can search for a public tag by value with a simple search query instead of
         # using a ``tag:`` predicate. Public tag templates may not appear in search
-        # results depending on scope, see: include_public_tag_templates
+        # results depending on scope, see: include_public_tag_templates Note: If an [IAM
+        # domain restriction](https://cloud.google.com/resource-manager/docs/
+        # organization-policy/restricting-domains) is configured in the tag template's
+        # location, the public access will not be enabled but the simple search for tag
+        # values will still work.
         # Corresponds to the JSON property `isPubliclyReadable`
         # @return [Boolean]
         attr_accessor :is_publicly_readable

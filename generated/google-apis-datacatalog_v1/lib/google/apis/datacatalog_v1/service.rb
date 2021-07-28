@@ -106,13 +106,13 @@ module Google
         #   datasets/`DATASET_ID`/tables/`TABLE_ID`` * `//pubsub.googleapis.com/projects/`
         #   PROJECT_ID`/topics/`TOPIC_ID``
         # @param [String] sql_resource
-        #   The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.`
-        #   PROJECT_ID`.`TOPIC_ID`` * `pubsub.`PROJECT_ID`.`TOPIC.ID.SEPARATED.WITH.DOTS``
-        #   * `bigquery.table.`PROJECT_ID`.`DATASET_ID`.`TABLE_ID`` * `bigquery.dataset.`
-        #   PROJECT_ID`.`DATASET_ID`` * `datacatalog.entry.`PROJECT_ID`.`LOCATION_ID`.`
-        #   ENTRY_GROUP_ID`.`ENTRY_ID`` Identifiers (`*_ID`) should comply with the [
-        #   Lexical structure in Standard SQL] (https://cloud.google.com/bigquery/docs/
-        #   reference/standard-sql/lexical).
+        #   The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.
+        #   topic.`PROJECT_ID`.`TOPIC_ID`` * `pubsub.topic.`PROJECT_ID`.`\```TOPIC.ID.
+        #   SEPARATED.WITH.DOTS``\` * `bigquery.table.`PROJECT_ID`.`DATASET_ID`.`TABLE_ID``
+        #   * `bigquery.dataset.`PROJECT_ID`.`DATASET_ID`` * `datacatalog.entry.`
+        #   PROJECT_ID`.`LOCATION_ID`.`ENTRY_GROUP_ID`.`ENTRY_ID`` Identifiers (`*_ID`)
+        #   should comply with the [Lexical structure in Standard SQL] (https://cloud.
+        #   google.com/bigquery/docs/reference/standard-sql/lexical).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
