@@ -262,6 +262,7 @@ module Google
           property :description, as: 'description'
           property :end_time, as: 'endTime'
           property :name, as: 'name'
+          collection :restoring_services, as: 'restoringServices'
           property :service_revision, as: 'serviceRevision', class: Google::Apis::MetastoreV1beta::Service, decorator: Google::Apis::MetastoreV1beta::Service::Representation
       
           property :state, as: 'state'
