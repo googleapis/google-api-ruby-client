@@ -22,6 +22,18 @@ module Google
   module Apis
     module ApigeeV1
       
+      class EdgeConfigstoreBundleBadBundle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EdgeConfigstoreBundleBadBundleViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiHttpBody
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1120,6 +1132,22 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EdgeConfigstoreBundleBadBundle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :violations, as: 'violations', class: Google::Apis::ApigeeV1::EdgeConfigstoreBundleBadBundleViolation, decorator: Google::Apis::ApigeeV1::EdgeConfigstoreBundleBadBundleViolation::Representation
+      
+        end
+      end
+      
+      class EdgeConfigstoreBundleBadBundleViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :filename, as: 'filename'
+        end
+      end
+      
       class GoogleApiHttpBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1268,6 +1296,7 @@ module Google
       class GoogleCloudApigeeV1ApiProxy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
           property :latest_revision_id, as: 'latestRevisionId'
           property :meta_data, as: 'metaData', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EntityMetadata, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EntityMetadata::Representation
       
@@ -1625,6 +1654,7 @@ module Google
           property :revision, as: 'revision'
           collection :route_conflicts, as: 'routeConflicts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict::Representation
       
+          property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
         end
       end
