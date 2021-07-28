@@ -1795,8 +1795,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The index of the parent revisions corresponding collection of items (eg. list
-        # of entities, properties within entities, etc.)
+        # The index of the parent item in the corresponding item list (eg. list of
+        # entities, properties within entities, etc.) on parent revision.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -3559,8 +3559,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The index of the parent revisions corresponding collection of items (eg. list
-        # of entities, properties within entities, etc.)
+        # The index of the parent item in the corresponding item list (eg. list of
+        # entities, properties within entities, etc.) on parent revision.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
