@@ -385,7 +385,15 @@ module Google
         #   behavior at `otherContacts.list`.
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to
-        #   READ_SOURCE_TYPE_CONTACT if not set.
+        #   READ_SOURCE_TYPE_CONTACT if not set. If READ_SOURCE_TYPE_CONTACT is used,
+        #   valid values for the readMask are: * emailAddresses * metadata * names *
+        #   phoneNumbers * photos If READ_SOURCE_TYPE_PROFILE is used, valid values for
+        #   the readMask are: * addresses * ageRanges * biographies * birthdays *
+        #   calendarUrls * clientData * coverPhotos * emailAddresses * events *
+        #   externalIds * genders * imClients * interests * locales * locations *
+        #   memberships * metadata * miscKeywords * names * nicknames * occupations *
+        #   organizations * phoneNumbers * photos * relations * sipAddresses * skills *
+        #   urls * userDefined
         # @param [String] sync_token
         #   Optional. A sync token, received from a previous response `next_sync_token`
         #   Provide this to retrieve only the resources changed since the last request.
