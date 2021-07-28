@@ -979,8 +979,8 @@ module Google
       
         # Required. Resource name for the Access Level. The `short_name` component must
         # begin with a letter and only include alphanumeric and '_'. Format: `
-        # accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length of
-        # the `short_name` component is 50 characters.
+        # accessPolicies/`access_policy`/accessLevels/`access_level``. The maximum
+        # length of the `access_level` component is 50 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1021,7 +1021,7 @@ module Google
         attr_accessor :etag
       
         # Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/`
-        # policy_id``
+        # access_policy``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1626,7 +1626,7 @@ module Google
       
         # Required. Resource name for the ServicePerimeter. The `short_name` component
         # must begin with a letter and only include alphanumeric and '_'. Format: `
-        # accessPolicies/`policy_id`/servicePerimeters/`short_name``
+        # accessPolicies/`access_policy`/servicePerimeters/`service_perimeter``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
