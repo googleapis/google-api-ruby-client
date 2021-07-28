@@ -329,7 +329,7 @@ module Google
         
         # Gets details of executions
         # @param [String] name
-        #   Required. Format: `projects/`project_id`/locations/`location`/schedules/`
+        #   Required. Format: `projects/`project_id`/locations/`location`/executions/`
         #   execution_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
