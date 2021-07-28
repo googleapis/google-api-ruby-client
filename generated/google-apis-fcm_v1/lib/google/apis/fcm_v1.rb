@@ -32,6 +32,9 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud Platform data
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Send messages and manage messaging subscriptions for your Firebase applications
+      AUTH_FIREBASE_MESSAGING = 'https://www.googleapis.com/auth/firebase.messaging'
     end
   end
 end
