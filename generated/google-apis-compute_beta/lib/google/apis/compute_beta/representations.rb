@@ -2482,6 +2482,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkEndpointGroupServerlessDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkEndpointGroupsAttachEndpointsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3778,6 +3784,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RolloutPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Route
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -4066,6 +4078,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyRuleHttpHeaderAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleHttpHeaderActionHttpHeaderOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyRuleMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4079,6 +4103,24 @@ module Google
       end
       
       class SecurityPolicyRuleMatcherConfigLayer4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleRateLimitOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsThreshold
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleRedirectOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4138,12 +4180,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ServiceAttachmentConsumerForwardingRule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ServiceAttachmentConsumerProjectLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4182,6 +4218,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShareSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5719,6 +5761,7 @@ module Google
       
           property :source, as: 'source'
           property :type, as: 'type'
+          collection :user_licenses, as: 'userLicenses'
         end
       end
       
@@ -6215,6 +6258,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_persistence_on_unhealthy_backends, as: 'connectionPersistenceOnUnhealthyBackends'
+          property :enable_strong_affinity, as: 'enableStrongAffinity'
           property :idle_timeout_sec, as: 'idleTimeoutSec'
           property :tracking_mode, as: 'trackingMode'
         end
@@ -6650,6 +6694,8 @@ module Google
           property :obsolete, as: 'obsolete'
           property :replacement, as: 'replacement'
           property :state, as: 'state'
+          property :state_override, as: 'stateOverride', class: Google::Apis::ComputeBeta::RolloutPolicy, decorator: Google::Apis::ComputeBeta::RolloutPolicy::Representation
+      
         end
       end
       
@@ -6698,6 +6744,7 @@ module Google
           property :status, as: 'status'
           property :storage_type, as: 'storageType'
           property :type, as: 'type'
+          collection :user_licenses, as: 'userLicenses'
           collection :users, as: 'users'
           property :zone, as: 'zone'
         end
@@ -8102,6 +8149,8 @@ module Google
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeBeta::Image::RawDisk, decorator: Google::Apis::ComputeBeta::Image::RawDisk::Representation
       
+          property :rollout_override, as: 'rolloutOverride', class: Google::Apis::ComputeBeta::RolloutPolicy, decorator: Google::Apis::ComputeBeta::RolloutPolicy::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeBeta::InitialStateConfig, decorator: Google::Apis::ComputeBeta::InitialStateConfig::Representation
@@ -8121,6 +8170,7 @@ module Google
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
           collection :storage_locations, as: 'storageLocations'
+          collection :user_licenses, as: 'userLicenses'
         end
         
         class RawDisk
@@ -8590,6 +8640,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+          property :skip_instances_on_validation_error, as: 'skipInstancesOnValidationError'
         end
       end
       
@@ -10028,8 +10079,11 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
+          property :psc_target_service, as: 'pscTargetService'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :serverless_deployment, as: 'serverlessDeployment', class: Google::Apis::ComputeBeta::NetworkEndpointGroupServerlessDeployment, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupServerlessDeployment::Representation
+      
           property :size, as: 'size'
           property :subnetwork, as: 'subnetwork'
           property :zone, as: 'zone'
@@ -10134,6 +10188,16 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NetworkEndpointGroupServerlessDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :platform, as: 'platform'
+          property :resource, as: 'resource'
+          property :url_mask, as: 'urlMask'
+          property :version, as: 'version'
         end
       end
       
@@ -10256,6 +10320,7 @@ module Google
           property :network, as: 'network'
           property :network_ip, as: 'networkIP'
           property :nic_type, as: 'nicType'
+          property :queue_count, as: 'queueCount'
           property :stack_type, as: 'stackType'
           property :subnetwork, as: 'subnetwork'
         end
@@ -11837,6 +11902,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+          property :skip_instances_on_validation_error, as: 'skipInstancesOnValidationError'
         end
       end
       
@@ -12050,6 +12116,8 @@ module Google
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeBeta::ShareSettings, decorator: Google::Apis::ComputeBeta::ShareSettings::Representation
+      
           property :specific_reservation, as: 'specificReservation', class: Google::Apis::ComputeBeta::AllocationSpecificSkuReservation, decorator: Google::Apis::ComputeBeta::AllocationSpecificSkuReservation::Representation
       
           property :specific_reservation_required, as: 'specificReservationRequired'
@@ -12419,6 +12487,14 @@ module Google
           property :day, as: 'day'
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class RolloutPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_rollout_time, as: 'defaultRolloutTime'
+          hash :location_rollout_policies, as: 'locationRolloutPolicies'
         end
       end
       
@@ -12999,15 +13075,37 @@ module Google
           property :description, as: 'description'
           property :direction, as: 'direction'
           property :enable_logging, as: 'enableLogging'
+          property :header_action, as: 'headerAction', class: Google::Apis::ComputeBeta::SecurityPolicyRuleHttpHeaderAction, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleHttpHeaderAction::Representation
+      
           property :kind, as: 'kind'
           property :match, as: 'match', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher::Representation
       
           property :preview, as: 'preview'
           property :priority, as: 'priority'
+          property :rate_limit_options, as: 'rateLimitOptions', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptions, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptions::Representation
+      
+          property :redirect_options, as: 'redirectOptions', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRedirectOptions, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRedirectOptions::Representation
+      
           property :rule_number, :numeric_string => true, as: 'ruleNumber'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
           collection :target_service_accounts, as: 'targetServiceAccounts'
+        end
+      end
+      
+      class SecurityPolicyRuleHttpHeaderAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_headers_to_adds, as: 'requestHeadersToAdds', class: Google::Apis::ComputeBeta::SecurityPolicyRuleHttpHeaderActionHttpHeaderOption, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleHttpHeaderActionHttpHeaderOption::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRuleHttpHeaderActionHttpHeaderOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_name, as: 'headerName'
+          property :header_value, as: 'headerValue'
         end
       end
       
@@ -13037,6 +13135,37 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'ipProtocol'
           collection :ports, as: 'ports'
+        end
+      end
+      
+      class SecurityPolicyRuleRateLimitOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ban_duration_sec, as: 'banDurationSec'
+          property :ban_threshold, as: 'banThreshold', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
+      
+          property :conform_action, as: 'conformAction'
+          property :enforce_on_key, as: 'enforceOnKey'
+          property :enforce_on_key_name, as: 'enforceOnKeyName'
+          property :exceed_action, as: 'exceedAction'
+          property :rate_limit_threshold, as: 'rateLimitThreshold', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyRuleRateLimitOptionsThreshold
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :interval_sec, as: 'intervalSec'
+        end
+      end
+      
+      class SecurityPolicyRuleRedirectOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target, as: 'target'
+          property :type, as: 'type'
         end
       end
       
@@ -13082,8 +13211,6 @@ module Google
       
           property :connection_preference, as: 'connectionPreference'
           collection :consumer_accept_lists, as: 'consumerAcceptLists', class: Google::Apis::ComputeBeta::ServiceAttachmentConsumerProjectLimit, decorator: Google::Apis::ComputeBeta::ServiceAttachmentConsumerProjectLimit::Representation
-      
-          collection :consumer_forwarding_rules, as: 'consumerForwardingRules', class: Google::Apis::ComputeBeta::ServiceAttachmentConsumerForwardingRule, decorator: Google::Apis::ComputeBeta::ServiceAttachmentConsumerForwardingRule::Representation
       
           collection :consumer_reject_lists, as: 'consumerRejectLists'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -13140,16 +13267,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint, as: 'endpoint'
-          property :forwarding_rule, as: 'forwardingRule'
-          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
-          property :status, as: 'status'
-        end
-      end
-      
-      class ServiceAttachmentConsumerForwardingRule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :forwarding_rule, as: 'forwardingRule'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
           property :status, as: 'status'
         end
@@ -13220,6 +13337,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ShareSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :projects, as: 'projects'
+          property :share_type, as: 'shareType'
         end
       end
       
@@ -13331,6 +13456,7 @@ module Google
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
           collection :storage_locations, as: 'storageLocations'
+          collection :user_licenses, as: 'userLicenses'
         end
       end
       
