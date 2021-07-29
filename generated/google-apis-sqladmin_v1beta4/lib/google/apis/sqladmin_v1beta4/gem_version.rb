@@ -16,13 +16,13 @@ module Google
   module Apis
     module SqladminV1beta4
       # Version of the google-apis-sqladmin_v1beta4 gem
-      GEM_VERSION = "0.13.0"
+      GEM_VERSION = "0.14.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20210627"
+      REVISION = "20210715"
     end
   end
 end

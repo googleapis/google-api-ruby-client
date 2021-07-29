@@ -55,7 +55,7 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Fixnum] id
-        #   The ID of the Backup Run to delete. To find a Backup Run ID, use the list
+        #   The ID of the backup run to delete. To find a backup run ID, use the list
         #   method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -92,7 +92,7 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Fixnum] id
-        #   The ID of this Backup Run.
+        #   The ID of this backup run.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -122,8 +122,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new backup run on demand. This method is applicable only to Second
-        # Generation instances.
+        # Creates a new backup run on demand.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -498,7 +497,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all available database flags for Cloud SQL instances.
+        # Lists all available database flags for Cloud SQL instances.
         # @param [String] database_version
         #   Database type and version you want to retrieve flags for. By default, this
         #   method returns flags for all database types and versions.
@@ -711,8 +710,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Failover the instance to its failover replica instance. Using this operation
-        # might cause your instance to restart.
+        # Initiates a manual failover of a high availability (HA) primary instance to a
+        # standby instance, which becomes the primary instance. Users are then rerouted
+        # to the new primary. For more information, see the Overview of high
+        # availability page in the Cloud SQL documentation. If using Legacy HA (MySQL
+        # only), this causes the instance to failover to its failover replica instance.
         # @param [String] project
         #   ID of the project that contains the read replica.
         # @param [String] instance
