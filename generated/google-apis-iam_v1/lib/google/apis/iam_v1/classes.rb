@@ -1589,9 +1589,9 @@ module Google
         # Must be a serialized JSON object that contains a JWT Claims Set. For example: `
         # `"sub": "user@example.com", "iat": 313435`` If the JWT Claims Set contains an
         # expiration time (`exp`) claim, it must be an integer timestamp that is not in
-        # the past and no more than 1 hour in the future. If the JWT Claims Set does not
-        # contain an expiration time (`exp`) claim, this claim is added automatically,
-        # with a timestamp that is 1 hour in the future.
+        # the past and no more than 12 hours in the future. If the JWT Claims Set does
+        # not contain an expiration time (`exp`) claim, this claim is added
+        # automatically, with a timestamp that is 1 hour in the future.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
