@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSnapshotsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +203,12 @@ module Google
       end
       
       class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Snapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -459,6 +471,15 @@ module Google
         end
       end
       
+      class ListSnapshotsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :snapshots, as: 'snapshots', class: Google::Apis::FileV1beta1::Snapshot, decorator: Google::Apis::FileV1beta1::Snapshot::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -557,6 +578,18 @@ module Google
           property :duration, as: 'duration'
           property :start_time, as: 'startTime', class: Google::Apis::FileV1beta1::TimeOfDay, decorator: Google::Apis::FileV1beta1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class Snapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :filesystem_used_bytes, :numeric_string => true, as: 'filesystemUsedBytes'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       
