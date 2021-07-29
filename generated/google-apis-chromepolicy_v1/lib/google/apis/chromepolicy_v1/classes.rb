@@ -258,6 +258,32 @@ module Google
         end
       end
       
+      # The field and the value it must have for another field to be allowed to be set.
+      class GoogleChromePolicyV1PolicySchemaFieldDependencies
+        include Google::Apis::Core::Hashable
+      
+        # The source field which this field depends on.
+        # Corresponds to the JSON property `sourceField`
+        # @return [String]
+        attr_accessor :source_field
+      
+        # The value which the source field must have for this field to be allowed to be
+        # set.
+        # Corresponds to the JSON property `sourceFieldValue`
+        # @return [String]
+        attr_accessor :source_field_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_field = args[:source_field] if args.key?(:source_field)
+          @source_field_value = args[:source_field_value] if args.key?(:source_field_value)
+        end
+      end
+      
       # Provides detailed information for a particular field that is part of a
       # PolicySchema.
       class GoogleChromePolicyV1PolicySchemaFieldDescription
@@ -272,6 +298,12 @@ module Google
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
+      
+        # Output only. Provides a list of fields and the values they must have for this
+        # field to be allowed to be set.
+        # Corresponds to the JSON property `fieldDependencies`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDependencies>]
+        attr_accessor :field_dependencies
       
         # Output only. Any input constraints associated on the values for the field.
         # Corresponds to the JSON property `inputConstraint`
@@ -298,6 +330,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @field = args[:field] if args.key?(:field)
+          @field_dependencies = args[:field_dependencies] if args.key?(:field_dependencies)
           @input_constraint = args[:input_constraint] if args.key?(:input_constraint)
           @known_value_descriptions = args[:known_value_descriptions] if args.key?(:known_value_descriptions)
           @nested_field_descriptions = args[:nested_field_descriptions] if args.key?(:nested_field_descriptions)

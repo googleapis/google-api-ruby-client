@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromePolicyV1PolicySchemaFieldDependencies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromePolicyV1PolicySchemaFieldDescription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,11 +244,21 @@ module Google
         end
       end
       
+      class GoogleChromePolicyV1PolicySchemaFieldDependencies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_field, as: 'sourceField'
+          property :source_field_value, as: 'sourceFieldValue'
+        end
+      end
+      
       class GoogleChromePolicyV1PolicySchemaFieldDescription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :field, as: 'field'
+          collection :field_dependencies, as: 'fieldDependencies', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDependencies, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDependencies::Representation
+      
           property :input_constraint, as: 'inputConstraint'
           collection :known_value_descriptions, as: 'knownValueDescriptions', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription::Representation
       
