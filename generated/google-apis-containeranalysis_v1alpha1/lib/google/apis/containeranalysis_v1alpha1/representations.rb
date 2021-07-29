@@ -160,6 +160,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DocumentNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DocumentOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,7 +184,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +364,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PackageNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PgpSignedAttestation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +389,18 @@ module Google
       end
       
       class RelatedUrl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RelationshipNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RelationshipOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -708,6 +762,29 @@ module Google
         end
       end
       
+      class DocumentNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_licence, as: 'dataLicence'
+          property :spdx_version, as: 'spdxVersion'
+        end
+      end
+      
+      class DocumentOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :creator_comment, as: 'creatorComment'
+          collection :creators, as: 'creators'
+          property :document_comment, as: 'documentComment'
+          collection :external_document_refs, as: 'externalDocumentRefs'
+          property :id, as: 'id'
+          property :license_list_version, as: 'licenseListVersion'
+          property :namespace, as: 'namespace'
+          property :title, as: 'title'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -724,11 +801,45 @@ module Google
         end
       end
       
+      class ExternalRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :comment, as: 'comment'
+          property :locator, as: 'locator'
+          property :type, as: 'type'
+        end
+      end
+      
       class FileHashes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::ContaineranalysisV1alpha1::HashProp, decorator: Google::Apis::ContaineranalysisV1alpha1::HashProp::Representation
       
+        end
+      end
+      
+      class FileNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :checksum, as: 'checksum'
+          property :file_type, as: 'fileType'
+          property :title, as: 'title'
+        end
+      end
+      
+      class FileOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributions, as: 'attributions'
+          property :comment, as: 'comment'
+          collection :contributors, as: 'contributors'
+          property :copyright, as: 'copyright'
+          collection :files_license_info, as: 'filesLicenseInfo'
+          property :id, as: 'id'
+          property :license_comments, as: 'licenseComments'
+          property :license_concluded, as: 'licenseConcluded'
+          property :notice, as: 'notice'
         end
       end
       
@@ -944,7 +1055,15 @@ module Google
       
           collection :related_url, as: 'relatedUrl', class: Google::Apis::ContaineranalysisV1alpha1::RelatedUrl, decorator: Google::Apis::ContaineranalysisV1alpha1::RelatedUrl::Representation
       
+          property :sbom, as: 'sbom', class: Google::Apis::ContaineranalysisV1alpha1::DocumentNote, decorator: Google::Apis::ContaineranalysisV1alpha1::DocumentNote::Representation
+      
           property :short_description, as: 'shortDescription'
+          property :spdx_file, as: 'spdxFile', class: Google::Apis::ContaineranalysisV1alpha1::FileNote, decorator: Google::Apis::ContaineranalysisV1alpha1::FileNote::Representation
+      
+          property :spdx_package, as: 'spdxPackage', class: Google::Apis::ContaineranalysisV1alpha1::PackageNote, decorator: Google::Apis::ContaineranalysisV1alpha1::PackageNote::Representation
+      
+          property :spdx_relationship, as: 'spdxRelationship', class: Google::Apis::ContaineranalysisV1alpha1::RelationshipNote, decorator: Google::Apis::ContaineranalysisV1alpha1::RelationshipNote::Representation
+      
           property :update_time, as: 'updateTime'
           property :upgrade, as: 'upgrade', class: Google::Apis::ContaineranalysisV1alpha1::UpgradeNote, decorator: Google::Apis::ContaineranalysisV1alpha1::UpgradeNote::Representation
       
@@ -978,6 +1097,14 @@ module Google
           property :resource, as: 'resource', class: Google::Apis::ContaineranalysisV1alpha1::Resource, decorator: Google::Apis::ContaineranalysisV1alpha1::Resource::Representation
       
           property :resource_url, as: 'resourceUrl'
+          property :sbom, as: 'sbom', class: Google::Apis::ContaineranalysisV1alpha1::DocumentOccurrence, decorator: Google::Apis::ContaineranalysisV1alpha1::DocumentOccurrence::Representation
+      
+          property :spdx_file, as: 'spdxFile', class: Google::Apis::ContaineranalysisV1alpha1::FileOccurrence, decorator: Google::Apis::ContaineranalysisV1alpha1::FileOccurrence::Representation
+      
+          property :spdx_package, as: 'spdxPackage', class: Google::Apis::ContaineranalysisV1alpha1::PackageOccurrence, decorator: Google::Apis::ContaineranalysisV1alpha1::PackageOccurrence::Representation
+      
+          property :spdx_relationship, as: 'spdxRelationship', class: Google::Apis::ContaineranalysisV1alpha1::RelationshipOccurrence, decorator: Google::Apis::ContaineranalysisV1alpha1::RelationshipOccurrence::Representation
+      
           property :update_time, as: 'updateTime'
           property :upgrade, as: 'upgrade', class: Google::Apis::ContaineranalysisV1alpha1::UpgradeOccurrence, decorator: Google::Apis::ContaineranalysisV1alpha1::UpgradeOccurrence::Representation
       
@@ -1018,6 +1145,41 @@ module Google
         end
       end
       
+      class PackageNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analyzed, as: 'analyzed'
+          property :attribution, as: 'attribution'
+          property :checksum, as: 'checksum'
+          property :copyright, as: 'copyright'
+          property :detailed_description, as: 'detailedDescription'
+          property :download_location, as: 'downloadLocation'
+          collection :external_refs, as: 'externalRefs', class: Google::Apis::ContaineranalysisV1alpha1::ExternalRef, decorator: Google::Apis::ContaineranalysisV1alpha1::ExternalRef::Representation
+      
+          collection :files_license_info, as: 'filesLicenseInfo'
+          property :home_page, as: 'homePage'
+          property :license_declared, as: 'licenseDeclared'
+          property :originator, as: 'originator'
+          property :summary_description, as: 'summaryDescription'
+          property :supplier, as: 'supplier'
+          property :title, as: 'title'
+          property :verification_code, as: 'verificationCode'
+          property :version, as: 'version'
+        end
+      end
+      
+      class PackageOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment'
+          property :filename, as: 'filename'
+          property :id, as: 'id'
+          property :license_comments, as: 'licenseComments'
+          property :license_concluded, as: 'licenseConcluded'
+          property :source_info, as: 'sourceInfo'
+        end
+      end
+      
       class PgpSignedAttestation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1042,6 +1204,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label, as: 'label'
           property :url, as: 'url'
+        end
+      end
+      
+      class RelationshipNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RelationshipOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment'
+          property :source, as: 'source'
+          property :target, as: 'target'
+          property :type, as: 'type'
         end
       end
       

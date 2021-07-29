@@ -1007,6 +1007,112 @@ module Google
         end
       end
       
+      # DocumentNote represents an SPDX Document Creation Infromation section: https://
+      # spdx.github.io/spdx-spec/2-document-creation-information/
+      class DocumentNote
+        include Google::Apis::Core::Hashable
+      
+        # Compliance with the SPDX specification includes populating the SPDX fields
+        # therein with data related to such fields ("SPDX-Metadata")
+        # Corresponds to the JSON property `dataLicence`
+        # @return [String]
+        attr_accessor :data_licence
+      
+        # Provide a reference number that can be used to understand how to parse and
+        # interpret the rest of the file
+        # Corresponds to the JSON property `spdxVersion`
+        # @return [String]
+        attr_accessor :spdx_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_licence = args[:data_licence] if args.key?(:data_licence)
+          @spdx_version = args[:spdx_version] if args.key?(:spdx_version)
+        end
+      end
+      
+      # DocumentOccurrence represents an SPDX Document Creation Information section:
+      # https://spdx.github.io/spdx-spec/2-document-creation-information/
+      class DocumentOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # Identify when the SPDX file was originally created. The date is to be
+        # specified according to combined date and time in UTC format as specified in
+        # ISO 8601 standard
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A field for creators of the SPDX file to provide general comments about the
+        # creation of the SPDX file or any other relevant comment not included in the
+        # other fields
+        # Corresponds to the JSON property `creatorComment`
+        # @return [String]
+        attr_accessor :creator_comment
+      
+        # Identify who (or what, in the case of a tool) created the SPDX file. If the
+        # SPDX file was created by an individual, indicate the person's name
+        # Corresponds to the JSON property `creators`
+        # @return [Array<String>]
+        attr_accessor :creators
+      
+        # A field for creators of the SPDX file content to provide comments to the
+        # consumers of the SPDX document
+        # Corresponds to the JSON property `documentComment`
+        # @return [String]
+        attr_accessor :document_comment
+      
+        # Identify any external SPDX documents referenced within this SPDX document
+        # Corresponds to the JSON property `externalDocumentRefs`
+        # @return [Array<String>]
+        attr_accessor :external_document_refs
+      
+        # Identify the current SPDX document which may be referenced in relationships by
+        # other files, packages internally and documents externally
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A field for creators of the SPDX file to provide the version of the SPDX
+        # License List used when the SPDX file was created
+        # Corresponds to the JSON property `licenseListVersion`
+        # @return [String]
+        attr_accessor :license_list_version
+      
+        # Provide an SPDX document specific namespace as a unique absolute Uniform
+        # Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘
+        # #’ delimiter
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        # Identify name of this document as designated by creator
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator_comment = args[:creator_comment] if args.key?(:creator_comment)
+          @creators = args[:creators] if args.key?(:creators)
+          @document_comment = args[:document_comment] if args.key?(:document_comment)
+          @external_document_refs = args[:external_document_refs] if args.key?(:external_document_refs)
+          @id = args[:id] if args.key?(:id)
+          @license_list_version = args[:license_list_version] if args.key?(:license_list_version)
+          @namespace = args[:namespace] if args.key?(:namespace)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1078,6 +1184,48 @@ module Google
         end
       end
       
+      # An External Reference allows a Package to reference an external source of
+      # additional information, metadata, enumerations, asset identifiers, or
+      # downloadable content believed to be relevant to the Package
+      class ExternalRef
+        include Google::Apis::Core::Hashable
+      
+        # An External Reference allows a Package to reference an external source of
+        # additional information, metadata, enumerations, asset identifiers, or
+        # downloadable content believed to be relevant to the Package
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Human-readable information about the purpose and target of the reference
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # The unique string with no spaces necessary to access the package-specific
+        # information, metadata, or content within the target location
+        # Corresponds to the JSON property `locator`
+        # @return [String]
+        attr_accessor :locator
+      
+        # Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @comment = args[:comment] if args.key?(:comment)
+          @locator = args[:locator] if args.key?(:locator)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Container message for hashes of byte content of files, used in Source messages
       # to verify integrity of source input to the build.
       class FileHashes
@@ -1095,6 +1243,117 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # FileNote represents an SPDX File Information section: https://spdx.github.io/
+      # spdx-spec/4-file-information/
+      class FileNote
+        include Google::Apis::Core::Hashable
+      
+        # Provide a unique identifier to match analysis information on each specific
+        # file in a package
+        # Corresponds to the JSON property `checksum`
+        # @return [Array<String>]
+        attr_accessor :checksum
+      
+        # This field provides information about the type of file identified
+        # Corresponds to the JSON property `fileType`
+        # @return [String]
+        attr_accessor :file_type
+      
+        # Identify the full path and filename that corresponds to the file information
+        # in this section
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checksum = args[:checksum] if args.key?(:checksum)
+          @file_type = args[:file_type] if args.key?(:file_type)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # FileOccurrence represents an SPDX File Information section: https://spdx.
+      # github.io/spdx-spec/4-file-information/
+      class FileOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # This field provides a place for the SPDX data creator to record, at the file
+        # level, acknowledgements that may be needed to be communicated in some contexts
+        # Corresponds to the JSON property `attributions`
+        # @return [Array<String>]
+        attr_accessor :attributions
+      
+        # This field provides a place for the SPDX file creator to record any general
+        # comments about the file
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # This field provides a place for the SPDX file creator to record file
+        # contributors
+        # Corresponds to the JSON property `contributors`
+        # @return [Array<String>]
+        attr_accessor :contributors
+      
+        # Identify the copyright holder of the file, as well as any dates present
+        # Corresponds to the JSON property `copyright`
+        # @return [String]
+        attr_accessor :copyright
+      
+        # This field contains the license information actually found in the file, if any
+        # Corresponds to the JSON property `filesLicenseInfo`
+        # @return [Array<String>]
+        attr_accessor :files_license_info
+      
+        # Uniquely identify any element in an SPDX document which may be referenced by
+        # other elements
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # This field provides a place for the SPDX file creator to record any relevant
+        # background references or analysis that went in to arriving at the Concluded
+        # License for a file
+        # Corresponds to the JSON property `licenseComments`
+        # @return [String]
+        attr_accessor :license_comments
+      
+        # This field contains the license the SPDX file creator has concluded as
+        # governing the file or alternative values if the governing license cannot be
+        # determined
+        # Corresponds to the JSON property `licenseConcluded`
+        # @return [String]
+        attr_accessor :license_concluded
+      
+        # This field provides a place for the SPDX file creator to record license
+        # notices or other such related notices found in the file
+        # Corresponds to the JSON property `notice`
+        # @return [String]
+        attr_accessor :notice
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributions = args[:attributions] if args.key?(:attributions)
+          @comment = args[:comment] if args.key?(:comment)
+          @contributors = args[:contributors] if args.key?(:contributors)
+          @copyright = args[:copyright] if args.key?(:copyright)
+          @files_license_info = args[:files_license_info] if args.key?(:files_license_info)
+          @id = args[:id] if args.key?(:id)
+          @license_comments = args[:license_comments] if args.key?(:license_comments)
+          @license_concluded = args[:license_concluded] if args.key?(:license_concluded)
+          @notice = args[:notice] if args.key?(:notice)
         end
       end
       
@@ -1770,10 +2029,34 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::RelatedUrl>]
         attr_accessor :related_url
       
+        # DocumentNote represents an SPDX Document Creation Infromation section: https://
+        # spdx.github.io/spdx-spec/2-document-creation-information/
+        # Corresponds to the JSON property `sbom`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::DocumentNote]
+        attr_accessor :sbom
+      
         # A one sentence description of this `Note`.
         # Corresponds to the JSON property `shortDescription`
         # @return [String]
         attr_accessor :short_description
+      
+        # FileNote represents an SPDX File Information section: https://spdx.github.io/
+        # spdx-spec/4-file-information/
+        # Corresponds to the JSON property `spdxFile`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::FileNote]
+        attr_accessor :spdx_file
+      
+        # PackageNote represents an SPDX Package Information section: https://spdx.
+        # github.io/spdx-spec/3-package-information/
+        # Corresponds to the JSON property `spdxPackage`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::PackageNote]
+        attr_accessor :spdx_package
+      
+        # RelationshipNote represents an SPDX Relationship section: https://spdx.github.
+        # io/spdx-spec/7-relationships-between-SPDX-elements/
+        # Corresponds to the JSON property `spdxRelationship`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::RelationshipNote]
+        attr_accessor :spdx_relationship
       
         # Output only. The time this note was last updated. This field can be used as a
         # filter in list requests.
@@ -1812,7 +2095,11 @@ module Google
           @name = args[:name] if args.key?(:name)
           @package = args[:package] if args.key?(:package)
           @related_url = args[:related_url] if args.key?(:related_url)
+          @sbom = args[:sbom] if args.key?(:sbom)
           @short_description = args[:short_description] if args.key?(:short_description)
+          @spdx_file = args[:spdx_file] if args.key?(:spdx_file)
+          @spdx_package = args[:spdx_package] if args.key?(:spdx_package)
+          @spdx_relationship = args[:spdx_relationship] if args.key?(:spdx_relationship)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade = args[:upgrade] if args.key?(:upgrade)
           @vulnerability_type = args[:vulnerability_type] if args.key?(:vulnerability_type)
@@ -1908,6 +2195,30 @@ module Google
         # @return [String]
         attr_accessor :resource_url
       
+        # DocumentOccurrence represents an SPDX Document Creation Information section:
+        # https://spdx.github.io/spdx-spec/2-document-creation-information/
+        # Corresponds to the JSON property `sbom`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::DocumentOccurrence]
+        attr_accessor :sbom
+      
+        # FileOccurrence represents an SPDX File Information section: https://spdx.
+        # github.io/spdx-spec/4-file-information/
+        # Corresponds to the JSON property `spdxFile`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::FileOccurrence]
+        attr_accessor :spdx_file
+      
+        # PackageOccurrence represents an SPDX Package Information section: https://spdx.
+        # github.io/spdx-spec/3-package-information/
+        # Corresponds to the JSON property `spdxPackage`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::PackageOccurrence]
+        attr_accessor :spdx_package
+      
+        # RelationshipOccurrence represents an SPDX Relationship section: https://spdx.
+        # github.io/spdx-spec/7-relationships-between-SPDX-elements/
+        # Corresponds to the JSON property `spdxRelationship`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::RelationshipOccurrence]
+        attr_accessor :spdx_relationship
+      
         # Output only. The time this `Occurrence` was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1946,6 +2257,10 @@ module Google
           @remediation = args[:remediation] if args.key?(:remediation)
           @resource = args[:resource] if args.key?(:resource)
           @resource_url = args[:resource_url] if args.key?(:resource_url)
+          @sbom = args[:sbom] if args.key?(:sbom)
+          @spdx_file = args[:spdx_file] if args.key?(:spdx_file)
+          @spdx_package = args[:spdx_package] if args.key?(:spdx_package)
+          @spdx_relationship = args[:spdx_relationship] if args.key?(:spdx_relationship)
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade = args[:upgrade] if args.key?(:upgrade)
           @vulnerability_details = args[:vulnerability_details] if args.key?(:vulnerability_details)
@@ -2069,6 +2384,189 @@ module Google
           @affected_location = args[:affected_location] if args.key?(:affected_location)
           @fixed_location = args[:fixed_location] if args.key?(:fixed_location)
           @severity_name = args[:severity_name] if args.key?(:severity_name)
+        end
+      end
+      
+      # PackageNote represents an SPDX Package Information section: https://spdx.
+      # github.io/spdx-spec/3-package-information/
+      class PackageNote
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether the file content of this package has been available for or
+        # subjected to analysis when creating the SPDX document
+        # Corresponds to the JSON property `analyzed`
+        # @return [Boolean]
+        attr_accessor :analyzed
+        alias_method :analyzed?, :analyzed
+      
+        # A place for the SPDX data creator to record, at the package level,
+        # acknowledgements that may be needed to be communicated in some contexts
+        # Corresponds to the JSON property `attribution`
+        # @return [String]
+        attr_accessor :attribution
+      
+        # Provide an independently reproducible mechanism that permits unique
+        # identification of a specific package that correlates to the data in this SPDX
+        # file
+        # Corresponds to the JSON property `checksum`
+        # @return [String]
+        attr_accessor :checksum
+      
+        # Identify the copyright holders of the package, as well as any dates present
+        # Corresponds to the JSON property `copyright`
+        # @return [String]
+        attr_accessor :copyright
+      
+        # A more detailed description of the package
+        # Corresponds to the JSON property `detailedDescription`
+        # @return [String]
+        attr_accessor :detailed_description
+      
+        # This section identifies the download Universal Resource Locator (URL), or a
+        # specific location within a version control system (VCS) for the package at the
+        # time that the SPDX file was created
+        # Corresponds to the JSON property `downloadLocation`
+        # @return [String]
+        attr_accessor :download_location
+      
+        # ExternalRef
+        # Corresponds to the JSON property `externalRefs`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::ExternalRef>]
+        attr_accessor :external_refs
+      
+        # Contain the license the SPDX file creator has concluded as governing the This
+        # field is to contain a list of all licenses found in the package. The
+        # relationship between licenses (i.e., conjunctive, disjunctive) is not
+        # specified in this field – it is simply a listing of all licenses found
+        # Corresponds to the JSON property `filesLicenseInfo`
+        # @return [Array<String>]
+        attr_accessor :files_license_info
+      
+        # Provide a place for the SPDX file creator to record a web site that serves as
+        # the package's home page
+        # Corresponds to the JSON property `homePage`
+        # @return [String]
+        attr_accessor :home_page
+      
+        # List the licenses that have been declared by the authors of the package
+        # Corresponds to the JSON property `licenseDeclared`
+        # @return [String]
+        attr_accessor :license_declared
+      
+        # If the package identified in the SPDX file originated from a different person
+        # or organization than identified as Package Supplier, this field identifies
+        # from where or whom the package originally came
+        # Corresponds to the JSON property `originator`
+        # @return [String]
+        attr_accessor :originator
+      
+        # A short description of the package
+        # Corresponds to the JSON property `summaryDescription`
+        # @return [String]
+        attr_accessor :summary_description
+      
+        # Identify the actual distribution source for the package/directory identified
+        # in the SPDX file
+        # Corresponds to the JSON property `supplier`
+        # @return [String]
+        attr_accessor :supplier
+      
+        # Identify the full name of the package as given by the Package Originator
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # This field provides an independently reproducible mechanism identifying
+        # specific contents of a package based on the actual files (except the SPDX file
+        # itself, if it is included in the package) that make up each package and that
+        # correlates to the data in this SPDX file
+        # Corresponds to the JSON property `verificationCode`
+        # @return [String]
+        attr_accessor :verification_code
+      
+        # Identify the version of the package
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analyzed = args[:analyzed] if args.key?(:analyzed)
+          @attribution = args[:attribution] if args.key?(:attribution)
+          @checksum = args[:checksum] if args.key?(:checksum)
+          @copyright = args[:copyright] if args.key?(:copyright)
+          @detailed_description = args[:detailed_description] if args.key?(:detailed_description)
+          @download_location = args[:download_location] if args.key?(:download_location)
+          @external_refs = args[:external_refs] if args.key?(:external_refs)
+          @files_license_info = args[:files_license_info] if args.key?(:files_license_info)
+          @home_page = args[:home_page] if args.key?(:home_page)
+          @license_declared = args[:license_declared] if args.key?(:license_declared)
+          @originator = args[:originator] if args.key?(:originator)
+          @summary_description = args[:summary_description] if args.key?(:summary_description)
+          @supplier = args[:supplier] if args.key?(:supplier)
+          @title = args[:title] if args.key?(:title)
+          @verification_code = args[:verification_code] if args.key?(:verification_code)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # PackageOccurrence represents an SPDX Package Information section: https://spdx.
+      # github.io/spdx-spec/3-package-information/
+      class PackageOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # A place for the SPDX file creator to record any general comments about the
+        # package being described
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Provide the actual file name of the package, or path of the directory being
+        # treated as a package
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        # Uniquely identify any element in an SPDX document which may be referenced by
+        # other elements
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # This field provides a place for the SPDX file creator to record any relevant
+        # background information or analysis that went in to arriving at the Concluded
+        # License for a package
+        # Corresponds to the JSON property `licenseComments`
+        # @return [String]
+        attr_accessor :license_comments
+      
+        # package or alternative values, if the governing license cannot be determined
+        # Corresponds to the JSON property `licenseConcluded`
+        # @return [String]
+        attr_accessor :license_concluded
+      
+        # Provide a place for the SPDX file creator to record any relevant background
+        # information or additional comments about the origin of the package
+        # Corresponds to the JSON property `sourceInfo`
+        # @return [String]
+        attr_accessor :source_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
+          @filename = args[:filename] if args.key?(:filename)
+          @id = args[:id] if args.key?(:id)
+          @license_comments = args[:license_comments] if args.key?(:license_comments)
+          @license_concluded = args[:license_concluded] if args.key?(:license_concluded)
+          @source_info = args[:source_info] if args.key?(:source_info)
         end
       end
       
@@ -2231,6 +2729,63 @@ module Google
         def update!(**args)
           @label = args[:label] if args.key?(:label)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # RelationshipNote represents an SPDX Relationship section: https://spdx.github.
+      # io/spdx-spec/7-relationships-between-SPDX-elements/
+      class RelationshipNote
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # RelationshipOccurrence represents an SPDX Relationship section: https://spdx.
+      # github.io/spdx-spec/7-relationships-between-SPDX-elements/
+      class RelationshipOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # A place for the SPDX file creator to record any general comments about the
+        # relationship
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Also referred to as SPDXRef-A The source SPDX element (file, package, etc)
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In
+        # cases where there are "known unknowns", the use of the keyword NOASSERTION can
+        # be used The keywords NONE can be used to indicate that an SPDX element (
+        # package/file/snippet) has no other elements connected by some relationship to
+        # it
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # The type of relationship between the source and target SPDX elements
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
+          @source = args[:source] if args.key?(:source)
+          @target = args[:target] if args.key?(:target)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
