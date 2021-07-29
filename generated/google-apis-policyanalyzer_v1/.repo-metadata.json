@@ -1,0 +1,7 @@
+{
+    "api_id": "policyanalyzer:v1",
+    "name_pretty": "Policy Analyzer API",
+    "distribution_name": "google-apis-policyanalyzer_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
