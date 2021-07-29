@@ -1551,8 +1551,8 @@ module Google
         # @param [String] q
         #   Query string for searching files.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query. Supported values are 'drive', '
-        #   appDataFolder' and 'photos'.
+        #   A comma-separated list of spaces to query. Supported values are 'drive' and '
+        #   appDataFolder'.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
