@@ -1073,8 +1073,9 @@ module Google
         # @return [String]
         attr_accessor :file_extension
       
-        # The color for a folder as an RGB hex string. The supported colors are
-        # published in the folderColorPalette field of the About resource.
+        # The color for a folder or shortcut to a folder as an RGB hex string. The
+        # supported colors are published in the folderColorPalette field of the About
+        # resource.
         # If an unsupported color is specified, the closest color in the palette will be
         # used instead.
         # Corresponds to the JSON property `folderColorRgb`
