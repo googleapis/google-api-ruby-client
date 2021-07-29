@@ -954,6 +954,32 @@ module Google
         end
       end
       
+      # ListSnapshotsResponse is the result of ListSnapshotsRequest.
+      class ListSnapshotsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token you can use to retrieve the next page of results. Not returned if
+        # there are no more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of snapshots in the project for the specified instance.
+        # Corresponds to the JSON property `snapshots`
+        # @return [Array<Google::Apis::FileV1beta1::Snapshot>]
+        attr_accessor :snapshots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @snapshots = args[:snapshots] if args.key?(:snapshots)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -1117,12 +1143,18 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # A /29 CIDR block for Basic or a /23 CIDR block for High Scale in one of the [
-        # internal IP address ranges](https://www.arin.net/knowledge/address_filters.
-        # html) that identifies the range of IP addresses reserved for this instance.
-        # For example, 10.0.0.0/29 or 192.168.0.0/23. The range you specify can't
-        # overlap with either existing subnets or assigned IP address ranges for other
-        # Cloud Filestore instances in the selected VPC network.
+        # Optional, reserved_ip_range can have one of the following two types of values.
+        # * CIDR range value when using DIRECT_PEERING connect mode. * [Named Address
+        # Range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-
+        # internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. For both
+        # cases, the range value (direct CIDR value or the range value with which the
+        # named range was created) must be a /29 CIDR block for Basic tier or a /23 CIDR
+        # block for High Scale or Enterprise tier in one of the [internal IP address
+        # ranges](https://www.arin.net/knowledge/address_filters.html) that identifies
+        # the range of IP addresses reserved for this instance. For example, 10.0.0.0/29
+        # or 192.168.0.0/23. The range you specify can't overlap with either existing
+        # subnets or assigned IP address ranges for other Cloud Filestore instances in
+        # the selected VPC network.
         # Corresponds to the JSON property `reservedIpRange`
         # @return [String]
         attr_accessor :reserved_ip_range
@@ -1385,6 +1417,59 @@ module Google
         end
       end
       
+      # A Cloud Filestore snapshot.
+      class Snapshot
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the snapshot was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of the snapshot with 2048 characters or less. Requests with
+        # longer descriptions will be rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The amount of bytes needed to allocate a full copy of the
+        # snapshot content
+        # Corresponds to the JSON property `filesystemUsedBytes`
+        # @return [Fixnum]
+        attr_accessor :filesystem_used_bytes
+      
+        # Resource labels to represent user provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name of the snapshot, in the format projects/`
+        # project_id`/locations/`location_id`/instances/`instance_id`/snapshots/`
+        # snapshot_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The snapshot state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @filesystem_used_bytes = args[:filesystem_used_bytes] if args.key?(:filesystem_used_bytes)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -1476,8 +1561,7 @@ module Google
       
         # Deny Maintenance Period that is applied to resource to indicate when
         # maintenance is forbidden. User can specify zero or more non-overlapping deny
-        # periods. For V1, Maximum number of deny_maintenance_periods is expected to be
-        # one.
+        # periods. Maximum number of deny_maintenance_periods expected is one.
         # Corresponds to the JSON property `denyMaintenancePeriods`
         # @return [Array<Google::Apis::FileV1beta1::DenyMaintenancePeriod>]
         attr_accessor :deny_maintenance_periods
