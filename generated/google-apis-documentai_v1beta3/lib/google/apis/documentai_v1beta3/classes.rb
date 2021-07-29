@@ -1795,8 +1795,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The index of the parent item in the corresponding item list (eg. list of
-        # entities, properties within entities, etc.) on parent revision.
+        # The index of the parent revisions corresponding collection of items (eg. list
+        # of entities, properties within entities, etc.)
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -3519,8 +3519,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The index of the parent item in the corresponding item list (eg. list of
-        # entities, properties within entities, etc.) on parent revision.
+        # The index of the parent revisions corresponding collection of items (eg. list
+        # of entities, properties within entities, etc.)
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -5560,8 +5560,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The index of the parent item in the corresponding item list (eg. list of
-        # entities, properties within entities, etc.) on parent revision.
+        # The index of the parent revisions corresponding collection of items (eg. list
+        # of entities, properties within entities, etc.)
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -6325,7 +6325,7 @@ module Google
       # EU' endpoint to feach processor types. In the return, we will have an 'invoice
       # parsing' processor with 'available_locations' field only containing 'US'. So
       # the user can try to create an 'invoice parsing' processor under the location '
-      # US'. Such attempt of creating under the location 'EU' will fail. Next ID: 8.
+      # US'. Such attempt of creating under the location 'EU' will fail. Next ID: 7.
       class GoogleCloudDocumentaiV1beta3ProcessorType
         include Google::Apis::Core::Hashable
       
