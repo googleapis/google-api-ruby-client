@@ -3856,6 +3856,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPolicyAdaptiveProtectionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPolicyAdvancedOptionsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3924,6 +3936,78 @@ module Google
       
       class ServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentConnectedEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentConsumerProjectLimit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4673,6 +4757,12 @@ module Google
       end
       
       class TestPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Uint128
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6208,6 +6298,7 @@ module Google
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_service_account, as: 'kmsKeyServiceAccount'
           property :raw_key, as: 'rawKey'
+          property :rsa_encrypted_key, as: 'rsaEncryptedKey'
           property :sha256, as: 'sha256'
         end
       end
@@ -6899,6 +6990,7 @@ module Google
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
+          property :psc_connection_status, as: 'pscConnectionStatus'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :service_directory_registrations, as: 'serviceDirectoryRegistrations', class: Google::Apis::ComputeV1::ForwardingRuleServiceDirectoryRegistration, decorator: Google::Apis::ComputeV1::ForwardingRuleServiceDirectoryRegistration::Representation
@@ -9667,6 +9759,7 @@ module Google
           property :network, as: 'network'
           property :network_ip, as: 'networkIP'
           property :nic_type, as: 'nicType'
+          property :queue_count, as: 'queueCount'
           property :stack_type, as: 'stackType'
           property :subnetwork, as: 'subnetwork'
         end
@@ -12204,6 +12297,8 @@ module Google
       class SecurityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adaptive_protection_config, as: 'adaptiveProtectionConfig', class: Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfig::Representation
+      
           property :advanced_options_config, as: 'advancedOptionsConfig', class: Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyAdvancedOptionsConfig::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -12215,6 +12310,22 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::SecurityPolicyRule, decorator: Google::Apis::ComputeV1::SecurityPolicyRule::Representation
       
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :layer7_ddos_defense_config, as: 'layer7DdosDefenseConfig', class: Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig::Representation
+      
+        end
+      end
+      
+      class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          property :rule_visibility, as: 'ruleVisibility'
         end
       end
       
@@ -12326,6 +12437,142 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class ServiceAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connected_endpoints, as: 'connectedEndpoints', class: Google::Apis::ComputeV1::ServiceAttachmentConnectedEndpoint, decorator: Google::Apis::ComputeV1::ServiceAttachmentConnectedEndpoint::Representation
+      
+          property :connection_preference, as: 'connectionPreference'
+          collection :consumer_accept_lists, as: 'consumerAcceptLists', class: Google::Apis::ComputeV1::ServiceAttachmentConsumerProjectLimit, decorator: Google::Apis::ComputeV1::ServiceAttachmentConsumerProjectLimit::Representation
+      
+          collection :consumer_reject_lists, as: 'consumerRejectLists'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :enable_proxy_protocol, as: 'enableProxyProtocol'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :nat_subnets, as: 'natSubnets'
+          property :producer_forwarding_rule, as: 'producerForwardingRule'
+          property :psc_service_attachment_id, as: 'pscServiceAttachmentId', class: Google::Apis::ComputeV1::Uint128, decorator: Google::Apis::ComputeV1::Uint128::Representation
+      
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :target_service, as: 'targetService'
+        end
+      end
+      
+      class ServiceAttachmentAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::ServiceAttachmentsScopedList, decorator: Google::Apis::ComputeV1::ServiceAttachmentsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ServiceAttachmentAggregatedList::Warning, decorator: Google::Apis::ComputeV1::ServiceAttachmentAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ServiceAttachmentAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::ServiceAttachmentAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ServiceAttachmentConnectedEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint'
+          property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
+          property :status, as: 'status'
+        end
+      end
+      
+      class ServiceAttachmentConsumerProjectLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_limit, as: 'connectionLimit'
+          property :project_id_or_num, as: 'projectIdOrNum'
+        end
+      end
+      
+      class ServiceAttachmentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::ServiceAttachment, decorator: Google::Apis::ComputeV1::ServiceAttachment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ServiceAttachmentList::Warning, decorator: Google::Apis::ComputeV1::ServiceAttachmentList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ServiceAttachmentList::Warning::Datum, decorator: Google::Apis::ComputeV1::ServiceAttachmentList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ServiceAttachmentsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :service_attachments, as: 'serviceAttachments', class: Google::Apis::ComputeV1::ServiceAttachment, decorator: Google::Apis::ComputeV1::ServiceAttachment::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ServiceAttachmentsScopedList::Warning, decorator: Google::Apis::ComputeV1::ServiceAttachmentsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ServiceAttachmentsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::ServiceAttachmentsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -13659,6 +13906,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class Uint128
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :high, :numeric_string => true, as: 'high'
+          property :low, :numeric_string => true, as: 'low'
         end
       end
       
