@@ -1885,10 +1885,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :file_size
       
-        # Folder color as an RGB hex string if the file is a folder. The list of
-        # supported colors is available in the folderColorPalette field of the About
-        # resource. If an unsupported color is specified, it will be changed to the
-        # closest color in the palette. Not populated for items in shared drives.
+        # Folder color as an RGB hex string if the file is a folder or a shortcut to a
+        # folder. The list of supported colors is available in the folderColorPalette
+        # field of the About resource. If an unsupported color is specified, it will be
+        # changed to the closest color in the palette.
         # Corresponds to the JSON property `folderColorRgb`
         # @return [String]
         attr_accessor :folder_color_rgb
