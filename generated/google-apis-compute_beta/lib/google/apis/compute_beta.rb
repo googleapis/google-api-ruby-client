@@ -23,7 +23,7 @@ module Google
     #
     # Creates and runs virtual machines on Google Cloud Platform.
     #
-    # @see https://developers.google.com/compute/docs/reference/latest/
+    # @see https://cloud.google.com/compute/
     module ComputeBeta
       # Version of the Compute Engine API this client connects to.
       # This is NOT the gem version.
