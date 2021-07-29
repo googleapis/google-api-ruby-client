@@ -565,9 +565,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the flag. These flags are passed at instance startup, so include
-        # both server options and system variables for MySQL. Flags are specified with
-        # underscores, not hyphens. For more information, see Configuring Database Flags
-        # in the Cloud SQL documentation.
+        # both server options and system variables. Flags are specified with underscores,
+        # not hyphens. For more information, see Configuring Database Flags in the
+        # Cloud SQL documentation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -615,9 +615,10 @@ module Google
         # The database engine type and version. The *databaseVersion* field cannot be
         # changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (
         # default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*,
-        # *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances:
-        # *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *
-        # SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        # *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *
+        # SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*
+        # , or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *
+        # SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -638,8 +639,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The name and status of the failover replica. This property is applicable only
-        # to Second Generation instances.
+        # The name and status of the failover replica.
         # Corresponds to the JSON property `failoverReplica`
         # @return [Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica]
         attr_accessor :failover_replica
@@ -825,8 +825,7 @@ module Google
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
         end
         
-        # The name and status of the failover replica. This property is applicable only
-        # to Second Generation instances.
+        # The name and status of the failover replica.
         class FailoverReplica
           include Google::Apis::Core::Hashable
         
@@ -840,7 +839,7 @@ module Google
         
           # The name of the failover replica. If specified at instance creation, a
           # failover replica is created for the instance. The name doesn't include the
-          # project ID. This property is applicable only to Second Generation instances.
+          # project ID.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
@@ -927,13 +926,12 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::DemoteMasterConfiguration]
         attr_accessor :replica_configuration
       
-        # Verify GTID consistency for demote operation. Default value: *True*. Second
-        # Generation instances only. Setting this flag to false enables you to bypass
-        # GTID consistency check between on-premises primary instance and Cloud SQL
-        # instance during the demotion operation but also exposes you to the risk of
-        # future replication failures. Change the value only if you know the reason for
-        # the GTID divergence and are confident that doing so will not cause any
-        # replication issues.
+        # Verify GTID consistency for demote operation. Default value: *True*. Setting
+        # this flag to false enables you to bypass GTID consistency check between on-
+        # premises primary instance and Cloud SQL instance during the demotion operation
+        # but also exposes you to the risk of future replication failures. Change the
+        # value only if you know the reason for the GTID divergence and are confident
+        # that doing so will not cause any replication issues.
         # Corresponds to the JSON property `verifyGtidConsistency`
         # @return [Boolean]
         attr_accessor :verify_gtid_consistency
@@ -1311,8 +1309,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Indicates whether changing this flag will trigger a database restart. Only
-        # applicable to Second Generation instances.
+        # Indicates whether changing this flag will trigger a database restart.
         # Corresponds to the JSON property `requiresRestart`
         # @return [Boolean]
         attr_accessor :requires_restart
@@ -1572,8 +1569,8 @@ module Google
         attr_accessor :query_insights_enabled
         alias_method :query_insights_enabled?, :query_insights_enabled
       
-        # Number of query plans generated by Insights per minute. Default is 5. Changing
-        # this will restart the database.
+        # Number of query execution plans captured by Insights per minute for all
+        # queries combined. Default is 5.
         # Corresponds to the JSON property `queryPlansPerMinute`
         # @return [Fixnum]
         attr_accessor :query_plans_per_minute
