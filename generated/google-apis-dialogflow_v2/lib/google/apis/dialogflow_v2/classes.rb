@@ -10420,7 +10420,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :entries
       
-        # The detailed error messsage.
+        # The detailed error message.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
