@@ -84,9 +84,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The Idea IDs for this entry.
-        # Corresponds to the JSON property `ideaIds`
+        # Corresponds to the JSON property `ideas`
         # @return [Array<String>]
-        attr_accessor :idea_ids
+        attr_accessor :ideas
       
         # Unique identifier for the idea activity. Format: platforms/`platform`/
         # properties/`property`/ideaActivities/`idea_activity`
@@ -95,9 +95,9 @@ module Google
         attr_accessor :name
       
         # The Topic IDs for this entry.
-        # Corresponds to the JSON property `topicIds`
+        # Corresponds to the JSON property `topics`
         # @return [Array<String>]
-        attr_accessor :topic_ids
+        attr_accessor :topics
       
         # The type of activity performed.
         # Corresponds to the JSON property `type`
@@ -115,9 +115,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @idea_ids = args[:idea_ids] if args.key?(:idea_ids)
+          @ideas = args[:ideas] if args.key?(:ideas)
           @name = args[:name] if args.key?(:name)
-          @topic_ids = args[:topic_ids] if args.key?(:topic_ids)
+          @topics = args[:topics] if args.key?(:topics)
           @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -224,6 +224,11 @@ module Google
         # @return [String]
         attr_accessor :mid
       
+        # Unique identifier for the topic. Format: topics/`topic`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -232,6 +237,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
