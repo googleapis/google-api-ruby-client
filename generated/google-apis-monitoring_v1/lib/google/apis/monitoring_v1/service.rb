@@ -108,8 +108,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_location_global_metrics_scope_metric_scopes_by_monitored_project(monitored_resource_container: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/locations/global/metricsScopes:listMetricScopesByMonitoredProject', options)
+        def list_location_global_metrics_scope_metrics_scopes_by_monitored_project(monitored_resource_container: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/locations/global/metricsScopes:listMetricsScopesByMonitoredProject', options)
           command.response_representation = Google::Apis::MonitoringV1::ListMetricsScopesByMonitoredProjectResponse::Representation
           command.response_class = Google::Apis::MonitoringV1::ListMetricsScopesByMonitoredProjectResponse
           command.query['monitoredResourceContainer'] = monitored_resource_container unless monitored_resource_container.nil?
