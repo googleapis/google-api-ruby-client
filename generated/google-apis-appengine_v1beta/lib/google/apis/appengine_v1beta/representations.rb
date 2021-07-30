@@ -946,6 +946,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :forwarded_ports, as: 'forwardedPorts'
+          property :instance_ip_mode, as: 'instanceIpMode'
           property :instance_tag, as: 'instanceTag'
           property :name, as: 'name'
           property :session_affinity, as: 'sessionAffinity'
