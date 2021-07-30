@@ -8693,7 +8693,8 @@ module Google
       
         # Language code for the conversation profile. If not specified, the language is
         # en-US. Language at ConversationProfile should be set for all non en-us
-        # languages.
+        # languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.
+        # txt) language tag. Example: "en-US".
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -8719,10 +8720,23 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig]
         attr_accessor :notification_config
       
+        # Name of the CX SecuritySettings reference for the agent. Format: `projects//
+        # locations//securitySettings/`.
+        # Corresponds to the JSON property `securitySettings`
+        # @return [String]
+        attr_accessor :security_settings
+      
         # Configures speech transcription for ConversationProfile.
         # Corresponds to the JSON property `sttConfig`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfig]
         attr_accessor :stt_config
+      
+        # The time zone of this conversational profile from the [time zone database](
+        # https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        # Defaults to America/New_York.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
       
         # Output only. Update time of the conversation profile.
         # Corresponds to the JSON property `updateTime`
@@ -8745,7 +8759,9 @@ module Google
           @name = args[:name] if args.key?(:name)
           @new_message_event_notification_config = args[:new_message_event_notification_config] if args.key?(:new_message_event_notification_config)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @security_settings = args[:security_settings] if args.key?(:security_settings)
           @stt_config = args[:stt_config] if args.key?(:stt_config)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -14211,7 +14227,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :entries
       
-        # The detailed error messsage.
+        # The detailed error message.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
