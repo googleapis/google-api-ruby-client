@@ -1590,6 +1590,9 @@ module Google
         # @param [String] sku
         #   Unique identifier for the in-app product.
         # @param [Google::Apis::AndroidpublisherV3::InAppProduct] in_app_product_object
+        # @param [Boolean] allow_missing
+        #   If set to true, and the in-app product with the given package_name and sku
+        #   doesn't exist, the in-app product will be created.
         # @param [Boolean] auto_convert_missing_prices
         #   If true the prices for all regions targeted by the parent app that don't have
         #   a price specified for this in-app product will be auto converted to the target
@@ -1611,7 +1614,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_inappproduct(package_name, sku, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_inappproduct(package_name, sku, in_app_product_object = nil, allow_missing: nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'androidpublisher/v3/applications/{packageName}/inappproducts/{sku}', options)
           command.request_representation = Google::Apis::AndroidpublisherV3::InAppProduct::Representation
           command.request_object = in_app_product_object
@@ -1619,6 +1622,7 @@ module Google
           command.response_class = Google::Apis::AndroidpublisherV3::InAppProduct
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['sku'] = sku unless sku.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['autoConvertMissingPrices'] = auto_convert_missing_prices unless auto_convert_missing_prices.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
