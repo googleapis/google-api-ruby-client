@@ -1826,6 +1826,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :forwarded_ports
       
+        # The IP mode for instances. Only applicable in the App Engine flexible
+        # environment.
+        # Corresponds to the JSON property `instanceIpMode`
+        # @return [String]
+        attr_accessor :instance_ip_mode
+      
         # Tag to apply to the instance during creation. Only applicable in the App
         # Engine flexible environment.
         # Corresponds to the JSON property `instanceTag`
@@ -1869,6 +1875,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @forwarded_ports = args[:forwarded_ports] if args.key?(:forwarded_ports)
+          @instance_ip_mode = args[:instance_ip_mode] if args.key?(:instance_ip_mode)
           @instance_tag = args[:instance_tag] if args.key?(:instance_tag)
           @name = args[:name] if args.key?(:name)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
