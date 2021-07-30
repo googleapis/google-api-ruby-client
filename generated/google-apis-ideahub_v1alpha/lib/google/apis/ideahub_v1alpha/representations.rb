@@ -91,9 +91,9 @@ module Google
       class GoogleSearchIdeahubV1alphaIdeaActivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :idea_ids, as: 'ideaIds'
+          collection :ideas, as: 'ideas'
           property :name, as: 'name'
-          collection :topic_ids, as: 'topicIds'
+          collection :topics, as: 'topics'
           property :type, as: 'type'
           property :uri, as: 'uri'
         end
@@ -131,6 +131,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :mid, as: 'mid'
+          property :name, as: 'name'
         end
       end
       
