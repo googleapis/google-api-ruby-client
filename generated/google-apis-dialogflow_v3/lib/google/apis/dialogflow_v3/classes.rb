@@ -22,6 +22,54 @@ module Google
   module Apis
     module DialogflowV3
       
+      # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+      # Settings exposed at lower level overrides the settings exposed at higher level.
+      # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+      class GoogleCloudDialogflowCxV3AdvancedSettings
+        include Google::Apis::Core::Hashable
+      
+        # Define behaviors on logging.
+        # Corresponds to the JSON property `loggingSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings]
+        attr_accessor :logging_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logging_settings = args[:logging_settings] if args.key?(:logging_settings)
+        end
+      end
+      
+      # Define behaviors on logging.
+      class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
+        include Google::Apis::Core::Hashable
+      
+        # If true, DF Interaction logging is currently enabled.
+        # Corresponds to the JSON property `enableInteractionLogging`
+        # @return [Boolean]
+        attr_accessor :enable_interaction_logging
+        alias_method :enable_interaction_logging?, :enable_interaction_logging
+      
+        # If true, StackDriver logging is currently enabled.
+        # Corresponds to the JSON property `enableStackdriverLogging`
+        # @return [Boolean]
+        attr_accessor :enable_stackdriver_logging
+        alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_interaction_logging = args[:enable_interaction_logging] if args.key?(:enable_interaction_logging)
+          @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
+        end
+      end
+      
       # Agents are best described as Natural Language Understanding (NLU) modules that
       # transform user requests into actionable data. You can include agents in your
       # app, product, or service to determine user intent and respond to the user in a
@@ -29,6 +77,13 @@ module Google
       # Flows, Fulfillments, Webhooks, and so on to manage the conversation flows..
       class GoogleCloudDialogflowCxV3Agent
         include Google::Apis::Core::Hashable
+      
+        # Hierarchical advanced settings for agent/flow/page/fulfillment/parameter.
+        # Settings exposed at lower level overrides the settings exposed at higher level.
+        # Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        # Corresponds to the JSON property `advancedSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings]
+        attr_accessor :advanced_settings
       
         # The URI of the agent's avatar. Avatars are used throughout the Dialogflow
         # console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/
@@ -62,7 +117,8 @@ module Google
         attr_accessor :enable_spell_correction
         alias_method :enable_spell_correction?, :enable_spell_correction
       
-        # Indicates if stackdriver logging is enabled for the agent.
+        # Indicates if stackdriver logging is enabled for the agent. Please use agent.
+        # advanced_settings instead.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
@@ -111,6 +167,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
           @avatar_uri = args[:avatar_uri] if args.key?(:avatar_uri)
           @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
           @description = args[:description] if args.key?(:description)
@@ -3408,6 +3465,15 @@ module Google
         attr_accessor :disable_webhook
         alias_method :disable_webhook?, :disable_webhook
       
+        # A list of flow versions to override for the request. Format: `projects//
+        # locations//agents//flows//versions/`. If version 1 of flow X is included in
+        # this list, the traffic of flow X will go through version 1 regardless of the
+        # version configuration in the environment. Each flow can have at most one
+        # version specified in this list.
+        # Corresponds to the JSON property `flowVersions`
+        # @return [Array<String>]
+        attr_accessor :flow_versions
+      
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this object must conform to the WGS84 standard. Values
@@ -3475,6 +3541,7 @@ module Google
           @analyze_query_text_sentiment = args[:analyze_query_text_sentiment] if args.key?(:analyze_query_text_sentiment)
           @current_page = args[:current_page] if args.key?(:current_page)
           @disable_webhook = args[:disable_webhook] if args.key?(:disable_webhook)
+          @flow_versions = args[:flow_versions] if args.key?(:flow_versions)
           @geo_location = args[:geo_location] if args.key?(:geo_location)
           @parameters = args[:parameters] if args.key?(:parameters)
           @payload = args[:payload] if args.key?(:payload)
@@ -4126,6 +4193,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Settings for exporting conversations to [Insights](https://cloud.google.com/
+        # dialogflow/priv/docs/insights).
+        # Corresponds to the JSON property `insightsExportSettings`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings]
+        attr_accessor :insights_export_settings
+      
         # [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this
         # template to define inspect base settings. If empty, we use the default DLP
         # inspect config. The template name will have one of the following formats: `
@@ -4174,12 +4247,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @insights_export_settings = args[:insights_export_settings] if args.key?(:insights_export_settings)
           @inspect_template = args[:inspect_template] if args.key?(:inspect_template)
           @name = args[:name] if args.key?(:name)
           @purge_data_types = args[:purge_data_types] if args.key?(:purge_data_types)
           @redaction_scope = args[:redaction_scope] if args.key?(:redaction_scope)
           @redaction_strategy = args[:redaction_strategy] if args.key?(:redaction_strategy)
           @retention_window_days = args[:retention_window_days] if args.key?(:retention_window_days)
+        end
+      end
+      
+      # Settings for exporting conversations to [Insights](https://cloud.google.com/
+      # dialogflow/priv/docs/insights).
+      class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings
+        include Google::Apis::Core::Hashable
+      
+        # If enabled, we will automatically exports conversations to Insights and
+        # Insights runs its analyzers.
+        # Corresponds to the JSON property `enableInsightsExport`
+        # @return [Boolean]
+        attr_accessor :enable_insights_export
+        alias_method :enable_insights_export?, :enable_insights_export
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_insights_export = args[:enable_insights_export] if args.key?(:enable_insights_export)
         end
       end
       
