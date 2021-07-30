@@ -460,6 +460,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1Agent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1139,6 +1151,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1SecuritySettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2990,9 +3008,27 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :logging_settings, as: 'loggingSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_interaction_logging, as: 'enableInteractionLogging'
+          property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1Agent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
+      
           property :avatar_uri, as: 'avatarUri'
           property :default_language_code, as: 'defaultLanguageCode'
           property :description, as: 'description'
@@ -3922,6 +3958,7 @@ module Google
           property :analyze_query_text_sentiment, as: 'analyzeQueryTextSentiment'
           property :current_page, as: 'currentPage'
           property :disable_webhook, as: 'disableWebhook'
+          collection :flow_versions, as: 'flowVersions'
           property :geo_location, as: 'geoLocation', class: Google::Apis::DialogflowV3beta1::GoogleTypeLatLng, decorator: Google::Apis::DialogflowV3beta1::GoogleTypeLatLng::Representation
       
           hash :parameters, as: 'parameters'
@@ -4115,12 +4152,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :insights_export_settings, as: 'insightsExportSettings', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings::Representation
+      
           property :inspect_template, as: 'inspectTemplate'
           property :name, as: 'name'
           collection :purge_data_types, as: 'purgeDataTypes'
           property :redaction_scope, as: 'redactionScope'
           property :redaction_strategy, as: 'redactionStrategy'
           property :retention_window_days, as: 'retentionWindowDays'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_insights_export, as: 'enableInsightsExport'
         end
       end
       
