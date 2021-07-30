@@ -4822,8 +4822,10 @@ module Google
       
           property :notification_config, as: 'notificationConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1NotificationConfig::Representation
       
+          property :security_settings, as: 'securitySettings'
           property :stt_config, as: 'sttConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfig::Representation
       
+          property :time_zone, as: 'timeZone'
           property :update_time, as: 'updateTime'
         end
       end
