@@ -1,0 +1,7 @@
+{
+    "api_id": "networkservices:v1beta1",
+    "name_pretty": "Network Services API",
+    "distribution_name": "google-apis-networkservices_v1beta1",
+    "language": "ruby",
+    "library_type": "REST"
+}
