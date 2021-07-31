@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NotificationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +131,12 @@ module Google
       end
       
       class PauseTransferOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PosixFilesystem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -313,6 +325,13 @@ module Google
         end
       end
       
+      class LoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_onprem_gcs_transfer_logs, as: 'enableOnpremGcsTransferLogs'
+        end
+      end
+      
       class NotificationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -349,6 +368,13 @@ module Google
       class PauseTransferOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PosixFilesystem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :root_directory, as: 'rootDirectory'
         end
       end
       
@@ -410,6 +436,9 @@ module Google
           property :bytes_found_only_from_sink, :numeric_string => true, as: 'bytesFoundOnlyFromSink'
           property :bytes_from_source_failed, :numeric_string => true, as: 'bytesFromSourceFailed'
           property :bytes_from_source_skipped_by_sync, :numeric_string => true, as: 'bytesFromSourceSkippedBySync'
+          property :directories_failed_to_list_from_source, :numeric_string => true, as: 'directoriesFailedToListFromSource'
+          property :directories_found_from_source, :numeric_string => true, as: 'directoriesFoundFromSource'
+          property :directories_successfully_listed_from_source, :numeric_string => true, as: 'directoriesSuccessfullyListedFromSource'
           property :objects_copied_to_sink, :numeric_string => true, as: 'objectsCopiedToSink'
           property :objects_deleted_from_sink, :numeric_string => true, as: 'objectsDeletedFromSink'
           property :objects_deleted_from_source, :numeric_string => true, as: 'objectsDeletedFromSource'
@@ -429,6 +458,8 @@ module Google
           property :description, as: 'description'
           property :last_modification_time, as: 'lastModificationTime'
           property :latest_operation_name, as: 'latestOperationName'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::StoragetransferV1::LoggingConfig, decorator: Google::Apis::StoragetransferV1::LoggingConfig::Representation
+      
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::StoragetransferV1::NotificationConfig, decorator: Google::Apis::StoragetransferV1::NotificationConfig::Representation
       
@@ -484,6 +515,8 @@ module Google
           property :http_data_source, as: 'httpDataSource', class: Google::Apis::StoragetransferV1::HttpData, decorator: Google::Apis::StoragetransferV1::HttpData::Representation
       
           property :object_conditions, as: 'objectConditions', class: Google::Apis::StoragetransferV1::ObjectConditions, decorator: Google::Apis::StoragetransferV1::ObjectConditions::Representation
+      
+          property :posix_data_source, as: 'posixDataSource', class: Google::Apis::StoragetransferV1::PosixFilesystem, decorator: Google::Apis::StoragetransferV1::PosixFilesystem::Representation
       
           property :transfer_options, as: 'transferOptions', class: Google::Apis::StoragetransferV1::TransferOptions, decorator: Google::Apis::StoragetransferV1::TransferOptions::Representation
       

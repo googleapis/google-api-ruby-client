@@ -76,13 +76,12 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Input only. The Amazon Resource Name (ARN) of the role to support temporary
-        # credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs,
-        # see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/
-        # reference_identifiers.html#identifiers-arns). When a role ARN is provided,
-        # Transfer Service fetches temporary credentials for the session using a `
-        # AssumeRoleWithWebIdentity` call for the provided role using the
-        # GoogleServiceAccount for this project.
+        # The Amazon Resource Name (ARN) of the role to support temporary credentials
+        # via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM
+        # ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.
+        # html#identifiers-arns). When a role ARN is provided, Transfer Service fetches
+        # temporary credentials for the session using a `AssumeRoleWithWebIdentity` call
+        # for the provided role using the GoogleServiceAccount for this project.
         # Corresponds to the JSON property `roleArn`
         # @return [String]
         attr_accessor :role_arn
@@ -450,6 +449,28 @@ module Google
         end
       end
       
+      # Logging configure.
+      class LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enables the Cloud Storage transfer logs for this transfer. This is only
+        # supported for transfer jobs with PosixFilesystem sources. The default is that
+        # logs are not generated for this transfer.
+        # Corresponds to the JSON property `enableOnpremGcsTransferLogs`
+        # @return [Boolean]
+        attr_accessor :enable_onprem_gcs_transfer_logs
+        alias_method :enable_onprem_gcs_transfer_logs?, :enable_onprem_gcs_transfer_logs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_onprem_gcs_transfer_logs = args[:enable_onprem_gcs_transfer_logs] if args.key?(:enable_onprem_gcs_transfer_logs)
+        end
+      end
+      
       # Specification to configure notifications published to Pub/Sub. Notifications
       # are published to the customer-provided topic using the following `
       # PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"
@@ -661,6 +682,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A POSIX filesystem data source or sink.
+      class PosixFilesystem
+        include Google::Apis::Core::Hashable
+      
+        # Root directory path to the filesystem.
+        # Corresponds to the JSON property `rootDirectory`
+        # @return [String]
+        attr_accessor :root_directory
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @root_directory = args[:root_directory] if args.key?(:root_directory)
         end
       end
       
@@ -886,6 +926,28 @@ module Google
         # @return [Fixnum]
         attr_accessor :bytes_from_source_skipped_by_sync
       
+        # For transfers involving PosixFilesystem only. Number of listing failures for
+        # each directory found at the source. Potential failures when listing a
+        # directory include permission failure or block failure. If listing a directory
+        # fails, no files in the directory are transferred.
+        # Corresponds to the JSON property `directoriesFailedToListFromSource`
+        # @return [Fixnum]
+        attr_accessor :directories_failed_to_list_from_source
+      
+        # For transfers involving PosixFilesystem only. Number of directories found
+        # while listing. For example, if the root directory of the transfer is `base/`
+        # and there are two other directories, `a/` and `b/` under this directory, the
+        # count after listing `base/`, `base/a/` and `base/b/` is 3.
+        # Corresponds to the JSON property `directoriesFoundFromSource`
+        # @return [Fixnum]
+        attr_accessor :directories_found_from_source
+      
+        # For transfers involving PosixFilesystem only. Number of successful listings
+        # for each directory found at the source.
+        # Corresponds to the JSON property `directoriesSuccessfullyListedFromSource`
+        # @return [Fixnum]
+        attr_accessor :directories_successfully_listed_from_source
+      
         # Objects that are copied to the data sink.
         # Corresponds to the JSON property `objectsCopiedToSink`
         # @return [Fixnum]
@@ -944,6 +1006,9 @@ module Google
           @bytes_found_only_from_sink = args[:bytes_found_only_from_sink] if args.key?(:bytes_found_only_from_sink)
           @bytes_from_source_failed = args[:bytes_from_source_failed] if args.key?(:bytes_from_source_failed)
           @bytes_from_source_skipped_by_sync = args[:bytes_from_source_skipped_by_sync] if args.key?(:bytes_from_source_skipped_by_sync)
+          @directories_failed_to_list_from_source = args[:directories_failed_to_list_from_source] if args.key?(:directories_failed_to_list_from_source)
+          @directories_found_from_source = args[:directories_found_from_source] if args.key?(:directories_found_from_source)
+          @directories_successfully_listed_from_source = args[:directories_successfully_listed_from_source] if args.key?(:directories_successfully_listed_from_source)
           @objects_copied_to_sink = args[:objects_copied_to_sink] if args.key?(:objects_copied_to_sink)
           @objects_deleted_from_sink = args[:objects_deleted_from_sink] if args.key?(:objects_deleted_from_sink)
           @objects_deleted_from_source = args[:objects_deleted_from_source] if args.key?(:objects_deleted_from_source)
@@ -986,6 +1051,11 @@ module Google
         # Corresponds to the JSON property `latestOperationName`
         # @return [String]
         attr_accessor :latest_operation_name
+      
+        # Logging configure.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::StoragetransferV1::LoggingConfig]
+        attr_accessor :logging_config
       
         # A unique name (within the transfer project) assigned when the job is created.
         # If this field is empty in a CreateTransferJobRequest, Storage Transfer Service
@@ -1053,6 +1123,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @last_modification_time = args[:last_modification_time] if args.key?(:last_modification_time)
           @latest_operation_name = args[:latest_operation_name] if args.key?(:latest_operation_name)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @project_id = args[:project_id] if args.key?(:project_id)
@@ -1255,6 +1326,11 @@ module Google
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
         attr_accessor :object_conditions
       
+        # A POSIX filesystem data source or sink.
+        # Corresponds to the JSON property `posixDataSource`
+        # @return [Google::Apis::StoragetransferV1::PosixFilesystem]
+        attr_accessor :posix_data_source
+      
         # TransferOptions define the actions to be performed on objects in a transfer.
         # Corresponds to the JSON property `transferOptions`
         # @return [Google::Apis::StoragetransferV1::TransferOptions]
@@ -1272,6 +1348,7 @@ module Google
           @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
           @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
           @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
+          @posix_data_source = args[:posix_data_source] if args.key?(:posix_data_source)
           @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
         end
       end
