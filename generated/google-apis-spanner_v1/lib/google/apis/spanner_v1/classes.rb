@@ -1673,17 +1673,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The number of nodes allocated to this instance. This may be zero in API
-        # responses for instances that are not yet in state `READY`. See [the
-        # documentation](https://cloud.google.com/spanner/docs/instances#node_count) for
-        # more information about nodes.
+        # The number of nodes allocated to this instance. At most one of either
+        # node_count or processing_units should be present in the message. This may be
+        # zero in API responses for instances that are not yet in state `READY`. See [
+        # the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for
+        # more information about nodes and processing units.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
       
         # The number of processing units allocated to this instance. At most one of
         # processing_units or node_count should be present in the message. This may be
-        # zero in API responses for instances that are not yet in state `READY`.
+        # zero in API responses for instances that are not yet in state `READY`. See [
+        # the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for
+        # more information about nodes and processing units.
         # Corresponds to the JSON property `processingUnits`
         # @return [Fixnum]
         attr_accessor :processing_units
