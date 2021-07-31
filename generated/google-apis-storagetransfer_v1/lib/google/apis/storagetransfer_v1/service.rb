@@ -119,7 +119,7 @@ module Google
         
         # Gets a transfer job.
         # @param [String] job_name
-        #   Required. " The job to get.
+        #   Required. The job to get.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform Console project that owns the
         #   job.
