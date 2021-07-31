@@ -621,6 +621,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # IdentityServiceConfig is configuration for Identity Service which allows
+        # customers to use external identity providers with the K8S API
+        # Corresponds to the JSON property `identityServiceConfig`
+        # @return [Google::Apis::ContainerV1beta1::IdentityServiceConfig]
+        attr_accessor :identity_service_config
+      
         # The initial Kubernetes version for this cluster. Valid versions are those
         # found in validMasterVersions returned by getServerConfig. The version can be
         # upgraded over time; such upgrades are reflected in currentMasterVersion and
@@ -933,6 +939,7 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @id = args[:id] if args.key?(:id)
+          @identity_service_config = args[:identity_service_config] if args.key?(:identity_service_config)
           @initial_cluster_version = args[:initial_cluster_version] if args.key?(:initial_cluster_version)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
@@ -1104,6 +1111,12 @@ module Google
         # Corresponds to the JSON property `desiredDnsConfig`
         # @return [Google::Apis::ContainerV1beta1::DnsConfig]
         attr_accessor :desired_dns_config
+      
+        # IdentityServiceConfig is configuration for Identity Service which allows
+        # customers to use external identity providers with the K8S API
+        # Corresponds to the JSON property `desiredIdentityServiceConfig`
+        # @return [Google::Apis::ContainerV1beta1::IdentityServiceConfig]
+        attr_accessor :desired_identity_service_config
       
         # The desired image type for the node pool. NOTE: Set the "desired_node_pool"
         # field as well.
@@ -1284,6 +1297,7 @@ module Google
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
+          @desired_identity_service_config = args[:desired_identity_service_config] if args.key?(:desired_identity_service_config)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_l4ilb_subsetting_config = args[:desired_l4ilb_subsetting_config] if args.key?(:desired_l4ilb_subsetting_config)
@@ -2082,6 +2096,27 @@ module Google
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @use_ip_aliases = args[:use_ip_aliases] if args.key?(:use_ip_aliases)
           @use_routes = args[:use_routes] if args.key?(:use_routes)
+        end
+      end
+      
+      # IdentityServiceConfig is configuration for Identity Service which allows
+      # customers to use external identity providers with the K8S API
+      class IdentityServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable the Identity Service component
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
