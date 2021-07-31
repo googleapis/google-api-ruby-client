@@ -896,6 +896,11 @@ module Google
         # @return [Google::Apis::ContainerV1::AutoprovisioningNodePoolDefaults]
         attr_accessor :autoprovisioning_node_pool_defaults
       
+        # Defines autoscaling behaviour.
+        # Corresponds to the JSON property `autoscalingProfile`
+        # @return [String]
+        attr_accessor :autoscaling_profile
+      
         # Enables automatic node pool creation and deletion.
         # Corresponds to the JSON property `enableNodeAutoprovisioning`
         # @return [Boolean]
@@ -916,6 +921,7 @@ module Google
         def update!(**args)
           @autoprovisioning_locations = args[:autoprovisioning_locations] if args.key?(:autoprovisioning_locations)
           @autoprovisioning_node_pool_defaults = args[:autoprovisioning_node_pool_defaults] if args.key?(:autoprovisioning_node_pool_defaults)
+          @autoscaling_profile = args[:autoscaling_profile] if args.key?(:autoscaling_profile)
           @enable_node_autoprovisioning = args[:enable_node_autoprovisioning] if args.key?(:enable_node_autoprovisioning)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
         end

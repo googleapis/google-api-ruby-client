@@ -845,6 +845,7 @@ module Google
           collection :autoprovisioning_locations, as: 'autoprovisioningLocations'
           property :autoprovisioning_node_pool_defaults, as: 'autoprovisioningNodePoolDefaults', class: Google::Apis::ContainerV1::AutoprovisioningNodePoolDefaults, decorator: Google::Apis::ContainerV1::AutoprovisioningNodePoolDefaults::Representation
       
+          property :autoscaling_profile, as: 'autoscalingProfile'
           property :enable_node_autoprovisioning, as: 'enableNodeAutoprovisioning'
           collection :resource_limits, as: 'resourceLimits', class: Google::Apis::ContainerV1::ResourceLimit, decorator: Google::Apis::ContainerV1::ResourceLimit::Representation
       
