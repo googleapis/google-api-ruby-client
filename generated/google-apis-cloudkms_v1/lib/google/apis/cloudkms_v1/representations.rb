@@ -202,6 +202,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MacSignRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MacSignResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MacVerifyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MacVerifyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -553,6 +577,47 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ekm_available, as: 'ekmAvailable'
           property :hsm_available, as: 'hsmAvailable'
+        end
+      end
+      
+      class MacSignRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :data_crc32c, :numeric_string => true, as: 'dataCrc32c'
+        end
+      end
+      
+      class MacSignResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mac, :base64 => true, as: 'mac'
+          property :mac_crc32c, :numeric_string => true, as: 'macCrc32c'
+          property :name, as: 'name'
+          property :protection_level, as: 'protectionLevel'
+          property :verified_data_crc32c, as: 'verifiedDataCrc32c'
+        end
+      end
+      
+      class MacVerifyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :data_crc32c, :numeric_string => true, as: 'dataCrc32c'
+          property :mac, :base64 => true, as: 'mac'
+          property :mac_crc32c, :numeric_string => true, as: 'macCrc32c'
+        end
+      end
+      
+      class MacVerifyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :protection_level, as: 'protectionLevel'
+          property :success, as: 'success'
+          property :verified_data_crc32c, as: 'verifiedDataCrc32c'
+          property :verified_mac_crc32c, as: 'verifiedMacCrc32c'
+          property :verified_success_integrity, as: 'verifiedSuccessIntegrity'
         end
       end
       
