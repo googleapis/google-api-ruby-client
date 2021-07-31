@@ -27,8 +27,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The full resource name of the identity provider; for example: `//iam.
-        # googleapis.com/projects//workloadIdentityPools//providers/`. Required when
-        # exchanging an external credential for a Google access token.
+        # googleapis.com/projects//locations/global/workloadIdentityPools//providers/`.
+        # Required when exchanging an external credential for a Google access token.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
@@ -107,8 +107,8 @@ module Google
         # The full, canonical resource name of the workload identity pool provider, with
         # or without an `https:` prefix. To help ensure data integrity, we recommend
         # including this header in the `SignedHeaders` field of the signed request. For
-        # example: //iam.googleapis.com/projects//locations//workloadIdentityPools//
-        # providers/ https://iam.googleapis.com/projects//locations//
+        # example: //iam.googleapis.com/projects//locations/global/workloadIdentityPools/
+        # /providers/ https://iam.googleapis.com/projects//locations/global/
         # workloadIdentityPools//providers/ If you are using temporary security
         # credentials provided by AWS, you must also include the header `x-amz-security-
         # token`, with the value set to the session token. The following example shows a
@@ -116,8 +116,8 @@ module Google
         # 20200815T015049Z"`, `"key": "Authorization", "value": "AWS4-HMAC-SHA256+
         # Credential=$credential,+SignedHeaders=host;x-amz-date;x-goog-cloud-target-
         # resource,+Signature=$signature"`, `"key": "x-goog-cloud-target-resource", "
-        # value": "//iam.googleapis.com/projects//locations//workloadIdentityPools//
-        # providers/"`, `"key": "host", "value": "sts.amazonaws.com"` . ], "method": "
+        # value": "//iam.googleapis.com/projects//locations/global/workloadIdentityPools/
+        # /providers/"`, `"key": "host", "value": "sts.amazonaws.com"` . ], "method": "
         # POST", "url": "https://sts.amazonaws.com?Action=GetCallerIdentity&Version=2011-
         # 06-15" ` ``` You can also use a Google-issued OAuth 2.0 access token with this
         # field to obtain an access token with new security attributes applied, such as
@@ -274,7 +274,7 @@ module Google
         # The human-readable identifier for the token principal subject. For example, if
         # the provided token is associated with a workload identity pool, this field
         # contains a value in the following format: `principal://iam.googleapis.com/
-        # projects//locations//workloadIdentityPools//subject/`
+        # projects//locations/global/workloadIdentityPools//subject/`
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
