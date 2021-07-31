@@ -1036,6 +1036,75 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing a
+        # tag that can be verified by another source with the same key.
+        # @param [String] name
+        #   Required. The resource name of the CryptoKeyVersion to use for signing.
+        # @param [Google::Apis::CloudkmsV1::MacSignRequest] mac_sign_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::MacSignResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::MacSignResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mac_crypto_key_version_sign(name, mac_sign_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:macSign', options)
+          command.request_representation = Google::Apis::CloudkmsV1::MacSignRequest::Representation
+          command.request_object = mac_sign_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::MacSignResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::MacSignResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and
+        # returns a response that indicates whether or not the verification was
+        # successful.
+        # @param [String] name
+        #   Required. The resource name of the CryptoKeyVersion to use for verification.
+        # @param [Google::Apis::CloudkmsV1::MacVerifyRequest] mac_verify_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::MacVerifyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::MacVerifyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mac_crypto_key_version_verify(name, mac_verify_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:macVerify', options)
+          command.request_representation = Google::Apis::CloudkmsV1::MacVerifyRequest::Representation
+          command.request_object = mac_verify_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::MacVerifyResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::MacVerifyResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and
         # DISABLED using this method. See DestroyCryptoKeyVersion and
         # RestoreCryptoKeyVersion to move between other states.

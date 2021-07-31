@@ -1409,6 +1409,232 @@ module Google
         end
       end
       
+      # Request message for KeyManagementService.MacSign.
+      class MacSignRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The data to sign. The MAC tag is computed over this data field based
+        # on the specific algorithm.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Optional. An optional CRC32C checksum of the MacSignRequest.data. If specified,
+        # KeyManagementService will verify the integrity of the received MacSignRequest.
+        # data using this checksum. KeyManagementService will report an error if the
+        # checksum verification fails. If you receive a checksum error, your client
+        # should verify that CRC32C(MacSignRequest.data) is equal to MacSignRequest.
+        # data_crc32c, and if so, perform a limited number of retries. A persistent
+        # mismatch may indicate an issue in your computation of the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will never
+        # exceed 2^32-1, and can be safely downconverted to uint32 in languages that
+        # support this type.
+        # Corresponds to the JSON property `dataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :data_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @data_crc32c = args[:data_crc32c] if args.key?(:data_crc32c)
+        end
+      end
+      
+      # Response message for KeyManagementService.MacSign.
+      class MacSignResponse
+        include Google::Apis::Core::Hashable
+      
+        # The created signature.
+        # Corresponds to the JSON property `mac`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :mac
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # MacSignResponse.mac. An integrity check of MacSignResponse.mac can be
+        # performed by computing the CRC32C checksum of MacSignResponse.mac and
+        # comparing your results to this field. Discard the response in case of non-
+        # matching checksum values, and perform a limited number of retries. A
+        # persistent mismatch may indicate an issue in your computation of the CRC32C
+        # checksum. Note: This field is defined as int64 for reasons of compatibility
+        # across different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # Corresponds to the JSON property `macCrc32c`
+        # @return [Fixnum]
+        attr_accessor :mac_crc32c
+      
+        # The resource name of the CryptoKeyVersion used for signing. Check this field
+        # to verify that the intended resource was used for signing.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ProtectionLevel of the CryptoKeyVersion used for signing.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        # Integrity verification field. A flag indicating whether MacSignRequest.
+        # data_crc32c was received by KeyManagementService and used for the integrity
+        # verification of the data. A false value of this field indicates either that
+        # MacSignRequest.data_crc32c was left unset or that it was not delivered to
+        # KeyManagementService. If you've set MacSignRequest.data_crc32c but this field
+        # is still false, discard the response and perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedDataCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_data_crc32c
+        alias_method :verified_data_crc32c?, :verified_data_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mac = args[:mac] if args.key?(:mac)
+          @mac_crc32c = args[:mac_crc32c] if args.key?(:mac_crc32c)
+          @name = args[:name] if args.key?(:name)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
+          @verified_data_crc32c = args[:verified_data_crc32c] if args.key?(:verified_data_crc32c)
+        end
+      end
+      
+      # Request message for KeyManagementService.MacVerify.
+      class MacVerifyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The data used previously as a MacSignRequest.data to generate the
+        # MAC tag.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Optional. An optional CRC32C checksum of the MacVerifyRequest.data. If
+        # specified, KeyManagementService will verify the integrity of the received
+        # MacVerifyRequest.data using this checksum. KeyManagementService will report an
+        # error if the checksum verification fails. If you receive a checksum error,
+        # your client should verify that CRC32C(MacVerifyRequest.data) is equal to
+        # MacVerifyRequest.data_crc32c, and if so, perform a limited number of retries.
+        # A persistent mismatch may indicate an issue in your computation of the CRC32C
+        # checksum. Note: This field is defined as int64 for reasons of compatibility
+        # across different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # Corresponds to the JSON property `dataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :data_crc32c
+      
+        # Required. The signature to verify.
+        # Corresponds to the JSON property `mac`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :mac
+      
+        # Optional. An optional CRC32C checksum of the MacVerifyRequest.mac. If
+        # specified, KeyManagementService will verify the integrity of the received
+        # MacVerifyRequest.mac using this checksum. KeyManagementService will report an
+        # error if the checksum verification fails. If you receive a checksum error,
+        # your client should verify that CRC32C(MacVerifyRequest.tag) is equal to
+        # MacVerifyRequest.mac_crc32c, and if so, perform a limited number of retries. A
+        # persistent mismatch may indicate an issue in your computation of the CRC32C
+        # checksum. Note: This field is defined as int64 for reasons of compatibility
+        # across different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # Corresponds to the JSON property `macCrc32c`
+        # @return [Fixnum]
+        attr_accessor :mac_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @data_crc32c = args[:data_crc32c] if args.key?(:data_crc32c)
+          @mac = args[:mac] if args.key?(:mac)
+          @mac_crc32c = args[:mac_crc32c] if args.key?(:mac_crc32c)
+        end
+      end
+      
+      # Response message for KeyManagementService.MacVerify.
+      class MacVerifyResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the CryptoKeyVersion used for verification. Check this
+        # field to verify that the intended resource was used for verification.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The ProtectionLevel of the CryptoKeyVersion used for verification.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        # This field indicates whether or not the verification operation for
+        # MacVerifyRequest.mac over MacVerifyRequest.data was successful.
+        # Corresponds to the JSON property `success`
+        # @return [Boolean]
+        attr_accessor :success
+        alias_method :success?, :success
+      
+        # Integrity verification field. A flag indicating whether MacVerifyRequest.
+        # data_crc32c was received by KeyManagementService and used for the integrity
+        # verification of the data. A false value of this field indicates either that
+        # MacVerifyRequest.data_crc32c was left unset or that it was not delivered to
+        # KeyManagementService. If you've set MacVerifyRequest.data_crc32c but this
+        # field is still false, discard the response and perform a limited number of
+        # retries.
+        # Corresponds to the JSON property `verifiedDataCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_data_crc32c
+        alias_method :verified_data_crc32c?, :verified_data_crc32c
+      
+        # Integrity verification field. A flag indicating whether MacVerifyRequest.
+        # mac_crc32c was received by KeyManagementService and used for the integrity
+        # verification of the data. A false value of this field indicates either that
+        # MacVerifyRequest.mac_crc32c was left unset or that it was not delivered to
+        # KeyManagementService. If you've set MacVerifyRequest.mac_crc32c but this field
+        # is still false, discard the response and perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedMacCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_mac_crc32c
+        alias_method :verified_mac_crc32c?, :verified_mac_crc32c
+      
+        # Integrity verification field. This value is used for the integrity
+        # verification of [MacVerifyResponse.success]. If the value of this field
+        # contradicts the value of [MacVerifyResponse.success], discard the response and
+        # perform a limited number of retries.
+        # Corresponds to the JSON property `verifiedSuccessIntegrity`
+        # @return [Boolean]
+        attr_accessor :verified_success_integrity
+        alias_method :verified_success_integrity?, :verified_success_integrity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
+          @success = args[:success] if args.key?(:success)
+          @verified_data_crc32c = args[:verified_data_crc32c] if args.key?(:verified_data_crc32c)
+          @verified_mac_crc32c = args[:verified_mac_crc32c] if args.key?(:verified_mac_crc32c)
+          @verified_success_integrity = args[:verified_success_integrity] if args.key?(:verified_success_integrity)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members` to a single `role`. Members can be
