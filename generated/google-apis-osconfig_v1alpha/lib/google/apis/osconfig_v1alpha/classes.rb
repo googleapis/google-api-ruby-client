@@ -127,6 +127,47 @@ module Google
         end
       end
       
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -481,6 +522,14 @@ module Google
         # @return [Google::Apis::OsconfigV1alpha::InventoryWindowsQuickFixEngineeringPackage]
         attr_accessor :qfe_package
       
+        # Contains information about a Windows application as retrieved from the Windows
+        # Registry. For more information about these fields, see [Windows Installer
+        # Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/
+        # windows/win32/msi/uninstall-registry-key)`: class="external" `
+        # Corresponds to the JSON property `windowsApplication`
+        # @return [Google::Apis::OsconfigV1alpha::InventoryWindowsApplication]
+        attr_accessor :windows_application
+      
         # Details related to a Windows Update package. Field data and names are taken
         # from Windows Update API IUpdate Interface: https://docs.microsoft.com/en-us/
         # windows/win32/api/_wua/ Descriptive fields like title, and description are
@@ -516,6 +565,7 @@ module Google
           @cos_package = args[:cos_package] if args.key?(:cos_package)
           @googet_package = args[:googet_package] if args.key?(:googet_package)
           @qfe_package = args[:qfe_package] if args.key?(:qfe_package)
+          @windows_application = args[:windows_application] if args.key?(:windows_application)
           @wua_package = args[:wua_package] if args.key?(:wua_package)
           @yum_package = args[:yum_package] if args.key?(:yum_package)
           @zypper_package = args[:zypper_package] if args.key?(:zypper_package)
@@ -552,6 +602,59 @@ module Google
           @architecture = args[:architecture] if args.key?(:architecture)
           @package_name = args[:package_name] if args.key?(:package_name)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Contains information about a Windows application as retrieved from the Windows
+      # Registry. For more information about these fields, see [Windows Installer
+      # Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/
+      # windows/win32/msi/uninstall-registry-key)`: class="external" `
+      class InventoryWindowsApplication
+        include Google::Apis::Core::Hashable
+      
+        # The name of the application or product.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The version of the product or application in string format.
+        # Corresponds to the JSON property `displayVersion`
+        # @return [String]
+        attr_accessor :display_version
+      
+        # The internet address for technical support.
+        # Corresponds to the JSON property `helpLink`
+        # @return [String]
+        attr_accessor :help_link
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `installDate`
+        # @return [Google::Apis::OsconfigV1alpha::Date]
+        attr_accessor :install_date
+      
+        # The name of the manufacturer for the product or application.
+        # Corresponds to the JSON property `publisher`
+        # @return [String]
+        attr_accessor :publisher
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @display_version = args[:display_version] if args.key?(:display_version)
+          @help_link = args[:help_link] if args.key?(:help_link)
+          @install_date = args[:install_date] if args.key?(:install_date)
+          @publisher = args[:publisher] if args.key?(:publisher)
         end
       end
       
