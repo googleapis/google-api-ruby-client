@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,12 @@ module Google
       end
       
       class InventoryVersionedPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InventoryWindowsApplication
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -387,6 +399,15 @@ module Google
         end
       end
       
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -479,6 +500,8 @@ module Google
       
           property :qfe_package, as: 'qfePackage', class: Google::Apis::OsconfigV1alpha::InventoryWindowsQuickFixEngineeringPackage, decorator: Google::Apis::OsconfigV1alpha::InventoryWindowsQuickFixEngineeringPackage::Representation
       
+          property :windows_application, as: 'windowsApplication', class: Google::Apis::OsconfigV1alpha::InventoryWindowsApplication, decorator: Google::Apis::OsconfigV1alpha::InventoryWindowsApplication::Representation
+      
           property :wua_package, as: 'wuaPackage', class: Google::Apis::OsconfigV1alpha::InventoryWindowsUpdatePackage, decorator: Google::Apis::OsconfigV1alpha::InventoryWindowsUpdatePackage::Representation
       
           property :yum_package, as: 'yumPackage', class: Google::Apis::OsconfigV1alpha::InventoryVersionedPackage, decorator: Google::Apis::OsconfigV1alpha::InventoryVersionedPackage::Representation
@@ -496,6 +519,18 @@ module Google
           property :architecture, as: 'architecture'
           property :package_name, as: 'packageName'
           property :version, as: 'version'
+        end
+      end
+      
+      class InventoryWindowsApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :display_version, as: 'displayVersion'
+          property :help_link, as: 'helpLink'
+          property :install_date, as: 'installDate', class: Google::Apis::OsconfigV1alpha::Date, decorator: Google::Apis::OsconfigV1alpha::Date::Representation
+      
+          property :publisher, as: 'publisher'
         end
       end
       
