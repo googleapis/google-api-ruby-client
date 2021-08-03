@@ -1733,6 +1733,9 @@ module Google
         
         # ReceiveWebhook is called when the API receives a GitHub webhook.
         # @param [Google::Apis::CloudbuildV1::HttpBody] http_body_object
+        # @param [String] webhook_key
+        #   For GitHub Enterprise webhooks, this key is used to associate the webhook
+        #   request with the GitHubEnterpriseConfig to use for validation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1750,12 +1753,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhook(http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhook(http_body_object = nil, webhook_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/webhook', options)
           command.request_representation = Google::Apis::CloudbuildV1::HttpBody::Representation
           command.request_object = http_body_object
           command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
           command.response_class = Google::Apis::CloudbuildV1::Empty
+          command.query['webhookKey'] = webhook_key unless webhook_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
