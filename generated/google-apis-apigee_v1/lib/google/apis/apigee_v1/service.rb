@@ -6871,6 +6871,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an Apigee runtime instance. You can update the fields described in
+        # NodeConfig. No other fields will be updated. **Note:** Not supported for
+        # Apigee hybrid.
+        # @param [String] name
+        #   Required. Name of the instance. Use the following structure in your request: `
+        #   organizations/`org`/instances/`instance``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance] google_cloud_apigee_v1_instance_object
+        # @param [String] update_mask
+        #   List of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_instance(name, google_cloud_apigee_v1_instance_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance::Representation
+          command.request_object = google_cloud_apigee_v1_instance_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Reports the latest status for a runtime instance.
         # @param [String] instance
         #   The name of the instance reporting this status. For SaaS the request will be

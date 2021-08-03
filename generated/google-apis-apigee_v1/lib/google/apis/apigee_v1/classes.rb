@@ -257,11 +257,6 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig]
         attr_accessor :advanced_api_ops_config
       
-        # Configuration for the Integration add-on.
-        # Corresponds to the JSON property `integrationConfig`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig]
-        attr_accessor :integration_config
-      
         # Configuration for the Monetization add-on.
         # Corresponds to the JSON property `monetizationConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig]
@@ -274,7 +269,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_api_ops_config = args[:advanced_api_ops_config] if args.key?(:advanced_api_ops_config)
-          @integration_config = args[:integration_config] if args.key?(:integration_config)
           @monetization_config = args[:monetization_config] if args.key?(:monetization_config)
         end
       end
@@ -3623,26 +3617,6 @@ module Google
           @envgroup = args[:envgroup] if args.key?(:envgroup)
           @environment = args[:environment] if args.key?(:environment)
           @percentage = args[:percentage] if args.key?(:percentage)
-        end
-      end
-      
-      # Configuration for the Integration add-on.
-      class GoogleCloudApigeeV1IntegrationConfig
-        include Google::Apis::Core::Hashable
-      
-        # Flag that specifies whether the Integration add-on is enabled.
-        # Corresponds to the JSON property `enabled`
-        # @return [Boolean]
-        attr_accessor :enabled
-        alias_method :enabled?, :enabled
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       

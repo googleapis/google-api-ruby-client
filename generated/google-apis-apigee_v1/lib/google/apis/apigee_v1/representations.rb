@@ -472,12 +472,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudApigeeV1IntegrationConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudApigeeV1KeyAliasReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1204,8 +1198,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_api_ops_config, as: 'advancedApiOpsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig::Representation
-      
-          property :integration_config, as: 'integrationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig::Representation
       
           property :monetization_config, as: 'monetizationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig::Representation
       
@@ -2036,13 +2028,6 @@ module Google
           property :envgroup, as: 'envgroup'
           property :environment, as: 'environment'
           property :percentage, as: 'percentage'
-        end
-      end
-      
-      class GoogleCloudApigeeV1IntegrationConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
         end
       end
       
