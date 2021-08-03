@@ -1,5 +1,9 @@
 # Release history for google-apis-recaptchaenterprise_v1
 
+### v0.5.0 (2021-08-03)
+
+* Regenerated from discovery document revision 20210731
+
 ### v0.4.0 (2021-06-29)
 
 * Regenerated using generator version 0.4.0
