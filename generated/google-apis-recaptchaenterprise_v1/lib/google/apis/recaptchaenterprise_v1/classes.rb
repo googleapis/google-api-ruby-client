@@ -329,6 +329,12 @@ module Google
         # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>]
         attr_accessor :challenge_metrics
       
+        # Output only. The name of the metrics, in the format "projects/`project`/keys/`
+        # key`/metrics".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Metrics will be continuous and in order by dates, and in the granularity of
         # day. All Key types should have score-based data.
         # Corresponds to the JSON property `scoreMetrics`
@@ -347,6 +353,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @challenge_metrics = args[:challenge_metrics] if args.key?(:challenge_metrics)
+          @name = args[:name] if args.key?(:name)
           @score_metrics = args[:score_metrics] if args.key?(:score_metrics)
           @start_time = args[:start_time] if args.key?(:start_time)
         end

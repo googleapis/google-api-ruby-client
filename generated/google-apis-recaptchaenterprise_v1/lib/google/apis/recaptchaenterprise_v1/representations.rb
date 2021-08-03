@@ -224,6 +224,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :challenge_metrics, as: 'challengeMetrics', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeMetrics, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeMetrics::Representation
       
+          property :name, as: 'name'
           collection :score_metrics, as: 'scoreMetrics', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ScoreMetrics, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ScoreMetrics::Representation
       
           property :start_time, as: 'startTime'
