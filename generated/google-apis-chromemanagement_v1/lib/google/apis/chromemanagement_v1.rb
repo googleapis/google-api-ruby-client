@@ -31,6 +31,9 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # See detailed information about apps installed on Chrome browsers and devices managed by your organization
+      AUTH_CHROME_MANAGEMENT_APPDETAILS_READONLY = 'https://www.googleapis.com/auth/chrome.management.appdetails.readonly'
+
       # See reports about devices and Chrome browsers managed within your organization
       AUTH_CHROME_MANAGEMENT_REPORTS_READONLY = 'https://www.googleapis.com/auth/chrome.management.reports.readonly'
     end

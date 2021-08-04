@@ -51,6 +51,108 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Get a specific app for a customer by its resource name.
+        # @param [String] name
+        #   Required. The app for which details are being queried. Examples: "customers/
+        #   my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save
+        #   to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/
+        #   android/com.google.android.apps.docs" for the Google Drive Android app's
+        #   latest version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_app_android(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a specific app for a customer by its resource name.
+        # @param [String] name
+        #   Required. The app for which details are being queried. Examples: "customers/
+        #   my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save
+        #   to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/
+        #   android/com.google.android.apps.docs" for the Google Drive Android app's
+        #   latest version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_app_chrome(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a specific app for a customer by its resource name.
+        # @param [String] name
+        #   Required. The app for which details are being queried. Examples: "customers/
+        #   my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save
+        #   to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/
+        #   android/com.google.android.apps.docs" for the Google Drive Android app's
+        #   latest version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_app_web(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AppDetails
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate report of installed Chrome versions.
         # @param [String] customer
         #   Required. Customer id or "my_customer" to use the customer associated to the
