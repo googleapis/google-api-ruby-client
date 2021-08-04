@@ -129,7 +129,8 @@ module Google
       end
       
       # The configuration of Cloud SQL instance that is used by the Apache Airflow
-      # software.
+      # software. Supported for Cloud Composer environments in versions composer-1.*.*-
+      # airflow-*.*.*.
       class DatabaseConfig
         include Google::Apis::Core::Hashable
       
@@ -209,6 +210,8 @@ module Google
       end
       
       # The encryption options for the Cloud Composer environment and its dependencies.
+      # Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*
+      # .*.*.
       class EncryptionConfig
         include Google::Apis::Core::Hashable
       
@@ -312,12 +315,15 @@ module Google
         attr_accessor :dag_gcs_prefix
       
         # The configuration of Cloud SQL instance that is used by the Apache Airflow
-        # software.
+        # software. Supported for Cloud Composer environments in versions composer-1.*.*-
+        # airflow-*.*.*.
         # Corresponds to the JSON property `databaseConfig`
         # @return [Google::Apis::ComposerV1beta1::DatabaseConfig]
         attr_accessor :database_config
       
         # The encryption options for the Cloud Composer environment and its dependencies.
+        # Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*
+        # .*.*.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::ComposerV1beta1::EncryptionConfig]
         attr_accessor :encryption_config
@@ -350,7 +356,8 @@ module Google
         attr_accessor :node_config
       
         # The number of nodes in the Kubernetes Engine cluster that will be used to run
-        # this environment.
+        # this environment. This field is supported for Cloud Composer environments in
+        # versions composer-1.*.*-airflow-*.*.*.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
@@ -367,11 +374,14 @@ module Google
         attr_accessor :software_config
       
         # The configuration settings for the Airflow web server App Engine instance.
+        # Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.
+        # *.*.
         # Corresponds to the JSON property `webServerConfig`
         # @return [Google::Apis::ComposerV1beta1::WebServerConfig]
         attr_accessor :web_server_config
       
-        # Network-level access control policy for the Airflow web server.
+        # Network-level access control policy for the Airflow web server. Supported for
+        # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         # Corresponds to the JSON property `webServerNetworkAccessControl`
         # @return [Google::Apis::ComposerV1beta1::WebServerNetworkAccessControl]
         attr_accessor :web_server_network_access_control
@@ -411,12 +421,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The IP address range used to allocate IP addresses to pods in the
-        # cluster. This field is applicable only when `use_ip_aliases` is true. Set to
-        # blank to have GKE choose a range with the default size. Set to /netmask (e.g. `
-        # /14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](http:
-        # //en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.
-        # 0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`
-        # , `192.168.0.0/16`) to pick a specific range to use. Specify `
+        # cluster. This field is applicable only when `use_ip_aliases` is true. For
+        # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this
+        # field is applicable only when `use_ip_aliases` is true. Set to blank to have
+        # GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have
+        # GKE choose a range with a specific netmask. Set to a [CIDR](http://en.
+        # wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/
+        # 14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `
+        # 192.168.0.0/16`) to pick a specific range to use. Specify `
         # cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
         # Corresponds to the JSON property `clusterIpv4CidrBlock`
         # @return [String]
@@ -425,19 +437,23 @@ module Google
         # Optional. The name of the cluster's secondary range used to allocate IP
         # addresses to pods. Specify either `cluster_secondary_range_name` or `
         # cluster_ipv4_cidr_block` but not both. This field is applicable only when `
-        # use_ip_aliases` is true.
+        # use_ip_aliases` is true. For Cloud Composer environments in versions composer-
+        # 1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is
+        # true.
         # Corresponds to the JSON property `clusterSecondaryRangeName`
         # @return [String]
         attr_accessor :cluster_secondary_range_name
       
         # Optional. The IP address range of the services IP addresses in this cluster.
-        # This field is applicable only when `use_ip_aliases` is true. Set to blank to
-        # have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to
-        # have GKE choose a range with a specific netmask. Set to a [CIDR](http://en.
-        # wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/
-        # 14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `
-        # 192.168.0.0/16`) to pick a specific range to use. Specify `
-        # services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+        # This field is applicable only when `use_ip_aliases` is true. For Cloud
+        # Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is
+        # applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose
+        # a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose
+        # a range with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/
+        # Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-
+        # 1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`)
+        # to pick a specific range to use. Specify `services_secondary_range_name` or `
+        # services_ipv4_cidr_block` but not both.
         # Corresponds to the JSON property `servicesIpv4CidrBlock`
         # @return [String]
         attr_accessor :services_ipv4_cidr_block
@@ -445,13 +461,17 @@ module Google
         # Optional. The name of the services' secondary range used to allocate IP
         # addresses to the cluster. Specify either `services_secondary_range_name` or `
         # services_ipv4_cidr_block` but not both. This field is applicable only when `
-        # use_ip_aliases` is true.
+        # use_ip_aliases` is true. For Cloud Composer environments in versions composer-
+        # 1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is
+        # true.
         # Corresponds to the JSON property `servicesSecondaryRangeName`
         # @return [String]
         attr_accessor :services_secondary_range_name
       
         # Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a
-        # VPC-native cluster is created.
+        # VPC-native cluster is created. This field is only supported for Cloud Composer
+        # environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer
+        # versions always use VPC-native GKE clusters.
         # Corresponds to the JSON property `useIpAliases`
         # @return [Boolean]
         attr_accessor :use_ip_aliases
@@ -654,7 +674,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If
-        # unspecified, defaults to 100GB. Cannot be updated.
+        # unspecified, defaults to 100GB. Cannot be updated. This field is supported for
+        # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -674,7 +695,9 @@ module Google
         # zone in the Compute Engine region corresponding to the Cloud Composer location,
         # and propagate that choice to both fields. If only one field (`location` or `
         # nodeConfig.machineType`) is specified, the location information from the
-        # specified field will be propagated to the unspecified field.
+        # specified field will be propagated to the unspecified field. This field is
+        # supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.
+        # *.*.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -692,6 +715,8 @@ module Google
         # field will be propagated to the unspecified field. The `machineTypeId` must
         # not be a [shared-core machine type](/compute/docs/machine-types#sharedcore).
         # If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".
+        # This field is supported for Cloud Composer environments in versions composer-1.
+        # *.*-airflow-*.*.*.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -704,7 +729,8 @@ module Google
         # newly created node pools if their value is not explicitly set during node pool
         # creation. For more information, see [Optimizing IP address allocation] (https:/
         # /cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be
-        # updated.
+        # updated. This field is supported for Cloud Composer environments in versions
+        # composer-1.*.*-airflow-*.*.*.
         # Corresponds to the JSON property `maxPodsPerNode`
         # @return [Fixnum]
         attr_accessor :max_pods_per_node
@@ -722,7 +748,8 @@ module Google
       
         # Optional. The set of Google API scopes to be made available on all node VMs.
         # If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/
-        # cloud-platform"]. Cannot be updated.
+        # cloud-platform"]. Cannot be updated. This field is supported for Cloud
+        # Composer environments in versions composer-1.*.*-airflow-*.*.*.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
@@ -747,7 +774,8 @@ module Google
         # Optional. The list of instance tags applied to all node VMs. Tags are used to
         # identify valid sources or targets for network firewalls. Each tag within the
         # list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot
-        # be updated.
+        # be updated. This field is supported for Cloud Composer environments in
+        # versions composer-1.*.*-airflow-*.*.*.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -952,7 +980,7 @@ module Google
       
         # Optional. If `true`, a Private IP Cloud Composer environment is created. If
         # this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to
-        # true .
+        # true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         # Corresponds to the JSON property `enablePrivateEnvironment`
         # @return [Boolean]
         attr_accessor :enable_private_environment
@@ -966,12 +994,15 @@ module Google
       
         # Optional. The CIDR block from which IP range for web server will be reserved.
         # Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and
-        # cloud_sql_ipv4_cidr_block.
+        # cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer
+        # environments in versions composer-1.*.*-airflow-*.*.*.
         # Corresponds to the JSON property `webServerIpv4CidrBlock`
         # @return [String]
         attr_accessor :web_server_ipv4_cidr_block
       
         # Output only. The IP range reserved for the tenant project's App Engine VMs.
+        # This field is supported for Cloud Composer environments in versions composer-1.
+        # *.*-airflow-*.*.*.
         # Corresponds to the JSON property `webServerIpv4ReservedRange`
         # @return [String]
         attr_accessor :web_server_ipv4_reserved_range
@@ -1104,12 +1135,15 @@ module Google
       
         # Optional. The major version of Python used to run the Apache Airflow scheduler,
         # worker, and webserver processes. Can be set to '2' or '3'. If not specified,
-        # the default is '3'. Cannot be updated.
+        # the default is '3'. Cannot be updated. This field is only supported for Cloud
+        # Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments
+        # in newer versions always use Python major version 3.
         # Corresponds to the JSON property `pythonVersion`
         # @return [String]
         attr_accessor :python_version
       
-        # Optional. The number of schedulers for Airflow.
+        # Optional. The number of schedulers for Airflow. This field is supported for
+        # Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
         # Corresponds to the JSON property `schedulerCount`
         # @return [Fixnum]
         attr_accessor :scheduler_count
@@ -1169,6 +1203,8 @@ module Google
       end
       
       # The configuration settings for the Airflow web server App Engine instance.
+      # Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.
+      # *.*.
       class WebServerConfig
         include Google::Apis::Core::Hashable
       
@@ -1191,7 +1227,8 @@ module Google
         end
       end
       
-      # Network-level access control policy for the Airflow web server.
+      # Network-level access control policy for the Airflow web server. Supported for
+      # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
       class WebServerNetworkAccessControl
         include Google::Apis::Core::Hashable
       
