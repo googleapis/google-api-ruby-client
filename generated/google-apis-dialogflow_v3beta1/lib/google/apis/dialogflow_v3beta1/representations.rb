@@ -1114,6 +1114,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1RolloutConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RolloutState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3296,6 +3314,11 @@ module Google
           property :name, as: 'name'
           property :result, as: 'result', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResult::Representation
       
+          property :rollout_config, as: 'rolloutConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RolloutConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RolloutConfig::Representation
+      
+          property :rollout_failure_reason, as: 'rolloutFailureReason'
+          property :rollout_state, as: 'rolloutState', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RolloutState, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RolloutState::Representation
+      
           property :start_time, as: 'startTime'
           property :state, as: 'state'
           collection :variants_history, as: 'variantsHistory', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VariantsHistory, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1VariantsHistory::Representation
@@ -4102,6 +4125,34 @@ module Google
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
           property :restore_option, as: 'restoreOption'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RolloutConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_condition, as: 'failureCondition'
+          property :rollout_condition, as: 'rolloutCondition'
+          collection :rollout_steps, as: 'rolloutSteps', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :min_duration, as: 'minDuration'
+          property :traffic_percent, as: 'trafficPercent'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1RolloutState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+          property :step, as: 'step'
+          property :step_index, as: 'stepIndex'
         end
       end
       
