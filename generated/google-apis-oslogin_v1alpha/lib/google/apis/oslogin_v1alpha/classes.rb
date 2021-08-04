@@ -80,6 +80,11 @@ module Google
         # @return [Array<Google::Apis::OsloginV1alpha::PosixAccount>]
         attr_accessor :posix_accounts
       
+        # The registered security key credentials for a user.
+        # Corresponds to the JSON property `securityKeys`
+        # @return [Array<Google::Apis::OsloginV1alpha::SecurityKey>]
+        attr_accessor :security_keys
+      
         # A map from SSH public key fingerprint to the associated key object.
         # Corresponds to the JSON property `sshPublicKeys`
         # @return [Hash<String,Google::Apis::OsloginV1alpha::SshPublicKey>]
@@ -93,6 +98,7 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @posix_accounts = args[:posix_accounts] if args.key?(:posix_accounts)
+          @security_keys = args[:security_keys] if args.key?(:security_keys)
           @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
         end
       end
@@ -178,6 +184,44 @@ module Google
         end
       end
       
+      # The credential information for a Google registered security key.
+      class SecurityKey
+        include Google::Apis::Core::Hashable
+      
+        # Hardware-backed private key text in SSH format.
+        # Corresponds to the JSON property `privateKey`
+        # @return [String]
+        attr_accessor :private_key
+      
+        # Public key text in SSH format, defined by [RFC4253]("https://www.ietf.org/rfc/
+        # rfc4253.txt") section 6.6.
+        # Corresponds to the JSON property `publicKey`
+        # @return [String]
+        attr_accessor :public_key
+      
+        # Security key information specific to the U2F protocol.
+        # Corresponds to the JSON property `universalTwoFactor`
+        # @return [Google::Apis::OsloginV1alpha::UniversalTwoFactor]
+        attr_accessor :universal_two_factor
+      
+        # Security key information specific to the Web Authentication protocol.
+        # Corresponds to the JSON property `webAuthn`
+        # @return [Google::Apis::OsloginV1alpha::WebAuthn]
+        attr_accessor :web_authn
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_key = args[:private_key] if args.key?(:private_key)
+          @public_key = args[:public_key] if args.key?(:public_key)
+          @universal_two_factor = args[:universal_two_factor] if args.key?(:universal_two_factor)
+          @web_authn = args[:web_authn] if args.key?(:web_authn)
+        end
+      end
+      
       # The SSH public key information associated with a Google account.
       class SshPublicKey
         include Google::Apis::Core::Hashable
@@ -212,6 +256,44 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @key = args[:key] if args.key?(:key)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Security key information specific to the U2F protocol.
+      class UniversalTwoFactor
+        include Google::Apis::Core::Hashable
+      
+        # Application ID for the U2F protocol.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+        end
+      end
+      
+      # Security key information specific to the Web Authentication protocol.
+      class WebAuthn
+        include Google::Apis::Core::Hashable
+      
+        # Relying party ID for Web Authentication.
+        # Corresponds to the JSON property `rpId`
+        # @return [String]
+        attr_accessor :rp_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rp_id = args[:rp_id] if args.key?(:rp_id)
         end
       end
     end
