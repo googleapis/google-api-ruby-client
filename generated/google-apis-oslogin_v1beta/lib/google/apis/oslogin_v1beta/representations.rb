@@ -46,7 +46,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SshPublicKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UniversalTwoFactor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WebAuthn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -73,6 +91,8 @@ module Google
           property :name, as: 'name'
           collection :posix_accounts, as: 'posixAccounts', class: Google::Apis::OsloginV1beta::PosixAccount, decorator: Google::Apis::OsloginV1beta::PosixAccount::Representation
       
+          collection :security_keys, as: 'securityKeys', class: Google::Apis::OsloginV1beta::SecurityKey, decorator: Google::Apis::OsloginV1beta::SecurityKey::Representation
+      
           hash :ssh_public_keys, as: 'sshPublicKeys', class: Google::Apis::OsloginV1beta::SshPublicKey, decorator: Google::Apis::OsloginV1beta::SshPublicKey::Representation
       
         end
@@ -95,6 +115,18 @@ module Google
         end
       end
       
+      class SecurityKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_key, as: 'privateKey'
+          property :public_key, as: 'publicKey'
+          property :universal_two_factor, as: 'universalTwoFactor', class: Google::Apis::OsloginV1beta::UniversalTwoFactor, decorator: Google::Apis::OsloginV1beta::UniversalTwoFactor::Representation
+      
+          property :web_authn, as: 'webAuthn', class: Google::Apis::OsloginV1beta::WebAuthn, decorator: Google::Apis::OsloginV1beta::WebAuthn::Representation
+      
+        end
+      end
+      
       class SshPublicKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -102,6 +134,20 @@ module Google
           property :fingerprint, as: 'fingerprint'
           property :key, as: 'key'
           property :name, as: 'name'
+        end
+      end
+      
+      class UniversalTwoFactor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+        end
+      end
+      
+      class WebAuthn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rp_id, as: 'rpId'
         end
       end
     end
