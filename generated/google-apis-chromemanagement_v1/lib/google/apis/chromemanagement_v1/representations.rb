@@ -22,7 +22,43 @@ module Google
   module Apis
     module ChromemanagementV1
       
+      class GoogleChromeManagementV1AndroidAppInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1AndroidAppPermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1AppDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1BrowserVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1ChromeAppInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1ChromeAppPermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1ChromeAppSiteAccess
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,6 +94,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleRpcStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1AndroidAppInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AndroidAppPermission, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AndroidAppPermission::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementV1AndroidAppPermission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleChromeManagementV1AppDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_app_info, as: 'androidAppInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AndroidAppInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1AndroidAppInfo::Representation
+      
+          property :app_id, as: 'appId'
+          property :chrome_app_info, as: 'chromeAppInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppInfo::Representation
+      
+          property :description, as: 'description'
+          property :detail_uri, as: 'detailUri'
+          property :display_name, as: 'displayName'
+          property :first_publish_time, as: 'firstPublishTime'
+          property :homepage_uri, as: 'homepageUri'
+          property :icon_uri, as: 'iconUri'
+          property :is_paid_app, as: 'isPaidApp'
+          property :latest_publish_time, as: 'latestPublishTime'
+          property :name, as: 'name'
+          property :privacy_policy_uri, as: 'privacyPolicyUri'
+          property :publisher, as: 'publisher'
+          property :review_number, :numeric_string => true, as: 'reviewNumber'
+          property :review_rating, as: 'reviewRating'
+          property :revision_id, as: 'revisionId'
+          property :service_error, as: 'serviceError', class: Google::Apis::ChromemanagementV1::GoogleRpcStatus, decorator: Google::Apis::ChromemanagementV1::GoogleRpcStatus::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleChromeManagementV1BrowserVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -66,6 +151,37 @@ module Google
           property :device_os_version, as: 'deviceOsVersion'
           property :system, as: 'system'
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleChromeManagementV1ChromeAppInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_owned, as: 'googleOwned'
+          property :is_cws_hosted, as: 'isCwsHosted'
+          property :is_theme, as: 'isTheme'
+          property :min_user_count, as: 'minUserCount'
+          collection :permissions, as: 'permissions', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppPermission, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppPermission::Representation
+      
+          collection :site_access, as: 'siteAccess', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppSiteAccess, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppSiteAccess::Representation
+      
+          property :support_enabled, as: 'supportEnabled'
+        end
+      end
+      
+      class GoogleChromeManagementV1ChromeAppPermission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_user_data, as: 'accessUserData'
+          property :documentation_uri, as: 'documentationUri'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleChromeManagementV1ChromeAppSiteAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_match, as: 'hostMatch'
         end
       end
       
@@ -121,6 +237,15 @@ module Google
           property :homepage_uri, as: 'homepageUri'
           property :os_user_count, :numeric_string => true, as: 'osUserCount'
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class GoogleRpcStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
     end
