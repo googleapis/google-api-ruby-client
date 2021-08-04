@@ -3583,11 +3583,9 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # LINT.IfChange(default_experiment_length) Maximum number of days to run the
-        # experiment. If auto-rollout is not enabled, default value and maximum will be
-        # 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
-        # LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:
-        # default_experiment_length)
+        # Maximum number of days to run the experiment. If auto-rollout is not enabled,
+        # default value and maximum will be 30 days. If auto-rollout is enabled, default
+        # value and maximum will be 6 days.
         # Corresponds to the JSON property `experimentLength`
         # @return [String]
         attr_accessor :experiment_length
@@ -3608,6 +3606,22 @@ module Google
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ExperimentResult]
         attr_accessor :result
+      
+        # The configuration for auto rollout.
+        # Corresponds to the JSON property `rolloutConfig`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RolloutConfig]
+        attr_accessor :rollout_config
+      
+        # The reason why rollout has failed. Should only be set when state is
+        # ROLLOUT_FAILED.
+        # Corresponds to the JSON property `rolloutFailureReason`
+        # @return [String]
+        attr_accessor :rollout_failure_reason
+      
+        # State of the auto-rollout process.
+        # Corresponds to the JSON property `rolloutState`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RolloutState]
+        attr_accessor :rollout_state
       
         # Start time of this experiment.
         # Corresponds to the JSON property `startTime`
@@ -3641,6 +3655,9 @@ module Google
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @name = args[:name] if args.key?(:name)
           @result = args[:result] if args.key?(:result)
+          @rollout_config = args[:rollout_config] if args.key?(:rollout_config)
+          @rollout_failure_reason = args[:rollout_failure_reason] if args.key?(:rollout_failure_reason)
+          @rollout_state = args[:rollout_state] if args.key?(:rollout_state)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
           @variants_history = args[:variants_history] if args.key?(:variants_history)
@@ -6612,6 +6629,109 @@ module Google
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
           @restore_option = args[:restore_option] if args.key?(:restore_option)
+        end
+      end
+      
+      # The configuration for auto rollout.
+      class GoogleCloudDialogflowCxV3beta1RolloutConfig
+        include Google::Apis::Core::Hashable
+      
+        # The conditions that are used to evaluate the failure of a rollout step. If not
+        # specified, no rollout steps will fail. E.g. "containment_rate < 10% OR
+        # average_turn_count < 3". See the [conditions reference](https://cloud.google.
+        # com/dialogflow/cx/docs/reference/condition).
+        # Corresponds to the JSON property `failureCondition`
+        # @return [String]
+        attr_accessor :failure_condition
+      
+        # The conditions that are used to evaluate the success of a rollout step. If not
+        # specified, all rollout steps will proceed to the next one unless failure
+        # conditions are met. E.g. "containment_rate > 60% AND callback_rate < 20%". See
+        # the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/
+        # reference/condition).
+        # Corresponds to the JSON property `rolloutCondition`
+        # @return [String]
+        attr_accessor :rollout_condition
+      
+        # Steps to roll out a flow version. Steps should be sorted by percentage in
+        # ascending order.
+        # Corresponds to the JSON property `rolloutSteps`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep>]
+        attr_accessor :rollout_steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_condition = args[:failure_condition] if args.key?(:failure_condition)
+          @rollout_condition = args[:rollout_condition] if args.key?(:rollout_condition)
+          @rollout_steps = args[:rollout_steps] if args.key?(:rollout_steps)
+        end
+      end
+      
+      # A single rollout step with specified traffic allocation.
+      class GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep
+        include Google::Apis::Core::Hashable
+      
+        # The name of the rollout step;
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The minimum time that this step should last. Should be longer than 1 hour. If
+        # not set, the default minimum duration for each step will be 1 hour.
+        # Corresponds to the JSON property `minDuration`
+        # @return [String]
+        attr_accessor :min_duration
+      
+        # The percentage of traffic allocated to the flow version of this rollout step. (
+        # 0%, 100%].
+        # Corresponds to the JSON property `trafficPercent`
+        # @return [Fixnum]
+        attr_accessor :traffic_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @min_duration = args[:min_duration] if args.key?(:min_duration)
+          @traffic_percent = args[:traffic_percent] if args.key?(:traffic_percent)
+        end
+      end
+      
+      # State of the auto-rollout process.
+      class GoogleCloudDialogflowCxV3beta1RolloutState
+        include Google::Apis::Core::Hashable
+      
+        # Start time of the current step.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Display name of the current auto rollout step.
+        # Corresponds to the JSON property `step`
+        # @return [String]
+        attr_accessor :step
+      
+        # Index of the current step in the auto rollout steps list.
+        # Corresponds to the JSON property `stepIndex`
+        # @return [Fixnum]
+        attr_accessor :step_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @step = args[:step] if args.key?(:step)
+          @step_index = args[:step_index] if args.key?(:step_index)
         end
       end
       
