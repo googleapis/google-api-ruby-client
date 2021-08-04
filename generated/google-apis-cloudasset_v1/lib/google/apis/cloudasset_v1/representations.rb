@@ -502,6 +502,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RelatedAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RelatedAssets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RelationshipAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -657,6 +675,8 @@ module Google
       
           property :os_inventory, as: 'osInventory', class: Google::Apis::CloudassetV1::Inventory, decorator: Google::Apis::CloudassetV1::Inventory::Representation
       
+          property :related_assets, as: 'relatedAssets', class: Google::Apis::CloudassetV1::RelatedAssets, decorator: Google::Apis::CloudassetV1::RelatedAssets::Representation
+      
           property :resource, as: 'resource', class: Google::Apis::CloudassetV1::Resource, decorator: Google::Apis::CloudassetV1::Resource::Representation
       
           property :service_perimeter, as: 'servicePerimeter', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter::Representation
@@ -766,6 +786,7 @@ module Google
           property :output_config, as: 'outputConfig', class: Google::Apis::CloudassetV1::OutputConfig, decorator: Google::Apis::CloudassetV1::OutputConfig::Representation
       
           property :read_time, as: 'readTime'
+          collection :relationship_types, as: 'relationshipTypes'
         end
       end
       
@@ -790,6 +811,7 @@ module Google
           property :feed_output_config, as: 'feedOutputConfig', class: Google::Apis::CloudassetV1::FeedOutputConfig, decorator: Google::Apis::CloudassetV1::FeedOutputConfig::Representation
       
           property :name, as: 'name'
+          collection :relationship_types, as: 'relationshipTypes'
         end
       end
       
@@ -1275,8 +1297,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :items, as: 'items', class: Google::Apis::CloudassetV1::Item, decorator: Google::Apis::CloudassetV1::Item::Representation
       
+          property :name, as: 'name'
           property :os_info, as: 'osInfo', class: Google::Apis::CloudassetV1::OsInfo, decorator: Google::Apis::CloudassetV1::OsInfo::Representation
       
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1419,6 +1443,35 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :topic, as: 'topic'
+        end
+      end
+      
+      class RelatedAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ancestors, as: 'ancestors'
+          property :asset, as: 'asset'
+          property :asset_type, as: 'assetType'
+        end
+      end
+      
+      class RelatedAssets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assets, as: 'assets', class: Google::Apis::CloudassetV1::RelatedAsset, decorator: Google::Apis::CloudassetV1::RelatedAsset::Representation
+      
+          property :relationship_attributes, as: 'relationshipAttributes', class: Google::Apis::CloudassetV1::RelationshipAttributes, decorator: Google::Apis::CloudassetV1::RelationshipAttributes::Representation
+      
+        end
+      end
+      
+      class RelationshipAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :source_resource_type, as: 'sourceResourceType'
+          property :target_resource_type, as: 'targetResourceType'
+          property :type, as: 'type'
         end
       end
       

@@ -84,6 +84,19 @@ module Google
         #   not specified, the current time will be used. Due to delays in resource data
         #   collection and indexing, there is a volatile window during which running the
         #   same query may get different results.
+        # @param [Array<String>, String] relationship_types
+        #   A list of relationship types to output, for example: `
+        #   INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if
+        #   content_type=RELATIONSHIP. * If specified: it snapshots specified
+        #   relationships. It returns an error if any of the [relationship_types] doesn't
+        #   belong to the supported relationship types of the [asset_types] or if any of
+        #   the [asset_types] doesn't belong to the source types of the [
+        #   relationship_types]. * Otherwise: it snapshots the supported relationships for
+        #   all [asset_types] or returns an error if any of the [asset_types] has no
+        #   relationship support. An unspecified asset types field means all supported
+        #   asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.
+        #   com/asset-inventory/docs/overview) for all supported asset types and
+        #   relationship types.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -101,7 +114,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_assets(parent, asset_types: nil, content_type: nil, page_size: nil, page_token: nil, read_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_assets(parent, asset_types: nil, content_type: nil, page_size: nil, page_token: nil, read_time: nil, relationship_types: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/assets', options)
           command.response_representation = Google::Apis::CloudassetV1::ListAssetsResponse::Representation
           command.response_class = Google::Apis::CloudassetV1::ListAssetsResponse
@@ -111,6 +124,7 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['readTime'] = read_time unless read_time.nil?
+          command.query['relationshipTypes'] = relationship_types unless relationship_types.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -562,6 +576,18 @@ module Google
         #   timestamp is used instead.
         # @param [String] read_time_window_start_time
         #   Start time of the time window (exclusive).
+        # @param [Array<String>, String] relationship_types
+        #   Optional. A list of relationship types to output, for example: `
+        #   INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if
+        #   content_type=RELATIONSHIP. * If specified: it outputs specified relationships'
+        #   history on the [asset_names]. It returns an error if any of the [
+        #   relationship_types] doesn't belong to the supported relationship types of the [
+        #   asset_names] or if any of the [asset_names]'s types doesn't belong to the
+        #   source types of the [relationship_types]. * Otherwise: it outputs the
+        #   supported relationships' history on the [asset_names] or returns an error if
+        #   any of the [asset_names]'s types has no relationship support. See [
+        #   Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-
+        #   inventory/docs/overview) for all supported asset types and relationship types.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -579,7 +605,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_get_assets_history(parent, asset_names: nil, content_type: nil, read_time_window_end_time: nil, read_time_window_start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def batch_get_assets_history(parent, asset_names: nil, content_type: nil, read_time_window_end_time: nil, read_time_window_start_time: nil, relationship_types: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}:batchGetAssetsHistory', options)
           command.response_representation = Google::Apis::CloudassetV1::BatchGetAssetsHistoryResponse::Representation
           command.response_class = Google::Apis::CloudassetV1::BatchGetAssetsHistoryResponse
@@ -588,6 +614,7 @@ module Google
           command.query['contentType'] = content_type unless content_type.nil?
           command.query['readTimeWindow.endTime'] = read_time_window_end_time unless read_time_window_end_time.nil?
           command.query['readTimeWindow.startTime'] = read_time_window_start_time unless read_time_window_start_time.nil?
+          command.query['relationshipTypes'] = relationship_types unless relationship_types.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
