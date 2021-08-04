@@ -594,6 +594,11 @@ module Google
         # @return [Array<Google::Apis::RecommenderV1::GoogleCloudRecommenderV1OperationGroup>]
         attr_accessor :operation_groups
       
+        # Condensed overview information about the recommendation.
+        # Corresponds to the JSON property `overview`
+        # @return [Hash<String,Object>]
+        attr_accessor :overview
+      
         def initialize(**args)
            update!(**args)
         end
@@ -601,6 +606,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation_groups = args[:operation_groups] if args.key?(:operation_groups)
+          @overview = args[:overview] if args.key?(:overview)
         end
       end
       
