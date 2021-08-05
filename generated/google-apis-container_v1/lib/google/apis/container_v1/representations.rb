@@ -280,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoggingComponentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenancePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +328,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MonitoringComponentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MonitoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +371,12 @@ module Google
       end
       
       class NodeManagement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeNetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -795,12 +825,16 @@ module Google
       
           property :location, as: 'location'
           collection :locations, as: 'locations'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::ContainerV1::LoggingConfig, decorator: Google::Apis::ContainerV1::LoggingConfig::Representation
+      
           property :logging_service, as: 'loggingService'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1::MaintenancePolicy, decorator: Google::Apis::ContainerV1::MaintenancePolicy::Representation
       
           property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1::MasterAuth, decorator: Google::Apis::ContainerV1::MasterAuth::Representation
       
           property :master_authorized_networks_config, as: 'masterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
+      
+          property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::ContainerV1::MonitoringConfig, decorator: Google::Apis::ContainerV1::MonitoringConfig::Representation
       
           property :monitoring_service, as: 'monitoringService'
           property :name, as: 'name'
@@ -876,10 +910,14 @@ module Google
           property :desired_l4ilb_subsetting_config, as: 'desiredL4ilbSubsettingConfig', class: Google::Apis::ContainerV1::IlbSubsettingConfig, decorator: Google::Apis::ContainerV1::IlbSubsettingConfig::Representation
       
           collection :desired_locations, as: 'desiredLocations'
+          property :desired_logging_config, as: 'desiredLoggingConfig', class: Google::Apis::ContainerV1::LoggingConfig, decorator: Google::Apis::ContainerV1::LoggingConfig::Representation
+      
           property :desired_logging_service, as: 'desiredLoggingService'
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
       
           property :desired_master_version, as: 'desiredMasterVersion'
+          property :desired_monitoring_config, as: 'desiredMonitoringConfig', class: Google::Apis::ContainerV1::MonitoringConfig, decorator: Google::Apis::ContainerV1::MonitoringConfig::Representation
+      
           property :desired_monitoring_service, as: 'desiredMonitoringService'
           property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
       
@@ -1152,6 +1190,21 @@ module Google
         end
       end
       
+      class LoggingComponentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enable_components, as: 'enableComponents'
+        end
+      end
+      
+      class LoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_config, as: 'componentConfig', class: Google::Apis::ContainerV1::LoggingComponentConfig, decorator: Google::Apis::ContainerV1::LoggingComponentConfig::Representation
+      
+        end
+      end
+      
       class MaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1209,6 +1262,21 @@ module Google
           property :int_value, :numeric_string => true, as: 'intValue'
           property :name, as: 'name'
           property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class MonitoringComponentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enable_components, as: 'enableComponents'
+        end
+      end
+      
+      class MonitoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_config, as: 'componentConfig', class: Google::Apis::ContainerV1::MonitoringComponentConfig, decorator: Google::Apis::ContainerV1::MonitoringComponentConfig::Representation
+      
         end
       end
       
@@ -1296,6 +1364,15 @@ module Google
         end
       end
       
+      class NodeNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_pod_range, as: 'createPodRange'
+          property :pod_ipv4_cidr_block, as: 'podIpv4CidrBlock'
+          property :pod_range, as: 'podRange'
+        end
+      end
+      
       class NodePool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1313,6 +1390,8 @@ module Google
           property :max_pods_constraint, as: 'maxPodsConstraint', class: Google::Apis::ContainerV1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1::MaxPodsConstraint::Representation
       
           property :name, as: 'name'
+          property :network_config, as: 'networkConfig', class: Google::Apis::ContainerV1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1::NodeNetworkConfig::Representation
+      
           property :pod_ipv4_cidr_size, as: 'podIpv4CidrSize'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'

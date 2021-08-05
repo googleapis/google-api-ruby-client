@@ -639,6 +639,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :locations
       
+        # LoggingConfig is cluster logging configuration.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::ContainerV1::LoggingConfig]
+        attr_accessor :logging_config
+      
         # The logging service the cluster should use to write logs. Currently available
         # options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service
         # with a Kubernetes-native resource model * `logging.googleapis.com` - The
@@ -668,6 +673,11 @@ module Google
         # Corresponds to the JSON property `masterAuthorizedNetworksConfig`
         # @return [Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig]
         attr_accessor :master_authorized_networks_config
+      
+        # MonitoringConfig is cluster monitoring configuration.
+        # Corresponds to the JSON property `monitoringConfig`
+        # @return [Google::Apis::ContainerV1::MonitoringConfig]
+        attr_accessor :monitoring_config
       
         # The monitoring service the cluster should use to write metrics. Currently
         # available options: * "monitoring.googleapis.com/kubernetes" - The Cloud
@@ -848,10 +858,12 @@ module Google
           @legacy_abac = args[:legacy_abac] if args.key?(:legacy_abac)
           @location = args[:location] if args.key?(:location)
           @locations = args[:locations] if args.key?(:locations)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
           @logging_service = args[:logging_service] if args.key?(:logging_service)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @master_auth = args[:master_auth] if args.key?(:master_auth)
           @master_authorized_networks_config = args[:master_authorized_networks_config] if args.key?(:master_authorized_networks_config)
+          @monitoring_config = args[:monitoring_config] if args.key?(:monitoring_config)
           @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -1003,6 +1015,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :desired_locations
       
+        # LoggingConfig is cluster logging configuration.
+        # Corresponds to the JSON property `desiredLoggingConfig`
+        # @return [Google::Apis::ContainerV1::LoggingConfig]
+        attr_accessor :desired_logging_config
+      
         # The logging service the cluster should use to write logs. Currently available
         # options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service
         # with a Kubernetes-native resource model * `logging.googleapis.com` - The
@@ -1032,6 +1049,11 @@ module Google
         # Corresponds to the JSON property `desiredMasterVersion`
         # @return [String]
         attr_accessor :desired_master_version
+      
+        # MonitoringConfig is cluster monitoring configuration.
+        # Corresponds to the JSON property `desiredMonitoringConfig`
+        # @return [Google::Apis::ContainerV1::MonitoringConfig]
+        attr_accessor :desired_monitoring_config
       
         # The monitoring service the cluster should use to write metrics. Currently
         # available options: * "monitoring.googleapis.com/kubernetes" - The Cloud
@@ -1131,9 +1153,11 @@ module Google
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_l4ilb_subsetting_config = args[:desired_l4ilb_subsetting_config] if args.key?(:desired_l4ilb_subsetting_config)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
+          @desired_logging_config = args[:desired_logging_config] if args.key?(:desired_logging_config)
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
           @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
+          @desired_monitoring_config = args[:desired_monitoring_config] if args.key?(:desired_monitoring_config)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
@@ -2054,6 +2078,44 @@ module Google
         end
       end
       
+      # LoggingComponentConfig is cluster logging component configuration.
+      class LoggingComponentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Select components to collect logs. An empty set would disable all logging.
+        # Corresponds to the JSON property `enableComponents`
+        # @return [Array<String>]
+        attr_accessor :enable_components
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_components = args[:enable_components] if args.key?(:enable_components)
+        end
+      end
+      
+      # LoggingConfig is cluster logging configuration.
+      class LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # LoggingComponentConfig is cluster logging component configuration.
+        # Corresponds to the JSON property `componentConfig`
+        # @return [Google::Apis::ContainerV1::LoggingComponentConfig]
+        attr_accessor :component_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component_config = args[:component_config] if args.key?(:component_config)
+        end
+      end
+      
       # MaintenancePolicy defines the maintenance policy to be used for the cluster.
       class MaintenancePolicy
         include Google::Apis::Core::Hashable
@@ -2263,6 +2325,45 @@ module Google
           @int_value = args[:int_value] if args.key?(:int_value)
           @name = args[:name] if args.key?(:name)
           @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # MonitoringComponentConfig is cluster monitoring component configuration.
+      class MonitoringComponentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Select components to collect metrics. An empty set would disable all
+        # monitoring.
+        # Corresponds to the JSON property `enableComponents`
+        # @return [Array<String>]
+        attr_accessor :enable_components
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_components = args[:enable_components] if args.key?(:enable_components)
+        end
+      end
+      
+      # MonitoringConfig is cluster monitoring configuration.
+      class MonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # MonitoringComponentConfig is cluster monitoring component configuration.
+        # Corresponds to the JSON property `componentConfig`
+        # @return [Google::Apis::ContainerV1::MonitoringComponentConfig]
+        attr_accessor :component_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component_config = args[:component_config] if args.key?(:component_config)
         end
       end
       
@@ -2672,6 +2773,53 @@ module Google
         end
       end
       
+      # Parameters for node pool-level network config.
+      class NodeNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Input only. Whether to create a new range for pod IPs in this node pool.
+        # Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are
+        # not specified. If neither `create_pod_range` or `pod_range` are specified, the
+        # cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used.
+        # Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field
+        # cannot be changed after the node pool has been created.
+        # Corresponds to the JSON property `createPodRange`
+        # @return [Boolean]
+        attr_accessor :create_pod_range
+        alias_method :create_pod_range?, :create_pod_range
+      
+        # The IP address range for pod IPs in this node pool. Only applicable if `
+        # create_pod_range` is true. Set to blank to have a range chosen with the
+        # default size. Set to /netmask (e.g. `/14`) to have a range chosen with a
+        # specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/
+        # Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a
+        # specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases`
+        # is true. This field cannot be changed after the node pool has been created.
+        # Corresponds to the JSON property `podIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :pod_ipv4_cidr_block
+      
+        # The ID of the secondary range for pod IPs. If `create_pod_range` is true, this
+        # ID is used for the new range. If `create_pod_range` is false, uses an existing
+        # secondary range with this ID. Only applicable if `ip_allocation_policy.
+        # use_ip_aliases` is true. This field cannot be changed after the node pool has
+        # been created.
+        # Corresponds to the JSON property `podRange`
+        # @return [String]
+        attr_accessor :pod_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
+          @pod_ipv4_cidr_block = args[:pod_ipv4_cidr_block] if args.key?(:pod_ipv4_cidr_block)
+          @pod_range = args[:pod_range] if args.key?(:pod_range)
+        end
+      end
+      
       # NodePool contains the name and configuration for a cluster's node pool. Node
       # pools are a set of nodes (i.e. VM's), with a common configuration and
       # specification, under the control of the cluster master. They may have a set of
@@ -2738,6 +2886,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Parameters for node pool-level network config.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::ContainerV1::NodeNetworkConfig]
+        attr_accessor :network_config
+      
         # [Output only] The pod CIDR block size per node in this node pool.
         # Corresponds to the JSON property `podIpv4CidrSize`
         # @return [Fixnum]
@@ -2797,6 +2950,7 @@ module Google
           @management = args[:management] if args.key?(:management)
           @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
+          @network_config = args[:network_config] if args.key?(:network_config)
           @pod_ipv4_cidr_size = args[:pod_ipv4_cidr_size] if args.key?(:pod_ipv4_cidr_size)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
