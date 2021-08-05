@@ -1742,9 +1742,10 @@ module Google
         # @return [String]
         attr_accessor :androidx_orchestrator_version
       
-        # A string representing the current version of Android Test Orchestrator that is
-        # used in the environment. The package is available at https://maven.google.com/
-        # web/index.html#com.android.support.test:orchestrator.
+        # Deprecated: Use AndroidX Test Orchestrator going forward. A string
+        # representing the current version of Android Test Orchestrator that is used in
+        # the environment. The package is available at https://maven.google.com/web/
+        # index.html#com.android.support.test:orchestrator.
         # Corresponds to the JSON property `orchestratorVersion`
         # @return [String]
         attr_accessor :orchestrator_version
