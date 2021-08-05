@@ -1077,8 +1077,9 @@ module Google
         # @return [String]
         attr_accessor :deprecation_description
       
-        # The description is the comment in front of the selected proto element, such as
-        # a message, a method, a 'service' definition, or a field.
+        # Description of the selected proto element (e.g. a message, a method, a '
+        # service' definition, or a field). Defaults to leading & trailing comments
+        # taken from the proto source definition of the proto element.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
