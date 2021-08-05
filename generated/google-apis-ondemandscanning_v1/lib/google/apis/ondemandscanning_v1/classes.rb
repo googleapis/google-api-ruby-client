@@ -253,6 +253,11 @@ module Google
       class BuildOccurrence
         include Google::Apis::Core::Hashable
       
+        # In-toto Provenance representation as defined in spec.
+        # Corresponds to the JSON property `intotoProvenance`
+        # @return [Google::Apis::OndemandscanningV1::InTotoProvenance]
+        attr_accessor :intoto_provenance
+      
         # Provenance of a build. Contains all information needed to verify the full
         # details about the build from source to completion.
         # Corresponds to the JSON property `provenance`
@@ -277,6 +282,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @intoto_provenance = args[:intoto_provenance] if args.key?(:intoto_provenance)
           @provenance = args[:provenance] if args.key?(:provenance)
           @provenance_bytes = args[:provenance_bytes] if args.key?(:provenance_bytes)
         end
@@ -374,6 +380,25 @@ module Google
           @source_provenance = args[:source_provenance] if args.key?(:source_provenance)
           @start_time = args[:start_time] if args.key?(:start_time)
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
+        end
+      end
+      
+      # 
+      class BuilderConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -486,6 +511,43 @@ module Google
         end
       end
       
+      # Indicates that the builder claims certain fields in this message to be
+      # complete.
+      class Completeness
+        include Google::Apis::Core::Hashable
+      
+        # If true, the builder claims that recipe.arguments is complete, meaning that
+        # all external inputs are properly captured in the recipe.
+        # Corresponds to the JSON property `arguments`
+        # @return [Boolean]
+        attr_accessor :arguments
+        alias_method :arguments?, :arguments
+      
+        # If true, the builder claims that recipe.environment is claimed to be complete.
+        # Corresponds to the JSON property `environment`
+        # @return [Boolean]
+        attr_accessor :environment
+        alias_method :environment?, :environment
+      
+        # If true, the builder claims that materials are complete, usually through some
+        # controls to prevent network access. Sometimes called "hermetic".
+        # Corresponds to the JSON property `materials`
+        # @return [Boolean]
+        attr_accessor :materials
+        alias_method :materials?, :materials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments = args[:arguments] if args.key?(:arguments)
+          @environment = args[:environment] if args.key?(:environment)
+          @materials = args[:materials] if args.key?(:materials)
+        end
+      end
+      
       # An indication that the compliance checks in the associated ComplianceNote were
       # not satisfied for particular resources or a specified reason.
       class ComplianceOccurrence
@@ -509,6 +571,34 @@ module Google
         def update!(**args)
           @non_compliance_reason = args[:non_compliance_reason] if args.key?(:non_compliance_reason)
           @non_compliant_files = args[:non_compliant_files] if args.key?(:non_compliant_files)
+        end
+      end
+      
+      # 
+      class DsseAttestationOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.
+        # proto. An authenticated message of arbitrary type.
+        # Corresponds to the JSON property `envelope`
+        # @return [Google::Apis::OndemandscanningV1::Envelope]
+        attr_accessor :envelope
+      
+        # Spec defined at https://github.com/in-toto/attestation/tree/main/spec#
+        # statement The serialized InTotoStatement will be stored as Envelope.payload.
+        # Envelope.payloadType is always "application/vnd.in-toto+json".
+        # Corresponds to the JSON property `statement`
+        # @return [Google::Apis::OndemandscanningV1::InTotoStatement]
+        attr_accessor :statement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @envelope = args[:envelope] if args.key?(:envelope)
+          @statement = args[:statement] if args.key?(:statement)
         end
       end
       
@@ -630,6 +720,65 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.
+      # proto. An authenticated message of arbitrary type.
+      class Envelope
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `payload`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :payload
+      
+        # 
+        # Corresponds to the JSON property `payloadType`
+        # @return [String]
+        attr_accessor :payload_type
+      
+        # 
+        # Corresponds to the JSON property `signatures`
+        # @return [Array<Google::Apis::OndemandscanningV1::EnvelopeSignature>]
+        attr_accessor :signatures
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @payload_type = args[:payload_type] if args.key?(:payload_type)
+          @signatures = args[:signatures] if args.key?(:signatures)
+        end
+      end
+      
+      # 
+      class EnvelopeSignature
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `keyid`
+        # @return [String]
+        attr_accessor :keyid
+      
+        # 
+        # Corresponds to the JSON property `sig`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sig
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keyid = args[:keyid] if args.key?(:keyid)
+          @sig = args[:sig] if args.key?(:sig)
         end
       end
       
@@ -844,6 +993,86 @@ module Google
       end
       
       # 
+      class InTotoProvenance
+        include Google::Apis::Core::Hashable
+      
+        # required
+        # Corresponds to the JSON property `builderConfig`
+        # @return [Google::Apis::OndemandscanningV1::BuilderConfig]
+        attr_accessor :builder_config
+      
+        # The collection of artifacts that influenced the build including sources,
+        # dependencies, build tools, base images, and so on. This is considered to be
+        # incomplete unless metadata.completeness.materials is true. Unset or null is
+        # equivalent to empty.
+        # Corresponds to the JSON property `materials`
+        # @return [Array<String>]
+        attr_accessor :materials
+      
+        # Other properties of the build.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::OndemandscanningV1::Metadata]
+        attr_accessor :metadata
+      
+        # Steps taken to build the artifact. For a TaskRun, typically each container
+        # corresponds to one step in the recipe.
+        # Corresponds to the JSON property `recipe`
+        # @return [Google::Apis::OndemandscanningV1::Recipe]
+        attr_accessor :recipe
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @builder_config = args[:builder_config] if args.key?(:builder_config)
+          @materials = args[:materials] if args.key?(:materials)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @recipe = args[:recipe] if args.key?(:recipe)
+        end
+      end
+      
+      # Spec defined at https://github.com/in-toto/attestation/tree/main/spec#
+      # statement The serialized InTotoStatement will be stored as Envelope.payload.
+      # Envelope.payloadType is always "application/vnd.in-toto+json".
+      class InTotoStatement
+        include Google::Apis::Core::Hashable
+      
+        # "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+        # Corresponds to the JSON property `predicateType`
+        # @return [String]
+        attr_accessor :predicate_type
+      
+        # 
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::OndemandscanningV1::InTotoProvenance]
+        attr_accessor :provenance
+      
+        # 
+        # Corresponds to the JSON property `subject`
+        # @return [Array<Google::Apis::OndemandscanningV1::Subject>]
+        attr_accessor :subject
+      
+        # Always "https://in-toto.io/Statement/v0.1".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predicate_type = args[:predicate_type] if args.key?(:predicate_type)
+          @provenance = args[:provenance] if args.key?(:provenance)
+          @subject = args[:subject] if args.key?(:subject)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
       class Jwt
         include Google::Apis::Core::Hashable
       
@@ -975,6 +1204,54 @@ module Google
         end
       end
       
+      # Other properties of the build.
+      class Metadata
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp of when the build completed.
+        # Corresponds to the JSON property `buildFinishedOn`
+        # @return [String]
+        attr_accessor :build_finished_on
+      
+        # Identifies the particular build invocation, which can be useful for finding
+        # associated logs or other ad-hoc analysis. The value SHOULD be globally unique,
+        # per in-toto Provenance spec.
+        # Corresponds to the JSON property `buildInvocationId`
+        # @return [String]
+        attr_accessor :build_invocation_id
+      
+        # The timestamp of when the build started.
+        # Corresponds to the JSON property `buildStartedOn`
+        # @return [String]
+        attr_accessor :build_started_on
+      
+        # Indicates that the builder claims certain fields in this message to be
+        # complete.
+        # Corresponds to the JSON property `completeness`
+        # @return [Google::Apis::OndemandscanningV1::Completeness]
+        attr_accessor :completeness
+      
+        # If true, the builder claims that running the recipe on materials will produce
+        # bit-for-bit identical output.
+        # Corresponds to the JSON property `reproducible`
+        # @return [Boolean]
+        attr_accessor :reproducible
+        alias_method :reproducible?, :reproducible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_finished_on = args[:build_finished_on] if args.key?(:build_finished_on)
+          @build_invocation_id = args[:build_invocation_id] if args.key?(:build_invocation_id)
+          @build_started_on = args[:build_started_on] if args.key?(:build_started_on)
+          @completeness = args[:completeness] if args.key?(:completeness)
+          @reproducible = args[:reproducible] if args.key?(:reproducible)
+        end
+      end
+      
       # Details about files that caused a compliance check to fail.
       class NonCompliantFile
         include Google::Apis::Core::Hashable
@@ -1049,6 +1326,17 @@ module Google
         # @return [Google::Apis::OndemandscanningV1::DiscoveryOccurrence]
         attr_accessor :discovery
       
+        # Describes an attestation of an artifact using dsse.
+        # Corresponds to the JSON property `dsseAttestation`
+        # @return [Google::Apis::OndemandscanningV1::DsseAttestationOccurrence]
+        attr_accessor :dsse_attestation
+      
+        # MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.
+        # proto. An authenticated message of arbitrary type.
+        # Corresponds to the JSON property `envelope`
+        # @return [Google::Apis::OndemandscanningV1::Envelope]
+        attr_accessor :envelope
+      
         # Details of the derived image portion of the DockerImage relationship. This
         # image would be produced from a Dockerfile with FROM .
         # Corresponds to the JSON property `image`
@@ -1122,6 +1410,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @deployment = args[:deployment] if args.key?(:deployment)
           @discovery = args[:discovery] if args.key?(:discovery)
+          @dsse_attestation = args[:dsse_attestation] if args.key?(:dsse_attestation)
+          @envelope = args[:envelope] if args.key?(:envelope)
           @image = args[:image] if args.key?(:image)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -1368,6 +1658,64 @@ module Google
         end
       end
       
+      # Steps taken to build the artifact. For a TaskRun, typically each container
+      # corresponds to one step in the recipe.
+      class Recipe
+        include Google::Apis::Core::Hashable
+      
+        # Collection of all external inputs that influenced the build on top of recipe.
+        # definedInMaterial and recipe.entryPoint. For example, if the recipe type were "
+        # make", then this might be the flags passed to make aside from the target,
+        # which is captured in recipe.entryPoint.
+        # Corresponds to the JSON property `arguments`
+        # @return [Array<String>]
+        attr_accessor :arguments
+      
+        # Index in materials containing the recipe steps that are not implied by recipe.
+        # type. For example, if the recipe type were "make", then this would point to
+        # the source containing the Makefile, not the make program itself. Set to -1 if
+        # the recipe doesn't come from a material, as zero is default unset value for
+        # int64.
+        # Corresponds to the JSON property `definedInMaterial`
+        # @return [Fixnum]
+        attr_accessor :defined_in_material
+      
+        # String identifying the entry point into the build. This is often a path to a
+        # configuration file and/or a target label within that file. The syntax and
+        # meaning are defined by recipe.type. For example, if the recipe type were "make"
+        # , then this would reference the directory in which to run make as well as
+        # which target to use.
+        # Corresponds to the JSON property `entryPoint`
+        # @return [String]
+        attr_accessor :entry_point
+      
+        # Any other builder-controlled inputs necessary for correctly evaluating the
+        # recipe. Usually only needed for reproducing the build but not evaluated as
+        # part of policy.
+        # Corresponds to the JSON property `environment`
+        # @return [Hash<String,String>]
+        attr_accessor :environment
+      
+        # URI indicating what type of recipe was performed. It determines the meaning of
+        # recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments = args[:arguments] if args.key?(:arguments)
+          @defined_in_material = args[:defined_in_material] if args.key?(:defined_in_material)
+          @entry_point = args[:entry_point] if args.key?(:entry_point)
+          @environment = args[:environment] if args.key?(:environment)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Metadata for any related URL information.
       class RelatedUrl
         include Google::Apis::Core::Hashable
@@ -1595,6 +1943,31 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # 
+      class Subject
+        include Google::Apis::Core::Hashable
+      
+        # "": ""
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

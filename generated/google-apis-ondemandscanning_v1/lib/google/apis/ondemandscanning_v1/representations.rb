@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuilderConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Category
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,7 +106,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Completeness
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ComplianceOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DsseAttestationOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -119,6 +137,18 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Envelope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnvelopeSignature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InTotoProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InTotoStatement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Jwt
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +233,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Recipe
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RelatedUrl
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +323,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Subject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -374,6 +434,8 @@ module Google
       class BuildOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :intoto_provenance, as: 'intotoProvenance', class: Google::Apis::OndemandscanningV1::InTotoProvenance, decorator: Google::Apis::OndemandscanningV1::InTotoProvenance::Representation
+      
           property :provenance, as: 'provenance', class: Google::Apis::OndemandscanningV1::BuildProvenance, decorator: Google::Apis::OndemandscanningV1::BuildProvenance::Representation
       
           property :provenance_bytes, as: 'provenanceBytes'
@@ -399,6 +461,13 @@ module Google
       
           property :start_time, as: 'startTime'
           property :trigger_id, as: 'triggerId'
+        end
+      end
+      
+      class BuilderConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
         end
       end
       
@@ -433,11 +502,30 @@ module Google
         end
       end
       
+      class Completeness
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :arguments, as: 'arguments'
+          property :environment, as: 'environment'
+          property :materials, as: 'materials'
+        end
+      end
+      
       class ComplianceOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :non_compliance_reason, as: 'nonComplianceReason'
           collection :non_compliant_files, as: 'nonCompliantFiles', class: Google::Apis::OndemandscanningV1::NonCompliantFile, decorator: Google::Apis::OndemandscanningV1::NonCompliantFile::Representation
+      
+        end
+      end
+      
+      class DsseAttestationOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :envelope, as: 'envelope', class: Google::Apis::OndemandscanningV1::Envelope, decorator: Google::Apis::OndemandscanningV1::Envelope::Representation
+      
+          property :statement, as: 'statement', class: Google::Apis::OndemandscanningV1::InTotoStatement, decorator: Google::Apis::OndemandscanningV1::InTotoStatement::Representation
       
         end
       end
@@ -470,6 +558,24 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Envelope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload, :base64 => true, as: 'payload'
+          property :payload_type, as: 'payloadType'
+          collection :signatures, as: 'signatures', class: Google::Apis::OndemandscanningV1::EnvelopeSignature, decorator: Google::Apis::OndemandscanningV1::EnvelopeSignature::Representation
+      
+        end
+      end
+      
+      class EnvelopeSignature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :keyid, as: 'keyid'
+          property :sig, :base64 => true, as: 'sig'
         end
       end
       
@@ -537,6 +643,31 @@ module Google
         end
       end
       
+      class InTotoProvenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :builder_config, as: 'builderConfig', class: Google::Apis::OndemandscanningV1::BuilderConfig, decorator: Google::Apis::OndemandscanningV1::BuilderConfig::Representation
+      
+          collection :materials, as: 'materials'
+          property :metadata, as: 'metadata', class: Google::Apis::OndemandscanningV1::Metadata, decorator: Google::Apis::OndemandscanningV1::Metadata::Representation
+      
+          property :recipe, as: 'recipe', class: Google::Apis::OndemandscanningV1::Recipe, decorator: Google::Apis::OndemandscanningV1::Recipe::Representation
+      
+        end
+      end
+      
+      class InTotoStatement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predicate_type, as: 'predicateType'
+          property :provenance, as: 'provenance', class: Google::Apis::OndemandscanningV1::InTotoProvenance, decorator: Google::Apis::OndemandscanningV1::InTotoProvenance::Representation
+      
+          collection :subject, as: 'subject', class: Google::Apis::OndemandscanningV1::Subject, decorator: Google::Apis::OndemandscanningV1::Subject::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class Jwt
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -580,6 +711,18 @@ module Google
         end
       end
       
+      class Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_finished_on, as: 'buildFinishedOn'
+          property :build_invocation_id, as: 'buildInvocationId'
+          property :build_started_on, as: 'buildStartedOn'
+          property :completeness, as: 'completeness', class: Google::Apis::OndemandscanningV1::Completeness, decorator: Google::Apis::OndemandscanningV1::Completeness::Representation
+      
+          property :reproducible, as: 'reproducible'
+        end
+      end
+      
       class NonCompliantFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -602,6 +745,10 @@ module Google
           property :deployment, as: 'deployment', class: Google::Apis::OndemandscanningV1::DeploymentOccurrence, decorator: Google::Apis::OndemandscanningV1::DeploymentOccurrence::Representation
       
           property :discovery, as: 'discovery', class: Google::Apis::OndemandscanningV1::DiscoveryOccurrence, decorator: Google::Apis::OndemandscanningV1::DiscoveryOccurrence::Representation
+      
+          property :dsse_attestation, as: 'dsseAttestation', class: Google::Apis::OndemandscanningV1::DsseAttestationOccurrence, decorator: Google::Apis::OndemandscanningV1::DsseAttestationOccurrence::Representation
+      
+          property :envelope, as: 'envelope', class: Google::Apis::OndemandscanningV1::Envelope, decorator: Google::Apis::OndemandscanningV1::Envelope::Representation
       
           property :image, as: 'image', class: Google::Apis::OndemandscanningV1::ImageOccurrence, decorator: Google::Apis::OndemandscanningV1::ImageOccurrence::Representation
       
@@ -677,6 +824,17 @@ module Google
         end
       end
       
+      class Recipe
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :arguments, as: 'arguments'
+          property :defined_in_material, :numeric_string => true, as: 'definedInMaterial'
+          property :entry_point, as: 'entryPoint'
+          hash :environment, as: 'environment'
+          property :type, as: 'type'
+        end
+      end
+      
       class RelatedUrl
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -734,6 +892,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class Subject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :name, as: 'name'
         end
       end
       
