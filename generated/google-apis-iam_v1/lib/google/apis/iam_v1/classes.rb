@@ -1057,6 +1057,25 @@ module Google
         end
       end
       
+      # Metadata for long-running Policy operations.
+      class PolicyOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when the google.longrunning.Operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # A request to get the list of auditable services for a resource.
       class QueryAuditableServicesRequest
         include Google::Apis::Core::Hashable
