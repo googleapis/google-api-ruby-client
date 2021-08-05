@@ -1,5 +1,9 @@
 # Release history for google-apis-people_v1
 
+### v0.19.0 (2021-08-05)
+
+* Regenerated from discovery document revision 20210803
+
 ### v0.18.0 (2021-07-28)
 
 * Regenerated from discovery document revision 20210726
