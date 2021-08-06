@@ -262,8 +262,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Name of the EndpointPolicy resource. It matches pattern `projects/*/
-        # locations/global/endpointPolicies/`.
+        # Required. Name of the EndpointPolicy resource. It matches pattern `projects/`
+        # project`/locations/global/endpointPolicies/`endpoint_policy``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

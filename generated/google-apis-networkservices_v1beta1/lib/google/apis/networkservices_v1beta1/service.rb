@@ -304,8 +304,8 @@ module Google
         
         # Updates the parameters of a single EndpointPolicy.
         # @param [String] name
-        #   Required. Name of the EndpointPolicy resource. It matches pattern `projects/*/
-        #   locations/global/endpointPolicies/`.
+        #   Required. Name of the EndpointPolicy resource. It matches pattern `projects/`
+        #   project`/locations/global/endpointPolicies/`endpoint_policy``.
         # @param [Google::Apis::NetworkservicesV1beta1::EndpointPolicy] endpoint_policy_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
