@@ -1402,10 +1402,7 @@ module Google
         #   ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [Boolean] skip_verification
-        #   Whether to skip the verification step (VESS).
-        # @param [String] sync_mode
-        #   External sync mode.
+        # @param [Google::Apis::SqladminV1beta4::SqlInstancesStartExternalSyncRequest] sql_instances_start_external_sync_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1423,14 +1420,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_project_instance_external_sync(project, instance, skip_verification: nil, sync_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def start_project_instance_external_sync(project, instance, sql_instances_start_external_sync_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/startExternalSync', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::SqlInstancesStartExternalSyncRequest::Representation
+          command.request_object = sql_instances_start_external_sync_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
-          command.query['skipVerification'] = skip_verification unless skip_verification.nil?
-          command.query['syncMode'] = sync_mode unless sync_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1441,10 +1438,7 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [String] sync_mode
-        #   External sync mode
-        # @param [Boolean] verify_connection_only
-        #   Flag to enable verifying connection only
+        # @param [Google::Apis::SqladminV1beta4::SqlInstancesVerifyExternalSyncSettingsRequest] sql_instances_verify_external_sync_settings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1462,14 +1456,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def verify_project_instance_external_sync_settings(project, instance, sync_mode: nil, verify_connection_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def verify_project_instance_external_sync_settings(project, instance, sql_instances_verify_external_sync_settings_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/verifyExternalSyncSettings', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::SqlInstancesVerifyExternalSyncSettingsRequest::Representation
+          command.request_object = sql_instances_verify_external_sync_settings_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
-          command.query['syncMode'] = sync_mode unless sync_mode.nil?
-          command.query['verifyConnectionOnly'] = verify_connection_only unless verify_connection_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

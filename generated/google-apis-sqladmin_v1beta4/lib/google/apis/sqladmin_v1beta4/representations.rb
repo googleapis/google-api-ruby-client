@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MySqlSyncConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OnPremisesConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +401,18 @@ module Google
       end
       
       class SqlInstancesRescheduleMaintenanceRequestBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesStartExternalSyncRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesVerifyExternalSyncSettingsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -991,6 +1009,7 @@ module Google
       class IpConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_ip_range, as: 'allocatedIpRange'
           collection :authorized_networks, as: 'authorizedNetworks', class: Google::Apis::SqladminV1beta4::AclEntry, decorator: Google::Apis::SqladminV1beta4::AclEntry::Representation
       
           property :ipv4_enabled, as: 'ipv4Enabled'
@@ -1042,6 +1061,12 @@ module Google
           property :ssl_cipher, as: 'sslCipher'
           property :username, as: 'username'
           property :verify_server_certificate, as: 'verifyServerCertificate'
+        end
+      end
+      
+      class MySqlSyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1209,6 +1234,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reschedule, as: 'reschedule', class: Google::Apis::SqladminV1beta4::Reschedule, decorator: Google::Apis::SqladminV1beta4::Reschedule::Representation
       
+        end
+      end
+      
+      class SqlInstancesStartExternalSyncRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1beta4::MySqlSyncConfig, decorator: Google::Apis::SqladminV1beta4::MySqlSyncConfig::Representation
+      
+          property :skip_verification, as: 'skipVerification'
+          property :sync_mode, as: 'syncMode'
+        end
+      end
+      
+      class SqlInstancesVerifyExternalSyncSettingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1beta4::MySqlSyncConfig, decorator: Google::Apis::SqladminV1beta4::MySqlSyncConfig::Representation
+      
+          property :sync_mode, as: 'syncMode'
+          property :verify_connection_only, as: 'verifyConnectionOnly'
         end
       end
       
