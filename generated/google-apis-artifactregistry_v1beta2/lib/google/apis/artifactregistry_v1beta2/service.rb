@@ -343,7 +343,7 @@ module Google
         # @param [String] parent
         #   The name of the parent resource whose repositories will be listed.
         # @param [Fixnum] page_size
-        #   The maximum number of repositories to return. Maximum page size is 10,000.
+        #   The maximum number of repositories to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields
@@ -657,7 +657,7 @@ module Google
         # @param [String] parent
         #   The name of the parent resource whose packages will be listed.
         # @param [Fixnum] page_size
-        #   The maximum number of packages to return. Maximum page size is 10,000.
+        #   The maximum number of packages to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields
@@ -942,7 +942,7 @@ module Google
         # @param [String] order_by
         #   Optional. Sorting field and order
         # @param [Fixnum] page_size
-        #   The maximum number of versions to return. Maximum page size is 10,000.
+        #   The maximum number of versions to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] view
