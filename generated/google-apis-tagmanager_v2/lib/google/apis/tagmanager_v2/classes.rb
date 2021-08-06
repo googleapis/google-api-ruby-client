@@ -1859,6 +1859,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :blocking_trigger_id
       
+        # Consent settings of a tag. @mutable tagmanager.accounts.containers.workspaces.
+        # tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update
+        # Corresponds to the JSON property `consentSettings`
+        # @return [Google::Apis::TagmanagerV2::TagConsentSetting]
+        attr_accessor :consent_settings
+      
         # GTM Container ID.
         # Corresponds to the JSON property `containerId`
         # @return [String]
@@ -2008,6 +2014,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @blocking_rule_id = args[:blocking_rule_id] if args.key?(:blocking_rule_id)
           @blocking_trigger_id = args[:blocking_trigger_id] if args.key?(:blocking_trigger_id)
+          @consent_settings = args[:consent_settings] if args.key?(:consent_settings)
           @container_id = args[:container_id] if args.key?(:container_id)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @firing_rule_id = args[:firing_rule_id] if args.key?(:firing_rule_id)
@@ -2031,6 +2038,32 @@ module Google
           @teardown_tag = args[:teardown_tag] if args.key?(:teardown_tag)
           @type = args[:type] if args.key?(:type)
           @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
+        end
+      end
+      
+      # 
+      class TagConsentSetting
+        include Google::Apis::Core::Hashable
+      
+        # The tag's consent status. If set to NEEDED, the runtime will check that the
+        # consent types specified by the consent_type field have been granted.
+        # Corresponds to the JSON property `consentStatus`
+        # @return [String]
+        attr_accessor :consent_status
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `consentType`
+        # @return [Google::Apis::TagmanagerV2::Parameter]
+        attr_accessor :consent_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_status = args[:consent_status] if args.key?(:consent_status)
+          @consent_type = args[:consent_type] if args.key?(:consent_type)
         end
       end
       
