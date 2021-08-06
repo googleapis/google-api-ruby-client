@@ -1836,6 +1836,16 @@ module Google
       class IpConfiguration
         include Google::Apis::Core::Hashable
       
+        # The name of the allocated ip range for the private ip CloudSQL instance. For
+        # example: "google-managed-services-default". If set, the instance ip will be
+        # created in the allocated range. The range name must comply with [RFC 1035](
+        # https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63
+        # characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
+        # Reserved for future use.
+        # Corresponds to the JSON property `allocatedIpRange`
+        # @return [String]
+        attr_accessor :allocated_ip_range
+      
         # The list of external networks that are allowed to connect to the instance
         # using the IP. In 'CIDR' notation, also known as 'slash' notation (for example:
         # **192.168.100.0/24**).
@@ -1869,6 +1879,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocated_ip_range = args[:allocated_ip_range] if args.key?(:allocated_ip_range)
           @authorized_networks = args[:authorized_networks] if args.key?(:authorized_networks)
           @ipv4_enabled = args[:ipv4_enabled] if args.key?(:ipv4_enabled)
           @private_network = args[:private_network] if args.key?(:private_network)
@@ -2077,6 +2088,19 @@ module Google
           @ssl_cipher = args[:ssl_cipher] if args.key?(:ssl_cipher)
           @username = args[:username] if args.key?(:username)
           @verify_server_certificate = args[:verify_server_certificate] if args.key?(:verify_server_certificate)
+        end
+      end
+      
+      # MySQL-specific external server sync settings.
+      class MySqlSyncConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2733,6 +2757,70 @@ module Google
         # Update properties of this object
         def update!(**args)
           @reschedule = args[:reschedule] if args.key?(:reschedule)
+        end
+      end
+      
+      # Instance start external sync request.
+      class SqlInstancesStartExternalSyncRequest
+        include Google::Apis::Core::Hashable
+      
+        # MySQL-specific external server sync settings.
+        # Corresponds to the JSON property `mysqlSyncConfig`
+        # @return [Google::Apis::SqladminV1::MySqlSyncConfig]
+        attr_accessor :mysql_sync_config
+      
+        # Whether to skip the verification step (VESS).
+        # Corresponds to the JSON property `skipVerification`
+        # @return [Boolean]
+        attr_accessor :skip_verification
+        alias_method :skip_verification?, :skip_verification
+      
+        # External sync mode.
+        # Corresponds to the JSON property `syncMode`
+        # @return [String]
+        attr_accessor :sync_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
+          @skip_verification = args[:skip_verification] if args.key?(:skip_verification)
+          @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
+        end
+      end
+      
+      # Instance verify external sync settings request.
+      class SqlInstancesVerifyExternalSyncSettingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # MySQL-specific external server sync settings.
+        # Corresponds to the JSON property `mysqlSyncConfig`
+        # @return [Google::Apis::SqladminV1::MySqlSyncConfig]
+        attr_accessor :mysql_sync_config
+      
+        # External sync mode
+        # Corresponds to the JSON property `syncMode`
+        # @return [String]
+        attr_accessor :sync_mode
+      
+        # Flag to enable verifying connection only
+        # Corresponds to the JSON property `verifyConnectionOnly`
+        # @return [Boolean]
+        attr_accessor :verify_connection_only
+        alias_method :verify_connection_only?, :verify_connection_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
+          @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
+          @verify_connection_only = args[:verify_connection_only] if args.key?(:verify_connection_only)
         end
       end
       
