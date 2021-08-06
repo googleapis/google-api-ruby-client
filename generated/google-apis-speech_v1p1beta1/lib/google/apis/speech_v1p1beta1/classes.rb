@@ -337,6 +337,11 @@ module Google
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult>]
         attr_accessor :results
       
+        # When available, billed audio seconds for the corresponding request.
+        # Corresponds to the JSON property `totalBilledTime`
+        # @return [String]
+        attr_accessor :total_billed_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -346,6 +351,7 @@ module Google
           @output_config = args[:output_config] if args.key?(:output_config)
           @output_error = args[:output_error] if args.key?(:output_error)
           @results = args[:results] if args.key?(:results)
+          @total_billed_time = args[:total_billed_time] if args.key?(:total_billed_time)
         end
       end
       
@@ -872,6 +878,11 @@ module Google
         # @return [Array<Google::Apis::SpeechV1p1beta1::SpeechRecognitionResult>]
         attr_accessor :results
       
+        # When available, billed audio seconds for the corresponding request.
+        # Corresponds to the JSON property `totalBilledTime`
+        # @return [String]
+        attr_accessor :total_billed_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -879,6 +890,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @results = args[:results] if args.key?(:results)
+          @total_billed_time = args[:total_billed_time] if args.key?(:total_billed_time)
         end
       end
       
