@@ -50,6 +50,26 @@ module Google
         end
       end
       
+      # Represents the metadata of the longrunning operation for the
+      # AnalyzeIamPolicyLongrunning rpc.
+      class AnalyzeIamPolicyLongrunningMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # A request message for AssetService.AnalyzeIamPolicyLongrunning.
       class AnalyzeIamPolicyLongrunningRequest
         include Google::Apis::Core::Hashable
