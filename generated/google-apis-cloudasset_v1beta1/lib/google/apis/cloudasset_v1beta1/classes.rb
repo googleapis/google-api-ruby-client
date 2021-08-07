@@ -22,6 +22,26 @@ module Google
   module Apis
     module CloudassetV1beta1
       
+      # Represents the metadata of the longrunning operation for the
+      # AnalyzeIamPolicyLongrunning rpc.
+      class AnalyzeIamPolicyLongrunningMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # A response message for AssetService.AnalyzeIamPolicyLongrunning.
       class AnalyzeIamPolicyLongrunningResponse
         include Google::Apis::Core::Hashable
