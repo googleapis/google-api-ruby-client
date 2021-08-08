@@ -1046,7 +1046,15 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Message to represent the filters to select VMs for an assignment
+        # The etag for this OS policy assignment. If this is provided on update, it must
+        # match the server's etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Filters to select target VMs for an assignment. If more than one filter
+        # criteria is specified below, a VM will be selected if and only if it satisfies
+        # all of them.
         # Corresponds to the JSON property `instanceFilter`
         # @return [Google::Apis::OsconfigV1alpha::OsPolicyAssignmentInstanceFilter]
         attr_accessor :instance_filter
@@ -1107,6 +1115,7 @@ module Google
           @baseline = args[:baseline] if args.key?(:baseline)
           @deleted = args[:deleted] if args.key?(:deleted)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @instance_filter = args[:instance_filter] if args.key?(:instance_filter)
           @name = args[:name] if args.key?(:name)
           @os_policies = args[:os_policies] if args.key?(:os_policies)
@@ -1119,7 +1128,9 @@ module Google
         end
       end
       
-      # Message to represent the filters to select VMs for an assignment
+      # Filters to select target VMs for an assignment. If more than one filter
+      # criteria is specified below, a VM will be selected if and only if it satisfies
+      # all of them.
       class OsPolicyAssignmentInstanceFilter
         include Google::Apis::Core::Hashable
       
@@ -1131,8 +1142,6 @@ module Google
       
         # List of label sets used for VM exclusion. If the list has more than one label
         # set, the VM is excluded if any of the label sets are applicable for the VM.
-        # This filter is applied last in the filtering chain and therefore a VM is
-        # guaranteed to be excluded if it satisfies one of the below label sets.
         # Corresponds to the JSON property `exclusionLabels`
         # @return [Array<Google::Apis::OsconfigV1alpha::OsPolicyAssignmentLabelSet>]
         attr_accessor :exclusion_labels
@@ -1144,7 +1153,13 @@ module Google
         # @return [Array<Google::Apis::OsconfigV1alpha::OsPolicyAssignmentLabelSet>]
         attr_accessor :inclusion_labels
       
-        # A VM is included if it's OS short name matches with any of the values provided
+        # List of inventories to select VMs. A VM is selected if its inventory data
+        # matches at least one of the following inventories.
+        # Corresponds to the JSON property `inventories`
+        # @return [Array<Google::Apis::OsconfigV1alpha::OsPolicyAssignmentInstanceFilterInventory>]
+        attr_accessor :inventories
+      
+        # A VM is selected if it's OS short name matches with any of the values provided
         # in this list.
         # Corresponds to the JSON property `osShortNames`
         # @return [Array<String>]
@@ -1159,7 +1174,36 @@ module Google
           @all = args[:all] if args.key?(:all)
           @exclusion_labels = args[:exclusion_labels] if args.key?(:exclusion_labels)
           @inclusion_labels = args[:inclusion_labels] if args.key?(:inclusion_labels)
+          @inventories = args[:inventories] if args.key?(:inventories)
           @os_short_names = args[:os_short_names] if args.key?(:os_short_names)
+        end
+      end
+      
+      # VM inventory details.
+      class OsPolicyAssignmentInstanceFilterInventory
+        include Google::Apis::Core::Hashable
+      
+        # Required. The OS short name
+        # Corresponds to the JSON property `osShortName`
+        # @return [String]
+        attr_accessor :os_short_name
+      
+        # The OS version Prefix matches are supported if asterisk(*) is provided as the
+        # last character. For example, to match all versions with a major version of `7`,
+        # specify the following value for this field `7.*` An empty string matches all
+        # OS versions.
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @os_short_name = args[:os_short_name] if args.key?(:os_short_name)
+          @os_version = args[:os_version] if args.key?(:os_version)
         end
       end
       
@@ -1263,8 +1307,35 @@ module Google
         end
       end
       
-      # The `OSFilter` is used to specify the OS filtering criteria for the resource
-      # group.
+      # Filtering criteria to select VMs based on inventory details.
+      class OsPolicyInventoryFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The OS short name
+        # Corresponds to the JSON property `osShortName`
+        # @return [String]
+        attr_accessor :os_short_name
+      
+        # The OS version Prefix matches are supported if asterisk(*) is provided as the
+        # last character. For example, to match all versions with a major version of `7`,
+        # specify the following value for this field `7.*` An empty string matches all
+        # OS versions.
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @os_short_name = args[:os_short_name] if args.key?(:os_short_name)
+          @os_version = args[:os_version] if args.key?(:os_version)
+        end
+      end
+      
+      # Filtering criteria to select VMs based on OS details.
       class OsPolicyOsFilter
         include Google::Apis::Core::Hashable
       
@@ -1698,8 +1769,18 @@ module Google
       class OsPolicyResourceGroup
         include Google::Apis::Core::Hashable
       
-        # The `OSFilter` is used to specify the OS filtering criteria for the resource
-        # group.
+        # List of inventory filters for the resource group. The resources in this
+        # resource group are applied to the target VM if it satisfies at least one of
+        # the following inventory filters. For example, to apply this resource group to
+        # VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for
+        # the list with following values: inventory_filters[0].os_short_name='rhel' and
+        # inventory_filters[1].os_short_name='centos' If the list is empty, this
+        # resource group will be applied to the target VM unconditionally.
+        # Corresponds to the JSON property `inventoryFilters`
+        # @return [Array<Google::Apis::OsconfigV1alpha::OsPolicyInventoryFilter>]
+        attr_accessor :inventory_filters
+      
+        # Filtering criteria to select VMs based on OS details.
         # Corresponds to the JSON property `osFilter`
         # @return [Google::Apis::OsconfigV1alpha::OsPolicyOsFilter]
         attr_accessor :os_filter
@@ -1716,6 +1797,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @inventory_filters = args[:inventory_filters] if args.key?(:inventory_filters)
           @os_filter = args[:os_filter] if args.key?(:os_filter)
           @resources = args[:resources] if args.key?(:resources)
         end
@@ -2391,6 +2473,11 @@ module Google
       class VulnerabilityReportVulnerabilityDetailsReference
         include Google::Apis::Core::Hashable
       
+        # The source of the reference e.g. NVD.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
         # The url of the reference.
         # Corresponds to the JSON property `url`
         # @return [String]
@@ -2402,6 +2489,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @source = args[:source] if args.key?(:source)
           @url = args[:url] if args.key?(:url)
         end
       end
