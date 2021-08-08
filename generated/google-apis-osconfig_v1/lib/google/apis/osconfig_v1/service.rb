@@ -129,6 +129,169 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get inventory data for the specified VM instance. If the VM has no associated
+        # inventory, the message `NOT_FOUND` is returned.
+        # @param [String] name
+        #   Required. API resource name for inventory resource. Format: `projects/`project`
+        #   /locations/`location`/instances/`instance`/inventory` For ``project``, either `
+        #   project-number` or `project-id` can be provided. For ``instance``, either
+        #   Compute Engine `instance-id` or `instance-name` can be provided.
+        # @param [String] view
+        #   Inventory view indicating what information should be included in the inventory
+        #   resource. If unspecified, the default view is BASIC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::Inventory] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::Inventory]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_instance_inventory(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OsconfigV1::Inventory::Representation
+          command.response_class = Google::Apis::OsconfigV1::Inventory
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List inventory data for all VM instances in the specified zone.
+        # @param [String] parent
+        #   Required. The parent resource name. Format: `projects/`project`/locations/`
+        #   location`/instances/-` For ``project``, either `project-number` or `project-id`
+        #   can be provided.
+        # @param [String] filter
+        #   If provided, this field specifies the criteria that must be met by a `
+        #   Inventory` API resource to be included in the response.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to `ListInventories` that
+        #   indicates where this listing should continue from.
+        # @param [String] view
+        #   Inventory view indicating what information should be included in the inventory
+        #   resource. If unspecified, the default view is BASIC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::ListInventoriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::ListInventoriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_instance_inventories(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/inventories', options)
+          command.response_representation = Google::Apis::OsconfigV1::ListInventoriesResponse::Representation
+          command.response_class = Google::Apis::OsconfigV1::ListInventoriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the vulnerability report for the specified VM instance. Only VMs with
+        # inventory data have vulnerability reports associated with them.
+        # @param [String] name
+        #   Required. API resource name for vulnerability resource. Format: `projects/`
+        #   project`/locations/`location`/instances/`instance`/vulnerabilityReport` For ``
+        #   project``, either `project-number` or `project-id` can be provided. For ``
+        #   instance``, either Compute Engine `instance-id` or `instance-name` can be
+        #   provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::VulnerabilityReport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::VulnerabilityReport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_instance_vulnerability_report(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OsconfigV1::VulnerabilityReport::Representation
+          command.response_class = Google::Apis::OsconfigV1::VulnerabilityReport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List vulnerability reports for all VM instances in the specified zone.
+        # @param [String] parent
+        #   Required. The parent resource name. Format: `projects/`project`/locations/`
+        #   location`/instances/-` For ``project``, either `project-number` or `project-id`
+        #   can be provided.
+        # @param [String] filter
+        #   If provided, this field specifies the criteria that must be met by a `
+        #   vulnerabilityReport` API resource to be included in the response.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to `ListVulnerabilityReports`
+        #   that indicates where this listing should continue from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::ListVulnerabilityReportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::ListVulnerabilityReportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_instance_vulnerability_reports(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/vulnerabilityReports', options)
+          command.response_representation = Google::Apis::OsconfigV1::ListVulnerabilityReportsResponse::Representation
+          command.response_class = Google::Apis::OsconfigV1::ListVulnerabilityReportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create an OS Config patch deployment.
         # @param [String] parent
         #   Required. The project to apply this patch deployment to in the form `projects/*

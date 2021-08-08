@@ -57,6 +57,98 @@ module Google
         end
       end
       
+      # Common Vulnerability Scoring System version 3. For details, see https://www.
+      # first.org/cvss/specification-document
+      class CvsSv3
+        include Google::Apis::Core::Hashable
+      
+        # This metric describes the conditions beyond the attacker's control that must
+        # exist in order to exploit the vulnerability.
+        # Corresponds to the JSON property `attackComplexity`
+        # @return [String]
+        attr_accessor :attack_complexity
+      
+        # This metric reflects the context by which vulnerability exploitation is
+        # possible.
+        # Corresponds to the JSON property `attackVector`
+        # @return [String]
+        attr_accessor :attack_vector
+      
+        # This metric measures the impact to the availability of the impacted component
+        # resulting from a successfully exploited vulnerability.
+        # Corresponds to the JSON property `availabilityImpact`
+        # @return [String]
+        attr_accessor :availability_impact
+      
+        # The base score is a function of the base metric scores. https://www.first.org/
+        # cvss/specification-document#Base-Metrics
+        # Corresponds to the JSON property `baseScore`
+        # @return [Float]
+        attr_accessor :base_score
+      
+        # This metric measures the impact to the confidentiality of the information
+        # resources managed by a software component due to a successfully exploited
+        # vulnerability.
+        # Corresponds to the JSON property `confidentialityImpact`
+        # @return [String]
+        attr_accessor :confidentiality_impact
+      
+        # The Exploitability sub-score equation is derived from the Base Exploitability
+        # metrics. https://www.first.org/cvss/specification-document#2-1-Exploitability-
+        # Metrics
+        # Corresponds to the JSON property `exploitabilityScore`
+        # @return [Float]
+        attr_accessor :exploitability_score
+      
+        # The Impact sub-score equation is derived from the Base Impact metrics.
+        # Corresponds to the JSON property `impactScore`
+        # @return [Float]
+        attr_accessor :impact_score
+      
+        # This metric measures the impact to integrity of a successfully exploited
+        # vulnerability.
+        # Corresponds to the JSON property `integrityImpact`
+        # @return [String]
+        attr_accessor :integrity_impact
+      
+        # This metric describes the level of privileges an attacker must possess before
+        # successfully exploiting the vulnerability.
+        # Corresponds to the JSON property `privilegesRequired`
+        # @return [String]
+        attr_accessor :privileges_required
+      
+        # The Scope metric captures whether a vulnerability in one vulnerable component
+        # impacts resources in components beyond its security scope.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # This metric captures the requirement for a human user, other than the attacker,
+        # to participate in the successful compromise of the vulnerable component.
+        # Corresponds to the JSON property `userInteraction`
+        # @return [String]
+        attr_accessor :user_interaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
+          @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
+          @base_score = args[:base_score] if args.key?(:base_score)
+          @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @exploitability_score = args[:exploitability_score] if args.key?(:exploitability_score)
+          @impact_score = args[:impact_score] if args.key?(:impact_score)
+          @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
+          @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
+          @scope = args[:scope] if args.key?(:scope)
+          @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+        end
+      end
+      
       # Message for canceling a patch job.
       class CancelPatchJobRequest
         include Google::Apis::Core::Hashable
@@ -286,7 +378,11 @@ module Google
         end
       end
       
-      # The inventory details of a VM.
+      # This API resource represents the available inventory data for a Compute Engine
+      # virtual machine (VM) instance at a given point in time. You can use this API
+      # resource to determine the inventory data of your VM. For more information, see
+      # [Information provided by OS inventory management](https://cloud.google.com/
+      # compute/docs/instances/os-inventory-management#data-collected).
       class Inventory
         include Google::Apis::Core::Hashable
       
@@ -297,10 +393,21 @@ module Google
         # @return [Hash<String,Google::Apis::OsconfigV1::InventoryItem>]
         attr_accessor :items
       
+        # Output only. The `Inventory` API resource name. Format: `projects/`
+        # project_number`/locations/`location`/instances/`instance_id`/inventory`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Operating system information for the VM.
         # Corresponds to the JSON property `osInfo`
         # @return [Google::Apis::OsconfigV1::InventoryOsInfo]
         attr_accessor :os_info
+      
+        # Output only. Timestamp of the last reported inventory for the VM.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
       
         def initialize(**args)
            update!(**args)
@@ -309,7 +416,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @items = args[:items] if args.key?(:items)
+          @name = args[:name] if args.key?(:name)
           @os_info = args[:os_info] if args.key?(:os_info)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -705,6 +814,32 @@ module Google
         end
       end
       
+      # A response message for listing inventory data for all VMs in a specified
+      # location.
+      class ListInventoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of inventory objects.
+        # Corresponds to the JSON property `inventories`
+        # @return [Array<Google::Apis::OsconfigV1::Inventory>]
+        attr_accessor :inventories
+      
+        # The pagination token to retrieve the next page of inventory objects.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inventories = args[:inventories] if args.key?(:inventories)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -802,6 +937,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @patch_jobs = args[:patch_jobs] if args.key?(:patch_jobs)
+        end
+      end
+      
+      # A response message for listing vulnerability reports for all VM instances in
+      # the specified location.
+      class ListVulnerabilityReportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pagination token to retrieve the next page of vulnerabilityReports object.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of vulnerabilityReport objects.
+        # Corresponds to the JSON property `vulnerabilityReports`
+        # @return [Array<Google::Apis::OsconfigV1::VulnerabilityReport>]
+        attr_accessor :vulnerability_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @vulnerability_reports = args[:vulnerability_reports] if args.key?(:vulnerability_reports)
         end
       end
       
@@ -1679,6 +1840,173 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # This API resource represents the vulnerability report for a specified Compute
+      # Engine virtual machine (VM) instance at a given point in time. For more
+      # information, see [Vulnerability reports](https://cloud.google.com/compute/docs/
+      # instances/os-inventory-management#vulnerability-reports).
+      class VulnerabilityReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The `vulnerabilityReport` API resource name. Format: `projects/`
+        # project_number`/locations/`location`/instances/`instance_id`/
+        # vulnerabilityReport`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp for when the last vulnerability report was
+        # generated for the VM.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. List of vulnerabilities affecting the VM.
+        # Corresponds to the JSON property `vulnerabilities`
+        # @return [Array<Google::Apis::OsconfigV1::VulnerabilityReportVulnerability>]
+        attr_accessor :vulnerabilities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @vulnerabilities = args[:vulnerabilities] if args.key?(:vulnerabilities)
+        end
+      end
+      
+      # A vulnerability affecting the VM instance.
+      class VulnerabilityReportVulnerability
+        include Google::Apis::Core::Hashable
+      
+        # Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM. If the
+        # vulnerability report was not updated after the VM inventory update, these
+        # values might not display in VM inventory. If there is no available fix, the
+        # field is empty. The `inventory_item` value specifies the latest `
+        # SoftwarePackage` available to the VM that fixes the vulnerability.
+        # Corresponds to the JSON property `availableInventoryItemIds`
+        # @return [Array<String>]
+        attr_accessor :available_inventory_item_ids
+      
+        # The timestamp for when the vulnerability was first detected.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Contains metadata information for the vulnerability. This information is
+        # collected from the upstream feed of the operating system.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityDetails]
+        attr_accessor :details
+      
+        # Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM. This field
+        # displays the inventory items affected by this vulnerability. If the
+        # vulnerability report was not updated after the VM inventory update, these
+        # values might not display in VM inventory. For some distros, this field may be
+        # empty.
+        # Corresponds to the JSON property `installedInventoryItemIds`
+        # @return [Array<String>]
+        attr_accessor :installed_inventory_item_ids
+      
+        # The timestamp for when the vulnerability was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_inventory_item_ids = args[:available_inventory_item_ids] if args.key?(:available_inventory_item_ids)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @details = args[:details] if args.key?(:details)
+          @installed_inventory_item_ids = args[:installed_inventory_item_ids] if args.key?(:installed_inventory_item_ids)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Contains metadata information for the vulnerability. This information is
+      # collected from the upstream feed of the operating system.
+      class VulnerabilityReportVulnerabilityDetails
+        include Google::Apis::Core::Hashable
+      
+        # The CVE of the vulnerability. CVE cannot be empty and the combination of
+        # should be unique across vulnerabilities for a VM.
+        # Corresponds to the JSON property `cve`
+        # @return [String]
+        attr_accessor :cve
+      
+        # The CVSS V2 score of this vulnerability. CVSS V2 score is on a scale of 0 - 10
+        # where 0 indicates low severity and 10 indicates high severity.
+        # Corresponds to the JSON property `cvssV2Score`
+        # @return [Float]
+        attr_accessor :cvss_v2_score
+      
+        # Common Vulnerability Scoring System version 3. For details, see https://www.
+        # first.org/cvss/specification-document
+        # Corresponds to the JSON property `cvssV3`
+        # @return [Google::Apis::OsconfigV1::CvsSv3]
+        attr_accessor :cvss_v3
+      
+        # The note or description describing the vulnerability from the distro.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Corresponds to the references attached to the `VulnerabilityDetails`.
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityDetailsReference>]
+        attr_accessor :references
+      
+        # Assigned severity/impact ranking from the distro.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cve = args[:cve] if args.key?(:cve)
+          @cvss_v2_score = args[:cvss_v2_score] if args.key?(:cvss_v2_score)
+          @cvss_v3 = args[:cvss_v3] if args.key?(:cvss_v3)
+          @description = args[:description] if args.key?(:description)
+          @references = args[:references] if args.key?(:references)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # A reference for this vulnerability.
+      class VulnerabilityReportVulnerabilityDetailsReference
+        include Google::Apis::Core::Hashable
+      
+        # The source of the reference e.g. NVD.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # The url of the reference.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+          @url = args[:url] if args.key?(:url)
         end
       end
       

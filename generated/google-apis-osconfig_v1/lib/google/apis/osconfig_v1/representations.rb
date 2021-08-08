@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CvsSv3
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelPatchJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListInventoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +161,12 @@ module Google
       end
       
       class ListPatchJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListVulnerabilityReportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,6 +268,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VulnerabilityReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VulnerabilityReportVulnerability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VulnerabilityReportVulnerabilityDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VulnerabilityReportVulnerabilityDetailsReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WeekDayOfMonth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +328,23 @@ module Google
           collection :excludes, as: 'excludes'
           collection :exclusive_packages, as: 'exclusivePackages'
           property :type, as: 'type'
+        end
+      end
+      
+      class CvsSv3
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_complexity, as: 'attackComplexity'
+          property :attack_vector, as: 'attackVector'
+          property :availability_impact, as: 'availabilityImpact'
+          property :base_score, as: 'baseScore'
+          property :confidentiality_impact, as: 'confidentialityImpact'
+          property :exploitability_score, as: 'exploitabilityScore'
+          property :impact_score, as: 'impactScore'
+          property :integrity_impact, as: 'integrityImpact'
+          property :privileges_required, as: 'privilegesRequired'
+          property :scope, as: 'scope'
+          property :user_interaction, as: 'userInteraction'
         end
       end
       
@@ -366,8 +425,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :items, as: 'items', class: Google::Apis::OsconfigV1::InventoryItem, decorator: Google::Apis::OsconfigV1::InventoryItem::Representation
       
+          property :name, as: 'name'
           property :os_info, as: 'osInfo', class: Google::Apis::OsconfigV1::InventoryOsInfo, decorator: Google::Apis::OsconfigV1::InventoryOsInfo::Representation
       
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -475,6 +536,15 @@ module Google
         end
       end
       
+      class ListInventoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inventories, as: 'inventories', class: Google::Apis::OsconfigV1::Inventory, decorator: Google::Apis::OsconfigV1::Inventory::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -507,6 +577,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :patch_jobs, as: 'patchJobs', class: Google::Apis::OsconfigV1::PatchJob, decorator: Google::Apis::OsconfigV1::PatchJob::Representation
+      
+        end
+      end
+      
+      class ListVulnerabilityReportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :vulnerability_reports, as: 'vulnerabilityReports', class: Google::Apis::OsconfigV1::VulnerabilityReport, decorator: Google::Apis::OsconfigV1::VulnerabilityReport::Representation
       
         end
       end
@@ -721,6 +800,50 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :version, as: 'version'
+        end
+      end
+      
+      class VulnerabilityReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+          collection :vulnerabilities, as: 'vulnerabilities', class: Google::Apis::OsconfigV1::VulnerabilityReportVulnerability, decorator: Google::Apis::OsconfigV1::VulnerabilityReportVulnerability::Representation
+      
+        end
+      end
+      
+      class VulnerabilityReportVulnerability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_inventory_item_ids, as: 'availableInventoryItemIds'
+          property :create_time, as: 'createTime'
+          property :details, as: 'details', class: Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityDetails, decorator: Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityDetails::Representation
+      
+          collection :installed_inventory_item_ids, as: 'installedInventoryItemIds'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class VulnerabilityReportVulnerabilityDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cve, as: 'cve'
+          property :cvss_v2_score, as: 'cvssV2Score'
+          property :cvss_v3, as: 'cvssV3', class: Google::Apis::OsconfigV1::CvsSv3, decorator: Google::Apis::OsconfigV1::CvsSv3::Representation
+      
+          property :description, as: 'description'
+          collection :references, as: 'references', class: Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityDetailsReference, decorator: Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityDetailsReference::Representation
+      
+          property :severity, as: 'severity'
+        end
+      end
+      
+      class VulnerabilityReportVulnerabilityDetailsReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source'
+          property :url, as: 'url'
         end
       end
       
