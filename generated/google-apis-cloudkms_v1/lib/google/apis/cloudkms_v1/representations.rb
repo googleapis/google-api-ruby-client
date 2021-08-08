@@ -136,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateRandomBytesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateRandomBytesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportCryptoKeyVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +364,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :destroy_scheduled_duration, as: 'destroyScheduledDuration'
+          property :import_only, as: 'importOnly'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :next_rotation_time, as: 'nextRotationTime'
@@ -464,6 +478,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_key_uri, as: 'externalKeyUri'
+        end
+      end
+      
+      class GenerateRandomBytesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :length_bytes, as: 'lengthBytes'
+          property :protection_level, as: 'protectionLevel'
+        end
+      end
+      
+      class GenerateRandomBytesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :data_crc32c, :numeric_string => true, as: 'dataCrc32c'
         end
       end
       

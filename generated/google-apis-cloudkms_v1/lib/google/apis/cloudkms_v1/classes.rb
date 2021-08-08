@@ -397,6 +397,19 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Immutable. The period of time that versions of this key spend in the
+        # DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at
+        # creation time, the default duration is 24 hours.
+        # Corresponds to the JSON property `destroyScheduledDuration`
+        # @return [String]
+        attr_accessor :destroy_scheduled_duration
+      
+        # Immutable. Whether this key may contain imported versions only.
+        # Corresponds to the JSON property `importOnly`
+        # @return [Boolean]
+        attr_accessor :import_only
+        alias_method :import_only?, :import_only
+      
         # Labels with user-defined metadata. For more information, see [Labeling Keys](
         # https://cloud.google.com/kms/docs/labeling-keys).
         # Corresponds to the JSON property `labels`
@@ -457,6 +470,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @destroy_scheduled_duration = args[:destroy_scheduled_duration] if args.key?(:destroy_scheduled_duration)
+          @import_only = args[:import_only] if args.key?(:import_only)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
@@ -976,6 +991,68 @@ module Google
         # Update properties of this object
         def update!(**args)
           @external_key_uri = args[:external_key_uri] if args.key?(:external_key_uri)
+        end
+      end
+      
+      # Request message for KeyManagementService.GenerateRandomBytes.
+      class GenerateRandomBytesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The length in bytes of the amount of randomness to retrieve. Minimum 8 bytes,
+        # maximum 1024 bytes.
+        # Corresponds to the JSON property `lengthBytes`
+        # @return [Fixnum]
+        attr_accessor :length_bytes
+      
+        # The ProtectionLevel to use when generating the random data. Defaults to
+        # SOFTWARE.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @length_bytes = args[:length_bytes] if args.key?(:length_bytes)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
+        end
+      end
+      
+      # Response message for KeyManagementService.GenerateRandomBytes.
+      class GenerateRandomBytesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The generated data.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # GenerateRandomBytesResponse.data. An integrity check of
+        # GenerateRandomBytesResponse.data can be performed by computing the CRC32C
+        # checksum of GenerateRandomBytesResponse.data and comparing your results to
+        # this field. Discard the response in case of non-matching checksum values, and
+        # perform a limited number of retries. A persistent mismatch may indicate an
+        # issue in your computation of the CRC32C checksum. Note: This field is defined
+        # as int64 for reasons of compatibility across different languages. However, it
+        # is a non-negative integer, which will never exceed 2^32-1, and can be safely
+        # downconverted to uint32 in languages that support this type.
+        # Corresponds to the JSON property `dataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :data_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @data_crc32c = args[:data_crc32c] if args.key?(:data_crc32c)
         end
       end
       
