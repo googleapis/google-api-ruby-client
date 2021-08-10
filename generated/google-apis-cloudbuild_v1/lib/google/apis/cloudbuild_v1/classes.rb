@@ -22,6 +22,97 @@ module Google
   module Apis
     module CloudbuildV1
       
+      # ApprovalConfig describes configuration for manual approval of a build.
+      class ApprovalConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not approval is needed. If this is set on a build, it will become
+        # pending when created, and will need to be explicitly approved to start.
+        # Corresponds to the JSON property `approvalRequired`
+        # @return [Boolean]
+        attr_accessor :approval_required
+        alias_method :approval_required?, :approval_required
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_required = args[:approval_required] if args.key?(:approval_required)
+        end
+      end
+      
+      # ApprovalResult describes the decision and associated metadata of a manual
+      # approval of a build.
+      class ApprovalResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the approval decision was made.
+        # Corresponds to the JSON property `approvalTime`
+        # @return [String]
+        attr_accessor :approval_time
+      
+        # Output only. Email of the user that called the ApproveBuild API to approve or
+        # reject a build at the time that the API was called (the user's actual email
+        # that is tied to their GAIA ID may have changed). This field is not stored,
+        # rather, it is calculated on the fly using approver_id.
+        # Corresponds to the JSON property `approverAccount`
+        # @return [String]
+        attr_accessor :approver_account
+      
+        # Optional. An optional comment for this manual approval result.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Required. The decision of this manual approval.
+        # Corresponds to the JSON property `decision`
+        # @return [String]
+        attr_accessor :decision
+      
+        # Optional. An optional URL tied to this manual approval result. This field is
+        # essentially the same as comment, except that it will be rendered by the UI
+        # differently. An example use case is a link to an external job that approved
+        # this Build.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_time = args[:approval_time] if args.key?(:approval_time)
+          @approver_account = args[:approver_account] if args.key?(:approver_account)
+          @comment = args[:comment] if args.key?(:comment)
+          @decision = args[:decision] if args.key?(:decision)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Request to approve or reject a pending build.
+      class ApproveBuildRequest
+        include Google::Apis::Core::Hashable
+      
+        # ApprovalResult describes the decision and associated metadata of a manual
+        # approval of a build.
+        # Corresponds to the JSON property `approvalResult`
+        # @return [Google::Apis::CloudbuildV1::ApprovalResult]
+        attr_accessor :approval_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_result = args[:approval_result] if args.key?(:approval_result)
+        end
+      end
+      
       # Files in the workspace to upload to Cloud Storage upon successful completion
       # of all build steps.
       class ArtifactObjects
@@ -128,6 +219,11 @@ module Google
       # characters of $REVISION_ID or $COMMIT_SHA.
       class Build
         include Google::Apis::Core::Hashable
+      
+        # BuildApproval describes a build's approval configuration, state, and result.
+        # Corresponds to the JSON property `approval`
+        # @return [Google::Apis::CloudbuildV1::BuildApproval]
+        attr_accessor :approval
       
         # Artifacts produced by a build that should be uploaded upon successful
         # completion of all build steps.
@@ -302,6 +398,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approval = args[:approval] if args.key?(:approval)
           @artifacts = args[:artifacts] if args.key?(:artifacts)
           @available_secrets = args[:available_secrets] if args.key?(:available_secrets)
           @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
@@ -330,6 +427,38 @@ module Google
           @timeout = args[:timeout] if args.key?(:timeout)
           @timing = args[:timing] if args.key?(:timing)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # BuildApproval describes a build's approval configuration, state, and result.
+      class BuildApproval
+        include Google::Apis::Core::Hashable
+      
+        # ApprovalConfig describes configuration for manual approval of a build.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::CloudbuildV1::ApprovalConfig]
+        attr_accessor :config
+      
+        # ApprovalResult describes the decision and associated metadata of a manual
+        # approval of a build.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::CloudbuildV1::ApprovalResult]
+        attr_accessor :result
+      
+        # Output only. The state of this build's approval.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @result = args[:result] if args.key?(:result)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -540,6 +669,12 @@ module Google
         # @return [Google::Apis::CloudbuildV1::TimeSpan]
         attr_accessor :pull_timing
       
+        # A shell script to be executed in the step. When script is provided, the user
+        # cannot specify the entrypoint or args.
+        # Corresponds to the JSON property `script`
+        # @return [String]
+        attr_accessor :script
+      
         # A list of environment variables which are encrypted using a Cloud Key
         # Management Service crypto key. These values must be specified in the build's `
         # Secret`.
@@ -596,6 +731,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @status = args[:status] if args.key?(:status)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -608,6 +744,11 @@ module Google
       # Configuration for an automated build in response to source repository changes.
       class BuildTrigger
         include Google::Apis::Core::Hashable
+      
+        # ApprovalConfig describes configuration for manual approval of a build.
+        # Corresponds to the JSON property `approvalConfig`
+        # @return [Google::Apis::CloudbuildV1::ApprovalConfig]
+        attr_accessor :approval_config
       
         # Autodetect build configuration. The following precedence is used (case
         # insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4.
@@ -654,10 +795,15 @@ module Google
         # @return [String]
         attr_accessor :filename
       
-        # Optional. A Common Expression Language string.
+        # A Common Expression Language string.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
+      
+        # GitFileSource describes a file within a (possibly remote) code repository.
+        # Corresponds to the JSON property `gitFileSource`
+        # @return [Google::Apis::CloudbuildV1::GitFileSource]
+        attr_accessor :git_file_source
       
         # GitHubEventsConfig describes the configuration of a trigger that creates a
         # build whenever a GitHub event is received.
@@ -711,9 +857,9 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
-        # Optional. The service account used for all user-controlled operations
-        # including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild.
-        # If no service account is set, then the standard Cloud Build service account ([
+        # The service account used for all user-controlled operations including
+        # UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild. If no
+        # service account is set, then the standard Cloud Build service account ([
         # PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format: `
         # projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT_ID_OR_EMAIL``
         # Corresponds to the JSON property `serviceAccount`
@@ -753,6 +899,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approval_config = args[:approval_config] if args.key?(:approval_config)
           @autodetect = args[:autodetect] if args.key?(:autodetect)
           @build = args[:build] if args.key?(:build)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -760,6 +907,7 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @filename = args[:filename] if args.key?(:filename)
           @filter = args[:filter] if args.key?(:filter)
+          @git_file_source = args[:git_file_source] if args.key?(:git_file_source)
           @github = args[:github] if args.key?(:github)
           @id = args[:id] if args.key?(:id)
           @ignored_files = args[:ignored_files] if args.key?(:ignored_files)
@@ -1040,6 +1188,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # GitFileSource describes a file within a (possibly remote) code repository.
+      class GitFileSource
+        include Google::Apis::Core::Hashable
+      
+        # The path of the file, with the repo root as the root of the path.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # See RepoType above.
+        # Corresponds to the JSON property `repoType`
+        # @return [String]
+        attr_accessor :repo_type
+      
+        # The branch, tag, arbitrary ref, or SHA version of the repo to use when
+        # resolving the filename (optional). This field respects the same syntax/
+        # resolution as described here: https://git-scm.com/docs/gitrevisions If
+        # unspecified, the revision from which the trigger invocation originated is
+        # assumed to be the revision from which to read the specified path.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        # The URI of the repo (optional). If unspecified, the repo from which the
+        # trigger invocation originated is assumed to be the repo from which to read the
+        # specified path.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @repo_type = args[:repo_type] if args.key?(:repo_type)
+          @revision = args[:revision] if args.key?(:revision)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1842,7 +2033,7 @@ module Google
         attr_accessor :api_version
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
+        # operation. Operations that have been cancelled successfully have Operation.
         # error value with a google.rpc.Status.code of 1, corresponding to `Code.
         # CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
