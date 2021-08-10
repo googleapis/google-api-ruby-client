@@ -958,6 +958,66 @@ module Google
         end
       end
       
+      # Archive Deployment information.
+      class GoogleCloudApigeeV1ArchiveDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the Archive Deployment was created in
+        # milliseconds since the epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # Input only. The Google Cloud Storage signed URL returned from
+        # GenerateUploadUrl and used to upload the Archive zip file.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # User-supplied key-value pairs used to organize ArchiveDeployments. Label keys
+        # must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+        # bytes, and must conform to the following PCRE regular expression: \p`Ll`\p`Lo``
+        # 0,62` Label values must be between 1 and 63 characters long, have a UTF-8
+        # encoding of maximum 128 bytes, and must conform to the following PCRE regular
+        # expression: [\p`Ll`\p`Lo`\p`N`_-]`0,63` No more than 64 labels can be
+        # associated with a given store.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Name of the Archive Deployment in the following format: `organizations/`org`/
+        # environments/`env`/archiveDeployments/`id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. A reference to the LRO that created this Archive Deployment in
+        # the following format: `organizations/`org`/operations/`id``
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Output only. The time at which the Archive Deployment was updated in
+        # milliseconds since the epoch.
+        # Corresponds to the JSON property `updatedAt`
+        # @return [Fixnum]
+        attr_accessor :updated_at
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @operation = args[:operation] if args.key?(:operation)
+          @updated_at = args[:updated_at] if args.key?(:updated_at)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1AsyncQuery
         include Google::Apis::Core::Hashable
@@ -2721,10 +2781,27 @@ module Google
       class GoogleCloudApigeeV1Environment
         include Google::Apis::Core::Hashable
       
+        # Optional. API Proxy type supported by the environment. The type can be set
+        # when creating the Environment and cannot be changed.
+        # Corresponds to the JSON property `apiProxyType`
+        # @return [String]
+        attr_accessor :api_proxy_type
+      
         # Output only. Creation time of this environment as milliseconds since epoch.
         # Corresponds to the JSON property `createdAt`
         # @return [Fixnum]
         attr_accessor :created_at
+      
+        # Optional. Deployment type supported by the environment. The deployment type
+        # can be set when creating the environment and cannot be changed. When you
+        # enable archive deployment, you will be **prevented from performing** a [subset
+        # of actions](/apigee/docs/api-platform/local-development/overview#prevented-
+        # actions) within the environment, including: * Managing the deployment of API
+        # proxy or shared flow revisions * Creating, updating, or deleting resource
+        # files * Creating, updating, or deleting target servers
+        # Corresponds to the JSON property `deploymentType`
+        # @return [String]
+        attr_accessor :deployment_type
       
         # Optional. Description of the environment.
         # Corresponds to the JSON property `description`
@@ -2766,7 +2843,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_proxy_type = args[:api_proxy_type] if args.key?(:api_proxy_type)
           @created_at = args[:created_at] if args.key?(:created_at)
+          @deployment_type = args[:deployment_type] if args.key?(:deployment_type)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
@@ -2779,6 +2858,13 @@ module Google
       # 
       class GoogleCloudApigeeV1EnvironmentConfig
         include Google::Apis::Core::Hashable
+      
+        # The location for the config blob of API Runtime Control, aka Envoy Adapter,
+        # for op-based authentication as a URI, e.g. a Cloud Storage URI. This is only
+        # used by Envoy-based gateways.
+        # Corresponds to the JSON property `arcConfigLocation`
+        # @return [String]
+        attr_accessor :arc_config_location
       
         # Time that the environment configuration was created.
         # Corresponds to the JSON property `createTime`
@@ -2809,6 +2895,12 @@ module Google
         # Corresponds to the JSON property `flowhooks`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHookConfig>]
         attr_accessor :flowhooks
+      
+        # The location for the gateway config blob as a URI, e.g. a Cloud Storage URI.
+        # This is only used by Envoy-based gateways.
+        # Corresponds to the JSON property `gatewayConfigLocation`
+        # @return [String]
+        attr_accessor :gateway_config_location
       
         # List of keystores in the environment.
         # Corresponds to the JSON property `keystores`
@@ -2877,12 +2969,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @arc_config_location = args[:arc_config_location] if args.key?(:arc_config_location)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_collectors = args[:data_collectors] if args.key?(:data_collectors)
           @debug_mask = args[:debug_mask] if args.key?(:debug_mask)
           @deployments = args[:deployments] if args.key?(:deployments)
           @feature_flags = args[:feature_flags] if args.key?(:feature_flags)
           @flowhooks = args[:flowhooks] if args.key?(:flowhooks)
+          @gateway_config_location = args[:gateway_config_location] if args.key?(:gateway_config_location)
           @keystores = args[:keystores] if args.key?(:keystores)
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
@@ -3239,6 +3333,72 @@ module Google
           @continue_on_error = args[:continue_on_error] if args.key?(:continue_on_error)
           @name = args[:name] if args.key?(:name)
           @shared_flow_name = args[:shared_flow_name] if args.key?(:shared_flow_name)
+        end
+      end
+      
+      # Request for GenerateDownloadUrl method.
+      class GoogleCloudApigeeV1GenerateDownloadUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for GenerateDownloadUrl method.
+      class GoogleCloudApigeeV1GenerateDownloadUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage signed URL that can be used to download the Archive
+        # zip file.
+        # Corresponds to the JSON property `downloadUri`
+        # @return [String]
+        attr_accessor :download_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_uri = args[:download_uri] if args.key?(:download_uri)
+        end
+      end
+      
+      # Request for GenerateUploadUrl method.
+      class GoogleCloudApigeeV1GenerateUploadUrlRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for GenerateUploadUrl method.
+      class GoogleCloudApigeeV1GenerateUploadUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage signed URL that can be used to upload a new Archive
+        # zip file.
+        # Corresponds to the JSON property `uploadUri`
+        # @return [String]
+        attr_accessor :upload_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @upload_uri = args[:upload_uri] if args.key?(:upload_uri)
         end
       end
       
@@ -3821,6 +3981,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app = args[:app] if args.key?(:app)
+        end
+      end
+      
+      # Response for ListArchiveDeployments method.
+      class GoogleCloudApigeeV1ListArchiveDeploymentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Archive Deployments in the specified environment.
+        # Corresponds to the JSON property `archiveDeployments`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment>]
+        attr_accessor :archive_deployments
+      
+        # Page token that you can include in a ListArchiveDeployments request to
+        # retrieve the next page. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_deployments = args[:archive_deployments] if args.key?(:archive_deployments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
