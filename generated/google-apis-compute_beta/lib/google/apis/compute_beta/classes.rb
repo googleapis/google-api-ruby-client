@@ -2509,7 +2509,12 @@ module Google
       
         # Specifies how to determine whether the backend of a load balancer can handle
         # additional traffic or is fully loaded. For usage guidelines, see Connection
-        # balancing mode.
+        # balancing mode. Backends must use compatible balancing modes. For more
+        # information, see Restrictions and guidelines. Note: Currently, if you use the
+        # API to configure incompatible balancing modes, the configuration might be
+        # accepted even though it has no impact and will be ignored. Specifically,
+        # Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the
+        # future, this incompatible combination will be rejected.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
@@ -2590,7 +2595,9 @@ module Google
         # @return [Float]
         attr_accessor :max_rate_per_instance
       
-        # 
+        # Optional parameter to define a target capacity for the UTILIZATIONbalancing
+        # mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization
+        # balancing mode.
         # Corresponds to the JSON property `maxUtilization`
         # @return [Float]
         attr_accessor :max_utilization
@@ -7481,7 +7488,7 @@ module Google
       
         # If destination ranges are specified, the firewall rule applies only to traffic
         # that has destination IP address in these ranges. These ranges must be
-        # expressed in CIDR format. Only IPv4 is supported.
+        # expressed in CIDR format. Both IPv4 and IPv6 are supported.
         # Corresponds to the JSON property `destinationRanges`
         # @return [Array<String>]
         attr_accessor :destination_ranges
@@ -7569,7 +7576,7 @@ module Google
         # fields are set, the rule applies to traffic that has a source IP address
         # within sourceRanges OR a source IP from a resource with a matching tag listed
         # in the sourceTags field. The connection does not need to match both fields for
-        # the rule to apply. Only IPv4 is supported.
+        # the rule to apply. Both IPv4 and IPv6 are supported.
         # Corresponds to the JSON property `sourceRanges`
         # @return [Array<String>]
         attr_accessor :source_ranges
@@ -11961,10 +11968,12 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
-        # URL of the source image used to create this image. In order to create an image,
-        # you must provide the full or partial URL of one of the following: - The
-        # rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The
-        # sourceSnapshot URL
+        # URL of the source image used to create this image. The following are valid
+        # formats for the URL: - https://www.googleapis.com/compute/v1/projects/
+        # project_id/global/ images/image_name - projects/project_id/global/images/
+        # image_name In order to create an image, you must provide the full or partial
+        # URL of one of the following: - The rawDisk.source URL - The sourceDisk URL -
+        # The sourceImage URL - The sourceSnapshot URL
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -11982,10 +11991,12 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
-        # URL of the source snapshot used to create this image. In order to create an
-        # image, you must provide the full or partial URL of one of the following: - The
-        # rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The
-        # sourceSnapshot URL
+        # URL of the source snapshot used to create this image. The following are valid
+        # formats for the URL: - https://www.googleapis.com/compute/v1/projects/
+        # project_id/global/ snapshots/snapshot_name - projects/project_id/global/
+        # snapshots/snapshot_name In order to create an image, you must provide the full
+        # or partial URL of one of the following: - The rawDisk.source URL - The
+        # sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -12090,10 +12101,12 @@ module Google
           # @return [String]
           attr_accessor :sha1_checksum
         
-          # The full Google Cloud Storage URL where the disk image is stored. In order to
-          # create an image, you must provide the full or partial URL of one of the
-          # following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL
-          # - The sourceSnapshot URL
+          # The full Google Cloud Storage URL where the raw disk image archive is stored.
+          # The following are valid formats for the URL: - https://storage.googleapis.com/
+          # bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/
+          # folder_name/ image_archive_name In order to create an image, you must provide
+          # the full or partial URL of one of the following: - The rawDisk.source URL -
+          # The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
           # Corresponds to the JSON property `source`
           # @return [String]
           attr_accessor :source
@@ -20653,9 +20666,8 @@ module Google
         alias_method :export_custom_routes?, :export_custom_routes
       
         # Whether subnet routes with public IP range are exported. The default value is
-        # true, all subnet routes are exported. The IPv4 special-use ranges (https://en.
-        # wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and
-        # are not controlled by this field.
+        # true, all subnet routes are exported. IPv4 special-use ranges are always
+        # exported to peers and are not controlled by this field.
         # Corresponds to the JSON property `exportSubnetRoutesWithPublicIp`
         # @return [Boolean]
         attr_accessor :export_subnet_routes_with_public_ip
@@ -20668,9 +20680,8 @@ module Google
         alias_method :import_custom_routes?, :import_custom_routes
       
         # Whether subnet routes with public IP range are imported. The default value is
-        # false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#
-        # Special_addresses) are always imported from peers and are not controlled by
-        # this field.
+        # false. IPv4 special-use ranges are always imported from peers and are not
+        # controlled by this field.
         # Corresponds to the JSON property `importSubnetRoutesWithPublicIp`
         # @return [Boolean]
         attr_accessor :import_subnet_routes_with_public_ip
@@ -20961,7 +20972,7 @@ module Google
         end
       end
       
-      # Represent a sole-tenant Node Group resource. A sole-tenant node is a physical
+      # Represents a sole-tenant Node Group resource. A sole-tenant node is a physical
       # server that is dedicated to hosting VM instances only for your specific
       # project. Use sole-tenant nodes to keep your instances physically separated
       # from instances in other projects, or to group your instances together on the
@@ -35510,6 +35521,25 @@ module Google
       end
       
       # 
+      class TargetHttpsProxiesSetCertificateMapRequest
+        include Google::Apis::Core::Hashable
+      
+        # URL of the Certificate Map to associate with this TargetHttpsProxy.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
+        end
+      end
+      
+      # 
       class TargetHttpsProxiesSetQuicOverrideRequest
         include Google::Apis::Core::Hashable
       
@@ -35581,6 +35611,13 @@ module Google
         # Corresponds to the JSON property `authorizationPolicy`
         # @return [String]
         attr_accessor :authorization_policy
+      
+        # URL of a certificate map that identifies a certificate map associated with the
+        # given target proxy. This field can only be set for global target proxies. If
+        # set, sslCertificates will be ignored.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -35719,6 +35756,7 @@ module Google
           @authentication = args[:authentication] if args.key?(:authentication)
           @authorization = args[:authorization] if args.key?(:authorization)
           @authorization_policy = args[:authorization_policy] if args.key?(:authorization_policy)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
@@ -37008,6 +37046,25 @@ module Google
       end
       
       # 
+      class TargetSslProxiesSetCertificateMapRequest
+        include Google::Apis::Core::Hashable
+      
+        # URL of the Certificate Map to associate with this TargetSslProxy.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
+        end
+      end
+      
+      # 
       class TargetSslProxiesSetProxyHeaderRequest
         include Google::Apis::Core::Hashable
       
@@ -37054,6 +37111,13 @@ module Google
       # information, read Using Target Proxies.
       class TargetSslProxy
         include Google::Apis::Core::Hashable
+      
+        # URL of a certificate map that identifies a certificate map associated with the
+        # given target proxy. This field can only be set for global target proxies. If
+        # set, sslCertificates will be ignored.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -37125,6 +37189,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)

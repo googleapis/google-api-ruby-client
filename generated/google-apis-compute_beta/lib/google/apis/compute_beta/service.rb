@@ -16726,9 +16726,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified network peering with the data included in the request
-        # Only the following fields can be modified: NetworkPeering.export_custom_routes,
-        # and NetworkPeering.import_custom_routes
+        # Updates the specified network peering with the data included in the request.
+        # You can only modify the NetworkPeering.export_custom_routes field and the
+        # NetworkPeering.import_custom_routes field.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -31336,6 +31336,10 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [String] service_project
+        #   The project id or project number in which the subnetwork is intended to be
+        #   used. Only applied for Shared VPC. See [Shared VPC documentation](https://
+        #   cloud.google.com/vpc/docs/shared-vpc/)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31355,7 +31359,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_subnetwork_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_subnetwork_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/subnetworks/listUsable', options)
           command.response_representation = Google::Apis::ComputeBeta::UsableSubnetworksAggregatedList::Representation
           command.response_class = Google::Apis::ComputeBeta::UsableSubnetworksAggregatedList
@@ -31365,6 +31369,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProject'] = service_project unless service_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -32633,6 +32638,57 @@ module Google
           command = make_simple_command(:patch, 'projects/{project}/global/targetHttpsProxies/{targetHttpsProxy}', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetHttpsProxy::Representation
           command.request_object = target_https_proxy_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['targetHttpsProxy'] = target_https_proxy unless target_https_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the Certificate Map for TargetHttpsProxy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_https_proxy
+        #   Name of the TargetHttpsProxy resource whose CertificateMap is to be set. The
+        #   name must be 1-63 characters long, and comply with RFC1035.
+        # @param [Google::Apis::ComputeBeta::TargetHttpsProxiesSetCertificateMapRequest] target_https_proxies_set_certificate_map_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_target_https_proxy_certificate_map(project, target_https_proxy, target_https_proxies_set_certificate_map_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/targetHttpsProxies/{targetHttpsProxy}/setCertificateMap', options)
+          command.request_representation = Google::Apis::ComputeBeta::TargetHttpsProxiesSetCertificateMapRequest::Representation
+          command.request_object = target_https_proxies_set_certificate_map_request_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?
@@ -34125,6 +34181,57 @@ module Google
           command = make_simple_command(:post, 'projects/{project}/global/targetSslProxies/{targetSslProxy}/setBackendService', options)
           command.request_representation = Google::Apis::ComputeBeta::TargetSslProxiesSetBackendServiceRequest::Representation
           command.request_object = target_ssl_proxies_set_backend_service_request_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['targetSslProxy'] = target_ssl_proxy unless target_ssl_proxy.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the Certificate Map for TargetSslProxy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] target_ssl_proxy
+        #   Name of the TargetSslProxy resource whose CertificateMap is to be set. The
+        #   name must be 1-63 characters long, and comply with RFC1035.
+        # @param [Google::Apis::ComputeBeta::TargetSslProxiesSetCertificateMapRequest] target_ssl_proxies_set_certificate_map_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, will ignore the
+        #   second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_target_ssl_proxy_certificate_map(project, target_ssl_proxy, target_ssl_proxies_set_certificate_map_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/targetSslProxies/{targetSslProxy}/setCertificateMap', options)
+          command.request_representation = Google::Apis::ComputeBeta::TargetSslProxiesSetCertificateMapRequest::Representation
+          command.request_object = target_ssl_proxies_set_certificate_map_request_object
           command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
           command.response_class = Google::Apis::ComputeBeta::Operation
           command.params['project'] = project unless project.nil?

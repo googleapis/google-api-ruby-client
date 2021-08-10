@@ -4666,6 +4666,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetHttpsProxiesSetCertificateMapRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetHttpsProxiesSetQuicOverrideRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4877,6 +4883,12 @@ module Google
       end
       
       class TargetSslProxiesSetBackendServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetSslProxiesSetCertificateMapRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -14146,6 +14158,13 @@ module Google
         end
       end
       
+      class TargetHttpsProxiesSetCertificateMapRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_map, as: 'certificateMap'
+        end
+      end
+      
       class TargetHttpsProxiesSetQuicOverrideRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14166,6 +14185,7 @@ module Google
           property :authentication, as: 'authentication'
           property :authorization, as: 'authorization'
           property :authorization_policy, as: 'authorizationPolicy'
+          property :certificate_map, as: 'certificateMap'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -14524,6 +14544,13 @@ module Google
         end
       end
       
+      class TargetSslProxiesSetCertificateMapRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_map, as: 'certificateMap'
+        end
+      end
+      
       class TargetSslProxiesSetProxyHeaderRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14541,6 +14568,7 @@ module Google
       class TargetSslProxy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_map, as: 'certificateMap'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
