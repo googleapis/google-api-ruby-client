@@ -602,6 +602,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Imports a Customer from the Cloud Identity associated with the provided Cloud
+        # Identity ID or domain before a TransferEntitlements call. If a linked Customer
+        # already exists and overwrite_if_exists is true, it will update that Customer's
+        # data. Possible error codes: * PERMISSION_DENIED: The reseller account making
+        # the request is different from the reseller account in the API request. *
+        # NOT_FOUND: Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT:
+        # Required parameters are missing, or the auth_token is expired or invalid. *
+        # ALREADY_EXISTS: A customer already exists and has conflicting critical fields.
+        # Requires an overwrite. Return value: The Customer.
+        # @param [String] parent
+        #   Required. The resource name of the reseller's account. Parent takes the format:
+        #   accounts/`account_id` or accounts/`account_id`/channelPartnerLinks/`
+        #   channel_partner_id`
+        # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ImportCustomerRequest] google_cloud_channel_v1_import_customer_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_account_channel_partner_link_customer(parent, google_cloud_channel_v1_import_customer_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customers:import', options)
+          command.request_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ImportCustomerRequest::Representation
+          command.request_object = google_cloud_channel_v1_import_customer_request_object
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List Customers. Possible error codes: * PERMISSION_DENIED: The reseller
         # account making the request is different from the reseller account in the API
         # request. * INVALID_ARGUMENT: Required request parameters are missing or
@@ -793,6 +836,49 @@ module Google
           command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
           command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports a Customer from the Cloud Identity associated with the provided Cloud
+        # Identity ID or domain before a TransferEntitlements call. If a linked Customer
+        # already exists and overwrite_if_exists is true, it will update that Customer's
+        # data. Possible error codes: * PERMISSION_DENIED: The reseller account making
+        # the request is different from the reseller account in the API request. *
+        # NOT_FOUND: Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT:
+        # Required parameters are missing, or the auth_token is expired or invalid. *
+        # ALREADY_EXISTS: A customer already exists and has conflicting critical fields.
+        # Requires an overwrite. Return value: The Customer.
+        # @param [String] parent
+        #   Required. The resource name of the reseller's account. Parent takes the format:
+        #   accounts/`account_id` or accounts/`account_id`/channelPartnerLinks/`
+        #   channel_partner_id`
+        # @param [Google::Apis::CloudchannelV1::GoogleCloudChannelV1ImportCustomerRequest] google_cloud_channel_v1_import_customer_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_account_customer(parent, google_cloud_channel_v1_import_customer_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/customers:import', options)
+          command.request_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1ImportCustomerRequest::Representation
+          command.request_object = google_cloud_channel_v1_import_customer_request_object
+          command.response_representation = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer::Representation
+          command.response_class = Google::Apis::CloudchannelV1::GoogleCloudChannelV1Customer
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
