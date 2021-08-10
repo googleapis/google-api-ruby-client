@@ -4906,6 +4906,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShareSettingsFolderConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShieldedInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7248,7 +7254,6 @@ module Google
           property :name_pattern, as: 'namePattern'
           hash :per_instance_properties, as: 'perInstanceProperties', class: Google::Apis::ComputeAlpha::BulkInsertInstanceResourcePerInstanceProperties, decorator: Google::Apis::ComputeAlpha::BulkInsertInstanceResourcePerInstanceProperties::Representation
       
-          collection :secure_tags, as: 'secureTags'
           property :source_instance_template, as: 'sourceInstanceTemplate'
         end
       end
@@ -9241,6 +9246,7 @@ module Google
           hash :labels, as: 'labels'
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
+          property :locked, as: 'locked'
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeAlpha::Image::RawDisk, decorator: Google::Apis::ComputeAlpha::Image::RawDisk::Representation
       
@@ -10735,8 +10741,6 @@ module Google
           collection :links, as: 'links', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkStatus, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkStatus::Representation
       
           property :mac_address, as: 'macAddress'
-          property :macsec, as: 'macsec', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsMacsecStatus, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsMacsecStatus::Representation
-      
         end
       end
       
@@ -10774,6 +10778,8 @@ module Google
           property :google_demarc, as: 'googleDemarc'
           property :lacp_status, as: 'lacpStatus', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkLacpStatus, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkLacpStatus::Representation
       
+          property :macsec, as: 'macsec', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsMacsecStatus, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsMacsecStatus::Representation
+      
           property :receiving_optical_power, as: 'receivingOpticalPower', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkOpticalPower::Representation
       
           property :transmitting_optical_power, as: 'transmittingOpticalPower', class: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkOpticalPower, decorator: Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkOpticalPower::Representation
@@ -10785,7 +10791,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ckn, as: 'ckn'
-          property :state, as: 'state'
+          property :operational, as: 'operational'
         end
       end
       
@@ -13195,6 +13201,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :organization, as: 'organization'
+          property :return_partial_page, as: 'returnPartialPage'
         end
       end
       
@@ -15402,8 +15409,17 @@ module Google
       class ShareSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :folder_map, as: 'folderMap', class: Google::Apis::ComputeAlpha::ShareSettingsFolderConfig, decorator: Google::Apis::ComputeAlpha::ShareSettingsFolderConfig::Representation
+      
           collection :projects, as: 'projects'
           property :share_type, as: 'shareType'
+        end
+      end
+      
+      class ShareSettingsFolderConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :folder_id, as: 'folderId'
         end
       end
       
@@ -17303,6 +17319,7 @@ module Google
           property :network, as: 'network'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :stack_type, as: 'stackType'
           collection :vpn_interfaces, as: 'vpnInterfaces', class: Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface, decorator: Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface::Representation
       
         end

@@ -2673,7 +2673,12 @@ module Google
       
         # Specifies how to determine whether the backend of a load balancer can handle
         # additional traffic or is fully loaded. For usage guidelines, see Connection
-        # balancing mode.
+        # balancing mode. Backends must use compatible balancing modes. For more
+        # information, see Restrictions and guidelines. Note: Currently, if you use the
+        # API to configure incompatible balancing modes, the configuration might be
+        # accepted even though it has no impact and will be ignored. Specifically,
+        # Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the
+        # future, this incompatible combination will be rejected.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
@@ -2754,7 +2759,9 @@ module Google
         # @return [Float]
         attr_accessor :max_rate_per_instance
       
-        # 
+        # Optional parameter to define a target capacity for the UTILIZATIONbalancing
+        # mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization
+        # balancing mode.
         # Corresponds to the JSON property `maxUtilization`
         # @return [Float]
         attr_accessor :max_utilization
@@ -4804,13 +4811,6 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::BulkInsertInstanceResourcePerInstanceProperties>]
         attr_accessor :per_instance_properties
       
-        # DEPRECATED: Please use instance_properties.secure_tag instead. Secure tags to
-        # apply to this instance. These can be later modified by the update method.
-        # Maximum number of secure tags allowed is 50.
-        # Corresponds to the JSON property `secureTags`
-        # @return [Array<String>]
-        attr_accessor :secure_tags
-      
         # Specifies the instance template from which to create instances. You may
         # combine sourceInstanceTemplate with instanceProperties to override specific
         # values from an existing instance template. Bulk API follows the semantics of
@@ -4836,7 +4836,6 @@ module Google
           @min_count = args[:min_count] if args.key?(:min_count)
           @name_pattern = args[:name_pattern] if args.key?(:name_pattern)
           @per_instance_properties = args[:per_instance_properties] if args.key?(:per_instance_properties)
-          @secure_tags = args[:secure_tags] if args.key?(:secure_tags)
           @source_instance_template = args[:source_instance_template] if args.key?(:source_instance_template)
         end
       end
@@ -7915,7 +7914,7 @@ module Google
       
         # If destination ranges are specified, the firewall rule applies only to traffic
         # that has destination IP address in these ranges. These ranges must be
-        # expressed in CIDR format. Only IPv4 is supported.
+        # expressed in CIDR format. Both IPv4 and IPv6 are supported.
         # Corresponds to the JSON property `destinationRanges`
         # @return [Array<String>]
         attr_accessor :destination_ranges
@@ -8008,7 +8007,7 @@ module Google
         # fields are set, the rule applies to traffic that has a source IP address
         # within sourceRanges OR a source IP from a resource with a matching tag listed
         # in the sourceTags field. The connection does not need to match both fields for
-        # the rule to apply. Only IPv4 is supported.
+        # the rule to apply. Both IPv4 and IPv6 are supported.
         # Corresponds to the JSON property `sourceRanges`
         # @return [Array<String>]
         attr_accessor :source_ranges
@@ -13285,6 +13284,24 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
+        # A flag for marketplace VM disk created from the image, which is designed for
+        # marketplace VM disk to prevent the proprietary data on the disk from being
+        # accessed unwantedly. The flag will be inherited by the disk created from the
+        # image. The disk with locked flag set to true will be prohibited from
+        # performing the operations below: - R/W or R/O disk attach - Disk detach, if
+        # disk is created via create-on-create - Create images - Create snapshots -
+        # Create disk clone (create disk from the current disk) The image with the
+        # locked field set to true will be prohibited from performing the operations
+        # below: - Create images from the current image - Update the locked field for
+        # the current image The instance with at least one disk with locked flag set to
+        # true will be prohibited from performing the operations below: - Secondary disk
+        # attach - Create instant snapshot - Create machine images - Create instance
+        # template - Delete the instance with --keep-disk parameter set to true
+        # Corresponds to the JSON property `locked`
+        # @return [Boolean]
+        attr_accessor :locked
+        alias_method :locked?, :locked
+      
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -13350,10 +13367,12 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
-        # URL of the source image used to create this image. In order to create an image,
-        # you must provide the full or partial URL of one of the following: - The
-        # rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The
-        # sourceSnapshot URL
+        # URL of the source image used to create this image. The following are valid
+        # formats for the URL: - https://www.googleapis.com/compute/v1/projects/
+        # project_id/global/ images/image_name - projects/project_id/global/images/
+        # image_name In order to create an image, you must provide the full or partial
+        # URL of one of the following: - The rawDisk.source URL - The sourceDisk URL -
+        # The sourceImage URL - The sourceSnapshot URL
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -13371,10 +13390,12 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
-        # URL of the source snapshot used to create this image. In order to create an
-        # image, you must provide the full or partial URL of one of the following: - The
-        # rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The
-        # sourceSnapshot URL
+        # URL of the source snapshot used to create this image. The following are valid
+        # formats for the URL: - https://www.googleapis.com/compute/v1/projects/
+        # project_id/global/ snapshots/snapshot_name - projects/project_id/global/
+        # snapshots/snapshot_name In order to create an image, you must provide the full
+        # or partial URL of one of the following: - The rawDisk.source URL - The
+        # sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -13441,6 +13462,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
+          @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
           @raw_disk = args[:raw_disk] if args.key?(:raw_disk)
           @rollout_override = args[:rollout_override] if args.key?(:rollout_override)
@@ -13480,10 +13502,12 @@ module Google
           # @return [String]
           attr_accessor :sha1_checksum
         
-          # The full Google Cloud Storage URL where the disk image is stored. In order to
-          # create an image, you must provide the full or partial URL of one of the
-          # following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL
-          # - The sourceSnapshot URL
+          # The full Google Cloud Storage URL where the raw disk image archive is stored.
+          # The following are valid formats for the URL: - https://storage.googleapis.com/
+          # bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/
+          # folder_name/ image_archive_name In order to create an image, you must provide
+          # the full or partial URL of one of the following: - The rawDisk.source URL -
+          # The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
           # Corresponds to the JSON property `source`
           # @return [String]
           attr_accessor :source
@@ -19366,11 +19390,6 @@ module Google
         # @return [String]
         attr_accessor :mac_address
       
-        # Describes the status of MACsec encryption on the link.
-        # Corresponds to the JSON property `macsec`
-        # @return [Google::Apis::ComputeAlpha::InterconnectDiagnosticsMacsecStatus]
-        attr_accessor :macsec
-      
         def initialize(**args)
            update!(**args)
         end
@@ -19380,7 +19399,6 @@ module Google
           @arp_caches = args[:arp_caches] if args.key?(:arp_caches)
           @links = args[:links] if args.key?(:links)
           @mac_address = args[:mac_address] if args.key?(:mac_address)
-          @macsec = args[:macsec] if args.key?(:macsec)
         end
       end
       
@@ -19502,6 +19520,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::InterconnectDiagnosticsLinkLacpStatus]
         attr_accessor :lacp_status
       
+        # Describes the status of MACsec encryption on the link.
+        # Corresponds to the JSON property `macsec`
+        # @return [Google::Apis::ComputeAlpha::InterconnectDiagnosticsMacsecStatus]
+        attr_accessor :macsec
+      
         # An InterconnectDiagnostics.LinkOpticalPower object, describing the current
         # value and status of the received light level.
         # Corresponds to the JSON property `receivingOpticalPower`
@@ -19524,6 +19547,7 @@ module Google
           @circuit_id = args[:circuit_id] if args.key?(:circuit_id)
           @google_demarc = args[:google_demarc] if args.key?(:google_demarc)
           @lacp_status = args[:lacp_status] if args.key?(:lacp_status)
+          @macsec = args[:macsec] if args.key?(:macsec)
           @receiving_optical_power = args[:receiving_optical_power] if args.key?(:receiving_optical_power)
           @transmitting_optical_power = args[:transmitting_optical_power] if args.key?(:transmitting_optical_power)
         end
@@ -19539,18 +19563,11 @@ module Google
         # @return [String]
         attr_accessor :ckn
       
-        # The current state of MACsec configuration on this Interconnect, which can take
-        # one of the following values: - INITIALIZED: MACsec has been configured on the
-        # bundle interface. The Google edge router is waiting to establish a MACsec
-        # session with the customer router on the other side of this Interconnect. In
-        # addition, when key rollover fails between the two routers, the bundle
-        # interface will return to the initialized state. - SECURED: MACsec session has
-        # been successfully established between the Google edge router and the customer
-        # router. - FAILED: MACsec configuration on the bundle interface encountered an
-        # error. - DISABLED: MACsec is explicitly disabled on this Interconnect.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
+        # Indicates whether or not MACsec is operational on this link.
+        # Corresponds to the JSON property `operational`
+        # @return [Boolean]
+        attr_accessor :operational
+        alias_method :operational?, :operational
       
         def initialize(**args)
            update!(**args)
@@ -19559,7 +19576,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ckn = args[:ckn] if args.key?(:ckn)
-          @state = args[:state] if args.key?(:state)
+          @operational = args[:operational] if args.key?(:operational)
         end
       end
       
@@ -24150,9 +24167,8 @@ module Google
         alias_method :export_custom_routes?, :export_custom_routes
       
         # Whether subnet routes with public IP range are exported. The default value is
-        # true, all subnet routes are exported. The IPv4 special-use ranges (https://en.
-        # wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and
-        # are not controlled by this field.
+        # true, all subnet routes are exported. IPv4 special-use ranges are always
+        # exported to peers and are not controlled by this field.
         # Corresponds to the JSON property `exportSubnetRoutesWithPublicIp`
         # @return [Boolean]
         attr_accessor :export_subnet_routes_with_public_ip
@@ -24165,9 +24181,8 @@ module Google
         alias_method :import_custom_routes?, :import_custom_routes
       
         # Whether subnet routes with public IP range are imported. The default value is
-        # false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#
-        # Special_addresses) are always imported from peers and are not controlled by
-        # this field.
+        # false. IPv4 special-use ranges are always imported from peers and are not
+        # controlled by this field.
         # Corresponds to the JSON property `importSubnetRoutesWithPublicIp`
         # @return [Boolean]
         attr_accessor :import_subnet_routes_with_public_ip
@@ -24481,7 +24496,7 @@ module Google
         end
       end
       
-      # Represent a sole-tenant Node Group resource. A sole-tenant node is a physical
+      # Represents a sole-tenant Node Group resource. A sole-tenant node is a physical
       # server that is dedicated to hosting VM instances only for your specific
       # project. Use sole-tenant nodes to keep your instances physically separated
       # from instances in other projects, or to group your instances together on the
@@ -28971,6 +28986,16 @@ module Google
         # @return [String]
         attr_accessor :organization
       
+        # Opt-in for partial page behavior which provides a partial filled page (number
+        # of items on which may be smaller than maxResults) within the API deadline. If
+        # opt-in, then the user should rely on if nextPageToken is empty in the response
+        # to determine if there is a next page. Empty page is also valid and possible.
+        # The default value is false.
+        # Corresponds to the JSON property `returnPartialPage`
+        # @return [Boolean]
+        attr_accessor :return_partial_page
+        alias_method :return_partial_page?, :return_partial_page
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28978,6 +29003,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @organization = args[:organization] if args.key?(:organization)
+          @return_partial_page = args[:return_partial_page] if args.key?(:return_partial_page)
         end
       end
       
@@ -34605,9 +34631,11 @@ module Google
       
         # CEL expression that specifies the match condition that egress traffic from a
         # VM is evaluated against. If it evaluates to true, the corresponding `action`
-        # is enforced. The following examples are valid match expressions: "inIpRange(
-        # destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')" "
-        # destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+        # is enforced. The following examples are valid match expressions for public NAT:
+        # "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.
+        # 0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The
+        # following example is a valid match expression for private NAT: "nexthop.hub ==
+        # '/projects/my-project/global/hub/hub-1'"
         # Corresponds to the JSON property `match`
         # @return [String]
         attr_accessor :match
@@ -34637,14 +34665,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of URLs of the IP resources used for this NAT rule. These IP addresses
-        # must be valid static external IP addresses assigned to the project.
+        # must be valid static external IP addresses assigned to the project. This field
+        # is used for public NAT.
         # Corresponds to the JSON property `sourceNatActiveIps`
         # @return [Array<String>]
         attr_accessor :source_nat_active_ips
       
         # A list of URLs of the IP resources to be drained. These IPs must be valid
         # static external IPs that have been assigned to the NAT. These IPs should be
-        # used for updating/patching a NAT rule only.
+        # used for updating/patching a NAT rule only. This field is used for public NAT.
         # Corresponds to the JSON property `sourceNatDrainIps`
         # @return [Array<String>]
         attr_accessor :source_nat_drain_ips
@@ -37506,6 +37535,13 @@ module Google
       class ShareSettings
         include Google::Apis::Core::Hashable
       
+        # A map of folder id and folder config to specify consumer projects for this
+        # shared-reservation. This is only valid when share_type's value is
+        # DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS.
+        # Corresponds to the JSON property `folderMap`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::ShareSettingsFolderConfig>]
+        attr_accessor :folder_map
+      
         # A List of Project names to specify consumer projects for this shared-
         # reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         # Corresponds to the JSON property `projects`
@@ -37523,8 +37559,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @folder_map = args[:folder_map] if args.key?(:folder_map)
           @projects = args[:projects] if args.key?(:projects)
           @share_type = args[:share_type] if args.key?(:share_type)
+        end
+      end
+      
+      # Config for each folder in the share settings.
+      class ShareSettingsFolderConfig
+        include Google::Apis::Core::Hashable
+      
+        # The folder ID, should be same as the key of this folder config in the parent
+        # map.
+        # Corresponds to the JSON property `folderId`
+        # @return [String]
+        attr_accessor :folder_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder_id = args[:folder_id] if args.key?(:folder_id)
         end
       end
       
@@ -45146,6 +45203,12 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The stack type for this VPN gateway to identify the IP protocols that are
+        # enabled. If not specified, IPV4_ONLY will be used.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
         # The list of VPN interfaces associated with this VPN gateway.
         # Corresponds to the JSON property `vpnInterfaces`
         # @return [Array<Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface>]
@@ -45167,6 +45230,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @vpn_interfaces = args[:vpn_interfaces] if args.key?(:vpn_interfaces)
         end
       end
