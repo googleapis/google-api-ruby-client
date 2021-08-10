@@ -22,6 +22,77 @@ module Google
   module Apis
     module CloudbuildV1beta1
       
+      # ApprovalConfig describes configuration for manual approval of a build.
+      class ApprovalConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not approval is needed. If this is set on a build, it will become
+        # pending when created, and will need to be explicitly approved to start.
+        # Corresponds to the JSON property `approvalRequired`
+        # @return [Boolean]
+        attr_accessor :approval_required
+        alias_method :approval_required?, :approval_required
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_required = args[:approval_required] if args.key?(:approval_required)
+        end
+      end
+      
+      # ApprovalResult describes the decision and associated metadata of a manual
+      # approval of a build.
+      class ApprovalResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the approval decision was made.
+        # Corresponds to the JSON property `approvalTime`
+        # @return [String]
+        attr_accessor :approval_time
+      
+        # Output only. Email of the user that called the ApproveBuild API to approve or
+        # reject a build at the time that the API was called (the user's actual email
+        # that is tied to their GAIA ID may have changed). This field is not stored,
+        # rather, it is calculated on the fly using approver_id.
+        # Corresponds to the JSON property `approverAccount`
+        # @return [String]
+        attr_accessor :approver_account
+      
+        # Optional. An optional comment for this manual approval result.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Required. The decision of this manual approval.
+        # Corresponds to the JSON property `decision`
+        # @return [String]
+        attr_accessor :decision
+      
+        # Optional. An optional URL tied to this manual approval result. This field is
+        # essentially the same as comment, except that it will be rendered by the UI
+        # differently. An example use case is a link to an external job that approved
+        # this Build.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_time = args[:approval_time] if args.key?(:approval_time)
+          @approver_account = args[:approver_account] if args.key?(:approver_account)
+          @comment = args[:comment] if args.key?(:comment)
+          @decision = args[:decision] if args.key?(:decision)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Files in the workspace to upload to Cloud Storage upon successful completion
       # of all build steps.
       class ArtifactObjects
@@ -128,6 +199,11 @@ module Google
       # characters of $REVISION_ID or $COMMIT_SHA.
       class Build
         include Google::Apis::Core::Hashable
+      
+        # BuildApproval describes a build's approval configuration, state, and result.
+        # Corresponds to the JSON property `approval`
+        # @return [Google::Apis::CloudbuildV1beta1::BuildApproval]
+        attr_accessor :approval
       
         # Artifacts produced by a build that should be uploaded upon successful
         # completion of all build steps.
@@ -302,6 +378,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approval = args[:approval] if args.key?(:approval)
           @artifacts = args[:artifacts] if args.key?(:artifacts)
           @available_secrets = args[:available_secrets] if args.key?(:available_secrets)
           @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
@@ -330,6 +407,38 @@ module Google
           @timeout = args[:timeout] if args.key?(:timeout)
           @timing = args[:timing] if args.key?(:timing)
           @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # BuildApproval describes a build's approval configuration, state, and result.
+      class BuildApproval
+        include Google::Apis::Core::Hashable
+      
+        # ApprovalConfig describes configuration for manual approval of a build.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::CloudbuildV1beta1::ApprovalConfig]
+        attr_accessor :config
+      
+        # ApprovalResult describes the decision and associated metadata of a manual
+        # approval of a build.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::CloudbuildV1beta1::ApprovalResult]
+        attr_accessor :result
+      
+        # Output only. The state of this build's approval.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @result = args[:result] if args.key?(:result)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -540,6 +649,12 @@ module Google
         # @return [Google::Apis::CloudbuildV1beta1::TimeSpan]
         attr_accessor :pull_timing
       
+        # A shell script to be executed in the step. When script is provided, the user
+        # cannot specify the entrypoint or args.
+        # Corresponds to the JSON property `script`
+        # @return [String]
+        attr_accessor :script
+      
         # A list of environment variables which are encrypted using a Cloud Key
         # Management Service crypto key. These values must be specified in the build's `
         # Secret`.
@@ -596,6 +711,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @status = args[:status] if args.key?(:status)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -1283,7 +1399,7 @@ module Google
         attr_accessor :api_version
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
+        # operation. Operations that have been cancelled successfully have Operation.
         # error value with a google.rpc.Status.code of 1, corresponding to `Code.
         # CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
