@@ -1651,7 +1651,7 @@ module Google
       class BusinessDayConfig
         include Google::Apis::Core::Hashable
       
-        # Regular business days. May not be empty.
+        # Regular business days, such as '"monday"'. May not be empty.
         # Corresponds to the JSON property `businessDays`
         # @return [Array<String>]
         attr_accessor :business_days
@@ -11094,8 +11094,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Product]
         attr_accessor :product
       
-        # The ID of the product to get or delete. Only defined if the method is `get` or
-        # `delete`.
+        # The ID of the product to mutate. Only defined if the method is `get`, `delete`,
+        # or `update`. or `delete`.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
