@@ -5556,8 +5556,7 @@ module Google
         # Searches for targeting options of a given type based on the given search terms.
         # @param [String] targeting_type
         #   Required. The type of targeting options to retrieve. Accepted values are: * `
-        #   TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_POI` * `
-        #   TARGETING_TYPE_BUSINESS_CHAIN`
+        #   TARGETING_TYPE_GEO_REGION`
         # @param [Google::Apis::DisplayvideoV1::SearchTargetingOptionsRequest] search_targeting_options_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

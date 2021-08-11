@@ -735,13 +735,6 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::BrowserAssignedTargetingOptionDetails]
         attr_accessor :browser_details
       
-        # Details for assigned Business chain targeting option. This will be populated
-        # in the details field of an AssignedTargetingOption when targeting_type is `
-        # TARGETING_TYPE_BUSINESS_CHAIN`.
-        # Corresponds to the JSON property `businessChainDetails`
-        # @return [Google::Apis::DisplayvideoV1::BusinessChainAssignedTargetingOptionDetails]
-        attr_accessor :business_chain_details
-      
         # Details for assigned carrier and ISP targeting option. This will be populated
         # in the details field of an AssignedTargetingOption when targeting_type is `
         # TARGETING_TYPE_CARRIER_AND_ISP`.
@@ -921,13 +914,6 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::ParentalStatusAssignedTargetingOptionDetails]
         attr_accessor :parental_status_details
       
-        # Details for assigned POI targeting option. This will be populated in the
-        # details field of an AssignedTargetingOption when targeting_type is `
-        # TARGETING_TYPE_POI`.
-        # Corresponds to the JSON property `poiDetails`
-        # @return [Google::Apis::DisplayvideoV1::PoiAssignedTargetingOptionDetails]
-        attr_accessor :poi_details
-      
         # Targeting details for proximity location list. This will be populated in the
         # details field of an AssignedTargetingOption when targeting_type is `
         # TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
@@ -1011,7 +997,6 @@ module Google
           @audience_group_details = args[:audience_group_details] if args.key?(:audience_group_details)
           @authorized_seller_status_details = args[:authorized_seller_status_details] if args.key?(:authorized_seller_status_details)
           @browser_details = args[:browser_details] if args.key?(:browser_details)
-          @business_chain_details = args[:business_chain_details] if args.key?(:business_chain_details)
           @carrier_and_isp_details = args[:carrier_and_isp_details] if args.key?(:carrier_and_isp_details)
           @category_details = args[:category_details] if args.key?(:category_details)
           @channel_details = args[:channel_details] if args.key?(:channel_details)
@@ -1038,7 +1023,6 @@ module Google
           @on_screen_position_details = args[:on_screen_position_details] if args.key?(:on_screen_position_details)
           @operating_system_details = args[:operating_system_details] if args.key?(:operating_system_details)
           @parental_status_details = args[:parental_status_details] if args.key?(:parental_status_details)
-          @poi_details = args[:poi_details] if args.key?(:poi_details)
           @proximity_location_list_details = args[:proximity_location_list_details] if args.key?(:proximity_location_list_details)
           @regional_location_list_details = args[:regional_location_list_details] if args.key?(:regional_location_list_details)
           @sensitive_category_exclusion_details = args[:sensitive_category_exclusion_details] if args.key?(:sensitive_category_exclusion_details)
@@ -1970,111 +1954,6 @@ module Google
         def update!(**args)
           @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Details for assigned Business chain targeting option. This will be populated
-      # in the details field of an AssignedTargetingOption when targeting_type is `
-      # TARGETING_TYPE_BUSINESS_CHAIN`.
-      class BusinessChainAssignedTargetingOptionDetails
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The display name of a business chain, e.g. "KFC", "Chase Bank".
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Required. The radius of the area around the business chain that will be
-        # targeted. The units of the radius are specified by proximity_radius_unit. Must
-        # be 1 to 800 if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500 if unit is `
-        # DISTANCE_UNIT_MILES`. The minimum increment for both cases is 0.1. Inputs will
-        # be rounded to the nearest acceptable value if it is too granular, e.g. 15.57
-        # will become 15.6.
-        # Corresponds to the JSON property `proximityRadiusAmount`
-        # @return [Float]
-        attr_accessor :proximity_radius_amount
-      
-        # Required. The unit of distance by which the targeting radius is measured.
-        # Corresponds to the JSON property `proximityRadiusUnit`
-        # @return [String]
-        attr_accessor :proximity_radius_unit
-      
-        # Required. The targeting_option_id of a TargetingOption of type `
-        # TARGETING_TYPE_BUSINESS_CHAIN`.
-        # Corresponds to the JSON property `targetingOptionId`
-        # @return [String]
-        attr_accessor :targeting_option_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @proximity_radius_amount = args[:proximity_radius_amount] if args.key?(:proximity_radius_amount)
-          @proximity_radius_unit = args[:proximity_radius_unit] if args.key?(:proximity_radius_unit)
-          @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
-        end
-      end
-      
-      # Search terms for Business Chain targeting options. At least one of the field
-      # should be populated.
-      class BusinessChainSearchTerms
-        include Google::Apis::Core::Hashable
-      
-        # The search query for the desired business chain. The query can be a prefix, e.
-        # g. "KFC", "mercede".
-        # Corresponds to the JSON property `businessChain`
-        # @return [String]
-        attr_accessor :business_chain
-      
-        # The search query for the desired geo region, e.g. "Seattle", "United State".
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @business_chain = args[:business_chain] if args.key?(:business_chain)
-          @region = args[:region] if args.key?(:region)
-        end
-      end
-      
-      # Represents a targetable business chain within a geo region. This will be
-      # populated in the business_chain_details field when targeting_type is `
-      # TARGETING_TYPE_BUSINESS_CHAIN`.
-      class BusinessChainTargetingOptionDetails
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The display name of the business chain, e.g. "KFC", "Chase Bank".
-        # Corresponds to the JSON property `businessChain`
-        # @return [String]
-        attr_accessor :business_chain
-      
-        # Output only. The display name of the geographic region, e.g. "Ontario, Canada".
-        # Corresponds to the JSON property `geoRegion`
-        # @return [String]
-        attr_accessor :geo_region
-      
-        # Output only. The type of the geographic region.
-        # Corresponds to the JSON property `geoRegionType`
-        # @return [String]
-        attr_accessor :geo_region_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @business_chain = args[:business_chain] if args.key?(:business_chain)
-          @geo_region = args[:geo_region] if args.key?(:geo_region)
-          @geo_region_type = args[:geo_region_type] if args.key?(:geo_region_type)
         end
       end
       
@@ -8136,114 +8015,6 @@ module Google
         end
       end
       
-      # Details for assigned POI targeting option. This will be populated in the
-      # details field of an AssignedTargetingOption when targeting_type is `
-      # TARGETING_TYPE_POI`.
-      class PoiAssignedTargetingOptionDetails
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The display name of a POI, e.g. "Times Square", "Space Needle".
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. Latitude of the POI rounding to 6th decimal place.
-        # Corresponds to the JSON property `latitude`
-        # @return [Float]
-        attr_accessor :latitude
-      
-        # Output only. Longitude of the POI rounding to 6th decimal place.
-        # Corresponds to the JSON property `longitude`
-        # @return [Float]
-        attr_accessor :longitude
-      
-        # Required. The radius of the area around the POI that will be targeted. The
-        # units of the radius are specified by proximity_radius_unit. Must be 1 to 800
-        # if unit is `DISTANCE_UNIT_KILOMETERS` and 1 to 500 if unit is `
-        # DISTANCE_UNIT_MILES`.
-        # Corresponds to the JSON property `proximityRadiusAmount`
-        # @return [Float]
-        attr_accessor :proximity_radius_amount
-      
-        # Required. The unit of distance by which the targeting radius is measured.
-        # Corresponds to the JSON property `proximityRadiusUnit`
-        # @return [String]
-        attr_accessor :proximity_radius_unit
-      
-        # Input only. The targeting_option_id of a TargetingOption of type `
-        # TARGETING_TYPE_POI`.
-        # Corresponds to the JSON property `targetingOptionId`
-        # @return [String]
-        attr_accessor :targeting_option_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @latitude = args[:latitude] if args.key?(:latitude)
-          @longitude = args[:longitude] if args.key?(:longitude)
-          @proximity_radius_amount = args[:proximity_radius_amount] if args.key?(:proximity_radius_amount)
-          @proximity_radius_unit = args[:proximity_radius_unit] if args.key?(:proximity_radius_unit)
-          @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
-        end
-      end
-      
-      # Search terms for POI targeting options.
-      class PoiSearchTerms
-        include Google::Apis::Core::Hashable
-      
-        # The search query for the desired POI name, street address, or coordinate of
-        # the desired POI. The query can be a prefix, e.g. "Times squar", "40.7505045,-
-        # 73.99562", "315 W 44th St", etc.
-        # Corresponds to the JSON property `poiQuery`
-        # @return [String]
-        attr_accessor :poi_query
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @poi_query = args[:poi_query] if args.key?(:poi_query)
-        end
-      end
-      
-      # Represents a targetable point of interest(POI). This will be populated in the
-      # poi_details field when targeting_type is `TARGETING_TYPE_POI`.
-      class PoiTargetingOptionDetails
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The display name of a POI, e.g. "Times Square", "Space Needle".
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. Latitude of the POI rounding to 6th decimal place.
-        # Corresponds to the JSON property `latitude`
-        # @return [Float]
-        attr_accessor :latitude
-      
-        # Output only. Longitude of the POI rounding to 6th decimal place.
-        # Corresponds to the JSON property `longitude`
-        # @return [Float]
-        attr_accessor :longitude
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @latitude = args[:latitude] if args.key?(:latitude)
-          @longitude = args[:longitude] if args.key?(:longitude)
-        end
-      end
-      
       # Settings specific to the Mediaocean Prisma tool.
       class PrismaConfig
         include Google::Apis::Core::Hashable
@@ -8660,12 +8431,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # Search terms for Business Chain targeting options. At least one of the field
-        # should be populated.
-        # Corresponds to the JSON property `businessChainSearchTerms`
-        # @return [Google::Apis::DisplayvideoV1::BusinessChainSearchTerms]
-        attr_accessor :business_chain_search_terms
-      
         # Search terms for geo region targeting options.
         # Corresponds to the JSON property `geoRegionSearchTerms`
         # @return [Google::Apis::DisplayvideoV1::GeoRegionSearchTerms]
@@ -8686,11 +8451,6 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
-        # Search terms for POI targeting options.
-        # Corresponds to the JSON property `poiSearchTerms`
-        # @return [Google::Apis::DisplayvideoV1::PoiSearchTerms]
-        attr_accessor :poi_search_terms
-      
         def initialize(**args)
            update!(**args)
         end
@@ -8698,15 +8458,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
-          @business_chain_search_terms = args[:business_chain_search_terms] if args.key?(:business_chain_search_terms)
           @geo_region_search_terms = args[:geo_region_search_terms] if args.key?(:geo_region_search_terms)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
-          @poi_search_terms = args[:poi_search_terms] if args.key?(:poi_search_terms)
         end
       end
       
-      # Response message for SearchTargetingOptionsResponse.
+      # Response message for SearchTargetingOptions.
       class SearchTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -8953,13 +8711,6 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::BrowserTargetingOptionDetails]
         attr_accessor :browser_details
       
-        # Represents a targetable business chain within a geo region. This will be
-        # populated in the business_chain_details field when targeting_type is `
-        # TARGETING_TYPE_BUSINESS_CHAIN`.
-        # Corresponds to the JSON property `businessChainDetails`
-        # @return [Google::Apis::DisplayvideoV1::BusinessChainTargetingOptionDetails]
-        attr_accessor :business_chain_details
-      
         # Represents a targetable carrier or ISP. This will be populated in the
         # carrier_and_isp_details field of a TargetingOption when targeting_type is `
         # TARGETING_TYPE_CARRIER_AND_ISP`.
@@ -9090,12 +8841,6 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::ParentalStatusTargetingOptionDetails]
         attr_accessor :parental_status_details
       
-        # Represents a targetable point of interest(POI). This will be populated in the
-        # poi_details field when targeting_type is `TARGETING_TYPE_POI`.
-        # Corresponds to the JSON property `poiDetails`
-        # @return [Google::Apis::DisplayvideoV1::PoiTargetingOptionDetails]
-        attr_accessor :poi_details
-      
         # Represents a targetable sensitive category. This will be populated in the
         # sensitive_category_details field of the TargetingOption when targeting_type is
         # `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
@@ -9152,7 +8897,6 @@ module Google
           @app_category_details = args[:app_category_details] if args.key?(:app_category_details)
           @authorized_seller_status_details = args[:authorized_seller_status_details] if args.key?(:authorized_seller_status_details)
           @browser_details = args[:browser_details] if args.key?(:browser_details)
-          @business_chain_details = args[:business_chain_details] if args.key?(:business_chain_details)
           @carrier_and_isp_details = args[:carrier_and_isp_details] if args.key?(:carrier_and_isp_details)
           @category_details = args[:category_details] if args.key?(:category_details)
           @content_instream_position_details = args[:content_instream_position_details] if args.key?(:content_instream_position_details)
@@ -9172,7 +8916,6 @@ module Google
           @on_screen_position_details = args[:on_screen_position_details] if args.key?(:on_screen_position_details)
           @operating_system_details = args[:operating_system_details] if args.key?(:operating_system_details)
           @parental_status_details = args[:parental_status_details] if args.key?(:parental_status_details)
-          @poi_details = args[:poi_details] if args.key?(:poi_details)
           @sensitive_category_details = args[:sensitive_category_details] if args.key?(:sensitive_category_details)
           @sub_exchange_details = args[:sub_exchange_details] if args.key?(:sub_exchange_details)
           @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
