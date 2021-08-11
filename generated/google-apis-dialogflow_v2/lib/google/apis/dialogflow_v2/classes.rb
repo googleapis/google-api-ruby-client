@@ -7636,8 +7636,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :events
       
-        # Read-only. Information about all followup intents that have this intent as a
-        # direct or indirect parent. We populate this field only in the output.
+        # Output only. Read-only. Information about all followup intents that have this
+        # intent as a direct or indirect parent. We populate this field only in the
+        # output.
         # Corresponds to the JSON property `followupIntentInfo`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2IntentFollowupIntentInfo>]
         attr_accessor :followup_intent_info
@@ -7722,9 +7723,10 @@ module Google
         attr_accessor :reset_contexts
         alias_method :reset_contexts?, :reset_contexts
       
-        # Read-only. The unique identifier of the root intent in the chain of followup
-        # intents. It identifies the correct followup intents chain for this intent. We
-        # populate this field only in the output. Format: `projects//agent/intents/`.
+        # Output only. Read-only. The unique identifier of the root intent in the chain
+        # of followup intents. It identifies the correct followup intents chain for this
+        # intent. We populate this field only in the output. Format: `projects//agent/
+        # intents/`.
         # Corresponds to the JSON property `rootFollowupIntentName`
         # @return [String]
         attr_accessor :root_followup_intent_name
@@ -13868,6 +13870,78 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # The response message for Locations.ListLocations.
+      class GoogleCloudLocationListLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of locations that matches the specified filter in the request.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudLocationLocation>]
+        attr_accessor :locations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A resource that represents Google Cloud Platform location.
+      class GoogleCloudLocationLocation
+        include Google::Apis::Core::Hashable
+      
+        # The friendly name for this location, typically a nearby city name. For example,
+        # "Tokyo".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Cross-service attributes for the location. For example `"cloud.googleapis.com/
+        # region": "us-east1"`
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The canonical id for this location. For example: `"us-east1"`.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        # Service-specific metadata. For example the available capacity at the given
+        # location.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Resource name for the location, which may vary between implementations. For
+        # example: `"projects/example-project/locations/us-east1"`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @location_id = args[:location_id] if args.key?(:location_id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
