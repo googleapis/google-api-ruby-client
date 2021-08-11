@@ -65,12 +65,12 @@ module Google
       class GoogleCloudPolicyanalyzerV1ObservationPeriod
         include Google::Apis::Core::Hashable
       
-        # The observation end time.
+        # The observation end time. The time in this timestamp is always `07:00:00Z`.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The observation start time.
+        # The observation start time. The time in this timestamp is always `07:00:00Z`.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
