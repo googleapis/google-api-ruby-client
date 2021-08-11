@@ -177,7 +177,9 @@ module Google
         end
       end
       
-      # The response to a request to create a batch of contacts.
+      # If not successful, returns BatchCreateContactsErrorDetails.contacts which
+      # contains a list of errors for each invalid contact. The response to a request
+      # to create a batch of contacts.
       class BatchCreateContactsResponse
         include Google::Apis::Core::Hashable
       
@@ -289,7 +291,9 @@ module Google
         end
       end
       
-      # The response to a request to create a batch of contacts.
+      # If not successful, returns BatchUpdateContactsErrorDetails.contacts, a list of
+      # errors corresponding to each contact. The response to a request to update a
+      # batch of contacts.
       class BatchUpdateContactsResponse
         include Google::Apis::Core::Hashable
       
