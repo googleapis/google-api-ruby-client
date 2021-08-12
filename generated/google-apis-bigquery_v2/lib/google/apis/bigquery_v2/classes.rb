@@ -1387,6 +1387,12 @@ module Google
         # @return [String]
         attr_accessor :field_delimiter
       
+        # [Optional] An custom string that will represent a NULL value in CSV import
+        # data.
+        # Corresponds to the JSON property `null_marker`
+        # @return [String]
+        attr_accessor :null_marker
+      
         # [Optional] The value that is used to quote data sections in a CSV file.
         # BigQuery converts the string to ISO-8859-1 encoding, and then uses the first
         # byte of the encoded string to split the data in its raw, binary state. The
@@ -1423,6 +1429,7 @@ module Google
           @allow_quoted_newlines = args[:allow_quoted_newlines] if args.key?(:allow_quoted_newlines)
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
+          @null_marker = args[:null_marker] if args.key?(:null_marker)
           @quote = args[:quote] if args.key?(:quote)
           @skip_leading_rows = args[:skip_leading_rows] if args.key?(:skip_leading_rows)
         end
@@ -1539,6 +1546,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # [Optional] Indicates if table names are case insensitive in the dataset.
+        # Corresponds to the JSON property `isCaseInsensitive`
+        # @return [Boolean]
+        attr_accessor :is_case_insensitive
+        alias_method :is_case_insensitive?, :is_case_insensitive
+      
         # [Output-only] The resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1591,6 +1604,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @id = args[:id] if args.key?(:id)
+          @is_case_insensitive = args[:is_case_insensitive] if args.key?(:is_case_insensitive)
           @kind = args[:kind] if args.key?(:kind)
           @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
@@ -6532,6 +6546,12 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableFieldSchema::Categories]
         attr_accessor :categories
       
+        # Optional. Collation specification of the field. It only can be set on string
+        # type field.
+        # Corresponds to the JSON property `collationSpec`
+        # @return [String]
+        attr_accessor :collation_spec
+      
         # [Optional] The field description. The maximum length is 1,024 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -6612,6 +6632,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @categories = args[:categories] if args.key?(:categories)
+          @collation_spec = args[:collation_spec] if args.key?(:collation_spec)
           @description = args[:description] if args.key?(:description)
           @fields = args[:fields] if args.key?(:fields)
           @max_length = args[:max_length] if args.key?(:max_length)
