@@ -2896,7 +2896,8 @@ module Google
       class PeeredDnsDomain
         include Google::Apis::Core::Hashable
       
-        # The DNS domain name suffix e.g. `example.com.`.
+        # The DNS domain name suffix e.g. `example.com.`. Cloud DNS requires that a DNS
+        # suffix ends with a trailing dot.
         # Corresponds to the JSON property `dnsSuffix`
         # @return [String]
         attr_accessor :dns_suffix
