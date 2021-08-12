@@ -190,7 +190,7 @@ module Google
         # metadata` as a BadRequest proto.
         # @param [String] name
         #   Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/`
-        #   policy_id``
+        #   access_policy``
         # @param [Google::Apis::AccesscontextmanagerV1::AccessPolicy] access_policy_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
@@ -382,8 +382,8 @@ module Google
         # @param [String] name
         #   Required. Resource name for the Access Level. The `short_name` component must
         #   begin with a letter and only include alphanumeric and '_'. Format: `
-        #   accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length of
-        #   the `short_name` component is 50 characters.
+        #   accessPolicies/`access_policy`/accessLevels/`access_level``. The maximum
+        #   length of the `access_level` component is 50 characters.
         # @param [Google::Apis::AccesscontextmanagerV1::AccessLevel] access_level_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
@@ -649,7 +649,7 @@ module Google
         # @param [String] name
         #   Required. Resource name for the ServicePerimeter. The `short_name` component
         #   must begin with a letter and only include alphanumeric and '_'. Format: `
-        #   accessPolicies/`policy_id`/servicePerimeters/`short_name``
+        #   accessPolicies/`access_policy`/servicePerimeters/`service_perimeter``
         # @param [Google::Apis::AccesscontextmanagerV1::ServicePerimeter] service_perimeter_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.

@@ -22,6 +22,12 @@ module Google
   module Apis
     module AccesscontextmanagerV1
       
+      class AccessContextManagerOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessLevel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class GcpUserAccessBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcpUserAccessBindingOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -236,6 +248,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessContextManagerOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class AccessLevel
@@ -383,6 +401,12 @@ module Google
           collection :access_levels, as: 'accessLevels'
           property :group_key, as: 'groupKey'
           property :name, as: 'name'
+        end
+      end
+      
+      class GcpUserAccessBindingOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
