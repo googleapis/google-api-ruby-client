@@ -2512,6 +2512,11 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
+        # Configuration of gVNIC feature.
+        # Corresponds to the JSON property `gvnic`
+        # @return [Google::Apis::ContainerV1::VirtualNic]
+        attr_accessor :gvnic
+      
         # The image type to use for this node. Note that for a given image type, the
         # latest version of it will be used.
         # Corresponds to the JSON property `imageType`
@@ -2666,6 +2671,7 @@ module Google
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
           @labels = args[:labels] if args.key?(:labels)
@@ -4604,6 +4610,11 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
+        # Configuration of gVNIC feature.
+        # Corresponds to the JSON property `gvnic`
+        # @return [Google::Apis::ContainerV1::VirtualNic]
+        attr_accessor :gvnic
+      
         # Required. The desired image type for the node pool.
         # Corresponds to the JSON property `imageType`
         # @return [String]
@@ -4696,6 +4707,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
           @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
@@ -4930,6 +4942,26 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Enables vertical pod autoscaling.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration of gVNIC feature.
+      class VirtualNic
+        include Google::Apis::Core::Hashable
+      
+        # Whether gVNIC features are enabled in the node pool.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
