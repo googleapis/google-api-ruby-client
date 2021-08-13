@@ -1018,6 +1018,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :fallback_text, as: 'fallbackText'
+          property :last_update_time, as: 'lastUpdateTime'
           property :name, as: 'name'
           property :preview_text, as: 'previewText'
           property :sender, as: 'sender', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation

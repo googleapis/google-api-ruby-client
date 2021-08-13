@@ -2237,6 +2237,13 @@ module Google
         # @return [String]
         attr_accessor :fallback_text
       
+        # Output only. The time at which the message was last updated in Hangouts Chat
+        # server. If the message was never updated, this field will be same as
+        # create_time.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
         # 
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2287,6 +2294,7 @@ module Google
           @cards = args[:cards] if args.key?(:cards)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @name = args[:name] if args.key?(:name)
           @preview_text = args[:preview_text] if args.key?(:preview_text)
           @sender = args[:sender] if args.key?(:sender)
