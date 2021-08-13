@@ -54,7 +54,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns a specific Metrics Scope.
+        # Returns a specific Metrics Scope, including the list of projects monitored by
+        # the specified Metrics Scope.
         # @param [String] name
         #   Required. The resource name of the Metrics Scope. Example: locations/global/
         #   metricsScopes/`SCOPING_PROJECT_ID_OR_NUMBER`

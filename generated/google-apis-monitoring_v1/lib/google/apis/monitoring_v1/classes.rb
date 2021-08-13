@@ -319,6 +319,11 @@ module Google
         # @return [String]
         attr_accessor :plot_type
       
+        # Optional. The target axis to use for plotting the metric.
+        # Corresponds to the JSON property `targetAxis`
+        # @return [String]
+        attr_accessor :target_axis
+      
         # TimeSeriesQuery collects the set of supported methods for querying time series
         # data from the Stackdriver metrics API.
         # Corresponds to the JSON property `timeSeriesQuery`
@@ -334,6 +339,7 @@ module Google
           @legend_template = args[:legend_template] if args.key?(:legend_template)
           @min_alignment_period = args[:min_alignment_period] if args.key?(:min_alignment_period)
           @plot_type = args[:plot_type] if args.key?(:plot_type)
+          @target_axis = args[:target_axis] if args.key?(:target_axis)
           @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
         end
       end
@@ -1169,6 +1175,12 @@ module Google
         # @return [String]
         attr_accessor :label
       
+        # The target axis to use for plotting the threshold. Target axis is not allowed
+        # in a Scorecard.
+        # Corresponds to the JSON property `targetAxis`
+        # @return [String]
+        attr_accessor :target_axis
+      
         # The value of the threshold. The value should be defined in the native scale of
         # the metric.
         # Corresponds to the JSON property `value`
@@ -1184,6 +1196,7 @@ module Google
           @color = args[:color] if args.key?(:color)
           @direction = args[:direction] if args.key?(:direction)
           @label = args[:label] if args.key?(:label)
+          @target_axis = args[:target_axis] if args.key?(:target_axis)
           @value = args[:value] if args.key?(:value)
         end
       end
@@ -1588,6 +1601,11 @@ module Google
         attr_accessor :x_axis
       
         # A chart axis.
+        # Corresponds to the JSON property `y2Axis`
+        # @return [Google::Apis::MonitoringV1::Axis]
+        attr_accessor :y2_axis
+      
+        # A chart axis.
         # Corresponds to the JSON property `yAxis`
         # @return [Google::Apis::MonitoringV1::Axis]
         attr_accessor :y_axis
@@ -1603,6 +1621,7 @@ module Google
           @thresholds = args[:thresholds] if args.key?(:thresholds)
           @timeshift_duration = args[:timeshift_duration] if args.key?(:timeshift_duration)
           @x_axis = args[:x_axis] if args.key?(:x_axis)
+          @y2_axis = args[:y2_axis] if args.key?(:y2_axis)
           @y_axis = args[:y_axis] if args.key?(:y_axis)
         end
       end
