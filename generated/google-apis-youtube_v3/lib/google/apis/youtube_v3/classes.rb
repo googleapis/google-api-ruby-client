@@ -4084,7 +4084,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the message.
+        # Next ID: 29
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageSnippet]
         attr_accessor :snippet
@@ -4281,7 +4281,7 @@ module Google
         end
       end
       
-      # 
+      # Next ID: 29
       class LiveChatMessageSnippet
         include Google::Apis::Core::Hashable
       
@@ -4291,7 +4291,7 @@ module Google
         # sponsor messageDeletedEvent - the moderator that took the action
         # messageRetractedEvent - the author that retracted their message
         # userBannedEvent - the moderator that took the action superChatEvent - the user
-        # that made the purchase
+        # that made the purchase superStickerEvent - the user that made the purchase
         # Corresponds to the JSON property `authorChannelId`
         # @return [String]
         attr_accessor :author_channel_id
