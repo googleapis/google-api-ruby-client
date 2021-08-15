@@ -1511,8 +1511,7 @@ module Google
       
         # Deny Maintenance Period that is applied to resource to indicate when
         # maintenance is forbidden. User can specify zero or more non-overlapping deny
-        # periods. For V1, Maximum number of deny_maintenance_periods is expected to be
-        # one.
+        # periods. Maximum number of deny_maintenance_periods expected is one.
         # Corresponds to the JSON property `denyMaintenancePeriods`
         # @return [Array<Google::Apis::MemcacheV1::DenyMaintenancePeriod>]
         attr_accessor :deny_maintenance_periods
