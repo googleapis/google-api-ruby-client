@@ -403,6 +403,11 @@ module Google
         # @return [String]
         attr_accessor :project_display_name
       
+        # The full resource type of the resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -415,6 +420,7 @@ module Google
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @project = args[:project] if args.key?(:project)
           @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
