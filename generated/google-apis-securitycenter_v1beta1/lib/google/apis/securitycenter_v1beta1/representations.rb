@@ -441,6 +441,7 @@ module Google
           property :parent_display_name, as: 'parentDisplayName'
           property :project, as: 'project'
           property :project_display_name, as: 'projectDisplayName'
+          property :type, as: 'type'
         end
       end
       
