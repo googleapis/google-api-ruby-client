@@ -382,7 +382,7 @@ module Google
       end
       
       # A test of an android application that explores the application on a virtual or
-      # physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+      # physical Android Device, finding culprits and crashes as it goes.
       class AndroidRoboTest
         include Google::Apis::Core::Hashable
       
@@ -1426,9 +1426,9 @@ module Google
         attr_accessor :network_profile
       
         # List of directories on the device to upload to Cloud Storage at the end of the
-        # test. Directories should either be in a shared directory (e.g. /private/var/
-        # mobile/Media) or within an accessible directory inside the app's filesystem (e.
-        # g. /Documents) by specifying the bundle id.
+        # test. Directories should either be in a shared directory (such as /private/var/
+        # mobile/Media) or within an accessible directory inside the app's filesystem (
+        # such as /Documents) by specifying the bundle ID.
         # Corresponds to the JSON property `pullDirectories`
         # @return [Array<Google::Apis::TestingV1::IosDeviceFile>]
         attr_accessor :pull_directories
@@ -2355,7 +2355,7 @@ module Google
         attr_accessor :android_instrumentation_test
       
         # A test of an android application that explores the application on a virtual or
-        # physical Android Device, finding culprits and crashes as it goes. Next tag: 30
+        # physical Android Device, finding culprits and crashes as it goes.
         # Corresponds to the JSON property `androidRoboTest`
         # @return [Google::Apis::TestingV1::AndroidRoboTest]
         attr_accessor :android_robo_test
