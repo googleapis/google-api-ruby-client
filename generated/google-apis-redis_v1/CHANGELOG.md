@@ -1,5 +1,9 @@
 # Release history for google-apis-redis_v1
 
+### v0.13.0 (2021-08-18)
+
+* Regenerated from discovery document revision 20210813
+
 ### v0.12.0 (2021-07-01)
 
 * Regenerated from discovery document revision 20210624
