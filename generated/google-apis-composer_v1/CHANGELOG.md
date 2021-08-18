@@ -1,5 +1,9 @@
 # Release history for google-apis-composer_v1
 
+### v0.12.0 (2021-08-18)
+
+* Regenerated from discovery document revision 20210810
+
 ### v0.11.0 (2021-07-14)
 
 * Regenerated from discovery document revision 20210705
