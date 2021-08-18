@@ -115,7 +115,7 @@ module Google
       # View user schemas on your domain
       AUTH_ADMIN_DIRECTORY_USERSCHEMA_READONLY = 'https://www.googleapis.com/auth/admin.directory.userschema.readonly'
 
-      # See, edit, configure, and delete your Google Cloud Platform data
+      # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
