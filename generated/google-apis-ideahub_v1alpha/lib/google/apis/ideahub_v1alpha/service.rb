@@ -50,10 +50,6 @@ module Google
         end
         
         # List ideas for a given Creator and filter and sort options.
-        # @param [String] creator_platform
-        #   Identifies the platform from which this user is accessing Idea Hub.
-        # @param [String] creator_platform_id
-        #   Identifies the platform account (blog/site/etc.) for which to fetch Ideas.
         # @param [String] filter
         #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
         #   more restrictions. * Restrictions are implicitly combined, as if the `AND`
@@ -92,12 +88,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_ideas(creator_platform: nil, creator_platform_id: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_ideas(filter: nil, order_by: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/ideas', options)
           command.response_representation = Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaListIdeasResponse::Representation
           command.response_class = Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaListIdeasResponse
-          command.query['creator.platform'] = creator_platform unless creator_platform.nil?
-          command.query['creator.platformId'] = creator_platform_id unless creator_platform_id.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -183,10 +177,6 @@ module Google
         # @param [String] parent
         #   If defined, specifies the creator for which to filter by. Format: publishers/`
         #   publisher`/properties/`property`
-        # @param [String] creator_platform
-        #   Identifies the platform from which this user is accessing Idea Hub.
-        # @param [String] creator_platform_id
-        #   Identifies the platform account (blog/site/etc.) for which to fetch Ideas.
         # @param [String] filter
         #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
         #   more restrictions. * Restrictions are implicitly combined, as if the `AND`
@@ -222,13 +212,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_platform_property_ideas(parent, creator_platform: nil, creator_platform_id: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_platform_property_ideas(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/ideas', options)
           command.response_representation = Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaListIdeasResponse::Representation
           command.response_class = Google::Apis::IdeahubV1alpha::GoogleSearchIdeahubV1alphaListIdeasResponse
           command.params['parent'] = parent unless parent.nil?
-          command.query['creator.platform'] = creator_platform unless creator_platform.nil?
-          command.query['creator.platformId'] = creator_platform_id unless creator_platform_id.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
