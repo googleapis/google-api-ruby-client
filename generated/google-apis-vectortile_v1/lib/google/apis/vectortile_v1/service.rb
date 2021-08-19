@@ -203,13 +203,15 @@ module Google
         #   height) max_elevation_resolution: 30 New resolution: 30px (width) * 30px (
         #   height)
         # @param [Fixnum] min_elevation_resolution_cells
-        #   The minimum allowed resolution for the returned elevation heightmap. Possible
-        #   values: between 0 and 1024 (and not more than max_elevation_resolution_cells).
-        #   Zero is supported for backward compatibility. Under-sized heightmaps will be
-        #   non-uniformly up-sampled such that each edge is no shorter than this value.
-        #   Non-uniformity is chosen to maximise the amount of preserved data. For example:
-        #   Original resolution: 30px (width) * 10px (height) min_elevation_resolution:
-        #   30 New resolution: 30px (width) * 30px (height)
+        #   api-linter: core::0131::request-unknown-fields=disabled aip.dev/not-precedent:
+        #   Maintaining existing request parameter pattern. The minimum allowed
+        #   resolution for the returned elevation heightmap. Possible values: between 0
+        #   and 1024 (and not more than max_elevation_resolution_cells). Zero is supported
+        #   for backward compatibility. Under-sized heightmaps will be non-uniformly up-
+        #   sampled such that each edge is no shorter than this value. Non-uniformity is
+        #   chosen to maximise the amount of preserved data. For example: Original
+        #   resolution: 30px (width) * 10px (height) min_elevation_resolution: 30 New
+        #   resolution: 30px (width) * 30px (height)
         # @param [Array<String>, String] terrain_formats
         #   Terrain formats that the client understands.
         # @param [String] fields
