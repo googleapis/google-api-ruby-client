@@ -184,8 +184,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_project_location_operation_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/{+name}', options)
+        def cancel_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
           command.response_representation = Google::Apis::DocumentaiV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DocumentaiV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
@@ -585,8 +585,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_uiv1beta3_project_location_operation_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'uiv1beta3/{+name}', options)
+        def cancel_uiv1beta3_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'uiv1beta3/{+name}:cancel', options)
           command.response_representation = Google::Apis::DocumentaiV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::DocumentaiV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
