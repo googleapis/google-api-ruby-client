@@ -1891,7 +1891,13 @@ module Google
       
         # The distro assigned severity for this vulnerability when it is available, and
         # note provider assigned severity when distro has not yet assigned a severity
-        # for this vulnerability.
+        # for this vulnerability. When there are multiple PackageIssues for this
+        # vulnerability, they can have different effective severities because some might
+        # be provided by the distro while others are provided by the language ecosystem
+        # for a language pack. For this reason, it is advised to use the effective
+        # severity on the PackageIssue level. In the case where multiple PackageIssues
+        # have differing effective severities, this field should be the highest severity
+        # for any of the PackageIssues.
         # Corresponds to the JSON property `effectiveSeverity`
         # @return [String]
         attr_accessor :effective_severity
@@ -2651,10 +2657,22 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation]
         attr_accessor :affected_location
       
+        # Output only. The distro or language system assigned severity for this
+        # vulnerability when that is available and note provider assigned severity when
+        # it is not available.
+        # Corresponds to the JSON property `effectiveSeverity`
+        # @return [String]
+        attr_accessor :effective_severity
+      
         # The location of the vulnerability.
         # Corresponds to the JSON property `fixedLocation`
         # @return [Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation]
         attr_accessor :fixed_location
+      
+        # The type of package (e.g. OS, MAVEN, GO).
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
       
         # Deprecated, use Details.effective_severity instead The severity (e.g., distro
         # assigned severity) for this vulnerability.
@@ -2669,7 +2687,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @affected_location = args[:affected_location] if args.key?(:affected_location)
+          @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @fixed_location = args[:fixed_location] if args.key?(:fixed_location)
+          @package_type = args[:package_type] if args.key?(:package_type)
           @severity_name = args[:severity_name] if args.key?(:severity_name)
         end
       end
@@ -2934,7 +2954,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -3236,7 +3256,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
