@@ -325,7 +325,8 @@ module Google
       # altitudes directly, we store the diffs between them as integers at some
       # requested level of precision to take advantage of integer packing. The actual
       # altitude values a[] can be reconstructed using the scale and each row's
-      # first_altitude and altitude_diff fields.
+      # first_altitude and altitude_diff fields. More details in go/elevation-encoding-
+      # options-for-enduro under "Recommended implementation".
       class FirstDerivativeElevationGrid
         include Google::Apis::Core::Hashable
       
@@ -685,7 +686,8 @@ module Google
         # altitudes directly, we store the diffs between them as integers at some
         # requested level of precision to take advantage of integer packing. The actual
         # altitude values a[] can be reconstructed using the scale and each row's
-        # first_altitude and altitude_diff fields.
+        # first_altitude and altitude_diff fields. More details in go/elevation-encoding-
+        # options-for-enduro under "Recommended implementation".
         # Corresponds to the JSON property `firstDerivative`
         # @return [Google::Apis::VectortileV1::FirstDerivativeElevationGrid]
         attr_accessor :first_derivative
