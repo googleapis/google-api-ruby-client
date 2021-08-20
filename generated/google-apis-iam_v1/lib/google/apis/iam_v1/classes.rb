@@ -972,7 +972,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -1054,25 +1054,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @binding_deltas = args[:binding_deltas] if args.key?(:binding_deltas)
-        end
-      end
-      
-      # Metadata for long-running Policy operations.
-      class PolicyOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Timestamp when the google.longrunning.Operation was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
         end
       end
       
@@ -1522,7 +1503,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
