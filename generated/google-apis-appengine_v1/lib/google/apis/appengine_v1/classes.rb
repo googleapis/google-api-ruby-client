@@ -171,6 +171,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The service account associated with the application. This is the app-level
+        # default identity. If no identity provided during create version, Admin API
+        # will fallback to this one.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Serving status of this application.
         # Corresponds to the JSON property `servingStatus`
         # @return [String]
@@ -195,6 +202,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @location_id = args[:location_id] if args.key?(:location_id)
           @name = args[:name] if args.key?(:name)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @serving_status = args[:serving_status] if args.key?(:serving_status)
         end
       end
