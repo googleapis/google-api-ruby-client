@@ -497,6 +497,7 @@ module Google
           property :id, as: 'id'
           property :location_id, as: 'locationId'
           property :name, as: 'name'
+          property :service_account, as: 'serviceAccount'
           property :serving_status, as: 'servingStatus'
         end
       end
