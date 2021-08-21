@@ -1302,6 +1302,178 @@ module Google
         end
       end
       
+      # Configuration of an auth method for a member/cluster. Only one authentication
+      # method (e.g., OIDC and LDAP) can be set per AuthMethod.
+      class IdentityServiceAuthMethod
+        include Google::Apis::Core::Hashable
+      
+        # Identifier for auth config.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for OIDC Auth flow.
+        # Corresponds to the JSON property `oidcConfig`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceOidcConfig]
+        attr_accessor :oidc_config
+      
+        # Proxy server address to use for auth method.
+        # Corresponds to the JSON property `proxy`
+        # @return [String]
+        attr_accessor :proxy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @oidc_config = args[:oidc_config] if args.key?(:oidc_config)
+          @proxy = args[:proxy] if args.key?(:proxy)
+        end
+      end
+      
+      # **Anthos Identity Service**: Configuration for a single Membership.
+      class IdentityServiceMembershipSpec
+        include Google::Apis::Core::Hashable
+      
+        # A member may support multiple auth methods.
+        # Corresponds to the JSON property `authMethods`
+        # @return [Array<Google::Apis::GkehubV1beta::IdentityServiceAuthMethod>]
+        attr_accessor :auth_methods
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_methods = args[:auth_methods] if args.key?(:auth_methods)
+        end
+      end
+      
+      # **Anthos Identity Service**: State for a single Membership.
+      class IdentityServiceMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # The reason of the failure.
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
+        # Installed AIS version. This is the AIS version installed on this member. The
+        # values makes sense iff state is OK.
+        # Corresponds to the JSON property `installedVersion`
+        # @return [String]
+        attr_accessor :installed_version
+      
+        # **Anthos Identity Service**: Configuration for a single Membership.
+        # Corresponds to the JSON property `memberConfig`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec]
+        attr_accessor :member_config
+      
+        # Deployment state on this member
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @installed_version = args[:installed_version] if args.key?(:installed_version)
+          @member_config = args[:member_config] if args.key?(:member_config)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Configuration for OIDC Auth flow.
+      class IdentityServiceOidcConfig
+        include Google::Apis::Core::Hashable
+      
+        # PEM-encoded CA for OIDC provider.
+        # Corresponds to the JSON property `certificateAuthorityData`
+        # @return [String]
+        attr_accessor :certificate_authority_data
+      
+        # ID for OIDC client application.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Flag to denote if reverse proxy is used to connect to auth provider. This flag
+        # should be set to true when provider is not reachable by Google Cloud Console.
+        # Corresponds to the JSON property `deployCloudConsoleProxy`
+        # @return [Boolean]
+        attr_accessor :deploy_cloud_console_proxy
+        alias_method :deploy_cloud_console_proxy?, :deploy_cloud_console_proxy
+      
+        # Comma-separated list of key-value pairs.
+        # Corresponds to the JSON property `extraParams`
+        # @return [String]
+        attr_accessor :extra_params
+      
+        # Prefix to prepend to group name.
+        # Corresponds to the JSON property `groupPrefix`
+        # @return [String]
+        attr_accessor :group_prefix
+      
+        # Claim in OIDC ID token that holds group information.
+        # Corresponds to the JSON property `groupsClaim`
+        # @return [String]
+        attr_accessor :groups_claim
+      
+        # URI for the OIDC provider. This should point to the level below .well-known/
+        # openid-configuration.
+        # Corresponds to the JSON property `issuerUri`
+        # @return [String]
+        attr_accessor :issuer_uri
+      
+        # Registered redirect uri to redirect users going through OAuth flow using
+        # kubectl plugin.
+        # Corresponds to the JSON property `kubectlRedirectUri`
+        # @return [String]
+        attr_accessor :kubectl_redirect_uri
+      
+        # Comma-separated list of identifiers.
+        # Corresponds to the JSON property `scopes`
+        # @return [String]
+        attr_accessor :scopes
+      
+        # Claim in OIDC ID token that holds username.
+        # Corresponds to the JSON property `userClaim`
+        # @return [String]
+        attr_accessor :user_claim
+      
+        # Prefix to prepend to user name.
+        # Corresponds to the JSON property `userPrefix`
+        # @return [String]
+        attr_accessor :user_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_authority_data = args[:certificate_authority_data] if args.key?(:certificate_authority_data)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @deploy_cloud_console_proxy = args[:deploy_cloud_console_proxy] if args.key?(:deploy_cloud_console_proxy)
+          @extra_params = args[:extra_params] if args.key?(:extra_params)
+          @group_prefix = args[:group_prefix] if args.key?(:group_prefix)
+          @groups_claim = args[:groups_claim] if args.key?(:groups_claim)
+          @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
+          @kubectl_redirect_uri = args[:kubectl_redirect_uri] if args.key?(:kubectl_redirect_uri)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @user_claim = args[:user_claim] if args.key?(:user_claim)
+          @user_prefix = args[:user_prefix] if args.key?(:user_prefix)
+        end
+      end
+      
       # Response message for the `GkeHub.ListFeatures` method.
       class ListFeaturesResponse
         include Google::Apis::Core::Hashable
@@ -1436,6 +1608,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec]
         attr_accessor :configmanagement
       
+        # **Anthos Identity Service**: Configuration for a single Membership.
+        # Corresponds to the JSON property `identityservice`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec]
+        attr_accessor :identityservice
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1443,6 +1620,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+          @identityservice = args[:identityservice] if args.key?(:identityservice)
         end
       end
       
@@ -1455,6 +1633,11 @@ module Google
         # Corresponds to the JSON property `configmanagement`
         # @return [Google::Apis::GkehubV1beta::ConfigManagementMembershipState]
         attr_accessor :configmanagement
+      
+        # **Anthos Identity Service**: State for a single Membership.
+        # Corresponds to the JSON property `identityservice`
+        # @return [Google::Apis::GkehubV1beta::IdentityServiceMembershipState]
+        attr_accessor :identityservice
       
         # **Metering**: Per-Membership Feature State.
         # Corresponds to the JSON property `metering`
@@ -1475,6 +1658,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
+          @identityservice = args[:identityservice] if args.key?(:identityservice)
           @metering = args[:metering] if args.key?(:metering)
           @state = args[:state] if args.key?(:state)
         end
@@ -1680,7 +1864,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -1774,7 +1958,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
