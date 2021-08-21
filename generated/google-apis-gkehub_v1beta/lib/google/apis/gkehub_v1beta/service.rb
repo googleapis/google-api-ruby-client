@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GkehubV1beta
-      # GKE Hub
+      # GKE Hub API
       #
       # 
       #
