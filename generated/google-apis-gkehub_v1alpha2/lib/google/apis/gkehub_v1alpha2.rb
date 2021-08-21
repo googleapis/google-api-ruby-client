@@ -19,13 +19,13 @@ require 'google/apis/gkehub_v1alpha2/gem_version.rb'
 
 module Google
   module Apis
-    # GKE Hub
+    # GKE Hub API
     #
     # 
     #
     # @see https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster
     module GkehubV1alpha2
-      # Version of the GKE Hub this client connects to.
+      # Version of the GKE Hub API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1alpha2'
 

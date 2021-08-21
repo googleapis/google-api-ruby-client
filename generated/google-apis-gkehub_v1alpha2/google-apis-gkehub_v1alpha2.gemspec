@@ -5,15 +5,15 @@ Gem::Specification.new do |gem|
   gem.version = Google::Apis::GkehubV1alpha2::GEM_VERSION
   gem.authors = ["Google LLC"]
   gem.email = "googleapis-packages@google.com"
-  gem.summary = "Simple REST client for GKE Hub V1alpha2"
+  gem.summary = "Simple REST client for GKE Hub API V1alpha2"
   gem.description =
-      "This is the simple REST client for GKE Hub V1alpha2." \
+      "This is the simple REST client for GKE Hub API V1alpha2." \
       " Simple REST clients are Ruby client libraries that provide access to" \
       " Google services via their HTTP REST API endpoints. These libraries are" \
       " generated and updated automatically based on the discovery documents" \
       " published by the service, and they handle most concerns such as" \
       " authentication, pagination, retry, timeouts, and logging. You can use" \
-      " this client to access the GKE Hub, but note that some" \
+      " this client to access the GKE Hub API, but note that some" \
       " services may provide a separate modern client that is easier to use."
   gem.homepage = "https://github.com/google/google-api-ruby-client"
   gem.license = "Apache-2.0"
