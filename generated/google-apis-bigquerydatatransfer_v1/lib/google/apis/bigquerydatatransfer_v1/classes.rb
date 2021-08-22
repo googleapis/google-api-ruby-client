@@ -799,10 +799,16 @@ module Google
         attr_accessor :next_run_time
       
         # Pub/Sub topic where notifications will be sent after transfer runs associated
-        # with this transfer config finish.
+        # with this transfer config finish. The format for specifying a pubsub topic is:
+        # `projects/`project`/topics/`topic``
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
+      
+        # Information about a user.
+        # Corresponds to the JSON property `ownerInfo`
+        # @return [Google::Apis::BigquerydatatransferV1::UserInfo]
+        attr_accessor :owner_info
       
         # Parameters specific to each data source. For more information see the bq tab
         # in the 'Setting up a data transfer' section for each data source. For example
@@ -860,6 +866,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
+          @owner_info = args[:owner_info] if args.key?(:owner_info)
           @params = args[:params] if args.key?(:params)
           @schedule = args[:schedule] if args.key?(:schedule)
           @schedule_options = args[:schedule_options] if args.key?(:schedule_options)
@@ -943,7 +950,8 @@ module Google
         attr_accessor :name
       
         # Output only. Pub/Sub topic where a notification will be sent after this
-        # transfer run finishes
+        # transfer run finishes. The format for specifying a pubsub topic is: `projects/`
+        # project`/topics/`topic``
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -1017,6 +1025,25 @@ module Google
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Information about a user.
+      class UserInfo
+        include Google::Apis::Core::Hashable
+      
+        # E-mail address of the user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
         end
       end
     end

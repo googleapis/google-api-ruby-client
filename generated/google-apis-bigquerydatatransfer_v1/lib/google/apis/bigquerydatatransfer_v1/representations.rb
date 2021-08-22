@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckValidCredsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -357,6 +363,8 @@ module Google
           property :name, as: 'name'
           property :next_run_time, as: 'nextRunTime'
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
+          property :owner_info, as: 'ownerInfo', class: Google::Apis::BigquerydatatransferV1::UserInfo, decorator: Google::Apis::BigquerydatatransferV1::UserInfo::Representation
+      
           hash :params, as: 'params'
           property :schedule, as: 'schedule'
           property :schedule_options, as: 'scheduleOptions', class: Google::Apis::BigquerydatatransferV1::ScheduleOptions, decorator: Google::Apis::BigquerydatatransferV1::ScheduleOptions::Representation
@@ -396,6 +404,13 @@ module Google
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           property :user_id, :numeric_string => true, as: 'userId'
+        end
+      end
+      
+      class UserInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
         end
       end
     end

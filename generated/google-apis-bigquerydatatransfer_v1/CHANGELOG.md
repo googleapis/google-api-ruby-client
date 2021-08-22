@@ -1,5 +1,9 @@
 # Release history for google-apis-bigquerydatatransfer_v1
 
+### v0.12.0 (2021-08-22)
+
+* Regenerated from discovery document revision 20210814
+
 ### v0.11.0 (2021-07-22)
 
 * Regenerated from discovery document revision 20210717
