@@ -22,6 +22,70 @@ module Google
   module Apis
     module DocumentaiV1beta3
       
+      # 
+      class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response of the delete documents operation.
+      class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
+      class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response of the batch move documents operation.
+      class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The common metadata for long running operations.
       class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
         include Google::Apis::Core::Hashable
@@ -309,6 +373,38 @@ module Google
         end
       end
       
+      # Metadata of the import document operation.
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response of the import document operation.
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The long running operation metadata for set default processor version method.
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
@@ -463,6 +559,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
         end
       end
       
@@ -867,8 +982,9 @@ module Google
         end
       end
       
-      # A phrase in the text that is a known entity type, such as a person, an
-      # organization, or location.
+      # An entity that could be a phrase in the text or a property belongs to the
+      # document. It is a known entity type, such as a person, an organization, or
+      # location.
       class GoogleCloudDocumentaiV1beta1DocumentEntity
         include Google::Apis::Core::Hashable
       
@@ -888,7 +1004,8 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.
+        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the
+        # entity is not present in the document, this field will be empty.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
@@ -1007,17 +1124,29 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime]
         attr_accessor :datetime_value
       
+        # Float value.
+        # Corresponds to the JSON property `floatValue`
+        # @return [Float]
+        attr_accessor :float_value
+      
+        # Integer value.
+        # Corresponds to the JSON property `integerValue`
+        # @return [Fixnum]
+        attr_accessor :integer_value
+      
         # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `moneyValue`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeMoney]
         attr_accessor :money_value
       
-        # Required. Normalized entity value stored as a string. This field is populated
-        # for supported document type (e.g. Invoice). For some entity types, one of
-        # respective 'structured_value' fields may also be populated. - Money/Currency
-        # type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`)
-        # is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the
-        # ISO 8601 text format.
+        # Optional. An optional field to store a normalized string. For some entity
+        # types, one of respective 'structured_value' fields may also be populated. Also
+        # not all the types of 'structured_value' will be normalized. For example, some
+        # processors may not generate float or int normalized text by default. Below are
+        # sample formats mapped to structured values. - Money/Currency type (`
+        # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
+        # the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO
+        # 8601 text format.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -1032,6 +1161,8 @@ module Google
           @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @date_value = args[:date_value] if args.key?(:date_value)
           @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
+          @float_value = args[:float_value] if args.key?(:float_value)
+          @integer_value = args[:integer_value] if args.key?(:integer_value)
           @money_value = args[:money_value] if args.key?(:money_value)
           @text = args[:text] if args.key?(:text)
         end
@@ -2554,8 +2685,9 @@ module Google
         end
       end
       
-      # A phrase in the text that is a known entity type, such as a person, an
-      # organization, or location.
+      # An entity that could be a phrase in the text or a property belongs to the
+      # document. It is a known entity type, such as a person, an organization, or
+      # location.
       class GoogleCloudDocumentaiV1beta2DocumentEntity
         include Google::Apis::Core::Hashable
       
@@ -2575,7 +2707,8 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.
+        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the
+        # entity is not present in the document, this field will be empty.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
@@ -2694,17 +2827,29 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime]
         attr_accessor :datetime_value
       
+        # Float value.
+        # Corresponds to the JSON property `floatValue`
+        # @return [Float]
+        attr_accessor :float_value
+      
+        # Integer value.
+        # Corresponds to the JSON property `integerValue`
+        # @return [Fixnum]
+        attr_accessor :integer_value
+      
         # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `moneyValue`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeMoney]
         attr_accessor :money_value
       
-        # Required. Normalized entity value stored as a string. This field is populated
-        # for supported document type (e.g. Invoice). For some entity types, one of
-        # respective 'structured_value' fields may also be populated. - Money/Currency
-        # type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`)
-        # is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the
-        # ISO 8601 text format.
+        # Optional. An optional field to store a normalized string. For some entity
+        # types, one of respective 'structured_value' fields may also be populated. Also
+        # not all the types of 'structured_value' will be normalized. For example, some
+        # processors may not generate float or int normalized text by default. Below are
+        # sample formats mapped to structured values. - Money/Currency type (`
+        # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
+        # the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO
+        # 8601 text format.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -2719,6 +2864,8 @@ module Google
           @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @date_value = args[:date_value] if args.key?(:date_value)
           @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
+          @float_value = args[:float_value] if args.key?(:float_value)
+          @integer_value = args[:integer_value] if args.key?(:integer_value)
           @money_value = args[:money_value] if args.key?(:money_value)
           @text = args[:text] if args.key?(:text)
         end
@@ -4593,8 +4740,9 @@ module Google
         end
       end
       
-      # A phrase in the text that is a known entity type, such as a person, an
-      # organization, or location.
+      # An entity that could be a phrase in the text or a property belongs to the
+      # document. It is a known entity type, such as a person, an organization, or
+      # location.
       class GoogleCloudDocumentaiV1beta3DocumentEntity
         include Google::Apis::Core::Hashable
       
@@ -4614,7 +4762,8 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.
+        # Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`. If the
+        # entity is not present in the document, this field will be empty.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
@@ -4733,17 +4882,29 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime]
         attr_accessor :datetime_value
       
+        # Float value.
+        # Corresponds to the JSON property `floatValue`
+        # @return [Float]
+        attr_accessor :float_value
+      
+        # Integer value.
+        # Corresponds to the JSON property `integerValue`
+        # @return [Fixnum]
+        attr_accessor :integer_value
+      
         # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `moneyValue`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeMoney]
         attr_accessor :money_value
       
-        # Required. Normalized entity value stored as a string. This field is populated
-        # for supported document type (e.g. Invoice). For some entity types, one of
-        # respective 'structured_value' fields may also be populated. - Money/Currency
-        # type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`)
-        # is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the
-        # ISO 8601 text format.
+        # Optional. An optional field to store a normalized string. For some entity
+        # types, one of respective 'structured_value' fields may also be populated. Also
+        # not all the types of 'structured_value' will be normalized. For example, some
+        # processors may not generate float or int normalized text by default. Below are
+        # sample formats mapped to structured values. - Money/Currency type (`
+        # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
+        # the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO
+        # 8601 text format.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -4758,6 +4919,8 @@ module Google
           @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @date_value = args[:date_value] if args.key?(:date_value)
           @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
+          @float_value = args[:float_value] if args.key?(:float_value)
+          @integer_value = args[:integer_value] if args.key?(:integer_value)
           @money_value = args[:money_value] if args.key?(:money_value)
           @text = args[:text] if args.key?(:text)
         end
