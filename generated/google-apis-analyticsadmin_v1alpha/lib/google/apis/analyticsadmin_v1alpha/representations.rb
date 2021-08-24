@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaDataRetentionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaDataSharingSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -556,6 +562,8 @@ module Google
       
           property :custom_metric, as: 'customMetric', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric::Representation
       
+          property :data_retention_settings, as: 'dataRetentionSettings', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRetentionSettings, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRetentionSettings::Representation
+      
           property :display_video360_advertiser_link, as: 'displayVideo360AdvertiserLink', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink::Representation
       
           property :display_video360_advertiser_link_proposal, as: 'displayVideo360AdvertiserLinkProposal', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal::Representation
@@ -632,6 +640,15 @@ module Google
           property :name, as: 'name'
           property :parameter_name, as: 'parameterName'
           property :scope, as: 'scope'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDataRetentionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_data_retention, as: 'eventDataRetention'
+          property :name, as: 'name'
+          property :reset_user_data_on_new_activity, as: 'resetUserDataOnNewActivity'
         end
       end
       
