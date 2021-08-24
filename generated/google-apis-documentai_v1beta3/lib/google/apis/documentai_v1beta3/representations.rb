@@ -22,6 +22,30 @@ module Google
   module Apis
     module DocumentaiV1beta3
       
+      class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +185,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1192,6 +1234,34 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1306,6 +1376,20 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1362,6 +1446,14 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
         end
       end
       
@@ -1521,6 +1613,8 @@ module Google
       
           property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime::Representation
       
+          property :float_value, as: 'floatValue'
+          property :integer_value, as: 'integerValue'
           property :money_value, as: 'moneyValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeMoney, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeMoney::Representation
       
           property :text, as: 'text'
@@ -2006,6 +2100,8 @@ module Google
       
           property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime::Representation
       
+          property :float_value, as: 'floatValue'
+          property :integer_value, as: 'integerValue'
           property :money_value, as: 'moneyValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeMoney, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeMoney::Representation
       
           property :text, as: 'text'
@@ -2600,6 +2696,8 @@ module Google
       
           property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeDateTime::Representation
       
+          property :float_value, as: 'floatValue'
+          property :integer_value, as: 'integerValue'
           property :money_value, as: 'moneyValue', class: Google::Apis::DocumentaiV1beta3::GoogleTypeMoney, decorator: Google::Apis::DocumentaiV1beta3::GoogleTypeMoney::Representation
       
           property :text, as: 'text'
