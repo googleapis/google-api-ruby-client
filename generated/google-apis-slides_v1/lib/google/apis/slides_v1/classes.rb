@@ -1207,6 +1207,11 @@ module Google
         # @return [Google::Apis::SlidesV1::ImageProperties]
         attr_accessor :image_properties
       
+        # The placeholder information that uniquely identifies a placeholder shape.
+        # Corresponds to the JSON property `placeholder`
+        # @return [Google::Apis::SlidesV1::Placeholder]
+        attr_accessor :placeholder
+      
         # The source URL is the URL used to insert the image. The source URL can be
         # empty.
         # Corresponds to the JSON property `sourceUrl`
@@ -1221,6 +1226,7 @@ module Google
         def update!(**args)
           @content_url = args[:content_url] if args.key?(:content_url)
           @image_properties = args[:image_properties] if args.key?(:image_properties)
+          @placeholder = args[:placeholder] if args.key?(:placeholder)
           @source_url = args[:source_url] if args.key?(:source_url)
         end
       end
