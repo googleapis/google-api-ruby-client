@@ -1156,6 +1156,8 @@ module Google
           property :content_url, as: 'contentUrl'
           property :image_properties, as: 'imageProperties', class: Google::Apis::SlidesV1::ImageProperties, decorator: Google::Apis::SlidesV1::ImageProperties::Representation
       
+          property :placeholder, as: 'placeholder', class: Google::Apis::SlidesV1::Placeholder, decorator: Google::Apis::SlidesV1::Placeholder::Representation
+      
           property :source_url, as: 'sourceUrl'
         end
       end
