@@ -531,6 +531,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric]
         attr_accessor :custom_metric
       
+        # Settings values for data retention. This is a singleton resource.
+        # Corresponds to the JSON property `dataRetentionSettings`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRetentionSettings]
+        attr_accessor :data_retention_settings
+      
         # A link between a GA4 property and a Display & Video 360 advertiser.
         # Corresponds to the JSON property `displayVideo360AdvertiserLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink]
@@ -590,6 +595,7 @@ module Google
           @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
           @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
           @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
+          @data_retention_settings = args[:data_retention_settings] if args.key?(:data_retention_settings)
           @display_video360_advertiser_link = args[:display_video360_advertiser_link] if args.key?(:display_video360_advertiser_link)
           @display_video360_advertiser_link_proposal = args[:display_video360_advertiser_link_proposal] if args.key?(:display_video360_advertiser_link_proposal)
           @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
@@ -865,6 +871,40 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parameter_name = args[:parameter_name] if args.key?(:parameter_name)
           @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Settings values for data retention. This is a singleton resource.
+      class GoogleAnalyticsAdminV1alphaDataRetentionSettings
+        include Google::Apis::Core::Hashable
+      
+        # The length of time that event-level data is retained.
+        # Corresponds to the JSON property `eventDataRetention`
+        # @return [String]
+        attr_accessor :event_data_retention
+      
+        # Output only. Resource name for this DataRetentionSetting resource. Format:
+        # properties/`property`/dataRetentionSettings
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If true, reset the retention period for the user identifier with every event
+        # from that user.
+        # Corresponds to the JSON property `resetUserDataOnNewActivity`
+        # @return [Boolean]
+        attr_accessor :reset_user_data_on_new_activity
+        alias_method :reset_user_data_on_new_activity?, :reset_user_data_on_new_activity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_data_retention = args[:event_data_retention] if args.key?(:event_data_retention)
+          @name = args[:name] if args.key?(:name)
+          @reset_user_data_on_new_activity = args[:reset_user_data_on_new_activity] if args.key?(:reset_user_data_on_new_activity)
         end
       end
       
