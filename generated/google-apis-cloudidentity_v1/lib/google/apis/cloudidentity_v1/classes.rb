@@ -45,6 +45,58 @@ module Google
         end
       end
       
+      # Metadata for CreateGroup LRO.
+      class CreateGroupMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for CreateMembership LRO.
+      class CreateMembershipMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for DeleteGroup LRO.
+      class DeleteGroupMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for DeleteMembership LRO.
+      class DeleteMembershipMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Dynamic group metadata like queries and status.
       class DynamicGroupMetadata
         include Google::Apis::Core::Hashable
@@ -147,7 +199,7 @@ module Google
         # represents a Google-managed entity such as a Google user or a Google Group. If
         # specified, the `EntityKey` represents an external-identity-mapped group. The
         # namespace must correspond to an identity source created in Admin Console and
-        # must be in the form of `identitysources/`identity_source_id``.
+        # must be in the form of `identitysources/`identity_source``.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
@@ -179,6 +231,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
+      # Metadata of GetMembershipGraphResponse LRO. This is currently empty to permit
+      # future extensibility.
+      class GetMembershipGraphMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -253,6 +319,19 @@ module Google
         end
       end
       
+      # Metadata for ApproveDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for approving the device to access user data.
       class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
         include Google::Apis::Core::Hashable
@@ -260,8 +339,8 @@ module Google
         # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         # of the customer. If you're using this API for your own organization, use `
         # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
+        # use `customers/`customer``, where customer is the customer to whom the device
+        # belongs.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
@@ -296,6 +375,19 @@ module Google
         end
       end
       
+      # Metadata for BlockDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for blocking account on device.
       class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest
         include Google::Apis::Core::Hashable
@@ -303,8 +395,8 @@ module Google
         # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         # of the customer. If you're using this API for your own organization, use `
         # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
+        # use `customers/`customer``, where customer is the customer to whom the device
+        # belongs.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
@@ -339,6 +431,19 @@ module Google
         end
       end
       
+      # Metadata for CancelWipeDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for cancelling an unfinished device wipe.
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
         include Google::Apis::Core::Hashable
@@ -346,8 +451,8 @@ module Google
         # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         # of the customer. If you're using this API for your own organization, use `
         # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
+        # use `customers/`customer``, where customer is the customer to whom the device
+        # belongs.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
@@ -383,6 +488,19 @@ module Google
         end
       end
       
+      # Metadata for CancelWipeDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for cancelling an unfinished user account wipe.
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
         include Google::Apis::Core::Hashable
@@ -390,8 +508,8 @@ module Google
         # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         # of the customer. If you're using this API for your own organization, use `
         # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
+        # use `customers/`customer``, where customer is the customer to whom the device
+        # belongs.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
@@ -484,19 +602,18 @@ module Google
         attr_accessor :managed
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the ClientState in format: `devices/`device_id`/deviceUsers/
-        # `device_user_id`/clientState/`partner_id``, where partner_id corresponds to
-        # the partner storing the data. For partners belonging to the "BeyondCorp
-        # Alliance", this is the partner ID specified to you by Google. For all other
-        # callers, this is a string of the form: ``customer_id`-suffix`, where `
-        # customer_id` is your customer ID. The *suffix* is any string the caller
-        # specifies. This string will be displayed verbatim in the administration
-        # console. This suffix is used in setting up Custom Access Levels in Context-
-        # Aware Access. Your organization's customer ID can be obtained from the URL: `
-        # GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `
-        # id` field in the response contains the customer ID starting with the letter 'C'
-        # . The customer ID to be used in this API is the string after the letter 'C' (
-        # not including 'C')
+        # resource_names) of the ClientState in format: `devices/`device`/deviceUsers/`
+        # device_user`/clientState/`partner``, where partner corresponds to the partner
+        # storing the data. For partners belonging to the "BeyondCorp Alliance", this is
+        # the partner ID specified to you by Google. For all other callers, this is a
+        # string of the form: ``customer`-suffix`, where `customer` is your customer ID.
+        # The *suffix* is any string the caller specifies. This string will be displayed
+        # verbatim in the administration console. This suffix is used in setting up
+        # Custom Access Levels in Context-Aware Access. Your organization's customer ID
+        # can be obtained from the URL: `GET https://www.googleapis.com/admin/directory/
+        # v1/customers/my_customer` The `id` field in the response contains the customer
+        # ID starting with the letter 'C'. The customer ID to be used in this API is the
+        # string after the letter 'C' (not including 'C')
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -532,6 +649,19 @@ module Google
         end
       end
       
+      # Metadata for CreateDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Additional custom attribute values may be one of these types
       class GoogleAppsCloudidentityDevicesV1CustomAttributeValue
         include Google::Apis::Core::Hashable
@@ -561,6 +691,32 @@ module Google
           @bool_value = args[:bool_value] if args.key?(:bool_value)
           @number_value = args[:number_value] if args.key?(:number_value)
           @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # Metadata for DeleteDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for DeleteDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -669,8 +825,8 @@ module Google
         attr_accessor :model
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the Device in format: `devices/`device_id``, where
-        # device_id is the unique id assigned to the Device.
+        # resource_names) of the Device in format: `devices/`device``, where device is
+        # the unique id assigned to the Device.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -792,8 +948,8 @@ module Google
         attr_accessor :management_state
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the DeviceUser in format: `devices/`device_id`/deviceUsers/`
-        # device_user_id``, where `device_user_id` uniquely identifies a user's use of a
+        # resource_names) of the DeviceUser in format: `devices/`device`/deviceUsers/`
+        # device_user``, where `device_user` uniquely identifies a user's use of a
         # device.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -908,6 +1064,19 @@ module Google
         end
       end
       
+      # Metadata for ListEndpointApps LRO.
+      class GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response containing resource names of the DeviceUsers associated with the
       # caller's credentials.
       class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
@@ -920,9 +1089,9 @@ module Google
         attr_accessor :customer
       
         # [Resource names](https://cloud.google.com/apis/design/resource_names) of the
-        # DeviceUsers in the format: `devices/`device_id`/deviceUsers/`user_resource_id``
-        # , where device_id is the unique ID assigned to a Device and user_resource_id
-        # is the unique user ID
+        # DeviceUsers in the format: `devices/`device`/deviceUsers/`user_resource``,
+        # where device is the unique ID assigned to a Device and user_resource is the
+        # unique user ID
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
         attr_accessor :names
@@ -944,6 +1113,58 @@ module Google
         end
       end
       
+      # Metadata for SignoutDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for UpdateClientState LRO.
+      class GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for UpdateDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for WipeDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for wiping all data on the device.
       class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest
         include Google::Apis::Core::Hashable
@@ -951,8 +1172,8 @@ module Google
         # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         # of the customer. If you're using this API for your own organization, use `
         # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
+        # use `customers/`customer``, where customer is the customer to whom the device
+        # belongs.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
@@ -988,6 +1209,19 @@ module Google
         end
       end
       
+      # Metadata for WipeDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for starting an account wipe on device.
       class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest
         include Google::Apis::Core::Hashable
@@ -995,8 +1229,8 @@ module Google
         # Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         # of the customer. If you're using this API for your own organization, use `
         # customers/my_customer` If you're using this API to manage another organization,
-        # use `customers/`customer_id``, where customer_id is the customer to whom the
-        # device belongs.
+        # use `customers/`customer``, where customer is the customer to whom the device
+        # belongs.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
@@ -1081,16 +1315,16 @@ module Google
         attr_accessor :labels
       
         # Output only. The [resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the `Group`. Shall be of the form `groups/`group_id``.
+        # resource_names) of the `Group`. Shall be of the form `groups/`group``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. Immutable. The resource name of the entity under which this `Group`
         # resides in the Cloud Identity resource hierarchy. Must be of the form `
-        # identitysources/`identity_source_id`` for external- identity-mapped groups or `
-        # customers/`customer_id`` for Google Groups. The `customer_id` must begin with "
-        # C" (for example, 'C046psxkn').
+        # identitysources/`identity_source`` for external- identity-mapped groups or `
+        # customers/`customer`` for Google Groups. The `customer` must begin with "C" (
+        # for example, 'C046psxkn').
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1247,8 +1481,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The [resource name](https://cloud.google.com/apis/design/resource_names) of
-        # the looked-up `Membership`. Must be of the form `groups/`group_id`/memberships/
-        # `membership_id``.
+        # the looked-up `Membership`. Must be of the form `groups/`group`/memberships/`
+        # membership``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1313,8 +1547,8 @@ module Google
         attr_accessor :create_time
       
         # Output only. The [resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the `Membership`. Shall be of the form `groups/`group_id`/
-        # memberships/`membership_id``.
+        # resource_names) of the `Membership`. Shall be of the form `groups/`group`/
+        # memberships/`membership``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1669,6 +1903,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Metadata for UpdateGroup LRO.
+      class UpdateGroupMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for UpdateMembership LRO.
+      class UpdateMembershipMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

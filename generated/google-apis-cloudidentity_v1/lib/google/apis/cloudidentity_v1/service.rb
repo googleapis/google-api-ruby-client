@@ -57,8 +57,8 @@ module Google
         # if the wipe command has already been issued to the device.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in format: `devices/`device_id``, where device_id is the unique
-        #   ID assigned to the Device.
+        #   of the Device in format: `devices/`device``, where device is the unique ID
+        #   assigned to the Device.
         # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest] google_apps_cloudidentity_devices_v1_cancel_wipe_device_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -98,8 +98,8 @@ module Google
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the customer. If you're using this API for your own organization, use `
         #   customers/my_customer` If you're using this API to manage another organization,
-        #   use `customers/`customer_id``, where customer_id is the customer to whom the
-        #   device belongs.
+        #   use `customers/`customer``, where customer is the customer to whom the device
+        #   belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -132,14 +132,14 @@ module Google
         # Deletes the specified device.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in format: `devices/`device_id``, where device_id is the unique
-        #   ID assigned to the Device.
+        #   of the Device in format: `devices/`device``, where device is the unique ID
+        #   assigned to the Device.
         # @param [String] customer
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the customer. If you're using this API for your own organization, use `
         #   customers/my_customer` If you're using this API to manage another organization,
-        #   use `customers/`customer_id``, where customer_id is the customer to whom the
-        #   device belongs.
+        #   use `customers/`customer``, where customer is the customer to whom the device
+        #   belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -171,14 +171,14 @@ module Google
         # Retrieves the specified device.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in the format: `devices/`device_id``, where device_id is the
-        #   unique ID assigned to the Device.
+        #   of the Device in the format: `devices/`device``, where device is the unique ID
+        #   assigned to the Device.
         # @param [String] customer
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Customer in the format: `customers/`customer_id``, where customer_id is
-        #   the customer to whom the device belongs. If you're using this API for your own
+        #   of the Customer in the format: `customers/`customer``, where customer is the
+        #   customer to whom the device belongs. If you're using this API for your own
         #   organization, use `customers/my_customer`. If you're using this API to manage
-        #   another organization, use `customers/`customer_id``, where customer_id is the
+        #   another organization, use `customers/`customer``, where customer is the
         #   customer to whom the device belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -211,10 +211,10 @@ module Google
         # Lists/Searches devices.
         # @param [String] customer
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the customer in the format: `customers/`customer_id``, where customer_id is
-        #   the customer to whom the device belongs. If you're using this API for your own
+        #   of the customer in the format: `customers/`customer``, where customer is the
+        #   customer to whom the device belongs. If you're using this API for your own
         #   organization, use `customers/my_customer`. If you're using this API to manage
-        #   another organization, use `customers/`customer_id``, where customer_id is the
+        #   another organization, use `customers/`customer``, where customer is the
         #   customer to whom the device belongs.
         # @param [String] filter
         #   Optional. Additional restrictions when fetching list of devices. For a list of
@@ -272,9 +272,9 @@ module Google
         # Wipes all data on the specified device.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
-        #   where device_id is the unique ID assigned to the Device, and device_user_id is
-        #   the unique ID assigned to the User.
+        #   of the Device in format: `devices/`device`/deviceUsers/`device_user``, where
+        #   device is the unique ID assigned to the Device, and device_user is the unique
+        #   ID assigned to the User.
         # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1WipeDeviceRequest] google_apps_cloudidentity_devices_v1_wipe_device_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -308,9 +308,9 @@ module Google
         # Approves device to access user data.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
-        #   where device_id is the unique ID assigned to the Device, and device_user_id is
-        #   the unique ID assigned to the User.
+        #   of the Device in format: `devices/`device`/deviceUsers/`device_user``, where
+        #   device is the unique ID assigned to the Device, and device_user is the unique
+        #   ID assigned to the User.
         # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest] google_apps_cloudidentity_devices_v1_approve_device_user_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -344,9 +344,9 @@ module Google
         # Blocks device from accessing user data
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
-        #   where device_id is the unique ID assigned to the Device, and device_user_id is
-        #   the unique ID assigned to the User.
+        #   of the Device in format: `devices/`device`/deviceUsers/`device_user``, where
+        #   device is the unique ID assigned to the Device, and device_user is the unique
+        #   ID assigned to the User.
         # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest] google_apps_cloudidentity_devices_v1_block_device_user_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -382,9 +382,9 @@ module Google
         # device being wiped.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
-        #   where device_id is the unique ID assigned to the Device, and device_user_id is
-        #   the unique ID assigned to the User.
+        #   of the Device in format: `devices/`device`/deviceUsers/`device_user``, where
+        #   device is the unique ID assigned to the Device, and device_user is the unique
+        #   ID assigned to the User.
         # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest] google_apps_cloudidentity_devices_v1_cancel_wipe_device_user_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -419,15 +419,15 @@ module Google
         # device data.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
-        #   where device_id is the unique ID assigned to the Device, and device_user_id is
-        #   the unique ID assigned to the User.
+        #   of the Device in format: `devices/`device`/deviceUsers/`device_user``, where
+        #   device is the unique ID assigned to the Device, and device_user is the unique
+        #   ID assigned to the User.
         # @param [String] customer
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the customer. If you're using this API for your own organization, use `
         #   customers/my_customer` If you're using this API to manage another organization,
-        #   use `customers/`customer_id``, where customer_id is the customer to whom the
-        #   device belongs.
+        #   use `customers/`customer``, where customer is the customer to whom the device
+        #   belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -459,15 +459,15 @@ module Google
         # Retrieves the specified DeviceUser
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
-        #   where device_id is the unique ID assigned to the Device, and device_user_id is
-        #   the unique ID assigned to the User.
+        #   of the Device in format: `devices/`device`/deviceUsers/`device_user``, where
+        #   device is the unique ID assigned to the Device, and device_user is the unique
+        #   ID assigned to the User.
         # @param [String] customer
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the customer. If you're using this API for your own organization, use `
         #   customers/my_customer` If you're using this API to manage another organization,
-        #   use `customers/`customer_id``, where customer_id is the customer to whom the
-        #   device belongs.
+        #   use `customers/`customer``, where customer is the customer to whom the device
+        #   belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -505,8 +505,8 @@ module Google
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the customer. If you're using this API for your own organization, use `
         #   customers/my_customer` If you're using this API to manage another organization,
-        #   use `customers/`customer_id``, where customer_id is the customer to whom the
-        #   device belongs.
+        #   use `customers/`customer``, where customer is the customer to whom the device
+        #   belongs.
         # @param [String] filter
         #   Optional. Additional restrictions when fetching list of devices. For a list of
         #   search fields, refer to [Mobile device search fields](https://developers.
@@ -632,9 +632,9 @@ module Google
         # apps such as Photos.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the Device in format: `devices/`device_id`/deviceUsers/`device_user_id``,
-        #   where device_id is the unique ID assigned to the Device, and device_user_id is
-        #   the unique ID assigned to the User.
+        #   of the Device in format: `devices/`device`/deviceUsers/`device_user``, where
+        #   device is the unique ID assigned to the Device, and device_user is the unique
+        #   ID assigned to the User.
         # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest] google_apps_cloudidentity_devices_v1_wipe_device_user_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -668,24 +668,23 @@ module Google
         # Gets the client state for the device user
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the ClientState in format: `devices/`device_id`/deviceUsers/`device_user_id`
-        #   /clientStates/`partner_id``, where `device_id` is the unique ID assigned to
-        #   the Device, `device_user_id` is the unique ID assigned to the User and `
-        #   partner_id` identifies the partner storing the data. To get the client state
-        #   for devices belonging to your own organization, the `partnerId` is in the
-        #   format: `customerId-*anystring*`. Where the `customerId` is your organization'
-        #   s customer ID and `anystring` is any suffix. This suffix is used in setting up
+        #   of the ClientState in format: `devices/`device`/deviceUsers/`device_user`/
+        #   clientStates/`partner``, where `device` is the unique ID assigned to the
+        #   Device, `device_user` is the unique ID assigned to the User and `partner`
+        #   identifies the partner storing the data. To get the client state for devices
+        #   belonging to your own organization, the `partnerId` is in the format: `
+        #   customerId-*anystring*`. Where the `customerId` is your organization's
+        #   customer ID and `anystring` is any suffix. This suffix is used in setting up
         #   Custom Access Levels in Context-Aware Access. You may use `my_customer`
         #   instead of the customer ID for devices managed by your own organization. You
-        #   may specify `-` in place of the ``device_id``, so the ClientState resource
-        #   name can be: `devices/-/deviceUsers/`device_user_resource_id`/clientStates/`
-        #   partner_id``.
+        #   may specify `-` in place of the ``device``, so the ClientState resource name
+        #   can be: `devices/-/deviceUsers/`device_user_resource`/clientStates/`partner``.
         # @param [String] customer
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the customer. If you're using this API for your own organization, use `
         #   customers/my_customer` If you're using this API to manage another organization,
-        #   use `customers/`customer_id``, where customer_id is the customer to whom the
-        #   device belongs.
+        #   use `customers/`customer``, where customer is the customer to whom the device
+        #   belongs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -723,8 +722,8 @@ module Google
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the customer. If you're using this API for your own organization, use `
         #   customers/my_customer` If you're using this API to manage another organization,
-        #   use `customers/`customer_id``, where customer_id is the customer to whom the
-        #   device belongs.
+        #   use `customers/`customer``, where customer is the customer to whom the device
+        #   belongs.
         # @param [String] filter
         #   Optional. Additional restrictions when fetching list of client states.
         # @param [String] order_by
@@ -771,26 +770,25 @@ module Google
         # Premium
         # @param [String] name
         #   Output only. [Resource name](https://cloud.google.com/apis/design/
-        #   resource_names) of the ClientState in format: `devices/`device_id`/deviceUsers/
-        #   `device_user_id`/clientState/`partner_id``, where partner_id corresponds to
-        #   the partner storing the data. For partners belonging to the "BeyondCorp
-        #   Alliance", this is the partner ID specified to you by Google. For all other
-        #   callers, this is a string of the form: ``customer_id`-suffix`, where `
-        #   customer_id` is your customer ID. The *suffix* is any string the caller
-        #   specifies. This string will be displayed verbatim in the administration
-        #   console. This suffix is used in setting up Custom Access Levels in Context-
-        #   Aware Access. Your organization's customer ID can be obtained from the URL: `
-        #   GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `
-        #   id` field in the response contains the customer ID starting with the letter 'C'
-        #   . The customer ID to be used in this API is the string after the letter 'C' (
-        #   not including 'C')
+        #   resource_names) of the ClientState in format: `devices/`device`/deviceUsers/`
+        #   device_user`/clientState/`partner``, where partner corresponds to the partner
+        #   storing the data. For partners belonging to the "BeyondCorp Alliance", this is
+        #   the partner ID specified to you by Google. For all other callers, this is a
+        #   string of the form: ``customer`-suffix`, where `customer` is your customer ID.
+        #   The *suffix* is any string the caller specifies. This string will be displayed
+        #   verbatim in the administration console. This suffix is used in setting up
+        #   Custom Access Levels in Context-Aware Access. Your organization's customer ID
+        #   can be obtained from the URL: `GET https://www.googleapis.com/admin/directory/
+        #   v1/customers/my_customer` The `id` field in the response contains the customer
+        #   ID starting with the letter 'C'. The customer ID to be used in this API is the
+        #   string after the letter 'C' (not including 'C')
         # @param [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1ClientState] google_apps_cloudidentity_devices_v1_client_state_object
         # @param [String] customer
         #   Optional. [Resource name](https://cloud.google.com/apis/design/resource_names)
         #   of the customer. If you're using this API for your own organization, use `
         #   customers/my_customer` If you're using this API to manage another organization,
-        #   use `customers/`customer_id``, where customer_id is the customer to whom the
-        #   device belongs.
+        #   use `customers/`customer``, where customer is the customer to whom the device
+        #   belongs.
         # @param [String] update_mask
         #   Optional. Comma-separated list of fully qualified names of fields to be
         #   updated. If not specified, all updatable fields in ClientState are updated.
@@ -861,8 +859,8 @@ module Google
         # Deletes a `Group`.
         # @param [String] name
         #   Required. The [resource name](https://cloud.google.com/apis/design/
-        #   resource_names) of the `Group` to retrieve. Must be of the form `groups/`
-        #   group_id``.
+        #   resource_names) of the `Group` to retrieve. Must be of the form `groups/`group`
+        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -893,8 +891,8 @@ module Google
         # Retrieves a `Group`.
         # @param [String] name
         #   Required. The [resource name](https://cloud.google.com/apis/design/
-        #   resource_names) of the `Group` to retrieve. Must be of the form `groups/`
-        #   group_id``.
+        #   resource_names) of the `Group` to retrieve. Must be of the form `groups/`group`
+        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -934,9 +932,9 @@ module Google
         #   The `next_page_token` value returned from a previous list request, if any.
         # @param [String] parent
         #   Required. The parent resource under which to list all `Group` resources. Must
-        #   be of the form `identitysources/`identity_source_id`` for external- identity-
-        #   mapped groups or `customers/`customer_id`` for Google Groups. The `customer_id`
-        #   must begin with "C" (for example, 'C046psxkn').
+        #   be of the form `identitysources/`identity_source`` for external- identity-
+        #   mapped groups or `customers/`customer`` for Google Groups. The `customer` must
+        #   begin with "C" (for example, 'C046psxkn').
         # @param [String] view
         #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
@@ -981,7 +979,7 @@ module Google
         #   represents a Google-managed entity such as a Google user or a Google Group. If
         #   specified, the `EntityKey` represents an external-identity-mapped group. The
         #   namespace must correspond to an identity source created in Admin Console and
-        #   must be in the form of `identitysources/`identity_source_id``.
+        #   must be in the form of `identitysources/`identity_source``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1013,7 +1011,7 @@ module Google
         # Updates a `Group`.
         # @param [String] name
         #   Output only. The [resource name](https://cloud.google.com/apis/design/
-        #   resource_names) of the `Group`. Shall be of the form `groups/`group_id``.
+        #   resource_names) of the `Group`. Shall be of the form `groups/`group``.
         # @param [Google::Apis::CloudidentityV1::Group] group_object
         # @param [String] update_mask
         #   Required. The names of fields to update. May only contain the following fields:
@@ -1062,8 +1060,8 @@ module Google
         #   Required. The search query. Must be specified in [Common Expression Language](
         #   https://opensource.google/projects/cel). May only contain equality operators
         #   on the parent and inclusion operators on labels (e.g., `parent == 'customers/`
-        #   customer_id`' && 'cloudidentity.googleapis.com/groups.discussion_forum' in
-        #   labels`). The `customer_id` must begin with "C" (for example, 'C046psxkn').
+        #   customer`' && 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`
+        #   ). The `customer` must begin with "C" (for example, 'C046psxkn').
         # @param [String] view
         #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields
@@ -1106,9 +1104,9 @@ module Google
         # the member and group.
         # @param [String] parent
         #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
-        #   group to check the transitive membership in. Format: `groups/`group_id``,
-        #   where `group_id` is the unique id assigned to the Group to which the
-        #   Membership belongs to.
+        #   group to check the transitive membership in. Format: `groups/`group``, where `
+        #   group` is the unique id assigned to the Group to which the Membership belongs
+        #   to.
         # @param [String] query
         #   Required. A CEL expression that MUST include member specification. This is a `
         #   required` field. Certain groups are uniquely identified by both a '
@@ -1146,7 +1144,7 @@ module Google
         # Creates a `Membership`.
         # @param [String] parent
         #   Required. The parent `Group` resource under which to create the `Membership`.
-        #   Must be of the form `groups/`group_id``.
+        #   Must be of the form `groups/`group``.
         # @param [Google::Apis::CloudidentityV1::Membership] membership_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1181,7 +1179,7 @@ module Google
         # @param [String] name
         #   Required. The [resource name](https://cloud.google.com/apis/design/
         #   resource_names) of the `Membership` to delete. Must be of the form `groups/`
-        #   group_id`/memberships/`membership_id``
+        #   group`/memberships/`membership``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1213,7 +1211,7 @@ module Google
         # @param [String] name
         #   Required. The [resource name](https://cloud.google.com/apis/design/
         #   resource_names) of the `Membership` to retrieve. Must be of the form `groups/`
-        #   group_id`/memberships/`membership_id``.
+        #   group`/memberships/`membership``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1251,13 +1249,12 @@ module Google
         # and the member.
         # @param [String] parent
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the group to search transitive memberships in. Format: `groups/`group_id``,
-        #   where `group_id` is the unique ID assigned to the Group to which the
-        #   Membership belongs to. group_id can be a wildcard collection id "-". When a
-        #   group_id is specified, the membership graph will be constrained to paths
-        #   between the member (defined in the query) and the parent. If a wildcard
-        #   collection is provided, all membership paths connected to the member will be
-        #   returned.
+        #   of the group to search transitive memberships in. Format: `groups/`group``,
+        #   where `group` is the unique ID assigned to the Group to which the Membership
+        #   belongs to. group can be a wildcard collection id "-". When a group is
+        #   specified, the membership graph will be constrained to paths between the
+        #   member (defined in the query) and the parent. If a wildcard collection is
+        #   provided, all membership paths connected to the member will be returned.
         # @param [String] query
         #   Required. A CEL expression that MUST include member specification AND label(s).
         #   Certain groups are uniquely identified by both a 'member_key_id' and a '
@@ -1295,7 +1292,7 @@ module Google
         # Lists the `Membership`s within a `Group`.
         # @param [String] parent
         #   Required. The parent `Group` resource under which to lookup the `Membership`
-        #   name. Must be of the form `groups/`group_id``.
+        #   name. Must be of the form `groups/`group``.
         # @param [Fixnum] page_size
         #   The maximum number of results to return. Note that the number of results
         #   returned may be less than this value even if there are more available results.
@@ -1341,7 +1338,7 @@ module Google
         # resource_names) of a `Membership` by its `EntityKey`.
         # @param [String] parent
         #   Required. The parent `Group` resource under which to lookup the `Membership`
-        #   name. Must be of the form `groups/`group_id``.
+        #   name. Must be of the form `groups/`group``.
         # @param [String] member_key_id
         #   The ID of the entity. For Google-managed entities, the `id` should be the
         #   email address of an existing group or user. For external-identity-mapped
@@ -1352,7 +1349,7 @@ module Google
         #   represents a Google-managed entity such as a Google user or a Google Group. If
         #   specified, the `EntityKey` represents an external-identity-mapped group. The
         #   namespace must correspond to an identity source created in Admin Console and
-        #   must be in the form of `identitysources/`identity_source_id``.
+        #   must be in the form of `identitysources/`identity_source``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1386,7 +1383,7 @@ module Google
         # @param [String] name
         #   Required. The [resource name](https://cloud.google.com/apis/design/
         #   resource_names) of the `Membership` whose roles are to be modified. Must be of
-        #   the form `groups/`group_id`/memberships/`membership_id``.
+        #   the form `groups/`group`/memberships/`membership``.
         # @param [Google::Apis::CloudidentityV1::ModifyMembershipRolesRequest] modify_membership_roles_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1426,8 +1423,8 @@ module Google
         # groups.
         # @param [String] parent
         #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
-        #   group to search transitive memberships in. Format: `groups/`group_id``, where `
-        #   group_id` is always '-' as this API will search across all groups for a given
+        #   group to search transitive memberships in. Format: `groups/`group``, where `
+        #   group` is always '-' as this API will search across all groups for a given
         #   member.
         # @param [Fixnum] page_size
         #   The default page size is 200 (max 1000).
@@ -1478,8 +1475,8 @@ module Google
         # of a group. Actor must have view permissions to all transitive memberships.
         # @param [String] parent
         #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
-        #   group to search transitive memberships in. Format: `groups/`group_id``, where `
-        #   group_id` is the unique ID assigned to the Group.
+        #   group to search transitive memberships in. Format: `groups/`group``, where `
+        #   group` is the unique ID assigned to the Group.
         # @param [Fixnum] page_size
         #   The default page size is 200 (max 1000).
         # @param [String] page_token
