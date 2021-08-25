@@ -858,6 +858,19 @@ module Google
         end
       end
       
+      # Metadata for ApproveDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response message for approving the device to access user data.
       class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
         include Google::Apis::Core::Hashable
@@ -875,6 +888,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_user = args[:device_user] if args.key?(:device_user)
+        end
+      end
+      
+      # Metadata for BlockDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -898,6 +924,19 @@ module Google
         end
       end
       
+      # Metadata for CancelWipeDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response message for cancelling an unfinished device wipe.
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
         include Google::Apis::Core::Hashable
@@ -916,6 +955,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device = args[:device] if args.key?(:device)
+        end
+      end
+      
+      # Metadata for CancelWipeDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -997,19 +1049,18 @@ module Google
         attr_accessor :managed
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the ClientState in format: `devices/`device_id`/deviceUsers/
-        # `device_user_id`/clientState/`partner_id``, where partner_id corresponds to
-        # the partner storing the data. For partners belonging to the "BeyondCorp
-        # Alliance", this is the partner ID specified to you by Google. For all other
-        # callers, this is a string of the form: ``customer_id`-suffix`, where `
-        # customer_id` is your customer ID. The *suffix* is any string the caller
-        # specifies. This string will be displayed verbatim in the administration
-        # console. This suffix is used in setting up Custom Access Levels in Context-
-        # Aware Access. Your organization's customer ID can be obtained from the URL: `
-        # GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `
-        # id` field in the response contains the customer ID starting with the letter 'C'
-        # . The customer ID to be used in this API is the string after the letter 'C' (
-        # not including 'C')
+        # resource_names) of the ClientState in format: `devices/`device`/deviceUsers/`
+        # device_user`/clientState/`partner``, where partner corresponds to the partner
+        # storing the data. For partners belonging to the "BeyondCorp Alliance", this is
+        # the partner ID specified to you by Google. For all other callers, this is a
+        # string of the form: ``customer`-suffix`, where `customer` is your customer ID.
+        # The *suffix* is any string the caller specifies. This string will be displayed
+        # verbatim in the administration console. This suffix is used in setting up
+        # Custom Access Levels in Context-Aware Access. Your organization's customer ID
+        # can be obtained from the URL: `GET https://www.googleapis.com/admin/directory/
+        # v1/customers/my_customer` The `id` field in the response contains the customer
+        # ID starting with the letter 'C'. The customer ID to be used in this API is the
+        # string after the letter 'C' (not including 'C')
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1045,6 +1096,19 @@ module Google
         end
       end
       
+      # Metadata for CreateDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Additional custom attribute values may be one of these types
       class GoogleAppsCloudidentityDevicesV1CustomAttributeValue
         include Google::Apis::Core::Hashable
@@ -1074,6 +1138,32 @@ module Google
           @bool_value = args[:bool_value] if args.key?(:bool_value)
           @number_value = args[:number_value] if args.key?(:number_value)
           @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # Metadata for DeleteDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for DeleteDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1182,8 +1272,8 @@ module Google
         attr_accessor :model
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the Device in format: `devices/`device_id``, where
-        # device_id is the unique id assigned to the Device.
+        # resource_names) of the Device in format: `devices/`device``, where device is
+        # the unique id assigned to the Device.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1305,8 +1395,8 @@ module Google
         attr_accessor :management_state
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of the DeviceUser in format: `devices/`device_id`/deviceUsers/`
-        # device_user_id``, where `device_user_id` uniquely identifies a user's use of a
+        # resource_names) of the DeviceUser in format: `devices/`device`/deviceUsers/`
+        # device_user``, where `device_user` uniquely identifies a user's use of a
         # device.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1346,6 +1436,71 @@ module Google
         end
       end
       
+      # Metadata for ListEndpointApps LRO.
+      class GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for SignoutDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for UpdateClientState LRO.
+      class GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for UpdateDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for WipeDevice LRO.
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response message for wiping all data on the device.
       class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
         include Google::Apis::Core::Hashable
@@ -1364,6 +1519,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device = args[:device] if args.key?(:device)
+        end
+      end
+      
+      # Metadata for WipeDeviceUser LRO.
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

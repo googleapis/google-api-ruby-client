@@ -160,7 +160,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,7 +184,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,7 +214,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCloudidentityDevicesV1CustomAttributeValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,7 +250,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -639,11 +717,23 @@ module Google
         end
       end
       
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
       
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -655,11 +745,23 @@ module Google
         end
       end
       
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device, as: 'device', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1Device, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1Device::Representation
       
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -690,12 +792,30 @@ module Google
         end
       end
       
+      class GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleAppsCloudidentityDevicesV1CustomAttributeValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bool_value, as: 'boolValue'
           property :number_value, as: 'numberValue'
           property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -750,11 +870,47 @@ module Google
         end
       end
       
+      class GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device, as: 'device', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1Device, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1Device::Representation
       
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
