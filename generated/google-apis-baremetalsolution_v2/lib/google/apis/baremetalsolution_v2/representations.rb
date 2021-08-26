@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVolumesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotReservationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +137,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -207,6 +225,16 @@ module Google
         end
       end
       
+      class ListVolumesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::Volume, decorator: Google::Apis::BaremetalsolutionV2::Volume::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -227,6 +255,7 @@ module Google
           property :shared, as: 'shared'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :state, as: 'state'
+          property :storage_type, as: 'storageType'
           property :storage_volume, as: 'storageVolume'
         end
       end
@@ -284,6 +313,15 @@ module Google
         end
       end
       
+      class SnapshotReservationDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reserved_space_gib, :numeric_string => true, as: 'reservedSpaceGib'
+          property :reserved_space_remaining_gib, :numeric_string => true, as: 'reservedSpaceRemainingGib'
+          property :reserved_space_used_percent, as: 'reservedSpaceUsedPercent'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -304,6 +342,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_grown_size_gib, :numeric_string => true, as: 'autoGrownSizeGib'
+          property :current_size_gib, :numeric_string => true, as: 'currentSizeGib'
+          property :name, as: 'name'
+          property :remaining_space_gib, :numeric_string => true, as: 'remainingSpaceGib'
+          property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
+          property :snapshot_reservation_detail, as: 'snapshotReservationDetail', class: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail, decorator: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail::Representation
+      
+          property :state, as: 'state'
+          property :storage_type, as: 'storageType'
         end
       end
     end

@@ -331,6 +331,37 @@ module Google
         end
       end
       
+      # Message for response to listing Volumes.
+      class ListVolumesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # The list of Volume.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::Volume>]
+        attr_accessor :volumes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -415,6 +446,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The storage type of this Lun.
+        # Corresponds to the JSON property `storageType`
+        # @return [String]
+        attr_accessor :storage_type
+      
         # The storage volume that this Lun is attached to.
         # Corresponds to the JSON property `storageVolume`
         # @return [String]
@@ -432,6 +468,7 @@ module Google
           @shared = args[:shared] if args.key?(:shared)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @state = args[:state] if args.key?(:state)
+          @storage_type = args[:storage_type] if args.key?(:storage_type)
           @storage_volume = args[:storage_volume] if args.key?(:storage_volume)
         end
       end
@@ -723,6 +760,40 @@ module Google
         end
       end
       
+      # Details about snapshot space reservation and usage on the Volume.
+      class SnapshotReservationDetail
+        include Google::Apis::Core::Hashable
+      
+        # The space on this Volume reserved for snapshotsk, provided in GiB.
+        # Corresponds to the JSON property `reservedSpaceGib`
+        # @return [Fixnum]
+        attr_accessor :reserved_space_gib
+      
+        # The amount, in GiB, of space available in this Volume's reserved snapshot
+        # space.
+        # Corresponds to the JSON property `reservedSpaceRemainingGib`
+        # @return [Fixnum]
+        attr_accessor :reserved_space_remaining_gib
+      
+        # The percent of reserved snapshot space on this Volume that is actually used by
+        # snapshot copies. This may be higher than 100% if snapshot copies are occupying
+        # more space than has been reserved on the Volume.
+        # Corresponds to the JSON property `reservedSpaceUsedPercent`
+        # @return [Fixnum]
+        attr_accessor :reserved_space_used_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reserved_space_gib = args[:reserved_space_gib] if args.key?(:reserved_space_gib)
+          @reserved_space_remaining_gib = args[:reserved_space_remaining_gib] if args.key?(:reserved_space_remaining_gib)
+          @reserved_space_used_percent = args[:reserved_space_used_percent] if args.key?(:reserved_space_used_percent)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -799,6 +870,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A storage Volume.
+      class Volume
+        include Google::Apis::Core::Hashable
+      
+        # The size, in GiB, that this Volume has expanded as a result of an auto grow
+        # policy. In the absence of auto-grow, the value is 0.
+        # Corresponds to the JSON property `autoGrownSizeGib`
+        # @return [Fixnum]
+        attr_accessor :auto_grown_size_gib
+      
+        # The current size of this Volume, in GiB, including space reserved for
+        # snapshots. This size may be different than the requested size if the Volume
+        # has been configured with auto grow or auto shrink.
+        # Corresponds to the JSON property `currentSizeGib`
+        # @return [Fixnum]
+        attr_accessor :current_size_gib
+      
+        # Output only. The resource name of this `Volume`. Resource names are schemeless
+        # URIs that follow the conventions in https://cloud.google.com/apis/design/
+        # resource_names. Format: `projects/`project`/locations/`location`/volumes/`
+        # volume``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The space remaining in the Volume for new LUNs, in GiB, excluding space
+        # reserved for snapshots.
+        # Corresponds to the JSON property `remainingSpaceGib`
+        # @return [Fixnum]
+        attr_accessor :remaining_space_gib
+      
+        # The requested size of this Volume, in GiB.
+        # Corresponds to the JSON property `requestedSizeGib`
+        # @return [Fixnum]
+        attr_accessor :requested_size_gib
+      
+        # Details about snapshot space reservation and usage on the Volume.
+        # Corresponds to the JSON property `snapshotReservationDetail`
+        # @return [Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail]
+        attr_accessor :snapshot_reservation_detail
+      
+        # The state of this Volume.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The storage type of this Volume.
+        # Corresponds to the JSON property `storageType`
+        # @return [String]
+        attr_accessor :storage_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_grown_size_gib = args[:auto_grown_size_gib] if args.key?(:auto_grown_size_gib)
+          @current_size_gib = args[:current_size_gib] if args.key?(:current_size_gib)
+          @name = args[:name] if args.key?(:name)
+          @remaining_space_gib = args[:remaining_space_gib] if args.key?(:remaining_space_gib)
+          @requested_size_gib = args[:requested_size_gib] if args.key?(:requested_size_gib)
+          @snapshot_reservation_detail = args[:snapshot_reservation_detail] if args.key?(:snapshot_reservation_detail)
+          @state = args[:state] if args.key?(:state)
+          @storage_type = args[:storage_type] if args.key?(:storage_type)
         end
       end
     end
