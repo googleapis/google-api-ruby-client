@@ -183,6 +183,12 @@ module Google
         # @return [Google::Apis::BaremetalsolutionV1alpha1::NetworkAddress]
         attr_accessor :private_network
       
+        # User note field, it can be used by customers to add additional information for
+        # the BMS Ops team (b/194021617).
+        # Corresponds to the JSON property `userNote`
+        # @return [String]
+        attr_accessor :user_note
+      
         def initialize(**args)
            update!(**args)
         end
@@ -196,6 +202,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @os_image = args[:os_image] if args.key?(:os_image)
           @private_network = args[:private_network] if args.key?(:private_network)
+          @user_note = args[:user_note] if args.key?(:user_note)
         end
       end
       
@@ -438,6 +445,11 @@ module Google
         # @return [Google::Apis::BaremetalsolutionV1alpha1::Volume]
         attr_accessor :remote_volume
       
+        # The serial number of this Lun
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
         # Whether this Lun is allowed to be shared between multiple physical servers.
         # Corresponds to the JSON property `shareable`
         # @return [Boolean]
@@ -454,6 +466,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # World Wide IDentifier of this Lun
+        # Corresponds to the JSON property `wwid`
+        # @return [String]
+        attr_accessor :wwid
+      
         def initialize(**args)
            update!(**args)
         end
@@ -464,9 +481,11 @@ module Google
           @multiprotocol_type = args[:multiprotocol_type] if args.key?(:multiprotocol_type)
           @name = args[:name] if args.key?(:name)
           @remote_volume = args[:remote_volume] if args.key?(:remote_volume)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
           @shareable = args[:shareable] if args.key?(:shareable)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @state = args[:state] if args.key?(:state)
+          @wwid = args[:wwid] if args.key?(:wwid)
         end
       end
       
@@ -555,6 +574,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # User note field, it can be used by customers to add additional information for
+        # the BMS Ops team (b/194021617).
+        # Corresponds to the JSON property `userNote`
+        # @return [String]
+        attr_accessor :user_note
+      
         # List of VLAN attachments. As of now there are always 2 attachments, but it is
         # going to change in the future (multi vlan).
         # Corresponds to the JSON property `vlanAttachments`
@@ -573,6 +598,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @service_cidr = args[:service_cidr] if args.key?(:service_cidr)
           @type = args[:type] if args.key?(:type)
+          @user_note = args[:user_note] if args.key?(:user_note)
           @vlan_attachments = args[:vlan_attachments] if args.key?(:vlan_attachments)
         end
       end
@@ -966,6 +992,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :requested_size_gb
       
+        # The behavior to use when snapshot reserved space is full.
+        # Corresponds to the JSON property `snapshotAutoDeleteBehavior`
+        # @return [String]
+        attr_accessor :snapshot_auto_delete_behavior
+      
         # The percent of space on this Volume reserved for snapshots.
         # Corresponds to the JSON property `snapshotReservedSpacePercent`
         # @return [Fixnum]
@@ -1004,6 +1035,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @remaining_space_gb = args[:remaining_space_gb] if args.key?(:remaining_space_gb)
           @requested_size_gb = args[:requested_size_gb] if args.key?(:requested_size_gb)
+          @snapshot_auto_delete_behavior = args[:snapshot_auto_delete_behavior] if args.key?(:snapshot_auto_delete_behavior)
           @snapshot_reserved_space_percent = args[:snapshot_reserved_space_percent] if args.key?(:snapshot_reserved_space_percent)
           @snapshot_reserved_space_remaining_gb = args[:snapshot_reserved_space_remaining_gb] if args.key?(:snapshot_reserved_space_remaining_gb)
           @snapshot_reserved_space_used_percent = args[:snapshot_reserved_space_used_percent] if args.key?(:snapshot_reserved_space_used_percent)
@@ -1064,6 +1096,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # User note field, it can be used by customers to add additional information for
+        # the BMS Ops team (b/194021617).
+        # Corresponds to the JSON property `userNote`
+        # @return [String]
+        attr_accessor :user_note
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1079,12 +1117,18 @@ module Google
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @snapshots_enabled = args[:snapshots_enabled] if args.key?(:snapshots_enabled)
           @type = args[:type] if args.key?(:type)
+          @user_note = args[:user_note] if args.key?(:user_note)
         end
       end
       
       # VolumeSnapshot registered for given Volume
       class VolumeSnapshot
         include Google::Apis::Core::Hashable
+      
+        # The creation time of this Snapshot.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
       
         # The description of this Snapshot.
         # Corresponds to the JSON property `description`
@@ -1112,6 +1156,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)

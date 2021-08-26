@@ -425,7 +425,7 @@ module Google
         # @param [Google::Apis::BaremetalsolutionV1alpha1::Volume] volume_object
         # @param [String] update_mask
         #   The list of fields to update. The only currently supported field is `
-        #   snapshot_reserved_space_percent`.
+        #   snapshot_auto_delete_behavior`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -691,6 +691,8 @@ module Google
         # @param [String] parent
         #   Required. The parent project containing the SnapshotSchedulePolicy.
         # @param [Google::Apis::BaremetalsolutionV1alpha1::SnapshotSchedulePolicy] snapshot_schedule_policy_object
+        # @param [String] snapshot_schedule_policy_id
+        #   Required. Snapshot policy ID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -708,13 +710,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_snapshot_schedule_policy(parent, snapshot_schedule_policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_snapshot_schedule_policy(parent, snapshot_schedule_policy_object = nil, snapshot_schedule_policy_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1alpha1/{+parent}/snapshotSchedulePolicies', options)
           command.request_representation = Google::Apis::BaremetalsolutionV1alpha1::SnapshotSchedulePolicy::Representation
           command.request_object = snapshot_schedule_policy_object
           command.response_representation = Google::Apis::BaremetalsolutionV1alpha1::SnapshotSchedulePolicy::Representation
           command.response_class = Google::Apis::BaremetalsolutionV1alpha1::SnapshotSchedulePolicy
           command.params['parent'] = parent unless parent.nil?
+          command.query['snapshotSchedulePolicyId'] = snapshot_schedule_policy_id unless snapshot_schedule_policy_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
