@@ -2710,10 +2710,23 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation]
         attr_accessor :affected_location
       
+        # Output only. The distro or language system assigned severity for this
+        # vulnerability when that is available and note provider assigned severity when
+        # distro or language system has not yet assigned a severity for this
+        # vulnerability.
+        # Corresponds to the JSON property `effectiveSeverity`
+        # @return [String]
+        attr_accessor :effective_severity
+      
         # The location of the vulnerability
         # Corresponds to the JSON property `fixedLocation`
         # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation]
         attr_accessor :fixed_location
+      
+        # The type of package (e.g. OS, MAVEN, GO).
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
       
         # 
         # Corresponds to the JSON property `severityName`
@@ -2727,7 +2740,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @affected_location = args[:affected_location] if args.key?(:affected_location)
+          @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @fixed_location = args[:fixed_location] if args.key?(:fixed_location)
+          @package_type = args[:package_type] if args.key?(:package_type)
           @severity_name = args[:severity_name] if args.key?(:severity_name)
         end
       end
@@ -3784,7 +3799,14 @@ module Google
       
         # The distro assigned severity for this vulnerability when that is available and
         # note provider assigned severity when distro has not yet assigned a severity
-        # for this vulnerability.
+        # for this vulnerability. When there are multiple package issues for this
+        # vulnerability, they can have different effective severities because some might
+        # come from the distro and some might come from installed language packs (e.g.
+        # Maven JARs or Go binaries). For this reason, it is advised to use the
+        # effective severity on the PackageIssue level, as this field may eventually be
+        # deprecated. In the case where multiple PackageIssues have different effective
+        # severities, the one set here will be the highest severity of any of the
+        # PackageIssues.
         # Corresponds to the JSON property `effectiveSeverity`
         # @return [String]
         attr_accessor :effective_severity
@@ -3801,7 +3823,8 @@ module Google
         attr_accessor :severity
       
         # The type of package; whether native or non native(ruby gems, node.js packages
-        # etc)
+        # etc). This may be deprecated in the future because we can have multiple
+        # PackageIssues with different package types.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
