@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CrossProfilePolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -478,6 +484,7 @@ module Google
           property :common_criteria_mode, as: 'commonCriteriaMode'
           property :developer_settings, as: 'developerSettings'
           property :google_play_protect_verify_apps, as: 'googlePlayProtectVerifyApps'
+          collection :personal_apps_that_can_read_work_notifications, as: 'personalAppsThatCanReadWorkNotifications'
           property :untrusted_apps_policy, as: 'untrustedAppsPolicy'
         end
       end
@@ -651,6 +658,15 @@ module Google
           property :package_name, as: 'packageName'
           collection :signing_certs_sha256, as: 'signingCertsSha256'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class CrossProfilePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cross_profile_copy_paste, as: 'crossProfileCopyPaste'
+          property :cross_profile_data_sharing, as: 'crossProfileDataSharing'
+          property :show_work_contacts_in_personal_profile, as: 'showWorkContactsInPersonalProfile'
         end
       end
       
@@ -1115,6 +1131,8 @@ module Google
       
           property :create_windows_disabled, as: 'createWindowsDisabled'
           property :credentials_config_disabled, as: 'credentialsConfigDisabled'
+          property :cross_profile_policies, as: 'crossProfilePolicies', class: Google::Apis::AndroidmanagementV1::CrossProfilePolicies, decorator: Google::Apis::AndroidmanagementV1::CrossProfilePolicies::Representation
+      
           property :data_roaming_disabled, as: 'dataRoamingDisabled'
           property :debugging_features_allowed, as: 'debuggingFeaturesAllowed'
           property :default_permission_policy, as: 'defaultPermissionPolicy'
