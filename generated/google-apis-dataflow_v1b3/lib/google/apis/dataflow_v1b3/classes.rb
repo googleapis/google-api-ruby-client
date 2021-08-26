@@ -247,7 +247,7 @@ module Google
         end
       end
       
-      # Metadata for a Cloud BigTable connector used by the job.
+      # Metadata for a Cloud Bigtable connector used by the job.
       class BigTableIoDetails
         include Google::Apis::Core::Hashable
       
@@ -1462,10 +1462,24 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :additional_user_labels
       
+        # The algorithm to use for autoscaling
+        # Corresponds to the JSON property `autoscalingAlgorithm`
+        # @return [String]
+        attr_accessor :autoscaling_algorithm
+      
         # Worker disk size, in gigabytes.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
+      
+        # If true, save a heap dump before killing a thread or process which is GC
+        # thrashing or out of memory. The location of the heap file will either be
+        # echoed back to the user, or the user will be given the opportunity to download
+        # the heap file.
+        # Corresponds to the JSON property `dumpHeapOnOom`
+        # @return [Boolean]
+        attr_accessor :dump_heap_on_oom
+        alias_method :dump_heap_on_oom?, :dump_heap_on_oom
       
         # Whether to enable Streaming Engine for the job.
         # Corresponds to the JSON property `enableStreamingEngine`
@@ -1496,11 +1510,6 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # The maximum number of workers to cap scaling at.
-        # Corresponds to the JSON property `maxNumWorkers`
-        # @return [Fixnum]
-        attr_accessor :max_num_workers
-      
         # The maximum number of Google Compute Engine instances to be made available to
         # your pipeline during execution, from 1 to 1000.
         # Corresponds to the JSON property `maxWorkers`
@@ -1517,6 +1526,13 @@ module Google
         # Corresponds to the JSON property `numWorkers`
         # @return [Fixnum]
         attr_accessor :num_workers
+      
+        # Cloud Storage bucket (directory) to upload heap dumps to the given location.
+        # Enabling this implies that heap dumps should be generated on OOM (
+        # dump_heap_on_oom is set to true).
+        # Corresponds to the JSON property `saveHeapDumpsToGcsPath`
+        # @return [String]
+        attr_accessor :save_heap_dumps_to_gcs_path
       
         # Docker registry location of container image to use for the 'worker harness.
         # Default is the container for the version of the SDK. Note this field is only
@@ -1585,16 +1601,18 @@ module Google
         def update!(**args)
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
           @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
+          @autoscaling_algorithm = args[:autoscaling_algorithm] if args.key?(:autoscaling_algorithm)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @dump_heap_on_oom = args[:dump_heap_on_oom] if args.key?(:dump_heap_on_oom)
           @enable_streaming_engine = args[:enable_streaming_engine] if args.key?(:enable_streaming_engine)
           @flexrs_goal = args[:flexrs_goal] if args.key?(:flexrs_goal)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
-          @max_num_workers = args[:max_num_workers] if args.key?(:max_num_workers)
           @max_workers = args[:max_workers] if args.key?(:max_workers)
           @network = args[:network] if args.key?(:network)
           @num_workers = args[:num_workers] if args.key?(:num_workers)
+          @save_heap_dumps_to_gcs_path = args[:save_heap_dumps_to_gcs_path] if args.key?(:save_heap_dumps_to_gcs_path)
           @sdk_container_image = args[:sdk_container_image] if args.key?(:sdk_container_image)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @staging_location = args[:staging_location] if args.key?(:staging_location)
@@ -2282,7 +2300,7 @@ module Google
       class JobMetadata
         include Google::Apis::Core::Hashable
       
-        # Identification of a Cloud BigTable source used in the Dataflow job.
+        # Identification of a Cloud Bigtable source used in the Dataflow job.
         # Corresponds to the JSON property `bigTableDetails`
         # @return [Array<Google::Apis::DataflowV1b3::BigTableIoDetails>]
         attr_accessor :big_table_details
@@ -2302,7 +2320,7 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::FileIoDetails>]
         attr_accessor :file_details
       
-        # Identification of a PubSub source used in the Dataflow job.
+        # Identification of a Pub/Sub source used in the Dataflow job.
         # Corresponds to the JSON property `pubsubDetails`
         # @return [Array<Google::Apis::DataflowV1b3::PubSubIoDetails>]
         attr_accessor :pubsub_details
@@ -3821,7 +3839,8 @@ module Google
       class RuntimeEnvironment
         include Google::Apis::Core::Hashable
       
-        # Additional experiment flags for the job.
+        # Additional experiment flags for the job, specified with the `--experiments`
+        # option.
         # Corresponds to the JSON property `additionalExperiments`
         # @return [Array<String>]
         attr_accessor :additional_experiments
@@ -4355,7 +4374,7 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # PubSub snapshot metadata.
+        # Pub/Sub snapshot metadata.
         # Corresponds to the JSON property `pubsubMetadata`
         # @return [Array<Google::Apis::DataflowV1b3::PubsubSnapshotMetadata>]
         attr_accessor :pubsub_metadata
