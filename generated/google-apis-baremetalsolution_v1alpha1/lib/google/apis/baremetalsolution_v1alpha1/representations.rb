@@ -293,6 +293,7 @@ module Google
           property :os_image, as: 'osImage'
           property :private_network, as: 'privateNetwork', class: Google::Apis::BaremetalsolutionV1alpha1::NetworkAddress, decorator: Google::Apis::BaremetalsolutionV1alpha1::NetworkAddress::Representation
       
+          property :user_note, as: 'userNote'
         end
       end
       
@@ -376,9 +377,11 @@ module Google
           property :name, as: 'name'
           property :remote_volume, as: 'remoteVolume', class: Google::Apis::BaremetalsolutionV1alpha1::Volume, decorator: Google::Apis::BaremetalsolutionV1alpha1::Volume::Representation
       
+          property :serial_number, as: 'serialNumber'
           property :shareable, as: 'shareable'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :state, as: 'state'
+          property :wwid, as: 'wwid'
         end
       end
       
@@ -407,6 +410,7 @@ module Google
           property :location, as: 'location'
           property :service_cidr, as: 'serviceCidr'
           property :type, as: 'type'
+          property :user_note, as: 'userNote'
           collection :vlan_attachments, as: 'vlanAttachments', class: Google::Apis::BaremetalsolutionV1alpha1::VlanAttachment, decorator: Google::Apis::BaremetalsolutionV1alpha1::VlanAttachment::Representation
       
         end
@@ -538,6 +542,7 @@ module Google
           property :name, as: 'name'
           property :remaining_space_gb, :numeric_string => true, as: 'remainingSpaceGb'
           property :requested_size_gb, :numeric_string => true, as: 'requestedSizeGb'
+          property :snapshot_auto_delete_behavior, as: 'snapshotAutoDeleteBehavior'
           property :snapshot_reserved_space_percent, as: 'snapshotReservedSpacePercent'
           property :snapshot_reserved_space_remaining_gb, :numeric_string => true, as: 'snapshotReservedSpaceRemainingGb'
           property :snapshot_reserved_space_used_percent, as: 'snapshotReservedSpaceUsedPercent'
@@ -560,12 +565,14 @@ module Google
           property :size_gb, as: 'sizeGb'
           property :snapshots_enabled, as: 'snapshotsEnabled'
           property :type, as: 'type'
+          property :user_note, as: 'userNote'
         end
       end
       
       class VolumeSnapshot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
           property :description, as: 'description'
           property :name, as: 'name'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
