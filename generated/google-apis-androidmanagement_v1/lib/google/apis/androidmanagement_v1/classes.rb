@@ -53,6 +53,15 @@ module Google
         # @return [String]
         attr_accessor :google_play_protect_verify_apps
       
+        # Personal apps that can read work profile notifications using a
+        # NotificationListenerService (https://developer.android.com/reference/android/
+        # service/notification/NotificationListenerService). By default, no personal
+        # apps (aside from system apps) can read work notifications. Each value in the
+        # list must be a package name.
+        # Corresponds to the JSON property `personalAppsThatCanReadWorkNotifications`
+        # @return [Array<String>]
+        attr_accessor :personal_apps_that_can_read_work_notifications
+      
         # The policy for untrusted apps (apps from unknown sources) enforced on the
         # device. Replaces install_unknown_sources_allowed (deprecated).
         # Corresponds to the JSON property `untrustedAppsPolicy`
@@ -68,6 +77,7 @@ module Google
           @common_criteria_mode = args[:common_criteria_mode] if args.key?(:common_criteria_mode)
           @developer_settings = args[:developer_settings] if args.key?(:developer_settings)
           @google_play_protect_verify_apps = args[:google_play_protect_verify_apps] if args.key?(:google_play_protect_verify_apps)
+          @personal_apps_that_can_read_work_notifications = args[:personal_apps_that_can_read_work_notifications] if args.key?(:personal_apps_that_can_read_work_notifications)
           @untrusted_apps_policy = args[:untrusted_apps_policy] if args.key?(:untrusted_apps_policy)
         end
       end
@@ -780,6 +790,43 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @signing_certs_sha256 = args[:signing_certs_sha256] if args.key?(:signing_certs_sha256)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Cross-profile policies applied on the device.
+      class CrossProfilePolicies
+        include Google::Apis::Core::Hashable
+      
+        # Whether text copied from one profile (personal or work) can be pasted in the
+        # other profile.
+        # Corresponds to the JSON property `crossProfileCopyPaste`
+        # @return [String]
+        attr_accessor :cross_profile_copy_paste
+      
+        # Whether data from one profile (personal or work) can be shared with apps in
+        # the other profile. Specifically controls simple data sharing via intents.
+        # Management of other cross-profile communication channels, such as contact
+        # search, copy/paste, or connected work & personal apps, are configured
+        # separately.
+        # Corresponds to the JSON property `crossProfileDataSharing`
+        # @return [String]
+        attr_accessor :cross_profile_data_sharing
+      
+        # Whether contacts stored in the work profile can be shown in personal profile
+        # contact searches and incoming calls.
+        # Corresponds to the JSON property `showWorkContactsInPersonalProfile`
+        # @return [String]
+        attr_accessor :show_work_contacts_in_personal_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cross_profile_copy_paste = args[:cross_profile_copy_paste] if args.key?(:cross_profile_copy_paste)
+          @cross_profile_data_sharing = args[:cross_profile_data_sharing] if args.key?(:cross_profile_data_sharing)
+          @show_work_contacts_in_personal_profile = args[:show_work_contacts_in_personal_profile] if args.key?(:show_work_contacts_in_personal_profile)
         end
       end
       
@@ -2702,6 +2749,11 @@ module Google
         attr_accessor :credentials_config_disabled
         alias_method :credentials_config_disabled?, :credentials_config_disabled
       
+        # Cross-profile policies applied on the device.
+        # Corresponds to the JSON property `crossProfilePolicies`
+        # @return [Google::Apis::AndroidmanagementV1::CrossProfilePolicies]
+        attr_accessor :cross_profile_policies
+      
         # Whether roaming data services are disabled.
         # Corresponds to the JSON property `dataRoamingDisabled`
         # @return [Boolean]
@@ -3119,6 +3171,7 @@ module Google
           @compliance_rules = args[:compliance_rules] if args.key?(:compliance_rules)
           @create_windows_disabled = args[:create_windows_disabled] if args.key?(:create_windows_disabled)
           @credentials_config_disabled = args[:credentials_config_disabled] if args.key?(:credentials_config_disabled)
+          @cross_profile_policies = args[:cross_profile_policies] if args.key?(:cross_profile_policies)
           @data_roaming_disabled = args[:data_roaming_disabled] if args.key?(:data_roaming_disabled)
           @debugging_features_allowed = args[:debugging_features_allowed] if args.key?(:debugging_features_allowed)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
