@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckCompatibilityRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckCompatibilityResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cohort
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +107,12 @@ module Google
       end
       
       class Dimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DimensionCompatibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +179,12 @@ module Google
       end
       
       class Metric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricCompatibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -361,6 +385,31 @@ module Google
         end
       end
       
+      class CheckCompatibilityRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compatibility_filter, as: 'compatibilityFilter'
+          property :dimension_filter, as: 'dimensionFilter', class: Google::Apis::AnalyticsdataV1beta::FilterExpression, decorator: Google::Apis::AnalyticsdataV1beta::FilterExpression::Representation
+      
+          collection :dimensions, as: 'dimensions', class: Google::Apis::AnalyticsdataV1beta::Dimension, decorator: Google::Apis::AnalyticsdataV1beta::Dimension::Representation
+      
+          property :metric_filter, as: 'metricFilter', class: Google::Apis::AnalyticsdataV1beta::FilterExpression, decorator: Google::Apis::AnalyticsdataV1beta::FilterExpression::Representation
+      
+          collection :metrics, as: 'metrics', class: Google::Apis::AnalyticsdataV1beta::Metric, decorator: Google::Apis::AnalyticsdataV1beta::Metric::Representation
+      
+        end
+      end
+      
+      class CheckCompatibilityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimension_compatibilities, as: 'dimensionCompatibilities', class: Google::Apis::AnalyticsdataV1beta::DimensionCompatibility, decorator: Google::Apis::AnalyticsdataV1beta::DimensionCompatibility::Representation
+      
+          collection :metric_compatibilities, as: 'metricCompatibilities', class: Google::Apis::AnalyticsdataV1beta::MetricCompatibility, decorator: Google::Apis::AnalyticsdataV1beta::MetricCompatibility::Representation
+      
+        end
+      end
+      
       class Cohort
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -425,6 +474,15 @@ module Google
         end
       end
       
+      class DimensionCompatibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compatibility, as: 'compatibility'
+          property :dimension_metadata, as: 'dimensionMetadata', class: Google::Apis::AnalyticsdataV1beta::DimensionMetadata, decorator: Google::Apis::AnalyticsdataV1beta::DimensionMetadata::Representation
+      
+        end
+      end
+      
       class DimensionExpression
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -448,6 +506,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_name, as: 'apiName'
+          property :category, as: 'category'
           property :custom_definition, as: 'customDefinition'
           collection :deprecated_api_names, as: 'deprecatedApiNames'
           property :description, as: 'description'
@@ -535,6 +594,15 @@ module Google
         end
       end
       
+      class MetricCompatibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compatibility, as: 'compatibility'
+          property :metric_metadata, as: 'metricMetadata', class: Google::Apis::AnalyticsdataV1beta::MetricMetadata, decorator: Google::Apis::AnalyticsdataV1beta::MetricMetadata::Representation
+      
+        end
+      end
+      
       class MetricHeader
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -547,6 +615,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_name, as: 'apiName'
+          property :category, as: 'category'
           property :custom_definition, as: 'customDefinition'
           collection :deprecated_api_names, as: 'deprecatedApiNames'
           property :description, as: 'description'
