@@ -1315,8 +1315,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :affected_location, as: 'affectedLocation', class: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation, decorator: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation::Representation
       
+          property :effective_severity, as: 'effectiveSeverity'
           property :fixed_location, as: 'fixedLocation', class: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation, decorator: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation::Representation
       
+          property :package_type, as: 'packageType'
           property :severity_name, as: 'severityName'
         end
       end
