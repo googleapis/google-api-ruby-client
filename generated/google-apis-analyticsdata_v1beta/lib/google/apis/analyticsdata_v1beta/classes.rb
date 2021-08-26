@@ -161,6 +161,83 @@ module Google
         end
       end
       
+      # The request for compatibility information for a report's dimensions and
+      # metrics. Check compatibility provides a preview of the compatibility of a
+      # report; fields shared with the `runReport` request should be the same values
+      # as in your `runReport` request.
+      class CheckCompatibilityRequest
+        include Google::Apis::Core::Hashable
+      
+        # Filters the dimensions and metrics in the response to just this compatibility.
+        # Commonly used as `”compatibilityFilter”: “COMPATIBLE”` to only return
+        # compatible dimensions & metrics.
+        # Corresponds to the JSON property `compatibilityFilter`
+        # @return [String]
+        attr_accessor :compatibility_filter
+      
+        # To express dimension or metric filters. The fields in the same
+        # FilterExpression need to be either all dimensions or all metrics.
+        # Corresponds to the JSON property `dimensionFilter`
+        # @return [Google::Apis::AnalyticsdataV1beta::FilterExpression]
+        attr_accessor :dimension_filter
+      
+        # The dimensions in this report. `dimensions` should be the same value as in
+        # your `runReport` request.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::Dimension>]
+        attr_accessor :dimensions
+      
+        # To express dimension or metric filters. The fields in the same
+        # FilterExpression need to be either all dimensions or all metrics.
+        # Corresponds to the JSON property `metricFilter`
+        # @return [Google::Apis::AnalyticsdataV1beta::FilterExpression]
+        attr_accessor :metric_filter
+      
+        # The metrics in this report. `metrics` should be the same value as in your `
+        # runReport` request.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::Metric>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compatibility_filter = args[:compatibility_filter] if args.key?(:compatibility_filter)
+          @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @metric_filter = args[:metric_filter] if args.key?(:metric_filter)
+          @metrics = args[:metrics] if args.key?(:metrics)
+        end
+      end
+      
+      # The compatibility response with the compatibility of each dimension & metric.
+      class CheckCompatibilityResponse
+        include Google::Apis::Core::Hashable
+      
+        # The compatibility of each dimension.
+        # Corresponds to the JSON property `dimensionCompatibilities`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::DimensionCompatibility>]
+        attr_accessor :dimension_compatibilities
+      
+        # The compatibility of each metric.
+        # Corresponds to the JSON property `metricCompatibilities`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::MetricCompatibility>]
+        attr_accessor :metric_compatibilities
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_compatibilities = args[:dimension_compatibilities] if args.key?(:dimension_compatibilities)
+          @metric_compatibilities = args[:metric_compatibilities] if args.key?(:metric_compatibilities)
+        end
+      end
+      
       # Defines a cohort selection criteria. A cohort is a group of users who share a
       # common characteristic. For example, users with the same `firstSessionDate`
       # belong to the same cohort.
@@ -421,6 +498,32 @@ module Google
         end
       end
       
+      # The compatibility for a single dimension.
+      class DimensionCompatibility
+        include Google::Apis::Core::Hashable
+      
+        # The compatibility of this dimension. If the compatibility is COMPATIBLE, this
+        # dimension can be successfully added to the report.
+        # Corresponds to the JSON property `compatibility`
+        # @return [String]
+        attr_accessor :compatibility
+      
+        # Explains a dimension.
+        # Corresponds to the JSON property `dimensionMetadata`
+        # @return [Google::Apis::AnalyticsdataV1beta::DimensionMetadata]
+        attr_accessor :dimension_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compatibility = args[:compatibility] if args.key?(:compatibility)
+          @dimension_metadata = args[:dimension_metadata] if args.key?(:dimension_metadata)
+        end
+      end
+      
       # Used to express a dimension which is the result of a formula of multiple
       # dimensions. Example usages: 1) lower_case(dimension) 2) concatenate(dimension1,
       # symbol, dimension2).
@@ -486,6 +589,12 @@ module Google
         # @return [String]
         attr_accessor :api_name
       
+        # The display name of the category that this dimension belongs to. Similar
+        # dimensions and metrics are categorized together.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
         # True if the dimension is a custom dimension for this property.
         # Corresponds to the JSON property `customDefinition`
         # @return [Boolean]
@@ -518,6 +627,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_name = args[:api_name] if args.key?(:api_name)
+          @category = args[:category] if args.key?(:category)
           @custom_definition = args[:custom_definition] if args.key?(:custom_definition)
           @deprecated_api_names = args[:deprecated_api_names] if args.key?(:deprecated_api_names)
           @description = args[:description] if args.key?(:description)
@@ -771,6 +881,32 @@ module Google
         end
       end
       
+      # The compatibility for a single metric.
+      class MetricCompatibility
+        include Google::Apis::Core::Hashable
+      
+        # The compatibility of this metric. If the compatibility is COMPATIBLE, this
+        # metric can be successfully added to the report.
+        # Corresponds to the JSON property `compatibility`
+        # @return [String]
+        attr_accessor :compatibility
+      
+        # Explains a metric.
+        # Corresponds to the JSON property `metricMetadata`
+        # @return [Google::Apis::AnalyticsdataV1beta::MetricMetadata]
+        attr_accessor :metric_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compatibility = args[:compatibility] if args.key?(:compatibility)
+          @metric_metadata = args[:metric_metadata] if args.key?(:metric_metadata)
+        end
+      end
+      
       # Describes a metric column in the report. Visible metrics requested in a report
       # produce column entries within rows and MetricHeaders. However, metrics used
       # exclusively within filters or expressions do not produce columns in a report;
@@ -808,6 +944,12 @@ module Google
         # Corresponds to the JSON property `apiName`
         # @return [String]
         attr_accessor :api_name
+      
+        # The display name of the category that this metrics belongs to. Similar
+        # dimensions and metrics are categorized together.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
       
         # True if the metric is a custom metric for this property.
         # Corresponds to the JSON property `customDefinition`
@@ -853,6 +995,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_name = args[:api_name] if args.key?(:api_name)
+          @category = args[:category] if args.key?(:category)
           @custom_definition = args[:custom_definition] if args.key?(:custom_definition)
           @deprecated_api_names = args[:deprecated_api_names] if args.key?(:deprecated_api_names)
           @description = args[:description] if args.key?(:description)

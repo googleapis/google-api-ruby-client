@@ -127,6 +127,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # This compatibility method lists dimensions and metrics that can be added to a
+        # report request and maintain compatibility. This method fails if the request's
+        # dimensions and metrics are incompatible. In Google Analytics, reports fail if
+        # they request incompatible dimensions and/or metrics; in that case, you will
+        # need to remove dimensions and/or metrics from the incompatible report until
+        # the report is compatible. The Realtime and Core reports have different
+        # compatibility rules. This method checks compatibility for Core reports.
+        # @param [String] property
+        #   A Google Analytics GA4 property identifier whose events are tracked. To learn
+        #   more, see [where to find your Property ID](https://developers.google.com/
+        #   analytics/devguides/reporting/data/v1/property-id). `property` should be the
+        #   same value as in your `runReport` request. Example: properties/1234 Set the
+        #   Property ID to 0 for compatibility checking on dimensions and metrics common
+        #   to all properties. In this special mode, this method will not return custom
+        #   dimensions and metrics.
+        # @param [Google::Apis::AnalyticsdataV1beta::CheckCompatibilityRequest] check_compatibility_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsdataV1beta::CheckCompatibilityResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsdataV1beta::CheckCompatibilityResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_property_compatibility(property, check_compatibility_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+property}:checkCompatibility', options)
+          command.request_representation = Google::Apis::AnalyticsdataV1beta::CheckCompatibilityRequest::Representation
+          command.request_object = check_compatibility_request_object
+          command.response_representation = Google::Apis::AnalyticsdataV1beta::CheckCompatibilityResponse::Representation
+          command.response_class = Google::Apis::AnalyticsdataV1beta::CheckCompatibilityResponse
+          command.params['property'] = property unless property.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns metadata for dimensions and metrics available in reporting methods.
         # Used to explore the dimensions and metrics. In this method, a Google Analytics
         # GA4 Property Identifier is specified in the request, and the metadata response
