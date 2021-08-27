@@ -351,6 +351,27 @@ module Google
         end
       end
       
+      # A request to enroll a set of data sources so they are visible in the BigQuery
+      # UI's `Transfer` tab.
+      class EnrollDataSourcesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Data sources that are enrolled. It is required to provide at least one data
+        # source id.
+        # Corresponds to the JSON property `dataSourceIds`
+        # @return [Array<String>]
+        attr_accessor :data_source_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_ids = args[:data_source_ids] if args.key?(:data_source_ids)
+        end
+      end
+      
       # Returns list of supported data sources and their metadata.
       class ListDataSourcesResponse
         include Google::Apis::Core::Hashable
