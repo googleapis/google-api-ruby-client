@@ -83,7 +83,7 @@ module Google
       class GoogleSearchIdeahubV1alphaIdeaActivity
         include Google::Apis::Core::Hashable
       
-        # The Idea IDs for this entry.
+        # The Idea IDs for this entry. If empty, topics should be set.
         # Corresponds to the JSON property `ideas`
         # @return [Array<String>]
         attr_accessor :ideas
@@ -94,7 +94,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The Topic IDs for this entry.
+        # The Topic IDs for this entry. If empty, ideas should be set.
         # Corresponds to the JSON property `topics`
         # @return [Array<String>]
         attr_accessor :topics
