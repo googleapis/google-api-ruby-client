@@ -19,7 +19,7 @@ require 'google/apis/vault_v1/gem_version.rb'
 
 module Google
   module Apis
-    # G Suite Vault API
+    # Google Vault API
     #
     # Retention and eDiscovery for Google Workspace. To work with Vault resources,
     # the account must have the [required Vault privileges](https://support.google.
@@ -31,7 +31,7 @@ module Google
     #
     # @see https://developers.google.com/vault
     module VaultV1
-      # Version of the G Suite Vault API this client connects to.
+      # Version of the Google Vault API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 

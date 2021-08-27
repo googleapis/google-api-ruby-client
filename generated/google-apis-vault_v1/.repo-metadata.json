@@ -1,6 +1,6 @@
 {
     "api_id": "vault:v1",
-    "name_pretty": "G Suite Vault API",
+    "name_pretty": "Google Vault API",
     "distribution_name": "google-apis-vault_v1",
     "language": "ruby",
     "library_type": "REST"

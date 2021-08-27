@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module VaultV1
-      # G Suite Vault API
+      # Google Vault API
       #
       # Retention and eDiscovery for Google Workspace. To work with Vault resources,
       #  the account must have the [required Vault privileges](https://support.google.
