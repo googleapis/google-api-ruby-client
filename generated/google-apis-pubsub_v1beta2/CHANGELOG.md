@@ -1,5 +1,9 @@
 # Release history for google-apis-pubsub_v1beta2
 
+### v0.8.0 (2021-08-27)
+
+* Regenerated from discovery document revision 20210816
+
 ### v0.7.0 (2021-08-20)
 
 * Regenerated from discovery document revision 20210809
