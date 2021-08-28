@@ -22,6 +22,271 @@ module Google
   module Apis
     module StsV1beta
       
+      # Associates `members` with a `role`.
+      class GoogleIamV1Binding
+        include Google::Apis::Core::Hashable
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::StsV1beta::GoogleTypeExpr]
+        attr_accessor :condition
+      
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following values: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. * `
+        # user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
+        # address that represents a service account. For example, `my-other-app@appspot.
+        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
+        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
+        # `uniqueid``: An email address (plus unique identifier) representing a user
+        # that has been recently deleted. For example, `alice@example.com?uid=
+        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
+        # emailid`` and the recovered user retains the role in the binding. * `deleted:
+        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a service account that has been recently deleted. For
+        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to `serviceAccount:`
+        # emailid`` and the undeleted service account retains the role in the binding. *
+        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently deleted. For
+        # example, `admins@example.com?uid=123456789012345678901`. If the group is
+        # recovered, this value reverts to `group:`emailid`` and the recovered group
+        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
+        # primary) that represents all the users of that domain. For example, `google.
+        # com` or `example.com`.
+        # Corresponds to the JSON property `members`
+        # @return [Array<String>]
+        attr_accessor :members
+      
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @members = args[:members] if args.key?(:members)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # An access boundary defines the upper bound of what a principal may access. It
+      # includes a list of access boundary rules that each defines the resource that
+      # may be allowed as well as permissions that may be used on those resources.
+      class GoogleIdentityStsV1AccessBoundary
+        include Google::Apis::Core::Hashable
+      
+        # A list of access boundary rules which defines the upper bound of the
+        # permission a principal may carry. If multiple rules are specified, the
+        # effective access boundary is the union of all the access boundary rules
+        # attached. One access boundary can contain at most 10 rules.
+        # Corresponds to the JSON property `accessBoundaryRules`
+        # @return [Array<Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundaryRule>]
+        attr_accessor :access_boundary_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_boundary_rules = args[:access_boundary_rules] if args.key?(:access_boundary_rules)
+        end
+      end
+      
+      # An access boundary rule defines an upper bound of IAM permissions on a single
+      # resource.
+      class GoogleIdentityStsV1AccessBoundaryRule
+        include Google::Apis::Core::Hashable
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `availabilityCondition`
+        # @return [Google::Apis::StsV1beta::GoogleTypeExpr]
+        attr_accessor :availability_condition
+      
+        # A list of permissions that may be allowed for use on the specified resource.
+        # The only supported values in the list are IAM roles, following the format of
+        # google.iam.v1.Binding.role. Example value: `inRole:roles/logging.viewer` for
+        # predefined roles and `inRole:organizations/`ORGANIZATION_ID`/roles/logging.
+        # viewer` for custom roles.
+        # Corresponds to the JSON property `availablePermissions`
+        # @return [Array<String>]
+        attr_accessor :available_permissions
+      
+        # The full resource name of a Google Cloud resource entity. The format
+        # definition is at https://cloud.google.com/apis/design/resource_names. Example
+        # value: `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        # Corresponds to the JSON property `availableResource`
+        # @return [String]
+        attr_accessor :available_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_condition = args[:availability_condition] if args.key?(:availability_condition)
+          @available_permissions = args[:available_permissions] if args.key?(:available_permissions)
+          @available_resource = args[:available_resource] if args.key?(:available_resource)
+        end
+      end
+      
+      # An `Options` object configures features that the Security Token Service
+      # supports, but that are not supported by standard OAuth 2.0 token exchange
+      # endpoints, as defined in https://tools.ietf.org/html/rfc8693.
+      class GoogleIdentityStsV1Options
+        include Google::Apis::Core::Hashable
+      
+        # An access boundary defines the upper bound of what a principal may access. It
+        # includes a list of access boundary rules that each defines the resource that
+        # may be allowed as well as permissions that may be used on those resources.
+        # Corresponds to the JSON property `accessBoundary`
+        # @return [Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundary]
+        attr_accessor :access_boundary
+      
+        # The intended audience(s) of the credential. The audience value(s) should be
+        # the name(s) of services intended to receive the credential. Example: `["https:/
+        # /pubsub.googleapis.com/", "https://storage.googleapis.com/"]`. A maximum of 5
+        # audiences can be included. For each provided audience, the maximum length is
+        # 262 characters.
+        # Corresponds to the JSON property `audiences`
+        # @return [Array<String>]
+        attr_accessor :audiences
+      
+        # A Google project used for quota and billing purposes when the credential is
+        # used to access Google APIs. The provided project overrides the project bound
+        # to the credential. The value must be a project number or a project ID. Example:
+        # `my-sample-project-191923`. The maximum length is 32 characters.
+        # Corresponds to the JSON property `userProject`
+        # @return [String]
+        attr_accessor :user_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_boundary = args[:access_boundary] if args.key?(:access_boundary)
+          @audiences = args[:audiences] if args.key?(:audiences)
+          @user_project = args[:user_project] if args.key?(:user_project)
+        end
+      end
+      
+      # An access boundary defines the upper bound of what a principal may access. It
+      # includes a list of access boundary rules that each defines the resource that
+      # may be allowed as well as permissions that may be used on those resources.
+      class GoogleIdentityStsV1betaAccessBoundary
+        include Google::Apis::Core::Hashable
+      
+        # A list of access boundary rules which defines the upper bound of the
+        # permission a principal may carry. If multiple rules are specified, the
+        # effective access boundary is the union of all the access boundary rules
+        # attached. One access boundary can contain at most 10 rules.
+        # Corresponds to the JSON property `accessBoundaryRules`
+        # @return [Array<Google::Apis::StsV1beta::GoogleIdentityStsV1betaAccessBoundaryRule>]
+        attr_accessor :access_boundary_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_boundary_rules = args[:access_boundary_rules] if args.key?(:access_boundary_rules)
+        end
+      end
+      
+      # An access boundary rule defines an upper bound of IAM permissions on a single
+      # resource.
+      class GoogleIdentityStsV1betaAccessBoundaryRule
+        include Google::Apis::Core::Hashable
+      
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `availabilityCondition`
+        # @return [Google::Apis::StsV1beta::GoogleTypeExpr]
+        attr_accessor :availability_condition
+      
+        # A list of permissions that may be allowed for use on the specified resource.
+        # The only supported values in the list are IAM roles, following the format of
+        # google.iam.v1.Binding.role. Example value: `inRole:roles/logging.viewer` for
+        # predefined roles and `inRole:organizations/`ORGANIZATION_ID`/roles/logging.
+        # viewer` for custom roles.
+        # Corresponds to the JSON property `availablePermissions`
+        # @return [Array<String>]
+        attr_accessor :available_permissions
+      
+        # The full resource name of a Google Cloud resource entity. The format
+        # definition is at https://cloud.google.com/apis/design/resource_names. Example
+        # value: `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        # Corresponds to the JSON property `availableResource`
+        # @return [String]
+        attr_accessor :available_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_condition = args[:availability_condition] if args.key?(:availability_condition)
+          @available_permissions = args[:available_permissions] if args.key?(:available_permissions)
+          @available_resource = args[:available_resource] if args.key?(:available_resource)
+        end
+      end
+      
       # Request message for ExchangeToken.
       class GoogleIdentityStsV1betaExchangeTokenRequest
         include Google::Apis::Core::Hashable
@@ -194,6 +459,102 @@ module Google
           @expires_in = args[:expires_in] if args.key?(:expires_in)
           @issued_token_type = args[:issued_token_type] if args.key?(:issued_token_type)
           @token_type = args[:token_type] if args.key?(:token_type)
+        end
+      end
+      
+      # An `Options` object configures features that the Security Token Service
+      # supports, but that are not supported by standard OAuth 2.0 token exchange
+      # endpoints, as defined in https://tools.ietf.org/html/rfc8693.
+      class GoogleIdentityStsV1betaOptions
+        include Google::Apis::Core::Hashable
+      
+        # An access boundary defines the upper bound of what a principal may access. It
+        # includes a list of access boundary rules that each defines the resource that
+        # may be allowed as well as permissions that may be used on those resources.
+        # Corresponds to the JSON property `accessBoundary`
+        # @return [Google::Apis::StsV1beta::GoogleIdentityStsV1betaAccessBoundary]
+        attr_accessor :access_boundary
+      
+        # The intended audience(s) of the credential. The audience value(s) should be
+        # the name(s) of services intended to receive the credential. Example: `["https:/
+        # /pubsub.googleapis.com/", "https://storage.googleapis.com/"]`. A maximum of 5
+        # audiences can be included. For each provided audience, the maximum length is
+        # 262 characters.
+        # Corresponds to the JSON property `audiences`
+        # @return [Array<String>]
+        attr_accessor :audiences
+      
+        # A Google project used for quota and billing purposes when the credential is
+        # used to access Google APIs. The provided project overrides the project bound
+        # to the credential. The value must be a project number or a project ID. Example:
+        # `my-sample-project-191923`. The maximum length is 32 characters.
+        # Corresponds to the JSON property `userProject`
+        # @return [String]
+        attr_accessor :user_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_boundary = args[:access_boundary] if args.key?(:access_boundary)
+          @audiences = args[:audiences] if args.key?(:audiences)
+          @user_project = args[:user_project] if args.key?(:user_project)
+        end
+      end
+      
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
+      class GoogleTypeExpr
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in Common Expression Language syntax.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
         end
       end
     end
