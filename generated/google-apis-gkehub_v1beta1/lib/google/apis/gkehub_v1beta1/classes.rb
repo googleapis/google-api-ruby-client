@@ -820,6 +820,16 @@ module Google
         # @return [Google::Apis::GkehubV1beta1::KubernetesResource]
         attr_accessor :kubernetes_resource
       
+        # MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+        # Corresponds to the JSON property `multiCloudCluster`
+        # @return [Google::Apis::GkehubV1beta1::MultiCloudCluster]
+        attr_accessor :multi_cloud_cluster
+      
+        # OnPremCluster contains information specific to GKE On-Prem clusters.
+        # Corresponds to the JSON property `onPremCluster`
+        # @return [Google::Apis::GkehubV1beta1::OnPremCluster]
+        attr_accessor :on_prem_cluster
+      
         def initialize(**args)
            update!(**args)
         end
@@ -829,6 +839,8 @@ module Google
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @kubernetes_metadata = args[:kubernetes_metadata] if args.key?(:kubernetes_metadata)
           @kubernetes_resource = args[:kubernetes_resource] if args.key?(:kubernetes_resource)
+          @multi_cloud_cluster = args[:multi_cloud_cluster] if args.key?(:multi_cloud_cluster)
+          @on_prem_cluster = args[:on_prem_cluster] if args.key?(:on_prem_cluster)
         end
       end
       
@@ -860,6 +872,73 @@ module Google
           @code = args[:code] if args.key?(:code)
           @description = args[:description] if args.key?(:description)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
+      class MultiCloudCluster
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If cluster_missing is set then it denotes that API(gkemulticloud.
+        # googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
+        # Corresponds to the JSON property `clusterMissing`
+        # @return [Boolean]
+        attr_accessor :cluster_missing
+        alias_method :cluster_missing?, :cluster_missing
+      
+        # Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For
+        # example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-
+        # a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/
+        # locations/us-west1-a/azureClusters/my-cluster
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_missing = args[:cluster_missing] if args.key?(:cluster_missing)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
+        end
+      end
+      
+      # OnPremCluster contains information specific to GKE On-Prem clusters.
+      class OnPremCluster
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Whether the cluster is an admin cluster.
+        # Corresponds to the JSON property `adminCluster`
+        # @return [Boolean]
+        attr_accessor :admin_cluster
+        alias_method :admin_cluster?, :admin_cluster
+      
+        # Output only. If cluster_missing is set then it denotes that API(gkeonprem.
+        # googleapis.com) resource for this GKE On-Prem cluster no longer exists.
+        # Corresponds to the JSON property `clusterMissing`
+        # @return [Boolean]
+        attr_accessor :cluster_missing
+        alias_method :cluster_missing?, :cluster_missing
+      
+        # Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For
+        # example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/
+        # vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/
+        # locations/us-west1-a/bareMetalClusters/my-cluster
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_cluster = args[:admin_cluster] if args.key?(:admin_cluster)
+          @cluster_missing = args[:cluster_missing] if args.key?(:cluster_missing)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
         end
       end
       
