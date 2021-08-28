@@ -148,12 +148,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -505,8 +499,6 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exclusions, as: 'exclusions', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
-      
           property :location, as: 'location'
           property :node_id, as: 'nodeId'
           property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
@@ -538,21 +530,9 @@ module Google
         end
       end
       
-      class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :duration, as: 'duration'
-          property :reason, as: 'reason'
-          property :sli_name, as: 'sliName'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exclusions, as: 'exclusions', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
-      
           collection :nodes, as: 'nodes', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata::Representation
       
           property :per_sli_eligibility, as: 'perSliEligibility', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility::Representation
