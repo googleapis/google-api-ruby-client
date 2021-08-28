@@ -22,6 +22,42 @@ module Google
   module Apis
     module StsV1beta
       
+      class GoogleIamV1Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1AccessBoundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1AccessBoundaryRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1Options
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1betaAccessBoundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1betaAccessBoundaryRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityStsV1betaExchangeTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -32,6 +68,74 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1betaOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeExpr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::StsV1beta::GoogleTypeExpr, decorator: Google::Apis::StsV1beta::GoogleTypeExpr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleIdentityStsV1AccessBoundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_boundary_rules, as: 'accessBoundaryRules', class: Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundaryRule, decorator: Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundaryRule::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityStsV1AccessBoundaryRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_condition, as: 'availabilityCondition', class: Google::Apis::StsV1beta::GoogleTypeExpr, decorator: Google::Apis::StsV1beta::GoogleTypeExpr::Representation
+      
+          collection :available_permissions, as: 'availablePermissions'
+          property :available_resource, as: 'availableResource'
+        end
+      end
+      
+      class GoogleIdentityStsV1Options
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_boundary, as: 'accessBoundary', class: Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundary, decorator: Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundary::Representation
+      
+          collection :audiences, as: 'audiences'
+          property :user_project, as: 'userProject'
+        end
+      end
+      
+      class GoogleIdentityStsV1betaAccessBoundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_boundary_rules, as: 'accessBoundaryRules', class: Google::Apis::StsV1beta::GoogleIdentityStsV1betaAccessBoundaryRule, decorator: Google::Apis::StsV1beta::GoogleIdentityStsV1betaAccessBoundaryRule::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityStsV1betaAccessBoundaryRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_condition, as: 'availabilityCondition', class: Google::Apis::StsV1beta::GoogleTypeExpr, decorator: Google::Apis::StsV1beta::GoogleTypeExpr::Representation
+      
+          collection :available_permissions, as: 'availablePermissions'
+          property :available_resource, as: 'availableResource'
+        end
       end
       
       class GoogleIdentityStsV1betaExchangeTokenRequest
@@ -54,6 +158,26 @@ module Google
           property :expires_in, as: 'expires_in'
           property :issued_token_type, as: 'issued_token_type'
           property :token_type, as: 'token_type'
+        end
+      end
+      
+      class GoogleIdentityStsV1betaOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_boundary, as: 'accessBoundary', class: Google::Apis::StsV1beta::GoogleIdentityStsV1betaAccessBoundary, decorator: Google::Apis::StsV1beta::GoogleIdentityStsV1betaAccessBoundary::Representation
+      
+          collection :audiences, as: 'audiences'
+          property :user_project, as: 'userProject'
+        end
+      end
+      
+      class GoogleTypeExpr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
     end
