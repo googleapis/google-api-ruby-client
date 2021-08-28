@@ -148,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiCloudCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OnPremCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -404,6 +416,10 @@ module Google
       
           property :kubernetes_resource, as: 'kubernetesResource', class: Google::Apis::GkehubV1beta1::KubernetesResource, decorator: Google::Apis::GkehubV1beta1::KubernetesResource::Representation
       
+          property :multi_cloud_cluster, as: 'multiCloudCluster', class: Google::Apis::GkehubV1beta1::MultiCloudCluster, decorator: Google::Apis::GkehubV1beta1::MultiCloudCluster::Representation
+      
+          property :on_prem_cluster, as: 'onPremCluster', class: Google::Apis::GkehubV1beta1::OnPremCluster, decorator: Google::Apis::GkehubV1beta1::OnPremCluster::Representation
+      
         end
       end
       
@@ -413,6 +429,23 @@ module Google
           property :code, as: 'code'
           property :description, as: 'description'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MultiCloudCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_missing, as: 'clusterMissing'
+          property :resource_link, as: 'resourceLink'
+        end
+      end
+      
+      class OnPremCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_cluster, as: 'adminCluster'
+          property :cluster_missing, as: 'clusterMissing'
+          property :resource_link, as: 'resourceLink'
         end
       end
       
