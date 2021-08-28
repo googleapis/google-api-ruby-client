@@ -422,6 +422,7 @@ module Google
           property :etag, as: 'etag'
           collection :file_shares, as: 'fileShares', class: Google::Apis::FileV1beta1::FileShareConfig, decorator: Google::Apis::FileV1beta1::FileShareConfig::Representation
       
+          property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
@@ -429,6 +430,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
+          collection :suspension_reasons, as: 'suspensionReasons'
           property :tier, as: 'tier'
         end
       end
