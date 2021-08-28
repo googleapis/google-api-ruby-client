@@ -310,7 +310,7 @@ module Google
         # @return [String]
         attr_accessor :input_constraint
       
-        # Output only. If the field has a set of know values, this field will provide a
+        # Output only. If the field has a set of known values, this field will provide a
         # description for these values.
         # Corresponds to the JSON property `knownValueDescriptions`
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>]

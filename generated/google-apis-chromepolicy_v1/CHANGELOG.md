@@ -1,5 +1,9 @@
 # Release history for google-apis-chromepolicy_v1
 
+### v0.7.0 (2021-08-28)
+
+* Regenerated from discovery document revision 20210826
+
 ### v0.6.0 (2021-07-29)
 
 * Regenerated from discovery document revision 20210727
