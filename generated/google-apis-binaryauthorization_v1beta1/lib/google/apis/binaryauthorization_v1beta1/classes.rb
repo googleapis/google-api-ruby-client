@@ -528,7 +528,7 @@ module Google
         end
       end
       
-      # A policy for container image binary authorization.
+      # A policy for Binary Authorization.
       class Policy
         include Google::Apis::Core::Hashable
       
