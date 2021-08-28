@@ -775,6 +775,11 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::FileShareConfig>]
         attr_accessor :file_shares
       
+        # KMS key name used for data encryption.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -808,6 +813,12 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
+        # Output only. field indicates all the reasons the instance is in "SUSPENDED"
+        # state.
+        # Corresponds to the JSON property `suspensionReasons`
+        # @return [Array<String>]
+        attr_accessor :suspension_reasons
+      
         # The service tier of the instance.
         # Corresponds to the JSON property `tier`
         # @return [String]
@@ -823,12 +834,14 @@ module Google
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @file_shares = args[:file_shares] if args.key?(:file_shares)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
+          @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
           @tier = args[:tier] if args.key?(:tier)
         end
       end
