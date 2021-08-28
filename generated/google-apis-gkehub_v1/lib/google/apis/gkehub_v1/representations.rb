@@ -310,7 +310,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiCloudCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultiClusterIngressFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OnPremCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -814,6 +826,10 @@ module Google
       
           property :kubernetes_metadata, as: 'kubernetesMetadata', class: Google::Apis::GkehubV1::KubernetesMetadata, decorator: Google::Apis::GkehubV1::KubernetesMetadata::Representation
       
+          property :multi_cloud_cluster, as: 'multiCloudCluster', class: Google::Apis::GkehubV1::MultiCloudCluster, decorator: Google::Apis::GkehubV1::MultiCloudCluster::Representation
+      
+          property :on_prem_cluster, as: 'onPremCluster', class: Google::Apis::GkehubV1::OnPremCluster, decorator: Google::Apis::GkehubV1::OnPremCluster::Representation
+      
         end
       end
       
@@ -842,10 +858,27 @@ module Google
         end
       end
       
+      class MultiCloudCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_missing, as: 'clusterMissing'
+          property :resource_link, as: 'resourceLink'
+        end
+      end
+      
       class MultiClusterIngressFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config_membership, as: 'configMembership'
+        end
+      end
+      
+      class OnPremCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_cluster, as: 'adminCluster'
+          property :cluster_missing, as: 'clusterMissing'
+          property :resource_link, as: 'resourceLink'
         end
       end
       
