@@ -869,14 +869,6 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
         include Google::Apis::Core::Hashable
       
-        # By default node is eligible if instance is eligible. But individual node might
-        # be excluded from SLO by adding entry here. For semantic see SloMetadata.
-        # exclusions. If both instance and node level exclusions are present for time
-        # period, the node level's reason will be reported by Eligibility Exporter.
-        # Corresponds to the JSON property `exclusions`
-        # @return [Array<Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
-        attr_accessor :exclusions
-      
         # The location of the node, if different from instance location.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -898,7 +890,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @exclusions = args[:exclusions] if args.key?(:exclusions)
           @location = args[:location] if args.key?(:location)
           @node_id = args[:node_id] if args.key?(:node_id)
           @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
@@ -993,70 +984,10 @@ module Google
         end
       end
       
-      # SloExclusion represents an exclusion in SLI calculation applies to all SLOs.
-      class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-        include Google::Apis::Core::Hashable
-      
-        # Exclusion duration. No restrictions on the possible values. When an ongoing
-        # operation is taking longer than initially expected, an existing entry in the
-        # exclusion list can be updated by extending the duration. This is supported by
-        # the subsystem exporting eligibility data as long as such extension is
-        # committed at least 10 minutes before the original exclusion expiration -
-        # otherwise it is possible that there will be "gaps" in the exclusion
-        # application in the exported timeseries.
-        # Corresponds to the JSON property `duration`
-        # @return [String]
-        attr_accessor :duration
-      
-        # Human-readable reason for the exclusion. This should be a static string (e.g. "
-        # Disruptive update in progress") and should not contain dynamically generated
-        # data (e.g. instance name). Can be left empty.
-        # Corresponds to the JSON property `reason`
-        # @return [String]
-        attr_accessor :reason
-      
-        # Name of an SLI that this exclusion applies to. Can be left empty, signaling
-        # that the instance should be excluded from all SLIs.
-        # Corresponds to the JSON property `sliName`
-        # @return [String]
-        attr_accessor :sli_name
-      
-        # Start time of the exclusion. No alignment (e.g. to a full minute) needed.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @duration = args[:duration] if args.key?(:duration)
-          @reason = args[:reason] if args.key?(:reason)
-          @sli_name = args[:sli_name] if args.key?(:sli_name)
-          @start_time = args[:start_time] if args.key?(:start_time)
-        end
-      end
-      
       # SloMetadata contains resources required for proper SLO classification of the
       # instance.
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         include Google::Apis::Core::Hashable
-      
-        # List of SLO exclusion windows. When multiple entries in the list match (
-        # matching the exclusion time-window against current time point) the exclusion
-        # reason used in the first matching entry will be published. It is not needed to
-        # include expired exclusion in this list, as only the currently applicable
-        # exclusions are taken into account by the eligibility exporting subsystem (the
-        # historical state of exclusions will be reflected in the historically produced
-        # timeseries regardless of the current state). This field can be used to mark
-        # the instance as temporary ineligible for the purpose of SLO calculation. For
-        # permanent instance SLO exclusion, use of custom instance eligibility is
-        # recommended. See 'eligibility' field below.
-        # Corresponds to the JSON property `exclusions`
-        # @return [Array<Google::Apis::ManagedidentitiesV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
-        attr_accessor :exclusions
       
         # Optional. List of nodes. Some producers need to use per-node metadata to
         # calculate SLO. This field allows such producers to publish per-node SLO meta
@@ -1084,7 +1015,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @exclusions = args[:exclusions] if args.key?(:exclusions)
           @nodes = args[:nodes] if args.key?(:nodes)
           @per_sli_eligibility = args[:per_sli_eligibility] if args.key?(:per_sli_eligibility)
           @tier = args[:tier] if args.key?(:tier)
@@ -1514,7 +1444,7 @@ module Google
         attr_accessor :api_version
       
         # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
+        # operation. Operations that have been cancelled successfully have Operation.
         # error value with a google.rpc.Status.code of 1, corresponding to `Code.
         # CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
@@ -1656,7 +1586,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -1836,7 +1766,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
@@ -2115,8 +2045,7 @@ module Google
       
         # Deny Maintenance Period that is applied to resource to indicate when
         # maintenance is forbidden. User can specify zero or more non-overlapping deny
-        # periods. For V1, Maximum number of deny_maintenance_periods is expected to be
-        # one.
+        # periods. Maximum number of deny_maintenance_periods expected is one.
         # Corresponds to the JSON property `denyMaintenancePeriods`
         # @return [Array<Google::Apis::ManagedidentitiesV1beta1::DenyMaintenancePeriod>]
         attr_accessor :deny_maintenance_periods
