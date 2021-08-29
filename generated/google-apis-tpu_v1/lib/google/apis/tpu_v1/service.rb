@@ -392,7 +392,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Stops a node.
+        # Stops a node, this operation is only available with single TPU nodes.
         # @param [String] name
         #   The resource name.
         # @param [Google::Apis::TpuV1::StopNodeRequest] stop_node_request_object
