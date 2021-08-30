@@ -350,7 +350,7 @@ module Google
         # the format `/operations/` and can be used to track the instance modification.
         # The metadata field type is UpdateInstanceMetadata. The response field type is
         # Instance, if successful. Authorization requires `spanner.instances.update`
-        # permission on resource name.
+        # permission on the resource name.
         # @param [String] name
         #   Required. A unique identifier for the instance, which cannot be changed after
         #   the instance is created. Values are of the form `projects//instances/a-z*[a-z0-
