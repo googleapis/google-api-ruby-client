@@ -88,8 +88,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :ideas
       
-        # Unique identifier for the idea activity. Format: platforms/`platform`/
-        # properties/`property`/ideaActivities/`idea_activity`
+        # Unique identifier for the idea activity. The name is ignored when creating an
+        # idea activity. Format: platforms/`platform`/properties/`property`/
+        # ideaActivities/`idea_activity`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
