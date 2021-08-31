@@ -1789,7 +1789,9 @@ module Google
         # teachers of this course or for access errors. * `NOT_FOUND` if no teacher of
         # this course has the requested ID or if the course does not exist. * `
         # FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of
-        # this course.
+        # this course. * `FAILED_PRECONDITION` if the requested ID belongs to the owner
+        # of the course Drive folder. * `FAILED_PRECONDITION` if the course no longer
+        # has an active owner.
         # @param [String] course_id
         #   Identifier of the course. This identifier can be either the Classroom-assigned
         #   identifier or an alias.
