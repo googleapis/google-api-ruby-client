@@ -751,7 +751,9 @@ module Google
       class ResponseMetaData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
           property :data_loss_from_other_row, as: 'dataLossFromOtherRow'
+          property :time_zone, as: 'timeZone'
         end
       end
       

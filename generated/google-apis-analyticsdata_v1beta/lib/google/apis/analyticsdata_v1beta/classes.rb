@@ -1416,6 +1416,18 @@ module Google
       class ResponseMetaData
         include Google::Apis::Core::Hashable
       
+        # The currency code used in this report. Intended to be used in formatting
+        # currency metrics like `purchaseRevenue` for visualization. If currency_code
+        # was specified in the request, this response parameter will echo the request
+        # parameter; otherwise, this response parameter is the property's current
+        # currency_code. Currency codes are string encodings of currency types from the
+        # ISO 4217 standard (https://en.wikipedia.org/wiki/ISO_4217); for example "USD",
+        # "EUR", "JPY". To learn more, see https://support.google.com/analytics/answer/
+        # 9796179.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
         # If true, indicates some buckets of dimension combinations are rolled into "(
         # other)" row. This can happen for high cardinality reports.
         # Corresponds to the JSON property `dataLossFromOtherRow`
@@ -1423,13 +1435,23 @@ module Google
         attr_accessor :data_loss_from_other_row
         alias_method :data_loss_from_other_row?, :data_loss_from_other_row
       
+        # The property's current timezone. Intended to be used to interpret time-based
+        # dimensions like `hour` and `minute`. Formatted as strings from the IANA Time
+        # Zone database (https://www.iana.org/time-zones); for example "America/New_York"
+        # or "Asia/Tokyo".
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
           @data_loss_from_other_row = args[:data_loss_from_other_row] if args.key?(:data_loss_from_other_row)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
