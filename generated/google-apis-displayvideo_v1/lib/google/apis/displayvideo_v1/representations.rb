@@ -2458,11 +2458,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :custom_bidding_algorithm_id, :numeric_string => true, as: 'customBiddingAlgorithmId'
+          property :custom_bidding_algorithm_state, as: 'customBiddingAlgorithmState'
           property :custom_bidding_algorithm_type, as: 'customBiddingAlgorithmType'
           property :display_name, as: 'displayName'
           property :entity_status, as: 'entityStatus'
           property :name, as: 'name'
           property :partner_id, :numeric_string => true, as: 'partnerId'
+          collection :shared_advertiser_ids, as: 'sharedAdvertiserIds'
         end
       end
       
