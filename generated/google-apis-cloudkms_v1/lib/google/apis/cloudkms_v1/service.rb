@@ -50,6 +50,41 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Generate random bytes using the Cloud KMS randomness source in the provided
+        # location.
+        # @param [String] location
+        #   The project-specific location in which to generate random bytes. For example, "
+        #   projects/my-project/locations/us-central1".
+        # @param [Google::Apis::CloudkmsV1::GenerateRandomBytesRequest] generate_random_bytes_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::GenerateRandomBytesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::GenerateRandomBytesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_location_random_bytes(location, generate_random_bytes_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+location}:generateRandomBytes', options)
+          command.request_representation = Google::Apis::CloudkmsV1::GenerateRandomBytesRequest::Representation
+          command.request_object = generate_random_bytes_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::GenerateRandomBytesResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::GenerateRandomBytesResponse
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -848,11 +883,11 @@ module Google
         end
         
         # Schedule a CryptoKeyVersion for destruction. Upon calling this method,
-        # CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and destroy_time will
-        # be set to a time 24 hours in the future, at which point the state will be
-        # changed to DESTROYED, and the key material will be irrevocably destroyed.
-        # Before the destroy_time is reached, RestoreCryptoKeyVersion may be called to
-        # reverse the process.
+        # CryptoKeyVersion.state will be set to DESTROY_SCHEDULED, and destroy_time will
+        # be set to the time destroy_scheduled_duration in the future. At that time, the
+        # state will automatically change to DESTROYED, and the key material will be
+        # irrevocably destroyed. Before the destroy_time is reached,
+        # RestoreCryptoKeyVersion may be called to reverse the process.
         # @param [String] name
         #   Required. The resource name of the CryptoKeyVersion to destroy.
         # @param [Google::Apis::CloudkmsV1::DestroyCryptoKeyVersionRequest] destroy_crypto_key_version_request_object
@@ -946,11 +981,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Imports a new CryptoKeyVersion into an existing CryptoKey using the wrapped
-        # key material provided in the request. The version ID will be assigned the next
-        # sequential id within the CryptoKey.
+        # Import wrapped key material into a CryptoKeyVersion. All requests must specify
+        # a CryptoKey. If a CryptoKeyVersion is additionally specified in the request,
+        # key material will be reimported into that version. Otherwise, a new version
+        # will be created, and will be assigned the next sequential id within the
+        # CryptoKey.
         # @param [String] parent
-        #   Required. The name of the CryptoKey to be imported into.
+        #   Required. The name of the CryptoKey to be imported into. The create permission
+        #   is only required on this key when creating a new CryptoKeyVersion.
         # @param [Google::Apis::CloudkmsV1::ImportCryptoKeyVersionRequest] import_crypto_key_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

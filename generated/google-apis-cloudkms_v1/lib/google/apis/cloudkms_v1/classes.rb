@@ -397,6 +397,19 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Immutable. The period of time that versions of this key spend in the
+        # DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at
+        # creation time, the default duration is 24 hours.
+        # Corresponds to the JSON property `destroyScheduledDuration`
+        # @return [String]
+        attr_accessor :destroy_scheduled_duration
+      
+        # Immutable. Whether this key may contain imported versions only.
+        # Corresponds to the JSON property `importOnly`
+        # @return [Boolean]
+        attr_accessor :import_only
+        alias_method :import_only?, :import_only
+      
         # Labels with user-defined metadata. For more information, see [Labeling Keys](
         # https://cloud.google.com/kms/docs/labeling-keys).
         # Corresponds to the JSON property `labels`
@@ -457,6 +470,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @destroy_scheduled_duration = args[:destroy_scheduled_duration] if args.key?(:destroy_scheduled_duration)
+          @import_only = args[:import_only] if args.key?(:import_only)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
@@ -517,20 +532,20 @@ module Google
         # @return [String]
         attr_accessor :generate_time
       
-        # Output only. The root cause of an import failure. Only present if state is
-        # IMPORT_FAILED.
+        # Output only. The root cause of the most recent import failure. Only present if
+        # state is IMPORT_FAILED.
         # Corresponds to the JSON property `importFailureReason`
         # @return [String]
         attr_accessor :import_failure_reason
       
-        # Output only. The name of the ImportJob used to import this CryptoKeyVersion.
-        # Only present if the underlying key material was imported.
+        # Output only. The name of the ImportJob used in the most recent import of this
+        # CryptoKeyVersion. Only present if the underlying key material was imported.
         # Corresponds to the JSON property `importJob`
         # @return [String]
         attr_accessor :import_job
       
-        # Output only. The time at which this CryptoKeyVersion's key material was
-        # imported.
+        # Output only. The time at which this CryptoKeyVersion's key material was most
+        # recently imported.
         # Corresponds to the JSON property `importTime`
         # @return [String]
         attr_accessor :import_time
@@ -546,6 +561,14 @@ module Google
         # Corresponds to the JSON property `protectionLevel`
         # @return [String]
         attr_accessor :protection_level
+      
+        # Output only. Whether or not this key version is eligible for reimport, by
+        # being specified as a target in ImportCryptoKeyVersionRequest.
+        # crypto_key_version.
+        # Corresponds to the JSON property `reimportEligible`
+        # @return [Boolean]
+        attr_accessor :reimport_eligible
+        alias_method :reimport_eligible?, :reimport_eligible
       
         # The current state of the CryptoKeyVersion.
         # Corresponds to the JSON property `state`
@@ -570,6 +593,7 @@ module Google
           @import_time = args[:import_time] if args.key?(:import_time)
           @name = args[:name] if args.key?(:name)
           @protection_level = args[:protection_level] if args.key?(:protection_level)
+          @reimport_eligible = args[:reimport_eligible] if args.key?(:reimport_eligible)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -979,6 +1003,68 @@ module Google
         end
       end
       
+      # Request message for KeyManagementService.GenerateRandomBytes.
+      class GenerateRandomBytesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The length in bytes of the amount of randomness to retrieve. Minimum 8 bytes,
+        # maximum 1024 bytes.
+        # Corresponds to the JSON property `lengthBytes`
+        # @return [Fixnum]
+        attr_accessor :length_bytes
+      
+        # The ProtectionLevel to use when generating the random data. Defaults to
+        # SOFTWARE.
+        # Corresponds to the JSON property `protectionLevel`
+        # @return [String]
+        attr_accessor :protection_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @length_bytes = args[:length_bytes] if args.key?(:length_bytes)
+          @protection_level = args[:protection_level] if args.key?(:protection_level)
+        end
+      end
+      
+      # Response message for KeyManagementService.GenerateRandomBytes.
+      class GenerateRandomBytesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The generated data.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # GenerateRandomBytesResponse.data. An integrity check of
+        # GenerateRandomBytesResponse.data can be performed by computing the CRC32C
+        # checksum of GenerateRandomBytesResponse.data and comparing your results to
+        # this field. Discard the response in case of non-matching checksum values, and
+        # perform a limited number of retries. A persistent mismatch may indicate an
+        # issue in your computation of the CRC32C checksum. Note: This field is defined
+        # as int64 for reasons of compatibility across different languages. However, it
+        # is a non-negative integer, which will never exceed 2^32-1, and can be safely
+        # downconverted to uint32 in languages that support this type.
+        # Corresponds to the JSON property `dataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :data_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @data_crc32c = args[:data_crc32c] if args.key?(:data_crc32c)
+        end
+      end
+      
       # Request message for KeyManagementService.ImportCryptoKeyVersion.
       class ImportCryptoKeyVersionRequest
         include Google::Apis::Core::Hashable
@@ -988,6 +1074,19 @@ module Google
         # Corresponds to the JSON property `algorithm`
         # @return [String]
         attr_accessor :algorithm
+      
+        # Optional. The optional name of an existing CryptoKeyVersion to target for an
+        # import operation. If this field is not present, a new CryptoKeyVersion
+        # containing the supplied key material is created. If this field is present, the
+        # supplied key material is imported into the existing CryptoKeyVersion. To
+        # import into an existing CryptoKeyVersion, the CryptoKeyVersion must be a child
+        # of ImportCryptoKeyVersionRequest.parent, have been previously created via
+        # ImportCryptoKeyVersion, and be in DESTROYED or IMPORT_FAILED state. The key
+        # material and algorithm must match the previous CryptoKeyVersion exactly if the
+        # CryptoKeyVersion has ever contained key material.
+        # Corresponds to the JSON property `cryptoKeyVersion`
+        # @return [String]
+        attr_accessor :crypto_key_version
       
         # Required. The name of the ImportJob that was used to wrap this key material.
         # Corresponds to the JSON property `importJob`
@@ -1016,6 +1115,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @crypto_key_version = args[:crypto_key_version] if args.key?(:crypto_key_version)
           @import_job = args[:import_job] if args.key?(:import_job)
           @rsa_aes_wrapped_key = args[:rsa_aes_wrapped_key] if args.key?(:rsa_aes_wrapped_key)
         end
@@ -1659,7 +1759,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -1822,7 +1922,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
