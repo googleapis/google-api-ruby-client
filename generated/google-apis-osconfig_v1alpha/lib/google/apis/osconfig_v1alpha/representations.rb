@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OsPolicyAssignmentInstanceFilterInventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OsPolicyAssignmentLabelSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,12 @@ module Google
       end
       
       class OsPolicyAssignmentRollout
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OsPolicyInventoryFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -641,6 +653,7 @@ module Google
           property :baseline, as: 'baseline'
           property :deleted, as: 'deleted'
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :instance_filter, as: 'instanceFilter', class: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentInstanceFilter, decorator: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentInstanceFilter::Representation
       
           property :name, as: 'name'
@@ -664,7 +677,17 @@ module Google
       
           collection :inclusion_labels, as: 'inclusionLabels', class: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentLabelSet, decorator: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentLabelSet::Representation
       
+          collection :inventories, as: 'inventories', class: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentInstanceFilterInventory, decorator: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentInstanceFilterInventory::Representation
+      
           collection :os_short_names, as: 'osShortNames'
+        end
+      end
+      
+      class OsPolicyAssignmentInstanceFilterInventory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :os_short_name, as: 'osShortName'
+          property :os_version, as: 'osVersion'
         end
       end
       
@@ -692,6 +715,14 @@ module Google
           property :disruption_budget, as: 'disruptionBudget', class: Google::Apis::OsconfigV1alpha::FixedOrPercent, decorator: Google::Apis::OsconfigV1alpha::FixedOrPercent::Representation
       
           property :min_wait_duration, as: 'minWaitDuration'
+        end
+      end
+      
+      class OsPolicyInventoryFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :os_short_name, as: 'osShortName'
+          property :os_version, as: 'osVersion'
         end
       end
       
@@ -812,6 +843,8 @@ module Google
       class OsPolicyResourceGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inventory_filters, as: 'inventoryFilters', class: Google::Apis::OsconfigV1alpha::OsPolicyInventoryFilter, decorator: Google::Apis::OsconfigV1alpha::OsPolicyInventoryFilter::Representation
+      
           property :os_filter, as: 'osFilter', class: Google::Apis::OsconfigV1alpha::OsPolicyOsFilter, decorator: Google::Apis::OsconfigV1alpha::OsPolicyOsFilter::Representation
       
           collection :resources, as: 'resources', class: Google::Apis::OsconfigV1alpha::OsPolicyResource, decorator: Google::Apis::OsconfigV1alpha::OsPolicyResource::Representation
@@ -1008,6 +1041,7 @@ module Google
       class VulnerabilityReportVulnerabilityDetailsReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source'
           property :url, as: 'url'
         end
       end

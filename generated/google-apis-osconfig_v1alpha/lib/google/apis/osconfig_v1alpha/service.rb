@@ -170,9 +170,8 @@ module Google
         # List inventory data for all VM instances in the specified zone.
         # @param [String] parent
         #   Required. The parent resource name. Format: `projects/`project`/locations/`
-        #   location`/instances/`instance`` For ``project``, either `project-number` or `
-        #   project-id` can be provided. For ``instance``, only hyphen or dash character
-        #   is supported to list inventories across VMs.
+        #   location`/instances/-` For ``project``, either `project-number` or `project-id`
+        #   can be provided.
         # @param [String] filter
         #   If provided, this field specifies the criteria that must be met by a `
         #   Inventory` API resource to be included in the response.
@@ -253,9 +252,8 @@ module Google
         # List vulnerability reports for all VM instances in the specified zone.
         # @param [String] parent
         #   Required. The parent resource name. Format: `projects/`project`/locations/`
-        #   location`/instances/`instance`` For ``project``, either `project-number` or `
-        #   project-id` can be provided. For ``instance``, only `-` character is supported
-        #   to list vulnerability reports across VMs.
+        #   location`/instances/-` For ``project``, either `project-number` or `project-id`
+        #   can be provided.
         # @param [String] filter
         #   If provided, this field specifies the criteria that must be met by a `
         #   vulnerabilityReport` API resource to be included in the response.
