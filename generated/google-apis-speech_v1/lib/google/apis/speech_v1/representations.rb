@@ -152,6 +152,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :results, as: 'results', class: Google::Apis::SpeechV1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1::SpeechRecognitionResult::Representation
       
+          property :total_billed_time, as: 'totalBilledTime'
         end
       end
       
@@ -227,6 +228,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :results, as: 'results', class: Google::Apis::SpeechV1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1::SpeechRecognitionResult::Representation
       
+          property :total_billed_time, as: 'totalBilledTime'
         end
       end
       
