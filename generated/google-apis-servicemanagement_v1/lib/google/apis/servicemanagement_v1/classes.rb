@@ -1108,8 +1108,9 @@ module Google
         # @return [String]
         attr_accessor :deprecation_description
       
-        # The description is the comment in front of the selected proto element, such as
-        # a message, a method, a 'service' definition, or a field.
+        # Description of the selected proto element (e.g. a message, a method, a '
+        # service' definition, or a field). Defaults to leading & trailing comments
+        # taken from the proto source definition of the proto element.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2460,7 +2461,10 @@ module Google
         attr_accessor :name
       
         # Required. The monitored resource type. For example, the type `"
-        # cloudsql_database"` represents databases in Google Cloud SQL.
+        # cloudsql_database"` represents databases in Google Cloud SQL. For a list of
+        # types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/
+        # resources) and [Logging resource types](https://cloud.google.com/logging/docs/
+        # api/v2/resource-list).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2829,7 +2833,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -3510,7 +3514,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
