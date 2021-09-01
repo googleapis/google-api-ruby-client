@@ -1207,6 +1207,7 @@ module Google
           property :allow_quoted_newlines, as: 'allowQuotedNewlines'
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
+          property :null_marker, as: 'null_marker'
           property :quote, as: 'quote'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
         end
@@ -1238,6 +1239,7 @@ module Google
           property :etag, as: 'etag'
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
+          property :is_case_insensitive, as: 'isCaseInsensitive'
           property :kind, as: 'kind'
           hash :labels, as: 'labels'
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
@@ -2123,7 +2125,7 @@ module Google
       
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
-          property :session_info_template, as: 'sessionInfoTemplate', class: Google::Apis::BigqueryV2::SessionInfo, decorator: Google::Apis::BigqueryV2::SessionInfo::Representation
+          property :session_info, as: 'sessionInfo', class: Google::Apis::BigqueryV2::SessionInfo, decorator: Google::Apis::BigqueryV2::SessionInfo::Representation
       
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_rows, :numeric_string => true, as: 'totalRows'
@@ -2451,6 +2453,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :categories, as: 'categories', class: Google::Apis::BigqueryV2::TableFieldSchema::Categories, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Categories::Representation
       
+          property :collation_spec, as: 'collationSpec'
           property :description, as: 'description'
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Representation
       
