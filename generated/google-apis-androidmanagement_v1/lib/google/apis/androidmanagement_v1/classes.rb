@@ -703,7 +703,7 @@ module Google
         end
       end
       
-      # Contact details for LaForge enterprises.
+      # Contact details for managed Google Play enterprises.
       class ContactInfo
         include Google::Apis::Core::Hashable
       
@@ -1375,7 +1375,7 @@ module Google
         attr_accessor :app_auto_approval_enabled
         alias_method :app_auto_approval_enabled?, :app_auto_approval_enabled
       
-        # Contact details for LaForge enterprises.
+        # Contact details for managed Google Play enterprises.
         # Corresponds to the JSON property `contactInfo`
         # @return [Google::Apis::AndroidmanagementV1::ContactInfo]
         attr_accessor :contact_info
