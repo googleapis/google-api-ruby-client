@@ -29,7 +29,7 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # See, edit, configure, and delete your Google Cloud Platform data
+      # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # View and manage your Google Compute Engine resources
@@ -38,13 +38,13 @@ module Google
       # View your Google Compute Engine resources
       AUTH_COMPUTE_READONLY = 'https://www.googleapis.com/auth/compute.readonly'
 
-      # Manage your data and permissions in Google Cloud Storage
+      # Manage your data and permissions in Cloud Storage and see the email address for your Google Account
       AUTH_DEVSTORAGE_FULL_CONTROL = 'https://www.googleapis.com/auth/devstorage.full_control'
 
       # View your data in Google Cloud Storage
       AUTH_DEVSTORAGE_READ_ONLY = 'https://www.googleapis.com/auth/devstorage.read_only'
 
-      # Manage your data in Google Cloud Storage
+      # Manage your data in Cloud Storage and see the email address of your Google Account
       AUTH_DEVSTORAGE_READ_WRITE = 'https://www.googleapis.com/auth/devstorage.read_write'
     end
   end
