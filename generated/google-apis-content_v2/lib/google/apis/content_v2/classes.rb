@@ -215,6 +215,13 @@ module Google
         # @return [Google::Apis::ContentV2::AccountCustomerService]
         attr_accessor :customer_service
       
+        # The 10-digit [Korean business registration number](https://support.google.com/
+        # merchants/answer/9037766) separated with dashes in the format: XXX-XX-XXXXX.
+        # This field will only be updated if explicitly set.
+        # Corresponds to the JSON property `koreanBusinessRegistrationNumber`
+        # @return [String]
+        attr_accessor :korean_business_registration_number
+      
         # The phone number of the business.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
@@ -228,6 +235,7 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @customer_service = args[:customer_service] if args.key?(:customer_service)
+          @korean_business_registration_number = args[:korean_business_registration_number] if args.key?(:korean_business_registration_number)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
@@ -1526,7 +1534,7 @@ module Google
       class BusinessDayConfig
         include Google::Apis::Core::Hashable
       
-        # Regular business days. May not be empty.
+        # Regular business days, such as '"monday"'. May not be empty.
         # Corresponds to the JSON property `businessDays`
         # @return [Array<String>]
         attr_accessor :business_days
