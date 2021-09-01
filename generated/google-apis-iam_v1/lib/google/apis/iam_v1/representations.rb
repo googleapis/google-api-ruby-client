@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableServiceAccountKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisableServiceAccountRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableServiceAccountKeyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -446,6 +458,12 @@ module Google
         end
       end
       
+      class DisableServiceAccountKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DisableServiceAccountRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -453,6 +471,12 @@ module Google
       end
       
       class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableServiceAccountKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -701,6 +725,7 @@ module Google
       class ServiceAccountKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
           property :key_algorithm, as: 'keyAlgorithm'
           property :key_origin, as: 'keyOrigin'
           property :key_type, as: 'keyType'

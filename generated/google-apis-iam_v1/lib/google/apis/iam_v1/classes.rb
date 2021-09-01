@@ -387,6 +387,19 @@ module Google
         end
       end
       
+      # The service account key disable request.
+      class DisableServiceAccountKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The service account disable request.
       class DisableServiceAccountRequest
         include Google::Apis::Core::Hashable
@@ -406,6 +419,19 @@ module Google
       # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
       # `Empty` is empty JSON object ````.
       class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The service account key enable request.
+      class EnableServiceAccountKeyRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1400,6 +1426,12 @@ module Google
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
       
+        # The key status.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # Specifies the algorithm (and possibly key size) for the key.
         # Corresponds to the JSON property `keyAlgorithm`
         # @return [String]
@@ -1463,6 +1495,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
           @key_origin = args[:key_origin] if args.key?(:key_origin)
           @key_type = args[:key_type] if args.key?(:key_type)
