@@ -52,14 +52,14 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets a bucket.
+        # Gets a log bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/
-        #   my-location/buckets/my-bucket-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/
+        #   global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -87,11 +87,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view.
+        # Gets a view on a log bucket..
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
+        #   project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -125,8 +125,8 @@ module Google
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects/my-logging-
-        #   project", "organizations/123456789".
+        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-
+        #   project" "organizations/123456789"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -162,8 +162,8 @@ module Google
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
         #   exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[
-        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "
-        #   projects/my-project-id/exclusions/my-exclusion-id".
+        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"
+        #   projects/my-project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -196,8 +196,8 @@ module Google
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -273,8 +273,8 @@ module Google
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing exclusion. New
@@ -386,12 +386,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a bucket that can be used to store log entries. Once a bucket has been
-        # created, the region cannot be changed.
+        # Creates a log bucket that can be used to store log entries. After a bucket has
+        # been created, the bucket's location cannot be changed.
         # @param [String] parent
-        #   Required. The resource in which to create the bucket: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/
-        #   global"
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
@@ -427,16 +427,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days,
-        # the bucket will be purged and all logs in the bucket will be permanently
-        # deleted.
+        # Deletes a log bucket.Changes the bucket's lifecycle_state to the
+        # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
+        # entries in the bucket will be permanently deleted.
         # @param [String] name
         #   Required. The full resource name of the bucket to delete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -464,7 +464,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets.
+        # Lists log buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -510,27 +510,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a bucket. This method replaces the following fields in the existing
-        # bucket with values from the new bucket: retention_periodIf the retention
-        # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
-        # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-        # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created.
+        # Updates a log bucket. This method replaces the following fields in the
+        # existing bucket with values from the new bucket: retention_periodIf the
+        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
+        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id". Also requires
-        #   permission "resourcemanager.projects.updateLiens" to set the locked property
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] update_mask
         #   Required. Field mask that specifies the fields in bucket that need an update.
         #   A bucket field will be overwritten if, and only if, it is in the update mask.
         #   name and output only fields cannot be updated.For a detailed FieldMask
-        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
-        #   google.protobuf#google.protobuf.FieldMaskExample: updateMask=retention_days.
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -561,15 +561,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes a bucket. A bucket that has been deleted may be undeleted within the
-        # grace period of 7 days.
+        # Undeletes a log bucket. A bucket that has been deleted can be undeleted within
+        # the grace period of 7 days.
         # @param [String] name
         #   Required. The full resource name of the bucket to undelete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::UndeleteBucketRequest] undelete_bucket_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -600,12 +600,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
-        # views.
+        # Creates a view over log entries in a log bucket. A bucket may contain a
+        # maximum of 30 views.
         # @param [String] parent
-        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
-        #   project/locations/my-location/buckets/my-bucket"
+        #   Required. The bucket in which to create the view `"projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For example:"projects/my-project/
+        #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
         #   Required. The id to use for this view.
@@ -639,12 +639,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view from a bucket.
+        # Deletes a view on a log bucket.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -672,12 +671,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket.
+        # Lists views on a log bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Non-
+        #   Optional. The maximum number of results to return from this request.Non-
         #   positive values are ignored. The presence of nextPageToken in the response
         #   indicates that more results might be available.
         # @param [String] page_token
@@ -714,20 +713,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view. This method replaces the following fields in the existing view
-        # with values from the new view: filter.
+        # Updates a view on a log bucket. This method replaces the following fields in
+        # the existing view with values from the new view: filter.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in view that need an update. A
         #   field will be overwritten if, and only if, it is in the update mask. name and
         #   output only fields cannot be updated.For a detailed FieldMask definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        #   google.protobuf.FieldMaskFor example: updateMask=filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -974,14 +972,14 @@ module Google
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
-        #   folders/[FOLDER_ID]" Examples: "projects/my-logging-project", "organizations/
-        #   123456789".
+        #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
+        #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
         #   parent is a project, then the value returned as writer_identity is the same
-        #   group or service account used by Logging before the addition of writer
+        #   group or service account used by Cloud Logging before the addition of writer
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
@@ -1023,8 +1021,8 @@ module Google
         #   Required. The full resource name of the sink to delete, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1056,8 +1054,8 @@ module Google
         # @param [String] sink_name
         #   Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]
         #   " "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1135,8 +1133,8 @@ module Google
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
@@ -1152,10 +1150,11 @@ module Google
         #   sink field will be overwritten if, and only if, it is in the update mask. name
         #   and output only fields cannot be updated.An empty updateMask is temporarily
         #   treated as using the following mask for backwards compatibility purposes:
-        #   destination,filter,includeChildren At some point in the future, behavior will
+        #   destination,filter,includeChildrenAt some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.
+        #   reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1194,8 +1193,8 @@ module Google
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
@@ -1211,10 +1210,11 @@ module Google
         #   sink field will be overwritten if, and only if, it is in the update mask. name
         #   and output only fields cannot be updated.An empty updateMask is temporarily
         #   treated as using the following mask for backwards compatibility purposes:
-        #   destination,filter,includeChildren At some point in the future, behavior will
+        #   destination,filter,includeChildrenAt some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.
+        #   reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1246,7 +1246,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Copies a set of log entries from a logging bucket to a Cloud Storage bucket.
+        # Copies a set of log entries from a log bucket to a Cloud Storage bucket.
         # @param [Google::Apis::LoggingV2::CopyLogEntriesRequest] copy_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1379,8 +1379,8 @@ module Google
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects/my-logging-
-        #   project", "organizations/123456789".
+        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-
+        #   project" "organizations/123456789"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1416,8 +1416,8 @@ module Google
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
         #   exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[
-        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "
-        #   projects/my-project-id/exclusions/my-exclusion-id".
+        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"
+        #   projects/my-project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1450,8 +1450,8 @@ module Google
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1527,8 +1527,8 @@ module Google
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing exclusion. New
@@ -1573,8 +1573,8 @@ module Google
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects/my-logging-
-        #   project", "organizations/123456789".
+        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-
+        #   project" "organizations/123456789"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1610,8 +1610,8 @@ module Google
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
         #   exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[
-        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "
-        #   projects/my-project-id/exclusions/my-exclusion-id".
+        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"
+        #   projects/my-project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1644,8 +1644,8 @@ module Google
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1721,8 +1721,8 @@ module Google
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing exclusion. New
@@ -1834,12 +1834,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a bucket that can be used to store log entries. Once a bucket has been
-        # created, the region cannot be changed.
+        # Creates a log bucket that can be used to store log entries. After a bucket has
+        # been created, the bucket's location cannot be changed.
         # @param [String] parent
-        #   Required. The resource in which to create the bucket: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/
-        #   global"
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
@@ -1875,16 +1875,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days,
-        # the bucket will be purged and all logs in the bucket will be permanently
-        # deleted.
+        # Deletes a log bucket.Changes the bucket's lifecycle_state to the
+        # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
+        # entries in the bucket will be permanently deleted.
         # @param [String] name
         #   Required. The full resource name of the bucket to delete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1912,14 +1912,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a bucket.
+        # Gets a log bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/
-        #   my-location/buckets/my-bucket-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/
+        #   global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1947,7 +1947,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets.
+        # Lists log buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -1993,27 +1993,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a bucket. This method replaces the following fields in the existing
-        # bucket with values from the new bucket: retention_periodIf the retention
-        # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
-        # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-        # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created.
+        # Updates a log bucket. This method replaces the following fields in the
+        # existing bucket with values from the new bucket: retention_periodIf the
+        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
+        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id". Also requires
-        #   permission "resourcemanager.projects.updateLiens" to set the locked property
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] update_mask
         #   Required. Field mask that specifies the fields in bucket that need an update.
         #   A bucket field will be overwritten if, and only if, it is in the update mask.
         #   name and output only fields cannot be updated.For a detailed FieldMask
-        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
-        #   google.protobuf#google.protobuf.FieldMaskExample: updateMask=retention_days.
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2044,15 +2044,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes a bucket. A bucket that has been deleted may be undeleted within the
-        # grace period of 7 days.
+        # Undeletes a log bucket. A bucket that has been deleted can be undeleted within
+        # the grace period of 7 days.
         # @param [String] name
         #   Required. The full resource name of the bucket to undelete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::UndeleteBucketRequest] undelete_bucket_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2083,12 +2083,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
-        # views.
+        # Creates a view over log entries in a log bucket. A bucket may contain a
+        # maximum of 30 views.
         # @param [String] parent
-        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
-        #   project/locations/my-location/buckets/my-bucket"
+        #   Required. The bucket in which to create the view `"projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For example:"projects/my-project/
+        #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
         #   Required. The id to use for this view.
@@ -2122,12 +2122,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view from a bucket.
+        # Deletes a view on a log bucket.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2155,11 +2154,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view.
+        # Gets a view on a log bucket..
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
+        #   project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2187,12 +2186,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket.
+        # Lists views on a log bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Non-
+        #   Optional. The maximum number of results to return from this request.Non-
         #   positive values are ignored. The presence of nextPageToken in the response
         #   indicates that more results might be available.
         # @param [String] page_token
@@ -2229,20 +2228,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view. This method replaces the following fields in the existing view
-        # with values from the new view: filter.
+        # Updates a view on a log bucket. This method replaces the following fields in
+        # the existing view with values from the new view: filter.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in view that need an update. A
         #   field will be overwritten if, and only if, it is in the update mask. name and
         #   output only fields cannot be updated.For a detailed FieldMask definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        #   google.protobuf.FieldMaskFor example: updateMask=filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2489,14 +2487,14 @@ module Google
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
-        #   folders/[FOLDER_ID]" Examples: "projects/my-logging-project", "organizations/
-        #   123456789".
+        #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
+        #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
         #   parent is a project, then the value returned as writer_identity is the same
-        #   group or service account used by Logging before the addition of writer
+        #   group or service account used by Cloud Logging before the addition of writer
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
@@ -2538,8 +2536,8 @@ module Google
         #   Required. The full resource name of the sink to delete, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2571,8 +2569,8 @@ module Google
         # @param [String] sink_name
         #   Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]
         #   " "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2650,8 +2648,8 @@ module Google
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
@@ -2667,10 +2665,11 @@ module Google
         #   sink field will be overwritten if, and only if, it is in the update mask. name
         #   and output only fields cannot be updated.An empty updateMask is temporarily
         #   treated as using the following mask for backwards compatibility purposes:
-        #   destination,filter,includeChildren At some point in the future, behavior will
+        #   destination,filter,includeChildrenAt some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.
+        #   reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2709,8 +2708,8 @@ module Google
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
@@ -2726,10 +2725,11 @@ module Google
         #   sink field will be overwritten if, and only if, it is in the update mask. name
         #   and output only fields cannot be updated.An empty updateMask is temporarily
         #   treated as using the following mask for backwards compatibility purposes:
-        #   destination,filter,includeChildren At some point in the future, behavior will
+        #   destination,filter,includeChildrenAt some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.
+        #   reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2834,12 +2834,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a bucket that can be used to store log entries. Once a bucket has been
-        # created, the region cannot be changed.
+        # Creates a log bucket that can be used to store log entries. After a bucket has
+        # been created, the bucket's location cannot be changed.
         # @param [String] parent
-        #   Required. The resource in which to create the bucket: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/
-        #   global"
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
@@ -2875,16 +2875,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days,
-        # the bucket will be purged and all logs in the bucket will be permanently
-        # deleted.
+        # Deletes a log bucket.Changes the bucket's lifecycle_state to the
+        # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
+        # entries in the bucket will be permanently deleted.
         # @param [String] name
         #   Required. The full resource name of the bucket to delete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2912,14 +2912,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a bucket.
+        # Gets a log bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/
-        #   my-location/buckets/my-bucket-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/
+        #   global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2947,7 +2947,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets.
+        # Lists log buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -2993,27 +2993,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a bucket. This method replaces the following fields in the existing
-        # bucket with values from the new bucket: retention_periodIf the retention
-        # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
-        # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-        # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created.
+        # Updates a log bucket. This method replaces the following fields in the
+        # existing bucket with values from the new bucket: retention_periodIf the
+        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
+        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id". Also requires
-        #   permission "resourcemanager.projects.updateLiens" to set the locked property
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] update_mask
         #   Required. Field mask that specifies the fields in bucket that need an update.
         #   A bucket field will be overwritten if, and only if, it is in the update mask.
         #   name and output only fields cannot be updated.For a detailed FieldMask
-        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
-        #   google.protobuf#google.protobuf.FieldMaskExample: updateMask=retention_days.
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3044,15 +3044,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes a bucket. A bucket that has been deleted may be undeleted within the
-        # grace period of 7 days.
+        # Undeletes a log bucket. A bucket that has been deleted can be undeleted within
+        # the grace period of 7 days.
         # @param [String] name
         #   Required. The full resource name of the bucket to undelete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::UndeleteBucketRequest] undelete_bucket_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3083,12 +3083,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
-        # views.
+        # Creates a view over log entries in a log bucket. A bucket may contain a
+        # maximum of 30 views.
         # @param [String] parent
-        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
-        #   project/locations/my-location/buckets/my-bucket"
+        #   Required. The bucket in which to create the view `"projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For example:"projects/my-project/
+        #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
         #   Required. The id to use for this view.
@@ -3122,12 +3122,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view from a bucket.
+        # Deletes a view on a log bucket.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3155,11 +3154,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view.
+        # Gets a view on a log bucket..
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
+        #   project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3187,12 +3186,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket.
+        # Lists views on a log bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Non-
+        #   Optional. The maximum number of results to return from this request.Non-
         #   positive values are ignored. The presence of nextPageToken in the response
         #   indicates that more results might be available.
         # @param [String] page_token
@@ -3229,20 +3228,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view. This method replaces the following fields in the existing view
-        # with values from the new view: filter.
+        # Updates a view on a log bucket. This method replaces the following fields in
+        # the existing view with values from the new view: filter.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in view that need an update. A
         #   field will be overwritten if, and only if, it is in the update mask. name and
         #   output only fields cannot be updated.For a detailed FieldMask definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        #   google.protobuf.FieldMaskFor example: updateMask=filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3529,7 +3527,7 @@ module Google
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
         #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
-        #   cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the
+        #   cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the
         #   Logs Router can currently only be configured for GCP organizations. Once
         #   configured, it applies to all projects and folders in the GCP organization.
         # @param [String] fields
@@ -3571,15 +3569,15 @@ module Google
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
         #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
-        #   cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the
+        #   cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the
         #   Logs Router can currently only be configured for GCP organizations. Once
         #   configured, it applies to all projects and folders in the GCP organization.
         # @param [Google::Apis::LoggingV2::CmekSettings] cmek_settings_object
         # @param [String] update_mask
         #   Optional. Field mask identifying which fields from cmek_settings should be
         #   updated. A field will be overwritten if and only if it is in the update mask.
-        #   Output only fields cannot be updated.See FieldMask for more information.
-        #   Example: "updateMask=kmsKeyName"
+        #   Output only fields cannot be updated.See FieldMask for more information.For
+        #   example: "updateMask=kmsKeyName"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3616,8 +3614,8 @@ module Google
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects/my-logging-
-        #   project", "organizations/123456789".
+        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-
+        #   project" "organizations/123456789"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3653,8 +3651,8 @@ module Google
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
         #   exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[
-        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "
-        #   projects/my-project-id/exclusions/my-exclusion-id".
+        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"
+        #   projects/my-project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3687,8 +3685,8 @@ module Google
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3764,8 +3762,8 @@ module Google
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing exclusion. New
@@ -3877,12 +3875,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a bucket that can be used to store log entries. Once a bucket has been
-        # created, the region cannot be changed.
+        # Creates a log bucket that can be used to store log entries. After a bucket has
+        # been created, the bucket's location cannot be changed.
         # @param [String] parent
-        #   Required. The resource in which to create the bucket: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/
-        #   global"
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
@@ -3918,16 +3916,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days,
-        # the bucket will be purged and all logs in the bucket will be permanently
-        # deleted.
+        # Deletes a log bucket.Changes the bucket's lifecycle_state to the
+        # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
+        # entries in the bucket will be permanently deleted.
         # @param [String] name
         #   Required. The full resource name of the bucket to delete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3955,14 +3953,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a bucket.
+        # Gets a log bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/
-        #   my-location/buckets/my-bucket-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/
+        #   global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3990,7 +3988,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets.
+        # Lists log buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -4036,27 +4034,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a bucket. This method replaces the following fields in the existing
-        # bucket with values from the new bucket: retention_periodIf the retention
-        # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
-        # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-        # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created.
+        # Updates a log bucket. This method replaces the following fields in the
+        # existing bucket with values from the new bucket: retention_periodIf the
+        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
+        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id". Also requires
-        #   permission "resourcemanager.projects.updateLiens" to set the locked property
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] update_mask
         #   Required. Field mask that specifies the fields in bucket that need an update.
         #   A bucket field will be overwritten if, and only if, it is in the update mask.
         #   name and output only fields cannot be updated.For a detailed FieldMask
-        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
-        #   google.protobuf#google.protobuf.FieldMaskExample: updateMask=retention_days.
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4087,15 +4085,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes a bucket. A bucket that has been deleted may be undeleted within the
-        # grace period of 7 days.
+        # Undeletes a log bucket. A bucket that has been deleted can be undeleted within
+        # the grace period of 7 days.
         # @param [String] name
         #   Required. The full resource name of the bucket to undelete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::UndeleteBucketRequest] undelete_bucket_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4126,12 +4124,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
-        # views.
+        # Creates a view over log entries in a log bucket. A bucket may contain a
+        # maximum of 30 views.
         # @param [String] parent
-        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
-        #   project/locations/my-location/buckets/my-bucket"
+        #   Required. The bucket in which to create the view `"projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For example:"projects/my-project/
+        #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
         #   Required. The id to use for this view.
@@ -4165,12 +4163,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view from a bucket.
+        # Deletes a view on a log bucket.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4198,11 +4195,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view.
+        # Gets a view on a log bucket..
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
+        #   project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4230,12 +4227,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket.
+        # Lists views on a log bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Non-
+        #   Optional. The maximum number of results to return from this request.Non-
         #   positive values are ignored. The presence of nextPageToken in the response
         #   indicates that more results might be available.
         # @param [String] page_token
@@ -4272,20 +4269,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view. This method replaces the following fields in the existing view
-        # with values from the new view: filter.
+        # Updates a view on a log bucket. This method replaces the following fields in
+        # the existing view with values from the new view: filter.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in view that need an update. A
         #   field will be overwritten if, and only if, it is in the update mask. name and
         #   output only fields cannot be updated.For a detailed FieldMask definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        #   google.protobuf.FieldMaskFor example: updateMask=filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4532,14 +4528,14 @@ module Google
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
-        #   folders/[FOLDER_ID]" Examples: "projects/my-logging-project", "organizations/
-        #   123456789".
+        #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
+        #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
         #   parent is a project, then the value returned as writer_identity is the same
-        #   group or service account used by Logging before the addition of writer
+        #   group or service account used by Cloud Logging before the addition of writer
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
@@ -4581,8 +4577,8 @@ module Google
         #   Required. The full resource name of the sink to delete, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4614,8 +4610,8 @@ module Google
         # @param [String] sink_name
         #   Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]
         #   " "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4693,8 +4689,8 @@ module Google
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
@@ -4710,10 +4706,11 @@ module Google
         #   sink field will be overwritten if, and only if, it is in the update mask. name
         #   and output only fields cannot be updated.An empty updateMask is temporarily
         #   treated as using the following mask for backwards compatibility purposes:
-        #   destination,filter,includeChildren At some point in the future, behavior will
+        #   destination,filter,includeChildrenAt some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.
+        #   reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4752,8 +4749,8 @@ module Google
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
@@ -4769,10 +4766,11 @@ module Google
         #   sink field will be overwritten if, and only if, it is in the update mask. name
         #   and output only fields cannot be updated.An empty updateMask is temporarily
         #   treated as using the following mask for backwards compatibility purposes:
-        #   destination,filter,includeChildren At some point in the future, behavior will
+        #   destination,filter,includeChildrenAt some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.
+        #   reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4810,8 +4808,8 @@ module Google
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects/my-logging-
-        #   project", "organizations/123456789".
+        #   BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" For examples:"projects/my-logging-
+        #   project" "organizations/123456789"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4847,8 +4845,8 @@ module Google
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
         #   exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[
-        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "
-        #   projects/my-project-id/exclusions/my-exclusion-id".
+        #   EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"
+        #   projects/my-project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4881,8 +4879,8 @@ module Google
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4958,8 +4956,8 @@ module Google
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
         #   EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-
-        #   id/exclusions/my-exclusion-id".
+        #   "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-
+        #   project/exclusions/my-exclusion"
         # @param [Google::Apis::LoggingV2::LogExclusion] log_exclusion_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing exclusion. New
@@ -5071,12 +5069,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a bucket that can be used to store log entries. Once a bucket has been
-        # created, the region cannot be changed.
+        # Creates a log bucket that can be used to store log entries. After a bucket has
+        # been created, the bucket's location cannot be changed.
         # @param [String] parent
-        #   Required. The resource in which to create the bucket: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]" Example: "projects/my-logging-project/locations/
-        #   global"
+        #   Required. The resource in which to create the log bucket: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
+        #   locations/global"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] bucket_id
         #   Required. A client-assigned identifier such as "my-bucket". Identifiers are
@@ -5112,16 +5110,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days,
-        # the bucket will be purged and all logs in the bucket will be permanently
-        # deleted.
+        # Deletes a log bucket.Changes the bucket's lifecycle_state to the
+        # DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log
+        # entries in the bucket will be permanently deleted.
         # @param [String] name
         #   Required. The full resource name of the bucket to delete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5149,14 +5147,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a bucket.
+        # Gets a log bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[
         #   LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-project-id/locations/
-        #   my-location/buckets/my-bucket-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/
+        #   global/buckets/my-bucket"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5184,7 +5182,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists buckets.
+        # Lists log buckets.
         # @param [String] parent
         #   Required. The parent resource whose buckets are to be listed: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -5230,27 +5228,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a bucket. This method replaces the following fields in the existing
-        # bucket with values from the new bucket: retention_periodIf the retention
-        # period is decreased and the bucket is locked, FAILED_PRECONDITION will be
-        # returned.If the bucket has a LifecycleState of DELETE_REQUESTED,
-        # FAILED_PRECONDITION will be returned.A buckets region may not be modified
-        # after it is created.
+        # Updates a log bucket. This method replaces the following fields in the
+        # existing bucket with values from the new bucket: retention_periodIf the
+        # retention period is decreased and the bucket is locked, FAILED_PRECONDITION
+        # will be returned.If the bucket has a lifecycle_state of DELETE_REQUESTED, then
+        # FAILED_PRECONDITION will be returned.After a bucket has been created, the
+        # bucket's location cannot be changed.
         # @param [String] name
         #   Required. The full resource name of the bucket to update. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id". Also requires
-        #   permission "resourcemanager.projects.updateLiens" to set the locked property
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogBucket] log_bucket_object
         # @param [String] update_mask
         #   Required. Field mask that specifies the fields in bucket that need an update.
         #   A bucket field will be overwritten if, and only if, it is in the update mask.
         #   name and output only fields cannot be updated.For a detailed FieldMask
-        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
-        #   google.protobuf#google.protobuf.FieldMaskExample: updateMask=retention_days.
+        #   definition, see: https://developers.google.com/protocol-buffers/docs/reference/
+        #   google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   retention_days
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5281,15 +5279,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes a bucket. A bucket that has been deleted may be undeleted within the
-        # grace period of 7 days.
+        # Undeletes a log bucket. A bucket that has been deleted can be undeleted within
+        # the grace period of 7 days.
         # @param [String] name
         #   Required. The full resource name of the bucket to undelete. "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[
         #   ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/
         #   [BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[
-        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id".
+        #   FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/
+        #   my-project/locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::UndeleteBucketRequest] undelete_bucket_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5320,12 +5318,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a view over logs in a bucket. A bucket may contain a maximum of 50
-        # views.
+        # Creates a view over log entries in a log bucket. A bucket may contain a
+        # maximum of 30 views.
         # @param [String] parent
-        #   Required. The bucket in which to create the view "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example: "projects/my-logging-
-        #   project/locations/my-location/buckets/my-bucket"
+        #   Required. The bucket in which to create the view `"projects/[PROJECT_ID]/
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"` For example:"projects/my-project/
+        #   locations/global/buckets/my-bucket"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] view_id
         #   Required. The id to use for this view.
@@ -5359,12 +5357,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view from a bucket.
+        # Deletes a view on a log bucket.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5392,11 +5389,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a view.
+        # Gets a view on a log bucket..
         # @param [String] name
         #   Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[
-        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "projects/my-
-        #   project-id/locations/my-location/buckets/my-bucket-id/views/my-view-id".
+        #   LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-
+        #   project/locations/global/buckets/my-bucket/views/my-view"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5424,12 +5421,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists views on a bucket.
+        # Lists views on a log bucket.
         # @param [String] parent
         #   Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request. Non-
+        #   Optional. The maximum number of results to return from this request.Non-
         #   positive values are ignored. The presence of nextPageToken in the response
         #   indicates that more results might be available.
         # @param [String] page_token
@@ -5466,20 +5463,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a view. This method replaces the following fields in the existing view
-        # with values from the new view: filter.
+        # Updates a view on a log bucket. This method replaces the following fields in
+        # the existing view with values from the new view: filter.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" Example: "
-        #   projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-
-        #   view-id".
+        #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
+        #   projects/my-project/locations/global/buckets/my-bucket/views/my-view"
         # @param [Google::Apis::LoggingV2::LogView] log_view_object
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in view that need an update. A
         #   field will be overwritten if, and only if, it is in the update mask. name and
         #   output only fields cannot be updated.For a detailed FieldMask definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   google.protobuf.FieldMaskExample: updateMask=filter.
+        #   google.protobuf.FieldMaskFor example: updateMask=filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5900,14 +5896,14 @@ module Google
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
-        #   folders/[FOLDER_ID]" Examples: "projects/my-logging-project", "organizations/
-        #   123456789".
+        #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
+        #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
         #   parent is a project, then the value returned as writer_identity is the same
-        #   group or service account used by Logging before the addition of writer
+        #   group or service account used by Cloud Logging before the addition of writer
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
@@ -5949,8 +5945,8 @@ module Google
         #   Required. The full resource name of the sink to delete, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5982,8 +5978,8 @@ module Google
         # @param [String] sink_name
         #   Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]
         #   " "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6061,8 +6057,8 @@ module Google
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
@@ -6078,10 +6074,11 @@ module Google
         #   sink field will be overwritten if, and only if, it is in the update mask. name
         #   and output only fields cannot be updated.An empty updateMask is temporarily
         #   treated as using the following mask for backwards compatibility purposes:
-        #   destination,filter,includeChildren At some point in the future, behavior will
+        #   destination,filter,includeChildrenAt some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.
+        #   reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6120,8 +6117,8 @@ module Google
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
@@ -6137,10 +6134,11 @@ module Google
         #   sink field will be overwritten if, and only if, it is in the update mask. name
         #   and output only fields cannot be updated.An empty updateMask is temporarily
         #   treated as using the following mask for backwards compatibility purposes:
-        #   destination,filter,includeChildren At some point in the future, behavior will
+        #   destination,filter,includeChildrenAt some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.
+        #   reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6179,14 +6177,14 @@ module Google
         # @param [String] parent
         #   Required. The resource in which to create the sink: "projects/[PROJECT_ID]" "
         #   organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "
-        #   folders/[FOLDER_ID]" Examples: "projects/my-logging-project", "organizations/
-        #   123456789".
+        #   folders/[FOLDER_ID]" For examples:"projects/my-project" "organizations/
+        #   123456789"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. Determines the kind of IAM identity returned as writer_identity in
         #   the new sink. If this value is omitted or set to false, and if the sink's
         #   parent is a project, then the value returned as writer_identity is the same
-        #   group or service account used by Logging before the addition of writer
+        #   group or service account used by Cloud Logging before the addition of writer
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
@@ -6228,8 +6226,8 @@ module Google
         #   Required. The full resource name of the sink to delete, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6261,8 +6259,8 @@ module Google
         # @param [String] sink_name
         #   Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]
         #   " "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6340,8 +6338,8 @@ module Google
         #   Required. The full resource name of the sink to update, including the parent
         #   resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "
         #   organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[
-        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
-        #   Example: "projects/my-project-id/sinks/my-sink-id".
+        #   BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For
+        #   example:"projects/my-project/sinks/my-sink"
         # @param [Google::Apis::LoggingV2::LogSink] log_sink_object
         # @param [Boolean] unique_writer_identity
         #   Optional. See sinks.create for a description of this field. When updating a
@@ -6357,10 +6355,11 @@ module Google
         #   sink field will be overwritten if, and only if, it is in the update mask. name
         #   and output only fields cannot be updated.An empty updateMask is temporarily
         #   treated as using the following mask for backwards compatibility purposes:
-        #   destination,filter,includeChildren At some point in the future, behavior will
+        #   destination,filter,includeChildrenAt some point in the future, behavior will
         #   be removed and specifying an empty updateMask will be an error.For a detailed
         #   FieldMask definition, see https://developers.google.com/protocol-buffers/docs/
-        #   reference/google.protobuf#google.protobuf.FieldMaskExample: updateMask=filter.
+        #   reference/google.protobuf#google.protobuf.FieldMaskFor example: updateMask=
+        #   filter
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6401,7 +6400,7 @@ module Google
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
         #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
-        #   cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the
+        #   cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the
         #   Logs Router can currently only be configured for GCP organizations. Once
         #   configured, it applies to all projects and folders in the GCP organization.
         # @param [String] fields
@@ -6443,15 +6442,15 @@ module Google
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
         #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
-        #   cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the
+        #   cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the
         #   Logs Router can currently only be configured for GCP organizations. Once
         #   configured, it applies to all projects and folders in the GCP organization.
         # @param [Google::Apis::LoggingV2::CmekSettings] cmek_settings_object
         # @param [String] update_mask
         #   Optional. Field mask identifying which fields from cmek_settings should be
         #   updated. A field will be overwritten if and only if it is in the update mask.
-        #   Output only fields cannot be updated.See FieldMask for more information.
-        #   Example: "updateMask=kmsKeyName"
+        #   Output only fields cannot be updated.See FieldMask for more information.For
+        #   example: "updateMask=kmsKeyName"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
