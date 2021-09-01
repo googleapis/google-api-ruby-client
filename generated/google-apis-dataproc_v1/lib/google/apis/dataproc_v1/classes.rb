@@ -372,8 +372,8 @@ module Google
         end
       end
       
-      # Describes the identifying information, config, and status of a cluster of
-      # Compute Engine instances.
+      # Describes the identifying information, config, and status of a Dataproc
+      # cluster
       class Cluster
         include Google::Apis::Core::Hashable
       
@@ -456,9 +456,10 @@ module Google
         # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
         # cluster's staging bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
-        # location bucket (see Dataproc staging bucket (https://cloud.google.com/
-        # dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
-        # requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+        # location bucket (see Dataproc staging and temp buckets (https://cloud.google.
+        # com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
+        # requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage
+        # bucket.
         # Corresponds to the JSON property `configBucket`
         # @return [String]
         attr_accessor :config_bucket
@@ -479,7 +480,7 @@ module Google
         # @return [Google::Apis::DataprocV1::GceClusterConfig]
         attr_accessor :gce_cluster_config
       
-        # The GKE config for this cluster.
+        # The cluster's GKE config.
         # Corresponds to the JSON property `gkeClusterConfig`
         # @return [Google::Apis::DataprocV1::GkeClusterConfig]
         attr_accessor :gke_cluster_config
@@ -533,8 +534,10 @@ module Google
         # your cluster's temp bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
         # location bucket. The default bucket has a TTL of 90 days, but you can use any
-        # TTL (or none) if you specify a bucket. This field requires a Cloud Storage
-        # bucket name, not a URI to a Cloud Storage bucket.
+        # TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (
+        # https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-
+        # bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI
+        # to a Cloud Storage bucket.
         # Corresponds to the JSON property `tempBucket`
         # @return [String]
         attr_accessor :temp_bucket
@@ -1181,7 +1184,7 @@ module Google
         end
       end
       
-      # The GKE config for this cluster.
+      # The cluster's GKE config.
       class GkeClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -2704,7 +2707,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the IAM documentation (https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -3059,7 +3062,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the IAM documentation (https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
