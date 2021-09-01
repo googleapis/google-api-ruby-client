@@ -12661,10 +12661,6 @@ module Google
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        # @param [Array<String>, String] secure_tags
-        #   DEPRECATED: Please use resource.secure_tag instead. Secure tags to apply to
-        #   this instance. These can be later modified by the update method. Maximum
-        #   number of secure tags allowed is 50.
         # @param [String] source_instance_template
         #   Specifies instance template to create the instance. This field is optional. It
         #   can be a full or partial URL. For example, the following are all valid URLs to
@@ -12696,7 +12692,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance(project, zone, instance_object = nil, request_id: nil, secure_tags: nil, source_instance_template: nil, source_machine_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance(project, zone, instance_object = nil, request_id: nil, source_instance_template: nil, source_machine_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instances', options)
           command.request_representation = Google::Apis::ComputeAlpha::Instance::Representation
           command.request_object = instance_object
@@ -12705,7 +12701,6 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['requestId'] = request_id unless request_id.nil?
-          command.query['secureTags'] = secure_tags unless secure_tags.nil?
           command.query['sourceInstanceTemplate'] = source_instance_template unless source_instance_template.nil?
           command.query['sourceMachineImage'] = source_machine_image unless source_machine_image.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -14201,9 +14196,6 @@ module Google
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        # @param [Array<String>, String] secure_tags
-        #   DEPRECATED: Please use resource.secure_tag instead. Secure tags to apply to
-        #   this instance. Maximum number of secure tags allowed is 50.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14223,7 +14215,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_instance(project, zone, instance, instance_object = nil, clear_secure_tag: nil, minimal_action: nil, most_disruptive_allowed_action: nil, request_id: nil, secure_tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_instance(project, zone, instance, instance_object = nil, clear_secure_tag: nil, minimal_action: nil, most_disruptive_allowed_action: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:put, 'projects/{project}/zones/{zone}/instances/{instance}', options)
           command.request_representation = Google::Apis::ComputeAlpha::Instance::Representation
           command.request_object = instance_object
@@ -14236,7 +14228,6 @@ module Google
           command.query['minimalAction'] = minimal_action unless minimal_action.nil?
           command.query['mostDisruptiveAllowedAction'] = most_disruptive_allowed_action unless most_disruptive_allowed_action.nil?
           command.query['requestId'] = request_id unless request_id.nil?
-          command.query['secureTags'] = secure_tags unless secure_tags.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -19057,9 +19048,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified network peering with the data included in the request
-        # Only the following fields can be modified: NetworkPeering.export_custom_routes,
-        # and NetworkPeering.import_custom_routes
+        # Updates the specified network peering with the data included in the request.
+        # You can only modify the NetworkPeering.export_custom_routes field and the
+        # NetworkPeering.import_custom_routes field.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -36354,6 +36345,10 @@ module Google
         # @param [Boolean] return_partial_success
         #   Opt-in for partial success behavior which provides partial results in case of
         #   failure. The default value is false.
+        # @param [String] service_project
+        #   The project id or project number in which the subnetwork is intended to be
+        #   used. Only applied for Shared VPC. See [Shared VPC documentation](https://
+        #   cloud.google.com/vpc/docs/shared-vpc/)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36373,7 +36368,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_subnetwork_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_subnetwork_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/subnetworks/listUsable', options)
           command.response_representation = Google::Apis::ComputeAlpha::UsableSubnetworksAggregatedList::Representation
           command.response_class = Google::Apis::ComputeAlpha::UsableSubnetworksAggregatedList
@@ -36383,6 +36378,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['serviceProject'] = service_project unless service_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
