@@ -4171,14 +4171,16 @@ module Google
         # _revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum
         # number of search results returned defaults to 100, which can be overridden by
         # the `_count` parameter up to a maximum limit of 1000. If there are additional
-        # results, the returned `Bundle` will contain pagination links. Resources with a
-        # total size larger than 5MB or a field count larger than 50,000 might not be
-        # fully searchable as the server might trim its generated search index in those
-        # cases. Note: FHIR resources are indexed asynchronously, so there might be a
-        # slight delay between the time a resource is created or changes and when the
-        # change is reflected in search results. For samples and detailed information,
-        # see [Searching for FHIR resources](/healthcare/docs/how-tos/fhir-search) and [
-        # Advanced FHIR search features](/healthcare/docs/how-tos/fhir-advanced-search).
+        # results, the returned `Bundle` contains a link of `relation` "next", which has
+        # a `_page_token` parameter for an opaque pagination token that can be used to
+        # retrieve the next page. Resources with a total size larger than 5MB or a field
+        # count larger than 50,000 might not be fully searchable as the server might
+        # trim its generated search index in those cases. Note: FHIR resources are
+        # indexed asynchronously, so there might be a slight delay between the time a
+        # resource is created or changes and when the change is reflected in search
+        # results. For samples and detailed information, see [Searching for FHIR
+        # resources](/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search
+        # features](/healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1::SearchResourcesRequest] search_resources_request_object
@@ -4245,14 +4247,16 @@ module Google
         # _revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum
         # number of search results returned defaults to 100, which can be overridden by
         # the `_count` parameter up to a maximum limit of 1000. If there are additional
-        # results, the returned `Bundle` will contain pagination links. Resources with a
-        # total size larger than 5MB or a field count larger than 50,000 might not be
-        # fully searchable as the server might trim its generated search index in those
-        # cases. Note: FHIR resources are indexed asynchronously, so there might be a
-        # slight delay between the time a resource is created or changes and when the
-        # change is reflected in search results. For samples and detailed information,
-        # see [Searching for FHIR resources](/healthcare/docs/how-tos/fhir-search) and [
-        # Advanced FHIR search features](/healthcare/docs/how-tos/fhir-advanced-search).
+        # results, the returned `Bundle` contains a link of `relation` "next", which has
+        # a `_page_token` parameter for an opaque pagination token that can be used to
+        # retrieve the next page. Resources with a total size larger than 5MB or a field
+        # count larger than 50,000 might not be fully searchable as the server might
+        # trim its generated search index in those cases. Note: FHIR resources are
+        # indexed asynchronously, so there might be a slight delay between the time a
+        # resource is created or changes and when the change is reflected in search
+        # results. For samples and detailed information, see [Searching for FHIR
+        # resources](/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search
+        # features](/healthcare/docs/how-tos/fhir-advanced-search).
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [String] resource_type
@@ -5084,6 +5088,42 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Analyze heathcare entity in a document. Its response includes the recognized
+        # entity mentions and the relationships between them. AnalyzeEntities uses
+        # context aware models to detect entities.
+        # @param [String] nlp_service
+        #   The resource name of the service of the form: "projects/`project_id`/locations/
+        #   `location_id`/services/nlp".
+        # @param [Google::Apis::HealthcareV1::AnalyzeEntitiesRequest] analyze_entities_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1::AnalyzeEntitiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1::AnalyzeEntitiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def analyze_nlp_entities(nlp_service, analyze_entities_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+nlpService}:analyzeEntities', options)
+          command.request_representation = Google::Apis::HealthcareV1::AnalyzeEntitiesRequest::Representation
+          command.request_object = analyze_entities_request_object
+          command.response_representation = Google::Apis::HealthcareV1::AnalyzeEntitiesResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1::AnalyzeEntitiesResponse
+          command.params['nlpService'] = nlp_service unless nlp_service.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
