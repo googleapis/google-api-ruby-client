@@ -246,6 +246,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :ip_prefix_length
       
+        # Optional. The private IPv6 google access type for the VMs in this subnet. For
+        # information about the access types that can be set using this field, see [
+        # subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/
+        # subnetworks) in the Compute API documentation.
+        # Corresponds to the JSON property `privateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :private_ipv6_google_access
+      
         # Required. The name of a [region](/compute/docs/regions-zones) for the subnet,
         # such `europe-west1`.
         # Corresponds to the JSON property `region`
@@ -299,6 +307,7 @@ module Google
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @description = args[:description] if args.key?(:description)
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
+          @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @region = args[:region] if args.key?(:region)
           @requested_address = args[:requested_address] if args.key?(:requested_address)
           @requested_ranges = args[:requested_ranges] if args.key?(:requested_ranges)
@@ -2896,7 +2905,8 @@ module Google
       class PeeredDnsDomain
         include Google::Apis::Core::Hashable
       
-        # The DNS domain name suffix e.g. `example.com.`.
+        # The DNS domain name suffix e.g. `example.com.`. Cloud DNS requires that a DNS
+        # suffix ends with a trailing dot.
         # Corresponds to the JSON property `dnsSuffix`
         # @return [String]
         attr_accessor :dns_suffix
