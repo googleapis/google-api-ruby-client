@@ -281,6 +281,28 @@ module Google
         end
       end
       
+      # Specifies how metastore metadata should be integrated with the Dataplex
+      # service.
+      class DataplexConfig
+        include Google::Apis::Core::Hashable
+      
+        # A reference to the Lake resources that this metastore service is attached to.
+        # The key is the lake resource name. Example: projects/`project_number`/
+        # locations/`location_id`/lakes/`lake_id`.
+        # Corresponds to the JSON property `lakeResources`
+        # @return [Hash<String,Google::Apis::MetastoreV1alpha::Lake>]
+        attr_accessor :lake_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lake_resources = args[:lake_resources] if args.key?(:lake_resources)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -424,6 +446,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :config_overrides
       
+        # The protocol to use for the metastore service endpoint. If unspecified,
+        # defaults to THRIFT.
+        # Corresponds to the JSON property `endpointProtocol`
+        # @return [String]
+        attr_accessor :endpoint_protocol
+      
         # Configuration information for a Kerberos principal.
         # Corresponds to the JSON property `kerberosConfig`
         # @return [Google::Apis::MetastoreV1alpha::KerberosConfig]
@@ -441,6 +469,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config_overrides = args[:config_overrides] if args.key?(:config_overrides)
+          @endpoint_protocol = args[:endpoint_protocol] if args.key?(:endpoint_protocol)
           @kerberos_config = args[:kerberos_config] if args.key?(:kerberos_config)
           @version = args[:version] if args.key?(:version)
         end
@@ -505,6 +534,26 @@ module Google
           @keytab = args[:keytab] if args.key?(:keytab)
           @krb5_config_gcs_uri = args[:krb5_config_gcs_uri] if args.key?(:krb5_config_gcs_uri)
           @principal = args[:principal] if args.key?(:principal)
+        end
+      end
+      
+      # Represents a Lake resource
+      class Lake
+        include Google::Apis::Core::Hashable
+      
+        # The Lake resource name. Example: projects/`project_number`/locations/`
+        # location_id`/lakes/`lake_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -860,6 +909,12 @@ module Google
         # @return [Google::Apis::MetastoreV1alpha::DataCatalogConfig]
         attr_accessor :data_catalog_config
       
+        # Specifies how metastore metadata should be integrated with the Dataplex
+        # service.
+        # Corresponds to the JSON property `dataplexConfig`
+        # @return [Google::Apis::MetastoreV1alpha::DataplexConfig]
+        attr_accessor :dataplex_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -867,6 +922,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_catalog_config = args[:data_catalog_config] if args.key?(:data_catalog_config)
+          @dataplex_config = args[:dataplex_config] if args.key?(:dataplex_config)
         end
       end
       
@@ -1040,7 +1096,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the IAM documentation (https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -1374,7 +1430,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the IAM documentation (https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
