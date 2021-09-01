@@ -1713,7 +1713,6 @@ module Google
         # protocol buffer structures.
         # @param [String] parent
         #   Required. Resource name of project that the imported taxonomies will belong to.
-        #   
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ImportTaxonomiesRequest] google_cloud_datacatalog_v1_import_taxonomies_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
