@@ -22,6 +22,19 @@ module Google
   module Apis
     module AccesscontextmanagerV1
       
+      # Metadata of Access Context Manager's Long Running Operations.
+      class AccessContextManagerOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An `AccessLevel` is a label that can be applied to requests to Google Cloud
       # services, along with a list of requirements necessary for the label to be
       # applied.
@@ -47,8 +60,8 @@ module Google
       
         # Required. Resource name for the Access Level. The `short_name` component must
         # begin with a letter and only include alphanumeric and '_'. Format: `
-        # accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length of
-        # the `short_name` component is 50 characters.
+        # accessPolicies/`access_policy`/accessLevels/`access_level``. The maximum
+        # length of the `access_level` component is 50 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -89,7 +102,7 @@ module Google
         attr_accessor :etag
       
         # Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/`
-        # policy_id``
+        # access_policy``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -635,6 +648,21 @@ module Google
         end
       end
       
+      # Currently, a completed operation means nothing. In the future, this metadata
+      # and a completed operation may indicate that the binding has taken effect and
+      # is affecting access decisions for all users.
+      class GcpUserAccessBindingOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Defines the conditions under which an IngressPolicy matches a request.
       # Conditions are based on information about the source of the request. The
       # request must satisfy what is defined in `sources` AND identity related fields
@@ -1160,7 +1188,7 @@ module Google
       
         # Required. Resource name for the ServicePerimeter. The `short_name` component
         # must begin with a letter and only include alphanumeric and '_'. Format: `
-        # accessPolicies/`policy_id`/servicePerimeters/`short_name``
+        # accessPolicies/`access_policy`/servicePerimeters/`service_perimeter``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
