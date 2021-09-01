@@ -425,7 +425,7 @@ module Google
         # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this
         # field is applicable only when `use_ip_aliases` is true. Set to blank to have
         # GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have
-        # GKE choose a range with a specific netmask. Set to a [CIDR](http://en.
+        # GKE choose a range with a specific netmask. Set to a [CIDR](https://en.
         # wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/
         # 14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `
         # 192.168.0.0/16`) to pick a specific range to use. Specify `
@@ -449,7 +449,7 @@ module Google
         # Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is
         # applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose
         # a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose
-        # a range with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/
+        # a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/
         # Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-
         # 1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`)
         # to pick a specific range to use. Specify `services_secondary_range_name` or `
@@ -680,6 +680,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
+        # nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all
+        # destination addresses, except between pods traffic. See: https://cloud.google.
+        # com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+        # Corresponds to the JSON property `enableIpMasqAgent`
+        # @return [Boolean]
+        attr_accessor :enable_ip_masq_agent
+        alias_method :enable_ip_masq_agent?, :enable_ip_masq_agent
+      
         # Configuration for controlling how IPs are allocated in the GKE cluster.
         # Corresponds to the JSON property `ipAllocationPolicy`
         # @return [Google::Apis::ComposerV1beta1::IpAllocationPolicy]
@@ -787,6 +796,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @enable_ip_masq_agent = args[:enable_ip_masq_agent] if args.key?(:enable_ip_masq_agent)
           @ip_allocation_policy = args[:ip_allocation_policy] if args.key?(:ip_allocation_policy)
           @location = args[:location] if args.key?(:location)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -986,6 +996,14 @@ module Google
         attr_accessor :enable_private_environment
         alias_method :enable_private_environment?, :enable_private_environment
       
+        # Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `
+        # IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.
+        # service_ipv4_cidr_block`.
+        # Corresponds to the JSON property `enablePrivatelyUsedPublicIps`
+        # @return [Boolean]
+        attr_accessor :enable_privately_used_public_ips
+        alias_method :enable_privately_used_public_ips?, :enable_privately_used_public_ips
+      
         # Configuration options for the private GKE cluster in a Cloud Composer
         # environment.
         # Corresponds to the JSON property `privateClusterConfig`
@@ -1017,6 +1035,7 @@ module Google
           @cloud_composer_network_ipv4_reserved_range = args[:cloud_composer_network_ipv4_reserved_range] if args.key?(:cloud_composer_network_ipv4_reserved_range)
           @cloud_sql_ipv4_cidr_block = args[:cloud_sql_ipv4_cidr_block] if args.key?(:cloud_sql_ipv4_cidr_block)
           @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
+          @enable_privately_used_public_ips = args[:enable_privately_used_public_ips] if args.key?(:enable_privately_used_public_ips)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @web_server_ipv4_cidr_block = args[:web_server_ipv4_cidr_block] if args.key?(:web_server_ipv4_cidr_block)
           @web_server_ipv4_reserved_range = args[:web_server_ipv4_reserved_range] if args.key?(:web_server_ipv4_reserved_range)
