@@ -543,8 +543,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The desired lifetime of the CA certificate. Used to create the "
-        # not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        # Required. Immutable. The desired lifetime of the CA certificate. Used to
+        # create the "not_before_time" and "not_after_time" fields inside an X.509
+        # certificate.
         # Corresponds to the JSON property `lifetime`
         # @return [String]
         attr_accessor :lifetime
@@ -1915,7 +1916,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -2221,7 +2222,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
