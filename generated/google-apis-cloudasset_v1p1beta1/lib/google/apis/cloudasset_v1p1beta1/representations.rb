@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudassetV1p1beta1
       
+      class AnalyzeIamPolicyLongrunningMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnalyzeIamPolicyLongrunningResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -260,6 +266,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeIamPolicyLongrunningMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+        end
       end
       
       class AnalyzeIamPolicyLongrunningResponse
