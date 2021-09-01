@@ -144,8 +144,9 @@ module Google
       class AccountAddress
         include Google::Apis::Core::Hashable
       
-        # CLDR country code (e.g. "US"). This value cannot be set for a sub-account of
-        # an MCA. All MCA sub-accounts inherit the country of their parent MCA.
+        # CLDR country code (e.g. "US"). All MCA sub-accounts inherit the country of
+        # their parent MCA by default, however the country can be updated for individual
+        # sub-accounts.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -1651,7 +1652,7 @@ module Google
       class BusinessDayConfig
         include Google::Apis::Core::Hashable
       
-        # Regular business days. May not be empty.
+        # Regular business days, such as '"monday"'. May not be empty.
         # Corresponds to the JSON property `businessDays`
         # @return [Array<String>]
         attr_accessor :business_days
@@ -1670,17 +1671,18 @@ module Google
       class BuyOnGoogleProgramStatus
         include Google::Apis::Core::Hashable
       
-        # The customer service pending email.
+        # The customer service pending email. After verification this field becomes
+        # empty.
         # Corresponds to the JSON property `customerServicePendingEmail`
         # @return [String]
         attr_accessor :customer_service_pending_email
       
-        # The customer service verified email.
+        # Output only. The customer service verified email.
         # Corresponds to the JSON property `customerServiceVerifiedEmail`
         # @return [String]
         attr_accessor :customer_service_verified_email
       
-        # The current participation stage for the program.
+        # Output only. The current participation stage for the program.
         # Corresponds to the JSON property `participationStage`
         # @return [String]
         attr_accessor :participation_stage
@@ -1694,6 +1696,39 @@ module Google
           @customer_service_pending_email = args[:customer_service_pending_email] if args.key?(:customer_service_pending_email)
           @customer_service_verified_email = args[:customer_service_verified_email] if args.key?(:customer_service_verified_email)
           @participation_stage = args[:participation_stage] if args.key?(:participation_stage)
+        end
+      end
+      
+      # Request message for the CaptureOrder method.
+      class CaptureOrderRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for the CaptureOrder method.
+      class CaptureOrderResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution. Only defined if the request was successful.
+        # Acceptable values are: * "duplicate" * "executed"
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
         end
       end
       
@@ -10291,15 +10326,39 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ProductProductDetail>]
         attr_accessor :product_details
       
+        # The height of the product in the units provided. The value must be between 0 (
+        # exclusive) and 3000 (inclusive).
+        # Corresponds to the JSON property `productHeight`
+        # @return [Google::Apis::ContentV2_1::ProductDimension]
+        attr_accessor :product_height
+      
         # Bullet points describing the most relevant highlights of a product.
         # Corresponds to the JSON property `productHighlights`
         # @return [Array<String>]
         attr_accessor :product_highlights
       
+        # The length of the product in the units provided. The value must be between 0 (
+        # exclusive) and 3000 (inclusive).
+        # Corresponds to the JSON property `productLength`
+        # @return [Google::Apis::ContentV2_1::ProductDimension]
+        attr_accessor :product_length
+      
         # Categories of the item (formatted as in products data specification).
         # Corresponds to the JSON property `productTypes`
         # @return [Array<String>]
         attr_accessor :product_types
+      
+        # The weight of the product in the units provided. The value must be between 0 (
+        # exclusive) and 2000 (inclusive).
+        # Corresponds to the JSON property `productWeight`
+        # @return [Google::Apis::ContentV2_1::ProductWeight]
+        attr_accessor :product_weight
+      
+        # The width of the product in the units provided. The value must be between 0 (
+        # exclusive) and 3000 (inclusive).
+        # Corresponds to the JSON property `productWidth`
+        # @return [Google::Apis::ContentV2_1::ProductDimension]
+        attr_accessor :product_width
       
         # The unique ID of a promotion.
         # Corresponds to the JSON property `promotionIds`
@@ -10492,8 +10551,12 @@ module Google
           @pickup_sla = args[:pickup_sla] if args.key?(:pickup_sla)
           @price = args[:price] if args.key?(:price)
           @product_details = args[:product_details] if args.key?(:product_details)
+          @product_height = args[:product_height] if args.key?(:product_height)
           @product_highlights = args[:product_highlights] if args.key?(:product_highlights)
+          @product_length = args[:product_length] if args.key?(:product_length)
           @product_types = args[:product_types] if args.key?(:product_types)
+          @product_weight = args[:product_weight] if args.key?(:product_weight)
+          @product_width = args[:product_width] if args.key?(:product_width)
           @promotion_ids = args[:promotion_ids] if args.key?(:promotion_ids)
           @sale_price = args[:sale_price] if args.key?(:sale_price)
           @sale_price_effective_date = args[:sale_price_effective_date] if args.key?(:sale_price_effective_date)
@@ -10548,6 +10611,32 @@ module Google
           @price_amount = args[:price_amount] if args.key?(:price_amount)
           @remitted_tax_amount = args[:remitted_tax_amount] if args.key?(:remitted_tax_amount)
           @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
+        end
+      end
+      
+      # 
+      class ProductDimension
+        include Google::Apis::Core::Hashable
+      
+        # Required. The length units. Acceptable values are: - "`in`" - "`cm`"
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # Required. The length value represented as a number. The value can have a
+        # maximum precision of four decimal places.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unit = args[:unit] if args.key?(:unit)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -11042,6 +11131,33 @@ module Google
       end
       
       # 
+      class ProductWeight
+        include Google::Apis::Core::Hashable
+      
+        # Required. The weight unit. Acceptable values are: - "`g`" - "`kg`" - "`oz`" - "
+        # `lb`"
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        # Required. The weight represented as a number. The weight can have a maximum
+        # precision of four decimal places.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unit = args[:unit] if args.key?(:unit)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
       class ProductsCustomBatchRequest
         include Google::Apis::Core::Hashable
       
@@ -11094,8 +11210,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Product]
         attr_accessor :product
       
-        # The ID of the product to get or delete. Only defined if the method is `get` or
-        # `delete`.
+        # The ID of the product to get or mutate. Only defined if the method is `get`, `
+        # delete`, or `update`.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -11389,6 +11505,217 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Represents a promotion. (1) https://support.google.com/merchants/answer/
+      # 2906014 (2) https://support.google.com/merchants/answer/10146130 (3) https://
+      # support.google.com/merchants/answer/9173673
+      class Promotion
+        include Google::Apis::Core::Hashable
+      
+        # Product filter by brand for the promotion.
+        # Corresponds to the JSON property `brand`
+        # @return [Array<String>]
+        attr_accessor :brand
+      
+        # Product filter by brand exclusion for the promotion.
+        # Corresponds to the JSON property `brandExclusion`
+        # @return [Array<String>]
+        attr_accessor :brand_exclusion
+      
+        # Required. The content language used as part of the unique identifier.
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # Required. Coupon value type for the promotion.
+        # Corresponds to the JSON property `couponValueType`
+        # @return [String]
+        attr_accessor :coupon_value_type
+      
+        # Free gift description for the promotion.
+        # Corresponds to the JSON property `freeGiftDescription`
+        # @return [String]
+        attr_accessor :free_gift_description
+      
+        # Free gift item id for the promotion.
+        # Corresponds to the JSON property `freeGiftItemId`
+        # @return [String]
+        attr_accessor :free_gift_item_id
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `freeGiftValue`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :free_gift_value
+      
+        # Generic redemption code for the promotion. To be used with the above field.
+        # Corresponds to the JSON property `genericRedemptionCode`
+        # @return [String]
+        attr_accessor :generic_redemption_code
+      
+        # The number of items discounted in the promotion.
+        # Corresponds to the JSON property `getThisQuantityDiscounted`
+        # @return [Fixnum]
+        attr_accessor :get_this_quantity_discounted
+      
+        # Required. Output only. The REST promotion id to uniquely identify the
+        # promotion. Content API methods that operate on promotions take this as their
+        # promotionId parameter.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Product filter by item group id for the promotion.
+        # Corresponds to the JSON property `itemGroupId`
+        # @return [Array<String>]
+        attr_accessor :item_group_id
+      
+        # Product filter by item group id exclusion for the promotion.
+        # Corresponds to the JSON property `itemGroupIdExclusion`
+        # @return [Array<String>]
+        attr_accessor :item_group_id_exclusion
+      
+        # Product filter by item id for the promotion.
+        # Corresponds to the JSON property `itemId`
+        # @return [Array<String>]
+        attr_accessor :item_id
+      
+        # Product filter by item id exclusion for the promotion.
+        # Corresponds to the JSON property `itemIdExclusion`
+        # @return [Array<String>]
+        attr_accessor :item_id_exclusion
+      
+        # Maximum purchase quantity for the promotion.
+        # Corresponds to the JSON property `limitQuantity`
+        # @return [Fixnum]
+        attr_accessor :limit_quantity
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `limitValue`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :limit_value
+      
+        # Long title for the promotion.
+        # Corresponds to the JSON property `longTitle`
+        # @return [String]
+        attr_accessor :long_title
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `minimumPurchaseAmount`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :minimum_purchase_amount
+      
+        # Minimum purchase quantity for the promotion.
+        # Corresponds to the JSON property `minimumPurchaseQuantity`
+        # @return [Fixnum]
+        attr_accessor :minimum_purchase_quantity
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `moneyBudget`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :money_budget
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `moneyOffAmount`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :money_off_amount
+      
+        # Required. Type of the promotion.
+        # Corresponds to the JSON property `offerType`
+        # @return [String]
+        attr_accessor :offer_type
+      
+        # Order limit for the promotion.
+        # Corresponds to the JSON property `orderLimit`
+        # @return [Fixnum]
+        attr_accessor :order_limit
+      
+        # The percentage discount offered in the promotion.
+        # Corresponds to the JSON property `percentOff`
+        # @return [Fixnum]
+        attr_accessor :percent_off
+      
+        # Required. Applicability of the promotion to either all products or only
+        # specific products.
+        # Corresponds to the JSON property `productApplicability`
+        # @return [String]
+        attr_accessor :product_applicability
+      
+        # Destination ID for the promotion.
+        # Corresponds to the JSON property `promotionDestinationIds`
+        # @return [Array<String>]
+        attr_accessor :promotion_destination_ids
+      
+        # String representation of the promotion display dates.
+        # Corresponds to the JSON property `promotionDisplayDates`
+        # @return [String]
+        attr_accessor :promotion_display_dates
+      
+        # Required. String representation of the promotion effective dates.
+        # Corresponds to the JSON property `promotionEffectiveDates`
+        # @return [String]
+        attr_accessor :promotion_effective_dates
+      
+        # Required. The user provided promotion id to uniquely identify the promotion.
+        # Corresponds to the JSON property `promotionId`
+        # @return [String]
+        attr_accessor :promotion_id
+      
+        # Required. Redemption channel for the promotion. At least one channel is
+        # required.
+        # Corresponds to the JSON property `redemptionChannel`
+        # @return [Array<String>]
+        attr_accessor :redemption_channel
+      
+        # Shipping service names for thse promotion.
+        # Corresponds to the JSON property `shippingServiceNames`
+        # @return [Array<String>]
+        attr_accessor :shipping_service_names
+      
+        # Required. The target country used as part of the unique identifier.
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brand = args[:brand] if args.key?(:brand)
+          @brand_exclusion = args[:brand_exclusion] if args.key?(:brand_exclusion)
+          @content_language = args[:content_language] if args.key?(:content_language)
+          @coupon_value_type = args[:coupon_value_type] if args.key?(:coupon_value_type)
+          @free_gift_description = args[:free_gift_description] if args.key?(:free_gift_description)
+          @free_gift_item_id = args[:free_gift_item_id] if args.key?(:free_gift_item_id)
+          @free_gift_value = args[:free_gift_value] if args.key?(:free_gift_value)
+          @generic_redemption_code = args[:generic_redemption_code] if args.key?(:generic_redemption_code)
+          @get_this_quantity_discounted = args[:get_this_quantity_discounted] if args.key?(:get_this_quantity_discounted)
+          @id = args[:id] if args.key?(:id)
+          @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
+          @item_group_id_exclusion = args[:item_group_id_exclusion] if args.key?(:item_group_id_exclusion)
+          @item_id = args[:item_id] if args.key?(:item_id)
+          @item_id_exclusion = args[:item_id_exclusion] if args.key?(:item_id_exclusion)
+          @limit_quantity = args[:limit_quantity] if args.key?(:limit_quantity)
+          @limit_value = args[:limit_value] if args.key?(:limit_value)
+          @long_title = args[:long_title] if args.key?(:long_title)
+          @minimum_purchase_amount = args[:minimum_purchase_amount] if args.key?(:minimum_purchase_amount)
+          @minimum_purchase_quantity = args[:minimum_purchase_quantity] if args.key?(:minimum_purchase_quantity)
+          @money_budget = args[:money_budget] if args.key?(:money_budget)
+          @money_off_amount = args[:money_off_amount] if args.key?(:money_off_amount)
+          @offer_type = args[:offer_type] if args.key?(:offer_type)
+          @order_limit = args[:order_limit] if args.key?(:order_limit)
+          @percent_off = args[:percent_off] if args.key?(:percent_off)
+          @product_applicability = args[:product_applicability] if args.key?(:product_applicability)
+          @promotion_destination_ids = args[:promotion_destination_ids] if args.key?(:promotion_destination_ids)
+          @promotion_display_dates = args[:promotion_display_dates] if args.key?(:promotion_display_dates)
+          @promotion_effective_dates = args[:promotion_effective_dates] if args.key?(:promotion_effective_dates)
+          @promotion_id = args[:promotion_id] if args.key?(:promotion_id)
+          @redemption_channel = args[:redemption_channel] if args.key?(:redemption_channel)
+          @shipping_service_names = args[:shipping_service_names] if args.key?(:shipping_service_names)
+          @target_country = args[:target_country] if args.key?(:target_country)
         end
       end
       
