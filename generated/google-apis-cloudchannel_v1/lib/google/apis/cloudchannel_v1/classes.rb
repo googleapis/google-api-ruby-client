@@ -892,6 +892,64 @@ module Google
         end
       end
       
+      # Request message for CloudChannelService.ImportCustomer
+      class GoogleCloudChannelV1ImportCustomerRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The super admin of the resold customer generates this token to
+        # authorize a reseller to access their Cloud Identity and purchase entitlements
+        # on their behalf. You can omit this token after authorization. See https://
+        # support.google.com/a/answer/7643790 for more details.
+        # Corresponds to the JSON property `authToken`
+        # @return [String]
+        attr_accessor :auth_token
+      
+        # Optional. Cloud Identity ID of a channel partner who will be the direct
+        # reseller for the customer's order. This field is required for 2-tier transfer
+        # scenarios and can be provided via the request Parent binding as well.
+        # Corresponds to the JSON property `channelPartnerId`
+        # @return [String]
+        attr_accessor :channel_partner_id
+      
+        # Required. Customer's Cloud Identity ID
+        # Corresponds to the JSON property `cloudIdentityId`
+        # @return [String]
+        attr_accessor :cloud_identity_id
+      
+        # Optional. Specifies the customer that will receive imported Cloud Identity
+        # information. Format: accounts/`account_id`/customers/`customer_id`
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Required. Customer domain.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Required. Choose to overwrite an existing customer if found. This must be set
+        # to true if there is an existing customer with a conflicting region code or
+        # domain.
+        # Corresponds to the JSON property `overwriteIfExists`
+        # @return [Boolean]
+        attr_accessor :overwrite_if_exists
+        alias_method :overwrite_if_exists?, :overwrite_if_exists
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_token = args[:auth_token] if args.key?(:auth_token)
+          @channel_partner_id = args[:channel_partner_id] if args.key?(:channel_partner_id)
+          @cloud_identity_id = args[:cloud_identity_id] if args.key?(:cloud_identity_id)
+          @customer = args[:customer] if args.key?(:customer)
+          @domain = args[:domain] if args.key?(:domain)
+          @overwrite_if_exists = args[:overwrite_if_exists] if args.key?(:overwrite_if_exists)
+        end
+      end
+      
       # Response message for CloudChannelService.ListChannelPartnerLinks.
       class GoogleCloudChannelV1ListChannelPartnerLinksResponse
         include Google::Apis::Core::Hashable

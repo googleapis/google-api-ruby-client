@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudChannelV1ImportCustomerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudChannelV1ListChannelPartnerLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -797,6 +803,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entitlement, as: 'entitlement'
           property :event_type, as: 'eventType'
+        end
+      end
+      
+      class GoogleCloudChannelV1ImportCustomerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_token, as: 'authToken'
+          property :channel_partner_id, as: 'channelPartnerId'
+          property :cloud_identity_id, as: 'cloudIdentityId'
+          property :customer, as: 'customer'
+          property :domain, as: 'domain'
+          property :overwrite_if_exists, as: 'overwriteIfExists'
         end
       end
       
