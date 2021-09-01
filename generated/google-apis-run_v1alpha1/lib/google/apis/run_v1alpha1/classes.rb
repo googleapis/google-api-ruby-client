@@ -774,7 +774,7 @@ module Google
         attr_accessor :status
       
         # Required. Type is used to communicate the status of the reconciliation process.
-        # See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#
+        # See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#
         # error-conditions-and-reporting Types include: * "Completed": True when the Job
         # has successfully completed. * "Started": True when the Job has successfully
         # started running. * "ResourcesAvailable": True when underlying resources have
@@ -1642,7 +1642,7 @@ module Google
         end
       end
       
-      # Not supported by Cloud Run Volume represents a named volume in a container.
+      # Volume represents a named volume in a container.
       class Volume
         include Google::Apis::Core::Hashable
       
@@ -1654,7 +1654,7 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ConfigMapVolumeSource]
         attr_accessor :config_map
       
-        # Volume's name.
+        # Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1679,8 +1679,7 @@ module Google
         end
       end
       
-      # Not supported by Cloud Run VolumeMount describes a mounting of a Volume within
-      # a container.
+      # VolumeMount describes a mounting of a Volume within a container.
       class VolumeMount
         include Google::Apis::Core::Hashable
       
@@ -1690,7 +1689,8 @@ module Google
         # @return [String]
         attr_accessor :mount_path
       
-        # This must match the Name of a Volume.
+        # The name of the volume. There must be a corresponding Volume with the same
+        # name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
