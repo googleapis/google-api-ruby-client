@@ -161,6 +161,26 @@ module Google
         end
       end
       
+      # Parameters used in Dataproc JobType executions.
+      class DataprocParameters
+        include Google::Apis::Core::Hashable
+      
+        # URI for cluster used to run Dataproc execution. Format: 'projects/`PROJECT_ID`/
+        # regions/`REGION`/clusters/`CLUSTER_NAME`
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+        end
+      end
+      
       # An instance-attached disk resource.
       class Disk
         include Google::Apis::Core::Hashable
@@ -480,12 +500,22 @@ module Google
         # @return [String]
         attr_accessor :container_image_uri
       
+        # Parameters used in Dataproc JobType executions.
+        # Corresponds to the JSON property `dataprocParameters`
+        # @return [Google::Apis::NotebooksV1::DataprocParameters]
+        attr_accessor :dataproc_parameters
+      
         # Path to the notebook file to execute. Must be in a Google Cloud Storage bucket.
         # Format: gs://`project_id`/`folder`/`notebook_file_name` Ex: gs://
         # notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
         # Corresponds to the JSON property `inputNotebookFile`
         # @return [String]
         attr_accessor :input_notebook_file
+      
+        # The type of Job to be used on this execution.
+        # Corresponds to the JSON property `jobType`
+        # @return [String]
+        attr_accessor :job_type
       
         # Labels for execution. If execution is scheduled, a field included will be 'nbs-
         # scheduled'. Otherwise, it is an immediate execution, and an included field
@@ -555,7 +585,9 @@ module Google
         def update!(**args)
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @container_image_uri = args[:container_image_uri] if args.key?(:container_image_uri)
+          @dataproc_parameters = args[:dataproc_parameters] if args.key?(:dataproc_parameters)
           @input_notebook_file = args[:input_notebook_file] if args.key?(:input_notebook_file)
+          @job_type = args[:job_type] if args.key?(:job_type)
           @labels = args[:labels] if args.key?(:labels)
           @master_type = args[:master_type] if args.key?(:master_type)
           @output_notebook_folder = args[:output_notebook_folder] if args.key?(:output_notebook_folder)
@@ -1574,7 +1606,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -2211,7 +2243,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
