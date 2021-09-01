@@ -766,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VirtualNic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WindowsVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1586,6 +1592,8 @@ module Google
           property :disk_type, as: 'diskType'
           property :ephemeral_storage_config, as: 'ephemeralStorageConfig', class: Google::Apis::ContainerV1beta1::EphemeralStorageConfig, decorator: Google::Apis::ContainerV1beta1::EphemeralStorageConfig::Representation
       
+          property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1beta1::VirtualNic, decorator: Google::Apis::ContainerV1beta1::VirtualNic::Representation
+      
           property :image_type, as: 'imageType'
           property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
       
@@ -2128,6 +2136,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
+          property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1beta1::VirtualNic, decorator: Google::Apis::ContainerV1beta1::VirtualNic::Representation
+      
           property :image_type, as: 'imageType'
           property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
       
@@ -2160,6 +2170,8 @@ module Google
           property :resource, as: 'resource'
           property :resource_type, as: 'resourceType'
           property :version, as: 'version'
+          property :windows_versions, as: 'windowsVersions', class: Google::Apis::ContainerV1beta1::WindowsVersions, decorator: Google::Apis::ContainerV1beta1::WindowsVersions::Representation
+      
         end
       end
       
@@ -2205,6 +2217,13 @@ module Google
       end
       
       class VerticalPodAutoscaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class VirtualNic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
