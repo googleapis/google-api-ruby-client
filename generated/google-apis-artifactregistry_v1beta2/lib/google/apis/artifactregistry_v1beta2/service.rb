@@ -154,52 +154,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
-        # @param [String] name
-        #   The name of the operation's parent resource.
-        # @param [String] filter
-        #   The standard list filter.
-        # @param [Fixnum] page_size
-        #   The standard list page size.
-        # @param [String] page_token
-        #   The standard list page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ArtifactregistryV1beta2::ListOperationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ArtifactregistryV1beta2::ListOperationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/{+name}/operations', options)
-          command.response_representation = Google::Apis::ArtifactregistryV1beta2::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::ArtifactregistryV1beta2::ListOperationsResponse
-          command.params['name'] = name unless name.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates a repository. The returned Operation will finish once the repository
         # has been created. Its response will be the created Repository.
         # @param [String] parent
@@ -343,7 +297,7 @@ module Google
         # @param [String] parent
         #   The name of the parent resource whose repositories will be listed.
         # @param [Fixnum] page_size
-        #   The maximum number of repositories to return. Maximum page size is 10,000.
+        #   The maximum number of repositories to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields
@@ -518,6 +472,52 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Directly uploads an Apt artifact. The returned Operation will complete once
+        # the resources are uploaded. Package, Version, and File resources are created
+        # based on the imported artifact. Imported artifacts that conflict with existing
+        # resources are ignored.
+        # @param [String] parent
+        #   The name of the parent resource where the artifacts will be uploaded.
+        # @param [Google::Apis::ArtifactregistryV1beta2::UploadAptArtifactRequest] upload_apt_artifact_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1beta2::UploadAptArtifactMediaResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1beta2::UploadAptArtifactMediaResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_aptartifact_apt_artifact(parent, upload_apt_artifact_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'v1beta2/{+parent}/aptArtifacts:create', options)
+          else
+            command = make_upload_command(:post, 'v1beta2/{+parent}/aptArtifacts:create', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::ArtifactregistryV1beta2::UploadAptArtifactRequest::Representation
+          command.request_object = upload_apt_artifact_request_object
+          command.response_representation = Google::Apis::ArtifactregistryV1beta2::UploadAptArtifactMediaResponse::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1beta2::UploadAptArtifactMediaResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a file.
         # @param [String] name
         #   The name of the file to retrieve.
@@ -530,18 +530,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ArtifactregistryV1beta2::File] parsed result object
+        # @yieldparam result [Google::Apis::ArtifactregistryV1beta2::GoogleDevtoolsArtifactregistryV1beta2File] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ArtifactregistryV1beta2::File]
+        # @return [Google::Apis::ArtifactregistryV1beta2::GoogleDevtoolsArtifactregistryV1beta2File]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_repository_file(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta2/{+name}', options)
-          command.response_representation = Google::Apis::ArtifactregistryV1beta2::File::Representation
-          command.response_class = Google::Apis::ArtifactregistryV1beta2::File
+          command.response_representation = Google::Apis::ArtifactregistryV1beta2::GoogleDevtoolsArtifactregistryV1beta2File::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1beta2::GoogleDevtoolsArtifactregistryV1beta2File
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -657,7 +657,7 @@ module Google
         # @param [String] parent
         #   The name of the parent resource whose packages will be listed.
         # @param [Fixnum] page_size
-        #   The maximum number of packages to return. Maximum page size is 10,000.
+        #   The maximum number of packages to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] fields
@@ -831,8 +831,9 @@ module Google
         # Updates a tag.
         # @param [String] name
         #   The name of the tag, for example: "projects/p1/locations/us-central1/
-        #   repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts
-        #   contain slashes, the slashes are escaped.
+        #   repositories/repo1/packages/pkg1/tags/tag1". If the package part contains
+        #   slashes, the slashes are escaped. The tag part can only have characters in [a-
+        #   zA-Z0-9\-._~:@], anything else must be URL encoded.
         # @param [Google::Apis::ArtifactregistryV1beta2::Tag] tag_object
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see
@@ -942,7 +943,7 @@ module Google
         # @param [String] order_by
         #   Optional. Sorting field and order
         # @param [Fixnum] page_size
-        #   The maximum number of versions to return. Maximum page size is 10,000.
+        #   The maximum number of versions to return. Maximum page size is 1,000.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] view
@@ -1008,6 +1009,52 @@ module Google
           command.request_object = import_yum_artifacts_request_object
           command.response_representation = Google::Apis::ArtifactregistryV1beta2::Operation::Representation
           command.response_class = Google::Apis::ArtifactregistryV1beta2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Directly uploads a Yum artifact. The returned Operation will complete once the
+        # resources are uploaded. Package, Version, and File resources are created based
+        # on the imported artifact. Imported artifacts that conflict with existing
+        # resources are ignored.
+        # @param [String] parent
+        #   The name of the parent resource where the artifacts will be uploaded.
+        # @param [Google::Apis::ArtifactregistryV1beta2::UploadYumArtifactRequest] upload_yum_artifact_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ArtifactregistryV1beta2::UploadYumArtifactMediaResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ArtifactregistryV1beta2::UploadYumArtifactMediaResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_yumartifact_yum_artifact(parent, upload_yum_artifact_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'v1beta2/{+parent}/yumArtifacts:create', options)
+          else
+            command = make_upload_command(:post, 'v1beta2/{+parent}/yumArtifacts:create', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::ArtifactregistryV1beta2::UploadYumArtifactRequest::Representation
+          command.request_object = upload_yum_artifact_request_object
+          command.response_representation = Google::Apis::ArtifactregistryV1beta2::UploadYumArtifactMediaResponse::Representation
+          command.response_class = Google::Apis::ArtifactregistryV1beta2::UploadYumArtifactMediaResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

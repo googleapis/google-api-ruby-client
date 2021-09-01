@@ -217,7 +217,7 @@ module Google
       end
       
       # Files store content that is potentially associated with Packages or Versions.
-      class File
+      class GoogleDevtoolsArtifactregistryV1beta2File
         include Google::Apis::Core::Hashable
       
         # The time when the File was created.
@@ -499,7 +499,7 @@ module Google
       
         # The files returned.
         # Corresponds to the JSON property `files`
-        # @return [Array<Google::Apis::ArtifactregistryV1beta2::File>]
+        # @return [Array<Google::Apis::ArtifactregistryV1beta2::GoogleDevtoolsArtifactregistryV1beta2File>]
         attr_accessor :files
       
         # The token to retrieve the next page of files, or empty if there are no more
@@ -541,31 +541,6 @@ module Google
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::ArtifactregistryV1beta2::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
         end
       end
       
@@ -846,7 +821,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -996,7 +971,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
@@ -1058,8 +1033,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the tag, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts
-        # contain slashes, the slashes are escaped.
+        # repositories/repo1/packages/pkg1/tags/tag1". If the package part contains
+        # slashes, the slashes are escaped. The tag part can only have characters in [a-
+        # zA-Z0-9\-._~:@], anything else must be URL encoded.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1142,6 +1118,19 @@ module Google
         end
       end
       
+      # The request to upload an artifact.
+      class UploadAptArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The response of the completed artifact upload operation. This response is
       # contained in the Operation and available to users.
       class UploadAptArtifactResponse
@@ -1179,6 +1168,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # The request to upload an artifact.
+      class UploadYumArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
