@@ -58,12 +58,12 @@ module Google
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] thread_key
-        #   Opaque thread identifier string that can be specified to group messages into a
-        #   single thread. If this is the first message with a given thread identifier, a
-        #   new thread is created. Subsequent messages with the same thread identifier
-        #   will be posted into the same thread. This relieves bots and webhooks from
-        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
-        #   them) to post further updates to it. Has no effect if thread field,
+        #   Optional. Opaque thread identifier string that can be specified to group
+        #   messages into a single thread. If this is the first message with a given
+        #   thread identifier, a new thread is created. Subsequent messages with the same
+        #   thread identifier will be posted into the same thread. This relieves bots and
+        #   webhooks from having to store the Hangouts Chat thread ID of a thread (created
+        #   earlier by them) to post further updates to it. Has no effect if thread field,
         #   corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -102,12 +102,12 @@ module Google
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] thread_key
-        #   Opaque thread identifier string that can be specified to group messages into a
-        #   single thread. If this is the first message with a given thread identifier, a
-        #   new thread is created. Subsequent messages with the same thread identifier
-        #   will be posted into the same thread. This relieves bots and webhooks from
-        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
-        #   them) to post further updates to it. Has no effect if thread field,
+        #   Optional. Opaque thread identifier string that can be specified to group
+        #   messages into a single thread. If this is the first message with a given
+        #   thread identifier, a new thread is created. Subsequent messages with the same
+        #   thread identifier will be posted into the same thread. This relieves bots and
+        #   webhooks from having to store the Hangouts Chat thread ID of a thread (created
+        #   earlier by them) to post further updates to it. Has no effect if thread field,
         #   corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -146,12 +146,12 @@ module Google
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] thread_key
-        #   Opaque thread identifier string that can be specified to group messages into a
-        #   single thread. If this is the first message with a given thread identifier, a
-        #   new thread is created. Subsequent messages with the same thread identifier
-        #   will be posted into the same thread. This relieves bots and webhooks from
-        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
-        #   them) to post further updates to it. Has no effect if thread field,
+        #   Optional. Opaque thread identifier string that can be specified to group
+        #   messages into a single thread. If this is the first message with a given
+        #   thread identifier, a new thread is created. Subsequent messages with the same
+        #   thread identifier will be posted into the same thread. This relieves bots and
+        #   webhooks from having to store the Hangouts Chat thread ID of a thread (created
+        #   earlier by them) to post further updates to it. Has no effect if thread field,
         #   corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -228,12 +228,12 @@ module Google
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] thread_key
-        #   Opaque thread identifier string that can be specified to group messages into a
-        #   single thread. If this is the first message with a given thread identifier, a
-        #   new thread is created. Subsequent messages with the same thread identifier
-        #   will be posted into the same thread. This relieves bots and webhooks from
-        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
-        #   them) to post further updates to it. Has no effect if thread field,
+        #   Optional. Opaque thread identifier string that can be specified to group
+        #   messages into a single thread. If this is the first message with a given
+        #   thread identifier, a new thread is created. Subsequent messages with the same
+        #   thread identifier will be posted into the same thread. This relieves bots and
+        #   webhooks from having to store the Hangouts Chat thread ID of a thread (created
+        #   earlier by them) to post further updates to it. Has no effect if thread field,
         #   corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -272,12 +272,12 @@ module Google
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] thread_key
-        #   Opaque thread identifier string that can be specified to group messages into a
-        #   single thread. If this is the first message with a given thread identifier, a
-        #   new thread is created. Subsequent messages with the same thread identifier
-        #   will be posted into the same thread. This relieves bots and webhooks from
-        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
-        #   them) to post further updates to it. Has no effect if thread field,
+        #   Optional. Opaque thread identifier string that can be specified to group
+        #   messages into a single thread. If this is the first message with a given
+        #   thread identifier, a new thread is created. Subsequent messages with the same
+        #   thread identifier will be posted into the same thread. This relieves bots and
+        #   webhooks from having to store the Hangouts Chat thread ID of a thread (created
+        #   earlier by them) to post further updates to it. Has no effect if thread field,
         #   corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -316,12 +316,12 @@ module Google
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] thread_key
-        #   Opaque thread identifier string that can be specified to group messages into a
-        #   single thread. If this is the first message with a given thread identifier, a
-        #   new thread is created. Subsequent messages with the same thread identifier
-        #   will be posted into the same thread. This relieves bots and webhooks from
-        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
-        #   them) to post further updates to it. Has no effect if thread field,
+        #   Optional. Opaque thread identifier string that can be specified to group
+        #   messages into a single thread. If this is the first message with a given
+        #   thread identifier, a new thread is created. Subsequent messages with the same
+        #   thread identifier will be posted into the same thread. This relieves bots and
+        #   webhooks from having to store the Hangouts Chat thread ID of a thread (created
+        #   earlier by them) to post further updates to it. Has no effect if thread field,
         #   corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -425,12 +425,12 @@ module Google
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] thread_key
-        #   Opaque thread identifier string that can be specified to group messages into a
-        #   single thread. If this is the first message with a given thread identifier, a
-        #   new thread is created. Subsequent messages with the same thread identifier
-        #   will be posted into the same thread. This relieves bots and webhooks from
-        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
-        #   them) to post further updates to it. Has no effect if thread field,
+        #   Optional. Opaque thread identifier string that can be specified to group
+        #   messages into a single thread. If this is the first message with a given
+        #   thread identifier, a new thread is created. Subsequent messages with the same
+        #   thread identifier will be posted into the same thread. This relieves bots and
+        #   webhooks from having to store the Hangouts Chat thread ID of a thread (created
+        #   earlier by them) to post further updates to it. Has no effect if thread field,
         #   corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -537,12 +537,12 @@ module Google
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] thread_key
-        #   Opaque thread identifier string that can be specified to group messages into a
-        #   single thread. If this is the first message with a given thread identifier, a
-        #   new thread is created. Subsequent messages with the same thread identifier
-        #   will be posted into the same thread. This relieves bots and webhooks from
-        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
-        #   them) to post further updates to it. Has no effect if thread field,
+        #   Optional. Opaque thread identifier string that can be specified to group
+        #   messages into a single thread. If this is the first message with a given
+        #   thread identifier, a new thread is created. Subsequent messages with the same
+        #   thread identifier will be posted into the same thread. This relieves bots and
+        #   webhooks from having to store the Hangouts Chat thread ID of a thread (created
+        #   earlier by them) to post further updates to it. Has no effect if thread field,
         #   corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
