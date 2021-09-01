@@ -22,6 +22,18 @@ module Google
   module Apis
     module CloudbuildV1alpha1
       
+      class ApprovalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApprovalResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ArtifactObjects
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +53,12 @@ module Google
       end
       
       class Build
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BuildApproval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +346,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApprovalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_required, as: 'approvalRequired'
+        end
+      end
+      
+      class ApprovalResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_time, as: 'approvalTime'
+          property :approver_account, as: 'approverAccount'
+          property :comment, as: 'comment'
+          property :decision, as: 'decision'
+          property :url, as: 'url'
+        end
+      end
+      
       class ArtifactObjects
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -359,6 +395,8 @@ module Google
       class Build
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval, as: 'approval', class: Google::Apis::CloudbuildV1alpha1::BuildApproval, decorator: Google::Apis::CloudbuildV1alpha1::BuildApproval::Representation
+      
           property :artifacts, as: 'artifacts', class: Google::Apis::CloudbuildV1alpha1::Artifacts, decorator: Google::Apis::CloudbuildV1alpha1::Artifacts::Representation
       
           property :available_secrets, as: 'availableSecrets', class: Google::Apis::CloudbuildV1alpha1::Secrets, decorator: Google::Apis::CloudbuildV1alpha1::Secrets::Representation
@@ -398,6 +436,17 @@ module Google
       
           collection :warnings, as: 'warnings', class: Google::Apis::CloudbuildV1alpha1::Warning, decorator: Google::Apis::CloudbuildV1alpha1::Warning::Representation
       
+        end
+      end
+      
+      class BuildApproval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::CloudbuildV1alpha1::ApprovalConfig, decorator: Google::Apis::CloudbuildV1alpha1::ApprovalConfig::Representation
+      
+          property :result, as: 'result', class: Google::Apis::CloudbuildV1alpha1::ApprovalResult, decorator: Google::Apis::CloudbuildV1alpha1::ApprovalResult::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -441,6 +490,7 @@ module Google
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::CloudbuildV1alpha1::TimeSpan, decorator: Google::Apis::CloudbuildV1alpha1::TimeSpan::Representation
       
+          property :script, as: 'script'
           collection :secret_env, as: 'secretEnv'
           property :status, as: 'status'
           property :timeout, as: 'timeout'
