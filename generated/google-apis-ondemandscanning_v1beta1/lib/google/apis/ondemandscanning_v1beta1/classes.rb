@@ -1567,6 +1567,13 @@ module Google
         # @return [Google::Apis::OndemandscanningV1beta1::Version]
         attr_accessor :affected_version
       
+        # Output only. The distro or language system assigned severity for this
+        # vulnerability when that is available and note provider assigned severity when
+        # it is not available.
+        # Corresponds to the JSON property `effectiveSeverity`
+        # @return [String]
+        attr_accessor :effective_severity
+      
         # Output only. Whether a fix is available for this package.
         # Corresponds to the JSON property `fixAvailable`
         # @return [Boolean]
@@ -1590,6 +1597,11 @@ module Google
         # @return [Google::Apis::OndemandscanningV1beta1::Version]
         attr_accessor :fixed_version
       
+        # The type of package (e.g. OS, MAVEN, GO).
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1599,10 +1611,12 @@ module Google
           @affected_cpe_uri = args[:affected_cpe_uri] if args.key?(:affected_cpe_uri)
           @affected_package = args[:affected_package] if args.key?(:affected_package)
           @affected_version = args[:affected_version] if args.key?(:affected_version)
+          @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @fix_available = args[:fix_available] if args.key?(:fix_available)
           @fixed_cpe_uri = args[:fixed_cpe_uri] if args.key?(:fixed_cpe_uri)
           @fixed_package = args[:fixed_package] if args.key?(:fixed_package)
           @fixed_version = args[:fixed_version] if args.key?(:fixed_version)
+          @package_type = args[:package_type] if args.key?(:package_type)
         end
       end
       
@@ -1666,9 +1680,11 @@ module Google
         # Collection of all external inputs that influenced the build on top of recipe.
         # definedInMaterial and recipe.entryPoint. For example, if the recipe type were "
         # make", then this might be the flags passed to make aside from the target,
-        # which is captured in recipe.entryPoint.
+        # which is captured in recipe.entryPoint. Since the arguments field can greatly
+        # vary in structure, depending on the builder and recipe type, this is of form "
+        # Any".
         # Corresponds to the JSON property `arguments`
-        # @return [Array<String>]
+        # @return [Array<Hash<String,Object>>]
         attr_accessor :arguments
       
         # Index in materials containing the recipe steps that are not implied by recipe.
@@ -1691,9 +1707,10 @@ module Google
       
         # Any other builder-controlled inputs necessary for correctly evaluating the
         # recipe. Usually only needed for reproducing the build but not evaluated as
-        # part of policy.
+        # part of policy. Since the environment field can greatly vary in structure,
+        # depending on the builder and recipe type, this is of form "Any".
         # Corresponds to the JSON property `environment`
-        # @return [Hash<String,String>]
+        # @return [Array<Hash<String,Object>>]
         attr_accessor :environment
       
         # URI indicating what type of recipe was performed. It determines the meaning of
@@ -2127,7 +2144,13 @@ module Google
         attr_accessor :cvss_score
       
         # The distro assigned severity for this vulnerability when it is available,
-        # otherwise this is the note provider assigned severity.
+        # otherwise this is the note provider assigned severity. When there are multiple
+        # PackageIssues for this vulnerability, they can have different effective
+        # severities because some might be provided by the distro while others are
+        # provided by the language ecosystem for a language pack. For this reason, it is
+        # advised to use the effective severity on the PackageIssue level. In the case
+        # where multiple PackageIssues have differing effective severities, this field
+        # should be the highest severity for any of the PackageIssues.
         # Corresponds to the JSON property `effectiveSeverity`
         # @return [String]
         attr_accessor :effective_severity

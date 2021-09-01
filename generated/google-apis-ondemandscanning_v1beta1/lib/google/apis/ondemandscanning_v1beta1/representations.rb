@@ -799,11 +799,13 @@ module Google
           property :affected_package, as: 'affectedPackage'
           property :affected_version, as: 'affectedVersion', class: Google::Apis::OndemandscanningV1beta1::Version, decorator: Google::Apis::OndemandscanningV1beta1::Version::Representation
       
+          property :effective_severity, as: 'effectiveSeverity'
           property :fix_available, as: 'fixAvailable'
           property :fixed_cpe_uri, as: 'fixedCpeUri'
           property :fixed_package, as: 'fixedPackage'
           property :fixed_version, as: 'fixedVersion', class: Google::Apis::OndemandscanningV1beta1::Version, decorator: Google::Apis::OndemandscanningV1beta1::Version::Representation
       
+          property :package_type, as: 'packageType'
         end
       end
       
@@ -830,7 +832,7 @@ module Google
           collection :arguments, as: 'arguments'
           property :defined_in_material, :numeric_string => true, as: 'definedInMaterial'
           property :entry_point, as: 'entryPoint'
-          hash :environment, as: 'environment'
+          collection :environment, as: 'environment'
           property :type, as: 'type'
         end
       end
