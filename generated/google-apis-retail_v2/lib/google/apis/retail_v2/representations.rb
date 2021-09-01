@@ -1399,6 +1399,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :condition, as: 'condition'
+          property :pin_unexpanded_results, as: 'pinUnexpandedResults'
         end
       end
       
@@ -1443,6 +1444,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expanded_query, as: 'expandedQuery'
+          property :pinned_result_count, :numeric_string => true, as: 'pinnedResultCount'
         end
       end
       
