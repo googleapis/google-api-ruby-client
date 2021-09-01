@@ -22,6 +22,19 @@ module Google
   module Apis
     module AccesscontextmanagerV1beta
       
+      # Metadata of Access Context Manager's Long Running Operations.
+      class AccessContextManagerOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An `AccessLevel` is a label that can be applied to requests to Google Cloud
       # services, along with a list of requirements necessary for the label to be
       # applied.
