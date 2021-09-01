@@ -2284,6 +2284,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudLocationListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudLocationLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3490,6 +3502,7 @@ module Google
       class GoogleCloudDialogflowCxV3SecuritySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deidentify_template, as: 'deidentifyTemplate'
           property :display_name, as: 'displayName'
           property :insights_export_settings, as: 'insightsExportSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings::Representation
       
@@ -6146,6 +6159,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :generic_metadata, as: 'genericMetadata', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata::Representation
       
+        end
+      end
+      
+      class GoogleCloudLocationListLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::DialogflowV3::GoogleCloudLocationLocation, decorator: Google::Apis::DialogflowV3::GoogleCloudLocationLocation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudLocationLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :location_id, as: 'locationId'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
         end
       end
       
