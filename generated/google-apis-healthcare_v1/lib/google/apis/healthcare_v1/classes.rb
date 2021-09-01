@@ -61,6 +61,66 @@ module Google
         end
       end
       
+      # The request to analyze healthcare entities in a document.
+      class AnalyzeEntitiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # document_content is a document to be annotated.
+        # Corresponds to the JSON property `documentContent`
+        # @return [String]
+        attr_accessor :document_content
+      
+        # A list of licensed vocabularies to use in the request, in addition to the
+        # default unlicensed vocabularies.
+        # Corresponds to the JSON property `licensedVocabularies`
+        # @return [Array<String>]
+        attr_accessor :licensed_vocabularies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_content = args[:document_content] if args.key?(:document_content)
+          @licensed_vocabularies = args[:licensed_vocabularies] if args.key?(:licensed_vocabularies)
+        end
+      end
+      
+      # Includes recognized entity mentions and relationships between them.
+      class AnalyzeEntitiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The union of all the candidate entities that the entity_mentions in this
+        # response could link to. These are UMLS concepts or normalized mention content.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::HealthcareV1::Entity>]
+        attr_accessor :entities
+      
+        # entity_mentions contains all the annotated medical entities that were
+        # mentioned in the provided document.
+        # Corresponds to the JSON property `entityMentions`
+        # @return [Array<Google::Apis::HealthcareV1::EntityMention>]
+        attr_accessor :entity_mentions
+      
+        # relationships contains all the binary relationships that were identified
+        # between entity mentions within the provided document.
+        # Corresponds to the JSON property `relationships`
+        # @return [Array<Google::Apis::HealthcareV1::EntityMentionRelationship>]
+        attr_accessor :relationships
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
+          @entity_mentions = args[:entity_mentions] if args.key?(:entity_mentions)
+          @relationships = args[:relationships] if args.key?(:relationships)
+        end
+      end
+      
       # Archives the specified User data mapping.
       class ArchiveUserDataMappingRequest
         include Google::Apis::Core::Hashable
@@ -1045,6 +1105,145 @@ module Google
         end
       end
       
+      # The candidate entities that an entity mention could link to.
+      class Entity
+        include Google::Apis::Core::Hashable
+      
+        # entity_id is a first class field entity_id uniquely identifies this concept
+        # and its meta-vocabulary. For example, "UMLS/C0000970".
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # preferred_term is the preferred term for this concept. For example, "
+        # Acetaminophen". For ad hoc entities formed by normalization, this is the most
+        # popular unnormalized string.
+        # Corresponds to the JSON property `preferredTerm`
+        # @return [String]
+        attr_accessor :preferred_term
+      
+        # Vocabulary codes are first-class fields and differentiated from the concept
+        # unique identifier (entity_id). vocabulary_codes contains the representation of
+        # this concept in particular vocabularies, such as ICD-10, SNOMED-CT and RxNORM.
+        # These are prefixed by the name of the vocabulary, followed by the unique code
+        # within that vocabulary. For example, "RXNORM/A10334543".
+        # Corresponds to the JSON property `vocabularyCodes`
+        # @return [Array<String>]
+        attr_accessor :vocabulary_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @preferred_term = args[:preferred_term] if args.key?(:preferred_term)
+          @vocabulary_codes = args[:vocabulary_codes] if args.key?(:vocabulary_codes)
+        end
+      end
+      
+      # An entity mention in the document.
+      class EntityMention
+        include Google::Apis::Core::Hashable
+      
+        # A feature of an entity mention.
+        # Corresponds to the JSON property `certaintyAssessment`
+        # @return [Google::Apis::HealthcareV1::Feature]
+        attr_accessor :certainty_assessment
+      
+        # The model's confidence in this entity mention annotation. A number between 0
+        # and 1.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # linked_entities are candidate ontological concepts that this entity mention
+        # may refer to. They are sorted by decreasing confidence.it
+        # Corresponds to the JSON property `linkedEntities`
+        # @return [Array<Google::Apis::HealthcareV1::LinkedEntity>]
+        attr_accessor :linked_entities
+      
+        # mention_id uniquely identifies each entity mention in a single response.
+        # Corresponds to the JSON property `mentionId`
+        # @return [String]
+        attr_accessor :mention_id
+      
+        # A feature of an entity mention.
+        # Corresponds to the JSON property `subject`
+        # @return [Google::Apis::HealthcareV1::Feature]
+        attr_accessor :subject
+      
+        # A feature of an entity mention.
+        # Corresponds to the JSON property `temporalAssessment`
+        # @return [Google::Apis::HealthcareV1::Feature]
+        attr_accessor :temporal_assessment
+      
+        # A span of text in the provided document.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::HealthcareV1::TextSpan]
+        attr_accessor :text
+      
+        # The semantic type of the entity: UNKNOWN_ENTITY_TYPE, ALONE,
+        # ANATOMICAL_STRUCTURE, ASSISTED_LIVING, BF_RESULT, BM_RESULT, BM_UNIT, BM_VALUE,
+        # BODY_FUNCTION, BODY_MEASUREMENT, COMPLIANT, DOESNOT_FOLLOWUP, FAMILY,
+        # FOLLOWSUP, LABORATORY_DATA, LAB_RESULT, LAB_UNIT, LAB_VALUE, MEDICAL_DEVICE,
+        # MEDICINE, MED_DOSE, MED_DURATION, MED_FORM, MED_FREQUENCY, MED_ROUTE,
+        # MED_STATUS, MED_STRENGTH, MED_TOTALDOSE, MED_UNIT, NON_COMPLIANT,
+        # OTHER_LIVINGSTATUS, PROBLEM, PROCEDURE, PROCEDURE_RESULT, PROC_METHOD,
+        # REASON_FOR_NONCOMPLIANCE, SEVERITY, SUBSTANCE_ABUSE, UNCLEAR_FOLLOWUP.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certainty_assessment = args[:certainty_assessment] if args.key?(:certainty_assessment)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @linked_entities = args[:linked_entities] if args.key?(:linked_entities)
+          @mention_id = args[:mention_id] if args.key?(:mention_id)
+          @subject = args[:subject] if args.key?(:subject)
+          @temporal_assessment = args[:temporal_assessment] if args.key?(:temporal_assessment)
+          @text = args[:text] if args.key?(:text)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Defines directed relationship from one entity mention to another.
+      class EntityMentionRelationship
+        include Google::Apis::Core::Hashable
+      
+        # The model's confidence in this annotation. A number between 0 and 1.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # object_id is the id of the object entity mention.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # subject_id is the id of the subject entity mention.
+        # Corresponds to the JSON property `subjectId`
+        # @return [String]
+        attr_accessor :subject_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @subject_id = args[:subject_id] if args.key?(:subject_id)
+        end
+      end
+      
       # Evaluate a user's Consents for all matching User data mappings. Note: User
       # data mappings are indexed asynchronously, causing slight delays between the
       # time mappings are created or updated and when they are included in
@@ -1266,6 +1465,32 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A feature of an entity mention.
+      class Feature
+        include Google::Apis::Core::Hashable
+      
+        # The model's confidence in this feature annotation. A number between 0 and 1.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The value of this feature annotation. Its range depends on the type of the
+        # feature.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -2298,6 +2523,29 @@ module Google
         end
       end
       
+      # EntityMentions can be linked to multiple entities using a LinkedEntity message
+      # lets us add other fields, e.g. confidence.
+      class LinkedEntity
+        include Google::Apis::Core::Hashable
+      
+        # entity_id is a concept unique identifier. These are prefixed by a string that
+        # identifies the entity coding system, followed by the unique identifier within
+        # that system. For example, "UMLS/C0000970". This also supports ad hoc entities,
+        # which are formed by normalizing entity mention content.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+        end
+      end
+      
       # 
       class ListAttributeDefinitionsResponse
         include Google::Apis::Core::Hashable
@@ -3027,7 +3275,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -3583,7 +3831,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
@@ -3791,6 +4039,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @transformations = args[:transformations] if args.key?(:transformations)
+        end
+      end
+      
+      # A span of text in the provided document.
+      class TextSpan
+        include Google::Apis::Core::Hashable
+      
+        # The unicode codepoint index of the beginning of this span.
+        # Corresponds to the JSON property `beginOffset`
+        # @return [Fixnum]
+        attr_accessor :begin_offset
+      
+        # The original text contained in this span.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @begin_offset = args[:begin_offset] if args.key?(:begin_offset)
+          @content = args[:content] if args.key?(:content)
         end
       end
       

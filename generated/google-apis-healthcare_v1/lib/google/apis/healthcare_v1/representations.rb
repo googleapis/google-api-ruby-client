@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzeEntitiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyzeEntitiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ArchiveUserDataMappingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +214,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Entity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EntityMention
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EntityMentionRelationship
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EvaluateUserConsentsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +269,12 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Feature
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -419,6 +455,12 @@ module Google
       end
       
       class IngestMessageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkedEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -700,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -724,6 +772,26 @@ module Google
           property :consent_artifact, as: 'consentArtifact'
           property :expire_time, as: 'expireTime'
           property :ttl, as: 'ttl'
+        end
+      end
+      
+      class AnalyzeEntitiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_content, as: 'documentContent'
+          collection :licensed_vocabularies, as: 'licensedVocabularies'
+        end
+      end
+      
+      class AnalyzeEntitiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entities, as: 'entities', class: Google::Apis::HealthcareV1::Entity, decorator: Google::Apis::HealthcareV1::Entity::Representation
+      
+          collection :entity_mentions, as: 'entityMentions', class: Google::Apis::HealthcareV1::EntityMention, decorator: Google::Apis::HealthcareV1::EntityMention::Representation
+      
+          collection :relationships, as: 'relationships', class: Google::Apis::HealthcareV1::EntityMentionRelationship, decorator: Google::Apis::HealthcareV1::EntityMentionRelationship::Representation
+      
         end
       end
       
@@ -994,6 +1062,43 @@ module Google
         end
       end
       
+      class Entity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_id, as: 'entityId'
+          property :preferred_term, as: 'preferredTerm'
+          collection :vocabulary_codes, as: 'vocabularyCodes'
+        end
+      end
+      
+      class EntityMention
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certainty_assessment, as: 'certaintyAssessment', class: Google::Apis::HealthcareV1::Feature, decorator: Google::Apis::HealthcareV1::Feature::Representation
+      
+          property :confidence, as: 'confidence'
+          collection :linked_entities, as: 'linkedEntities', class: Google::Apis::HealthcareV1::LinkedEntity, decorator: Google::Apis::HealthcareV1::LinkedEntity::Representation
+      
+          property :mention_id, as: 'mentionId'
+          property :subject, as: 'subject', class: Google::Apis::HealthcareV1::Feature, decorator: Google::Apis::HealthcareV1::Feature::Representation
+      
+          property :temporal_assessment, as: 'temporalAssessment', class: Google::Apis::HealthcareV1::Feature, decorator: Google::Apis::HealthcareV1::Feature::Representation
+      
+          property :text, as: 'text', class: Google::Apis::HealthcareV1::TextSpan, decorator: Google::Apis::HealthcareV1::TextSpan::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class EntityMentionRelationship
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :object_id_prop, as: 'objectId'
+          property :subject_id, as: 'subjectId'
+        end
+      end
+      
       class EvaluateUserConsentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1056,6 +1161,14 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class Feature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :value, as: 'value'
         end
       end
       
@@ -1323,6 +1436,13 @@ module Google
           property :hl7_ack, :base64 => true, as: 'hl7Ack'
           property :message, as: 'message', class: Google::Apis::HealthcareV1::Message, decorator: Google::Apis::HealthcareV1::Message::Representation
       
+        end
+      end
+      
+      class LinkedEntity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_id, as: 'entityId'
         end
       end
       
@@ -1741,6 +1861,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :transformations, as: 'transformations', class: Google::Apis::HealthcareV1::InfoTypeTransformation, decorator: Google::Apis::HealthcareV1::InfoTypeTransformation::Representation
       
+        end
+      end
+      
+      class TextSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :begin_offset, as: 'beginOffset'
+          property :content, as: 'content'
         end
       end
       
