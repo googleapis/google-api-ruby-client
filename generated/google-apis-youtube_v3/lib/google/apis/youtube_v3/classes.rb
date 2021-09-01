@@ -4058,6 +4058,42 @@ module Google
         end
       end
       
+      # 
+      class LiveChatMemberMilestoneChatDetails
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Level at which the viever is a member. The Level names are
+        # defined by the YouTube channel offering the Membership. In some situations
+        # this field isn't filled.
+        # Corresponds to the JSON property `memberLevelName`
+        # @return [String]
+        attr_accessor :member_level_name
+      
+        # The total amount of months (rounded up) the viewer has been a member that
+        # granted them this Member Milestone Chat. This is the same number of months as
+        # is being displayed to YouTube users.
+        # Corresponds to the JSON property `memberMonth`
+        # @return [Fixnum]
+        attr_accessor :member_month
+      
+        # The comment added by the member to this Member Milestone Chat. This field is
+        # empty for messages without a comment from the member.
+        # Corresponds to the JSON property `userComment`
+        # @return [String]
+        attr_accessor :user_comment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @member_level_name = args[:member_level_name] if args.key?(:member_level_name)
+          @member_month = args[:member_month] if args.key?(:member_month)
+          @user_comment = args[:user_comment] if args.key?(:user_comment)
+        end
+      end
+      
       # A *liveChatMessage* resource represents a chat message in a YouTube Live Chat.
       class LiveChatMessage
         include Google::Apis::Core::Hashable
@@ -4084,7 +4120,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the message.
+        # Next ID: 31
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageSnippet]
         attr_accessor :snippet
@@ -4281,17 +4317,18 @@ module Google
         end
       end
       
-      # 
+      # Next ID: 31
       class LiveChatMessageSnippet
         include Google::Apis::Core::Hashable
       
         # The ID of the user that authored this message, this field is not always filled.
         # textMessageEvent - the user that wrote the message fanFundingEvent - the user
         # that funded the broadcast newSponsorEvent - the user that just became a
-        # sponsor messageDeletedEvent - the moderator that took the action
-        # messageRetractedEvent - the author that retracted their message
-        # userBannedEvent - the moderator that took the action superChatEvent - the user
-        # that made the purchase
+        # sponsor memberMilestoneChatEvent - the member that sent the message
+        # messageDeletedEvent - the moderator that took the action messageRetractedEvent
+        # - the author that retracted their message userBannedEvent - the moderator that
+        # took the action superChatEvent - the user that made the purchase
+        # superStickerEvent - the user that made the purchase
         # Corresponds to the JSON property `authorChannelId`
         # @return [String]
         attr_accessor :author_channel_id
@@ -4320,6 +4357,12 @@ module Google
         # @return [String]
         attr_accessor :live_chat_id
       
+        # Details about the Member Milestone Chat event, this is only set if the type is
+        # 'memberMilestoneChatEvent'.
+        # Corresponds to the JSON property `memberMilestoneChatDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatMemberMilestoneChatDetails]
+        attr_accessor :member_milestone_chat_details
+      
         # 
         # Corresponds to the JSON property `messageDeletedDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageDeletedDetails]
@@ -4329,6 +4372,12 @@ module Google
         # Corresponds to the JSON property `messageRetractedDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails]
         attr_accessor :message_retracted_details
+      
+        # Details about the New Member Announcement event, this is only set if the type
+        # is 'newSponsorEvent'. Please note that "member" is the new term for "sponsor".
+        # Corresponds to the JSON property `newSponsorDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatNewSponsorDetails]
+        attr_accessor :new_sponsor_details
       
         # The date and time when the message was orignally published.
         # Corresponds to the JSON property `publishedAt`
@@ -4375,8 +4424,10 @@ module Google
           @fan_funding_event_details = args[:fan_funding_event_details] if args.key?(:fan_funding_event_details)
           @has_display_content = args[:has_display_content] if args.key?(:has_display_content)
           @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
+          @member_milestone_chat_details = args[:member_milestone_chat_details] if args.key?(:member_milestone_chat_details)
           @message_deleted_details = args[:message_deleted_details] if args.key?(:message_deleted_details)
           @message_retracted_details = args[:message_retracted_details] if args.key?(:message_retracted_details)
+          @new_sponsor_details = args[:new_sponsor_details] if args.key?(:new_sponsor_details)
           @published_at = args[:published_at] if args.key?(:published_at)
           @super_chat_details = args[:super_chat_details] if args.key?(:super_chat_details)
           @super_sticker_details = args[:super_sticker_details] if args.key?(:super_sticker_details)
@@ -4519,6 +4570,35 @@ module Google
         def update!(**args)
           @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
           @moderator_details = args[:moderator_details] if args.key?(:moderator_details)
+        end
+      end
+      
+      # 
+      class LiveChatNewSponsorDetails
+        include Google::Apis::Core::Hashable
+      
+        # If the viewer just had upgraded from a lower level. For viewers that were not
+        # members at the time of purchase, this field is false.
+        # Corresponds to the JSON property `isUpgrade`
+        # @return [Boolean]
+        attr_accessor :is_upgrade
+        alias_method :is_upgrade?, :is_upgrade
+      
+        # The name of the Level that the viewer just had joined. The Level names are
+        # defined by the YouTube channel offering the Membership. In some situations
+        # this field isn't filled.
+        # Corresponds to the JSON property `memberLevelName`
+        # @return [String]
+        attr_accessor :member_level_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_upgrade = args[:is_upgrade] if args.key?(:is_upgrade)
+          @member_level_name = args[:member_level_name] if args.key?(:member_level_name)
         end
       end
       
