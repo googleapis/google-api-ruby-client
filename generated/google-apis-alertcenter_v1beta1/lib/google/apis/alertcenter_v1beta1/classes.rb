@@ -22,6 +22,65 @@ module Google
   module Apis
     module AlertcenterV1beta1
       
+      # Details about why an account is receiving an account suspension warning.
+      class AccountSuspensionDetails
+        include Google::Apis::Core::Hashable
+      
+        # The reason why this account is receiving an account suspension warning.
+        # Corresponds to the JSON property `abuseReason`
+        # @return [String]
+        attr_accessor :abuse_reason
+      
+        # The name of the product being abused. This is restricted to only the following
+        # values: "Gmail" "Payments" "Voice" "Workspace" "Other"
+        # Corresponds to the JSON property `productName`
+        # @return [String]
+        attr_accessor :product_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abuse_reason = args[:abuse_reason] if args.key?(:abuse_reason)
+          @product_name = args[:product_name] if args.key?(:product_name)
+        end
+      end
+      
+      # A warning that the customer's account is about to be suspended.
+      class AccountSuspensionWarning
+        include Google::Apis::Core::Hashable
+      
+        # The amount of time remaining to appeal an imminent suspension. After this
+        # window has elapsed, the account will be suspended. Only populated if the
+        # account suspension is in WARNING state.
+        # Corresponds to the JSON property `appealWindow`
+        # @return [String]
+        attr_accessor :appeal_window
+      
+        # Account suspension warning state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Details about why an account is being suspended.
+        # Corresponds to the JSON property `suspensionDetails`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::AccountSuspensionDetails>]
+        attr_accessor :suspension_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @appeal_window = args[:appeal_window] if args.key?(:appeal_window)
+          @state = args[:state] if args.key?(:state)
+          @suspension_details = args[:suspension_details] if args.key?(:suspension_details)
+        end
+      end
+      
       # Alerts for user account warning events.
       class AccountWarning
         include Google::Apis::Core::Hashable
@@ -216,7 +275,8 @@ module Google
         # Required. A unique identifier for the system that reported the alert. This is
         # output only after alert is created. Supported sources are any of the following:
         # * Google Operations * Mobile device management * Gmail phishing * Data Loss
-        # Prevention * Domain wide takeout * State sponsored attack * Google identity
+        # Prevention * Domain wide takeout * State sponsored attack * Google identity *
+        # Apps outage
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -423,8 +483,7 @@ module Google
         end
       end
       
-      # An outage incident reported by Google for a Google Workspace (formerly G Suite)
-      # application.
+      # An outage incident reported for a Google Workspace service.
       class AppsOutage
         include Google::Apis::Core::Hashable
       
@@ -433,7 +492,7 @@ module Google
         # @return [String]
         attr_accessor :dashboard_uri
       
-        # Timestamp by which the next update shall be provided.
+        # Timestamp by which the next update is expected to arrive.
         # Corresponds to the JSON property `nextUpdateTime`
         # @return [String]
         attr_accessor :next_update_time
@@ -443,8 +502,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :products
       
-        # Timestamp of the outage expected or confirmed resolution. (Used only when
-        # known).
+        # Timestamp when the outage is expected to be resolved, or has confirmed
+        # resolution. Provided only when known.
         # Corresponds to the JSON property `resolutionTime`
         # @return [String]
         attr_accessor :resolution_time

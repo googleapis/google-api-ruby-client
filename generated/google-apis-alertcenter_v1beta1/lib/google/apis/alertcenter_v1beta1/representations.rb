@@ -22,6 +22,18 @@ module Google
   module Apis
     module AlertcenterV1beta1
       
+      class AccountSuspensionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountSuspensionWarning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountWarning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -314,6 +326,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountSuspensionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abuse_reason, as: 'abuseReason'
+          property :product_name, as: 'productName'
+        end
+      end
+      
+      class AccountSuspensionWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :appeal_window, as: 'appealWindow'
+          property :state, as: 'state'
+          collection :suspension_details, as: 'suspensionDetails', class: Google::Apis::AlertcenterV1beta1::AccountSuspensionDetails, decorator: Google::Apis::AlertcenterV1beta1::AccountSuspensionDetails::Representation
+      
+        end
       end
       
       class AccountWarning
