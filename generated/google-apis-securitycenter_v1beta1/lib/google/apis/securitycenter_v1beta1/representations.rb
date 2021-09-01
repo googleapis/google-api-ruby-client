@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Cve
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Cvssv3
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Reference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunAssetDiscoveryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +317,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Vulnerability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -359,6 +383,32 @@ module Google
         end
       end
       
+      class Cve
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cvssv3, as: 'cvssv3', class: Google::Apis::SecuritycenterV1beta1::Cvssv3, decorator: Google::Apis::SecuritycenterV1beta1::Cvssv3::Representation
+      
+          property :id, as: 'id'
+          collection :references, as: 'references', class: Google::Apis::SecuritycenterV1beta1::Reference, decorator: Google::Apis::SecuritycenterV1beta1::Reference::Representation
+      
+        end
+      end
+      
+      class Cvssv3
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_complexity, as: 'attackComplexity'
+          property :attack_vector, as: 'attackVector'
+          property :availability_impact, as: 'availabilityImpact'
+          property :base_score, as: 'baseScore'
+          property :confidentiality_impact, as: 'confidentialityImpact'
+          property :integrity_impact, as: 'integrityImpact'
+          property :privileges_required, as: 'privilegesRequired'
+          property :scope, as: 'scope'
+          property :user_interaction, as: 'userInteraction'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -394,6 +444,8 @@ module Google
           property :severity, as: 'severity'
           hash :source_properties, as: 'sourceProperties'
           property :state, as: 'state'
+          property :vulnerability, as: 'vulnerability', class: Google::Apis::SecuritycenterV1beta1::Vulnerability, decorator: Google::Apis::SecuritycenterV1beta1::Vulnerability::Representation
+      
         end
       end
       
@@ -441,6 +493,7 @@ module Google
           property :parent_display_name, as: 'parentDisplayName'
           property :project, as: 'project'
           property :project_display_name, as: 'projectDisplayName'
+          property :type, as: 'type'
         end
       end
       
@@ -695,6 +748,14 @@ module Google
         end
       end
       
+      class Reference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class RunAssetDiscoveryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -767,6 +828,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class Vulnerability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cve, as: 'cve', class: Google::Apis::SecuritycenterV1beta1::Cve, decorator: Google::Apis::SecuritycenterV1beta1::Cve::Representation
+      
         end
       end
     end
