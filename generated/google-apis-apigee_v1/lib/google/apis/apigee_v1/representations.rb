@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ArchiveDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1AsyncQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -412,6 +418,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1GenerateDownloadUrlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1GenerateDownloadUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1GenerateUploadUrlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1GenerateUploadUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1GetSyncAuthorizationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +545,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListAppsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListArchiveDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1359,6 +1395,18 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ArchiveDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :gcs_uri, as: 'gcsUri'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :operation, as: 'operation'
+          property :updated_at, :numeric_string => true, as: 'updatedAt'
+        end
+      end
+      
       class GoogleCloudApigeeV1AsyncQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1800,7 +1848,9 @@ module Google
       class GoogleCloudApigeeV1Environment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_proxy_type, as: 'apiProxyType'
           property :created_at, :numeric_string => true, as: 'createdAt'
+          property :deployment_type, as: 'deploymentType'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
@@ -1814,6 +1864,7 @@ module Google
       class GoogleCloudApigeeV1EnvironmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :arc_config_location, as: 'arcConfigLocation'
           property :create_time, as: 'createTime'
           collection :data_collectors, as: 'dataCollectors', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig::Representation
       
@@ -1824,6 +1875,7 @@ module Google
           hash :feature_flags, as: 'featureFlags'
           collection :flowhooks, as: 'flowhooks', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHookConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHookConfig::Representation
       
+          property :gateway_config_location, as: 'gatewayConfigLocation'
           collection :keystores, as: 'keystores', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeystoreConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeystoreConfig::Representation
       
           property :name, as: 'name'
@@ -1928,6 +1980,32 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1GenerateDownloadUrlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1GenerateDownloadUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_uri, as: 'downloadUri'
+        end
+      end
+      
+      class GoogleCloudApigeeV1GenerateUploadUrlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1GenerateUploadUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :upload_uri, as: 'uploadUri'
+        end
+      end
+      
       class GoogleCloudApigeeV1GetSyncAuthorizationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1989,6 +2067,7 @@ module Google
           property :name, as: 'name'
           property :peering_cidr_range, as: 'peeringCidrRange'
           property :port, as: 'port'
+          property :runtime_version, as: 'runtimeVersion'
           property :state, as: 'state'
         end
       end
@@ -2097,6 +2176,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :app, as: 'app', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1App, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1App::Representation
       
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListArchiveDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :archive_deployments, as: 'archiveDeployments', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -2889,6 +2977,7 @@ module Google
       class GoogleCloudApigeeV1TargetServerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
           property :host, as: 'host'
           property :name, as: 'name'
           property :port, as: 'port'
