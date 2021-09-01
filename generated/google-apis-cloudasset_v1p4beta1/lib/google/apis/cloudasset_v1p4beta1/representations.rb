@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzeIamPolicyLongrunningMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnalyzeIamPolicyLongrunningResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -351,6 +357,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
           collection :roles, as: 'roles'
+        end
+      end
+      
+      class AnalyzeIamPolicyLongrunningMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
         end
       end
       
