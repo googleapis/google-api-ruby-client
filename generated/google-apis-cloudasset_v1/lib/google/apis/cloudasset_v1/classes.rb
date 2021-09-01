@@ -50,6 +50,26 @@ module Google
         end
       end
       
+      # Represents the metadata of the longrunning operation for the
+      # AnalyzeIamPolicyLongrunning rpc.
+      class AnalyzeIamPolicyLongrunningMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # A request message for AssetService.AnalyzeIamPolicyLongrunning.
       class AnalyzeIamPolicyLongrunningRequest
         include Google::Apis::Core::Hashable
@@ -210,7 +230,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `iamPolicy`
@@ -621,6 +641,47 @@ module Google
         def update!(**args)
           @feed = args[:feed] if args.key?(:feed)
           @feed_id = args[:feed_id] if args.key?(:feed_id)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -1283,7 +1344,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `iamPolicy`
@@ -2905,7 +2966,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
@@ -3512,7 +3573,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -3667,6 +3728,51 @@ module Google
         def update!(**args)
           @assets = args[:assets] if args.key?(:assets)
           @relationship_attributes = args[:relationship_attributes] if args.key?(:relationship_attributes)
+        end
+      end
+      
+      # The detailed related resource.
+      class RelatedResource
+        include Google::Apis::Core::Hashable
+      
+        # The type of the asset. Example: `compute.googleapis.com/Instance`
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        # The full resource name of the related resource. Example: `//compute.googleapis.
+        # com/projects/my_proj_123/zones/instance/instance123`
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+        end
+      end
+      
+      # The related resources of the primary resource.
+      class RelatedResources
+        include Google::Apis::Core::Hashable
+      
+        # The detailed related resources of the primary resource.
+        # Corresponds to the JSON property `relatedResources`
+        # @return [Array<Google::Apis::CloudassetV1::RelatedResource>]
+        attr_accessor :related_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @related_resources = args[:related_resources] if args.key?(:related_resources)
         end
       end
       
@@ -3939,6 +4045,15 @@ module Google
         # @return [String]
         attr_accessor :project
       
+        # A map of related resources of this resource, keyed by the relationship type. A
+        # relationship type is in the format of `SourceType`_`ACTION`_`DestType`.
+        # Example: `DISK_TO_INSTANCE`, `DISK_TO_NETWORK`, `INSTANCE_TO_INSTANCEGROUP`.
+        # See [supported relationship types](https://cloud.google.com/asset-inventory/
+        # docs/supported-asset-types#supported_relationship_types).
+        # Corresponds to the JSON property `relationships`
+        # @return [Hash<String,Google::Apis::CloudassetV1::RelatedResources>]
+        attr_accessor :relationships
+      
         # The state of this resource. Different resources types have different state
         # definitions that are mapped from various fields of different resource types.
         # This field is available only when the resource's proto contains it. Example:
@@ -3998,6 +4113,7 @@ module Google
           @parent_asset_type = args[:parent_asset_type] if args.key?(:parent_asset_type)
           @parent_full_resource_name = args[:parent_full_resource_name] if args.key?(:parent_full_resource_name)
           @project = args[:project] if args.key?(:project)
+          @relationships = args[:relationships] if args.key?(:relationships)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @versioned_resources = args[:versioned_resources] if args.key?(:versioned_resources)
@@ -4113,6 +4229,14 @@ module Google
         # @return [Google::Apis::CloudassetV1::WindowsQuickFixEngineeringPackage]
         attr_accessor :qfe_package
       
+        # Contains information about a Windows application as retrieved from the Windows
+        # Registry. For more information about these fields, see [Windows Installer
+        # Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/
+        # windows/win32/msi/uninstall-registry-key)`: class="external" `
+        # Corresponds to the JSON property `windowsApplication`
+        # @return [Google::Apis::CloudassetV1::WindowsApplication]
+        attr_accessor :windows_application
+      
         # Details related to a Windows Update package. Field data and names are taken
         # from Windows Update API IUpdate Interface: https://docs.microsoft.com/en-us/
         # windows/win32/api/_wua/ Descriptive fields like title, and description are
@@ -4148,6 +4272,7 @@ module Google
           @cos_package = args[:cos_package] if args.key?(:cos_package)
           @googet_package = args[:googet_package] if args.key?(:googet_package)
           @qfe_package = args[:qfe_package] if args.key?(:qfe_package)
+          @windows_application = args[:windows_application] if args.key?(:windows_application)
           @wua_package = args[:wua_package] if args.key?(:wua_package)
           @yum_package = args[:yum_package] if args.key?(:yum_package)
           @zypper_package = args[:zypper_package] if args.key?(:zypper_package)
@@ -4370,6 +4495,59 @@ module Google
         def update!(**args)
           @resource = args[:resource] if args.key?(:resource)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Contains information about a Windows application as retrieved from the Windows
+      # Registry. For more information about these fields, see [Windows Installer
+      # Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/
+      # windows/win32/msi/uninstall-registry-key)`: class="external" `
+      class WindowsApplication
+        include Google::Apis::Core::Hashable
+      
+        # The name of the application or product.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The version of the product or application in string format.
+        # Corresponds to the JSON property `displayVersion`
+        # @return [String]
+        attr_accessor :display_version
+      
+        # The internet address for technical support.
+        # Corresponds to the JSON property `helpLink`
+        # @return [String]
+        attr_accessor :help_link
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `installDate`
+        # @return [Google::Apis::CloudassetV1::Date]
+        attr_accessor :install_date
+      
+        # The name of the manufacturer for the product or application.
+        # Corresponds to the JSON property `publisher`
+        # @return [String]
+        attr_accessor :publisher
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @display_version = args[:display_version] if args.key?(:display_version)
+          @help_link = args[:help_link] if args.key?(:help_link)
+          @install_date = args[:install_date] if args.key?(:install_date)
+          @publisher = args[:publisher] if args.key?(:publisher)
         end
       end
       
