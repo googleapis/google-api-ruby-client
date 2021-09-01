@@ -46,7 +46,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class File
+      class GoogleDevtoolsArtifactregistryV1beta2File
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -113,12 +113,6 @@ module Google
       end
       
       class ListLocationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadAptArtifactRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UploadAptArtifactResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +221,12 @@ module Google
       end
       
       class UploadYumArtifactMediaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadYumArtifactRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -282,7 +288,7 @@ module Google
         end
       end
       
-      class File
+      class GoogleDevtoolsArtifactregistryV1beta2File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
@@ -378,7 +384,7 @@ module Google
       class ListFilesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :files, as: 'files', class: Google::Apis::ArtifactregistryV1beta2::File, decorator: Google::Apis::ArtifactregistryV1beta2::File::Representation
+          collection :files, as: 'files', class: Google::Apis::ArtifactregistryV1beta2::GoogleDevtoolsArtifactregistryV1beta2File, decorator: Google::Apis::ArtifactregistryV1beta2::GoogleDevtoolsArtifactregistryV1beta2File::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -390,15 +396,6 @@ module Google
           collection :locations, as: 'locations', class: Google::Apis::ArtifactregistryV1beta2::Location, decorator: Google::Apis::ArtifactregistryV1beta2::Location::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::ArtifactregistryV1beta2::Operation, decorator: Google::Apis::ArtifactregistryV1beta2::Operation::Representation
-      
         end
       end
       
@@ -541,6 +538,12 @@ module Google
         end
       end
       
+      class UploadAptArtifactRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class UploadAptArtifactResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -554,6 +557,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operation, as: 'operation', class: Google::Apis::ArtifactregistryV1beta2::Operation, decorator: Google::Apis::ArtifactregistryV1beta2::Operation::Representation
       
+        end
+      end
+      
+      class UploadYumArtifactRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
