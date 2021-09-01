@@ -361,6 +361,8 @@ module Google
         # parent` of `projects/1234` requires permission `resourcemanager.projects.get`.
         # @param [Fixnum] page_size
         #   The maximum number of items to return. This is a suggestion for the server.
+        #   The server can return fewer liens than requested. If unspecified, server picks
+        #   an appropriate default.
         # @param [String] page_token
         #   The `next_page_token` value returned from a previous List request, if any.
         # @param [String] parent
