@@ -1366,6 +1366,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageFamilyView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -6137,6 +6143,7 @@ module Google
           property :start_timestamp, as: 'startTimestamp'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
+          property :type, as: 'type'
         end
       end
       
@@ -7784,6 +7791,14 @@ module Google
         end
       end
       
+      class ImageFamilyView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image', class: Google::Apis::ComputeV1::Image, decorator: Google::Apis::ComputeV1::Image::Representation
+      
+        end
+      end
+      
       class ImageList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8217,6 +8232,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+          property :skip_instances_on_validation_error, as: 'skipInstancesOnValidationError'
         end
       end
       
@@ -11294,6 +11310,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+          property :skip_instances_on_validation_error, as: 'skipInstancesOnValidationError'
         end
       end
       
