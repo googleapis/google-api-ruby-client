@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListClientsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListContainerVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RevertClientResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RevertFolderResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +311,12 @@ module Google
       end
       
       class Tag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TagConsentSetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -643,6 +661,15 @@ module Google
         end
       end
       
+      class ListClientsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :client, as: 'client', class: Google::Apis::TagmanagerV2::Client, decorator: Google::Apis::TagmanagerV2::Client::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListContainerVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -801,6 +828,14 @@ module Google
         end
       end
       
+      class RevertClientResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client, as: 'client', class: Google::Apis::TagmanagerV2::Client, decorator: Google::Apis::TagmanagerV2::Client::Representation
+      
+        end
+      end
+      
       class RevertFolderResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -881,6 +916,8 @@ module Google
           property :account_id, as: 'accountId'
           collection :blocking_rule_id, as: 'blockingRuleId'
           collection :blocking_trigger_id, as: 'blockingTriggerId'
+          property :consent_settings, as: 'consentSettings', class: Google::Apis::TagmanagerV2::TagConsentSetting, decorator: Google::Apis::TagmanagerV2::TagConsentSetting::Representation
+      
           property :container_id, as: 'containerId'
           property :fingerprint, as: 'fingerprint'
           collection :firing_rule_id, as: 'firingRuleId'
@@ -909,6 +946,15 @@ module Google
       
           property :type, as: 'type'
           property :workspace_id, as: 'workspaceId'
+        end
+      end
+      
+      class TagConsentSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_status, as: 'consentStatus'
+          property :consent_type, as: 'consentType', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
         end
       end
       

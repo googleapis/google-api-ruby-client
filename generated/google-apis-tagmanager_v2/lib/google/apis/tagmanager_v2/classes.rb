@@ -1157,6 +1157,31 @@ module Google
         end
       end
       
+      # 
+      class ListClientsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All GTM Clients of a GTM Container.
+        # Corresponds to the JSON property `client`
+        # @return [Array<Google::Apis::TagmanagerV2::Client>]
+        attr_accessor :client
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client = args[:client] if args.key?(:client)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # List container versions response.
       class ListContainerVersionsResponse
         include Google::Apis::Core::Hashable
@@ -1640,6 +1665,27 @@ module Google
         end
       end
       
+      # The result of reverting a client in a workspace.
+      class RevertClientResponse
+        include Google::Apis::Core::Hashable
+      
+        # Client as it appears in the latest container version since the last workspace
+        # synchronization operation. If no client is present, that means the client was
+        # deleted in the latest container version.
+        # Corresponds to the JSON property `client`
+        # @return [Google::Apis::TagmanagerV2::Client]
+        attr_accessor :client
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client = args[:client] if args.key?(:client)
+        end
+      end
+      
       # The result of reverting folder changes in a workspace.
       class RevertFolderResponse
         include Google::Apis::Core::Hashable
@@ -1859,6 +1905,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :blocking_trigger_id
       
+        # Consent settings of a tag. @mutable tagmanager.accounts.containers.workspaces.
+        # tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update
+        # Corresponds to the JSON property `consentSettings`
+        # @return [Google::Apis::TagmanagerV2::TagConsentSetting]
+        attr_accessor :consent_settings
+      
         # GTM Container ID.
         # Corresponds to the JSON property `containerId`
         # @return [String]
@@ -2008,6 +2060,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @blocking_rule_id = args[:blocking_rule_id] if args.key?(:blocking_rule_id)
           @blocking_trigger_id = args[:blocking_trigger_id] if args.key?(:blocking_trigger_id)
+          @consent_settings = args[:consent_settings] if args.key?(:consent_settings)
           @container_id = args[:container_id] if args.key?(:container_id)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @firing_rule_id = args[:firing_rule_id] if args.key?(:firing_rule_id)
@@ -2031,6 +2084,32 @@ module Google
           @teardown_tag = args[:teardown_tag] if args.key?(:teardown_tag)
           @type = args[:type] if args.key?(:type)
           @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
+        end
+      end
+      
+      # 
+      class TagConsentSetting
+        include Google::Apis::Core::Hashable
+      
+        # The tag's consent status. If set to NEEDED, the runtime will check that the
+        # consent types specified by the consent_type field have been granted.
+        # Corresponds to the JSON property `consentStatus`
+        # @return [String]
+        attr_accessor :consent_status
+      
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `consentType`
+        # @return [Google::Apis::TagmanagerV2::Parameter]
+        attr_accessor :consent_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_status = args[:consent_status] if args.key?(:consent_status)
+          @consent_type = args[:consent_type] if args.key?(:consent_type)
         end
       end
       
