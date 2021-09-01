@@ -22,6 +22,24 @@ module Google
   module Apis
     module CloudbuildV1
       
+      class ApprovalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApprovalResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApproveBuildRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ArtifactObjects
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +59,12 @@ module Google
       end
       
       class Build
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BuildApproval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +149,12 @@ module Google
       end
       
       class FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GitFileSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -436,6 +466,32 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApprovalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_required, as: 'approvalRequired'
+        end
+      end
+      
+      class ApprovalResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_time, as: 'approvalTime'
+          property :approver_account, as: 'approverAccount'
+          property :comment, as: 'comment'
+          property :decision, as: 'decision'
+          property :url, as: 'url'
+        end
+      end
+      
+      class ApproveBuildRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_result, as: 'approvalResult', class: Google::Apis::CloudbuildV1::ApprovalResult, decorator: Google::Apis::CloudbuildV1::ApprovalResult::Representation
+      
+        end
+      end
+      
       class ArtifactObjects
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -467,6 +523,8 @@ module Google
       class Build
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval, as: 'approval', class: Google::Apis::CloudbuildV1::BuildApproval, decorator: Google::Apis::CloudbuildV1::BuildApproval::Representation
+      
           property :artifacts, as: 'artifacts', class: Google::Apis::CloudbuildV1::Artifacts, decorator: Google::Apis::CloudbuildV1::Artifacts::Representation
       
           property :available_secrets, as: 'availableSecrets', class: Google::Apis::CloudbuildV1::Secrets, decorator: Google::Apis::CloudbuildV1::Secrets::Representation
@@ -506,6 +564,17 @@ module Google
       
           collection :warnings, as: 'warnings', class: Google::Apis::CloudbuildV1::Warning, decorator: Google::Apis::CloudbuildV1::Warning::Representation
       
+        end
+      end
+      
+      class BuildApproval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::CloudbuildV1::ApprovalConfig, decorator: Google::Apis::CloudbuildV1::ApprovalConfig::Representation
+      
+          property :result, as: 'result', class: Google::Apis::CloudbuildV1::ApprovalResult, decorator: Google::Apis::CloudbuildV1::ApprovalResult::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -549,6 +618,7 @@ module Google
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
       
+          property :script, as: 'script'
           collection :secret_env, as: 'secretEnv'
           property :status, as: 'status'
           property :timeout, as: 'timeout'
@@ -563,6 +633,8 @@ module Google
       class BuildTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_config, as: 'approvalConfig', class: Google::Apis::CloudbuildV1::ApprovalConfig, decorator: Google::Apis::CloudbuildV1::ApprovalConfig::Representation
+      
           property :autodetect, as: 'autodetect'
           property :build, as: 'build', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation
       
@@ -571,6 +643,8 @@ module Google
           property :disabled, as: 'disabled'
           property :filename, as: 'filename'
           property :filter, as: 'filter'
+          property :git_file_source, as: 'gitFileSource', class: Google::Apis::CloudbuildV1::GitFileSource, decorator: Google::Apis::CloudbuildV1::GitFileSource::Representation
+      
           property :github, as: 'github', class: Google::Apis::CloudbuildV1::GitHubEventsConfig, decorator: Google::Apis::CloudbuildV1::GitHubEventsConfig::Representation
       
           property :id, as: 'id'
@@ -672,6 +746,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::CloudbuildV1::HashProp, decorator: Google::Apis::CloudbuildV1::HashProp::Representation
       
+        end
+      end
+      
+      class GitFileSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :repo_type, as: 'repoType'
+          property :revision, as: 'revision'
+          property :uri, as: 'uri'
         end
       end
       
