@@ -338,7 +338,7 @@ module Google
       # and optionally how the containers those revisions reference are built. Users
       # create new Revisions by updating the Configuration's spec. The "latest created"
       # revision's name is available under status, as is the "latest ready" revision'
-      # s name. See also: https://github.com/knative/serving/blob/master/docs/spec/
+      # s name. See also: https://github.com/knative/serving/blob/main/docs/spec/
       # overview.md#configuration
       class Configuration
         include Google::Apis::Core::Hashable
@@ -984,7 +984,7 @@ module Google
         attr_accessor :status
       
         # type is used to communicate the status of the reconciliation process. See also:
-        # https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-
+        # https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-
         # conditions-and-reporting Types common to all resources include: * "Ready":
         # True when the Resource is ready.
         # Corresponds to the JSON property `type`
@@ -1754,7 +1754,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -1964,7 +1964,7 @@ module Google
       
       # Revision is an immutable snapshot of code and configuration. A revision
       # references a container image. Revisions are created by updates to a
-      # Configuration. See also: https://github.com/knative/serving/blob/master/docs/
+      # Configuration. See also: https://github.com/knative/serving/blob/main/docs/
       # spec/overview.md#revision
       class Revision
         include Google::Apis::Core::Hashable
@@ -2027,7 +2027,7 @@ module Google
         # this Revision. In the context of a Revision, we disallow a number of fields on
         # this Container, including: name and lifecycle. In Cloud Run, only a single
         # container may be provided. The runtime contract is documented here: https://
-        # github.com/knative/serving/blob/master/docs/runtime-contract.md
+        # github.com/knative/serving/blob/main/docs/runtime-contract.md
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV1::Container>]
         attr_accessor :containers
@@ -2042,9 +2042,9 @@ module Google
       
         # TimeoutSeconds holds the max duration the instance is allowed for responding
         # to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes).
-        # Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos:
-        # defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by
-        # the cluster operator.
+        # Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults
+        # to 300 seconds (5 minutes). Maximum allowed value is configurable by the
+        # cluster operator.
         # Corresponds to the JSON property `timeoutSeconds`
         # @return [Fixnum]
         attr_accessor :timeout_seconds
@@ -2158,8 +2158,8 @@ module Google
       # referencing the Configuration responsible for creating them; in these cases
       # the Route is additionally responsible for monitoring the Configuration for "
       # latest ready" revision changes, and smoothly rolling out latest revisions. See
-      # also: https://github.com/knative/serving/blob/master/docs/spec/overview.md#
-      # route Cloud Run currently supports referencing a single Configuration to
+      # also: https://github.com/knative/serving/blob/main/docs/spec/overview.md#route
+      # Cloud Run currently supports referencing a single Configuration to
       # automatically deploy the "latest ready" Revision from that Configuration.
       class Route
         include Google::Apis::Core::Hashable
@@ -2454,7 +2454,7 @@ module Google
       # Routes and Configurations (much as a kubernetes Deployment orchestrates
       # ReplicaSets). The Service's controller will track the statuses of its owned
       # Configuration and Route, reflecting their statuses and conditions as its own.
-      # See also: https://github.com/knative/serving/blob/master/docs/spec/overview.md#
+      # See also: https://github.com/knative/serving/blob/main/docs/spec/overview.md#
       # service
       class Service
         include Google::Apis::Core::Hashable
@@ -2629,7 +2629,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
@@ -2950,7 +2950,7 @@ module Google
         end
       end
       
-      # Not supported by Cloud Run Volume represents a named volume in a container.
+      # Volume represents a named volume in a container.
       class Volume
         include Google::Apis::Core::Hashable
       
@@ -2962,7 +2962,7 @@ module Google
         # @return [Google::Apis::RunV1::ConfigMapVolumeSource]
         attr_accessor :config_map
       
-        # Volume's name.
+        # Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2987,8 +2987,7 @@ module Google
         end
       end
       
-      # Not supported by Cloud Run VolumeMount describes a mounting of a Volume within
-      # a container.
+      # VolumeMount describes a mounting of a Volume within a container.
       class VolumeMount
         include Google::Apis::Core::Hashable
       
@@ -2998,7 +2997,8 @@ module Google
         # @return [String]
         attr_accessor :mount_path
       
-        # This must match the Name of a Volume.
+        # The name of the volume. There must be a corresponding Volume with the same
+        # name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
