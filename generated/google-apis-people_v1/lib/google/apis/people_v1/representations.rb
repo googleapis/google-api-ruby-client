@@ -950,12 +950,14 @@ module Google
       class Organization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cost_center, as: 'costCenter'
           property :current, as: 'current'
           property :department, as: 'department'
           property :domain, as: 'domain'
           property :end_date, as: 'endDate', class: Google::Apis::PeopleV1::Date, decorator: Google::Apis::PeopleV1::Date::Representation
       
           property :formatted_type, as: 'formattedType'
+          property :full_time_equivalent_millipercent, as: 'fullTimeEquivalentMillipercent'
           property :job_description, as: 'jobDescription'
           property :location, as: 'location'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation

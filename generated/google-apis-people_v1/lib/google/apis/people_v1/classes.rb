@@ -177,7 +177,9 @@ module Google
         end
       end
       
-      # The response to a request to create a batch of contacts.
+      # If not successful, returns BatchCreateContactsErrorDetails which contains a
+      # list of errors for each invalid contact. The response to a request to create a
+      # batch of contacts.
       class BatchCreateContactsResponse
         include Google::Apis::Core::Hashable
       
@@ -289,7 +291,9 @@ module Google
         end
       end
       
-      # The response to a request to create a batch of contacts.
+      # If not successful, returns BatchUpdateContactsErrorDetails, a list of errors
+      # corresponding to each contact. The response to a request to update a batch of
+      # contacts.
       class BatchUpdateContactsResponse
         include Google::Apis::Core::Hashable
       
@@ -1005,7 +1009,8 @@ module Google
       class FieldMetadata
         include Google::Apis::Core::Hashable
       
-        # True if the field is the primary field for the person.
+        # Output only. True if the field is the primary field for all sources in the
+        # person. Each person will have at most one field with `primary` set to true.
         # Corresponds to the JSON property `primary`
         # @return [Boolean]
         attr_accessor :primary
@@ -1016,7 +1021,8 @@ module Google
         # @return [Google::Apis::PeopleV1::Source]
         attr_accessor :source
       
-        # True if the field is the primary field for the source.
+        # True if the field is the primary field for the source. Each source must have
+        # at most one field with `source_primary` set to true.
         # Corresponds to the JSON property `sourcePrimary`
         # @return [Boolean]
         attr_accessor :source_primary
@@ -1072,8 +1078,8 @@ module Google
       class Gender
         include Google::Apis::Core::Hashable
       
-        # The type of pronouns that should be used to address the person. The value can
-        # be custom or one of these predefined values: * `male` * `female` * `other`
+        # Free form text field for pronouns that should be used to address the person.
+        # Common values are: * `he`/`him` * `she`/`her` * `they`/`them`
         # Corresponds to the JSON property `addressMeAs`
         # @return [String]
         attr_accessor :address_me_as
@@ -1775,6 +1781,11 @@ module Google
       class Organization
         include Google::Apis::Core::Hashable
       
+        # The person's cost center at the organization.
+        # Corresponds to the JSON property `costCenter`
+        # @return [String]
+        attr_accessor :cost_center
+      
         # True if the organization is the person's current organization; false if the
         # organization is a past organization.
         # Corresponds to the JSON property `current`
@@ -1809,6 +1820,12 @@ module Google
         # Corresponds to the JSON property `formattedType`
         # @return [String]
         attr_accessor :formatted_type
+      
+        # The person's full-time equivalent millipercent within the organization (100000
+        # = 100%).
+        # Corresponds to the JSON property `fullTimeEquivalentMillipercent`
+        # @return [Fixnum]
+        attr_accessor :full_time_equivalent_millipercent
       
         # The person's job description at the organization.
         # Corresponds to the JSON property `jobDescription`
@@ -1870,11 +1887,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cost_center = args[:cost_center] if args.key?(:cost_center)
           @current = args[:current] if args.key?(:current)
           @department = args[:department] if args.key?(:department)
           @domain = args[:domain] if args.key?(:domain)
           @end_date = args[:end_date] if args.key?(:end_date)
           @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
+          @full_time_equivalent_millipercent = args[:full_time_equivalent_millipercent] if args.key?(:full_time_equivalent_millipercent)
           @job_description = args[:job_description] if args.key?(:job_description)
           @location = args[:location] if args.key?(:location)
           @metadata = args[:metadata] if args.key?(:metadata)
