@@ -1402,10 +1402,7 @@ module Google
         #   ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [Boolean] skip_verification
-        #   Whether to skip the verification step (VESS).
-        # @param [String] sync_mode
-        #   External sync mode.
+        # @param [Google::Apis::SqladminV1::SqlInstancesStartExternalSyncRequest] sql_instances_start_external_sync_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1423,14 +1420,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_project_instance_external_sync(project, instance, skip_verification: nil, sync_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def start_project_instance_external_sync(project, instance, sql_instances_start_external_sync_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/startExternalSync', options)
+          command.request_representation = Google::Apis::SqladminV1::SqlInstancesStartExternalSyncRequest::Representation
+          command.request_object = sql_instances_start_external_sync_request_object
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
-          command.query['skipVerification'] = skip_verification unless skip_verification.nil?
-          command.query['syncMode'] = sync_mode unless sync_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1441,10 +1438,7 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [String] sync_mode
-        #   External sync mode
-        # @param [Boolean] verify_connection_only
-        #   Flag to enable verifying connection only
+        # @param [Google::Apis::SqladminV1::SqlInstancesVerifyExternalSyncSettingsRequest] sql_instances_verify_external_sync_settings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1462,14 +1456,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def verify_project_instance_external_sync_settings(project, instance, sync_mode: nil, verify_connection_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def verify_project_instance_external_sync_settings(project, instance, sql_instances_verify_external_sync_settings_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/verifyExternalSyncSettings', options)
+          command.request_representation = Google::Apis::SqladminV1::SqlInstancesVerifyExternalSyncSettingsRequest::Representation
+          command.request_object = sql_instances_verify_external_sync_settings_request_object
           command.response_representation = Google::Apis::SqladminV1::SqlInstancesVerifyExternalSyncSettingsResponse::Representation
           command.response_class = Google::Apis::SqladminV1::SqlInstancesVerifyExternalSyncSettingsResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
-          command.query['syncMode'] = sync_mode unless sync_mode.nil?
-          command.query['verifyConnectionOnly'] = verify_connection_only unless verify_connection_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1770,33 +1764,6 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
-        # @param [String] body_etag
-        #   This field is deprecated and will be removed from a future version of the API.
-        # @param [String] body_host
-        #   The host name from which the user can connect. For *insert* operations, host
-        #   defaults to an empty string. For *update* operations, host is specified as
-        #   part of the request URL. The host name cannot be updated after insertion.
-        # @param [String] body_instance
-        #   The name of the Cloud SQL instance. This does not include the project ID. Can
-        #   be omitted for *update* since it is already specified on the URL.
-        # @param [String] body_kind
-        #   This is always *sql#user*.
-        # @param [String] body_name
-        #   The name of the user in the Cloud SQL instance. Can be omitted for *update*
-        #   since it is already specified in the URL.
-        # @param [String] body_password
-        #   The password for the user.
-        # @param [String] body_project
-        #   The project ID of the project containing the Cloud SQL database. The Google
-        #   apps domain is prefixed if applicable. Can be omitted for *update* since it is
-        #   already specified on the URL.
-        # @param [Boolean] body_sqlserver_user_details_disabled
-        #   If the user has been disabled
-        # @param [Array<String>, String] body_sqlserver_user_details_server_roles
-        #   The server roles for this user
-        # @param [String] body_type
-        #   The user type. It determines the method to authenticate the user during login.
-        #   The default is the database's built-in user type.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1814,22 +1781,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_users(project, instance, body_etag: nil, body_host: nil, body_instance: nil, body_kind: nil, body_name: nil, body_password: nil, body_project: nil, body_sqlserver_user_details_disabled: nil, body_sqlserver_user_details_server_roles: nil, body_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_users(project, instance, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/users', options)
           command.response_representation = Google::Apis::SqladminV1::UsersListResponse::Representation
           command.response_class = Google::Apis::SqladminV1::UsersListResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
-          command.query['body.etag'] = body_etag unless body_etag.nil?
-          command.query['body.host'] = body_host unless body_host.nil?
-          command.query['body.instance'] = body_instance unless body_instance.nil?
-          command.query['body.kind'] = body_kind unless body_kind.nil?
-          command.query['body.name'] = body_name unless body_name.nil?
-          command.query['body.password'] = body_password unless body_password.nil?
-          command.query['body.project'] = body_project unless body_project.nil?
-          command.query['body.sqlserverUserDetails.disabled'] = body_sqlserver_user_details_disabled unless body_sqlserver_user_details_disabled.nil?
-          command.query['body.sqlserverUserDetails.serverRoles'] = body_sqlserver_user_details_server_roles unless body_sqlserver_user_details_server_roles.nil?
-          command.query['body.type'] = body_type unless body_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
