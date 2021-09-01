@@ -3694,6 +3694,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new custom bidding algorithm. Returns the newly created custom
+        # bidding algorithm if successful.
+        # @param [Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm] custom_bidding_algorithm_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_custom_bidding_algorithm(custom_bidding_algorithm_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/customBiddingAlgorithms', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm::Representation
+          command.request_object = custom_bidding_algorithm_object
+          command.response_representation = Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a custom bidding algorithm.
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Required. The ID of the custom bidding algorithm to fetch.
@@ -3742,14 +3773,19 @@ module Google
         #   restriction has the form of ``field` `operator` `value``. * The operator must
         #   be `CONTAINS (:)` or `EQUALS (=)`. * The operator must be `CONTAINS (:)` for
         #   the following field: - `displayName` * The operator must be `EQUALS (=)` for
-        #   the following field: - `customBiddingAlgorithmType` * For `displayName`, the
-        #   value is a string. We return all custom bidding algorithms whose display_name
-        #   contains such string. * For `customBiddingAlgorithmType`, the value is a
-        #   string. We return all algorithms whose custom_bidding_algorithm_type is equal
-        #   to the given type. Examples: * All custom bidding algorithms for which the
-        #   display name contains "politics": `displayName:politics`. * All custom bidding
-        #   algorithms for which the type is "SCRIPT_BASED": `customBiddingAlgorithmType=
-        #   SCRIPT_BASED` The length of this field should be no more than 500 characters.
+        #   the following field: - `customBiddingAlgorithmType` - `
+        #   customBiddingAlgorithmState` * For `displayName`, the value is a string. We
+        #   return all custom bidding algorithms whose display_name contains such string. *
+        #   For `customBiddingAlgorithmType`, the value is a string. We return all
+        #   algorithms whose custom_bidding_algorithm_type is equal to the given type. *
+        #   For `customBiddingAlgorithmState`, the value is a string. We return all
+        #   algorithms whose custom_bidding_algorithm_state is equal to the given type.
+        #   Examples: * All custom bidding algorithms for which the display name contains "
+        #   politics": `displayName:politics`. * All custom bidding algorithms for which
+        #   the type is "SCRIPT_BASED": `customBiddingAlgorithmType=SCRIPT_BASED` * All
+        #   custom bidding algorithms for which the state is "ENABLED": `
+        #   customBiddingAlgorithmState=ENABLED` The length of this field should be no
+        #   more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) The default sorting order is ascending. To specify descending order
@@ -3793,6 +3829,44 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing custom bidding algorithm. Returns the updated custom
+        # bidding algorithm if successful.
+        # @param [Fixnum] custom_bidding_algorithm_id
+        #   Output only. The unique ID of the custom bidding algorithm. Assigned by the
+        #   system.
+        # @param [Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm] custom_bidding_algorithm_object
+        # @param [String] update_mask
+        #   Required. The mask to control which fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_custom_bidding_algorithm(custom_bidding_algorithm_id, custom_bidding_algorithm_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm::Representation
+          command.request_object = custom_bidding_algorithm_object
+          command.response_representation = Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm
+          command.params['customBiddingAlgorithmId'] = custom_bidding_algorithm_id unless custom_bidding_algorithm_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4699,6 +4773,51 @@ module Google
             command = make_download_command(:get, 'download/{+resourceName}', options)
             command.download_dest = download_dest
           end
+          command.response_representation = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia
+          command.params['resourceName'] = resource_name unless resource_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uploads media. Upload is supported on the URI `/upload/media/`resource_name=**`
+        # ?upload_type=media.` **Note**: Upload requests will not be successful without
+        # including `upload_type=media` query string.
+        # @param [String] resource_name
+        #   Name of the media that is being downloaded. See ReadRequest.resource_name.
+        # @param [Google::Apis::DisplayvideoV1::GoogleBytestreamMedia] google_bytestream_media_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::GoogleBytestreamMedia] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::GoogleBytestreamMedia]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_medium(resource_name, google_bytestream_media_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'media/{+resourceName}', options)
+          else
+            command = make_upload_command(:post, 'media/{+resourceName}', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia::Representation
+          command.request_object = google_bytestream_media_object
           command.response_representation = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia::Representation
           command.response_class = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia
           command.params['resourceName'] = resource_name unless resource_name.nil?

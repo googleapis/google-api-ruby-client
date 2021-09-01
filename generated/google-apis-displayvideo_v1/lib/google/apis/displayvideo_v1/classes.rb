@@ -2023,8 +2023,8 @@ module Google
       class BusinessChainSearchTerms
         include Google::Apis::Core::Hashable
       
-        # The search query for the desired business chain. The query can be a prefix, e.
-        # g. "KFC", "mercede".
+        # The search query for the desired business chain. The query must be the full
+        # name of the business, e.g. "KFC", "mercedes-benz".
         # Corresponds to the JSON property `businessChain`
         # @return [String]
         attr_accessor :business_chain
@@ -3426,6 +3426,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :custom_bidding_algorithm_id
       
+        # Output only. The status of custom bidding algorithm.
+        # Corresponds to the JSON property `customBiddingAlgorithmState`
+        # @return [String]
+        attr_accessor :custom_bidding_algorithm_state
+      
         # Required. Immutable. The type of custom bidding algorithm.
         # Corresponds to the JSON property `customBiddingAlgorithmType`
         # @return [String]
@@ -3454,6 +3459,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :partner_id
       
+        # The IDs of the advertisers who have access to this algorithm. This field will
+        # not be set if the algorithm owner is a partner and is being retrieved using an
+        # advertiser accessor.
+        # Corresponds to the JSON property `sharedAdvertiserIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :shared_advertiser_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3462,11 +3474,13 @@ module Google
         def update!(**args)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @custom_bidding_algorithm_id = args[:custom_bidding_algorithm_id] if args.key?(:custom_bidding_algorithm_id)
+          @custom_bidding_algorithm_state = args[:custom_bidding_algorithm_state] if args.key?(:custom_bidding_algorithm_state)
           @custom_bidding_algorithm_type = args[:custom_bidding_algorithm_type] if args.key?(:custom_bidding_algorithm_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @name = args[:name] if args.key?(:name)
           @partner_id = args[:partner_id] if args.key?(:partner_id)
+          @shared_advertiser_ids = args[:shared_advertiser_ids] if args.key?(:shared_advertiser_ids)
         end
       end
       
@@ -8142,7 +8156,8 @@ module Google
       class PoiAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The display name of a POI, e.g. "Times Square", "Space Needle".
+        # Output only. The display name of a POI, e.g. "Times Square", "Space Needle",
+        # followed by its full address if available.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -8170,8 +8185,8 @@ module Google
         # @return [String]
         attr_accessor :proximity_radius_unit
       
-        # Input only. The targeting_option_id of a TargetingOption of type `
-        # TARGETING_TYPE_POI`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_POI` or reuse an existing assigned_targeting_option_id.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -8217,7 +8232,8 @@ module Google
       class PoiTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The display name of a POI, e.g. "Times Square", "Space Needle".
+        # Output only. The display name of a POI(e.g. "Times Square", "Space Needle"),
+        # followed by its full address if available.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -8706,7 +8722,7 @@ module Google
         end
       end
       
-      # Response message for SearchTargetingOptionsResponse.
+      # Response message for SearchTargetingOptions.
       class SearchTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
