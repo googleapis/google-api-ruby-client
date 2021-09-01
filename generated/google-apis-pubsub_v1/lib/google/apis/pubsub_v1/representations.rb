@@ -580,6 +580,7 @@ module Google
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::PubsubV1::RetryPolicy, decorator: Google::Apis::PubsubV1::RetryPolicy::Representation
       
           property :topic, as: 'topic'
+          property :topic_message_retention_duration, as: 'topicMessageRetentionDuration'
         end
       end
       
@@ -602,6 +603,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
+          property :message_retention_duration, as: 'messageRetentionDuration'
           property :message_storage_policy, as: 'messageStoragePolicy', class: Google::Apis::PubsubV1::MessageStoragePolicy, decorator: Google::Apis::PubsubV1::MessageStoragePolicy::Representation
       
           property :name, as: 'name'
