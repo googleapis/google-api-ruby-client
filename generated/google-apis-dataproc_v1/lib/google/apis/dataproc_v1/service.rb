@@ -1079,6 +1079,8 @@ module Google
         # @param [String] region
         #   Required. The Dataproc region in which to handle the request.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
+        # @param [String] action_on_failed_primary_workers
+        #   Optional. Failure action when primary worker creation fails.
         # @param [String] request_id
         #   Optional. A unique ID used to identify the request. If the server receives two
         #   CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
@@ -1106,7 +1108,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_cluster(project_id, region, cluster_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_cluster(project_id, region, cluster_object = nil, action_on_failed_primary_workers: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/clusters', options)
           command.request_representation = Google::Apis::DataprocV1::Cluster::Representation
           command.request_object = cluster_object
@@ -1114,6 +1116,7 @@ module Google
           command.response_class = Google::Apis::DataprocV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
+          command.query['actionOnFailedPrimaryWorkers'] = action_on_failed_primary_workers unless action_on_failed_primary_workers.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
