@@ -212,7 +212,9 @@ module Google
         # ascending) lexical ordering of their display_name. The caller must have `
         # resourcemanager.folders.list` permission on the identified parent.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of Folders to return in the response.
+        #   Optional. The maximum number of Folders to return in the response. The server
+        #   can return fewer folders than requested. If unspecified, server picks an
+        #   appropriate default.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to `ListFolders`
         #   that indicates where this listing should continue from.
