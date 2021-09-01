@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataplexConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,12 @@ module Google
       end
       
       class KerberosConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Lake
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -296,6 +308,14 @@ module Google
         end
       end
       
+      class DataplexConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :lake_resources, as: 'lakeResources', class: Google::Apis::MetastoreV1beta::Lake, decorator: Google::Apis::MetastoreV1beta::Lake::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -332,6 +352,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :config_overrides, as: 'configOverrides'
+          property :endpoint_protocol, as: 'endpointProtocol'
           property :kerberos_config, as: 'kerberosConfig', class: Google::Apis::MetastoreV1beta::KerberosConfig, decorator: Google::Apis::MetastoreV1beta::KerberosConfig::Representation
       
           property :version, as: 'version'
@@ -353,6 +374,13 @@ module Google
       
           property :krb5_config_gcs_uri, as: 'krb5ConfigGcsUri'
           property :principal, as: 'principal'
+        end
+      end
+      
+      class Lake
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -460,6 +488,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_catalog_config, as: 'dataCatalogConfig', class: Google::Apis::MetastoreV1beta::DataCatalogConfig, decorator: Google::Apis::MetastoreV1beta::DataCatalogConfig::Representation
+      
+          property :dataplex_config, as: 'dataplexConfig', class: Google::Apis::MetastoreV1beta::DataplexConfig, decorator: Google::Apis::MetastoreV1beta::DataplexConfig::Representation
       
         end
       end
