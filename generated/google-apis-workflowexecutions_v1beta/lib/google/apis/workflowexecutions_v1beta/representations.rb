@@ -84,6 +84,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :argument, as: 'argument'
+          property :call_log_level, as: 'callLogLevel'
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::WorkflowexecutionsV1beta::Error, decorator: Google::Apis::WorkflowexecutionsV1beta::Error::Representation
       

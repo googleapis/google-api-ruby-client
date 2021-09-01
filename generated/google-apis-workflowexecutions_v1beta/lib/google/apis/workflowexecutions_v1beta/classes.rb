@@ -79,6 +79,11 @@ module Google
         # @return [String]
         attr_accessor :argument
       
+        # The call logging level associated to this execution.
+        # Corresponds to the JSON property `callLogLevel`
+        # @return [String]
+        attr_accessor :call_log_level
+      
         # Output only. Marks the end of execution, successful or not.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -123,6 +128,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @argument = args[:argument] if args.key?(:argument)
+          @call_log_level = args[:call_log_level] if args.key?(:call_log_level)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @name = args[:name] if args.key?(:name)
