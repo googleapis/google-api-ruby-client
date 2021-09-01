@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportMessagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1482,6 +1488,12 @@ module Google
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GcsDestination, decorator: Google::Apis::HealthcareV1beta1::GcsDestination::Representation
       
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ExportMessagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
