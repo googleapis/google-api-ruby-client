@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataprocParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Disk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -462,6 +468,13 @@ module Google
         end
       end
       
+      class DataprocParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+        end
+      end
+      
       class Disk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -539,7 +552,10 @@ module Google
           property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::NotebooksV1::SchedulerAcceleratorConfig, decorator: Google::Apis::NotebooksV1::SchedulerAcceleratorConfig::Representation
       
           property :container_image_uri, as: 'containerImageUri'
+          property :dataproc_parameters, as: 'dataprocParameters', class: Google::Apis::NotebooksV1::DataprocParameters, decorator: Google::Apis::NotebooksV1::DataprocParameters::Representation
+      
           property :input_notebook_file, as: 'inputNotebookFile'
+          property :job_type, as: 'jobType'
           hash :labels, as: 'labels'
           property :master_type, as: 'masterType'
           property :output_notebook_folder, as: 'outputNotebookFolder'
