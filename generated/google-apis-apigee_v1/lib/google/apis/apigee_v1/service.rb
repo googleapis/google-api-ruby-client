@@ -1386,6 +1386,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an existing API proxy.
+        # @param [String] name
+        #   Required. API proxy to update in the following format: `organizations/`org`/
+        #   apis/`api``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy] google_cloud_apigee_v1_api_proxy_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_api(name, google_cloud_apigee_v1_api_proxy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy::Representation
+          command.request_object = google_cloud_apigee_v1_api_proxy_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProxy
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all deployments of an API proxy.
         # @param [String] parent
         #   Required. Name of the API proxy for which to return deployment information in
@@ -4687,6 +4724,261 @@ module Google
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReport::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReport
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new ArchiveDeployment.
+        # @param [String] parent
+        #   Required. The Environment this Archive Deployment will be created in.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment] google_cloud_apigee_v1_archive_deployment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_environment_archive_deployment(parent, google_cloud_apigee_v1_archive_deployment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/archiveDeployments', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment::Representation
+          command.request_object = google_cloud_apigee_v1_archive_deployment_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an archive deployment.
+        # @param [String] name
+        #   Required. Name of the Archive Deployment in the following format: `
+        #   organizations/`org`/environments/`env`/archiveDeployments/`id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_environment_archive_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates a signed URL for downloading the original zip file used to create an
+        # Archive Deployment. The URL is only valid for a limited period and should be
+        # used within minutes after generation. Each call returns a new upload URL.
+        # @param [String] name
+        #   Required. The name of the Archive Deployment you want to download.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateDownloadUrlRequest] google_cloud_apigee_v1_generate_download_url_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateDownloadUrlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateDownloadUrlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_organization_environment_archive_deployment_download_url(name, google_cloud_apigee_v1_generate_download_url_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:generateDownloadUrl', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateDownloadUrlRequest::Representation
+          command.request_object = google_cloud_apigee_v1_generate_download_url_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateDownloadUrlResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateDownloadUrlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates a signed URL for uploading an Archive zip file to Google Cloud
+        # Storage. Once the upload is complete, the signed URL should be passed to
+        # CreateArchiveDeployment. When uploading to the generated signed URL, please
+        # follow these restrictions: * Source file type should be a zip file. * Source
+        # file size should not exceed 1GB limit. * No credentials should be attached -
+        # the signed URLs provide access to the target bucket using internal service
+        # identity; if credentials were attached, the identity from the credentials
+        # would be used, but that identity does not have permissions to upload files to
+        # the URL. When making a HTTP PUT request, these two headers need to be
+        # specified: * `content-type: application/zip` * `x-goog-content-length-range: 0,
+        # 1073741824` And this header SHOULD NOT be specified: * `Authorization: Bearer
+        # YOUR_TOKEN`
+        # @param [String] parent
+        #   Required. The organization and environment to upload to.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateUploadUrlRequest] google_cloud_apigee_v1_generate_upload_url_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateUploadUrlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateUploadUrlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_organization_environment_archive_deployment_upload_url(parent, google_cloud_apigee_v1_generate_upload_url_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/archiveDeployments:generateUploadUrl', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateUploadUrlRequest::Representation
+          command.request_object = google_cloud_apigee_v1_generate_upload_url_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateUploadUrlResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1GenerateUploadUrlResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified ArchiveDeployment.
+        # @param [String] name
+        #   Required. Name of the Archive Deployment in the following format: `
+        #   organizations/`org`/environments/`env`/archiveDeployments/`id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_archive_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the ArchiveDeployments in the specified Environment.
+        # @param [String] parent
+        #   Required. Name of the Environment for which to list Archive Deployments in the
+        #   format: `organizations/`org`/environments/`env``.
+        # @param [String] filter
+        #   Optional. An optional query used to return a subset of Archive Deployments
+        #   using the semantics defined in https://google.aip.dev/160.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of Archive Deployments to return. If unspecified, at
+        #   most 25 deployments will be returned.
+        # @param [String] page_token
+        #   Optional. Page token, returned from a previous ListArchiveDeployments call,
+        #   that you can use to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListArchiveDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListArchiveDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_environment_archive_deployments(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/archiveDeployments', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListArchiveDeploymentsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListArchiveDeploymentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing ArchiveDeployment. Labels can modified but most of the
+        # other fields are not modifiable.
+        # @param [String] name
+        #   Name of the Archive Deployment in the following format: `organizations/`org`/
+        #   environments/`env`/archiveDeployments/`id``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment] google_cloud_apigee_v1_archive_deployment_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_environment_archive_deployment(name, google_cloud_apigee_v1_archive_deployment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment::Representation
+          command.request_object = google_cloud_apigee_v1_archive_deployment_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ArchiveDeployment
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
