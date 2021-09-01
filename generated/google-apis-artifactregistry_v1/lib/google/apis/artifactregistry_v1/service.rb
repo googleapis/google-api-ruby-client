@@ -162,10 +162,10 @@ module Google
         # service configuration. For backwards compatibility, the default name includes
         # the operations collection id, however overriding users must ensure the name
         # binding is the parent resource, without the operations collection id.
-        # @param [String] filter
-        #   The standard list filter.
         # @param [String] name
         #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -187,12 +187,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/operations', options)
+        def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ArtifactregistryV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ArtifactregistryV1::ListOperationsResponse
+          command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
