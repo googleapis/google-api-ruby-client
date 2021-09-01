@@ -605,6 +605,12 @@ module Google
         # @return [String]
         attr_accessor :connection_name
       
+        # Output only. The time when the instance was created in RFC 3339 format (https:/
+        # /tools.ietf.org/html/rfc3339), for example 2012-11-15T16:19:00.094Z
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # The current disk usage of the instance in bytes. This property has been
         # deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric
         # in Cloud Monitoring API instead. Please see this announcement for details.
@@ -793,6 +799,7 @@ module Google
         def update!(**args)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
           @connection_name = args[:connection_name] if args.key?(:connection_name)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
           @database_version = args[:database_version] if args.key?(:database_version)
           @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
@@ -926,6 +933,12 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::DemoteMasterConfiguration]
         attr_accessor :replica_configuration
       
+        # Flag to skip replication setup on the instance.
+        # Corresponds to the JSON property `skipReplicationSetup`
+        # @return [Boolean]
+        attr_accessor :skip_replication_setup
+        alias_method :skip_replication_setup?, :skip_replication_setup
+      
         # Verify GTID consistency for demote operation. Default value: *True*. Setting
         # this flag to false enables you to bypass GTID consistency check between on-
         # premises primary instance and Cloud SQL instance during the demotion operation
@@ -946,6 +959,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @master_instance_name = args[:master_instance_name] if args.key?(:master_instance_name)
           @replica_configuration = args[:replica_configuration] if args.key?(:replica_configuration)
+          @skip_replication_setup = args[:skip_replication_setup] if args.key?(:skip_replication_setup)
           @verify_gtid_consistency = args[:verify_gtid_consistency] if args.key?(:verify_gtid_consistency)
         end
       end
@@ -1609,6 +1623,39 @@ module Google
         end
       end
       
+      # Reference to another Cloud SQL instance.
+      class InstanceReference
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Cloud SQL instance being referenced. This does not include the
+        # project ID.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The project ID of the Cloud SQL instance being referenced. The default is the
+        # same project ID as the instance references it.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # The region of the Cloud SQL instance being referenced.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @project = args[:project] if args.key?(:project)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
       # Database instance clone request.
       class CloneInstancesRequest
         include Google::Apis::Core::Hashable
@@ -1835,6 +1882,16 @@ module Google
       class IpConfiguration
         include Google::Apis::Core::Hashable
       
+        # The name of the allocated ip range for the private ip CloudSQL instance. For
+        # example: "google-managed-services-default". If set, the instance ip will be
+        # created in the allocated range. The range name must comply with [RFC 1035](
+        # https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63
+        # characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+        # Reserved for future use.
+        # Corresponds to the JSON property `allocatedIpRange`
+        # @return [String]
+        attr_accessor :allocated_ip_range
+      
         # The list of external networks that are allowed to connect to the instance
         # using the IP. In 'CIDR' notation, also known as 'slash' notation (for example:
         # *192.168.100.0/24*).
@@ -1868,6 +1925,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocated_ip_range = args[:allocated_ip_range] if args.key?(:allocated_ip_range)
           @authorized_networks = args[:authorized_networks] if args.key?(:authorized_networks)
           @ipv4_enabled = args[:ipv4_enabled] if args.key?(:ipv4_enabled)
           @private_network = args[:private_network] if args.key?(:private_network)
@@ -2079,6 +2137,25 @@ module Google
         end
       end
       
+      # MySQL-specific external server sync settings.
+      class MySqlSyncConfig
+        include Google::Apis::Core::Hashable
+      
+        # Flags to use for the initial dump.
+        # Corresponds to the JSON property `initialSyncFlags`
+        # @return [Array<Google::Apis::SqladminV1beta4::SyncFlags>]
+        attr_accessor :initial_sync_flags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initial_sync_flags = args[:initial_sync_flags] if args.key?(:initial_sync_flags)
+        end
+      end
+      
       # On-premises instance configuration.
       class OnPremisesConfiguration
         include Google::Apis::Core::Hashable
@@ -2119,6 +2196,11 @@ module Google
         # @return [String]
         attr_accessor :password
       
+        # Reference to another Cloud SQL instance.
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [Google::Apis::SqladminV1beta4::InstanceReference]
+        attr_accessor :source_instance
+      
         # The username for connecting to on-premises instance.
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -2137,6 +2219,7 @@ module Google
           @host_port = args[:host_port] if args.key?(:host_port)
           @kind = args[:kind] if args.key?(:kind)
           @password = args[:password] if args.key?(:password)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -2738,6 +2821,70 @@ module Google
         end
       end
       
+      # 
+      class SqlInstancesStartExternalSyncRequest
+        include Google::Apis::Core::Hashable
+      
+        # MySQL-specific external server sync settings.
+        # Corresponds to the JSON property `mysqlSyncConfig`
+        # @return [Google::Apis::SqladminV1beta4::MySqlSyncConfig]
+        attr_accessor :mysql_sync_config
+      
+        # Whether to skip the verification step (VESS).
+        # Corresponds to the JSON property `skipVerification`
+        # @return [Boolean]
+        attr_accessor :skip_verification
+        alias_method :skip_verification?, :skip_verification
+      
+        # External sync mode.
+        # Corresponds to the JSON property `syncMode`
+        # @return [String]
+        attr_accessor :sync_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
+          @skip_verification = args[:skip_verification] if args.key?(:skip_verification)
+          @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
+        end
+      end
+      
+      # 
+      class SqlInstancesVerifyExternalSyncSettingsRequest
+        include Google::Apis::Core::Hashable
+      
+        # MySQL-specific external server sync settings.
+        # Corresponds to the JSON property `mysqlSyncConfig`
+        # @return [Google::Apis::SqladminV1beta4::MySqlSyncConfig]
+        attr_accessor :mysql_sync_config
+      
+        # External sync mode
+        # Corresponds to the JSON property `syncMode`
+        # @return [String]
+        attr_accessor :sync_mode
+      
+        # Flag to enable verifying connection only
+        # Corresponds to the JSON property `verifyConnectionOnly`
+        # @return [Boolean]
+        attr_accessor :verify_connection_only
+        alias_method :verify_connection_only?, :verify_connection_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
+          @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
+          @verify_connection_only = args[:verify_connection_only] if args.key?(:verify_connection_only)
+        end
+      end
+      
       # Instance verify external sync settings response.
       class SqlInstancesVerifyExternalSyncSettingsResponse
         include Google::Apis::Core::Hashable
@@ -3088,6 +3235,33 @@ module Google
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Initial sync flags for certain Cloud SQL APIs. Currently used for the MySQL
+      # external server initial dump.
+      class SyncFlags
+        include Google::Apis::Core::Hashable
+      
+        # The name of the flag.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The value of the flag. This field must be omitted if the flag doesn't take a
+        # value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
