@@ -125,7 +125,7 @@ module Google
         #   `schema``.
         # @param [String] view
         #   The set of fields to return in the response. If not set, returns a Schema with
-        #   `name` and `type`, but not `definition`. Set to `FULL` to retrieve all fields.
+        #   all fields filled out. Set to `BASIC` to omit the `definition`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
