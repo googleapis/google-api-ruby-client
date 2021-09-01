@@ -358,6 +358,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, as: 'diskSizeGb'
+          property :enable_ip_masq_agent, as: 'enableIpMasqAgent'
           property :ip_allocation_policy, as: 'ipAllocationPolicy', class: Google::Apis::ComposerV1beta1::IpAllocationPolicy, decorator: Google::Apis::ComposerV1beta1::IpAllocationPolicy::Representation
       
           property :location, as: 'location'
@@ -411,6 +412,7 @@ module Google
           property :cloud_composer_network_ipv4_reserved_range, as: 'cloudComposerNetworkIpv4ReservedRange'
           property :cloud_sql_ipv4_cidr_block, as: 'cloudSqlIpv4CidrBlock'
           property :enable_private_environment, as: 'enablePrivateEnvironment'
+          property :enable_privately_used_public_ips, as: 'enablePrivatelyUsedPublicIps'
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ComposerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ComposerV1beta1::PrivateClusterConfig::Representation
       
           property :web_server_ipv4_cidr_block, as: 'webServerIpv4CidrBlock'
