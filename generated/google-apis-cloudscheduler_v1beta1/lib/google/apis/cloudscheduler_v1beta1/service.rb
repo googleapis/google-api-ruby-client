@@ -227,6 +227,12 @@ module Google
         # @param [String] parent
         #   Required. The location name. For example: `projects/PROJECT_ID/locations/
         #   LOCATION_ID`.
+        # @param [String] filter
+        #   `filter` can be used to specify a subset of jobs. If `filter` equals `
+        #   target_config="HttpConfig"`, then the http target jobs are retrieved. If `
+        #   filter` equals `target_config="PubSubConfig"`, then the Pub/Sub target jobs
+        #   are retrieved. If `filter` equals `labels.foo=value1 labels.foo=value2` then
+        #   only jobs which are labeled with foo=value1 AND foo=value2 will be returned.
         # @param [Boolean] legacy_app_engine_cron
         #   This field is used to manage the legacy App Engine Cron jobs using the Cloud
         #   Scheduler API. If the field is set to true, the jobs in the __cron queue will
@@ -258,11 +264,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_jobs(parent, legacy_app_engine_cron: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_jobs(parent, filter: nil, legacy_app_engine_cron: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/jobs', options)
           command.response_representation = Google::Apis::CloudschedulerV1beta1::ListJobsResponse::Representation
           command.response_class = Google::Apis::CloudschedulerV1beta1::ListJobsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['legacyAppEngineCron'] = legacy_app_engine_cron unless legacy_app_engine_cron.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
