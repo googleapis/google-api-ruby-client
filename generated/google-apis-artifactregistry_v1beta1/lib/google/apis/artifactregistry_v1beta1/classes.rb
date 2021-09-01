@@ -506,31 +506,6 @@ module Google
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::ArtifactregistryV1beta1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
       # The response from listing packages.
       class ListPackagesResponse
         include Google::Apis::Core::Hashable
@@ -808,7 +783,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -958,7 +933,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
@@ -1020,8 +995,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the tag, for example: "projects/p1/locations/us-central1/
-        # repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts
-        # contain slashes, the slashes are escaped.
+        # repositories/repo1/packages/pkg1/tags/tag1". If the package part contains
+        # slashes, the slashes are escaped. The tag part can only have characters in [a-
+        # zA-Z0-9\-._~:@], anything else must be URL encoded.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

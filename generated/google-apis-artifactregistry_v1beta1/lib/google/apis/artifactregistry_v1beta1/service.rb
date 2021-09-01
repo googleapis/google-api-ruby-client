@@ -154,52 +154,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
-        # binding allows API services to override the binding to use different resource
-        # name schemes, such as `users/*/operations`. To override the binding, API
-        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
-        # service configuration. For backwards compatibility, the default name includes
-        # the operations collection id, however overriding users must ensure the name
-        # binding is the parent resource, without the operations collection id.
-        # @param [String] name
-        #   The name of the operation's parent resource.
-        # @param [String] filter
-        #   The standard list filter.
-        # @param [Fixnum] page_size
-        #   The standard list page size.
-        # @param [String] page_token
-        #   The standard list page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ArtifactregistryV1beta1::ListOperationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ArtifactregistryV1beta1::ListOperationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta1/{+name}/operations', options)
-          command.response_representation = Google::Apis::ArtifactregistryV1beta1::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::ArtifactregistryV1beta1::ListOperationsResponse
-          command.params['name'] = name unless name.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates a repository. The returned Operation will finish once the repository
         # has been created. Its response will be the created Repository.
         # @param [String] parent
@@ -795,8 +749,9 @@ module Google
         # Updates a tag.
         # @param [String] name
         #   The name of the tag, for example: "projects/p1/locations/us-central1/
-        #   repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts
-        #   contain slashes, the slashes are escaped.
+        #   repositories/repo1/packages/pkg1/tags/tag1". If the package part contains
+        #   slashes, the slashes are escaped. The tag part can only have characters in [a-
+        #   zA-Z0-9\-._~:@], anything else must be URL encoded.
         # @param [Google::Apis::ArtifactregistryV1beta1::Tag] tag_object
         # @param [String] update_mask
         #   The update mask applies to the resource. For the `FieldMask` definition, see
