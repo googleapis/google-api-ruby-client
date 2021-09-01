@@ -705,6 +705,7 @@ module Google
           property :consumer_network, as: 'consumerNetwork'
           property :description, as: 'description'
           property :ip_prefix_length, as: 'ipPrefixLength'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :region, as: 'region'
           property :requested_address, as: 'requestedAddress'
           collection :requested_ranges, as: 'requestedRanges'
