@@ -334,6 +334,7 @@ module Google
           property :legend_template, as: 'legendTemplate'
           property :min_alignment_period, as: 'minAlignmentPeriod'
           property :plot_type, as: 'plotType'
+          property :target_axis, as: 'targetAxis'
           property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
       
         end
@@ -562,6 +563,7 @@ module Google
           property :color, as: 'color'
           property :direction, as: 'direction'
           property :label, as: 'label'
+          property :target_axis, as: 'targetAxis'
           property :value, as: 'value'
         end
       end
@@ -664,6 +666,8 @@ module Google
       
           property :timeshift_duration, as: 'timeshiftDuration'
           property :x_axis, as: 'xAxis', class: Google::Apis::MonitoringV1::Axis, decorator: Google::Apis::MonitoringV1::Axis::Representation
+      
+          property :y2_axis, as: 'y2Axis', class: Google::Apis::MonitoringV1::Axis, decorator: Google::Apis::MonitoringV1::Axis::Representation
       
           property :y_axis, as: 'yAxis', class: Google::Apis::MonitoringV1::Axis, decorator: Google::Apis::MonitoringV1::Axis::Representation
       
