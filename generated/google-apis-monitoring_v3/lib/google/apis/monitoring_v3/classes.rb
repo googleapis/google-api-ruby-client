@@ -1007,9 +1007,7 @@ module Google
         # @return [String]
         attr_accessor :distribution_filter
       
-        # Range of numerical values within min and max. If the open range "< range.max"
-        # is desired, set range.min = -infinity. If the open range ">= range.min" is
-        # desired, set range.max = infinity.
+        # Range of numerical values within min and max.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::MonitoringV3::GoogleMonitoringV3Range]
         attr_accessor :range
@@ -1365,9 +1363,7 @@ module Google
         end
       end
       
-      # Range of numerical values within min and max. If the open range "< range.max"
-      # is desired, set range.min = -infinity. If the open range ">= range.min" is
-      # desired, set range.max = infinity.
+      # Range of numerical values within min and max.
       class GoogleMonitoringV3Range
         include Google::Apis::Core::Hashable
       
@@ -2501,9 +2497,7 @@ module Google
       class MetricRange
         include Google::Apis::Core::Hashable
       
-        # Range of numerical values within min and max. If the open range "< range.max"
-        # is desired, set range.min = -infinity. If the open range ">= range.min" is
-        # desired, set range.max = infinity.
+        # Range of numerical values within min and max.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::MonitoringV3::GoogleMonitoringV3Range]
         attr_accessor :range
@@ -2711,7 +2705,10 @@ module Google
         attr_accessor :name
       
         # Required. The monitored resource type. For example, the type "
-        # cloudsql_database" represents databases in Google Cloud SQL.
+        # cloudsql_database" represents databases in Google Cloud SQL. For a list of
+        # types, see Monitoring resource types (https://cloud.google.com/monitoring/api/
+        # resources) and Logging resource types (https://cloud.google.com/logging/docs/
+        # api/v2/resource-list).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
