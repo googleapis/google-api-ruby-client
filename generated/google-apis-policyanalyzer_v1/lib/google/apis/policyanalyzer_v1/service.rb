@@ -49,16 +49,16 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Queries policy activities on GCP resources.
+        # Queries policy activities on Google Cloud resources.
         # @param [String] parent
         #   Required. The container resource on which to execute the request. Acceptable
         #   formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/
-        #   activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://
-        #   cloud.google.com/about/locations/
+        #   activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to Google Cloud Locations:
+        #   https://cloud.google.com/about/locations/
         # @param [String] filter
-        #   Optional. Optional filter expression to restrict the activities returned.
-        #   Supported filters are: - service_account_last_authn.full_resource_name `=` -
-        #   service_account_key_last_authn.full_resource_name `=`
+        #   Optional. Filter expression to restrict the activities returned. Supported
+        #   filters are: - service_account_last_authn.full_resource_name `=` [STRING] -
+        #   service_account_key_last_authn.full_resource_name `=` [STRING]
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Max limit
         #   is 1000. Non-positive values are ignored. The presence of `nextPageToken` in
