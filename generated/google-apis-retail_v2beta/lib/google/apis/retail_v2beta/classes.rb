@@ -1341,9 +1341,9 @@ module Google
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult>]
         attr_accessor :completion_results
       
-        # Matched recent searches of this user. This field is a restricted feature.
-        # Contact Retail Support (retail-search-support@google.com) if you are
-        # interested in enabling it. This feature is only available when
+        # Matched recent searches of this user. The maximum number of recent searches is
+        # 10. This field is a restricted feature. Contact Retail Search support team if
+        # you are interested in enabling it. This feature is only available when
         # CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The
         # recent searches satisfy the follow rules: * They are ordered from latest to
         # oldest. * They are matched with CompleteQueryRequest.query case insensitively.
@@ -2402,12 +2402,10 @@ module Google
         # product, or age of a customer. For example: `` "vendor": `"text": ["vendor123",
         # "vendor456"]`, "lengths_cm": `"numbers":[2.3, 15.4]`, "heights_cm": `"numbers"
         # :[8.1, 6.4]` ``. This field needs to pass all below criteria, otherwise an
-        # INVALID_ARGUMENT error is returned: * Max entries count: 200 by default; 100
-        # for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit
-        # of 128 characters. * Max indexable entries count: 200 by default; 40 for Type.
-        # VARIANT. * Max searchable entries count: 30. * For indexable attribute, the
-        # key must match the pattern: a-zA-Z0-9*. For example, key0LikeThis or
-        # KEY_1_LIKE_THIS.
+        # INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must
+        # be a UTF-8 encoded string with a length limit of 128 characters. * For
+        # indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example,
+        # key0LikeThis or KEY_1_LIKE_THIS.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCustomAttribute>]
         attr_accessor :attributes
@@ -2514,7 +2512,8 @@ module Google
       
         # The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8
         # encoded string with a length limit of 128 characters. Otherwise, an
-        # INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](
+        # INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise,
+        # an INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](
         # https://support.google.com/merchants/answer/6324461). Schema.org property [
         # Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/
         # gtin8) or [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](
@@ -2553,7 +2552,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # The material of the product. For example, "leather", "wooden". A maximum of 5
+        # The material of the product. For example, "leather", "wooden". A maximum of 20
         # values are allowed. Each value must be a UTF-8 encoded string with a length
         # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         # Google Merchant Center property [material](https://support.google.com/
@@ -2571,7 +2570,7 @@ module Google
         attr_accessor :name
       
         # The pattern or graphic print of the product. For example, "striped", "polka
-        # dot", "paisley". A maximum of 5 values are allowed per Product. Each value
+        # dot", "paisley". A maximum of 20 values are allowed per Product. Each value
         # must be a UTF-8 encoded string with a length limit of 128 characters.
         # Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center
         # property [pattern](https://support.google.com/merchants/answer/6324483).
@@ -2627,8 +2626,9 @@ module Google
         # attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION,
         # the following fields are always returned in SearchResponse by default: * name
         # For Type.VARIANT, the following fields are always returned in by default: *
-        # name * color_info Maximum number of paths is 20. Otherwise, an
-        # INVALID_ARGUMENT error is returned.
+        # name * color_info Maximum number of paths is 30. Otherwise, an
+        # INVALID_ARGUMENT error is returned. Note: Returning more fields in
+        # SearchResponse may increase response payload size and serving latency.
         # Corresponds to the JSON property `retrievableFields`
         # @return [String]
         attr_accessor :retrievable_fields
@@ -3297,25 +3297,25 @@ module Google
         # The keys to fetch and rollup the matching variant Products attributes. The
         # attributes from all the matching variant Products are merged and de-duplicated.
         # Notice that rollup variant Products attributes will lead to extra query
-        # latency. Maximum number of keys is 10. For Product.fulfillment_info, a
-        # fulfillment type and a fulfillment ID must be provided in the format of "
-        # fulfillmentType.filfillmentId". E.g., in "pickupInStore.store123", "
-        # pickupInStore" is fulfillment type and "store123" is the store ID. Supported
-        # keys are: * colorFamilies * price * originalPrice * discount * attributes.key,
-        # where key is any key in the Product.attributes map. * pickupInStore.id, where
-        # id is any FulfillmentInfo.ids for type FulfillmentInfo.Type.PICKUP_IN_STORE. *
-        # shipToStore.id, where id is any FulfillmentInfo.ids for type FulfillmentInfo.
-        # Type.SHIP_TO_STORE. * sameDayDelivery.id, where id is any FulfillmentInfo.ids
-        # for type FulfillmentInfo.Type.SAME_DAY_DELIVERY. * nextDayDelivery.id, where
-        # id is any FulfillmentInfo.ids for type FulfillmentInfo.Type.NEXT_DAY_DELIVERY.
-        # * customFulfillment1.id, where id is any FulfillmentInfo.ids for type
-        # FulfillmentInfo.Type.CUSTOM_TYPE_1. * customFulfillment2.id, where id is any
-        # FulfillmentInfo.ids for type FulfillmentInfo.Type.CUSTOM_TYPE_2. *
-        # customFulfillment3.id, where id is any FulfillmentInfo.ids for type
-        # FulfillmentInfo.Type.CUSTOM_TYPE_3. * customFulfillment4.id, where id is any
-        # FulfillmentInfo.ids for type FulfillmentInfo.Type.CUSTOM_TYPE_4. *
-        # customFulfillment5.id, where id is any FulfillmentInfo.ids for type
-        # FulfillmentInfo.Type.CUSTOM_TYPE_5. If this field is set to an invalid value
+        # latency. Maximum number of keys is 10. For FulfillmentInfo, a fulfillment type
+        # and a fulfillment ID must be provided in the format of "fulfillmentType.
+        # fulfillmentId". E.g., in "pickupInStore.store123", "pickupInStore" is
+        # fulfillment type and "store123" is the store ID. Supported keys are: *
+        # colorFamilies * price * originalPrice * discount * attributes.key, where key
+        # is any key in the Product.attributes map. * pickupInStore.id, where id is any
+        # FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". *
+        # shipToStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.
+        # type "ship-to-store". * sameDayDelivery.id, where id is any FulfillmentInfo.
+        # place_ids for FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id,
+        # where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "next-day-
+        # delivery". * customFulfillment1.id, where id is any FulfillmentInfo.place_ids
+        # for FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is
+        # any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-2". *
+        # customFulfillment3.id, where id is any FulfillmentInfo.place_ids for
+        # FulfillmentInfo.type "custom-type-3". * customFulfillment4.id, where id is any
+        # FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-4". *
+        # customFulfillment5.id, where id is any FulfillmentInfo.place_ids for
+        # FulfillmentInfo.type "custom-type-5". If this field is set to an invalid value
         # other than these, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `variantRollupKeys`
         # @return [Array<String>]
@@ -3399,8 +3399,8 @@ module Google
         # An expression which specifies a boost condition. The syntax and supported
         # fields are the same as a filter expression. See SearchRequest.filter for
         # detail syntax and limitations. Examples: * To boost products with product ID "
-        # product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "
-        # product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        # product_1" or "product_2", and color "Red" or "Blue": * (id: ANY("product_1", "
+        # product_2")) AND (colorFamilies: ANY("Red","Blue"))
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
@@ -3522,33 +3522,13 @@ module Google
       
         # Required. Supported textual and numerical facet keys in Product object, over
         # which the facet values are computed. Facet key is case-sensitive. Allowed
-        # facet keys when FacetKey.query is not specified: * textual_field = *# The
-        # Product.brands. * "brands"; *# The Product.categories. * "categories"; *# The
-        # Audience.genders. * | "genders"; *# The Audience.age_groups. * | "ageGroups"; *
-        # # The Product.availability. Value is one of * *# "IN_STOCK", "OUT_OF_STOCK",
-        # PREORDER", "BACKORDER". * | "availability"; *# The ColorInfo.color_families. *
-        # | "colorFamilies"; *# The ColorInfo.colors. * | "colors"; *# The Product.sizes.
-        # * | "sizes"; *# The Product.materials. * | "materials"; *# The Product.
-        # patterns. * | "patterns"; *# The Product.conditions. * | "conditions"; *# The
-        # textual custom attribute in Product object. Key can * *# be any key in the
-        # Product.attributes map * *# if the attribute values are textual. * *# map. * |
-        # "attributes.key"; *# The FulfillmentInfo.ids for type *# FulfillmentInfo.Type.
-        # PICKUP_IN_STORE. * | "pickupInStore"; *# The FulfillmentInfo.ids for type *#
-        # FulfillmentInfo.Type.SHIP_TO_STORE. * | "shipToStore"; *# The FulfillmentInfo.
-        # ids for type *# FulfillmentInfo.Type.SAME_DAY_DELIVERY. * | "sameDayDelivery";
-        # *# The FulfillmentInfo.ids for type *# FulfillmentInfo.Type.NEXT_DAY_DELIVERY.
-        # * | "nextDayDelivery"; *# The FulfillmentInfo.ids for type *# FulfillmentInfo.
-        # Type.CUSTOM_TYPE_1. * | "customFulfillment1"; *# The FulfillmentInfo.ids for
-        # type *# FulfillmentInfo.Type.CUSTOM_TYPE_2. * | "customFulfillment2"; *# The
-        # FulfillmentInfo.ids for type *# FulfillmentInfo.Type.CUSTOM_TYPE_3. * | "
-        # customFulfillment3"; *# The FulfillmentInfo.ids for type *# FulfillmentInfo.
-        # Type.CUSTOM_TYPE_4. * | "customFulfillment4"; *# The FulfillmentInfo.ids for
-        # type *# FulfillmentInfo.Type.CUSTOM_TYPE_5. * | "customFulfillment5"; *
-        # numerical_field = *# The PriceInfo.price. * "price"; *# The discount. Computed
-        # by (original_price-price)/price * "discount"; *# The Rating.average_rating. * "
-        # rating"; *# The Rating.rating_count. * "ratingCount"; *# The numerical custom
-        # attribute in Product object. Key can * *# be any key in the Product.attributes
-        # map * *# if the attribute values are numerical. * | "attributes.key";
+        # facet keys when FacetKey.query is not specified: * textual_field = * "brands" *
+        # "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "
+        # colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key"
+        # * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "
+        # customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "
+        # customFulfillment4" * "customFulfillment5" * numerical_field = * "price" * "
+        # discount" * "rating" * "ratingCount" * "attributes.key"
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -3558,7 +3538,7 @@ module Google
         # which means order by Facet.FacetValue.value descending. Only applies to
         # textual facets. If not set, textual values are sorted in [natural order](https:
         # //en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in
-        # the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.ids are
+        # the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are
         # sorted in the order given by FacetSpec.FacetKey.restricted_values.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
@@ -3624,6 +3604,14 @@ module Google
         # @return [String]
         attr_accessor :condition
       
+        # Whether to pin unexpanded results. If this field is set to true, unexpanded
+        # products are always at the top of the search results, followed by the expanded
+        # results.
+        # Corresponds to the JSON property `pinUnexpandedResults`
+        # @return [Boolean]
+        attr_accessor :pin_unexpanded_results
+        alias_method :pin_unexpanded_results?, :pin_unexpanded_results
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3631,6 +3619,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @condition = args[:condition] if args.key?(:condition)
+          @pin_unexpanded_results = args[:pin_unexpanded_results] if args.key?(:pin_unexpanded_results)
         end
       end
       
@@ -3777,6 +3766,12 @@ module Google
         attr_accessor :expanded_query
         alias_method :expanded_query?, :expanded_query
       
+        # Number of pinned results. This field will only be set when expansion happens
+        # and SearchRequest.query_expansion_spec.pin_unexpanded_results is set to true.
+        # Corresponds to the JSON property `pinnedResultCount`
+        # @return [Fixnum]
+        attr_accessor :pinned_result_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3784,6 +3779,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expanded_query = args[:expanded_query] if args.key?(:expanded_query)
+          @pinned_result_count = args[:pinned_result_count] if args.key?(:pinned_result_count)
         end
       end
       
@@ -3825,10 +3821,10 @@ module Google
         # protobuf.ListValue. For example, if there are two variants with colors "red"
         # and "blue", the rollup values are ` key: "colorFamilies" value ` list_value `
         # values ` string_value: "red" ` values ` string_value: "blue" ` ` ` ` For
-        # Product.fulfillment_info, the rollup values is a double value with type google.
-        # protobuf.Value. For example, `key: "pickupInStore.store1" value ` number_value:
-        # 10 `` means a there are 10 variants in this product are available in the
-        # store "store1".
+        # FulfillmentInfo, the rollup values is a double value with type google.protobuf.
+        # Value. For example, ``key: "pickupInStore.store1" value ` number_value: 10 ```
+        # means a there are 10 variants in this product are available in the store "
+        # store1".
         # Corresponds to the JSON property `variantRollupValues`
         # @return [Hash<String,Object>]
         attr_accessor :variant_rollup_values
