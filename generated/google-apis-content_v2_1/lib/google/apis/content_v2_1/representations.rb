@@ -298,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CaptureOrderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CaptureOrderResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CarrierRate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1540,6 +1552,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductDimension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductProductDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1606,6 +1624,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductWeight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductsCustomBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1661,6 +1685,12 @@ module Google
       end
       
       class ProductstatusesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Promotion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2743,6 +2773,19 @@ module Google
           property :customer_service_pending_email, as: 'customerServicePendingEmail'
           property :customer_service_verified_email, as: 'customerServiceVerifiedEmail'
           property :participation_stage, as: 'participationStage'
+        end
+      end
+      
+      class CaptureOrderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CaptureOrderResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
         end
       end
       
@@ -5046,8 +5089,16 @@ module Google
       
           collection :product_details, as: 'productDetails', class: Google::Apis::ContentV2_1::ProductProductDetail, decorator: Google::Apis::ContentV2_1::ProductProductDetail::Representation
       
+          property :product_height, as: 'productHeight', class: Google::Apis::ContentV2_1::ProductDimension, decorator: Google::Apis::ContentV2_1::ProductDimension::Representation
+      
           collection :product_highlights, as: 'productHighlights'
+          property :product_length, as: 'productLength', class: Google::Apis::ContentV2_1::ProductDimension, decorator: Google::Apis::ContentV2_1::ProductDimension::Representation
+      
           collection :product_types, as: 'productTypes'
+          property :product_weight, as: 'productWeight', class: Google::Apis::ContentV2_1::ProductWeight, decorator: Google::Apis::ContentV2_1::ProductWeight::Representation
+      
+          property :product_width, as: 'productWidth', class: Google::Apis::ContentV2_1::ProductDimension, decorator: Google::Apis::ContentV2_1::ProductDimension::Representation
+      
           collection :promotion_ids, as: 'promotionIds'
           property :sale_price, as: 'salePrice', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
@@ -5093,6 +5144,14 @@ module Google
       
           property :tax_amount, as: 'taxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
+        end
+      end
+      
+      class ProductDimension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unit, as: 'unit'
+          property :value, as: 'value'
         end
       end
       
@@ -5220,6 +5279,14 @@ module Google
         end
       end
       
+      class ProductWeight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unit, as: 'unit'
+          property :value, as: 'value'
+        end
+      end
+      
       class ProductsCustomBatchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5321,6 +5388,49 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::ProductStatus, decorator: Google::Apis::ContentV2_1::ProductStatus::Representation
       
+        end
+      end
+      
+      class Promotion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :brand, as: 'brand'
+          collection :brand_exclusion, as: 'brandExclusion'
+          property :content_language, as: 'contentLanguage'
+          property :coupon_value_type, as: 'couponValueType'
+          property :free_gift_description, as: 'freeGiftDescription'
+          property :free_gift_item_id, as: 'freeGiftItemId'
+          property :free_gift_value, as: 'freeGiftValue', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :generic_redemption_code, as: 'genericRedemptionCode'
+          property :get_this_quantity_discounted, as: 'getThisQuantityDiscounted'
+          property :id, as: 'id'
+          collection :item_group_id, as: 'itemGroupId'
+          collection :item_group_id_exclusion, as: 'itemGroupIdExclusion'
+          collection :item_id, as: 'itemId'
+          collection :item_id_exclusion, as: 'itemIdExclusion'
+          property :limit_quantity, as: 'limitQuantity'
+          property :limit_value, as: 'limitValue', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :long_title, as: 'longTitle'
+          property :minimum_purchase_amount, as: 'minimumPurchaseAmount', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :minimum_purchase_quantity, as: 'minimumPurchaseQuantity'
+          property :money_budget, as: 'moneyBudget', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :money_off_amount, as: 'moneyOffAmount', class: Google::Apis::ContentV2_1::PriceAmount, decorator: Google::Apis::ContentV2_1::PriceAmount::Representation
+      
+          property :offer_type, as: 'offerType'
+          property :order_limit, as: 'orderLimit'
+          property :percent_off, as: 'percentOff'
+          property :product_applicability, as: 'productApplicability'
+          collection :promotion_destination_ids, as: 'promotionDestinationIds'
+          property :promotion_display_dates, as: 'promotionDisplayDates'
+          property :promotion_effective_dates, as: 'promotionEffectiveDates'
+          property :promotion_id, as: 'promotionId'
+          collection :redemption_channel, as: 'redemptionChannel'
+          collection :shipping_service_names, as: 'shippingServiceNames'
+          property :target_country, as: 'targetCountry'
         end
       end
       

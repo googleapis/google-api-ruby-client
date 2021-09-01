@@ -3096,6 +3096,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Capture funds from the customer for the current order total. This method
+        # should be called after the merchant verifies that they are able and ready to
+        # start shipping the order. This method blocks until a response is received from
+        # the payment processsor. If this method succeeds, the merchant is guaranteed to
+        # receive funds for the order after shipment. If the request fails, it can be
+        # retried or the order may be cancelled. This method cannot be called after the
+        # entire order is already shipped.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account that manages the order. This cannot be a multi-
+        #   client account.
+        # @param [String] order_id
+        #   Required. The ID of the Order.
+        # @param [Google::Apis::ContentV2_1::CaptureOrderRequest] capture_order_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::CaptureOrderResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::CaptureOrderResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def capture_order(merchant_id, order_id, capture_order_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/orders/{orderId}/captureOrder', options)
+          command.request_representation = Google::Apis::ContentV2_1::CaptureOrderRequest::Representation
+          command.request_object = capture_order_request_object
+          command.response_representation = Google::Apis::ContentV2_1::CaptureOrderResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::CaptureOrderResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sandbox only. Creates a test order.
         # @param [Fixnum] merchant_id
         #   The ID of the account that should manage the order. This cannot be a multi-
@@ -4385,6 +4428,40 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['ruleId'] = rule_id unless rule_id.nil?
           command.query['startDate'] = start_date unless start_date.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a promotion for your Merchant Center account. If the promotion already
+        # exists, then it will update the promotion instead.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account that contains the collection.
+        # @param [Google::Apis::ContentV2_1::Promotion] promotion_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::Promotion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::Promotion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_promotion(merchant_id, promotion_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/promotions', options)
+          command.request_representation = Google::Apis::ContentV2_1::Promotion::Representation
+          command.request_object = promotion_object
+          command.response_representation = Google::Apis::ContentV2_1::Promotion::Representation
+          command.response_class = Google::Apis::ContentV2_1::Promotion
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
