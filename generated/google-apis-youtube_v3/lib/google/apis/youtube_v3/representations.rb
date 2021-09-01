@@ -496,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LiveChatMemberMilestoneChatDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiveChatMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,6 +551,12 @@ module Google
       end
       
       class LiveChatModeratorSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatNewSponsorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2142,6 +2154,15 @@ module Google
         end
       end
       
+      class LiveChatMemberMilestoneChatDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :member_level_name, as: 'memberLevelName'
+          property :member_month, as: 'memberMonth'
+          property :user_comment, as: 'userComment'
+        end
+      end
+      
       class LiveChatMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2212,9 +2233,13 @@ module Google
       
           property :has_display_content, as: 'hasDisplayContent'
           property :live_chat_id, as: 'liveChatId'
+          property :member_milestone_chat_details, as: 'memberMilestoneChatDetails', class: Google::Apis::YoutubeV3::LiveChatMemberMilestoneChatDetails, decorator: Google::Apis::YoutubeV3::LiveChatMemberMilestoneChatDetails::Representation
+      
           property :message_deleted_details, as: 'messageDeletedDetails', class: Google::Apis::YoutubeV3::LiveChatMessageDeletedDetails, decorator: Google::Apis::YoutubeV3::LiveChatMessageDeletedDetails::Representation
       
           property :message_retracted_details, as: 'messageRetractedDetails', class: Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails, decorator: Google::Apis::YoutubeV3::LiveChatMessageRetractedDetails::Representation
+      
+          property :new_sponsor_details, as: 'newSponsorDetails', class: Google::Apis::YoutubeV3::LiveChatNewSponsorDetails, decorator: Google::Apis::YoutubeV3::LiveChatNewSponsorDetails::Representation
       
           property :published_at, as: 'publishedAt', type: DateTime
       
@@ -2265,6 +2290,14 @@ module Google
           property :live_chat_id, as: 'liveChatId'
           property :moderator_details, as: 'moderatorDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
       
+        end
+      end
+      
+      class LiveChatNewSponsorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_upgrade, as: 'isUpgrade'
+          property :member_level_name, as: 'memberLevelName'
         end
       end
       
