@@ -22,6 +22,12 @@ module Google
   module Apis
     module PubsubliteV1
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Capacity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListPartitionCursorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,6 +130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartitionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +155,24 @@ module Google
       end
       
       class RetentionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SeekSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SeekSubscriptionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -158,6 +200,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class Capacity
@@ -256,6 +304,15 @@ module Google
         end
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::PubsubliteV1::Operation, decorator: Google::Apis::PubsubliteV1::Operation::Representation
+      
+        end
+      end
+      
       class ListPartitionCursorsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -291,6 +348,28 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::PubsubliteV1::Status, decorator: Google::Apis::PubsubliteV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
       class PartitionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -315,6 +394,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :per_partition_bytes, :numeric_string => true, as: 'perPartitionBytes'
           property :period, as: 'period'
+        end
+      end
+      
+      class SeekSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :named_target, as: 'namedTarget'
+          property :time_target, as: 'timeTarget', class: Google::Apis::PubsubliteV1::TimeTarget, decorator: Google::Apis::PubsubliteV1::TimeTarget::Representation
+      
+        end
+      end
+      
+      class SeekSubscriptionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
