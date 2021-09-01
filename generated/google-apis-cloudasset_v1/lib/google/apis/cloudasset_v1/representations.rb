@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnalyzeIamPolicyLongrunningMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnalyzeIamPolicyLongrunningRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class CreateFeedRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -514,6 +526,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RelatedResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RelatedResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RelationshipAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -592,6 +616,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WindowsApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WindowsQuickFixEngineeringPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -621,6 +651,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
           collection :roles, as: 'roles'
+        end
+      end
+      
+      class AnalyzeIamPolicyLongrunningMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
         end
       end
       
@@ -761,6 +798,15 @@ module Google
           property :feed, as: 'feed', class: Google::Apis::CloudassetV1::Feed, decorator: Google::Apis::CloudassetV1::Feed::Representation
       
           property :feed_id, as: 'feedId'
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -1465,6 +1511,22 @@ module Google
         end
       end
       
+      class RelatedResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_type, as: 'assetType'
+          property :full_resource_name, as: 'fullResourceName'
+        end
+      end
+      
+      class RelatedResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :related_resources, as: 'relatedResources', class: Google::Apis::CloudassetV1::RelatedResource, decorator: Google::Apis::CloudassetV1::RelatedResource::Representation
+      
+        end
+      end
+      
       class RelationshipAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1508,6 +1570,8 @@ module Google
           property :parent_asset_type, as: 'parentAssetType'
           property :parent_full_resource_name, as: 'parentFullResourceName'
           property :project, as: 'project'
+          hash :relationships, as: 'relationships', class: Google::Apis::CloudassetV1::RelatedResources, decorator: Google::Apis::CloudassetV1::RelatedResources::Representation
+      
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           collection :versioned_resources, as: 'versionedResources', class: Google::Apis::CloudassetV1::VersionedResource, decorator: Google::Apis::CloudassetV1::VersionedResource::Representation
@@ -1550,6 +1614,8 @@ module Google
           property :googet_package, as: 'googetPackage', class: Google::Apis::CloudassetV1::VersionedPackage, decorator: Google::Apis::CloudassetV1::VersionedPackage::Representation
       
           property :qfe_package, as: 'qfePackage', class: Google::Apis::CloudassetV1::WindowsQuickFixEngineeringPackage, decorator: Google::Apis::CloudassetV1::WindowsQuickFixEngineeringPackage::Representation
+      
+          property :windows_application, as: 'windowsApplication', class: Google::Apis::CloudassetV1::WindowsApplication, decorator: Google::Apis::CloudassetV1::WindowsApplication::Representation
       
           property :wua_package, as: 'wuaPackage', class: Google::Apis::CloudassetV1::WindowsUpdatePackage, decorator: Google::Apis::CloudassetV1::WindowsUpdatePackage::Representation
       
@@ -1616,6 +1682,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :resource, as: 'resource'
           property :version, as: 'version'
+        end
+      end
+      
+      class WindowsApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :display_version, as: 'displayVersion'
+          property :help_link, as: 'helpLink'
+          property :install_date, as: 'installDate', class: Google::Apis::CloudassetV1::Date, decorator: Google::Apis::CloudassetV1::Date::Representation
+      
+          property :publisher, as: 'publisher'
         end
       end
       
