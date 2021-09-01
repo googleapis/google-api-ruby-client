@@ -22,6 +22,24 @@ module Google
   module Apis
     module StsV1
       
+      class GoogleIamV1Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1AccessBoundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1AccessBoundaryRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityStsV1ExchangeTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -34,16 +52,62 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleIdentityStsV1IntrospectTokenRequest
+      class GoogleIdentityStsV1Options
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleIdentityStsV1IntrospectTokenResponse
+      class GoogleIdentityStsV1betaAccessBoundary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1betaAccessBoundaryRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1betaOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeExpr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::StsV1::GoogleTypeExpr, decorator: Google::Apis::StsV1::GoogleTypeExpr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleIdentityStsV1AccessBoundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_boundary_rules, as: 'accessBoundaryRules', class: Google::Apis::StsV1::GoogleIdentityStsV1AccessBoundaryRule, decorator: Google::Apis::StsV1::GoogleIdentityStsV1AccessBoundaryRule::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityStsV1AccessBoundaryRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_condition, as: 'availabilityCondition', class: Google::Apis::StsV1::GoogleTypeExpr, decorator: Google::Apis::StsV1::GoogleTypeExpr::Representation
+      
+          collection :available_permissions, as: 'availablePermissions'
+          property :available_resource, as: 'availableResource'
+        end
       end
       
       class GoogleIdentityStsV1ExchangeTokenRequest
@@ -69,25 +133,51 @@ module Google
         end
       end
       
-      class GoogleIdentityStsV1IntrospectTokenRequest
+      class GoogleIdentityStsV1Options
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :token, as: 'token'
-          property :token_type_hint, as: 'tokenTypeHint'
+          property :access_boundary, as: 'accessBoundary', class: Google::Apis::StsV1::GoogleIdentityStsV1AccessBoundary, decorator: Google::Apis::StsV1::GoogleIdentityStsV1AccessBoundary::Representation
+      
+          collection :audiences, as: 'audiences'
+          property :user_project, as: 'userProject'
         end
       end
       
-      class GoogleIdentityStsV1IntrospectTokenResponse
+      class GoogleIdentityStsV1betaAccessBoundary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :active, as: 'active'
-          property :client_id, as: 'client_id'
-          property :exp, :numeric_string => true, as: 'exp'
-          property :iat, :numeric_string => true, as: 'iat'
-          property :iss, as: 'iss'
-          property :scope, as: 'scope'
-          property :sub, as: 'sub'
-          property :username, as: 'username'
+          collection :access_boundary_rules, as: 'accessBoundaryRules', class: Google::Apis::StsV1::GoogleIdentityStsV1betaAccessBoundaryRule, decorator: Google::Apis::StsV1::GoogleIdentityStsV1betaAccessBoundaryRule::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityStsV1betaAccessBoundaryRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_condition, as: 'availabilityCondition', class: Google::Apis::StsV1::GoogleTypeExpr, decorator: Google::Apis::StsV1::GoogleTypeExpr::Representation
+      
+          collection :available_permissions, as: 'availablePermissions'
+          property :available_resource, as: 'availableResource'
+        end
+      end
+      
+      class GoogleIdentityStsV1betaOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_boundary, as: 'accessBoundary', class: Google::Apis::StsV1::GoogleIdentityStsV1betaAccessBoundary, decorator: Google::Apis::StsV1::GoogleIdentityStsV1betaAccessBoundary::Representation
+      
+          collection :audiences, as: 'audiences'
+          property :user_project, as: 'userProject'
+        end
+      end
+      
+      class GoogleTypeExpr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
     end
