@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesCloneRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MySqlSyncConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OnPremisesConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,6 +412,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlInstancesStartExternalSyncRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesVerifyExternalSyncSettingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlInstancesVerifyExternalSyncSettingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -461,6 +485,12 @@ module Google
       end
       
       class SslCertsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SyncFlags
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -645,6 +675,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_type, as: 'backendType'
           property :connection_name, as: 'connectionName'
+          property :create_time, as: 'createTime'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
           property :database_version, as: 'databaseVersion'
           property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqladminV1::DiskEncryptionConfiguration, decorator: Google::Apis::SqladminV1::DiskEncryptionConfiguration::Representation
@@ -721,6 +752,7 @@ module Google
           property :master_instance_name, as: 'masterInstanceName'
           property :replica_configuration, as: 'replicaConfiguration', class: Google::Apis::SqladminV1::DemoteMasterConfiguration, decorator: Google::Apis::SqladminV1::DemoteMasterConfiguration::Representation
       
+          property :skip_replication_setup, as: 'skipReplicationSetup'
           property :verify_gtid_consistency, as: 'verifyGtidConsistency'
         end
       end
@@ -902,6 +934,15 @@ module Google
         end
       end
       
+      class InstanceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :project, as: 'project'
+          property :region, as: 'region'
+        end
+      end
+      
       class InstancesCloneRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -991,6 +1032,7 @@ module Google
       class IpConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_ip_range, as: 'allocatedIpRange'
           collection :authorized_networks, as: 'authorizedNetworks', class: Google::Apis::SqladminV1::AclEntry, decorator: Google::Apis::SqladminV1::AclEntry::Representation
       
           property :ipv4_enabled, as: 'ipv4Enabled'
@@ -1045,6 +1087,14 @@ module Google
         end
       end
       
+      class MySqlSyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :initial_sync_flags, as: 'initialSyncFlags', class: Google::Apis::SqladminV1::SyncFlags, decorator: Google::Apis::SqladminV1::SyncFlags::Representation
+      
+        end
+      end
+      
       class OnPremisesConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1055,6 +1105,8 @@ module Google
           property :host_port, as: 'hostPort'
           property :kind, as: 'kind'
           property :password, as: 'password'
+          property :source_instance, as: 'sourceInstance', class: Google::Apis::SqladminV1::InstanceReference, decorator: Google::Apis::SqladminV1::InstanceReference::Representation
+      
           property :username, as: 'username'
         end
       end
@@ -1212,6 +1264,26 @@ module Google
         end
       end
       
+      class SqlInstancesStartExternalSyncRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1::MySqlSyncConfig, decorator: Google::Apis::SqladminV1::MySqlSyncConfig::Representation
+      
+          property :skip_verification, as: 'skipVerification'
+          property :sync_mode, as: 'syncMode'
+        end
+      end
+      
+      class SqlInstancesVerifyExternalSyncSettingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1::MySqlSyncConfig, decorator: Google::Apis::SqladminV1::MySqlSyncConfig::Representation
+      
+          property :sync_mode, as: 'syncMode'
+          property :verify_connection_only, as: 'verifyConnectionOnly'
+        end
+      end
+      
       class SqlInstancesVerifyExternalSyncSettingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1315,6 +1387,14 @@ module Google
           collection :items, as: 'items', class: Google::Apis::SqladminV1::SslCert, decorator: Google::Apis::SqladminV1::SslCert::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class SyncFlags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
