@@ -50,6 +50,79 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Gets information about a location.
+        # @param [String] name
+        #   Resource name for the location.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudLocationLocation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudLocationLocation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudLocationLocation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudLocationLocation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists information about the supported locations for this service.
+        # @param [String] name
+        #   The resource that owns the locations collection, if applicable.
+        # @param [String] filter
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like "displayName=tokyo", and is documented in more detail in [
+        #   AIP-160](https://google.aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. If not set, the service selects a
+        #   default.
+        # @param [String] page_token
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudLocationListLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudLocationListLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_locations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+name}/locations', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudLocationListLocationsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudLocationListLocationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an agent in the specified location. Note: You should always train a
         # flow prior to sending it queries. See the [training documentation](https://
         # cloud.google.com/dialogflow/cx/docs/concept/training).
@@ -116,7 +189,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports the specified agent to a binary file.
+        # Exports the specified agent to a binary file. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-
+        # operation). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`:
+        # ExportAgentResponse
         # @param [String] name
         #   Required. The name of the agent to export. Format: `projects//locations//
         #   agents/`.
@@ -295,9 +373,15 @@ module Google
         
         # Restores the specified agent from a binary file. Replaces the current agent
         # with a new one. Note that all existing resources in agent (e.g. intents,
-        # entity types, flows) will be removed. Note: You should always train a flow
-        # prior to sending it queries. See the [training documentation](https://cloud.
-        # google.com/dialogflow/cx/docs/concept/training).
+        # entity types, flows) will be removed. This method is a [long-running operation]
+        # (https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: An empty [Struct message](https://developers.google.com/protocol-
+        # buffers/docs/reference/google.protobuf#struct) - `response`: An [Empty message]
+        # (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        # empty) Note: You should always train a flow prior to sending it queries. See
+        # the [training documentation](https://cloud.google.com/dialogflow/cx/docs/
+        # concept/training).
         # @param [String] name
         #   Required. The name of the agent to restore into. Format: `projects//locations//
         #   agents/`.
@@ -579,7 +663,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an Environment in the specified Agent.
+        # Creates an Environment in the specified Agent. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-
+        # operation). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`:
+        # Environment
         # @param [String] parent
         #   Required. The Agent to create an Environment for. Format: `projects//locations/
         #   /agents/`.
@@ -751,7 +840,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified Environment.
+        # Updates the specified Environment. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: An empty [Struct message](https://developers.google.com/protocol-
+        # buffers/docs/reference/google.protobuf#struct) - `response`: Environment
         # @param [String] name
         #   The name of the environment. Format: `projects//locations//agents//
         #   environments/`.
@@ -788,7 +881,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Kicks off a continuous test under the specified Environment.
+        # Kicks off a continuous test under the specified Environment. This method is a [
+        # long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-
+        # running-operation). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: RunContinuousTestMetadata - `response`:
+        # RunContinuousTestResponse
         # @param [String] environment
         #   Required. Format: `projects//locations//agents//environments/`.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest] google_cloud_dialogflow_cx_v3beta1_run_continuous_test_request_object
@@ -1493,8 +1590,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports the specified flow to a binary file. Note that resources (e.g. intents,
-        # entities, webhooks) that the flow references will also be exported.
+        # Exports the specified flow to a binary file. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-
+        # operation). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`:
+        # ExportFlowResponse Note that resources (e.g. intents, entities, webhooks) that
+        # the flow references will also be exported.
         # @param [String] name
         #   Required. The name of the flow to export. Format: `projects//locations//agents/
         #   /flows/`.
@@ -1604,9 +1706,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Imports the specified flow to the specified agent from a binary file. Note:
-        # You should always train a flow prior to sending it queries. See the [training
-        # documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+        # Imports the specified flow to the specified agent from a binary file. This
+        # method is a [long-running operation](https://cloud.google.com/dialogflow/cx/
+        # docs/how/long-running-operation). The returned `Operation` type has the
+        # following method-specific fields: - `metadata`: An empty [Struct message](
+        # https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        # struct) - `response`: ImportFlowResponse Note: You should always train a flow
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/cx/docs/concept/training).
         # @param [String] parent
         #   Required. The agent to import the flow into. Format: `projects//locations//
         #   agents/`.
@@ -1704,8 +1811,8 @@ module Google
         #   com/dialogflow/cx/docs/reference/language) are supported. Note: languages must
         #   be enabled in the agent before they can be used.
         # @param [String] update_mask
-        #   Required. The mask to control which fields get updated. If `update_mask` is
-        #   not specified, an error will be returned.
+        #   The mask to control which fields get updated. If the mask is not present, all
+        #   fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1738,9 +1845,14 @@ module Google
         end
         
         # Trains the specified flow. Note that only the flow in 'draft' environment is
-        # trained. Note: You should always train a flow prior to sending it queries. See
-        # the [training documentation](https://cloud.google.com/dialogflow/cx/docs/
-        # concept/training).
+        # trained. This method is a [long-running operation](https://cloud.google.com/
+        # dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type
+        # has the following method-specific fields: - `metadata`: An empty [Struct
+        # message](https://developers.google.com/protocol-buffers/docs/reference/google.
+        # protobuf#struct) - `response`: An [Empty message](https://developers.google.
+        # com/protocol-buffers/docs/reference/google.protobuf#empty) Note: You should
+        # always train a flow prior to sending it queries. See the [training
+        # documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
         # @param [String] name
         #   Required. The flow to train. Format: `projects//locations//agents//flows/`.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TrainFlowRequest] google_cloud_dialogflow_cx_v3beta1_train_flow_request_object
@@ -2268,7 +2380,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Version in the specified Flow.
+        # Creates a Version in the specified Flow. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-
+        # operation). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: CreateVersionOperationMetadata - `response`: Version
         # @param [String] parent
         #   Required. The Flow to create an Version for. Format: `projects//locations//
         #   agents//flows/`.
@@ -2402,7 +2517,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Loads resources in the specified version to the draft flow.
+        # Loads resources in the specified version to the draft flow. This method is a [
+        # long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-
+        # running-operation). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: An empty [Struct message](https://developers.
+        # google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`
+        # : An [Empty message](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#empty)
         # @param [String] name
         #   Required. The Version to be loaded to draft flow. Format: `projects//locations/
         #   /agents//flows//versions/`.
@@ -3027,7 +3148,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Kicks off a batch run of test cases.
+        # Kicks off a batch run of test cases. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: BatchRunTestCasesMetadata - `response`: BatchRunTestCasesResponse
         # @param [String] parent
         #   Required. Agent name. Format: `projects//locations//agents/ `.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest] google_cloud_dialogflow_cx_v3beta1_batch_run_test_cases_request_object
@@ -3129,7 +3253,11 @@ module Google
         end
         
         # Exports the test cases under the agent to a Cloud Storage bucket or a local
-        # file. Filter can be applied to export a subset of test cases.
+        # file. Filter can be applied to export a subset of test cases. This method is a
+        # [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-
+        # running-operation). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: ExportTestCasesMetadata - `response`:
+        # ExportTestCasesResponse
         # @param [String] parent
         #   Required. The agent where to export test cases from. Format: `projects//
         #   locations//agents/`.
@@ -3196,7 +3324,11 @@ module Google
         
         # Imports the test cases from a Cloud Storage bucket or a local file. It always
         # creates new test cases and won't overwite any existing ones. The provided ID
-        # in the imported test case is neglected.
+        # in the imported test case is neglected. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-
+        # operation). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: ImportTestCasesMetadata - `response`:
+        # ImportTestCasesResponse
         # @param [String] parent
         #   Required. The agent to import test cases to. Format: `projects//locations//
         #   agents/`.
@@ -3311,7 +3443,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Kicks off a test case run.
+        # Kicks off a test case run. This method is a [long-running operation](https://
+        # cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `
+        # Operation` type has the following method-specific fields: - `metadata`:
+        # RunTestCaseMetadata - `response`: RunTestCaseResponse
         # @param [String] name
         #   Required. Format of test case name to run: `projects//locations/ /agents//
         #   testCases/`.
