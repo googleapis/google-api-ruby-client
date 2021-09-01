@@ -4666,6 +4666,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetHttpsProxiesSetCertificateMapRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetHttpsProxiesSetQuicOverrideRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4877,6 +4883,12 @@ module Google
       end
       
       class TargetSslProxiesSetBackendServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetSslProxiesSetCertificateMapRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5756,6 +5768,7 @@ module Google
           property :interface, as: 'interface'
           property :kind, as: 'kind'
           collection :licenses, as: 'licenses'
+          property :locked, as: 'locked'
           property :mode, as: 'mode'
           property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeBeta::InitialStateConfig, decorator: Google::Apis::ComputeBeta::InitialStateConfig::Representation
       
@@ -6719,6 +6732,7 @@ module Google
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
           property :location_hint, as: 'locationHint'
+          property :locked, as: 'locked'
           property :multi_writer, as: 'multiWriter'
           property :name, as: 'name'
           property :options, as: 'options'
@@ -7379,6 +7393,7 @@ module Google
       
           property :service_label, as: 'serviceLabel'
           property :service_name, as: 'serviceName'
+          collection :source_ip_ranges, as: 'sourceIpRanges'
           property :subnetwork, as: 'subnetwork'
           property :target, as: 'target'
         end
@@ -8146,6 +8161,7 @@ module Google
           hash :labels, as: 'labels'
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
+          property :locked, as: 'locked'
           property :name, as: 'name'
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeBeta::Image::RawDisk, decorator: Google::Apis::ComputeBeta::Image::RawDisk::Representation
       
@@ -14146,6 +14162,13 @@ module Google
         end
       end
       
+      class TargetHttpsProxiesSetCertificateMapRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_map, as: 'certificateMap'
+        end
+      end
+      
       class TargetHttpsProxiesSetQuicOverrideRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14166,6 +14189,7 @@ module Google
           property :authentication, as: 'authentication'
           property :authorization, as: 'authorization'
           property :authorization_policy, as: 'authorizationPolicy'
+          property :certificate_map, as: 'certificateMap'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -14524,6 +14548,13 @@ module Google
         end
       end
       
+      class TargetSslProxiesSetCertificateMapRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_map, as: 'certificateMap'
+        end
+      end
+      
       class TargetSslProxiesSetProxyHeaderRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14541,6 +14572,7 @@ module Google
       class TargetSslProxy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_map, as: 'certificateMap'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
