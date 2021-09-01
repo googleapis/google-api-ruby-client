@@ -23,13 +23,13 @@ module Google
     #
     # The Network Connectivity API provides access to Network Connectivity Center.
     #
-    # @see https://cloud.google.com/network-connectivity/docs
+    # @see https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest
     module NetworkconnectivityV1alpha1
       # Version of the Network Connectivity API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1alpha1'
 
-      # See, edit, configure, and delete your Google Cloud Platform data
+      # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
