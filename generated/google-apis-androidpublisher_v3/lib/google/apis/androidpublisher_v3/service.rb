@@ -1504,13 +1504,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all in-app products - both managed products and subscriptions.
+        # Lists all in-app products - both managed products and subscriptions. If an app
+        # has a large number of in-app products, the response may be paginated. In this
+        # case the response field `tokenPagination.nextPageToken` will be set and the
+        # caller should provide its value as a `token` request parameter to retrieve the
+        # next page.
         # @param [String] package_name
         #   Package name of the app.
         # @param [Fixnum] max_results
-        #   How many results the list operation should return.
+        #   Deprecated and ignored. The page size is determined by the server.
         # @param [Fixnum] start_index
-        #   The index of the first element to return.
+        #   Deprecated and ignored. Set the `token` parameter to rertieve the next page.
         # @param [String] token
         #   Pagination token. If empty, list starts at the first product.
         # @param [String] fields
@@ -1717,7 +1721,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Refund a user's subscription or in-app purchase order.
+        # Refunds a user's subscription or in-app purchase order. Orders older than 1
+        # year cannot be refunded.
         # @param [String] package_name
         #   The package name of the application for which this subscription or in-app item
         #   was purchased (for example, 'com.some.thing').
