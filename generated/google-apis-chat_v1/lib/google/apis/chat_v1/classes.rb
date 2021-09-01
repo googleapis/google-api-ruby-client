@@ -464,6 +464,118 @@ module Google
         end
       end
       
+      # Next available ID = 8
+      class CommonEventObject
+        include Google::Apis::Core::Hashable
+      
+        # The keys are the string IDs associated with the widget and the values are
+        # inputs with a widget in the card.
+        # Corresponds to the JSON property `formInputs`
+        # @return [Hash<String,Google::Apis::ChatV1::Inputs>]
+        attr_accessor :form_inputs
+      
+        # The hostApp enum which indicates the app the add-on is invoked from
+        # Corresponds to the JSON property `hostApp`
+        # @return [String]
+        attr_accessor :host_app
+      
+        # Name of the invoked function associated with the widget. This field is
+        # currently only set for chat.
+        # Corresponds to the JSON property `invokedFunction`
+        # @return [String]
+        attr_accessor :invoked_function
+      
+        # Any additional parameters.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
+        # The platform enum which indicates the platform where the add-on is running.
+        # Corresponds to the JSON property `platform`
+        # @return [String]
+        attr_accessor :platform
+      
+        # The timezone id and offset. The id is the tz database time zones such as "
+        # America/Toronto". The user timezone offset, in milliseconds, from Coordinated
+        # Universal Time (UTC).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::ChatV1::TimeZone]
+        attr_accessor :time_zone
+      
+        # The full locale.displayName in the format of [ISO 639 language code]-[ISO 3166
+        # country/region code] such as "en-US"
+        # Corresponds to the JSON property `userLocale`
+        # @return [String]
+        attr_accessor :user_locale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @form_inputs = args[:form_inputs] if args.key?(:form_inputs)
+          @host_app = args[:host_app] if args.key?(:host_app)
+          @invoked_function = args[:invoked_function] if args.key?(:invoked_function)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @platform = args[:platform] if args.key?(:platform)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @user_locale = args[:user_locale] if args.key?(:user_locale)
+        end
+      end
+      
+      # Input Parameter for Date Picker widget.
+      class DateInput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `msSinceEpoch`
+        # @return [Fixnum]
+        attr_accessor :ms_since_epoch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ms_since_epoch = args[:ms_since_epoch] if args.key?(:ms_since_epoch)
+        end
+      end
+      
+      # Input Parameter for Date and Time Picker widget.
+      class DateTimeInput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `hasDate`
+        # @return [Boolean]
+        attr_accessor :has_date
+        alias_method :has_date?, :has_date
+      
+        # 
+        # Corresponds to the JSON property `hasTime`
+        # @return [Boolean]
+        attr_accessor :has_time
+        alias_method :has_time?, :has_time
+      
+        # 
+        # Corresponds to the JSON property `msSinceEpoch`
+        # @return [Fixnum]
+        attr_accessor :ms_since_epoch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_date = args[:has_date] if args.key?(:has_date)
+          @has_time = args[:has_time] if args.key?(:has_time)
+          @ms_since_epoch = args[:ms_since_epoch] if args.key?(:ms_since_epoch)
+        end
+      end
+      
       # Google Chat events.
       class DeprecatedEvent
         include Google::Apis::Core::Hashable
@@ -474,6 +586,11 @@ module Google
         # @return [Google::Apis::ChatV1::FormAction]
         attr_accessor :action
       
+        # Next available ID = 8
+        # Corresponds to the JSON property `common`
+        # @return [Google::Apis::ChatV1::CommonEventObject]
+        attr_accessor :common
+      
         # The URL the bot should redirect the user to after they have completed an
         # authorization or configuration flow outside of Google Chat. See the [
         # Authorizing access to 3p services guide](/chat/how-tos/auth-3p) for more
@@ -482,10 +599,22 @@ module Google
         # @return [String]
         attr_accessor :config_complete_redirect_url
       
+        # The type of dialog event we have received.
+        # Corresponds to the JSON property `dialogEventType`
+        # @return [String]
+        attr_accessor :dialog_event_type
+      
         # The timestamp indicating when the event was dispatched.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
+      
+        # Whether or not this event is related to dialogs request, submit or cancel.
+        # This will be set to true when we want a request/submit/cancel event.
+        # Corresponds to the JSON property `isDialogEvent`
+        # @return [Boolean]
+        attr_accessor :is_dialog_event
+        alias_method :is_dialog_event?, :is_dialog_event
       
         # A message in Hangouts Chat.
         # Corresponds to the JSON property `message`
@@ -528,8 +657,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @common = args[:common] if args.key?(:common)
           @config_complete_redirect_url = args[:config_complete_redirect_url] if args.key?(:config_complete_redirect_url)
+          @dialog_event_type = args[:dialog_event_type] if args.key?(:dialog_event_type)
           @event_time = args[:event_time] if args.key?(:event_time)
+          @is_dialog_event = args[:is_dialog_event] if args.key?(:is_dialog_event)
           @message = args[:message] if args.key?(:message)
           @space = args[:space] if args.key?(:space)
           @thread_key = args[:thread_key] if args.key?(:thread_key)
@@ -2021,6 +2153,45 @@ module Google
         end
       end
       
+      # The inputs with widgets.
+      class Inputs
+        include Google::Apis::Core::Hashable
+      
+        # Input Parameter for Date Picker widget.
+        # Corresponds to the JSON property `dateInput`
+        # @return [Google::Apis::ChatV1::DateInput]
+        attr_accessor :date_input
+      
+        # Input Parameter for Date and Time Picker widget.
+        # Corresponds to the JSON property `dateTimeInput`
+        # @return [Google::Apis::ChatV1::DateTimeInput]
+        attr_accessor :date_time_input
+      
+        # Input parameter for regular widgets. For single-valued widgets, it will be a
+        # single value list; for multi-valued widgets, such as checkbox, all the values
+        # are presented.
+        # Corresponds to the JSON property `stringInputs`
+        # @return [Google::Apis::ChatV1::StringInputs]
+        attr_accessor :string_inputs
+      
+        # Input Parameter for Time Picker widget.
+        # Corresponds to the JSON property `timeInput`
+        # @return [Google::Apis::ChatV1::TimeInput]
+        attr_accessor :time_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_input = args[:date_input] if args.key?(:date_input)
+          @date_time_input = args[:date_time_input] if args.key?(:date_time_input)
+          @string_inputs = args[:string_inputs] if args.key?(:string_inputs)
+          @time_input = args[:time_input] if args.key?(:time_input)
+        end
+      end
+      
       # A UI element contains a key (label) and a value (content). And this element
       # may also contain some actions such as onclick button.
       class KeyValue
@@ -2237,6 +2408,13 @@ module Google
         # @return [String]
         attr_accessor :fallback_text
       
+        # Output only. The time at which the message was last updated in Hangouts Chat
+        # server. If the message was never updated, this field will be same as
+        # create_time.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
         # 
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2287,6 +2465,7 @@ module Google
           @cards = args[:cards] if args.key?(:cards)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @name = args[:name] if args.key?(:name)
           @preview_text = args[:preview_text] if args.key?(:preview_text)
           @sender = args[:sender] if args.key?(:sender)
@@ -2480,6 +2659,27 @@ module Google
         end
       end
       
+      # Input parameter for regular widgets. For single-valued widgets, it will be a
+      # single value list; for multi-valued widgets, such as checkbox, all the values
+      # are presented.
+      class StringInputs
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [Array<String>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A button with text and onclick action.
       class TextButton
         include Google::Apis::Core::Hashable
@@ -2541,6 +2741,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Input Parameter for Time Picker widget.
+      class TimeInput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # 
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+        end
+      end
+      
+      # The timezone id and offset. The id is the tz database time zones such as "
+      # America/Toronto". The user timezone offset, in milliseconds, from Coordinated
+      # Universal Time (UTC).
+      class TimeZone
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `offset`
+        # @return [Fixnum]
+        attr_accessor :offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @offset = args[:offset] if args.key?(:offset)
         end
       end
       

@@ -88,6 +88,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommonEventObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DateInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DateTimeInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeprecatedEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Inputs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class KeyValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -382,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StringInputs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TextButton
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +425,18 @@ module Google
       end
       
       class Thread
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -532,13 +574,48 @@ module Google
         end
       end
       
+      class CommonEventObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :form_inputs, as: 'formInputs', class: Google::Apis::ChatV1::Inputs, decorator: Google::Apis::ChatV1::Inputs::Representation
+      
+          property :host_app, as: 'hostApp'
+          property :invoked_function, as: 'invokedFunction'
+          hash :parameters, as: 'parameters'
+          property :platform, as: 'platform'
+          property :time_zone, as: 'timeZone', class: Google::Apis::ChatV1::TimeZone, decorator: Google::Apis::ChatV1::TimeZone::Representation
+      
+          property :user_locale, as: 'userLocale'
+        end
+      end
+      
+      class DateInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ms_since_epoch, :numeric_string => true, as: 'msSinceEpoch'
+        end
+      end
+      
+      class DateTimeInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_date, as: 'hasDate'
+          property :has_time, as: 'hasTime'
+          property :ms_since_epoch, :numeric_string => true, as: 'msSinceEpoch'
+        end
+      end
+      
       class DeprecatedEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action', class: Google::Apis::ChatV1::FormAction, decorator: Google::Apis::ChatV1::FormAction::Representation
       
+          property :common, as: 'common', class: Google::Apis::ChatV1::CommonEventObject, decorator: Google::Apis::ChatV1::CommonEventObject::Representation
+      
           property :config_complete_redirect_url, as: 'configCompleteRedirectUrl'
+          property :dialog_event_type, as: 'dialogEventType'
           property :event_time, as: 'eventTime'
+          property :is_dialog_event, as: 'isDialogEvent'
           property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
       
           property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
@@ -952,6 +1029,20 @@ module Google
         end
       end
       
+      class Inputs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_input, as: 'dateInput', class: Google::Apis::ChatV1::DateInput, decorator: Google::Apis::ChatV1::DateInput::Representation
+      
+          property :date_time_input, as: 'dateTimeInput', class: Google::Apis::ChatV1::DateTimeInput, decorator: Google::Apis::ChatV1::DateTimeInput::Representation
+      
+          property :string_inputs, as: 'stringInputs', class: Google::Apis::ChatV1::StringInputs, decorator: Google::Apis::ChatV1::StringInputs::Representation
+      
+          property :time_input, as: 'timeInput', class: Google::Apis::ChatV1::TimeInput, decorator: Google::Apis::ChatV1::TimeInput::Representation
+      
+        end
+      end
+      
       class KeyValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1018,6 +1109,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :fallback_text, as: 'fallbackText'
+          property :last_update_time, as: 'lastUpdateTime'
           property :name, as: 'name'
           property :preview_text, as: 'previewText'
           property :sender, as: 'sender', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
@@ -1088,6 +1180,13 @@ module Google
         end
       end
       
+      class StringInputs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :value, as: 'value'
+        end
+      end
+      
       class TextButton
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1108,6 +1207,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class TimeInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+        end
+      end
+      
+      class TimeZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :offset, as: 'offset'
         end
       end
       
