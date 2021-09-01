@@ -263,6 +263,116 @@ module Google
         end
       end
       
+      # CVE stands for Common Vulnerabilities and Exposures. More information: https://
+      # cve.mitre.org
+      class Cve
+        include Google::Apis::Core::Hashable
+      
+        # Common Vulnerability Scoring System version 3.
+        # Corresponds to the JSON property `cvssv3`
+        # @return [Google::Apis::SecuritycenterV1beta1::Cvssv3]
+        attr_accessor :cvssv3
+      
+        # The unique identifier for the vulnerability. e.g. CVE-2021-34527
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Additional information about the CVE. e.g. https://cve.mitre.org/cgi-bin/
+        # cvename.cgi?name=CVE-2021-34527
+        # Corresponds to the JSON property `references`
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::Reference>]
+        attr_accessor :references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
+          @id = args[:id] if args.key?(:id)
+          @references = args[:references] if args.key?(:references)
+        end
+      end
+      
+      # Common Vulnerability Scoring System version 3.
+      class Cvssv3
+        include Google::Apis::Core::Hashable
+      
+        # This metric describes the conditions beyond the attacker's control that must
+        # exist in order to exploit the vulnerability.
+        # Corresponds to the JSON property `attackComplexity`
+        # @return [String]
+        attr_accessor :attack_complexity
+      
+        # Base Metrics Represents the intrinsic characteristics of a vulnerability that
+        # are constant over time and across user environments. This metric reflects the
+        # context by which vulnerability exploitation is possible.
+        # Corresponds to the JSON property `attackVector`
+        # @return [String]
+        attr_accessor :attack_vector
+      
+        # This metric measures the impact to the availability of the impacted component
+        # resulting from a successfully exploited vulnerability.
+        # Corresponds to the JSON property `availabilityImpact`
+        # @return [String]
+        attr_accessor :availability_impact
+      
+        # The base score is a function of the base metric scores.
+        # Corresponds to the JSON property `baseScore`
+        # @return [Float]
+        attr_accessor :base_score
+      
+        # This metric measures the impact to the confidentiality of the information
+        # resources managed by a software component due to a successfully exploited
+        # vulnerability.
+        # Corresponds to the JSON property `confidentialityImpact`
+        # @return [String]
+        attr_accessor :confidentiality_impact
+      
+        # This metric measures the impact to integrity of a successfully exploited
+        # vulnerability.
+        # Corresponds to the JSON property `integrityImpact`
+        # @return [String]
+        attr_accessor :integrity_impact
+      
+        # This metric describes the level of privileges an attacker must possess before
+        # successfully exploiting the vulnerability.
+        # Corresponds to the JSON property `privilegesRequired`
+        # @return [String]
+        attr_accessor :privileges_required
+      
+        # The Scope metric captures whether a vulnerability in one vulnerable component
+        # impacts resources in components beyond its security scope.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # This metric captures the requirement for a human user, other than the attacker,
+        # to participate in the successful compromise of the vulnerable component.
+        # Corresponds to the JSON property `userInteraction`
+        # @return [String]
+        attr_accessor :user_interaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
+          @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
+          @base_score = args[:base_score] if args.key?(:base_score)
+          @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
+          @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
+          @scope = args[:scope] if args.key?(:scope)
+          @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -443,6 +553,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
+        # Corresponds to the JSON property `vulnerability`
+        # @return [Google::Apis::SecuritycenterV1beta1::Vulnerability]
+        attr_accessor :vulnerability
+      
         def initialize(**args)
            update!(**args)
         end
@@ -463,6 +578,7 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @source_properties = args[:source_properties] if args.key?(:source_properties)
           @state = args[:state] if args.key?(:state)
+          @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
         end
       end
       
@@ -608,6 +724,11 @@ module Google
         # @return [String]
         attr_accessor :project_display_name
       
+        # The full resource type of the resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -620,6 +741,7 @@ module Google
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @project = args[:project] if args.key?(:project)
           @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1652,7 +1774,7 @@ module Google
       # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
       # roles/resourcemanager.organizationViewer condition: title: expirable access
       # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
       # description of IAM and its features, see the [IAM documentation](https://cloud.
       # google.com/iam/docs/).
       class Policy
@@ -1715,6 +1837,32 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Additional Links
+      class Reference
+        include Google::Apis::Core::Hashable
+      
+        # Source of the reference e.g. NVD
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Uri for the mentioned source e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?
+        # name=CVE-2021-34527.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1881,7 +2029,7 @@ module Google
         # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
         # roles/resourcemanager.organizationViewer condition: title: expirable access
         # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
         # description of IAM and its features, see the [IAM documentation](https://cloud.
         # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
@@ -2024,6 +2172,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
+      class Vulnerability
+        include Google::Apis::Core::Hashable
+      
+        # CVE stands for Common Vulnerabilities and Exposures. More information: https://
+        # cve.mitre.org
+        # Corresponds to the JSON property `cve`
+        # @return [Google::Apis::SecuritycenterV1beta1::Cve]
+        attr_accessor :cve
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cve = args[:cve] if args.key?(:cve)
         end
       end
     end
