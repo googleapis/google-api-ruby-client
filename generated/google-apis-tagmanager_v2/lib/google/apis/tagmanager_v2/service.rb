@@ -1277,6 +1277,207 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a GTM Client.
+        # @param [String] parent
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`
+        # @param [Google::Apis::TagmanagerV2::Client] client_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::Client] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::Client]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_account_container_workspace_client(parent, client_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v2/{+parent}/clients', options)
+          command.request_representation = Google::Apis::TagmanagerV2::Client::Representation
+          command.request_object = client_object
+          command.response_representation = Google::Apis::TagmanagerV2::Client::Representation
+          command.response_class = Google::Apis::TagmanagerV2::Client
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a GTM Client.
+        # @param [String] path
+        #   GTM Client's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`/clients/`client_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_account_container_workspace_client(path, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tagmanager/v2/{+path}', options)
+          command.params['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a GTM Client.
+        # @param [String] path
+        #   GTM Client's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`/clients/`client_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::Client] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::Client]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_account_container_workspace_client(path, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v2/{+path}', options)
+          command.response_representation = Google::Apis::TagmanagerV2::Client::Representation
+          command.response_class = Google::Apis::TagmanagerV2::Client
+          command.params['path'] = path unless path.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all GTM Clients of a GTM container workspace.
+        # @param [String] parent
+        #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::ListClientsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::ListClientsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_account_container_workspace_clients(parent, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tagmanager/v2/{+parent}/clients', options)
+          command.response_representation = Google::Apis::TagmanagerV2::ListClientsResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV2::ListClientsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reverts changes to a GTM Client in a GTM Workspace.
+        # @param [String] path
+        #   GTM Client's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`/clients/`client_id`
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the client in
+        #   storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::RevertClientResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::RevertClientResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revert_account_container_workspace_client(path, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tagmanager/v2/{+path}:revert', options)
+          command.response_representation = Google::Apis::TagmanagerV2::RevertClientResponse::Representation
+          command.response_class = Google::Apis::TagmanagerV2::RevertClientResponse
+          command.params['path'] = path unless path.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a GTM Client.
+        # @param [String] path
+        #   GTM Client's API relative path. Example: accounts/`account_id`/containers/`
+        #   container_id`/workspaces/`workspace_id`/clients/`client_id`
+        # @param [Google::Apis::TagmanagerV2::Client] client_object
+        # @param [String] fingerprint
+        #   When provided, this fingerprint must match the fingerprint of the client in
+        #   storage.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TagmanagerV2::Client] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TagmanagerV2::Client]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_account_container_workspace_client(path, client_object = nil, fingerprint: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tagmanager/v2/{+path}', options)
+          command.request_representation = Google::Apis::TagmanagerV2::Client::Representation
+          command.request_object = client_object
+          command.response_representation = Google::Apis::TagmanagerV2::Client::Representation
+          command.response_class = Google::Apis::TagmanagerV2::Client
+          command.params['path'] = path unless path.nil?
+          command.query['fingerprint'] = fingerprint unless fingerprint.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a GTM Folder.
         # @param [String] parent
         #   GTM Workspace's API relative path. Example: accounts/`account_id`/containers/`
