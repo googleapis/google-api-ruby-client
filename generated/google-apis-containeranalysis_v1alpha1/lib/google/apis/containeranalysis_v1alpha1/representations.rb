@@ -1383,7 +1383,7 @@ module Google
           collection :arguments, as: 'arguments'
           property :defined_in_material, :numeric_string => true, as: 'definedInMaterial'
           property :entry_point, as: 'entryPoint'
-          hash :environment, as: 'environment'
+          collection :environment, as: 'environment'
           property :type, as: 'type'
         end
       end
