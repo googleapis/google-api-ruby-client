@@ -1,0 +1,38 @@
+name: Release-Please
+on:
+  schedule:
+    - cron: '37 8 * * *'
+  workflow_dispatch:
+    inputs:
+      gem:
+        description: "Name of single gem to release. Leave blank to check all gems."
+        required: false
+      args:
+        description: "Extra command line arguments."
+        required: false
+
+jobs:
+  release-please:
+    if: ${{ github.repository == 'googleapis/google-api-ruby-client' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
+      RELEASE_PLEASE_DISABLE: ${{ secrets.RELEASE_PLEASE_DISABLE }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Install Ruby 2.7
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "2.7"
+      - name: Install NodeJS 12.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: "12.x"
+      - name: Install tools
+        run: "gem install --no-document toys && npm install release-please"
+      - name: execute
+        run: |
+          toys release please -v --fork \
+            --github-event-name=${{ github.event_name }} \
+            ${{ github.event.inputs.args }} -- ${{ github.event.inputs.gem }}

@@ -1,0 +1,25 @@
+name: release-please-label
+on:
+  pull_request_target:
+    branches:
+      - master
+    types:
+      - opened
+jobs:
+  release-please-label:
+    if: "${{ github.event.sender.login == 'yoshi-code-bot' && startsWith(github.event.pull_request.title, 'chore: release ') }}"
+    runs-on: ubuntu-latest
+    steps:
+      - name: ReleaseLabel
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.YOSHI_APPROVER_TOKEN}}
+          script: |
+            core.info('Labeling release');
+            await github.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              labels: ['autorelease: pending']
+            });
+            core.info('Labeled');
