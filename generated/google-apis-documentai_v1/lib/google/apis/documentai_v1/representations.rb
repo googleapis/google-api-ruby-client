@@ -1665,6 +1665,8 @@ module Google
       class GoogleCloudDocumentaiV1DocumentPageFormField
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :corrected_key_text, as: 'correctedKeyText'
+          property :corrected_value_text, as: 'correctedValueText'
           property :field_name, as: 'fieldName', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout::Representation
       
           property :field_value, as: 'fieldValue', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout::Representation
@@ -2184,6 +2186,8 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentPageFormField
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :corrected_key_text, as: 'correctedKeyText'
+          property :corrected_value_text, as: 'correctedValueText'
           property :field_name, as: 'fieldName', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout::Representation
       
           property :field_value, as: 'fieldValue', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout::Representation
@@ -2680,6 +2684,8 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentPageFormField
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :corrected_key_text, as: 'correctedKeyText'
+          property :corrected_value_text, as: 'correctedValueText'
           property :field_name, as: 'fieldName', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout::Representation
       
           property :field_value, as: 'fieldValue', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout::Representation
