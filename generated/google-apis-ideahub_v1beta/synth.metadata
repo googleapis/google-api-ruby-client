@@ -1,0 +1,11 @@
+{
+  "sources": [
+    {
+      "git": {
+        "name": ".",
+        "remote": "https://github.com/googleapis/google-api-ruby-client.git",
+        "sha": "26f493eba896b38202310ffc614e039940c79b2f"
+      }
+    }
+  ]
+}
