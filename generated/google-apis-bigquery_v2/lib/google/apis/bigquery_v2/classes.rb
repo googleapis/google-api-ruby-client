@@ -538,6 +538,28 @@ module Google
       end
       
       # 
+      class AvroOptions
+        include Google::Apis::Core::Hashable
+      
+        # [Optional] If set to true will enable interpreting logical types into their
+        # corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie.
+        # INTEGER).
+        # Corresponds to the JSON property `useAvroLogicalTypes`
+        # @return [Boolean]
+        attr_accessor :use_avro_logical_types
+        alias_method :use_avro_logical_types?, :use_avro_logical_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_avro_logical_types = args[:use_avro_logical_types] if args.key?(:use_avro_logical_types)
+        end
+      end
+      
+      # 
       class BiEngineReason
         include Google::Apis::Core::Hashable
       
@@ -2364,6 +2386,11 @@ module Google
         attr_accessor :autodetect
         alias_method :autodetect?, :autodetect
       
+        # Additional properties to set if sourceFormat is set to Avro.
+        # Corresponds to the JSON property `avroOptions`
+        # @return [Google::Apis::BigqueryV2::AvroOptions]
+        attr_accessor :avro_options
+      
         # [Optional] Additional options if sourceFormat is set to BIGTABLE.
         # Corresponds to the JSON property `bigtableOptions`
         # @return [Google::Apis::BigqueryV2::BigtableOptions]
@@ -2480,6 +2507,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @autodetect = args[:autodetect] if args.key?(:autodetect)
+          @avro_options = args[:avro_options] if args.key?(:avro_options)
           @bigtable_options = args[:bigtable_options] if args.key?(:bigtable_options)
           @compression = args[:compression] if args.key?(:compression)
           @connection_id = args[:connection_id] if args.key?(:connection_id)
@@ -5618,6 +5646,16 @@ module Google
         # @return [String]
         attr_accessor :routine_type
       
+        # Optional. Can be set for procedures only. If true (default), the definition
+        # body will be validated in the creation and the updates of the procedure. For
+        # procedures with an argument of ANY TYPE, the definition body validtion is not
+        # supported at creation/update time, and thus this field must be set to false
+        # explicitly.
+        # Corresponds to the JSON property `strictMode`
+        # @return [Boolean]
+        attr_accessor :strict_mode
+        alias_method :strict_mode?, :strict_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5637,6 +5675,7 @@ module Google
           @return_type = args[:return_type] if args.key?(:return_type)
           @routine_reference = args[:routine_reference] if args.key?(:routine_reference)
           @routine_type = args[:routine_type] if args.key?(:routine_type)
+          @strict_mode = args[:strict_mode] if args.key?(:strict_mode)
         end
       end
       
