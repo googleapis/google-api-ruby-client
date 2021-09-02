@@ -887,7 +887,7 @@ module Google
         # Supported operators are: +, -, *, /, where the left and right side of the
         # operator is either a numeric Job.custom_attributes key, integer/double value
         # or an expression that can be evaluated to a number. Parenthesis are supported
-        # to adjust calculation precedence. The expression must be < 100 characters in
+        # to adjust calculation precedence. The expression must be < 200 characters in
         # length. The expression is considered invalid for a job if the expression
         # references custom attributes that are not populated on the job or if the
         # expression results in a divide by zero. If an expression is invalid for a job,
