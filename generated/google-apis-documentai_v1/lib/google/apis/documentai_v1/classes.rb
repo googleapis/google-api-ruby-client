@@ -1471,6 +1471,20 @@ module Google
       class GoogleCloudDocumentaiV1DocumentPageFormField
         include Google::Apis::Core::Hashable
       
+        # Created for Labeling UI to export key text. If corrections were made to the
+        # text identified by the `field_name.text_anchor`, this field will contain the
+        # correction.
+        # Corresponds to the JSON property `correctedKeyText`
+        # @return [String]
+        attr_accessor :corrected_key_text
+      
+        # Created for Labeling UI to export value text. If corrections were made to the
+        # text identified by the `field_value.text_anchor`, this field will contain the
+        # correction.
+        # Corresponds to the JSON property `correctedValueText`
+        # @return [String]
+        attr_accessor :corrected_value_text
+      
         # Visual element describing a layout unit on a page.
         # Corresponds to the JSON property `fieldName`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout]
@@ -1510,6 +1524,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @corrected_key_text = args[:corrected_key_text] if args.key?(:corrected_key_text)
+          @corrected_value_text = args[:corrected_value_text] if args.key?(:corrected_value_text)
           @field_name = args[:field_name] if args.key?(:field_name)
           @field_value = args[:field_value] if args.key?(:field_value)
           @name_detected_languages = args[:name_detected_languages] if args.key?(:name_detected_languages)
@@ -3267,6 +3283,20 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentPageFormField
         include Google::Apis::Core::Hashable
       
+        # Created for Labeling UI to export key text. If corrections were made to the
+        # text identified by the `field_name.text_anchor`, this field will contain the
+        # correction.
+        # Corresponds to the JSON property `correctedKeyText`
+        # @return [String]
+        attr_accessor :corrected_key_text
+      
+        # Created for Labeling UI to export value text. If corrections were made to the
+        # text identified by the `field_value.text_anchor`, this field will contain the
+        # correction.
+        # Corresponds to the JSON property `correctedValueText`
+        # @return [String]
+        attr_accessor :corrected_value_text
+      
         # Visual element describing a layout unit on a page.
         # Corresponds to the JSON property `fieldName`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout]
@@ -3306,6 +3336,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @corrected_key_text = args[:corrected_key_text] if args.key?(:corrected_key_text)
+          @corrected_value_text = args[:corrected_value_text] if args.key?(:corrected_value_text)
           @field_name = args[:field_name] if args.key?(:field_name)
           @field_value = args[:field_value] if args.key?(:field_value)
           @name_detected_languages = args[:name_detected_languages] if args.key?(:name_detected_languages)
@@ -5007,6 +5039,20 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentPageFormField
         include Google::Apis::Core::Hashable
       
+        # Created for Labeling UI to export key text. If corrections were made to the
+        # text identified by the `field_name.text_anchor`, this field will contain the
+        # correction.
+        # Corresponds to the JSON property `correctedKeyText`
+        # @return [String]
+        attr_accessor :corrected_key_text
+      
+        # Created for Labeling UI to export value text. If corrections were made to the
+        # text identified by the `field_value.text_anchor`, this field will contain the
+        # correction.
+        # Corresponds to the JSON property `correctedValueText`
+        # @return [String]
+        attr_accessor :corrected_value_text
+      
         # Visual element describing a layout unit on a page.
         # Corresponds to the JSON property `fieldName`
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout]
@@ -5046,6 +5092,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @corrected_key_text = args[:corrected_key_text] if args.key?(:corrected_key_text)
+          @corrected_value_text = args[:corrected_value_text] if args.key?(:corrected_value_text)
           @field_name = args[:field_name] if args.key?(:field_name)
           @field_value = args[:field_value] if args.key?(:field_value)
           @name_detected_languages = args[:name_detected_languages] if args.key?(:name_detected_languages)
