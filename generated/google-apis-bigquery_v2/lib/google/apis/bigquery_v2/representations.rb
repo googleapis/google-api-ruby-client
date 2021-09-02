@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvroOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BiEngineReason
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -996,6 +1002,13 @@ module Google
         end
       end
       
+      class AvroOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_avro_logical_types, as: 'useAvroLogicalTypes'
+        end
+      end
+      
       class BiEngineReason
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1436,6 +1449,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autodetect, as: 'autodetect'
+          property :avro_options, as: 'avroOptions', class: Google::Apis::BigqueryV2::AvroOptions, decorator: Google::Apis::BigqueryV2::AvroOptions::Representation
+      
           property :bigtable_options, as: 'bigtableOptions', class: Google::Apis::BigqueryV2::BigtableOptions, decorator: Google::Apis::BigqueryV2::BigtableOptions::Representation
       
           property :compression, as: 'compression'
@@ -2202,6 +2217,7 @@ module Google
           property :routine_reference, as: 'routineReference', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
       
           property :routine_type, as: 'routineType'
+          property :strict_mode, as: 'strictMode'
         end
       end
       
