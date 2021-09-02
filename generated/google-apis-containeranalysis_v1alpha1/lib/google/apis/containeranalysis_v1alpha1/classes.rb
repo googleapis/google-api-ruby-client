@@ -3077,7 +3077,7 @@ module Google
         # make", then this might be the flags passed to make aside from the target,
         # which is captured in recipe.entryPoint.
         # Corresponds to the JSON property `arguments`
-        # @return [Array<String>]
+        # @return [Array<Hash<String,Object>>]
         attr_accessor :arguments
       
         # Index in materials containing the recipe steps that are not implied by recipe.
@@ -3102,7 +3102,7 @@ module Google
         # recipe. Usually only needed for reproducing the build but not evaluated as
         # part of policy.
         # Corresponds to the JSON property `environment`
-        # @return [Hash<String,String>]
+        # @return [Array<Hash<String,Object>>]
         attr_accessor :environment
       
         # URI indicating what type of recipe was performed. It determines the meaning of
