@@ -1604,7 +1604,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Medium of conversations used in training data.
+        # Required.
         # Corresponds to the JSON property `medium`
         # @return [String]
         attr_accessor :medium
@@ -2745,7 +2745,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Medium of conversations used in training data.
+        # Required.
         # Corresponds to the JSON property `medium`
         # @return [String]
         attr_accessor :medium
