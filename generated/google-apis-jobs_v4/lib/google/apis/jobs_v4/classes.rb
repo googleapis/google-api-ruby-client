@@ -809,7 +809,7 @@ module Google
         # Supported operators are: +, -, *, /, where the left and right side of the
         # operator is either a numeric Job.custom_attributes key, integer/double value
         # or an expression that can be evaluated to a number. Parenthesis are supported
-        # to adjust calculation precedence. The expression must be < 100 characters in
+        # to adjust calculation precedence. The expression must be < 200 characters in
         # length. The expression is considered invalid for a job if the expression
         # references custom attributes that are not populated on the job or if the
         # expression results in a divide by zero. If an expression is invalid for a job,
@@ -2263,18 +2263,23 @@ module Google
         # @return [Google::Apis::JobsV4::CustomRankingInfo]
         attr_accessor :custom_ranking_info
       
-        # Controls whether to disable exact keyword match on Job.title, Job.description,
-        # Job.company_display_name, Job.addresses, Job.qualifications. When disable
-        # keyword match is turned off, a keyword match returns jobs that do not match
-        # given category filters when there are matching keywords. For example, for the
-        # query "program manager," a result is returned even if the job posting has the
-        # title "software developer," which doesn't fall into "program manager" ontology,
-        # but does have "program manager" appearing in its description. For queries
-        # like "cloud" that don't contain title or location specific ontology, jobs with
-        # "cloud" keyword matches are returned regardless of this flag's value. Use
-        # Company.keyword_searchable_job_custom_attributes if company-specific globally
-        # matched custom field/attribute string values are needed. Enabling keyword
-        # match improves recall of subsequent search requests. Defaults to false.
+        # This field is deprecated. Please use SearchJobsRequest.keyword_match_mode
+        # going forward. To migrate, disable_keyword_match set to false maps to
+        # KeywordMatchMode.KEYWORD_MATCH_ALL, and disable_keyword_match set to true maps
+        # to KeywordMatchMode.KEYWORD_MATCH_DISABLED. If SearchJobsRequest.
+        # keyword_match_mode is set, this field is ignored. Controls whether to disable
+        # exact keyword match on Job.title, Job.description, Job.company_display_name,
+        # Job.addresses, Job.qualifications. When disable keyword match is turned off, a
+        # keyword match returns jobs that do not match given category filters when there
+        # are matching keywords. For example, for the query "program manager," a result
+        # is returned even if the job posting has the title "software developer," which
+        # doesn't fall into "program manager" ontology, but does have "program manager"
+        # appearing in its description. For queries like "cloud" that don't contain
+        # title or location specific ontology, jobs with "cloud" keyword matches are
+        # returned regardless of this flag's value. Use Company.
+        # keyword_searchable_job_custom_attributes if company-specific globally matched
+        # custom field/attribute string values are needed. Enabling keyword match
+        # improves recall of subsequent search requests. Defaults to false.
         # Corresponds to the JSON property `disableKeywordMatch`
         # @return [Boolean]
         attr_accessor :disable_keyword_match
@@ -2369,6 +2374,13 @@ module Google
         # @return [String]
         attr_accessor :job_view
       
+        # Controls what keyword match options to use. If both keyword_match_mode and
+        # disable_keyword_match are set, keyword_match_mode will take precedence.
+        # Defaults to KeywordMatchMode.KEYWORD_MATCH_ALL if no value is specified.
+        # Corresponds to the JSON property `keywordMatchMode`
+        # @return [String]
+        attr_accessor :keyword_match_mode
+      
         # A limit on the number of jobs returned in the search results. Increasing this
         # value above the default value of 10 can increase search response time. The
         # value can be between 1 and 100.
@@ -2455,6 +2467,7 @@ module Google
           @histogram_queries = args[:histogram_queries] if args.key?(:histogram_queries)
           @job_query = args[:job_query] if args.key?(:job_query)
           @job_view = args[:job_view] if args.key?(:job_view)
+          @keyword_match_mode = args[:keyword_match_mode] if args.key?(:keyword_match_mode)
           @max_page_size = args[:max_page_size] if args.key?(:max_page_size)
           @offset = args[:offset] if args.key?(:offset)
           @order_by = args[:order_by] if args.key?(:order_by)
