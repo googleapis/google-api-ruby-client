@@ -4781,51 +4781,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads media. Upload is supported on the URI `/upload/media/`resource_name=**`
-        # ?upload_type=media.` **Note**: Upload requests will not be successful without
-        # including `upload_type=media` query string.
-        # @param [String] resource_name
-        #   Name of the media that is being downloaded. See ReadRequest.resource_name.
-        # @param [Google::Apis::DisplayvideoV1::GoogleBytestreamMedia] google_bytestream_media_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [IO, String] upload_source
-        #   IO stream or filename containing content to upload
-        # @param [String] content_type
-        #   Content type of the uploaded content.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DisplayvideoV1::GoogleBytestreamMedia] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DisplayvideoV1::GoogleBytestreamMedia]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_medium(resource_name, google_bytestream_media_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          if upload_source.nil?
-            command = make_simple_command(:post, 'media/{+resourceName}', options)
-          else
-            command = make_upload_command(:post, 'media/{+resourceName}', options)
-            command.upload_source = upload_source
-            command.upload_content_type = content_type
-          end
-          command.request_representation = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia::Representation
-          command.request_object = google_bytestream_media_object
-          command.response_representation = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia::Representation
-          command.response_class = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia
-          command.params['resourceName'] = resource_name unless resource_name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Bulk edits targeting options under a single partner. The operation will delete
         # the assigned targeting options provided in
         # BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create
