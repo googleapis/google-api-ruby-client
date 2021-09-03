@@ -106,6 +106,11 @@ module Google
         # @return [Google::Apis::SpeechV1::RecognitionConfig]
         attr_accessor :config
       
+        # Specifies an optional destination for the recognition results.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::SpeechV1::TranscriptOutputConfig]
+        attr_accessor :output_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -114,6 +119,7 @@ module Google
         def update!(**args)
           @audio = args[:audio] if args.key?(:audio)
           @config = args[:config] if args.key?(:config)
+          @output_config = args[:output_config] if args.key?(:output_config)
         end
       end
       
@@ -698,6 +704,27 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Specifies an optional destination for the recognition results.
+      class TranscriptOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a Cloud Storage URI for the recognition results. Must be specified
+        # in the format: `gs://bucket_name/object_name`, and the bucket must already
+        # exist.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
         end
       end
       
