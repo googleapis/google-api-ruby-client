@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TranscriptOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WordInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +149,8 @@ module Google
           property :audio, as: 'audio', class: Google::Apis::SpeechV1::RecognitionAudio, decorator: Google::Apis::SpeechV1::RecognitionAudio::Representation
       
           property :config, as: 'config', class: Google::Apis::SpeechV1::RecognitionConfig, decorator: Google::Apis::SpeechV1::RecognitionConfig::Representation
+      
+          property :output_config, as: 'outputConfig', class: Google::Apis::SpeechV1::TranscriptOutputConfig, decorator: Google::Apis::SpeechV1::TranscriptOutputConfig::Representation
       
         end
       end
@@ -274,6 +282,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TranscriptOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
         end
       end
       
