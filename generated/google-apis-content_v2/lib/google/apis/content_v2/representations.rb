@@ -1697,7 +1697,6 @@ module Google
       
           property :customer_service, as: 'customerService', class: Google::Apis::ContentV2::AccountCustomerService, decorator: Google::Apis::ContentV2::AccountCustomerService::Representation
       
-          property :korean_business_registration_number, as: 'koreanBusinessRegistrationNumber'
           property :phone_number, as: 'phoneNumber'
         end
       end
