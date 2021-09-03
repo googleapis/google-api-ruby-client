@@ -81,6 +81,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::GcePersistentDiskCsiDriverConfig]
         attr_accessor :gce_persistent_disk_csi_driver_config
       
+        # Configuration for the GCP Filestore CSI driver.
+        # Corresponds to the JSON property `gcpFilestoreCsiDriverConfig`
+        # @return [Google::Apis::ContainerV1beta1::GcpFilestoreCsiDriverConfig]
+        attr_accessor :gcp_filestore_csi_driver_config
+      
         # Configuration options for the horizontal pod autoscaling feature, which
         # increases or decreases the number of replica pods a replication controller has
         # based on the resource usage of the existing pods.
@@ -126,6 +131,7 @@ module Google
           @config_connector_config = args[:config_connector_config] if args.key?(:config_connector_config)
           @dns_cache_config = args[:dns_cache_config] if args.key?(:dns_cache_config)
           @gce_persistent_disk_csi_driver_config = args[:gce_persistent_disk_csi_driver_config] if args.key?(:gce_persistent_disk_csi_driver_config)
+          @gcp_filestore_csi_driver_config = args[:gcp_filestore_csi_driver_config] if args.key?(:gcp_filestore_csi_driver_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @istio_config = args[:istio_config] if args.key?(:istio_config)
@@ -1773,6 +1779,26 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the Compute Engine PD CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration for the GCP Filestore CSI driver.
+      class GcpFilestoreCsiDriverConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the GCP Filestore CSI driver is enabled for this cluster.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
