@@ -857,6 +857,7 @@ module Google
           property :job_query, as: 'jobQuery', class: Google::Apis::JobsV4::JobQuery, decorator: Google::Apis::JobsV4::JobQuery::Representation
       
           property :job_view, as: 'jobView'
+          property :keyword_match_mode, as: 'keywordMatchMode'
           property :max_page_size, as: 'maxPageSize'
           property :offset, as: 'offset'
           property :order_by, as: 'orderBy'
