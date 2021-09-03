@@ -671,6 +671,7 @@ module Google
       class AlertStrategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_close, as: 'autoClose'
           property :notification_rate_limit, as: 'notificationRateLimit', class: Google::Apis::MonitoringV3::NotificationRateLimit, decorator: Google::Apis::MonitoringV3::NotificationRateLimit::Representation
       
         end
