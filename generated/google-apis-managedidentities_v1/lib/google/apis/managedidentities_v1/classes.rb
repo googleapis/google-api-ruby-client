@@ -1177,6 +1177,38 @@ module Google
         end
       end
       
+      # ListPeeringsResponse is the response message for ListPeerings method.
+      class ListPeeringsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of Managed Identities Service Peerings in the project.
+        # Corresponds to the JSON property `peerings`
+        # @return [Array<Google::Apis::ManagedidentitiesV1::Peering>]
+        attr_accessor :peerings
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @peerings = args[:peerings] if args.key?(:peerings)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # ListSqlIntegrationsResponse is the response message for ListSqlIntegrations
       # method.
       class ListSqlIntegrationsResponse
@@ -1462,6 +1494,75 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Represents a Managed Service for Microsoft Active Directory Peering.
+      class Peering
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full names of the Google Compute Engine [networks](/compute/docs/
+        # networks-and-firewalls#networks) to which the instance is connected. Caller
+        # needs to make sure that CIDR subnets do not overlap between networks, else
+        # peering creation will fail.
+        # Corresponds to the JSON property `authorizedNetwork`
+        # @return [String]
+        attr_accessor :authorized_network
+      
+        # Output only. The time the instance was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Full domain resource path for the Managed AD Domain involved in
+        # peering. The resource path should be in the form: `projects/`project_id`/
+        # locations/global/domains/`domain_name``
+        # Corresponds to the JSON property `domainResource`
+        # @return [String]
+        attr_accessor :domain_resource
+      
+        # Optional. Resource labels to represent user-provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Unique name of the peering in this scope including projects and
+        # location using the form: `projects/`project_id`/locations/global/peerings/`
+        # peering_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of this Peering.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Additional information about the current status of this peering,
+        # if available.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @domain_resource = args[:domain_resource] if args.key?(:domain_resource)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
