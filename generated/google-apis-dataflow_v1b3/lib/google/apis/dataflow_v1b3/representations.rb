@@ -1390,6 +1390,7 @@ module Google
           property :flexrs_goal, as: 'flexrsGoal'
           property :ip_configuration, as: 'ipConfiguration'
           property :kms_key_name, as: 'kmsKeyName'
+          property :launcher_machine_type, as: 'launcherMachineType'
           property :machine_type, as: 'machineType'
           property :max_workers, as: 'maxWorkers'
           property :network, as: 'network'
