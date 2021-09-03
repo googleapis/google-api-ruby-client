@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPeeringsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSqlIntegrationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Peering
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -582,6 +594,16 @@ module Google
         end
       end
       
+      class ListPeeringsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :peerings, as: 'peerings', class: Google::Apis::ManagedidentitiesV1::Peering, decorator: Google::Apis::ManagedidentitiesV1::Peering::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSqlIntegrationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -649,6 +671,20 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class Peering
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorized_network, as: 'authorizedNetwork'
+          property :create_time, as: 'createTime'
+          property :domain_resource, as: 'domainResource'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :status_message, as: 'statusMessage'
+          property :update_time, as: 'updateTime'
         end
       end
       
