@@ -1504,6 +1504,11 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
+        # The machine type to use for launching the job. The default is n1-standard-1.
+        # Corresponds to the JSON property `launcherMachineType`
+        # @return [String]
+        attr_accessor :launcher_machine_type
+      
         # The machine type to use for the job. Defaults to the value from the template
         # if not specified.
         # Corresponds to the JSON property `machineType`
@@ -1608,6 +1613,7 @@ module Google
           @flexrs_goal = args[:flexrs_goal] if args.key?(:flexrs_goal)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @launcher_machine_type = args[:launcher_machine_type] if args.key?(:launcher_machine_type)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @max_workers = args[:max_workers] if args.key?(:max_workers)
           @network = args[:network] if args.key?(:network)
