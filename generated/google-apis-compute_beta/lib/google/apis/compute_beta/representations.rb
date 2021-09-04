@@ -12940,6 +12940,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
+          property :instance_termination_action, as: 'instanceTerminationAction'
           property :location_hint, as: 'locationHint'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :maintenance_interval, as: 'maintenanceInterval'
@@ -12948,6 +12949,7 @@ module Google
       
           property :on_host_maintenance, as: 'onHostMaintenance'
           property :preemptible, as: 'preemptible'
+          property :provisioning_model, as: 'provisioningModel'
         end
       end
       
