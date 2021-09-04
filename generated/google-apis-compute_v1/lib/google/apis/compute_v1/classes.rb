@@ -5121,14 +5121,20 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Encrypts the disk using a customer-supplied encryption key. After you encrypt
-        # a disk with a customer-supplied key, you must provide the same key if you use
-        # the disk later (e.g. to create a disk snapshot, to create a disk image, to
-        # create a machine image, or to attach the disk to a virtual machine). Customer-
-        # supplied encryption keys do not protect access to metadata of the disk. If you
-        # do not provide an encryption key when creating the disk, then the disk will be
-        # encrypted using an automatically generated key and you do not need to provide
-        # a key to use the disk later.
+        # Encrypts the disk using a customer-supplied encryption key or a customer-
+        # managed encryption key. Encryption keys do not protect access to metadata of
+        # the disk. After you encrypt a disk with a customer-supplied key, you must
+        # provide the same key if you use the disk later. For example, to create a disk
+        # snapshot, to create a disk image, to create a machine image, or to attach the
+        # disk to a virtual machine. After you encrypt a disk with a customer-managed
+        # key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the
+        # disk is created. The disk is encrypted with this version of the key. In the
+        # response, diskEncryptionKey.kmsKeyName appears in the following format: "
+        # diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/
+        # keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not
+        # provide an encryption key when creating the disk, then the disk is encrypted
+        # using an automatically generated key and you don't need to provide a key to
+        # use the disk later.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
