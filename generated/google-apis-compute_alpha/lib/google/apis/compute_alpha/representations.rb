@@ -2236,6 +2236,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantSnapshotsExportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Int64RangeMatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6155,12 +6161,6 @@ module Google
       end
       
       class Zone
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ZoneInstantSnapshotsExportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10525,6 +10525,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstantSnapshotsExportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_params, as: 'exportParams', class: Google::Apis::ComputeAlpha::InstantSnapshotExportParams, decorator: Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
+      
         end
       end
       
@@ -17682,14 +17690,6 @@ module Google
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :supports_pzs, as: 'supportsPzs'
-        end
-      end
-      
-      class ZoneInstantSnapshotsExportRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :export_params, as: 'exportParams', class: Google::Apis::ComputeAlpha::InstantSnapshotExportParams, decorator: Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
-      
         end
       end
       
