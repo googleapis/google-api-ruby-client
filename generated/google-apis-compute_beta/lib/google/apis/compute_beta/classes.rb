@@ -5641,14 +5641,20 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Encrypts the disk using a customer-supplied encryption key. After you encrypt
-        # a disk with a customer-supplied key, you must provide the same key if you use
-        # the disk later (e.g. to create a disk snapshot, to create a disk image, to
-        # create a machine image, or to attach the disk to a virtual machine). Customer-
-        # supplied encryption keys do not protect access to metadata of the disk. If you
-        # do not provide an encryption key when creating the disk, then the disk will be
-        # encrypted using an automatically generated key and you do not need to provide
-        # a key to use the disk later.
+        # Encrypts the disk using a customer-supplied encryption key or a customer-
+        # managed encryption key. Encryption keys do not protect access to metadata of
+        # the disk. After you encrypt a disk with a customer-supplied key, you must
+        # provide the same key if you use the disk later. For example, to create a disk
+        # snapshot, to create a disk image, to create a machine image, or to attach the
+        # disk to a virtual machine. After you encrypt a disk with a customer-managed
+        # key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the
+        # disk is created. The disk is encrypted with this version of the key. In the
+        # response, diskEncryptionKey.kmsKeyName appears in the following format: "
+        # diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/
+        # keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not
+        # provide an encryption key when creating the disk, then the disk is encrypted
+        # using an automatically generated key and you don't need to provide a key to
+        # use the disk later.
         # Corresponds to the JSON property `diskEncryptionKey`
         # @return [Google::Apis::ComputeBeta::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
@@ -30662,6 +30668,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :host_error_timeout_seconds
       
+        # Specifies the termination action for the instance.
+        # Corresponds to the JSON property `instanceTerminationAction`
+        # @return [String]
+        attr_accessor :instance_termination_action
+      
         # An opaque location hint used to place the instance close to other resources.
         # This field is for use by internal tools that use the public API.
         # Corresponds to the JSON property `locationHint`
@@ -30709,6 +30720,11 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # Specifies the provisioning model of the instance.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
         def initialize(**args)
            update!(**args)
         end
@@ -30717,6 +30733,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
+          @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
           @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
@@ -30724,6 +30741,7 @@ module Google
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
         end
       end
       
