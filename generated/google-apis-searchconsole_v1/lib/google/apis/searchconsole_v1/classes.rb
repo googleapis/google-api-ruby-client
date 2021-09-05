@@ -569,7 +569,7 @@ module Google
       class WmxSitemapContent
         include Google::Apis::Core::Hashable
       
-        # The number of URLs from the sitemap that were indexed (of the content type).
+        # *Deprecated; do not use.*
         # Corresponds to the JSON property `indexed`
         # @return [Fixnum]
         attr_accessor :indexed
