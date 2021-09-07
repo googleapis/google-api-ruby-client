@@ -50,10 +50,10 @@ module Google
       # Administer your Cloud Bigtable tables
       AUTH_CLOUD_BIGTABLE_ADMIN_TABLE = 'https://www.googleapis.com/auth/cloud-bigtable.admin.table'
 
-      # See, edit, configure, and delete your Google Cloud Platform data
+      # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
-      # View your data across Google Cloud Platform services
+      # View your data across Google Cloud services and see the email address of your Google Account
       AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
     end
   end
