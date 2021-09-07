@@ -354,6 +354,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :antenna_model, as: 'antennaModel'
+          property :common_channel_group, as: 'commonChannelGroup'
+          property :interference_coordination_group, as: 'interferenceCoordinationGroup'
         end
       end
       
