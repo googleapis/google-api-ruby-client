@@ -133,6 +133,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_all_package_names, as: 'allowAllPackageNames'
           collection :allowed_package_names, as: 'allowedPackageNames'
         end
       end
@@ -188,6 +189,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1IosKeySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_all_bundle_ids, as: 'allowAllBundleIds'
           collection :allowed_bundle_ids, as: 'allowedBundleIds'
         end
       end
