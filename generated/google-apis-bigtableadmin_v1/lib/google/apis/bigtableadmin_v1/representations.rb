@@ -283,6 +283,7 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           hash :labels, as: 'labels'
           property :name, as: 'name'

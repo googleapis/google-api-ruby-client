@@ -501,6 +501,12 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Output only. A server-assigned timestamp representing when this Instance was
+        # created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Required. The descriptive name for this instance as it appears in UIs. Can be
         # changed at any time, but should be kept globally unique to avoid confusion.
         # Corresponds to the JSON property `displayName`
@@ -541,6 +547,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
