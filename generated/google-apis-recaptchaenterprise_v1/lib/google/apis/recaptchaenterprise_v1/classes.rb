@@ -26,6 +26,12 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         include Google::Apis::Core::Hashable
       
+        # If set to true, it means allowed_package_names will not be enforced.
+        # Corresponds to the JSON property `allowAllPackageNames`
+        # @return [Boolean]
+        attr_accessor :allow_all_package_names
+        alias_method :allow_all_package_names?, :allow_all_package_names
+      
         # Android package names of apps allowed to use the key. Example: 'com.
         # companyname.appname'
         # Corresponds to the JSON property `allowedPackageNames`
@@ -38,6 +44,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_all_package_names = args[:allow_all_package_names] if args.key?(:allow_all_package_names)
           @allowed_package_names = args[:allowed_package_names] if args.key?(:allowed_package_names)
         end
       end
@@ -214,6 +221,12 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1IosKeySettings
         include Google::Apis::Core::Hashable
       
+        # If set to true, it means allowed_bundle_ids will not be enforced.
+        # Corresponds to the JSON property `allowAllBundleIds`
+        # @return [Boolean]
+        attr_accessor :allow_all_bundle_ids
+        alias_method :allow_all_bundle_ids?, :allow_all_bundle_ids
+      
         # iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.
         # productname.appname'
         # Corresponds to the JSON property `allowedBundleIds`
@@ -226,6 +239,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_all_bundle_ids = args[:allow_all_bundle_ids] if args.key?(:allow_all_bundle_ids)
           @allowed_bundle_ids = args[:allowed_bundle_ids] if args.key?(:allowed_bundle_ids)
         end
       end
