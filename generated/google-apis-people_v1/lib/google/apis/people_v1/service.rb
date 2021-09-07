@@ -879,7 +879,7 @@ module Google
         # Provides a list of contacts in the authenticated user's grouped contacts that
         # matches the search query. The query matches on a contact's `names`, `nickNames`
         # , `emailAddresses`, `phoneNumbers`, and `organizations` fields that are from
-        # the CONTACT" source. **IMPORTANT**: Before searching, clients should send a
+        # the CONTACT source. **IMPORTANT**: Before searching, clients should send a
         # warmup request with an empty query to update the cache. See https://developers.
         # google.com/people/v1/contacts#search_the_users_contacts
         # @param [Fixnum] page_size
