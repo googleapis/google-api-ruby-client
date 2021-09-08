@@ -1623,8 +1623,8 @@ module Google
       
         # The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-
         # in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A
-        # maximum of 2000 values are allowed. Each value must be a string with a length
-        # limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1"
+        # maximum of 3000 values are allowed. Each value must be a string with a length
+        # limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1"
         # or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `placeIds`
         # @return [Array<String>]
@@ -3228,9 +3228,9 @@ module Google
       
         # The filter syntax consists of an expression language for constructing a
         # predicate from one or more fields of the products being filtered. Filter
-        # expression is case-sensitive. See more details at this [user guide](/retail/
-        # private/docs/filter-and-order#filter). If this field is unrecognizable, an
-        # INVALID_ARGUMENT is returned.
+        # expression is case-sensitive. See more details at this [user guide](https://
+        # cloud.google.com/retail/docs/filter-and-order#filter). If this field is
+        # unrecognizable, an INVALID_ARGUMENT is returned.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -3245,9 +3245,9 @@ module Google
       
         # The order in which products are returned. Products can be ordered by a field
         # in an Product object. Leave it unset if ordered by relevance. OrderBy
-        # expression is case-sensitive. See more details at this [user guide](/retail/
-        # private/docs/filter-and-order#order). If this field is unrecognizable, an
-        # INVALID_ARGUMENT is returned.
+        # expression is case-sensitive. See more details at this [user guide](https://
+        # cloud.google.com/retail/docs/filter-and-order#order). If this field is
+        # unrecognizable, an INVALID_ARGUMENT is returned.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -3767,7 +3767,7 @@ module Google
         alias_method :expanded_query?, :expanded_query
       
         # Number of pinned results. This field will only be set when expansion happens
-        # and SearchRequest.query_expansion_spec.pin_unexpanded_results is set to true.
+        # and SearchRequest.QueryExpansionSpec.pin_unexpanded_results is set to true.
         # Corresponds to the JSON property `pinnedResultCount`
         # @return [Fixnum]
         attr_accessor :pinned_result_count
@@ -3978,7 +3978,7 @@ module Google
         # @return [String]
         attr_accessor :attribution_token
       
-        # The id or name of the associated shopping cart. This id is used to associate
+        # The ID or name of the associated shopping cart. This ID is used to associate
         # multiple items added or present in the cart before purchase. This can only be
         # set for `add-to-cart`, `purchase-complete`, or `shopping-cart-page-view`
         # events.
@@ -4059,7 +4059,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :page_categories
       
-        # A unique id of a web page view. This should be kept the same for all user
+        # A unique ID of a web page view. This should be kept the same for all user
         # events triggered from the same pageview. For example, an item detail page view
         # could trigger multiple events as the user is browsing the page. The `
         # pageViewId` property should be kept the same for all these events so that they
@@ -4073,11 +4073,11 @@ module Google
         # The main product details related to the event. This field is required for the
         # following event types: * `add-to-cart` * `detail-page-view` * `purchase-
         # complete` In a `search` event, this field represents the products returned to
-        # the end user on the current page (the end user may have not finished broswing
+        # the end user on the current page (the end user may have not finished browsing
         # the whole page yet). When a new page is returned to the end user, after
         # pagination/filtering/ordering even for the same query, a new `search` event
         # with different product_details is desired. The end user may have not finished
-        # broswing the whole page yet.
+        # browsing the whole page yet.
         # Corresponds to the JSON property `productDetails`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductDetail>]
         attr_accessor :product_details
