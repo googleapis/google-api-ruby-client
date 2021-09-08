@@ -370,7 +370,6 @@ module Google
         end
         
         # Create an association between a GCP project and a GitHub Enterprise server.
-        # This API is experimental.
         # @param [String] parent
         #   Name of the parent project. For example: projects/`$project_number` or
         #   projects/`$project_id`
@@ -408,7 +407,6 @@ module Google
         end
         
         # Delete an association between a GCP project and a GitHub Enterprise server.
-        # This API is experimental.
         # @param [String] name
         #   This field should contain the name of the enterprise config resource. For
         #   example: "projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
@@ -445,7 +443,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve a GitHubEnterpriseConfig. This API is experimental.
+        # Retrieve a GitHubEnterpriseConfig.
         # @param [String] name
         #   This field should contain the name of the enterprise config resource. For
         #   example: "projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
@@ -482,7 +480,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all GitHubEnterpriseConfigs for a given project. This API is experimental.
+        # List all GitHubEnterpriseConfigs for a given project.
         # @param [String] parent
         #   Name of the parent project. For example: projects/`$project_number` or
         #   projects/`$project_id`
@@ -517,7 +515,6 @@ module Google
         end
         
         # Update an association between a GCP project and a GitHub Enterprise server.
-        # This API is experimental.
         # @param [String] name
         #   Optional. The full resource name for the GitHubEnterpriseConfig For example: "
         #   projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
@@ -802,7 +799,6 @@ module Google
         end
         
         # Create an association between a GCP project and a GitHub Enterprise server.
-        # This API is experimental.
         # @param [String] parent
         #   Name of the parent project. For example: projects/`$project_number` or
         #   projects/`$project_id`
@@ -840,7 +836,6 @@ module Google
         end
         
         # Delete an association between a GCP project and a GitHub Enterprise server.
-        # This API is experimental.
         # @param [String] name
         #   This field should contain the name of the enterprise config resource. For
         #   example: "projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
@@ -877,7 +872,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve a GitHubEnterpriseConfig. This API is experimental.
+        # Retrieve a GitHubEnterpriseConfig.
         # @param [String] name
         #   This field should contain the name of the enterprise config resource. For
         #   example: "projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
@@ -914,7 +909,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all GitHubEnterpriseConfigs for a given project. This API is experimental.
+        # List all GitHubEnterpriseConfigs for a given project.
         # @param [String] parent
         #   Name of the parent project. For example: projects/`$project_number` or
         #   projects/`$project_id`
@@ -949,7 +944,6 @@ module Google
         end
         
         # Update an association between a GCP project and a GitHub Enterprise server.
-        # This API is experimental.
         # @param [String] name
         #   Optional. The full resource name for the GitHubEnterpriseConfig For example: "
         #   projects/`$project_id`/githubEnterpriseConfigs/`$config_id`"
