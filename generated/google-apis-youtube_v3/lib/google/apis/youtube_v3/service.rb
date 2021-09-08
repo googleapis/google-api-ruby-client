@@ -3003,6 +3003,7 @@ module Google
         # POST method.
         # @param [Array<String>, String] part
         # @param [Google::Apis::YoutubeV3::TestItem] test_item_object
+        # @param [String] external_channel_id
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3020,12 +3021,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_test(part, test_item_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_test(part, test_item_object = nil, external_channel_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'youtube/v3/tests', options)
           command.request_representation = Google::Apis::YoutubeV3::TestItem::Representation
           command.request_object = test_item_object
           command.response_representation = Google::Apis::YoutubeV3::TestItem::Representation
           command.response_class = Google::Apis::YoutubeV3::TestItem
+          command.query['externalChannelId'] = external_channel_id unless external_channel_id.nil?
           command.query['part'] = part unless part.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
