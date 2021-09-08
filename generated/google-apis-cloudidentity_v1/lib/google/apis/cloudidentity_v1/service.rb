@@ -1014,8 +1014,8 @@ module Google
         #   resource_names) of the `Group`. Shall be of the form `groups/`group``.
         # @param [Google::Apis::CloudidentityV1::Group] group_object
         # @param [String] update_mask
-        #   Required. The names of fields to update. May only contain the following fields:
-        #   `display_name`, `description`, `labels`.
+        #   Required. The names of fields to update. May only contain the following field
+        #   names: `display_name`, `description`, `labels`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
