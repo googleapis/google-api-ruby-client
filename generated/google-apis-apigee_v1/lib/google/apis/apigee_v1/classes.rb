@@ -1542,6 +1542,33 @@ module Google
         end
       end
       
+      # Request for CreditDeveloperBalance.
+      class GoogleCloudApigeeV1CreditDeveloperBalanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `transactionAmount`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeMoney]
+        attr_accessor :transaction_amount
+      
+        # Each transaction_id uniquely identifies a credit balance request. If multiple
+        # requests are received with the same transaction_id, only one of them will be
+        # considered.
+        # Corresponds to the JSON property `transactionId`
+        # @return [String]
+        attr_accessor :transaction_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transaction_amount = args[:transaction_amount] if args.key?(:transaction_amount)
+          @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1CustomReport
         include Google::Apis::Core::Hashable
@@ -2666,6 +2693,71 @@ module Google
           @issued_at = args[:issued_at] if args.key?(:issued_at)
           @scopes = args[:scopes] if args.key?(:scopes)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Account balance for the developer.
+      class GoogleCloudApigeeV1DeveloperBalance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of all wallets. Each individual wallet stores the account
+        # balance for a particular currency.
+        # Corresponds to the JSON property `wallets`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalanceWallet>]
+        attr_accessor :wallets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wallets = args[:wallets] if args.key?(:wallets)
+        end
+      end
+      
+      # Wallet used to manage an account balance for a particular currency.
+      class GoogleCloudApigeeV1DeveloperBalanceWallet
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `balance`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeMoney]
+        attr_accessor :balance
+      
+        # Output only. Time at which the developer last added credit to the account in
+        # milliseconds since epoch.
+        # Corresponds to the JSON property `lastCreditTime`
+        # @return [Fixnum]
+        attr_accessor :last_credit_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @balance = args[:balance] if args.key?(:balance)
+          @last_credit_time = args[:last_credit_time] if args.key?(:last_credit_time)
+        end
+      end
+      
+      # Monetization configuration for the developer.
+      class GoogleCloudApigeeV1DeveloperMonetizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Billing type.
+        # Corresponds to the JSON property `billingType`
+        # @return [String]
+        attr_accessor :billing_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_type = args[:billing_type] if args.key?(:billing_type)
         end
       end
       

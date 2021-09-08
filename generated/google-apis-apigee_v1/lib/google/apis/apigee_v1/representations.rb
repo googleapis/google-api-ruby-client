@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1CreditDeveloperBalanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1CustomReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +341,24 @@ module Google
       end
       
       class GoogleCloudApigeeV1DeveloperAppKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DeveloperBalance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DeveloperBalanceWallet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DeveloperMonetizationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1546,6 +1570,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1CreditDeveloperBalanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transaction_amount, as: 'transactionAmount', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+          property :transaction_id, as: 'transactionId'
+        end
+      end
+      
       class GoogleCloudApigeeV1CustomReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1812,6 +1845,30 @@ module Google
           property :issued_at, :numeric_string => true, as: 'issuedAt'
           collection :scopes, as: 'scopes'
           property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DeveloperBalance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :wallets, as: 'wallets', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalanceWallet, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalanceWallet::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1DeveloperBalanceWallet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :balance, as: 'balance', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+          property :last_credit_time, :numeric_string => true, as: 'lastCreditTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DeveloperMonetizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_type, as: 'billingType'
         end
       end
       

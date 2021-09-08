@@ -2123,6 +2123,69 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the account balance for the developer.
+        # @param [String] name
+        #   Required. Account balance for the developer. Use the following structure in
+        #   your request: `organizations/`org`/developers/`developer`/balance`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_developer_balance(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalance::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalance
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the monetization configuration for the developer.
+        # @param [String] name
+        #   Required. Monetization configuration for the developer. Use the following
+        #   structure in your request: `organizations/`org`/developers/`developer`/
+        #   monetizationConfig`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_developer_monetization_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all developers in an organization by email address. By default, the
         # response does not include company developers. Set the `includeCompany` query
         # parameter to `true` to include company developers. **Note**: A maximum of 1000
@@ -2263,6 +2326,41 @@ module Google
           command.request_object = google_cloud_apigee_v1_developer_object
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Developer::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Developer
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the monetization configuration for the developer.
+        # @param [String] name
+        #   Required. Monetization configuration for the developer. Use the following
+        #   structure in your request: `organizations/`org`/developers/`developer`/
+        #   monetizationConfig`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig] google_cloud_apigee_v1_developer_monetization_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_developer_monetization_config(name, google_cloud_apigee_v1_developer_monetization_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig::Representation
+          command.request_object = google_cloud_apigee_v1_developer_monetization_config_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperMonetizationConfig
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3152,6 +3250,40 @@ module Google
           command.request_object = google_cloud_apigee_v1_attribute_object
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Credits the account balance for the developer.
+        # @param [String] name
+        #   Required. Account balance for the developer. Use the following structure in
+        #   your request: `organizations/`org`/developers/`developer`/balance`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CreditDeveloperBalanceRequest] google_cloud_apigee_v1_credit_developer_balance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def credit_organization_developer_balance(name, google_cloud_apigee_v1_credit_developer_balance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:credit', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CreditDeveloperBalanceRequest::Representation
+          command.request_object = google_cloud_apigee_v1_credit_developer_balance_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalance::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperBalance
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
