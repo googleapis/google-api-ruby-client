@@ -16,13 +16,13 @@ module Google
   module Apis
     module MybusinesslodgingV1
       # Version of the google-apis-mybusinesslodging_v1 gem
-      GEM_VERSION = "0.4.0"
+      GEM_VERSION = "0.5.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20210406"
+      REVISION = "20210908"
     end
   end
 end
