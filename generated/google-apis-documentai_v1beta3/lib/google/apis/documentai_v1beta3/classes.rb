@@ -760,6 +760,142 @@ module Google
         end
       end
       
+      # The long running operation metadata for delete processor method.
+      class GoogleCloudDocumentaiV1DeleteProcessorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The long running operation metadata for delete processor version method.
+      class GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The long running operation metadata for deploy processor version method.
+      class GoogleCloudDocumentaiV1DeployProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for the deploy processor version method.
+      class GoogleCloudDocumentaiV1DeployProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The long running operation metadata for disable processor method.
+      class GoogleCloudDocumentaiV1DisableProcessorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for the disable processor method. Intentionally empty proto
+      # for adding fields in future.
+      class GoogleCloudDocumentaiV1DisableProcessorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The long running operation metadata for enable processor method.
+      class GoogleCloudDocumentaiV1EnableProcessorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for the enable processor method. Intentionally empty proto
+      # for adding fields in future.
+      class GoogleCloudDocumentaiV1EnableProcessorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The status of human review on a processed document.
       class GoogleCloudDocumentaiV1HumanReviewStatus
         include Google::Apis::Core::Hashable
@@ -829,6 +965,70 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # The long running operation metadata for set default processor version method.
+      class GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for set default processor version method.
+      class GoogleCloudDocumentaiV1SetDefaultProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The long running operation metadata for the undeploy processor version method.
+      class GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Response message for the undeploy processor version method.
+      class GoogleCloudDocumentaiV1UndeployProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -4621,6 +4821,70 @@ module Google
         end
       end
       
+      # The long running operation metadata for delete processor version method.
+      class GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The long running operation metadata for deploy processor version method.
+      class GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Request message for the deploy processor version method.
+      class GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for the deploy processor version method.
+      class GoogleCloudDocumentaiV1beta3DeployProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The long running operation metadata for disable processor method.
       class GoogleCloudDocumentaiV1beta3DisableProcessorMetadata
         include Google::Apis::Core::Hashable
@@ -6207,6 +6471,104 @@ module Google
         end
       end
       
+      # Evaluation metrics, either in aggregate or about a specific entity.
+      class GoogleCloudDocumentaiV1beta3EvaluationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # The calculated f1 score.
+        # Corresponds to the JSON property `f1Score`
+        # @return [Float]
+        attr_accessor :f1_score
+      
+        # The amount of false negatives.
+        # Corresponds to the JSON property `falseNegativesCount`
+        # @return [Fixnum]
+        attr_accessor :false_negatives_count
+      
+        # The amount of false positives.
+        # Corresponds to the JSON property `falsePositivesCount`
+        # @return [Fixnum]
+        attr_accessor :false_positives_count
+      
+        # The amount of occurrences in ground truth documents.
+        # Corresponds to the JSON property `groundTruthOccurrencesCount`
+        # @return [Fixnum]
+        attr_accessor :ground_truth_occurrences_count
+      
+        # The calculated precision.
+        # Corresponds to the JSON property `precision`
+        # @return [Float]
+        attr_accessor :precision
+      
+        # The amount of occurrences in predicted documents.
+        # Corresponds to the JSON property `predictedOccurrencesCount`
+        # @return [Fixnum]
+        attr_accessor :predicted_occurrences_count
+      
+        # The calculated recall.
+        # Corresponds to the JSON property `recall`
+        # @return [Float]
+        attr_accessor :recall
+      
+        # The amount of documents that had an occurrence of this label.
+        # Corresponds to the JSON property `totalDocumentsCount`
+        # @return [Fixnum]
+        attr_accessor :total_documents_count
+      
+        # The amount of true positives.
+        # Corresponds to the JSON property `truePositivesCount`
+        # @return [Fixnum]
+        attr_accessor :true_positives_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @f1_score = args[:f1_score] if args.key?(:f1_score)
+          @false_negatives_count = args[:false_negatives_count] if args.key?(:false_negatives_count)
+          @false_positives_count = args[:false_positives_count] if args.key?(:false_positives_count)
+          @ground_truth_occurrences_count = args[:ground_truth_occurrences_count] if args.key?(:ground_truth_occurrences_count)
+          @precision = args[:precision] if args.key?(:precision)
+          @predicted_occurrences_count = args[:predicted_occurrences_count] if args.key?(:predicted_occurrences_count)
+          @recall = args[:recall] if args.key?(:recall)
+          @total_documents_count = args[:total_documents_count] if args.key?(:total_documents_count)
+          @true_positives_count = args[:true_positives_count] if args.key?(:true_positives_count)
+        end
+      end
+      
+      # Gives a short summary of an evaluation, and links to the evaluation itself.
+      class GoogleCloudDocumentaiV1beta3EvaluationReference
+        include Google::Apis::Core::Hashable
+      
+        # Evaluation metrics, either in aggregate or about a specific entity.
+        # Corresponds to the JSON property `aggregateMetrics`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMetrics]
+        attr_accessor :aggregate_metrics
+      
+        # The resource name of the evaluation.
+        # Corresponds to the JSON property `evaluation`
+        # @return [String]
+        attr_accessor :evaluation
+      
+        # The resource name of the Long Running Operation for the evaluation.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_metrics = args[:aggregate_metrics] if args.key?(:aggregate_metrics)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
       # Response message for fetch processor types.
       class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse
         include Google::Apis::Core::Hashable
@@ -6320,6 +6682,31 @@ module Google
           @human_review_operation = args[:human_review_operation] if args.key?(:human_review_operation)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+        end
+      end
+      
+      # Response message for list processors.
+      class GoogleCloudDocumentaiV1beta3ListProcessorVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Points to the next processor, otherwise empty.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of processors.
+        # Corresponds to the JSON property `processorVersions`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersion>]
+        attr_accessor :processor_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @processor_versions = args[:processor_versions] if args.key?(:processor_versions)
         end
       end
       
@@ -6541,8 +6928,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the processor type allows creation. If yes, user can create a
-        # processor of this processor type. Otherwise, user needs to require for
-        # whitelisting.
+        # processor of this processor type. Otherwise, user needs to request access.
         # Corresponds to the JSON property `allowCreation`
         # @return [Boolean]
         attr_accessor :allow_creation
@@ -6599,6 +6985,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @location_id = args[:location_id] if args.key?(:location_id)
+        end
+      end
+      
+      # A processor version is an implementation of a processor. Each processor can
+      # have multiple versions, pre-trained by Google internally or up-trained by the
+      # customer. At a time, a processor can only have one default version version. So
+      # the processor's behavior (when processing documents) is defined by a default
+      # version.
+      class GoogleCloudDocumentaiV1beta3ProcessorVersion
+        include Google::Apis::Core::Hashable
+      
+        # The time the processor version was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The display name of the processor version.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Gives a short summary of an evaluation, and links to the evaluation itself.
+        # Corresponds to the JSON property `latestEvaluation`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationReference]
+        attr_accessor :latest_evaluation
+      
+        # The resource name of the processor version. Format: projects/`project`/
+        # locations/`location`/processors/`processor`/processorVersions/`
+        # processor_version`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Schema]
+        attr_accessor :schema
+      
+        # The state of the processor version.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
+          @name = args[:name] if args.key?(:name)
+          @schema = args[:schema] if args.key?(:schema)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -6732,6 +7173,201 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # The schema defines the output of the processed document by a processor.
+      class GoogleCloudDocumentaiV1beta3Schema
+        include Google::Apis::Core::Hashable
+      
+        # Description of the schema.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name to show to users.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Entity types of the schema.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaEntityType>]
+        attr_accessor :entity_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+        end
+      end
+      
+      # EntityType is the wrapper of a label of the corresponding model with detailed
+      # attributes and limitations for entity-based processors. Multiple types can
+      # also compose a dependency tree to represent nested types.
+      class GoogleCloudDocumentaiV1beta3SchemaEntityType
+        include Google::Apis::Core::Hashable
+      
+        # Type of the entity. It must be one of the following: `document` - the entity
+        # represents a classification of a logical document. `object` - if the entity
+        # has properties it is likely an object (or or a document.) `datetime` - the
+        # entity is a date or time value. `money` - the entity represents a money value
+        # amount. `number` - the entity is a number - integer or floating point. `string`
+        # - the entity is a string value. `boolean` - the entity is a boolean value. `
+        # address` - the entity is a location address.
+        # Corresponds to the JSON property `baseType`
+        # @return [String]
+        attr_accessor :base_type
+      
+        # Description of the entity type.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If specified, lists all the possible values for this entity.
+        # Corresponds to the JSON property `enumValues`
+        # @return [Array<String>]
+        attr_accessor :enum_values
+      
+        # Occurrence type limits the number of times an entity type appears in the
+        # document.
+        # Corresponds to the JSON property `occurrenceType`
+        # @return [String]
+        attr_accessor :occurrence_type
+      
+        # Describing the nested structure of an entity. An EntityType may consist of
+        # several other EntityTypes. For example, in a document there can be an
+        # EntityType 'ID', which consists of EntityType 'name' and 'address', with
+        # corresponding attributes, such as TEXT for both types and ONCE for occurrence
+        # types.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaEntityType>]
+        attr_accessor :properties
+      
+        # Source of this entity type.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Name of the type. It must be unique within the set of same level types.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_type = args[:base_type] if args.key?(:base_type)
+          @description = args[:description] if args.key?(:description)
+          @enum_values = args[:enum_values] if args.key?(:enum_values)
+          @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
+          @properties = args[:properties] if args.key?(:properties)
+          @source = args[:source] if args.key?(:source)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The long running operation metadata for set default processor version method.
+      class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Request message for the set default processor version method.
+      class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of child ProcessorVersion to use as default.
+        # Corresponds to the JSON property `defaultProcessorVersion`
+        # @return [String]
+        attr_accessor :default_processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_processor_version = args[:default_processor_version] if args.key?(:default_processor_version)
+        end
+      end
+      
+      # Response message for set default processor version method.
+      class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The long running operation metadata for the undeploy processor version method.
+      class GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Request message for the undeploy processor version method.
+      class GoogleCloudDocumentaiV1beta3UndeployProcessorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for the undeploy processor version method.
+      class GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
