@@ -5578,7 +5578,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Model to use for shot change detection. Supported values: "builtin/stable" (
-        # the default if unset) and "builtin/latest".
+        # the default if unset), "builtin/latest", and "builtin/legacy".
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
