@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EcoCertification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnergyEfficiency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnhancedCleaning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,6 +226,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Sustainability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SustainabilityCertifications
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SustainableSourcing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeOfDay
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +257,18 @@ module Google
       end
       
       class ViewsFromUnit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WasteReduction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WaterConservation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -315,6 +357,35 @@ module Google
           property :public_internet_terminal_exception, as: 'publicInternetTerminalException'
           property :wifi_available, as: 'wifiAvailable'
           property :wifi_available_exception, as: 'wifiAvailableException'
+        end
+      end
+      
+      class EcoCertification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :awarded, as: 'awarded'
+          property :awarded_exception, as: 'awardedException'
+          property :eco_certificate, as: 'ecoCertificate'
+        end
+      end
+      
+      class EnergyEfficiency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carbon_free_energy_sources, as: 'carbonFreeEnergySources'
+          property :carbon_free_energy_sources_exception, as: 'carbonFreeEnergySourcesException'
+          property :energy_conservation_program, as: 'energyConservationProgram'
+          property :energy_conservation_program_exception, as: 'energyConservationProgramException'
+          property :energy_efficient_heating_and_cooling_systems, as: 'energyEfficientHeatingAndCoolingSystems'
+          property :energy_efficient_heating_and_cooling_systems_exception, as: 'energyEfficientHeatingAndCoolingSystemsException'
+          property :energy_efficient_lighting, as: 'energyEfficientLighting'
+          property :energy_efficient_lighting_exception, as: 'energyEfficientLightingException'
+          property :energy_saving_thermostats, as: 'energySavingThermostats'
+          property :energy_saving_thermostats_exception, as: 'energySavingThermostatsException'
+          property :green_building_design, as: 'greenBuildingDesign'
+          property :green_building_design_exception, as: 'greenBuildingDesignException'
+          property :independent_organization_audits_energy_use, as: 'independentOrganizationAuditsEnergyUse'
+          property :independent_organization_audits_energy_use_exception, as: 'independentOrganizationAuditsEnergyUseException'
         end
       end
       
@@ -694,6 +765,8 @@ module Google
       
           property :some_units, as: 'someUnits', class: Google::Apis::MybusinesslodgingV1::GuestUnitFeatures, decorator: Google::Apis::MybusinesslodgingV1::GuestUnitFeatures::Representation
       
+          property :sustainability, as: 'sustainability', class: Google::Apis::MybusinesslodgingV1::Sustainability, decorator: Google::Apis::MybusinesslodgingV1::Sustainability::Representation
+      
           property :transportation, as: 'transportation', class: Google::Apis::MybusinesslodgingV1::Transportation, decorator: Google::Apis::MybusinesslodgingV1::Transportation::Representation
       
           property :wellness, as: 'wellness', class: Google::Apis::MybusinesslodgingV1::Wellness, decorator: Google::Apis::MybusinesslodgingV1::Wellness::Representation
@@ -914,6 +987,56 @@ module Google
         end
       end
       
+      class Sustainability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :energy_efficiency, as: 'energyEfficiency', class: Google::Apis::MybusinesslodgingV1::EnergyEfficiency, decorator: Google::Apis::MybusinesslodgingV1::EnergyEfficiency::Representation
+      
+          property :sustainability_certifications, as: 'sustainabilityCertifications', class: Google::Apis::MybusinesslodgingV1::SustainabilityCertifications, decorator: Google::Apis::MybusinesslodgingV1::SustainabilityCertifications::Representation
+      
+          property :sustainable_sourcing, as: 'sustainableSourcing', class: Google::Apis::MybusinesslodgingV1::SustainableSourcing, decorator: Google::Apis::MybusinesslodgingV1::SustainableSourcing::Representation
+      
+          property :waste_reduction, as: 'wasteReduction', class: Google::Apis::MybusinesslodgingV1::WasteReduction, decorator: Google::Apis::MybusinesslodgingV1::WasteReduction::Representation
+      
+          property :water_conservation, as: 'waterConservation', class: Google::Apis::MybusinesslodgingV1::WaterConservation, decorator: Google::Apis::MybusinesslodgingV1::WaterConservation::Representation
+      
+        end
+      end
+      
+      class SustainabilityCertifications
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :breeam_certification, as: 'breeamCertification'
+          property :breeam_certification_exception, as: 'breeamCertificationException'
+          collection :eco_certifications, as: 'ecoCertifications', class: Google::Apis::MybusinesslodgingV1::EcoCertification, decorator: Google::Apis::MybusinesslodgingV1::EcoCertification::Representation
+      
+          property :leed_certification, as: 'leedCertification'
+          property :leed_certification_exception, as: 'leedCertificationException'
+        end
+      end
+      
+      class SustainableSourcing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eco_friendly_toiletries, as: 'ecoFriendlyToiletries'
+          property :eco_friendly_toiletries_exception, as: 'ecoFriendlyToiletriesException'
+          property :locally_sourced_food_and_beverages, as: 'locallySourcedFoodAndBeverages'
+          property :locally_sourced_food_and_beverages_exception, as: 'locallySourcedFoodAndBeveragesException'
+          property :organic_cage_free_eggs, as: 'organicCageFreeEggs'
+          property :organic_cage_free_eggs_exception, as: 'organicCageFreeEggsException'
+          property :organic_food_and_beverages, as: 'organicFoodAndBeverages'
+          property :organic_food_and_beverages_exception, as: 'organicFoodAndBeveragesException'
+          property :responsible_purchasing_policy, as: 'responsiblePurchasingPolicy'
+          property :responsible_purchasing_policy_exception, as: 'responsiblePurchasingPolicyException'
+          property :responsibly_sources_seafood, as: 'responsiblySourcesSeafood'
+          property :responsibly_sources_seafood_exception, as: 'responsiblySourcesSeafoodException'
+          property :vegan_meals, as: 'veganMeals'
+          property :vegan_meals_exception, as: 'veganMealsException'
+          property :vegetarian_meals, as: 'vegetarianMeals'
+          property :vegetarian_meals_exception, as: 'vegetarianMealsException'
+        end
+      end
+      
       class TimeOfDay
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -963,6 +1086,62 @@ module Google
           property :pool_view_exception, as: 'poolViewException'
           property :valley_view, as: 'valleyView'
           property :valley_view_exception, as: 'valleyViewException'
+        end
+      end
+      
+      class WasteReduction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compostable_food_containers_and_cutlery, as: 'compostableFoodContainersAndCutlery'
+          property :compostable_food_containers_and_cutlery_exception, as: 'compostableFoodContainersAndCutleryException'
+          property :composts_excess_food, as: 'compostsExcessFood'
+          property :composts_excess_food_exception, as: 'compostsExcessFoodException'
+          property :donates_excess_food, as: 'donatesExcessFood'
+          property :donates_excess_food_exception, as: 'donatesExcessFoodException'
+          property :food_waste_reduction_program, as: 'foodWasteReductionProgram'
+          property :food_waste_reduction_program_exception, as: 'foodWasteReductionProgramException'
+          property :no_single_use_plastic_straws, as: 'noSingleUsePlasticStraws'
+          property :no_single_use_plastic_straws_exception, as: 'noSingleUsePlasticStrawsException'
+          property :no_single_use_plastic_water_bottles, as: 'noSingleUsePlasticWaterBottles'
+          property :no_single_use_plastic_water_bottles_exception, as: 'noSingleUsePlasticWaterBottlesException'
+          property :no_styrofoam_food_containers, as: 'noStyrofoamFoodContainers'
+          property :no_styrofoam_food_containers_exception, as: 'noStyrofoamFoodContainersException'
+          property :recycling_program, as: 'recyclingProgram'
+          property :recycling_program_exception, as: 'recyclingProgramException'
+          property :refillable_toiletry_containers, as: 'refillableToiletryContainers'
+          property :refillable_toiletry_containers_exception, as: 'refillableToiletryContainersException'
+          property :safely_disposes_batteries, as: 'safelyDisposesBatteries'
+          property :safely_disposes_batteries_exception, as: 'safelyDisposesBatteriesException'
+          property :safely_disposes_electronics, as: 'safelyDisposesElectronics'
+          property :safely_disposes_electronics_exception, as: 'safelyDisposesElectronicsException'
+          property :safely_disposes_lightbulbs, as: 'safelyDisposesLightbulbs'
+          property :safely_disposes_lightbulbs_exception, as: 'safelyDisposesLightbulbsException'
+          property :safely_handles_hazardous_substances, as: 'safelyHandlesHazardousSubstances'
+          property :safely_handles_hazardous_substances_exception, as: 'safelyHandlesHazardousSubstancesException'
+          property :soap_donation_program, as: 'soapDonationProgram'
+          property :soap_donation_program_exception, as: 'soapDonationProgramException'
+          property :toiletry_donation_program, as: 'toiletryDonationProgram'
+          property :toiletry_donation_program_exception, as: 'toiletryDonationProgramException'
+          property :water_bottle_filling_stations, as: 'waterBottleFillingStations'
+          property :water_bottle_filling_stations_exception, as: 'waterBottleFillingStationsException'
+        end
+      end
+      
+      class WaterConservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :independent_organization_audits_water_use, as: 'independentOrganizationAuditsWaterUse'
+          property :independent_organization_audits_water_use_exception, as: 'independentOrganizationAuditsWaterUseException'
+          property :linen_reuse_program, as: 'linenReuseProgram'
+          property :linen_reuse_program_exception, as: 'linenReuseProgramException'
+          property :towel_reuse_program, as: 'towelReuseProgram'
+          property :towel_reuse_program_exception, as: 'towelReuseProgramException'
+          property :water_saving_showers, as: 'waterSavingShowers'
+          property :water_saving_showers_exception, as: 'waterSavingShowersException'
+          property :water_saving_sinks, as: 'waterSavingSinks'
+          property :water_saving_sinks_exception, as: 'waterSavingSinksException'
+          property :water_saving_toilets, as: 'waterSavingToilets'
+          property :water_saving_toilets_exception, as: 'waterSavingToiletsException'
         end
       end
       

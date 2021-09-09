@@ -508,6 +508,174 @@ module Google
         end
       end
       
+      # An eco certificate awarded to the hotel.
+      class EcoCertification
+        include Google::Apis::Core::Hashable
+      
+        # Whether the eco certificate was awarded or not.
+        # Corresponds to the JSON property `awarded`
+        # @return [Boolean]
+        attr_accessor :awarded
+        alias_method :awarded?, :awarded
+      
+        # Awarded exception.
+        # Corresponds to the JSON property `awardedException`
+        # @return [String]
+        attr_accessor :awarded_exception
+      
+        # Required. The eco certificate.
+        # Corresponds to the JSON property `ecoCertificate`
+        # @return [String]
+        attr_accessor :eco_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @awarded = args[:awarded] if args.key?(:awarded)
+          @awarded_exception = args[:awarded_exception] if args.key?(:awarded_exception)
+          @eco_certificate = args[:eco_certificate] if args.key?(:eco_certificate)
+        end
+      end
+      
+      # Energy efficiency practices implemented at the hotel.
+      class EnergyEfficiency
+        include Google::Apis::Core::Hashable
+      
+        # Carbon free energy sources. Property sources carbon-free electricity via at
+        # least one of the following methods: on-site clean energy generation, power
+        # purchase agreement(s) with clean energy generators, green power provided by
+        # electricity supplier, or purchases of Energy Attribute Certificates (such as
+        # Renewable Energy Certificates or Guarantees of Origin).
+        # Corresponds to the JSON property `carbonFreeEnergySources`
+        # @return [Boolean]
+        attr_accessor :carbon_free_energy_sources
+        alias_method :carbon_free_energy_sources?, :carbon_free_energy_sources
+      
+        # Carbon free energy sources exception.
+        # Corresponds to the JSON property `carbonFreeEnergySourcesException`
+        # @return [String]
+        attr_accessor :carbon_free_energy_sources_exception
+      
+        # Energy conservation program. The property tracks corporate-level Scope 1 and 2
+        # GHG emissions, and Scope 3 emissions if available. The property has a
+        # commitment to implement initiatives that reduce GHG emissions year over year.
+        # The property has shown an absolute reduction in emissions for at least 2 years.
+        # Emissions are either verfied by a third-party and/or published in external
+        # communications.
+        # Corresponds to the JSON property `energyConservationProgram`
+        # @return [Boolean]
+        attr_accessor :energy_conservation_program
+        alias_method :energy_conservation_program?, :energy_conservation_program
+      
+        # Energy conservation program exception.
+        # Corresponds to the JSON property `energyConservationProgramException`
+        # @return [String]
+        attr_accessor :energy_conservation_program_exception
+      
+        # Energy efficient heating and cooling systems. The property doesn't use
+        # chlorofluorocarbon (CFC)-based refrigerants in heating, ventilating, and air-
+        # conditioning systems unless a third-party audit shows it's not economically
+        # feasible. The CFC-based refrigerants which are used should have a Global
+        # Warming Potential (GWP) ≤ 10. The property uses occupancy sensors on HVAC
+        # systems in back-of-house spaces, meeting rooms, and other low-traffic areas.
+        # Corresponds to the JSON property `energyEfficientHeatingAndCoolingSystems`
+        # @return [Boolean]
+        attr_accessor :energy_efficient_heating_and_cooling_systems
+        alias_method :energy_efficient_heating_and_cooling_systems?, :energy_efficient_heating_and_cooling_systems
+      
+        # Energy efficient heating and cooling systems exception.
+        # Corresponds to the JSON property `energyEfficientHeatingAndCoolingSystemsException`
+        # @return [String]
+        attr_accessor :energy_efficient_heating_and_cooling_systems_exception
+      
+        # Energy efficient lighting. At least 75% of the property's lighting is energy
+        # efficient, using lighting that is more than 45 lumens per watt – typically LED
+        # or CFL lightbulbs.
+        # Corresponds to the JSON property `energyEfficientLighting`
+        # @return [Boolean]
+        attr_accessor :energy_efficient_lighting
+        alias_method :energy_efficient_lighting?, :energy_efficient_lighting
+      
+        # Energy efficient lighting exception.
+        # Corresponds to the JSON property `energyEfficientLightingException`
+        # @return [String]
+        attr_accessor :energy_efficient_lighting_exception
+      
+        # Energy saving thermostats. The property installed energy-saving thermostats
+        # throughout the building to conserve energy when rooms or areas are not in use.
+        # Energy-saving thermostats are devices that control heating/cooling in the
+        # building by learning temperature preferences and automatically adjusting to
+        # energy-saving temperatures as the default. The thermostats are automatically
+        # set to a temperature between 68-78 degrees F (20-26 °C), depending on
+        # seasonality. In the winter, set the thermostat to 68°F (20°C) when the room is
+        # occupied, lowering room temperature when unoccupied. In the summer, set the
+        # thermostat to 78°F (26°C) when the room is occupied.
+        # Corresponds to the JSON property `energySavingThermostats`
+        # @return [Boolean]
+        attr_accessor :energy_saving_thermostats
+        alias_method :energy_saving_thermostats?, :energy_saving_thermostats
+      
+        # Energy saving thermostats exception.
+        # Corresponds to the JSON property `energySavingThermostatsException`
+        # @return [String]
+        attr_accessor :energy_saving_thermostats_exception
+      
+        # Output only. Green building design. True if BREEAM-* or LEED-* certified.
+        # Corresponds to the JSON property `greenBuildingDesign`
+        # @return [Boolean]
+        attr_accessor :green_building_design
+        alias_method :green_building_design?, :green_building_design
+      
+        # Output only. Green building design exception.
+        # Corresponds to the JSON property `greenBuildingDesignException`
+        # @return [String]
+        attr_accessor :green_building_design_exception
+      
+        # Independent organization audits energy use. The property conducts an energy
+        # audit at least every 5 years, the results of which are either verified by a
+        # third-party and/or published in external communications. An energy audit is a
+        # detailed assessment of the facility which provides recommendations to existing
+        # operations and procedures to improve energy efficiency, available incentives
+        # or rebates,and opportunities for improvements through renovations or upgrades.
+        # Examples of organizations that conduct credible third party audits include:
+        # Engie Impact, DNV GL (EU), Dexma, and local utility providers (they often
+        # provide energy and water audits).
+        # Corresponds to the JSON property `independentOrganizationAuditsEnergyUse`
+        # @return [Boolean]
+        attr_accessor :independent_organization_audits_energy_use
+        alias_method :independent_organization_audits_energy_use?, :independent_organization_audits_energy_use
+      
+        # Independent organization audits energy use exception.
+        # Corresponds to the JSON property `independentOrganizationAuditsEnergyUseException`
+        # @return [String]
+        attr_accessor :independent_organization_audits_energy_use_exception
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carbon_free_energy_sources = args[:carbon_free_energy_sources] if args.key?(:carbon_free_energy_sources)
+          @carbon_free_energy_sources_exception = args[:carbon_free_energy_sources_exception] if args.key?(:carbon_free_energy_sources_exception)
+          @energy_conservation_program = args[:energy_conservation_program] if args.key?(:energy_conservation_program)
+          @energy_conservation_program_exception = args[:energy_conservation_program_exception] if args.key?(:energy_conservation_program_exception)
+          @energy_efficient_heating_and_cooling_systems = args[:energy_efficient_heating_and_cooling_systems] if args.key?(:energy_efficient_heating_and_cooling_systems)
+          @energy_efficient_heating_and_cooling_systems_exception = args[:energy_efficient_heating_and_cooling_systems_exception] if args.key?(:energy_efficient_heating_and_cooling_systems_exception)
+          @energy_efficient_lighting = args[:energy_efficient_lighting] if args.key?(:energy_efficient_lighting)
+          @energy_efficient_lighting_exception = args[:energy_efficient_lighting_exception] if args.key?(:energy_efficient_lighting_exception)
+          @energy_saving_thermostats = args[:energy_saving_thermostats] if args.key?(:energy_saving_thermostats)
+          @energy_saving_thermostats_exception = args[:energy_saving_thermostats_exception] if args.key?(:energy_saving_thermostats_exception)
+          @green_building_design = args[:green_building_design] if args.key?(:green_building_design)
+          @green_building_design_exception = args[:green_building_design_exception] if args.key?(:green_building_design_exception)
+          @independent_organization_audits_energy_use = args[:independent_organization_audits_energy_use] if args.key?(:independent_organization_audits_energy_use)
+          @independent_organization_audits_energy_use_exception = args[:independent_organization_audits_energy_use_exception] if args.key?(:independent_organization_audits_energy_use_exception)
+        end
+      end
+      
       # Enhanced cleaning measures implemented by the hotel during COVID-19.
       class EnhancedCleaning
         include Google::Apis::Core::Hashable
@@ -2415,6 +2583,11 @@ module Google
         # @return [Google::Apis::MybusinesslodgingV1::GuestUnitFeatures]
         attr_accessor :some_units
       
+        # Sustainability practices implemented at the hotel.
+        # Corresponds to the JSON property `sustainability`
+        # @return [Google::Apis::MybusinesslodgingV1::Sustainability]
+        attr_accessor :sustainability
+      
         # Vehicles or vehicular services facilitated or owned by the property.
         # Corresponds to the JSON property `transportation`
         # @return [Google::Apis::MybusinesslodgingV1::Transportation]
@@ -2452,6 +2625,7 @@ module Google
           @property = args[:property] if args.key?(:property)
           @services = args[:services] if args.key?(:services)
           @some_units = args[:some_units] if args.key?(:some_units)
+          @sustainability = args[:sustainability] if args.key?(:sustainability)
           @transportation = args[:transportation] if args.key?(:transportation)
           @wellness = args[:wellness] if args.key?(:wellness)
         end
@@ -3613,6 +3787,229 @@ module Google
         end
       end
       
+      # Sustainability practices implemented at the hotel.
+      class Sustainability
+        include Google::Apis::Core::Hashable
+      
+        # Energy efficiency practices implemented at the hotel.
+        # Corresponds to the JSON property `energyEfficiency`
+        # @return [Google::Apis::MybusinesslodgingV1::EnergyEfficiency]
+        attr_accessor :energy_efficiency
+      
+        # Sustainability certifications the hotel has been awarded.
+        # Corresponds to the JSON property `sustainabilityCertifications`
+        # @return [Google::Apis::MybusinesslodgingV1::SustainabilityCertifications]
+        attr_accessor :sustainability_certifications
+      
+        # Sustainable sourcing practices implemented at the hotel.
+        # Corresponds to the JSON property `sustainableSourcing`
+        # @return [Google::Apis::MybusinesslodgingV1::SustainableSourcing]
+        attr_accessor :sustainable_sourcing
+      
+        # Waste reduction practices implemented at the hotel.
+        # Corresponds to the JSON property `wasteReduction`
+        # @return [Google::Apis::MybusinesslodgingV1::WasteReduction]
+        attr_accessor :waste_reduction
+      
+        # Water conservation practices implemented at the hotel.
+        # Corresponds to the JSON property `waterConservation`
+        # @return [Google::Apis::MybusinesslodgingV1::WaterConservation]
+        attr_accessor :water_conservation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @energy_efficiency = args[:energy_efficiency] if args.key?(:energy_efficiency)
+          @sustainability_certifications = args[:sustainability_certifications] if args.key?(:sustainability_certifications)
+          @sustainable_sourcing = args[:sustainable_sourcing] if args.key?(:sustainable_sourcing)
+          @waste_reduction = args[:waste_reduction] if args.key?(:waste_reduction)
+          @water_conservation = args[:water_conservation] if args.key?(:water_conservation)
+        end
+      end
+      
+      # Sustainability certifications the hotel has been awarded.
+      class SustainabilityCertifications
+        include Google::Apis::Core::Hashable
+      
+        # BREEAM certification.
+        # Corresponds to the JSON property `breeamCertification`
+        # @return [String]
+        attr_accessor :breeam_certification
+      
+        # BREEAM certification exception.
+        # Corresponds to the JSON property `breeamCertificationException`
+        # @return [String]
+        attr_accessor :breeam_certification_exception
+      
+        # The eco certificates awarded to the hotel.
+        # Corresponds to the JSON property `ecoCertifications`
+        # @return [Array<Google::Apis::MybusinesslodgingV1::EcoCertification>]
+        attr_accessor :eco_certifications
+      
+        # LEED certification.
+        # Corresponds to the JSON property `leedCertification`
+        # @return [String]
+        attr_accessor :leed_certification
+      
+        # LEED certification exception.
+        # Corresponds to the JSON property `leedCertificationException`
+        # @return [String]
+        attr_accessor :leed_certification_exception
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @breeam_certification = args[:breeam_certification] if args.key?(:breeam_certification)
+          @breeam_certification_exception = args[:breeam_certification_exception] if args.key?(:breeam_certification_exception)
+          @eco_certifications = args[:eco_certifications] if args.key?(:eco_certifications)
+          @leed_certification = args[:leed_certification] if args.key?(:leed_certification)
+          @leed_certification_exception = args[:leed_certification_exception] if args.key?(:leed_certification_exception)
+        end
+      end
+      
+      # Sustainable sourcing practices implemented at the hotel.
+      class SustainableSourcing
+        include Google::Apis::Core::Hashable
+      
+        # Eco friendly toiletries. Soap, shampoo, lotion, and other toiletries provided
+        # for guests have a nationally or internationally recognized sustainability
+        # certification, such as USDA Organic, EU Organic, or cruelty-free.
+        # Corresponds to the JSON property `ecoFriendlyToiletries`
+        # @return [Boolean]
+        attr_accessor :eco_friendly_toiletries
+        alias_method :eco_friendly_toiletries?, :eco_friendly_toiletries
+      
+        # Eco friendly toiletries exception.
+        # Corresponds to the JSON property `ecoFriendlyToiletriesException`
+        # @return [String]
+        attr_accessor :eco_friendly_toiletries_exception
+      
+        # Locally sourced food and beverages. Property sources locally in order to lower
+        # the environmental footprint from reduced transportation and to stimulate the
+        # local economy. Products produced less than 62 miles from the establishment are
+        # normally considered as locally produced.
+        # Corresponds to the JSON property `locallySourcedFoodAndBeverages`
+        # @return [Boolean]
+        attr_accessor :locally_sourced_food_and_beverages
+        alias_method :locally_sourced_food_and_beverages?, :locally_sourced_food_and_beverages
+      
+        # Locally sourced food and beverages exception.
+        # Corresponds to the JSON property `locallySourcedFoodAndBeveragesException`
+        # @return [String]
+        attr_accessor :locally_sourced_food_and_beverages_exception
+      
+        # Organic cage free eggs. The property sources 100% certified organic and cage-
+        # free eggs (shell, liquid, and egg products). Cage-free means hens are able to
+        # walk, spread their wings and lay their eggs in nests).
+        # Corresponds to the JSON property `organicCageFreeEggs`
+        # @return [Boolean]
+        attr_accessor :organic_cage_free_eggs
+        alias_method :organic_cage_free_eggs?, :organic_cage_free_eggs
+      
+        # Organic cage free eggs exception.
+        # Corresponds to the JSON property `organicCageFreeEggsException`
+        # @return [String]
+        attr_accessor :organic_cage_free_eggs_exception
+      
+        # Organic food and beverages. At least 25% of food and beverages, by spend, are
+        # certified organic. Organic means products that are certified to one of the
+        # organic standard listed in the IFOAM family of standards. Qualifying
+        # certifications include USDA Organic and EU Organic, among others.
+        # Corresponds to the JSON property `organicFoodAndBeverages`
+        # @return [Boolean]
+        attr_accessor :organic_food_and_beverages
+        alias_method :organic_food_and_beverages?, :organic_food_and_beverages
+      
+        # Organic food and beverages exception.
+        # Corresponds to the JSON property `organicFoodAndBeveragesException`
+        # @return [String]
+        attr_accessor :organic_food_and_beverages_exception
+      
+        # Responsible purchasing policy. The property has a responsible procurement
+        # policy in place. Responsible means integration of social, ethical, and/or
+        # environmental performance factors into the procurement process when selecting
+        # suppliers.
+        # Corresponds to the JSON property `responsiblePurchasingPolicy`
+        # @return [Boolean]
+        attr_accessor :responsible_purchasing_policy
+        alias_method :responsible_purchasing_policy?, :responsible_purchasing_policy
+      
+        # Responsible purchasing policy exception.
+        # Corresponds to the JSON property `responsiblePurchasingPolicyException`
+        # @return [String]
+        attr_accessor :responsible_purchasing_policy_exception
+      
+        # Responsibly sources seafood. The property does not source seafood from the
+        # Monterey Bay Aquarium Seafood Watch "avoid" list, and must sustainably source
+        # seafood listed as "good alternative," "eco-certified," and "best choice". The
+        # property has a policy outlining a commitment to source Marine Stewardship
+        # Council (MSC) and/or Aquaculture Stewardship Council (ASC) Chain of Custody
+        # certified seafood.
+        # Corresponds to the JSON property `responsiblySourcesSeafood`
+        # @return [Boolean]
+        attr_accessor :responsibly_sources_seafood
+        alias_method :responsibly_sources_seafood?, :responsibly_sources_seafood
+      
+        # Responsibly sources seafood exception.
+        # Corresponds to the JSON property `responsiblySourcesSeafoodException`
+        # @return [String]
+        attr_accessor :responsibly_sources_seafood_exception
+      
+        # Vegan meals. The property provides vegan menu options for guests. Vegan food
+        # does not contain animal products or byproducts.
+        # Corresponds to the JSON property `veganMeals`
+        # @return [Boolean]
+        attr_accessor :vegan_meals
+        alias_method :vegan_meals?, :vegan_meals
+      
+        # Vegan meals exception.
+        # Corresponds to the JSON property `veganMealsException`
+        # @return [String]
+        attr_accessor :vegan_meals_exception
+      
+        # Vegetarian meals. The property provides vegetarian menu options for guests.
+        # Vegetarian food does not contain animal products.
+        # Corresponds to the JSON property `vegetarianMeals`
+        # @return [Boolean]
+        attr_accessor :vegetarian_meals
+        alias_method :vegetarian_meals?, :vegetarian_meals
+      
+        # Vegetarian meals exception.
+        # Corresponds to the JSON property `vegetarianMealsException`
+        # @return [String]
+        attr_accessor :vegetarian_meals_exception
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eco_friendly_toiletries = args[:eco_friendly_toiletries] if args.key?(:eco_friendly_toiletries)
+          @eco_friendly_toiletries_exception = args[:eco_friendly_toiletries_exception] if args.key?(:eco_friendly_toiletries_exception)
+          @locally_sourced_food_and_beverages = args[:locally_sourced_food_and_beverages] if args.key?(:locally_sourced_food_and_beverages)
+          @locally_sourced_food_and_beverages_exception = args[:locally_sourced_food_and_beverages_exception] if args.key?(:locally_sourced_food_and_beverages_exception)
+          @organic_cage_free_eggs = args[:organic_cage_free_eggs] if args.key?(:organic_cage_free_eggs)
+          @organic_cage_free_eggs_exception = args[:organic_cage_free_eggs_exception] if args.key?(:organic_cage_free_eggs_exception)
+          @organic_food_and_beverages = args[:organic_food_and_beverages] if args.key?(:organic_food_and_beverages)
+          @organic_food_and_beverages_exception = args[:organic_food_and_beverages_exception] if args.key?(:organic_food_and_beverages_exception)
+          @responsible_purchasing_policy = args[:responsible_purchasing_policy] if args.key?(:responsible_purchasing_policy)
+          @responsible_purchasing_policy_exception = args[:responsible_purchasing_policy_exception] if args.key?(:responsible_purchasing_policy_exception)
+          @responsibly_sources_seafood = args[:responsibly_sources_seafood] if args.key?(:responsibly_sources_seafood)
+          @responsibly_sources_seafood_exception = args[:responsibly_sources_seafood_exception] if args.key?(:responsibly_sources_seafood_exception)
+          @vegan_meals = args[:vegan_meals] if args.key?(:vegan_meals)
+          @vegan_meals_exception = args[:vegan_meals_exception] if args.key?(:vegan_meals_exception)
+          @vegetarian_meals = args[:vegetarian_meals] if args.key?(:vegetarian_meals)
+          @vegetarian_meals_exception = args[:vegetarian_meals_exception] if args.key?(:vegetarian_meals_exception)
+        end
+      end
+      
       # Represents a time of day. The date and time zone are either not significant or
       # are specified elsewhere. An API may choose to allow leap seconds. Related
       # types are google.type.Date and `google.protobuf.Timestamp`.
@@ -3897,6 +4294,369 @@ module Google
           @pool_view_exception = args[:pool_view_exception] if args.key?(:pool_view_exception)
           @valley_view = args[:valley_view] if args.key?(:valley_view)
           @valley_view_exception = args[:valley_view_exception] if args.key?(:valley_view_exception)
+        end
+      end
+      
+      # Waste reduction practices implemented at the hotel.
+      class WasteReduction
+        include Google::Apis::Core::Hashable
+      
+        # Compostable food containers and cutlery. 100% of food service containers and
+        # to-go cutlery are compostable, and reusable utensils are offered wherever
+        # possible. Compostable materials are capable of undergoing biological
+        # decomposition in a compost site, such that material is not visually
+        # distinguishable and breaks down into carbon dioxide, water, inorganic
+        # compounds, and biomass.
+        # Corresponds to the JSON property `compostableFoodContainersAndCutlery`
+        # @return [Boolean]
+        attr_accessor :compostable_food_containers_and_cutlery
+        alias_method :compostable_food_containers_and_cutlery?, :compostable_food_containers_and_cutlery
+      
+        # Compostable food containers and cutlery exception.
+        # Corresponds to the JSON property `compostableFoodContainersAndCutleryException`
+        # @return [String]
+        attr_accessor :compostable_food_containers_and_cutlery_exception
+      
+        # Composts excess food. The property has a program and/or policy for diverting
+        # waste from landfill by composting food and yard waste, either through compost
+        # collection and off-site processing or on-site compost processing.
+        # Corresponds to the JSON property `compostsExcessFood`
+        # @return [Boolean]
+        attr_accessor :composts_excess_food
+        alias_method :composts_excess_food?, :composts_excess_food
+      
+        # Composts excess food exception.
+        # Corresponds to the JSON property `compostsExcessFoodException`
+        # @return [String]
+        attr_accessor :composts_excess_food_exception
+      
+        # Donates excess food. The property has a program and/or policy for diverting
+        # waste from landfill that may include efforts to donate for human consumption
+        # or divert food for animal feed.
+        # Corresponds to the JSON property `donatesExcessFood`
+        # @return [Boolean]
+        attr_accessor :donates_excess_food
+        alias_method :donates_excess_food?, :donates_excess_food
+      
+        # Donates excess food exception.
+        # Corresponds to the JSON property `donatesExcessFoodException`
+        # @return [String]
+        attr_accessor :donates_excess_food_exception
+      
+        # Food waste reduction program. The property has established a food waste
+        # reduction and donation program, aiming to reduce food waste by half. These
+        # programs typically use tools such as the Hotel Kitchen Toolkit and others to
+        # track waste and measure progress.
+        # Corresponds to the JSON property `foodWasteReductionProgram`
+        # @return [Boolean]
+        attr_accessor :food_waste_reduction_program
+        alias_method :food_waste_reduction_program?, :food_waste_reduction_program
+      
+        # Food waste reduction program exception.
+        # Corresponds to the JSON property `foodWasteReductionProgramException`
+        # @return [String]
+        attr_accessor :food_waste_reduction_program_exception
+      
+        # No single use plastic straws. The property bans single-use plastic straws.
+        # Corresponds to the JSON property `noSingleUsePlasticStraws`
+        # @return [Boolean]
+        attr_accessor :no_single_use_plastic_straws
+        alias_method :no_single_use_plastic_straws?, :no_single_use_plastic_straws
+      
+        # No single use plastic straws exception.
+        # Corresponds to the JSON property `noSingleUsePlasticStrawsException`
+        # @return [String]
+        attr_accessor :no_single_use_plastic_straws_exception
+      
+        # No single use plastic water bottles. The property bans single-use plastic
+        # water bottles.
+        # Corresponds to the JSON property `noSingleUsePlasticWaterBottles`
+        # @return [Boolean]
+        attr_accessor :no_single_use_plastic_water_bottles
+        alias_method :no_single_use_plastic_water_bottles?, :no_single_use_plastic_water_bottles
+      
+        # No single use plastic water bottles exception.
+        # Corresponds to the JSON property `noSingleUsePlasticWaterBottlesException`
+        # @return [String]
+        attr_accessor :no_single_use_plastic_water_bottles_exception
+      
+        # No styrofoam food containers. The property eliminates the use of Styrofoam in
+        # disposable food service items.
+        # Corresponds to the JSON property `noStyrofoamFoodContainers`
+        # @return [Boolean]
+        attr_accessor :no_styrofoam_food_containers
+        alias_method :no_styrofoam_food_containers?, :no_styrofoam_food_containers
+      
+        # No styrofoam food containers exception.
+        # Corresponds to the JSON property `noStyrofoamFoodContainersException`
+        # @return [String]
+        attr_accessor :no_styrofoam_food_containers_exception
+      
+        # Recycling program. The property has a recycling program, aligned with LEED
+        # waste requirements, and a policy outlining efforts to send less than 50% of
+        # waste to landfill. The recycling program includes storage locations for
+        # recyclable materials, including mixed paper, corrugated cardboard, glass,
+        # plastics, and metals.
+        # Corresponds to the JSON property `recyclingProgram`
+        # @return [Boolean]
+        attr_accessor :recycling_program
+        alias_method :recycling_program?, :recycling_program
+      
+        # Recycling program exception.
+        # Corresponds to the JSON property `recyclingProgramException`
+        # @return [String]
+        attr_accessor :recycling_program_exception
+      
+        # Refillable toiletry containers. The property has replaced miniature individual
+        # containers with refillable amenity dispensers for shampoo, conditioner, soap,
+        # and lotion.
+        # Corresponds to the JSON property `refillableToiletryContainers`
+        # @return [Boolean]
+        attr_accessor :refillable_toiletry_containers
+        alias_method :refillable_toiletry_containers?, :refillable_toiletry_containers
+      
+        # Refillable toiletry containers exception.
+        # Corresponds to the JSON property `refillableToiletryContainersException`
+        # @return [String]
+        attr_accessor :refillable_toiletry_containers_exception
+      
+        # Safely disposes batteries. The property safely stores and disposes batteries.
+        # Corresponds to the JSON property `safelyDisposesBatteries`
+        # @return [Boolean]
+        attr_accessor :safely_disposes_batteries
+        alias_method :safely_disposes_batteries?, :safely_disposes_batteries
+      
+        # Safely disposes batteries exception.
+        # Corresponds to the JSON property `safelyDisposesBatteriesException`
+        # @return [String]
+        attr_accessor :safely_disposes_batteries_exception
+      
+        # Safely disposes electronics. The property has a reputable recycling program
+        # that keeps hazardous electronic parts and chemical compounds out of landfills,
+        # dumps and other unauthorized abandonment sites, and recycles/reuses applicable
+        # materials. (e.g. certified electronics recyclers).
+        # Corresponds to the JSON property `safelyDisposesElectronics`
+        # @return [Boolean]
+        attr_accessor :safely_disposes_electronics
+        alias_method :safely_disposes_electronics?, :safely_disposes_electronics
+      
+        # Safely disposes electronics exception.
+        # Corresponds to the JSON property `safelyDisposesElectronicsException`
+        # @return [String]
+        attr_accessor :safely_disposes_electronics_exception
+      
+        # Safely disposes lightbulbs. The property safely stores and disposes lightbulbs.
+        # Corresponds to the JSON property `safelyDisposesLightbulbs`
+        # @return [Boolean]
+        attr_accessor :safely_disposes_lightbulbs
+        alias_method :safely_disposes_lightbulbs?, :safely_disposes_lightbulbs
+      
+        # Safely disposes lightbulbs exception.
+        # Corresponds to the JSON property `safelyDisposesLightbulbsException`
+        # @return [String]
+        attr_accessor :safely_disposes_lightbulbs_exception
+      
+        # Safely handles hazardous substances. The property has a hazardous waste
+        # management program aligned wit GreenSeal and LEED requirements, and meets all
+        # regulatory requirements for hazardous waste disposal and recycling. Hazardous
+        # means substances that are classified as "hazardous" by an authoritative body (
+        # such as OSHA or DOT), are labeled with signal words such as "Danger," "Caution,
+        # " "Warning," or are flammable, corrosive, or ignitable. Requirements include: -
+        # The property shall maintain records of the efforts it has made to replace the
+        # hazardous substances it uses with less hazardous alternatives. - An inventory
+        # of the hazardous materials stored on-site. - Products intended for cleaning,
+        # dishwashing, laundry, and pool maintenance shall be stored in clearly labeled
+        # containers. These containers shall be checked regularly for leaks, and
+        # replaced a necessary. - Spill containment devices shall be installed to
+        # collect spills, drips, or leaching of chemicals.
+        # Corresponds to the JSON property `safelyHandlesHazardousSubstances`
+        # @return [Boolean]
+        attr_accessor :safely_handles_hazardous_substances
+        alias_method :safely_handles_hazardous_substances?, :safely_handles_hazardous_substances
+      
+        # Safely handles hazardous substances exception.
+        # Corresponds to the JSON property `safelyHandlesHazardousSubstancesException`
+        # @return [String]
+        attr_accessor :safely_handles_hazardous_substances_exception
+      
+        # Soap donation program. The property participates in a soap donation program
+        # such as Clean the World or something similar.
+        # Corresponds to the JSON property `soapDonationProgram`
+        # @return [Boolean]
+        attr_accessor :soap_donation_program
+        alias_method :soap_donation_program?, :soap_donation_program
+      
+        # Soap donation program exception.
+        # Corresponds to the JSON property `soapDonationProgramException`
+        # @return [String]
+        attr_accessor :soap_donation_program_exception
+      
+        # Toiletry donation program. The property participates in a toiletry donation
+        # program such as Clean the World or something similar.
+        # Corresponds to the JSON property `toiletryDonationProgram`
+        # @return [Boolean]
+        attr_accessor :toiletry_donation_program
+        alias_method :toiletry_donation_program?, :toiletry_donation_program
+      
+        # Toiletry donation program exception.
+        # Corresponds to the JSON property `toiletryDonationProgramException`
+        # @return [String]
+        attr_accessor :toiletry_donation_program_exception
+      
+        # Water bottle filling stations. The property offers water stations throughout
+        # the building for guest use.
+        # Corresponds to the JSON property `waterBottleFillingStations`
+        # @return [Boolean]
+        attr_accessor :water_bottle_filling_stations
+        alias_method :water_bottle_filling_stations?, :water_bottle_filling_stations
+      
+        # Water bottle filling stations exception.
+        # Corresponds to the JSON property `waterBottleFillingStationsException`
+        # @return [String]
+        attr_accessor :water_bottle_filling_stations_exception
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compostable_food_containers_and_cutlery = args[:compostable_food_containers_and_cutlery] if args.key?(:compostable_food_containers_and_cutlery)
+          @compostable_food_containers_and_cutlery_exception = args[:compostable_food_containers_and_cutlery_exception] if args.key?(:compostable_food_containers_and_cutlery_exception)
+          @composts_excess_food = args[:composts_excess_food] if args.key?(:composts_excess_food)
+          @composts_excess_food_exception = args[:composts_excess_food_exception] if args.key?(:composts_excess_food_exception)
+          @donates_excess_food = args[:donates_excess_food] if args.key?(:donates_excess_food)
+          @donates_excess_food_exception = args[:donates_excess_food_exception] if args.key?(:donates_excess_food_exception)
+          @food_waste_reduction_program = args[:food_waste_reduction_program] if args.key?(:food_waste_reduction_program)
+          @food_waste_reduction_program_exception = args[:food_waste_reduction_program_exception] if args.key?(:food_waste_reduction_program_exception)
+          @no_single_use_plastic_straws = args[:no_single_use_plastic_straws] if args.key?(:no_single_use_plastic_straws)
+          @no_single_use_plastic_straws_exception = args[:no_single_use_plastic_straws_exception] if args.key?(:no_single_use_plastic_straws_exception)
+          @no_single_use_plastic_water_bottles = args[:no_single_use_plastic_water_bottles] if args.key?(:no_single_use_plastic_water_bottles)
+          @no_single_use_plastic_water_bottles_exception = args[:no_single_use_plastic_water_bottles_exception] if args.key?(:no_single_use_plastic_water_bottles_exception)
+          @no_styrofoam_food_containers = args[:no_styrofoam_food_containers] if args.key?(:no_styrofoam_food_containers)
+          @no_styrofoam_food_containers_exception = args[:no_styrofoam_food_containers_exception] if args.key?(:no_styrofoam_food_containers_exception)
+          @recycling_program = args[:recycling_program] if args.key?(:recycling_program)
+          @recycling_program_exception = args[:recycling_program_exception] if args.key?(:recycling_program_exception)
+          @refillable_toiletry_containers = args[:refillable_toiletry_containers] if args.key?(:refillable_toiletry_containers)
+          @refillable_toiletry_containers_exception = args[:refillable_toiletry_containers_exception] if args.key?(:refillable_toiletry_containers_exception)
+          @safely_disposes_batteries = args[:safely_disposes_batteries] if args.key?(:safely_disposes_batteries)
+          @safely_disposes_batteries_exception = args[:safely_disposes_batteries_exception] if args.key?(:safely_disposes_batteries_exception)
+          @safely_disposes_electronics = args[:safely_disposes_electronics] if args.key?(:safely_disposes_electronics)
+          @safely_disposes_electronics_exception = args[:safely_disposes_electronics_exception] if args.key?(:safely_disposes_electronics_exception)
+          @safely_disposes_lightbulbs = args[:safely_disposes_lightbulbs] if args.key?(:safely_disposes_lightbulbs)
+          @safely_disposes_lightbulbs_exception = args[:safely_disposes_lightbulbs_exception] if args.key?(:safely_disposes_lightbulbs_exception)
+          @safely_handles_hazardous_substances = args[:safely_handles_hazardous_substances] if args.key?(:safely_handles_hazardous_substances)
+          @safely_handles_hazardous_substances_exception = args[:safely_handles_hazardous_substances_exception] if args.key?(:safely_handles_hazardous_substances_exception)
+          @soap_donation_program = args[:soap_donation_program] if args.key?(:soap_donation_program)
+          @soap_donation_program_exception = args[:soap_donation_program_exception] if args.key?(:soap_donation_program_exception)
+          @toiletry_donation_program = args[:toiletry_donation_program] if args.key?(:toiletry_donation_program)
+          @toiletry_donation_program_exception = args[:toiletry_donation_program_exception] if args.key?(:toiletry_donation_program_exception)
+          @water_bottle_filling_stations = args[:water_bottle_filling_stations] if args.key?(:water_bottle_filling_stations)
+          @water_bottle_filling_stations_exception = args[:water_bottle_filling_stations_exception] if args.key?(:water_bottle_filling_stations_exception)
+        end
+      end
+      
+      # Water conservation practices implemented at the hotel.
+      class WaterConservation
+        include Google::Apis::Core::Hashable
+      
+        # Independent organization audits water use. The property conducts a water
+        # conservation audit every 5 years, the results of which are either verified by
+        # a third-party and/or published in external communications. A water
+        # conservation audit is a detailed assessment of the facility, providing
+        # recommendations to existing operations and procedures to improve water
+        # efficiency, available incentives or rebates, and opportunities for
+        # improvements through renovations or upgrades. Examples of organizations who
+        # conduct credible third party audits include: Engie Impact, and local utility
+        # providers (they often provide energy and water audits).
+        # Corresponds to the JSON property `independentOrganizationAuditsWaterUse`
+        # @return [Boolean]
+        attr_accessor :independent_organization_audits_water_use
+        alias_method :independent_organization_audits_water_use?, :independent_organization_audits_water_use
+      
+        # Independent organization audits water use exception.
+        # Corresponds to the JSON property `independentOrganizationAuditsWaterUseException`
+        # @return [String]
+        attr_accessor :independent_organization_audits_water_use_exception
+      
+        # Linen reuse program. The property offers a linen reuse program.
+        # Corresponds to the JSON property `linenReuseProgram`
+        # @return [Boolean]
+        attr_accessor :linen_reuse_program
+        alias_method :linen_reuse_program?, :linen_reuse_program
+      
+        # Linen reuse program exception.
+        # Corresponds to the JSON property `linenReuseProgramException`
+        # @return [String]
+        attr_accessor :linen_reuse_program_exception
+      
+        # Towel reuse program. The property offers a towel reuse program.
+        # Corresponds to the JSON property `towelReuseProgram`
+        # @return [Boolean]
+        attr_accessor :towel_reuse_program
+        alias_method :towel_reuse_program?, :towel_reuse_program
+      
+        # Towel reuse program exception.
+        # Corresponds to the JSON property `towelReuseProgramException`
+        # @return [String]
+        attr_accessor :towel_reuse_program_exception
+      
+        # Water saving showers. All of the property's guest rooms have shower heads that
+        # use no more than 2.0 gallons per minute (gpm).
+        # Corresponds to the JSON property `waterSavingShowers`
+        # @return [Boolean]
+        attr_accessor :water_saving_showers
+        alias_method :water_saving_showers?, :water_saving_showers
+      
+        # Water saving showers exception.
+        # Corresponds to the JSON property `waterSavingShowersException`
+        # @return [String]
+        attr_accessor :water_saving_showers_exception
+      
+        # Water saving sinks. All of the property's guest rooms have bathroom faucets
+        # that use a maximum of 1.5 gallons per minute (gpm), public restroom faucets do
+        # not exceed 0.5 gpm, and kitchen faucets (excluding faucets used exclusively
+        # for filling operations) do not exceed 2.2 gpm.
+        # Corresponds to the JSON property `waterSavingSinks`
+        # @return [Boolean]
+        attr_accessor :water_saving_sinks
+        alias_method :water_saving_sinks?, :water_saving_sinks
+      
+        # Water saving sinks exception.
+        # Corresponds to the JSON property `waterSavingSinksException`
+        # @return [String]
+        attr_accessor :water_saving_sinks_exception
+      
+        # Water saving toilets. All of the property's toilets use 1.6 gallons per flush,
+        # or less.
+        # Corresponds to the JSON property `waterSavingToilets`
+        # @return [Boolean]
+        attr_accessor :water_saving_toilets
+        alias_method :water_saving_toilets?, :water_saving_toilets
+      
+        # Water saving toilets exception.
+        # Corresponds to the JSON property `waterSavingToiletsException`
+        # @return [String]
+        attr_accessor :water_saving_toilets_exception
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @independent_organization_audits_water_use = args[:independent_organization_audits_water_use] if args.key?(:independent_organization_audits_water_use)
+          @independent_organization_audits_water_use_exception = args[:independent_organization_audits_water_use_exception] if args.key?(:independent_organization_audits_water_use_exception)
+          @linen_reuse_program = args[:linen_reuse_program] if args.key?(:linen_reuse_program)
+          @linen_reuse_program_exception = args[:linen_reuse_program_exception] if args.key?(:linen_reuse_program_exception)
+          @towel_reuse_program = args[:towel_reuse_program] if args.key?(:towel_reuse_program)
+          @towel_reuse_program_exception = args[:towel_reuse_program_exception] if args.key?(:towel_reuse_program_exception)
+          @water_saving_showers = args[:water_saving_showers] if args.key?(:water_saving_showers)
+          @water_saving_showers_exception = args[:water_saving_showers_exception] if args.key?(:water_saving_showers_exception)
+          @water_saving_sinks = args[:water_saving_sinks] if args.key?(:water_saving_sinks)
+          @water_saving_sinks_exception = args[:water_saving_sinks_exception] if args.key?(:water_saving_sinks_exception)
+          @water_saving_toilets = args[:water_saving_toilets] if args.key?(:water_saving_toilets)
+          @water_saving_toilets_exception = args[:water_saving_toilets_exception] if args.key?(:water_saving_toilets_exception)
         end
       end
       
