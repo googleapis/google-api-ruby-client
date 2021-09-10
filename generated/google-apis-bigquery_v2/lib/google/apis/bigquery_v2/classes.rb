@@ -541,9 +541,9 @@ module Google
       class AvroOptions
         include Google::Apis::Core::Hashable
       
-        # [Optional] If set to true will enable interpreting logical types into their
-        # corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie.
-        # INTEGER).
+        # [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret
+        # logical types as the corresponding BigQuery data type (for example, TIMESTAMP),
+        # instead of using the raw type (for example, INTEGER).
         # Corresponds to the JSON property `useAvroLogicalTypes`
         # @return [Boolean]
         attr_accessor :use_avro_logical_types
@@ -1510,6 +1510,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :dataset_reference
       
+        # [Output-only] The default collation of the dataset.
+        # Corresponds to the JSON property `defaultCollation`
+        # @return [String]
+        attr_accessor :default_collation
+      
         # 
         # Corresponds to the JSON property `defaultEncryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
@@ -1619,6 +1624,7 @@ module Google
           @access = args[:access] if args.key?(:access)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @dataset_reference = args[:dataset_reference] if args.key?(:dataset_reference)
+          @default_collation = args[:default_collation] if args.key?(:default_collation)
           @default_encryption_configuration = args[:default_encryption_configuration] if args.key?(:default_encryption_configuration)
           @default_partition_expiration_ms = args[:default_partition_expiration_ms] if args.key?(:default_partition_expiration_ms)
           @default_table_expiration_ms = args[:default_table_expiration_ms] if args.key?(:default_table_expiration_ms)
@@ -3353,9 +3359,9 @@ module Google
         # @return [Google::Apis::BigqueryV2::TimePartitioning]
         attr_accessor :time_partitioning
       
-        # [Optional] If sourceFormat is set to "AVRO", indicates whether to enable
-        # interpreting logical types into their corresponding types (ie. TIMESTAMP),
-        # instead of only using their raw types (ie. INTEGER).
+        # [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret
+        # logical types as the corresponding BigQuery data type (for example, TIMESTAMP),
+        # instead of using the raw type (for example, INTEGER).
         # Corresponds to the JSON property `useAvroLogicalTypes`
         # @return [Boolean]
         attr_accessor :use_avro_logical_types
@@ -6175,6 +6181,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :creation_time
       
+        # [Output-only] The default collation of the table.
+        # Corresponds to the JSON property `defaultCollation`
+        # @return [String]
+        attr_accessor :default_collation
+      
         # [Optional] A user-friendly description of this table.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -6351,6 +6362,7 @@ module Google
         def update!(**args)
           @clustering = args[:clustering] if args.key?(:clustering)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @default_collation = args[:default_collation] if args.key?(:default_collation)
           @description = args[:description] if args.key?(:description)
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @etag = args[:etag] if args.key?(:etag)
