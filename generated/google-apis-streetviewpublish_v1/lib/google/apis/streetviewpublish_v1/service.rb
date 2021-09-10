@@ -385,7 +385,7 @@ module Google
         # Lists all the Photos that belong to the user. *Note:* Recently created photos
         # that are still being indexed are not returned in the response.
         # @param [String] filter
-        #   Required. The filter expression. For example: `placeId=
+        #   Optional. The filter expression. For example: `placeId=
         #   ChIJj61dQgK6j4AR4GeTYWZsKWw`. The only filter supported at the moment is `
         #   placeId`.
         # @param [String] language_code
