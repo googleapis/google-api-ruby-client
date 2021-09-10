@@ -2025,14 +2025,14 @@ module Google
       
         # The search query for the desired business chain. The query must be the full
         # name of the business, e.g. "KFC", "mercedes-benz".
-        # Corresponds to the JSON property `businessChain`
+        # Corresponds to the JSON property `businessChainQuery`
         # @return [String]
-        attr_accessor :business_chain
+        attr_accessor :business_chain_query
       
         # The search query for the desired geo region, e.g. "Seattle", "United State".
-        # Corresponds to the JSON property `region`
+        # Corresponds to the JSON property `regionQuery`
         # @return [String]
-        attr_accessor :region
+        attr_accessor :region_query
       
         def initialize(**args)
            update!(**args)
@@ -2040,8 +2040,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @business_chain = args[:business_chain] if args.key?(:business_chain)
-          @region = args[:region] if args.key?(:region)
+          @business_chain_query = args[:business_chain_query] if args.key?(:business_chain_query)
+          @region_query = args[:region_query] if args.key?(:region_query)
         end
       end
       

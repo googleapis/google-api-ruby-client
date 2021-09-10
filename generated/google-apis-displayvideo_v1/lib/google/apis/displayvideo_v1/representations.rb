@@ -2119,8 +2119,8 @@ module Google
       class BusinessChainSearchTerms
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :business_chain, as: 'businessChain'
-          property :region, as: 'region'
+          property :business_chain_query, as: 'businessChainQuery'
+          property :region_query, as: 'regionQuery'
         end
       end
       
