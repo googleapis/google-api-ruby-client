@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerAuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlServerDatabaseDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +647,7 @@ module Google
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
       
           property :kind, as: 'kind'
+          property :region, as: 'region'
           property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqladminV1::SslCert, decorator: Google::Apis::SqladminV1::SslCert::Representation
       
         end
@@ -811,6 +818,10 @@ module Google
         class CsvExportOptions
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :escape_character, as: 'escapeCharacter'
+            property :fields_terminated_by, as: 'fieldsTerminatedBy'
+            property :lines_terminated_by, as: 'linesTerminatedBy'
+            property :quote_character, as: 'quoteCharacter'
             property :select_query, as: 'selectQuery'
           end
         end
@@ -918,6 +929,10 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :columns, as: 'columns'
+            property :escape_character, as: 'escapeCharacter'
+            property :fields_terminated_by, as: 'fieldsTerminatedBy'
+            property :lines_terminated_by, as: 'linesTerminatedBy'
+            property :quote_character, as: 'quoteCharacter'
             property :table, as: 'table'
           end
         end
@@ -1232,6 +1247,8 @@ module Google
           property :pricing_plan, as: 'pricingPlan'
           property :replication_type, as: 'replicationType'
           property :settings_version, :numeric_string => true, as: 'settingsVersion'
+          property :sql_server_audit_config, as: 'sqlServerAuditConfig', class: Google::Apis::SqladminV1::SqlServerAuditConfig, decorator: Google::Apis::SqladminV1::SqlServerAuditConfig::Representation
+      
           property :storage_auto_resize, as: 'storageAutoResize'
           property :storage_auto_resize_limit, :numeric_string => true, as: 'storageAutoResizeLimit'
           property :tier, as: 'tier'
@@ -1281,6 +1298,7 @@ module Google
       
           property :sync_mode, as: 'syncMode'
           property :verify_connection_only, as: 'verifyConnectionOnly'
+          property :verify_replication_only, as: 'verifyReplicationOnly'
         end
       end
       
@@ -1310,6 +1328,14 @@ module Google
           property :can_reschedule, as: 'canReschedule'
           property :schedule_deadline_time, as: 'scheduleDeadlineTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class SqlServerAuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :kind, as: 'kind'
         end
       end
       

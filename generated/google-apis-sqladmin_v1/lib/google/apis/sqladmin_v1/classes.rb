@@ -472,6 +472,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The cloud region for the instance. e.g. **us-central1**, **europe-west1**. The
+        # region cannot be changed after instance creation.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # SslCerts Resource
         # Corresponds to the JSON property `serverCaCert`
         # @return [Google::Apis::SqladminV1::SslCert]
@@ -487,6 +493,7 @@ module Google
           @database_version = args[:database_version] if args.key?(:database_version)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @kind = args[:kind] if args.key?(:kind)
+          @region = args[:region] if args.key?(:region)
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
         end
       end
@@ -1176,6 +1183,29 @@ module Google
         class CsvExportOptions
           include Google::Apis::Core::Hashable
         
+          # Specifies the character that should appear before a data character that needs
+          # to be escaped.
+          # Corresponds to the JSON property `escapeCharacter`
+          # @return [String]
+          attr_accessor :escape_character
+        
+          # Specifies the character that separates columns within each row (line) of the
+          # file.
+          # Corresponds to the JSON property `fieldsTerminatedBy`
+          # @return [String]
+          attr_accessor :fields_terminated_by
+        
+          # This is used to separate lines. If a line does not contain all fields, the
+          # rest of the columns are set to their default values.
+          # Corresponds to the JSON property `linesTerminatedBy`
+          # @return [String]
+          attr_accessor :lines_terminated_by
+        
+          # Specifies the quoting character to be used when a data value is quoted.
+          # Corresponds to the JSON property `quoteCharacter`
+          # @return [String]
+          attr_accessor :quote_character
+        
           # The select query used to extract the data.
           # Corresponds to the JSON property `selectQuery`
           # @return [String]
@@ -1187,6 +1217,10 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @escape_character = args[:escape_character] if args.key?(:escape_character)
+            @fields_terminated_by = args[:fields_terminated_by] if args.key?(:fields_terminated_by)
+            @lines_terminated_by = args[:lines_terminated_by] if args.key?(:lines_terminated_by)
+            @quote_character = args[:quote_character] if args.key?(:quote_character)
             @select_query = args[:select_query] if args.key?(:select_query)
           end
         end
@@ -1556,6 +1590,29 @@ module Google
           # @return [Array<String>]
           attr_accessor :columns
         
+          # Specifies the character that should appear before a data character that needs
+          # to be escaped.
+          # Corresponds to the JSON property `escapeCharacter`
+          # @return [String]
+          attr_accessor :escape_character
+        
+          # Specifies the character that separates columns within each row (line) of the
+          # file.
+          # Corresponds to the JSON property `fieldsTerminatedBy`
+          # @return [String]
+          attr_accessor :fields_terminated_by
+        
+          # This is used to separate lines. If a line does not contain all fields, the
+          # rest of the columns are set to their default values.
+          # Corresponds to the JSON property `linesTerminatedBy`
+          # @return [String]
+          attr_accessor :lines_terminated_by
+        
+          # Specifies the quoting character to be used when a data value is quoted.
+          # Corresponds to the JSON property `quoteCharacter`
+          # @return [String]
+          attr_accessor :quote_character
+        
           # The table to which CSV data is imported.
           # Corresponds to the JSON property `table`
           # @return [String]
@@ -1568,6 +1625,10 @@ module Google
           # Update properties of this object
           def update!(**args)
             @columns = args[:columns] if args.key?(:columns)
+            @escape_character = args[:escape_character] if args.key?(:escape_character)
+            @fields_terminated_by = args[:fields_terminated_by] if args.key?(:fields_terminated_by)
+            @lines_terminated_by = args[:lines_terminated_by] if args.key?(:lines_terminated_by)
+            @quote_character = args[:quote_character] if args.key?(:quote_character)
             @table = args[:table] if args.key?(:table)
           end
         end
@@ -2687,6 +2748,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :settings_version
       
+        # SQL Server specific audit configuration.
+        # Corresponds to the JSON property `sqlServerAuditConfig`
+        # @return [Google::Apis::SqladminV1::SqlServerAuditConfig]
+        attr_accessor :sql_server_audit_config
+      
         # Configuration to increase storage size automatically. The default value is
         # true.
         # Corresponds to the JSON property `storageAutoResize`
@@ -2737,6 +2803,7 @@ module Google
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
           @replication_type = args[:replication_type] if args.key?(:replication_type)
           @settings_version = args[:settings_version] if args.key?(:settings_version)
+          @sql_server_audit_config = args[:sql_server_audit_config] if args.key?(:sql_server_audit_config)
           @storage_auto_resize = args[:storage_auto_resize] if args.key?(:storage_auto_resize)
           @storage_auto_resize_limit = args[:storage_auto_resize_limit] if args.key?(:storage_auto_resize_limit)
           @tier = args[:tier] if args.key?(:tier)
@@ -2871,6 +2938,12 @@ module Google
         attr_accessor :verify_connection_only
         alias_method :verify_connection_only?, :verify_connection_only
       
+        # Optional. Flag to verify settings required by replication setup only
+        # Corresponds to the JSON property `verifyReplicationOnly`
+        # @return [Boolean]
+        attr_accessor :verify_replication_only
+        alias_method :verify_replication_only?, :verify_replication_only
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2880,6 +2953,7 @@ module Google
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
           @verify_connection_only = args[:verify_connection_only] if args.key?(:verify_connection_only)
+          @verify_replication_only = args[:verify_replication_only] if args.key?(:verify_replication_only)
         end
       end
       
@@ -2979,6 +3053,31 @@ module Google
           @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
           @schedule_deadline_time = args[:schedule_deadline_time] if args.key?(:schedule_deadline_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # SQL Server specific audit configuration.
+      class SqlServerAuditConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the destination bucket (e.g., gs://mybucket).
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # This is always sql#sqlServerAuditConfig
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
