@@ -3034,6 +3034,67 @@ module Google
         end
       end
       
+      # Metadata describing the Session operation.
+      class SessionOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time when the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Short description of the operation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The time when the operation was finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
+        # Labels associated with the operation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # Name of the session for the operation.
+        # Corresponds to the JSON property `session`
+        # @return [String]
+        attr_accessor :session
+      
+        # Session UUID for the operation.
+        # Corresponds to the JSON property `sessionUuid`
+        # @return [String]
+        attr_accessor :session_uuid
+      
+        # Warnings encountered during operation execution.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @done_time = args[:done_time] if args.key?(:done_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @session = args[:session] if args.key?(:session)
+          @session_uuid = args[:session_uuid] if args.key?(:session_uuid)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
       # Request message for SetIamPolicy method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable

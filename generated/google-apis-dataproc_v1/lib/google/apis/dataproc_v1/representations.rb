@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SessionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1298,6 +1304,20 @@ module Google
       
           property :kerberos_config, as: 'kerberosConfig', class: Google::Apis::DataprocV1::KerberosConfig, decorator: Google::Apis::DataprocV1::KerberosConfig::Representation
       
+        end
+      end
+      
+      class SessionOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :done_time, as: 'doneTime'
+          hash :labels, as: 'labels'
+          property :operation_type, as: 'operationType'
+          property :session, as: 'session'
+          property :session_uuid, as: 'sessionUuid'
+          collection :warnings, as: 'warnings'
         end
       end
       
