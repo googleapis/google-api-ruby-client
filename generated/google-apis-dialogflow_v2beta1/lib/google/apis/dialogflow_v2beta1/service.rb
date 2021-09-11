@@ -151,7 +151,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports the specified agent to a ZIP file.
+        # Exports the specified agent to a ZIP file. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-
+        # operations). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`:
+        # ExportAgentResponse
         # @param [String] parent
         #   Required. The project that the agent to export is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -260,9 +265,16 @@ module Google
         # the import, the imported draft agent will be trained automatically (unless
         # disabled in agent settings). However, once the import is done, training may
         # not be completed yet. Please call TrainAgent and wait for the operation it
-        # returns in order to train explicitly. Note: You should always train an agent
-        # prior to sending it queries. See the [training documentation](https://cloud.
-        # google.com/dialogflow/es/docs/training).
+        # returns in order to train explicitly. This method is a [long-running operation]
+        # (https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: An empty [Struct message](https://developers.google.com/protocol-
+        # buffers/docs/reference/google.protobuf#struct) - `response`: An [Empty message]
+        # (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        # empty) The operation only tracks when importing is complete, not when it is
+        # done training. Note: You should always train an agent prior to sending it
+        # queries. See the [training documentation](https://cloud.google.com/dialogflow/
+        # es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to import is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -301,9 +313,16 @@ module Google
         # are deleted. After the restore, the restored draft agent will be trained
         # automatically (unless disabled in agent settings). However, once the restore
         # is done, training may not be completed yet. Please call TrainAgent and wait
-        # for the operation it returns in order to train explicitly. Note: You should
-        # always train an agent prior to sending it queries. See the [training
-        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
+        # for the operation it returns in order to train explicitly. This method is a [
+        # long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-
+        # running-operations). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: An empty [Struct message](https://developers.
+        # google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`
+        # : An [Empty message](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#empty) The operation only tracks when restoring is
+        # complete, not when it is done training. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to restore is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -379,9 +398,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Trains the specified agent. Note: You should always train an agent prior to
-        # sending it queries. See the [training documentation](https://cloud.google.com/
-        # dialogflow/es/docs/training).
+        # Trains the specified agent. This method is a [long-running operation](https://
+        # cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+        # `Operation` type has the following method-specific fields: - `metadata`: An
+        # empty [Struct message](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#struct) - `response`: An [Empty message](https://
+        # developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+        # Note: You should always train an agent prior to sending it queries. See the [
+        # training documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to train is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -454,9 +478,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes entity types in the specified agent. Note: You should always train an
-        # agent prior to sending it queries. See the [training documentation](https://
-        # cloud.google.com/dialogflow/es/docs/training).
+        # Deletes entity types in the specified agent. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-
+        # operations). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`: An [
+        # Empty message](https://developers.google.com/protocol-buffers/docs/reference/
+        # google.protobuf#empty) Note: You should always train an agent prior to sending
+        # it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Supported
         #   formats: - `projects//agent`, - `projects//locations//agent`.
@@ -490,9 +520,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates/Creates multiple entity types in the specified agent. Note: You should
-        # always train an agent prior to sending it queries. See the [training
-        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
+        # Updates/Creates multiple entity types in the specified agent. This method is a
+        # [long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-
+        # running-operations). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: An empty [Struct message](https://developers.
+        # google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`
+        # : BatchUpdateEntityTypesResponse Note: You should always train an agent prior
+        # to sending it queries. See the [training documentation](https://cloud.google.
+        # com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to update or create entity types in. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -729,9 +764,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates multiple new entities in the specified entity type. Note: You should
-        # always train an agent prior to sending it queries. See the [training
-        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
+        # Creates multiple new entities in the specified entity type. This method is a [
+        # long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-
+        # running-operations). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: An empty [Struct message](https://developers.
+        # google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`
+        # : An [Empty message](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#empty) Note: You should always train an agent prior
+        # to sending it queries. See the [training documentation](https://cloud.google.
+        # com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to create entities in. Supported formats:
         #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -765,9 +806,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes entities in the specified entity type. Note: You should always train
-        # an agent prior to sending it queries. See the [training documentation](https://
-        # cloud.google.com/dialogflow/es/docs/training).
+        # Deletes entities in the specified entity type. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-
+        # operations). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`: An [
+        # Empty message](https://developers.google.com/protocol-buffers/docs/reference/
+        # google.protobuf#empty) Note: You should always train an agent prior to sending
+        # it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to delete entries for. Supported formats:
         #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -805,7 +852,12 @@ module Google
         # does not affect entities in the entity type that aren't explicitly specified
         # in the request. Note: You should always train an agent prior to sending it
         # queries. See the [training documentation](https://cloud.google.com/dialogflow/
-        # es/docs/training).
+        # es/docs/training). This method is a [long-running operation](https://cloud.
+        # google.com/dialogflow/es/docs/how/long-running-operations). The returned `
+        # Operation` type has the following method-specific fields: - `metadata`: An
+        # empty [Struct message](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#struct) - `response`: An [Empty message](https://
+        # developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
         # @param [String] parent
         #   Required. The name of the entity type to update or create entities in.
         #   Supported formats: - `projects//agent/entityTypes/` - `projects//locations//
@@ -1611,9 +1663,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes intents in the specified agent. Note: You should always train an agent
-        # prior to sending it queries. See the [training documentation](https://cloud.
-        # google.com/dialogflow/es/docs/training).
+        # Deletes intents in the specified agent. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-
+        # operations). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`: An [
+        # Empty message](https://developers.google.com/protocol-buffers/docs/reference/
+        # google.protobuf#empty) Note: You should always train an agent prior to sending
+        # it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -1647,9 +1705,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates/Creates multiple intents in the specified agent. Note: You should
-        # always train an agent prior to sending it queries. See the [training
-        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
+        # Updates/Creates multiple intents in the specified agent. This method is a [
+        # long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-
+        # running-operations). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: An empty [Struct message](https://developers.
+        # google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`
+        # : BatchUpdateIntentsResponse Note: You should always train an agent prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to update or create intents in. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -2098,8 +2161,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new document. Note: The `projects.agent.knowledgeBases.documents`
-        # resource is deprecated; only use `projects.knowledgeBases.documents`.
+        # Creates a new document. This method is a [long-running operation](https://
+        # cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `
+        # Operation` type has the following method-specific fields: - `metadata`:
+        # KnowledgeOperationMetadata - `response`: Document Note: The `projects.agent.
+        # knowledgeBases.documents` resource is deprecated; only use `projects.
+        # knowledgeBases.documents`.
         # @param [String] parent
         #   Required. The knowledge base to create a document for. Format: `projects//
         #   locations//knowledgeBases/`.
@@ -2137,9 +2204,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified document. Note: The `projects.agent.knowledgeBases.
-        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
-        # .
+        # Deletes the specified document. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: KnowledgeOperationMetadata - `response`: An [Empty message](https://
+        # developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # @param [String] name
         #   Required. The name of the document to delete. Format: `projects//locations//
         #   knowledgeBases//documents/`.
@@ -2254,9 +2325,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified document. Note: The `projects.agent.knowledgeBases.
-        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
-        # .
+        # Updates the specified document. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: KnowledgeOperationMetadata - `response`: Document Note: The `
+        # projects.agent.knowledgeBases.documents` resource is deprecated; only use `
+        # projects.knowledgeBases.documents`.
         # @param [String] name
         #   Optional. The document resource name. The name must be empty when creating a
         #   document. Format: `projects//locations//knowledgeBases//documents/`.
@@ -2301,9 +2375,12 @@ module Google
         # effects because of internal implementation changes. Note: If the document
         # source is Google Cloud Storage URI, its metadata will be replaced with the
         # custom metadata from Google Cloud Storage if the `import_gcs_custom_metadata`
-        # field is set to true in the request. Note: The `projects.agent.knowledgeBases.
-        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
-        # .
+        # field is set to true in the request. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: KnowledgeOperationMetadata - `response`: Document Note: The `
+        # projects.agent.knowledgeBases.documents` resource is deprecated; only use `
+        # projects.knowledgeBases.documents`.
         # @param [String] name
         #   Required. The name of the document to reload. Format: `projects//locations//
         #   knowledgeBases//documents/`
@@ -4112,8 +4189,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new document. Note: The `projects.agent.knowledgeBases.documents`
-        # resource is deprecated; only use `projects.knowledgeBases.documents`.
+        # Creates a new document. This method is a [long-running operation](https://
+        # cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `
+        # Operation` type has the following method-specific fields: - `metadata`:
+        # KnowledgeOperationMetadata - `response`: Document Note: The `projects.agent.
+        # knowledgeBases.documents` resource is deprecated; only use `projects.
+        # knowledgeBases.documents`.
         # @param [String] parent
         #   Required. The knowledge base to create a document for. Format: `projects//
         #   locations//knowledgeBases/`.
@@ -4151,9 +4232,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified document. Note: The `projects.agent.knowledgeBases.
-        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
-        # .
+        # Deletes the specified document. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: KnowledgeOperationMetadata - `response`: An [Empty message](https://
+        # developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # @param [String] name
         #   Required. The name of the document to delete. Format: `projects//locations//
         #   knowledgeBases//documents/`.
@@ -4219,7 +4304,10 @@ module Google
         
         # Create documents by importing data from external sources. Dialogflow supports
         # up to 350 documents in each request. If you try to import more, Dialogflow
-        # will return an error.
+        # will return an error. This method is a [long-running operation](https://cloud.
+        # google.com/dialogflow/cx/docs/how/long-running-operation). The returned `
+        # Operation` type has the following method-specific fields: - `metadata`:
+        # KnowledgeOperationMetadata - `response`: ImportDocumentsResponse
         # @param [String] parent
         #   Required. The knowledge base to import documents into. Format: `projects//
         #   locations//knowledgeBases/`.
@@ -4304,9 +4392,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified document. Note: The `projects.agent.knowledgeBases.
-        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
-        # .
+        # Updates the specified document. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: KnowledgeOperationMetadata - `response`: Document Note: The `
+        # projects.agent.knowledgeBases.documents` resource is deprecated; only use `
+        # projects.knowledgeBases.documents`.
         # @param [String] name
         #   Optional. The document resource name. The name must be empty when creating a
         #   document. Format: `projects//locations//knowledgeBases//documents/`.
@@ -4351,9 +4442,12 @@ module Google
         # effects because of internal implementation changes. Note: If the document
         # source is Google Cloud Storage URI, its metadata will be replaced with the
         # custom metadata from Google Cloud Storage if the `import_gcs_custom_metadata`
-        # field is set to true in the request. Note: The `projects.agent.knowledgeBases.
-        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
-        # .
+        # field is set to true in the request. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: KnowledgeOperationMetadata - `response`: Document Note: The `
+        # projects.agent.knowledgeBases.documents` resource is deprecated; only use `
+        # projects.knowledgeBases.documents`.
         # @param [String] name
         #   Required. The name of the document to reload. Format: `projects//locations//
         #   knowledgeBases//documents/`
@@ -4561,7 +4655,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports the specified agent to a ZIP file.
+        # Exports the specified agent to a ZIP file. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-
+        # operations). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`:
+        # ExportAgentResponse
         # @param [String] parent
         #   Required. The project that the agent to export is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -4670,9 +4769,16 @@ module Google
         # the import, the imported draft agent will be trained automatically (unless
         # disabled in agent settings). However, once the import is done, training may
         # not be completed yet. Please call TrainAgent and wait for the operation it
-        # returns in order to train explicitly. Note: You should always train an agent
-        # prior to sending it queries. See the [training documentation](https://cloud.
-        # google.com/dialogflow/es/docs/training).
+        # returns in order to train explicitly. This method is a [long-running operation]
+        # (https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: An empty [Struct message](https://developers.google.com/protocol-
+        # buffers/docs/reference/google.protobuf#struct) - `response`: An [Empty message]
+        # (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        # empty) The operation only tracks when importing is complete, not when it is
+        # done training. Note: You should always train an agent prior to sending it
+        # queries. See the [training documentation](https://cloud.google.com/dialogflow/
+        # es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to import is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -4711,9 +4817,16 @@ module Google
         # are deleted. After the restore, the restored draft agent will be trained
         # automatically (unless disabled in agent settings). However, once the restore
         # is done, training may not be completed yet. Please call TrainAgent and wait
-        # for the operation it returns in order to train explicitly. Note: You should
-        # always train an agent prior to sending it queries. See the [training
-        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
+        # for the operation it returns in order to train explicitly. This method is a [
+        # long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-
+        # running-operations). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: An empty [Struct message](https://developers.
+        # google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`
+        # : An [Empty message](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#empty) The operation only tracks when restoring is
+        # complete, not when it is done training. Note: You should always train an agent
+        # prior to sending it queries. See the [training documentation](https://cloud.
+        # google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to restore is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -4789,9 +4902,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Trains the specified agent. Note: You should always train an agent prior to
-        # sending it queries. See the [training documentation](https://cloud.google.com/
-        # dialogflow/es/docs/training).
+        # Trains the specified agent. This method is a [long-running operation](https://
+        # cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned
+        # `Operation` type has the following method-specific fields: - `metadata`: An
+        # empty [Struct message](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#struct) - `response`: An [Empty message](https://
+        # developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+        # Note: You should always train an agent prior to sending it queries. See the [
+        # training documentation](https://cloud.google.com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The project that the agent to train is associated with. Format: `
         #   projects/` or `projects//locations/`.
@@ -4864,9 +4982,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes entity types in the specified agent. Note: You should always train an
-        # agent prior to sending it queries. See the [training documentation](https://
-        # cloud.google.com/dialogflow/es/docs/training).
+        # Deletes entity types in the specified agent. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-
+        # operations). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`: An [
+        # Empty message](https://developers.google.com/protocol-buffers/docs/reference/
+        # google.protobuf#empty) Note: You should always train an agent prior to sending
+        # it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Supported
         #   formats: - `projects//agent`, - `projects//locations//agent`.
@@ -4900,9 +5024,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates/Creates multiple entity types in the specified agent. Note: You should
-        # always train an agent prior to sending it queries. See the [training
-        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
+        # Updates/Creates multiple entity types in the specified agent. This method is a
+        # [long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-
+        # running-operations). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: An empty [Struct message](https://developers.
+        # google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`
+        # : BatchUpdateEntityTypesResponse Note: You should always train an agent prior
+        # to sending it queries. See the [training documentation](https://cloud.google.
+        # com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to update or create entity types in. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -5139,9 +5268,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates multiple new entities in the specified entity type. Note: You should
-        # always train an agent prior to sending it queries. See the [training
-        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
+        # Creates multiple new entities in the specified entity type. This method is a [
+        # long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-
+        # running-operations). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: An empty [Struct message](https://developers.
+        # google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`
+        # : An [Empty message](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#empty) Note: You should always train an agent prior
+        # to sending it queries. See the [training documentation](https://cloud.google.
+        # com/dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to create entities in. Supported formats:
         #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -5175,9 +5310,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes entities in the specified entity type. Note: You should always train
-        # an agent prior to sending it queries. See the [training documentation](https://
-        # cloud.google.com/dialogflow/es/docs/training).
+        # Deletes entities in the specified entity type. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-
+        # operations). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`: An [
+        # Empty message](https://developers.google.com/protocol-buffers/docs/reference/
+        # google.protobuf#empty) Note: You should always train an agent prior to sending
+        # it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the entity type to delete entries for. Supported formats:
         #   - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -5215,7 +5356,12 @@ module Google
         # does not affect entities in the entity type that aren't explicitly specified
         # in the request. Note: You should always train an agent prior to sending it
         # queries. See the [training documentation](https://cloud.google.com/dialogflow/
-        # es/docs/training).
+        # es/docs/training). This method is a [long-running operation](https://cloud.
+        # google.com/dialogflow/es/docs/how/long-running-operations). The returned `
+        # Operation` type has the following method-specific fields: - `metadata`: An
+        # empty [Struct message](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#struct) - `response`: An [Empty message](https://
+        # developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
         # @param [String] parent
         #   Required. The name of the entity type to update or create entities in.
         #   Supported formats: - `projects//agent/entityTypes/` - `projects//locations//
@@ -6021,9 +6167,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes intents in the specified agent. Note: You should always train an agent
-        # prior to sending it queries. See the [training documentation](https://cloud.
-        # google.com/dialogflow/es/docs/training).
+        # Deletes intents in the specified agent. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-
+        # operations). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: An empty [Struct message](https://developers.google.com/
+        # protocol-buffers/docs/reference/google.protobuf#struct) - `response`: An [
+        # Empty message](https://developers.google.com/protocol-buffers/docs/reference/
+        # google.protobuf#empty) Note: You should always train an agent prior to sending
+        # it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to delete all entities types for. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -6057,9 +6209,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates/Creates multiple intents in the specified agent. Note: You should
-        # always train an agent prior to sending it queries. See the [training
-        # documentation](https://cloud.google.com/dialogflow/es/docs/training).
+        # Updates/Creates multiple intents in the specified agent. This method is a [
+        # long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-
+        # running-operations). The returned `Operation` type has the following method-
+        # specific fields: - `metadata`: An empty [Struct message](https://developers.
+        # google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`
+        # : BatchUpdateIntentsResponse Note: You should always train an agent prior to
+        # sending it queries. See the [training documentation](https://cloud.google.com/
+        # dialogflow/es/docs/training).
         # @param [String] parent
         #   Required. The name of the agent to update or create intents in. Supported
         #   formats: - `projects//agent` - `projects//locations//agent`
@@ -7992,8 +8149,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new document. Note: The `projects.agent.knowledgeBases.documents`
-        # resource is deprecated; only use `projects.knowledgeBases.documents`.
+        # Creates a new document. This method is a [long-running operation](https://
+        # cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `
+        # Operation` type has the following method-specific fields: - `metadata`:
+        # KnowledgeOperationMetadata - `response`: Document Note: The `projects.agent.
+        # knowledgeBases.documents` resource is deprecated; only use `projects.
+        # knowledgeBases.documents`.
         # @param [String] parent
         #   Required. The knowledge base to create a document for. Format: `projects//
         #   locations//knowledgeBases/`.
@@ -8031,9 +8192,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified document. Note: The `projects.agent.knowledgeBases.
-        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
-        # .
+        # Deletes the specified document. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: KnowledgeOperationMetadata - `response`: An [Empty message](https://
+        # developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
+        # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
+        # only use `projects.knowledgeBases.documents`.
         # @param [String] name
         #   Required. The name of the document to delete. Format: `projects//locations//
         #   knowledgeBases//documents/`.
@@ -8099,7 +8264,10 @@ module Google
         
         # Create documents by importing data from external sources. Dialogflow supports
         # up to 350 documents in each request. If you try to import more, Dialogflow
-        # will return an error.
+        # will return an error. This method is a [long-running operation](https://cloud.
+        # google.com/dialogflow/cx/docs/how/long-running-operation). The returned `
+        # Operation` type has the following method-specific fields: - `metadata`:
+        # KnowledgeOperationMetadata - `response`: ImportDocumentsResponse
         # @param [String] parent
         #   Required. The knowledge base to import documents into. Format: `projects//
         #   locations//knowledgeBases/`.
@@ -8184,9 +8352,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified document. Note: The `projects.agent.knowledgeBases.
-        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
-        # .
+        # Updates the specified document. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: KnowledgeOperationMetadata - `response`: Document Note: The `
+        # projects.agent.knowledgeBases.documents` resource is deprecated; only use `
+        # projects.knowledgeBases.documents`.
         # @param [String] name
         #   Optional. The document resource name. The name must be empty when creating a
         #   document. Format: `projects//locations//knowledgeBases//documents/`.
@@ -8231,9 +8402,12 @@ module Google
         # effects because of internal implementation changes. Note: If the document
         # source is Google Cloud Storage URI, its metadata will be replaced with the
         # custom metadata from Google Cloud Storage if the `import_gcs_custom_metadata`
-        # field is set to true in the request. Note: The `projects.agent.knowledgeBases.
-        # documents` resource is deprecated; only use `projects.knowledgeBases.documents`
-        # .
+        # field is set to true in the request. This method is a [long-running operation](
+        # https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The
+        # returned `Operation` type has the following method-specific fields: - `
+        # metadata`: KnowledgeOperationMetadata - `response`: Document Note: The `
+        # projects.agent.knowledgeBases.documents` resource is deprecated; only use `
+        # projects.knowledgeBases.documents`.
         # @param [String] name
         #   Required. The name of the document to reload. Format: `projects//locations//
         #   knowledgeBases//documents/`
