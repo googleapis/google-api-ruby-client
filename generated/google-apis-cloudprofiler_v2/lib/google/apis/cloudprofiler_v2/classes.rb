@@ -34,7 +34,7 @@ module Google
         # @return [Google::Apis::CloudprofilerV2::Deployment]
         attr_accessor :deployment
       
-        # One or more profile types that the agent is capable of providing.
+        # Required. One or more profile types that the agent is capable of providing.
         # Corresponds to the JSON property `profileType`
         # @return [Array<String>]
         attr_accessor :profile_type
@@ -75,9 +75,9 @@ module Google
         attr_accessor :project_id
       
         # Target is the service name used to group related deployments: * Service name
-        # for GAE Flex / Standard. * Cluster and container name for GKE. * User-
-        # specified string for direct GCE profiling (e.g. Java). * Job name for Dataflow.
-        # Validation regex: `^[a-z]([-a-z0-9_.]`0,253`[a-z0-9])?$`.
+        # for App Engine Flex / Standard. * Cluster and container name for GKE. * User-
+        # specified string for direct Compute Engine profiling (e.g. Java). * Job name
+        # for Dataflow. Validation regex: `^[a-z]([-a-z0-9_.]`0,253`[a-z0-9])?$`.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
