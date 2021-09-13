@@ -4228,6 +4228,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShareSettingsProjectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShieldedInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -13361,8 +13367,17 @@ module Google
       class ShareSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :project_map, as: 'projectMap', class: Google::Apis::ComputeBeta::ShareSettingsProjectConfig, decorator: Google::Apis::ComputeBeta::ShareSettingsProjectConfig::Representation
+      
           collection :projects, as: 'projects'
           property :share_type, as: 'shareType'
+        end
+      end
+      
+      class ShareSettingsProjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
         end
       end
       
