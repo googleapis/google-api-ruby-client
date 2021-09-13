@@ -3718,6 +3718,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterBgpPeerBfd
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12047,6 +12053,8 @@ module Google
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeV1::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeV1::RouterAdvertisedIpRange::Representation
       
           property :advertised_route_priority, as: 'advertisedRoutePriority'
+          property :bfd, as: 'bfd', class: Google::Apis::ComputeV1::RouterBgpPeerBfd, decorator: Google::Apis::ComputeV1::RouterBgpPeerBfd::Representation
+      
           property :enable, as: 'enable'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
@@ -12054,6 +12062,17 @@ module Google
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :router_appliance_instance, as: 'routerApplianceInstance'
+        end
+      end
+      
+      class RouterBgpPeerBfd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_receive_interval, as: 'minReceiveInterval'
+          property :min_transmit_interval, as: 'minTransmitInterval'
+          property :multiplier, as: 'multiplier'
+          property :session_initialization_mode, as: 'sessionInitializationMode'
         end
       end
       
@@ -12065,6 +12084,9 @@ module Google
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :management_type, as: 'managementType'
           property :name, as: 'name'
+          property :private_ip_address, as: 'privateIpAddress'
+          property :redundant_interface, as: 'redundantInterface'
+          property :subnetwork, as: 'subnetwork'
         end
       end
       
@@ -12163,6 +12185,7 @@ module Google
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
           property :status, as: 'status'
           property :uptime, as: 'uptime'
@@ -13399,6 +13422,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_policy, as: 'natPolicy'
+          property :network, as: 'network'
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
         end
