@@ -7363,7 +7363,7 @@ module Google
         attr_accessor :description
       
         # Deprecated, please use short name instead. User-provided name of the
-        # Organization firewall plicy. The name should be unique in the organization in
+        # Organization firewall policy. The name should be unique in the organization in
         # which the firewall policy is created. This name must be set on creation and
         # cannot be changed. The name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -27928,6 +27928,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertised_route_priority
       
+        # BFD configuration for the BGP peering.
+        # Corresponds to the JSON property `bfd`
+        # @return [Google::Apis::ComputeV1::RouterBgpPeerBfd]
+        attr_accessor :bfd
+      
         # The status of the BGP peer connection. If set to FALSE, any active session
         # with the peer is terminated and all associated routing information is removed.
         # If set to TRUE, the peer connection can be established with routing
@@ -27979,6 +27984,14 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
+        # URI of the VM instance that is used as third-party router appliances such as
+        # Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance
+        # must be located in zones contained in the same region as this Cloud Router.
+        # The VM instance is the peer side of the BGP session.
+        # Corresponds to the JSON property `routerApplianceInstance`
+        # @return [String]
+        attr_accessor :router_appliance_instance
+      
         def initialize(**args)
            update!(**args)
         end
@@ -27989,6 +28002,7 @@ module Google
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
+          @bfd = args[:bfd] if args.key?(:bfd)
           @enable = args[:enable] if args.key?(:enable)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -27996,6 +28010,58 @@ module Google
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
+        end
+      end
+      
+      # 
+      class RouterBgpPeerBfd
+        include Google::Apis::Core::Hashable
+      
+        # The minimum interval, in milliseconds, between BFD control packets received
+        # from the peer router. The actual value is negotiated between the two routers
+        # and is equal to the greater of this value and the transmit interval of the
+        # other router. If set, this value must be between 1000 and 30000. The default
+        # is 1000.
+        # Corresponds to the JSON property `minReceiveInterval`
+        # @return [Fixnum]
+        attr_accessor :min_receive_interval
+      
+        # The minimum interval, in milliseconds, between BFD control packets transmitted
+        # to the peer router. The actual value is negotiated between the two routers and
+        # is equal to the greater of this value and the corresponding receive interval
+        # of the other router. If set, this value must be between 1000 and 30000. The
+        # default is 1000.
+        # Corresponds to the JSON property `minTransmitInterval`
+        # @return [Fixnum]
+        attr_accessor :min_transmit_interval
+      
+        # The number of consecutive BFD packets that must be missed before BFD declares
+        # that a peer is unavailable. If set, the value must be a value between 5 and 16.
+        # The default is 5.
+        # Corresponds to the JSON property `multiplier`
+        # @return [Fixnum]
+        attr_accessor :multiplier
+      
+        # The BFD session initialization mode for this BGP peer. If set to ACTIVE, the
+        # Cloud Router will initiate the BFD session for this BGP peer. If set to
+        # PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD
+        # session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP
+        # peer. The default is PASSIVE.
+        # Corresponds to the JSON property `sessionInitializationMode`
+        # @return [String]
+        attr_accessor :session_initialization_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_receive_interval = args[:min_receive_interval] if args.key?(:min_receive_interval)
+          @min_transmit_interval = args[:min_transmit_interval] if args.key?(:min_transmit_interval)
+          @multiplier = args[:multiplier] if args.key?(:multiplier)
+          @session_initialization_mode = args[:session_initialization_mode] if args.key?(:session_initialization_mode)
         end
       end
       
@@ -28045,6 +28111,35 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The regional private internal IP address that is used to establish BGP
+        # sessions to a VM instance acting as a third-party Router Appliance, such as a
+        # Next Gen Firewall, a Virtual Router, or an SD-WAN VM.
+        # Corresponds to the JSON property `privateIpAddress`
+        # @return [String]
+        attr_accessor :private_ip_address
+      
+        # Name of the interface that will be redundant with the current interface you
+        # are creating. The redundantInterface must belong to the same Cloud Router as
+        # the interface here. To establish the BGP session to a Router Appliance VM, you
+        # must create two BGP peers. The two BGP peers must be attached to two separate
+        # interfaces that are redundant with each other. The redundant_interface must be
+        # 1-63 characters long, and comply with RFC1035. Specifically, the
+        # redundant_interface must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must
+        # be a lowercase letter, and all following characters must be a dash, lowercase
+        # letter, or digit, except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `redundantInterface`
+        # @return [String]
+        attr_accessor :redundant_interface
+      
+        # The URI of the subnetwork resource that this interface belongs to, which must
+        # be in the same region as the Cloud Router. When you establish a BGP session to
+        # a VM instance using this interface, the VM instance must belong to the same
+        # subnetwork as the subnetwork specified here.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28056,6 +28151,9 @@ module Google
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @management_type = args[:management_type] if args.key?(:management_type)
           @name = args[:name] if args.key?(:name)
+          @private_ip_address = args[:private_ip_address] if args.key?(:private_ip_address)
+          @redundant_interface = args[:redundant_interface] if args.key?(:redundant_interface)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
       
@@ -28438,6 +28536,13 @@ module Google
         # @return [String]
         attr_accessor :peer_ip_address
       
+        # [Output only] URI of the VM instance that is used as third-party router
+        # appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
+        # The VM instance is the peer side of the BGP session.
+        # Corresponds to the JSON property `routerApplianceInstance`
+        # @return [String]
+        attr_accessor :router_appliance_instance
+      
         # BGP state as specified in RFC1771.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -28471,6 +28576,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+          @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @uptime = args[:uptime] if args.key?(:uptime)
@@ -31583,9 +31689,8 @@ module Google
         attr_accessor :name
       
         # The URL of the network to which this subnetwork belongs, provided by the
-        # client when initially creating the subnetwork. Only networks that are in the
-        # distributed mode can have subnetworks. This field can be set only at resource
-        # creation time.
+        # client when initially creating the subnetwork. This field can be set only at
+        # resource creation time.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -33431,6 +33536,13 @@ module Google
         # @return [String]
         attr_accessor :nat_policy
       
+        # The URL of the network this target instance uses to forward traffic. If not
+        # specified, the traffic will be forwarded to the network that the default
+        # network interface belongs to.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -33456,6 +33568,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @nat_policy = args[:nat_policy] if args.key?(:nat_policy)
+          @network = args[:network] if args.key?(:network)
           @self_link = args[:self_link] if args.key?(:self_link)
           @zone = args[:zone] if args.key?(:zone)
         end
