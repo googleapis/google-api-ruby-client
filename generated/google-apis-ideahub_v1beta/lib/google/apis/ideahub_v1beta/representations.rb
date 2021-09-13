@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleSearchIdeahubV1betaIdeaActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleSearchIdeahubV1betaIdeaState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -79,6 +85,17 @@ module Google
           property :text, as: 'text'
           collection :topics, as: 'topics', class: Google::Apis::IdeahubV1beta::GoogleSearchIdeahubV1betaTopic, decorator: Google::Apis::IdeahubV1beta::GoogleSearchIdeahubV1betaTopic::Representation
       
+        end
+      end
+      
+      class GoogleSearchIdeahubV1betaIdeaActivity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ideas, as: 'ideas'
+          property :name, as: 'name'
+          collection :topics, as: 'topics'
+          property :type, as: 'type'
+          property :uri, as: 'uri'
         end
       end
       

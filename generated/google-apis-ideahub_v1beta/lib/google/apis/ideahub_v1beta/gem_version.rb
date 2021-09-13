@@ -16,13 +16,13 @@ module Google
   module Apis
     module IdeahubV1beta
       # Version of the google-apis-ideahub_v1beta gem
-      GEM_VERSION = "0.1.0"
+      GEM_VERSION = "0.2.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20210831"
+      REVISION = "20210910"
     end
   end
 end

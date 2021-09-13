@@ -79,6 +79,51 @@ module Google
         end
       end
       
+      # An idea activity entry.
+      class GoogleSearchIdeahubV1betaIdeaActivity
+        include Google::Apis::Core::Hashable
+      
+        # The Idea IDs for this entry. If empty, topics should be set.
+        # Corresponds to the JSON property `ideas`
+        # @return [Array<String>]
+        attr_accessor :ideas
+      
+        # Unique identifier for the idea activity. The name is ignored when creating an
+        # idea activity. Format: platforms/`platform`/properties/`property`/
+        # ideaActivities/`idea_activity`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The Topic IDs for this entry. If empty, ideas should be set.
+        # Corresponds to the JSON property `topics`
+        # @return [Array<String>]
+        attr_accessor :topics
+      
+        # The type of activity performed.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The uri the activity relates to.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ideas = args[:ideas] if args.key?(:ideas)
+          @name = args[:name] if args.key?(:name)
+          @topics = args[:topics] if args.key?(:topics)
+          @type = args[:type] if args.key?(:type)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Represents idea state specific to a web property.
       class GoogleSearchIdeahubV1betaIdeaState
         include Google::Apis::Core::Hashable
