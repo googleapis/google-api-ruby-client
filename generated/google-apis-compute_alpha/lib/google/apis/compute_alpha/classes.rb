@@ -8397,7 +8397,7 @@ module Google
         attr_accessor :description
       
         # Deprecated, please use short name instead. User-provided name of the
-        # Organization firewall plicy. The name should be unique in the organization in
+        # Organization firewall policy. The name should be unique in the organization in
         # which the firewall policy is created. This name must be set on creation and
         # cannot be changed. The name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -8783,6 +8783,12 @@ module Google
       class FirewallPolicyRuleMatcher
         include Google::Apis::Core::Hashable
       
+        # Address groups which should be matched against the traffic destination.
+        # Maximum number of destination address groups is 10.
+        # Corresponds to the JSON property `destAddressGroups`
+        # @return [Array<String>]
+        attr_accessor :dest_address_groups
+      
         # CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is
         # 5000.
         # Corresponds to the JSON property `destIpRanges`
@@ -8793,6 +8799,12 @@ module Google
         # Corresponds to the JSON property `layer4Configs`
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config>]
         attr_accessor :layer4_configs
+      
+        # Address groups which should be matched against the traffic source. Maximum
+        # number of source address groups is 10.
+        # Corresponds to the JSON property `srcAddressGroups`
+        # @return [Array<String>]
+        attr_accessor :src_address_groups
       
         # CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         # Corresponds to the JSON property `srcIpRanges`
@@ -8813,8 +8825,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dest_address_groups = args[:dest_address_groups] if args.key?(:dest_address_groups)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
+          @src_address_groups = args[:src_address_groups] if args.key?(:src_address_groups)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
         end
@@ -15029,7 +15043,7 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
-        # Stanby policy for stopped and suspended instances.
+        # Standby policy for stopped and suspended instances.
         # Corresponds to the JSON property `standbyPolicy`
         # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStandbyPolicy]
         attr_accessor :standby_policy
@@ -34104,7 +34118,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertised_route_priority
       
-        # BFD configuration for the BGP peering. Not currently available publicly.
+        # BFD configuration for the BGP peering.
         # Corresponds to the JSON property `bfd`
         # @return [Google::Apis::ComputeAlpha::RouterBgpPeerBfd]
         attr_accessor :bfd
@@ -34216,8 +34230,8 @@ module Google
         # The minimum interval, in milliseconds, between BFD control packets received
         # from the peer router. The actual value is negotiated between the two routers
         # and is equal to the greater of this value and the transmit interval of the
-        # other router. Not currently available publicly. If set, this value must be
-        # between 1000 and 30000. The default is 1000.
+        # other router. If set, this value must be between 1000 and 30000. The default
+        # is 1000.
         # Corresponds to the JSON property `minReceiveInterval`
         # @return [Fixnum]
         attr_accessor :min_receive_interval
@@ -34225,8 +34239,8 @@ module Google
         # The minimum interval, in milliseconds, between BFD control packets transmitted
         # to the peer router. The actual value is negotiated between the two routers and
         # is equal to the greater of this value and the corresponding receive interval
-        # of the other router. Not currently available publicly. If set, this value must
-        # be between 1000 and 30000. The default is 1000.
+        # of the other router. If set, this value must be between 1000 and 30000. The
+        # default is 1000.
         # Corresponds to the JSON property `minTransmitInterval`
         # @return [Fixnum]
         attr_accessor :min_transmit_interval
@@ -34241,8 +34255,8 @@ module Google
         attr_accessor :mode
       
         # The number of consecutive BFD packets that must be missed before BFD declares
-        # that a peer is unavailable. Not currently available publicly. If set, the
-        # value must be a value between 5 and 16. The default is 5.
+        # that a peer is unavailable. If set, the value must be a value between 5 and 16.
+        # The default is 5.
         # Corresponds to the JSON property `multiplier`
         # @return [Fixnum]
         attr_accessor :multiplier
@@ -34259,11 +34273,11 @@ module Google
         # @return [String]
         attr_accessor :packet_mode
       
-        # The BFD session initialization mode for this BGP peer. Not currently available
-        # publicly. If set to ACTIVE, the Cloud Router will initiate the BFD session for
-        # this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer
-        # router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD
-        # is disabled for this BGP peer. The default is PASSIVE.
+        # The BFD session initialization mode for this BGP peer. If set to ACTIVE, the
+        # Cloud Router will initiate the BFD session for this BGP peer. If set to
+        # PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD
+        # session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP
+        # peer. The default is PASSIVE.
         # Corresponds to the JSON property `sessionInitializationMode`
         # @return [String]
         attr_accessor :session_initialization_mode
@@ -37622,6 +37636,13 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::ShareSettingsFolderConfig>]
         attr_accessor :folder_map
       
+        # A map of project id and project config. Using map format to ease add-to/remove-
+        # from the Project list in PATCH command. In future we will deprecate (And later
+        # remove) the array one.
+        # Corresponds to the JSON property `projectMap`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::ShareSettingsProjectConfig>]
+        attr_accessor :project_map
+      
         # A List of Project names to specify consumer projects for this shared-
         # reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         # Corresponds to the JSON property `projects`
@@ -37640,6 +37661,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @folder_map = args[:folder_map] if args.key?(:folder_map)
+          @project_map = args[:project_map] if args.key?(:project_map)
           @projects = args[:projects] if args.key?(:projects)
           @share_type = args[:share_type] if args.key?(:share_type)
         end
@@ -37662,6 +37684,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @folder_id = args[:folder_id] if args.key?(:folder_id)
+        end
+      end
+      
+      # Config for each project in the share settings.
+      class ShareSettingsProjectConfig
+        include Google::Apis::Core::Hashable
+      
+        # The project ID, should be same as the key of this project config in the parent
+        # map.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -38427,7 +38469,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # PostKeyRevocationActionType of the instance.
+        # PostKeyRevocationActionType of the instance. (will be deprecated soon)
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
         attr_accessor :post_key_revocation_action_type
@@ -39598,9 +39640,8 @@ module Google
         attr_accessor :name
       
         # The URL of the network to which this subnetwork belongs, provided by the
-        # client when initially creating the subnetwork. Only networks that are in the
-        # distributed mode can have subnetworks. This field can be set only at resource
-        # creation time.
+        # client when initially creating the subnetwork. This field can be set only at
+        # resource creation time.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
