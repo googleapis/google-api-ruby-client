@@ -366,6 +366,11 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::UploadRef]
         attr_accessor :upload_reference
       
+        # Time when the image was uploaded.
+        # Corresponds to the JSON property `uploadTime`
+        # @return [String]
+        attr_accessor :upload_time
+      
         # Output only. View count of the photo.
         # Corresponds to the JSON property `viewCount`
         # @return [Fixnum]
@@ -388,6 +393,7 @@ module Google
           @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
           @transfer_status = args[:transfer_status] if args.key?(:transfer_status)
           @upload_reference = args[:upload_reference] if args.key?(:upload_reference)
+          @upload_time = args[:upload_time] if args.key?(:upload_time)
           @view_count = args[:view_count] if args.key?(:view_count)
         end
       end

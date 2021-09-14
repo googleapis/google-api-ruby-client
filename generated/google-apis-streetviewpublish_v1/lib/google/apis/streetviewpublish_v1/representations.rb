@@ -245,6 +245,7 @@ module Google
           property :transfer_status, as: 'transferStatus'
           property :upload_reference, as: 'uploadReference', class: Google::Apis::StreetviewpublishV1::UploadRef, decorator: Google::Apis::StreetviewpublishV1::UploadRef::Representation
       
+          property :upload_time, as: 'uploadTime'
           property :view_count, :numeric_string => true, as: 'viewCount'
         end
       end
