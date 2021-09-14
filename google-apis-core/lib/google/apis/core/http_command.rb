@@ -267,7 +267,7 @@ module Google
         # @yield [nil, err] if block given
         # @raise [StandardError] if no block
         def error(err, rethrow: false, &block)
-          logger.debug { sprintf('Error - %s', PP.pp(err, '')) }
+          logger.error { sprintf('Error - %s', PP.pp(err, '')) }
           if err.is_a?(HTTPClient::BadResponseError)
             begin
               res = err.res
