@@ -4918,6 +4918,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShareSettingsProjectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShieldedInstanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8178,9 +8184,11 @@ module Google
       class FirewallPolicyRuleMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_address_groups, as: 'destAddressGroups'
           collection :dest_ip_ranges, as: 'destIpRanges'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config::Representation
       
+          collection :src_address_groups, as: 'srcAddressGroups'
           collection :src_ip_ranges, as: 'srcIpRanges'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag::Representation
       
@@ -15424,6 +15432,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :folder_map, as: 'folderMap', class: Google::Apis::ComputeAlpha::ShareSettingsFolderConfig, decorator: Google::Apis::ComputeAlpha::ShareSettingsFolderConfig::Representation
       
+          hash :project_map, as: 'projectMap', class: Google::Apis::ComputeAlpha::ShareSettingsProjectConfig, decorator: Google::Apis::ComputeAlpha::ShareSettingsProjectConfig::Representation
+      
           collection :projects, as: 'projects'
           property :share_type, as: 'shareType'
         end
@@ -15433,6 +15443,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :folder_id, as: 'folderId'
+        end
+      end
+      
+      class ShareSettingsProjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
         end
       end
       
