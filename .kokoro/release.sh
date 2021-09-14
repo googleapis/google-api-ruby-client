@@ -10,12 +10,11 @@ export PATH=$GEM_HOME/bin:$PATH
 python3 -m pip install git+https://github.com/googleapis/releasetool
 python3 -m pip install gcp-docuploader
 gem install --no-document toys
-bundle install
 
 if [ "$PACKAGE" = "ALL_GENERATED" ]; then
-    # This is not called from autorelease, so don't run publish-reporter-script
+    # TODO(dazuma): Remove this clause once we switch to release-generated
     toys kokoro release-all-generated < /dev/null
 else
     python3 -m releasetool publish-reporter-script > /tmp/publisher-script; source /tmp/publisher-script
-    toys kokoro release "$PACKAGE" < /dev/null
+    toys release perform -v --enable-docs --enable-rad < /dev/null
 fi

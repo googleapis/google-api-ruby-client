@@ -21,3 +21,6 @@ atlassian*
 
 __pycache__/
 /vendor/
+
+/node-modules/
+/package-lock.json
