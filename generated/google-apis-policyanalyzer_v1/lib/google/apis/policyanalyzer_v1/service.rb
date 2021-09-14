@@ -56,9 +56,14 @@ module Google
         #   activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to Google Cloud Locations:
         #   https://cloud.google.com/about/locations/
         # @param [String] filter
-        #   Optional. Filter expression to restrict the activities returned. Supported
-        #   filters are: - service_account_last_authn.full_resource_name `=` [STRING] -
-        #   service_account_key_last_authn.full_resource_name `=` [STRING]
+        #   Optional. Filter expression to restrict the activities returned. For
+        #   serviceAccountLastAuthentication activities, supported filters are: - `
+        #   activities.full_resource_name `=` [STRING]` - `activities.fullResourceName `=`
+        #   [STRING]` where `[STRING]` is the full resource name of the service account.
+        #   For serviceAccountKeyLastAuthentication activities, supported filters are: - `
+        #   activities.full_resource_name `=` [STRING]` - `activities.fullResourceName `=`
+        #   [STRING]` where `[STRING]` is the full resource name of the service account
+        #   key.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Max limit
         #   is 1000. Non-positive values are ignored. The presence of `nextPageToken` in
