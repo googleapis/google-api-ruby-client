@@ -441,6 +441,18 @@ module Google
         # @return [String]
         attr_accessor :antenna_model
       
+        # CCG. A group of CBSDs in the same ICG requesting a common primary channel
+        # assignment. See CBRSA-TS-2001 V3.0.0 for more details.
+        # Corresponds to the JSON property `commonChannelGroup`
+        # @return [String]
+        attr_accessor :common_channel_group
+      
+        # ICG. A group of CBSDs that manage their own interference with the group. See
+        # CBRSA-TS-2001 V3.0.0 for more details.
+        # Corresponds to the JSON property `interferenceCoordinationGroup`
+        # @return [String]
+        attr_accessor :interference_coordination_group
+      
         def initialize(**args)
            update!(**args)
         end
@@ -448,6 +460,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @antenna_model = args[:antenna_model] if args.key?(:antenna_model)
+          @common_channel_group = args[:common_channel_group] if args.key?(:common_channel_group)
+          @interference_coordination_group = args[:interference_coordination_group] if args.key?(:interference_coordination_group)
         end
       end
       
