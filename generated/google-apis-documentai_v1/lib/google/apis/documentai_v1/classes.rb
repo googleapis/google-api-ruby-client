@@ -901,6 +901,19 @@ module Google
         end
       end
       
+      # Request message for the deploy processor version method.
+      class GoogleCloudDocumentaiV1DeployProcessorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response message for the deploy processor version method.
       class GoogleCloudDocumentaiV1DeployProcessorVersionResponse
         include Google::Apis::Core::Hashable
@@ -930,6 +943,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Request message for the disable processor method.
+      class GoogleCloudDocumentaiV1DisableProcessorRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2460,6 +2486,19 @@ module Google
         end
       end
       
+      # Request message for the enable processor method.
+      class GoogleCloudDocumentaiV1EnableProcessorRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response message for the enable processor method. Intentionally empty proto
       # for adding fields in future.
       class GoogleCloudDocumentaiV1EnableProcessorResponse
@@ -2471,6 +2510,123 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Evaluation metrics, either in aggregate or about a specific entity.
+      class GoogleCloudDocumentaiV1EvaluationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # The calculated f1 score.
+        # Corresponds to the JSON property `f1Score`
+        # @return [Float]
+        attr_accessor :f1_score
+      
+        # The amount of false negatives.
+        # Corresponds to the JSON property `falseNegativesCount`
+        # @return [Fixnum]
+        attr_accessor :false_negatives_count
+      
+        # The amount of false positives.
+        # Corresponds to the JSON property `falsePositivesCount`
+        # @return [Fixnum]
+        attr_accessor :false_positives_count
+      
+        # The amount of occurrences in ground truth documents.
+        # Corresponds to the JSON property `groundTruthOccurrencesCount`
+        # @return [Fixnum]
+        attr_accessor :ground_truth_occurrences_count
+      
+        # The calculated precision.
+        # Corresponds to the JSON property `precision`
+        # @return [Float]
+        attr_accessor :precision
+      
+        # The amount of occurrences in predicted documents.
+        # Corresponds to the JSON property `predictedOccurrencesCount`
+        # @return [Fixnum]
+        attr_accessor :predicted_occurrences_count
+      
+        # The calculated recall.
+        # Corresponds to the JSON property `recall`
+        # @return [Float]
+        attr_accessor :recall
+      
+        # The amount of documents that had an occurrence of this label.
+        # Corresponds to the JSON property `totalDocumentsCount`
+        # @return [Fixnum]
+        attr_accessor :total_documents_count
+      
+        # The amount of true positives.
+        # Corresponds to the JSON property `truePositivesCount`
+        # @return [Fixnum]
+        attr_accessor :true_positives_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @f1_score = args[:f1_score] if args.key?(:f1_score)
+          @false_negatives_count = args[:false_negatives_count] if args.key?(:false_negatives_count)
+          @false_positives_count = args[:false_positives_count] if args.key?(:false_positives_count)
+          @ground_truth_occurrences_count = args[:ground_truth_occurrences_count] if args.key?(:ground_truth_occurrences_count)
+          @precision = args[:precision] if args.key?(:precision)
+          @predicted_occurrences_count = args[:predicted_occurrences_count] if args.key?(:predicted_occurrences_count)
+          @recall = args[:recall] if args.key?(:recall)
+          @total_documents_count = args[:total_documents_count] if args.key?(:total_documents_count)
+          @true_positives_count = args[:true_positives_count] if args.key?(:true_positives_count)
+        end
+      end
+      
+      # Gives a short summary of an evaluation, and links to the evaluation itself.
+      class GoogleCloudDocumentaiV1EvaluationReference
+        include Google::Apis::Core::Hashable
+      
+        # Evaluation metrics, either in aggregate or about a specific entity.
+        # Corresponds to the JSON property `aggregateMetrics`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMetrics]
+        attr_accessor :aggregate_metrics
+      
+        # The resource name of the evaluation.
+        # Corresponds to the JSON property `evaluation`
+        # @return [String]
+        attr_accessor :evaluation
+      
+        # The resource name of the Long Running Operation for the evaluation.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_metrics = args[:aggregate_metrics] if args.key?(:aggregate_metrics)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # Response message for fetch processor types.
+      class GoogleCloudDocumentaiV1FetchProcessorTypesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of processor types.
+        # Corresponds to the JSON property `processorTypes`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorType>]
+        attr_accessor :processor_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @processor_types = args[:processor_types] if args.key?(:processor_types)
         end
       end
       
@@ -2571,6 +2727,56 @@ module Google
         end
       end
       
+      # Response message for list processors.
+      class GoogleCloudDocumentaiV1ListProcessorVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Points to the next processor, otherwise empty.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of processors.
+        # Corresponds to the JSON property `processorVersions`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorVersion>]
+        attr_accessor :processor_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @processor_versions = args[:processor_versions] if args.key?(:processor_versions)
+        end
+      end
+      
+      # Response message for list processors.
+      class GoogleCloudDocumentaiV1ListProcessorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Points to the next processor, otherwise empty.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of processors.
+        # Corresponds to the JSON property `processors`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Processor>]
+        attr_accessor :processors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @processors = args[:processors] if args.key?(:processors)
+        end
+      end
+      
       # A vertex represents a 2D point in the image. NOTE: the normalized vertex
       # coordinates are relative to the original image and range from 0 to 1.
       class GoogleCloudDocumentaiV1NormalizedVertex
@@ -2658,6 +2864,206 @@ module Google
         def update!(**args)
           @document = args[:document] if args.key?(:document)
           @human_review_status = args[:human_review_status] if args.key?(:human_review_status)
+        end
+      end
+      
+      # The first-class citizen for DAI. Each processor defines how to extract
+      # structural information from a document.
+      class GoogleCloudDocumentaiV1Processor
+        include Google::Apis::Core::Hashable
+      
+        # The time the processor was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The default processor version.
+        # Corresponds to the JSON property `defaultProcessorVersion`
+        # @return [String]
+        attr_accessor :default_processor_version
+      
+        # The display name of the processor.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The KMS key used for encryption/decryption in CMEK scenarios. See https://
+        # cloud.google.com/security-key-management.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Output only. Immutable. The resource name of the processor. Format: projects/`
+        # project`/locations/`location`/processors/`processor`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Immutable. The http endpoint that can be called to invoke
+        # processing.
+        # Corresponds to the JSON property `processEndpoint`
+        # @return [String]
+        attr_accessor :process_endpoint
+      
+        # Output only. The state of the processor.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_processor_version = args[:default_processor_version] if args.key?(:default_processor_version)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @name = args[:name] if args.key?(:name)
+          @process_endpoint = args[:process_endpoint] if args.key?(:process_endpoint)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A processor type is responsible for performing a certain document
+      # understanding task on a certain type of document. All processor types are
+      # created by the documentai service internally. User will only list all
+      # available processor types via UI. For different users (projects), the
+      # available processor types may be different since we'll expose the access of
+      # some types via EAP whitelisting. We make the ProcessorType a resource under
+      # location so we have a unified API and keep the possibility that UI will load
+      # different available processor types from different regions. But for alpha the
+      # behavior is that the user will always get the union of all available processor
+      # types among all regions no matter which regionalized endpoint is called, and
+      # then we use the 'available_locations' field to show under which regions a
+      # processor type is available. For example, users can call either the 'US' or '
+      # EU' endpoint to feach processor types. In the return, we will have an 'invoice
+      # parsing' processor with 'available_locations' field only containing 'US'. So
+      # the user can try to create an 'invoice parsing' processor under the location '
+      # US'. Such attempt of creating under the location 'EU' will fail. Next ID: 8.
+      class GoogleCloudDocumentaiV1ProcessorType
+        include Google::Apis::Core::Hashable
+      
+        # Whether the processor type allows creation. If yes, user can create a
+        # processor of this processor type. Otherwise, user needs to request access.
+        # Corresponds to the JSON property `allowCreation`
+        # @return [Boolean]
+        attr_accessor :allow_creation
+        alias_method :allow_creation?, :allow_creation
+      
+        # The locations in which this processor is available.
+        # Corresponds to the JSON property `availableLocations`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorTypeLocationInfo>]
+        attr_accessor :available_locations
+      
+        # The processor category, used by UI to group processor types.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # The resource name of the processor type. Format: projects/`project`/
+        # processorTypes/`processor_type`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of the processor, e.g, "invoice_parsing".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_creation = args[:allow_creation] if args.key?(:allow_creation)
+          @available_locations = args[:available_locations] if args.key?(:available_locations)
+          @category = args[:category] if args.key?(:category)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The location information about where the processor is available.
+      class GoogleCloudDocumentaiV1ProcessorTypeLocationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The location id, currently must be one of [us, eu].
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_id = args[:location_id] if args.key?(:location_id)
+        end
+      end
+      
+      # A processor version is an implementation of a processor. Each processor can
+      # have multiple versions, pre-trained by Google internally or up-trained by the
+      # customer. At a time, a processor can only have one default version version. So
+      # the processor's behavior (when processing documents) is defined by a default
+      # version.
+      class GoogleCloudDocumentaiV1ProcessorVersion
+        include Google::Apis::Core::Hashable
+      
+        # The time the processor version was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The display name of the processor version.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Gives a short summary of an evaluation, and links to the evaluation itself.
+        # Corresponds to the JSON property `latestEvaluation`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationReference]
+        attr_accessor :latest_evaluation
+      
+        # The resource name of the processor version. Format: projects/`project`/
+        # locations/`location`/processors/`processor`/processorVersions/`
+        # processor_version`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Schema]
+        attr_accessor :schema
+      
+        # The state of the processor version.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
+          @name = args[:name] if args.key?(:name)
+          @schema = args[:schema] if args.key?(:schema)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2760,6 +3166,105 @@ module Google
         end
       end
       
+      # The schema defines the output of the processed document by a processor.
+      class GoogleCloudDocumentaiV1Schema
+        include Google::Apis::Core::Hashable
+      
+        # Description of the schema.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name to show to users.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Entity types of the schema.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaEntityType>]
+        attr_accessor :entity_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+        end
+      end
+      
+      # EntityType is the wrapper of a label of the corresponding model with detailed
+      # attributes and limitations for entity-based processors. Multiple types can
+      # also compose a dependency tree to represent nested types.
+      class GoogleCloudDocumentaiV1SchemaEntityType
+        include Google::Apis::Core::Hashable
+      
+        # Type of the entity. It must be one of the following: `document` - the entity
+        # represents a classification of a logical document. `object` - if the entity
+        # has properties it is likely an object (or or a document.) `datetime` - the
+        # entity is a date or time value. `money` - the entity represents a money value
+        # amount. `number` - the entity is a number - integer or floating point. `string`
+        # - the entity is a string value. `boolean` - the entity is a boolean value. `
+        # address` - the entity is a location address.
+        # Corresponds to the JSON property `baseType`
+        # @return [String]
+        attr_accessor :base_type
+      
+        # Description of the entity type.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If specified, lists all the possible values for this entity.
+        # Corresponds to the JSON property `enumValues`
+        # @return [Array<String>]
+        attr_accessor :enum_values
+      
+        # Occurrence type limits the number of times an entity type appears in the
+        # document.
+        # Corresponds to the JSON property `occurrenceType`
+        # @return [String]
+        attr_accessor :occurrence_type
+      
+        # Describing the nested structure of an entity. An EntityType may consist of
+        # several other EntityTypes. For example, in a document there can be an
+        # EntityType 'ID', which consists of EntityType 'name' and 'address', with
+        # corresponding attributes, such as TEXT for both types and ONCE for occurrence
+        # types.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaEntityType>]
+        attr_accessor :properties
+      
+        # Source of this entity type.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Name of the type. It must be unique within the set of same level types.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_type = args[:base_type] if args.key?(:base_type)
+          @description = args[:description] if args.key?(:description)
+          @enum_values = args[:enum_values] if args.key?(:enum_values)
+          @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
+          @properties = args[:properties] if args.key?(:properties)
+          @source = args[:source] if args.key?(:source)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # The long running operation metadata for set default processor version method.
       class GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
@@ -2776,6 +3281,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Request message for the set default processor version method.
+      class GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of child ProcessorVersion to use as default.
+        # Corresponds to the JSON property `defaultProcessorVersion`
+        # @return [String]
+        attr_accessor :default_processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_processor_version = args[:default_processor_version] if args.key?(:default_processor_version)
         end
       end
       
@@ -2808,6 +3332,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # Request message for the undeploy processor version method.
+      class GoogleCloudDocumentaiV1UndeployProcessorVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
