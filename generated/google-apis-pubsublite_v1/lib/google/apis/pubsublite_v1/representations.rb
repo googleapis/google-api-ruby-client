@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListReservationTopicsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListReservationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSubscriptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +161,18 @@ module Google
       end
       
       class PartitionCursor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Reservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,6 +346,23 @@ module Google
         end
       end
       
+      class ListReservationTopicsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :topics, as: 'topics'
+        end
+      end
+      
+      class ListReservationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :reservations, as: 'reservations', class: Google::Apis::PubsubliteV1::Reservation, decorator: Google::Apis::PubsubliteV1::Reservation::Representation
+      
+        end
+      end
+      
       class ListSubscriptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -389,6 +430,21 @@ module Google
         end
       end
       
+      class Reservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :throughput_capacity, :numeric_string => true, as: 'throughputCapacity'
+        end
+      end
+      
+      class ReservationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :throughput_reservation, as: 'throughputReservation'
+        end
+      end
+      
       class RetentionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -444,6 +500,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :partition_config, as: 'partitionConfig', class: Google::Apis::PubsubliteV1::PartitionConfig, decorator: Google::Apis::PubsubliteV1::PartitionConfig::Representation
+      
+          property :reservation_config, as: 'reservationConfig', class: Google::Apis::PubsubliteV1::ReservationConfig, decorator: Google::Apis::PubsubliteV1::ReservationConfig::Representation
       
           property :retention_config, as: 'retentionConfig', class: Google::Apis::PubsubliteV1::RetentionConfig, decorator: Google::Apis::PubsubliteV1::RetentionConfig::Representation
       

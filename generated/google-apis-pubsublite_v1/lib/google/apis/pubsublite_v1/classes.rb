@@ -363,6 +363,60 @@ module Google
         end
       end
       
+      # Response for ListReservationTopics.
+      class ListReservationTopicsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page of results.
+        # If this field is omitted, there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The names of topics attached to the reservation. The order of the topics is
+        # unspecified.
+        # Corresponds to the JSON property `topics`
+        # @return [Array<String>]
+        attr_accessor :topics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @topics = args[:topics] if args.key?(:topics)
+        end
+      end
+      
+      # Response for ListReservations.
+      class ListReservationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page of results.
+        # If this field is omitted, there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of reservation in the requested parent. The order of the reservations
+        # is unspecified.
+        # Corresponds to the JSON property `reservations`
+        # @return [Array<Google::Apis::PubsubliteV1::Reservation>]
+        attr_accessor :reservations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reservations = args[:reservations] if args.key?(:reservations)
+        end
+      end
+      
       # Response for ListSubscriptions.
       class ListSubscriptionsResponse
         include Google::Apis::Core::Hashable
@@ -610,6 +664,55 @@ module Google
         end
       end
       
+      # Metadata about a reservation resource.
+      class Reservation
+        include Google::Apis::Core::Hashable
+      
+        # The name of the reservation. Structured like: projects/`project_number`/
+        # locations/`location`/reservations/`reservation_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The reserved throughput capacity. Every unit of throughput capacity is
+        # equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages.
+        # Any topics which are declared as using capacity from a Reservation will
+        # consume resources from this reservation instead of being charged individually.
+        # Corresponds to the JSON property `throughputCapacity`
+        # @return [Fixnum]
+        attr_accessor :throughput_capacity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @throughput_capacity = args[:throughput_capacity] if args.key?(:throughput_capacity)
+        end
+      end
+      
+      # The settings for this topic's Reservation usage.
+      class ReservationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Reservation to use for this topic's throughput capacity. Structured like:
+        # projects/`project_number`/locations/`location`/reservations/`reservation_id`
+        # Corresponds to the JSON property `throughputReservation`
+        # @return [String]
+        attr_accessor :throughput_reservation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @throughput_reservation = args[:throughput_reservation] if args.key?(:throughput_reservation)
+        end
+      end
+      
       # The settings for a topic's message retention.
       class RetentionConfig
         include Google::Apis::Core::Hashable
@@ -798,6 +901,11 @@ module Google
         # @return [Google::Apis::PubsubliteV1::PartitionConfig]
         attr_accessor :partition_config
       
+        # The settings for this topic's Reservation usage.
+        # Corresponds to the JSON property `reservationConfig`
+        # @return [Google::Apis::PubsubliteV1::ReservationConfig]
+        attr_accessor :reservation_config
+      
         # The settings for a topic's message retention.
         # Corresponds to the JSON property `retentionConfig`
         # @return [Google::Apis::PubsubliteV1::RetentionConfig]
@@ -811,6 +919,7 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @partition_config = args[:partition_config] if args.key?(:partition_config)
+          @reservation_config = args[:reservation_config] if args.key?(:reservation_config)
           @retention_config = args[:retention_config] if args.key?(:retention_config)
         end
       end

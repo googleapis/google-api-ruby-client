@@ -199,6 +199,228 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new reservation.
+        # @param [String] parent
+        #   Required. The parent location in which to create the reservation. Structured
+        #   like `projects/`project_number`/locations/`location``.
+        # @param [Google::Apis::PubsubliteV1::Reservation] reservation_object
+        # @param [String] reservation_id
+        #   Required. The ID to use for the reservation, which will become the final
+        #   component of the reservation's name. This value is structured like: `my-
+        #   reservation-name`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubliteV1::Reservation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubliteV1::Reservation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_admin_project_location_reservation(parent, reservation_object = nil, reservation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/admin/{+parent}/reservations', options)
+          command.request_representation = Google::Apis::PubsubliteV1::Reservation::Representation
+          command.request_object = reservation_object
+          command.response_representation = Google::Apis::PubsubliteV1::Reservation::Representation
+          command.response_class = Google::Apis::PubsubliteV1::Reservation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['reservationId'] = reservation_id unless reservation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified reservation.
+        # @param [String] name
+        #   Required. The name of the reservation to delete. Structured like: projects/`
+        #   project_number`/locations/`location`/reservations/`reservation_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubliteV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubliteV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_admin_project_location_reservation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/admin/{+name}', options)
+          command.response_representation = Google::Apis::PubsubliteV1::Empty::Representation
+          command.response_class = Google::Apis::PubsubliteV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the reservation configuration.
+        # @param [String] name
+        #   Required. The name of the reservation whose configuration to return.
+        #   Structured like: projects/`project_number`/locations/`location`/reservations/`
+        #   reservation_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubliteV1::Reservation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubliteV1::Reservation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_admin_project_location_reservation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/admin/{+name}', options)
+          command.response_representation = Google::Apis::PubsubliteV1::Reservation::Representation
+          command.response_class = Google::Apis::PubsubliteV1::Reservation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of reservations for the given project.
+        # @param [String] parent
+        #   Required. The parent whose reservations are to be listed. Structured like `
+        #   projects/`project_number`/locations/`location``.
+        # @param [Fixnum] page_size
+        #   The maximum number of reservations to return. The service may return fewer
+        #   than this value. If unset or zero, all reservations for the parent will be
+        #   returned.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListReservations` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListReservations` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubliteV1::ListReservationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubliteV1::ListReservationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_admin_project_location_reservations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/admin/{+parent}/reservations', options)
+          command.response_representation = Google::Apis::PubsubliteV1::ListReservationsResponse::Representation
+          command.response_class = Google::Apis::PubsubliteV1::ListReservationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates properties of the specified reservation.
+        # @param [String] name
+        #   The name of the reservation. Structured like: projects/`project_number`/
+        #   locations/`location`/reservations/`reservation_id`
+        # @param [Google::Apis::PubsubliteV1::Reservation] reservation_object
+        # @param [String] update_mask
+        #   Required. A mask specifying the reservation fields to change.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubliteV1::Reservation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubliteV1::Reservation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_admin_project_location_reservation(name, reservation_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/admin/{+name}', options)
+          command.request_representation = Google::Apis::PubsubliteV1::Reservation::Representation
+          command.request_object = reservation_object
+          command.response_representation = Google::Apis::PubsubliteV1::Reservation::Representation
+          command.response_class = Google::Apis::PubsubliteV1::Reservation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the topics attached to the specified reservation.
+        # @param [String] name
+        #   Required. The name of the reservation whose topics to list. Structured like:
+        #   projects/`project_number`/locations/`location`/reservations/`reservation_id`
+        # @param [Fixnum] page_size
+        #   The maximum number of topics to return. The service may return fewer than this
+        #   value. If unset or zero, all topics for the given reservation will be returned.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListReservationTopics` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListReservationTopics` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubliteV1::ListReservationTopicsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubliteV1::ListReservationTopicsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_admin_project_location_reservation_topics(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/admin/{+name}/topics', options)
+          command.response_representation = Google::Apis::PubsubliteV1::ListReservationTopicsResponse::Representation
+          command.response_class = Google::Apis::PubsubliteV1::ListReservationTopicsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new subscription.
         # @param [String] parent
         #   Required. The parent location in which to create the subscription. Structured
