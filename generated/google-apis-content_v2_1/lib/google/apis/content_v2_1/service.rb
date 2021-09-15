@@ -497,7 +497,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Validates verification code to verify phone number for the account.
+        # Validates verification code to verify phone number for the account. If
+        # successful this will overwrite the value of `accounts.businessinformation.
+        # phoneNumber`. Only verified phone number will replace an existing verified
+        # phone number.
         # @param [Fixnum] merchant_id
         #   Required. The ID of the managing account. If this parameter is not the same as
         #   accountId, then this account must be a multi-client account and accountId must
@@ -1105,8 +1108,8 @@ module Google
         # @param [Fixnum] merchant_id
         #   Required. The ID of the account.
         # @param [String] region_code
-        #   The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
-        #   ISO_3166-1_alpha-2). Currently only US is available.
+        #   Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.
+        #   org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
         # @param [Google::Apis::ContentV2_1::ActivateBuyOnGoogleProgramRequest] activate_buy_on_google_program_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1140,8 +1143,8 @@ module Google
         # @param [Fixnum] merchant_id
         #   Required. The ID of the account.
         # @param [String] region_code
-        #   The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
-        #   ISO_3166-1_alpha-2). Currently only US is available.
+        #   Required. The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.
+        #   org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1179,8 +1182,8 @@ module Google
         # @param [Fixnum] merchant_id
         #   Required. The ID of the account.
         # @param [String] region_code
-        #   The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
-        #   ISO_3166-1_alpha-2). Currently only US is available.
+        #   Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.
+        #   org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
         # @param [Google::Apis::ContentV2_1::OnboardBuyOnGoogleProgramRequest] onboard_buy_on_google_program_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1210,13 +1213,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the status of the BoG program for your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   Required. The ID of the account.
+        # @param [String] region_code
+        #   Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.
+        #   org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
+        # @param [Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus] buy_on_google_program_status_object
+        # @param [String] update_mask
+        #   The list of fields to update. If the update mask is not provided, then all the
+        #   fields set in buyOnGoogleProgramStatus will be updated. Clearing fields is
+        #   only possible if update mask is provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_buyongoogleprogram(merchant_id, region_code, buy_on_google_program_status_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, '{merchantId}/buyongoogleprograms/{regionCode}', options)
+          command.request_representation = Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus::Representation
+          command.request_object = buy_on_google_program_status_object
+          command.response_representation = Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus::Representation
+          command.response_class = Google::Apis::ContentV2_1::BuyOnGoogleProgramStatus
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['regionCode'] = region_code unless region_code.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Pauses the BoG program in your Merchant Center account. Important: This method
         # is only whitelisted for selected merchants.
         # @param [Fixnum] merchant_id
         #   Required. The ID of the account.
         # @param [String] region_code
-        #   The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
-        #   ISO_3166-1_alpha-2). Currently only US is available.
+        #   Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.
+        #   org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
         # @param [Google::Apis::ContentV2_1::PauseBuyOnGoogleProgramRequest] pause_buy_on_google_program_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1252,8 +1297,8 @@ module Google
         # @param [Fixnum] merchant_id
         #   Required. The ID of the account.
         # @param [String] region_code
-        #   The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
-        #   ISO_3166-1_alpha-2). Currently only US is available.
+        #   Required. The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.
+        #   org/wiki/ISO_3166-1_alpha-2). Currently only US is available.
         # @param [Google::Apis::ContentV2_1::RequestReviewBuyOnGoogleProgramRequest] request_review_buy_on_google_program_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
