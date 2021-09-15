@@ -2354,6 +2354,7 @@ module Google
       
           property :customer_service, as: 'customerService', class: Google::Apis::ContentV2_1::AccountCustomerService, decorator: Google::Apis::ContentV2_1::AccountCustomerService::Representation
       
+          property :korean_business_registration_number, as: 'koreanBusinessRegistrationNumber'
           property :phone_number, as: 'phoneNumber'
         end
       end
@@ -2770,8 +2771,14 @@ module Google
       class BuyOnGoogleProgramStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_model, as: 'businessModel'
           property :customer_service_pending_email, as: 'customerServicePendingEmail'
+          property :customer_service_pending_phone_number, as: 'customerServicePendingPhoneNumber'
+          property :customer_service_pending_phone_region_code, as: 'customerServicePendingPhoneRegionCode'
           property :customer_service_verified_email, as: 'customerServiceVerifiedEmail'
+          property :customer_service_verified_phone_number, as: 'customerServiceVerifiedPhoneNumber'
+          property :customer_service_verified_phone_region_code, as: 'customerServiceVerifiedPhoneRegionCode'
+          property :online_sales_channel, as: 'onlineSalesChannel'
           property :participation_stage, as: 'participationStage'
         end
       end

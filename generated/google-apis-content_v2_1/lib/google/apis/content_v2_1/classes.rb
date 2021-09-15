@@ -235,6 +235,13 @@ module Google
         # @return [Google::Apis::ContentV2_1::AccountCustomerService]
         attr_accessor :customer_service
       
+        # The 10-digit [Korean business registration number](https://support.google.com/
+        # merchants/answer/9037766) separated with dashes in the format: XXX-XX-XXXXX.
+        # This field will only be updated if explicitly set.
+        # Corresponds to the JSON property `koreanBusinessRegistrationNumber`
+        # @return [String]
+        attr_accessor :korean_business_registration_number
+      
         # The phone number of the business.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
@@ -248,6 +255,7 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @customer_service = args[:customer_service] if args.key?(:customer_service)
+          @korean_business_registration_number = args[:korean_business_registration_number] if args.key?(:korean_business_registration_number)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
@@ -1671,16 +1679,57 @@ module Google
       class BuyOnGoogleProgramStatus
         include Google::Apis::Core::Hashable
       
+        # The business models in which merchant participates.
+        # Corresponds to the JSON property `businessModel`
+        # @return [Array<String>]
+        attr_accessor :business_model
+      
         # The customer service pending email. After verification this field becomes
         # empty.
         # Corresponds to the JSON property `customerServicePendingEmail`
         # @return [String]
         attr_accessor :customer_service_pending_email
       
+        # The pending phone number specified for BuyOnGoogle program. It might be
+        # different than account level phone number. In order to update this field the
+        # customer_service_pending_phone_region_code must also be set. After
+        # verification this field becomes empty.
+        # Corresponds to the JSON property `customerServicePendingPhoneNumber`
+        # @return [String]
+        attr_accessor :customer_service_pending_phone_number
+      
+        # Two letter country code for the pending phone number, for example `CA` for
+        # Canadian numbers. See the [ISO 3166-1 alpha-2](https://wikipedia.org/wiki/
+        # ISO_3166-1_alpha-2#Officially_assigned_code_elements) officially assigned
+        # codes. In order to update this field the customer_service_pending_phone_number
+        # must also be set. After verification this field becomes empty.
+        # Corresponds to the JSON property `customerServicePendingPhoneRegionCode`
+        # @return [String]
+        attr_accessor :customer_service_pending_phone_region_code
+      
         # Output only. The customer service verified email.
         # Corresponds to the JSON property `customerServiceVerifiedEmail`
         # @return [String]
         attr_accessor :customer_service_verified_email
+      
+        # Output only. The verified phone number specified for BuyOnGoogle program. It
+        # might be different than account level phone number.
+        # Corresponds to the JSON property `customerServiceVerifiedPhoneNumber`
+        # @return [String]
+        attr_accessor :customer_service_verified_phone_number
+      
+        # Output only. Two letter country code for the verified phone number, for
+        # example `CA` for Canadian numbers. See the [ISO 3166-1 alpha-2](https://
+        # wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+        # officially assigned codes.
+        # Corresponds to the JSON property `customerServiceVerifiedPhoneRegionCode`
+        # @return [String]
+        attr_accessor :customer_service_verified_phone_region_code
+      
+        # The channels through which the merchant is selling.
+        # Corresponds to the JSON property `onlineSalesChannel`
+        # @return [String]
+        attr_accessor :online_sales_channel
       
         # Output only. The current participation stage for the program.
         # Corresponds to the JSON property `participationStage`
@@ -1693,8 +1742,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @business_model = args[:business_model] if args.key?(:business_model)
           @customer_service_pending_email = args[:customer_service_pending_email] if args.key?(:customer_service_pending_email)
+          @customer_service_pending_phone_number = args[:customer_service_pending_phone_number] if args.key?(:customer_service_pending_phone_number)
+          @customer_service_pending_phone_region_code = args[:customer_service_pending_phone_region_code] if args.key?(:customer_service_pending_phone_region_code)
           @customer_service_verified_email = args[:customer_service_verified_email] if args.key?(:customer_service_verified_email)
+          @customer_service_verified_phone_number = args[:customer_service_verified_phone_number] if args.key?(:customer_service_verified_phone_number)
+          @customer_service_verified_phone_region_code = args[:customer_service_verified_phone_region_code] if args.key?(:customer_service_verified_phone_region_code)
+          @online_sales_channel = args[:online_sales_channel] if args.key?(:online_sales_channel)
           @participation_stage = args[:participation_stage] if args.key?(:participation_stage)
         end
       end
@@ -15671,7 +15726,8 @@ module Google
       class VerifyPhoneNumberResponse
         include Google::Apis::Core::Hashable
       
-        # Verified phone number if verification is successful.
+        # Verified phone number if verification is successful. This phone number can
+        # only be replaced by another verified phone number.
         # Corresponds to the JSON property `verifiedPhoneNumber`
         # @return [String]
         attr_accessor :verified_phone_number
