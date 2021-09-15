@@ -163,7 +163,7 @@ module Google
         end
       end
       
-      # An attachment in Hangouts Chat.
+      # An attachment in Google Chat.
       class Attachment
         include Google::Apis::Core::Hashable
       
@@ -616,12 +616,13 @@ module Google
         attr_accessor :is_dialog_event
         alias_method :is_dialog_event?, :is_dialog_event
       
-        # A message in Hangouts Chat.
+        # A message in Google Chat.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::ChatV1::Message]
         attr_accessor :message
       
-        # A room or DM in Hangouts Chat.
+        # A space in Google Chat. Spaces are conversations between two or more users or
+        # 1:1 messages between a user and a Chat bot.
         # Corresponds to the JSON property `space`
         # @return [Google::Apis::ChatV1::Space]
         attr_accessor :space
@@ -2328,7 +2329,7 @@ module Google
         end
       end
       
-      # Represents a membership relation in Hangouts Chat.
+      # Represents a membership relation in Google Chat.
       class Membership
         include Google::Apis::Core::Hashable
       
@@ -2366,7 +2367,7 @@ module Google
         end
       end
       
-      # A message in Hangouts Chat.
+      # A message in Google Chat.
       class Message
         include Google::Apis::Core::Hashable
       
@@ -2397,7 +2398,7 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Card>]
         attr_accessor :cards
       
-        # Output only. The time at which the message was created in Hangouts Chat server.
+        # Output only. The time at which the message was created in Google Chat server.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2408,7 +2409,7 @@ module Google
         # @return [String]
         attr_accessor :fallback_text
       
-        # Output only. The time at which the message was last updated in Hangouts Chat
+        # Output only. The time at which the message was last updated in Google Chat
         # server. If the message was never updated, this field will be same as
         # create_time.
         # Corresponds to the JSON property `lastUpdateTime`
@@ -2437,7 +2438,8 @@ module Google
         # @return [Google::Apis::ChatV1::SlashCommand]
         attr_accessor :slash_command
       
-        # A room or DM in Hangouts Chat.
+        # A space in Google Chat. Spaces are conversations between two or more users or
+        # 1:1 messages between a user and a Chat bot.
         # Corresponds to the JSON property `space`
         # @return [Google::Apis::ChatV1::Space]
         attr_accessor :space
@@ -2447,7 +2449,7 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # A thread in Hangouts Chat.
+        # A thread in Google Chat.
         # Corresponds to the JSON property `thread`
         # @return [Google::Apis::ChatV1::Thread]
         attr_accessor :thread
@@ -2611,12 +2613,13 @@ module Google
         end
       end
       
-      # A room or DM in Hangouts Chat.
+      # A space in Google Chat. Spaces are conversations between two or more users or
+      # 1:1 messages between a user and a Chat bot.
       class Space
         include Google::Apis::Core::Hashable
       
-        # Output only. The display name (only if the space is a room). Please note that
-        # this field might not be populated in direct messages between humans.
+        # Output only. The display name (only if the space is of type `ROOM`). Please
+        # note that this field might not be populated in direct messages between humans.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2724,7 +2727,7 @@ module Google
         end
       end
       
-      # A thread in Hangouts Chat.
+      # A thread in Google Chat.
       class Thread
         include Google::Apis::Core::Hashable
       
