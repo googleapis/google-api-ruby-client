@@ -1640,6 +1640,7 @@ module Google
           property :schema, as: 'schema', class: Google::Apis::HealthcareV1::SchemaPackage, decorator: Google::Apis::HealthcareV1::SchemaPackage::Representation
       
           property :segment_terminator, :base64 => true, as: 'segmentTerminator'
+          property :version, as: 'version'
         end
       end
       
@@ -1761,6 +1762,7 @@ module Google
           property :schematized_parsing_type, as: 'schematizedParsingType'
           collection :types, as: 'types', class: Google::Apis::HealthcareV1::Hl7TypesConfig, decorator: Google::Apis::HealthcareV1::Hl7TypesConfig::Representation
       
+          property :unexpected_segment_handling, as: 'unexpectedSegmentHandling'
         end
       end
       

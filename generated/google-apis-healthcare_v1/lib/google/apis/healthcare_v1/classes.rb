@@ -3214,6 +3214,12 @@ module Google
         # @return [String]
         attr_accessor :segment_terminator
       
+        # Immutable. Determines the version of the unschematized parser to be used when `
+        # schema` is not given. This field is immutable after store creation.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3223,6 +3229,7 @@ module Google
           @allow_null_header = args[:allow_null_header] if args.key?(:allow_null_header)
           @schema = args[:schema] if args.key?(:schema)
           @segment_terminator = args[:segment_terminator] if args.key?(:segment_terminator)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3669,6 +3676,12 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1::Hl7TypesConfig>]
         attr_accessor :types
       
+        # Determines how unexpected segments (segments not matched to the schema) are
+        # handled.
+        # Corresponds to the JSON property `unexpectedSegmentHandling`
+        # @return [String]
+        attr_accessor :unexpected_segment_handling
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3679,6 +3692,7 @@ module Google
           @schemas = args[:schemas] if args.key?(:schemas)
           @schematized_parsing_type = args[:schematized_parsing_type] if args.key?(:schematized_parsing_type)
           @types = args[:types] if args.key?(:types)
+          @unexpected_segment_handling = args[:unexpected_segment_handling] if args.key?(:unexpected_segment_handling)
         end
       end
       
