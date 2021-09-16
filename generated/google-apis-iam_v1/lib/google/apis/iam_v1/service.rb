@@ -608,7 +608,7 @@ module Google
         #   Output only. The resource name of the pool.
         # @param [Google::Apis::IamV1::WorkloadIdentityPool] workload_identity_pool_object
         # @param [String] update_mask
-        #   Required. The list of fields update.
+        #   Required. The list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
