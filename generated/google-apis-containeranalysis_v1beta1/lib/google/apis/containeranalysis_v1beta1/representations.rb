@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ByProducts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -550,7 +556,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -718,6 +736,29 @@ module Google
           property :key_type, as: 'keyType'
           property :public_key, as: 'publicKey'
           property :signature, :base64 => true, as: 'signature'
+        end
+      end
+      
+      class BuildStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          property :dir, as: 'dir'
+          property :entrypoint, as: 'entrypoint'
+          collection :env, as: 'env'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :pull_timing, as: 'pullTiming', class: Google::Apis::ContaineranalysisV1beta1::TimeSpan, decorator: Google::Apis::ContaineranalysisV1beta1::TimeSpan::Representation
+      
+          property :script, as: 'script'
+          collection :secret_env, as: 'secretEnv'
+          property :status, as: 'status'
+          property :timeout, as: 'timeout'
+          property :timing, as: 'timing', class: Google::Apis::ContaineranalysisV1beta1::TimeSpan, decorator: Google::Apis::ContaineranalysisV1beta1::TimeSpan::Representation
+      
+          collection :volumes, as: 'volumes', class: Google::Apis::ContaineranalysisV1beta1::Volume, decorator: Google::Apis::ContaineranalysisV1beta1::Volume::Representation
+      
+          collection :wait_for, as: 'waitFor'
         end
       end
       
@@ -1511,6 +1552,14 @@ module Google
         end
       end
       
+      class TimeSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1519,6 +1568,14 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :revision, as: 'revision'
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :path, as: 'path'
         end
       end
       
