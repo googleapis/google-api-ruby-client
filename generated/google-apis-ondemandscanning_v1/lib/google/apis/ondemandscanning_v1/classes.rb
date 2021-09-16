@@ -104,6 +104,12 @@ module Google
       class AnalyzePackagesRequestV1
         include Google::Apis::Core::Hashable
       
+        # Whether to include OSV data in the scan.
+        # Corresponds to the JSON property `includeOsvData`
+        # @return [Boolean]
+        attr_accessor :include_osv_data
+        alias_method :include_osv_data?, :include_osv_data
+      
         # The packages to analyze.
         # Corresponds to the JSON property `packages`
         # @return [Array<Google::Apis::OndemandscanningV1::PackageData>]
@@ -120,6 +126,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_osv_data = args[:include_osv_data] if args.key?(:include_osv_data)
           @packages = args[:packages] if args.key?(:packages)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
         end

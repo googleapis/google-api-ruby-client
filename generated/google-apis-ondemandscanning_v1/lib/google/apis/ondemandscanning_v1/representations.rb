@@ -391,6 +391,7 @@ module Google
       class AnalyzePackagesRequestV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_osv_data, as: 'includeOsvData'
           collection :packages, as: 'packages', class: Google::Apis::OndemandscanningV1::PackageData, decorator: Google::Apis::OndemandscanningV1::PackageData::Representation
       
           property :resource_uri, as: 'resourceUri'
