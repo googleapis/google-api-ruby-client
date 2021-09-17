@@ -301,6 +301,12 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
+        # Configuration to enable an app as an extension app, with the capability of
+        # interacting with Android Device Policy offline.
+        # Corresponds to the JSON property `extensionConfig`
+        # @return [Google::Apis::AndroidmanagementV1::ExtensionConfig]
+        attr_accessor :extension_config
+      
         # The type of installation to perform.
         # Corresponds to the JSON property `installType`
         # @return [String]
@@ -364,6 +370,7 @@ module Google
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
           @disabled = args[:disabled] if args.key?(:disabled)
+          @extension_config = args[:extension_config] if args.key?(:extension_config)
           @install_type = args[:install_type] if args.key?(:install_type)
           @lock_task_allowed = args[:lock_task_allowed] if args.key?(:lock_task_allowed)
           @managed_configuration = args[:managed_configuration] if args.key?(:managed_configuration)
@@ -1444,6 +1451,41 @@ module Google
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @signin_details = args[:signin_details] if args.key?(:signin_details)
           @terms_and_conditions = args[:terms_and_conditions] if args.key?(:terms_and_conditions)
+        end
+      end
+      
+      # Configuration to enable an app as an extension app, with the capability of
+      # interacting with Android Device Policy offline.
+      class ExtensionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Fully qualified class name of the receiver service class for Android Device
+        # Policy to notify the extension app of any local command status updates.
+        # Corresponds to the JSON property `notificationReceiver`
+        # @return [String]
+        attr_accessor :notification_receiver
+      
+        # Hex-encoded SHA256 hash of the signing certificate of the extension app. Only
+        # hexadecimal string representations of 64 characters are valid.If not specified,
+        # the signature for the corresponding package name is obtained from the Play
+        # Store instead.If this list is empty, the signature of the extension app on the
+        # device must match the signature obtained from the Play Store for the app to be
+        # able to communicate with Android Device Policy.If this list is not empty, the
+        # signature of the extension app on the device must match one of the entries in
+        # this list for the app to be able to communicate with Android Device Policy.In
+        # production use cases, it is recommended to leave this empty.
+        # Corresponds to the JSON property `signingKeyFingerprintsSha256`
+        # @return [Array<String>]
+        attr_accessor :signing_key_fingerprints_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @notification_receiver = args[:notification_receiver] if args.key?(:notification_receiver)
+          @signing_key_fingerprints_sha256 = args[:signing_key_fingerprints_sha256] if args.key?(:signing_key_fingerprints_sha256)
         end
       end
       
