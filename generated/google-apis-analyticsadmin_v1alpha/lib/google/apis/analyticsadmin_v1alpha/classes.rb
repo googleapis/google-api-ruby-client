@@ -2188,9 +2188,9 @@ module Google
       
         # Roles directly assigned to this user for this account or property. Valid
         # values: predefinedRoles/read predefinedRoles/collaborate predefinedRoles/edit
-        # predefinedRoles/manage-users Excludes roles that are inherited from a higher-
-        # level entity, group, or organization admin role. A UserLink that is updated to
-        # have an empty list of direct_roles will be deleted.
+        # predefinedRoles/admin Excludes roles that are inherited from a higher-level
+        # entity, group, or organization admin role. A UserLink that is updated to have
+        # an empty list of direct_roles will be deleted.
         # Corresponds to the JSON property `directRoles`
         # @return [Array<String>]
         attr_accessor :direct_roles
