@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExtensionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExternalData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -552,6 +558,8 @@ module Google
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           collection :delegated_scopes, as: 'delegatedScopes'
           property :disabled, as: 'disabled'
+          property :extension_config, as: 'extensionConfig', class: Google::Apis::AndroidmanagementV1::ExtensionConfig, decorator: Google::Apis::AndroidmanagementV1::ExtensionConfig::Representation
+      
           property :install_type, as: 'installType'
           property :lock_task_allowed, as: 'lockTaskAllowed'
           hash :managed_configuration, as: 'managedConfiguration'
@@ -802,6 +810,14 @@ module Google
       
           collection :terms_and_conditions, as: 'termsAndConditions', class: Google::Apis::AndroidmanagementV1::TermsAndConditions, decorator: Google::Apis::AndroidmanagementV1::TermsAndConditions::Representation
       
+        end
+      end
+      
+      class ExtensionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :notification_receiver, as: 'notificationReceiver'
+          collection :signing_key_fingerprints_sha256, as: 'signingKeyFingerprintsSha256'
         end
       end
       
