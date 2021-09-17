@@ -478,6 +478,45 @@ module Google
         end
       end
       
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class GoogleRpcStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get
       # requests.
       class HttpGetAction
@@ -540,6 +579,38 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Result of an instance attempt.
+      class InstanceAttemptResult
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The exit code of this attempt. This may be unset if the container
+        # was unable to exit cleanly with a code due to some other failure. See status
+        # field for possible failure details.
+        # Corresponds to the JSON property `exitCode`
+        # @return [Fixnum]
+        attr_accessor :exit_code
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1alpha1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exit_code = args[:exit_code] if args.key?(:exit_code)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -631,6 +702,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :index
       
+        # Result of an instance attempt.
+        # Corresponds to the JSON property `lastAttemptResult`
+        # @return [Google::Apis::RunV1alpha1::InstanceAttemptResult]
+        attr_accessor :last_attempt_result
+      
         # Optional. Last exit code seen for this instance. +optional
         # Corresponds to the JSON property `lastExitCode`
         # @return [Fixnum]
@@ -664,6 +740,7 @@ module Google
           @completion_time = args[:completion_time] if args.key?(:completion_time)
           @failed = args[:failed] if args.key?(:failed)
           @index = args[:index] if args.key?(:index)
+          @last_attempt_result = args[:last_attempt_result] if args.key?(:last_attempt_result)
           @last_exit_code = args[:last_exit_code] if args.key?(:last_exit_code)
           @restarted = args[:restarted] if args.key?(:restarted)
           @start_time = args[:start_time] if args.key?(:start_time)

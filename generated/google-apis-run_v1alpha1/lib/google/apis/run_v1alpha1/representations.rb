@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleRpcStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpGetAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class HttpHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceAttemptResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -343,6 +355,15 @@ module Google
         end
       end
       
+      class GoogleRpcStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class HttpGetAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -359,6 +380,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class InstanceAttemptResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exit_code, as: 'exitCode'
+          property :status, as: 'status', class: Google::Apis::RunV1alpha1::GoogleRpcStatus, decorator: Google::Apis::RunV1alpha1::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -382,6 +412,8 @@ module Google
           property :completion_time, as: 'completionTime'
           property :failed, as: 'failed'
           property :index, as: 'index'
+          property :last_attempt_result, as: 'lastAttemptResult', class: Google::Apis::RunV1alpha1::InstanceAttemptResult, decorator: Google::Apis::RunV1alpha1::InstanceAttemptResult::Representation
+      
           property :last_exit_code, as: 'lastExitCode'
           property :restarted, as: 'restarted'
           property :start_time, as: 'startTime'
