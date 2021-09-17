@@ -1082,7 +1082,7 @@ module Google
         attr_accessor :action
       
         # An optional string description of this rule. This field has a maximum length
-        # of 100 characters.
+        # of 400 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
