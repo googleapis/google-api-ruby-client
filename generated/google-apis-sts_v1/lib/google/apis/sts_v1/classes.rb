@@ -344,6 +344,105 @@ module Google
         end
       end
       
+      # Request message for IntrospectToken.
+      class GoogleIdentityStsV1IntrospectTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The OAuth 2.0 security token issued by the Security Token Service
+        # API.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # Optional. The type of the given token. Supported values are `urn:ietf:params:
+        # oauth:token-type:access_token` and `access_token`.
+        # Corresponds to the JSON property `tokenTypeHint`
+        # @return [String]
+        attr_accessor :token_type_hint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token = args[:token] if args.key?(:token)
+          @token_type_hint = args[:token_type_hint] if args.key?(:token_type_hint)
+        end
+      end
+      
+      # Response message for IntrospectToken.
+      class GoogleIdentityStsV1IntrospectTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # A boolean value that indicates whether the provided access token is currently
+        # active.
+        # Corresponds to the JSON property `active`
+        # @return [Boolean]
+        attr_accessor :active
+        alias_method :active?, :active
+      
+        # The client identifier for the OAuth 2.0 client that requested the provided
+        # token.
+        # Corresponds to the JSON property `client_id`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # The expiration timestamp, measured in the number of seconds since January 1
+        # 1970 UTC, indicating when this token will expire.
+        # Corresponds to the JSON property `exp`
+        # @return [Fixnum]
+        attr_accessor :exp
+      
+        # The issued timestamp, measured in the number of seconds since January 1 1970
+        # UTC, indicating when this token was originally issued.
+        # Corresponds to the JSON property `iat`
+        # @return [Fixnum]
+        attr_accessor :iat
+      
+        # The issuer of the provided token.
+        # Corresponds to the JSON property `iss`
+        # @return [String]
+        attr_accessor :iss
+      
+        # A list of scopes associated with the provided token.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # The unique user ID associated with the provided token. For Google Accounts,
+        # this value is based on the Google Account's user ID. For federated identities,
+        # this value is based on the identity pool ID and the value of the mapped `
+        # google.subject` attribute.
+        # Corresponds to the JSON property `sub`
+        # @return [String]
+        attr_accessor :sub
+      
+        # The human-readable identifier for the token principal subject. For example, if
+        # the provided token is associated with a workload identity pool, this field
+        # contains a value in the following format: `principal://iam.googleapis.com/
+        # projects//locations/global/workloadIdentityPools//subject/`
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @exp = args[:exp] if args.key?(:exp)
+          @iat = args[:iat] if args.key?(:iat)
+          @iss = args[:iss] if args.key?(:iss)
+          @scope = args[:scope] if args.key?(:scope)
+          @sub = args[:sub] if args.key?(:sub)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
       # An `Options` object configures features that the Security Token Service
       # supports, but that are not supported by standard OAuth 2.0 token exchange
       # endpoints, as defined in https://tools.ietf.org/html/rfc8693.

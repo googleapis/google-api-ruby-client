@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityStsV1IntrospectTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1IntrospectTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityStsV1Options
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,6 +142,28 @@ module Google
           property :expires_in, as: 'expires_in'
           property :issued_token_type, as: 'issued_token_type'
           property :token_type, as: 'token_type'
+        end
+      end
+      
+      class GoogleIdentityStsV1IntrospectTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token, as: 'token'
+          property :token_type_hint, as: 'tokenTypeHint'
+        end
+      end
+      
+      class GoogleIdentityStsV1IntrospectTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, as: 'active'
+          property :client_id, as: 'client_id'
+          property :exp, :numeric_string => true, as: 'exp'
+          property :iat, :numeric_string => true, as: 'iat'
+          property :iss, as: 'iss'
+          property :scope, as: 'scope'
+          property :sub, as: 'sub'
+          property :username, as: 'username'
         end
       end
       
