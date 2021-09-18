@@ -213,6 +213,242 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create an OS policy assignment. This method also creates the first revision of
+        # the OS policy assignment. This method returns a long running operation (LRO)
+        # that contains the rollout details. The rollout can be cancelled by cancelling
+        # the LRO. For more information, see [Method: projects.locations.
+        # osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/
+        # osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
+        # @param [String] parent
+        #   Required. The parent resource name in the form: projects/`project`/locations/`
+        #   location`
+        # @param [Google::Apis::OsconfigV1::OsPolicyAssignment] os_policy_assignment_object
+        # @param [String] os_policy_assignment_id
+        #   Required. The logical name of the OS policy assignment in the project with the
+        #   following restrictions: * Must contain only lowercase letters, numbers, and
+        #   hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must
+        #   end with a number or a letter. * Must be unique within the project.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_os_policy_assignment(parent, os_policy_assignment_object = nil, os_policy_assignment_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/osPolicyAssignments', options)
+          command.request_representation = Google::Apis::OsconfigV1::OsPolicyAssignment::Representation
+          command.request_object = os_policy_assignment_object
+          command.response_representation = Google::Apis::OsconfigV1::Operation::Representation
+          command.response_class = Google::Apis::OsconfigV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['osPolicyAssignmentId'] = os_policy_assignment_id unless os_policy_assignment_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete the OS policy assignment. This method creates a new revision of the OS
+        # policy assignment. This method returns a long running operation (LRO) that
+        # contains the rollout details. The rollout can be cancelled by cancelling the
+        # LRO. If the LRO completes and is not cancelled, all revisions associated with
+        # the OS policy assignment are deleted. For more information, see [Method:
+        # projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.
+        # com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.
+        # operations/cancel).
+        # @param [String] name
+        #   Required. The name of the OS policy assignment to be deleted
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_os_policy_assignment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OsconfigV1::Operation::Representation
+          command.response_class = Google::Apis::OsconfigV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve an existing OS policy assignment. This method always returns the
+        # latest revision. In order to retrieve a previous revision of the assignment,
+        # also provide the revision ID in the `name` parameter.
+        # @param [String] name
+        #   Required. The resource name of OS policy assignment. Format: `projects/`
+        #   project`/locations/`location`/osPolicyAssignments/`os_policy_assignment`@`
+        #   revisionId``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::OsPolicyAssignment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::OsPolicyAssignment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_os_policy_assignment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OsconfigV1::OsPolicyAssignment::Representation
+          command.response_class = Google::Apis::OsconfigV1::OsPolicyAssignment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the OS policy assignments under the parent resource. For each OS policy
+        # assignment, the latest revision is returned.
+        # @param [String] parent
+        #   Required. The parent resource name.
+        # @param [Fixnum] page_size
+        #   The maximum number of assignments to return.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to `ListOSPolicyAssignments`
+        #   that indicates where this listing should continue from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::ListOsPolicyAssignmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::ListOsPolicyAssignmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_os_policy_assignments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/osPolicyAssignments', options)
+          command.response_representation = Google::Apis::OsconfigV1::ListOsPolicyAssignmentsResponse::Representation
+          command.response_class = Google::Apis::OsconfigV1::ListOsPolicyAssignmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the OS policy assignment revisions for a given OS policy assignment.
+        # @param [String] name
+        #   Required. The name of the OS policy assignment to list revisions for.
+        # @param [Fixnum] page_size
+        #   The maximum number of revisions to return.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to `
+        #   ListOSPolicyAssignmentRevisions` that indicates where this listing should
+        #   continue from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::ListOsPolicyAssignmentRevisionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::ListOsPolicyAssignmentRevisionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_os_policy_assignment_revisions(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:listRevisions', options)
+          command.response_representation = Google::Apis::OsconfigV1::ListOsPolicyAssignmentRevisionsResponse::Representation
+          command.response_class = Google::Apis::OsconfigV1::ListOsPolicyAssignmentRevisionsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update an existing OS policy assignment. This method creates a new revision of
+        # the OS policy assignment. This method returns a long running operation (LRO)
+        # that contains the rollout details. The rollout can be cancelled by cancelling
+        # the LRO. For more information, see [Method: projects.locations.
+        # osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/
+        # osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
+        # @param [String] name
+        #   Resource name. Format: `projects/`project_number`/locations/`location`/
+        #   osPolicyAssignments/`os_policy_assignment_id`` This field is ignored when you
+        #   create an OS policy assignment.
+        # @param [Google::Apis::OsconfigV1::OsPolicyAssignment] os_policy_assignment_object
+        # @param [String] update_mask
+        #   Optional. Field mask that controls which fields of the assignment should be
+        #   updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_os_policy_assignment(name, os_policy_assignment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OsconfigV1::OsPolicyAssignment::Representation
+          command.request_object = os_policy_assignment_object
+          command.response_representation = Google::Apis::OsconfigV1::Operation::Representation
+          command.response_class = Google::Apis::OsconfigV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create an OS Config patch deployment.
         # @param [String] parent
         #   Required. The project to apply this patch deployment to in the form `projects/*
