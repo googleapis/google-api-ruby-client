@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOsPolicyAssignmentReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOsPolicyAssignmentRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,36 @@ module Google
       end
       
       class OsPolicyAssignmentOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OsPolicyAssignmentReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OsPolicyAssignmentReportOsPolicyCompliance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceCompliance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceExecResourceOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceOsPolicyResourceConfigStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -608,6 +644,15 @@ module Google
         end
       end
       
+      class ListOsPolicyAssignmentReportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :os_policy_assignment_reports, as: 'osPolicyAssignmentReports', class: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReport, decorator: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReport::Representation
+      
+        end
+      end
+      
       class ListOsPolicyAssignmentRevisionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -706,6 +751,58 @@ module Google
           property :rollout_start_time, as: 'rolloutStartTime'
           property :rollout_state, as: 'rolloutState'
           property :rollout_update_time, as: 'rolloutUpdateTime'
+        end
+      end
+      
+      class OsPolicyAssignmentReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :last_run_id, as: 'lastRunId'
+          property :name, as: 'name'
+          property :os_policy_assignment, as: 'osPolicyAssignment'
+          collection :os_policy_compliances, as: 'osPolicyCompliances', class: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReportOsPolicyCompliance, decorator: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReportOsPolicyCompliance::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class OsPolicyAssignmentReportOsPolicyCompliance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compliance_state, as: 'complianceState'
+          property :compliance_state_reason, as: 'complianceStateReason'
+          property :os_policy_id, as: 'osPolicyId'
+          collection :os_policy_resource_compliances, as: 'osPolicyResourceCompliances', class: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceCompliance, decorator: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceCompliance::Representation
+      
+        end
+      end
+      
+      class OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceCompliance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compliance_state, as: 'complianceState'
+          property :compliance_state_reason, as: 'complianceStateReason'
+          collection :config_steps, as: 'configSteps', class: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceOsPolicyResourceConfigStep, decorator: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceOsPolicyResourceConfigStep::Representation
+      
+          property :exec_resource_output, as: 'execResourceOutput', class: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceExecResourceOutput, decorator: Google::Apis::OsconfigV1alpha::OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceExecResourceOutput::Representation
+      
+          property :os_policy_resource_id, as: 'osPolicyResourceId'
+        end
+      end
+      
+      class OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceExecResourceOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforcement_output, :base64 => true, as: 'enforcementOutput'
+        end
+      end
+      
+      class OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceOsPolicyResourceConfigStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :type, as: 'type'
         end
       end
       
