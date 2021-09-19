@@ -150,6 +150,12 @@ module Google
         # @return [Google::Apis::StorageV1::Bucket::RetentionPolicy]
         attr_accessor :retention_policy
       
+        # The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn
+        # on Turbo Replication on a bucket.
+        # Corresponds to the JSON property `rpo`
+        # @return [String]
+        attr_accessor :rpo
+      
         # Reserved for future use.
         # Corresponds to the JSON property `satisfiesPZS`
         # @return [Boolean]
@@ -229,6 +235,7 @@ module Google
           @owner = args[:owner] if args.key?(:owner)
           @project_number = args[:project_number] if args.key?(:project_number)
           @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
+          @rpo = args[:rpo] if args.key?(:rpo)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @storage_class = args[:storage_class] if args.key?(:storage_class)
