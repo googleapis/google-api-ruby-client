@@ -307,6 +307,7 @@ module Google
           property :project_number, :numeric_string => true, as: 'projectNumber'
           property :retention_policy, as: 'retentionPolicy', class: Google::Apis::StorageV1::Bucket::RetentionPolicy, decorator: Google::Apis::StorageV1::Bucket::RetentionPolicy::Representation
       
+          property :rpo, as: 'rpo'
           property :satisfies_pzs, as: 'satisfiesPZS'
           property :self_link, as: 'selfLink'
           property :storage_class, as: 'storageClass'
