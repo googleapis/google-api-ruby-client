@@ -233,8 +233,8 @@ module Google
         # SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and
         # the request will fail if you attempt to attach a persistent disk in any other
         # format than SCSI. Local SSDs can use either NVME or SCSI. For performance
-        # characteristics of SCSI over NVMe, see Local SSD performance. Valid values:
-        # NVME SCSI
+        # characteristics of SCSI over NVMe, see Local SSD performance. Valid values: *
+        # NVME * SCSI
         # Corresponds to the JSON property `interface`
         # @return [String]
         attr_accessor :interface
@@ -252,7 +252,7 @@ module Google
       
         # The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not
         # specified, the default is to attach the disk in READ_WRITE mode. Valid values:
-        # READ_ONLY READ_WRITE
+        # * READ_ONLY * READ_WRITE
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -262,8 +262,8 @@ module Google
         # @return [String]
         attr_accessor :source
       
-        # Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values:
-        # PERSISTENT SCRATCH
+        # Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: *
+        # PERSISTENT * SCRATCH
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -444,7 +444,7 @@ module Google
         attr_accessor :job_uri
       
         # Output only. The resource name of the execute. Format: `projects/`project_id`/
-        # locations/`location`/execution/`execution_id`
+        # locations/`location`/executions/`execution_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -487,8 +487,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Definition of a hardware accelerator. Note that not all combinations of `type`
-        # and `core_count` are valid. Check GPUs on Compute Engine to find a valid
-        # combination. TPUs are not supported.
+        # and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.
+        # google.com/compute/docs/gpus) to find a valid combination. TPUs are not
+        # supported.
         # Corresponds to the JSON property `acceleratorConfig`
         # @return [Google::Apis::NotebooksV1::SchedulerAcceleratorConfig]
         attr_accessor :accelerator_config
@@ -506,7 +507,7 @@ module Google
         attr_accessor :dataproc_parameters
       
         # Path to the notebook file to execute. Must be in a Google Cloud Storage bucket.
-        # Format: gs://`project_id`/`folder`/`notebook_file_name` Ex: gs://
+        # Format: gs://`bucket_name`/`folder`/`notebook_file_name` Ex: gs://
         # notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
         # Corresponds to the JSON property `inputNotebookFile`
         # @return [String]
@@ -539,13 +540,14 @@ module Google
         # standard_v100` - `large_model_v100` - `complex_model_m_v100` - `
         # complex_model_l_v100` Finally, if you want to use a TPU for training, specify `
         # cloud_tpu` in this field. Learn more about the [special configuration options
-        # for training with TPU.
+        # for training with TPU](https://cloud.google.com/ai-platform/training/docs/
+        # using-tpus#configuring_a_custom_tpu_machine).
         # Corresponds to the JSON property `masterType`
         # @return [String]
         attr_accessor :master_type
       
         # Path to the notebook folder to write to. Must be in a Google Cloud Storage
-        # bucket path. Format: gs://`project_id`/`folder` Ex: gs://notebook_user/
+        # bucket path. Format: gs://`bucket_name`/`folder` Ex: gs://notebook_user/
         # scheduled_notebooks
         # Corresponds to the JSON property `outputNotebookFolder`
         # @return [String]
@@ -577,6 +579,11 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Parameters used in Vertex AI JobType executions.
+        # Corresponds to the JSON property `vertexAiParameters`
+        # @return [Google::Apis::NotebooksV1::VertexAiParameters]
+        attr_accessor :vertex_ai_parameters
+      
         def initialize(**args)
            update!(**args)
         end
@@ -595,6 +602,7 @@ module Google
           @params_yaml_file = args[:params_yaml_file] if args.key?(:params_yaml_file)
           @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @vertex_ai_parameters = args[:vertex_ai_parameters] if args.key?(:vertex_ai_parameters)
         end
       end
       
@@ -685,8 +693,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ID of a supported feature. Read Enabling guest operating system features
-        # to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED
-        # MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        # to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED *
+        # MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE *
+        # WINDOWS
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -965,7 +974,7 @@ module Google
       class InstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Verifies core internal services are running. More info: go/notebooks-health
+        # Verifies core internal services are running.
         # Corresponds to the JSON property `enableHealthMonitoring`
         # @return [Boolean]
         attr_accessor :enable_health_monitoring
@@ -1246,7 +1255,7 @@ module Google
         end
       end
       
-      # An Local attached disk resource.
+      # A Local attached disk resource.
       class LocalDisk
         include Google::Apis::Core::Hashable
       
@@ -1301,8 +1310,8 @@ module Google
         # SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and
         # the request will fail if you attempt to attach a persistent disk in any other
         # format than SCSI. Local SSDs can use either NVME or SCSI. For performance
-        # characteristics of SCSI over NVMe, see Local SSD performance. Valid values:
-        # NVME SCSI
+        # characteristics of SCSI over NVMe, see Local SSD performance. Valid values: *
+        # NVME * SCSI
         # Corresponds to the JSON property `interface`
         # @return [String]
         attr_accessor :interface
@@ -1320,7 +1329,7 @@ module Google
       
         # The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not
         # specified, the default is to attach the disk in READ_WRITE mode. Valid values:
-        # READ_ONLY READ_WRITE
+        # * READ_ONLY * READ_WRITE
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -1331,7 +1340,7 @@ module Google
         attr_accessor :source
       
         # Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified,
-        # the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+        # the default is PERSISTENT. Valid values: * PERSISTENT * SCRATCH
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2065,7 +2074,7 @@ module Google
         attr_accessor :idle_shutdown
         alias_method :idle_shutdown?, :idle_shutdown
       
-        # Time in minutes to wait before shuting down runtime. Default: 180 minutes
+        # Time in minutes to wait before shutting down runtime. Default: 180 minutes
         # Corresponds to the JSON property `idleShutdownTimeout`
         # @return [Fixnum]
         attr_accessor :idle_shutdown_timeout
@@ -2114,9 +2123,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Cron-tab formatted schedule by which the job will execute Format: minute, hour,
-        # day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More
-        # examples: https://crontab.guru/examples.html
+        # Cron-tab formatted schedule by which the job will execute. Format: minute,
+        # hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday
+        # More examples: https://crontab.guru/examples.html
         # Corresponds to the JSON property `cronSchedule`
         # @return [String]
         attr_accessor :cron_schedule
@@ -2189,8 +2198,9 @@ module Google
       end
       
       # Definition of a hardware accelerator. Note that not all combinations of `type`
-      # and `core_count` are valid. Check GPUs on Compute Engine to find a valid
-      # combination. TPUs are not supported.
+      # and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.
+      # google.com/compute/docs/gpus) to find a valid combination. TPUs are not
+      # supported.
       class SchedulerAcceleratorConfig
         include Google::Apis::Core::Hashable
       
@@ -2690,6 +2700,31 @@ module Google
         end
       end
       
+      # Parameters used in Vertex AI JobType executions.
+      class VertexAiParameters
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the Compute Engine [network](/compute/docs/networks-and-
+        # firewalls#networks) to which the Job should be peered. For example, `projects/
+        # 12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/
+        # reference/rest/v1/networks/insert) is of the form `projects/`project`/global/
+        # networks/`network``. Where `project` is a project number, as in `12345`, and `
+        # network` is a network name. Private services access must already be configured
+        # for the network. If left unspecified, the job is not peered with any network.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+        end
+      end
+      
       # Runtime using Virtual Machine for computing.
       class VirtualMachine
         include Google::Apis::Core::Hashable
@@ -2740,7 +2775,7 @@ module Google
         # @return [Array<Google::Apis::NotebooksV1::ContainerImage>]
         attr_accessor :container_images
       
-        # An Local attached disk resource.
+        # A Local attached disk resource.
         # Corresponds to the JSON property `dataDisk`
         # @return [Google::Apis::NotebooksV1::LocalDisk]
         attr_accessor :data_disk
