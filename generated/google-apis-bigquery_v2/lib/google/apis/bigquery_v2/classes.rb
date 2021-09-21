@@ -7069,11 +7069,36 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_size
       
+        # Booster type for boosted tree models.
+        # Corresponds to the JSON property `boosterType`
+        # @return [String]
+        attr_accessor :booster_type
+      
         # If true, clean spikes and dips in the input time series.
         # Corresponds to the JSON property `cleanSpikesAndDips`
         # @return [Boolean]
         attr_accessor :clean_spikes_and_dips
         alias_method :clean_spikes_and_dips?, :clean_spikes_and_dips
+      
+        # Subsample ratio of columns for each level for boosted tree models.
+        # Corresponds to the JSON property `colsampleBylevel`
+        # @return [Float]
+        attr_accessor :colsample_bylevel
+      
+        # Subsample ratio of columns for each node(split) for boosted tree models.
+        # Corresponds to the JSON property `colsampleBynode`
+        # @return [Float]
+        attr_accessor :colsample_bynode
+      
+        # Subsample ratio of columns when constructing each tree for boosted tree models.
+        # Corresponds to the JSON property `colsampleBytree`
+        # @return [Float]
+        attr_accessor :colsample_bytree
+      
+        # Type of normalization algorithm for boosted tree models using dart booster.
+        # Corresponds to the JSON property `dartNormalizeType`
+        # @return [String]
+        attr_accessor :dart_normalize_type
       
         # The data frequency of a time series.
         # Corresponds to the JSON property `dataFrequency`
@@ -7235,6 +7260,11 @@ module Google
         # @return [Float]
         attr_accessor :min_split_loss
       
+        # Minimum sum of instance weight needed in a child for boosted tree models.
+        # Corresponds to the JSON property `minTreeChildWeight`
+        # @return [Fixnum]
+        attr_accessor :min_tree_child_weight
+      
         # Google Cloud Storage URI from which the model was imported. Only applicable
         # for imported models.
         # Corresponds to the JSON property `modelUri`
@@ -7255,6 +7285,12 @@ module Google
         # Corresponds to the JSON property `numFactors`
         # @return [Fixnum]
         attr_accessor :num_factors
+      
+        # Number of parallel trees constructed during each iteration for boosted tree
+        # models.
+        # Corresponds to the JSON property `numParallelTree`
+        # @return [Fixnum]
+        attr_accessor :num_parallel_tree
       
         # Optimization strategy for training linear regression models.
         # Corresponds to the JSON property `optimizationStrategy`
@@ -7295,6 +7331,11 @@ module Google
         # @return [String]
         attr_accessor :time_series_timestamp_column
       
+        # Tree construction algorithm for boosted tree models.
+        # Corresponds to the JSON property `treeMethod`
+        # @return [String]
+        attr_accessor :tree_method
+      
         # User column specified for matrix factorization models.
         # Corresponds to the JSON property `userColumn`
         # @return [String]
@@ -7321,7 +7362,12 @@ module Google
           @auto_arima = args[:auto_arima] if args.key?(:auto_arima)
           @auto_arima_max_order = args[:auto_arima_max_order] if args.key?(:auto_arima_max_order)
           @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @booster_type = args[:booster_type] if args.key?(:booster_type)
           @clean_spikes_and_dips = args[:clean_spikes_and_dips] if args.key?(:clean_spikes_and_dips)
+          @colsample_bylevel = args[:colsample_bylevel] if args.key?(:colsample_bylevel)
+          @colsample_bynode = args[:colsample_bynode] if args.key?(:colsample_bynode)
+          @colsample_bytree = args[:colsample_bytree] if args.key?(:colsample_bytree)
+          @dart_normalize_type = args[:dart_normalize_type] if args.key?(:dart_normalize_type)
           @data_frequency = args[:data_frequency] if args.key?(:data_frequency)
           @data_split_column = args[:data_split_column] if args.key?(:data_split_column)
           @data_split_eval_fraction = args[:data_split_eval_fraction] if args.key?(:data_split_eval_fraction)
@@ -7350,10 +7396,12 @@ module Google
           @max_tree_depth = args[:max_tree_depth] if args.key?(:max_tree_depth)
           @min_relative_progress = args[:min_relative_progress] if args.key?(:min_relative_progress)
           @min_split_loss = args[:min_split_loss] if args.key?(:min_split_loss)
+          @min_tree_child_weight = args[:min_tree_child_weight] if args.key?(:min_tree_child_weight)
           @model_uri = args[:model_uri] if args.key?(:model_uri)
           @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
           @num_clusters = args[:num_clusters] if args.key?(:num_clusters)
           @num_factors = args[:num_factors] if args.key?(:num_factors)
+          @num_parallel_tree = args[:num_parallel_tree] if args.key?(:num_parallel_tree)
           @optimization_strategy = args[:optimization_strategy] if args.key?(:optimization_strategy)
           @preserve_input_structs = args[:preserve_input_structs] if args.key?(:preserve_input_structs)
           @subsample = args[:subsample] if args.key?(:subsample)
@@ -7361,6 +7409,7 @@ module Google
           @time_series_id_column = args[:time_series_id_column] if args.key?(:time_series_id_column)
           @time_series_id_columns = args[:time_series_id_columns] if args.key?(:time_series_id_columns)
           @time_series_timestamp_column = args[:time_series_timestamp_column] if args.key?(:time_series_timestamp_column)
+          @tree_method = args[:tree_method] if args.key?(:tree_method)
           @user_column = args[:user_column] if args.key?(:user_column)
           @wals_alpha = args[:wals_alpha] if args.key?(:wals_alpha)
           @warm_start = args[:warm_start] if args.key?(:warm_start)
