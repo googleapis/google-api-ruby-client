@@ -3515,13 +3515,14 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # Maximum number of nodes in the NodePool. Must be >= min_node_count. There has
-        # to be enough quota to scale up the cluster.
+        # Maximum number of nodes for one location in the NodePool. Must be >=
+        # min_node_count. There has to be enough quota to scale up the cluster.
         # Corresponds to the JSON property `maxNodeCount`
         # @return [Fixnum]
         attr_accessor :max_node_count
       
-        # Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        # Minimum number of nodes for one location in the NodePool. Must be >= 1 and <=
+        # max_node_count.
         # Corresponds to the JSON property `minNodeCount`
         # @return [Fixnum]
         attr_accessor :min_node_count
