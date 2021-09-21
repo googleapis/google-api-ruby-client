@@ -398,7 +398,10 @@ module Google
         attr_accessor :context
       
         # Optional. Time when the event occurred. If not provided, the time when the
-        # event was received by the Error Reporting system will be used.
+        # event was received by the Error Reporting system is used. If provided, the
+        # time must not exceed the [logs retention period](https://cloud.google.com/
+        # logging/quotas#logs_retention_periods) in the past, or be more than 24 hours
+        # in the future. If an invalid time is provided, then an error is returned.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
