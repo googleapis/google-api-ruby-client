@@ -53,18 +53,18 @@ module Google
         # for the search, and the search results.
         # @param [String] c2coff
         #   Enables or disables [Simplified and Traditional Chinese Search](https://
-        #   developers.google.com/custom-search/docs/xml_results#chineseSearch). The
-        #   default value for this parameter is 0 (zero), meaning that the feature is
+        #   developers.google.com/custom-search/docs/json_api_reference#chineseSearch).
+        #   The default value for this parameter is 0 (zero), meaning that the feature is
         #   enabled. Supported values are: * `1`: Disabled * `0`: Enabled (default)
         # @param [String] cr
         #   Restricts search results to documents originating in a particular country. You
         #   may use [Boolean operators](https://developers.google.com/custom-search/docs/
-        #   xml_results_appendices#booleanOperators) in the cr parameter's value. Google
+        #   json_api_reference#booleanOperators) in the cr parameter's value. Google
         #   Search determines the country of a document by analyzing: * the top-level
         #   domain (TLD) of the document's URL * the geographic location of the Web server'
         #   s IP address See the [Country Parameter Values](https://developers.google.com/
-        #   custom-search/docs/xml_results_appendices#countryCollections) page for a list
-        #   of valid values for this parameter.
+        #   custom-search/docs/json_api_reference#countryCollections) page for a list of
+        #   valid values for this parameter.
         # @param [String] cx
         #   The Programmable Search Engine ID to use for this request.
         # @param [String] date_restrict
@@ -84,7 +84,7 @@ module Google
         #   support.google.com/webmasters/answer/35287).
         # @param [String] filter
         #   Controls turning on or off the duplicate content filter. * See [Automatic
-        #   Filtering](https://developers.google.com/custom-search/docs/xml_results#
+        #   Filtering](https://developers.google.com/custom-search/docs/json_api_reference#
         #   automaticFiltering) for more information about Google's search results filters.
         #   Note that host crowding filtering applies only to multi-site searches. * By
         #   default, Google applies filtering to all search results to improve the quality
@@ -94,8 +94,8 @@ module Google
         #   Geolocation of end user. * The `gl` parameter value is a two-letter country
         #   code. The `gl` parameter boosts search results whose country of origin matches
         #   the parameter value. See the [Country Codes](https://developers.google.com/
-        #   custom-search/docs/xml_results_appendices#countryCodes) page for a list of
-        #   valid values. * Specifying a `gl` parameter value should lead to more relevant
+        #   custom-search/docs/json_api_reference#countryCodes) page for a list of valid
+        #   values. * Specifying a `gl` parameter value should lead to more relevant
         #   results. This is particularly true for international customers and, even more
         #   specifically, for customers in English- speaking countries other than the
         #   United States.
@@ -109,12 +109,12 @@ module Google
         # @param [String] hl
         #   Sets the user interface language. * Explicitly setting this parameter improves
         #   the performance and the quality of your search results. * See the [Interface
-        #   Languages](https://developers.google.com/custom-search/docs/xml_results#
+        #   Languages](https://developers.google.com/custom-search/docs/json_api_reference#
         #   wsInterfaceLanguages) section of [Internationalizing Queries and Results
-        #   Presentation](https://developers.google.com/custom-search/docs/xml_results#
-        #   wsInternationalizing) for more information, and (Supported Interface Languages)
-        #   [https://developers.google.com/custom-search/docs/xml_results_appendices#
-        #   interfaceLanguages] for a list of supported languages.
+        #   Presentation](https://developers.google.com/custom-search/docs/
+        #   json_api_reference#wsInternationalizing) for more information, and [Supported
+        #   Interface Languages](https://developers.google.com/custom-search/docs/
+        #   json_api_reference#interfaceLanguages) for a list of supported languages.
         # @param [String] hq
         #   Appends the specified query terms to the query, as if they were combined with
         #   a logical AND operator.
@@ -254,18 +254,18 @@ module Google
         # for the search, and the search results. Uses a small set of url patterns.
         # @param [String] c2coff
         #   Enables or disables [Simplified and Traditional Chinese Search](https://
-        #   developers.google.com/custom-search/docs/xml_results#chineseSearch). The
-        #   default value for this parameter is 0 (zero), meaning that the feature is
+        #   developers.google.com/custom-search/docs/json_api_reference#chineseSearch).
+        #   The default value for this parameter is 0 (zero), meaning that the feature is
         #   enabled. Supported values are: * `1`: Disabled * `0`: Enabled (default)
         # @param [String] cr
         #   Restricts search results to documents originating in a particular country. You
         #   may use [Boolean operators](https://developers.google.com/custom-search/docs/
-        #   xml_results_appendices#booleanOperators) in the cr parameter's value. Google
+        #   json_api_reference#booleanOperators) in the cr parameter's value. Google
         #   Search determines the country of a document by analyzing: * the top-level
         #   domain (TLD) of the document's URL * the geographic location of the Web server'
         #   s IP address See the [Country Parameter Values](https://developers.google.com/
-        #   custom-search/docs/xml_results_appendices#countryCollections) page for a list
-        #   of valid values for this parameter.
+        #   custom-search/docs/json_api_reference#countryCollections) page for a list of
+        #   valid values for this parameter.
         # @param [String] cx
         #   The Programmable Search Engine ID to use for this request.
         # @param [String] date_restrict
@@ -285,7 +285,7 @@ module Google
         #   support.google.com/webmasters/answer/35287).
         # @param [String] filter
         #   Controls turning on or off the duplicate content filter. * See [Automatic
-        #   Filtering](https://developers.google.com/custom-search/docs/xml_results#
+        #   Filtering](https://developers.google.com/custom-search/docs/json_api_reference#
         #   automaticFiltering) for more information about Google's search results filters.
         #   Note that host crowding filtering applies only to multi-site searches. * By
         #   default, Google applies filtering to all search results to improve the quality
@@ -295,8 +295,8 @@ module Google
         #   Geolocation of end user. * The `gl` parameter value is a two-letter country
         #   code. The `gl` parameter boosts search results whose country of origin matches
         #   the parameter value. See the [Country Codes](https://developers.google.com/
-        #   custom-search/docs/xml_results_appendices#countryCodes) page for a list of
-        #   valid values. * Specifying a `gl` parameter value should lead to more relevant
+        #   custom-search/docs/json_api_reference#countryCodes) page for a list of valid
+        #   values. * Specifying a `gl` parameter value should lead to more relevant
         #   results. This is particularly true for international customers and, even more
         #   specifically, for customers in English- speaking countries other than the
         #   United States.
@@ -310,12 +310,12 @@ module Google
         # @param [String] hl
         #   Sets the user interface language. * Explicitly setting this parameter improves
         #   the performance and the quality of your search results. * See the [Interface
-        #   Languages](https://developers.google.com/custom-search/docs/xml_results#
+        #   Languages](https://developers.google.com/custom-search/docs/json_api_reference#
         #   wsInterfaceLanguages) section of [Internationalizing Queries and Results
-        #   Presentation](https://developers.google.com/custom-search/docs/xml_results#
-        #   wsInternationalizing) for more information, and (Supported Interface Languages)
-        #   [https://developers.google.com/custom-search/docs/xml_results_appendices#
-        #   interfaceLanguages] for a list of supported languages.
+        #   Presentation](https://developers.google.com/custom-search/docs/
+        #   json_api_reference#wsInternationalizing) for more information, and [Supported
+        #   Interface Languages](https://developers.google.com/custom-search/docs/
+        #   json_api_reference#interfaceLanguages) for a list of supported languages.
         # @param [String] hq
         #   Appends the specified query terms to the query, as if they were combined with
         #   a logical AND operator.
