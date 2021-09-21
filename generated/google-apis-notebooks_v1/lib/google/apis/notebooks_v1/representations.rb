@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VertexAiParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VirtualMachine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +569,8 @@ module Google
           property :params_yaml_file, as: 'paramsYamlFile'
           property :scale_tier, as: 'scaleTier'
           property :service_account, as: 'serviceAccount'
+          property :vertex_ai_parameters, as: 'vertexAiParameters', class: Google::Apis::NotebooksV1::VertexAiParameters, decorator: Google::Apis::NotebooksV1::VertexAiParameters::Representation
+      
         end
       end
       
@@ -1095,6 +1103,13 @@ module Google
       class UpgradeInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class VertexAiParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
         end
       end
       

@@ -260,7 +260,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Scheduled Notebook in a given project and location.
+        # Creates a new Execution in a given project and location.
         # @param [String] parent
         #   Required. Format: `parent=projects/`project_id`/locations/`location``
         # @param [Google::Apis::NotebooksV1::Execution] execution_object
