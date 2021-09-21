@@ -340,14 +340,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Requests that a job is deleted. This call will return when the job is deleted.
-        # This method is available in limited preview.
+        # Requests the deletion of the metadata of a job. This call returns when the job'
+        # s metadata is deleted.
         # @param [String] project_id
-        #   Required. Project ID of the job to be deleted.
+        #   Required. Project ID of the job for which metadata is to be deleted.
         # @param [String] job_id
-        #   Required. Job ID of the job to be deleted. If this is a parent job which has
-        #   child jobs, all child jobs will be deleted as well. Deletion of child jobs
-        #   directly is not allowed.
+        #   Required. Job ID of the job for which metadata is to be deleted. If this is a
+        #   parent job which has child jobs, the metadata from all child jobs will be
+        #   deleted as well. Direct deletion of the metadata of child jobs is not allowed.
         # @param [String] location
         #   The geographic location of the job. Required. See details at: https://cloud.
         #   google.com/bigquery/docs/locations#specifying_your_location.
