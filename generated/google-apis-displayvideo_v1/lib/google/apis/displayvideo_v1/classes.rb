@@ -2000,7 +2000,8 @@ module Google
         attr_accessor :proximity_radius_unit
       
         # Required. The targeting_option_id of a TargetingOption of type `
-        # TARGETING_TYPE_BUSINESS_CHAIN`.
+        # TARGETING_TYPE_BUSINESS_CHAIN`. Accepted business chain targeting option IDs
+        # can be retrieved using SearchTargetingOptions.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -3459,9 +3460,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :partner_id
       
-        # The IDs of the advertisers who have access to this algorithm. This field will
-        # not be set if the algorithm owner is a partner and is being retrieved using an
-        # advertiser accessor.
+        # The IDs of the advertisers who have access to this algorithm. If advertiser_id
+        # is set, this field will only consist of that value. This field will not be set
+        # if the algorithm [`owner`](/display-video/api/reference/rest/v1/
+        # customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner) is a
+        # partner and is being retrieved using an advertiser [`accessor`](/display-video/
+        # api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.
+        # oneof_accessor).
         # Corresponds to the JSON property `sharedAdvertiserIds`
         # @return [Array<Fixnum>]
         attr_accessor :shared_advertiser_ids
@@ -8186,7 +8191,13 @@ module Google
         attr_accessor :proximity_radius_unit
       
         # Required. The targeting_option_id of a TargetingOption of type `
-        # TARGETING_TYPE_POI` or reuse an existing assigned_targeting_option_id.
+        # TARGETING_TYPE_POI`. Accepted POI targeting option IDs can be retrieved using
+        # SearchTargetingOptions. If targeting a specific latitude/longitude coordinate
+        # removed from an address or POI name, you can generate the necessary targeting
+        # option ID by rounding the desired coordinate values to the 6th decimal place,
+        # removing the decimals, and concatenating the string values separated by a
+        # semicolon. For example, you can target the latitude/longitude pair of 40.
+        # 7414691, -74.003387 using the targeting option ID "40741469;-74003387".
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
