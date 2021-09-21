@@ -243,14 +243,14 @@ module Google
         # @return [Google::Apis::SqladminV1::DiskEncryptionStatus]
         attr_accessor :disk_encryption_status
       
-        # The time the backup operation completed in UTC timezone in RFC 3339 format,
-        # for example *2012-11-15T16:19:00.094Z*.
+        # The time the backup operation completed in UTC timezone in [RFC 3339](https://
+        # tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The time the run was enqueued in UTC timezone in RFC 3339 format, for example *
-        # 2012-11-15T16:19:00.094Z*.
+        # The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.
+        # org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         # Corresponds to the JSON property `enqueuedTime`
         # @return [String]
         attr_accessor :enqueued_time
@@ -286,8 +286,9 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The time the backup operation actually started in UTC timezone in RFC 3339
-        # format, for example *2012-11-15T16:19:00.094Z*.
+        # The time the backup operation actually started in UTC timezone in [RFC 3339](
+        # https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.
+        # 094Z**.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -304,7 +305,8 @@ module Google
         attr_accessor :type
       
         # The start time of the backup window during which this the backup was attempted
-        # in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        # in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-
+        # 11-15T16:19:00.094Z**.
         # Corresponds to the JSON property `windowStartTime`
         # @return [String]
         attr_accessor :window_start_time
@@ -612,8 +614,8 @@ module Google
         # @return [String]
         attr_accessor :connection_name
       
-        # Output only. The time when the instance was created in RFC 3339 format (https:/
-        # /tools.ietf.org/html/rfc3339), for example 2012-11-15T16:19:00.094Z
+        # Output only. The time when the instance was created in [RFC 3339](https://
+        # tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -946,12 +948,12 @@ module Google
         attr_accessor :skip_replication_setup
         alias_method :skip_replication_setup?, :skip_replication_setup
       
-        # Verify GTID consistency for demote operation. Default value: *True*. Setting
+        # Verify GTID consistency for demote operation. Default value: **True**. Setting
         # this flag to false enables you to bypass GTID consistency check between on-
         # premises primary instance and Cloud SQL instance during the demotion operation
         # but also exposes you to the risk of future replication failures. Change the
-        # value value only if you know the reason for the GTID divergence and are
-        # confident that doing so will not cause any replication issues.
+        # value only if you know the reason for the GTID divergence and are confident
+        # that doing so will not cause any replication issues.
         # Corresponds to the JSON property `verifyGtidConsistency`
         # @return [Boolean]
         attr_accessor :verify_gtid_consistency
@@ -1036,8 +1038,8 @@ module Google
         attr_accessor :end_date
       
         # "deny maintenance period" start date. If the year of the start date is empty,
-        # the year of the end date also must be empty. In this case, it means the no
-        # maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e.,
+        # the year of the end date also must be empty. In this case, it means the deny
+        # maintenance period recurs every year. The date is in format yyyy-mm-dd i.e.,
         # 2020-11-01, or mm-dd, i.e., 11-01
         # Corresponds to the JSON property `startDate`
         # @return [String]
@@ -1120,22 +1122,22 @@ module Google
         # @return [Google::Apis::SqladminV1::ExportContext::CsvExportOptions]
         attr_accessor :csv_export_options
       
-        # Databases to be exported. **MySQL instances:** If **fileType** is **SQL** and
-        # no database is specified, all databases are exported, except for the **mysql**
-        # system database. If **fileType** is **CSV**, you can specify one database,
-        # either by using this property or by using the **csvExportOptions.selectQuery**
-        # property, which takes precedence over this property. **PostgreSQL instances:**
-        # You must specify one database to be exported. If **fileType** is **CSV**, this
-        # database must match the one specified in the **csvExportOptions.selectQuery**
-        # property. **SQL Server instances:** You must specify one database to be
-        # exported, and the **fileType** must be **BAK**.
+        # Databases to be exported. * **MySQL instances:** If **fileType** is **SQL**
+        # and no database is specified, all databases are exported, except for the **
+        # mysql** system database. If **fileType** is **CSV**, you can specify one
+        # database, either by using this property or by using the **csvExportOptions.
+        # selectQuery** property, which takes precedence over this property. * **
+        # PostgreSQL instances:** You must specify one database to be exported. If **
+        # fileType** is **CSV**, this database must match the one specified in the **
+        # csvExportOptions.selectQuery** property. * **SQL Server instances:** You must
+        # specify one database to be exported, and the **fileType** must be **BAK**.
         # Corresponds to the JSON property `databases`
         # @return [Array<String>]
         attr_accessor :databases
       
-        # The file type for the specified uri. **SQL**: The file contains SQL statements.
-        # **CSV**: The file contains CSV data. **BAK**: The file contains backup data
-        # for a SQL Server instance.
+        # The file type for the specified uri. * **SQL**: The file contains SQL
+        # statements. * **CSV**: The file contains CSV data. * **BAK**: The file
+        # contains backup data for a SQL Server instance.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
@@ -1262,10 +1264,10 @@ module Google
           class MysqlExportOptions
             include Google::Apis::Core::Hashable
           
-            # Option to include SQL statement required to set up replication. If set to **1**
-            # , the dump file includes a CHANGE MASTER TO statement with the binary log
-            # coordinates, and --set-gtid-purged is set to ON. If set to **2**, the CHANGE
-            # MASTER TO statement is written as a SQL comment and has no effect. If set to
+            # Option to include SQL statement required to set up replication. * If set to **
+            # 1**, the dump file includes a CHANGE MASTER TO statement with the binary log
+            # coordinates, and --set-gtid-purged is set to ON. * If set to **2**, the CHANGE
+            # MASTER TO statement is written as a SQL comment and has no effect. * If set to
             # any value other than **1**, --set-gtid-purged is set to OFF.
             # Corresponds to the JSON property `masterData`
             # @return [Fixnum]
@@ -2094,7 +2096,7 @@ module Google
         attr_accessor :kind
       
         # Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn
-        # more] (https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-
+        # more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-
         # timing-2ndgen).
         # Corresponds to the JSON property `updateTrack`
         # @return [String]
@@ -2336,9 +2338,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The type of the operation. Valid values are: **CREATE** **DELETE** **UPDATE** *
-        # *RESTART** **IMPORT** **EXPORT** **BACKUP_VOLUME** **RESTORE_VOLUME** **
-        # CREATE_USER** **DELETE_USER** **CREATE_DATABASE** **DELETE_DATABASE**
+        # The type of the operation. Valid values are: * **CREATE** * **DELETE** * **
+        # UPDATE** * **RESTART** * **IMPORT** * **EXPORT** * **BACKUP_VOLUME** * **
+        # RESTORE_VOLUME** * **CREATE_USER** * **DELETE_USER** * **CREATE_DATABASE** * **
+        # DELETE_DATABASE**
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -2354,8 +2357,8 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # The status of an operation. Valid values are: **PENDING** **RUNNING** **DONE**
-        # **SQL_OPERATION_STATUS_UNSPECIFIED**
+        # The status of an operation. Valid values are: * **PENDING** * **RUNNING** * **
+        # DONE** * **SQL_OPERATION_STATUS_UNSPECIFIED**
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -2539,8 +2542,8 @@ module Google
         attr_accessor :reschedule_type
       
         # Optional. Timestamp when the maintenance shall be rescheduled to if
-        # reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example *2012-11-15T16:
-        # 19:00.094Z*.
+        # reschedule_type=SPECIFIC_TIME, in [RFC 3339](https://tools.ietf.org/html/
+        # rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
@@ -2625,10 +2628,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The activation policy specifies when the instance is activated; it is
-        # applicable only when the instance state is RUNNABLE. Valid values: **ALWAYS**:
-        # The instance is on, and remains so even in the absence of connection requests.
-        # **NEVER**: The instance is off; it is not activated, even if a connection
-        # request arrives.
+        # applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**
+        # : The instance is on, and remains so even in the absence of connection
+        # requests. * **NEVER**: The instance is off; it is not activated, even if a
+        # connection request arrives.
         # Corresponds to the JSON property `activationPolicy`
         # @return [String]
         attr_accessor :activation_policy
@@ -2644,11 +2647,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
       
-        # Availability type. Potential values: **ZONAL**: The instance serves data from
-        # only one zone. Outages in that zone affect data accessibility. **REGIONAL**:
-        # The instance can serve data from more than one zone in a region (it is highly
-        # available). For more information, see [Overview of the High Availability
-        # Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
+        # Availability type. Potential values: * **ZONAL**: The instance serves data
+        # from only one zone. Outages in that zone affect data accessibility. * **
+        # REGIONAL**: The instance can serve data from more than one zone in a region (
+        # it is highly available)./ For more information, see [Overview of the High
+        # Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-
+        # availability).
         # Corresponds to the JSON property `availabilityType`
         # @return [String]
         attr_accessor :availability_type
@@ -2676,7 +2680,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :data_disk_size_gb
       
-        # The type of data disk: **PD_SSD** (default) or **PD_HDD**.
+        # The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First
+        # Generation instances.
         # Corresponds to the JSON property `dataDiskType`
         # @return [String]
         attr_accessor :data_disk_type
@@ -2836,7 +2841,7 @@ module Google
         end
       end
       
-      # External primary instance migration setting error.
+      # External primary instance migration setting error/warning.
       class SqlExternalSyncSettingError
         include Google::Apis::Core::Hashable
       
@@ -2993,15 +2998,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The minimum recommended increase size in GigaBytes This field is consumed by
-        # the frontend Writers: -- the proactive database wellness job for OOD. Readers:
-        # -- the Pantheon frontend
+        # the frontend * Writers: * the proactive database wellness job for OOD. *
+        # Readers:
         # Corresponds to the JSON property `sqlMinRecommendedIncreaseSizeGb`
         # @return [Fixnum]
         attr_accessor :sql_min_recommended_increase_size_gb
       
         # This field represents the state generated by the proactive database wellness
-        # job for OutOfDisk issues. Writers: -- the proactive database wellness job for
-        # OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+        # job for OutOfDisk issues. * Writers: * the proactive database wellness job for
+        # OOD. * Readers: * the proactive database wellness job
         # Corresponds to the JSON property `sqlOutOfDiskState`
         # @return [String]
         attr_accessor :sql_out_of_disk_state
@@ -3168,7 +3173,7 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # This is always sql#sslCert.
+        # This is always **sql#sslCert**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
