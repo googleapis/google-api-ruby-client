@@ -26,9 +26,7 @@ module Google
       class Promotion
         include Google::Apis::Core::Hashable
       
-        # An array of block objects for this promotion. See [Google WebSearch Protocol
-        # reference](https://developers.google.com/custom-search/docs/xml_results) for
-        # more information.
+        # An array of block objects for this promotion.
         # Corresponds to the JSON property `bodyLines`
         # @return [Array<Google::Apis::CustomsearchV1::Promotion::BodyLine>]
         attr_accessor :body_lines
@@ -191,8 +189,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Encapsulates all information about [refinement labels](https://developers.
-        # google.com/custom-search/docs/xml_results).
+        # Encapsulates all information about refinement labels.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::CustomsearchV1::Result::Label>]
         attr_accessor :labels
@@ -443,12 +440,12 @@ module Google
           
             # Restricts search results to documents originating in a particular country. You
             # may use [Boolean operators](https://developers.google.com/custom-search/docs/
-            # xml_results#booleanOperators) in the `cr` parameter's value. Google WebSearch
-            # determines the country of a document by analyzing the following: * The top-
-            # level domain (TLD) of the document's URL. * The geographic location of the web
-            # server's IP address. See [Country (cr) Parameter Values](https://developers.
-            # google.com/custom-search/docs/xml_results#countryCollections) for a list of
-            # valid values for this parameter.
+            # json_api_reference#BooleanOrSearch) in the `cr` parameter's value. Google
+            # WebSearch determines the country of a document by analyzing the following: *
+            # The top-level domain (TLD) of the document's URL. * The geographic location of
+            # the web server's IP address. See [Country (cr) Parameter Values](https://
+            # developers.google.com/custom-search/docs/json_api_reference#countryCollections)
+            # for a list of valid values for this parameter.
             # Corresponds to the JSON property `cr`
             # @return [String]
             attr_accessor :cr
@@ -470,8 +467,8 @@ module Google
             attr_accessor :date_restrict
           
             # Enables or disables the [Simplified and Traditional Chinese Search](https://
-            # developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
-            # Supported values are: * `0`: enabled (default) * `1`: disabled
+            # developers.google.com/custom-search/docs/json_api_reference#chineseSearch)
+            # feature. Supported values are: * `0`: enabled (default) * `1`: disabled
             # Corresponds to the JSON property `disableCnTwTranslation`
             # @return [String]
             attr_accessor :disable_cn_tw_translation
@@ -502,20 +499,21 @@ module Google
           
             # Activates or deactivates the automatic filtering of Google search results. See
             # [Automatic Filtering](https://developers.google.com/custom-search/docs/
-            # xml_results#automaticFiltering) for more information about Google's search
-            # results filters. Valid values for this parameter are: * `0`: Disabled * `1`:
-            # Enabled (default) **Note**: By default, Google applies filtering to all search
-            # results to improve the quality of those results.
+            # json_api_reference#automaticFiltering) for more information about Google's
+            # search results filters. Valid values for this parameter are: * `0`: Disabled *
+            # `1`: Enabled (default) **Note**: By default, Google applies filtering to all
+            # search results to improve the quality of those results.
             # Corresponds to the JSON property `filter`
             # @return [String]
             attr_accessor :filter
           
             # Boosts search results whose country of origin matches the parameter value. See
-            # [Country Codes](https://developers.google.com/custom-search/docs/xml_results#
-            # countryCodes) for a list of valid values. Specifying a `gl` parameter value in
-            # WebSearch requests should improve the relevance of results. This is
-            # particularly true for international customers and, even more specifically, for
-            # customers in English-speaking countries other than the United States.
+            # [Country Codes](https://developers.google.com/custom-search/docs/
+            # json_api_reference#countryCodes) for a list of valid values. Specifying a `gl`
+            # parameter value in WebSearch requests should improve the relevance of results.
+            # This is particularly true for international customers and, even more
+            # specifically, for customers in English-speaking countries other than the
+            # United States.
             # Corresponds to the JSON property `gl`
             # @return [String]
             attr_accessor :gl
@@ -536,12 +534,12 @@ module Google
             # Specifies the interface language (host language) of your user interface.
             # Explicitly setting this parameter improves the performance and the quality of
             # your search results. See the [Interface Languages](https://developers.google.
-            # com/custom-search/docs/xml_results#wsInterfaceLanguages) section of [
+            # com/custom-search/docs/json_api_reference#wsInterfaceLanguages) section of [
             # Internationalizing Queries and Results Presentation](https://developers.google.
-            # com/custom-search/docs/xml_results#wsInternationalizing) for more information,
-            # and [Supported Interface Languages](https://developers.google.com/custom-
-            # search/docs/xml_results_appendices#interfaceLanguages) for a list of supported
-            # languages.
+            # com/custom-search/docs/json_api_reference#wsInternationalizing) for more
+            # information, and [Supported Interface Languages](https://developers.google.com/
+            # custom-search/docs/json_api_reference#interfaceLanguages) for a list of
+            # supported languages.
             # Corresponds to the JSON property `hl`
             # @return [String]
             attr_accessor :hl
@@ -604,7 +602,8 @@ module Google
             # Provides additional search terms to check for in a document, where each
             # document in the search results must contain at least one of the additional
             # search terms. You can also use the [Boolean OR](https://developers.google.com/
-            # custom-search/docs/xml_results#BooleanOrqt) query term for this type of query.
+            # custom-search/docs/json_api_reference#BooleanOrSearch) query term for this
+            # type of query.
             # Corresponds to the JSON property `orTerms`
             # @return [String]
             attr_accessor :or_terms
@@ -627,8 +626,8 @@ module Google
             attr_accessor :rights
           
             # Specifies the [SafeSearch level](https://developers.google.com/custom-search/
-            # docs/xml_results#safeSearchLevels) used for filtering out adult results. This
-            # is a custom property not defined in the OpenSearch spec. Valid parameter
+            # docs/json_api_reference#safeSearchLevels) used for filtering out adult results.
+            # This is a custom property not defined in the OpenSearch spec. Valid parameter
             # values are: * `"off"`: Disable SafeSearch * `"active"`: Enable SafeSearch
             # Corresponds to the JSON property `safe`
             # @return [String]
@@ -741,12 +740,12 @@ module Google
           
             # Restricts search results to documents originating in a particular country. You
             # may use [Boolean operators](https://developers.google.com/custom-search/docs/
-            # xml_results#booleanOperators) in the `cr` parameter's value. Google WebSearch
-            # determines the country of a document by analyzing the following: * The top-
-            # level domain (TLD) of the document's URL. * The geographic location of the web
-            # server's IP address. See [Country (cr) Parameter Values](https://developers.
-            # google.com/custom-search/docs/xml_results#countryCollections) for a list of
-            # valid values for this parameter.
+            # json_api_reference#BooleanOrSearch) in the `cr` parameter's value. Google
+            # WebSearch determines the country of a document by analyzing the following: *
+            # The top-level domain (TLD) of the document's URL. * The geographic location of
+            # the web server's IP address. See [Country (cr) Parameter Values](https://
+            # developers.google.com/custom-search/docs/json_api_reference#countryCollections)
+            # for a list of valid values for this parameter.
             # Corresponds to the JSON property `cr`
             # @return [String]
             attr_accessor :cr
@@ -768,8 +767,8 @@ module Google
             attr_accessor :date_restrict
           
             # Enables or disables the [Simplified and Traditional Chinese Search](https://
-            # developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
-            # Supported values are: * `0`: enabled (default) * `1`: disabled
+            # developers.google.com/custom-search/docs/json_api_reference#chineseSearch)
+            # feature. Supported values are: * `0`: enabled (default) * `1`: disabled
             # Corresponds to the JSON property `disableCnTwTranslation`
             # @return [String]
             attr_accessor :disable_cn_tw_translation
@@ -800,20 +799,21 @@ module Google
           
             # Activates or deactivates the automatic filtering of Google search results. See
             # [Automatic Filtering](https://developers.google.com/custom-search/docs/
-            # xml_results#automaticFiltering) for more information about Google's search
-            # results filters. Valid values for this parameter are: * `0`: Disabled * `1`:
-            # Enabled (default) **Note**: By default, Google applies filtering to all search
-            # results to improve the quality of those results.
+            # json_api_reference#automaticFiltering) for more information about Google's
+            # search results filters. Valid values for this parameter are: * `0`: Disabled *
+            # `1`: Enabled (default) **Note**: By default, Google applies filtering to all
+            # search results to improve the quality of those results.
             # Corresponds to the JSON property `filter`
             # @return [String]
             attr_accessor :filter
           
             # Boosts search results whose country of origin matches the parameter value. See
-            # [Country Codes](https://developers.google.com/custom-search/docs/xml_results#
-            # countryCodes) for a list of valid values. Specifying a `gl` parameter value in
-            # WebSearch requests should improve the relevance of results. This is
-            # particularly true for international customers and, even more specifically, for
-            # customers in English-speaking countries other than the United States.
+            # [Country Codes](https://developers.google.com/custom-search/docs/
+            # json_api_reference#countryCodes) for a list of valid values. Specifying a `gl`
+            # parameter value in WebSearch requests should improve the relevance of results.
+            # This is particularly true for international customers and, even more
+            # specifically, for customers in English-speaking countries other than the
+            # United States.
             # Corresponds to the JSON property `gl`
             # @return [String]
             attr_accessor :gl
@@ -834,12 +834,12 @@ module Google
             # Specifies the interface language (host language) of your user interface.
             # Explicitly setting this parameter improves the performance and the quality of
             # your search results. See the [Interface Languages](https://developers.google.
-            # com/custom-search/docs/xml_results#wsInterfaceLanguages) section of [
+            # com/custom-search/docs/json_api_reference#wsInterfaceLanguages) section of [
             # Internationalizing Queries and Results Presentation](https://developers.google.
-            # com/custom-search/docs/xml_results#wsInternationalizing) for more information,
-            # and [Supported Interface Languages](https://developers.google.com/custom-
-            # search/docs/xml_results_appendices#interfaceLanguages) for a list of supported
-            # languages.
+            # com/custom-search/docs/json_api_reference#wsInternationalizing) for more
+            # information, and [Supported Interface Languages](https://developers.google.com/
+            # custom-search/docs/json_api_reference#interfaceLanguages) for a list of
+            # supported languages.
             # Corresponds to the JSON property `hl`
             # @return [String]
             attr_accessor :hl
@@ -902,7 +902,8 @@ module Google
             # Provides additional search terms to check for in a document, where each
             # document in the search results must contain at least one of the additional
             # search terms. You can also use the [Boolean OR](https://developers.google.com/
-            # custom-search/docs/xml_results#BooleanOrqt) query term for this type of query.
+            # custom-search/docs/json_api_reference#BooleanOrSearch) query term for this
+            # type of query.
             # Corresponds to the JSON property `orTerms`
             # @return [String]
             attr_accessor :or_terms
@@ -925,8 +926,8 @@ module Google
             attr_accessor :rights
           
             # Specifies the [SafeSearch level](https://developers.google.com/custom-search/
-            # docs/xml_results#safeSearchLevels) used for filtering out adult results. This
-            # is a custom property not defined in the OpenSearch spec. Valid parameter
+            # docs/json_api_reference#safeSearchLevels) used for filtering out adult results.
+            # This is a custom property not defined in the OpenSearch spec. Valid parameter
             # values are: * `"off"`: Disable SafeSearch * `"active"`: Enable SafeSearch
             # Corresponds to the JSON property `safe`
             # @return [String]
@@ -1039,12 +1040,12 @@ module Google
           
             # Restricts search results to documents originating in a particular country. You
             # may use [Boolean operators](https://developers.google.com/custom-search/docs/
-            # xml_results#booleanOperators) in the `cr` parameter's value. Google WebSearch
-            # determines the country of a document by analyzing the following: * The top-
-            # level domain (TLD) of the document's URL. * The geographic location of the web
-            # server's IP address. See [Country (cr) Parameter Values](https://developers.
-            # google.com/custom-search/docs/xml_results#countryCollections) for a list of
-            # valid values for this parameter.
+            # json_api_reference#BooleanOrSearch) in the `cr` parameter's value. Google
+            # WebSearch determines the country of a document by analyzing the following: *
+            # The top-level domain (TLD) of the document's URL. * The geographic location of
+            # the web server's IP address. See [Country (cr) Parameter Values](https://
+            # developers.google.com/custom-search/docs/json_api_reference#countryCollections)
+            # for a list of valid values for this parameter.
             # Corresponds to the JSON property `cr`
             # @return [String]
             attr_accessor :cr
@@ -1066,8 +1067,8 @@ module Google
             attr_accessor :date_restrict
           
             # Enables or disables the [Simplified and Traditional Chinese Search](https://
-            # developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
-            # Supported values are: * `0`: enabled (default) * `1`: disabled
+            # developers.google.com/custom-search/docs/json_api_reference#chineseSearch)
+            # feature. Supported values are: * `0`: enabled (default) * `1`: disabled
             # Corresponds to the JSON property `disableCnTwTranslation`
             # @return [String]
             attr_accessor :disable_cn_tw_translation
@@ -1098,20 +1099,21 @@ module Google
           
             # Activates or deactivates the automatic filtering of Google search results. See
             # [Automatic Filtering](https://developers.google.com/custom-search/docs/
-            # xml_results#automaticFiltering) for more information about Google's search
-            # results filters. Valid values for this parameter are: * `0`: Disabled * `1`:
-            # Enabled (default) **Note**: By default, Google applies filtering to all search
-            # results to improve the quality of those results.
+            # json_api_reference#automaticFiltering) for more information about Google's
+            # search results filters. Valid values for this parameter are: * `0`: Disabled *
+            # `1`: Enabled (default) **Note**: By default, Google applies filtering to all
+            # search results to improve the quality of those results.
             # Corresponds to the JSON property `filter`
             # @return [String]
             attr_accessor :filter
           
             # Boosts search results whose country of origin matches the parameter value. See
-            # [Country Codes](https://developers.google.com/custom-search/docs/xml_results#
-            # countryCodes) for a list of valid values. Specifying a `gl` parameter value in
-            # WebSearch requests should improve the relevance of results. This is
-            # particularly true for international customers and, even more specifically, for
-            # customers in English-speaking countries other than the United States.
+            # [Country Codes](https://developers.google.com/custom-search/docs/
+            # json_api_reference#countryCodes) for a list of valid values. Specifying a `gl`
+            # parameter value in WebSearch requests should improve the relevance of results.
+            # This is particularly true for international customers and, even more
+            # specifically, for customers in English-speaking countries other than the
+            # United States.
             # Corresponds to the JSON property `gl`
             # @return [String]
             attr_accessor :gl
@@ -1132,12 +1134,12 @@ module Google
             # Specifies the interface language (host language) of your user interface.
             # Explicitly setting this parameter improves the performance and the quality of
             # your search results. See the [Interface Languages](https://developers.google.
-            # com/custom-search/docs/xml_results#wsInterfaceLanguages) section of [
+            # com/custom-search/docs/json_api_reference#wsInterfaceLanguages) section of [
             # Internationalizing Queries and Results Presentation](https://developers.google.
-            # com/custom-search/docs/xml_results#wsInternationalizing) for more information,
-            # and [Supported Interface Languages](https://developers.google.com/custom-
-            # search/docs/xml_results_appendices#interfaceLanguages) for a list of supported
-            # languages.
+            # com/custom-search/docs/json_api_reference#wsInternationalizing) for more
+            # information, and [Supported Interface Languages](https://developers.google.com/
+            # custom-search/docs/json_api_reference#interfaceLanguages) for a list of
+            # supported languages.
             # Corresponds to the JSON property `hl`
             # @return [String]
             attr_accessor :hl
@@ -1200,7 +1202,8 @@ module Google
             # Provides additional search terms to check for in a document, where each
             # document in the search results must contain at least one of the additional
             # search terms. You can also use the [Boolean OR](https://developers.google.com/
-            # custom-search/docs/xml_results#BooleanOrqt) query term for this type of query.
+            # custom-search/docs/json_api_reference#BooleanOrSearch) query term for this
+            # type of query.
             # Corresponds to the JSON property `orTerms`
             # @return [String]
             attr_accessor :or_terms
@@ -1223,8 +1226,8 @@ module Google
             attr_accessor :rights
           
             # Specifies the [SafeSearch level](https://developers.google.com/custom-search/
-            # docs/xml_results#safeSearchLevels) used for filtering out adult results. This
-            # is a custom property not defined in the OpenSearch spec. Valid parameter
+            # docs/json_api_reference#safeSearchLevels) used for filtering out adult results.
+            # This is a custom property not defined in the OpenSearch spec. Valid parameter
             # values are: * `"off"`: Disable SafeSearch * `"active"`: Enable SafeSearch
             # Corresponds to the JSON property `safe`
             # @return [String]
