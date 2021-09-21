@@ -449,7 +449,7 @@ module Google
         end
       end
       
-      # Logging configure.
+      # Logging configuration.
       class LoggingConfig
         include Google::Apis::Core::Hashable
       
@@ -518,7 +518,8 @@ module Google
       # refers to the time of the last change to the object's content or metadata —
       # specifically, this is the `updated` property of Cloud Storage objects, the `
       # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-      # blobs. This is not supported for transfers involving PosixFilesystem.
+      # blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don'
+      # t support `ObjectConditions`.
       class ObjectConditions
         include Google::Apis::Core::Hashable
       
@@ -685,7 +686,7 @@ module Google
         end
       end
       
-      # A POSIX filesystem data source or sink.
+      # A POSIX filesystem resource.
       class PosixFilesystem
         include Google::Apis::Core::Hashable
       
@@ -1052,7 +1053,7 @@ module Google
         # @return [String]
         attr_accessor :latest_operation_name
       
-        # Logging configure.
+        # Logging configuration.
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::StoragetransferV1::LoggingConfig]
         attr_accessor :logging_config
@@ -1064,13 +1065,12 @@ module Google
         # request fails with an ALREADY_EXISTS error. This name must start with `"
         # transferJobs/"` prefix and end with a letter or a number, and should be no
         # more than 128 characters. For transfers involving PosixFilesystem, this name
-        # must start with 'transferJobs/OPI' specifically. For all other transfer types,
-        # this name must not start with 'transferJobs/OPI'. 'transferJobs/OPI' is a
-        # reserved prefix for PosixFilesystem transfers. Non-PosixFilesystem example: `"
-        # transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"
-        # transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on
-        # the enforcement of naming requirements involving OPI. Invalid job names fail
-        # with an INVALID_ARGUMENT error.
+        # must start with `transferJobs/OPI` specifically. For all other transfer types,
+        # this name must not start with `transferJobs/OPI`. Non-PosixFilesystem example:
+        # `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example:
+        # `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely
+        # on the enforcement of naming requirements involving OPI. Invalid job names
+        # fail with an INVALID_ARGUMENT error.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1321,12 +1321,13 @@ module Google
         # refers to the time of the last change to the object's content or metadata —
         # specifically, this is the `updated` property of Cloud Storage objects, the `
         # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-        # blobs. This is not supported for transfers involving PosixFilesystem.
+        # blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don'
+        # t support `ObjectConditions`.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
         attr_accessor :object_conditions
       
-        # A POSIX filesystem data source or sink.
+        # A POSIX filesystem resource.
         # Corresponds to the JSON property `posixDataSource`
         # @return [Google::Apis::StoragetransferV1::PosixFilesystem]
         attr_accessor :posix_data_source
