@@ -773,6 +773,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dialogflow_participant, as: 'dialogflowParticipant'
           property :dialogflow_participant_name, as: 'dialogflowParticipantName'
+          property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
           property :role, as: 'role'
           property :user_id, as: 'userId'
         end
@@ -1052,6 +1053,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
           property :medium, as: 'medium'
           property :training_conversations_count, :numeric_string => true, as: 'trainingConversationsCount'
         end
@@ -1175,6 +1177,7 @@ module Google
           property :revision_id, as: 'revisionId'
           property :role_match, as: 'roleMatch'
           property :type, as: 'type'
+          property :update_time, as: 'updateTime'
           property :version_tag, as: 'versionTag'
         end
       end
@@ -1405,6 +1408,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
           property :medium, as: 'medium'
           property :training_conversations_count, :numeric_string => true, as: 'trainingConversationsCount'
         end

@@ -679,6 +679,11 @@ module Google
         # @return [String]
         attr_accessor :dialogflow_participant_name
       
+        # Obfuscated user ID from Dialogflow.
+        # Corresponds to the JSON property `obfuscatedExternalUserId`
+        # @return [String]
+        attr_accessor :obfuscated_external_user_id
+      
         # The role of the participant.
         # Corresponds to the JSON property `role`
         # @return [String]
@@ -697,6 +702,7 @@ module Google
         def update!(**args)
           @dialogflow_participant = args[:dialogflow_participant] if args.key?(:dialogflow_participant)
           @dialogflow_participant_name = args[:dialogflow_participant_name] if args.key?(:dialogflow_participant_name)
+          @obfuscated_external_user_id = args[:obfuscated_external_user_id] if args.key?(:obfuscated_external_user_id)
           @role = args[:role] if args.key?(:role)
           @user_id = args[:user_id] if args.key?(:user_id)
         end
@@ -1604,7 +1610,15 @@ module Google
       class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig
         include Google::Apis::Core::Hashable
       
-        # Required.
+        # A filter to reduce the conversations used for training the model to a specific
+        # subset.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Medium of conversations used in training data. This field is being deprecated.
+        # To specify the medium to be used in training a new issue model, set the `
+        # medium` field on `filter`.
         # Corresponds to the JSON property `medium`
         # @return [String]
         attr_accessor :medium
@@ -1620,6 +1634,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
           @medium = args[:medium] if args.key?(:medium)
           @training_conversations_count = args[:training_conversations_count] if args.key?(:training_conversations_count)
         end
@@ -1985,6 +2000,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Output only. The most recent time at which the phrase matcher was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # The customized version tag to use for the phrase matcher. If not specified, it
         # will default to `revision_id`.
         # Corresponds to the JSON property `versionTag`
@@ -2006,6 +2026,7 @@ module Google
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @role_match = args[:role_match] if args.key?(:role_match)
           @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @version_tag = args[:version_tag] if args.key?(:version_tag)
         end
       end
@@ -2745,7 +2766,15 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig
         include Google::Apis::Core::Hashable
       
-        # Required.
+        # A filter to reduce the conversations used for training the model to a specific
+        # subset.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Medium of conversations used in training data. This field is being deprecated.
+        # To specify the medium to be used in training a new issue model, set the `
+        # medium` field on `filter`.
         # Corresponds to the JSON property `medium`
         # @return [String]
         attr_accessor :medium
@@ -2761,6 +2790,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
           @medium = args[:medium] if args.key?(:medium)
           @training_conversations_count = args[:training_conversations_count] if args.key?(:training_conversations_count)
         end
