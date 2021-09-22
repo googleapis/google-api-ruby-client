@@ -1146,6 +1146,11 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # Additional information required for E_COMMERCE_PLATFORM link type.
+        # Corresponds to the JSON property `eCommercePlatformLinkInfo`
+        # @return [Google::Apis::ContentV2_1::ECommercePlatformLinkInfo]
+        attr_accessor :e_commerce_platform_link_info
+      
         # Type of the link between the two accounts. Acceptable values are: - "`
         # channelPartner`" - "`eCommercePlatform`" - "`paymentServiceProvider`"
         # Corresponds to the JSON property `linkType`
@@ -1176,6 +1181,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @e_commerce_platform_link_info = args[:e_commerce_platform_link_info] if args.key?(:e_commerce_platform_link_info)
           @link_type = args[:link_type] if args.key?(:link_type)
           @linked_account_id = args[:linked_account_id] if args.key?(:linked_account_id)
           @payment_service_provider_link_info = args[:payment_service_provider_link_info] if args.key?(:payment_service_provider_link_info)
@@ -3235,6 +3241,25 @@ module Google
           @transit_business_day_config = args[:transit_business_day_config] if args.key?(:transit_business_day_config)
           @transit_time_table = args[:transit_time_table] if args.key?(:transit_time_table)
           @warehouse_based_delivery_times = args[:warehouse_based_delivery_times] if args.key?(:warehouse_based_delivery_times)
+        end
+      end
+      
+      # Additional information required for E_COMMERCE_PLATFORM link type.
+      class ECommercePlatformLinkInfo
+        include Google::Apis::Core::Hashable
+      
+        # The id used by the third party service provider to identify the merchant.
+        # Corresponds to the JSON property `externalAccountId`
+        # @return [String]
+        attr_accessor :external_account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
         end
       end
       
@@ -5553,7 +5578,7 @@ module Google
         # "`noInventory`" - "`orderTimeout`" - "`other`" - "`paymentAbuse`" - "`
         # paymentDeclined`" - "`priceError`" - "`returnRefundAbuse`" - "`
         # shippingPriceError`" - "`taxError`" - "`undeliverableShippingAddress`" - "`
-        # unsupportedPoBoxAddress`"
+        # unsupportedPoBoxAddress`" - "`failedToCaptureFunds`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -7841,7 +7866,8 @@ module Google
         # The reason for the cancellation. Acceptable values are: - "`
         # customerInitiatedCancel`" - "`invalidCoupon`" - "`malformedShippingAddress`" -
         # "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`
-        # taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
+        # taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "
+        # `failedToCaptureFunds`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -7905,7 +7931,8 @@ module Google
         # The reason for the cancellation. Acceptable values are: - "`
         # customerInitiatedCancel`" - "`invalidCoupon`" - "`malformedShippingAddress`" -
         # "`noInventory`" - "`other`" - "`priceError`" - "`shippingPriceError`" - "`
-        # taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
+        # taxError`" - "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`" - "
+        # `failedToCaptureFunds`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
