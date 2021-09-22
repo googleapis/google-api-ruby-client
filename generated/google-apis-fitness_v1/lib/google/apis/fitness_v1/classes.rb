@@ -151,7 +151,9 @@ module Google
         attr_accessor :bucket_by_time
       
         # The end of a window of time. Data that intersects with this time window will
-        # be aggregated. The time is in milliseconds since epoch, inclusive.
+        # be aggregated. The time is in milliseconds since epoch, inclusive. The maximum
+        # allowed difference between start_time_millis // and end_time_millis is
+        # 7776000000 (roughly 90 days).
         # Corresponds to the JSON property `endTimeMillis`
         # @return [Fixnum]
         attr_accessor :end_time_millis

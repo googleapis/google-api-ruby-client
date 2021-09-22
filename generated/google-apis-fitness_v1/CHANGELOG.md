@@ -1,5 +1,9 @@
 # Release history for google-apis-fitness_v1
 
+### v0.10.0 (2021-09-22)
+
+* Regenerated from discovery document revision 20210920
+
 ### v0.9.0 (2021-08-04)
 
 * Regenerated from discovery document revision 20210731
