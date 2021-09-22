@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ECommercePlatformLinkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Error
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2596,6 +2602,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :e_commerce_platform_link_info, as: 'eCommercePlatformLinkInfo', class: Google::Apis::ContentV2_1::ECommercePlatformLinkInfo, decorator: Google::Apis::ContentV2_1::ECommercePlatformLinkInfo::Representation
+      
           property :link_type, as: 'linkType'
           property :linked_account_id, as: 'linkedAccountId'
           property :payment_service_provider_link_info, as: 'paymentServiceProviderLinkInfo', class: Google::Apis::ContentV2_1::PaymentServiceProviderLinkInfo, decorator: Google::Apis::ContentV2_1::PaymentServiceProviderLinkInfo::Representation
@@ -3163,6 +3171,13 @@ module Google
       
           collection :warehouse_based_delivery_times, as: 'warehouseBasedDeliveryTimes', class: Google::Apis::ContentV2_1::WarehouseBasedDeliveryTime, decorator: Google::Apis::ContentV2_1::WarehouseBasedDeliveryTime::Representation
       
+        end
+      end
+      
+      class ECommercePlatformLinkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_account_id, as: 'externalAccountId'
         end
       end
       
