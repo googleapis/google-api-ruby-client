@@ -89,12 +89,12 @@ module Google
       class GoogleCloudAssuredworkloadsV1Workload
         include Google::Apis::Core::Hashable
       
-        # Required. Input only. The billing account used for the resources which are
-        # direct children of workload. This billing account is initially associated with
-        # the resources created as part of Workload creation. After the initial creation
-        # of these resources, the customer can change the assigned billing account. The
-        # resource name has the form `billingAccounts/`billing_account_id``. For example,
-        # `billingAccounts/012345-567890-ABCDEF`.
+        # Optional. The billing account used for the resources which are direct children
+        # of workload. This billing account is initially associated with the resources
+        # created as part of Workload creation. After the initial creation of these
+        # resources, the customer can change the assigned billing account. The resource
+        # name has the form `billingAccounts/`billing_account_id``. For example, `
+        # billingAccounts/012345-567890-ABCDEF`.
         # Corresponds to the JSON property `billingAccount`
         # @return [String]
         attr_accessor :billing_account
