@@ -4,4 +4,9 @@
 # For syntax help see:
 # https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners#codeowners-syntax
 
-*     @googleapis/yoshi-ruby
+# Default: Yoshi-Ruby team
+* @googleapis/yoshi-ruby
+
+# Autogeneration PRs should be handled by yoshi-approver
+/generated/ @yoshi-approver
+/api_names_out.yaml @yoshi-approver
