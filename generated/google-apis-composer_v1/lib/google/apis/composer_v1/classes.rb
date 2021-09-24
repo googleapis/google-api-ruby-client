@@ -926,6 +926,12 @@ module Google
         # @return [String]
         attr_accessor :python_version
       
+        # Optional. The number of schedulers for Airflow. This field is supported for
+        # Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+        # Corresponds to the JSON property `schedulerCount`
+        # @return [Fixnum]
+        attr_accessor :scheduler_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -937,6 +943,7 @@ module Google
           @image_version = args[:image_version] if args.key?(:image_version)
           @pypi_packages = args[:pypi_packages] if args.key?(:pypi_packages)
           @python_version = args[:python_version] if args.key?(:python_version)
+          @scheduler_count = args[:scheduler_count] if args.key?(:scheduler_count)
         end
       end
       

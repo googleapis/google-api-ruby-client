@@ -246,7 +246,11 @@ module Google
         #   all environment variables. If a replacement environment variable map is not
         #   included in `environment`, all custom environment variables are cleared. It is
         #   an error to provide both this mask and a mask specifying one or more
-        #   individual environment variables.
+        #   individual environment variables. * `config.softwareConfig.schedulerCount` *
+        #   Horizontally scale the number of schedulers in Airflow. A positive integer not
+        #   greater than the number of nodes must be provided in the `config.
+        #   softwareConfig.schedulerCount` field. Supported for Cloud Composer
+        #   environments in versions composer-1.*.*-airflow-2.*.*.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
