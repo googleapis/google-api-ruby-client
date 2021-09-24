@@ -423,6 +423,7 @@ module Google
         # Name used to represent this client to publishers. You may have multiple
         # clients that map to the same entity, but for each client the combination of `
         # clientName` and entity must be unique. You can specify this field as empty.
+        # Maximum length of 255 characters is allowed.
         # Corresponds to the JSON property `clientName`
         # @return [String]
         attr_accessor :client_name
