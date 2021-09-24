@@ -335,6 +335,57 @@ module Google
         end
       end
       
+      # Metadata returned for the Environments.DeployFlow long running operation.
+      class GoogleCloudDialogflowCxV3DeployFlowMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Errors of running deployment tests.
+        # Corresponds to the JSON property `testErrors`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3TestError>]
+        attr_accessor :test_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_errors = args[:test_errors] if args.key?(:test_errors)
+        end
+      end
+      
+      # The response message for Environments.DeployFlow.
+      class GoogleCloudDialogflowCxV3DeployFlowResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the flow version Deployment. Format: `projects//locations//agents//
+        # environments//deployments/`.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # Represents an environment for an agent. You can create multiple versions of
+        # your agent and publish them to separate environments. When you edit an agent,
+        # you are editing the draft agent. At any point, you can save the draft agent as
+        # an agent version, which is an immutable snapshot of your agent. When you save
+        # the draft agent, it is published to the default environment. When you create
+        # agent versions, you can publish them to custom environments. You can create a
+        # variety of custom environments for testing, development, production, etc.
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3Environment]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @environment = args[:environment] if args.key?(:environment)
+        end
+      end
+      
       # Represents the input for dtmf event.
       class GoogleCloudDialogflowCxV3DtmfInput
         include Google::Apis::Core::Hashable
@@ -357,6 +408,121 @@ module Google
         def update!(**args)
           @digits = args[:digits] if args.key?(:digits)
           @finish_digit = args[:finish_digit] if args.key?(:finish_digit)
+        end
+      end
+      
+      # Represents an environment for an agent. You can create multiple versions of
+      # your agent and publish them to separate environments. When you edit an agent,
+      # you are editing the draft agent. At any point, you can save the draft agent as
+      # an agent version, which is an immutable snapshot of your agent. When you save
+      # the draft agent, it is published to the default environment. When you create
+      # agent versions, you can publish them to custom environments. You can create a
+      # variety of custom environments for testing, development, production, etc.
+      class GoogleCloudDialogflowCxV3Environment
+        include Google::Apis::Core::Hashable
+      
+        # The human-readable description of the environment. The maximum length is 500
+        # characters. If exceeded, the request is rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The human-readable name of the environment (unique in an agent).
+        # Limit of 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The name of the environment. Format: `projects//locations//agents//
+        # environments/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The configuration for continuous tests.
+        # Corresponds to the JSON property `testCasesConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig]
+        attr_accessor :test_cases_config
+      
+        # Output only. Update time of this environment.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Required. A list of configurations for flow versions. You should include
+        # version configs for all flows that are reachable from `Start Flow` in the
+        # agent. Otherwise, an error will be returned.
+        # Corresponds to the JSON property `versionConfigs`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3EnvironmentVersionConfig>]
+        attr_accessor :version_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @test_cases_config = args[:test_cases_config] if args.key?(:test_cases_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version_configs = args[:version_configs] if args.key?(:version_configs)
+        end
+      end
+      
+      # The configuration for continuous tests.
+      class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to run test cases in TestCasesConfig.test_cases periodically. Default
+        # false. If set to ture, run once a day.
+        # Corresponds to the JSON property `enableContinuousRun`
+        # @return [Boolean]
+        attr_accessor :enable_continuous_run
+        alias_method :enable_continuous_run?, :enable_continuous_run
+      
+        # Whether to run test cases in TestCasesConfig.test_cases before deploying a
+        # flow version to the environment. Default false.
+        # Corresponds to the JSON property `enablePredeploymentRun`
+        # @return [Boolean]
+        attr_accessor :enable_predeployment_run
+        alias_method :enable_predeployment_run?, :enable_predeployment_run
+      
+        # A list of test case names to run. They should be under the same agent. Format
+        # of each test case name: `projects//locations/ /agents//testCases/`
+        # Corresponds to the JSON property `testCases`
+        # @return [Array<String>]
+        attr_accessor :test_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_continuous_run = args[:enable_continuous_run] if args.key?(:enable_continuous_run)
+          @enable_predeployment_run = args[:enable_predeployment_run] if args.key?(:enable_predeployment_run)
+          @test_cases = args[:test_cases] if args.key?(:test_cases)
+        end
+      end
+      
+      # Configuration for the version.
+      class GoogleCloudDialogflowCxV3EnvironmentVersionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Format: projects//locations//agents//flows//versions/.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -2876,6 +3042,57 @@ module Google
         end
       end
       
+      # Metadata returned for the Environments.DeployFlow long running operation.
+      class GoogleCloudDialogflowCxV3beta1DeployFlowMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Errors of running deployment tests.
+        # Corresponds to the JSON property `testErrors`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1TestError>]
+        attr_accessor :test_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_errors = args[:test_errors] if args.key?(:test_errors)
+        end
+      end
+      
+      # The response message for Environments.DeployFlow.
+      class GoogleCloudDialogflowCxV3beta1DeployFlowResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the flow version deployment. Format: `projects//locations//agents//
+        # environments//deployments/`.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # Represents an environment for an agent. You can create multiple versions of
+        # your agent and publish them to separate environments. When you edit an agent,
+        # you are editing the draft agent. At any point, you can save the draft agent as
+        # an agent version, which is an immutable snapshot of your agent. When you save
+        # the draft agent, it is published to the default environment. When you create
+        # agent versions, you can publish them to custom environments. You can create a
+        # variety of custom environments for testing, development, production, etc.
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1Environment]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @environment = args[:environment] if args.key?(:environment)
+        end
+      end
+      
       # Represents the input for dtmf event.
       class GoogleCloudDialogflowCxV3beta1DtmfInput
         include Google::Apis::Core::Hashable
@@ -2898,6 +3115,121 @@ module Google
         def update!(**args)
           @digits = args[:digits] if args.key?(:digits)
           @finish_digit = args[:finish_digit] if args.key?(:finish_digit)
+        end
+      end
+      
+      # Represents an environment for an agent. You can create multiple versions of
+      # your agent and publish them to separate environments. When you edit an agent,
+      # you are editing the draft agent. At any point, you can save the draft agent as
+      # an agent version, which is an immutable snapshot of your agent. When you save
+      # the draft agent, it is published to the default environment. When you create
+      # agent versions, you can publish them to custom environments. You can create a
+      # variety of custom environments for testing, development, production, etc.
+      class GoogleCloudDialogflowCxV3beta1Environment
+        include Google::Apis::Core::Hashable
+      
+        # The human-readable description of the environment. The maximum length is 500
+        # characters. If exceeded, the request is rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The human-readable name of the environment (unique in an agent).
+        # Limit of 64 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The name of the environment. Format: `projects//locations//agents//
+        # environments/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The configuration for continuous tests.
+        # Corresponds to the JSON property `testCasesConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig]
+        attr_accessor :test_cases_config
+      
+        # Output only. Update time of this environment.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Required. A list of configurations for flow versions. You should include
+        # version configs for all flows that are reachable from `Start Flow` in the
+        # agent. Otherwise, an error will be returned.
+        # Corresponds to the JSON property `versionConfigs`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>]
+        attr_accessor :version_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @test_cases_config = args[:test_cases_config] if args.key?(:test_cases_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version_configs = args[:version_configs] if args.key?(:version_configs)
+        end
+      end
+      
+      # The configuration for continuous tests.
+      class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to run test cases in TestCasesConfig.test_cases periodically. Default
+        # false. If set to ture, run once a day.
+        # Corresponds to the JSON property `enableContinuousRun`
+        # @return [Boolean]
+        attr_accessor :enable_continuous_run
+        alias_method :enable_continuous_run?, :enable_continuous_run
+      
+        # Whether to run test cases in TestCasesConfig.test_cases before deploying a
+        # flow version to the environment. Default false.
+        # Corresponds to the JSON property `enablePredeploymentRun`
+        # @return [Boolean]
+        attr_accessor :enable_predeployment_run
+        alias_method :enable_predeployment_run?, :enable_predeployment_run
+      
+        # A list of test case names to run. They should be under the same agent. Format
+        # of each test case name: `projects//locations/ /agents//testCases/`
+        # Corresponds to the JSON property `testCases`
+        # @return [Array<String>]
+        attr_accessor :test_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_continuous_run = args[:enable_continuous_run] if args.key?(:enable_continuous_run)
+          @enable_predeployment_run = args[:enable_predeployment_run] if args.key?(:enable_predeployment_run)
+          @test_cases = args[:test_cases] if args.key?(:test_cases)
+        end
+      end
+      
+      # Configuration for the version.
+      class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Format: projects//locations//agents//flows//versions/.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
