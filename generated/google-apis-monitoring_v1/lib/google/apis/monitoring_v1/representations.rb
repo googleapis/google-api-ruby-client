@@ -208,6 +208,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableDataSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableDisplayOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Text
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +251,12 @@ module Google
       end
       
       class TimeSeriesQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeSeriesTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -549,6 +567,25 @@ module Google
         end
       end
       
+      class TableDataSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_alignment_period, as: 'minAlignmentPeriod'
+          property :table_display_options, as: 'tableDisplayOptions', class: Google::Apis::MonitoringV1::TableDisplayOptions, decorator: Google::Apis::MonitoringV1::TableDisplayOptions::Representation
+      
+          property :table_template, as: 'tableTemplate'
+          property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
+      
+        end
+      end
+      
+      class TableDisplayOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :shown_columns, as: 'shownColumns'
+        end
+      end
+      
       class Text
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -623,6 +660,14 @@ module Google
         end
       end
       
+      class TimeSeriesTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_sets, as: 'dataSets', class: Google::Apis::MonitoringV1::TableDataSet, decorator: Google::Apis::MonitoringV1::TableDataSet::Representation
+      
+        end
+      end
+      
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -648,6 +693,8 @@ module Google
           property :scorecard, as: 'scorecard', class: Google::Apis::MonitoringV1::Scorecard, decorator: Google::Apis::MonitoringV1::Scorecard::Representation
       
           property :text, as: 'text', class: Google::Apis::MonitoringV1::Text, decorator: Google::Apis::MonitoringV1::Text::Representation
+      
+          property :time_series_table, as: 'timeSeriesTable', class: Google::Apis::MonitoringV1::TimeSeriesTable, decorator: Google::Apis::MonitoringV1::TimeSeriesTable::Representation
       
           property :title, as: 'title'
           property :xy_chart, as: 'xyChart', class: Google::Apis::MonitoringV1::XyChart, decorator: Google::Apis::MonitoringV1::XyChart::Representation
