@@ -1131,6 +1131,71 @@ module Google
         end
       end
       
+      # Groups a time series query definition with table options.
+      class TableDataSet
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The lower bound on data point frequency for this data set,
+        # implemented by specifying the minimum alignment period to use in a time series
+        # query For example, if the data is published once every 10 minutes, the
+        # min_alignment_period should be at least 10 minutes. It would not make sense to
+        # fetch and align data at one minute intervals.
+        # Corresponds to the JSON property `minAlignmentPeriod`
+        # @return [String]
+        attr_accessor :min_alignment_period
+      
+        # Table display options that can be reused.
+        # Corresponds to the JSON property `tableDisplayOptions`
+        # @return [Google::Apis::MonitoringV1::TableDisplayOptions]
+        attr_accessor :table_display_options
+      
+        # Optional. A template string for naming TimeSeries in the resulting data set.
+        # This should be a string with interpolations of the form $`label_name`, which
+        # will resolve to the label's value i.e. "$`resource.labels.project_id`."
+        # Corresponds to the JSON property `tableTemplate`
+        # @return [String]
+        attr_accessor :table_template
+      
+        # TimeSeriesQuery collects the set of supported methods for querying time series
+        # data from the Stackdriver metrics API.
+        # Corresponds to the JSON property `timeSeriesQuery`
+        # @return [Google::Apis::MonitoringV1::TimeSeriesQuery]
+        attr_accessor :time_series_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_alignment_period = args[:min_alignment_period] if args.key?(:min_alignment_period)
+          @table_display_options = args[:table_display_options] if args.key?(:table_display_options)
+          @table_template = args[:table_template] if args.key?(:table_template)
+          @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
+        end
+      end
+      
+      # Table display options that can be reused.
+      class TableDisplayOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Columns to display in the table. Leave empty to display all
+        # available columns. Note: This field is for future features and is not
+        # currently used.
+        # Corresponds to the JSON property `shownColumns`
+        # @return [Array<String>]
+        attr_accessor :shown_columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shown_columns = args[:shown_columns] if args.key?(:shown_columns)
+        end
+      end
+      
       # A widget that displays textual content.
       class Text
         include Google::Apis::Core::Hashable
@@ -1463,6 +1528,25 @@ module Google
         end
       end
       
+      # A table that displays time series data.
+      class TimeSeriesTable
+        include Google::Apis::Core::Hashable
+      
+        # Required. The data displayed in this table.
+        # Corresponds to the JSON property `dataSets`
+        # @return [Array<Google::Apis::MonitoringV1::TableDataSet>]
+        attr_accessor :data_sets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_sets = args[:data_sets] if args.key?(:data_sets)
+        end
+      end
+      
       # A protocol buffer message type.
       class Type
         include Google::Apis::Core::Hashable
@@ -1543,6 +1627,11 @@ module Google
         # @return [Google::Apis::MonitoringV1::Text]
         attr_accessor :text
       
+        # A table that displays time series data.
+        # Corresponds to the JSON property `timeSeriesTable`
+        # @return [Google::Apis::MonitoringV1::TimeSeriesTable]
+        attr_accessor :time_series_table
+      
         # Optional. The title of the widget.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -1563,6 +1652,7 @@ module Google
           @blank = args[:blank] if args.key?(:blank)
           @scorecard = args[:scorecard] if args.key?(:scorecard)
           @text = args[:text] if args.key?(:text)
+          @time_series_table = args[:time_series_table] if args.key?(:time_series_table)
           @title = args[:title] if args.key?(:title)
           @xy_chart = args[:xy_chart] if args.key?(:xy_chart)
         end
