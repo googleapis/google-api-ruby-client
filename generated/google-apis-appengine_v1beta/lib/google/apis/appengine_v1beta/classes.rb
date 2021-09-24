@@ -2559,6 +2559,20 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # A set of labels to apply to this service. Labels are key/value pairs that
+        # describe the service and all resources that belong to it (e.g., versions). The
+        # labels can be used to search and group resources, and are propagated to the
+        # usage and billing reports, enabling fine-grain analysis of costs. An example
+        # of using labels is to tag resources belonging to different environments (e.g.,
+        # "env=prod", "env=qa"). Label keys and values can be no longer than 63
+        # characters, can only contain lowercase letters, numeric characters,
+        # underscores, dashes, and international characters. Label keys must start with
+        # a lowercase letter or an international character. Each service can have at
+        # most 32 labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Full path to the Service resource in the API. Example: apps/myapp/services/
         # default.@OutputOnly
         # Corresponds to the JSON property `name`
@@ -2584,6 +2598,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network_settings = args[:network_settings] if args.key?(:network_settings)
           @split = args[:split] if args.key?(:split)
