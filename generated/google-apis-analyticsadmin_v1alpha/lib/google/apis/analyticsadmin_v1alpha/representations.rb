@@ -923,6 +923,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaProperty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account, as: 'account'
           property :create_time, as: 'createTime'
           property :currency_code, as: 'currencyCode'
           property :delete_time, as: 'deleteTime'

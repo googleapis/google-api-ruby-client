@@ -1907,6 +1907,12 @@ module Google
       class GoogleAnalyticsAdminV1alphaProperty
         include Google::Apis::Core::Hashable
       
+        # Immutable. The resource name of the parent account Format: accounts/`
+        # account_id` Example: "accounts/123"
+        # Corresponds to the JSON property `account`
+        # @return [String]
+        attr_accessor :account
+      
         # Output only. Time when the entity was originally created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1980,6 +1986,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account = args[:account] if args.key?(:account)
           @create_time = args[:create_time] if args.key?(:create_time)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
