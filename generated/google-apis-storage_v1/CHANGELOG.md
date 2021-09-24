@@ -1,5 +1,9 @@
 # Release history for google-apis-storage_v1
 
+### v0.8.0 (2021-09-24)
+
+* Regenerated from discovery document revision 20210918
+
 ### v0.7.0 (2021-09-19)
 
 * Regenerated from discovery document revision 20210914
