@@ -1222,7 +1222,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a file's metadata and/or content. This method supports patch semantics.
+        # Updates a file's metadata and/or content. When calling this method, only
+        # populate fields in the request that you want to modify. When updating fields,
+        # some fields might change automatically, such as modifiedDate. This method
+        # supports patch semantics.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
