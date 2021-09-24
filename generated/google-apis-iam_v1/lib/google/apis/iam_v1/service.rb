@@ -1902,7 +1902,7 @@ module Google
         end
         
         # Disable a ServiceAccountKey. A disabled service account key can be enabled
-        # through EnableServiceAccountKey. The API is currently in preview phase.
+        # through EnableServiceAccountKey.
         # @param [String] name
         #   Required. The resource name of the service account key in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``. Using `-` as a
@@ -1939,7 +1939,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enable a ServiceAccountKey. The API is currently in preview phase.
+        # Enable a ServiceAccountKey.
         # @param [String] name
         #   Required. The resource name of the service account key in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``. Using `-` as a
