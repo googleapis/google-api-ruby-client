@@ -82,7 +82,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3DeployFlowMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3DeployFlowResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3DtmfInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3Environment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3EnvironmentVersionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -562,6 +592,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1DeployFlowMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1DeployFlowRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1DeployFlowResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1Deployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1DeploymentResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1DetectIntentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +659,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1Environment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -875,6 +941,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2423,11 +2495,58 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3DeployFlowMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :test_errors, as: 'testErrors', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3TestError, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3TestError::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3DeployFlowResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment'
+          property :environment, as: 'environment', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3Environment, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3Environment::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3DtmfInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :digits, as: 'digits'
           property :finish_digit, as: 'finishDigit'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3Environment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :test_cases_config, as: 'testCasesConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig::Representation
+      
+          property :update_time, as: 'updateTime'
+          collection :version_configs, as: 'versionConfigs', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3EnvironmentVersionConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3EnvironmentVersionConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_continuous_run, as: 'enableContinuousRun'
+          property :enable_predeployment_run, as: 'enablePredeploymentRun'
+          collection :test_cases, as: 'testCases'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3EnvironmentVersionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
         end
       end
       
@@ -3209,6 +3328,51 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1DeployFlowMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :test_errors, as: 'testErrors', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestError, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1TestError::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1DeployFlowRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :flow_version, as: 'flowVersion'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1DeployFlowResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment'
+          property :environment, as: 'environment', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Environment, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Environment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1Deployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :flow_version, as: 'flowVersion'
+          property :name, as: 'name'
+          property :result, as: 'result', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DeploymentResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DeploymentResult::Representation
+      
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1DeploymentResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployment_test_results, as: 'deploymentTestResults'
+          property :experiment, as: 'experiment'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1DetectIntentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3280,9 +3444,20 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :test_cases_config, as: 'testCasesConfig', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig::Representation
+      
           property :update_time, as: 'updateTime'
           collection :version_configs, as: 'versionConfigs', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_continuous_run, as: 'enableContinuousRun'
+          property :enable_predeployment_run, as: 'enablePredeploymentRun'
+          collection :test_cases, as: 'testCases'
         end
       end
       
@@ -3731,6 +3906,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :continuous_test_results, as: 'continuousTestResults', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ContinuousTestResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ContinuousTestResult::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployments, as: 'deployments', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Deployment, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Deployment::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

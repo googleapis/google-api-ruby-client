@@ -733,6 +733,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deploys a flow to the specified Environment. This method is a [long-running
+        # operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-
+        # operation). The returned `Operation` type has the following method-specific
+        # fields: - `metadata`: DeployFlowMetadata - `response`: DeployFlowResponse
+        # @param [String] environment
+        #   Required. The environment to deploy the flow to. Format: `projects//locations//
+        #   agents// environments/`.
+        # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DeployFlowRequest] google_cloud_dialogflow_cx_v3beta1_deploy_flow_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deploy_project_location_agent_environment_flow(environment, google_cloud_dialogflow_cx_v3beta1_deploy_flow_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3beta1/{+environment}:deployFlow', options)
+          command.request_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DeployFlowRequest::Representation
+          command.request_object = google_cloud_dialogflow_cx_v3beta1_deploy_flow_request_object
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleLongrunningOperation
+          command.params['environment'] = environment unless environment.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the specified Environment.
         # @param [String] name
         #   Required. The name of the Environment. Format: `projects//locations//agents//
@@ -948,6 +985,75 @@ module Google
           command = make_simple_command(:get, 'v3beta1/{+parent}/continuousTestResults', options)
           command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse::Representation
           command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified Deployment.
+        # @param [String] name
+        #   Required. The name of the Deployment. Format: `projects//locations//agents//
+        #   environments//deployments/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Deployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Deployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_agent_environment_deployment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Deployment::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Deployment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all deployments in the specified Environment.
+        # @param [String] parent
+        #   Required. The Environment to list all environments for. Format: `projects//
+        #   locations//agents//environments/`.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return in a single page. By default 20 and at
+        #   most 100.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_agent_environment_deployments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3beta1/{+parent}/deployments', options)
+          command.response_representation = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3996,7 +4102,9 @@ module Google
         
         # Updates the specified SecuritySettings.
         # @param [String] name
-        #   Required. Resource name of the settings. Format: `projects//locations//
+        #   Resource name of the settings. Required for the SecuritySettingsService.
+        #   UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings
+        #   populates the name automatically. Format: `projects//locations//
         #   securitySettings/`.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1SecuritySettings] google_cloud_dialogflow_cx_v3beta1_security_settings_object
         # @param [String] update_mask
