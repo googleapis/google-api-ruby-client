@@ -1095,6 +1095,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network_settings, as: 'networkSettings', class: Google::Apis::AppengineV1::NetworkSettings, decorator: Google::Apis::AppengineV1::NetworkSettings::Representation
       
