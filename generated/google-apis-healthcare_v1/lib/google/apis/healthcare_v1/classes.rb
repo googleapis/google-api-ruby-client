@@ -182,7 +182,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Possible values for the attribute. The number of allowed values must
-        # not exceed 100. An empty list is invalid. The list can only be expanded after
+        # not exceed 500. An empty list is invalid. The list can only be expanded after
         # creation.
         # Corresponds to the JSON property `allowedValues`
         # @return [Array<String>]
