@@ -594,7 +594,6 @@ module Google
         # @param [String] name
         #   Immutable. Full resource name of the product, such as `projects/*/locations/
         #   global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-        #   The branch ID must be "default_branch".
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProduct] google_cloud_retail_v2alpha_product_object
         # @param [Boolean] allow_missing
         #   If set to true, and the Product is not found, a new Product will be created.
@@ -702,7 +701,6 @@ module Google
         # @param [String] name
         #   Immutable. Full resource name of the product, such as `projects/*/locations/
         #   global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-        #   The branch ID must be "default_branch".
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSetInventoryRequest] google_cloud_retail_v2alpha_set_inventory_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
