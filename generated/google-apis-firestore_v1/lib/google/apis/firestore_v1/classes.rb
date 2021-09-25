@@ -775,6 +775,55 @@ module Google
         end
       end
       
+      # A Cloud Firestore Database in Native Mode. Currently one database is allowed
+      # per cloud project. It is named '(default)'
+      class GoogleFirestoreAdminV1Database
+        include Google::Apis::Core::Hashable
+      
+        # The concurrency control mode to use for this database.
+        # Corresponds to the JSON property `concurrencyMode`
+        # @return [String]
+        attr_accessor :concurrency_mode
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The location of the database. Available databases are listed at https://cloud.
+        # google.com/firestore/docs/locations.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        # The resource name of the Database. Format: `projects/`project`/databases/`
+        # database``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The type of the database. See https://cloud.google.com/datastore/docs/
+        # firestore-or-datastore for information about how to choose.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
+          @etag = args[:etag] if args.key?(:etag)
+          @location_id = args[:location_id] if args.key?(:location_id)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Metadata for google.longrunning.Operation results from FirestoreAdmin.
       # ExportDocuments.
       class GoogleFirestoreAdminV1ExportDocumentsMetadata
@@ -1289,6 +1338,25 @@ module Google
           @progress_documents = args[:progress_documents] if args.key?(:progress_documents)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The list of databases for a project.
+      class GoogleFirestoreAdminV1ListDatabasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The databases in the project.
+        # Corresponds to the JSON property `databases`
+        # @return [Array<Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database>]
+        attr_accessor :databases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @databases = args[:databases] if args.key?(:databases)
         end
       end
       

@@ -92,6 +92,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets information about a database.
+        # @param [String] name
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_database(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Imports documents into Google Cloud Firestore. Existing documents with the
         # same name are overwritten. The import occurs in the background and its
         # progress can be monitored and managed via the Operation resource that is
@@ -125,6 +155,73 @@ module Google
           command.response_representation = Google::Apis::FirestoreV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all the databases in the project.
+        # @param [String] parent
+        #   Required. A parent name of the form `projects/`project_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListDatabasesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListDatabasesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_databases(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/databases', options)
+          command.response_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListDatabasesResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ListDatabasesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a database.
+        # @param [String] name
+        #   The resource name of the Database. Format: `projects/`project`/databases/`
+        #   database``
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database] google_firestore_admin_v1_database_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_database(name, google_firestore_admin_v1_database_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database::Representation
+          command.request_object = google_firestore_admin_v1_database_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1Database
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1ExportDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +245,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1IndexOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1ListDatabasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -706,6 +718,17 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1Database
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency_mode, as: 'concurrencyMode'
+          property :etag, as: 'etag'
+          property :location_id, as: 'locationId'
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleFirestoreAdminV1ExportDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -835,6 +858,14 @@ module Google
       
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1ListDatabasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :databases, as: 'databases', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Database::Representation
+      
         end
       end
       
