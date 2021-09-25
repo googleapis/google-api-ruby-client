@@ -186,6 +186,7 @@ module Google
       
           property :multiple_values_disallowed, as: 'multipleValuesDisallowed'
           property :name, as: 'name'
+          property :readonly, as: 'readonly'
           property :relationship_details, as: 'relationshipDetails', class: Google::Apis::Area120tablesV1alpha1::RelationshipDetails, decorator: Google::Apis::Area120tablesV1alpha1::RelationshipDetails::Representation
       
         end

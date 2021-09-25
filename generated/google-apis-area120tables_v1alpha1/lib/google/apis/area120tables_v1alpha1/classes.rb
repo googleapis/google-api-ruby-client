@@ -164,6 +164,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Indicates that values for the column cannot be set by the user.
+        # Corresponds to the JSON property `readonly`
+        # @return [Boolean]
+        attr_accessor :readonly
+        alias_method :readonly?, :readonly
+      
         # Details about a relationship column.
         # Corresponds to the JSON property `relationshipDetails`
         # @return [Google::Apis::Area120tablesV1alpha1::RelationshipDetails]
@@ -181,6 +187,7 @@ module Google
           @lookup_details = args[:lookup_details] if args.key?(:lookup_details)
           @multiple_values_disallowed = args[:multiple_values_disallowed] if args.key?(:multiple_values_disallowed)
           @name = args[:name] if args.key?(:name)
+          @readonly = args[:readonly] if args.key?(:readonly)
           @relationship_details = args[:relationship_details] if args.key?(:relationship_details)
         end
       end
