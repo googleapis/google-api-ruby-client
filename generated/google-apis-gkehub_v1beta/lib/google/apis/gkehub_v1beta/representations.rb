@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigManagementContainerResourceRequirements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigManagementErrorResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +191,12 @@ module Google
       end
       
       class ConfigManagementPolicyControllerVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigManagementQuantity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -423,6 +435,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :git, as: 'git', class: Google::Apis::GkehubV1beta::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementGitConfig::Representation
       
+          hash :resource_requirements, as: 'resourceRequirements', class: Google::Apis::GkehubV1beta::ConfigManagementContainerResourceRequirements, decorator: Google::Apis::GkehubV1beta::ConfigManagementContainerResourceRequirements::Representation
+      
           property :source_format, as: 'sourceFormat'
         end
       end
@@ -430,6 +444,7 @@ module Google
       class ConfigManagementConfigSyncDeploymentState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admission_webhook, as: 'admissionWebhook'
           property :git_sync, as: 'gitSync'
           property :importer, as: 'importer'
           property :monitor, as: 'monitor'
@@ -454,12 +469,24 @@ module Google
       class ConfigManagementConfigSyncVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admission_webhook, as: 'admissionWebhook'
           property :git_sync, as: 'gitSync'
           property :importer, as: 'importer'
           property :monitor, as: 'monitor'
           property :reconciler_manager, as: 'reconcilerManager'
           property :root_reconciler, as: 'rootReconciler'
           property :syncer, as: 'syncer'
+        end
+      end
+      
+      class ConfigManagementContainerResourceRequirements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_name, as: 'containerName'
+          property :cpu_limit, as: 'cpuLimit', class: Google::Apis::GkehubV1beta::ConfigManagementQuantity, decorator: Google::Apis::GkehubV1beta::ConfigManagementQuantity::Representation
+      
+          property :memory_limit, as: 'memoryLimit', class: Google::Apis::GkehubV1beta::ConfigManagementQuantity, decorator: Google::Apis::GkehubV1beta::ConfigManagementQuantity::Representation
+      
         end
       end
       
@@ -487,9 +514,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcp_service_account_email, as: 'gcpServiceAccountEmail'
           property :https_proxy, as: 'httpsProxy'
+          property :no_ssl_verify, as: 'noSslVerify'
           property :policy_dir, as: 'policyDir'
           property :secret_type, as: 'secretType'
           property :sync_branch, as: 'syncBranch'
+          property :sync_depth, :numeric_string => true, as: 'syncDepth'
           property :sync_repo, as: 'syncRepo'
           property :sync_rev, as: 'syncRev'
           property :sync_wait_secs, :numeric_string => true, as: 'syncWaitSecs'
@@ -617,6 +646,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class ConfigManagementQuantity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :string, as: 'string'
         end
       end
       
