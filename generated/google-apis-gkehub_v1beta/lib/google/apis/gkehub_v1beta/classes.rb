@@ -291,6 +291,11 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementGitConfig]
         attr_accessor :git
       
+        # Specifies CPU and memory limits for containers, keyed by container name
+        # Corresponds to the JSON property `resourceRequirements`
+        # @return [Hash<String,Google::Apis::GkehubV1beta::ConfigManagementContainerResourceRequirements>]
+        attr_accessor :resource_requirements
+      
         # Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured”
         # mode.
         # Corresponds to the JSON property `sourceFormat`
@@ -304,6 +309,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @git = args[:git] if args.key?(:git)
+          @resource_requirements = args[:resource_requirements] if args.key?(:resource_requirements)
           @source_format = args[:source_format] if args.key?(:source_format)
         end
       end
@@ -311,6 +317,11 @@ module Google
       # The state of ConfigSync's deployment on a cluster
       class ConfigManagementConfigSyncDeploymentState
         include Google::Apis::Core::Hashable
+      
+        # Deployment state of admission-webhook
+        # Corresponds to the JSON property `admissionWebhook`
+        # @return [String]
+        attr_accessor :admission_webhook
       
         # Deployment state of the git-sync pod
         # Corresponds to the JSON property `gitSync`
@@ -348,6 +359,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @admission_webhook = args[:admission_webhook] if args.key?(:admission_webhook)
           @git_sync = args[:git_sync] if args.key?(:git_sync)
           @importer = args[:importer] if args.key?(:importer)
           @monitor = args[:monitor] if args.key?(:monitor)
@@ -392,6 +404,11 @@ module Google
       class ConfigManagementConfigSyncVersion
         include Google::Apis::Core::Hashable
       
+        # Version of the deployed admission_webhook pod
+        # Corresponds to the JSON property `admissionWebhook`
+        # @return [String]
+        attr_accessor :admission_webhook
+      
         # Version of the deployed git-sync pod
         # Corresponds to the JSON property `gitSync`
         # @return [String]
@@ -428,12 +445,49 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @admission_webhook = args[:admission_webhook] if args.key?(:admission_webhook)
           @git_sync = args[:git_sync] if args.key?(:git_sync)
           @importer = args[:importer] if args.key?(:importer)
           @monitor = args[:monitor] if args.key?(:monitor)
           @reconciler_manager = args[:reconciler_manager] if args.key?(:reconciler_manager)
           @root_reconciler = args[:root_reconciler] if args.key?(:root_reconciler)
           @syncer = args[:syncer] if args.key?(:syncer)
+        end
+      end
+      
+      # ResourceRequirements allows to override the CPU and memory resource
+      # requirements of a container.
+      class ConfigManagementContainerResourceRequirements
+        include Google::Apis::Core::Hashable
+      
+        # Name of the container
+        # Corresponds to the JSON property `containerName`
+        # @return [String]
+        attr_accessor :container_name
+      
+        # The view model of a single quantity, e.g. "800 MiB". Corresponds to https://
+        # github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/
+        # pkg/api/resource/generated.proto
+        # Corresponds to the JSON property `cpuLimit`
+        # @return [Google::Apis::GkehubV1beta::ConfigManagementQuantity]
+        attr_accessor :cpu_limit
+      
+        # The view model of a single quantity, e.g. "800 MiB". Corresponds to https://
+        # github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/
+        # pkg/api/resource/generated.proto
+        # Corresponds to the JSON property `memoryLimit`
+        # @return [Google::Apis::GkehubV1beta::ConfigManagementQuantity]
+        attr_accessor :memory_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_name = args[:container_name] if args.key?(:container_name)
+          @cpu_limit = args[:cpu_limit] if args.key?(:cpu_limit)
+          @memory_limit = args[:memory_limit] if args.key?(:memory_limit)
         end
       end
       
@@ -514,6 +568,12 @@ module Google
         # @return [String]
         attr_accessor :https_proxy
       
+        # Enable or disable the SSL certificate verification Default: false.
+        # Corresponds to the JSON property `noSslVerify`
+        # @return [Boolean]
+        attr_accessor :no_ssl_verify
+        alias_method :no_ssl_verify?, :no_ssl_verify
+      
         # The path within the Git repository that represents the top level of the repo
         # to sync. Default: the root directory of the repository.
         # Corresponds to the JSON property `policyDir`
@@ -529,6 +589,11 @@ module Google
         # Corresponds to the JSON property `syncBranch`
         # @return [String]
         attr_accessor :sync_branch
+      
+        # The depth of git commits synced by the git-sync container.
+        # Corresponds to the JSON property `syncDepth`
+        # @return [Fixnum]
+        attr_accessor :sync_depth
       
         # The URL of the Git repository to use as the source of truth.
         # Corresponds to the JSON property `syncRepo`
@@ -553,9 +618,11 @@ module Google
         def update!(**args)
           @gcp_service_account_email = args[:gcp_service_account_email] if args.key?(:gcp_service_account_email)
           @https_proxy = args[:https_proxy] if args.key?(:https_proxy)
+          @no_ssl_verify = args[:no_ssl_verify] if args.key?(:no_ssl_verify)
           @policy_dir = args[:policy_dir] if args.key?(:policy_dir)
           @secret_type = args[:secret_type] if args.key?(:secret_type)
           @sync_branch = args[:sync_branch] if args.key?(:sync_branch)
+          @sync_depth = args[:sync_depth] if args.key?(:sync_depth)
           @sync_repo = args[:sync_repo] if args.key?(:sync_repo)
           @sync_rev = args[:sync_rev] if args.key?(:sync_rev)
           @sync_wait_secs = args[:sync_wait_secs] if args.key?(:sync_wait_secs)
@@ -954,6 +1021,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The view model of a single quantity, e.g. "800 MiB". Corresponds to https://
+      # github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/
+      # pkg/api/resource/generated.proto
+      class ConfigManagementQuantity
+        include Google::Apis::Core::Hashable
+      
+        # Stringified version of the quantity, e.g., "800 MiB".
+        # Corresponds to the JSON property `string`
+        # @return [String]
+        attr_accessor :string
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @string = args[:string] if args.key?(:string)
         end
       end
       
