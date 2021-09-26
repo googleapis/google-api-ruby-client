@@ -1878,8 +1878,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :in
       
-        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-        # that match the LOG action.
+        # The config returned to callers of CheckPolicy for any entries that match the
+        # LOG action.
         # Corresponds to the JSON property `logConfig`
         # @return [Array<Google::Apis::GameservicesV1beta::LogConfig>]
         attr_accessor :log_config
