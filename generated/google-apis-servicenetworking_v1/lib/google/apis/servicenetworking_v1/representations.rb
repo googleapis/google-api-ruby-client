@@ -705,6 +705,7 @@ module Google
           property :consumer_network, as: 'consumerNetwork'
           property :description, as: 'description'
           property :ip_prefix_length, as: 'ipPrefixLength'
+          property :outside_allocation_public_ip_range, as: 'outsideAllocationPublicIpRange'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :region, as: 'region'
           property :requested_address, as: 'requestedAddress'
@@ -1441,6 +1442,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_prefix_length, as: 'ipPrefixLength'
+          property :outside_allocation_public_ip_range, as: 'outsideAllocationPublicIpRange'
           property :range_name, as: 'rangeName'
           property :requested_address, as: 'requestedAddress'
         end
