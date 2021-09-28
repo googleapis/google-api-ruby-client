@@ -1,5 +1,9 @@
 # Release history for google-apis-content_v2_1
 
+### v0.23.0 (2021-09-28)
+
+* Regenerated from discovery document revision 20210924
+
 ### v0.22.0 (2021-09-22)
 
 * Regenerated from discovery document revision 20210917

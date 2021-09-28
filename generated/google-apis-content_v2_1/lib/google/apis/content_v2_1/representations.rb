@@ -5446,6 +5446,8 @@ module Google
           property :order_limit, as: 'orderLimit'
           property :percent_off, as: 'percentOff'
           property :product_applicability, as: 'productApplicability'
+          collection :product_type, as: 'productType'
+          collection :product_type_exclusion, as: 'productTypeExclusion'
           collection :promotion_destination_ids, as: 'promotionDestinationIds'
           property :promotion_display_dates, as: 'promotionDisplayDates'
           property :promotion_effective_dates, as: 'promotionEffectiveDates'

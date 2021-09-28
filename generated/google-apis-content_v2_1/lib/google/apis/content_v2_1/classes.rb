@@ -242,7 +242,9 @@ module Google
         # @return [String]
         attr_accessor :korean_business_registration_number
       
-        # The phone number of the business.
+        # ! The phone number of the business. This can only be updated if a verified !
+        # phone number is not already set. To replace a verified phone number use ! the `
+        # Accounts.requestphoneverification` and ! `Accounts.verifyphonenumber`.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
         attr_accessor :phone_number
@@ -4642,7 +4644,7 @@ module Google
       
         # Supported pickup method for this offer. Unless the value is "not supported",
         # this field must be submitted together with `pickupSla`. For accepted attribute
-        # values, see the local product inventory feed // specification.
+        # values, see the local product inventory feed specification.
         # Corresponds to the JSON property `pickupMethod`
         # @return [String]
         attr_accessor :pickup_method
@@ -11724,6 +11726,16 @@ module Google
         # @return [String]
         attr_accessor :product_applicability
       
+        # Product filter by product type for the promotion.
+        # Corresponds to the JSON property `productType`
+        # @return [Array<String>]
+        attr_accessor :product_type
+      
+        # Product filter by product type exclusion for the promotion.
+        # Corresponds to the JSON property `productTypeExclusion`
+        # @return [Array<String>]
+        attr_accessor :product_type_exclusion
+      
         # Destination ID for the promotion.
         # Corresponds to the JSON property `promotionDestinationIds`
         # @return [Array<String>]
@@ -11791,6 +11803,8 @@ module Google
           @order_limit = args[:order_limit] if args.key?(:order_limit)
           @percent_off = args[:percent_off] if args.key?(:percent_off)
           @product_applicability = args[:product_applicability] if args.key?(:product_applicability)
+          @product_type = args[:product_type] if args.key?(:product_type)
+          @product_type_exclusion = args[:product_type_exclusion] if args.key?(:product_type_exclusion)
           @promotion_destination_ids = args[:promotion_destination_ids] if args.key?(:promotion_destination_ids)
           @promotion_display_dates = args[:promotion_display_dates] if args.key?(:promotion_display_dates)
           @promotion_effective_dates = args[:promotion_effective_dates] if args.key?(:promotion_effective_dates)
