@@ -421,11 +421,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The IP address range used to allocate IP addresses to pods in the
-        # cluster. This field is applicable only when `use_ip_aliases` is true. For
-        # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this
-        # field is applicable only when `use_ip_aliases` is true. Set to blank to have
-        # GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have
-        # GKE choose a range with a specific netmask. Set to a [CIDR](https://en.
+        # cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*
+        # .*, this field is applicable only when `use_ip_aliases` is true. Set to blank
+        # to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`)
+        # to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.
         # wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/
         # 14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `
         # 192.168.0.0/16`) to pick a specific range to use. Specify `
@@ -436,34 +435,31 @@ module Google
       
         # Optional. The name of the cluster's secondary range used to allocate IP
         # addresses to pods. Specify either `cluster_secondary_range_name` or `
-        # cluster_ipv4_cidr_block` but not both. This field is applicable only when `
-        # use_ip_aliases` is true. For Cloud Composer environments in versions composer-
-        # 1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is
-        # true.
+        # cluster_ipv4_cidr_block` but not both. For Cloud Composer environments in
+        # versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `
+        # use_ip_aliases` is true.
         # Corresponds to the JSON property `clusterSecondaryRangeName`
         # @return [String]
         attr_accessor :cluster_secondary_range_name
       
         # Optional. The IP address range of the services IP addresses in this cluster.
-        # This field is applicable only when `use_ip_aliases` is true. For Cloud
-        # Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is
-        # applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose
-        # a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose
-        # a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/
-        # Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-
-        # 1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`)
-        # to pick a specific range to use. Specify `services_secondary_range_name` or `
-        # services_ipv4_cidr_block` but not both.
+        # For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this
+        # field is applicable only when `use_ip_aliases` is true. Set to blank to have
+        # GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have
+        # GKE choose a range with a specific netmask. Set to a [CIDR](https://en.
+        # wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/
+        # 14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `
+        # 192.168.0.0/16`) to pick a specific range to use. Specify `
+        # services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
         # Corresponds to the JSON property `servicesIpv4CidrBlock`
         # @return [String]
         attr_accessor :services_ipv4_cidr_block
       
         # Optional. The name of the services' secondary range used to allocate IP
         # addresses to the cluster. Specify either `services_secondary_range_name` or `
-        # services_ipv4_cidr_block` but not both. This field is applicable only when `
-        # use_ip_aliases` is true. For Cloud Composer environments in versions composer-
-        # 1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is
-        # true.
+        # services_ipv4_cidr_block` but not both. For Cloud Composer environments in
+        # versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `
+        # use_ip_aliases` is true.
         # Corresponds to the JSON property `servicesSecondaryRangeName`
         # @return [String]
         attr_accessor :services_secondary_range_name
