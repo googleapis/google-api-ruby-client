@@ -257,6 +257,16 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig]
         attr_accessor :advanced_api_ops_config
       
+        # Configuration for the Connectors Platform add-on.
+        # Corresponds to the JSON property `connectorsPlatformConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConnectorsPlatformConfig]
+        attr_accessor :connectors_platform_config
+      
+        # Configuration for the Integration add-on.
+        # Corresponds to the JSON property `integrationConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig]
+        attr_accessor :integration_config
+      
         # Configuration for the Monetization add-on.
         # Corresponds to the JSON property `monetizationConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig]
@@ -269,6 +279,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_api_ops_config = args[:advanced_api_ops_config] if args.key?(:advanced_api_ops_config)
+          @connectors_platform_config = args[:connectors_platform_config] if args.key?(:connectors_platform_config)
+          @integration_config = args[:integration_config] if args.key?(:integration_config)
           @monetization_config = args[:monetization_config] if args.key?(:monetization_config)
         end
       end
@@ -1477,6 +1489,33 @@ module Google
         def update!(**args)
           @major_version = args[:major_version] if args.key?(:major_version)
           @minor_version = args[:minor_version] if args.key?(:minor_version)
+        end
+      end
+      
+      # Configuration for the Connectors Platform add-on.
+      class GoogleCloudApigeeV1ConnectorsPlatformConfig
+        include Google::Apis::Core::Hashable
+      
+        # Flag that specifies whether the Connectors Platform add-on is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Output only. Time at which the Connectors Platform add-on expires in in
+        # milliseconds since epoch. If unspecified, the add-on will never expire.
+        # Corresponds to the JSON property `expiresAt`
+        # @return [Fixnum]
+        attr_accessor :expires_at
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @expires_at = args[:expires_at] if args.key?(:expires_at)
         end
       end
       
@@ -3877,6 +3916,26 @@ module Google
           @envgroup = args[:envgroup] if args.key?(:envgroup)
           @environment = args[:environment] if args.key?(:environment)
           @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
+      # Configuration for the Integration add-on.
+      class GoogleCloudApigeeV1IntegrationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Flag that specifies whether the Integration add-on is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
