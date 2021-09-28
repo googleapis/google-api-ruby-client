@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ConnectorsPlatformConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Credential
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +527,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1IntegrationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1259,6 +1271,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_api_ops_config, as: 'advancedApiOpsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdvancedApiOpsConfig::Representation
       
+          property :connectors_platform_config, as: 'connectorsPlatformConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConnectorsPlatformConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConnectorsPlatformConfig::Representation
+      
+          property :integration_config, as: 'integrationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig::Representation
+      
           property :monetization_config, as: 'monetizationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig::Representation
       
         end
@@ -1551,6 +1567,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :major_version, as: 'majorVersion'
           property :minor_version, as: 'minorVersion'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ConnectorsPlatformConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :expires_at, :numeric_string => true, as: 'expiresAt'
         end
       end
       
@@ -2164,6 +2188,13 @@ module Google
           property :envgroup, as: 'envgroup'
           property :environment, as: 'environment'
           property :percentage, as: 'percentage'
+        end
+      end
+      
+      class GoogleCloudApigeeV1IntegrationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
