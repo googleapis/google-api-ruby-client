@@ -246,6 +246,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :ip_prefix_length
       
+        # Optional. Enable outside allocation using public IP addresses. Any public IP
+        # range may be specified. If this field is provided, we will not use customer
+        # reserved ranges for this primary IP range.
+        # Corresponds to the JSON property `outsideAllocationPublicIpRange`
+        # @return [String]
+        attr_accessor :outside_allocation_public_ip_range
+      
         # Optional. The private IPv6 google access type for the VMs in this subnet. For
         # information about the access types that can be set using this field, see [
         # subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/
@@ -307,6 +314,7 @@ module Google
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @description = args[:description] if args.key?(:description)
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
+          @outside_allocation_public_ip_range = args[:outside_allocation_public_ip_range] if args.key?(:outside_allocation_public_ip_range)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @region = args[:region] if args.key?(:region)
           @requested_address = args[:requested_address] if args.key?(:requested_address)
@@ -3430,6 +3438,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :ip_prefix_length
       
+        # Optional. Enable outside allocation using public IP addresses. Any public IP
+        # range may be specified. If this field is provided, we will not use customer
+        # reserved ranges for this secondary IP range.
+        # Corresponds to the JSON property `outsideAllocationPublicIpRange`
+        # @return [String]
+        attr_accessor :outside_allocation_public_ip_range
+      
         # Required. A name for the secondary IP range. The name must be 1-63 characters
         # long, and comply with RFC1035. The name must be unique within the subnetwork.
         # Corresponds to the JSON property `rangeName`
@@ -3452,6 +3467,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
+          @outside_allocation_public_ip_range = args[:outside_allocation_public_ip_range] if args.key?(:outside_allocation_public_ip_range)
           @range_name = args[:range_name] if args.key?(:range_name)
           @requested_address = args[:requested_address] if args.key?(:requested_address)
         end
