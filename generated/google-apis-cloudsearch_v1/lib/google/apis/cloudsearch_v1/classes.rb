@@ -3049,8 +3049,8 @@ module Google
       
         # Indicates that the property can be used for sorting. Cannot be true for
         # properties that are repeatable. Cannot be true for properties whose type is
-        # object or user identifier. IsReturnable must be true to set this option. Only
-        # supported for Boolean, Date, Double, Integer, and Timestamp properties.
+        # object. IsReturnable must be true to set this option. Only supported for
+        # Boolean, Date, Double, Integer, and Timestamp properties.
         # Corresponds to the JSON property `isSortable`
         # @return [Boolean]
         attr_accessor :is_sortable
