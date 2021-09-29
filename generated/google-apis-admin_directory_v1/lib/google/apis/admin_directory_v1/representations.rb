@@ -127,6 +127,24 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class CpuInfo
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class LogicalCpu
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class CState
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class CpuStatusReport
           class Representation < Google::Apis::Core::JsonRepresentation; end
           
@@ -808,6 +826,8 @@ module Google
           property :annotated_user, as: 'annotatedUser'
           property :auto_update_expiration, :numeric_string => true, as: 'autoUpdateExpiration'
           property :boot_mode, as: 'bootMode'
+          collection :cpu_info, as: 'cpuInfo', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::Representation
+      
           collection :cpu_status_reports, as: 'cpuStatusReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport::Representation
       
           collection :device_files, as: 'deviceFiles', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DeviceFile::Representation
@@ -858,6 +878,36 @@ module Google
             property :active_time, as: 'activeTime'
             property :date, as: 'date', type: Date
         
+          end
+        end
+        
+        class CpuInfo
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :architecture, as: 'architecture'
+            collection :logical_cpus, as: 'logicalCpus', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::LogicalCpu, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::LogicalCpu::Representation
+        
+            property :max_clock_speed_khz, as: 'maxClockSpeedKhz'
+            property :model, as: 'model'
+          end
+          
+          class LogicalCpu
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              collection :c_states, as: 'cStates', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::LogicalCpu::CState, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::LogicalCpu::CState::Representation
+          
+              property :current_scaling_frequency_khz, as: 'currentScalingFrequencyKhz'
+              property :idle_duration, as: 'idleDuration'
+              property :max_scaling_frequency_khz, as: 'maxScalingFrequencyKhz'
+            end
+            
+            class CState
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :display_name, as: 'displayName'
+                property :session_duration, as: 'sessionDuration'
+              end
+            end
           end
         end
         

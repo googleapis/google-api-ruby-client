@@ -770,6 +770,11 @@ module Google
         # @return [String]
         attr_accessor :boot_mode
       
+        # Information regarding CPU specs in the device.
+        # Corresponds to the JSON property `cpuInfo`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo>]
+        attr_accessor :cpu_info
+      
         # Reports of CPU utilization and temperature (Read-only)
         # Corresponds to the JSON property `cpuStatusReports`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport>]
@@ -969,6 +974,7 @@ module Google
           @annotated_user = args[:annotated_user] if args.key?(:annotated_user)
           @auto_update_expiration = args[:auto_update_expiration] if args.key?(:auto_update_expiration)
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
+          @cpu_info = args[:cpu_info] if args.key?(:cpu_info)
           @cpu_status_reports = args[:cpu_status_reports] if args.key?(:cpu_status_reports)
           @device_files = args[:device_files] if args.key?(:device_files)
           @device_id = args[:device_id] if args.key?(:device_id)
@@ -1024,6 +1030,107 @@ module Google
           def update!(**args)
             @active_time = args[:active_time] if args.key?(:active_time)
             @date = args[:date] if args.key?(:date)
+          end
+        end
+        
+        # CPU specs for a CPU.
+        class CpuInfo
+          include Google::Apis::Core::Hashable
+        
+          # The CPU architecture.
+          # Corresponds to the JSON property `architecture`
+          # @return [String]
+          attr_accessor :architecture
+        
+          # Information for the Logical CPUs
+          # Corresponds to the JSON property `logicalCpus`
+          # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::LogicalCpu>]
+          attr_accessor :logical_cpus
+        
+          # The max CPU clock speed in kHz.
+          # Corresponds to the JSON property `maxClockSpeedKhz`
+          # @return [Fixnum]
+          attr_accessor :max_clock_speed_khz
+        
+          # The CPU model name.
+          # Corresponds to the JSON property `model`
+          # @return [String]
+          attr_accessor :model
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @architecture = args[:architecture] if args.key?(:architecture)
+            @logical_cpus = args[:logical_cpus] if args.key?(:logical_cpus)
+            @max_clock_speed_khz = args[:max_clock_speed_khz] if args.key?(:max_clock_speed_khz)
+            @model = args[:model] if args.key?(:model)
+          end
+          
+          # Status of a single logical CPU.
+          class LogicalCpu
+            include Google::Apis::Core::Hashable
+          
+            # C-States indicate the power consumption state of the CPU. For more information
+            # look at documentation published by the CPU maker.
+            # Corresponds to the JSON property `cStates`
+            # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::LogicalCpu::CState>]
+            attr_accessor :c_states
+          
+            # Current frequency the CPU is running at.
+            # Corresponds to the JSON property `currentScalingFrequencyKhz`
+            # @return [Fixnum]
+            attr_accessor :current_scaling_frequency_khz
+          
+            # Idle time since last boot.
+            # Corresponds to the JSON property `idleDuration`
+            # @return [String]
+            attr_accessor :idle_duration
+          
+            # Maximum frequency the CPU is allowed to run at, by policy.
+            # Corresponds to the JSON property `maxScalingFrequencyKhz`
+            # @return [Fixnum]
+            attr_accessor :max_scaling_frequency_khz
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @c_states = args[:c_states] if args.key?(:c_states)
+              @current_scaling_frequency_khz = args[:current_scaling_frequency_khz] if args.key?(:current_scaling_frequency_khz)
+              @idle_duration = args[:idle_duration] if args.key?(:idle_duration)
+              @max_scaling_frequency_khz = args[:max_scaling_frequency_khz] if args.key?(:max_scaling_frequency_khz)
+            end
+            
+            # Status of a single C-state. C-states are various modes the CPU can transition
+            # to in order to use more or less power.
+            class CState
+              include Google::Apis::Core::Hashable
+            
+              # Name of the state.
+              # Corresponds to the JSON property `displayName`
+              # @return [String]
+              attr_accessor :display_name
+            
+              # Time spent in the state since the last reboot.
+              # Corresponds to the JSON property `sessionDuration`
+              # @return [String]
+              attr_accessor :session_duration
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @display_name = args[:display_name] if args.key?(:display_name)
+                @session_duration = args[:session_duration] if args.key?(:session_duration)
+              end
+            end
           end
         end
         
@@ -3338,7 +3445,8 @@ module Google
         # @return [String]
         attr_accessor :schema_id
       
-        # The schema's name.
+        # The schema's name. Each `schema_name` must be unique within a customer.
+        # Reusing a name results in a `409: Entity already exists` error.
         # Corresponds to the JSON property `schemaName`
         # @return [String]
         attr_accessor :schema_name
@@ -3647,7 +3755,8 @@ module Google
         # @return [DateTime]
         attr_accessor :creation_time
       
-        # Custom fields of the user.
+        # Custom fields of the user. The key is a `schema_name` and its values are `'
+        # field_name': 'field_value'`.
         # Corresponds to the JSON property `customSchemas`
         # @return [Hash<String,Hash<String,Object>>]
         attr_accessor :custom_schemas
