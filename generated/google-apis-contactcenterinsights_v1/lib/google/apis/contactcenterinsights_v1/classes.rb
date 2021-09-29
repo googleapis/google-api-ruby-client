@@ -302,7 +302,7 @@ module Google
       
         # A map associating each issue resource name with its respective number of
         # matches in the set of conversations. Key has the format: `projects//locations//
-        # issueModels//issues/`
+        # issueModels//issues/` Deprecated, use `issue_matches_stats` field instead.
         # Corresponds to the JSON property `issueMatches`
         # @return [Hash<String,Fixnum>]
         attr_accessor :issue_matches
@@ -745,16 +745,31 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
+        # Metadata from Dialogflow relating to the current transcript segment.
+        # Corresponds to the JSON property `dialogflowSegmentMetadata`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata]
+        attr_accessor :dialogflow_segment_metadata
+      
         # The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/
         # bcp/bcp47.txt) language tag. Example: "en-US".
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
+        # The time that the message occurred, if provided.
+        # Corresponds to the JSON property `messageTime`
+        # @return [String]
+        attr_accessor :message_time
+      
         # The call participant speaking for a given utterance.
         # Corresponds to the JSON property `segmentParticipant`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationParticipant]
         attr_accessor :segment_participant
+      
+        # The data for a sentiment annotation.
+        # Corresponds to the JSON property `sentiment`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SentimentData]
+        attr_accessor :sentiment
       
         # The text of this segment.
         # Corresponds to the JSON property `text`
@@ -774,10 +789,34 @@ module Google
         def update!(**args)
           @channel_tag = args[:channel_tag] if args.key?(:channel_tag)
           @confidence = args[:confidence] if args.key?(:confidence)
+          @dialogflow_segment_metadata = args[:dialogflow_segment_metadata] if args.key?(:dialogflow_segment_metadata)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @message_time = args[:message_time] if args.key?(:message_time)
           @segment_participant = args[:segment_participant] if args.key?(:segment_participant)
+          @sentiment = args[:sentiment] if args.key?(:sentiment)
           @text = args[:text] if args.key?(:text)
           @words = args[:words] if args.key?(:words)
+        end
+      end
+      
+      # Metadata from Dialogflow relating to the current transcript segment.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Whether the transcript segment was covered under the configured smart reply
+        # allowlist in Agent Assist.
+        # Corresponds to the JSON property `smartReplyAllowlistCovered`
+        # @return [Boolean]
+        attr_accessor :smart_reply_allowlist_covered
+        alias_method :smart_reply_allowlist_covered?, :smart_reply_allowlist_covered
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @smart_reply_allowlist_covered = args[:smart_reply_allowlist_covered] if args.key?(:smart_reply_allowlist_covered)
         end
       end
       
