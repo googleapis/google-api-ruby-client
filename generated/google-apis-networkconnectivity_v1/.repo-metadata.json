@@ -1,0 +1,7 @@
+{
+    "api_id": "networkconnectivity:v1",
+    "name_pretty": "Network Connectivity API",
+    "distribution_name": "google-apis-networkconnectivity_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
