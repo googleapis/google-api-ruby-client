@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MemberRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Membership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +395,12 @@ module Google
       end
       
       class MembershipRole
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipRoleRestrictionEvaluation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +430,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestrictionEvaluation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestrictionEvaluations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +455,12 @@ module Google
       end
       
       class SearchTransitiveMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecuritySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1053,6 +1083,15 @@ module Google
         end
       end
       
+      class MemberRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation, as: 'evaluation', class: Google::Apis::CloudidentityV1beta1::RestrictionEvaluation, decorator: Google::Apis::CloudidentityV1beta1::RestrictionEvaluation::Representation
+      
+          property :query, as: 'query'
+        end
+      end
+      
       class Membership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1084,6 +1123,15 @@ module Google
           property :expiry_detail, as: 'expiryDetail', class: Google::Apis::CloudidentityV1beta1::ExpiryDetail, decorator: Google::Apis::CloudidentityV1beta1::ExpiryDetail::Representation
       
           property :name, as: 'name'
+          property :restriction_evaluations, as: 'restrictionEvaluations', class: Google::Apis::CloudidentityV1beta1::RestrictionEvaluations, decorator: Google::Apis::CloudidentityV1beta1::RestrictionEvaluations::Representation
+      
+        end
+      end
+      
+      class MembershipRoleRestrictionEvaluation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
@@ -1127,6 +1175,21 @@ module Google
         end
       end
       
+      class RestrictionEvaluation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+        end
+      end
+      
+      class RestrictionEvaluations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :member_restriction_evaluation, as: 'memberRestrictionEvaluation', class: Google::Apis::CloudidentityV1beta1::MembershipRoleRestrictionEvaluation, decorator: Google::Apis::CloudidentityV1beta1::MembershipRoleRestrictionEvaluation::Representation
+      
+        end
+      end
+      
       class SearchGroupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1151,6 +1214,15 @@ module Google
           collection :memberships, as: 'memberships', class: Google::Apis::CloudidentityV1beta1::MemberRelation, decorator: Google::Apis::CloudidentityV1beta1::MemberRelation::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SecuritySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :member_restriction, as: 'memberRestriction', class: Google::Apis::CloudidentityV1beta1::MemberRestriction, decorator: Google::Apis::CloudidentityV1beta1::MemberRestriction::Representation
+      
+          property :name, as: 'name'
         end
       end
       
