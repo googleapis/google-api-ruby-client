@@ -621,7 +621,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists entries.
+        # Lists entries. Note: Currently, this method can list only custom entries. To
+        # get a list of both custom and automatically created entries, use SearchCatalog.
         # @param [String] parent
         #   Required. The name of the entry group that contains the entries to list. Can
         #   be provided in URL format.
