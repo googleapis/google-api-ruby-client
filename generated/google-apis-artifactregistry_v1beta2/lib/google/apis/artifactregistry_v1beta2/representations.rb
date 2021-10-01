@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MavenRepositoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -446,6 +452,14 @@ module Google
         end
       end
       
+      class MavenRepositoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_snapshot_overwrites, as: 'allowSnapshotOverwrites'
+          property :version_policy, as: 'versionPolicy'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -486,6 +500,8 @@ module Google
           property :format, as: 'format'
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
+          property :maven_config, as: 'mavenConfig', class: Google::Apis::ArtifactregistryV1beta2::MavenRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1beta2::MavenRepositoryConfig::Representation
+      
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
         end
