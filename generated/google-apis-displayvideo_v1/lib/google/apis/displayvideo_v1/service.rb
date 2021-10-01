@@ -22,8 +22,9 @@ module Google
     module DisplayvideoV1
       # Display & Video 360 API
       #
-      # Display & Video 360 API allows users to manage and create campaigns and
-      #  reports.
+      # Display & Video 360 API allows users to automate complex Display & Video 360
+      #  workflows, such as creating insertion orders and setting targeting options for
+      #  individual line items.
       #
       # @example
       #    require 'google/apis/displayvideo_v1'
