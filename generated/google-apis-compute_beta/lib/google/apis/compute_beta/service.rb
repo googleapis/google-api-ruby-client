@@ -6502,8 +6502,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the specified Operations resource. Gets a list of operations by
-        # making a `list()` request.
+        # Retrieves the specified Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
@@ -9568,7 +9567,11 @@ module Google
         # the instances in the group are still in the process of being patched. You must
         # separately verify the status of the individual instances with the
         # listManagedInstances method. This method supports PATCH semantics and uses the
-        # JSON merge patch format and processing rules.
+        # JSON merge patch format and processing rules. If you update your group to
+        # specify a new template or instance configuration, it's possible that your
+        # intended specification for each VM in the group is different from the current
+        # state of that VM. To learn how to apply an updated configuration to the VMs in
+        # a MIG, see Updating instances in a MIG.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -10086,7 +10089,11 @@ module Google
         # request. This operation is marked as DONE when the group is updated even if
         # the instances in the group have not yet been updated. You must separately
         # verify the status of the individual instances with the listManagedInstances
-        # method.
+        # method. If you update your group to specify a new template or instance
+        # configuration, it's possible that your intended specification for each VM in
+        # the group is different from the current state of that VM. To learn how to
+        # apply an updated configuration to the VMs in a MIG, see Updating instances in
+        # a MIG.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11228,8 +11235,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves aggregated list of all of the instances in your project across all
-        # regions and zones.
+        # Retrieves an aggregated list of all of the instances in your project across
+        # all regions and zones. The performance of this method degrades when a filter
+        # is specified on a project that has a very large number of instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -23888,7 +23896,11 @@ module Google
         # the instances in the group are still in the process of being patched. You must
         # separately verify the status of the individual instances with the
         # listmanagedinstances method. This method supports PATCH semantics and uses the
-        # JSON merge patch format and processing rules.
+        # JSON merge patch format and processing rules. If you update your group to
+        # specify a new template or instance configuration, it's possible that your
+        # intended specification for each VM in the group is different from the current
+        # state of that VM. To learn how to apply an updated configuration to the VMs in
+        # a MIG, see Updating instances in a MIG.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -24328,7 +24340,11 @@ module Google
         # request. This operation is marked as DONE when the group is updated even if
         # the instances in the group have not yet been updated. You must separately
         # verify the status of the individual instances with the listmanagedinstances
-        # method.
+        # method. If you update your group to specify a new template or instance
+        # configuration, it's possible that your intended specification for each VM in
+        # the group is different from the current state of that VM. To learn how to
+        # apply an updated configuration to the VMs in a MIG, see Updating instances in
+        # a MIG.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
