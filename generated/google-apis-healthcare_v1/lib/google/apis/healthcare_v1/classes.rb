@@ -1374,6 +1374,63 @@ module Google
         end
       end
       
+      # Request to schedule an export.
+      class ExportMessagesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The end of the range in `send_time` (MSH.7, https://www.hl7.org/documentcenter/
+        # public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm) to process.
+        # If not specified, the time when the export is scheduled is used. This value
+        # has to come after the `start_time` defined below. Only messages whose `
+        # send_time` lies in the range `start_time` (inclusive) to `end_time` (exclusive)
+        # are exported.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The Cloud Storage output destination. The Cloud Healthcare Service Agent
+        # requires the `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage
+        # location.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::HealthcareV1::GcsDestination]
+        attr_accessor :gcs_destination
+      
+        # The start of the range in `send_time` (MSH.7, https://www.hl7.org/
+        # documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.
+        # htm) to process. If not specified, the UNIX epoch (1970-01-01T00:00:00Z) is
+        # used. This value has to come before the `end_time` defined below. Only
+        # messages whose `send_time` lies in the range `start_time` (inclusive) to `
+        # end_time` (exclusive) are exported.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Final response for the export operation. This structure is included in the
+      # response to describe the detailed outcome.
+      class ExportMessagesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request to export resources.
       class ExportResourcesRequest
         include Google::Apis::Core::Hashable
@@ -1727,6 +1784,71 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @paths = args[:paths] if args.key?(:paths)
+        end
+      end
+      
+      # The Cloud Storage output destination. The Cloud Healthcare Service Agent
+      # requires the `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage
+      # location.
+      class GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # The format of the exported HL7v2 message files.
+        # Corresponds to the JSON property `contentStructure`
+        # @return [String]
+        attr_accessor :content_structure
+      
+        # Specifies the parts of the Message resource to include in the export. If not
+        # specified, FULL is used.
+        # Corresponds to the JSON property `messageView`
+        # @return [String]
+        attr_accessor :message_view
+      
+        # URI of an existing Cloud Storage directory where the server writes result
+        # files, in the format `gs://`bucket-id`/`path/to/destination/dir``. If there is
+        # no trailing slash, the service appends one when composing the object path.
+        # Corresponds to the JSON property `uriPrefix`
+        # @return [String]
+        attr_accessor :uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_structure = args[:content_structure] if args.key?(:content_structure)
+          @message_view = args[:message_view] if args.key?(:message_view)
+          @uri_prefix = args[:uri_prefix] if args.key?(:uri_prefix)
+        end
+      end
+      
+      # Specifies the configuration for importing data from Cloud Storage.
+      class GcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Points to a Cloud Storage URI containing file(s) to import. The URI must be in
+        # the following format: `gs://`bucket_id`/`object_id``. The URI can include
+        # wildcards in `object_id` and thus identify multiple files. Supported wildcards:
+        # * `*` to match 0 or more non-separator characters * `**` to match 0 or more
+        # characters (including separators). Must be used at the end of a path and with
+        # no other wildcards in the path. Can also be used with a file extension (such
+        # as .ndjson), which imports all files with the extension in the specified
+        # directory and its sub-directories. For example, `gs://my-bucket/my-directory/**
+        # .ndjson` imports all files with `.ndjson` extensions in `my-directory/` and
+        # its sub-directories. * `?` to match 1 character Files matching the wildcard
+        # are expected to contain content only, no metadata.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -2368,6 +2490,40 @@ module Google
       
       # Returns additional information in regards to a completed DICOM store import.
       class ImportDicomDataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request to import messages.
+      class ImportMessagesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the configuration for importing data from Cloud Storage.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::HealthcareV1::GcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # Final response of importing messages. This structure is included in the
+      # response to describe the detailed outcome. It is only included when the
+      # operation finishes successfully.
+      class ImportMessagesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
