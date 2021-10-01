@@ -892,7 +892,7 @@ module Google
       
         # The type of the resource. The syntax is platform-specific because different
         # platforms define their resources differently. For Google APIs, the type format
-        # must be "`service`/`kind`".
+        # must be "`service`/`kind`", such as "pubsub.googleapis.com/Topic".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
