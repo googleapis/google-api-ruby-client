@@ -256,6 +256,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportMessagesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportMessagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +317,18 @@ module Google
       end
       
       class FieldMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -425,6 +449,18 @@ module Google
       end
       
       class ImportDicomDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportMessagesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1138,6 +1174,22 @@ module Google
         end
       end
       
+      class ExportMessagesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1::GcsDestination, decorator: Google::Apis::HealthcareV1::GcsDestination::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ExportMessagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ExportResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1221,6 +1273,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           collection :paths, as: 'paths'
+        end
+      end
+      
+      class GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_structure, as: 'contentStructure'
+          property :message_view, as: 'messageView'
+          property :uri_prefix, as: 'uriPrefix'
+        end
+      end
+      
+      class GcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -1385,6 +1453,20 @@ module Google
       end
       
       class ImportDicomDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ImportMessagesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1::GcsSource, decorator: Google::Apis::HealthcareV1::GcsSource::Representation
+      
+        end
+      end
+      
+      class ImportMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
