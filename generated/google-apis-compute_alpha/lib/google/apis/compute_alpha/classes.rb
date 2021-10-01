@@ -1094,6 +1094,12 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
+        # Whether to enable UEFI networking for instance creation.
+        # Corresponds to the JSON property `enableUefiNetworking`
+        # @return [Boolean]
+        attr_accessor :enable_uefi_networking
+        alias_method :enable_uefi_networking?, :enable_uefi_networking
+      
         # The number of vNUMA nodes.
         # Corresponds to the JSON property `numaNodeCount`
         # @return [Fixnum]
@@ -1121,6 +1127,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @enable_uefi_networking = args[:enable_uefi_networking] if args.key?(:enable_uefi_networking)
           @numa_node_count = args[:numa_node_count] if args.key?(:numa_node_count)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
           @visible_core_count = args[:visible_core_count] if args.key?(:visible_core_count)
@@ -3967,8 +3974,8 @@ module Google
         # @return [String]
         attr_accessor :connection_persistence_on_unhealthy_backends
       
-        # Enable Strong Session Affinity. This is only available in External TCP/UDP
-        # load balancer.
+        # Enable Strong Session Affinity for Network Load Balancing. This option is not
+        # available publicly.
         # Corresponds to the JSON property `enableStrongAffinity`
         # @return [Boolean]
         attr_accessor :enable_strong_affinity
@@ -3976,9 +3983,9 @@ module Google
       
         # Specifies how long to keep a Connection Tracking entry while there is no
         # matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes
-        # and maximum is 16 hours. For NLB the minimum(default) is 60 seconds and the
-        # maximum is 16 hours. This field will be supported only if the Connection
-        # Tracking key is less than 5-tuple.
+        # and maximum is 16 hours. For Network Load Balancer the default is 60 seconds.
+        # This option is not available publicly. This field will be supported only if
+        # the Connection Tracking key is less than 5-tuple.
         # Corresponds to the JSON property `idleTimeoutSec`
         # @return [Fixnum]
         attr_accessor :idle_timeout_sec
@@ -5871,30 +5878,39 @@ module Google
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
-        # The name of the encryption key that is stored in Google Cloud KMS.
+        # The name of the encryption key that is stored in Google Cloud KMS. For example:
+        # "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/
+        # cryptoKeys/key
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
       
         # The service account being used for the encryption request for the given KMS
-        # key. If absent, the Compute Engine default service account is used.
+        # key. If absent, the Compute Engine default service account is used. For
+        # example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
         # Corresponds to the JSON property `kmsKeyServiceAccount`
         # @return [String]
         attr_accessor :kms_key_service_account
       
         # Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
-        # base64 to either encrypt or decrypt this resource.
+        # base64 to either encrypt or decrypt this resource. You can provide either the
+        # rawKey or the rsaEncryptedKey. For example: "rawKey": "
+        # SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
         # Corresponds to the JSON property `rawKey`
         # @return [String]
         attr_accessor :raw_key
       
         # Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied
-        # encryption key to either encrypt or decrypt this resource. The key must meet
-        # the following requirements before you can provide it to Compute Engine: 1. The
-        # key is wrapped using a RSA public key certificate provided by Google. 2. After
-        # being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the
-        # RSA public key certificate provided by Google at: https://cloud-certs.storage.
-        # googleapis.com/google-cloud-csek-ingress.pem
+        # encryption key to either encrypt or decrypt this resource. You can provide
+        # either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "
+        # ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH
+        # z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD
+        # D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The
+        # key must meet the following requirements before you can provide it to Compute
+        # Engine: 1. The key is wrapped using a RSA public key certificate provided by
+        # Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64
+        # encoding. Gets the RSA public key certificate provided by Google at: https://
+        # cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
         # Corresponds to the JSON property `rsaEncryptedKey`
         # @return [String]
         attr_accessor :rsa_encrypted_key
@@ -5929,7 +5945,8 @@ module Google
         attr_accessor :disk_encryption_key
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # This field is only applicable for persistent disks.
+        # This field is only applicable for persistent disks. For example: "source": "/
+        # compute/v1/projects/project_id/zones/zone/disks/ disk_name
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -6268,25 +6285,6 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
-        # [Deprecated] The source in-place snapshot used to create this disk. You can
-        # provide this as a partial or full URL to the resource. For example, the
-        # following are valid values: - https://www.googleapis.com/compute/v1/projects/
-        # project /global/inPlaceSnapshots/inPlaceSnapshots - projects/project/global/
-        # inPlaceSnapshots/inPlaceSnapshots - global/inPlaceSnapshots/inPlaceSnapshots
-        # Corresponds to the JSON property `sourceInPlaceSnapshot`
-        # @return [String]
-        attr_accessor :source_in_place_snapshot
-      
-        # Deprecated The unique ID of the in-place snapshot used to create this disk.
-        # This value identifies the exact in-place snapshot that was used to create this
-        # persistent disk. For example, if you created the persistent disk from an in-
-        # place snapshot that was later deleted and recreated under the same name, the
-        # source in-place snapshot ID would identify the exact version of the in-place
-        # snapshot that was used.
-        # Corresponds to the JSON property `sourceInPlaceSnapshotId`
-        # @return [String]
-        attr_accessor :source_in_place_snapshot_id
-      
         # The source instant snapshot used to create this disk. You can provide this as
         # a partial or full URL to the resource. For example, the following are valid
         # values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /
@@ -6420,8 +6418,6 @@ module Google
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
           @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
-          @source_in_place_snapshot = args[:source_in_place_snapshot] if args.key?(:source_in_place_snapshot)
-          @source_in_place_snapshot_id = args[:source_in_place_snapshot_id] if args.key?(:source_in_place_snapshot_id)
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
@@ -8015,7 +8011,7 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all
         # following characters (except for the last character) must be a dash, lowercase
         # letter, or digit. The last character must be a lowercase letter or digit.
@@ -13730,264 +13726,6 @@ module Google
         end
       end
       
-      # Represents a InPlaceSnapshot resource. You can use in-place snapshots to
-      # create disk rollback points quickly..
-      class InPlaceSnapshot
-        include Google::Apis::Core::Hashable
-      
-        # [Output Only] Creation timestamp in RFC3339 text format.
-        # Corresponds to the JSON property `creationTimestamp`
-        # @return [String]
-        attr_accessor :creation_timestamp
-      
-        # An optional description of this resource. Provide this property when you
-        # create the resource.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # [Output Only] Size of the source disk, specified in GB.
-        # Corresponds to the JSON property `diskSizeGb`
-        # @return [Fixnum]
-        attr_accessor :disk_size_gb
-      
-        # Specifies to create an application consistent in-place snapshot by informing
-        # the OS to prepare for the snapshot process. Currently only supported on
-        # Windows instances using the Volume Shadow Copy Service (VSS).
-        # Corresponds to the JSON property `guestFlush`
-        # @return [Boolean]
-        attr_accessor :guest_flush
-        alias_method :guest_flush?, :guest_flush
-      
-        # [Output Only] The unique identifier for the resource. This identifier is
-        # defined by the server.
-        # Corresponds to the JSON property `id`
-        # @return [Fixnum]
-        attr_accessor :id
-      
-        # [Output Only] Type of the resource. Always compute#inPlaceSnapshot for
-        # InPlaceSnapshot resources.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # A fingerprint for the labels being applied to this InPlaceSnapshot, which is
-        # essentially a hash of the labels set used for optimistic locking. The
-        # fingerprint is initially generated by Compute Engine and changes after every
-        # request to modify or update labels. You must always provide an up-to-date
-        # fingerprint hash in order to update or change labels, otherwise the request
-        # will fail with error 412 conditionNotMet. To see the latest fingerprint, make
-        # a get() request to retrieve a InPlaceSnapshot.
-        # Corresponds to the JSON property `labelFingerprint`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :label_fingerprint
-      
-        # Labels to apply to this InPlaceSnapshot. These can be later modified by the
-        # setLabels method. Label values may be empty.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Name of the resource; provided by the client when the resource is created. The
-        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
-        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
-        # and all following characters must be a dash, lowercase letter, or digit,
-        # except the last character, which cannot be a dash.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # [Output Only] URL of the region where the in-place snapshot resides. You must
-        # specify this field as part of the HTTP request URL. It is not settable as a
-        # field in the request body.
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
-        # [Output Only] Server-defined URL for the resource.
-        # Corresponds to the JSON property `selfLink`
-        # @return [String]
-        attr_accessor :self_link
-      
-        # [Output Only] Server-defined URL for this resource's resource id.
-        # Corresponds to the JSON property `selfLinkWithId`
-        # @return [String]
-        attr_accessor :self_link_with_id
-      
-        # URL of the source disk used to create this in-place snapshot. Note that the
-        # source disk must be in the same zone/region as the in-place snapshot to be
-        # created. This can be a full or valid partial URL. For example, the following
-        # are valid values: - https://www.googleapis.com/compute/v1/projects/project/
-        # zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/
-        # disks/disk
-        # Corresponds to the JSON property `sourceDisk`
-        # @return [String]
-        attr_accessor :source_disk
-      
-        # [Output Only] The ID value of the disk used to create this InPlaceSnapshot.
-        # This value may be used to determine whether the InPlaceSnapshot was taken from
-        # the current or a previous instance of a given disk name.
-        # Corresponds to the JSON property `sourceDiskId`
-        # @return [String]
-        attr_accessor :source_disk_id
-      
-        # [Output Only] The status of the inPlaceSnapshot. This can be CREATING,
-        # DELETING, FAILED, or READY.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # [Output Only] URL of the zone where the in-place snapshot resides. You must
-        # specify this field as part of the HTTP request URL. It is not settable as a
-        # field in the request body.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
-          @description = args[:description] if args.key?(:description)
-          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
-          @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
-          @id = args[:id] if args.key?(:id)
-          @kind = args[:kind] if args.key?(:kind)
-          @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @region = args[:region] if args.key?(:region)
-          @self_link = args[:self_link] if args.key?(:self_link)
-          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
-          @source_disk = args[:source_disk] if args.key?(:source_disk)
-          @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
-          @status = args[:status] if args.key?(:status)
-          @zone = args[:zone] if args.key?(:zone)
-        end
-      end
-      
-      # Contains a list of InPlaceSnapshot resources.
-      class InPlaceSnapshotList
-        include Google::Apis::Core::Hashable
-      
-        # [Output Only] Unique identifier for the resource; defined by the server.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # A list of InPlaceSnapshot resources.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::ComputeAlpha::InPlaceSnapshot>]
-        attr_accessor :items
-      
-        # Type of resource.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # [Output Only] This token allows you to get the next page of results for list
-        # requests. If the number of results is larger than maxResults, use the
-        # nextPageToken as a value for the query parameter pageToken in the next list
-        # request. Subsequent list requests will have their own nextPageToken to
-        # continue paging through the results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # [Output Only] Server-defined URL for this resource.
-        # Corresponds to the JSON property `selfLink`
-        # @return [String]
-        attr_accessor :self_link
-      
-        # [Output Only] Informational warning message.
-        # Corresponds to the JSON property `warning`
-        # @return [Google::Apis::ComputeAlpha::InPlaceSnapshotList::Warning]
-        attr_accessor :warning
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @self_link = args[:self_link] if args.key?(:self_link)
-          @warning = args[:warning] if args.key?(:warning)
-        end
-        
-        # [Output Only] Informational warning message.
-        class Warning
-          include Google::Apis::Core::Hashable
-        
-          # [Output Only] A warning code, if applicable. For example, Compute Engine
-          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
-          # Corresponds to the JSON property `code`
-          # @return [String]
-          attr_accessor :code
-        
-          # [Output Only] Metadata about this warning in key: value format. For example: "
-          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
-          # Corresponds to the JSON property `data`
-          # @return [Array<Google::Apis::ComputeAlpha::InPlaceSnapshotList::Warning::Datum>]
-          attr_accessor :data
-        
-          # [Output Only] A human-readable description of the warning code.
-          # Corresponds to the JSON property `message`
-          # @return [String]
-          attr_accessor :message
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @code = args[:code] if args.key?(:code)
-            @data = args[:data] if args.key?(:data)
-            @message = args[:message] if args.key?(:message)
-          end
-          
-          # 
-          class Datum
-            include Google::Apis::Core::Hashable
-          
-            # [Output Only] A key that provides more detail on the warning being returned.
-            # For example, for warnings where there are no results in a list request for a
-            # particular zone, this key might be scope and the key value might be the zone
-            # name. Other examples might be a key indicating a deprecated resource and a
-            # suggested replacement, or a warning about invalid network settings (for
-            # example, if an instance attempts to perform IP forwarding but is not enabled
-            # for IP forwarding).
-            # Corresponds to the JSON property `key`
-            # @return [String]
-            attr_accessor :key
-          
-            # [Output Only] A warning data value corresponding to the key.
-            # Corresponds to the JSON property `value`
-            # @return [String]
-            attr_accessor :value
-          
-            def initialize(**args)
-               update!(**args)
-            end
-          
-            # Update properties of this object
-            def update!(**args)
-              @key = args[:key] if args.key?(:key)
-              @value = args[:value] if args.key?(:value)
-            end
-          end
-        end
-      end
-      
       # Initial State for shielded instance, these are public keys which are safe to
       # store in public
       class InitialStateConfig
@@ -14353,7 +14091,9 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Tags]
         attr_accessor :tags
       
-        # Upcoming Maintenance notification information.
+        # Upcoming Maintenance notification information. TODO(b/196881882) Deprecate
+        # this proto once it's fully migrated to be under proto ResourceStatus.
+        # UpcomingMaintenance.
         # Corresponds to the JSON property `upcomingMaintenance`
         # @return [Google::Apis::ComputeAlpha::UpcomingMaintenance]
         attr_accessor :upcoming_maintenance
@@ -14922,6 +14662,12 @@ module Google
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
+        # Specifies the instances configs overrides that should be applied for all
+        # instances in the MIG.
+        # Corresponds to the JSON property `allInstancesConfig`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerAllInstancesConfig]
+        attr_accessor :all_instances_config
+      
         # The autohealing policy for this managed instance group. You can specify only
         # one value.
         # Corresponds to the JSON property `autoHealingPolicies`
@@ -15116,6 +14862,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @auto_healing_policies = args[:auto_healing_policies] if args.key?(:auto_healing_policies)
           @base_instance_name = args[:base_instance_name] if args.key?(:base_instance_name)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -15388,6 +15135,25 @@ module Google
       end
       
       # 
+      class InstanceGroupManagerAllInstancesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents the change that you want to make to the instance properties.
+        # Corresponds to the JSON property `properties`
+        # @return [Google::Apis::ComputeAlpha::InstancePropertiesPatch]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # 
       class InstanceGroupManagerAutoHealingPolicy
         include Google::Apis::Core::Hashable
       
@@ -15411,6 +15177,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::FixedOrPercent]
         attr_accessor :max_unavailable
       
+        # 
+        # Corresponds to the JSON property `updateInstances`
+        # @return [String]
+        attr_accessor :update_instances
+      
         def initialize(**args)
            update!(**args)
         end
@@ -15420,6 +15191,7 @@ module Google
           @health_check = args[:health_check] if args.key?(:health_check)
           @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
+          @update_instances = args[:update_instances] if args.key?(:update_instances)
         end
       end
       
@@ -15612,6 +15384,12 @@ module Google
       class InstanceGroupManagerStatus
         include Google::Apis::Core::Hashable
       
+        # [Output Only] A status of consistency of Instances' config applied to
+        # instances with Instances' config defined in managed instance group.
+        # Corresponds to the JSON property `allInstancesConfig`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAllInstancesConfig]
+        attr_accessor :all_instances_config
+      
         # [Output Only] The URL of the Autoscaler that targets this instance group
         # manager.
         # Corresponds to the JSON property `autoscaler`
@@ -15646,10 +15424,39 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @autoscaler = args[:autoscaler] if args.key?(:autoscaler)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
           @stateful = args[:stateful] if args.key?(:stateful)
           @version_target = args[:version_target] if args.key?(:version_target)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusAllInstancesConfig
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Current instances' config revision. This value is in RFC3339
+        # text format.
+        # Corresponds to the JSON property `currentRevision`
+        # @return [String]
+        attr_accessor :current_revision
+      
+        # [Output Only] A bit indicating whether instances' config has been applied to
+        # all managed instances in managed instance group.
+        # Corresponds to the JSON property `effective`
+        # @return [Boolean]
+        attr_accessor :effective
+        alias_method :effective?, :effective
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_revision = args[:current_revision] if args.key?(:current_revision)
+          @effective = args[:effective] if args.key?(:effective)
         end
       end
       
@@ -17285,7 +17092,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::NetworkPerformanceConfig]
         attr_accessor :network_performance_config
       
-        # PostKeyRevocationActionType of the instance.
+        # PostKeyRevocationActionType of the instance.(will be deprecated soon)
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
         attr_accessor :post_key_revocation_action_type
@@ -17370,6 +17177,32 @@ module Google
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @shielded_vm_config = args[:shielded_vm_config] if args.key?(:shielded_vm_config)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Represents the change that you want to make to the instance properties.
+      class InstancePropertiesPatch
+        include Google::Apis::Core::Hashable
+      
+        # The label key-value pairs that you want to patch onto the instance.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The metadata key-value pairs that you want to patch onto the instance. For
+        # more information, see Project and instance metadata.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -22020,6 +21853,11 @@ module Google
       class ManagedInstance
         include Google::Apis::Core::Hashable
       
+        # [Output Only] Instances config revision applied to this instance.
+        # Corresponds to the JSON property `allInstancesConfig`
+        # @return [Google::Apis::ComputeAlpha::ManagedInstanceAllInstancesConfig]
+        attr_accessor :all_instances_config
+      
         # [Output Only] The current action that the managed instance group has scheduled
         # for the instance. Possible values: - NONE The instance is running, and the
         # managed instance group does not have any scheduled actions for this instance. -
@@ -22110,6 +21948,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances_config = args[:all_instances_config] if args.key?(:all_instances_config)
           @current_action = args[:current_action] if args.key?(:current_action)
           @id = args[:id] if args.key?(:id)
           @instance = args[:instance] if args.key?(:instance)
@@ -22122,6 +21961,25 @@ module Google
           @tag = args[:tag] if args.key?(:tag)
           @target_status = args[:target_status] if args.key?(:target_status)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class ManagedInstanceAllInstancesConfig
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Instances config revision. This value is in RFC3339 text format.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revision = args[:revision] if args.key?(:revision)
         end
       end
       
@@ -22508,6 +22366,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Enable ULA internal ipv6 on this network. Enabling this feature will assign a /
+        # 48 from google defined ULA prefix fd20::/20. .
+        # Corresponds to the JSON property `enableUlaInternalIpv6`
+        # @return [Boolean]
+        attr_accessor :enable_ula_internal_ipv6
+        alias_method :enable_ula_internal_ipv6?, :enable_ula_internal_ipv6
+      
         # [Output Only] URL of the firewall policy the network is associated with.
         # Corresponds to the JSON property `firewallPolicy`
         # @return [String]
@@ -22524,6 +22389,16 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
+      
+        # When enabling ula internal ipv6, caller optionally can specify the /48 range
+        # they want from the google defined ULA prefix fd20::/20. The input must be a
+        # valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
+        # fail if the speficied /48 is already in used by another resource. If the field
+        # is not speficied, then a /48 range will be randomly allocated from fd20::/20
+        # and returned via this field. .
+        # Corresponds to the JSON property `internalIpv6Range`
+        # @return [String]
+        attr_accessor :internal_ipv6_range
       
         # [Output Only] Type of the resource. Always compute#network for networks.
         # Corresponds to the JSON property `kind`
@@ -22545,6 +22420,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `networkFirewallPolicyEnforcementOrder`
+        # @return [String]
+        attr_accessor :network_firewall_policy_enforcement_order
       
         # [Output Only] A list of network peerings for the resource.
         # Corresponds to the JSON property `peerings`
@@ -22584,12 +22464,15 @@ module Google
           @auto_create_subnetworks = args[:auto_create_subnetworks] if args.key?(:auto_create_subnetworks)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @enable_ula_internal_ipv6 = args[:enable_ula_internal_ipv6] if args.key?(:enable_ula_internal_ipv6)
           @firewall_policy = args[:firewall_policy] if args.key?(:firewall_policy)
           @gateway_i_pv4 = args[:gateway_i_pv4] if args.key?(:gateway_i_pv4)
           @id = args[:id] if args.key?(:id)
+          @internal_ipv6_range = args[:internal_ipv6_range] if args.key?(:internal_ipv6_range)
           @kind = args[:kind] if args.key?(:kind)
           @mtu = args[:mtu] if args.key?(:mtu)
           @name = args[:name] if args.key?(:name)
+          @network_firewall_policy_enforcement_order = args[:network_firewall_policy_enforcement_order] if args.key?(:network_firewall_policy_enforcement_order)
           @peerings = args[:peerings] if args.key?(:peerings)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -33420,6 +33303,11 @@ module Google
         attr_accessor :allow_conflicting_subnetworks
         alias_method :allow_conflicting_subnetworks?, :allow_conflicting_subnetworks
       
+        # [Output Only] AS path.
+        # Corresponds to the JSON property `asPaths`
+        # @return [Array<Google::Apis::ComputeAlpha::RouteAsPath>]
+        attr_accessor :as_paths
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -33530,6 +33418,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
+        # [Output Only] The type of this route, which can be one of the following values:
+        # - 'TRANSIT' for a transit route that this router learned from another Cloud
+        # Router and will readvertise to one of its BGP peers - 'SUBNET' for a route
+        # from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this
+        # router - 'STATIC' for a static route
+        # Corresponds to the JSON property `routeType`
+        # @return [String]
+        attr_accessor :route_type
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -33558,6 +33455,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_conflicting_subnetworks = args[:allow_conflicting_subnetworks] if args.key?(:allow_conflicting_subnetworks)
+          @as_paths = args[:as_paths] if args.key?(:as_paths)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @dest_range = args[:dest_range] if args.key?(:dest_range)
@@ -33575,6 +33473,7 @@ module Google
           @next_hop_peering = args[:next_hop_peering] if args.key?(:next_hop_peering)
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
           @priority = args[:priority] if args.key?(:priority)
+          @route_type = args[:route_type] if args.key?(:route_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @tags = args[:tags] if args.key?(:tags)
@@ -33643,6 +33542,37 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class RouteAsPath
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The AS numbers of the AS Path.
+        # Corresponds to the JSON property `asLists`
+        # @return [Array<Fixnum>]
+        attr_accessor :as_lists
+      
+        # [Output Only] The type of the AS Path, which can be one of the following
+        # values: - 'AS_SET': unordered set of autonomous systems that the route in has
+        # traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the route
+        # has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems
+        # in the local confederation that the route has traversed - 'AS_CONFED_SET':
+        # unordered set of Member Autonomous Systems in the local confederation that the
+        # route has traversed
+        # Corresponds to the JSON property `pathSegmentType`
+        # @return [String]
+        attr_accessor :path_segment_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @as_lists = args[:as_lists] if args.key?(:as_lists)
+          @path_segment_type = args[:path_segment_type] if args.key?(:path_segment_type)
         end
       end
       
@@ -43973,7 +43903,9 @@ module Google
         end
       end
       
-      # Upcoming Maintenance notification information.
+      # Upcoming Maintenance notification information. TODO(b/196881882) Deprecate
+      # this proto once it's fully migrated to be under proto ResourceStatus.
+      # UpcomingMaintenance.
       class UpcomingMaintenance
         include Google::Apis::Core::Hashable
       

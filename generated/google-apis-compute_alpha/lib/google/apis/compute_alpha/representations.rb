@@ -1600,30 +1600,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InPlaceSnapshot
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InPlaceSnapshotList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Warning
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Datum
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InitialStateConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1726,6 +1702,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerAllInstancesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerAutoHealingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1769,6 +1751,12 @@ module Google
       end
       
       class InstanceGroupManagerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerStatusAllInstancesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2069,6 +2057,12 @@ module Google
       end
       
       class InstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancePropertiesPatch
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2705,6 +2699,12 @@ module Google
       end
       
       class ManagedInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedInstanceAllInstancesConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4404,6 +4404,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouteAsPath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -6460,6 +6466,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          property :enable_uefi_networking, as: 'enableUefiNetworking'
           property :numa_node_count, as: 'numaNodeCount'
           property :threads_per_core, as: 'threadsPerCore'
           property :visible_core_count, as: 'visibleCoreCount'
@@ -7589,8 +7596,6 @@ module Google
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :source_image_id, as: 'sourceImageId'
-          property :source_in_place_snapshot, as: 'sourceInPlaceSnapshot'
-          property :source_in_place_snapshot_id, as: 'sourceInPlaceSnapshotId'
           property :source_instant_snapshot, as: 'sourceInstantSnapshot'
           property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
           property :source_snapshot, as: 'sourceSnapshot'
@@ -9337,60 +9342,6 @@ module Google
         end
       end
       
-      class InPlaceSnapshot
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :creation_timestamp, as: 'creationTimestamp'
-          property :description, as: 'description'
-          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
-          property :guest_flush, as: 'guestFlush'
-          property :id, :numeric_string => true, as: 'id'
-          property :kind, as: 'kind'
-          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :region, as: 'region'
-          property :self_link, as: 'selfLink'
-          property :self_link_with_id, as: 'selfLinkWithId'
-          property :source_disk, as: 'sourceDisk'
-          property :source_disk_id, as: 'sourceDiskId'
-          property :status, as: 'status'
-          property :zone, as: 'zone'
-        end
-      end
-      
-      class InPlaceSnapshotList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::InPlaceSnapshot, decorator: Google::Apis::ComputeAlpha::InPlaceSnapshot::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :self_link, as: 'selfLink'
-          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::InPlaceSnapshotList::Warning, decorator: Google::Apis::ComputeAlpha::InPlaceSnapshotList::Warning::Representation
-      
-        end
-        
-        class Warning
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InPlaceSnapshotList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InPlaceSnapshotList::Warning::Datum::Representation
-        
-            property :message, as: 'message'
-          end
-          
-          class Datum
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :key, as: 'key'
-              property :value, as: 'value'
-            end
-          end
-        end
-      end
-      
       class InitialStateConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9604,6 +9555,8 @@ module Google
       class InstanceGroupManager
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeAlpha::InstanceGroupManagerAllInstancesConfig, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerAllInstancesConfig::Representation
+      
           collection :auto_healing_policies, as: 'autoHealingPolicies', class: Google::Apis::ComputeAlpha::InstanceGroupManagerAutoHealingPolicy, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerAutoHealingPolicy::Representation
       
           property :base_instance_name, as: 'baseInstanceName'
@@ -9698,6 +9651,14 @@ module Google
         end
       end
       
+      class InstanceGroupManagerAllInstancesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :properties, as: 'properties', class: Google::Apis::ComputeAlpha::InstancePropertiesPatch, decorator: Google::Apis::ComputeAlpha::InstancePropertiesPatch::Representation
+      
+        end
+      end
+      
       class InstanceGroupManagerAutoHealingPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9705,6 +9666,7 @@ module Google
           property :initial_delay_sec, as: 'initialDelaySec'
           property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
       
+          property :update_instances, as: 'updateInstances'
         end
       end
       
@@ -9765,12 +9727,22 @@ module Google
       class InstanceGroupManagerStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAllInstancesConfig, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusAllInstancesConfig::Representation
+      
           property :autoscaler, as: 'autoscaler'
           property :is_stable, as: 'isStable'
           property :stateful, as: 'stateful', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStateful, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStateful::Representation
       
           property :version_target, as: 'versionTarget', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusVersionTarget::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerStatusAllInstancesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_revision, as: 'currentRevision'
+          property :effective, as: 'effective'
         end
       end
       
@@ -10258,6 +10230,14 @@ module Google
       
           property :tags, as: 'tags', class: Google::Apis::ComputeAlpha::Tags, decorator: Google::Apis::ComputeAlpha::Tags::Representation
       
+        end
+      end
+      
+      class InstancePropertiesPatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          hash :metadata, as: 'metadata'
         end
       end
       
@@ -11427,6 +11407,8 @@ module Google
       class ManagedInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances_config, as: 'allInstancesConfig', class: Google::Apis::ComputeAlpha::ManagedInstanceAllInstancesConfig, decorator: Google::Apis::ComputeAlpha::ManagedInstanceAllInstancesConfig::Representation
+      
           property :current_action, as: 'currentAction'
           property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
@@ -11444,6 +11426,13 @@ module Google
           property :target_status, as: 'targetStatus'
           property :version, as: 'version', class: Google::Apis::ComputeAlpha::ManagedInstanceVersion, decorator: Google::Apis::ComputeAlpha::ManagedInstanceVersion::Representation
       
+        end
+      end
+      
+      class ManagedInstanceAllInstancesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :revision, as: 'revision'
         end
       end
       
@@ -11554,12 +11543,15 @@ module Google
           property :auto_create_subnetworks, as: 'autoCreateSubnetworks'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :enable_ula_internal_ipv6, as: 'enableUlaInternalIpv6'
           property :firewall_policy, as: 'firewallPolicy'
           property :gateway_i_pv4, as: 'gatewayIPv4'
           property :id, :numeric_string => true, as: 'id'
+          property :internal_ipv6_range, as: 'internalIpv6Range'
           property :kind, as: 'kind'
           property :mtu, as: 'mtu'
           property :name, as: 'name'
+          property :network_firewall_policy_enforcement_order, as: 'networkFirewallPolicyEnforcementOrder'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeAlpha::NetworkPeering, decorator: Google::Apis::ComputeAlpha::NetworkPeering::Representation
       
           property :routing_config, as: 'routingConfig', class: Google::Apis::ComputeAlpha::NetworkRoutingConfig, decorator: Google::Apis::ComputeAlpha::NetworkRoutingConfig::Representation
@@ -14415,6 +14407,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_conflicting_subnetworks, as: 'allowConflictingSubnetworks'
+          collection :as_paths, as: 'asPaths', class: Google::Apis::ComputeAlpha::RouteAsPath, decorator: Google::Apis::ComputeAlpha::RouteAsPath::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :dest_range, as: 'destRange'
@@ -14432,6 +14426,7 @@ module Google
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
+          property :route_type, as: 'routeType'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           collection :tags, as: 'tags'
@@ -14455,6 +14450,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RouteAsPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :as_lists, as: 'asLists'
+          property :path_segment_type, as: 'pathSegmentType'
         end
       end
       
