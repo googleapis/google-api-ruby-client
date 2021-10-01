@@ -695,6 +695,33 @@ module Google
         end
       end
       
+      # MavenRepositoryConfig is maven related repository details. Provides additional
+      # configuration details for repositories of the maven format type.
+      class MavenRepositoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # The repository with this flag will allow publishing the same snapshot versions.
+        # Corresponds to the JSON property `allowSnapshotOverwrites`
+        # @return [Boolean]
+        attr_accessor :allow_snapshot_overwrites
+        alias_method :allow_snapshot_overwrites?, :allow_snapshot_overwrites
+      
+        # Version policy defines the versions that the registry will accept.
+        # Corresponds to the JSON property `versionPolicy`
+        # @return [String]
+        attr_accessor :version_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_snapshot_overwrites = args[:allow_snapshot_overwrites] if args.key?(:allow_snapshot_overwrites)
+          @version_policy = args[:version_policy] if args.key?(:version_policy)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -916,6 +943,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # MavenRepositoryConfig is maven related repository details. Provides additional
+        # configuration details for repositories of the maven format type.
+        # Corresponds to the JSON property `mavenConfig`
+        # @return [Google::Apis::ArtifactregistryV1beta2::MavenRepositoryConfig]
+        attr_accessor :maven_config
+      
         # The name of the repository, for example: "projects/p1/locations/us-central1/
         # repositories/repo1".
         # Corresponds to the JSON property `name`
@@ -938,6 +971,7 @@ module Google
           @format = args[:format] if args.key?(:format)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
+          @maven_config = args[:maven_config] if args.key?(:maven_config)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
