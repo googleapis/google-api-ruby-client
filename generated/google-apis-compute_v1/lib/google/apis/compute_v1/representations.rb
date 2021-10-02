@@ -3658,6 +3658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouteAsPath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouteList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -3760,6 +3766,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterNatRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterNatRuleAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterNatSubnetworkToNat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3779,6 +3797,12 @@ module Google
       end
       
       class RouterStatusNatStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterStatusNatStatusNatRuleStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4301,6 +4325,12 @@ module Google
       end
       
       class SubnetworksSetPrivateIpGoogleAccessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Subsetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5886,6 +5916,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :session_affinity, as: 'sessionAffinity'
+          property :subsetting, as: 'subsetting', class: Google::Apis::ComputeV1::Subsetting, decorator: Google::Apis::ComputeV1::Subsetting::Representation
+      
           property :timeout_sec, as: 'timeoutSec'
         end
       end
@@ -8799,6 +8831,7 @@ module Google
           property :peer_ip_address, as: 'peerIpAddress'
           property :provisioned_link_count, as: 'provisionedLinkCount'
           property :requested_link_count, as: 'requestedLinkCount'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :state, as: 'state'
         end
@@ -8833,6 +8866,7 @@ module Google
       
           property :region, as: 'region'
           property :router, as: 'router'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :state, as: 'state'
           property :type, as: 'type'
@@ -9061,6 +9095,7 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
+          property :supports_pzs, as: 'supportsPzs'
         end
       end
       
@@ -11897,6 +11932,8 @@ module Google
       class Route
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :as_paths, as: 'asPaths', class: Google::Apis::ComputeV1::RouteAsPath, decorator: Google::Apis::ComputeV1::RouteAsPath::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :dest_range, as: 'destRange'
@@ -11912,6 +11949,7 @@ module Google
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
+          property :route_type, as: 'routeType'
           property :self_link, as: 'selfLink'
           collection :tags, as: 'tags'
           collection :warnings, as: 'warnings', class: Google::Apis::ComputeV1::Route::Warning, decorator: Google::Apis::ComputeV1::Route::Warning::Representation
@@ -11934,6 +11972,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RouteAsPath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :as_lists, as: 'asLists'
+          property :path_segment_type, as: 'pathSegmentType'
         end
       end
       
@@ -12134,10 +12180,13 @@ module Google
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
           collection :nat_ips, as: 'natIps'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeV1::RouterNatRule, decorator: Google::Apis::ComputeV1::RouterNatRule::Representation
+      
           property :source_subnetwork_ip_ranges_to_nat, as: 'sourceSubnetworkIpRangesToNat'
           collection :subnetworks, as: 'subnetworks', class: Google::Apis::ComputeV1::RouterNatSubnetworkToNat, decorator: Google::Apis::ComputeV1::RouterNatSubnetworkToNat::Representation
       
           property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
+          property :tcp_time_wait_timeout_sec, as: 'tcpTimeWaitTimeoutSec'
           property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
           property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
         end
@@ -12148,6 +12197,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class RouterNatRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::ComputeV1::RouterNatRuleAction, decorator: Google::Apis::ComputeV1::RouterNatRuleAction::Representation
+      
+          property :description, as: 'description'
+          property :match, as: 'match'
+          property :rule_number, as: 'ruleNumber'
+        end
+      end
+      
+      class RouterNatRuleAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :source_nat_active_ips, as: 'sourceNatActiveIps'
+          collection :source_nat_drain_ips, as: 'sourceNatDrainIps'
         end
       end
       
@@ -12202,8 +12270,21 @@ module Google
           property :min_extra_nat_ips_needed, as: 'minExtraNatIpsNeeded'
           property :name, as: 'name'
           property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
+          collection :rule_status, as: 'ruleStatus', class: Google::Apis::ComputeV1::RouterStatusNatStatusNatRuleStatus, decorator: Google::Apis::ComputeV1::RouterStatusNatStatusNatRuleStatus::Representation
+      
           collection :user_allocated_nat_ip_resources, as: 'userAllocatedNatIpResources'
           collection :user_allocated_nat_ips, as: 'userAllocatedNatIps'
+        end
+      end
+      
+      class RouterStatusNatStatusNatRuleStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :active_nat_ips, as: 'activeNatIps'
+          collection :drain_nat_ips, as: 'drainNatIps'
+          property :min_extra_ips_needed, as: 'minExtraIpsNeeded'
+          property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
+          property :rule_number, as: 'ruleNumber'
         end
       end
       
@@ -13124,6 +13205,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
+        end
+      end
+      
+      class Subsetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
         end
       end
       
