@@ -3191,6 +3191,13 @@ module Google
         # @return [String]
         attr_accessor :session_affinity
       
+        # Subsetting configuration for this BackendService. Currently this is applicable
+        # only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and
+        # Traffic Director.
+        # Corresponds to the JSON property `subsetting`
+        # @return [Google::Apis::ComputeV1::Subsetting]
+        attr_accessor :subsetting
+      
         # Not supported when the backend service is referenced by a URL map that is
         # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Instead, use maxStreamDuration.
@@ -3236,6 +3243,7 @@ module Google
           @security_settings = args[:security_settings] if args.key?(:security_settings)
           @self_link = args[:self_link] if args.key?(:self_link)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
+          @subsetting = args[:subsetting] if args.key?(:subsetting)
           @timeout_sec = args[:timeout_sec] if args.key?(:timeout_sec)
         end
       end
@@ -4968,30 +4976,39 @@ module Google
       class CustomerEncryptionKey
         include Google::Apis::Core::Hashable
       
-        # The name of the encryption key that is stored in Google Cloud KMS.
+        # The name of the encryption key that is stored in Google Cloud KMS. For example:
+        # "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/
+        # cryptoKeys/key
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
       
         # The service account being used for the encryption request for the given KMS
-        # key. If absent, the Compute Engine default service account is used.
+        # key. If absent, the Compute Engine default service account is used. For
+        # example: "kmsKeyServiceAccount": "name@project_id.iam.gserviceaccount.com/
         # Corresponds to the JSON property `kmsKeyServiceAccount`
         # @return [String]
         attr_accessor :kms_key_service_account
       
         # Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
-        # base64 to either encrypt or decrypt this resource.
+        # base64 to either encrypt or decrypt this resource. You can provide either the
+        # rawKey or the rsaEncryptedKey. For example: "rawKey": "
+        # SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
         # Corresponds to the JSON property `rawKey`
         # @return [String]
         attr_accessor :raw_key
       
         # Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied
-        # encryption key to either encrypt or decrypt this resource. The key must meet
-        # the following requirements before you can provide it to Compute Engine: 1. The
-        # key is wrapped using a RSA public key certificate provided by Google. 2. After
-        # being wrapped, the key must be encoded in RFC 4648 base64 encoding. Gets the
-        # RSA public key certificate provided by Google at: https://cloud-certs.storage.
-        # googleapis.com/google-cloud-csek-ingress.pem
+        # encryption key to either encrypt or decrypt this resource. You can provide
+        # either the rawKey or the rsaEncryptedKey. For example: "rsaEncryptedKey": "
+        # ieCx/NcW06PcT7Ep1X6LUTc/hLvUDYyzSZPPVCVPTVEohpeHASqC8uw5TzyO9U+Fka9JFH
+        # z0mBibXUInrC/jEk014kCK/NPjYgEMOyssZ4ZINPKxlUh2zn1bV+MCaTICrdmuSBTWlUUiFoD
+        # D6PYznLwh8ZNdaheCeZ8ewEXgFQ8V+sDroLaN3Xs3MDTXQEMMoNUXMCZEIpg9Vtp9x2oe==" The
+        # key must meet the following requirements before you can provide it to Compute
+        # Engine: 1. The key is wrapped using a RSA public key certificate provided by
+        # Google. 2. After being wrapped, the key must be encoded in RFC 4648 base64
+        # encoding. Gets the RSA public key certificate provided by Google at: https://
+        # cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem
         # Corresponds to the JSON property `rsaEncryptedKey`
         # @return [String]
         attr_accessor :rsa_encrypted_key
@@ -5026,7 +5043,8 @@ module Google
         attr_accessor :disk_encryption_key
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # This field is only applicable for persistent disks.
+        # This field is only applicable for persistent disks. For example: "source": "/
+        # compute/v1/projects/project_id/zones/zone/disks/ disk_name
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -6988,7 +7006,7 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
         # z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all
         # following characters (except for the last character) must be a dash, lowercase
         # letter, or digit. The last character must be a lowercase letter or digit.
@@ -15278,6 +15296,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :requested_link_count
       
+        # [Output Only] Set to true if the resource satisfies the zone separation
+        # organization policy constraints and false otherwise. Defaults to false if the
+        # field is not present.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -15320,6 +15346,7 @@ module Google
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
           @provisioned_link_count = args[:provisioned_link_count] if args.key?(:provisioned_link_count)
           @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @state = args[:state] if args.key?(:state)
         end
@@ -15526,6 +15553,14 @@ module Google
         # @return [String]
         attr_accessor :router
       
+        # [Output Only] Set to true if the resource satisfies the zone separation
+        # organization policy constraints and false otherwise. Defaults to false if the
+        # field is not present.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -15595,6 +15630,7 @@ module Google
           @private_interconnect_info = args[:private_interconnect_info] if args.key?(:private_interconnect_info)
           @region = args[:region] if args.key?(:region)
           @router = args[:router] if args.key?(:router)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
@@ -16422,6 +16458,13 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # [Output Only] Set to true for locations that support physical zone separation.
+        # Defaults to false if the field is not present.
+        # Corresponds to the JSON property `supportsPzs`
+        # @return [Boolean]
+        attr_accessor :supports_pzs
+        alias_method :supports_pzs?, :supports_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16443,6 +16486,7 @@ module Google
           @region_infos = args[:region_infos] if args.key?(:region_infos)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
+          @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
         end
       end
       
@@ -27258,6 +27302,11 @@ module Google
       class Route
         include Google::Apis::Core::Hashable
       
+        # [Output Only] AS path.
+        # Corresponds to the JSON property `asPaths`
+        # @return [Array<Google::Apis::ComputeV1::RouteAsPath>]
+        attr_accessor :as_paths
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -27355,6 +27404,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
+        # [Output Only] The type of this route, which can be one of the following values:
+        # - 'TRANSIT' for a transit route that this router learned from another Cloud
+        # Router and will readvertise to one of its BGP peers - 'SUBNET' for a route
+        # from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this
+        # router - 'STATIC' for a static route
+        # Corresponds to the JSON property `routeType`
+        # @return [String]
+        attr_accessor :route_type
+      
         # [Output Only] Server-defined fully-qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -27377,6 +27435,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @as_paths = args[:as_paths] if args.key?(:as_paths)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @dest_range = args[:dest_range] if args.key?(:dest_range)
@@ -27392,6 +27451,7 @@ module Google
           @next_hop_peering = args[:next_hop_peering] if args.key?(:next_hop_peering)
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
           @priority = args[:priority] if args.key?(:priority)
+          @route_type = args[:route_type] if args.key?(:route_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @tags = args[:tags] if args.key?(:tags)
           @warnings = args[:warnings] if args.key?(:warnings)
@@ -27459,6 +27519,37 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class RouteAsPath
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The AS numbers of the AS Path.
+        # Corresponds to the JSON property `asLists`
+        # @return [Array<Fixnum>]
+        attr_accessor :as_lists
+      
+        # [Output Only] The type of the AS Path, which can be one of the following
+        # values: - 'AS_SET': unordered set of autonomous systems that the route in has
+        # traversed - 'AS_SEQUENCE': ordered set of autonomous systems that the route
+        # has traversed - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems
+        # in the local confederation that the route has traversed - 'AS_CONFED_SET':
+        # unordered set of Member Autonomous Systems in the local confederation that the
+        # route has traversed
+        # Corresponds to the JSON property `pathSegmentType`
+        # @return [String]
+        attr_accessor :path_segment_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @as_lists = args[:as_lists] if args.key?(:as_lists)
+          @path_segment_type = args[:path_segment_type] if args.key?(:path_segment_type)
         end
       end
       
@@ -28334,6 +28425,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :nat_ips
       
+        # A list of rules associated with this NAT.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ComputeV1::RouterNatRule>]
+        attr_accessor :rules
+      
         # Specify the Nat option, which can take one of the following values: -
         # ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are
         # allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP
@@ -28360,6 +28456,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :tcp_established_idle_timeout_sec
       
+        # Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults
+        # to 120s if not set.
+        # Corresponds to the JSON property `tcpTimeWaitTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :tcp_time_wait_timeout_sec
+      
         # Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not
         # set.
         # Corresponds to the JSON property `tcpTransitoryIdleTimeoutSec`
@@ -28385,9 +28487,11 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
           @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
+          @rules = args[:rules] if args.key?(:rules)
           @source_subnetwork_ip_ranges_to_nat = args[:source_subnetwork_ip_ranges_to_nat] if args.key?(:source_subnetwork_ip_ranges_to_nat)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
           @tcp_established_idle_timeout_sec = args[:tcp_established_idle_timeout_sec] if args.key?(:tcp_established_idle_timeout_sec)
+          @tcp_time_wait_timeout_sec = args[:tcp_time_wait_timeout_sec] if args.key?(:tcp_time_wait_timeout_sec)
           @tcp_transitory_idle_timeout_sec = args[:tcp_transitory_idle_timeout_sec] if args.key?(:tcp_transitory_idle_timeout_sec)
           @udp_idle_timeout_sec = args[:udp_idle_timeout_sec] if args.key?(:udp_idle_timeout_sec)
         end
@@ -28420,6 +28524,80 @@ module Google
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
           @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # 
+      class RouterNatRule
+        include Google::Apis::Core::Hashable
+      
+        # The action to be enforced for traffic that matches this rule.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::ComputeV1::RouterNatRuleAction]
+        attr_accessor :action
+      
+        # An optional description of this rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # CEL expression that specifies the match condition that egress traffic from a
+        # VM is evaluated against. If it evaluates to true, the corresponding `action`
+        # is enforced. The following examples are valid match expressions for public NAT:
+        # "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.
+        # 0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The
+        # following example is a valid match expression for private NAT: "nexthop.hub ==
+        # '/projects/my-project/global/hub/hub-1'"
+        # Corresponds to the JSON property `match`
+        # @return [String]
+        attr_accessor :match
+      
+        # An integer uniquely identifying a rule in the list. The rule number must be a
+        # positive value between 0 and 65000, and must be unique among rules within a
+        # NAT.
+        # Corresponds to the JSON property `ruleNumber`
+        # @return [Fixnum]
+        attr_accessor :rule_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @description = args[:description] if args.key?(:description)
+          @match = args[:match] if args.key?(:match)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
+        end
+      end
+      
+      # 
+      class RouterNatRuleAction
+        include Google::Apis::Core::Hashable
+      
+        # A list of URLs of the IP resources used for this NAT rule. These IP addresses
+        # must be valid static external IP addresses assigned to the project. This field
+        # is used for public NAT.
+        # Corresponds to the JSON property `sourceNatActiveIps`
+        # @return [Array<String>]
+        attr_accessor :source_nat_active_ips
+      
+        # A list of URLs of the IP resources to be drained. These IPs must be valid
+        # static external IPs that have been assigned to the NAT. These IPs should be
+        # used for updating/patching a NAT rule only. This field is used for public NAT.
+        # Corresponds to the JSON property `sourceNatDrainIps`
+        # @return [Array<String>]
+        attr_accessor :source_nat_drain_ips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_nat_active_ips = args[:source_nat_active_ips] if args.key?(:source_nat_active_ips)
+          @source_nat_drain_ips = args[:source_nat_drain_ips] if args.key?(:source_nat_drain_ips)
         end
       end
       
@@ -28622,6 +28800,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_vm_endpoints_with_nat_mappings
       
+        # Status of rules in this NAT.
+        # Corresponds to the JSON property `ruleStatus`
+        # @return [Array<Google::Apis::ComputeV1::RouterStatusNatStatusNatRuleStatus>]
+        attr_accessor :rule_status
+      
         # A list of fully qualified URLs of reserved IP address resources.
         # Corresponds to the JSON property `userAllocatedNatIpResources`
         # @return [Array<String>]
@@ -28645,8 +28828,55 @@ module Google
           @min_extra_nat_ips_needed = args[:min_extra_nat_ips_needed] if args.key?(:min_extra_nat_ips_needed)
           @name = args[:name] if args.key?(:name)
           @num_vm_endpoints_with_nat_mappings = args[:num_vm_endpoints_with_nat_mappings] if args.key?(:num_vm_endpoints_with_nat_mappings)
+          @rule_status = args[:rule_status] if args.key?(:rule_status)
           @user_allocated_nat_ip_resources = args[:user_allocated_nat_ip_resources] if args.key?(:user_allocated_nat_ip_resources)
           @user_allocated_nat_ips = args[:user_allocated_nat_ips] if args.key?(:user_allocated_nat_ips)
+        end
+      end
+      
+      # Status of a NAT Rule contained in this NAT.
+      class RouterStatusNatStatusNatRuleStatus
+        include Google::Apis::Core::Hashable
+      
+        # A list of active IPs for NAT. Example: ["1.1.1.1", "179.12.26.133"].
+        # Corresponds to the JSON property `activeNatIps`
+        # @return [Array<String>]
+        attr_accessor :active_nat_ips
+      
+        # A list of IPs for NAT that are in drain mode. Example: ["1.1.1.1", "179.12.26.
+        # 133"].
+        # Corresponds to the JSON property `drainNatIps`
+        # @return [Array<String>]
+        attr_accessor :drain_nat_ips
+      
+        # The number of extra IPs to allocate. This will be greater than 0 only if the
+        # existing IPs in this NAT Rule are NOT enough to allow all configured VMs to
+        # use NAT.
+        # Corresponds to the JSON property `minExtraIpsNeeded`
+        # @return [Fixnum]
+        attr_accessor :min_extra_ips_needed
+      
+        # Number of VM endpoints (i.e., NICs) that have NAT Mappings from this NAT Rule.
+        # Corresponds to the JSON property `numVmEndpointsWithNatMappings`
+        # @return [Fixnum]
+        attr_accessor :num_vm_endpoints_with_nat_mappings
+      
+        # Rule number of the rule.
+        # Corresponds to the JSON property `ruleNumber`
+        # @return [Fixnum]
+        attr_accessor :rule_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_nat_ips = args[:active_nat_ips] if args.key?(:active_nat_ips)
+          @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
+          @min_extra_ips_needed = args[:min_extra_ips_needed] if args.key?(:min_extra_ips_needed)
+          @num_vm_endpoints_with_nat_mappings = args[:num_vm_endpoints_with_nat_mappings] if args.key?(:num_vm_endpoints_with_nat_mappings)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
         end
       end
       
@@ -32263,6 +32493,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
+        end
+      end
+      
+      # Subsetting configuration for this BackendService. Currently this is applicable
+      # only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and
+      # Traffic Director.
+      class Subsetting
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
