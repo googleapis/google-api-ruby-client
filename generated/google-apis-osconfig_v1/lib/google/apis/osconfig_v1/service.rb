@@ -135,6 +135,99 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get the OS policy asssignment report for the specified Compute Engine VM
+        # instance.
+        # @param [String] name
+        #   Required. API resource name for OS policy assignment report. Format: `/
+        #   projects/`project`/locations/`location`/instances/`instance`/
+        #   osPolicyAssignments/`assignment`/report` For ``project``, either `project-
+        #   number` or `project-id` can be provided. For ``instance_id``, either Compute
+        #   Engine `instance-id` or `instance-name` can be provided. For ``assignment_id``,
+        #   the OSPolicyAssignment id must be provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::OsPolicyAssignmentReport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::OsPolicyAssignmentReport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_instance_os_policy_assignment_report(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OsconfigV1::OsPolicyAssignmentReport::Representation
+          command.response_class = Google::Apis::OsconfigV1::OsPolicyAssignmentReport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List OS policy asssignment reports for all Compute Engine VM instances in the
+        # specified zone.
+        # @param [String] parent
+        #   Required. The parent resource name. Format: `projects/`project`/locations/`
+        #   location`/instances/`instance`/osPolicyAssignments/`assignment`/reports` For ``
+        #   project``, either `project-number` or `project-id` can be provided. For ``
+        #   instance``, either `instance-name`, `instance-id`, or `-` can be provided. If '
+        #   -' is provided, the response will include OSPolicyAssignmentReports for all
+        #   instances in the project/location. For ``assignment``, either `assignment-id`
+        #   or `-` can be provided. If '-' is provided, the response will include
+        #   OSPolicyAssignmentReports for all OSPolicyAssignments in the project/location.
+        #   Either `instance` or `assignment` must be `-`. For example: `projects/`project`
+        #   /locations/`location`/instances/`instance`/osPolicyAssignments/-/reports`
+        #   returns all reports for the instance `projects/`project`/locations/`location`/
+        #   instances/-/osPolicyAssignments/`assignment-id`/reports` returns all the
+        #   reports for the given assignment across all instances. `projects/`project`/
+        #   locations/`location`/instances/-/osPolicyAssignments/-/reports` returns all
+        #   the reports for all assignments across all instances.
+        # @param [String] filter
+        #   If provided, this field specifies the criteria that must be met by the `
+        #   OSPolicyAssignmentReport` API resource that is included in the response.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return.
+        # @param [String] page_token
+        #   A pagination token returned from a previous call to the `
+        #   ListOSPolicyAssignmentReports` method that indicates where this listing should
+        #   continue from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::ListOsPolicyAssignmentReportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::ListOsPolicyAssignmentReportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_instance_os_policy_assignment_reports(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/reports', options)
+          command.response_representation = Google::Apis::OsconfigV1::ListOsPolicyAssignmentReportsResponse::Representation
+          command.response_class = Google::Apis::OsconfigV1::ListOsPolicyAssignmentReportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the vulnerability report for the specified VM instance. Only VMs with
         # inventory data have vulnerability reports associated with them.
         # @param [String] name
@@ -444,6 +537,77 @@ module Google
           command.response_class = Google::Apis::OsconfigV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
+        # @param [String] name
+        #   The name of the operation resource to be cancelled.
+        # @param [Google::Apis::OsconfigV1::CancelOperationRequest] cancel_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::OsconfigV1::CancelOperationRequest::Representation
+          command.request_object = cancel_operation_request_object
+          command.response_representation = Google::Apis::OsconfigV1::Empty::Representation
+          command.response_class = Google::Apis::OsconfigV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsconfigV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsconfigV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_os_policy_assignment_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OsconfigV1::Operation::Representation
+          command.response_class = Google::Apis::OsconfigV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
