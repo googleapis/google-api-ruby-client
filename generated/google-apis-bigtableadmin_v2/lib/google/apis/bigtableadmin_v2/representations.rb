@@ -786,6 +786,7 @@ module Google
       class MultiClusterRoutingUseAny
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cluster_ids, as: 'clusterIds'
         end
       end
       
