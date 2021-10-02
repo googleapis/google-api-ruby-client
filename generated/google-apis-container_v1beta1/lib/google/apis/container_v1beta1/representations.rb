@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MeshCertificates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1000,6 +1006,8 @@ module Google
           property :master_authorized_networks_config, as: 'masterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig::Representation
       
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
+          property :mesh_certificates, as: 'meshCertificates', class: Google::Apis::ContainerV1beta1::MeshCertificates, decorator: Google::Apis::ContainerV1beta1::MeshCertificates::Representation
+      
           property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::ContainerV1beta1::MonitoringConfig, decorator: Google::Apis::ContainerV1beta1::MonitoringConfig::Representation
       
           property :monitoring_service, as: 'monitoringService'
@@ -1106,6 +1114,8 @@ module Google
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig::Representation
       
           property :desired_master_version, as: 'desiredMasterVersion'
+          property :desired_mesh_certificates, as: 'desiredMeshCertificates', class: Google::Apis::ContainerV1beta1::MeshCertificates, decorator: Google::Apis::ContainerV1beta1::MeshCertificates::Representation
+      
           property :desired_monitoring_config, as: 'desiredMonitoringConfig', class: Google::Apis::ContainerV1beta1::MonitoringConfig, decorator: Google::Apis::ContainerV1beta1::MonitoringConfig::Representation
       
           property :desired_monitoring_service, as: 'desiredMonitoringService'
@@ -1532,6 +1542,13 @@ module Google
         end
       end
       
+      class MeshCertificates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_certificates, as: 'enableCertificates'
+        end
+      end
+      
       class Metric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1629,6 +1646,7 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ContainerV1beta1::ShieldedInstanceConfig, decorator: Google::Apis::ContainerV1beta1::ShieldedInstanceConfig::Representation
       
+          property :spot, as: 'spot'
           collection :tags, as: 'tags'
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1beta1::NodeTaint, decorator: Google::Apis::ContainerV1beta1::NodeTaint::Representation
       

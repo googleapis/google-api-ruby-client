@@ -747,6 +747,11 @@ module Google
         # @return [String]
         attr_accessor :master_ipv4_cidr_block
       
+        # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        # Corresponds to the JSON property `meshCertificates`
+        # @return [Google::Apis::ContainerV1beta1::MeshCertificates]
+        attr_accessor :mesh_certificates
+      
         # MonitoringConfig is cluster monitoring configuration.
         # Corresponds to the JSON property `monitoringConfig`
         # @return [Google::Apis::ContainerV1beta1::MonitoringConfig]
@@ -971,6 +976,7 @@ module Google
           @master_auth = args[:master_auth] if args.key?(:master_auth)
           @master_authorized_networks_config = args[:master_authorized_networks_config] if args.key?(:master_authorized_networks_config)
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
+          @mesh_certificates = args[:mesh_certificates] if args.key?(:mesh_certificates)
           @monitoring_config = args[:monitoring_config] if args.key?(:monitoring_config)
           @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
           @name = args[:name] if args.key?(:name)
@@ -1203,6 +1209,11 @@ module Google
         # @return [String]
         attr_accessor :desired_master_version
       
+        # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        # Corresponds to the JSON property `desiredMeshCertificates`
+        # @return [Google::Apis::ContainerV1beta1::MeshCertificates]
+        attr_accessor :desired_mesh_certificates
+      
         # MonitoringConfig is cluster monitoring configuration.
         # Corresponds to the JSON property `desiredMonitoringConfig`
         # @return [Google::Apis::ContainerV1beta1::MonitoringConfig]
@@ -1335,6 +1346,7 @@ module Google
           @desired_master = args[:desired_master] if args.key?(:desired_master)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
           @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
+          @desired_mesh_certificates = args[:desired_mesh_certificates] if args.key?(:desired_mesh_certificates)
           @desired_monitoring_config = args[:desired_monitoring_config] if args.key?(:desired_monitoring_config)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
@@ -2756,6 +2768,30 @@ module Google
         end
       end
       
+      # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+      class MeshCertificates
+        include Google::Apis::Core::Hashable
+      
+        # enable_certificates controls issuance of workload mTLS certificates. If set,
+        # the GKE Workload Identity Certificates controller and node agent will be
+        # deployed in the cluster, which can then be configured by creating a
+        # WorkloadCertificateConfig Custom Resource. Requires Workload Identity (
+        # workload_pool must be non-empty).
+        # Corresponds to the JSON property `enableCertificates`
+        # @return [Boolean]
+        attr_accessor :enable_certificates
+        alias_method :enable_certificates?, :enable_certificates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_certificates = args[:enable_certificates] if args.key?(:enable_certificates)
+        end
+      end
+      
       # Progress metric is (string, int|float|string) pair.
       class Metric
         include Google::Apis::Core::Hashable
@@ -3143,6 +3179,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
       
+        # Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible
+        # flag.
+        # Corresponds to the JSON property `spot`
+        # @return [Boolean]
+        attr_accessor :spot
+        alias_method :spot?, :spot
+      
         # The list of instance tags applied to all nodes. Tags are used to identify
         # valid sources or targets for network firewalls and are specified by the client
         # during cluster or node pool creation. Each tag within the list must comply
@@ -3191,6 +3234,7 @@ module Google
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @spot = args[:spot] if args.key?(:spot)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
