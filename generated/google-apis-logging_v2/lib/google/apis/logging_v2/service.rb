@@ -639,7 +639,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view on a log bucket.
+        # Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this
+        # indicates that system is not in a state where it can delete the view. If this
+        # occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -714,7 +716,9 @@ module Google
         end
         
         # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter.
+        # the existing view with values from the new view: filter. If an UNAVAILABLE
+        # error is returned, this indicates that system is not in a state where it can
+        # update the view. If this occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -2122,7 +2126,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view on a log bucket.
+        # Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this
+        # indicates that system is not in a state where it can delete the view. If this
+        # occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -2229,7 +2235,9 @@ module Google
         end
         
         # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter.
+        # the existing view with values from the new view: filter. If an UNAVAILABLE
+        # error is returned, this indicates that system is not in a state where it can
+        # update the view. If this occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -3122,7 +3130,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view on a log bucket.
+        # Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this
+        # indicates that system is not in a state where it can delete the view. If this
+        # occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -3229,7 +3239,9 @@ module Google
         end
         
         # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter.
+        # the existing view with values from the new view: filter. If an UNAVAILABLE
+        # error is returned, this indicates that system is not in a state where it can
+        # update the view. If this occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -4163,7 +4175,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view on a log bucket.
+        # Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this
+        # indicates that system is not in a state where it can delete the view. If this
+        # occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -4270,7 +4284,9 @@ module Google
         end
         
         # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter.
+        # the existing view with values from the new view: filter. If an UNAVAILABLE
+        # error is returned, this indicates that system is not in a state where it can
+        # update the view. If this occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -5357,7 +5373,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a view on a log bucket.
+        # Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this
+        # indicates that system is not in a state where it can delete the view. If this
+        # occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"
@@ -5464,7 +5482,9 @@ module Google
         end
         
         # Updates a view on a log bucket. This method replaces the following fields in
-        # the existing view with values from the new view: filter.
+        # the existing view with values from the new view: filter. If an UNAVAILABLE
+        # error is returned, this indicates that system is not in a state where it can
+        # update the view. If this occurs, please try again in a few minutes.
         # @param [String] name
         #   Required. The full resource name of the view to update "projects/[PROJECT_ID]/
         #   locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"

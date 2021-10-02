@@ -292,18 +292,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TableFieldSchema
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TableSchema
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TailLogEntriesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -702,8 +690,6 @@ module Google
           property :description, as: 'description'
           property :filter, as: 'filter'
           property :name, as: 'name'
-          property :schema, as: 'schema', class: Google::Apis::LoggingV2::TableSchema, decorator: Google::Apis::LoggingV2::TableSchema::Representation
-      
           property :update_time, as: 'updateTime'
         end
       end
@@ -849,26 +835,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reason, as: 'reason'
           property :suppressed_count, as: 'suppressedCount'
-        end
-      end
-      
-      class TableFieldSchema
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          collection :fields, as: 'fields', class: Google::Apis::LoggingV2::TableFieldSchema, decorator: Google::Apis::LoggingV2::TableFieldSchema::Representation
-      
-          property :mode, as: 'mode'
-          property :name, as: 'name'
-          property :type, as: 'type'
-        end
-      end
-      
-      class TableSchema
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :fields, as: 'fields', class: Google::Apis::LoggingV2::TableFieldSchema, decorator: Google::Apis::LoggingV2::TableFieldSchema::Representation
-      
         end
       end
       
