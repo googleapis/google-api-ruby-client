@@ -1334,6 +1334,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :expiration_timestamp_millis, :numeric_string => true, as: 'expirationTimestampMillis'
           property :friendly_name, as: 'friendlyName'
           hash :labels, as: 'labels'
         end
