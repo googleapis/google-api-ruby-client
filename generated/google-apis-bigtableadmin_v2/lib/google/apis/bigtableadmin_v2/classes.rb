@@ -1442,12 +1442,19 @@ module Google
       class MultiClusterRoutingUseAny
         include Google::Apis::Core::Hashable
       
+        # The set of clusters to route to. The order is ignored; clusters will be tried
+        # in order of distance. If left empty, all clusters are eligible.
+        # Corresponds to the JSON property `clusterIds`
+        # @return [Array<String>]
+        attr_accessor :cluster_ids
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cluster_ids = args[:cluster_ids] if args.key?(:cluster_ids)
         end
       end
       
