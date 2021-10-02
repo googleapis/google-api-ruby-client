@@ -149,6 +149,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Message for canceling a patch job.
       class CancelPatchJobRequest
         include Google::Apis::Core::Hashable
@@ -609,10 +622,9 @@ module Google
         # @return [Google::Apis::OsconfigV1::InventoryWindowsQuickFixEngineeringPackage]
         attr_accessor :qfe_package
       
-        # Contains information about a Windows application as retrieved from the Windows
-        # Registry. For more information about these fields, see [Windows Installer
-        # Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/
-        # windows/win32/msi/uninstall-registry-key)`: class="external" `
+        # Contains information about a Windows application that is retrieved from the
+        # Windows Registry. For more information about these fields, see Windows
+        # Installer Properties for the Uninstall Registry.
         # Corresponds to the JSON property `windowsApplication`
         # @return [Google::Apis::OsconfigV1::InventoryWindowsApplication]
         attr_accessor :windows_application
@@ -692,10 +704,9 @@ module Google
         end
       end
       
-      # Contains information about a Windows application as retrieved from the Windows
-      # Registry. For more information about these fields, see [Windows Installer
-      # Properties for the Uninstall Registry](https://docs.microsoft.com/en-us/
-      # windows/win32/msi/uninstall-registry-key)`: class="external" `
+      # Contains information about a Windows application that is retrieved from the
+      # Windows Registry. For more information about these fields, see Windows
+      # Installer Properties for the Uninstall Registry.
       class InventoryWindowsApplication
         include Google::Apis::Core::Hashable
       
@@ -940,6 +951,33 @@ module Google
         def update!(**args)
           @inventories = args[:inventories] if args.key?(:inventories)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # A response message for listing OS Policy assignment reports including the page
+      # of results and page token.
+      class ListOsPolicyAssignmentReportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pagination token to retrieve the next page of OS policy assignment report
+        # objects.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of OS policy assignment reports.
+        # Corresponds to the JSON property `osPolicyAssignmentReports`
+        # @return [Array<Google::Apis::OsconfigV1::OsPolicyAssignmentReport>]
+        attr_accessor :os_policy_assignment_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @os_policy_assignment_reports = args[:os_policy_assignment_reports] if args.key?(:os_policy_assignment_reports)
         end
       end
       
@@ -1431,6 +1469,214 @@ module Google
           @rollout_start_time = args[:rollout_start_time] if args.key?(:rollout_start_time)
           @rollout_state = args[:rollout_state] if args.key?(:rollout_state)
           @rollout_update_time = args[:rollout_update_time] if args.key?(:rollout_update_time)
+        end
+      end
+      
+      # A report of the OS policy assignment status for a given instance.
+      class OsPolicyAssignmentReport
+        include Google::Apis::Core::Hashable
+      
+        # The Compute Engine VM instance name.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Unique identifier of the last attempted run to apply the OS policies
+        # associated with this assignment on the VM. This ID is logged by the OS Config
+        # agent while applying the OS policies associated with this assignment on the VM.
+        # NOTE: If the service is unable to successfully connect to the agent for this
+        # run, then this id will not be available in the agent logs.
+        # Corresponds to the JSON property `lastRunId`
+        # @return [String]
+        attr_accessor :last_run_id
+      
+        # The `OSPolicyAssignmentReport` API resource name. Format: `projects/`
+        # project_number`/locations/`location`/instances/`instance_id`/
+        # osPolicyAssignments/`os_policy_assignment_id`/report`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Reference to the `OSPolicyAssignment` API resource that the `OSPolicy` belongs
+        # to. Format: `projects/`project_number`/locations/`location`/
+        # osPolicyAssignments/`os_policy_assignment_id@revision_id``
+        # Corresponds to the JSON property `osPolicyAssignment`
+        # @return [String]
+        attr_accessor :os_policy_assignment
+      
+        # Compliance data for each `OSPolicy` that is applied to the VM.
+        # Corresponds to the JSON property `osPolicyCompliances`
+        # @return [Array<Google::Apis::OsconfigV1::OsPolicyAssignmentReportOsPolicyCompliance>]
+        attr_accessor :os_policy_compliances
+      
+        # Timestamp for when the report was last generated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @last_run_id = args[:last_run_id] if args.key?(:last_run_id)
+          @name = args[:name] if args.key?(:name)
+          @os_policy_assignment = args[:os_policy_assignment] if args.key?(:os_policy_assignment)
+          @os_policy_compliances = args[:os_policy_compliances] if args.key?(:os_policy_compliances)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Compliance data for an OS policy
+      class OsPolicyAssignmentReportOsPolicyCompliance
+        include Google::Apis::Core::Hashable
+      
+        # The compliance state of the OS policy.
+        # Corresponds to the JSON property `complianceState`
+        # @return [String]
+        attr_accessor :compliance_state
+      
+        # The reason for the OS policy to be in an unknown compliance state. This field
+        # is always populated when `compliance_state` is `UNKNOWN`. If populated, the
+        # field can contain one of the following values: * `vm-not-running`: The VM was
+        # not running. * `os-policies-not-supported-by-agent`: The version of the OS
+        # Config agent running on the VM does not support running OS policies. * `no-
+        # agent-detected`: The OS Config agent is not detected for the VM. * `resource-
+        # execution-errors`: The OS Config agent encountered errors while executing one
+        # or more resources in the policy. See `os_policy_resource_compliances` for
+        # details. * `task-timeout`: The task sent to the agent to apply the policy
+        # timed out. * `unexpected-agent-state`: The OS Config agent did not report the
+        # final status of the task that attempted to apply the policy. Instead, the
+        # agent unexpectedly started working on a different task. This mostly happens
+        # when the agent or VM unexpectedly restarts while applying OS policies. * `
+        # internal-service-errors`: Internal service errors were encountered while
+        # attempting to apply the policy.
+        # Corresponds to the JSON property `complianceStateReason`
+        # @return [String]
+        attr_accessor :compliance_state_reason
+      
+        # The OS policy id
+        # Corresponds to the JSON property `osPolicyId`
+        # @return [String]
+        attr_accessor :os_policy_id
+      
+        # Compliance data for each resource within the policy that is applied to the VM.
+        # Corresponds to the JSON property `osPolicyResourceCompliances`
+        # @return [Array<Google::Apis::OsconfigV1::OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceCompliance>]
+        attr_accessor :os_policy_resource_compliances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliance_state = args[:compliance_state] if args.key?(:compliance_state)
+          @compliance_state_reason = args[:compliance_state_reason] if args.key?(:compliance_state_reason)
+          @os_policy_id = args[:os_policy_id] if args.key?(:os_policy_id)
+          @os_policy_resource_compliances = args[:os_policy_resource_compliances] if args.key?(:os_policy_resource_compliances)
+        end
+      end
+      
+      # Compliance data for an OS policy resource.
+      class OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceCompliance
+        include Google::Apis::Core::Hashable
+      
+        # The compliance state of the resource.
+        # Corresponds to the JSON property `complianceState`
+        # @return [String]
+        attr_accessor :compliance_state
+      
+        # A reason for the resource to be in the given compliance state. This field is
+        # always populated when `compliance_state` is `UNKNOWN`. The following values
+        # are supported when `compliance_state == UNKNOWN` * `execution-errors`: Errors
+        # were encountered by the agent while executing the resource and the compliance
+        # state couldn't be determined. * `execution-skipped-by-agent`: Resource
+        # execution was skipped by the agent because errors were encountered while
+        # executing prior resources in the OS policy. * `os-policy-execution-attempt-
+        # failed`: The execution of the OS policy containing this resource failed and
+        # the compliance state couldn't be determined.
+        # Corresponds to the JSON property `complianceStateReason`
+        # @return [String]
+        attr_accessor :compliance_state_reason
+      
+        # Ordered list of configuration completed by the agent for the OS policy
+        # resource.
+        # Corresponds to the JSON property `configSteps`
+        # @return [Array<Google::Apis::OsconfigV1::OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceOsPolicyResourceConfigStep>]
+        attr_accessor :config_steps
+      
+        # ExecResource specific output.
+        # Corresponds to the JSON property `execResourceOutput`
+        # @return [Google::Apis::OsconfigV1::OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceExecResourceOutput]
+        attr_accessor :exec_resource_output
+      
+        # The ID of the OS policy resource.
+        # Corresponds to the JSON property `osPolicyResourceId`
+        # @return [String]
+        attr_accessor :os_policy_resource_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliance_state = args[:compliance_state] if args.key?(:compliance_state)
+          @compliance_state_reason = args[:compliance_state_reason] if args.key?(:compliance_state_reason)
+          @config_steps = args[:config_steps] if args.key?(:config_steps)
+          @exec_resource_output = args[:exec_resource_output] if args.key?(:exec_resource_output)
+          @os_policy_resource_id = args[:os_policy_resource_id] if args.key?(:os_policy_resource_id)
+        end
+      end
+      
+      # ExecResource specific output.
+      class OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceExecResourceOutput
+        include Google::Apis::Core::Hashable
+      
+        # Output from enforcement phase output file (if run). Output size is limited to
+        # 100K bytes.
+        # Corresponds to the JSON property `enforcementOutput`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :enforcement_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enforcement_output = args[:enforcement_output] if args.key?(:enforcement_output)
+        end
+      end
+      
+      # Step performed by the OS Config agent for configuring an `OSPolicy` resource
+      # to its desired state.
+      class OsPolicyAssignmentReportOsPolicyComplianceOsPolicyResourceComplianceOsPolicyResourceConfigStep
+        include Google::Apis::Core::Hashable
+      
+        # An error message recorded during the execution of this step. Only populated if
+        # errors were encountered during this step execution.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Configuration step type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
