@@ -241,7 +241,7 @@ module Google
       class AlertStrategy
         include Google::Apis::Core::Hashable
       
-        # If an alert policy that was active has no data for this log, any open
+        # If an alert policy that was active has no data for this long, any open
         # incidents will close
         # Corresponds to the JSON property `autoClose`
         # @return [String]
