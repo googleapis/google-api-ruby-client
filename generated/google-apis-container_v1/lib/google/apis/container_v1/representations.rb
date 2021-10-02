@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MeshCertificates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -849,6 +855,8 @@ module Google
       
           property :master_authorized_networks_config, as: 'masterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
       
+          property :mesh_certificates, as: 'meshCertificates', class: Google::Apis::ContainerV1::MeshCertificates, decorator: Google::Apis::ContainerV1::MeshCertificates::Representation
+      
           property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::ContainerV1::MonitoringConfig, decorator: Google::Apis::ContainerV1::MonitoringConfig::Representation
       
           property :monitoring_service, as: 'monitoringService'
@@ -931,6 +939,8 @@ module Google
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
       
           property :desired_master_version, as: 'desiredMasterVersion'
+          property :desired_mesh_certificates, as: 'desiredMeshCertificates', class: Google::Apis::ContainerV1::MeshCertificates, decorator: Google::Apis::ContainerV1::MeshCertificates::Representation
+      
           property :desired_monitoring_config, as: 'desiredMonitoringConfig', class: Google::Apis::ContainerV1::MonitoringConfig, decorator: Google::Apis::ContainerV1::MonitoringConfig::Representation
       
           property :desired_monitoring_service, as: 'desiredMonitoringService'
@@ -1274,6 +1284,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_pods_per_node, :numeric_string => true, as: 'maxPodsPerNode'
+        end
+      end
+      
+      class MeshCertificates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -688,6 +688,11 @@ module Google
         # @return [Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig]
         attr_accessor :master_authorized_networks_config
       
+        # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        # Corresponds to the JSON property `meshCertificates`
+        # @return [Google::Apis::ContainerV1::MeshCertificates]
+        attr_accessor :mesh_certificates
+      
         # MonitoringConfig is cluster monitoring configuration.
         # Corresponds to the JSON property `monitoringConfig`
         # @return [Google::Apis::ContainerV1::MonitoringConfig]
@@ -877,6 +882,7 @@ module Google
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @master_auth = args[:master_auth] if args.key?(:master_auth)
           @master_authorized_networks_config = args[:master_authorized_networks_config] if args.key?(:master_authorized_networks_config)
+          @mesh_certificates = args[:mesh_certificates] if args.key?(:mesh_certificates)
           @monitoring_config = args[:monitoring_config] if args.key?(:monitoring_config)
           @monitoring_service = args[:monitoring_service] if args.key?(:monitoring_service)
           @name = args[:name] if args.key?(:name)
@@ -1064,6 +1070,11 @@ module Google
         # @return [String]
         attr_accessor :desired_master_version
       
+        # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        # Corresponds to the JSON property `desiredMeshCertificates`
+        # @return [Google::Apis::ContainerV1::MeshCertificates]
+        attr_accessor :desired_mesh_certificates
+      
         # MonitoringConfig is cluster monitoring configuration.
         # Corresponds to the JSON property `desiredMonitoringConfig`
         # @return [Google::Apis::ContainerV1::MonitoringConfig]
@@ -1171,6 +1182,7 @@ module Google
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
           @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
+          @desired_mesh_certificates = args[:desired_mesh_certificates] if args.key?(:desired_mesh_certificates)
           @desired_monitoring_config = args[:desired_monitoring_config] if args.key?(:desired_monitoring_config)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
@@ -2322,6 +2334,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_pods_per_node = args[:max_pods_per_node] if args.key?(:max_pods_per_node)
+        end
+      end
+      
+      # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+      class MeshCertificates
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
