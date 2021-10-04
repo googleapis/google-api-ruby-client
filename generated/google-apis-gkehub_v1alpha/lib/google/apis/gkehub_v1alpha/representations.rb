@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Authority
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,12 +107,6 @@ module Google
       end
       
       class ConfigManagementConfigSyncVersion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ConfigManagementContainerResourceRequirements
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,12 +202,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ConfigManagementQuantity
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ConfigManagementSyncError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkeCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleRpcStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KubernetesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAdminClusterMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListFeaturesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Membership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MembershipFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,13 +340,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MeteringMembershipState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiCloudCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultiClusterIngressFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OnPremCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -411,6 +453,16 @@ module Google
         end
       end
       
+      class Authority
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity_provider, as: 'identityProvider'
+          property :issuer, as: 'issuer'
+          property :oidc_jwks, :base64 => true, as: 'oidcJwks'
+          property :workload_identity_pool, as: 'workloadIdentityPool'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -480,9 +532,8 @@ module Google
       class ConfigManagementConfigSync
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig::Representation
-      
-          hash :resource_requirements, as: 'resourceRequirements', class: Google::Apis::GkehubV1alpha::ConfigManagementContainerResourceRequirements, decorator: Google::Apis::GkehubV1alpha::ConfigManagementContainerResourceRequirements::Representation
       
           property :source_format, as: 'sourceFormat'
         end
@@ -526,17 +577,6 @@ module Google
         end
       end
       
-      class ConfigManagementContainerResourceRequirements
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :container_name, as: 'containerName'
-          property :cpu_limit, as: 'cpuLimit', class: Google::Apis::GkehubV1alpha::ConfigManagementQuantity, decorator: Google::Apis::GkehubV1alpha::ConfigManagementQuantity::Representation
-      
-          property :memory_limit, as: 'memoryLimit', class: Google::Apis::GkehubV1alpha::ConfigManagementQuantity, decorator: Google::Apis::GkehubV1alpha::ConfigManagementQuantity::Representation
-      
-        end
-      end
-      
       class ConfigManagementErrorResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -562,11 +602,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcp_service_account_email, as: 'gcpServiceAccountEmail'
           property :https_proxy, as: 'httpsProxy'
-          property :no_ssl_verify, as: 'noSslVerify'
           property :policy_dir, as: 'policyDir'
           property :secret_type, as: 'secretType'
           property :sync_branch, as: 'syncBranch'
-          property :sync_depth, :numeric_string => true, as: 'syncDepth'
           property :sync_repo, as: 'syncRepo'
           property :sync_rev, as: 'syncRev'
           property :sync_wait_secs, :numeric_string => true, as: 'syncWaitSecs'
@@ -698,13 +736,6 @@ module Google
         end
       end
       
-      class ConfigManagementQuantity
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :string, as: 'string'
-        end
-      end
-      
       class ConfigManagementSyncError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -782,6 +813,14 @@ module Google
         end
       end
       
+      class GkeCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_missing, as: 'clusterMissing'
+          property :resource_link, as: 'resourceLink'
+        end
+      end
+      
       class GoogleRpcStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -837,6 +876,28 @@ module Google
         end
       end
       
+      class KubernetesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kubernetes_api_server_version, as: 'kubernetesApiServerVersion'
+          property :memory_mb, as: 'memoryMb'
+          property :node_count, as: 'nodeCount'
+          property :node_provider_id, as: 'nodeProviderId'
+          property :update_time, as: 'updateTime'
+          property :vcpu_count, as: 'vcpuCount'
+        end
+      end
+      
+      class ListAdminClusterMembershipsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :admin_cluster_memberships, as: 'adminClusterMemberships', class: Google::Apis::GkehubV1alpha::Membership, decorator: Google::Apis::GkehubV1alpha::Membership::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListFeaturesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -875,6 +936,41 @@ module Google
         end
       end
       
+      class Membership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority', class: Google::Apis::GkehubV1alpha::Authority, decorator: Google::Apis::GkehubV1alpha::Authority::Representation
+      
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :description, as: 'description'
+          property :endpoint, as: 'endpoint', class: Google::Apis::GkehubV1alpha::MembershipEndpoint, decorator: Google::Apis::GkehubV1alpha::MembershipEndpoint::Representation
+      
+          property :external_id, as: 'externalId'
+          hash :labels, as: 'labels'
+          property :last_connection_time, as: 'lastConnectionTime'
+          property :name, as: 'name'
+          property :state, as: 'state', class: Google::Apis::GkehubV1alpha::MembershipState, decorator: Google::Apis::GkehubV1alpha::MembershipState::Representation
+      
+          property :unique_id, as: 'uniqueId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MembershipEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gke_cluster, as: 'gkeCluster', class: Google::Apis::GkehubV1alpha::GkeCluster, decorator: Google::Apis::GkehubV1alpha::GkeCluster::Representation
+      
+          property :kubernetes_metadata, as: 'kubernetesMetadata', class: Google::Apis::GkehubV1alpha::KubernetesMetadata, decorator: Google::Apis::GkehubV1alpha::KubernetesMetadata::Representation
+      
+          property :multi_cloud_cluster, as: 'multiCloudCluster', class: Google::Apis::GkehubV1alpha::MultiCloudCluster, decorator: Google::Apis::GkehubV1alpha::MultiCloudCluster::Representation
+      
+          property :on_prem_cluster, as: 'onPremCluster', class: Google::Apis::GkehubV1alpha::OnPremCluster, decorator: Google::Apis::GkehubV1alpha::OnPremCluster::Representation
+      
+        end
+      end
+      
       class MembershipFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -901,6 +997,13 @@ module Google
         end
       end
       
+      class MembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+        end
+      end
+      
       class MeteringMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -909,11 +1012,28 @@ module Google
         end
       end
       
+      class MultiCloudCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_missing, as: 'clusterMissing'
+          property :resource_link, as: 'resourceLink'
+        end
+      end
+      
       class MultiClusterIngressFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing, as: 'billing'
           property :config_membership, as: 'configMembership'
+        end
+      end
+      
+      class OnPremCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_cluster, as: 'adminCluster'
+          property :cluster_missing, as: 'clusterMissing'
+          property :resource_link, as: 'resourceLink'
         end
       end
       
