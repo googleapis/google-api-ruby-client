@@ -2169,16 +2169,16 @@ module Google
       class RsaKeyType
         include Google::Apis::Core::Hashable
       
-        # Optional. The maximum allowed RSA modulus size, in bits. If this is not set,
-        # or if set to zero, the service will not enforce an explicit upper bound on RSA
-        # modulus sizes.
+        # Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this
+        # is not set, or if set to zero, the service will not enforce an explicit upper
+        # bound on RSA modulus sizes.
         # Corresponds to the JSON property `maxModulusSize`
         # @return [Fixnum]
         attr_accessor :max_modulus_size
       
-        # Optional. The minimum allowed RSA modulus size, in bits. If this is not set,
-        # or if set to zero, the service-level min RSA modulus size will continue to
-        # apply.
+        # Optional. The minimum allowed RSA modulus size (inclusive), in bits. If this
+        # is not set, or if set to zero, the service-level min RSA modulus size will
+        # continue to apply.
         # Corresponds to the JSON property `minModulusSize`
         # @return [Fixnum]
         attr_accessor :min_modulus_size
