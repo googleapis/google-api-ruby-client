@@ -290,6 +290,106 @@ module Google
         end
       end
       
+      # Request message for ConvertRegionPrices.
+      class ConvertRegionPricesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @price = args[:price] if args.key?(:price)
+        end
+      end
+      
+      # Response message for ConvertRegionPrices.
+      class ConvertRegionPricesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Converted other regions prices.
+        # Corresponds to the JSON property `convertedOtherRegionsPrice`
+        # @return [Google::Apis::AndroidpublisherV3::ConvertedOtherRegionsPrice]
+        attr_accessor :converted_other_regions_price
+      
+        # Map from region code to converted region price.
+        # Corresponds to the JSON property `convertedRegionPrices`
+        # @return [Hash<String,Google::Apis::AndroidpublisherV3::ConvertedRegionPrice>]
+        attr_accessor :converted_region_prices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @converted_other_regions_price = args[:converted_other_regions_price] if args.key?(:converted_other_regions_price)
+          @converted_region_prices = args[:converted_region_prices] if args.key?(:converted_region_prices)
+        end
+      end
+      
+      # Converted other regions prices.
+      class ConvertedOtherRegionsPrice
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `eurPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :eur_price
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `usdPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :usd_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eur_price = args[:eur_price] if args.key?(:eur_price)
+          @usd_price = args[:usd_price] if args.key?(:usd_price)
+        end
+      end
+      
+      # A converted region price.
+      class ConvertedRegionPrice
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :price
+      
+        # The region code of the region.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `taxAmount`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :tax_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @price = args[:price] if args.key?(:price)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
+        end
+      end
+      
       # Country targeting specification.
       class CountryTargeting
         include Google::Apis::Core::Hashable
@@ -1076,6 +1176,42 @@ module Google
         def update!(**args)
           @language = args[:language] if args.key?(:language)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Represents an amount of money with its currency type.
+      class Money
+        include Google::Apis::Core::Hashable
+      
+        # The three-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
         end
       end
       
