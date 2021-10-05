@@ -22,7 +22,7 @@ module Google
   module Apis
     module PolicytroubleshooterV1
       
-      # Information about the member, resource, and permission to check.
+      # Information about the principal, resource, and permission to check.
       class GoogleCloudPolicytroubleshooterV1AccessTuple
         include Google::Apis::Core::Hashable
       
@@ -34,7 +34,7 @@ module Google
         # @return [String]
         attr_accessor :full_resource_name
       
-        # Required. The IAM permission to check for the specified member and resource.
+        # Required. The IAM permission to check for the specified principal and resource.
         # For a complete list of IAM permissions, see https://cloud.google.com/iam/help/
         # permissions/reference. For a complete list of predefined IAM roles and the
         # permissions in each role, see https://cloud.google.com/iam/help/roles/
@@ -43,11 +43,11 @@ module Google
         # @return [String]
         attr_accessor :permission
       
-        # Required. The member, or principal, whose access you want to check, in the
-        # form of the email address that represents that member. For example, `alice@
-        # example.com` or `my-service-account@my-project.iam.gserviceaccount.com`. The
-        # member must be a Google Account or a service account. Other types of members
-        # are not supported.
+        # Required. The principal whose access you want to check, in the form of the
+        # email address that represents that principal. For example, `alice@example.com`
+        # or `my-service-account@my-project.iam.gserviceaccount.com`. The principal must
+        # be a Google Account or a service account. Other types of principals are not
+        # supported.
         # Corresponds to the JSON property `principal`
         # @return [String]
         attr_accessor :principal
@@ -64,17 +64,17 @@ module Google
         end
       end
       
-      # Details about how a binding in a policy affects a member's ability to use a
+      # Details about how a binding in a policy affects a principal's ability to use a
       # permission.
       class GoogleCloudPolicytroubleshooterV1BindingExplanation
         include Google::Apis::Core::Hashable
       
         # Required. Indicates whether _this binding_ provides the specified permission
-        # to the specified member for the specified resource. This field does _not_
-        # indicate whether the member actually has the permission for the resource.
+        # to the specified principal for the specified resource. This field does _not_
+        # indicate whether the principal actually has the permission for the resource.
         # There might be another binding that overrides this binding. To determine
-        # whether the member actually has the permission, use the `access` field in the
-        # TroubleshootIamPolicyResponse.
+        # whether the principal actually has the permission, use the `access` field in
+        # the TroubleshootIamPolicyResponse.
         # Corresponds to the JSON property `access`
         # @return [String]
         attr_accessor :access
@@ -98,17 +98,17 @@ module Google
         # @return [Google::Apis::PolicytroubleshooterV1::GoogleTypeExpr]
         attr_accessor :condition
       
-        # Indicates whether each member in the binding includes the member specified in
-        # the request, either directly or indirectly. Each key identifies a member in
-        # the binding, and each value indicates whether the member in the binding
-        # includes the member in the request. For example, suppose that a binding
-        # includes the following members: * `user:alice@example.com` * `group:product-
-        # eng@example.com` You want to troubleshoot access for `user:bob@example.com`.
-        # This user is a member of the group `group:product-eng@example.com`. For the
-        # first member in the binding, the key is `user:alice@example.com`, and the `
-        # membership` field in the value is set to `MEMBERSHIP_NOT_INCLUDED`. For the
-        # second member in the binding, the key is `group:product-eng@example.com`, and
-        # the `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
+        # Indicates whether each principal in the binding includes the principal
+        # specified in the request, either directly or indirectly. Each key identifies a
+        # principal in the binding, and each value indicates whether the principal in
+        # the binding includes the principal in the request. For example, suppose that a
+        # binding includes the following principals: * `user:alice@example.com` * `group:
+        # product-eng@example.com` You want to troubleshoot access for `user:bob@example.
+        # com`. This user is a principal of the group `group:product-eng@example.com`.
+        # For the first principal in the binding, the key is `user:alice@example.com`,
+        # and the `membership` field in the value is set to `MEMBERSHIP_NOT_INCLUDED`.
+        # For the second principal in the binding, the key is `group:product-eng@example.
+        # com`, and the `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
         # Corresponds to the JSON property `memberships`
         # @return [Hash<String,Google::Apis::PolicytroubleshooterV1::GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>]
         attr_accessor :memberships
@@ -154,16 +154,16 @@ module Google
         end
       end
       
-      # Details about whether the binding includes the member.
+      # Details about whether the binding includes the principal.
       class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
         include Google::Apis::Core::Hashable
       
-        # Indicates whether the binding includes the member.
+        # Indicates whether the binding includes the principal.
         # Corresponds to the JSON property `membership`
         # @return [String]
         attr_accessor :membership
       
-        # The relevance of the member's status to the overall determination for the
+        # The relevance of the principal's status to the overall determination for the
         # binding.
         # Corresponds to the JSON property `relevance`
         # @return [String]
@@ -185,17 +185,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Indicates whether _this policy_ provides the specified permission to the
-        # specified member for the specified resource. This field does _not_ indicate
-        # whether the member actually has the permission for the resource. There might
-        # be another policy that overrides this policy. To determine whether the member
-        # actually has the permission, use the `access` field in the
+        # specified principal for the specified resource. This field does _not_ indicate
+        # whether the principal actually has the permission for the resource. There
+        # might be another policy that overrides this policy. To determine whether the
+        # principal actually has the permission, use the `access` field in the
         # TroubleshootIamPolicyResponse.
         # Corresponds to the JSON property `access`
         # @return [String]
         attr_accessor :access
       
-        # Details about how each binding in the policy affects the member's ability, or
-        # inability, to use the permission for the resource. If the sender of the
+        # Details about how each binding in the policy affects the principal's ability,
+        # or inability, to use the permission for the resource. If the sender of the
         # request does not have access to the policy, this field is omitted.
         # Corresponds to the JSON property `bindingExplanations`
         # @return [Array<Google::Apis::PolicytroubleshooterV1::GoogleCloudPolicytroubleshooterV1BindingExplanation>]
@@ -266,7 +266,7 @@ module Google
       class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # Information about the member, resource, and permission to check.
+        # Information about the principal, resource, and permission to check.
         # Corresponds to the JSON property `accessTuple`
         # @return [Google::Apis::PolicytroubleshooterV1::GoogleCloudPolicytroubleshooterV1AccessTuple]
         attr_accessor :access_tuple
@@ -285,13 +285,13 @@ module Google
       class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse
         include Google::Apis::Core::Hashable
       
-        # Indicates whether the member has the specified permission for the specified
+        # Indicates whether the principal has the specified permission for the specified
         # resource, based on evaluating all of the applicable IAM policies.
         # Corresponds to the JSON property `access`
         # @return [String]
         attr_accessor :access
       
-        # List of IAM policies that were evaluated to check the member's permissions,
+        # List of IAM policies that were evaluated to check the principal's permissions,
         # with annotations to indicate how each policy contributed to the final result.
         # The list of policies can include the policy for the resource itself. It can
         # also include policies that are inherited from higher levels of the resource
@@ -492,7 +492,12 @@ module Google
       
         # Associates a list of `members` to a `role`. Optionally, may specify a `
         # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # the `bindings` must contain at least one member. The `bindings` in a `Policy`
+        # can refer to up to 1,500 members; up to 250 of these members can be Google
+        # groups. Each occurrence of a member counts towards these limits. For example,
+        # if the `bindings` grant 50 different roles to `user:alice@example.com`, and
+        # not to any other member, then you can add another 1,450 members to the `
+        # bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::PolicytroubleshooterV1::GoogleIamV1Binding>]
         attr_accessor :bindings
