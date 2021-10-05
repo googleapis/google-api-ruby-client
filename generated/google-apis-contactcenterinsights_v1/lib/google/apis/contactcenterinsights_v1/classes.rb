@@ -517,7 +517,7 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1Analysis]
         attr_accessor :latest_analysis
       
-        # Immutable. The conversation medium.
+        # Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         # Corresponds to the JSON property `medium`
         # @return [String]
         attr_accessor :medium
