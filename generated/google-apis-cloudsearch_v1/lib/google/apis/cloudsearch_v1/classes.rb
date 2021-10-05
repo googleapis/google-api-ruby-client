@@ -1410,11 +1410,12 @@ module Google
         end
       end
       
-      # 
+      # Response format for getting query stats at a search application level between
+      # given dates.
       class GetSearchApplicationQueryStatsResponse
         include Google::Apis::Core::Hashable
       
-        # 
+        # Search application level query stats per date
         # Corresponds to the JSON property `stats`
         # @return [Array<Google::Apis::CloudsearchV1::SearchApplicationQueryStats>]
         attr_accessor :stats
@@ -3985,7 +3986,7 @@ module Google
         end
       end
       
-      # 
+      # Search application level query stats per date
       class SearchApplicationQueryStats
         include Google::Apis::Core::Hashable
       
