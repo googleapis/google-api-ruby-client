@@ -379,8 +379,8 @@ module Google
         end
       end
       
-      # A status object which is used as the `metadata` field for the operation
-      # returned by DeleteOrganization.
+      # LINT.IfChange A status object which is used as the `metadata` field for the
+      # operation returned by DeleteOrganization.
       class DeleteOrganizationMetadata
         include Google::Apis::Core::Hashable
       
@@ -877,7 +877,12 @@ module Google
       
         # Associates a list of `members` to a `role`. Optionally, may specify a `
         # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # the `bindings` must contain at least one member. The `bindings` in a `Policy`
+        # can refer to up to 1,500 members; up to 250 of these members can be Google
+        # groups. Each occurrence of a member counts towards these limits. For example,
+        # if the `bindings` grant 50 different roles to `user:alice@example.com`, and
+        # not to any other member, then you can add another 1,450 members to the `
+        # bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Binding>]
         attr_accessor :bindings
@@ -1173,8 +1178,8 @@ module Google
         end
       end
       
-      # A status object which is used as the `metadata` field for the Operation
-      # returned by UndeleteOrganization.
+      # LINT.IfChange A status object which is used as the `metadata` field for the
+      # Operation returned by UndeleteOrganization.
       class UndeleteOrganizationMetadata
         include Google::Apis::Core::Hashable
       
