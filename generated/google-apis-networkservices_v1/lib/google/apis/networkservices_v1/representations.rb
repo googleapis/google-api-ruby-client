@@ -52,7 +52,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndpointMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndpointMatcherMetadataLabelMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndpointMatcherMetadataLabelMatcherMetadataLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndpointPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEndpointPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrafficPortSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -157,6 +193,50 @@ module Google
         end
       end
       
+      class EndpointMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata_label_matcher, as: 'metadataLabelMatcher', class: Google::Apis::NetworkservicesV1::EndpointMatcherMetadataLabelMatcher, decorator: Google::Apis::NetworkservicesV1::EndpointMatcherMetadataLabelMatcher::Representation
+      
+        end
+      end
+      
+      class EndpointMatcherMetadataLabelMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata_label_match_criteria, as: 'metadataLabelMatchCriteria'
+          collection :metadata_labels, as: 'metadataLabels', class: Google::Apis::NetworkservicesV1::EndpointMatcherMetadataLabelMatcherMetadataLabels, decorator: Google::Apis::NetworkservicesV1::EndpointMatcherMetadataLabelMatcherMetadataLabels::Representation
+      
+        end
+      end
+      
+      class EndpointMatcherMetadataLabelMatcherMetadataLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_name, as: 'labelName'
+          property :label_value, as: 'labelValue'
+        end
+      end
+      
+      class EndpointPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_policy, as: 'authorizationPolicy'
+          property :client_tls_policy, as: 'clientTlsPolicy'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :endpoint_matcher, as: 'endpointMatcher', class: Google::Apis::NetworkservicesV1::EndpointMatcher, decorator: Google::Apis::NetworkservicesV1::EndpointMatcher::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :server_tls_policy, as: 'serverTlsPolicy'
+          property :traffic_port_selector, as: 'trafficPortSelector', class: Google::Apis::NetworkservicesV1::TrafficPortSelector, decorator: Google::Apis::NetworkservicesV1::TrafficPortSelector::Representation
+      
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -164,6 +244,15 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ListEndpointPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoint_policies, as: 'endpointPolicies', class: Google::Apis::NetworkservicesV1::EndpointPolicy, decorator: Google::Apis::NetworkservicesV1::EndpointPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -262,6 +351,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TrafficPortSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ports, as: 'ports'
         end
       end
     end
