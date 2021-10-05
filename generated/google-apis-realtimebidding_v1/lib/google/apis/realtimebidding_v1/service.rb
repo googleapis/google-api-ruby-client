@@ -145,7 +145,9 @@ module Google
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
         #   this is the value of ListCreativesResponse.nextPageToken returned from the
-        #   previous call to the 'ListCreatives' method.
+        #   previous call to the 'ListCreatives' method. Page tokens for continued pages
+        #   are valid for up to five hours, counting from the call to 'ListCreatives' for
+        #   the first page.
         # @param [String] view
         #   Controls the amount of information included in the response. By default only
         #   creativeServingDecision is included. To retrieve the entire creative resource (
@@ -946,7 +948,9 @@ module Google
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
         #   this is the value of ListCreativesResponse.nextPageToken returned from the
-        #   previous call to the 'ListCreatives' method.
+        #   previous call to the 'ListCreatives' method. Page tokens for continued pages
+        #   are valid for up to five hours, counting from the call to 'ListCreatives' for
+        #   the first page.
         # @param [String] view
         #   Controls the amount of information included in the response. By default only
         #   creativeServingDecision is included. To retrieve the entire creative resource (
