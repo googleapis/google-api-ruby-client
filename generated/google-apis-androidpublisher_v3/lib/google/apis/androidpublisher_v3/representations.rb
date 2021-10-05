@@ -82,6 +82,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConvertRegionPricesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConvertRegionPricesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConvertedOtherRegionsPrice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConvertedRegionPrice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CountryTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +227,12 @@ module Google
       end
       
       class LocalizedText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Money
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -464,6 +494,45 @@ module Google
         end
       end
       
+      class ConvertRegionPricesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :price, as: 'price', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
+      class ConvertRegionPricesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :converted_other_regions_price, as: 'convertedOtherRegionsPrice', class: Google::Apis::AndroidpublisherV3::ConvertedOtherRegionsPrice, decorator: Google::Apis::AndroidpublisherV3::ConvertedOtherRegionsPrice::Representation
+      
+          hash :converted_region_prices, as: 'convertedRegionPrices', class: Google::Apis::AndroidpublisherV3::ConvertedRegionPrice, decorator: Google::Apis::AndroidpublisherV3::ConvertedRegionPrice::Representation
+      
+        end
+      end
+      
+      class ConvertedOtherRegionsPrice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eur_price, as: 'eurPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :usd_price, as: 'usdPrice', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
+      class ConvertedRegionPrice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :price, as: 'price', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :region_code, as: 'regionCode'
+          property :tax_amount, as: 'taxAmount', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
       class CountryTargeting
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -680,6 +749,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :language, as: 'language'
           property :text, as: 'text'
+        end
+      end
+      
+      class Money
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :nanos, as: 'nanos'
+          property :units, :numeric_string => true, as: 'units'
         end
       end
       
