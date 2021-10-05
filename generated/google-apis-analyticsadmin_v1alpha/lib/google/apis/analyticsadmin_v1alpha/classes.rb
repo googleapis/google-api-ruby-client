@@ -231,7 +231,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Roles directly assigned to this user for this entity. Format: predefinedRoles/
-        # read Excludes roles that are inherited from an account (if this is for a
+        # viewer Excludes roles that are inherited from an account (if this is for a
         # property), group, or organization admin role.
         # Corresponds to the JSON property `directRoles`
         # @return [Array<String>]
@@ -239,7 +239,7 @@ module Google
       
         # Union of all permissions a user has at this account or property (includes
         # direct permissions, group-inherited permissions, etc.). Format:
-        # predefinedRoles/read
+        # predefinedRoles/viewer
         # Corresponds to the JSON property `effectiveRoles`
         # @return [Array<String>]
         attr_accessor :effective_roles
@@ -2194,10 +2194,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Roles directly assigned to this user for this account or property. Valid
-        # values: predefinedRoles/read predefinedRoles/collaborate predefinedRoles/edit
-        # predefinedRoles/admin Excludes roles that are inherited from a higher-level
-        # entity, group, or organization admin role. A UserLink that is updated to have
-        # an empty list of direct_roles will be deleted.
+        # values: predefinedRoles/viewer predefinedRoles/analyst predefinedRoles/editor
+        # predefinedRoles/admin predefinedRoles/no-cost-data predefinedRoles/no-revenue-
+        # data Excludes roles that are inherited from a higher-level entity, group, or
+        # organization admin role. A UserLink that is updated to have an empty list of
+        # direct_roles will be deleted.
         # Corresponds to the JSON property `directRoles`
         # @return [Array<String>]
         attr_accessor :direct_roles
