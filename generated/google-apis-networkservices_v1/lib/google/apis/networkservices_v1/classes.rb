@@ -194,6 +194,189 @@ module Google
         end
       end
       
+      # A definition of a matcher that selects endpoints to which the policies should
+      # be applied.
+      class EndpointMatcher
+        include Google::Apis::Core::Hashable
+      
+        # The matcher that is based on node metadata presented by xDS clients.
+        # Corresponds to the JSON property `metadataLabelMatcher`
+        # @return [Google::Apis::NetworkservicesV1::EndpointMatcherMetadataLabelMatcher]
+        attr_accessor :metadata_label_matcher
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_label_matcher = args[:metadata_label_matcher] if args.key?(:metadata_label_matcher)
+        end
+      end
+      
+      # The matcher that is based on node metadata presented by xDS clients.
+      class EndpointMatcherMetadataLabelMatcher
+        include Google::Apis::Core::Hashable
+      
+        # Specifies how matching should be done. Supported values are: MATCH_ANY: At
+        # least one of the Labels specified in the matcher should match the metadata
+        # presented by xDS client. MATCH_ALL: The metadata presented by the xDS client
+        # should contain all of the labels specified here. The selection is determined
+        # based on the best match. For example, suppose there are three EndpointPolicy
+        # resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has
+        # MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config
+        # from P1 will be selected. If a client with label connects, the config from P2
+        # will be selected. If a client with label connects, the config from P3 will be
+        # selected. If there is more than one best match, (for example, if a config P4
+        # with selector exists and if a client with label connects), an error will be
+        # thrown.
+        # Corresponds to the JSON property `metadataLabelMatchCriteria`
+        # @return [String]
+        attr_accessor :metadata_label_match_criteria
+      
+        # The list of label value pairs that must match labels in the provided metadata
+        # based on filterMatchCriteria This list can have at most 64 entries. The list
+        # can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (
+        # i.e this matches any client).
+        # Corresponds to the JSON property `metadataLabels`
+        # @return [Array<Google::Apis::NetworkservicesV1::EndpointMatcherMetadataLabelMatcherMetadataLabels>]
+        attr_accessor :metadata_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_label_match_criteria = args[:metadata_label_match_criteria] if args.key?(:metadata_label_match_criteria)
+          @metadata_labels = args[:metadata_labels] if args.key?(:metadata_labels)
+        end
+      end
+      
+      # Defines a name-pair value for a single label.
+      class EndpointMatcherMetadataLabelMatcherMetadataLabels
+        include Google::Apis::Core::Hashable
+      
+        # Required. Label name presented as key in xDS Node Metadata.
+        # Corresponds to the JSON property `labelName`
+        # @return [String]
+        attr_accessor :label_name
+      
+        # Required. Label value presented as value corresponding to the above key, in
+        # xDS Node Metadata.
+        # Corresponds to the JSON property `labelValue`
+        # @return [String]
+        attr_accessor :label_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_name = args[:label_name] if args.key?(:label_name)
+          @label_value = args[:label_value] if args.key?(:label_value)
+        end
+      end
+      
+      # EndpointPolicy is a resource that helps apply desired configuration on the
+      # endpoints that match specific criteria. For example, this resource can be used
+      # to apply "authentication config" an all endpoints that serve on port 8080.
+      class EndpointPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. This field specifies the URL of AuthorizationPolicy resource that
+        # applies authorization policies to the inbound traffic at the matched endpoints.
+        # Refer to Authorization. If this field is not specified, authorization is
+        # disabled(no authz checks) for this endpoint. Applicable only when
+        # EndpointPolicyType is SIDECAR_PROXY.
+        # Corresponds to the JSON property `authorizationPolicy`
+        # @return [String]
+        attr_accessor :authorization_policy
+      
+        # Optional. A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can
+        # be set to specify the authentication for traffic from the proxy to the actual
+        # endpoints. More specifically, it is applied to the outgoing traffic from the
+        # proxy to the endpoint. This is typically used for sidecar model where the
+        # proxy identifies itself as endpoint to the control plane, with the connection
+        # between sidecar and endpoint requiring authentication. If this field is not
+        # set, authentication is disabled(open). Applicable only when EndpointPolicyType
+        # is SIDECAR_PROXY.
+        # Corresponds to the JSON property `clientTlsPolicy`
+        # @return [String]
+        attr_accessor :client_tls_policy
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A definition of a matcher that selects endpoints to which the policies should
+        # be applied.
+        # Corresponds to the JSON property `endpointMatcher`
+        # @return [Google::Apis::NetworkservicesV1::EndpointMatcher]
+        attr_accessor :endpoint_matcher
+      
+        # Optional. Set of label tags associated with the EndpointPolicy resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Name of the EndpointPolicy resource. It matches pattern `projects/`
+        # project`/locations/global/endpointPolicies/`endpoint_policy``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used
+        # to determine the authentication policy to be applied to terminate the inbound
+        # traffic at the identified backends. If this field is not set, authentication
+        # is disabled(open) for this endpoint.
+        # Corresponds to the JSON property `serverTlsPolicy`
+        # @return [String]
+        attr_accessor :server_tls_policy
+      
+        # Specification of a port-based selector.
+        # Corresponds to the JSON property `trafficPortSelector`
+        # @return [Google::Apis::NetworkservicesV1::TrafficPortSelector]
+        attr_accessor :traffic_port_selector
+      
+        # Required. The type of endpoint policy. This is primarily used to validate the
+        # configuration.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_policy = args[:authorization_policy] if args.key?(:authorization_policy)
+          @client_tls_policy = args[:client_tls_policy] if args.key?(:client_tls_policy)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @endpoint_matcher = args[:endpoint_matcher] if args.key?(:endpoint_matcher)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
+          @traffic_port_selector = args[:traffic_port_selector] if args.key?(:traffic_port_selector)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -245,6 +428,33 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Response returned by the ListEndpointPolicies method.
+      class ListEndpointPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of EndpointPolicy resources.
+        # Corresponds to the JSON property `endpointPolicies`
+        # @return [Array<Google::Apis::NetworkservicesV1::EndpointPolicy>]
+        attr_accessor :endpoint_policies
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_policies = args[:endpoint_policies] if args.key?(:endpoint_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -685,6 +895,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Specification of a port-based selector.
+      class TrafficPortSelector
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of ports. Can be port numbers or port range (example, [80-90]
+        # specifies all ports from 80 to 90, including 80 and 90) or named ports or * to
+        # specify all ports. If the list is empty, all ports are selected.
+        # Corresponds to the JSON property `ports`
+        # @return [Array<String>]
+        attr_accessor :ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ports = args[:ports] if args.key?(:ports)
         end
       end
     end
