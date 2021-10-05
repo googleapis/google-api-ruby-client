@@ -307,8 +307,8 @@ module Google
       
         # If set to true, and the Product is not found, the fulfillment information will
         # still be processed and retained for at most 1 day and processed once the
-        # Product is created. If set to false, an INVALID_ARGUMENT error is returned if
-        # the Product is not found.
+        # Product is created. If set to false, a NOT_FOUND error is returned if the
+        # Product is not found.
         # Corresponds to the JSON property `allowMissing`
         # @return [Boolean]
         attr_accessor :allow_missing
@@ -1615,8 +1615,10 @@ module Google
         # The timestamp when this product becomes unavailable for SearchService.Search.
         # If it is set, the Product is not available for SearchService.Search after
         # expire_time. However, the product can still be retrieved by ProductService.
-        # GetProduct and ProductService.ListProducts. Google Merchant Center property [
-        # expiration_date](https://support.google.com/merchants/answer/6324499).
+        # GetProduct and ProductService.ListProducts. expire_time must be later than
+        # available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown.
+        # Google Merchant Center property [expiration_date](https://support.google.com/
+        # merchants/answer/6324499).
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -2243,8 +2245,8 @@ module Google
       
         # If set to true, and the Product is not found, the fulfillment information will
         # still be processed and retained for at most 1 day and processed once the
-        # Product is created. If set to false, an INVALID_ARGUMENT error is returned if
-        # the Product is not found.
+        # Product is created. If set to false, a NOT_FOUND error is returned if the
+        # Product is not found.
         # Corresponds to the JSON property `allowMissing`
         # @return [Boolean]
         attr_accessor :allow_missing
@@ -3010,8 +3012,8 @@ module Google
       
         # If set to true, and the Product with name Product.name is not found, the
         # inventory update will still be processed and retained for at most 1 day until
-        # the Product is created. If set to false, an INVALID_ARGUMENT error is returned
-        # if the Product is not found.
+        # the Product is created. If set to false, a NOT_FOUND error is returned if the
+        # Product is not found.
         # Corresponds to the JSON property `allowMissing`
         # @return [Boolean]
         attr_accessor :allow_missing
