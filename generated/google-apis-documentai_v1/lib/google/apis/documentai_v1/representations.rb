@@ -2325,6 +2325,7 @@ module Google
           collection :available_locations, as: 'availableLocations', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorTypeLocationInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessorTypeLocationInfo::Representation
       
           property :category, as: 'category'
+          property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           property :type, as: 'type'
         end
