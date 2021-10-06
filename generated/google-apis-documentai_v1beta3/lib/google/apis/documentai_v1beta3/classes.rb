@@ -6923,7 +6923,7 @@ module Google
       # EU' endpoint to feach processor types. In the return, we will have an 'invoice
       # parsing' processor with 'available_locations' field only containing 'US'. So
       # the user can try to create an 'invoice parsing' processor under the location '
-      # US'. Such attempt of creating under the location 'EU' will fail. Next ID: 8.
+      # US'. Such attempt of creating under the location 'EU' will fail. Next ID: 9.
       class GoogleCloudDocumentaiV1beta3ProcessorType
         include Google::Apis::Core::Hashable
       
@@ -6944,13 +6944,18 @@ module Google
         # @return [String]
         attr_accessor :category
       
+        # Launch stage of the processor type
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
         # The resource name of the processor type. Format: projects/`project`/
         # processorTypes/`processor_type`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The type of the processor, e.g, "invoice_parsing".
+        # The type of the processor, e.g., "invoice_parsing".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6964,6 +6969,7 @@ module Google
           @allow_creation = args[:allow_creation] if args.key?(:allow_creation)
           @available_locations = args[:available_locations] if args.key?(:available_locations)
           @category = args[:category] if args.key?(:category)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
         end
