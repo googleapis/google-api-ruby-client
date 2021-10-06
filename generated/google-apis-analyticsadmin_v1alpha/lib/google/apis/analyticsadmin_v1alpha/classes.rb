@@ -114,6 +114,43 @@ module Google
         end
       end
       
+      # Request message for AcknowledgeUserDataCollection RPC.
+      class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. An acknowledgement that the caller of this method understands the
+        # terms of user data collection. This field must contain the exact value: "I
+        # acknowledge that I have the necessary privacy disclosures and rights from my
+        # end users for the collection and processing of their data, including the
+        # association of such data with the visitation information Google Analytics
+        # collects from my site and/or app property."
+        # Corresponds to the JSON property `acknowledgement`
+        # @return [String]
+        attr_accessor :acknowledgement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledgement = args[:acknowledgement] if args.key?(:acknowledgement)
+        end
+      end
+      
+      # Response message for AcknowledgeUserDataCollection RPC.
+      class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A resource message representing a Google Analytics Android app stream.
       class GoogleAnalyticsAdminV1alphaAndroidAppDataStream
         include Google::Apis::Core::Hashable
