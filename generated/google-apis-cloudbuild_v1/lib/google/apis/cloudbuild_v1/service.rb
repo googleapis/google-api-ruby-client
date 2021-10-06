@@ -374,6 +374,12 @@ module Google
         #   Name of the parent project. For example: projects/`$project_number` or
         #   projects/`$project_id`
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
+        # @param [String] ghe_config_id
+        #   Optional. The ID to use for the GithubEnterpriseConfig, which will become the
+        #   final component of the GithubEnterpriseConfig’s resource name. ghe_config_id
+        #   must meet the following requirements: + They must contain only alphanumeric
+        #   characters and dashes. + They can be 1-64 characters long. + They must begin
+        #   and end with an alphanumeric character
         # @param [String] project_id
         #   ID of the project.
         # @param [String] fields
@@ -393,13 +399,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_github_enterprise_config(parent, git_hub_enterprise_config_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_github_enterprise_config(parent, git_hub_enterprise_config_object = nil, ghe_config_id: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/githubEnterpriseConfigs', options)
           command.request_representation = Google::Apis::CloudbuildV1::GitHubEnterpriseConfig::Representation
           command.request_object = git_hub_enterprise_config_object
           command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
           command.response_class = Google::Apis::CloudbuildV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['gheConfigId'] = ghe_config_id unless ghe_config_id.nil?
           command.query['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -803,6 +810,12 @@ module Google
         #   Name of the parent project. For example: projects/`$project_number` or
         #   projects/`$project_id`
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
+        # @param [String] ghe_config_id
+        #   Optional. The ID to use for the GithubEnterpriseConfig, which will become the
+        #   final component of the GithubEnterpriseConfig’s resource name. ghe_config_id
+        #   must meet the following requirements: + They must contain only alphanumeric
+        #   characters and dashes. + They can be 1-64 characters long. + They must begin
+        #   and end with an alphanumeric character
         # @param [String] project_id
         #   ID of the project.
         # @param [String] fields
@@ -822,13 +835,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_github_enterprise_config(parent, git_hub_enterprise_config_object = nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_github_enterprise_config(parent, git_hub_enterprise_config_object = nil, ghe_config_id: nil, project_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/githubEnterpriseConfigs', options)
           command.request_representation = Google::Apis::CloudbuildV1::GitHubEnterpriseConfig::Representation
           command.request_object = git_hub_enterprise_config_object
           command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
           command.response_class = Google::Apis::CloudbuildV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['gheConfigId'] = ghe_config_id unless ghe_config_id.nil?
           command.query['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
