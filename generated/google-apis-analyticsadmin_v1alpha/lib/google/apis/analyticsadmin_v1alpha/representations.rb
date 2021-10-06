@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaAndroidAppDataStream
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -414,6 +426,19 @@ module Google
           property :name, as: 'name'
           collection :property_summaries, as: 'propertySummaries', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPropertySummary, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaPropertySummary::Representation
       
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledgement, as: 'acknowledgement'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
