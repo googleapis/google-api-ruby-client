@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReauthSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResetIdentityAwareProxyClientSecretRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +196,8 @@ module Google
           property :oauth_settings, as: 'oauthSettings', class: Google::Apis::IapV1::OAuthSettings, decorator: Google::Apis::IapV1::OAuthSettings::Representation
       
           property :policy_delegation_settings, as: 'policyDelegationSettings', class: Google::Apis::IapV1::PolicyDelegationSettings, decorator: Google::Apis::IapV1::PolicyDelegationSettings::Representation
+      
+          property :reauth_settings, as: 'reauthSettings', class: Google::Apis::IapV1::ReauthSettings, decorator: Google::Apis::IapV1::ReauthSettings::Representation
       
         end
       end
@@ -350,6 +358,15 @@ module Google
           property :id, as: 'id'
           property :region, as: 'region'
           property :type, as: 'type'
+        end
+      end
+      
+      class ReauthSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_age, as: 'maxAge'
+          property :method_prop, as: 'method'
+          property :policy_type, as: 'policyType'
         end
       end
       

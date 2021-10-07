@@ -82,6 +82,11 @@ module Google
         # @return [Google::Apis::IapV1::PolicyDelegationSettings]
         attr_accessor :policy_delegation_settings
       
+        # Configuration for IAP reauthentication policies.
+        # Corresponds to the JSON property `reauthSettings`
+        # @return [Google::Apis::IapV1::ReauthSettings]
+        attr_accessor :reauth_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -92,6 +97,7 @@ module Google
           @gcip_settings = args[:gcip_settings] if args.key?(:gcip_settings)
           @oauth_settings = args[:oauth_settings] if args.key?(:oauth_settings)
           @policy_delegation_settings = args[:policy_delegation_settings] if args.key?(:policy_delegation_settings)
+          @reauth_settings = args[:reauth_settings] if args.key?(:reauth_settings)
         end
       end
       
@@ -599,7 +605,12 @@ module Google
       
         # Associates a list of `members` to a `role`. Optionally, may specify a `
         # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # the `bindings` must contain at least one member. The `bindings` in a `Policy`
+        # can refer to up to 1,500 members; up to 250 of these members can be Google
+        # groups. Each occurrence of a member counts towards these limits. For example,
+        # if the `bindings` grant 50 different roles to `user:alice@example.com`, and
+        # not to any other member, then you can add another 1,450 members to the `
+        # bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::IapV1::Binding>]
         attr_accessor :bindings
@@ -733,6 +744,38 @@ module Google
           @id = args[:id] if args.key?(:id)
           @region = args[:region] if args.key?(:region)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Configuration for IAP reauthentication policies.
+      class ReauthSettings
+        include Google::Apis::Core::Hashable
+      
+        # Reauth session lifetime, how long before a user has to reauthenticate again.
+        # Corresponds to the JSON property `maxAge`
+        # @return [String]
+        attr_accessor :max_age
+      
+        # Reauth method required by the policy.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # How IAP determines the effective policy in cases of hierarchial policies.
+        # Policies are merged from higher in the hierarchy to lower in the hierarchy.
+        # Corresponds to the JSON property `policyType`
+        # @return [String]
+        attr_accessor :policy_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_age = args[:max_age] if args.key?(:max_age)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @policy_type = args[:policy_type] if args.key?(:policy_type)
         end
       end
       
