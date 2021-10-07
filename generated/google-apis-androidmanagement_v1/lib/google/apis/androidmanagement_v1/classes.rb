@@ -22,9 +22,8 @@ module Google
   module Apis
     module AndroidmanagementV1
       
-      # Security policies set to the most secure values by default. To maintain the
-      # security posture of a device, we don't recommend overriding any of the default
-      # values.
+      # Security policies set to secure values by default. To maintain the security
+      # posture of a device, we don't recommend overriding any of the default values.
       class AdvancedSecurityOverrides
         include Google::Apis::Core::Hashable
       
@@ -2679,9 +2678,8 @@ module Google
         attr_accessor :adjust_volume_disabled
         alias_method :adjust_volume_disabled?, :adjust_volume_disabled
       
-        # Security policies set to the most secure values by default. To maintain the
-        # security posture of a device, we don't recommend overriding any of the default
-        # values.
+        # Security policies set to secure values by default. To maintain the security
+        # posture of a device, we don't recommend overriding any of the default values.
         # Corresponds to the JSON property `advancedSecurityOverrides`
         # @return [Google::Apis::AndroidmanagementV1::AdvancedSecurityOverrides]
         attr_accessor :advanced_security_overrides
