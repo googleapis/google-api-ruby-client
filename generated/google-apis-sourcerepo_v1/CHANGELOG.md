@@ -1,5 +1,9 @@
 # Release history for google-apis-sourcerepo_v1
 
+### v0.7.0 (2021-10-07)
+
+* Regenerated from discovery document revision 20210928
+
 ### v0.6.0 (2021-06-29)
 
 * Regenerated using generator version 0.4.0
