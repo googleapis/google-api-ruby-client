@@ -6526,6 +6526,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :diagnostic_info
       
+        # Represents the input for dtmf event.
+        # Corresponds to the JSON property `dtmf`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DtmfInput]
+        attr_accessor :dtmf
+      
         # An intent represents a user's intent to interact with a conversational agent.
         # You can provide information for the Dialogflow API to use to match user input
         # to an intent by adding training phrases (i.e., examples of user input) to your
@@ -6626,6 +6631,7 @@ module Google
         def update!(**args)
           @current_page = args[:current_page] if args.key?(:current_page)
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
+          @dtmf = args[:dtmf] if args.key?(:dtmf)
           @intent = args[:intent] if args.key?(:intent)
           @intent_detection_confidence = args[:intent_detection_confidence] if args.key?(:intent_detection_confidence)
           @language_code = args[:language_code] if args.key?(:language_code)
