@@ -55,7 +55,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Fixnum] id
-        #   The ID of the backup run to delete. To find a backup run ID, use the list
+        #   The ID of the backup run to delete. To find a backup run ID, use the [list](
+        #   https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/backupRuns/list)
         #   method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -712,9 +713,10 @@ module Google
         
         # Initiates a manual failover of a high availability (HA) primary instance to a
         # standby instance, which becomes the primary instance. Users are then rerouted
-        # to the new primary. For more information, see the Overview of high
-        # availability page in the Cloud SQL documentation. If using Legacy HA (MySQL
-        # only), this causes the instance to failover to its failover replica instance.
+        # to the new primary. For more information, see the [Overview of high
+        # availability](https://cloud.google.com/sql/docs/mysql/high-availability) page
+        # in the Cloud SQL documentation. If using Legacy HA (MySQL only), this causes
+        # the instance to failover to its failover replica instance.
         # @param [String] project
         #   ID of the project that contains the read replica.
         # @param [String] instance
