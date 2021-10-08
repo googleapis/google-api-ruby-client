@@ -186,7 +186,7 @@ module Google
         end
       end
       
-      # Resource representing a policy schema. Next ID: 10
+      # Resource representing a policy schema. Next ID: 11
       class GoogleChromePolicyV1PolicySchema
         include Google::Apis::Core::Hashable
       
@@ -240,6 +240,11 @@ module Google
         # @return [String]
         attr_accessor :support_uri
       
+        # Output only. Information about applicable target resources for the policy.
+        # Corresponds to the JSON property `validTargetResources`
+        # @return [Array<String>]
+        attr_accessor :valid_target_resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -255,6 +260,7 @@ module Google
           @policy_description = args[:policy_description] if args.key?(:policy_description)
           @schema_name = args[:schema_name] if args.key?(:schema_name)
           @support_uri = args[:support_uri] if args.key?(:support_uri)
+          @valid_target_resources = args[:valid_target_resources] if args.key?(:valid_target_resources)
         end
       end
       
