@@ -158,6 +158,10 @@ module Google
       class LongRunningRecognizeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_config, as: 'outputConfig', class: Google::Apis::SpeechV1::TranscriptOutputConfig, decorator: Google::Apis::SpeechV1::TranscriptOutputConfig::Representation
+      
+          property :output_error, as: 'outputError', class: Google::Apis::SpeechV1::Status, decorator: Google::Apis::SpeechV1::Status::Representation
+      
           collection :results, as: 'results', class: Google::Apis::SpeechV1::SpeechRecognitionResult, decorator: Google::Apis::SpeechV1::SpeechRecognitionResult::Representation
       
           property :total_billed_time, as: 'totalBilledTime'

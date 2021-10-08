@@ -131,6 +131,21 @@ module Google
       class LongRunningRecognizeResponse
         include Google::Apis::Core::Hashable
       
+        # Specifies an optional destination for the recognition results.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::SpeechV1::TranscriptOutputConfig]
+        attr_accessor :output_config
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `outputError`
+        # @return [Google::Apis::SpeechV1::Status]
+        attr_accessor :output_error
+      
         # Sequential list of transcription results corresponding to sequential portions
         # of audio.
         # Corresponds to the JSON property `results`
@@ -148,6 +163,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @output_config = args[:output_config] if args.key?(:output_config)
+          @output_error = args[:output_error] if args.key?(:output_error)
           @results = args[:results] if args.key?(:results)
           @total_billed_time = args[:total_billed_time] if args.key?(:total_billed_time)
         end
