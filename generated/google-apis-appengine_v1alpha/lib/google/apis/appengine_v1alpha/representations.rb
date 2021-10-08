@@ -76,18 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAppengineV2OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleAppengineV2mainOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListAuthorizedCertificatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,36 +244,6 @@ module Google
           property :flexible_environment_available, as: 'flexibleEnvironmentAvailable'
           property :search_api_available, as: 'searchApiAvailable'
           property :standard_environment_available, as: 'standardEnvironmentAvailable'
-        end
-      end
-      
-      class GoogleAppengineV2OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :ephemeral_message, as: 'ephemeralMessage'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-          collection :warning, as: 'warning'
-        end
-      end
-      
-      class GoogleAppengineV2mainOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :ephemeral_message, as: 'ephemeralMessage'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-          collection :warning, as: 'warning'
         end
       end
       
