@@ -271,7 +271,7 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # This is always *sql#backupRun*.
+        # This is always **sql#backupRun**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -345,7 +345,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::BackupRun>]
         attr_accessor :items
       
-        # This is always *sql#backupRunsList*.
+        # This is always **sql#backupRunsList**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -382,7 +382,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :bin_log_position
       
-        # This is always *sql#binLogCoordinates*.
+        # This is always **sql#binLogCoordinates**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -413,7 +413,7 @@ module Google
         # @return [String]
         attr_accessor :destination_instance_name
       
-        # This is always *sql#cloneContext*.
+        # This is always **sql#cloneContext**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -602,9 +602,10 @@ module Google
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
-        # *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that
-        # is not managed by Google. This property is read-only; use the *tier* property
-        # in the *settings* object to determine the database type.
+        # The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A
+        # database server that is not managed by Google. This property is read-only; use
+        # the **tier** property in the **settings** object to determine the database
+        # type.
         # Corresponds to the JSON property `backendType`
         # @return [String]
         attr_accessor :backend_type
@@ -622,18 +623,20 @@ module Google
       
         # The current disk usage of the instance in bytes. This property has been
         # deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric
-        # in Cloud Monitoring API instead. Please see this announcement for details.
+        # in Cloud Monitoring API instead. Please see [this announcement](https://groups.
+        # google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for
+        # details.
         # Corresponds to the JSON property `currentDiskSize`
         # @return [Fixnum]
         attr_accessor :current_disk_size
       
-        # The database engine type and version. The *databaseVersion* field cannot be
-        # changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (
-        # default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*,
-        # *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances: *
-        # SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*
-        # , or *SQLSERVER_2019_WEB*, *SQLSERVER_2017_STANDARD* (default), *
-        # SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        # The database engine type and version. The **databaseVersion** field cannot be
+        # changed after instance creation. * **MySQL instances**: MYSQL_8_0, MYSQL_5_7 (
+        # default), or MYSQL_5_6. * **PostgreSQL instances**: POSTGRES_9_6, POSTGRES_10,
+        # POSTGRES_11, POSTGRES_12, POSTGRES_13 (default). * **SQL Server instances**:
+        # SQLSERVER_2019_STANDARD, SQLSERVER_2019_ENTERPRISE, SQLSERVER_2019_EXPRESS, or
+        # SQLSERVER_2019_WEB, SQLSERVER_2017_STANDARD (default),
+        # SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, or SQLSERVER_2017_WEB.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -649,7 +652,7 @@ module Google
         attr_accessor :disk_encryption_status
       
         # This field is deprecated and will be removed from a future version of the API.
-        # Use the *settings.settingsVersion* field instead.
+        # Use the **settings.settingsVersion** field instead.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -666,10 +669,10 @@ module Google
         # @return [String]
         attr_accessor :gce_zone
       
-        # The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A
-        # Cloud SQL instance that is not replicating from a primary instance. *
-        # ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *
-        # READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
+        # The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**:
+        # A Cloud SQL instance that is not replicating from a primary instance. * **
+        # ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **
+        # READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
         # Corresponds to the JSON property `instanceType`
         # @return [String]
         attr_accessor :instance_type
@@ -685,7 +688,7 @@ module Google
         # @return [String]
         attr_accessor :ipv6_address
       
-        # This is always *sql#instance*.
+        # This is always **sql#instance**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -721,10 +724,10 @@ module Google
         # @return [String]
         attr_accessor :project
       
-        # The geographical region. Can be *us-central* (*FIRST_GEN* instances only) *us-
-        # central1* (*SECOND_GEN* instances only) *asia-east1* or *europe-west1*.
-        # Defaults to *us-central* or *us-central1* depending on the instance type. The
-        # region cannot be changed after instance creation.
+        # The geographical region. Can be: * **us-central** (**FIRST_GEN** instances
+        # only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **
+        # europe-west1**. Defaults to **us-central** or **us-central1** depending on the
+        # instance type. The region cannot be changed after instance creation.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -785,12 +788,12 @@ module Google
         attr_accessor :settings
       
         # The current serving state of the Cloud SQL instance. This can be one of the
-        # following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is
-        # unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *
-        # SUSPENDED*: The instance is not available, for example due to problems with
-        # billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*:
-        # The instance is being created. *MAINTENANCE*: The instance is down for
-        # maintenance. *FAILED*: The instance creation failed.
+        # following: * **SQL_INSTANCE_STATE_UNSPECIFIED**: The state of the instance is
+        # unknown. * **RUNNABLE**: The instance is running, or has been stopped by owner.
+        # * **SUSPENDED**: The instance is not available, for example due to problems
+        # with billing. * **PENDING_DELETE**: The instance is being deleted. * **
+        # PENDING_CREATE**: The instance is being created. * **MAINTENANCE**: The
+        # instance is down for maintenance. * **FAILED**: The instance creation failed.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -881,7 +884,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::Database>]
         attr_accessor :items
       
-        # This is always *sql#databasesList*.
+        # This is always **sql#databasesList**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -926,7 +929,7 @@ module Google
       class DemoteMasterContext
         include Google::Apis::Core::Hashable
       
-        # This is always *sql#demoteMasterContext*.
+        # This is always **sql#demoteMasterContext**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1289,7 +1292,7 @@ module Google
       class FailoverContext
         include Google::Apis::Core::Hashable
       
-        # This is always *sql#failoverContext*.
+        # This is always **sql#failoverContext**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1436,6 +1439,11 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
+        # Optional. If set, it will contain the cert valid duration.
+        # Corresponds to the JSON property `validDuration`
+        # @return [String]
+        attr_accessor :valid_duration
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1445,6 +1453,7 @@ module Google
           @access_token = args[:access_token] if args.key?(:access_token)
           @public_key = args[:public_key] if args.key?(:public_key)
           @read_time = args[:read_time] if args.key?(:read_time)
+          @valid_duration = args[:valid_duration] if args.key?(:valid_duration)
         end
       end
       
@@ -1824,7 +1833,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::DatabaseInstance>]
         attr_accessor :items
       
-        # This is always *sql#instancesList*.
+        # This is always **sql#instancesList**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1867,7 +1876,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::SslCert>]
         attr_accessor :certs
       
-        # This is always *sql#instancesListServerCas*.
+        # This is always **sql#instancesListServerCas**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2250,7 +2259,7 @@ module Google
         # @return [String]
         attr_accessor :host_port
       
-        # This is always *sql#onPremisesConfiguration*.
+        # This is always **sql#onPremisesConfiguration**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2473,7 +2482,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::Operation>]
         attr_accessor :items
       
-        # This is always *sql#operationsList*.
+        # This is always **sql#operationsList**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2500,8 +2509,8 @@ module Google
       class ReplicaConfiguration
         include Google::Apis::Core::Hashable
       
-        # Specifies if the replica is the failover target. If the field is set to *true*
-        # the replica will be designated as a failover replica. In case the primary
+        # Specifies if the replica is the failover target. If the field is set to **true*
+        # * the replica will be designated as a failover replica. In case the primary
         # instance fails, the replica instance will be promoted as the new primary
         # instance. Only one replica can be specified as failover target, and the
         # replica has to be in different zone with the primary instance.
@@ -2510,7 +2519,7 @@ module Google
         attr_accessor :failover_target
         alias_method :failover_target?, :failover_target
       
-        # This is always *sql#replicaConfiguration*.
+        # This is always **sql#replicaConfiguration**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2574,7 +2583,7 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
-        # This is always *sql#restoreBackupContext*.
+        # This is always **sql#restoreBackupContext**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2601,7 +2610,7 @@ module Google
       class RotateServerCaContext
         include Google::Apis::Core::Hashable
       
-        # This is always *sql#rotateServerCaContext*.
+        # This is always **sql#rotateServerCaContext**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2850,7 +2859,7 @@ module Google
         # @return [String]
         attr_accessor :detail
       
-        # Can be *sql#externalSyncSettingError* or *sql#externalSyncSettingWarning*.
+        # Can be **sql#externalSyncSettingError** or **sql#externalSyncSettingWarning**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2971,7 +2980,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::SqlExternalSyncSettingError>]
         attr_accessor :errors
       
-        # This is always *sql#migrationSettingErrorList*.
+        # This is always **sql#migrationSettingErrorList**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3286,7 +3295,7 @@ module Google
         # @return [Google::Apis::SqladminV1::SslCertDetail]
         attr_accessor :client_cert
       
-        # This is always *sql#sslCertsInsert*.
+        # This is always **sql#sslCertsInsert**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3325,7 +3334,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::SslCert>]
         attr_accessor :items
       
-        # This is always *sql#sslCertsList*.
+        # This is always **sql#sslCertsList**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3382,7 +3391,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ram
       
-        # This is always *sql#tier*.
+        # This is always **sql#tier**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3393,7 +3402,7 @@ module Google
         attr_accessor :region
       
         # An identifier for the machine type, for example, db-custom-1-3840. For related
-        # information, see Pricing.
+        # information, see [Pricing](/sql/pricing).
         # Corresponds to the JSON property `tier`
         # @return [String]
         attr_accessor :tier
@@ -3421,7 +3430,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::Tier>]
         attr_accessor :items
       
-        # This is always *sql#tiersList*.
+        # This is always **sql#tiersList**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3441,13 +3450,13 @@ module Google
       class TruncateLogContext
         include Google::Apis::Core::Hashable
       
-        # This is always *sql#truncateLogContext*.
+        # This is always **sql#truncateLogContext**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The type of log to truncate. Valid values are *MYSQL_GENERAL_TABLE* and *
-        # MYSQL_SLOW_TABLE*.
+        # The type of log to truncate. Valid values are **MYSQL_GENERAL_TABLE** and **
+        # MYSQL_SLOW_TABLE**.
         # Corresponds to the JSON property `logType`
         # @return [String]
         attr_accessor :log_type
@@ -3472,25 +3481,25 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The host name from which the user can connect. For *insert* operations, host
-        # defaults to an empty string. For *update* operations, host is specified as
+        # The host name from which the user can connect. For **insert** operations, host
+        # defaults to an empty string. For **update** operations, host is specified as
         # part of the request URL. The host name cannot be updated after insertion.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
         # The name of the Cloud SQL instance. This does not include the project ID. Can
-        # be omitted for *update* since it is already specified on the URL.
+        # be omitted for **update** since it is already specified on the URL.
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
       
-        # This is always *sql#user*.
+        # This is always **sql#user**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The name of the user in the Cloud SQL instance. Can be omitted for *update*
+        # The name of the user in the Cloud SQL instance. Can be omitted for **update**
         # since it is already specified in the URL.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3502,8 +3511,8 @@ module Google
         attr_accessor :password
       
         # The project ID of the project containing the Cloud SQL database. The Google
-        # apps domain is prefixed if applicable. Can be omitted for *update* since it is
-        # already specified on the URL.
+        # apps domain is prefixed if applicable. Can be omitted for **update** since it
+        # is already specified on the URL.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
@@ -3546,7 +3555,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::User>]
         attr_accessor :items
       
-        # This is always *sql#usersList*.
+        # This is always **sql#usersList**.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
