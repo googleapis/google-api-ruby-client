@@ -883,6 +883,7 @@ module Google
           property :access_token, as: 'access_token'
           property :public_key, as: 'public_key'
           property :read_time, as: 'readTime'
+          property :valid_duration, as: 'validDuration'
         end
       end
       
