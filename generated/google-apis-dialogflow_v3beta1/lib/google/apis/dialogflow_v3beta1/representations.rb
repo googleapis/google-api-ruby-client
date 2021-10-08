@@ -4195,6 +4195,8 @@ module Google
           property :current_page, as: 'currentPage', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Page::Representation
       
           hash :diagnostic_info, as: 'diagnosticInfo'
+          property :dtmf, as: 'dtmf', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DtmfInput, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1DtmfInput::Representation
+      
           property :intent, as: 'intent', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Intent::Representation
       
           property :intent_detection_confidence, as: 'intentDetectionConfidence'
