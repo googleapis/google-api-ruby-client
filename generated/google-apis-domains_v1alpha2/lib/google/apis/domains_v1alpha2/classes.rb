@@ -963,7 +963,12 @@ module Google
       
         # Associates a list of `members` to a `role`. Optionally, may specify a `
         # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # the `bindings` must contain at least one member. The `bindings` in a `Policy`
+        # can refer to up to 1,500 members; up to 250 of these members can be Google
+        # groups. Each occurrence of a member counts towards these limits. For example,
+        # if the `bindings` grant 50 different roles to `user:alice@example.com`, and
+        # not to any other member, then you can add another 1,450 members to the `
+        # bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::DomainsV1alpha2::Binding>]
         attr_accessor :bindings
@@ -1166,11 +1171,17 @@ module Google
         attr_accessor :domain_notices
       
         # The `Registration` resource facilitates managing and configuring domain name
-        # registrations. To create a new `Registration` resource, find a suitable domain
-        # name by calling the `SearchDomains` method with a query to see available
-        # domain name options. After choosing a name, call `RetrieveRegisterParameters`
-        # to ensure availability and obtain information like pricing, which is needed to
-        # build a call to `RegisterDomain`.
+        # registrations. There are several ways to create a new `Registration` resource:
+        # To create a new `Registration` resource, find a suitable domain name by
+        # calling the `SearchDomains` method with a query to see available domain name
+        # options. After choosing a name, call `RetrieveRegisterParameters` to ensure
+        # availability and obtain information like pricing, which is needed to build a
+        # call to `RegisterDomain`. Another way to create a new `Registration` is to
+        # transfer an existing domain from another registrar. First, go to the current
+        # registrar to unlock the domain for transfer and retrieve the domain's transfer
+        # authorization code. Then call `RetrieveTransferParameters` to confirm that the
+        # domain is unlocked and to get values needed to build a call to `TransferDomain`
+        # .
         # Corresponds to the JSON property `registration`
         # @return [Google::Apis::DomainsV1alpha2::Registration]
         attr_accessor :registration
@@ -1248,11 +1259,17 @@ module Google
       end
       
       # The `Registration` resource facilitates managing and configuring domain name
-      # registrations. To create a new `Registration` resource, find a suitable domain
-      # name by calling the `SearchDomains` method with a query to see available
-      # domain name options. After choosing a name, call `RetrieveRegisterParameters`
-      # to ensure availability and obtain information like pricing, which is needed to
-      # build a call to `RegisterDomain`.
+      # registrations. There are several ways to create a new `Registration` resource:
+      # To create a new `Registration` resource, find a suitable domain name by
+      # calling the `SearchDomains` method with a query to see available domain name
+      # options. After choosing a name, call `RetrieveRegisterParameters` to ensure
+      # availability and obtain information like pricing, which is needed to build a
+      # call to `RegisterDomain`. Another way to create a new `Registration` is to
+      # transfer an existing domain from another registrar. First, go to the current
+      # registrar to unlock the domain for transfer and retrieve the domain's transfer
+      # authorization code. Then call `RetrieveTransferParameters` to confirm that the
+      # domain is unlocked and to get values needed to build a call to `TransferDomain`
+      # .
       class Registration
         include Google::Apis::Core::Hashable
       
@@ -1376,6 +1393,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @register_parameters = args[:register_parameters] if args.key?(:register_parameters)
+        end
+      end
+      
+      # Response for the `RetrieveTransferParameters` method.
+      class RetrieveTransferParametersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Parameters required to transfer a domain from another registrar.
+        # Corresponds to the JSON property `transferParameters`
+        # @return [Google::Apis::DomainsV1alpha2::TransferParameters]
+        attr_accessor :transfer_parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transfer_parameters = args[:transfer_parameters] if args.key?(:transfer_parameters)
         end
       end
       
@@ -1527,6 +1563,113 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Request for the `TransferDomain` method.
+      class TransferDomainRequest
+        include Google::Apis::Core::Hashable
+      
+        # Defines an authorization code.
+        # Corresponds to the JSON property `authorizationCode`
+        # @return [Google::Apis::DomainsV1alpha2::AuthorizationCode]
+        attr_accessor :authorization_code
+      
+        # The list of contact notices that you acknowledge. The notices needed here
+        # depend on the values specified in `registration.contact_settings`.
+        # Corresponds to the JSON property `contactNotices`
+        # @return [Array<String>]
+        attr_accessor :contact_notices
+      
+        # The `Registration` resource facilitates managing and configuring domain name
+        # registrations. There are several ways to create a new `Registration` resource:
+        # To create a new `Registration` resource, find a suitable domain name by
+        # calling the `SearchDomains` method with a query to see available domain name
+        # options. After choosing a name, call `RetrieveRegisterParameters` to ensure
+        # availability and obtain information like pricing, which is needed to build a
+        # call to `RegisterDomain`. Another way to create a new `Registration` is to
+        # transfer an existing domain from another registrar. First, go to the current
+        # registrar to unlock the domain for transfer and retrieve the domain's transfer
+        # authorization code. Then call `RetrieveTransferParameters` to confirm that the
+        # domain is unlocked and to get values needed to build a call to `TransferDomain`
+        # .
+        # Corresponds to the JSON property `registration`
+        # @return [Google::Apis::DomainsV1alpha2::Registration]
+        attr_accessor :registration
+      
+        # Validate the request without actually transferring the domain.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `yearlyPrice`
+        # @return [Google::Apis::DomainsV1alpha2::Money]
+        attr_accessor :yearly_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_code = args[:authorization_code] if args.key?(:authorization_code)
+          @contact_notices = args[:contact_notices] if args.key?(:contact_notices)
+          @registration = args[:registration] if args.key?(:registration)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+          @yearly_price = args[:yearly_price] if args.key?(:yearly_price)
+        end
+      end
+      
+      # Parameters required to transfer a domain from another registrar.
+      class TransferParameters
+        include Google::Apis::Core::Hashable
+      
+        # The registrar that currently manages the domain.
+        # Corresponds to the JSON property `currentRegistrar`
+        # @return [String]
+        attr_accessor :current_registrar
+      
+        # The domain name. Unicode domain names are expressed in Punycode format.
+        # Corresponds to the JSON property `domainName`
+        # @return [String]
+        attr_accessor :domain_name
+      
+        # The name servers that currently store the configuration of the domain.
+        # Corresponds to the JSON property `nameServers`
+        # @return [Array<String>]
+        attr_accessor :name_servers
+      
+        # Contact privacy options that the domain supports.
+        # Corresponds to the JSON property `supportedPrivacy`
+        # @return [Array<String>]
+        attr_accessor :supported_privacy
+      
+        # Indicates whether the domain is protected by a transfer lock. For a transfer
+        # to succeed, this must show `UNLOCKED`. To unlock a domain, go to its current
+        # registrar.
+        # Corresponds to the JSON property `transferLockState`
+        # @return [String]
+        attr_accessor :transfer_lock_state
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `yearlyPrice`
+        # @return [Google::Apis::DomainsV1alpha2::Money]
+        attr_accessor :yearly_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_registrar = args[:current_registrar] if args.key?(:current_registrar)
+          @domain_name = args[:domain_name] if args.key?(:domain_name)
+          @name_servers = args[:name_servers] if args.key?(:name_servers)
+          @supported_privacy = args[:supported_privacy] if args.key?(:supported_privacy)
+          @transfer_lock_state = args[:transfer_lock_state] if args.key?(:transfer_lock_state)
+          @yearly_price = args[:yearly_price] if args.key?(:yearly_price)
         end
       end
     end

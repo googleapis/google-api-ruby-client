@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RetrieveTransferParametersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchDomainsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +239,18 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransferDomainRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransferParameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -561,6 +579,14 @@ module Google
         end
       end
       
+      class RetrieveTransferParametersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transfer_parameters, as: 'transferParameters', class: Google::Apis::DomainsV1alpha2::TransferParameters, decorator: Google::Apis::DomainsV1alpha2::TransferParameters::Representation
+      
+        end
+      end
+      
       class SearchDomainsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -598,6 +624,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TransferDomainRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_code, as: 'authorizationCode', class: Google::Apis::DomainsV1alpha2::AuthorizationCode, decorator: Google::Apis::DomainsV1alpha2::AuthorizationCode::Representation
+      
+          collection :contact_notices, as: 'contactNotices'
+          property :registration, as: 'registration', class: Google::Apis::DomainsV1alpha2::Registration, decorator: Google::Apis::DomainsV1alpha2::Registration::Representation
+      
+          property :validate_only, as: 'validateOnly'
+          property :yearly_price, as: 'yearlyPrice', class: Google::Apis::DomainsV1alpha2::Money, decorator: Google::Apis::DomainsV1alpha2::Money::Representation
+      
+        end
+      end
+      
+      class TransferParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_registrar, as: 'currentRegistrar'
+          property :domain_name, as: 'domainName'
+          collection :name_servers, as: 'nameServers'
+          collection :supported_privacy, as: 'supportedPrivacy'
+          property :transfer_lock_state, as: 'transferLockState'
+          property :yearly_price, as: 'yearlyPrice', class: Google::Apis::DomainsV1alpha2::Money, decorator: Google::Apis::DomainsV1alpha2::Money::Representation
+      
         end
       end
     end
