@@ -134,6 +134,11 @@ module Google
         # @return [String]
         attr_accessor :data_type
       
+        # Details about a date column.
+        # Corresponds to the JSON property `dateDetails`
+        # @return [Google::Apis::Area120tablesV1alpha1::DateDetails]
+        attr_accessor :date_details
+      
         # Internal id for a column.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -182,6 +187,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_type = args[:data_type] if args.key?(:data_type)
+          @date_details = args[:date_details] if args.key?(:date_details)
           @id = args[:id] if args.key?(:id)
           @labels = args[:labels] if args.key?(:labels)
           @lookup_details = args[:lookup_details] if args.key?(:lookup_details)
@@ -222,6 +228,26 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @row = args[:row] if args.key?(:row)
           @view = args[:view] if args.key?(:view)
+        end
+      end
+      
+      # Details about a date column.
+      class DateDetails
+        include Google::Apis::Core::Hashable
+      
+        # Whether the date column includes time.
+        # Corresponds to the JSON property `hasTime`
+        # @return [Boolean]
+        attr_accessor :has_time
+        alias_method :has_time?, :has_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_time = args[:has_time] if args.key?(:has_time)
         end
       end
       
@@ -455,7 +481,7 @@ module Google
         end
       end
       
-      # A single table. NextId: 7
+      # A single table. NextId: 8
       class Table
         include Google::Apis::Core::Hashable
       
@@ -484,6 +510,12 @@ module Google
         # @return [Array<Google::Apis::Area120tablesV1alpha1::SavedView>]
         attr_accessor :saved_views
       
+        # The time zone of the table. IANA Time Zone Database time zone, e.g. "America/
+        # New_York".
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # Time when the table was last updated excluding updates to individual rows
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -500,6 +532,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @saved_views = args[:saved_views] if args.key?(:saved_views)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
