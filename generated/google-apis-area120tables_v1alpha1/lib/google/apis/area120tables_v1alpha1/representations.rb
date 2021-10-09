@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DateDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,6 +185,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_type, as: 'dataType'
+          property :date_details, as: 'dateDetails', class: Google::Apis::Area120tablesV1alpha1::DateDetails, decorator: Google::Apis::Area120tablesV1alpha1::DateDetails::Representation
+      
           property :id, as: 'id'
           collection :labels, as: 'labels', class: Google::Apis::Area120tablesV1alpha1::LabeledItem, decorator: Google::Apis::Area120tablesV1alpha1::LabeledItem::Representation
       
@@ -199,6 +207,13 @@ module Google
           property :row, as: 'row', class: Google::Apis::Area120tablesV1alpha1::Row, decorator: Google::Apis::Area120tablesV1alpha1::Row::Representation
       
           property :view, as: 'view'
+        end
+      end
+      
+      class DateDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_time, as: 'hasTime'
         end
       end
       
@@ -286,6 +301,7 @@ module Google
           property :name, as: 'name'
           collection :saved_views, as: 'savedViews', class: Google::Apis::Area120tablesV1alpha1::SavedView, decorator: Google::Apis::Area120tablesV1alpha1::SavedView::Representation
       
+          property :time_zone, as: 'timeZone'
           property :update_time, as: 'updateTime'
         end
       end

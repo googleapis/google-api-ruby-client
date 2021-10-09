@@ -1,5 +1,9 @@
 # Release history for google-apis-area120tables_v1alpha1
 
+### v0.12.0 (2021-10-09)
+
+* Regenerated from discovery document revision 20211007
+
 ### v0.11.0 (2021-09-25)
 
 * Regenerated from discovery document revision 20210923
