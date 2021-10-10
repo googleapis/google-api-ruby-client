@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDomainsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreDomainRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -321,6 +339,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :trust_prop, as: 'trust', class: Google::Apis::ManagedidentitiesV1beta1::TrustProp, decorator: Google::Apis::ManagedidentitiesV1beta1::TrustProp::Representation
       
+        end
+      end
+      
+      class Backup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :status_message, as: 'statusMessage'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -566,6 +597,16 @@ module Google
         end
       end
       
+      class ListBackupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::ManagedidentitiesV1beta1::Backup, decorator: Google::Apis::ManagedidentitiesV1beta1::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListDomainsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -716,6 +757,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password, as: 'password'
+        end
+      end
+      
+      class RestoreDomainRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_id, as: 'backupId'
         end
       end
       
