@@ -909,7 +909,8 @@ module Google
         #   project_id`/locations/global`
         # @param [Google::Apis::ManagedidentitiesV1::Peering] peering_object
         # @param [String] peering_id
-        #   Required. Peering Id, unique name to identify peering.
+        #   Required. Peering Id, unique name to identify peering. It should follow the
+        #   regex format "^(?:[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?)$"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
