@@ -346,6 +346,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Info per node.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<Google::Apis::RedisV1::NodeInfo>]
+        attr_accessor :nodes
+      
         # Output only. Cloud IAM identity used by import / export operations to transfer
         # data to/from Cloud Storage. Format is "serviceAccount:". The value may change
         # over time for a given instance so should be checked before each import/export
@@ -358,6 +363,25 @@ module Google
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
+      
+        # Output only. Hostname or IP address of the exposed readonly Redis endpoint.
+        # Standard tier only. Targets all healthy replica nodes in instance. Replication
+        # is asynchronous and replica nodes will exhibit some lag behind the primary.
+        # Write requests must target 'host'.
+        # Corresponds to the JSON property `readEndpoint`
+        # @return [String]
+        attr_accessor :read_endpoint
+      
+        # Output only. The port number of the exposed readonly redis endpoint. Standard
+        # tier only. Write requests should target 'port'.
+        # Corresponds to the JSON property `readEndpointPort`
+        # @return [Fixnum]
+        attr_accessor :read_endpoint_port
+      
+        # Optional. Read replica mode.
+        # Corresponds to the JSON property `readReplicasMode`
+        # @return [String]
+        attr_accessor :read_replicas_mode
       
         # Optional. Redis configuration parameters, according to http://redis.io/topics/
         # config. Currently, the only supported parameters are: Redis version 3.2 and
@@ -376,6 +400,12 @@ module Google
         # Corresponds to the JSON property `redisVersion`
         # @return [String]
         attr_accessor :redis_version
+      
+        # Optional. The number of replica nodes. Valid range for standard tier is [1-5]
+        # and defaults to 1. Valid value for basic tier is 0 and defaults to 0.
+        # Corresponds to the JSON property `replicaCount`
+        # @return [Fixnum]
+        attr_accessor :replica_count
       
         # Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that
         # are reserved for this instance. Range must be unique and non-overlapping with
@@ -434,10 +464,15 @@ module Google
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
           @name = args[:name] if args.key?(:name)
+          @nodes = args[:nodes] if args.key?(:nodes)
           @persistence_iam_identity = args[:persistence_iam_identity] if args.key?(:persistence_iam_identity)
           @port = args[:port] if args.key?(:port)
+          @read_endpoint = args[:read_endpoint] if args.key?(:read_endpoint)
+          @read_endpoint_port = args[:read_endpoint_port] if args.key?(:read_endpoint_port)
+          @read_replicas_mode = args[:read_replicas_mode] if args.key?(:read_replicas_mode)
           @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
           @redis_version = args[:redis_version] if args.key?(:redis_version)
+          @replica_count = args[:replica_count] if args.key?(:replica_count)
           @reserved_ip_range = args[:reserved_ip_range] if args.key?(:reserved_ip_range)
           @server_ca_certs = args[:server_ca_certs] if args.key?(:server_ca_certs)
           @state = args[:state] if args.key?(:state)
@@ -683,6 +718,31 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @schedule_deadline_time = args[:schedule_deadline_time] if args.key?(:schedule_deadline_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Node specific properties.
+      class NodeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Output Only. Node identifying string. e.g. 'node-0', 'node-1'
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. Output Only. Location of the node.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
