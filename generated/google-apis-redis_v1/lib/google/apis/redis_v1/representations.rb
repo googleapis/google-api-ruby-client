@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,10 +281,16 @@ module Google
       
           property :memory_size_gb, as: 'memorySizeGb'
           property :name, as: 'name'
+          collection :nodes, as: 'nodes', class: Google::Apis::RedisV1::NodeInfo, decorator: Google::Apis::RedisV1::NodeInfo::Representation
+      
           property :persistence_iam_identity, as: 'persistenceIamIdentity'
           property :port, as: 'port'
+          property :read_endpoint, as: 'readEndpoint'
+          property :read_endpoint_port, as: 'readEndpointPort'
+          property :read_replicas_mode, as: 'readReplicasMode'
           hash :redis_configs, as: 'redisConfigs'
           property :redis_version, as: 'redisVersion'
+          property :replica_count, as: 'replicaCount'
           property :reserved_ip_range, as: 'reservedIpRange'
           collection :server_ca_certs, as: 'serverCaCerts', class: Google::Apis::RedisV1::TlsCertificate, decorator: Google::Apis::RedisV1::TlsCertificate::Representation
       
@@ -353,6 +365,14 @@ module Google
           property :end_time, as: 'endTime'
           property :schedule_deadline_time, as: 'scheduleDeadlineTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class NodeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :zone, as: 'zone'
         end
       end
       
