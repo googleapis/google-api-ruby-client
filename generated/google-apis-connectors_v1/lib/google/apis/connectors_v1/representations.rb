@@ -404,6 +404,8 @@ module Google
           property :display_name, as: 'displayName'
           property :key, as: 'key'
           property :required, as: 'required'
+          property :role_grant, as: 'roleGrant', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
+      
           property :validation_regex, as: 'validationRegex'
           property :value_type, as: 'valueType'
         end
@@ -483,6 +485,8 @@ module Google
           property :name, as: 'name'
           property :release_version, as: 'releaseVersion'
           property :role_grant, as: 'roleGrant', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
+      
+          collection :role_grants, as: 'roleGrants', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
       
           property :supported_runtime_features, as: 'supportedRuntimeFeatures', class: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures, decorator: Google::Apis::ConnectorsV1::SupportedRuntimeFeatures::Representation
       

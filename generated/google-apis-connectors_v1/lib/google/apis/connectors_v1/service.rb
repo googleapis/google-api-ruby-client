@@ -30,7 +30,7 @@ module Google
       #    Connectors = Google::Apis::ConnectorsV1 # Alias the module
       #    service = Connectors::ConnectorsService.new
       #
-      # @see https://cloud.devsite.corp.google.com/apigee/docs/api-platform/connectors/about-connectors
+      # @see https://cloud.google.com/apigee/docs/api-platform/connectors/about-connectors
       class ConnectorsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
