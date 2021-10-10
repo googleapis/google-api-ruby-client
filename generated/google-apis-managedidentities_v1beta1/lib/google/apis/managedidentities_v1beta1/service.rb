@@ -524,6 +524,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # RestoreBackup restores domain mentioned in the RestoreBackupRequest
+        # @param [String] name
+        #   Required. resource name for the domain to which the backup belongs
+        # @param [Google::Apis::ManagedidentitiesV1beta1::RestoreDomainRequest] restore_domain_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_domain(name, restore_domain_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:restore', options)
+          command.request_representation = Google::Apis::ManagedidentitiesV1beta1::RestoreDomainRequest::Representation
+          command.request_object = restore_domain_request_object
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
         # PERMISSION_DENIED` errors.
@@ -672,6 +705,108 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Backup for a domain.
+        # @param [String] parent
+        #   Required. The domain resource name using the form: `projects/`project_id`/
+        #   locations/global/domains/`domain_name``
+        # @param [Google::Apis::ManagedidentitiesV1beta1::Backup] backup_object
+        # @param [String] backup_id
+        #   Required. Backup Id, unique name to identify the backups with the following
+        #   restrictions: * Must be lowercase letters, numbers, and hyphens * Must start
+        #   with a letter. * Must contain between 1-63 characters. * Must end with a
+        #   number or a letter. * Must be unique within the domain.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_global_domain_backup(parent, backup_object = nil, backup_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/backups', options)
+          command.request_representation = Google::Apis::ManagedidentitiesV1beta1::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['backupId'] = backup_id unless backup_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes identified Backup.
+        # @param [String] name
+        #   Required. The backup resource name using the form: `projects/`project_id`/
+        #   locations/global/domains/`domain_name`/backups/`backup_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_global_domain_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Backup.
+        # @param [String] name
+        #   Required. The backup resource name using the form: `projects/`project_id`/
+        #   locations/global/domains/`domain_name`/backups/`backup_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_global_domain_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Backup::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Backup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -708,6 +843,95 @@ module Google
           command.response_class = Google::Apis::ManagedidentitiesV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Backup in a given project.
+        # @param [String] parent
+        #   Required. The domain resource name using the form: `projects/`project_id`/
+        #   locations/global/domains/`domain_name``
+        # @param [String] filter
+        #   Optional. Filter specifying constraints of a list operation. For example, `
+        #   backup.location ="us-west1-a"`.
+        # @param [String] order_by
+        #   Optional. Specifies the ordering of results following syntax at https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If not specified, a default
+        #   value of 1000 will be used by the service. Regardless of the page_size value,
+        #   the response may include a partial list and a caller should only rely on
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous List request, if
+        #   any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::ListBackupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::ListBackupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_global_domain_backups(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/backups', options)
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::ListBackupsResponse::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::ListBackupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the labels for specified Backup.
+        # @param [String] name
+        #   Output only. The unique name of the Backup in the form of projects/`project_id`
+        #   /locations/global/domains/`domain_name`/backups/`name`
+        # @param [Google::Apis::ManagedidentitiesV1beta1::Backup] backup_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field. The elements of the repeated paths field may only include these fields
+        #   from Backup: * `labels`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedidentitiesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedidentitiesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_global_domain_backup(name, backup_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::ManagedidentitiesV1beta1::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::ManagedidentitiesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ManagedidentitiesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1089,7 +1313,7 @@ module Google
         # Gets details of a single Peering.
         # @param [String] name
         #   Required. Peering resource name using the form: `projects/`project_id`/
-        #   locations/global/domains/`peering_id``
+        #   locations/global/peerings/`peering_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
