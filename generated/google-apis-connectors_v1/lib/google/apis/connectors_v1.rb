@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://cloud.devsite.corp.google.com/apigee/docs/api-platform/connectors/about-connectors
+    # @see https://cloud.google.com/apigee/docs/api-platform/connectors/about-connectors
     module ConnectorsV1
       # Version of the Connectors API this client connects to.
       # This is NOT the gem version.

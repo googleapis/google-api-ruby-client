@@ -319,6 +319,15 @@ module Google
         attr_accessor :required
         alias_method :required?, :required
       
+        # This configuration defines all the Cloud IAM roles that needs to be granted to
+        # a particular GCP resource for the selected prinicpal like service account.
+        # These configurations will let UI display to customers what IAM roles need to
+        # be granted by them. Or these configurations can be used by the UI to render a '
+        # grant' button to do the same on behalf of the user.
+        # Corresponds to the JSON property `roleGrant`
+        # @return [Google::Apis::ConnectorsV1::RoleGrant]
+        attr_accessor :role_grant
+      
         # Regular expression in RE2 syntax used for validating the `value` of a `
         # ConfigVariable`.
         # Corresponds to the JSON property `validationRegex`
@@ -341,6 +350,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @key = args[:key] if args.key?(:key)
           @required = args[:required] if args.key?(:required)
+          @role_grant = args[:role_grant] if args.key?(:role_grant)
           @validation_regex = args[:validation_regex] if args.key?(:validation_regex)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
@@ -657,6 +667,11 @@ module Google
         # @return [Google::Apis::ConnectorsV1::RoleGrant]
         attr_accessor :role_grant
       
+        # Output only. Role grant configurations for this connector version.
+        # Corresponds to the JSON property `roleGrants`
+        # @return [Array<Google::Apis::ConnectorsV1::RoleGrant>]
+        attr_accessor :role_grants
+      
         # Supported runtime features of a connector version. This is passed to the
         # management layer to add a new connector version by the connector developer.
         # Details about how this proto is passed to the management layer is covered in
@@ -686,6 +701,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @release_version = args[:release_version] if args.key?(:release_version)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
+          @role_grants = args[:role_grants] if args.key?(:role_grants)
           @supported_runtime_features = args[:supported_runtime_features] if args.key?(:supported_runtime_features)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1491,7 +1507,12 @@ module Google
       
         # Associates a list of `members` to a `role`. Optionally, may specify a `
         # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # the `bindings` must contain at least one member. The `bindings` in a `Policy`
+        # can refer to up to 1,500 members; up to 250 of these members can be Google
+        # groups. Each occurrence of a member counts towards these limits. For example,
+        # if the `bindings` grant 50 different roles to `user:alice@example.com`, and
+        # not to any other member, then you can add another 1,450 members to the `
+        # bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::ConnectorsV1::Binding>]
         attr_accessor :bindings
