@@ -1609,6 +1609,19 @@ module Google
         end
       end
       
+      # Request message for `InitializeCustomer` method.
+      class InitializeCustomerRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Used to provide a search operator for integer properties. This is optional.
       # Search operators let users restrict the query to specific fields relevant to
       # the type of item being searched.

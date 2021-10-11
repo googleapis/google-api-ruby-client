@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InitializeCustomerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IntegerOperatorOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1444,6 +1450,12 @@ module Google
           property :item, as: 'item', class: Google::Apis::CloudsearchV1::Item, decorator: Google::Apis::CloudsearchV1::Item::Representation
       
           property :mode, as: 'mode'
+        end
+      end
+      
+      class InitializeCustomerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
