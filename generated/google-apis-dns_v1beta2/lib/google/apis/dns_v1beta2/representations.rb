@@ -722,8 +722,6 @@ module Google
       class RrSetRoutingPolicyGeoPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :failovers, as: 'failovers', class: Google::Apis::DnsV1beta2::RrSetRoutingPolicyGeoPolicyGeoPolicyItem, decorator: Google::Apis::DnsV1beta2::RrSetRoutingPolicyGeoPolicyGeoPolicyItem::Representation
-      
           collection :items, as: 'items', class: Google::Apis::DnsV1beta2::RrSetRoutingPolicyGeoPolicyGeoPolicyItem, decorator: Google::Apis::DnsV1beta2::RrSetRoutingPolicyGeoPolicyGeoPolicyItem::Representation
       
           property :kind, as: 'kind'
