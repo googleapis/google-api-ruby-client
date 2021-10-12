@@ -1506,6 +1506,52 @@ module Google
       end
       
       # 
+      class Address
+        include Google::Apis::Core::Hashable
+      
+        # Required. Top-level administrative subdivision of the country. For example, a
+        # state like California ("CA") or a province like Quebec ("QC").
+        # Corresponds to the JSON property `administrativeArea`
+        # @return [String]
+        attr_accessor :administrative_area
+      
+        # Required. City, town or commune. May also include dependent localities or
+        # sublocalities (e.g. neighborhoods or suburbs).
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
+        # Required. [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/
+        # common/main/en.xml)(e.g. "US").
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # Required. Postal code or ZIP (e.g. "94043"). Required.
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # Street-level part of the address.
+        # Corresponds to the JSON property `streetAddress`
+        # @return [String]
+        attr_accessor :street_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
+          @city = args[:city] if args.key?(:city)
+          @country = args[:country] if args.key?(:country)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @street_address = args[:street_address] if args.key?(:street_address)
+        end
+      end
+      
+      # 
       class Amount
         include Google::Apis::Core::Hashable
       
@@ -10654,6 +10700,11 @@ module Google
         # @return [Array<Google::Apis::ContentV2::Service>]
         attr_accessor :services
       
+        # Optional. A list of warehouses which can be referred to in `services`.
+        # Corresponds to the JSON property `warehouses`
+        # @return [Array<Google::Apis::ContentV2::Warehouse>]
+        attr_accessor :warehouses
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10663,6 +10714,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @postal_code_groups = args[:postal_code_groups] if args.key?(:postal_code_groups)
           @services = args[:services] if args.key?(:services)
+          @warehouses = args[:warehouses] if args.key?(:warehouses)
         end
       end
       
@@ -11525,6 +11577,54 @@ module Google
         end
       end
       
+      # A fulfillment warehouse, which stores and handles inventory.
+      class Warehouse
+        include Google::Apis::Core::Hashable
+      
+        # Business days of the warehouse. If not set, will be Monday to Friday by
+        # default.
+        # Corresponds to the JSON property `businessDayConfig`
+        # @return [Google::Apis::ContentV2::BusinessDayConfig]
+        attr_accessor :business_day_config
+      
+        # Required. The latest time of day that an order can be accepted and begin
+        # processing. Later orders will be processed in the next day. The time is based
+        # on the warehouse postal code.
+        # Corresponds to the JSON property `cutoffTime`
+        # @return [Google::Apis::ContentV2::WarehouseCutoffTime]
+        attr_accessor :cutoff_time
+      
+        # Required. The number of days it takes for this warehouse to pack up and ship
+        # an item. This is on the warehouse level, but can be overridden on the offer
+        # level based on the attributes of an item.
+        # Corresponds to the JSON property `handlingDays`
+        # @return [Fixnum]
+        attr_accessor :handling_days
+      
+        # Required. The name of the warehouse. Must be unique within account.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Shipping address of the warehouse.
+        # Corresponds to the JSON property `shippingAddress`
+        # @return [Google::Apis::ContentV2::Address]
+        attr_accessor :shipping_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_day_config = args[:business_day_config] if args.key?(:business_day_config)
+          @cutoff_time = args[:cutoff_time] if args.key?(:cutoff_time)
+          @handling_days = args[:handling_days] if args.key?(:handling_days)
+          @name = args[:name] if args.key?(:name)
+          @shipping_address = args[:shipping_address] if args.key?(:shipping_address)
+        end
+      end
+      
       # 
       class WarehouseBasedDeliveryTime
         include Google::Apis::Core::Hashable
@@ -11543,23 +11643,23 @@ module Google
         # @return [String]
         attr_accessor :carrier_service
       
-        # Required. Shipping origin's state.
+        # Shipping origin's state.
         # Corresponds to the JSON property `originAdministrativeArea`
         # @return [String]
         attr_accessor :origin_administrative_area
       
-        # Required. Shipping origin's city.
+        # Shipping origin's city.
         # Corresponds to the JSON property `originCity`
         # @return [String]
         attr_accessor :origin_city
       
-        # Required. Shipping origin's country represented as a [CLDR territory code](
-        # http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml).
+        # Shipping origin's country represented as a [CLDR territory code](http://www.
+        # unicode.org/repos/cldr/tags/latest/common/main/en.xml).
         # Corresponds to the JSON property `originCountry`
         # @return [String]
         attr_accessor :origin_country
       
-        # Required. Shipping origin.
+        # Shipping origin.
         # Corresponds to the JSON property `originPostalCode`
         # @return [String]
         attr_accessor :origin_postal_code
@@ -11568,6 +11668,13 @@ module Google
         # Corresponds to the JSON property `originStreetAddress`
         # @return [String]
         attr_accessor :origin_street_address
+      
+        # The name of the warehouse. Warehouse name need to be matched with name. If
+        # warehouseName is set, the below fields will be ignored. The warehouse info
+        # will be read from warehouse.
+        # Corresponds to the JSON property `warehouseName`
+        # @return [String]
+        attr_accessor :warehouse_name
       
         def initialize(**args)
            update!(**args)
@@ -11582,6 +11689,36 @@ module Google
           @origin_country = args[:origin_country] if args.key?(:origin_country)
           @origin_postal_code = args[:origin_postal_code] if args.key?(:origin_postal_code)
           @origin_street_address = args[:origin_street_address] if args.key?(:origin_street_address)
+          @warehouse_name = args[:warehouse_name] if args.key?(:warehouse_name)
+        end
+      end
+      
+      # 
+      class WarehouseCutoffTime
+        include Google::Apis::Core::Hashable
+      
+        # Required. Hour (24-hour clock) of the cutoff time until which an order has to
+        # be placed to be processed in the same day by the warehouse. Hour is based on
+        # the timezone of warehouse.
+        # Corresponds to the JSON property `hour`
+        # @return [Fixnum]
+        attr_accessor :hour
+      
+        # Required. Minute of the cutoff time until which an order has to be placed to
+        # be processed in the same day by the warehouse. Minute is based on the timezone
+        # of warehouse.
+        # Corresponds to the JSON property `minute`
+        # @return [Fixnum]
+        attr_accessor :minute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hour = args[:hour] if args.key?(:hour)
+          @minute = args[:minute] if args.key?(:minute)
         end
       end
       
