@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Address
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Amount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2296,7 +2302,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Warehouse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WarehouseBasedDeliveryTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WarehouseCutoffTime
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2362,6 +2380,7 @@ module Google
       
           property :korean_business_registration_number, as: 'koreanBusinessRegistrationNumber'
           property :phone_number, as: 'phoneNumber'
+          property :phone_verification_status, as: 'phoneVerificationStatus'
         end
       end
       
@@ -2756,6 +2775,17 @@ module Google
       class ActivateBuyOnGoogleProgramRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Address
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :administrative_area, as: 'administrativeArea'
+          property :city, as: 'city'
+          property :country, as: 'country'
+          property :postal_code, as: 'postalCode'
+          property :street_address, as: 'streetAddress'
         end
       end
       
@@ -4175,8 +4205,11 @@ module Google
           property :gtin, as: 'gtin'
           property :line_item_id, as: 'lineItemId'
           property :mpn, as: 'mpn'
+          property :product_description, as: 'productDescription'
           property :product_id, as: 'productId'
           property :quantity, :numeric_string => true, as: 'quantity'
+          property :sku, as: 'sku'
+          property :upc, as: 'upc'
         end
       end
       
@@ -6244,6 +6277,8 @@ module Google
       
           collection :services, as: 'services', class: Google::Apis::ContentV2_1::Service, decorator: Google::Apis::ContentV2_1::Service::Representation
       
+          collection :warehouses, as: 'warehouses', class: Google::Apis::ContentV2_1::Warehouse, decorator: Google::Apis::ContentV2_1::Warehouse::Representation
+      
         end
       end
       
@@ -6555,6 +6590,20 @@ module Google
         end
       end
       
+      class Warehouse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :business_day_config, as: 'businessDayConfig', class: Google::Apis::ContentV2_1::BusinessDayConfig, decorator: Google::Apis::ContentV2_1::BusinessDayConfig::Representation
+      
+          property :cutoff_time, as: 'cutoffTime', class: Google::Apis::ContentV2_1::WarehouseCutoffTime, decorator: Google::Apis::ContentV2_1::WarehouseCutoffTime::Representation
+      
+          property :handling_days, :numeric_string => true, as: 'handlingDays'
+          property :name, as: 'name'
+          property :shipping_address, as: 'shippingAddress', class: Google::Apis::ContentV2_1::Address, decorator: Google::Apis::ContentV2_1::Address::Representation
+      
+        end
+      end
+      
       class WarehouseBasedDeliveryTime
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6565,6 +6614,15 @@ module Google
           property :origin_country, as: 'originCountry'
           property :origin_postal_code, as: 'originPostalCode'
           property :origin_street_address, as: 'originStreetAddress'
+          property :warehouse_name, as: 'warehouseName'
+        end
+      end
+      
+      class WarehouseCutoffTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hour, as: 'hour'
+          property :minute, as: 'minute'
         end
       end
       
