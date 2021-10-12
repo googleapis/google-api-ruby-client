@@ -1500,15 +1500,6 @@ module Google
       class RrSetRoutingPolicyGeoPolicy
         include Google::Apis::Core::Hashable
       
-        # If the health check for the primary target for a geo location returns an
-        # unhealthy status, the failover target is returned instead. This failover
-        # configuration is not mandatory. If a failover is not provided, the primary
-        # target won't be healthchecked, and it returns the primarily configured rrdata
-        # irrespective of whether it is healthy or not.
-        # Corresponds to the JSON property `failovers`
-        # @return [Array<Google::Apis::DnsV1beta2::RrSetRoutingPolicyGeoPolicyGeoPolicyItem>]
-        attr_accessor :failovers
-      
         # The primary geo routing configuration. If there are multiple items with the
         # same location, an error is returned instead.
         # Corresponds to the JSON property `items`
@@ -1526,7 +1517,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @failovers = args[:failovers] if args.key?(:failovers)
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
         end
