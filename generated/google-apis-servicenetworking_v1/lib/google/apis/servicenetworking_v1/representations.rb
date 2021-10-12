@@ -707,6 +707,7 @@ module Google
           property :ip_prefix_length, as: 'ipPrefixLength'
           property :outside_allocation_public_ip_range, as: 'outsideAllocationPublicIpRange'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
+          property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :requested_address, as: 'requestedAddress'
           collection :requested_ranges, as: 'requestedRanges'
