@@ -261,6 +261,14 @@ module Google
         # @return [String]
         attr_accessor :private_ipv6_google_access
       
+        # Optional. Defines the purpose field of the subnet, e.g. '
+        # PRIVATE_SERVICE_CONNECT'. For information about the purposes that can be set
+        # using this field, see [subnetwork](https://cloud.google.com/compute/docs/
+        # reference/rest/v1/subnetworks) in the Compute API documentation.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
         # Required. The name of a [region](/compute/docs/regions-zones) for the subnet,
         # such `europe-west1`.
         # Corresponds to the JSON property `region`
@@ -316,6 +324,7 @@ module Google
           @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
           @outside_allocation_public_ip_range = args[:outside_allocation_public_ip_range] if args.key?(:outside_allocation_public_ip_range)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
+          @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @requested_address = args[:requested_address] if args.key?(:requested_address)
           @requested_ranges = args[:requested_ranges] if args.key?(:requested_ranges)
