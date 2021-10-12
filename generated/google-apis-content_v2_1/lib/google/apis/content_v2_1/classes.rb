@@ -242,12 +242,19 @@ module Google
         # @return [String]
         attr_accessor :korean_business_registration_number
       
-        # ! The phone number of the business. This can only be updated if a verified !
-        # phone number is not already set. To replace a verified phone number use ! the `
-        # Accounts.requestphoneverification` and ! `Accounts.verifyphonenumber`.
+        # The phone number of the business. This can only be updated if a verified phone
+        # number is not already set. To replace a verified phone number use the `
+        # Accounts.requestphoneverification` and `Accounts.verifyphonenumber`.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
         attr_accessor :phone_number
+      
+        # Verification status of the phone number of the business. This status is read
+        # only and can be updated only by successful phone verification. Acceptable
+        # values are: - "`verified`" - "`unverified`" "`unspecified`" -
+        # Corresponds to the JSON property `phoneVerificationStatus`
+        # @return [String]
+        attr_accessor :phone_verification_status
       
         def initialize(**args)
            update!(**args)
@@ -259,6 +266,7 @@ module Google
           @customer_service = args[:customer_service] if args.key?(:customer_service)
           @korean_business_registration_number = args[:korean_business_registration_number] if args.key?(:korean_business_registration_number)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @phone_verification_status = args[:phone_verification_status] if args.key?(:phone_verification_status)
         end
       end
       
@@ -1635,6 +1643,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class Address
+        include Google::Apis::Core::Hashable
+      
+        # Required. Top-level administrative subdivision of the country. For example, a
+        # state like California ("CA") or a province like Quebec ("QC").
+        # Corresponds to the JSON property `administrativeArea`
+        # @return [String]
+        attr_accessor :administrative_area
+      
+        # Required. City, town or commune. May also include dependent localities or
+        # sublocalities (e.g. neighborhoods or suburbs).
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
+        # Required. [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/
+        # common/main/en.xml) (e.g. "US").
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # Required. Postal code or ZIP (e.g. "94043").
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # Street-level part of the address.
+        # Corresponds to the JSON property `streetAddress`
+        # @return [String]
+        attr_accessor :street_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
+          @city = args[:city] if args.key?(:city)
+          @country = args[:country] if args.key?(:country)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @street_address = args[:street_address] if args.key?(:street_address)
         end
       end
       
@@ -6913,6 +6967,11 @@ module Google
         # @return [String]
         attr_accessor :mpn
       
+        # Plain text description of this product.
+        # Corresponds to the JSON property `productDescription`
+        # @return [String]
+        attr_accessor :product_description
+      
         # Required. The Content API REST ID of the product, in the form channel:
         # contentLanguage:targetCountry:offerId.
         # Corresponds to the JSON property `productId`
@@ -6924,6 +6983,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
+        # Merchant SKU for this item.
+        # Corresponds to the JSON property `sku`
+        # @return [String]
+        attr_accessor :sku
+      
+        # Universal product code for this item.
+        # Corresponds to the JSON property `upc`
+        # @return [String]
+        attr_accessor :upc
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6933,8 +7002,11 @@ module Google
           @gtin = args[:gtin] if args.key?(:gtin)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
           @mpn = args[:mpn] if args.key?(:mpn)
+          @product_description = args[:product_description] if args.key?(:product_description)
           @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
+          @sku = args[:sku] if args.key?(:sku)
+          @upc = args[:upc] if args.key?(:upc)
         end
       end
       
@@ -11592,9 +11664,14 @@ module Google
         end
       end
       
-      # Represents a promotion. (1) https://support.google.com/merchants/answer/
-      # 2906014 (2) https://support.google.com/merchants/answer/10146130 (3) https://
-      # support.google.com/merchants/answer/9173673
+      # The Promotions feature is currently in alpha and is not yet publicly
+      # available via Content API for Shopping. This documentation is provided for
+      # reference only may be subject to change. Represents a promotion. See the
+      # following articles for more details. * [Promotions feed specification](https://
+      # support.google.com/merchants/answer/2906014) * [Local promotions feed
+      # specification](https://support.google.com/merchants/answer/10146130) * [
+      # Promotions on Buy on Google product data specification](https://support.google.
+      # com/merchants/answer/9173673)
       class Promotion
         include Google::Apis::Core::Hashable
       
@@ -11645,7 +11722,9 @@ module Google
       
         # Required. Output only. The REST promotion id to uniquely identify the
         # promotion. Content API methods that operate on promotions take this as their
-        # promotionId parameter.
+        # promotionId parameter. The REST ID for a promotion is of the form channel:
+        # contentLanguage:targetCountry:promotionId The channel field will have a value
+        # of "online", "local", or "onlinelocal".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -14715,6 +14794,11 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::Service>]
         attr_accessor :services
       
+        # Optional. A list of warehouses which can be referred to in `services`.
+        # Corresponds to the JSON property `warehouses`
+        # @return [Array<Google::Apis::ContentV2_1::Warehouse>]
+        attr_accessor :warehouses
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14724,6 +14808,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @postal_code_groups = args[:postal_code_groups] if args.key?(:postal_code_groups)
           @services = args[:services] if args.key?(:services)
+          @warehouses = args[:warehouses] if args.key?(:warehouses)
         end
       end
       
@@ -15783,6 +15868,54 @@ module Google
         end
       end
       
+      # A fulfillment warehouse, which stores and handles inventory.
+      class Warehouse
+        include Google::Apis::Core::Hashable
+      
+        # Business days of the warehouse. If not set, will be Monday to Friday by
+        # default.
+        # Corresponds to the JSON property `businessDayConfig`
+        # @return [Google::Apis::ContentV2_1::BusinessDayConfig]
+        attr_accessor :business_day_config
+      
+        # Required. The latest time of day that an order can be accepted and begin
+        # processing. Later orders will be processed in the next day. The time is based
+        # on the warehouse postal code.
+        # Corresponds to the JSON property `cutoffTime`
+        # @return [Google::Apis::ContentV2_1::WarehouseCutoffTime]
+        attr_accessor :cutoff_time
+      
+        # Required. The number of days it takes for this warehouse to pack up and ship
+        # an item. This is on the warehouse level, but can be overridden on the offer
+        # level based on the attributes of an item.
+        # Corresponds to the JSON property `handlingDays`
+        # @return [Fixnum]
+        attr_accessor :handling_days
+      
+        # Required. The name of the warehouse. Must be unique within account.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Shipping address of the warehouse.
+        # Corresponds to the JSON property `shippingAddress`
+        # @return [Google::Apis::ContentV2_1::Address]
+        attr_accessor :shipping_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_day_config = args[:business_day_config] if args.key?(:business_day_config)
+          @cutoff_time = args[:cutoff_time] if args.key?(:cutoff_time)
+          @handling_days = args[:handling_days] if args.key?(:handling_days)
+          @name = args[:name] if args.key?(:name)
+          @shipping_address = args[:shipping_address] if args.key?(:shipping_address)
+        end
+      end
+      
       # 
       class WarehouseBasedDeliveryTime
         include Google::Apis::Core::Hashable
@@ -15801,23 +15934,23 @@ module Google
         # @return [String]
         attr_accessor :carrier_service
       
-        # Required. Shipping origin's state.
+        # Shipping origin's state.
         # Corresponds to the JSON property `originAdministrativeArea`
         # @return [String]
         attr_accessor :origin_administrative_area
       
-        # Required. Shipping origin's city.
+        # Shipping origin's city.
         # Corresponds to the JSON property `originCity`
         # @return [String]
         attr_accessor :origin_city
       
-        # Required. Shipping origin's country represented as a [CLDR territory code](
-        # http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml).
+        # Shipping origin's country represented as a [CLDR territory code](http://www.
+        # unicode.org/repos/cldr/tags/latest/common/main/en.xml).
         # Corresponds to the JSON property `originCountry`
         # @return [String]
         attr_accessor :origin_country
       
-        # Required. Shipping origin.
+        # Shipping origin.
         # Corresponds to the JSON property `originPostalCode`
         # @return [String]
         attr_accessor :origin_postal_code
@@ -15826,6 +15959,13 @@ module Google
         # Corresponds to the JSON property `originStreetAddress`
         # @return [String]
         attr_accessor :origin_street_address
+      
+        # The name of the warehouse. Warehouse name need to be matched with name. If
+        # warehouseName is set, the below fields will be ignored. The warehouse info
+        # will be read from warehouse.
+        # Corresponds to the JSON property `warehouseName`
+        # @return [String]
+        attr_accessor :warehouse_name
       
         def initialize(**args)
            update!(**args)
@@ -15840,6 +15980,36 @@ module Google
           @origin_country = args[:origin_country] if args.key?(:origin_country)
           @origin_postal_code = args[:origin_postal_code] if args.key?(:origin_postal_code)
           @origin_street_address = args[:origin_street_address] if args.key?(:origin_street_address)
+          @warehouse_name = args[:warehouse_name] if args.key?(:warehouse_name)
+        end
+      end
+      
+      # 
+      class WarehouseCutoffTime
+        include Google::Apis::Core::Hashable
+      
+        # Required. Hour (24-hour clock) of the cutoff time until which an order has to
+        # be placed to be processed in the same day by the warehouse. Hour is based on
+        # the timezone of warehouse.
+        # Corresponds to the JSON property `hour`
+        # @return [Fixnum]
+        attr_accessor :hour
+      
+        # Required. Minute of the cutoff time until which an order has to be placed to
+        # be processed in the same day by the warehouse. Minute is based on the timezone
+        # of warehouse.
+        # Corresponds to the JSON property `minute`
+        # @return [Fixnum]
+        attr_accessor :minute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hour = args[:hour] if args.key?(:hour)
+          @minute = args[:minute] if args.key?(:minute)
         end
       end
       
