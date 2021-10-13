@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsHomeservicesLocalservicesV1BookingLead
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,11 +107,24 @@ module Google
         end
       end
       
+      class GoogleAdsHomeservicesLocalservicesV1BookingLead
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :booking_appointment_timestamp, as: 'bookingAppointmentTimestamp'
+          property :consumer_email, as: 'consumerEmail'
+          property :consumer_phone_number, as: 'consumerPhoneNumber'
+          property :customer_name, as: 'customerName'
+          property :job_type, as: 'jobType'
+        end
+      end
+      
       class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, :numeric_string => true, as: 'accountId'
           property :aggregator_info, as: 'aggregatorInfo', class: Google::Apis::LocalservicesV1::GoogleAdsHomeservicesLocalservicesV1AggregatorInfo, decorator: Google::Apis::LocalservicesV1::GoogleAdsHomeservicesLocalservicesV1AggregatorInfo::Representation
+      
+          property :booking_lead, as: 'bookingLead', class: Google::Apis::LocalservicesV1::GoogleAdsHomeservicesLocalservicesV1BookingLead, decorator: Google::Apis::LocalservicesV1::GoogleAdsHomeservicesLocalservicesV1BookingLead::Representation
       
           property :business_name, as: 'businessName'
           property :charge_status, as: 'chargeStatus'
