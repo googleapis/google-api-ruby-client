@@ -294,8 +294,8 @@ module Google
         end
       end
       
-      # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
-      # is no meaningful response populated from the AddFulfillmentPlaces method.
+      # Response of the AddFulfillmentPlacesRequest. Currently empty because there is
+      # no meaningful response populated from the AddFulfillmentPlaces method.
       class GoogleCloudRetailV2AddFulfillmentPlacesResponse
         include Google::Apis::Core::Hashable
       
@@ -689,8 +689,8 @@ module Google
         end
       end
       
-      # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
-      # is no meaningful response populated from the AddFulfillmentPlaces method.
+      # Response of the AddFulfillmentPlacesRequest. Currently empty because there is
+      # no meaningful response populated from the AddFulfillmentPlaces method.
       class GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse
         include Google::Apis::Core::Hashable
       
@@ -1077,20 +1077,6 @@ module Google
           @numbers = args[:numbers] if args.key?(:numbers)
           @searchable = args[:searchable] if args.key?(:searchable)
           @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # Metadata related to the EnrollSolution method. This will be returned by the
-      # google.longrunning.Operation.metadata field.
-      class GoogleCloudRetailV2alphaEnrollSolutionMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -2962,16 +2948,17 @@ module Google
         # and a fulfillment ID must be provided in the format of "fulfillmentType.
         # fulfillmentId". E.g., in "pickupInStore.store123", "pickupInStore" is
         # fulfillment type and "store123" is the store ID. Supported keys are: *
-        # colorFamilies * price * originalPrice * discount * attributes.key, where key
-        # is any key in the Product.attributes map. * pickupInStore.id, where id is any
-        # FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". *
-        # shipToStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.
-        # type "ship-to-store". * sameDayDelivery.id, where id is any FulfillmentInfo.
-        # place_ids for FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id,
-        # where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "next-day-
-        # delivery". * customFulfillment1.id, where id is any FulfillmentInfo.place_ids
-        # for FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is
-        # any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-2". *
+        # colorFamilies * price * originalPrice * discount * inventory(place_id,price) *
+        # attributes.key, where key is any key in the Product.attributes map. *
+        # pickupInStore.id, where id is any FulfillmentInfo.place_ids for
+        # FulfillmentInfo.type "pickup-in-store". * shipToStore.id, where id is any
+        # FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". *
+        # sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for
+        # FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id, where id is
+        # any FulfillmentInfo.place_ids for FulfillmentInfo.type "next-day-delivery". *
+        # customFulfillment1.id, where id is any FulfillmentInfo.place_ids for
+        # FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is any
+        # FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-2". *
         # customFulfillment3.id, where id is any FulfillmentInfo.place_ids for
         # FulfillmentInfo.type "custom-type-3". * customFulfillment4.id, where id is any
         # FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-4". *
@@ -3190,7 +3177,8 @@ module Google
         # * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "
         # customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "
         # customFulfillment4" * "customFulfillment5" * numerical_field = * "price" * "
-        # discount" * "rating" * "ratingCount" * "attributes.key"
+        # discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,
+        # price)"
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -3975,8 +3963,8 @@ module Google
         end
       end
       
-      # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
-      # is no meaningful response populated from the AddFulfillmentPlaces method.
+      # Response of the AddFulfillmentPlacesRequest. Currently empty because there is
+      # no meaningful response populated from the AddFulfillmentPlaces method.
       class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse
         include Google::Apis::Core::Hashable
       

@@ -891,9 +891,8 @@ module Google
         # @param [String] placement
         #   Required. The resource name of the search engine placement, such as `projects/*
         #   /locations/global/catalogs/default_catalog/placements/default_search`. This
-        #   field is used to identify the set of models that will be used to make the
-        #   search. We currently support one placement with the following ID: * `
-        #   default_search`.
+        #   field is used to identify the serving configuration name and the set of models
+        #   that will be used to make the search.
         # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequest] google_cloud_retail_v2alpha_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -238,12 +238,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRetailV2alphaEnrollSolutionMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRetailV2alphaExportErrorsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1080,12 +1074,6 @@ module Google
           collection :numbers, as: 'numbers'
           property :searchable, as: 'searchable'
           collection :text, as: 'text'
-        end
-      end
-      
-      class GoogleCloudRetailV2alphaEnrollSolutionMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
