@@ -168,6 +168,49 @@ module Google
         end
       end
       
+      # Container for booking lead specific information.
+      class GoogleAdsHomeservicesLocalservicesV1BookingLead
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp of when service is provided by advertiser.
+        # Corresponds to the JSON property `bookingAppointmentTimestamp`
+        # @return [String]
+        attr_accessor :booking_appointment_timestamp
+      
+        # Consumer email associated with the booking lead.
+        # Corresponds to the JSON property `consumerEmail`
+        # @return [String]
+        attr_accessor :consumer_email
+      
+        # Consumer phone number associated with the booking lead.
+        # Corresponds to the JSON property `consumerPhoneNumber`
+        # @return [String]
+        attr_accessor :consumer_phone_number
+      
+        # Name of the customer who created the lead.
+        # Corresponds to the JSON property `customerName`
+        # @return [String]
+        attr_accessor :customer_name
+      
+        # The job type of the specified lead.
+        # Corresponds to the JSON property `jobType`
+        # @return [String]
+        attr_accessor :job_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @booking_appointment_timestamp = args[:booking_appointment_timestamp] if args.key?(:booking_appointment_timestamp)
+          @consumer_email = args[:consumer_email] if args.key?(:consumer_email)
+          @consumer_phone_number = args[:consumer_phone_number] if args.key?(:consumer_phone_number)
+          @customer_name = args[:customer_name] if args.key?(:customer_name)
+          @job_type = args[:job_type] if args.key?(:job_type)
+        end
+      end
+      
       # A Detailed Lead Report of a lead identified by their lead id and contains
       # consumer, account, monetization, and lead data.
       class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
@@ -183,6 +226,11 @@ module Google
         # Corresponds to the JSON property `aggregatorInfo`
         # @return [Google::Apis::LocalservicesV1::GoogleAdsHomeservicesLocalservicesV1AggregatorInfo]
         attr_accessor :aggregator_info
+      
+        # Container for booking lead specific information.
+        # Corresponds to the JSON property `bookingLead`
+        # @return [Google::Apis::LocalservicesV1::GoogleAdsHomeservicesLocalservicesV1BookingLead]
+        attr_accessor :booking_lead
       
         # Business name associated to the account.
         # Corresponds to the JSON property `businessName`
@@ -258,6 +306,7 @@ module Google
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
           @aggregator_info = args[:aggregator_info] if args.key?(:aggregator_info)
+          @booking_lead = args[:booking_lead] if args.key?(:booking_lead)
           @business_name = args[:business_name] if args.key?(:business_name)
           @charge_status = args[:charge_status] if args.key?(:charge_status)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
