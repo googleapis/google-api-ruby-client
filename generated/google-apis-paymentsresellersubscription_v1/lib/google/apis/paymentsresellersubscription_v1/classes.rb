@@ -27,8 +27,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. If true, the subscription will be cancelled immediately. Otherwise,
-        # the subscription will be cancelled at the end of the current cycle, and
-        # therefore no prorated refund will be issued for the rest of the cycle.
+        # the subscription will be cancelled at renewal_time, and therefore no prorated
+        # refund will be issued for the rest of the cycle.
         # Corresponds to the JSON property `cancelImmediately`
         # @return [Boolean]
         attr_accessor :cancel_immediately
