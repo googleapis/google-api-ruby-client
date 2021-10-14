@@ -90,8 +90,9 @@ module Google
         # they now inherit the value from a parent (if applicable). All targets must
         # have the same target format. That is to say that they must point to the same
         # target resource and must have the same keys specified in `
-        # additionalTargetKeyNames`. On failure the request will return the error
-        # details as part of the google.rpc.Status.
+        # additionalTargetKeyNames`, though the values for those keys may be different.
+        # On failure the request will return the error details as part of the google.rpc.
+        # Status.
         # @param [String] customer
         #   ID of the G Suite account or literal "my_customer" for the customer associated
         #   to the request.
@@ -128,8 +129,9 @@ module Google
         # Modify multiple policy values that are applied to a specific org unit. All
         # targets must have the same target format. That is to say that they must point
         # to the same target resource and must have the same keys specified in `
-        # additionalTargetKeyNames`. On failure the request will return the error
-        # details as part of the google.rpc.Status.
+        # additionalTargetKeyNames`, though the values for those keys may be different.
+        # On failure the request will return the error details as part of the google.rpc.
+        # Status.
         # @param [String] customer
         #   ID of the G Suite account or literal "my_customer" for the customer associated
         #   to the request.

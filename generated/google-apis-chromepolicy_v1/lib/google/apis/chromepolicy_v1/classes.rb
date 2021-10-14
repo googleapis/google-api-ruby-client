@@ -230,7 +230,8 @@ module Google
       
         # Output only. The full qualified name of the policy schema. This value is used
         # to fill the field `policy_schema` in PolicyValue when calling
-        # BatchInheritOrgUnitPolicies or BatchModifyOrgUnitPolicies.
+        # BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
+        # BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
         # Corresponds to the JSON property `schemaName`
         # @return [String]
         attr_accessor :schema_name
@@ -423,7 +424,8 @@ module Google
         attr_accessor :additional_target_keys
       
         # The target resource on which this policy is applied. The following resources
-        # are supported: * Organizational Unit ("orgunits/`orgunit_id`")
+        # are supported: * Organizational Unit ("orgunits/`orgunit_id`") * Group ("
+        # groups/`group_id`")
         # Corresponds to the JSON property `targetResource`
         # @return [String]
         attr_accessor :target_resource
