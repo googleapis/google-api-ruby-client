@@ -295,6 +295,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a bidder's endpoint.
+        # @param [String] name
+        #   Output only. Name of the endpoint resource that must follow the pattern `
+        #   bidders/`bidderAccountId`/endpoints/`endpointId``, where `bidderAccountId` is
+        #   the account ID of the bidder who operates this endpoint, and `endpointId` is a
+        #   unique ID assigned by the server.
+        # @param [Google::Apis::RealtimebiddingV1::Endpoint] endpoint_object
+        # @param [String] update_mask
+        #   Field mask to use for partial in-place updates.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::Endpoint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::Endpoint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_bidder_endpoint(name, endpoint_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::Endpoint::Representation
+          command.request_object = endpoint_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::Endpoint::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::Endpoint
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Activates a pretargeting configuration.
         # @param [String] name
         #   Required. The name of the pretargeting configuration. Format: bidders/`
