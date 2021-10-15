@@ -22,30 +22,6 @@ module Google
   module Apis
     module BaremetalsolutionV2
       
-      class Binding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Expr
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,13 +40,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListVolumesResponse
+      class ListLunsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,90 +64,10 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Operation
+      class Vrf
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SnapshotReservationDetail
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestIamPermissionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Volume
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Binding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :condition, as: 'condition', class: Google::Apis::BaremetalsolutionV2::Expr, decorator: Google::Apis::BaremetalsolutionV2::Expr::Representation
-      
-          collection :members, as: 'members'
-          property :role, as: 'role'
-        end
-      end
-      
-      class CancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Expr
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :expression, as: 'expression'
-          property :location, as: 'location'
-          property :title, as: 'title'
-        end
       end
       
       class Instance
@@ -185,6 +75,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :hyperthreading_enabled, as: 'hyperthreadingEnabled'
+          property :interactive_serial_console_enabled, as: 'interactiveSerialConsoleEnabled'
           hash :labels, as: 'labels'
           collection :luns, as: 'luns', class: Google::Apis::BaremetalsolutionV2::Lun, decorator: Google::Apis::BaremetalsolutionV2::Lun::Representation
       
@@ -216,22 +107,13 @@ module Google
         end
       end
       
-      class ListOperationsResponse
+      class ListLunsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::BaremetalsolutionV2::Operation, decorator: Google::Apis::BaremetalsolutionV2::Operation::Representation
+          collection :luns, as: 'luns', class: Google::Apis::BaremetalsolutionV2::Lun, decorator: Google::Apis::BaremetalsolutionV2::Lun::Representation
       
-        end
-      end
-      
-      class ListVolumesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
-          collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::Volume, decorator: Google::Apis::BaremetalsolutionV2::Volume::Representation
-      
         end
       end
       
@@ -252,111 +134,39 @@ module Google
           property :boot_lun, as: 'bootLun'
           property :multiprotocol_type, as: 'multiprotocolType'
           property :name, as: 'name'
-          property :shared, as: 'shared'
+          property :shareable, as: 'shareable'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :state, as: 'state'
           property :storage_type, as: 'storageType'
           property :storage_volume, as: 'storageVolume'
+          property :wwid, as: 'wwid'
         end
       end
       
       class Network
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cidr, as: 'cidr'
           property :ip_address, as: 'ipAddress'
           collection :mac_address, as: 'macAddress'
+          property :name, as: 'name'
           property :network, as: 'network'
-          property :type, as: 'type'
-        end
-      end
-      
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          property :error, as: 'error', class: Google::Apis::BaremetalsolutionV2::Status, decorator: Google::Apis::BaremetalsolutionV2::Status::Representation
-      
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-          hash :response, as: 'response'
-        end
-      end
-      
-      class OperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :create_time, as: 'createTime'
-          property :end_time, as: 'endTime'
-          property :requested_cancellation, as: 'requestedCancellation'
-          property :status_message, as: 'statusMessage'
-          property :target, as: 'target'
-          property :verb, as: 'verb'
-        end
-      end
-      
-      class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :bindings, as: 'bindings', class: Google::Apis::BaremetalsolutionV2::Binding, decorator: Google::Apis::BaremetalsolutionV2::Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-        end
-      end
-      
-      class SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy', class: Google::Apis::BaremetalsolutionV2::Policy, decorator: Google::Apis::BaremetalsolutionV2::Policy::Representation
-      
-        end
-      end
-      
-      class SnapshotReservationDetail
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :reserved_space_gib, :numeric_string => true, as: 'reservedSpaceGib'
-          property :reserved_space_remaining_gib, :numeric_string => true, as: 'reservedSpaceRemainingGib'
-          property :reserved_space_used_percent, as: 'reservedSpaceUsedPercent'
-        end
-      end
-      
-      class Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          collection :details, as: 'details'
-          property :message, as: 'message'
-        end
-      end
-      
-      class TestIamPermissionsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class Volume
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :auto_grown_size_gib, :numeric_string => true, as: 'autoGrownSizeGib'
-          property :current_size_gib, :numeric_string => true, as: 'currentSizeGib'
-          property :name, as: 'name'
-          property :remaining_space_gib, :numeric_string => true, as: 'remainingSpaceGib'
-          property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
-          property :snapshot_reservation_detail, as: 'snapshotReservationDetail', class: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail, decorator: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail::Representation
-      
           property :state, as: 'state'
-          property :storage_type, as: 'storageType'
+          property :type, as: 'type'
+          property :vlan_id, as: 'vlanId'
+          property :vrf, as: 'vrf', class: Google::Apis::BaremetalsolutionV2::Vrf, decorator: Google::Apis::BaremetalsolutionV2::Vrf::Representation
+      
+        end
+      end
+      
+      class Vrf
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autonomous_system_number, as: 'autonomousSystemNumber'
+          property :juniper_alias, as: 'juniperAlias'
+          property :name, as: 'name'
+          property :route_target, :numeric_string => true, as: 'routeTarget'
+          property :state, as: 'state'
         end
       end
     end
