@@ -31,7 +31,7 @@ module Google
       #    Adsense = Google::Apis::AdsenseV2 # Alias the module
       #    service = Adsense::AdsenseService.new
       #
-      # @see http://code.google.com/apis/adsense/management/
+      # @see https://developers.google.com/adsense/management/
       class AdsenseService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

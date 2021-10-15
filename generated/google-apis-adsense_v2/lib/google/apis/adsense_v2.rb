@@ -24,7 +24,7 @@ module Google
     # The AdSense Management API allows publishers to access their inventory and run
     # earnings and performance reports.
     #
-    # @see http://code.google.com/apis/adsense/management/
+    # @see https://developers.google.com/adsense/management/
     module AdsenseV2
       # Version of the AdSense Management API this client connects to.
       # This is NOT the gem version.
