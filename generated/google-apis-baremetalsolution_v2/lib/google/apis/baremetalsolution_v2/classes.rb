@@ -22,189 +22,41 @@ module Google
   module Apis
     module BaremetalsolutionV2
       
-      # Associates `members` with a `role`.
-      class Binding
-        include Google::Apis::Core::Hashable
-      
-        # Represents a textual expression in the Common Expression Language (CEL) syntax.
-        # CEL is a C-like expression language. The syntax and semantics of CEL are
-        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
-        # "Summary size limit" description: "Determines if a summary is less than 100
-        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
-        # Requestor is owner" description: "Determines if requestor is the document
-        # owner" expression: "document.owner == request.auth.claims.email" Example (
-        # Logic): title: "Public documents" description: "Determine whether the document
-        # should be publicly visible" expression: "document.type != 'private' &&
-        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
-        # string" description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)" The
-        # exact variables and functions that may be referenced within an expression are
-        # determined by the service that evaluates it. See the service documentation for
-        # additional information.
-        # Corresponds to the JSON property `condition`
-        # @return [Google::Apis::BaremetalsolutionV2::Expr]
-        attr_accessor :condition
-      
-        # Specifies the identities requesting access for a Cloud Platform resource. `
-        # members` can have the following values: * `allUsers`: A special identifier
-        # that represents anyone who is on the internet; with or without a Google
-        # account. * `allAuthenticatedUsers`: A special identifier that represents
-        # anyone who is authenticated with a Google account or a service account. * `
-        # user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
-        # address that represents a service account. For example, `my-other-app@appspot.
-        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
-        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
-        # `uniqueid``: An email address (plus unique identifier) representing a user
-        # that has been recently deleted. For example, `alice@example.com?uid=
-        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
-        # emailid`` and the recovered user retains the role in the binding. * `deleted:
-        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a service account that has been recently deleted. For
-        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to `serviceAccount:`
-        # emailid`` and the undeleted service account retains the role in the binding. *
-        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently deleted. For
-        # example, `admins@example.com?uid=123456789012345678901`. If the group is
-        # recovered, this value reverts to `group:`emailid`` and the recovered group
-        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
-        # primary) that represents all the users of that domain. For example, `google.
-        # com` or `example.com`.
-        # Corresponds to the JSON property `members`
-        # @return [Array<String>]
-        attr_accessor :members
-      
-        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
-        # , or `roles/owner`.
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @condition = args[:condition] if args.key?(:condition)
-          @members = args[:members] if args.key?(:members)
-          @role = args[:role] if args.key?(:role)
-        end
-      end
-      
-      # The request message for Operations.CancelOperation.
-      class CancelOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Represents a textual expression in the Common Expression Language (CEL) syntax.
-      # CEL is a C-like expression language. The syntax and semantics of CEL are
-      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
-      # "Summary size limit" description: "Determines if a summary is less than 100
-      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
-      # Requestor is owner" description: "Determines if requestor is the document
-      # owner" expression: "document.owner == request.auth.claims.email" Example (
-      # Logic): title: "Public documents" description: "Determine whether the document
-      # should be publicly visible" expression: "document.type != 'private' &&
-      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
-      # string" description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)" The
-      # exact variables and functions that may be referenced within an expression are
-      # determined by the service that evaluates it. See the service documentation for
-      # additional information.
-      class Expr
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Description of the expression. This is a longer text which describes
-        # the expression, e.g. when hovered over it in a UI.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Textual representation of an expression in Common Expression Language syntax.
-        # Corresponds to the JSON property `expression`
-        # @return [String]
-        attr_accessor :expression
-      
-        # Optional. String indicating the location of the expression for error reporting,
-        # e.g. a file name and a position in the file.
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        # Optional. Title for the expression, i.e. a short string describing its purpose.
-        # This can be used e.g. in UIs which allow to enter the expression.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @expression = args[:expression] if args.key?(:expression)
-          @location = args[:location] if args.key?(:location)
-          @title = args[:title] if args.key?(:title)
-        end
-      end
-      
-      # An instance resource.
+      # A server.
       class Instance
         include Google::Apis::Core::Hashable
       
-        # Output only. Create time stamp.
+        # Output only. Create a time stamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # True if hyperthreading enabled for the instance, false otherwise. The default
+        # True if you enable hyperthreading for the server, otherwise false. The default
         # value is false.
         # Corresponds to the JSON property `hyperthreadingEnabled`
         # @return [Boolean]
         attr_accessor :hyperthreading_enabled
         alias_method :hyperthreading_enabled?, :hyperthreading_enabled
       
+        # True if the interactive serial console feature is enabled for the instance,
+        # false otherwise. The default value is false.
+        # Corresponds to the JSON property `interactiveSerialConsoleEnabled`
+        # @return [Boolean]
+        attr_accessor :interactive_serial_console_enabled
+        alias_method :interactive_serial_console_enabled?, :interactive_serial_console_enabled
+      
         # Labels as key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # List of luns associated with this instance.
+        # List of LUNs associated with this server.
         # Corresponds to the JSON property `luns`
         # @return [Array<Google::Apis::BaremetalsolutionV2::Lun>]
         attr_accessor :luns
       
-        # The type of this Instance. [Available Instance types](https://cloud.google.com/
-        # bare-metal/docs/bms-planning#server_configurations)
+        # The server type. [Available server types](https://cloud.google.com/bare-metal/
+        # docs/bms-planning#server_configurations)
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -217,17 +69,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # List of networks associated with this instance.
+        # List of networks associated with this server.
         # Corresponds to the JSON property `networks`
         # @return [Array<Google::Apis::BaremetalsolutionV2::Network>]
         attr_accessor :networks
       
-        # The state of this Instance.
+        # The state of the server.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. Update time stamp.
+        # Output only. Update a time stamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -240,6 +92,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @hyperthreading_enabled = args[:hyperthreading_enabled] if args.key?(:hyperthreading_enabled)
+          @interactive_serial_console_enabled = args[:interactive_serial_console_enabled] if args.key?(:interactive_serial_console_enabled)
           @labels = args[:labels] if args.key?(:labels)
           @luns = args[:luns] if args.key?(:luns)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -250,16 +103,16 @@ module Google
         end
       end
       
-      # Message for response to listing Instances.
+      # Response message for the list of servers.
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Instance.
+        # The list of servers.
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::BaremetalsolutionV2::Instance>]
         attr_accessor :instances
       
-        # A token identifying a page of results the server should return.
+        # A token identifying a page of results from the server.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -306,36 +159,16 @@ module Google
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
+      # Response message containing the list of storage volume luns.
+      class ListLunsResponse
         include Google::Apis::Core::Hashable
       
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
+        # The list of luns.
+        # Corresponds to the JSON property `luns`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::Lun>]
+        attr_accessor :luns
       
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
-      # Message for response to listing Volumes.
-      class ListVolumesResponse
-        include Google::Apis::Core::Hashable
-      
-        # A token identifying a page of results the server should return.
+        # A token identifying a page of results from the server.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -345,20 +178,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :unreachable
       
-        # The list of Volume.
-        # Corresponds to the JSON property `volumes`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::Volume>]
-        attr_accessor :volumes
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @luns = args[:luns] if args.key?(:luns)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
-          @volumes = args[:volumes] if args.key?(:volumes)
         end
       end
       
@@ -409,52 +237,57 @@ module Google
         end
       end
       
-      # A storage Lun.
+      # A storage volume logical unit number (LUN).
       class Lun
         include Google::Apis::Core::Hashable
       
-        # Whether this Lun is a boot Lun.
+        # Display if this LUN is a boot LUN.
         # Corresponds to the JSON property `bootLun`
         # @return [Boolean]
         attr_accessor :boot_lun
         alias_method :boot_lun?, :boot_lun
       
-        # The Lun Multiprotocol type to ensure the characteristics of the LUN are
-        # optimized for the Operating System.
+        # The LUN multiprotocol type ensures the characteristics of the LUN are
+        # optimized for each operating system.
         # Corresponds to the JSON property `multiprotocolType`
         # @return [String]
         attr_accessor :multiprotocol_type
       
-        # Output only. The name of this Lun.
+        # Output only. The name of the LUN.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Whether this Lun is allowed to be shared between multiple physical servers.
-        # Corresponds to the JSON property `shared`
+        # Display if this LUN can be shared between multiple physical servers.
+        # Corresponds to the JSON property `shareable`
         # @return [Boolean]
-        attr_accessor :shared
-        alias_method :shared?, :shared
+        attr_accessor :shareable
+        alias_method :shareable?, :shareable
       
-        # The size of this Lun, in gigabytes.
+        # The size of this LUN, in gigabytes.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
       
-        # The state of this Volume.
+        # The state of this storage volume.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # The storage type of this Lun.
+        # The storage type for this LUN.
         # Corresponds to the JSON property `storageType`
         # @return [String]
         attr_accessor :storage_type
       
-        # The storage volume that this Lun is attached to.
+        # Display the storage volume for this LUN.
         # Corresponds to the JSON property `storageVolume`
         # @return [String]
         attr_accessor :storage_volume
+      
+        # The WWID for this LUN.
+        # Corresponds to the JSON property `wwid`
+        # @return [String]
+        attr_accessor :wwid
       
         def initialize(**args)
            update!(**args)
@@ -465,479 +298,127 @@ module Google
           @boot_lun = args[:boot_lun] if args.key?(:boot_lun)
           @multiprotocol_type = args[:multiprotocol_type] if args.key?(:multiprotocol_type)
           @name = args[:name] if args.key?(:name)
-          @shared = args[:shared] if args.key?(:shared)
+          @shareable = args[:shareable] if args.key?(:shareable)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @state = args[:state] if args.key?(:state)
           @storage_type = args[:storage_type] if args.key?(:storage_type)
           @storage_volume = args[:storage_volume] if args.key?(:storage_volume)
+          @wwid = args[:wwid] if args.key?(:wwid)
         end
       end
       
-      # A network.
+      # A Network.
       class Network
         include Google::Apis::Core::Hashable
+      
+        # The cidr of the Network.
+        # Corresponds to the JSON property `cidr`
+        # @return [String]
+        attr_accessor :cidr
       
         # IP address configured.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
-        # List of physical nics.
+        # List of physical interfaces.
         # Corresponds to the JSON property `macAddress`
         # @return [Array<String>]
         attr_accessor :mac_address
+      
+        # Output only. The resource name of this `Network`. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. Format: `projects/`project`/locations/`location`/
+        # networks/`network`` This field will contain the same value as field "network",
+        # which will soon be deprecated. Please use this field to reference the name of
+        # the network resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         # Name of the network.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
+        # The Network state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # The type of this network.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
+        # The vlan id of the Network.
+        # Corresponds to the JSON property `vlanId`
+        # @return [String]
+        attr_accessor :vlan_id
+      
+        # A network VRF.
+        # Corresponds to the JSON property `vrf`
+        # @return [Google::Apis::BaremetalsolutionV2::Vrf]
+        attr_accessor :vrf
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cidr = args[:cidr] if args.key?(:cidr)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @mac_address = args[:mac_address] if args.key?(:mac_address)
-          @network = args[:network] if args.key?(:network)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # This resource represents a long-running operation that is the result of a
-      # network API call.
-      class Operation
-        include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress. If `true`
-        # , the operation is completed, and either `error` or `response` is available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details. You can find out more
-        # about this error model and how to work with it in the [API Design Guide](https:
-        # //cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::BaremetalsolutionV2::Status]
-        attr_accessor :error
-      
-        # Service-specific metadata associated with the operation. It typically contains
-        # progress information and common metadata such as create time. Some services
-        # might not provide such metadata. Any method that returns a long-running
-        # operation should document the metadata type, if any.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the `name` should
-        # be a resource name ending with `operations/`unique_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @done = args[:done] if args.key?(:done)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
-          @response = args[:response] if args.key?(:response)
+          @network = args[:network] if args.key?(:network)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+          @vlan_id = args[:vlan_id] if args.key?(:vlan_id)
+          @vrf = args[:vrf] if args.key?(:vrf)
         end
       end
       
-      # Represents the metadata of the long-running operation.
-      class OperationMetadata
+      # A network VRF.
+      class Vrf
         include Google::Apis::Core::Hashable
       
-        # Output only. API version used to start the operation.
-        # Corresponds to the JSON property `apiVersion`
+        # The autonomous system number of the VRF.
+        # Corresponds to the JSON property `autonomousSystemNumber`
         # @return [String]
-        attr_accessor :api_version
+        attr_accessor :autonomous_system_number
       
-        # Output only. The time the operation was created.
-        # Corresponds to the JSON property `createTime`
+        # The Juniper alias of the VRF.
+        # Corresponds to the JSON property `juniperAlias`
         # @return [String]
-        attr_accessor :create_time
+        attr_accessor :juniper_alias
       
-        # Output only. The time the operation finished running.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have successfully been cancelled have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
-        # Corresponds to the JSON property `requestedCancellation`
-        # @return [Boolean]
-        attr_accessor :requested_cancellation
-        alias_method :requested_cancellation?, :requested_cancellation
-      
-        # Output only. Human-readable status of the operation, if any.
-        # Corresponds to the JSON property `statusMessage`
-        # @return [String]
-        attr_accessor :status_message
-      
-        # Output only. Server-defined resource path for the target of the operation.
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Output only. Name of the verb executed by the operation.
-        # Corresponds to the JSON property `verb`
-        # @return [String]
-        attr_accessor :verb
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
-          @status_message = args[:status_message] if args.key?(:status_message)
-          @target = args[:target] if args.key?(:target)
-          @verb = args[:verb] if args.key?(:verb)
-        end
-      end
-      
-      # An Identity and Access Management (IAM) policy, which specifies access
-      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-      # A `binding` binds one or more `members` to a single `role`. Members can be
-      # user accounts, service accounts, Google groups, and domains (such as G Suite).
-      # A `role` is a named list of permissions; each `role` can be an IAM predefined
-      # role or a user-created custom role. For some types of Google Cloud resources,
-      # a `binding` can also specify a `condition`, which is a logical expression that
-      # allows access to a resource only if the expression evaluates to `true`. A
-      # condition can add constraints based on attributes of the request, the resource,
-      # or both. To learn which resources support conditions in their IAM policies,
-      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-      # title": "expirable access", "description": "Does not grant access after Sep
-      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-      # members: - user:mike@example.com - group:admins@example.com - domain:google.
-      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-      # roles/resourcemanager.organizationViewer condition: title: expirable access
-      # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
-      # description of IAM and its features, see the [IAM documentation](https://cloud.
-      # google.com/iam/docs/).
-      class Policy
-        include Google::Apis::Core::Hashable
-      
-        # Associates a list of `members` to a `role`. Optionally, may specify a `
-        # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::BaremetalsolutionV2::Binding>]
-        attr_accessor :bindings
-      
-        # `etag` is used for optimistic concurrency control as a way to help prevent
-        # simultaneous updates of a policy from overwriting each other. It is strongly
-        # suggested that systems make use of the `etag` in the read-modify-write cycle
-        # to perform policy updates in order to avoid race conditions: An `etag` is
-        # returned in the response to `getIamPolicy`, and systems are expected to put
-        # that etag in the request to `setIamPolicy` to ensure that their change will be
-        # applied to the same version of the policy. **Important:** If you use IAM
-        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
-        # If you omit this field, then IAM allows you to overwrite a version `3` policy
-        # with a version `1` policy, and all of the conditions in the version `3` policy
-        # are lost.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
-        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
-        # Requests that specify an invalid value are rejected. Any operation that
-        # affects conditional role bindings must specify version `3`. This requirement
-        # applies to the following operations: * Getting a policy that includes a
-        # conditional role binding * Adding a conditional role binding to a policy *
-        # Changing a conditional role binding in a policy * Removing any role binding,
-        # with or without a condition, from a policy that includes conditions **
-        # Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
-        # to overwrite a version `3` policy with a version `1` policy, and all of the
-        # conditions in the version `3` policy are lost. If a policy does not include
-        # any conditions, operations on that policy may specify any valid version or
-        # leave the field unset. To learn which resources support conditions in their
-        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
-        # conditions/resource-policies).
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bindings = args[:bindings] if args.key?(:bindings)
-          @etag = args[:etag] if args.key?(:etag)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Request message for `SetIamPolicy` method.
-      class SetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # An Identity and Access Management (IAM) policy, which specifies access
-        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::BaremetalsolutionV2::Policy]
-        attr_accessor :policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy = args[:policy] if args.key?(:policy)
-        end
-      end
-      
-      # Details about snapshot space reservation and usage on the Volume.
-      class SnapshotReservationDetail
-        include Google::Apis::Core::Hashable
-      
-        # The space on this Volume reserved for snapshotsk, provided in GiB.
-        # Corresponds to the JSON property `reservedSpaceGib`
-        # @return [Fixnum]
-        attr_accessor :reserved_space_gib
-      
-        # The amount, in GiB, of space available in this Volume's reserved snapshot
-        # space.
-        # Corresponds to the JSON property `reservedSpaceRemainingGib`
-        # @return [Fixnum]
-        attr_accessor :reserved_space_remaining_gib
-      
-        # The percent of reserved snapshot space on this Volume that is actually used by
-        # snapshot copies. This may be higher than 100% if snapshot copies are occupying
-        # more space than has been reserved on the Volume.
-        # Corresponds to the JSON property `reservedSpaceUsedPercent`
-        # @return [Fixnum]
-        attr_accessor :reserved_space_used_percent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @reserved_space_gib = args[:reserved_space_gib] if args.key?(:reserved_space_gib)
-          @reserved_space_remaining_gib = args[:reserved_space_remaining_gib] if args.key?(:reserved_space_remaining_gib)
-          @reserved_space_used_percent = args[:reserved_space_used_percent] if args.key?(:reserved_space_used_percent)
-        end
-      end
-      
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by [
-      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-      # data: error code, error message, and error details. You can find out more
-      # about this error model and how to work with it in the [API Design Guide](https:
-      # //cloud.google.com/apis/design/errors).
-      class Status
-        include Google::Apis::Core::Hashable
-      
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # A list of messages that carry the error details. There is a common set of
-        # message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
-        # A developer-facing error message, which should be in English. Any user-facing
-        # error message should be localized and sent in the google.rpc.Status.details
-        # field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @details = args[:details] if args.key?(:details)
-          @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # Request message for `TestIamPermissions` method.
-      class TestIamPermissionsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The set of permissions to check for the `resource`. Permissions with wildcards
-        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
-        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Response message for `TestIamPermissions` method.
-      class TestIamPermissionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # A storage Volume.
-      class Volume
-        include Google::Apis::Core::Hashable
-      
-        # The size, in GiB, that this Volume has expanded as a result of an auto grow
-        # policy. In the absence of auto-grow, the value is 0.
-        # Corresponds to the JSON property `autoGrownSizeGib`
-        # @return [Fixnum]
-        attr_accessor :auto_grown_size_gib
-      
-        # The current size of this Volume, in GiB, including space reserved for
-        # snapshots. This size may be different than the requested size if the Volume
-        # has been configured with auto grow or auto shrink.
-        # Corresponds to the JSON property `currentSizeGib`
-        # @return [Fixnum]
-        attr_accessor :current_size_gib
-      
-        # Output only. The resource name of this `Volume`. Resource names are schemeless
-        # URIs that follow the conventions in https://cloud.google.com/apis/design/
-        # resource_names. Format: `projects/`project`/locations/`location`/volumes/`
-        # volume``
+        # The name of the VRF.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The space remaining in the Volume for new LUNs, in GiB, excluding space
-        # reserved for snapshots.
-        # Corresponds to the JSON property `remainingSpaceGib`
+        # The route target of the VRF.
+        # Corresponds to the JSON property `routeTarget`
         # @return [Fixnum]
-        attr_accessor :remaining_space_gib
+        attr_accessor :route_target
       
-        # The requested size of this Volume, in GiB.
-        # Corresponds to the JSON property `requestedSizeGib`
-        # @return [Fixnum]
-        attr_accessor :requested_size_gib
-      
-        # Details about snapshot space reservation and usage on the Volume.
-        # Corresponds to the JSON property `snapshotReservationDetail`
-        # @return [Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail]
-        attr_accessor :snapshot_reservation_detail
-      
-        # The state of this Volume.
+        # The possible state of VRF.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # The storage type of this Volume.
-        # Corresponds to the JSON property `storageType`
-        # @return [String]
-        attr_accessor :storage_type
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @auto_grown_size_gib = args[:auto_grown_size_gib] if args.key?(:auto_grown_size_gib)
-          @current_size_gib = args[:current_size_gib] if args.key?(:current_size_gib)
+          @autonomous_system_number = args[:autonomous_system_number] if args.key?(:autonomous_system_number)
+          @juniper_alias = args[:juniper_alias] if args.key?(:juniper_alias)
           @name = args[:name] if args.key?(:name)
-          @remaining_space_gib = args[:remaining_space_gib] if args.key?(:remaining_space_gib)
-          @requested_size_gib = args[:requested_size_gib] if args.key?(:requested_size_gib)
-          @snapshot_reservation_detail = args[:snapshot_reservation_detail] if args.key?(:snapshot_reservation_detail)
+          @route_target = args[:route_target] if args.key?(:route_target)
           @state = args[:state] if args.key?(:state)
-          @storage_type = args[:storage_type] if args.key?(:storage_type)
         end
       end
     end
