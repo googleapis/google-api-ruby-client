@@ -152,6 +152,13 @@ module Google
       class AnalyticsProperty
         include Google::Apis::Core::Hashable
       
+        # Output only. The ID of the [Google Analytics account](https://www.google.com/
+        # analytics/) for the Google Analytics property associated with the specified
+        # FirebaseProject.
+        # Corresponds to the JSON property `analyticsAccountId`
+        # @return [String]
+        attr_accessor :analytics_account_id
+      
         # The display name of the Google Analytics property associated with the
         # specified `FirebaseProject`.
         # Corresponds to the JSON property `displayName`
@@ -174,6 +181,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @analytics_account_id = args[:analytics_account_id] if args.key?(:analytics_account_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
         end
@@ -526,6 +534,11 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # The Apple Developer Team ID associated with the App in the App Store.
+        # Corresponds to the JSON property `teamId`
+        # @return [String]
+        attr_accessor :team_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -538,6 +551,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @team_id = args[:team_id] if args.key?(:team_id)
         end
       end
       

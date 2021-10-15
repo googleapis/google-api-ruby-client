@@ -258,6 +258,7 @@ module Google
       class AnalyticsProperty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_account_id, as: 'analyticsAccountId'
           property :display_name, as: 'displayName'
           property :id, as: 'id'
         end
@@ -338,6 +339,7 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
+          property :team_id, as: 'teamId'
         end
       end
       
