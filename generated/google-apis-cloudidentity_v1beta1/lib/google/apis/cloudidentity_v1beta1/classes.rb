@@ -1976,7 +1976,7 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::EntityKey>]
         attr_accessor :preferred_member_key
       
-        # The relation between the group and the transitive member.
+        # The relation between the group and the transitive membership.
         # Corresponds to the JSON property `relationType`
         # @return [String]
         attr_accessor :relation_type
@@ -2426,7 +2426,7 @@ module Google
       class SearchTransitiveMembershipsResponse
         include Google::Apis::Core::Hashable
       
-        # List of transitive members satisfying the query.
+        # List of transitive memberships satisfying the query.
         # Corresponds to the JSON property `memberships`
         # @return [Array<Google::Apis::CloudidentityV1beta1::MemberRelation>]
         attr_accessor :memberships
