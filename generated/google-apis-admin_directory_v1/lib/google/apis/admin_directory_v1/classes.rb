@@ -2874,7 +2874,8 @@ module Google
       # Managing your account's organizational units allows you to configure your
       # users' access to services and custom settings. For more information about
       # common organizational unit tasks, see the [Developer's Guide](/admin-sdk/
-      # directory/v1/guides/manage-org-units.html).
+      # directory/v1/guides/manage-org-units.html). The customer's organizational unit
+      # hierarchy is limited to 35 levels of depth.
       class OrgUnit
         include Google::Apis::Core::Hashable
       
