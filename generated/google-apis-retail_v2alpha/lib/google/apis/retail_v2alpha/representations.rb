@@ -1527,6 +1527,7 @@ module Google
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestQueryExpansionSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestQueryExpansionSpec::Representation
       
           property :relevance_threshold, as: 'relevanceThreshold'
+          property :search_mode, as: 'searchMode'
           property :user_info, as: 'userInfo', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo::Representation
       
           collection :variant_rollup_keys, as: 'variantRollupKeys'
