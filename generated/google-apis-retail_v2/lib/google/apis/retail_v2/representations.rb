@@ -1340,6 +1340,7 @@ module Google
           property :query, as: 'query'
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestQueryExpansionSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestQueryExpansionSpec::Representation
       
+          property :search_mode, as: 'searchMode'
           property :user_info, as: 'userInfo', class: Google::Apis::RetailV2::GoogleCloudRetailV2UserInfo, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2UserInfo::Representation
       
           collection :variant_rollup_keys, as: 'variantRollupKeys'
