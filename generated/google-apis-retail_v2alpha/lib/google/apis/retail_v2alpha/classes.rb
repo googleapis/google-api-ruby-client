@@ -2936,6 +2936,12 @@ module Google
         # @return [String]
         attr_accessor :relevance_threshold
       
+        # The search mode of the search request. If not specified, a single search
+        # request triggers both product search and faceted search.
+        # Corresponds to the JSON property `searchMode`
+        # @return [String]
+        attr_accessor :search_mode
+      
         # Information of an end user.
         # Corresponds to the JSON property `userInfo`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo]
@@ -2999,6 +3005,7 @@ module Google
           @query = args[:query] if args.key?(:query)
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @relevance_threshold = args[:relevance_threshold] if args.key?(:relevance_threshold)
+          @search_mode = args[:search_mode] if args.key?(:search_mode)
           @user_info = args[:user_info] if args.key?(:user_info)
           @variant_rollup_keys = args[:variant_rollup_keys] if args.key?(:variant_rollup_keys)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
