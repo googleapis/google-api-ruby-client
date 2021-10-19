@@ -42,4 +42,4 @@ Yes, the gem will continue to be available, _but_ it will likely not be updated 
 
 Reference documentation is now available separately for each service-specific gem. Reference documentation for common classes (such as `RequestOptions`) is connected to the common gem `google-apis-core`.
 
-Basic usage documentaiton is provided with each service-specific gem. Some more detailed documentation including how to implement OAuth flows, is available in the [docs directory of the repo](https://github.com/googleapis/google-api-ruby-client/tree/master/docs).
+Basic usage documentaiton is provided with each service-specific gem. Some more detailed documentation including how to implement OAuth flows, is available in the [docs directory of the repo](https://github.com/googleapis/google-api-ruby-client/tree/main/docs).

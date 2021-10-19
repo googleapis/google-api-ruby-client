@@ -2,7 +2,7 @@ name: release-please-label
 on:
   pull_request_target:
     branches:
-      - master
+      - main
     types:
       - opened
 jobs:

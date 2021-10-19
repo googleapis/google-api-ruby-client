@@ -4,7 +4,7 @@
 
 ** google-api-client is now deprecated **
 
-This gem includes API client classes for >300 Google APIs (updated as of December 2020). At the end of 2020, it was split into separate gems for each API. Instead of google-api-client, please install the separate gem corresponding to the specific service to be used. For example, to use the Google Drive V3 client, install `google-apis-drive_v3`. For more information, please see the [FAQ](https://github.com/googleapis/google-api-ruby-client/blob/master/google-api-client/OVERVIEW.md). The google-api-client gem will no longer be updated from this point.
+This gem includes API client classes for >300 Google APIs (updated as of December 2020). At the end of 2020, it was split into separate gems for each API. Instead of google-api-client, please install the separate gem corresponding to the specific service to be used. For example, to use the Google Drive V3 client, install `google-apis-drive_v3`. For more information, please see the [FAQ](https://github.com/googleapis/google-api-ruby-client/blob/main/google-api-client/OVERVIEW.md). The google-api-client gem will no longer be updated from this point.
 
 ## [0.52.0](https://www.github.com/googleapis/google-api-ruby-client/compare/v0.51.0...v0.52.0) (2020-12-14)
 

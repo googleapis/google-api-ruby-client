@@ -57,7 +57,7 @@ content.authorization.fetch_access_token!
 content.list_datafeeds(merchant_id) # Returns Google::Apis::ContentV2::ListDatafeedsResponse
 ```
 
-For more detailed information, see the [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/usage-guide.md).
+For more detailed information, see the [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/main/docs/usage-guide.md).
 
 ## Which client should I use?
 
@@ -73,7 +73,7 @@ The documentation for the particular Google service you are working with, may pr
 
 ## Samples
 
-See the [samples](https://github.com/google/google-api-ruby-client/tree/master/samples) for examples on how to use the client library for various
+See the [samples](https://github.com/google/google-api-ruby-client/tree/main/samples) for examples on how to use the client library for various
 services.
 
 ## Supported Ruby versions

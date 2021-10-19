@@ -1,8 +1,9 @@
 require File.expand_path("lib/google/apis/core/version", __dir__)
+gem_version = Google::Apis::Core::VERSION
 
 Gem::Specification.new do |gem|
   gem.name = "google-apis-core"
-  gem.version = Google::Apis::Core::VERSION
+  gem.version = gem_version
   gem.authors = ["Google LLC"]
   gem.email = "googleapis-packages@google.com"
   gem.summary = "Common utility and base classes for legacy Google REST clients"
@@ -10,9 +11,9 @@ Gem::Specification.new do |gem|
   gem.license = "Apache-2.0"
   gem.metadata = {
     "bug_tracker_uri" => "https://github.com/googleapis/google-api-ruby-client/issues",
-    "changelog_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/google-apis-core/CHANGELOG.md",
-    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-core/v#{Google::Apis::Core::VERSION}",
-    "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/google-apis-core"
+    "changelog_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/main/google-apis-core/CHANGELOG.md",
+    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-core/v#{gem_version}",
+    "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/main/google-apis-core"
   }
 
   gem.files = Dir.glob("lib/**/*.rb") + Dir.glob("*.md") + [".yardopts"]
