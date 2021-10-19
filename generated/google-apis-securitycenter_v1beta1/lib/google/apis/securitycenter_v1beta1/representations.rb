@@ -486,6 +486,7 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           collection :folders, as: 'folders', class: Google::Apis::SecuritycenterV1beta1::Folder, decorator: Google::Apis::SecuritycenterV1beta1::Folder::Representation
       
           property :name, as: 'name'
