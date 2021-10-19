@@ -701,6 +701,11 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         include Google::Apis::Core::Hashable
       
+        # The human readable name of the resource.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Output only. Contains a Folder message for each folder in the assets ancestry.
         # The first folder is the deepest nested folder, and the last folder is the
         # folder directly under the Organization.
@@ -745,6 +750,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @folders = args[:folders] if args.key?(:folders)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
@@ -1965,6 +1971,11 @@ module Google
       class Resource
         include Google::Apis::Core::Hashable
       
+        # The human readable name of the resource.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Contains a Folder message for each folder in the assets ancestry. The first
         # folder is the deepest nested folder, and the last folder is the folder
         # directly under the Organization.
@@ -1998,18 +2009,25 @@ module Google
         # @return [String]
         attr_accessor :project_name
       
+        # The full resource type of the resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @folders = args[:folders] if args.key?(:folders)
           @name = args[:name] if args.key?(:name)
           @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
           @parent_name = args[:parent_name] if args.key?(:parent_name)
           @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
           @project_name = args[:project_name] if args.key?(:project_name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
