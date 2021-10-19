@@ -748,6 +748,38 @@ module Google
         end
       end
       
+      # An access grant resource.
+      class Grant
+        include Google::Apis::Core::Hashable
+      
+        # The permissions granted to the user for this app.
+        # Corresponds to the JSON property `appLevelPermissions`
+        # @return [Array<String>]
+        attr_accessor :app_level_permissions
+      
+        # Required. Resource name for this grant, following the pattern "developers/`
+        # developer`/users/`email`/grants/`package_name`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The package name of the app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_level_permissions = args[:app_level_permissions] if args.key?(:app_level_permissions)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
       # An uploaded image. The resource for ImagesService.
       class Image
         include Google::Apis::Core::Hashable
@@ -1081,6 +1113,32 @@ module Google
           @introductory_price_currency_code = args[:introductory_price_currency_code] if args.key?(:introductory_price_currency_code)
           @introductory_price_cycles = args[:introductory_price_cycles] if args.key?(:introductory_price_cycles)
           @introductory_price_period = args[:introductory_price_period] if args.key?(:introductory_price_period)
+        end
+      end
+      
+      # A response containing one or more users with access to an account.
+      class ListUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to pass to subsequent calls in order to retrieve subsequent results.
+        # This will not be set if there are no more results to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The resulting users.
+        # Corresponds to the JSON property `users`
+        # @return [Array<Google::Apis::AndroidpublisherV3::User>]
+        attr_accessor :users
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @users = args[:users] if args.key?(:users)
         end
       end
       
@@ -2149,6 +2207,64 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @tracks = args[:tracks] if args.key?(:tracks)
+        end
+      end
+      
+      # A user resource.
+      class User
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the user's access to the Play Console.
+        # Corresponds to the JSON property `accessState`
+        # @return [String]
+        attr_accessor :access_state
+      
+        # Permissions for the user which apply across the developer account.
+        # Corresponds to the JSON property `developerAccountPermissions`
+        # @return [Array<String>]
+        attr_accessor :developer_account_permissions
+      
+        # Immutable. The user's email address.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The time at which the user's access expires, if set.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        # Output only. Per-app permissions for the user.
+        # Corresponds to the JSON property `grants`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Grant>]
+        attr_accessor :grants
+      
+        # Required. Resource name for this user, following the pattern "developers/`
+        # developer`/users/`email`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether there are more permissions for the user that are not
+        # represented here.
+        # Corresponds to the JSON property `partial`
+        # @return [Boolean]
+        attr_accessor :partial
+        alias_method :partial?, :partial
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_state = args[:access_state] if args.key?(:access_state)
+          @developer_account_permissions = args[:developer_account_permissions] if args.key?(:developer_account_permissions)
+          @email = args[:email] if args.key?(:email)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @grants = args[:grants] if args.key?(:grants)
+          @name = args[:name] if args.key?(:name)
+          @partial = args[:partial] if args.key?(:partial)
         end
       end
       
