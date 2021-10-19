@@ -486,6 +486,11 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         include Google::Apis::Core::Hashable
       
+        # The human readable name of the resource.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Output only. Contains a Folder message for each folder in the assets ancestry.
         # The first folder is the deepest nested folder, and the last folder is the
         # folder directly under the Organization.
@@ -530,6 +535,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @folders = args[:folders] if args.key?(:folders)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
