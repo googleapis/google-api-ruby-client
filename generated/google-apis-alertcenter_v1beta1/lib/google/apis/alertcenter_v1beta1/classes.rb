@@ -32,7 +32,7 @@ module Google
         attr_accessor :abuse_reason
       
         # The name of the product being abused. This is restricted to only the following
-        # values: "Gmail" "Payments" "Voice" "Workspace" "Other"
+        # values: "Gmail" "Google Workspace" "Payments" "Voice" "YouTube" "Other"
         # Corresponds to the JSON property `productName`
         # @return [String]
         attr_accessor :product_name
