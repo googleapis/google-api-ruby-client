@@ -424,8 +424,7 @@ module Google
         attr_accessor :additional_target_keys
       
         # The target resource on which this policy is applied. The following resources
-        # are supported: * Organizational Unit ("orgunits/`orgunit_id`") * Group ("
-        # groups/`group_id`")
+        # are supported: * Organizational Unit ("orgunits/`orgunit_id`")
         # Corresponds to the JSON property `targetResource`
         # @return [String]
         attr_accessor :target_resource
