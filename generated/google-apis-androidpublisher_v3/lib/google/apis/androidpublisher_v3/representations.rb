@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Grant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,12 @@ module Google
       end
       
       class IntroductoryPriceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,6 +383,12 @@ module Google
       end
       
       class TracksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -629,6 +647,15 @@ module Google
         end
       end
       
+      class Grant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_level_permissions, as: 'appLevelPermissions'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+        end
+      end
+      
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -721,6 +748,15 @@ module Google
           property :introductory_price_currency_code, as: 'introductoryPriceCurrencyCode'
           property :introductory_price_cycles, as: 'introductoryPriceCycles'
           property :introductory_price_period, as: 'introductoryPricePeriod'
+        end
+      end
+      
+      class ListUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :users, as: 'users', class: Google::Apis::AndroidpublisherV3::User, decorator: Google::Apis::AndroidpublisherV3::User::Representation
+      
         end
       end
       
@@ -997,6 +1033,20 @@ module Google
           property :kind, as: 'kind'
           collection :tracks, as: 'tracks', class: Google::Apis::AndroidpublisherV3::Track, decorator: Google::Apis::AndroidpublisherV3::Track::Representation
       
+        end
+      end
+      
+      class User
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_state, as: 'accessState'
+          collection :developer_account_permissions, as: 'developerAccountPermissions'
+          property :email, as: 'email'
+          property :expiration_time, as: 'expirationTime'
+          collection :grants, as: 'grants', class: Google::Apis::AndroidpublisherV3::Grant, decorator: Google::Apis::AndroidpublisherV3::Grant::Representation
+      
+          property :name, as: 'name'
+          property :partial, as: 'partial'
         end
       end
       

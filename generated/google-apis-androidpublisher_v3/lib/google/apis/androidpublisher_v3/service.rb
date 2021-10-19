@@ -1402,6 +1402,106 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Grant access for a user to the given package.
+        # @param [String] parent
+        #   Required. The user which needs permission. Format: developers/`developer`/
+        #   users/`user`
+        # @param [Google::Apis::AndroidpublisherV3::Grant] grant_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::Grant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::Grant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_grant(parent, grant_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/{+parent}/grants', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::Grant::Representation
+          command.request_object = grant_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::Grant::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::Grant
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes all access for the user to the given package or developer account.
+        # @param [String] name
+        #   Required. The name of the grant to delete. Format: developers/`developer`/
+        #   users/`email`/grants/`package_name`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_grant(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'androidpublisher/v3/{+name}', options)
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates access for the user to the given package.
+        # @param [String] name
+        #   Required. Resource name for this grant, following the pattern "developers/`
+        #   developer`/users/`email`/grants/`package_name`".
+        # @param [Google::Apis::AndroidpublisherV3::Grant] grant_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::Grant] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::Grant]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_grant(name, grant_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'androidpublisher/v3/{+name}', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::Grant::Representation
+          command.request_object = grant_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::Grant::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::Grant
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes an in-app product (i.e. a managed product or a subscriptions).
         # @param [String] package_name
         #   Package name of the app.
@@ -2421,6 +2521,145 @@ module Google
           command.response_class = Google::Apis::AndroidpublisherV3::SystemApksListResponse
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['versionCode'] = version_code unless version_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Grant access for a user to the given developer account.
+        # @param [String] parent
+        #   Required. The developer account to add the user to. Format: developers/`
+        #   developer`
+        # @param [Google::Apis::AndroidpublisherV3::User] user_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::User] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::User]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_user(parent, user_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/{+parent}/users', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::User::Representation
+          command.request_object = user_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::User::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::User
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes all access for the user to the given developer account.
+        # @param [String] name
+        #   Required. The name of the user to delete. Format: developers/`developer`/users/
+        #   `email`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'androidpublisher/v3/{+name}', options)
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all users with access to a developer account.
+        # @param [String] parent
+        #   Required. The developer account to fetch users from. Format: developers/`
+        #   developer`
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. This must be set to -1 to disable
+        #   pagination.
+        # @param [String] page_token
+        #   A token received from a previous call to this method, in order to retrieve
+        #   further results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ListUsersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ListUsersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_users(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/{+parent}/users', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::ListUsersResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ListUsersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates access for the user to the developer account.
+        # @param [String] name
+        #   Required. Resource name for this user, following the pattern "developers/`
+        #   developer`/users/`email`".
+        # @param [Google::Apis::AndroidpublisherV3::User] user_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::User] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::User]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_user(name, user_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'androidpublisher/v3/{+name}', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::User::Representation
+          command.request_object = user_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::User::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::User
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
