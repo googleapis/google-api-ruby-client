@@ -387,7 +387,7 @@ module Google
         #   my_property : ""` * resource: * resource.name: `=`, `:` * resource.parent_name:
         #   `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`
         #   , `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
-        #   resource.folders.resource_folder: `=`, `:`
+        #   resource.folders.resource_folder: `=`, `:` * resource.display_name: `=`, `:`
         # @param [String] order_by
         #   Expression that defines what fields and order to use for sorting. The string
         #   value should follow SQL syntax: comma separated list of fields. For example: "
@@ -1584,7 +1584,7 @@ module Google
         #   my_property : ""` * resource: * resource.name: `=`, `:` * resource.parent_name:
         #   `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`
         #   , `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
-        #   resource.folders.resource_folder: `=`, `:`
+        #   resource.folders.resource_folder: `=`, `:` * resource.display_name: `=`, `:`
         # @param [String] order_by
         #   Expression that defines what fields and order to use for sorting. The string
         #   value should follow SQL syntax: comma separated list of fields. For example: "
@@ -2101,7 +2101,7 @@ module Google
         #   my_property : ""` * resource: * resource.name: `=`, `:` * resource.parent_name:
         #   `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`
         #   , `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
-        #   resource.folders.resource_folder: `=`, `:`
+        #   resource.folders.resource_folder: `=`, `:` * resource.display_name: `=`, `:`
         # @param [String] order_by
         #   Expression that defines what fields and order to use for sorting. The string
         #   value should follow SQL syntax: comma separated list of fields. For example: "

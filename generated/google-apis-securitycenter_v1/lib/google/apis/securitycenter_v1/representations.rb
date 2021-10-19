@@ -502,6 +502,7 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           collection :folders, as: 'folders', class: Google::Apis::SecuritycenterV1::Folder, decorator: Google::Apis::SecuritycenterV1::Folder::Representation
       
           property :name, as: 'name'
@@ -792,6 +793,7 @@ module Google
       class Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           collection :folders, as: 'folders', class: Google::Apis::SecuritycenterV1::Folder, decorator: Google::Apis::SecuritycenterV1::Folder::Representation
       
           property :name, as: 'name'
@@ -799,6 +801,7 @@ module Google
           property :parent_name, as: 'parentName'
           property :project_display_name, as: 'projectDisplayName'
           property :project_name, as: 'projectName'
+          property :type, as: 'type'
         end
       end
       
