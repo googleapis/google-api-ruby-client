@@ -22,18 +22,8 @@ module Google
     module FirebaseappcheckV1beta
       # Firebase App Check API
       #
-      # App Check works alongside other Firebase services to help protect your backend
-      #  resources from abuse, such as billing fraud or phishing. With App Check,
-      #  devices running your app will use an app or device attestation provider that
-      #  attests to one or both of the following: * Requests originate from your
-      #  authentic app * Requests originate from an authentic, untampered device This
-      #  attestation is attached to every request your app makes to your Firebase
-      #  backend resources. The Firebase App Check REST API allows you to manage your
-      #  App Check configurations programmatically. It also allows you to exchange
-      #  attestation material for App Check tokens directly without using a Firebase
-      #  SDK. Finally, it allows you to obtain the public key set necessary to validate
-      #  an App Check token yourself. [Learn more about App Check](https://firebase.
-      #  google.com/docs/app-check).
+      # Firebase App Check works alongside other Firebase services to help protect
+      #  your backend resources from abuse, such as billing fraud or phishing.
       #
       # @example
       #    require 'google/apis/firebaseappcheck_v1beta'
@@ -94,13 +84,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Accepts a AppAttest Artifact and Assertion, and uses the developer's
-        # preconfigured auth token to verify the token with Apple. Returns an
-        # AttestationToken with the App ID as specified by the `app` field included as
-        # attested claims.
+        # Accepts an App Attest assertion and an artifact previously obtained from
+        # ExchangeAppAttestAttestation and verifies those with Apple. If valid, returns
+        # an App Check token encapsulated in an AttestationTokenResponse.
         # @param [String] app
-        #   Required. The full resource name to the iOS App. Format: "projects/`project_id`
-        #   /apps/`app_id`"
+        #   Required. The relative resource name of the iOS app, in the format: ```
+        #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
+        #   element can be replaced with the project ID of the Firebase project. Learn
+        #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
+        #   dev/cloud/2510) standard.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest] google_firebase_appcheck_v1beta_exchange_app_attest_assertion_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -131,13 +123,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Accepts a AppAttest CBOR Attestation, and uses the developer's preconfigured
-        # team and bundle IDs to verify the token with Apple. Returns an Attestation
-        # Artifact that can later be exchanged for an AttestationToken in
-        # ExchangeAppAttestAssertion.
+        # Accepts an App Attest CBOR attestation and verifies it with Apple using the
+        # developer's preconfigured team and bundle IDs. If valid, returns an
+        # attestation artifact that can later be exchanged for an
+        # AttestationTokenResponse using ExchangeAppAttestAssertion. For convenience and
+        # performance, this method's response object will also contain an App Check
+        # token encapsulated in an AttestationTokenResponse (if the verification is
+        # successful).
         # @param [String] app
-        #   Required. The full resource name to the iOS App. Format: "projects/`project_id`
-        #   /apps/`app_id`"
+        #   Required. The relative resource name of the iOS app, in the format: ```
+        #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
+        #   element can be replaced with the project ID of the Firebase project. Learn
+        #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
+        #   dev/cloud/2510) standard.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest] google_firebase_appcheck_v1beta_exchange_app_attest_attestation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -365,11 +363,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates the App Attest flow by generating a challenge which will be used as
-        # a type of nonce for this attestation.
+        # Generates a challenge that protects the integrity of an immediately following
+        # call to ExchangeAppAttestAttestation or ExchangeAppAttestAssertion. A
+        # challenge should not be reused for multiple calls.
         # @param [String] app
-        #   Required. The full resource name to the iOS App. Format: "projects/`project_id`
-        #   /apps/`app_id`"
+        #   Required. The relative resource name of the iOS app, in the format: ```
+        #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
+        #   element can be replaced with the project ID of the Firebase project. Learn
+        #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
+        #   dev/cloud/2510) standard.
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest] google_firebase_appcheck_v1beta_generate_app_attest_challenge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -663,8 +665,8 @@ module Google
         # cannot be updated, nor will it be populated in the response, but you can
         # revoke the debug token using DeleteDebugToken.
         # @param [String] name
-        #   The relative resource name of the debug token, in the format: ``` projects/`
-        #   project_number`/apps/`app_id`/debugTokens/`debug_token_id` ```
+        #   Required. The relative resource name of the debug token, in the format: ```
+        #   projects/`project_number`/apps/`app_id`/debugTokens/`debug_token_id` ```
         # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaDebugToken] google_firebase_appcheck_v1beta_debug_token_object
         # @param [String] update_mask
         #   Required. A comma-separated list of names of fields in the DebugToken to
