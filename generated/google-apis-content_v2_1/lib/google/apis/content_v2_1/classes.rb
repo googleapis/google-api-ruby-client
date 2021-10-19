@@ -11724,7 +11724,7 @@ module Google
         # promotion. Content API methods that operate on promotions take this as their
         # promotionId parameter. The REST ID for a promotion is of the form channel:
         # contentLanguage:targetCountry:promotionId The channel field will have a value
-        # of "online", "local", or "onlinelocal".
+        # of "online", "in_store", or "online_in_store".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
