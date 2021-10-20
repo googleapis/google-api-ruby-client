@@ -402,7 +402,7 @@ module Google
       class PhotoId
         include Google::Apis::Core::Hashable
       
-        # Required. A unique identifier for a photo.
+        # A unique identifier for a photo.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
