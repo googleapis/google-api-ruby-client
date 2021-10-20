@@ -1,8 +1,9 @@
 require File.expand_path("lib/google/apis/retail_v2alpha/gem_version", __dir__)
+gem_version = Google::Apis::RetailV2alpha::GEM_VERSION
 
 Gem::Specification.new do |gem|
   gem.name = "google-apis-retail_v2alpha"
-  gem.version = Google::Apis::RetailV2alpha::GEM_VERSION
+  gem.version = gem_version
   gem.authors = ["Google LLC"]
   gem.email = "googleapis-packages@google.com"
   gem.summary = "Simple REST client for Retail API V2alpha"
@@ -19,9 +20,9 @@ Gem::Specification.new do |gem|
   gem.license = "Apache-2.0"
   gem.metadata = {
     "bug_tracker_uri" => "https://github.com/googleapis/google-api-ruby-client/issues",
-    "changelog_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/generated/google-apis-retail_v2alpha/CHANGELOG.md",
-    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-retail_v2alpha/v#{Google::Apis::RetailV2alpha::GEM_VERSION}",
-    "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/generated/google-apis-retail_v2alpha"
+    "changelog_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/main/generated/google-apis-retail_v2alpha/CHANGELOG.md",
+    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-retail_v2alpha/v#{gem_version}",
+    "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/main/generated/google-apis-retail_v2alpha"
   }
 
   gem.files = Dir.glob("lib/**/*.rb") + Dir.glob("*.md") + [".yardopts"]
