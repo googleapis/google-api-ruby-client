@@ -16,7 +16,7 @@ module Google
   module Apis
     module GkehubV1alpha
       # Version of the google-apis-gkehub_v1alpha gem
-      GEM_VERSION = "0.12.0"
+      GEM_VERSION = "0.13.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
