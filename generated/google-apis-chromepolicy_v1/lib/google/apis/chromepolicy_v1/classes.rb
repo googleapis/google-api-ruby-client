@@ -228,10 +228,9 @@ module Google
         # @return [String]
         attr_accessor :policy_description
       
-        # Output only. The full qualified name of the policy schema. This value is used
+        # Output only. The fully qualified name of the policy schema. This value is used
         # to fill the field `policy_schema` in PolicyValue when calling
-        # BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies
-        # BatchModifyGroupPolicies or BatchDeleteGroupPolicies.
+        # BatchInheritOrgUnitPolicies or BatchModifyOrgUnitPolicies
         # Corresponds to the JSON property `schemaName`
         # @return [String]
         attr_accessor :schema_name
