@@ -1,5 +1,9 @@
 # Release history for google-apis-searchconsole_v1
 
+### v0.7.0 (2021-10-20)
+
+* Regenerated from discovery document revision 20211015
+
 ### v0.6.0 (2021-09-05)
 
 * Regenerated from discovery document revision 20210903
