@@ -578,7 +578,7 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink]
         attr_accessor :display_video360_advertiser_link
       
-        # A proposal for a link between an GA4 property and a Display & Video 360
+        # A proposal for a link between a GA4 property and a Display & Video 360
         # advertiser. A proposal is converted to a DisplayVideo360AdvertiserLink once
         # approved. Google Analytics admins approve inbound proposals while Display &
         # Video 360 admins approve outbound proposals.
@@ -586,12 +586,12 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal]
         attr_accessor :display_video360_advertiser_link_proposal
       
-        # A link between an GA4 property and a Firebase project.
+        # A link between a GA4 property and a Firebase project.
         # Corresponds to the JSON property `firebaseLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFirebaseLink]
         attr_accessor :firebase_link
       
-        # A link between an GA4 property and a Google Ads account.
+        # A link between a GA4 property and a Google Ads account.
         # Corresponds to the JSON property `googleAdsLink`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink]
         attr_accessor :google_ads_link
@@ -1085,7 +1085,7 @@ module Google
         end
       end
       
-      # A proposal for a link between an GA4 property and a Display & Video 360
+      # A proposal for a link between a GA4 property and a Display & Video 360
       # advertiser. A proposal is converted to a DisplayVideo360AdvertiserLink once
       # approved. Google Analytics admins approve inbound proposals while Display &
       # Video 360 admins approve outbound proposals.
@@ -1272,7 +1272,7 @@ module Google
         end
       end
       
-      # A link between an GA4 property and a Firebase project.
+      # A link between a GA4 property and a Firebase project.
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         include Google::Apis::Core::Hashable
       
@@ -1335,7 +1335,7 @@ module Google
         end
       end
       
-      # A link between an GA4 property and a Google Ads account.
+      # A link between a GA4 property and a Google Ads account.
       class GoogleAnalyticsAdminV1alphaGoogleAdsLink
         include Google::Apis::Core::Hashable
       
@@ -2038,7 +2038,7 @@ module Google
         end
       end
       
-      # A virtual resource representing metadata for an GA4 property.
+      # A virtual resource representing metadata for a GA4 property.
       class GoogleAnalyticsAdminV1alphaPropertySummary
         include Google::Apis::Core::Hashable
       
