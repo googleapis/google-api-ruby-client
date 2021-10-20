@@ -22,6 +22,12 @@ module Google
   module Apis
     module StoragetransferV1
       
+      class AgentPool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AwsAccessKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +47,12 @@ module Google
       end
       
       class AzureCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BandwidthLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -89,6 +101,12 @@ module Google
       end
       
       class HttpData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAgentPoolsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +226,17 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentPool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bandwidth_limit, as: 'bandwidthLimit', class: Google::Apis::StoragetransferV1::BandwidthLimit, decorator: Google::Apis::StoragetransferV1::BandwidthLimit::Representation
+      
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class AwsAccessKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -242,6 +271,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sas_token, as: 'sasToken'
+        end
+      end
+      
+      class BandwidthLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limit_mbps, :numeric_string => true, as: 'limitMbps'
         end
       end
       
@@ -304,6 +340,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :list_url, as: 'listUrl'
+        end
+      end
+      
+      class ListAgentPoolsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_pools, as: 'agentPools', class: Google::Apis::StoragetransferV1::AgentPool, decorator: Google::Apis::StoragetransferV1::AgentPool::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -439,6 +484,8 @@ module Google
           property :directories_failed_to_list_from_source, :numeric_string => true, as: 'directoriesFailedToListFromSource'
           property :directories_found_from_source, :numeric_string => true, as: 'directoriesFoundFromSource'
           property :directories_successfully_listed_from_source, :numeric_string => true, as: 'directoriesSuccessfullyListedFromSource'
+          property :intermediate_objects_cleaned_up, :numeric_string => true, as: 'intermediateObjectsCleanedUp'
+          property :intermediate_objects_failed_cleaned_up, :numeric_string => true, as: 'intermediateObjectsFailedCleanedUp'
           property :objects_copied_to_sink, :numeric_string => true, as: 'objectsCopiedToSink'
           property :objects_deleted_from_sink, :numeric_string => true, as: 'objectsDeletedFromSink'
           property :objects_deleted_from_source, :numeric_string => true, as: 'objectsDeletedFromSource'

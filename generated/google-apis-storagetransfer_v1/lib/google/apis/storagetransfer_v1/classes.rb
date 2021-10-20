@@ -22,6 +22,45 @@ module Google
   module Apis
     module StoragetransferV1
       
+      # Represents an On-Premises Agent pool.
+      class AgentPool
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the BandwidthLimit to describe the non-negative bandwidth rate in
+        # mbps for the agent pool.
+        # Corresponds to the JSON property `bandwidthLimit`
+        # @return [Google::Apis::StoragetransferV1::BandwidthLimit]
+        attr_accessor :bandwidth_limit
+      
+        # Specifies the client-specified AgentPool description.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Specifies a unique string that identifies the agent pool. Format:
+        # projects/`project_id`/agentPools/`agent_pool_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Specifies the state of the AgentPool.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bandwidth_limit = args[:bandwidth_limit] if args.key?(:bandwidth_limit)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/
       # general/latest/gr/aws-security-credentials.html)). For information on our data
       # retention policy for user credentials, see [User credentials](/storage-
@@ -169,6 +208,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sas_token = args[:sas_token] if args.key?(:sas_token)
+        end
+      end
+      
+      # Specifies the BandwidthLimit to describe the non-negative bandwidth rate in
+      # mbps for the agent pool.
+      class BandwidthLimit
+        include Google::Apis::Core::Hashable
+      
+        # Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+        # Corresponds to the JSON property `limitMbps`
+        # @return [Fixnum]
+        attr_accessor :limit_mbps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @limit_mbps = args[:limit_mbps] if args.key?(:limit_mbps)
         end
       end
       
@@ -396,6 +455,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @list_url = args[:list_url] if args.key?(:list_url)
+        end
+      end
+      
+      # Response from ListAgentPools.
+      class ListAgentPoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of agent pools.
+        # Corresponds to the JSON property `agentPools`
+        # @return [Array<Google::Apis::StoragetransferV1::AgentPool>]
+        attr_accessor :agent_pools
+      
+        # The list next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_pools = args[:agent_pools] if args.key?(:agent_pools)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -949,6 +1033,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :directories_successfully_listed_from_source
       
+        # Number of successfully cleaned up intermediate objects.
+        # Corresponds to the JSON property `intermediateObjectsCleanedUp`
+        # @return [Fixnum]
+        attr_accessor :intermediate_objects_cleaned_up
+      
+        # Number of intermediate objects failed cleaned up.
+        # Corresponds to the JSON property `intermediateObjectsFailedCleanedUp`
+        # @return [Fixnum]
+        attr_accessor :intermediate_objects_failed_cleaned_up
+      
         # Objects that are copied to the data sink.
         # Corresponds to the JSON property `objectsCopiedToSink`
         # @return [Fixnum]
@@ -1010,6 +1104,8 @@ module Google
           @directories_failed_to_list_from_source = args[:directories_failed_to_list_from_source] if args.key?(:directories_failed_to_list_from_source)
           @directories_found_from_source = args[:directories_found_from_source] if args.key?(:directories_found_from_source)
           @directories_successfully_listed_from_source = args[:directories_successfully_listed_from_source] if args.key?(:directories_successfully_listed_from_source)
+          @intermediate_objects_cleaned_up = args[:intermediate_objects_cleaned_up] if args.key?(:intermediate_objects_cleaned_up)
+          @intermediate_objects_failed_cleaned_up = args[:intermediate_objects_failed_cleaned_up] if args.key?(:intermediate_objects_failed_cleaned_up)
           @objects_copied_to_sink = args[:objects_copied_to_sink] if args.key?(:objects_copied_to_sink)
           @objects_deleted_from_sink = args[:objects_deleted_from_sink] if args.key?(:objects_deleted_from_sink)
           @objects_deleted_from_source = args[:objects_deleted_from_source] if args.key?(:objects_deleted_from_source)
