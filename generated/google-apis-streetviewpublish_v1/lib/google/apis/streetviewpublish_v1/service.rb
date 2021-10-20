@@ -218,7 +218,7 @@ module Google
         # exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being
         # indexed.
         # @param [String] id
-        #   Required. A unique identifier for a photo.
+        #   A unique identifier for a photo.
         # @param [Google::Apis::StreetviewpublishV1::Photo] photo_object
         # @param [String] update_mask
         #   Required. Mask that identifies fields on the photo metadata to update. If not
