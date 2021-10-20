@@ -431,6 +431,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset'
+          property :latest_shard_resource, as: 'latestShardResource'
           property :shard_count, :numeric_string => true, as: 'shardCount'
           property :table_prefix, as: 'tablePrefix'
         end
@@ -774,6 +775,8 @@ module Google
       class GoogleCloudDatacatalogV1SearchCatalogResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
           property :fully_qualified_name, as: 'fullyQualifiedName'
           property :integrated_system, as: 'integratedSystem'
           property :linked_resource, as: 'linkedResource'
