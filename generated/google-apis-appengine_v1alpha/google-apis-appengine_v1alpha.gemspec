@@ -1,8 +1,9 @@
 require File.expand_path("lib/google/apis/appengine_v1alpha/gem_version", __dir__)
+gem_version = Google::Apis::AppengineV1alpha::GEM_VERSION
 
 Gem::Specification.new do |gem|
   gem.name = "google-apis-appengine_v1alpha"
-  gem.version = Google::Apis::AppengineV1alpha::GEM_VERSION
+  gem.version = gem_version
   gem.authors = ["Google LLC"]
   gem.email = "googleapis-packages@google.com"
   gem.summary = "Simple REST client for App Engine Admin API V1alpha"
@@ -19,9 +20,9 @@ Gem::Specification.new do |gem|
   gem.license = "Apache-2.0"
   gem.metadata = {
     "bug_tracker_uri" => "https://github.com/googleapis/google-api-ruby-client/issues",
-    "changelog_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/generated/google-apis-appengine_v1alpha/CHANGELOG.md",
-    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-appengine_v1alpha/v#{Google::Apis::AppengineV1alpha::GEM_VERSION}",
-    "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/generated/google-apis-appengine_v1alpha"
+    "changelog_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/main/generated/google-apis-appengine_v1alpha/CHANGELOG.md",
+    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-appengine_v1alpha/v#{gem_version}",
+    "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/main/generated/google-apis-appengine_v1alpha"
   }
 
   gem.files = Dir.glob("lib/**/*.rb") + Dir.glob("*.md") + [".yardopts"]
