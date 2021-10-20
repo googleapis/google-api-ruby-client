@@ -271,6 +271,9 @@ module Google
         #   administrator, you can also use the `my_customer` alias to represent your
         #   account's `customerId`. The `customerId` is also returned as part of the [
         #   Users resource](/admin-sdk/directory/v1/reference/users).
+        # @param [Boolean] include_child_orgunits
+        #   Return devices from all child orgunits, as well as the specified org unit. If
+        #   this is set to true 'orgUnitPath' must be provided.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
@@ -306,11 +309,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_chrome_os_devices(customer_id, max_results: nil, order_by: nil, org_unit_path: nil, page_token: nil, projection: nil, query: nil, sort_order: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_chrome_os_devices(customer_id, include_child_orgunits: nil, max_results: nil, order_by: nil, org_unit_path: nil, page_token: nil, projection: nil, query: nil, sort_order: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/directory/v1/customer/{customerId}/devices/chromeos', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::ChromeOsDevices::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::ChromeOsDevices
           command.params['customerId'] = customer_id unless customer_id.nil?
+          command.query['includeChildOrgunits'] = include_child_orgunits unless include_child_orgunits.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['orgUnitPath'] = org_unit_path unless org_unit_path.nil?
