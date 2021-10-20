@@ -16,7 +16,7 @@ module Google
   module Apis
     module DeploymentmanagerAlpha
       # Version of the google-apis-deploymentmanager_alpha gem
-      GEM_VERSION = "0.11.0"
+      GEM_VERSION = "0.12.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
