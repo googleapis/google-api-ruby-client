@@ -1,8 +1,9 @@
 require File.expand_path("lib/google/apis/content_v2_1/gem_version", __dir__)
+gem_version = Google::Apis::ContentV2_1::GEM_VERSION
 
 Gem::Specification.new do |gem|
   gem.name = "google-apis-content_v2_1"
-  gem.version = Google::Apis::ContentV2_1::GEM_VERSION
+  gem.version = gem_version
   gem.authors = ["Google LLC"]
   gem.email = "googleapis-packages@google.com"
   gem.summary = "Simple REST client for Content API for Shopping V2_1"
@@ -19,9 +20,9 @@ Gem::Specification.new do |gem|
   gem.license = "Apache-2.0"
   gem.metadata = {
     "bug_tracker_uri" => "https://github.com/googleapis/google-api-ruby-client/issues",
-    "changelog_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/generated/google-apis-content_v2_1/CHANGELOG.md",
-    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-content_v2_1/v#{Google::Apis::ContentV2_1::GEM_VERSION}",
-    "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/master/generated/google-apis-content_v2_1"
+    "changelog_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/main/generated/google-apis-content_v2_1/CHANGELOG.md",
+    "documentation_uri" => "https://googleapis.dev/ruby/google-apis-content_v2_1/v#{gem_version}",
+    "source_code_uri" => "https://github.com/googleapis/google-api-ruby-client/tree/main/generated/google-apis-content_v2_1"
   }
 
   gem.files = Dir.glob("lib/**/*.rb") + Dir.glob("*.md") + [".yardopts"]
