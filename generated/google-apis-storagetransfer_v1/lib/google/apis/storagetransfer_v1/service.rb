@@ -87,6 +87,189 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an agent pool resource.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform Console project that owns the
+        #   agent pool.
+        # @param [Google::Apis::StoragetransferV1::AgentPool] agent_pool_object
+        # @param [String] agent_pool_id
+        #   Required. The id of the agent pool to create. The agent_pool_id must be non-
+        #   empty, less than or equal to 128 characters, and satisfy the following regex: "
+        #   ^[a-z]([a-z0-9-._~]*[a-z0-9])?$". Also, agent pool names cannot start with the
+        #   string "goog".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragetransferV1::AgentPool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragetransferV1::AgentPool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_agent_pool(project_id, agent_pool_object = nil, agent_pool_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{+projectId}/agentPools', options)
+          command.request_representation = Google::Apis::StoragetransferV1::AgentPool::Representation
+          command.request_object = agent_pool_object
+          command.response_representation = Google::Apis::StoragetransferV1::AgentPool::Representation
+          command.response_class = Google::Apis::StoragetransferV1::AgentPool
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['agentPoolId'] = agent_pool_id unless agent_pool_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an agent pool.
+        # @param [String] name
+        #   Required. The agent pool name to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragetransferV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragetransferV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_agent_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::StoragetransferV1::Empty::Representation
+          command.response_class = Google::Apis::StoragetransferV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an agent pool.
+        # @param [String] name
+        #   Required. The agent pool to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragetransferV1::AgentPool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragetransferV1::AgentPool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_agent_pool(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::StoragetransferV1::AgentPool::Representation
+          command.response_class = Google::Apis::StoragetransferV1::AgentPool
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists agent pools.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform Console project that owns the
+        #   job.
+        # @param [String] filter
+        #   A list of optional query parameters specified as JSON text in the form of: ``"
+        #   agentPoolNames":["agentpool1","agentpool2",...]`` Since `agentPoolNames`
+        #   support multiple values, its values must be specified with array notation. `
+        #   agentPoolNames` is an optional field. The list returns all agent pools for the
+        #   project when the filter is not provided or empty.
+        # @param [Fixnum] page_size
+        #   The list page size. The max allowed value is 256.
+        # @param [String] page_token
+        #   The list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragetransferV1::ListAgentPoolsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragetransferV1::ListAgentPoolsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_agent_pools(project_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/projects/{+projectId}/agentPools', options)
+          command.response_representation = Google::Apis::StoragetransferV1::ListAgentPoolsResponse::Representation
+          command.response_class = Google::Apis::StoragetransferV1::ListAgentPoolsResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing agent pool resource.
+        # @param [String] name
+        #   Required. Specifies a unique string that identifies the agent pool. Format:
+        #   projects/`project_id`/agentPools/`agent_pool_id`
+        # @param [Google::Apis::StoragetransferV1::AgentPool] agent_pool_object
+        # @param [String] update_mask
+        #   The field mask of the fields in `agentPool` that are to be updated in this
+        #   request. Fields in `agentPool` that can be updated are: display_name,
+        #   bandwidth_limit,
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragetransferV1::AgentPool] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragetransferV1::AgentPool]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_agent_pool(name, agent_pool_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::StoragetransferV1::AgentPool::Representation
+          command.request_object = agent_pool_object
+          command.response_representation = Google::Apis::StoragetransferV1::AgentPool::Representation
+          command.response_class = Google::Apis::StoragetransferV1::AgentPool
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a transfer job that runs periodically.
         # @param [Google::Apis::StoragetransferV1::TransferJob] transfer_job_object
         # @param [String] fields
