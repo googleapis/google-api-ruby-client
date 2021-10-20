@@ -16,7 +16,7 @@ module Google
   module Apis
     module PubsubV1beta1a
       # Version of the google-apis-pubsub_v1beta1a gem
-      GEM_VERSION = "0.7.0"
+      GEM_VERSION = "0.8.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
