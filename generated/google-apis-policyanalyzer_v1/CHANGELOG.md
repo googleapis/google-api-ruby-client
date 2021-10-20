@@ -1,5 +1,9 @@
 # Release history for google-apis-policyanalyzer_v1
 
+### v0.4.0 (2021-10-20)
+
+* Unspecified changes
+
 ### v0.3.0 (2021-09-14)
 
 * Regenerated from discovery document revision 20210910
