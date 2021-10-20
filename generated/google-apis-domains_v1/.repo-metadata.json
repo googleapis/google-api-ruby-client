@@ -1,0 +1,7 @@
+{
+    "api_id": "domains:v1",
+    "name_pretty": "Cloud Domains API",
+    "distribution_name": "google-apis-domains_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
