@@ -16,7 +16,7 @@ module Google
   module Apis
     module FirebasemlV1
       # Version of the google-apis-firebaseml_v1 gem
-      GEM_VERSION = "0.7.0"
+      GEM_VERSION = "0.8.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
