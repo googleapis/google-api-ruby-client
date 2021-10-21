@@ -753,6 +753,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency_code, as: 'currencyCode'
           property :data_loss_from_other_row, as: 'dataLossFromOtherRow'
+          property :empty_reason, as: 'emptyReason'
           property :time_zone, as: 'timeZone'
         end
       end
