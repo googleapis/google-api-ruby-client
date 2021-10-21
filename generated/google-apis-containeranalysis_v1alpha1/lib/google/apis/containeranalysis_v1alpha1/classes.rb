@@ -184,7 +184,7 @@ module Google
         end
       end
       
-      # Associates `members` with a `role`.
+      # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
       
@@ -207,7 +207,7 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Cloud Platform resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -237,8 +237,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
-        # , or `roles/owner`.
+        # Role that is assigned to the list of `members`, or principals. For example, `
+        # roles/viewer`, `roles/editor`, or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1652,18 +1652,10 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # This field provides a place for the SPDX file creator to record any relevant
-        # background references or analysis that went in to arriving at the Concluded
-        # License for a file
-        # Corresponds to the JSON property `licenseComments`
-        # @return [String]
-        attr_accessor :license_comments
-      
-        # This field contains the license the SPDX file creator has concluded as
-        # governing the file or alternative values if the governing license cannot be
-        # determined
+        # License information: https://spdx.github.io/spdx-spec/3-package-information/#
+        # 315-declared-license
         # Corresponds to the JSON property `licenseConcluded`
-        # @return [String]
+        # @return [Google::Apis::ContaineranalysisV1alpha1::License]
         attr_accessor :license_concluded
       
         # This field provides a place for the SPDX file creator to record license
@@ -1684,7 +1676,6 @@ module Google
           @copyright = args[:copyright] if args.key?(:copyright)
           @files_license_info = args[:files_license_info] if args.key?(:files_license_info)
           @id = args[:id] if args.key?(:id)
-          @license_comments = args[:license_comments] if args.key?(:license_comments)
           @license_concluded = args[:license_concluded] if args.key?(:license_concluded)
           @notice = args[:notice] if args.key?(:notice)
         end
@@ -2184,6 +2175,33 @@ module Google
         end
       end
       
+      # License information: https://spdx.github.io/spdx-spec/3-package-information/#
+      # 315-declared-license
+      class License
+        include Google::Apis::Core::Hashable
+      
+        # Comments
+        # Corresponds to the JSON property `comments`
+        # @return [String]
+        attr_accessor :comments
+      
+        # Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-
+        # expressions/
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comments = args[:comments] if args.key?(:comments)
+          @expression = args[:expression] if args.key?(:expression)
+        end
+      end
+      
       # Response including listed occurrences for a note.
       class ListNoteOccurrencesResponse
         include Google::Apis::Core::Hashable
@@ -2512,10 +2530,10 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::FileNote]
         attr_accessor :spdx_file
       
-        # PackageNote represents an SPDX Package Information section: https://spdx.
+        # PackageInfoNote represents an SPDX Package Information section: https://spdx.
         # github.io/spdx-spec/3-package-information/
         # Corresponds to the JSON property `spdxPackage`
-        # @return [Google::Apis::ContaineranalysisV1alpha1::PackageNote]
+        # @return [Google::Apis::ContaineranalysisV1alpha1::PackageInfoNote]
         attr_accessor :spdx_package
       
         # RelationshipNote represents an SPDX Relationship section: https://spdx.github.
@@ -2685,10 +2703,10 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::FileOccurrence]
         attr_accessor :spdx_file
       
-        # PackageOccurrence represents an SPDX Package Information section: https://spdx.
-        # github.io/spdx-spec/3-package-information/
+        # PackageInfoOccurrence represents an SPDX Package Information section: https://
+        # spdx.github.io/spdx-spec/3-package-information/
         # Corresponds to the JSON property `spdxPackage`
-        # @return [Google::Apis::ContaineranalysisV1alpha1::PackageOccurrence]
+        # @return [Google::Apis::ContaineranalysisV1alpha1::PackageInfoOccurrence]
         attr_accessor :spdx_package
       
         # RelationshipOccurrence represents an SPDX Relationship section: https://spdx.
@@ -2835,56 +2853,9 @@ module Google
         end
       end
       
-      # This message wraps a location affected by a vulnerability and its associated
-      # fix (if one is available).
-      class PackageIssue
-        include Google::Apis::Core::Hashable
-      
-        # The location of the vulnerability
-        # Corresponds to the JSON property `affectedLocation`
-        # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation]
-        attr_accessor :affected_location
-      
-        # Output only. The distro or language system assigned severity for this
-        # vulnerability when that is available and note provider assigned severity when
-        # distro or language system has not yet assigned a severity for this
-        # vulnerability.
-        # Corresponds to the JSON property `effectiveSeverity`
-        # @return [String]
-        attr_accessor :effective_severity
-      
-        # The location of the vulnerability
-        # Corresponds to the JSON property `fixedLocation`
-        # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation]
-        attr_accessor :fixed_location
-      
-        # The type of package (e.g. OS, MAVEN, GO).
-        # Corresponds to the JSON property `packageType`
-        # @return [String]
-        attr_accessor :package_type
-      
-        # 
-        # Corresponds to the JSON property `severityName`
-        # @return [String]
-        attr_accessor :severity_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @affected_location = args[:affected_location] if args.key?(:affected_location)
-          @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
-          @fixed_location = args[:fixed_location] if args.key?(:fixed_location)
-          @package_type = args[:package_type] if args.key?(:package_type)
-          @severity_name = args[:severity_name] if args.key?(:severity_name)
-        end
-      end
-      
-      # PackageNote represents an SPDX Package Information section: https://spdx.
+      # PackageInfoNote represents an SPDX Package Information section: https://spdx.
       # github.io/spdx-spec/3-package-information/
-      class PackageNote
+      class PackageInfoNote
         include Google::Apis::Core::Hashable
       
         # Indicates whether the file content of this package has been available for or
@@ -2943,9 +2914,10 @@ module Google
         # @return [String]
         attr_accessor :home_page
       
-        # List the licenses that have been declared by the authors of the package
+        # License information: https://spdx.github.io/spdx-spec/3-package-information/#
+        # 315-declared-license
         # Corresponds to the JSON property `licenseDeclared`
-        # @return [String]
+        # @return [Google::Apis::ContaineranalysisV1alpha1::License]
         attr_accessor :license_declared
       
         # If the package identified in the SPDX file originated from a different person
@@ -2954,6 +2926,11 @@ module Google
         # Corresponds to the JSON property `originator`
         # @return [String]
         attr_accessor :originator
+      
+        # The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
       
         # A short description of the package
         # Corresponds to the JSON property `summaryDescription`
@@ -3001,6 +2978,7 @@ module Google
           @home_page = args[:home_page] if args.key?(:home_page)
           @license_declared = args[:license_declared] if args.key?(:license_declared)
           @originator = args[:originator] if args.key?(:originator)
+          @package_type = args[:package_type] if args.key?(:package_type)
           @summary_description = args[:summary_description] if args.key?(:summary_description)
           @supplier = args[:supplier] if args.key?(:supplier)
           @title = args[:title] if args.key?(:title)
@@ -3009,9 +2987,9 @@ module Google
         end
       end
       
-      # PackageOccurrence represents an SPDX Package Information section: https://spdx.
-      # github.io/spdx-spec/3-package-information/
-      class PackageOccurrence
+      # PackageInfoOccurrence represents an SPDX Package Information section: https://
+      # spdx.github.io/spdx-spec/3-package-information/
+      class PackageInfoOccurrence
         include Google::Apis::Core::Hashable
       
         # A place for the SPDX file creator to record any general comments about the
@@ -3026,29 +3004,50 @@ module Google
         # @return [String]
         attr_accessor :filename
       
+        # Output only. Provide a place for the SPDX file creator to record a web site
+        # that serves as the package's home page
+        # Corresponds to the JSON property `homePage`
+        # @return [String]
+        attr_accessor :home_page
+      
         # Uniquely identify any element in an SPDX document which may be referenced by
         # other elements
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # This field provides a place for the SPDX file creator to record any relevant
-        # background information or analysis that went in to arriving at the Concluded
-        # License for a package
-        # Corresponds to the JSON property `licenseComments`
-        # @return [String]
-        attr_accessor :license_comments
-      
-        # package or alternative values, if the governing license cannot be determined
+        # License information: https://spdx.github.io/spdx-spec/3-package-information/#
+        # 315-declared-license
         # Corresponds to the JSON property `licenseConcluded`
-        # @return [String]
+        # @return [Google::Apis::ContaineranalysisV1alpha1::License]
         attr_accessor :license_concluded
+      
+        # Output only. The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
       
         # Provide a place for the SPDX file creator to record any relevant background
         # information or additional comments about the origin of the package
         # Corresponds to the JSON property `sourceInfo`
         # @return [String]
         attr_accessor :source_info
+      
+        # Output only. A short description of the package
+        # Corresponds to the JSON property `summaryDescription`
+        # @return [String]
+        attr_accessor :summary_description
+      
+        # Output only. Identify the full name of the package as given by the Package
+        # Originator
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Output only. Identify the version of the package
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
       
         def initialize(**args)
            update!(**args)
@@ -3058,10 +3057,61 @@ module Google
         def update!(**args)
           @comment = args[:comment] if args.key?(:comment)
           @filename = args[:filename] if args.key?(:filename)
+          @home_page = args[:home_page] if args.key?(:home_page)
           @id = args[:id] if args.key?(:id)
-          @license_comments = args[:license_comments] if args.key?(:license_comments)
           @license_concluded = args[:license_concluded] if args.key?(:license_concluded)
+          @package_type = args[:package_type] if args.key?(:package_type)
           @source_info = args[:source_info] if args.key?(:source_info)
+          @summary_description = args[:summary_description] if args.key?(:summary_description)
+          @title = args[:title] if args.key?(:title)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # This message wraps a location affected by a vulnerability and its associated
+      # fix (if one is available).
+      class PackageIssue
+        include Google::Apis::Core::Hashable
+      
+        # The location of the vulnerability
+        # Corresponds to the JSON property `affectedLocation`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation]
+        attr_accessor :affected_location
+      
+        # Output only. The distro or language system assigned severity for this
+        # vulnerability when that is available and note provider assigned severity when
+        # distro or language system has not yet assigned a severity for this
+        # vulnerability.
+        # Corresponds to the JSON property `effectiveSeverity`
+        # @return [String]
+        attr_accessor :effective_severity
+      
+        # The location of the vulnerability
+        # Corresponds to the JSON property `fixedLocation`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityLocation]
+        attr_accessor :fixed_location
+      
+        # The type of package (e.g. OS, MAVEN, GO).
+        # Corresponds to the JSON property `packageType`
+        # @return [String]
+        attr_accessor :package_type
+      
+        # 
+        # Corresponds to the JSON property `severityName`
+        # @return [String]
+        attr_accessor :severity_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @affected_location = args[:affected_location] if args.key?(:affected_location)
+          @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
+          @fixed_location = args[:fixed_location] if args.key?(:fixed_location)
+          @package_type = args[:package_type] if args.key?(:package_type)
+          @severity_name = args[:severity_name] if args.key?(:severity_name)
         end
       end
       
@@ -3120,37 +3170,42 @@ module Google
       
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-      # A `binding` binds one or more `members` to a single `role`. Members can be
-      # user accounts, service accounts, Google groups, and domains (such as G Suite).
-      # A `role` is a named list of permissions; each `role` can be an IAM predefined
-      # role or a user-created custom role. For some types of Google Cloud resources,
-      # a `binding` can also specify a `condition`, which is a logical expression that
-      # allows access to a resource only if the expression evaluates to `true`. A
-      # condition can add constraints based on attributes of the request, the resource,
-      # or both. To learn which resources support conditions in their IAM policies,
-      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-      # title": "expirable access", "description": "Does not grant access after Sep
-      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-      # members: - user:mike@example.com - group:admins@example.com - domain:google.
-      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-      # roles/resourcemanager.organizationViewer condition: title: expirable access
-      # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-      # description of IAM and its features, see the [IAM documentation](https://cloud.
-      # google.com/iam/docs/).
+      # A `binding` binds one or more `members`, or principals, to a single `role`.
+      # Principals can be user accounts, service accounts, Google groups, and domains (
+      # such as G Suite). A `role` is a named list of permissions; each `role` can be
+      # an IAM predefined role or a user-created custom role. For some types of Google
+      # Cloud resources, a `binding` can also specify a `condition`, which is a
+      # logical expression that allows access to a resource only if the expression
+      # evaluates to `true`. A condition can add constraints based on attributes of
+      # the request, the resource, or both. To learn which resources support
+      # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+      # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+      # ], "condition": ` "title": "expirable access", "description": "Does not grant
+      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+      # bindings: - members: - user:mike@example.com - group:admins@example.com -
+      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+      # access description: Does not grant access after Sep 2020 expression: request.
+      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+      # a description of IAM and its features, see the [IAM documentation](https://
+      # cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a `
-        # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # Associates a list of `members`, or principals, with a `role`. Optionally, may
+        # specify a `condition` that determines how and when the `bindings` are applied.
+        # Each of the `bindings` must contain at least one principal. The `bindings` in
+        # a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        # can be Google groups. Each occurrence of a principal counts towards these
+        # limits. For example, if the `bindings` grant 50 different roles to `user:alice@
+        # example.com`, and not to any other principal, then you can add another 1,450
+        # principals to the `bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Binding>]
         attr_accessor :bindings
@@ -3290,12 +3345,18 @@ module Google
       class RelationshipNote
         include Google::Apis::Core::Hashable
       
+        # The type of relationship between the source and target SPDX elements
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3324,7 +3385,8 @@ module Google
         # @return [String]
         attr_accessor :target
       
-        # The type of relationship between the source and target SPDX elements
+        # Output only. The type of relationship between the source and target SPDX
+        # elements
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3469,31 +3531,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Policy]
         attr_accessor :policy
