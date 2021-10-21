@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class License
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Link
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -436,19 +442,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PackageInfoNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageInfoOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PackageIssue
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PackageNote
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PackageOccurrence
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -983,8 +989,8 @@ module Google
           property :copyright, as: 'copyright'
           collection :files_license_info, as: 'filesLicenseInfo'
           property :id, as: 'id'
-          property :license_comments, as: 'licenseComments'
-          property :license_concluded, as: 'licenseConcluded'
+          property :license_concluded, as: 'licenseConcluded', class: Google::Apis::ContaineranalysisV1beta1::License, decorator: Google::Apis::ContaineranalysisV1beta1::License::Representation
+      
           property :notice, as: 'notice'
         end
       end
@@ -1200,6 +1206,14 @@ module Google
         end
       end
       
+      class License
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comments, as: 'comments'
+          property :expression, as: 'expression'
+        end
+      end
+      
       class Link
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1291,7 +1305,7 @@ module Google
           property :short_description, as: 'shortDescription'
           property :spdx_file, as: 'spdxFile', class: Google::Apis::ContaineranalysisV1beta1::FileNote, decorator: Google::Apis::ContaineranalysisV1beta1::FileNote::Representation
       
-          property :spdx_package, as: 'spdxPackage', class: Google::Apis::ContaineranalysisV1beta1::PackageNote, decorator: Google::Apis::ContaineranalysisV1beta1::PackageNote::Representation
+          property :spdx_package, as: 'spdxPackage', class: Google::Apis::ContaineranalysisV1beta1::PackageInfoNote, decorator: Google::Apis::ContaineranalysisV1beta1::PackageInfoNote::Representation
       
           property :spdx_relationship, as: 'spdxRelationship', class: Google::Apis::ContaineranalysisV1beta1::RelationshipNote, decorator: Google::Apis::ContaineranalysisV1beta1::RelationshipNote::Representation
       
@@ -1329,7 +1343,7 @@ module Google
       
           property :spdx_file, as: 'spdxFile', class: Google::Apis::ContaineranalysisV1beta1::FileOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::FileOccurrence::Representation
       
-          property :spdx_package, as: 'spdxPackage', class: Google::Apis::ContaineranalysisV1beta1::PackageOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::PackageOccurrence::Representation
+          property :spdx_package, as: 'spdxPackage', class: Google::Apis::ContaineranalysisV1beta1::PackageInfoOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::PackageInfoOccurrence::Representation
       
           property :spdx_relationship, as: 'spdxRelationship', class: Google::Apis::ContaineranalysisV1beta1::RelationshipOccurrence, decorator: Google::Apis::ContaineranalysisV1beta1::RelationshipOccurrence::Representation
       
@@ -1348,20 +1362,7 @@ module Google
         end
       end
       
-      class PackageIssue
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :affected_location, as: 'affectedLocation', class: Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation, decorator: Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation::Representation
-      
-          property :effective_severity, as: 'effectiveSeverity'
-          property :fixed_location, as: 'fixedLocation', class: Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation, decorator: Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation::Representation
-      
-          property :package_type, as: 'packageType'
-          property :severity_name, as: 'severityName'
-        end
-      end
-      
-      class PackageNote
+      class PackageInfoNote
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analyzed, as: 'analyzed'
@@ -1374,8 +1375,10 @@ module Google
       
           collection :files_license_info, as: 'filesLicenseInfo'
           property :home_page, as: 'homePage'
-          property :license_declared, as: 'licenseDeclared'
+          property :license_declared, as: 'licenseDeclared', class: Google::Apis::ContaineranalysisV1beta1::License, decorator: Google::Apis::ContaineranalysisV1beta1::License::Representation
+      
           property :originator, as: 'originator'
+          property :package_type, as: 'packageType'
           property :summary_description, as: 'summaryDescription'
           property :supplier, as: 'supplier'
           property :title, as: 'title'
@@ -1384,15 +1387,33 @@ module Google
         end
       end
       
-      class PackageOccurrence
+      class PackageInfoOccurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comment, as: 'comment'
           property :filename, as: 'filename'
+          property :home_page, as: 'homePage'
           property :id, as: 'id'
-          property :license_comments, as: 'licenseComments'
-          property :license_concluded, as: 'licenseConcluded'
+          property :license_concluded, as: 'licenseConcluded', class: Google::Apis::ContaineranalysisV1beta1::License, decorator: Google::Apis::ContaineranalysisV1beta1::License::Representation
+      
+          property :package_type, as: 'packageType'
           property :source_info, as: 'sourceInfo'
+          property :summary_description, as: 'summaryDescription'
+          property :title, as: 'title'
+          property :version, as: 'version'
+        end
+      end
+      
+      class PackageIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :affected_location, as: 'affectedLocation', class: Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation, decorator: Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation::Representation
+      
+          property :effective_severity, as: 'effectiveSeverity'
+          property :fixed_location, as: 'fixedLocation', class: Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation, decorator: Google::Apis::ContaineranalysisV1beta1::VulnerabilityLocation::Representation
+      
+          property :package_type, as: 'packageType'
+          property :severity_name, as: 'severityName'
         end
       end
       
@@ -1434,6 +1455,7 @@ module Google
       class RelationshipNote
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
