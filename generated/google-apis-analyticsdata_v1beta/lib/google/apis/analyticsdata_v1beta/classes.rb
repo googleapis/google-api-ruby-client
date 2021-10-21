@@ -1435,6 +1435,11 @@ module Google
         attr_accessor :data_loss_from_other_row
         alias_method :data_loss_from_other_row?, :data_loss_from_other_row
       
+        # If empty reason is specified, the report is empty for this reason.
+        # Corresponds to the JSON property `emptyReason`
+        # @return [String]
+        attr_accessor :empty_reason
+      
         # The property's current timezone. Intended to be used to interpret time-based
         # dimensions like `hour` and `minute`. Formatted as strings from the IANA Time
         # Zone database (https://www.iana.org/time-zones); for example "America/New_York"
@@ -1451,6 +1456,7 @@ module Google
         def update!(**args)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @data_loss_from_other_row = args[:data_loss_from_other_row] if args.key?(:data_loss_from_other_row)
+          @empty_reason = args[:empty_reason] if args.key?(:empty_reason)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
