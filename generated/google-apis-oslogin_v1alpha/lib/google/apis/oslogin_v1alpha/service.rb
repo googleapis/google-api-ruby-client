@@ -168,6 +168,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create an SSH public key
+        # @param [String] parent
+        #   Required. The unique ID for the user in format `users/`user``.
+        # @param [Google::Apis::OsloginV1alpha::SshPublicKey] ssh_public_key_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OsloginV1alpha::SshPublicKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OsloginV1alpha::SshPublicKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_user_ssh_public_key(parent, ssh_public_key_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/sshPublicKey', options)
+          command.request_representation = Google::Apis::OsloginV1alpha::SshPublicKey::Representation
+          command.request_object = ssh_public_key_object
+          command.response_representation = Google::Apis::OsloginV1alpha::SshPublicKey::Representation
+          command.response_class = Google::Apis::OsloginV1alpha::SshPublicKey
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes an SSH public key.
         # @param [String] name
         #   Required. The fingerprint of the public key to update. Public keys are
