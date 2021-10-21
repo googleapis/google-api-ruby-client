@@ -98,6 +98,16 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Optional. The labels to associate with this autoscaling policy. Label keys
+        # must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.
+        # ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must
+        # contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/
+        # rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling
+        # policy.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Output only. The "resource name" of the autoscaling policy, as described in
         # https://cloud.google.com/apis/design/resource_names. For projects.regions.
         # autoscalingPolicies, the resource name of the policy has the following format:
@@ -129,6 +139,7 @@ module Google
         def update!(**args)
           @basic_algorithm = args[:basic_algorithm] if args.key?(:basic_algorithm)
           @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @secondary_worker_config = args[:secondary_worker_config] if args.key?(:secondary_worker_config)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
@@ -146,6 +157,11 @@ module Google
         # @return [String]
         attr_accessor :cooldown_period
       
+        # Basic autoscaling configurations for Spark Standalone.
+        # Corresponds to the JSON property `sparkStandaloneConfig`
+        # @return [Google::Apis::DataprocV1::SparkStandaloneAutoscalingConfig]
+        attr_accessor :spark_standalone_config
+      
         # Basic autoscaling configurations for YARN.
         # Corresponds to the JSON property `yarnConfig`
         # @return [Google::Apis::DataprocV1::BasicYarnAutoscalingConfig]
@@ -158,6 +174,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cooldown_period = args[:cooldown_period] if args.key?(:cooldown_period)
+          @spark_standalone_config = args[:spark_standalone_config] if args.key?(:spark_standalone_config)
           @yarn_config = args[:yarn_config] if args.key?(:yarn_config)
         end
       end
@@ -289,7 +306,7 @@ module Google
         end
       end
       
-      # Associates members with a role.
+      # Associates members, or principals, with a role.
       class Binding
         include Google::Apis::Core::Hashable
       
@@ -312,7 +329,7 @@ module Google
         # @return [Google::Apis::DataprocV1::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource.
+        # Specifies the principals requesting access for a Cloud Platform resource.
         # members can have the following values: allUsers: A special identifier that
         # represents anyone who is on the internet; with or without a Google account.
         # allAuthenticatedUsers: A special identifier that represents anyone who is
@@ -341,8 +358,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to members. For example, roles/viewer, roles/editor, or
-        # roles/owner.
+        # Role that is assigned to the list of members, or principals. For example,
+        # roles/viewer, roles/editor, or roles/owner.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -2685,16 +2702,16 @@ module Google
       
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources.A Policy is a collection of bindings. A
-      # binding binds one or more members to a single role. Members can be user
-      # accounts, service accounts, Google groups, and domains (such as G Suite). A
-      # role is a named list of permissions; each role can be an IAM predefined role
-      # or a user-created custom role.For some types of Google Cloud resources, a
-      # binding can also specify a condition, which is a logical expression that
-      # allows access to a resource only if the expression evaluates to true. A
-      # condition can add constraints based on attributes of the request, the resource,
-      # or both. To learn which resources support conditions in their IAM policies,
-      # see the IAM documentation (https://cloud.google.com/iam/help/conditions/
-      # resource-policies).JSON example: ` "bindings": [ ` "role": "roles/
+      # binding binds one or more members, or principals, to a single role. Principals
+      # can be user accounts, service accounts, Google groups, and domains (such as G
+      # Suite). A role is a named list of permissions; each role can be an IAM
+      # predefined role or a user-created custom role.For some types of Google Cloud
+      # resources, a binding can also specify a condition, which is a logical
+      # expression that allows access to a resource only if the expression evaluates
+      # to true. A condition can add constraints based on attributes of the request,
+      # the resource, or both. To learn which resources support conditions in their
+      # IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/
+      # conditions/resource-policies).JSON example: ` "bindings": [ ` "role": "roles/
       # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
       # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
       # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
@@ -2713,13 +2730,14 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of members to a role. Optionally, may specify a condition
-        # that determines how and when the bindings are applied. Each of the bindings
-        # must contain at least one member.The bindings in a Policy can refer to up to 1,
-        # 500 members; up to 250 of these members can be Google groups. Each occurrence
-        # of a member counts towards these limits. For example, if the bindings grant 50
-        # different roles to user:alice@example.com, and not to any other member, then
-        # you can add another 1,450 members to the bindings in the Policy.
+        # Associates a list of members, or principals, with a role. Optionally, may
+        # specify a condition that determines how and when the bindings are applied.
+        # Each of the bindings must contain at least one principal.The bindings in a
+        # Policy can refer to up to 1,500 principals; up to 250 of these principals can
+        # be Google groups. Each occurrence of a principal counts towards these limits.
+        # For example, if the bindings grant 50 different roles to user:alice@example.
+        # com, and not to any other principal, then you can add another 1,450 principals
+        # to the bindings in the Policy.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::DataprocV1::Binding>]
         attr_accessor :bindings
@@ -3105,16 +3123,16 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources.A Policy is a collection of bindings. A
-        # binding binds one or more members to a single role. Members can be user
-        # accounts, service accounts, Google groups, and domains (such as G Suite). A
-        # role is a named list of permissions; each role can be an IAM predefined role
-        # or a user-created custom role.For some types of Google Cloud resources, a
-        # binding can also specify a condition, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to true. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the IAM documentation (https://cloud.google.com/iam/help/conditions/
-        # resource-policies).JSON example: ` "bindings": [ ` "role": "roles/
+        # binding binds one or more members, or principals, to a single role. Principals
+        # can be user accounts, service accounts, Google groups, and domains (such as G
+        # Suite). A role is a named list of permissions; each role can be an IAM
+        # predefined role or a user-created custom role.For some types of Google Cloud
+        # resources, a binding can also specify a condition, which is a logical
+        # expression that allows access to a resource only if the expression evaluates
+        # to true. A condition can add constraints based on attributes of the request,
+        # the resource, or both. To learn which resources support conditions in their
+        # IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/
+        # conditions/resource-policies).JSON example: ` "bindings": [ ` "role": "roles/
         # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
         # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
         # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
@@ -3401,6 +3419,68 @@ module Google
           @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
           @query_list = args[:query_list] if args.key?(:query_list)
           @script_variables = args[:script_variables] if args.key?(:script_variables)
+        end
+      end
+      
+      # Basic autoscaling configurations for Spark Standalone.
+      class SparkStandaloneAutoscalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Timeout for Spark graceful decommissioning of spark workers.
+        # Specifies the duration to wait for spark worker to complete spark
+        # decomissioning tasks before forcefully removing workers. Only applicable to
+        # downscaling operations.Bounds: 0s, 1d.
+        # Corresponds to the JSON property `gracefulDecommissionTimeout`
+        # @return [String]
+        attr_accessor :graceful_decommission_timeout
+      
+        # Required. Fraction of required executors to remove from Spark Serverless
+        # clusters. A scale-down factor of 1.0 will result in scaling down so that there
+        # are no more executors for the Spark Job.(more aggressive scaling). A scale-
+        # down factor closer to 0 will result in a smaller magnitude of scaling donw (
+        # less aggressive scaling).Bounds: 0.0, 1.0.
+        # Corresponds to the JSON property `scaleDownFactor`
+        # @return [Float]
+        attr_accessor :scale_down_factor
+      
+        # Optional. Minimum scale-down threshold as a fraction of total cluster size
+        # before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1
+        # means the autoscaler must recommend at least a 2 worker scale-down for the
+        # cluster to scale. A threshold of 0 means the autoscaler will scale down on any
+        # recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+        # Corresponds to the JSON property `scaleDownMinWorkerFraction`
+        # @return [Float]
+        attr_accessor :scale_down_min_worker_fraction
+      
+        # Required. Fraction of required workers to add to Spark Standalone clusters. A
+        # scale-up factor of 1.0 will result in scaling up so that there are no more
+        # required workers for the Spark Job (more aggressive scaling). A scale-up
+        # factor closer to 0 will result in a smaller magnitude of scaling up (less
+        # aggressive scaling).Bounds: 0.0, 1.0.
+        # Corresponds to the JSON property `scaleUpFactor`
+        # @return [Float]
+        attr_accessor :scale_up_factor
+      
+        # Optional. Minimum scale-up threshold as a fraction of total cluster size
+        # before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1
+        # means the autoscaler must recommend at least a 2-worker scale-up for the
+        # cluster to scale. A threshold of 0 means the autoscaler will scale up on any
+        # recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+        # Corresponds to the JSON property `scaleUpMinWorkerFraction`
+        # @return [Float]
+        attr_accessor :scale_up_min_worker_fraction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @graceful_decommission_timeout = args[:graceful_decommission_timeout] if args.key?(:graceful_decommission_timeout)
+          @scale_down_factor = args[:scale_down_factor] if args.key?(:scale_down_factor)
+          @scale_down_min_worker_fraction = args[:scale_down_min_worker_fraction] if args.key?(:scale_down_min_worker_fraction)
+          @scale_up_factor = args[:scale_up_factor] if args.key?(:scale_up_factor)
+          @scale_up_min_worker_fraction = args[:scale_up_min_worker_fraction] if args.key?(:scale_up_min_worker_fraction)
         end
       end
       
