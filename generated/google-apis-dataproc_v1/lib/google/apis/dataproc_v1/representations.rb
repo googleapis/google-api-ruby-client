@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SparkStandaloneAutoscalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -577,6 +583,7 @@ module Google
           property :basic_algorithm, as: 'basicAlgorithm', class: Google::Apis::DataprocV1::BasicAutoscalingAlgorithm, decorator: Google::Apis::DataprocV1::BasicAutoscalingAlgorithm::Representation
       
           property :id, as: 'id'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :secondary_worker_config, as: 'secondaryWorkerConfig', class: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig, decorator: Google::Apis::DataprocV1::InstanceGroupAutoscalingPolicyConfig::Representation
       
@@ -589,6 +596,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cooldown_period, as: 'cooldownPeriod'
+          property :spark_standalone_config, as: 'sparkStandaloneConfig', class: Google::Apis::DataprocV1::SparkStandaloneAutoscalingConfig, decorator: Google::Apis::DataprocV1::SparkStandaloneAutoscalingConfig::Representation
+      
           property :yarn_config, as: 'yarnConfig', class: Google::Apis::DataprocV1::BasicYarnAutoscalingConfig, decorator: Google::Apis::DataprocV1::BasicYarnAutoscalingConfig::Representation
       
         end
@@ -1386,6 +1395,17 @@ module Google
           property :query_list, as: 'queryList', class: Google::Apis::DataprocV1::QueryList, decorator: Google::Apis::DataprocV1::QueryList::Representation
       
           hash :script_variables, as: 'scriptVariables'
+        end
+      end
+      
+      class SparkStandaloneAutoscalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :graceful_decommission_timeout, as: 'gracefulDecommissionTimeout'
+          property :scale_down_factor, as: 'scaleDownFactor'
+          property :scale_down_min_worker_fraction, as: 'scaleDownMinWorkerFraction'
+          property :scale_up_factor, as: 'scaleUpFactor'
+          property :scale_up_min_worker_fraction, as: 'scaleUpMinWorkerFraction'
         end
       end
       
