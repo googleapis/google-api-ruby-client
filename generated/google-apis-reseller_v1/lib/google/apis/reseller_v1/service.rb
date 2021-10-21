@@ -56,10 +56,11 @@ module Google
         # response for existing customers, see [retrieving a customer account](/admin-
         # sdk/reseller/v1/how-tos/manage_customers#get_customer).
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -144,10 +145,11 @@ module Google
         # information, see [Verify your domain to unlock Essentials features](https://
         # support.google.com/a/answer/9122284).
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -183,10 +185,11 @@ module Google
         # customerType = "domain"`. For more information, see [update a customer's
         # settings](/admin-sdk/reseller/v1/how-tos/manage_customers#update_customer).
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -309,10 +312,11 @@ module Google
         # such as for abuse or a pending ToS acceptance, this call will not reactivate
         # the customer subscription.
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] subscription_id
         #   This is a required property. The `subscriptionId` is the subscription
         #   identifier and is unique for each customer. Since a `subscriptionId` changes
@@ -354,10 +358,11 @@ module Google
         # subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
         # update_subscription_plan).
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] subscription_id
         #   This is a required property. The `subscriptionId` is the subscription
         #   identifier and is unique for each customer. Since a `subscriptionId` changes
@@ -400,10 +405,11 @@ module Google
         # in [manage subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
         # update_renewal).
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] subscription_id
         #   This is a required property. The `subscriptionId` is the subscription
         #   identifier and is unique for each customer. Since a `subscriptionId` changes
@@ -446,10 +452,11 @@ module Google
         # see [Manage Subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
         # update_subscription_seat).
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] subscription_id
         #   This is a required property. The `subscriptionId` is the subscription
         #   identifier and is unique for each customer. Since a `subscriptionId` changes
@@ -489,10 +496,11 @@ module Google
         
         # Cancels, suspends, or transfers a subscription to direct.
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] subscription_id
         #   This is a required property. The `subscriptionId` is the subscription
         #   identifier and is unique for each customer. Since a `subscriptionId` changes
@@ -536,10 +544,11 @@ module Google
         # subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
         # get_subscription).
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] subscription_id
         #   This is a required property. The `subscriptionId` is the subscription
         #   identifier and is unique for each customer. Since a `subscriptionId` changes
@@ -587,10 +596,11 @@ module Google
         # subscriptions. For more information, see how to [transfer subscriptions](/
         # admin-sdk/reseller/v1/how-tos/manage_subscriptions#transfer_a_subscription).
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [Google::Apis::ResellerV1::Subscription] subscription_object
         # @param [String] customer_auth_token
         #   The `customerAuthToken` query string is required when creating a resold
@@ -640,10 +650,11 @@ module Google
         #   hexadecimal authentication token needed to complete the subscription transfer.
         #   For more information, see the administrator help center.
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] customer_name_prefix
         #   When retrieving all of your subscriptions and filtering for specific customers,
         #   you can enter a prefix for a customer name. Using an example customer group
@@ -695,10 +706,11 @@ module Google
         # manage subscriptions](/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
         # paid_service).
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] subscription_id
         #   This is a required property. The `subscriptionId` is the subscription
         #   identifier and is unique for each customer. Since a `subscriptionId` changes
@@ -744,10 +756,11 @@ module Google
         # for short periods of time as suspensions over 60 days may result in the
         # subscription being cancelled.
         # @param [String] customer_id
-        #   Either the customer's primary domain name or the customer's unique identifier.
-        #   If using the domain name, we do not recommend using a `customerId` as a key
-        #   for persistent data. If the domain name for a `customerId` is changed, the
-        #   Google system automatically updates.
+        #   This can be either the customer's primary domain name or the customer's unique
+        #   identifier. If the domain name for a customer changes, the old domain name
+        #   cannot be used to access the customer, but the customer's unique identifier (
+        #   as returned by the API) can always be used. We recommend storing the unique
+        #   identifier in your systems where applicable.
         # @param [String] subscription_id
         #   This is a required property. The `subscriptionId` is the subscription
         #   identifier and is unique for each customer. Since a `subscriptionId` changes
