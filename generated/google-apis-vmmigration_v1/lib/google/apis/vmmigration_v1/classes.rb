@@ -186,6 +186,11 @@ module Google
         # @return [Google::Apis::VmmigrationV1::AppliedLicense]
         attr_accessor :applied_license
       
+        # Output only. The VM Boot Option, as set in the source vm.
+        # Corresponds to the JSON property `bootOption`
+        # @return [String]
+        attr_accessor :boot_option
+      
         # Scheduling information for VM on maintenance/restart behaviour and node
         # allocation in sole tenant nodes.
         # Corresponds to the JSON property `computeScheduling`
@@ -217,6 +222,11 @@ module Google
         # @return [String]
         attr_accessor :machine_type_series
       
+        # The metadata key/value pairs to assign to the VM.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
         # List of NICs connected to this VM.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::VmmigrationV1::NetworkInterface>]
@@ -226,6 +236,13 @@ module Google
         # Corresponds to the JSON property `networkTags`
         # @return [Array<String>]
         attr_accessor :network_tags
+      
+        # Defines whether the instance has Secure Boot enabled. This can be set to true
+        # only if the vm boot option is EFI.
+        # Corresponds to the JSON property `secureBoot`
+        # @return [Boolean]
+        attr_accessor :secure_boot
+        alias_method :secure_boot?, :secure_boot
       
         # The service account to associate the VM with.
         # Corresponds to the JSON property `serviceAccount`
@@ -255,14 +272,17 @@ module Google
         # Update properties of this object
         def update!(**args)
           @applied_license = args[:applied_license] if args.key?(:applied_license)
+          @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @labels = args[:labels] if args.key?(:labels)
           @license_type = args[:license_type] if args.key?(:license_type)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @machine_type_series = args[:machine_type_series] if args.key?(:machine_type_series)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
+          @secure_boot = args[:secure_boot] if args.key?(:secure_boot)
           @service_account = args[:service_account] if args.key?(:service_account)
           @target_project = args[:target_project] if args.key?(:target_project)
           @vm_name = args[:vm_name] if args.key?(:vm_name)

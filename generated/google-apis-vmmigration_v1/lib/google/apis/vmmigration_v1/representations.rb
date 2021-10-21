@@ -382,6 +382,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1::AppliedLicense, decorator: Google::Apis::VmmigrationV1::AppliedLicense::Representation
       
+          property :boot_option, as: 'bootOption'
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
           property :disk_type, as: 'diskType'
@@ -389,9 +390,11 @@ module Google
           property :license_type, as: 'licenseType'
           property :machine_type, as: 'machineType'
           property :machine_type_series, as: 'machineTypeSeries'
+          hash :metadata, as: 'metadata'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::VmmigrationV1::NetworkInterface, decorator: Google::Apis::VmmigrationV1::NetworkInterface::Representation
       
           collection :network_tags, as: 'networkTags'
+          property :secure_boot, as: 'secureBoot'
           property :service_account, as: 'serviceAccount'
           property :target_project, as: 'targetProject'
           property :vm_name, as: 'vmName'
