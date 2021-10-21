@@ -1186,6 +1186,11 @@ module Google
         # @return [String]
         attr_accessor :data_last_refreshed
       
+        # If empty reason is specified, the report is empty for this reason.
+        # Corresponds to the JSON property `emptyReason`
+        # @return [String]
+        attr_accessor :empty_reason
+      
         # Indicates if response to this request is golden or not. Data is golden when
         # the exact same request will not produce any new results if asked at a later
         # point in time.
@@ -1251,6 +1256,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_last_refreshed = args[:data_last_refreshed] if args.key?(:data_last_refreshed)
+          @empty_reason = args[:empty_reason] if args.key?(:empty_reason)
           @is_data_golden = args[:is_data_golden] if args.key?(:is_data_golden)
           @maximums = args[:maximums] if args.key?(:maximums)
           @minimums = args[:minimums] if args.key?(:minimums)
