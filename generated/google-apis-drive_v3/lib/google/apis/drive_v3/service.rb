@@ -996,8 +996,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports a Google Doc to the requested MIME type and returns the exported
-        # content. Please note that the exported content is limited to 10MB.
+        # Exports a Google Workspace document to the requested MIME type and returns
+        # exported byte content. Note that the exported content is limited to 10MB.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] mime_type
