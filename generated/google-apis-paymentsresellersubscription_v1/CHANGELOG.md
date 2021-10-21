@@ -1,5 +1,9 @@
 # Release history for google-apis-paymentsresellersubscription_v1
 
+### v0.7.0 (2021-10-21)
+
+* Unspecified changes
+
 ### v0.6.0 (2021-10-14)
 
 * Regenerated from discovery document revision 20211013
