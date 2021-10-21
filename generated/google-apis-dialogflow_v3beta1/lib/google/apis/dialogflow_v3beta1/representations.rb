@@ -550,6 +550,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1Changelog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1CompareVersionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1CompareVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ContinuousTestResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -935,6 +953,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ListAgentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ListChangelogsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3256,6 +3280,36 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowCxV3beta1Changelog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :resource, as: 'resource'
+          property :type, as: 'type'
+          property :user_email, as: 'userEmail'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1CompareVersionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :target_version, as: 'targetVersion'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1CompareVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_version_content_json, as: 'baseVersionContentJson'
+          property :compare_time, as: 'compareTime'
+          property :target_version_content_json, as: 'targetVersionContentJson'
+        end
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ContinuousTestResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3897,6 +3951,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :agents, as: 'agents', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Agent, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Agent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ListChangelogsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :changelogs, as: 'changelogs', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Changelog, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Changelog::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

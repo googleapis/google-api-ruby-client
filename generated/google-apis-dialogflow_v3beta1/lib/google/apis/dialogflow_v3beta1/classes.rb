@@ -3074,6 +3074,123 @@ module Google
         end
       end
       
+      # Changelogs represents a change made to a given agent.
+      class GoogleCloudDialogflowCxV3beta1Changelog
+        include Google::Apis::Core::Hashable
+      
+        # The action of the change.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # The timestamp of the change.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The affected resource display name of the change.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The unique identifier of the changelog. Format: `projects//locations//agents//
+        # changelogs/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The affected resource name of the change.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # The affected resource type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Email address of the authenticated user.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+          @type = args[:type] if args.key?(:type)
+          @user_email = args[:user_email] if args.key?(:user_email)
+        end
+      end
+      
+      # The request message for Versions.CompareVersions.
+      class GoogleCloudDialogflowCxV3beta1CompareVersionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The language to compare the flow versions for. If not specified, the agent's
+        # default language is used. [Many languages](https://cloud.google.com/dialogflow/
+        # docs/reference/language) are supported. Note: languages must be enabled in the
+        # agent before they can be used.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. Name of the target flow version to compare with the base version.
+        # Use version ID `0` to indicate the draft version of the specified flow. Format:
+        # `projects//locations//agents//flows//versions/`.
+        # Corresponds to the JSON property `targetVersion`
+        # @return [String]
+        attr_accessor :target_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @target_version = args[:target_version] if args.key?(:target_version)
+        end
+      end
+      
+      # The response message for Versions.CompareVersions.
+      class GoogleCloudDialogflowCxV3beta1CompareVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # JSON representation of the base version content.
+        # Corresponds to the JSON property `baseVersionContentJson`
+        # @return [String]
+        attr_accessor :base_version_content_json
+      
+        # The timestamp when the two version compares.
+        # Corresponds to the JSON property `compareTime`
+        # @return [String]
+        attr_accessor :compare_time
+      
+        # JSON representation of the target version content.
+        # Corresponds to the JSON property `targetVersionContentJson`
+        # @return [String]
+        attr_accessor :target_version_content_json
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_version_content_json = args[:base_version_content_json] if args.key?(:base_version_content_json)
+          @compare_time = args[:compare_time] if args.key?(:compare_time)
+          @target_version_content_json = args[:target_version_content_json] if args.key?(:target_version_content_json)
+        end
+      end
+      
       # Represents a result from running a test case in an agent environment.
       class GoogleCloudDialogflowCxV3beta1ContinuousTestResult
         include Google::Apis::Core::Hashable
@@ -5443,6 +5560,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agents = args[:agents] if args.key?(:agents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Changelogs.ListChangelogs.
+      class GoogleCloudDialogflowCxV3beta1ListChangelogsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of changelogs. There will be a maximum number of items returned based
+        # on the page_size field in the request. The changelogs will be ordered by
+        # timestamp.
+        # Corresponds to the JSON property `changelogs`
+        # @return [Array<Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1Changelog>]
+        attr_accessor :changelogs
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @changelogs = args[:changelogs] if args.key?(:changelogs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
