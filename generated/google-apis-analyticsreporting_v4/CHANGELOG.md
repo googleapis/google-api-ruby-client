@@ -1,7 +1,8 @@
 # Release history for google-apis-analyticsreporting_v4
 
-### v0.6.0 (2021-10-20)
+### v0.6.0 (2021-10-21)
 
+* Regenerated from discovery document revision 20211020
 * Unspecified changes
 
 ### v0.5.0 (2021-06-29)

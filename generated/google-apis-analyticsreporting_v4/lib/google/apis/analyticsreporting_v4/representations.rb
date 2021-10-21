@@ -642,6 +642,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_last_refreshed, as: 'dataLastRefreshed'
+          property :empty_reason, as: 'emptyReason'
           property :is_data_golden, as: 'isDataGolden'
           collection :maximums, as: 'maximums', class: Google::Apis::AnalyticsreportingV4::DateRangeValues, decorator: Google::Apis::AnalyticsreportingV4::DateRangeValues::Representation
       
