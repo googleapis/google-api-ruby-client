@@ -1210,9 +1210,12 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries. Note: Always use agent versions for production traffic. See [
-        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
-        # versions).
+        # future queries. If you might use [Agent Assist](https://cloud.google.com/
+        # dialogflow/docs/#aa) or other CCAI products now or in the future, consider
+        # using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has
+        # additional functionality for Agent Assist and other CCAI products. Note:
+        # Always use agent versions for production traffic. See [Versions and
+        # environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Supported formats: - `
         #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
@@ -2453,9 +2456,12 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries. Note: Always use agent versions for production traffic. See [
-        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
-        # versions).
+        # future queries. If you might use [Agent Assist](https://cloud.google.com/
+        # dialogflow/docs/#aa) or other CCAI products now or in the future, consider
+        # using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has
+        # additional functionality for Agent Assist and other CCAI products. Note:
+        # Always use agent versions for production traffic. See [Versions and
+        # environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Supported formats: - `
         #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
@@ -5714,9 +5720,12 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries. Note: Always use agent versions for production traffic. See [
-        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
-        # versions).
+        # future queries. If you might use [Agent Assist](https://cloud.google.com/
+        # dialogflow/docs/#aa) or other CCAI products now or in the future, consider
+        # using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has
+        # additional functionality for Agent Assist and other CCAI products. Note:
+        # Always use agent versions for production traffic. See [Versions and
+        # environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Supported formats: - `
         #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
@@ -6507,9 +6516,12 @@ module Google
         # Processes a natural language query and returns structured, actionable data as
         # a result. This method is not idempotent, because it may cause contexts and
         # session entity types to be updated, which in turn might affect results of
-        # future queries. Note: Always use agent versions for production traffic. See [
-        # Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-
-        # versions).
+        # future queries. If you might use [Agent Assist](https://cloud.google.com/
+        # dialogflow/docs/#aa) or other CCAI products now or in the future, consider
+        # using AnalyzeContent instead of `DetectIntent`. `AnalyzeContent` has
+        # additional functionality for Agent Assist and other CCAI products. Note:
+        # Always use agent versions for production traffic. See [Versions and
+        # environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         # @param [String] session
         #   Required. The name of the session this query is sent to. Supported formats: - `
         #   projects//agent/sessions/, - `projects//locations//agent/sessions/`, - `
