@@ -16,7 +16,7 @@ module Google
   module Apis
     module PeopleV1
       # Version of the google-apis-people_v1 gem
-      GEM_VERSION = "0.21.0"
+      GEM_VERSION = "0.22.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
