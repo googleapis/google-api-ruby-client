@@ -16,7 +16,7 @@ module Google
   module Apis
     module MybusinessbusinessinformationV1
       # Version of the google-apis-mybusinessbusinessinformation_v1 gem
-      GEM_VERSION = "0.1.0"
+      GEM_VERSION = "0.2.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
