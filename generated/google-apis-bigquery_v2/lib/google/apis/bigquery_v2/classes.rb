@@ -922,7 +922,7 @@ module Google
         end
       end
       
-      # Associates `members` with a `role`.
+      # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
       
@@ -945,7 +945,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Cloud Platform resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -975,8 +975,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
-        # , or `roles/owner`.
+        # Role that is assigned to the list of `members`, or principals. For example, `
+        # roles/viewer`, `roles/editor`, or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1912,18 +1912,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Optional] The expiration timestamp for the destination table. If this field
-        # is set: For a new table, it will set the table's expiration time (even if
-        # there is a dataset level default table expiration time). For an existing table,
-        # it will update the table's expiration time. If this field is not set: For a
-        # new table, if dataset level default table expiration time is present, that
-        # will be applied. For an existing table, no change is made to the table's
-        # expiration time. Additionally this field is only applied when data is written
-        # to an empty table (WRITE_EMPTY) or data is overwritten to a table (
-        # WRITE_TRUNCATE).
-        # Corresponds to the JSON property `expirationTimestampMillis`
-        # @return [Fixnum]
-        attr_accessor :expiration_timestamp_millis
+        # [Optional] The destination table expiration time. If this field is set: For a
+        # new table, it will set the table's expiration time (even if there is a dataset
+        # level default table expiration time). For an existing table, it will update
+        # the table's expiration time. If this field is not set: For a new table, if
+        # dataset level default table expiration time is present, that will be applied.
+        # For an existing table, no change is made to the table's expiration time.
+        # Additionally this field is only applied when data is written to an empty table
+        # (WRITE_EMPTY) or data is overwritten to a table (WRITE_TRUNCATE).
+        # Corresponds to the JSON property `expirationTime`
+        # @return [DateTime]
+        attr_accessor :expiration_time
       
         # [Optional] The friendly name for the destination table. This will only be used
         # if the destination table is newly created. If the table already exists and a
@@ -1947,7 +1946,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
-          @expiration_timestamp_millis = args[:expiration_timestamp_millis] if args.key?(:expiration_timestamp_millis)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @labels = args[:labels] if args.key?(:labels)
         end
@@ -2832,20 +2831,9 @@ module Google
         end
       end
       
-      # Information about a single iteration of the training run.
+      # 
       class IterationResult
         include Google::Apis::Core::Hashable
-      
-        # (Auto-)arima fitting result. Wrap everything in ArimaResult for easier
-        # refactoring if we want to use model-specific iteration results.
-        # Corresponds to the JSON property `arimaResult`
-        # @return [Google::Apis::BigqueryV2::ArimaResult]
-        attr_accessor :arima_result
-      
-        # Information about top clusters for clustering models.
-        # Corresponds to the JSON property `clusterInfos`
-        # @return [Array<Google::Apis::BigqueryV2::ClusterInfo>]
-        attr_accessor :cluster_infos
       
         # Time taken to run the iteration in milliseconds.
         # Corresponds to the JSON property `durationMs`
@@ -2878,8 +2866,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @arima_result = args[:arima_result] if args.key?(:arima_result)
-          @cluster_infos = args[:cluster_infos] if args.key?(:cluster_infos)
           @duration_ms = args[:duration_ms] if args.key?(:duration_ms)
           @eval_loss = args[:eval_loss] if args.key?(:eval_loss)
           @index = args[:index] if args.key?(:index)
@@ -4096,6 +4082,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :estimated_bytes_processed
       
+        # [Output-only] Statistics of a BigQuery ML training job.
+        # Corresponds to the JSON property `mlStatistics`
+        # @return [Google::Apis::BigqueryV2::MlStatistics]
+        attr_accessor :ml_statistics
+      
         # [Output-only, Beta] Information about create model query job progress.
         # Corresponds to the JSON property `modelTraining`
         # @return [Google::Apis::BigqueryV2::BigQueryModelTraining]
@@ -4224,6 +4215,7 @@ module Google
           @ddl_target_table = args[:ddl_target_table] if args.key?(:ddl_target_table)
           @dml_stats = args[:dml_stats] if args.key?(:dml_stats)
           @estimated_bytes_processed = args[:estimated_bytes_processed] if args.key?(:estimated_bytes_processed)
+          @ml_statistics = args[:ml_statistics] if args.key?(:ml_statistics)
           @model_training = args[:model_training] if args.key?(:model_training)
           @model_training_current_iteration = args[:model_training_current_iteration] if args.key?(:model_training_current_iteration)
           @model_training_expected_total_iteration = args[:model_training_expected_total_iteration] if args.key?(:model_training_expected_total_iteration)
@@ -4521,6 +4513,33 @@ module Google
       end
       
       # 
+      class MlStatistics
+        include Google::Apis::Core::Hashable
+      
+        # Results for all completed iterations.
+        # Corresponds to the JSON property `iterationResults`
+        # @return [Array<Google::Apis::BigqueryV2::IterationResult>]
+        attr_accessor :iteration_results
+      
+        # Maximum number of iterations specified as max_iterations in the 'CREATE MODEL'
+        # query. The actual number of iterations may be less than this number due to
+        # early stop.
+        # Corresponds to the JSON property `maxIterations`
+        # @return [Fixnum]
+        attr_accessor :max_iterations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iteration_results = args[:iteration_results] if args.key?(:iteration_results)
+          @max_iterations = args[:max_iterations] if args.key?(:max_iterations)
+        end
+      end
+      
+      # 
       class Model
         include Google::Apis::Core::Hashable
       
@@ -4794,31 +4813,31 @@ module Google
       
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-      # A `binding` binds one or more `members` to a single `role`. Members can be
-      # user accounts, service accounts, Google groups, and domains (such as G Suite).
-      # A `role` is a named list of permissions; each `role` can be an IAM predefined
-      # role or a user-created custom role. For some types of Google Cloud resources,
-      # a `binding` can also specify a `condition`, which is a logical expression that
-      # allows access to a resource only if the expression evaluates to `true`. A
-      # condition can add constraints based on attributes of the request, the resource,
-      # or both. To learn which resources support conditions in their IAM policies,
-      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-      # title": "expirable access", "description": "Does not grant access after Sep
-      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-      # members: - user:mike@example.com - group:admins@example.com - domain:google.
-      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-      # roles/resourcemanager.organizationViewer condition: title: expirable access
-      # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-      # description of IAM and its features, see the [IAM documentation](https://cloud.
-      # google.com/iam/docs/).
+      # A `binding` binds one or more `members`, or principals, to a single `role`.
+      # Principals can be user accounts, service accounts, Google groups, and domains (
+      # such as G Suite). A `role` is a named list of permissions; each `role` can be
+      # an IAM predefined role or a user-created custom role. For some types of Google
+      # Cloud resources, a `binding` can also specify a `condition`, which is a
+      # logical expression that allows access to a resource only if the expression
+      # evaluates to `true`. A condition can add constraints based on attributes of
+      # the request, the resource, or both. To learn which resources support
+      # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+      # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+      # ], "condition": ` "title": "expirable access", "description": "Does not grant
+      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+      # bindings: - members: - user:mike@example.com - group:admins@example.com -
+      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+      # access description: Does not grant access after Sep 2020 expression: request.
+      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+      # a description of IAM and its features, see the [IAM documentation](https://
+      # cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -4827,9 +4846,14 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a `
-        # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # Associates a list of `members`, or principals, with a `role`. Optionally, may
+        # specify a `condition` that determines how and when the `bindings` are applied.
+        # Each of the `bindings` must contain at least one principal. The `bindings` in
+        # a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        # can be Google groups. Each occurrence of a principal counts towards these
+        # limits. For example, if the `bindings` grant 50 different roles to `user:alice@
+        # example.com`, and not to any other principal, then you can add another 1,450
+        # principals to the `bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::BigqueryV2::Binding>]
         attr_accessor :bindings
@@ -5967,31 +5991,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::BigqueryV2::Policy]
         attr_accessor :policy
