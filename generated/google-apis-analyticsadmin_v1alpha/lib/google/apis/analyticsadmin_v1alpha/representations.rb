@@ -208,12 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -720,24 +714,6 @@ module Google
       
           property :name, as: 'name'
           property :validation_email, as: 'validationEmail'
-        end
-      end
-      
-      class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :file_downloads_enabled, as: 'fileDownloadsEnabled'
-          property :name, as: 'name'
-          property :outbound_clicks_enabled, as: 'outboundClicksEnabled'
-          property :page_changes_enabled, as: 'pageChangesEnabled'
-          property :page_loads_enabled, as: 'pageLoadsEnabled'
-          property :page_views_enabled, as: 'pageViewsEnabled'
-          property :scrolls_enabled, as: 'scrollsEnabled'
-          property :search_query_parameter, as: 'searchQueryParameter'
-          property :site_search_enabled, as: 'siteSearchEnabled'
-          property :stream_enabled, as: 'streamEnabled'
-          property :uri_query_parameter, as: 'uriQueryParameter'
-          property :video_engagement_enabled, as: 'videoEngagementEnabled'
         end
       end
       

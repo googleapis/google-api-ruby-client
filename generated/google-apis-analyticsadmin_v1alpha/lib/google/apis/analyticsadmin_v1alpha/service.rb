@@ -3306,40 +3306,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the singleton enhanced measurement settings for this web stream. Note
-        # that the stream must enable enhanced measurement for these settings to take
-        # effect.
-        # @param [String] name
-        #   Required. The name of the settings to lookup. Format: properties/`property_id`/
-        #   webDataStreams/`stream_id`/enhancedMeasurementSettings Example: "properties/
-        #   1000/webDataStreams/2000/enhancedMeasurementSettings"
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_property_web_data_stream_enhanced_measurement_settings(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/{+name}', options)
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Returns the Site Tag for the specified web stream. Site Tags are immutable
         # singletons.
         # @param [String] name
@@ -3451,48 +3417,6 @@ module Google
           command.request_object = google_analytics_admin_v1alpha_web_data_stream_object
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the singleton enhanced measurement settings for this web stream. Note
-        # that the stream must enable enhanced measurement for these settings to take
-        # effect.
-        # @param [String] name
-        #   Output only. Resource name of this Data Stream. Format: properties/`
-        #   property_id`/webDataStreams/`stream_id`/enhancedMeasurementSettings Example: "
-        #   properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings] google_analytics_admin_v1alpha_enhanced_measurement_settings_object
-        # @param [String] update_mask
-        #   Required. The list of fields to be updated. Field names must be in snake case (
-        #   e.g., "field_to_update"). Omitted fields will not be updated. To replace the
-        #   entire entity, use one path with the string "*" to match all fields.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_property_web_data_stream_enhanced_measurement_settings(name, google_analytics_admin_v1alpha_enhanced_measurement_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings::Representation
-          command.request_object = google_analytics_admin_v1alpha_enhanced_measurement_settings_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
