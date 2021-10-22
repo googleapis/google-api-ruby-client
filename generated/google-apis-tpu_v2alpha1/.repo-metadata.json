@@ -1,0 +1,7 @@
+{
+    "api_id": "tpu:v2alpha1",
+    "name_pretty": "Cloud TPU API",
+    "distribution_name": "google-apis-tpu_v2alpha1",
+    "language": "ruby",
+    "library_type": "REST"
+}
