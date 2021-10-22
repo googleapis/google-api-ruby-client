@@ -902,6 +902,11 @@ module Google
         # @return [Hash<String,Google::Apis::AndroidpublisherV3::InAppProductListing>]
         attr_accessor :listings
       
+        # Details about taxation and legal compliance for managed products.
+        # Corresponds to the JSON property `managedProductTaxesAndComplianceSettings`
+        # @return [Google::Apis::AndroidpublisherV3::ManagedProductTaxAndComplianceSettings]
+        attr_accessor :managed_product_taxes_and_compliance_settings
+      
         # Package name of the parent app.
         # Corresponds to the JSON property `packageName`
         # @return [String]
@@ -935,6 +940,12 @@ module Google
         # @return [String]
         attr_accessor :subscription_period
       
+        # Details about taxation, Google Play policy and legal compliance for
+        # subscription products.
+        # Corresponds to the JSON property `subscriptionTaxesAndComplianceSettings`
+        # @return [Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings]
+        attr_accessor :subscription_taxes_and_compliance_settings
+      
         # Trial period, specified in ISO 8601 format. Acceptable values are anything
         # between P7D (seven days) and P999D (999 days).
         # Corresponds to the JSON property `trialPeriod`
@@ -951,12 +962,14 @@ module Google
           @default_price = args[:default_price] if args.key?(:default_price)
           @grace_period = args[:grace_period] if args.key?(:grace_period)
           @listings = args[:listings] if args.key?(:listings)
+          @managed_product_taxes_and_compliance_settings = args[:managed_product_taxes_and_compliance_settings] if args.key?(:managed_product_taxes_and_compliance_settings)
           @package_name = args[:package_name] if args.key?(:package_name)
           @prices = args[:prices] if args.key?(:prices)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
           @sku = args[:sku] if args.key?(:sku)
           @status = args[:status] if args.key?(:status)
           @subscription_period = args[:subscription_period] if args.key?(:subscription_period)
+          @subscription_taxes_and_compliance_settings = args[:subscription_taxes_and_compliance_settings] if args.key?(:subscription_taxes_and_compliance_settings)
           @trial_period = args[:trial_period] if args.key?(:trial_period)
         end
       end
@@ -1237,6 +1250,36 @@ module Google
         end
       end
       
+      # Details about taxation and legal compliance for managed products.
+      class ManagedProductTaxAndComplianceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Digital content or service classification for products distributed to users in
+        # the European Economic Area (EEA). The withdrawal regime under EEA consumer
+        # laws depends on this classification. Refer to the [Help Center article](https:/
+        # /support.google.com/googleplay/android-developer/answer/10463498) for more
+        # information.
+        # Corresponds to the JSON property `eeaWithdrawalRightType`
+        # @return [String]
+        attr_accessor :eea_withdrawal_right_type
+      
+        # A mapping from region code to tax rate details. The keys are region codes as
+        # defined by Unicode's "CLDR".
+        # Corresponds to the JSON property `taxRateInfoByRegionCode`
+        # @return [Hash<String,Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo>]
+        attr_accessor :tax_rate_info_by_region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
+          @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
+        end
+      end
+      
       # Represents an amount of money with its currency type.
       class Money
         include Google::Apis::Core::Hashable
@@ -1464,6 +1507,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
+        end
+      end
+      
+      # Specified details about taxation in a given geographical region.
+      class RegionalTaxRateInfo
+        include Google::Apis::Core::Hashable
+      
+        # You must tell us if your app contains streaming products to correctly charge
+        # US state and local sales tax. Field only supported in United States.
+        # Corresponds to the JSON property `eligibleForStreamingServiceTaxRate`
+        # @return [Boolean]
+        attr_accessor :eligible_for_streaming_service_tax_rate
+        alias_method :eligible_for_streaming_service_tax_rate?, :eligible_for_streaming_service_tax_rate
+      
+        # Tax tier to specify reduced tax rate. Developers who sell digital news,
+        # magazines, newspapers, books, or audiobooks in various regions may be eligible
+        # for reduced tax rates. [Learn more](https://support.google.com/googleplay/
+        # android-developer/answer/10463498).
+        # Corresponds to the JSON property `taxTier`
+        # @return [String]
+        attr_accessor :tax_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligible_for_streaming_service_tax_rate = args[:eligible_for_streaming_service_tax_rate] if args.key?(:eligible_for_streaming_service_tax_rate)
+          @tax_tier = args[:tax_tier] if args.key?(:tax_tier)
         end
       end
       
@@ -1993,6 +2066,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @new_expiry_time_millis = args[:new_expiry_time_millis] if args.key?(:new_expiry_time_millis)
+        end
+      end
+      
+      # Details about taxation, Google Play policy and legal compliance for
+      # subscription products.
+      class SubscriptionTaxAndComplianceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Digital content or service classification for products distributed to users in
+        # the European Economic Area (EEA). The withdrawal regime under EEA consumer
+        # laws depends on this classification. Refer to the [Help Center article](https:/
+        # /support.google.com/googleplay/android-developer/answer/10463498) for more
+        # information.
+        # Corresponds to the JSON property `eeaWithdrawalRightType`
+        # @return [String]
+        attr_accessor :eea_withdrawal_right_type
+      
+        # A mapping from region code to tax rate details. The keys are region codes as
+        # defined by Unicode's "CLDR".
+        # Corresponds to the JSON property `taxRateInfoByRegionCode`
+        # @return [Hash<String,Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo>]
+        attr_accessor :tax_rate_info_by_region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
+          @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
         end
       end
       
