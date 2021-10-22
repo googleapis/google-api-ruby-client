@@ -508,6 +508,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MlStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Model
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1334,7 +1340,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
-          property :expiration_timestamp_millis, :numeric_string => true, as: 'expirationTimestampMillis'
+          property :expiration_time, as: 'expirationTime', type: DateTime
+      
           property :friendly_name, as: 'friendlyName'
           hash :labels, as: 'labels'
         end
@@ -1550,10 +1557,6 @@ module Google
       class IterationResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :arima_result, as: 'arimaResult', class: Google::Apis::BigqueryV2::ArimaResult, decorator: Google::Apis::BigqueryV2::ArimaResult::Representation
-      
-          collection :cluster_infos, as: 'clusterInfos', class: Google::Apis::BigqueryV2::ClusterInfo, decorator: Google::Apis::BigqueryV2::ClusterInfo::Representation
-      
           property :duration_ms, :numeric_string => true, as: 'durationMs'
           property :eval_loss, as: 'evalLoss'
           property :index, as: 'index'
@@ -1830,6 +1833,8 @@ module Google
           property :dml_stats, as: 'dmlStats', class: Google::Apis::BigqueryV2::DmlStatistics, decorator: Google::Apis::BigqueryV2::DmlStatistics::Representation
       
           property :estimated_bytes_processed, :numeric_string => true, as: 'estimatedBytesProcessed'
+          property :ml_statistics, as: 'mlStatistics', class: Google::Apis::BigqueryV2::MlStatistics, decorator: Google::Apis::BigqueryV2::MlStatistics::Representation
+      
           property :model_training, as: 'modelTraining', class: Google::Apis::BigqueryV2::BigQueryModelTraining, decorator: Google::Apis::BigqueryV2::BigQueryModelTraining::Representation
       
           property :model_training_current_iteration, as: 'modelTrainingCurrentIteration'
@@ -1937,6 +1942,15 @@ module Google
           property :last_refresh_time, :numeric_string => true, as: 'lastRefreshTime'
           property :query, as: 'query'
           property :refresh_interval_ms, :numeric_string => true, as: 'refreshIntervalMs'
+        end
+      end
+      
+      class MlStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iteration_results, as: 'iterationResults', class: Google::Apis::BigqueryV2::IterationResult, decorator: Google::Apis::BigqueryV2::IterationResult::Representation
+      
+          property :max_iterations, :numeric_string => true, as: 'maxIterations'
         end
       end
       
