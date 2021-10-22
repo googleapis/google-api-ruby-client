@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedProductTaxAndComplianceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Money
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,12 @@ module Google
       end
       
       class ProductPurchasesAcknowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionalTaxRateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +353,12 @@ module Google
       end
       
       class SubscriptionPurchasesDeferResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscriptionTaxAndComplianceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -699,6 +717,8 @@ module Google
           property :grace_period, as: 'gracePeriod'
           hash :listings, as: 'listings', class: Google::Apis::AndroidpublisherV3::InAppProductListing, decorator: Google::Apis::AndroidpublisherV3::InAppProductListing::Representation
       
+          property :managed_product_taxes_and_compliance_settings, as: 'managedProductTaxesAndComplianceSettings', class: Google::Apis::AndroidpublisherV3::ManagedProductTaxAndComplianceSettings, decorator: Google::Apis::AndroidpublisherV3::ManagedProductTaxAndComplianceSettings::Representation
+      
           property :package_name, as: 'packageName'
           hash :prices, as: 'prices', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
       
@@ -706,6 +726,8 @@ module Google
           property :sku, as: 'sku'
           property :status, as: 'status'
           property :subscription_period, as: 'subscriptionPeriod'
+          property :subscription_taxes_and_compliance_settings, as: 'subscriptionTaxesAndComplianceSettings', class: Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings, decorator: Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings::Representation
+      
           property :trial_period, as: 'trialPeriod'
         end
       end
@@ -788,6 +810,15 @@ module Google
         end
       end
       
+      class ManagedProductTaxAndComplianceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eea_withdrawal_right_type, as: 'eeaWithdrawalRightType'
+          hash :tax_rate_info_by_region_code, as: 'taxRateInfoByRegionCode', class: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo::Representation
+      
+        end
+      end
+      
       class Money
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -838,6 +869,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :developer_payload, as: 'developerPayload'
+        end
+      end
+      
+      class RegionalTaxRateInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eligible_for_streaming_service_tax_rate, as: 'eligibleForStreamingServiceTaxRate'
+          property :tax_tier, as: 'taxTier'
         end
       end
       
@@ -969,6 +1008,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :new_expiry_time_millis, :numeric_string => true, as: 'newExpiryTimeMillis'
+        end
+      end
+      
+      class SubscriptionTaxAndComplianceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eea_withdrawal_right_type, as: 'eeaWithdrawalRightType'
+          hash :tax_rate_info_by_region_code, as: 'taxRateInfoByRegionCode', class: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo, decorator: Google::Apis::AndroidpublisherV3::RegionalTaxRateInfo::Representation
+      
         end
       end
       
