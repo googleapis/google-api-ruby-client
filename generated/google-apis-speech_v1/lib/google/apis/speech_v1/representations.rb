@@ -191,11 +191,13 @@ module Google
       class RecognitionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternative_language_codes, as: 'alternativeLanguageCodes'
           property :audio_channel_count, as: 'audioChannelCount'
           property :diarization_config, as: 'diarizationConfig', class: Google::Apis::SpeechV1::SpeakerDiarizationConfig, decorator: Google::Apis::SpeechV1::SpeakerDiarizationConfig::Representation
       
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
           property :enable_separate_recognition_per_channel, as: 'enableSeparateRecognitionPerChannel'
+          property :enable_word_confidence, as: 'enableWordConfidence'
           property :enable_word_time_offsets, as: 'enableWordTimeOffsets'
           property :encoding, as: 'encoding'
           property :language_code, as: 'languageCode'
@@ -277,6 +279,7 @@ module Google
           collection :alternatives, as: 'alternatives', class: Google::Apis::SpeechV1::SpeechRecognitionAlternative, decorator: Google::Apis::SpeechV1::SpeechRecognitionAlternative::Representation
       
           property :channel_tag, as: 'channelTag'
+          property :language_code, as: 'languageCode'
         end
       end
       
@@ -299,6 +302,7 @@ module Google
       class WordInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'

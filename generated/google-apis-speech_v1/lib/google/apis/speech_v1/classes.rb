@@ -273,6 +273,20 @@ module Google
       class RecognitionConfig
         include Google::Apis::Core::Hashable
       
+        # A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.
+        # txt) language tags, listing possible alternative languages of the supplied
+        # audio. See [Language Support](https://cloud.google.com/speech-to-text/docs/
+        # languages) for a list of the currently supported language codes. If
+        # alternative languages are listed, recognition result will contain recognition
+        # in the most likely language detected including the main language_code. The
+        # recognition result will include the language tag of the language detected in
+        # the audio. Note: This feature is only supported for Voice Command and Voice
+        # Search use cases and performance may vary for other use cases (e.g., phone
+        # call transcription).
+        # Corresponds to the JSON property `alternativeLanguageCodes`
+        # @return [Array<String>]
+        attr_accessor :alternative_language_codes
+      
         # The number of channels in the input audio data. ONLY set this for MULTI-
         # CHANNEL recognition. Valid values for LINEAR16 and FLAC are `1`-`8`. Valid
         # values for OGG_OPUS are '1'-'254'. Valid value for MULAW, AMR, AMR_WB and
@@ -308,6 +322,14 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_separate_recognition_per_channel
         alias_method :enable_separate_recognition_per_channel?, :enable_separate_recognition_per_channel
+      
+        # If `true`, the top result includes a list of words and the confidence for
+        # those words. If `false`, no word-level confidence information is returned. The
+        # default is `false`.
+        # Corresponds to the JSON property `enableWordConfidence`
+        # @return [Boolean]
+        attr_accessor :enable_word_confidence
+        alias_method :enable_word_confidence?, :enable_word_confidence
       
         # If `true`, the top result includes a list of words and the start and end time
         # offsets (timestamps) for those words. If `false`, no word-level time offset
@@ -402,10 +424,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternative_language_codes = args[:alternative_language_codes] if args.key?(:alternative_language_codes)
           @audio_channel_count = args[:audio_channel_count] if args.key?(:audio_channel_count)
           @diarization_config = args[:diarization_config] if args.key?(:diarization_config)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
           @enable_separate_recognition_per_channel = args[:enable_separate_recognition_per_channel] if args.key?(:enable_separate_recognition_per_channel)
+          @enable_word_confidence = args[:enable_word_confidence] if args.key?(:enable_word_confidence)
           @enable_word_time_offsets = args[:enable_word_time_offsets] if args.key?(:enable_word_time_offsets)
           @encoding = args[:encoding] if args.key?(:encoding)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -674,6 +698,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :channel_tag
       
+        # Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        # language tag of the language in this result. This language code was detected
+        # to have the most likelihood of being spoken in the audio.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -682,6 +713,7 @@ module Google
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
           @channel_tag = args[:channel_tag] if args.key?(:channel_tag)
+          @language_code = args[:language_code] if args.key?(:language_code)
         end
       end
       
@@ -749,6 +781,16 @@ module Google
       class WordInfo
         include Google::Apis::Core::Hashable
       
+        # The confidence estimate between 0.0 and 1.0. A higher number indicates an
+        # estimated greater likelihood that the recognized words are correct. This field
+        # is set only for the top alternative of a non-streaming result or, of a
+        # streaming result where `is_final=true`. This field is not guaranteed to be
+        # accurate and users should not rely on it to be always provided. The default of
+        # 0.0 is a sentinel value indicating `confidence` was not set.
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
         # Time offset relative to the beginning of the audio, and corresponding to the
         # end of the spoken word. This field is only set if `enable_word_time_offsets=
         # true` and only in the top hypothesis. This is an experimental feature and the
@@ -785,6 +827,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
