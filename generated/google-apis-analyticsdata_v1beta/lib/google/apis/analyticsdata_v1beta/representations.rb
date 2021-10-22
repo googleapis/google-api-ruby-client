@@ -22,6 +22,12 @@ module Google
   module Apis
     module AnalyticsdataV1beta
       
+      class ActiveMetricRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchRunPivotReportsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,10 +334,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchemaRestrictionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StringFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActiveMetricRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric_name, as: 'metricName'
+          collection :restricted_metric_types, as: 'restrictedMetricTypes'
+        end
       end
       
       class BatchRunPivotReportsRequest
@@ -615,6 +635,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_name, as: 'apiName'
+          collection :blocked_reasons, as: 'blockedReasons'
           property :category, as: 'category'
           property :custom_definition, as: 'customDefinition'
           collection :deprecated_api_names, as: 'deprecatedApiNames'
@@ -754,6 +775,8 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :data_loss_from_other_row, as: 'dataLossFromOtherRow'
           property :empty_reason, as: 'emptyReason'
+          property :schema_restriction_response, as: 'schemaRestrictionResponse', class: Google::Apis::AnalyticsdataV1beta::SchemaRestrictionResponse, decorator: Google::Apis::AnalyticsdataV1beta::SchemaRestrictionResponse::Representation
+      
           property :time_zone, as: 'timeZone'
         end
       end
@@ -903,6 +926,14 @@ module Google
           collection :rows, as: 'rows', class: Google::Apis::AnalyticsdataV1beta::Row, decorator: Google::Apis::AnalyticsdataV1beta::Row::Representation
       
           collection :totals, as: 'totals', class: Google::Apis::AnalyticsdataV1beta::Row, decorator: Google::Apis::AnalyticsdataV1beta::Row::Representation
+      
+        end
+      end
+      
+      class SchemaRestrictionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :active_metric_restrictions, as: 'activeMetricRestrictions', class: Google::Apis::AnalyticsdataV1beta::ActiveMetricRestriction, decorator: Google::Apis::AnalyticsdataV1beta::ActiveMetricRestriction::Representation
       
         end
       end
