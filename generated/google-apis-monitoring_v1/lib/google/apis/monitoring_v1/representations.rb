@@ -338,6 +338,7 @@ module Google
           property :etag, as: 'etag'
           property :grid_layout, as: 'gridLayout', class: Google::Apis::MonitoringV1::GridLayout, decorator: Google::Apis::MonitoringV1::GridLayout::Representation
       
+          hash :labels, as: 'labels'
           property :mosaic_layout, as: 'mosaicLayout', class: Google::Apis::MonitoringV1::MosaicLayout, decorator: Google::Apis::MonitoringV1::MosaicLayout::Representation
       
           property :name, as: 'name'

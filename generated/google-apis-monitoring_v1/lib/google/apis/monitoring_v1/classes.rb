@@ -260,6 +260,11 @@ module Google
         # @return [Google::Apis::MonitoringV1::GridLayout]
         attr_accessor :grid_layout
       
+        # Labels applied to the dashboard
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # A mosaic layout divides the available space into a grid of blocks, and
         # overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid
         # blocks and can be placed at arbitrary locations in the grid.
@@ -288,6 +293,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @grid_layout = args[:grid_layout] if args.key?(:grid_layout)
+          @labels = args[:labels] if args.key?(:labels)
           @mosaic_layout = args[:mosaic_layout] if args.key?(:mosaic_layout)
           @name = args[:name] if args.key?(:name)
           @row_layout = args[:row_layout] if args.key?(:row_layout)
