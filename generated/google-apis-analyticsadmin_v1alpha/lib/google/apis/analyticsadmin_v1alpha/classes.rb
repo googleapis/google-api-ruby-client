@@ -1054,7 +1054,7 @@ module Google
         alias_method :campaign_data_sharing_enabled?, :campaign_data_sharing_enabled
       
         # Immutable. Enables the import of cost data from Display & Video 360 into the
-        # GA4 property. This can only be enabled if campaign_data_import_enabled is
+        # GA4 property. This can only be enabled if campaign_data_sharing_enabled is
         # enabled. After link creation, this can only be updated from the Display &
         # Video 360 product. If this field is not set on create, it will be defaulted to
         # true.
@@ -1118,7 +1118,7 @@ module Google
         alias_method :campaign_data_sharing_enabled?, :campaign_data_sharing_enabled
       
         # Immutable. Enables the import of cost data from Display & Video 360. This can
-        # only be enabled if campaign_data_import_enabled is enabled. If this field is
+        # only be enabled if campaign_data_sharing_enabled is enabled. If this field is
         # not set on create, it will be defaulted to true.
         # Corresponds to the JSON property `costDataSharingEnabled`
         # @return [Boolean]
@@ -1162,113 +1162,6 @@ module Google
           @link_proposal_status_details = args[:link_proposal_status_details] if args.key?(:link_proposal_status_details)
           @name = args[:name] if args.key?(:name)
           @validation_email = args[:validation_email] if args.key?(:validation_email)
-        end
-      end
-      
-      # Singleton resource under a WebDataStream, configuring measurement of
-      # additional site interactions and content.
-      class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings
-        include Google::Apis::Core::Hashable
-      
-        # If enabled, capture a file download event each time a link is clicked with a
-        # common document, compressed file, application, video, or audio extension.
-        # Corresponds to the JSON property `fileDownloadsEnabled`
-        # @return [Boolean]
-        attr_accessor :file_downloads_enabled
-        alias_method :file_downloads_enabled?, :file_downloads_enabled
-      
-        # Output only. Resource name of this Data Stream. Format: properties/`
-        # property_id`/webDataStreams/`stream_id`/enhancedMeasurementSettings Example: "
-        # properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # If enabled, capture an outbound click event each time a visitor clicks a link
-        # that leads them away from your domain.
-        # Corresponds to the JSON property `outboundClicksEnabled`
-        # @return [Boolean]
-        attr_accessor :outbound_clicks_enabled
-        alias_method :outbound_clicks_enabled?, :outbound_clicks_enabled
-      
-        # If enabled, capture a page view event each time the website changes the
-        # browser history state.
-        # Corresponds to the JSON property `pageChangesEnabled`
-        # @return [Boolean]
-        attr_accessor :page_changes_enabled
-        alias_method :page_changes_enabled?, :page_changes_enabled
-      
-        # Output only. If enabled, capture a page view event each time a page loads.
-        # Corresponds to the JSON property `pageLoadsEnabled`
-        # @return [Boolean]
-        attr_accessor :page_loads_enabled
-        alias_method :page_loads_enabled?, :page_loads_enabled
-      
-        # Output only. If enabled, capture a page view event each time a page loads or
-        # the website changes the browser history state.
-        # Corresponds to the JSON property `pageViewsEnabled`
-        # @return [Boolean]
-        attr_accessor :page_views_enabled
-        alias_method :page_views_enabled?, :page_views_enabled
-      
-        # If enabled, capture scroll events each time a visitor gets to the bottom of a
-        # page.
-        # Corresponds to the JSON property `scrollsEnabled`
-        # @return [Boolean]
-        attr_accessor :scrolls_enabled
-        alias_method :scrolls_enabled?, :scrolls_enabled
-      
-        # Required. URL query parameters to interpret as site search parameters. Max
-        # length is 1024 characters. Must not be empty.
-        # Corresponds to the JSON property `searchQueryParameter`
-        # @return [String]
-        attr_accessor :search_query_parameter
-      
-        # If enabled, capture a view search results event each time a visitor performs a
-        # search on your site (based on a query parameter).
-        # Corresponds to the JSON property `siteSearchEnabled`
-        # @return [Boolean]
-        attr_accessor :site_search_enabled
-        alias_method :site_search_enabled?, :site_search_enabled
-      
-        # Indicates whether Enhanced Measurement Settings will be used to automatically
-        # measure interactions and content on this web stream. Changing this value does
-        # not affect the settings themselves, but determines whether they are respected.
-        # Corresponds to the JSON property `streamEnabled`
-        # @return [Boolean]
-        attr_accessor :stream_enabled
-        alias_method :stream_enabled?, :stream_enabled
-      
-        # Additional URL query parameters. Max length is 1024 characters.
-        # Corresponds to the JSON property `uriQueryParameter`
-        # @return [String]
-        attr_accessor :uri_query_parameter
-      
-        # If enabled, capture video play, progress, and complete events as visitors view
-        # embedded videos on your site.
-        # Corresponds to the JSON property `videoEngagementEnabled`
-        # @return [Boolean]
-        attr_accessor :video_engagement_enabled
-        alias_method :video_engagement_enabled?, :video_engagement_enabled
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @file_downloads_enabled = args[:file_downloads_enabled] if args.key?(:file_downloads_enabled)
-          @name = args[:name] if args.key?(:name)
-          @outbound_clicks_enabled = args[:outbound_clicks_enabled] if args.key?(:outbound_clicks_enabled)
-          @page_changes_enabled = args[:page_changes_enabled] if args.key?(:page_changes_enabled)
-          @page_loads_enabled = args[:page_loads_enabled] if args.key?(:page_loads_enabled)
-          @page_views_enabled = args[:page_views_enabled] if args.key?(:page_views_enabled)
-          @scrolls_enabled = args[:scrolls_enabled] if args.key?(:scrolls_enabled)
-          @search_query_parameter = args[:search_query_parameter] if args.key?(:search_query_parameter)
-          @site_search_enabled = args[:site_search_enabled] if args.key?(:site_search_enabled)
-          @stream_enabled = args[:stream_enabled] if args.key?(:stream_enabled)
-          @uri_query_parameter = args[:uri_query_parameter] if args.key?(:uri_query_parameter)
-          @video_engagement_enabled = args[:video_engagement_enabled] if args.key?(:video_engagement_enabled)
         end
       end
       
