@@ -22,6 +22,31 @@ module Google
   module Apis
     module AnalyticsdataV1beta
       
+      # A metric actively restricted in creating the report.
+      class ActiveMetricRestriction
+        include Google::Apis::Core::Hashable
+      
+        # The name of the restricted metric.
+        # Corresponds to the JSON property `metricName`
+        # @return [String]
+        attr_accessor :metric_name
+      
+        # The reason for this metric's restriction.
+        # Corresponds to the JSON property `restrictedMetricTypes`
+        # @return [Array<String>]
+        attr_accessor :restricted_metric_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_name = args[:metric_name] if args.key?(:metric_name)
+          @restricted_metric_types = args[:restricted_metric_types] if args.key?(:restricted_metric_types)
+        end
+      end
+      
       # The batch request containing multiple pivot report requests.
       class BatchRunPivotReportsRequest
         include Google::Apis::Core::Hashable
@@ -945,6 +970,16 @@ module Google
         # @return [String]
         attr_accessor :api_name
       
+        # If reasons are specified, your access is blocked to this metric for this
+        # property. API requests from you to this property for this metric will succeed;
+        # however, the report will contain only zeros for this metric. API requests with
+        # metric filters on blocked metrics will fail. If reasons are empty, you have
+        # access to this metric. To learn more, see [Access and data-restriction
+        # management](https://support.google.com/analytics/answer/10851388).
+        # Corresponds to the JSON property `blockedReasons`
+        # @return [Array<String>]
+        attr_accessor :blocked_reasons
+      
         # The display name of the category that this metrics belongs to. Similar
         # dimensions and metrics are categorized together.
         # Corresponds to the JSON property `category`
@@ -995,6 +1030,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_name = args[:api_name] if args.key?(:api_name)
+          @blocked_reasons = args[:blocked_reasons] if args.key?(:blocked_reasons)
           @category = args[:category] if args.key?(:category)
           @custom_definition = args[:custom_definition] if args.key?(:custom_definition)
           @deprecated_api_names = args[:deprecated_api_names] if args.key?(:deprecated_api_names)
@@ -1440,6 +1476,13 @@ module Google
         # @return [String]
         attr_accessor :empty_reason
       
+        # The schema restrictions actively enforced in creating this report. To learn
+        # more, see [Access and data-restriction management](https://support.google.com/
+        # analytics/answer/10851388).
+        # Corresponds to the JSON property `schemaRestrictionResponse`
+        # @return [Google::Apis::AnalyticsdataV1beta::SchemaRestrictionResponse]
+        attr_accessor :schema_restriction_response
+      
         # The property's current timezone. Intended to be used to interpret time-based
         # dimensions like `hour` and `minute`. Formatted as strings from the IANA Time
         # Zone database (https://www.iana.org/time-zones); for example "America/New_York"
@@ -1457,6 +1500,7 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @data_loss_from_other_row = args[:data_loss_from_other_row] if args.key?(:data_loss_from_other_row)
           @empty_reason = args[:empty_reason] if args.key?(:empty_reason)
+          @schema_restriction_response = args[:schema_restriction_response] if args.key?(:schema_restriction_response)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
@@ -2062,6 +2106,30 @@ module Google
           @row_count = args[:row_count] if args.key?(:row_count)
           @rows = args[:rows] if args.key?(:rows)
           @totals = args[:totals] if args.key?(:totals)
+        end
+      end
+      
+      # The schema restrictions actively enforced in creating this report. To learn
+      # more, see [Access and data-restriction management](https://support.google.com/
+      # analytics/answer/10851388).
+      class SchemaRestrictionResponse
+        include Google::Apis::Core::Hashable
+      
+        # All restrictions actively enforced in creating the report. For example, `
+        # purchaseRevenue` always has the restriction type `REVENUE_DATA`. However, this
+        # active response restriction is only populated if the user's custom role
+        # disallows access to `REVENUE_DATA`.
+        # Corresponds to the JSON property `activeMetricRestrictions`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::ActiveMetricRestriction>]
+        attr_accessor :active_metric_restrictions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_metric_restrictions = args[:active_metric_restrictions] if args.key?(:active_metric_restrictions)
         end
       end
       
