@@ -1338,6 +1338,7 @@ module Google
       
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
+          collection :supported_tiers, as: 'supportedTiers'
           property :type, as: 'type'
         end
       end

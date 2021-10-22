@@ -2276,7 +2276,7 @@ module Google
         # Specifies the alignment of data points in individual time series as well as
         # how to combine the retrieved time series together (such as when aggregating
         # multiple streams on each resource to a single stream for each resource or when
-        # aggregating streams across all members of a group of resrouces). Multiple
+        # aggregating streams across all members of a group of resources). Multiple
         # aggregations are applied in the order specified.This field is similar to the
         # one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/
         # ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the
@@ -2536,7 +2536,7 @@ module Google
         # Specifies the alignment of data points in individual time series as well as
         # how to combine the retrieved time series together (such as when aggregating
         # multiple streams on each resource to a single stream for each resource or when
-        # aggregating streams across all members of a group of resrouces). Multiple
+        # aggregating streams across all members of a group of resources). Multiple
         # aggregations are applied in the order specified.This field is similar to the
         # one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/
         # ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the
@@ -2985,6 +2985,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The tiers that support this notification channel; the project service tier
+        # must be one of the supported_tiers.
+        # Corresponds to the JSON property `supportedTiers`
+        # @return [Array<String>]
+        attr_accessor :supported_tiers
+      
         # The type of notification channel, such as "email" and "sms". To view the full
         # list of channels, see Channel descriptors (https://cloud.google.com/monitoring/
         # alerts/using-channels-api#ncd). Notification channel types are globally unique.
@@ -3003,6 +3009,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
+          @supported_tiers = args[:supported_tiers] if args.key?(:supported_tiers)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -3148,7 +3155,7 @@ module Google
         # specify a non-zero interval, with subsequent points specifying contiguous and
         # non-overlapping intervals. For DELTA metrics, the start time of the next
         # interval must be at least a millisecond after the end time of the previous
-        # interval. For CUMULATIVE metrics, the start time and end time must specify a a
+        # interval. For CUMULATIVE metrics, the start time and end time must specify a
         # non-zero interval, with subsequent points specifying the same start time and
         # increasing end times, until an event resets the cumulative value to zero and
         # sets a new start time for the following points. The new start time must be at
@@ -3200,7 +3207,7 @@ module Google
         # specify a non-zero interval, with subsequent points specifying contiguous and
         # non-overlapping intervals. For DELTA metrics, the start time of the next
         # interval must be at least a millisecond after the end time of the previous
-        # interval. For CUMULATIVE metrics, the start time and end time must specify a a
+        # interval. For CUMULATIVE metrics, the start time and end time must specify a
         # non-zero interval, with subsequent points specifying the same start time and
         # increasing end times, until an event resets the cumulative value to zero and
         # sets a new start time for the following points. The new start time must be at
@@ -3762,7 +3769,7 @@ module Google
       # specify a non-zero interval, with subsequent points specifying contiguous and
       # non-overlapping intervals. For DELTA metrics, the start time of the next
       # interval must be at least a millisecond after the end time of the previous
-      # interval. For CUMULATIVE metrics, the start time and end time must specify a a
+      # interval. For CUMULATIVE metrics, the start time and end time must specify a
       # non-zero interval, with subsequent points specifying the same start time and
       # increasing end times, until an event resets the cumulative value to zero and
       # sets a new start time for the following points. The new start time must be at
