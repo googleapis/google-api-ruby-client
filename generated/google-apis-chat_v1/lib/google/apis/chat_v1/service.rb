@@ -57,6 +57,10 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] request_id
+        #   Optional. A unique request ID for this message. If a message has already been
+        #   created in the space with this request ID, the subsequent request will return
+        #   the existing message and no new message will be created.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -82,13 +86,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_dm(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_dm(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -101,6 +106,10 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] request_id
+        #   Optional. A unique request ID for this message. If a message has already been
+        #   created in the space with this request ID, the subsequent request will return
+        #   the existing message and no new message will be created.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -126,13 +135,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhooks_dm(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhooks_dm(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -145,6 +155,10 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] request_id
+        #   Optional. A unique request ID for this message. If a message has already been
+        #   created in the space with this request ID, the subsequent request will return
+        #   the existing message and no new message will be created.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -170,13 +184,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_dm_conversation(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_dm_conversation(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -227,6 +242,10 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] request_id
+        #   Optional. A unique request ID for this message. If a message has already been
+        #   created in the space with this request ID, the subsequent request will return
+        #   the existing message and no new message will be created.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -252,13 +271,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_room(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_room(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -271,6 +291,10 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] request_id
+        #   Optional. A unique request ID for this message. If a message has already been
+        #   created in the space with this request ID, the subsequent request will return
+        #   the existing message and no new message will be created.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -296,13 +320,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhooks_room(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhooks_room(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -315,6 +340,10 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] request_id
+        #   Optional. A unique request ID for this message. If a message has already been
+        #   created in the space with this request ID, the subsequent request will return
+        #   the existing message and no new message will be created.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -340,13 +369,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def messages_room_conversation(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def messages_room_conversation(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -356,7 +386,7 @@ module Google
         # Returns a space.
         # @param [String] name
         #   Required. Resource name of the space, in the form "spaces/*". Example: spaces/
-        #   AAAAMpdlehY
+        #   AAAAAAAAAAAA
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -424,6 +454,10 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] request_id
+        #   Optional. A unique request ID for this message. If a message has already been
+        #   created in the space with this request ID, the subsequent request will return
+        #   the existing message and no new message will be created.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -449,13 +483,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def webhooks_space(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def webhooks_space(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/webhooks', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -536,6 +571,10 @@ module Google
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
         #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] request_id
+        #   Optional. A unique request ID for this message. If a message has already been
+        #   created in the space with this request ID, the subsequent request will return
+        #   the existing message and no new message will be created.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -561,13 +600,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_space_message(parent, message_object = nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_space_message(parent, message_object = nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['threadKey'] = thread_key unless thread_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -638,6 +678,8 @@ module Google
         
         # Updates a message.
         # @param [String] name
+        #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAMpdlehY/
+        #   messages/UMxbHmzDlr4.UMxbHmzDlr4`
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] update_mask
         #   Required. The field paths to be updated, comma separated if there are multiple.
