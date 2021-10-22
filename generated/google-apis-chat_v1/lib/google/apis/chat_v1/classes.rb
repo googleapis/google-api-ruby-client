@@ -2416,7 +2416,8 @@ module Google
         # @return [String]
         attr_accessor :last_update_time
       
-        # 
+        # Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAMpdlehY/
+        # messages/UMxbHmzDlr4.UMxbHmzDlr4`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2625,7 +2626,7 @@ module Google
         attr_accessor :display_name
       
         # Resource name of the space, in the form "spaces/*". Example: spaces/
-        # AAAAMpdlehYs
+        # AAAAAAAAAAAA
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
