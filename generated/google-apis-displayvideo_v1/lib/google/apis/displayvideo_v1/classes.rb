@@ -3489,6 +3489,92 @@ module Google
         end
       end
       
+      # A single custom bidding script.
+      class CustomBiddingScript
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether the script is currently being used for scoring by the
+        # parent algorithm.
+        # Corresponds to the JSON property `active`
+        # @return [Boolean]
+        attr_accessor :active
+        alias_method :active?, :active
+      
+        # Output only. The time when the script was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The unique ID of the custom bidding algorithm the script belongs
+        # to.
+        # Corresponds to the JSON property `customBiddingAlgorithmId`
+        # @return [Fixnum]
+        attr_accessor :custom_bidding_algorithm_id
+      
+        # Output only. The unique ID of the custom bidding script.
+        # Corresponds to the JSON property `customBiddingScriptId`
+        # @return [Fixnum]
+        attr_accessor :custom_bidding_script_id
+      
+        # Output only. Error details of a rejected custom bidding script. This field
+        # will only be populated when Script.state is REJECTED.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DisplayvideoV1::ScriptError>]
+        attr_accessor :errors
+      
+        # Output only. The resource name of the custom bidding script.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The reference to the uploaded custom bidding script file.
+        # Corresponds to the JSON property `script`
+        # @return [Google::Apis::DisplayvideoV1::CustomBiddingScriptRef]
+        attr_accessor :script
+      
+        # Output only. The state of the custom bidding script.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_bidding_algorithm_id = args[:custom_bidding_algorithm_id] if args.key?(:custom_bidding_algorithm_id)
+          @custom_bidding_script_id = args[:custom_bidding_script_id] if args.key?(:custom_bidding_script_id)
+          @errors = args[:errors] if args.key?(:errors)
+          @name = args[:name] if args.key?(:name)
+          @script = args[:script] if args.key?(:script)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The reference to the uploaded custom bidding script file.
+      class CustomBiddingScriptRef
+        include Google::Apis::Core::Hashable
+      
+        # A resource name to be used in media.download to Download the script files. Or
+        # media.upload to Upload the script files. Resource names have the format `
+        # customBiddingAlgorithms/`custom_bidding_algorithm_id`/scriptRef/`ref_id``.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
       # Describes a custom list entity, such as a custom affinity or custom intent
       # audience list.
       class CustomList
@@ -6428,6 +6514,34 @@ module Google
       end
       
       # 
+      class ListCustomBiddingScriptsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of custom bidding scripts. This list will be absent if empty.
+        # Corresponds to the JSON property `customBiddingScripts`
+        # @return [Array<Google::Apis::DisplayvideoV1::CustomBiddingScript>]
+        attr_accessor :custom_bidding_scripts
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListCustomBiddingScriptsRequest`
+        # method to retrieve the next page of results. If this field is null, it means
+        # this is the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_bidding_scripts = args[:custom_bidding_scripts] if args.key?(:custom_bidding_scripts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
       class ListCustomListsResponse
         include Google::Apis::Core::Hashable
       
@@ -8594,6 +8708,43 @@ module Google
           @creative_and_landing_page_review_status = args[:creative_and_landing_page_review_status] if args.key?(:creative_and_landing_page_review_status)
           @exchange_review_statuses = args[:exchange_review_statuses] if args.key?(:exchange_review_statuses)
           @publisher_review_statuses = args[:publisher_review_statuses] if args.key?(:publisher_review_statuses)
+        end
+      end
+      
+      # An error message for a custom bidding script.
+      class ScriptError
+        include Google::Apis::Core::Hashable
+      
+        # The column number in the script where the error was thrown.
+        # Corresponds to the JSON property `column`
+        # @return [Fixnum]
+        attr_accessor :column
+      
+        # The type of error.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # The detailed error message.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # The line number in the script where the error was thrown.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @line = args[:line] if args.key?(:line)
         end
       end
       

@@ -508,6 +508,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomBiddingScript
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomBiddingScriptRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -982,6 +994,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListCustomBiddingScriptsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCustomListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1373,6 +1391,12 @@ module Google
       end
       
       class ReviewStatusInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScriptError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2468,6 +2492,29 @@ module Google
         end
       end
       
+      class CustomBiddingScript
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, as: 'active'
+          property :create_time, as: 'createTime'
+          property :custom_bidding_algorithm_id, :numeric_string => true, as: 'customBiddingAlgorithmId'
+          property :custom_bidding_script_id, :numeric_string => true, as: 'customBiddingScriptId'
+          collection :errors, as: 'errors', class: Google::Apis::DisplayvideoV1::ScriptError, decorator: Google::Apis::DisplayvideoV1::ScriptError::Representation
+      
+          property :name, as: 'name'
+          property :script, as: 'script', class: Google::Apis::DisplayvideoV1::CustomBiddingScriptRef, decorator: Google::Apis::DisplayvideoV1::CustomBiddingScriptRef::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class CustomBiddingScriptRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
       class CustomList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3259,6 +3306,15 @@ module Google
         end
       end
       
+      class ListCustomBiddingScriptsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_bidding_scripts, as: 'customBiddingScripts', class: Google::Apis::DisplayvideoV1::CustomBiddingScript, decorator: Google::Apis::DisplayvideoV1::CustomBiddingScript::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListCustomListsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3863,6 +3919,16 @@ module Google
       
           collection :publisher_review_statuses, as: 'publisherReviewStatuses', class: Google::Apis::DisplayvideoV1::PublisherReviewStatus, decorator: Google::Apis::DisplayvideoV1::PublisherReviewStatus::Representation
       
+        end
+      end
+      
+      class ScriptError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, :numeric_string => true, as: 'column'
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+          property :line, :numeric_string => true, as: 'line'
         end
       end
       
