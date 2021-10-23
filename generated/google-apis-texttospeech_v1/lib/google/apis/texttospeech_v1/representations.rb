@@ -28,7 +28,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListVoicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,11 +94,39 @@ module Google
         end
       end
       
+      class ImportDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_cloud_storage_uri, as: 'csvCloudStorageUri'
+        end
+      end
+      
       class ListVoicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :voices, as: 'voices', class: Google::Apis::TexttospeechV1::Voice, decorator: Google::Apis::TexttospeechV1::Voice::Representation
       
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::TexttospeechV1::Status, decorator: Google::Apis::TexttospeechV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

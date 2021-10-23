@@ -31,6 +31,9 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View, manage and query your Dialogflow agents
+      AUTH_DIALOGFLOW = 'https://www.googleapis.com/auth/dialogflow'
     end
   end
 end
