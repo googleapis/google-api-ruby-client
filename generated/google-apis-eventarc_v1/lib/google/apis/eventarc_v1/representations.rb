@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Gke
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -201,6 +207,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_run, as: 'cloudRun', class: Google::Apis::EventarcV1::CloudRun, decorator: Google::Apis::EventarcV1::CloudRun::Representation
       
+          property :gke, as: 'gke', class: Google::Apis::EventarcV1::Gke, decorator: Google::Apis::EventarcV1::Gke::Representation
+      
         end
       end
       
@@ -225,6 +233,17 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class Gke
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+          property :location, as: 'location'
+          property :namespace, as: 'namespace'
+          property :path, as: 'path'
+          property :service, as: 'service'
         end
       end
       
