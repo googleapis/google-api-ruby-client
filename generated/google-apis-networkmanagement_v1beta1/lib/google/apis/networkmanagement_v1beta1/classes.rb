@@ -202,6 +202,25 @@ module Google
         end
       end
       
+      # Wrapper for cloud function attributes.
+      class CloudFunctionEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # A [Cloud function](https://cloud.google.com/functions) name.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # For display only. Metadata associated with a Cloud SQL instance.
       class CloudSqlInstanceInfo
         include Google::Apis::Core::Hashable
@@ -411,6 +430,11 @@ module Google
       class Endpoint
         include Google::Apis::Core::Hashable
       
+        # Wrapper for cloud function attributes.
+        # Corresponds to the JSON property `cloudFunction`
+        # @return [Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint]
+        attr_accessor :cloud_function
+      
         # A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         # Corresponds to the JSON property `cloudSqlInstance`
         # @return [String]
@@ -469,6 +493,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @gke_master_cluster = args[:gke_master_cluster] if args.key?(:gke_master_cluster)
           @instance = args[:instance] if args.key?(:instance)
