@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomVoiceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListVoicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -79,6 +85,14 @@ module Google
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :speaking_rate, as: 'speakingRate'
           property :volume_gain_db, as: 'volumeGainDb'
+        end
+      end
+      
+      class CustomVoiceParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model, as: 'model'
+          property :reported_usage, as: 'reportedUsage'
         end
       end
       
@@ -143,6 +157,8 @@ module Google
       class VoiceSelectionParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_voice, as: 'customVoice', class: Google::Apis::TexttospeechV1beta1::CustomVoiceParams, decorator: Google::Apis::TexttospeechV1beta1::CustomVoiceParams::Representation
+      
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
           property :ssml_gender, as: 'ssmlGender'

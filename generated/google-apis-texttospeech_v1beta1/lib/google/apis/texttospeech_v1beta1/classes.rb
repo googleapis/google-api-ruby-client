@@ -93,6 +93,31 @@ module Google
         end
       end
       
+      # Description of the custom voice to be synthesized.
+      class CustomVoiceParams
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the AutoML model that synthesizes the custom voice.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Optional. The usage of the synthesized audio to be reported.
+        # Corresponds to the JSON property `reportedUsage`
+        # @return [String]
+        attr_accessor :reported_usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+          @reported_usage = args[:reported_usage] if args.key?(:reported_usage)
+        end
+      end
+      
       # The message returned to the client by the `ListVoices` method.
       class ListVoicesResponse
         include Google::Apis::Core::Hashable
@@ -286,6 +311,11 @@ module Google
       class VoiceSelectionParams
         include Google::Apis::Core::Hashable
       
+        # Description of the custom voice to be synthesized.
+        # Corresponds to the JSON property `customVoice`
+        # @return [Google::Apis::TexttospeechV1beta1::CustomVoiceParams]
+        attr_accessor :custom_voice
+      
         # Required. The language (and potentially also the region) of the voice
         # expressed as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language
         # tag, e.g. "en-US". This should not include a script tag (e.g. use "cmn-cn"
@@ -321,6 +351,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_voice = args[:custom_voice] if args.key?(:custom_voice)
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
