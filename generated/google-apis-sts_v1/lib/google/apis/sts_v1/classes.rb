@@ -22,7 +22,7 @@ module Google
   module Apis
     module StsV1
       
-      # Associates `members` with a `role`.
+      # Associates `members`, or principals, with a `role`.
       class GoogleIamV1Binding
         include Google::Apis::Core::Hashable
       
@@ -45,7 +45,7 @@ module Google
         # @return [Google::Apis::StsV1::GoogleTypeExpr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Cloud Platform resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -75,8 +75,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
-        # , or `roles/owner`.
+        # Role that is assigned to the list of `members`, or principals. For example, `
+        # roles/viewer`, `roles/editor`, or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
