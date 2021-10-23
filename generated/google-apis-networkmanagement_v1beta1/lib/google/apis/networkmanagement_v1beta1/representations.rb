@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudFunctionEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudSqlInstanceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -315,6 +321,13 @@ module Google
         end
       end
       
+      class CloudFunctionEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
       class CloudSqlInstanceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -374,6 +387,8 @@ module Google
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint, decorator: Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint::Representation
+      
           property :cloud_sql_instance, as: 'cloudSqlInstance'
           property :gke_master_cluster, as: 'gkeMasterCluster'
           property :instance, as: 'instance'
