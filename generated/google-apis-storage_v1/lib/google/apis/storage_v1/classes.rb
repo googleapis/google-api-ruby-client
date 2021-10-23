@@ -31,6 +31,11 @@ module Google
         # @return [Array<Google::Apis::StorageV1::BucketAccessControl>]
         attr_accessor :acl
       
+        # The bucket's Autoclass configuration.
+        # Corresponds to the JSON property `autoclass`
+        # @return [Google::Apis::StorageV1::Bucket::Autoclass]
+        attr_accessor :autoclass
+      
         # The bucket's billing configuration.
         # Corresponds to the JSON property `billing`
         # @return [Google::Apis::StorageV1::Bucket::Billing]
@@ -212,6 +217,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acl = args[:acl] if args.key?(:acl)
+          @autoclass = args[:autoclass] if args.key?(:autoclass)
           @billing = args[:billing] if args.key?(:billing)
           @cors_configurations = args[:cors_configurations] if args.key?(:cors_configurations)
           @custom_placement_config = args[:custom_placement_config] if args.key?(:custom_placement_config)
@@ -240,6 +246,33 @@ module Google
           @updated = args[:updated] if args.key?(:updated)
           @versioning = args[:versioning] if args.key?(:versioning)
           @website = args[:website] if args.key?(:website)
+        end
+        
+        # The bucket's Autoclass configuration.
+        class Autoclass
+          include Google::Apis::Core::Hashable
+        
+          # Whether or not Autoclass is enabled on this bucket
+          # Corresponds to the JSON property `enabled`
+          # @return [Boolean]
+          attr_accessor :enabled
+          alias_method :enabled?, :enabled
+        
+          # A date and time in RFC 3339 format representing the instant at which "enabled"
+          # was last toggled.
+          # Corresponds to the JSON property `toggleTime`
+          # @return [DateTime]
+          attr_accessor :toggle_time
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @enabled = args[:enabled] if args.key?(:enabled)
+            @toggle_time = args[:toggle_time] if args.key?(:toggle_time)
+          end
         end
         
         # The bucket's billing configuration.

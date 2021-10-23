@@ -25,6 +25,12 @@ module Google
       class Bucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Autoclass
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Billing
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -285,6 +291,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :acl, as: 'acl', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
       
+          property :autoclass, as: 'autoclass', class: Google::Apis::StorageV1::Bucket::Autoclass, decorator: Google::Apis::StorageV1::Bucket::Autoclass::Representation
+      
           property :billing, as: 'billing', class: Google::Apis::StorageV1::Bucket::Billing, decorator: Google::Apis::StorageV1::Bucket::Billing::Representation
       
           collection :cors_configurations, as: 'cors', class: Google::Apis::StorageV1::Bucket::CorsConfiguration, decorator: Google::Apis::StorageV1::Bucket::CorsConfiguration::Representation
@@ -327,6 +335,15 @@ module Google
       
           property :website, as: 'website', class: Google::Apis::StorageV1::Bucket::Website, decorator: Google::Apis::StorageV1::Bucket::Website::Representation
       
+        end
+        
+        class Autoclass
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :enabled, as: 'enabled'
+            property :toggle_time, as: 'toggleTime', type: DateTime
+        
+          end
         end
         
         class Billing
