@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectAgentResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +245,12 @@ module Google
       end
       
       class FeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateConnectManifestResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -299,6 +311,12 @@ module Google
       end
       
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMembershipsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshMembershipState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +455,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TypeMeta
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -760,6 +790,15 @@ module Google
         end
       end
       
+      class ConnectAgentResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :manifest, as: 'manifest'
+          property :type, as: 'type', class: Google::Apis::GkehubV1alpha::TypeMeta, decorator: Google::Apis::GkehubV1alpha::TypeMeta::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -810,6 +849,14 @@ module Google
           property :code, as: 'code'
           property :description, as: 'description'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GenerateConnectManifestResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :manifest, as: 'manifest', class: Google::Apis::GkehubV1alpha::ConnectAgentResource, decorator: Google::Apis::GkehubV1alpha::ConnectAgentResource::Representation
+      
         end
       end
       
@@ -916,6 +963,16 @@ module Google
         end
       end
       
+      class ListMembershipsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::GkehubV1alpha::Membership, decorator: Google::Apis::GkehubV1alpha::Membership::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -977,6 +1034,8 @@ module Google
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec::Representation
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec::Representation
+      
+          property :mesh, as: 'mesh', class: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec::Representation
       
         end
       end
@@ -1103,6 +1162,12 @@ module Google
         end
       end
       
+      class ServiceMeshMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ServiceMeshMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1139,6 +1204,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TypeMeta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
         end
       end
     end
