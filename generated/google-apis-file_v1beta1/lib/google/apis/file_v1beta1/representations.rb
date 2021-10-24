@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RevertInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -550,6 +556,13 @@ module Google
           property :file_share, as: 'fileShare'
           property :source_backup, as: 'sourceBackup'
           property :source_snapshot, as: 'sourceSnapshot'
+        end
+      end
+      
+      class RevertInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_snapshot_id, as: 'targetSnapshotId'
         end
       end
       
