@@ -1242,7 +1242,7 @@ module Google
         end
       end
       
-      # RestoreInstanceRequest restores an existing instances's file share from a
+      # RestoreInstanceRequest restores an existing instance's file share from a
       # backup.
       class RestoreInstanceRequest
         include Google::Apis::Core::Hashable
