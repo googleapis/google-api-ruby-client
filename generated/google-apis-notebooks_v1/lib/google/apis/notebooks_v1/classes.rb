@@ -49,7 +49,7 @@ module Google
         end
       end
       
-      # Associates `members` with a `role`.
+      # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
       
@@ -72,7 +72,7 @@ module Google
         # @return [Google::Apis::NotebooksV1::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Cloud Platform resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -102,8 +102,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
-        # , or `roles/owner`.
+        # Role that is assigned to the list of `members`, or principals. For example, `
+        # roles/viewer`, `roles/editor`, or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -165,8 +165,8 @@ module Google
       class DataprocParameters
         include Google::Apis::Core::Hashable
       
-        # URI for cluster used to run Dataproc execution. Format: 'projects/`PROJECT_ID`/
-        # regions/`REGION`/clusters/`CLUSTER_NAME`
+        # URI for cluster used to run Dataproc execution. Format: `projects/`PROJECT_ID`/
+        # regions/`REGION`/clusters/`CLUSTER_NAME``
         # Corresponds to the JSON property `cluster`
         # @return [String]
         attr_accessor :cluster
@@ -507,8 +507,8 @@ module Google
         attr_accessor :dataproc_parameters
       
         # Path to the notebook file to execute. Must be in a Google Cloud Storage bucket.
-        # Format: gs://`bucket_name`/`folder`/`notebook_file_name` Ex: gs://
-        # notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        # Format: `gs://`bucket_name`/`folder`/`notebook_file_name`` Ex: `gs://
+        # notebook_user/scheduled_notebooks/sentiment_notebook.ipynb`
         # Corresponds to the JSON property `inputNotebookFile`
         # @return [String]
         attr_accessor :input_notebook_file
@@ -517,6 +517,12 @@ module Google
         # Corresponds to the JSON property `jobType`
         # @return [String]
         attr_accessor :job_type
+      
+        # Name of the kernel spec to use. This must be specified if the kernel spec name
+        # on the execution target does not match the name in the input notebook file.
+        # Corresponds to the JSON property `kernelSpec`
+        # @return [String]
+        attr_accessor :kernel_spec
       
         # Labels for execution. If execution is scheduled, a field included will be 'nbs-
         # scheduled'. Otherwise, it is an immediate execution, and an included field
@@ -547,8 +553,8 @@ module Google
         attr_accessor :master_type
       
         # Path to the notebook folder to write to. Must be in a Google Cloud Storage
-        # bucket path. Format: gs://`bucket_name`/`folder` Ex: gs://notebook_user/
-        # scheduled_notebooks
+        # bucket path. Format: `gs://`bucket_name`/`folder`` Ex: `gs://notebook_user/
+        # scheduled_notebooks`
         # Corresponds to the JSON property `outputNotebookFolder`
         # @return [String]
         attr_accessor :output_notebook_folder
@@ -561,7 +567,7 @@ module Google
         # Parameters to be overridden in the notebook during execution. Ref https://
         # papermill.readthedocs.io/en/latest/usage-parameterize.html on how to
         # specifying parameters in the input notebook and pass them here in an YAML file.
-        # Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+        # Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
         # Corresponds to the JSON property `paramsYamlFile`
         # @return [String]
         attr_accessor :params_yaml_file
@@ -595,6 +601,7 @@ module Google
           @dataproc_parameters = args[:dataproc_parameters] if args.key?(:dataproc_parameters)
           @input_notebook_file = args[:input_notebook_file] if args.key?(:input_notebook_file)
           @job_type = args[:job_type] if args.key?(:job_type)
+          @kernel_spec = args[:kernel_spec] if args.key?(:kernel_spec)
           @labels = args[:labels] if args.key?(:labels)
           @master_type = args[:master_type] if args.key?(:master_type)
           @output_notebook_folder = args[:output_notebook_folder] if args.key?(:output_notebook_folder)
@@ -853,8 +860,8 @@ module Google
         alias_method :no_remove_data_disk?, :no_remove_data_disk
       
         # Path to a Bash script that automatically runs after a notebook instance fully
-        # boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-
-        # name).
+        # boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/
+        # file-name`).
         # Corresponds to the JSON property `postStartupScript`
         # @return [String]
         attr_accessor :post_startup_script
@@ -1085,9 +1092,9 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Executions IDs that could not be reached. For example, ['projects/`project_id`/
+        # Executions IDs that could not be reached. For example: ['projects/`project_id`/
         # location/`location`/executions/imagenet_test1', 'projects/`project_id`/
-        # location/`location`/executions/classifier_train1'].
+        # location/`location`/executions/classifier_train1']
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1236,9 +1243,9 @@ module Google
         # @return [Array<Google::Apis::NotebooksV1::Schedule>]
         attr_accessor :schedules
       
-        # Schedules that could not be reached. For example, ['projects/`project_id`/
+        # Schedules that could not be reached. For example: ['projects/`project_id`/
         # location/`location`/schedules/monthly_digest', 'projects/`project_id`/location/
-        # `location`/schedules/weekly_sentiment'].
+        # `location`/schedules/weekly_sentiment']
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1593,37 +1600,42 @@ module Google
       
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-      # A `binding` binds one or more `members` to a single `role`. Members can be
-      # user accounts, service accounts, Google groups, and domains (such as G Suite).
-      # A `role` is a named list of permissions; each `role` can be an IAM predefined
-      # role or a user-created custom role. For some types of Google Cloud resources,
-      # a `binding` can also specify a `condition`, which is a logical expression that
-      # allows access to a resource only if the expression evaluates to `true`. A
-      # condition can add constraints based on attributes of the request, the resource,
-      # or both. To learn which resources support conditions in their IAM policies,
-      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-      # title": "expirable access", "description": "Does not grant access after Sep
-      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-      # members: - user:mike@example.com - group:admins@example.com - domain:google.
-      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-      # roles/resourcemanager.organizationViewer condition: title: expirable access
-      # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-      # description of IAM and its features, see the [IAM documentation](https://cloud.
-      # google.com/iam/docs/).
+      # A `binding` binds one or more `members`, or principals, to a single `role`.
+      # Principals can be user accounts, service accounts, Google groups, and domains (
+      # such as G Suite). A `role` is a named list of permissions; each `role` can be
+      # an IAM predefined role or a user-created custom role. For some types of Google
+      # Cloud resources, a `binding` can also specify a `condition`, which is a
+      # logical expression that allows access to a resource only if the expression
+      # evaluates to `true`. A condition can add constraints based on attributes of
+      # the request, the resource, or both. To learn which resources support
+      # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+      # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+      # ], "condition": ` "title": "expirable access", "description": "Does not grant
+      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+      # bindings: - members: - user:mike@example.com - group:admins@example.com -
+      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+      # access description: Does not grant access after Sep 2020 expression: request.
+      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+      # a description of IAM and its features, see the [IAM documentation](https://
+      # cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a `
-        # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # Associates a list of `members`, or principals, with a `role`. Optionally, may
+        # specify a `condition` that determines how and when the `bindings` are applied.
+        # Each of the `bindings` must contain at least one principal. The `bindings` in
+        # a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        # can be Google groups. Each occurrence of a principal counts towards these
+        # limits. For example, if the `bindings` grant 50 different roles to `user:alice@
+        # example.com`, and not to any other principal, then you can add another 1,450
+        # principals to the `bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::NotebooksV1::Binding>]
         attr_accessor :bindings
@@ -2092,8 +2104,8 @@ module Google
         attr_accessor :notebook_upgrade_schedule
       
         # Path to a Bash script that automatically runs after a notebook instance fully
-        # boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-
-        # name).
+        # boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/
+        # file-name`).
         # Corresponds to the JSON property `postStartupScript`
         # @return [String]
         attr_accessor :post_startup_script
@@ -2231,31 +2243,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::NotebooksV1::Policy]
         attr_accessor :policy
@@ -2704,6 +2716,12 @@ module Google
       class VertexAiParameters
         include Google::Apis::Core::Hashable
       
+        # Environment variables. At most 100 environment variables can be specified and
+        # unique. Example: GCP_BUCKET=gs://my-bucket/samples/
+        # Corresponds to the JSON property `env`
+        # @return [Hash<String,String>]
+        attr_accessor :env
+      
         # The full name of the Compute Engine [network](/compute/docs/networks-and-
         # firewalls#networks) to which the Job should be peered. For example, `projects/
         # 12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/
@@ -2721,6 +2739,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @env = args[:env] if args.key?(:env)
           @network = args[:network] if args.key?(:network)
         end
       end
