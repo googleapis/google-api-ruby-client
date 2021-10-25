@@ -562,6 +562,7 @@ module Google
       
           property :input_notebook_file, as: 'inputNotebookFile'
           property :job_type, as: 'jobType'
+          property :kernel_spec, as: 'kernelSpec'
           hash :labels, as: 'labels'
           property :master_type, as: 'masterType'
           property :output_notebook_folder, as: 'outputNotebookFolder'
@@ -1109,6 +1110,7 @@ module Google
       class VertexAiParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :env, as: 'env'
           property :network, as: 'network'
         end
       end
