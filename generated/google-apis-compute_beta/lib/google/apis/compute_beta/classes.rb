@@ -510,13 +510,17 @@ module Google
         attr_accessor :network_tier
       
         # The DNS domain name for the public PTR record. You can set this field only if
-        # the `setPublicPtr` field is enabled.
+        # the `setPublicPtr` field is enabled in accessConfig. If this field is
+        # unspecified in ipv6AccessConfig, a default PTR record will be createc for
+        # first IP in associated external IPv6 range.
         # Corresponds to the JSON property `publicPtrDomainName`
         # @return [String]
         attr_accessor :public_ptr_domain_name
       
         # Specifies whether a public DNS 'PTR' record should be created to map the
-        # external IP address of the instance to a DNS domain name.
+        # external IP address of the instance to a DNS domain name. This field is not
+        # used in ipv6AccessConfig. A default PTR record will be created if the VM has
+        # external IPv6 range associated.
         # Corresponds to the JSON property `setPublicPtr`
         # @return [Boolean]
         attr_accessor :set_public_ptr
@@ -2774,7 +2778,7 @@ module Google
         # specified), or else sets the response max-age directive to the lesser of the
         # client_ttl and default_ttl, and also ensures a "public" cache-control
         # directive is present. If a client TTL is not specified, a default value (1
-        # hour) will be used. The maximum allowed value is 86400s (1 day).
+        # hour) will be used. The maximum allowed value is 31,622,400s (1 year).
         # Corresponds to the JSON property `clientTtl`
         # @return [Fixnum]
         attr_accessor :client_ttl
@@ -3589,7 +3593,7 @@ module Google
         # specified), or else sets the response max-age directive to the lesser of the
         # client_ttl and default_ttl, and also ensures a "public" cache-control
         # directive is present. If a client TTL is not specified, a default value (1
-        # hour) will be used. The maximum allowed value is 86400s (1 day).
+        # hour) will be used. The maximum allowed value is 31,622,400s (1 year).
         # Corresponds to the JSON property `clientTtl`
         # @return [Fixnum]
         attr_accessor :client_ttl
@@ -7582,8 +7586,8 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all
         # following characters (except for the last character) must be a dash, lowercase
         # letter, or digit. The last character must be a lowercase letter or digit.
         # Corresponds to the JSON property `name`
@@ -15328,18 +15332,19 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # 
+        # Note that for MachineImage, this is not supported yet.
         # Corresponds to the JSON property `networkPerformanceConfig`
         # @return [Google::Apis::ComputeBeta::NetworkPerformanceConfig]
         attr_accessor :network_performance_config
       
-        # PostKeyRevocationActionType of the instance.(will be deprecated soon)
+        # PostKeyRevocationActionType of the instance.
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
         attr_accessor :post_key_revocation_action_type
       
         # The private IPv6 google access type for VMs. If not specified, use
-        # INHERIT_FROM_SUBNETWORK as default.
+        # INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not
+        # supported yet.
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
         # @return [String]
         attr_accessor :private_ipv6_google_access
@@ -15350,7 +15355,7 @@ module Google
         attr_accessor :reservation_affinity
       
         # Resource policies (names, not ULRs) applied to instances created from these
-        # properties.
+        # properties. Note that for MachineImage, this is not supported yet.
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Array<String>]
         attr_accessor :resource_policies
@@ -26899,6 +26904,47 @@ module Google
       end
       
       # 
+      class RegionInstanceGroupManagersResizeAdvancedRequest
+        include Google::Apis::Core::Hashable
+      
+        # If this flag is true, the managed instance group attempts to create all
+        # instances initiated by this resize request only once. If there is an error
+        # during creation, the managed instance group does not retry create this
+        # instance, and we will decrease the targetSize of the request instead. If the
+        # flag is false, the group attempts to recreate each instance continuously until
+        # it succeeds. This flag matters only in the first attempt of creation of an
+        # instance. After an instance is successfully created while this flag is enabled,
+        # the instance behaves the same way as all the other instances created with a
+        # regular resize request. In particular, if a running instance dies unexpectedly
+        # at a later time and needs to be recreated, this mode does not affect the
+        # recreation behavior in that scenario. This flag is applicable only to the
+        # current resize request. It does not influence other resize requests in any way.
+        # You can see which instances ar being created in which mode by calling the get
+        # or listManagedInstances API.
+        # Corresponds to the JSON property `noCreationRetries`
+        # @return [Boolean]
+        attr_accessor :no_creation_retries
+        alias_method :no_creation_retries?, :no_creation_retries
+      
+        # The number of running instances that the managed instance group should
+        # maintain at any given time. The group automatically adds or removes instances
+        # to maintain the number of instances specified by this parameter.
+        # Corresponds to the JSON property `targetSize`
+        # @return [Fixnum]
+        attr_accessor :target_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @no_creation_retries = args[:no_creation_retries] if args.key?(:no_creation_retries)
+          @target_size = args[:target_size] if args.key?(:target_size)
+        end
+      end
+      
+      # 
       class RegionInstanceGroupManagersSetAutoHealingRequest
         include Google::Apis::Core::Hashable
       
@@ -29951,6 +29997,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :drain_nat_ips
       
+        # Enable Dynamic Port Allocation. If not specified, it is disabled by default.
+        # If set to true, - Dynamic Port Allocation will be enabled on this NAT config. -
+        # enableEndpointIndependentMapping cannot be set to true. - If minPorts is set,
+        # minPortsPerVm must be set to a power of two greater than or equal to 32. If
+        # minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from
+        # this NAT config.
+        # Corresponds to the JSON property `enableDynamicPortAllocation`
+        # @return [Boolean]
+        attr_accessor :enable_dynamic_port_allocation
+        alias_method :enable_dynamic_port_allocation?, :enable_dynamic_port_allocation
+      
         # 
         # Corresponds to the JSON property `enableEndpointIndependentMapping`
         # @return [Boolean]
@@ -29966,6 +30023,17 @@ module Google
         # Corresponds to the JSON property `logConfig`
         # @return [Google::Apis::ComputeBeta::RouterNatLogConfig]
         attr_accessor :log_config
+      
+        # Maximum number of ports allocated to a VM from this NAT config when Dynamic
+        # Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this
+        # field has no effect. If Dynamic Port Allocation is enabled, and this field is
+        # set, it must be set to a power of two greater than minPortsPerVm, or 64 if
+        # minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field
+        # is not set, a maximum of 65536 ports will be allocated to a VM from this NAT
+        # config.
+        # Corresponds to the JSON property `maxPortsPerVm`
+        # @return [Fixnum]
+        attr_accessor :max_ports_per_vm
       
         # Minimum number of ports allocated to a VM from this NAT config. If not set, a
         # default number of ports is allocated to a VM. This is rounded up to the
@@ -30051,9 +30119,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
+          @enable_dynamic_port_allocation = args[:enable_dynamic_port_allocation] if args.key?(:enable_dynamic_port_allocation)
           @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
+          @max_ports_per_vm = args[:max_ports_per_vm] if args.key?(:max_ports_per_vm)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
           @name = args[:name] if args.key?(:name)
           @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
@@ -33321,7 +33391,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # PostKeyRevocationActionType of the instance. (will be deprecated soon)
+        # PostKeyRevocationActionType of the instance.
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
         attr_accessor :post_key_revocation_action_type
@@ -34984,6 +35054,20 @@ module Google
         # @return [String]
         attr_accessor :policy
       
+        # The number of backends per backend group assigned to each proxy instance or
+        # each service mesh client. An input parameter to the `
+        # CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `
+        # CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `
+        # INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for
+        # Internal HTTP(S) load balancing and required for Traffic Director. If you do
+        # not provide this value, Cloud Load Balancing will calculate it dynamically to
+        # optimize the number of proxies/clients visible to each backend and vice versa.
+        # Must be greater than 0. If `subset_size` is larger than the number of backends/
+        # endpoints, then subsetting is disabled.
+        # Corresponds to the JSON property `subsetSize`
+        # @return [Fixnum]
+        attr_accessor :subset_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -34991,6 +35075,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+          @subset_size = args[:subset_size] if args.key?(:subset_size)
         end
       end
       

@@ -3466,6 +3466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionInstanceGroupManagersResizeAdvancedRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupManagersSetAutoHealingRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12009,6 +12015,14 @@ module Google
         end
       end
       
+      class RegionInstanceGroupManagersResizeAdvancedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_creation_retries, as: 'noCreationRetries'
+          property :target_size, as: 'targetSize'
+        end
+      end
+      
       class RegionInstanceGroupManagersSetAutoHealingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12791,10 +12805,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :drain_nat_ips, as: 'drainNatIps'
+          property :enable_dynamic_port_allocation, as: 'enableDynamicPortAllocation'
           property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::RouterNatLogConfig, decorator: Google::Apis::ComputeBeta::RouterNatLogConfig::Representation
       
+          property :max_ports_per_vm, as: 'maxPortsPerVm'
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
@@ -14043,6 +14059,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy'
+          property :subset_size, as: 'subsetSize'
         end
       end
       
