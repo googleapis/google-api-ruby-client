@@ -719,6 +719,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :entity_meta_data_as_properties
       
+        # List of IntegrationEndpoints in the '/integration-endpoints' directory of the
+        # API proxy. This is a 'manifest' setting designed to provide visibility into
+        # the contents of the API proxy.
+        # Corresponds to the JSON property `integrationEndpoints`
+        # @return [Array<String>]
+        attr_accessor :integration_endpoints
+      
         # Time that the API proxy revision was last modified in milliseconds since epoch.
         # Corresponds to the JSON property `lastModifiedAt`
         # @return [Fixnum]
@@ -819,6 +826,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_meta_data_as_properties = args[:entity_meta_data_as_properties] if args.key?(:entity_meta_data_as_properties)
+          @integration_endpoints = args[:integration_endpoints] if args.key?(:integration_endpoints)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
           @policies = args[:policies] if args.key?(:policies)
