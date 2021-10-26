@@ -1,7 +1,8 @@
 # Release history for google-apis-playcustomapp_v1
 
-### v0.6.0 (2021-10-21)
+### v0.6.0 (2021-10-26)
 
+* Regenerated from discovery document revision 20211022
 * Unspecified changes
 
 ### v0.5.0 (2021-06-29)
