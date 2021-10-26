@@ -1086,6 +1086,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :resource, as: 'resource'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
           property :update_time, as: 'updateTime'
@@ -1327,6 +1328,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :resource, as: 'resource'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
           property :update_time, as: 'updateTime'
@@ -2554,6 +2556,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :resource, as: 'resource'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
           property :update_time, as: 'updateTime'
