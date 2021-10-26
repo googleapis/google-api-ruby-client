@@ -2946,6 +2946,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional version name for this InfoType.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2953,6 +2958,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @version = args[:version] if args.key?(:version)
         end
       end
       

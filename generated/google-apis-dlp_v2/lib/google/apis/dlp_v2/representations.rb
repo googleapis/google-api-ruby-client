@@ -2001,6 +2001,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :version, as: 'version'
         end
       end
       
