@@ -26,7 +26,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         include Google::Apis::Core::Hashable
       
-        # If set to true, it means allowed_package_names will not be enforced.
+        # If set to true, allowed_package_names are not enforced.
         # Corresponds to the JSON property `allowAllPackageNames`
         # @return [Boolean]
         attr_accessor :allow_all_package_names
@@ -221,7 +221,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1IosKeySettings
         include Google::Apis::Core::Hashable
       
-        # If set to true, it means allowed_bundle_ids will not be enforced.
+        # If set to true, allowed_bundle_ids are not enforced.
         # Corresponds to the JSON property `allowAllBundleIds`
         # @return [Boolean]
         attr_accessor :allow_all_bundle_ids
@@ -545,8 +545,8 @@ module Google
         attr_accessor :allow_all_domains
         alias_method :allow_all_domains?, :allow_all_domains
       
-        # Required. Whether this key can be used on AMP (Accelerated Mobile Pages)
-        # websites. This can only be set for the SCORE integration type.
+        # If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites.
+        # This is supported only for the SCORE integration type.
         # Corresponds to the JSON property `allowAmpTraffic`
         # @return [Boolean]
         attr_accessor :allow_amp_traffic
