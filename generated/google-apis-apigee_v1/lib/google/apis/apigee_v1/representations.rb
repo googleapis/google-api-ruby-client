@@ -1384,6 +1384,7 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           hash :entity_meta_data_as_properties, as: 'entityMetaDataAsProperties'
+          collection :integration_endpoints, as: 'integrationEndpoints'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
           collection :policies, as: 'policies'
