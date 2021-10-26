@@ -251,7 +251,7 @@ module Google
       
         # Verification status of the phone number of the business. This status is read
         # only and can be updated only by successful phone verification. Acceptable
-        # values are: - "`verified`" - "`unverified`" "`unspecified`" -
+        # values are: - "`verified`" - "`unverified`"
         # Corresponds to the JSON property `phoneVerificationStatus`
         # @return [String]
         attr_accessor :phone_verification_status
@@ -6952,6 +6952,11 @@ module Google
       class OrderTrackingSignalLineItemDetails
         include Google::Apis::Core::Hashable
       
+        # Brand of the product.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
         # The Global Trade Item Number.
         # Corresponds to the JSON property `gtin`
         # @return [String]
@@ -6967,7 +6972,8 @@ module Google
         # @return [String]
         attr_accessor :mpn
       
-        # Plain text description of this product.
+        # Plain text description of this product (deprecated: Please use product_title
+        # instead).
         # Corresponds to the JSON property `productDescription`
         # @return [String]
         attr_accessor :product_description
@@ -6978,17 +6984,22 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
+        # Plain text title of this product.
+        # Corresponds to the JSON property `productTitle`
+        # @return [String]
+        attr_accessor :product_title
+      
         # Required. The quantity of the line item in the order.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # Merchant SKU for this item.
+        # Merchant SKU for this item (deprecated).
         # Corresponds to the JSON property `sku`
         # @return [String]
         attr_accessor :sku
       
-        # Universal product code for this item.
+        # Universal product code for this item (deprecated: Please use GTIN instead).
         # Corresponds to the JSON property `upc`
         # @return [String]
         attr_accessor :upc
@@ -6999,11 +7010,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @brand = args[:brand] if args.key?(:brand)
           @gtin = args[:gtin] if args.key?(:gtin)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
           @mpn = args[:mpn] if args.key?(:mpn)
           @product_description = args[:product_description] if args.key?(:product_description)
           @product_id = args[:product_id] if args.key?(:product_id)
+          @product_title = args[:product_title] if args.key?(:product_title)
           @quantity = args[:quantity] if args.key?(:quantity)
           @sku = args[:sku] if args.key?(:sku)
           @upc = args[:upc] if args.key?(:upc)
