@@ -510,13 +510,17 @@ module Google
         attr_accessor :network_tier
       
         # The DNS domain name for the public PTR record. You can set this field only if
-        # the `setPublicPtr` field is enabled.
+        # the `setPublicPtr` field is enabled in accessConfig. If this field is
+        # unspecified in ipv6AccessConfig, a default PTR record will be createc for
+        # first IP in associated external IPv6 range.
         # Corresponds to the JSON property `publicPtrDomainName`
         # @return [String]
         attr_accessor :public_ptr_domain_name
       
         # Specifies whether a public DNS 'PTR' record should be created to map the
-        # external IP address of the instance to a DNS domain name.
+        # external IP address of the instance to a DNS domain name. This field is not
+        # used in ipv6AccessConfig. A default PTR record will be created if the VM has
+        # external IPv6 range associated.
         # Corresponds to the JSON property `setPublicPtr`
         # @return [Boolean]
         attr_accessor :set_public_ptr
@@ -2646,7 +2650,7 @@ module Google
         # specified), or else sets the response max-age directive to the lesser of the
         # client_ttl and default_ttl, and also ensures a "public" cache-control
         # directive is present. If a client TTL is not specified, a default value (1
-        # hour) will be used. The maximum allowed value is 86400s (1 day).
+        # hour) will be used. The maximum allowed value is 31,622,400s (1 year).
         # Corresponds to the JSON property `clientTtl`
         # @return [Fixnum]
         attr_accessor :client_ttl
@@ -3412,7 +3416,7 @@ module Google
         # specified), or else sets the response max-age directive to the lesser of the
         # client_ttl and default_ttl, and also ensures a "public" cache-control
         # directive is present. If a client TTL is not specified, a default value (1
-        # hour) will be used. The maximum allowed value is 86400s (1 day).
+        # hour) will be used. The maximum allowed value is 31,622,400s (1 year).
         # Corresponds to the JSON property `clientTtl`
         # @return [Fixnum]
         attr_accessor :client_ttl
@@ -3963,6 +3967,255 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class BfdPacket
+        include Google::Apis::Core::Hashable
+      
+        # The Authentication Present bit of the BFD packet. This is specified in section
+        # 4.1 of RFC5880
+        # Corresponds to the JSON property `authenticationPresent`
+        # @return [Boolean]
+        attr_accessor :authentication_present
+        alias_method :authentication_present?, :authentication_present
+      
+        # The Control Plane Independent bit of the BFD packet. This is specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `controlPlaneIndependent`
+        # @return [Boolean]
+        attr_accessor :control_plane_independent
+        alias_method :control_plane_independent?, :control_plane_independent
+      
+        # The demand bit of the BFD packet. This is specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `demand`
+        # @return [Boolean]
+        attr_accessor :demand
+        alias_method :demand?, :demand
+      
+        # The diagnostic code specifies the local system's reason for the last change in
+        # session state. This allows remote systems to determine the reason that the
+        # previous session failed, for example. These diagnostic codes are specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `diagnostic`
+        # @return [String]
+        attr_accessor :diagnostic
+      
+        # The Final bit of the BFD packet. This is specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `final`
+        # @return [Boolean]
+        attr_accessor :final
+        alias_method :final?, :final
+      
+        # The length of the BFD Control packet in bytes. This is specified in section 4.
+        # 1 of RFC5880
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # The Required Min Echo RX Interval value in the BFD packet. This is specified
+        # in section 4.1 of RFC5880
+        # Corresponds to the JSON property `minEchoRxIntervalMs`
+        # @return [Fixnum]
+        attr_accessor :min_echo_rx_interval_ms
+      
+        # The Required Min RX Interval value in the BFD packet. This is specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `minRxIntervalMs`
+        # @return [Fixnum]
+        attr_accessor :min_rx_interval_ms
+      
+        # The Desired Min TX Interval value in the BFD packet. This is specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `minTxIntervalMs`
+        # @return [Fixnum]
+        attr_accessor :min_tx_interval_ms
+      
+        # The detection time multiplier of the BFD packet. This is specified in section
+        # 4.1 of RFC5880
+        # Corresponds to the JSON property `multiplier`
+        # @return [Fixnum]
+        attr_accessor :multiplier
+      
+        # The multipoint bit of the BFD packet. This is specified in section 4.1 of
+        # RFC5880
+        # Corresponds to the JSON property `multipoint`
+        # @return [Boolean]
+        attr_accessor :multipoint
+        alias_method :multipoint?, :multipoint
+      
+        # The My Discriminator value in the BFD packet. This is specified in section 4.1
+        # of RFC5880
+        # Corresponds to the JSON property `myDiscriminator`
+        # @return [Fixnum]
+        attr_accessor :my_discriminator
+      
+        # The Poll bit of the BFD packet. This is specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `poll`
+        # @return [Boolean]
+        attr_accessor :poll
+        alias_method :poll?, :poll
+      
+        # The current BFD session state as seen by the transmitting system. These states
+        # are specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The version number of the BFD protocol, as specified in section 4.1 of RFC5880.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        # The Your Discriminator value in the BFD packet. This is specified in section 4.
+        # 1 of RFC5880
+        # Corresponds to the JSON property `yourDiscriminator`
+        # @return [Fixnum]
+        attr_accessor :your_discriminator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_present = args[:authentication_present] if args.key?(:authentication_present)
+          @control_plane_independent = args[:control_plane_independent] if args.key?(:control_plane_independent)
+          @demand = args[:demand] if args.key?(:demand)
+          @diagnostic = args[:diagnostic] if args.key?(:diagnostic)
+          @final = args[:final] if args.key?(:final)
+          @length = args[:length] if args.key?(:length)
+          @min_echo_rx_interval_ms = args[:min_echo_rx_interval_ms] if args.key?(:min_echo_rx_interval_ms)
+          @min_rx_interval_ms = args[:min_rx_interval_ms] if args.key?(:min_rx_interval_ms)
+          @min_tx_interval_ms = args[:min_tx_interval_ms] if args.key?(:min_tx_interval_ms)
+          @multiplier = args[:multiplier] if args.key?(:multiplier)
+          @multipoint = args[:multipoint] if args.key?(:multipoint)
+          @my_discriminator = args[:my_discriminator] if args.key?(:my_discriminator)
+          @poll = args[:poll] if args.key?(:poll)
+          @state = args[:state] if args.key?(:state)
+          @version = args[:version] if args.key?(:version)
+          @your_discriminator = args[:your_discriminator] if args.key?(:your_discriminator)
+        end
+      end
+      
+      # Next free: 15
+      class BfdStatus
+        include Google::Apis::Core::Hashable
+      
+        # The BFD session initialization mode for this BGP peer. If set to ACTIVE, the
+        # Cloud Router will initiate the BFD session for this BGP peer. If set to
+        # PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD
+        # session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP
+        # peer.
+        # Corresponds to the JSON property `bfdSessionInitializationMode`
+        # @return [String]
+        attr_accessor :bfd_session_initialization_mode
+      
+        # Unix timestamp of the most recent config update.
+        # Corresponds to the JSON property `configUpdateTimestampMicros`
+        # @return [Fixnum]
+        attr_accessor :config_update_timestamp_micros
+      
+        # Control packet counts for the current BFD session.
+        # Corresponds to the JSON property `controlPacketCounts`
+        # @return [Google::Apis::ComputeV1::BfdStatusPacketCounts]
+        attr_accessor :control_packet_counts
+      
+        # Inter-packet time interval statistics for control packets.
+        # Corresponds to the JSON property `controlPacketIntervals`
+        # @return [Array<Google::Apis::ComputeV1::PacketIntervals>]
+        attr_accessor :control_packet_intervals
+      
+        # The diagnostic code specifies the local system's reason for the last change in
+        # session state. This allows remote systems to determine the reason that the
+        # previous session failed, for example. These diagnostic codes are specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `localDiagnostic`
+        # @return [String]
+        attr_accessor :local_diagnostic
+      
+        # The current BFD session state as seen by the transmitting system. These states
+        # are specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `localState`
+        # @return [String]
+        attr_accessor :local_state
+      
+        # Negotiated transmit interval for control packets.
+        # Corresponds to the JSON property `negotiatedLocalControlTxIntervalMs`
+        # @return [Fixnum]
+        attr_accessor :negotiated_local_control_tx_interval_ms
+      
+        # The most recent Rx control packet for this BFD session.
+        # Corresponds to the JSON property `rxPacket`
+        # @return [Google::Apis::ComputeV1::BfdPacket]
+        attr_accessor :rx_packet
+      
+        # The most recent Tx control packet for this BFD session.
+        # Corresponds to the JSON property `txPacket`
+        # @return [Google::Apis::ComputeV1::BfdPacket]
+        attr_accessor :tx_packet
+      
+        # Session uptime in milliseconds. Value will be 0 if session is not up.
+        # Corresponds to the JSON property `uptimeMs`
+        # @return [Fixnum]
+        attr_accessor :uptime_ms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bfd_session_initialization_mode = args[:bfd_session_initialization_mode] if args.key?(:bfd_session_initialization_mode)
+          @config_update_timestamp_micros = args[:config_update_timestamp_micros] if args.key?(:config_update_timestamp_micros)
+          @control_packet_counts = args[:control_packet_counts] if args.key?(:control_packet_counts)
+          @control_packet_intervals = args[:control_packet_intervals] if args.key?(:control_packet_intervals)
+          @local_diagnostic = args[:local_diagnostic] if args.key?(:local_diagnostic)
+          @local_state = args[:local_state] if args.key?(:local_state)
+          @negotiated_local_control_tx_interval_ms = args[:negotiated_local_control_tx_interval_ms] if args.key?(:negotiated_local_control_tx_interval_ms)
+          @rx_packet = args[:rx_packet] if args.key?(:rx_packet)
+          @tx_packet = args[:tx_packet] if args.key?(:tx_packet)
+          @uptime_ms = args[:uptime_ms] if args.key?(:uptime_ms)
+        end
+      end
+      
+      # 
+      class BfdStatusPacketCounts
+        include Google::Apis::Core::Hashable
+      
+        # Number of packets received since the beginning of the current BFD session.
+        # Corresponds to the JSON property `numRx`
+        # @return [Fixnum]
+        attr_accessor :num_rx
+      
+        # Number of packets received that were rejected because of errors since the
+        # beginning of the current BFD session.
+        # Corresponds to the JSON property `numRxRejected`
+        # @return [Fixnum]
+        attr_accessor :num_rx_rejected
+      
+        # Number of packets received that were successfully processed since the
+        # beginning of the current BFD session.
+        # Corresponds to the JSON property `numRxSuccessful`
+        # @return [Fixnum]
+        attr_accessor :num_rx_successful
+      
+        # Number of packets transmitted since the beginning of the current BFD session.
+        # Corresponds to the JSON property `numTx`
+        # @return [Fixnum]
+        attr_accessor :num_tx
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_rx = args[:num_rx] if args.key?(:num_rx)
+          @num_rx_rejected = args[:num_rx_rejected] if args.key?(:num_rx_rejected)
+          @num_rx_successful = args[:num_rx_successful] if args.key?(:num_rx_successful)
+          @num_tx = args[:num_tx] if args.key?(:num_tx)
         end
       end
       
@@ -7006,8 +7259,8 @@ module Google
       
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        # name must be 1-63 characters long and match the regular expression [a-z]([-a-
-        # z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all
         # following characters (except for the last character) must be a dash, lowercase
         # letter, or digit. The last character must be a lowercase letter or digit.
         # Corresponds to the JSON property `name`
@@ -14478,7 +14731,8 @@ module Google
         attr_accessor :network_interfaces
       
         # The private IPv6 google access type for VMs. If not specified, use
-        # INHERIT_FROM_SUBNETWORK as default.
+        # INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not
+        # supported yet.
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
         # @return [String]
         attr_accessor :private_ipv6_google_access
@@ -14489,7 +14743,7 @@ module Google
         attr_accessor :reservation_affinity
       
         # Resource policies (names, not ULRs) applied to instances created from these
-        # properties.
+        # properties. Note that for MachineImage, this is not supported yet.
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Array<String>]
         attr_accessor :resource_policies
@@ -22347,6 +22601,55 @@ module Google
         end
       end
       
+      # Next free: 7
+      class PacketIntervals
+        include Google::Apis::Core::Hashable
+      
+        # Average observed inter-packet interval in milliseconds.
+        # Corresponds to the JSON property `avgMs`
+        # @return [Fixnum]
+        attr_accessor :avg_ms
+      
+        # From how long ago in the past these intervals were observed.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Maximum observed inter-packet interval in milliseconds.
+        # Corresponds to the JSON property `maxMs`
+        # @return [Fixnum]
+        attr_accessor :max_ms
+      
+        # Minimum observed inter-packet interval in milliseconds.
+        # Corresponds to the JSON property `minMs`
+        # @return [Fixnum]
+        attr_accessor :min_ms
+      
+        # Number of inter-packet intervals from which these statistics were derived.
+        # Corresponds to the JSON property `numIntervals`
+        # @return [Fixnum]
+        attr_accessor :num_intervals
+      
+        # The type of packets for which inter-packet intervals were computed.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avg_ms = args[:avg_ms] if args.key?(:avg_ms)
+          @duration = args[:duration] if args.key?(:duration)
+          @max_ms = args[:max_ms] if args.key?(:max_ms)
+          @min_ms = args[:min_ms] if args.key?(:min_ms)
+          @num_intervals = args[:num_intervals] if args.key?(:num_intervals)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Represents a Packet Mirroring resource. Packet Mirroring clones the traffic of
       # specified instances in your Virtual Private Cloud (VPC) network and forwards
       # it to a collector destination, such as an instance group of an internal TCP/
@@ -25954,6 +26257,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The share setting for reservations and sole tenancy node groups.
+        # Corresponds to the JSON property `shareSettings`
+        # @return [Google::Apis::ComputeV1::ShareSettings]
+        attr_accessor :share_settings
+      
         # This reservation type allows to pre allocate specific instance configuration.
         # Next ID: 5
         # Corresponds to the JSON property `specificReservation`
@@ -25993,6 +26301,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @share_settings = args[:share_settings] if args.key?(:share_settings)
           @specific_reservation = args[:specific_reservation] if args.key?(:specific_reservation)
           @specific_reservation_required = args[:specific_reservation_required] if args.key?(:specific_reservation_required)
           @status = args[:status] if args.key?(:status)
@@ -28689,6 +28998,11 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::Route>]
         attr_accessor :advertised_routes
       
+        # Next free: 15
+        # Corresponds to the JSON property `bfdStatus`
+        # @return [Google::Apis::ComputeV1::BfdStatus]
+        attr_accessor :bfd_status
+      
         # IP address of the local BGP interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
@@ -28749,6 +29063,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
+          @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @name = args[:name] if args.key?(:name)
@@ -30418,6 +30733,25 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # The share setting for reservations and sole tenancy node groups.
+      class ShareSettings
+        include Google::Apis::Core::Hashable
+      
+        # Type of sharing for this shared-reservation
+        # Corresponds to the JSON property `shareType`
+        # @return [String]
+        attr_accessor :share_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @share_type = args[:share_type] if args.key?(:share_type)
         end
       end
       

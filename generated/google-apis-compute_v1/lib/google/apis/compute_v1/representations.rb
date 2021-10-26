@@ -472,6 +472,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BfdPacket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BfdStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BfdStatusPacketCounts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2872,6 +2890,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PacketIntervals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PacketMirroring
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4044,6 +4068,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShareSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -6092,6 +6122,58 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BfdPacket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_present, as: 'authenticationPresent'
+          property :control_plane_independent, as: 'controlPlaneIndependent'
+          property :demand, as: 'demand'
+          property :diagnostic, as: 'diagnostic'
+          property :final, as: 'final'
+          property :length, as: 'length'
+          property :min_echo_rx_interval_ms, as: 'minEchoRxIntervalMs'
+          property :min_rx_interval_ms, as: 'minRxIntervalMs'
+          property :min_tx_interval_ms, as: 'minTxIntervalMs'
+          property :multiplier, as: 'multiplier'
+          property :multipoint, as: 'multipoint'
+          property :my_discriminator, as: 'myDiscriminator'
+          property :poll, as: 'poll'
+          property :state, as: 'state'
+          property :version, as: 'version'
+          property :your_discriminator, as: 'yourDiscriminator'
+        end
+      end
+      
+      class BfdStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bfd_session_initialization_mode, as: 'bfdSessionInitializationMode'
+          property :config_update_timestamp_micros, :numeric_string => true, as: 'configUpdateTimestampMicros'
+          property :control_packet_counts, as: 'controlPacketCounts', class: Google::Apis::ComputeV1::BfdStatusPacketCounts, decorator: Google::Apis::ComputeV1::BfdStatusPacketCounts::Representation
+      
+          collection :control_packet_intervals, as: 'controlPacketIntervals', class: Google::Apis::ComputeV1::PacketIntervals, decorator: Google::Apis::ComputeV1::PacketIntervals::Representation
+      
+          property :local_diagnostic, as: 'localDiagnostic'
+          property :local_state, as: 'localState'
+          property :negotiated_local_control_tx_interval_ms, as: 'negotiatedLocalControlTxIntervalMs'
+          property :rx_packet, as: 'rxPacket', class: Google::Apis::ComputeV1::BfdPacket, decorator: Google::Apis::ComputeV1::BfdPacket::Representation
+      
+          property :tx_packet, as: 'txPacket', class: Google::Apis::ComputeV1::BfdPacket, decorator: Google::Apis::ComputeV1::BfdPacket::Representation
+      
+          property :uptime_ms, :numeric_string => true, as: 'uptimeMs'
+        end
+      end
+      
+      class BfdStatusPacketCounts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_rx, as: 'numRx'
+          property :num_rx_rejected, as: 'numRxRejected'
+          property :num_rx_successful, as: 'numRxSuccessful'
+          property :num_tx, as: 'numTx'
         end
       end
       
@@ -10610,6 +10692,18 @@ module Google
         end
       end
       
+      class PacketIntervals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avg_ms, :numeric_string => true, as: 'avgMs'
+          property :duration, as: 'duration'
+          property :max_ms, :numeric_string => true, as: 'maxMs'
+          property :min_ms, :numeric_string => true, as: 'minMs'
+          property :num_intervals, :numeric_string => true, as: 'numIntervals'
+          property :type, as: 'type'
+        end
+      end
+      
       class PacketMirroring
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11557,6 +11651,8 @@ module Google
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
+      
           property :specific_reservation, as: 'specificReservation', class: Google::Apis::ComputeV1::AllocationSpecificSkuReservation, decorator: Google::Apis::ComputeV1::AllocationSpecificSkuReservation::Representation
       
           property :specific_reservation_required, as: 'specificReservationRequired'
@@ -12248,6 +12344,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advertised_routes, as: 'advertisedRoutes', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::Route::Representation
       
+          property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeV1::BfdStatus, decorator: Google::Apis::ComputeV1::BfdStatus::Representation
+      
           property :ip_address, as: 'ipAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :name, as: 'name'
@@ -12694,6 +12792,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ShareSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :share_type, as: 'shareType'
         end
       end
       
