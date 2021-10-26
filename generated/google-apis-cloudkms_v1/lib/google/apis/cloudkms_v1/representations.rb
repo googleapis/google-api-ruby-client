@@ -307,6 +307,8 @@ module Google
       class AsymmetricSignRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :data_crc32c, :numeric_string => true, as: 'dataCrc32c'
           property :digest, as: 'digest', class: Google::Apis::CloudkmsV1::Digest, decorator: Google::Apis::CloudkmsV1::Digest::Representation
       
           property :digest_crc32c, :numeric_string => true, as: 'digestCrc32c'
@@ -320,6 +322,7 @@ module Google
           property :protection_level, as: 'protectionLevel'
           property :signature, :base64 => true, as: 'signature'
           property :signature_crc32c, :numeric_string => true, as: 'signatureCrc32c'
+          property :verified_data_crc32c, as: 'verifiedDataCrc32c'
           property :verified_digest_crc32c, as: 'verifiedDigestCrc32c'
         end
       end
