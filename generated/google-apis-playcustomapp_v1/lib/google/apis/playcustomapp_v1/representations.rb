@@ -28,12 +28,28 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Organization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomApp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :language_code, as: 'languageCode'
+          collection :organizations, as: 'organizations', class: Google::Apis::PlaycustomappV1::Organization, decorator: Google::Apis::PlaycustomappV1::Organization::Representation
+      
           property :package_name, as: 'packageName'
           property :title, as: 'title'
+        end
+      end
+      
+      class Organization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :organization_id, as: 'organizationId'
+          property :organization_name, as: 'organizationName'
         end
       end
     end
