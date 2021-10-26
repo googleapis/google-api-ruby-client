@@ -2206,6 +2206,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstantSnapshotAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstantSnapshotExportParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2232,6 +2250,24 @@ module Google
       
       class InstantSnapshotsExportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4601,6 +4637,12 @@ module Google
       end
       
       class SavedAttachedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SavedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10472,6 +10514,39 @@ module Google
         end
       end
       
+      class InstantSnapshotAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeAlpha::InstantSnapshotsScopedList, decorator: Google::Apis::ComputeAlpha::InstantSnapshotsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::InstantSnapshotAggregatedList::Warning, decorator: Google::Apis::ComputeAlpha::InstantSnapshotAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InstantSnapshotAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InstantSnapshotAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class InstantSnapshotExportParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10521,6 +10596,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :export_params, as: 'exportParams', class: Google::Apis::ComputeAlpha::InstantSnapshotExportParams, decorator: Google::Apis::ComputeAlpha::InstantSnapshotExportParams::Representation
       
+        end
+      end
+      
+      class InstantSnapshotsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instant_snapshots, as: 'instantSnapshots', class: Google::Apis::ComputeAlpha::InstantSnapshot, decorator: Google::Apis::ComputeAlpha::InstantSnapshot::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::InstantSnapshotsScopedList::Warning, decorator: Google::Apis::ComputeAlpha::InstantSnapshotsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::InstantSnapshotsScopedList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::InstantSnapshotsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -11230,11 +11333,15 @@ module Google
           property :description, as: 'description'
           property :guest_flush, as: 'guestFlush'
           property :id, :numeric_string => true, as: 'id'
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::InstanceProperties, decorator: Google::Apis::ComputeAlpha::InstanceProperties::Representation
+      
           property :kind, as: 'kind'
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          collection :saved_disks, as: 'savedDisks', class: Google::Apis::ComputeAlpha::SavedDisk, decorator: Google::Apis::ComputeAlpha::SavedDisk::Representation
+      
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           collection :source_disk_encryption_keys, as: 'sourceDiskEncryptionKeys', class: Google::Apis::ComputeAlpha::SourceDiskEncryptionKey, decorator: Google::Apis::ComputeAlpha::SourceDiskEncryptionKey::Representation
@@ -12645,6 +12752,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :kind, as: 'kind'
+          hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :operation_group_id, as: 'operationGroupId'
           property :operation_type, as: 'operationType'
@@ -14873,6 +14981,16 @@ module Google
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
           property :type, as: 'type'
+        end
+      end
+      
+      class SavedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :source_disk, as: 'sourceDisk'
+          property :storage_bytes, :numeric_string => true, as: 'storageBytes'
+          property :storage_bytes_status, as: 'storageBytesStatus'
         end
       end
       
