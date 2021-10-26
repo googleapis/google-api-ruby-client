@@ -1787,12 +1787,13 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Input only. The TTL (time to live) of the product. If it is set, expire_time
-        # is set as current timestamp plus ttl. The derived expire_time is returned in
-        # the output and ttl is left blank when retrieving the Product. If it is set,
-        # the product is not available for SearchService.Search after current timestamp
-        # plus ttl. However, the product can still be retrieved by ProductService.
-        # GetProduct and ProductService.ListProducts.
+        # Input only. The TTL (time to live) of the product. If it is set, it must be a
+        # non-negative value, and expire_time is set as current timestamp plus ttl. The
+        # derived expire_time is returned in the output and ttl is left blank when
+        # retrieving the Product. If it is set, the product is not available for
+        # SearchService.Search after current timestamp plus ttl. However, the product
+        # can still be retrieved by ProductService.GetProduct and ProductService.
+        # ListProducts.
         # Corresponds to the JSON property `ttl`
         # @return [String]
         attr_accessor :ttl
