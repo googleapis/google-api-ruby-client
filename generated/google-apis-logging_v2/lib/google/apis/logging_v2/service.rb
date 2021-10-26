@@ -119,9 +119,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new exclusion in a specified parent resource. Only log entries
-        # belonging to that resource can be excluded. You can have up to 10 exclusions
-        # in a resource.
+        # Creates a new exclusion in the _Default sink in a specified parent resource.
+        # Only log entries belonging to that resource can be excluded. You can have up
+        # to 10 exclusions in a resource.
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -157,7 +157,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an exclusion.
+        # Deletes an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -191,7 +191,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the description of an exclusion.
+        # Gets the description of an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -225,7 +225,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the exclusions in a parent resource.
+        # Lists all the exclusions on the _Default sink in a parent resource.
         # @param [String] parent
         #   Required. The parent resource whose exclusions are to be listed. "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -268,7 +268,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes one or more properties of an existing exclusion.
+        # Changes one or more properties of an existing exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -1377,9 +1377,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new exclusion in a specified parent resource. Only log entries
-        # belonging to that resource can be excluded. You can have up to 10 exclusions
-        # in a resource.
+        # Creates a new exclusion in the _Default sink in a specified parent resource.
+        # Only log entries belonging to that resource can be excluded. You can have up
+        # to 10 exclusions in a resource.
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -1415,7 +1415,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an exclusion.
+        # Deletes an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -1449,7 +1449,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the description of an exclusion.
+        # Gets the description of an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -1483,7 +1483,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the exclusions in a parent resource.
+        # Lists all the exclusions on the _Default sink in a parent resource.
         # @param [String] parent
         #   Required. The parent resource whose exclusions are to be listed. "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -1526,7 +1526,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes one or more properties of an existing exclusion.
+        # Changes one or more properties of an existing exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -1571,9 +1571,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new exclusion in a specified parent resource. Only log entries
-        # belonging to that resource can be excluded. You can have up to 10 exclusions
-        # in a resource.
+        # Creates a new exclusion in the _Default sink in a specified parent resource.
+        # Only log entries belonging to that resource can be excluded. You can have up
+        # to 10 exclusions in a resource.
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -1609,7 +1609,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an exclusion.
+        # Deletes an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -1643,7 +1643,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the description of an exclusion.
+        # Gets the description of an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -1677,7 +1677,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the exclusions in a parent resource.
+        # Lists all the exclusions on the _Default sink in a parent resource.
         # @param [String] parent
         #   Required. The parent resource whose exclusions are to be listed. "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -1720,7 +1720,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes one or more properties of an existing exclusion.
+        # Changes one or more properties of an existing exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -3531,17 +3531,18 @@ module Google
         end
         
         # Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the
-        # Logs Router can currently only be configured for GCP organizations. Once
-        # configured, it applies to all projects and folders in the GCP organization.See
-        # Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/
-        # managed-encryption) for more information.
+        # Logs Router can currently only be configured for Google Cloud organizations.
+        # Once configured, it applies to all projects and folders in the Google Cloud
+        # organization.See Enabling CMEK for Logs Router (https://cloud.google.com/
+        # logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
         #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
         #   cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the
-        #   Logs Router can currently only be configured for GCP organizations. Once
-        #   configured, it applies to all projects and folders in the GCP organization.
+        #   Logs Router can currently only be configured for Google Cloud organizations.
+        #   Once configured, it applies to all projects and folders in the Google Cloud
+        #   organization.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3570,20 +3571,21 @@ module Google
         end
         
         # Updates the Logs Router CMEK settings for the given resource.Note: CMEK for
-        # the Logs Router can currently only be configured for GCP organizations. Once
-        # configured, it applies to all projects and folders in the GCP organization.
-        # UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
-        # associated service account does not have the required roles/cloudkms.
-        # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
-        # is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/
-        # logging/docs/routing/managed-encryption) for more information.
+        # the Logs Router can currently only be configured for Google Cloud
+        # organizations. Once configured, it applies to all projects and folders in the
+        # Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
+        # invalid, or 2) the associated service account does not have the required roles/
+        # cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access
+        # to the key is disabled.See Enabling CMEK for Logs Router (https://cloud.google.
+        # com/logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
         #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
         #   cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the
-        #   Logs Router can currently only be configured for GCP organizations. Once
-        #   configured, it applies to all projects and folders in the GCP organization.
+        #   Logs Router can currently only be configured for Google Cloud organizations.
+        #   Once configured, it applies to all projects and folders in the Google Cloud
+        #   organization.
         # @param [Google::Apis::LoggingV2::CmekSettings] cmek_settings_object
         # @param [String] update_mask
         #   Optional. Field mask identifying which fields from cmek_settings should be
@@ -3620,9 +3622,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new exclusion in a specified parent resource. Only log entries
-        # belonging to that resource can be excluded. You can have up to 10 exclusions
-        # in a resource.
+        # Creates a new exclusion in the _Default sink in a specified parent resource.
+        # Only log entries belonging to that resource can be excluded. You can have up
+        # to 10 exclusions in a resource.
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -3658,7 +3660,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an exclusion.
+        # Deletes an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -3692,7 +3694,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the description of an exclusion.
+        # Gets the description of an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -3726,7 +3728,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the exclusions in a parent resource.
+        # Lists all the exclusions on the _Default sink in a parent resource.
         # @param [String] parent
         #   Required. The parent resource whose exclusions are to be listed. "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -3769,7 +3771,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes one or more properties of an existing exclusion.
+        # Changes one or more properties of an existing exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -4818,9 +4820,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new exclusion in a specified parent resource. Only log entries
-        # belonging to that resource can be excluded. You can have up to 10 exclusions
-        # in a resource.
+        # Creates a new exclusion in the _Default sink in a specified parent resource.
+        # Only log entries belonging to that resource can be excluded. You can have up
+        # to 10 exclusions in a resource.
         # @param [String] parent
         #   Required. The parent resource in which to create the exclusion: "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -4856,7 +4858,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an exclusion.
+        # Deletes an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion to delete: "projects/[
         #   PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/
@@ -4890,7 +4892,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the description of an exclusion.
+        # Gets the description of an exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -4924,7 +4926,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the exclusions in a parent resource.
+        # Lists all the exclusions on the _Default sink in a parent resource.
         # @param [String] parent
         #   Required. The parent resource whose exclusions are to be listed. "projects/[
         #   PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[
@@ -4967,7 +4969,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes one or more properties of an existing exclusion.
+        # Changes one or more properties of an existing exclusion in the _Default sink.
         # @param [String] name
         #   Required. The resource name of the exclusion to update: "projects/[PROJECT_ID]/
         #   exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[
@@ -6412,17 +6414,18 @@ module Google
         end
         
         # Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the
-        # Logs Router can currently only be configured for GCP organizations. Once
-        # configured, it applies to all projects and folders in the GCP organization.See
-        # Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/
-        # managed-encryption) for more information.
+        # Logs Router can currently only be configured for Google Cloud organizations.
+        # Once configured, it applies to all projects and folders in the Google Cloud
+        # organization.See Enabling CMEK for Logs Router (https://cloud.google.com/
+        # logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
         #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
         #   cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the
-        #   Logs Router can currently only be configured for GCP organizations. Once
-        #   configured, it applies to all projects and folders in the GCP organization.
+        #   Logs Router can currently only be configured for Google Cloud organizations.
+        #   Once configured, it applies to all projects and folders in the Google Cloud
+        #   organization.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6451,20 +6454,21 @@ module Google
         end
         
         # Updates the Logs Router CMEK settings for the given resource.Note: CMEK for
-        # the Logs Router can currently only be configured for GCP organizations. Once
-        # configured, it applies to all projects and folders in the GCP organization.
-        # UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
-        # associated service account does not have the required roles/cloudkms.
-        # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
-        # is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/
-        # logging/docs/routing/managed-encryption) for more information.
+        # the Logs Router can currently only be configured for Google Cloud
+        # organizations. Once configured, it applies to all projects and folders in the
+        # Google Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
+        # invalid, or 2) the associated service account does not have the required roles/
+        # cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access
+        # to the key is disabled.See Enabling CMEK for Logs Router (https://cloud.google.
+        # com/logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
         #   billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/
         #   cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the
-        #   Logs Router can currently only be configured for GCP organizations. Once
-        #   configured, it applies to all projects and folders in the GCP organization.
+        #   Logs Router can currently only be configured for Google Cloud organizations.
+        #   Once configured, it applies to all projects and folders in the Google Cloud
+        #   organization.
         # @param [Google::Apis::LoggingV2::CmekSettings] cmek_settings_object
         # @param [String] update_mask
         #   Optional. Field mask identifying which fields from cmek_settings should be

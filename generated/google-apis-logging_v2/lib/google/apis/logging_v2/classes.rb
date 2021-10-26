@@ -131,10 +131,10 @@ module Google
       
       # Describes the customer-managed encryption key (CMEK) settings associated with
       # a project, folder, organization, billing account, or flexible resource.Note:
-      # CMEK for the Logs Router can currently only be configured for GCP
+      # CMEK for the Logs Router can currently only be configured for Google Cloud
       # organizations. Once configured, it applies to all projects and folders in the
-      # GCP organization.See Enabling CMEK for Logs Router (https://cloud.google.com/
-      # logging/docs/routing/managed-encryption) for more information.
+      # Google Cloud organization.See Enabling CMEK for Logs Router (https://cloud.
+      # google.com/logging/docs/routing/managed-encryption) for more information.
       class CmekSettings
         include Google::Apis::Core::Hashable
       
@@ -1296,12 +1296,11 @@ module Google
         end
       end
       
-      # Specifies a set of log entries that are not to be stored in Cloud Logging. If
-      # your GCP resource receives a large volume of log entries, you can use
-      # exclusions to reduce your chargeable logs. Exclusions are processed after log
-      # sinks, so you can export log entries before they are excluded. Note that
-      # organization-level and folder-level exclusions don't apply to child resources,
-      # and that you can't exclude audit log entries.
+      # Specifies a set of log entries that are filtered out by a sink. If your Google
+      # Cloud resource receives a large volume of log entries, you can use exclusions
+      # to reduce your chargeable logs. Note that exclusions on organization-level and
+      # folder-level sinks don't apply to child resources. Note also that you cannot
+      # modify the _Required sink or exclude logs from it.
       class LogExclusion
         include Google::Apis::Core::Hashable
       
@@ -1638,7 +1637,9 @@ module Google
         # iam/docs/granting-roles-to-service-accounts#
         # granting_access_to_a_service_account_for_a_resource). Consult the destination
         # service's documentation to determine the appropriate IAM roles to assign to
-        # the identity.
+        # the identity.Sinks that have a destination that is a log bucket in the same
+        # project as the sink do not have a writer_identity and no additional
+        # permissions are required.
         # Corresponds to the JSON property `writerIdentity`
         # @return [String]
         attr_accessor :writer_identity
