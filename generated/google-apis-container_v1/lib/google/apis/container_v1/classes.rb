@@ -747,6 +747,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_ipv4_cidr_size
       
+        # Subset of Nodepool message that has defaults.
+        # Corresponds to the JSON property `nodePoolDefaults`
+        # @return [Google::Apis::ContainerV1::NodePoolDefaults]
+        attr_accessor :node_pool_defaults
+      
         # The node pools associated with this cluster. This field should not be set if "
         # node_config" or "initial_node_count" are specified.
         # Corresponds to the JSON property `nodePools`
@@ -891,6 +896,7 @@ module Google
           @network_policy = args[:network_policy] if args.key?(:network_policy)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
+          @node_pool_defaults = args[:node_pool_defaults] if args.key?(:node_pool_defaults)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
@@ -975,11 +981,6 @@ module Google
         # @return [Google::Apis::ContainerV1::AuthenticatorGroupsConfig]
         attr_accessor :desired_authenticator_groups_config
       
-        # Autopilot is the configuration for Autopilot settings on the cluster.
-        # Corresponds to the JSON property `desiredAutopilot`
-        # @return [Google::Apis::ContainerV1::Autopilot]
-        attr_accessor :desired_autopilot
-      
         # Configuration for Binary Authorization.
         # Corresponds to the JSON property `desiredBinaryAuthorization`
         # @return [Google::Apis::ContainerV1::BinaryAuthorization]
@@ -1007,6 +1008,17 @@ module Google
         # Corresponds to the JSON property `desiredDefaultSnatStatus`
         # @return [Google::Apis::ContainerV1::DefaultSnatStatus]
         attr_accessor :desired_default_snat_status
+      
+        # DNSConfig contains the desired set of options for configuring clusterDNS.
+        # Corresponds to the JSON property `desiredDnsConfig`
+        # @return [Google::Apis::ContainerV1::DnsConfig]
+        attr_accessor :desired_dns_config
+      
+        # GcfsConfig contains configurations of Google Container File System (image
+        # streaming).
+        # Corresponds to the JSON property `desiredGcfsConfig`
+        # @return [Google::Apis::ContainerV1::GcfsConfig]
+        attr_accessor :desired_gcfs_config
       
         # The desired image type for the node pool. NOTE: Set the "desired_node_pool"
         # field as well.
@@ -1168,12 +1180,13 @@ module Google
         def update!(**args)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_authenticator_groups_config = args[:desired_authenticator_groups_config] if args.key?(:desired_authenticator_groups_config)
-          @desired_autopilot = args[:desired_autopilot] if args.key?(:desired_autopilot)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
+          @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
+          @desired_gcfs_config = args[:desired_gcfs_config] if args.key?(:desired_gcfs_config)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_l4ilb_subsetting_config = args[:desired_l4ilb_subsetting_config] if args.key?(:desired_l4ilb_subsetting_config)
@@ -1400,6 +1413,37 @@ module Google
         end
       end
       
+      # DNSConfig contains the desired set of options for configuring clusterDNS.
+      class DnsConfig
+        include Google::Apis::Core::Hashable
+      
+        # cluster_dns indicates which in-cluster DNS provider should be used.
+        # Corresponds to the JSON property `clusterDns`
+        # @return [String]
+        attr_accessor :cluster_dns
+      
+        # cluster_dns_domain is the suffix used for all cluster service records.
+        # Corresponds to the JSON property `clusterDnsDomain`
+        # @return [String]
+        attr_accessor :cluster_dns_domain
+      
+        # cluster_dns_scope indicates the scope of access to cluster DNS records.
+        # Corresponds to the JSON property `clusterDnsScope`
+        # @return [String]
+        attr_accessor :cluster_dns_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_dns = args[:cluster_dns] if args.key?(:cluster_dns)
+          @cluster_dns_domain = args[:cluster_dns_domain] if args.key?(:cluster_dns_domain)
+          @cluster_dns_scope = args[:cluster_dns_scope] if args.key?(:cluster_dns_scope)
+        end
+      end
+      
       # Time window specified for daily maintenance operations.
       class DailyMaintenanceWindow
         include Google::Apis::Core::Hashable
@@ -1518,6 +1562,27 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the Compute Engine PD CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # GcfsConfig contains configurations of Google Container File System (image
+      # streaming).
+      class GcfsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to use GCFS.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -2442,6 +2507,11 @@ module Google
         # @return [Google::Apis::ContainerV1::DefaultSnatStatus]
         attr_accessor :default_snat_status
       
+        # DNSConfig contains the desired set of options for configuring clusterDNS.
+        # Corresponds to the JSON property `dnsConfig`
+        # @return [Google::Apis::ContainerV1::DnsConfig]
+        attr_accessor :dns_config
+      
         # Whether Intra-node visibility is enabled for this cluster. This makes same
         # node pod to pod traffic visible for VPC network.
         # Corresponds to the JSON property `enableIntraNodeVisibility`
@@ -2483,6 +2553,7 @@ module Google
         def update!(**args)
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
+          @dns_config = args[:dns_config] if args.key?(:dns_config)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @enable_l4ilb_subsetting = args[:enable_l4ilb_subsetting] if args.key?(:enable_l4ilb_subsetting)
           @network = args[:network] if args.key?(:network)
@@ -2570,6 +2641,12 @@ module Google
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
+      
+        # GcfsConfig contains configurations of Google Container File System (image
+        # streaming).
+        # Corresponds to the JSON property `gcfsConfig`
+        # @return [Google::Apis::ContainerV1::GcfsConfig]
+        attr_accessor :gcfs_config
       
         # Configuration of gVNIC feature.
         # Corresponds to the JSON property `gvnic`
@@ -2729,6 +2806,7 @@ module Google
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
@@ -2748,6 +2826,26 @@ module Google
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
+        end
+      end
+      
+      # Subset of NodeConfig message that has defaults.
+      class NodeConfigDefaults
+        include Google::Apis::Core::Hashable
+      
+        # GcfsConfig contains configurations of Google Container File System (image
+        # streaming).
+        # Corresponds to the JSON property `gcfsConfig`
+        # @return [Google::Apis::ContainerV1::GcfsConfig]
+        attr_accessor :gcfs_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
         end
       end
       
@@ -3063,6 +3161,25 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # Subset of Nodepool message that has defaults.
+      class NodePoolDefaults
+        include Google::Apis::Core::Hashable
+      
+        # Subset of NodeConfig message that has defaults.
+        # Corresponds to the JSON property `nodeConfigDefaults`
+        # @return [Google::Apis::ContainerV1::NodeConfigDefaults]
+        attr_accessor :node_config_defaults
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_config_defaults = args[:node_config_defaults] if args.key?(:node_config_defaults)
         end
       end
       
@@ -4669,6 +4786,12 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
+        # GcfsConfig contains configurations of Google Container File System (image
+        # streaming).
+        # Corresponds to the JSON property `gcfsConfig`
+        # @return [Google::Apis::ContainerV1::GcfsConfig]
+        attr_accessor :gcfs_config
+      
         # Configuration of gVNIC feature.
         # Corresponds to the JSON property `gvnic`
         # @return [Google::Apis::ContainerV1::VirtualNic]
@@ -4766,6 +4889,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
