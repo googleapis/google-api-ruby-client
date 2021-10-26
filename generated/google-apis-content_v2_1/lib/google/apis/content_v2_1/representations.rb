@@ -4202,11 +4202,13 @@ module Google
       class OrderTrackingSignalLineItemDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :brand, as: 'brand'
           property :gtin, as: 'gtin'
           property :line_item_id, as: 'lineItemId'
           property :mpn, as: 'mpn'
           property :product_description, as: 'productDescription'
           property :product_id, as: 'productId'
+          property :product_title, as: 'productTitle'
           property :quantity, :numeric_string => true, as: 'quantity'
           property :sku, as: 'sku'
           property :upc, as: 'upc'
