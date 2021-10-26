@@ -95,6 +95,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # A related resource to this operation.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
         # The state of the operation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -117,6 +122,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @resource = args[:resource] if args.key?(:resource)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -816,6 +822,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # A related resource to this operation.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
         # The state of the operation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -838,6 +849,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @resource = args[:resource] if args.key?(:resource)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -7006,6 +7018,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # A related resource to this operation.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
         # The state of the operation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -7028,6 +7045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @resource = args[:resource] if args.key?(:resource)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @update_time = args[:update_time] if args.key?(:update_time)
