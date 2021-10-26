@@ -397,7 +397,8 @@ module Google
         #   Output only. Immutable. The name of the TPU.
         # @param [Google::Apis::TpuV2alpha1::Node] node_object
         # @param [String] update_mask
-        #   Required. Mask of fields from Node to update. Supported fields: None.
+        #   Required. Mask of fields from Node to update. Supported fields: [description,
+        #   tags, labels, metadata, network_config.enable_external_ips].
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
