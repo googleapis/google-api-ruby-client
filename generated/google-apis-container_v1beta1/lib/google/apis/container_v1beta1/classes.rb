@@ -1093,11 +1093,6 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig]
         attr_accessor :desired_authenticator_groups_config
       
-        # Autopilot is the configuration for Autopilot settings on the cluster.
-        # Corresponds to the JSON property `desiredAutopilot`
-        # @return [Google::Apis::ContainerV1beta1::Autopilot]
-        attr_accessor :desired_autopilot
-      
         # Configuration for Binary Authorization.
         # Corresponds to the JSON property `desiredBinaryAuthorization`
         # @return [Google::Apis::ContainerV1beta1::BinaryAuthorization]
@@ -1135,6 +1130,11 @@ module Google
         # Corresponds to the JSON property `desiredDnsConfig`
         # @return [Google::Apis::ContainerV1beta1::DnsConfig]
         attr_accessor :desired_dns_config
+      
+        # GcfsConfig contains configurations of Google Container File System.
+        # Corresponds to the JSON property `desiredGcfsConfig`
+        # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
+        attr_accessor :desired_gcfs_config
       
         # IdentityServiceConfig is configuration for Identity Service which allows
         # customers to use external identity providers with the K8S API
@@ -1328,7 +1328,6 @@ module Google
         def update!(**args)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_authenticator_groups_config = args[:desired_authenticator_groups_config] if args.key?(:desired_authenticator_groups_config)
-          @desired_autopilot = args[:desired_autopilot] if args.key?(:desired_autopilot)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_cluster_telemetry = args[:desired_cluster_telemetry] if args.key?(:desired_cluster_telemetry)
@@ -1336,6 +1335,7 @@ module Google
           @desired_datapath_provider = args[:desired_datapath_provider] if args.key?(:desired_datapath_provider)
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
+          @desired_gcfs_config = args[:desired_gcfs_config] if args.key?(:desired_gcfs_config)
           @desired_identity_service_config = args[:desired_identity_service_config] if args.key?(:desired_identity_service_config)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
@@ -1791,6 +1791,26 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the Compute Engine PD CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # GcfsConfig contains configurations of Google Container File System.
+      class GcfsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to use GCFS.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -3052,6 +3072,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::EphemeralStorageConfig]
         attr_accessor :ephemeral_storage_config
       
+        # GcfsConfig contains configurations of Google Container File System.
+        # Corresponds to the JSON property `gcfsConfig`
+        # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
+        attr_accessor :gcfs_config
+      
         # Configuration of gVNIC feature.
         # Corresponds to the JSON property `gvnic`
         # @return [Google::Apis::ContainerV1beta1::VirtualNic]
@@ -3218,6 +3243,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @ephemeral_storage_config = args[:ephemeral_storage_config] if args.key?(:ephemeral_storage_config)
+          @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
@@ -3245,12 +3271,18 @@ module Google
       class NodeConfigDefaults
         include Google::Apis::Core::Hashable
       
+        # GcfsConfig contains configurations of Google Container File System.
+        # Corresponds to the JSON property `gcfsConfig`
+        # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
+        attr_accessor :gcfs_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
         end
       end
       
@@ -5319,6 +5351,11 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
+        # GcfsConfig contains configurations of Google Container File System.
+        # Corresponds to the JSON property `gcfsConfig`
+        # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
+        attr_accessor :gcfs_config
+      
         # Configuration of gVNIC feature.
         # Corresponds to the JSON property `gvnic`
         # @return [Google::Apis::ContainerV1beta1::VirtualNic]
@@ -5422,6 +5459,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
           @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)

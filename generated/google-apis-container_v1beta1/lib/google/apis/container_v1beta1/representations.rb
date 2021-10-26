@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcfsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcpFilestoreCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1083,8 +1089,6 @@ module Google
       
           property :desired_authenticator_groups_config, as: 'desiredAuthenticatorGroupsConfig', class: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1beta1::AuthenticatorGroupsConfig::Representation
       
-          property :desired_autopilot, as: 'desiredAutopilot', class: Google::Apis::ContainerV1beta1::Autopilot, decorator: Google::Apis::ContainerV1beta1::Autopilot::Representation
-      
           property :desired_binary_authorization, as: 'desiredBinaryAuthorization', class: Google::Apis::ContainerV1beta1::BinaryAuthorization, decorator: Google::Apis::ContainerV1beta1::BinaryAuthorization::Representation
       
           property :desired_cluster_autoscaling, as: 'desiredClusterAutoscaling', class: Google::Apis::ContainerV1beta1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1beta1::ClusterAutoscaling::Representation
@@ -1097,6 +1101,8 @@ module Google
           property :desired_default_snat_status, as: 'desiredDefaultSnatStatus', class: Google::Apis::ContainerV1beta1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1beta1::DefaultSnatStatus::Representation
       
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1beta1::DnsConfig, decorator: Google::Apis::ContainerV1beta1::DnsConfig::Representation
+      
+          property :desired_gcfs_config, as: 'desiredGcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
       
           property :desired_identity_service_config, as: 'desiredIdentityServiceConfig', class: Google::Apis::ContainerV1beta1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1beta1::IdentityServiceConfig::Representation
       
@@ -1265,6 +1271,13 @@ module Google
       end
       
       class GcePersistentDiskCsiDriverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class GcfsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
@@ -1624,6 +1637,8 @@ module Google
           property :disk_type, as: 'diskType'
           property :ephemeral_storage_config, as: 'ephemeralStorageConfig', class: Google::Apis::ContainerV1beta1::EphemeralStorageConfig, decorator: Google::Apis::ContainerV1beta1::EphemeralStorageConfig::Representation
       
+          property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
+      
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1beta1::VirtualNic, decorator: Google::Apis::ContainerV1beta1::VirtualNic::Representation
       
           property :image_type, as: 'imageType'
@@ -1658,6 +1673,8 @@ module Google
       class NodeConfigDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
+      
         end
       end
       
@@ -2169,6 +2186,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
+          property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
+      
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1beta1::VirtualNic, decorator: Google::Apis::ContainerV1beta1::VirtualNic::Representation
       
           property :image_type, as: 'imageType'
