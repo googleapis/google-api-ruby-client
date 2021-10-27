@@ -279,7 +279,8 @@ module Google
         # @return [String]
         attr_accessor :cidr
       
-        # A single machine, identified by an ID.
+        # Either a single machine, identified by an ID, or a comma-separated list of
+        # machine IDs.
         # Corresponds to the JSON property `machineId`
         # @return [String]
         attr_accessor :machine_id
