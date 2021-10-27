@@ -39,7 +39,7 @@ module Google
       class Error
         include Google::Apis::Core::Hashable
       
-        # Human readable stack trace string.
+        # Human-readable stack trace string.
         # Corresponds to the JSON property `context`
         # @return [String]
         attr_accessor :context
@@ -176,8 +176,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :column
       
-        # The length in bytes of text in this character group, e.g. digits of a number,
-        # string length, or AST (abstract syntax tree) node.
+        # The number of bytes of source code making up this stack trace element.
         # Corresponds to the JSON property `length`
         # @return [Fixnum]
         attr_accessor :length
@@ -203,7 +202,7 @@ module Google
       class StackTrace
         include Google::Apis::Core::Hashable
       
-        # An array of Stack elements.
+        # An array of stack elements.
         # Corresponds to the JSON property `elements`
         # @return [Array<Google::Apis::WorkflowexecutionsV1beta::StackTraceElement>]
         attr_accessor :elements
