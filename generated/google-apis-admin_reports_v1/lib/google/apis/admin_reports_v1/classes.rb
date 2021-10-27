@@ -142,8 +142,9 @@ module Google
           # @return [String]
           attr_accessor :key
         
-          # The unique Google Workspace profile ID of the actor. May be absent if the
-          # actor is not a Google Workspace user.
+          # The unique Google Workspace profile ID of the actor. This value might be
+          # absent if the actor is not a Google Workspace user, or may be the number
+          # 105250506097979753968 which acts as a placeholder ID.
           # Corresponds to the JSON property `profileId`
           # @return [String]
           attr_accessor :profile_id
