@@ -1326,6 +1326,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :force, as: 'force'
           property :table_uri, as: 'tableUri'
+          property :write_disposition, as: 'writeDisposition'
         end
       end
       
