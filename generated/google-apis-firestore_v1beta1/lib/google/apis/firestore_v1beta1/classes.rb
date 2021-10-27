@@ -1549,7 +1549,7 @@ module Google
         alias_method :exists?, :exists
       
         # When set, the target document must exist and have been last updated at that
-        # time.
+        # time. Timestamp must be microsecond aligned.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
