@@ -702,7 +702,7 @@ module Google
         #   target document must not exist.
         # @param [String] current_document_update_time
         #   When set, the target document must exist and have been last updated at that
-        #   time.
+        #   time. Timestamp must be microsecond aligned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -955,7 +955,7 @@ module Google
         #   target document must not exist.
         # @param [String] current_document_update_time
         #   When set, the target document must exist and have been last updated at that
-        #   time.
+        #   time. Timestamp must be microsecond aligned.
         # @param [Array<String>, String] mask_field_paths
         #   The list of field paths in the mask. See Document.fields for a field path
         #   syntax reference.
