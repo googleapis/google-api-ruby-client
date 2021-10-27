@@ -188,6 +188,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cycle_end_time, as: 'cycleEndTime'
           property :free_trial_end_time, as: 'freeTrialEndTime'
+          property :renewal_time, as: 'renewalTime'
         end
       end
       

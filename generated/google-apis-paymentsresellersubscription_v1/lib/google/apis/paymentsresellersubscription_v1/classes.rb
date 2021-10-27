@@ -175,6 +175,15 @@ module Google
         # @return [String]
         attr_accessor :free_trial_end_time
       
+        # Output only. The time at which the subscription is expected to be renewed by
+        # Google - a new charge will be incurred and the service entitlement will be
+        # renewed. A non-immediate cancellation will take place at this time too, before
+        # which, the service entitlement for the end user will remain valid. UTC
+        # timezone in ISO 8061 format. For example: "2019-08-31T17:28:54.564Z"
+        # Corresponds to the JSON property `renewalTime`
+        # @return [String]
+        attr_accessor :renewal_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -183,6 +192,7 @@ module Google
         def update!(**args)
           @cycle_end_time = args[:cycle_end_time] if args.key?(:cycle_end_time)
           @free_trial_end_time = args[:free_trial_end_time] if args.key?(:free_trial_end_time)
+          @renewal_time = args[:renewal_time] if args.key?(:renewal_time)
         end
       end
       
