@@ -4236,8 +4236,8 @@ module Google
         attr_accessor :qfe_package
       
         # Contains information about a Windows application that is retrieved from the
-        # Windows Registry. For more information about these fields, see Windows
-        # Installer Properties for the Uninstall Registry.
+        # Windows Registry. For more information about these fields, see: https://docs.
+        # microsoft.com/en-us/windows/win32/msi/uninstall-registry-key
         # Corresponds to the JSON property `windowsApplication`
         # @return [Google::Apis::CloudassetV1::WindowsApplication]
         attr_accessor :windows_application
@@ -4504,8 +4504,8 @@ module Google
       end
       
       # Contains information about a Windows application that is retrieved from the
-      # Windows Registry. For more information about these fields, see Windows
-      # Installer Properties for the Uninstall Registry.
+      # Windows Registry. For more information about these fields, see: https://docs.
+      # microsoft.com/en-us/windows/win32/msi/uninstall-registry-key
       class WindowsApplication
         include Google::Apis::Core::Hashable
       
