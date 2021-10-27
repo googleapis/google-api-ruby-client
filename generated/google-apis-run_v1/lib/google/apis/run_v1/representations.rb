@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnvFromSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,12 @@ module Google
       end
       
       class GoogleCloudRunV1Condition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -596,6 +608,12 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class EnvFromSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -653,6 +671,12 @@ module Google
           property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleLongrunningCancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
