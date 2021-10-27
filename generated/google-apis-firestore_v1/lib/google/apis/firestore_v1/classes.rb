@@ -785,6 +785,18 @@ module Google
         # @return [String]
         attr_accessor :concurrency_mode
       
+        # Output only. The earliest timestamp at which older versions of the data can be
+        # read from the database. See [version_retention_period] above; this field is
+        # populated with `now - version_retention_period`. This value is continuously
+        # updated, and becomes stale the moment it is queried. If you are using this
+        # value to recover data, make sure to account for the time from the moment when
+        # the value is queried to the moment when you initiate the recovery. Note that
+        # you should not need to query this field: if you know the `
+        # version_retention_period` then you can query within that time.
+        # Corresponds to the JSON property `earliestVersionTime`
+        # @return [String]
+        attr_accessor :earliest_version_time
+      
         # This checksum is computed by the server based on the value of other fields,
         # and may be sent on update and delete requests to ensure the client has an up-
         # to-date value before proceeding.
@@ -817,6 +829,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
+          @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
           @etag = args[:etag] if args.key?(:etag)
           @location_id = args[:location_id] if args.key?(:location_id)
           @name = args[:name] if args.key?(:name)
@@ -1958,7 +1971,7 @@ module Google
         alias_method :exists?, :exists
       
         # When set, the target document must exist and have been last updated at that
-        # time.
+        # time. Timestamp must be microsecond aligned.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time

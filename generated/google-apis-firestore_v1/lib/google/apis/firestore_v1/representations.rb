@@ -722,6 +722,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :concurrency_mode, as: 'concurrencyMode'
+          property :earliest_version_time, as: 'earliestVersionTime'
           property :etag, as: 'etag'
           property :location_id, as: 'locationId'
           property :name, as: 'name'
