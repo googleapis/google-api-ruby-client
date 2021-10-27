@@ -1,0 +1,7 @@
+{
+    "api_id": "datapipelines:v1",
+    "name_pretty": "Data pipelines API",
+    "distribution_name": "google-apis-datapipelines_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
