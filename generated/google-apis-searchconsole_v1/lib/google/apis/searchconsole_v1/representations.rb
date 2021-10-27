@@ -219,6 +219,7 @@ module Google
           property :search_type, as: 'searchType'
           property :start_date, as: 'startDate'
           property :start_row, as: 'startRow'
+          property :type, as: 'type'
         end
       end
       

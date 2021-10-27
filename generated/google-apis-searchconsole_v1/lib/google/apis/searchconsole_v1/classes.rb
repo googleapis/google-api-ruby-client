@@ -353,6 +353,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_row
       
+        # Optional. [Optional; Default is \"web\"] Type of report: search type, or
+        # either Discover or Gnews.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -368,6 +374,7 @@ module Google
           @search_type = args[:search_type] if args.key?(:search_type)
           @start_date = args[:start_date] if args.key?(:start_date)
           @start_row = args[:start_row] if args.key?(:start_row)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
