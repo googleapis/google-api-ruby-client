@@ -141,6 +141,27 @@ module Google
         end
       end
       
+      # Specifies options for controlling advanced machine features.
+      class AdvancedMachineFeatures
+        include Google::Apis::Core::Hashable
+      
+        # The number of threads per physical core. To disable simultaneous
+        # multithreading (SMT) set this to 1. If unset, the maximum number of threads
+        # supported per core by the underlying processor is assumed.
+        # Corresponds to the JSON property `threadsPerCore`
+        # @return [Fixnum]
+        attr_accessor :threads_per_core
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
+        end
+      end
+      
       # Configuration for returning group information from authenticators.
       class AuthenticatorGroupsConfig
         include Google::Apis::Core::Hashable
@@ -3045,6 +3066,11 @@ module Google
         # @return [Array<Google::Apis::ContainerV1beta1::AcceleratorConfig>]
         attr_accessor :accelerators
       
+        # Specifies options for controlling advanced machine features.
+        # Corresponds to the JSON property `advancedMachineFeatures`
+        # @return [Google::Apis::ContainerV1beta1::AdvancedMachineFeatures]
+        attr_accessor :advanced_machine_features
+      
         # The Customer Managed Encryption Key used to encrypt the boot disk attached to
         # each node in the node pool. This should be of the form projects/[
         # KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]
@@ -3239,6 +3265,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
