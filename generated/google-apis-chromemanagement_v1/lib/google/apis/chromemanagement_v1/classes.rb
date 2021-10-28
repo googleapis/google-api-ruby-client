@@ -345,6 +345,63 @@ module Google
         end
       end
       
+      # Details of an app installation request.
+      class GoogleChromeManagementV1ChromeAppRequest
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Format: app_details=customers/`customer_id`/apps/chrome/`app_id`
+        # Corresponds to the JSON property `appDetails`
+        # @return [String]
+        attr_accessor :app_details
+      
+        # Output only. Unique store identifier for the app. Example: "
+        # gmbmikajjgmnabiglmofipeabaddhgne" for the Save to Google Drive Chrome
+        # extension.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Output only. The uri for the detail page of the item.
+        # Corresponds to the JSON property `detailUri`
+        # @return [String]
+        attr_accessor :detail_uri
+      
+        # Output only. App's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. A link to an image that can be used as an icon for the product.
+        # Corresponds to the JSON property `iconUri`
+        # @return [String]
+        attr_accessor :icon_uri
+      
+        # Output only. The timestamp of the most recently made request for this app.
+        # Corresponds to the JSON property `latestRequestTime`
+        # @return [String]
+        attr_accessor :latest_request_time
+      
+        # Output only. Total count of requests for this app.
+        # Corresponds to the JSON property `requestCount`
+        # @return [Fixnum]
+        attr_accessor :request_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_details = args[:app_details] if args.key?(:app_details)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @detail_uri = args[:detail_uri] if args.key?(:detail_uri)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @icon_uri = args[:icon_uri] if args.key?(:icon_uri)
+          @latest_request_time = args[:latest_request_time] if args.key?(:latest_request_time)
+          @request_count = args[:request_count] if args.key?(:request_count)
+        end
+      end
+      
       # Represent one host permission.
       class GoogleChromeManagementV1ChromeAppSiteAccess
         include Google::Apis::Core::Hashable
@@ -362,6 +419,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @host_match = args[:host_match] if args.key?(:host_match)
+        end
+      end
+      
+      # Response containing summary of requested app installations.
+      class GoogleChromeManagementV1CountChromeAppRequestsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to specify the next page in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Count of requested apps matching request.
+        # Corresponds to the JSON property `requestedApps`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppRequest>]
+        attr_accessor :requested_apps
+      
+        # Total number of matching app requests.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @requested_apps = args[:requested_apps] if args.key?(:requested_apps)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
