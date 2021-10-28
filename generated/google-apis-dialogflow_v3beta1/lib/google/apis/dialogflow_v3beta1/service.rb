@@ -2571,7 +2571,7 @@ module Google
         # @param [String] base_version
         #   Required. Name of the base flow version to compare with the target version.
         #   Use version ID `0` to indicate the draft version of the specified flow. Format:
-        #   `projects//locations//agents//flows//versions/`.
+        #   `projects//locations//agents/ /flows//versions/`.
         # @param [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1CompareVersionsRequest] google_cloud_dialogflow_cx_v3beta1_compare_versions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
