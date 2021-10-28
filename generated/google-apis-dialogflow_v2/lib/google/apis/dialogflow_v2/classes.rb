@@ -3183,7 +3183,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether to run test cases in TestCasesConfig.test_cases periodically. Default
-        # false. If set to ture, run once a day.
+        # false. If set to true, run once a day.
         # Corresponds to the JSON property `enableContinuousRun`
         # @return [Boolean]
         attr_accessor :enable_continuous_run
