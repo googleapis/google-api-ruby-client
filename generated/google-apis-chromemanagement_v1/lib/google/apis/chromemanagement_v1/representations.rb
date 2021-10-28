@@ -58,7 +58,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1ChromeAppRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1ChromeAppSiteAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CountChromeAppRequestsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,10 +190,33 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1ChromeAppRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_details, as: 'appDetails'
+          property :app_id, as: 'appId'
+          property :detail_uri, as: 'detailUri'
+          property :display_name, as: 'displayName'
+          property :icon_uri, as: 'iconUri'
+          property :latest_request_time, as: 'latestRequestTime'
+          property :request_count, :numeric_string => true, as: 'requestCount'
+        end
+      end
+      
       class GoogleChromeManagementV1ChromeAppSiteAccess
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host_match, as: 'hostMatch'
+        end
+      end
+      
+      class GoogleChromeManagementV1CountChromeAppRequestsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :requested_apps, as: 'requestedApps', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppRequest, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppRequest::Representation
+      
+          property :total_size, as: 'totalSize'
         end
       end
       

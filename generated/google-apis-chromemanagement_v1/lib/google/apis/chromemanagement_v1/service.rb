@@ -51,6 +51,51 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Generate summary of app installation requests.
+        # @param [String] customer
+        #   Required. Customer id or "my_customer" to use the customer associated to the
+        #   account making the request.
+        # @param [String] order_by
+        #   Field used to order results. Supported fields: * request_count *
+        #   latest_request_time
+        # @param [String] org_unit_id
+        #   The ID of the organizational unit.
+        # @param [Fixnum] page_size
+        #   Maximum number of results to return. Maximum and default are 50, anything
+        #   above will be coerced to 50.
+        # @param [String] page_token
+        #   Token to specify the page of the request to be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeAppRequestsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeAppRequestsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_app_chrome_app_requests(customer, order_by: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/apps:countChromeAppRequests', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeAppRequestsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeAppRequestsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get a specific app for a customer by its resource name.
         # @param [String] name
         #   Required. The app for which details are being queried. Examples: "customers/
