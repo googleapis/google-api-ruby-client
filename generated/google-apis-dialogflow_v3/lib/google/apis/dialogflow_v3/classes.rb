@@ -4684,7 +4684,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this
-        # template to define de-identification configuration for the content. If empty,
+        # template to define de-identification configuration for the content. The `DLP
+        # De-identify Templates Reader` role is needed on the Dialogflow service
+        # identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-
+        # dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty,
         # Dialogflow replaces sensitive info with `[redacted]` text. The template name
         # will have one of the following formats: `projects//locations//
         # deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note:
@@ -4707,11 +4710,13 @@ module Google
         attr_accessor :insights_export_settings
       
         # [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this
-        # template to define inspect base settings. If empty, we use the default DLP
-        # inspect config. The template name will have one of the following formats: `
-        # projects//locations//inspectTemplates/` OR `organizations//locations//
-        # inspectTemplates/` Note: `inspect_template` must be located in the same region
-        # as the `SecuritySettings`.
+        # template to define inspect base settings. The `DLP Inspect Templates Reader`
+        # role is needed on the Dialogflow service identity service account (has the
+        # form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for
+        # your agent's project. If empty, we use the default DLP inspect config. The
+        # template name will have one of the following formats: `projects//locations//
+        # inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `
+        # inspect_template` must be located in the same region as the `SecuritySettings`.
         # Corresponds to the JSON property `inspectTemplate`
         # @return [String]
         attr_accessor :inspect_template
@@ -4742,10 +4747,11 @@ module Google
       
         # Retains data in interaction logging for the specified number of days. This
         # does not apply to Cloud logging, which is owned by the user - not Dialogflow.
-        # User must Set a value lower than Dialogflow's default 30d TTL. Setting a value
-        # higher than that has no effect. A missing value or setting to 0 also means we
-        # use Dialogflow's default TTL. Note: Interaction logging is a limited access
-        # feature. Talk to your Google representative to check availability for you.
+        # User must set a value lower than Dialogflow's default 365d TTL. Setting a
+        # value higher than that has no effect. A missing value or setting to 0 also
+        # means we use Dialogflow's default TTL. Note: Interaction logging is a limited
+        # access feature. Talk to your Google representative to check availability for
+        # you.
         # Corresponds to the JSON property `retentionWindowDays`
         # @return [Fixnum]
         attr_accessor :retention_window_days
@@ -6723,7 +6729,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether to run test cases in TestCasesConfig.test_cases periodically. Default
-        # false. If set to ture, run once a day.
+        # false. If set to true, run once a day.
         # Corresponds to the JSON property `enableContinuousRun`
         # @return [Boolean]
         attr_accessor :enable_continuous_run
