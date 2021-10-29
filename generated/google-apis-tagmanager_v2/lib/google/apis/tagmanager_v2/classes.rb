@@ -2689,6 +2689,11 @@ module Google
         # @return [String]
         attr_accessor :notes
       
+        # Additional parameters.
+        # Corresponds to the JSON property `parameter`
+        # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
+        attr_accessor :parameter
+      
         # GTM Zone's API relative path.
         # Corresponds to the JSON property `path`
         # @return [String]
@@ -2727,6 +2732,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @name = args[:name] if args.key?(:name)
           @notes = args[:notes] if args.key?(:notes)
+          @parameter = args[:parameter] if args.key?(:parameter)
           @path = args[:path] if args.key?(:path)
           @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
           @type_restriction = args[:type_restriction] if args.key?(:type_restriction)
