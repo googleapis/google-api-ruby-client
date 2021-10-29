@@ -286,12 +286,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TargetVmDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UtilizationReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,8 +359,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compute_engine_target_details, as: 'computeEngineTargetDetails', class: Google::Apis::VmmigrationV1::ComputeEngineTargetDetails, decorator: Google::Apis::VmmigrationV1::ComputeEngineTargetDetails::Representation
-      
-          property :compute_engine_vm_details, as: 'computeEngineVmDetails', class: Google::Apis::VmmigrationV1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1::TargetVmDetails::Representation
       
           property :create_time, as: 'createTime'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
@@ -442,8 +434,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compute_engine_target_details, as: 'computeEngineTargetDetails', class: Google::Apis::VmmigrationV1::ComputeEngineTargetDetails, decorator: Google::Apis::VmmigrationV1::ComputeEngineTargetDetails::Representation
-      
-          property :compute_engine_vm_details, as: 'computeEngineVmDetails', class: Google::Apis::VmmigrationV1::TargetVmDetails, decorator: Google::Apis::VmmigrationV1::TargetVmDetails::Representation
       
           property :create_time, as: 'createTime'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
@@ -792,32 +782,6 @@ module Google
           property :name, as: 'name'
           property :project, as: 'project'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class TargetVmDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1::AppliedLicense, decorator: Google::Apis::VmmigrationV1::AppliedLicense::Representation
-      
-          property :boot_option, as: 'bootOption'
-          property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
-      
-          property :disk_type, as: 'diskType'
-          hash :labels, as: 'labels'
-          property :license_type, as: 'licenseType'
-          property :machine_type, as: 'machineType'
-          property :machine_type_series, as: 'machineTypeSeries'
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::VmmigrationV1::NetworkInterface, decorator: Google::Apis::VmmigrationV1::NetworkInterface::Representation
-      
-          collection :network_tags, as: 'networkTags'
-          property :project, as: 'project'
-          property :secure_boot, as: 'secureBoot'
-          property :service_account, as: 'serviceAccount'
-          property :target_project, as: 'targetProject'
-          property :zone, as: 'zone'
         end
       end
       
