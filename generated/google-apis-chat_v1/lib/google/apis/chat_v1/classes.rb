@@ -2333,7 +2333,7 @@ module Google
       class Membership
         include Google::Apis::Core::Hashable
       
-        # The creation time of the membership a.k.a the time at which the member joined
+        # The creation time of the membership a.k.a. the time at which the member joined
         # the space, if applicable.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2619,8 +2619,8 @@ module Google
       class Space
         include Google::Apis::Core::Hashable
       
-        # Output only. The display name (only if the space is of type `ROOM`). Please
-        # note that this field might not be populated in direct messages between humans.
+        # The display name (only if the space is of type `ROOM`). Please note that this
+        # field might not be populated in direct messages between humans.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name

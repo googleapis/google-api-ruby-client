@@ -500,7 +500,7 @@ module Google
         # Returns a membership.
         # @param [String] name
         #   Required. Resource name of the membership to be retrieved, in the form "spaces/
-        #   */members/*". Example: spaces/AAAAMpdlehY/members/105115627578887013105
+        #   */members/*". Example: spaces/AAAAAAAAAAAA/members/111111111111111111111
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -531,7 +531,7 @@ module Google
         # Lists human memberships in a space.
         # @param [String] parent
         #   Required. The resource name of the space for which membership list is to be
-        #   fetched, in the form "spaces/*". Example: spaces/AAAAMpdlehY
+        #   fetched, in the form "spaces/*". Example: spaces/AAAAAAAAAAAA
         # @param [Fixnum] page_size
         #   Requested page size. The value is capped at 1000. Server may return fewer
         #   results than requested. If unspecified, server will default to 100.
