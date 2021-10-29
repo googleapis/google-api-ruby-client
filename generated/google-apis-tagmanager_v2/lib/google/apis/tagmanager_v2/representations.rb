@@ -1104,6 +1104,8 @@ module Google
           property :fingerprint, as: 'fingerprint'
           property :name, as: 'name'
           property :notes, as: 'notes'
+          collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
           property :path, as: 'path'
           property :tag_manager_url, as: 'tagManagerUrl'
           property :type_restriction, as: 'typeRestriction', class: Google::Apis::TagmanagerV2::ZoneTypeRestriction, decorator: Google::Apis::TagmanagerV2::ZoneTypeRestriction::Representation
