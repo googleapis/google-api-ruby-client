@@ -323,6 +323,26 @@ module Google
         attr_accessor :enable_separate_recognition_per_channel
         alias_method :enable_separate_recognition_per_channel?, :enable_separate_recognition_per_channel
       
+        # The spoken emoji behavior for the call If not set, uses default behavior based
+        # on model of choice If 'true', adds spoken emoji formatting for the request.
+        # This will replace spoken emojis with the corresponding Unicode symbols in the
+        # final transcript. If 'false', spoken emojis are not replaced.
+        # Corresponds to the JSON property `enableSpokenEmojis`
+        # @return [Boolean]
+        attr_accessor :enable_spoken_emojis
+        alias_method :enable_spoken_emojis?, :enable_spoken_emojis
+      
+        # The spoken punctuation behavior for the call If not set, uses default behavior
+        # based on model of choice e.g. command_and_search will enable spoken
+        # punctuation by default If 'true', replaces spoken punctuation with the
+        # corresponding symbols in the request. For example, "how are you question mark"
+        # becomes "how are you?". See https://cloud.google.com/speech-to-text/docs/
+        # spoken-punctuation for support. If 'false', spoken punctuation is not replaced.
+        # Corresponds to the JSON property `enableSpokenPunctuation`
+        # @return [Boolean]
+        attr_accessor :enable_spoken_punctuation
+        alias_method :enable_spoken_punctuation?, :enable_spoken_punctuation
+      
         # If `true`, the top result includes a list of words and the confidence for
         # those words. If `false`, no word-level confidence information is returned. The
         # default is `false`.
@@ -429,6 +449,8 @@ module Google
           @diarization_config = args[:diarization_config] if args.key?(:diarization_config)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
           @enable_separate_recognition_per_channel = args[:enable_separate_recognition_per_channel] if args.key?(:enable_separate_recognition_per_channel)
+          @enable_spoken_emojis = args[:enable_spoken_emojis] if args.key?(:enable_spoken_emojis)
+          @enable_spoken_punctuation = args[:enable_spoken_punctuation] if args.key?(:enable_spoken_punctuation)
           @enable_word_confidence = args[:enable_word_confidence] if args.key?(:enable_word_confidence)
           @enable_word_time_offsets = args[:enable_word_time_offsets] if args.key?(:enable_word_time_offsets)
           @encoding = args[:encoding] if args.key?(:encoding)

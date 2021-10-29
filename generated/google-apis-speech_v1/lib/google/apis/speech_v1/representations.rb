@@ -197,6 +197,8 @@ module Google
       
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
           property :enable_separate_recognition_per_channel, as: 'enableSeparateRecognitionPerChannel'
+          property :enable_spoken_emojis, as: 'enableSpokenEmojis'
+          property :enable_spoken_punctuation, as: 'enableSpokenPunctuation'
           property :enable_word_confidence, as: 'enableWordConfidence'
           property :enable_word_time_offsets, as: 'enableWordTimeOffsets'
           property :encoding, as: 'encoding'
