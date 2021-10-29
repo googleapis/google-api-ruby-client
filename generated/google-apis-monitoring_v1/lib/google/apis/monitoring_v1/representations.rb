@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDashboardsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,24 @@ module Google
       end
       
       class PickTimeSeriesFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryInstantRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryRangeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuerySeriesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,6 +430,15 @@ module Google
         end
       end
       
+      class HttpBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :data, :base64 => true, as: 'data'
+          collection :extensions, as: 'extensions'
+        end
+      end
+      
       class ListDashboardsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -486,6 +519,34 @@ module Google
           property :direction, as: 'direction'
           property :num_time_series, as: 'numTimeSeries'
           property :ranking_method, as: 'rankingMethod'
+        end
+      end
+      
+      class QueryInstantRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query'
+          property :time, as: 'time'
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class QueryRangeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :query, as: 'query'
+          property :start, as: 'start'
+          property :step, as: 'step'
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class QuerySeriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :start, as: 'start'
         end
       end
       
