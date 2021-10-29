@@ -1220,14 +1220,16 @@ module Google
       
         # Output only. The recent clone jobs performed on the migrating VM. This field
         # holds the vm's last completed clone job and the vm's running clone job, if one
-        # exists.
+        # exists. Note: To have this field populated you need to explicitly request it
+        # via the "view" parameter of the Get/List request.
         # Corresponds to the JSON property `recentCloneJobs`
         # @return [Array<Google::Apis::VmmigrationV1alpha1::CloneJob>]
         attr_accessor :recent_clone_jobs
       
         # Output only. The recent cutover jobs performed on the migrating VM. This field
         # holds the vm's last completed cutover job and the vm's running cutover job, if
-        # one exists.
+        # one exists. Note: To have this field populated you need to explicitly request
+        # it via the "view" parameter of the Get/List request.
         # Corresponds to the JSON property `recentCutoverJobs`
         # @return [Array<Google::Apis::VmmigrationV1alpha1::CutoverJob>]
         attr_accessor :recent_cutover_jobs
