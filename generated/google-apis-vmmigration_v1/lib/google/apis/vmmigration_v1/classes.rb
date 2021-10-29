@@ -123,12 +123,6 @@ module Google
         # @return [Google::Apis::VmmigrationV1::ComputeEngineTargetDetails]
         attr_accessor :compute_engine_target_details
       
-        # TargetVMDetails is a collection of details for creating a VM in a target
-        # Compute Engine project.
-        # Corresponds to the JSON property `computeEngineVmDetails`
-        # @return [Google::Apis::VmmigrationV1::TargetVmDetails]
-        attr_accessor :compute_engine_vm_details
-      
         # Output only. The time the clone job was created (as an API call, not when it
         # was actually created in the target).
         # Corresponds to the JSON property `createTime`
@@ -167,7 +161,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @compute_engine_target_details = args[:compute_engine_target_details] if args.key?(:compute_engine_target_details)
-          @compute_engine_vm_details = args[:compute_engine_vm_details] if args.key?(:compute_engine_vm_details)
           @create_time = args[:create_time] if args.key?(:create_time)
           @error = args[:error] if args.key?(:error)
           @name = args[:name] if args.key?(:name)
@@ -459,12 +452,6 @@ module Google
         # @return [Google::Apis::VmmigrationV1::ComputeEngineTargetDetails]
         attr_accessor :compute_engine_target_details
       
-        # TargetVMDetails is a collection of details for creating a VM in a target
-        # Compute Engine project.
-        # Corresponds to the JSON property `computeEngineVmDetails`
-        # @return [Google::Apis::VmmigrationV1::TargetVmDetails]
-        attr_accessor :compute_engine_vm_details
-      
         # Output only. The time the cutover job was created (as an API call, not when it
         # was actually created in the target).
         # Corresponds to the JSON property `createTime`
@@ -514,7 +501,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @compute_engine_target_details = args[:compute_engine_target_details] if args.key?(:compute_engine_target_details)
-          @compute_engine_vm_details = args[:compute_engine_vm_details] if args.key?(:compute_engine_vm_details)
           @create_time = args[:create_time] if args.key?(:create_time)
           @error = args[:error] if args.key?(:error)
           @name = args[:name] if args.key?(:name)
@@ -1734,126 +1720,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @project = args[:project] if args.key?(:project)
           @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # TargetVMDetails is a collection of details for creating a VM in a target
-      # Compute Engine project.
-      class TargetVmDetails
-        include Google::Apis::Core::Hashable
-      
-        # AppliedLicense holds the license data returned by adaptation module report.
-        # Corresponds to the JSON property `appliedLicense`
-        # @return [Google::Apis::VmmigrationV1::AppliedLicense]
-        attr_accessor :applied_license
-      
-        # Output only. The VM Boot Option, as set in the source vm.
-        # Corresponds to the JSON property `bootOption`
-        # @return [String]
-        attr_accessor :boot_option
-      
-        # Scheduling information for VM on maintenance/restart behaviour and node
-        # allocation in sole tenant nodes.
-        # Corresponds to the JSON property `computeScheduling`
-        # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
-        attr_accessor :compute_scheduling
-      
-        # The disk type to use in the VM.
-        # Corresponds to the JSON property `diskType`
-        # @return [String]
-        attr_accessor :disk_type
-      
-        # A map of labels to associate with the VM.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # The license type to use in OS adaptation.
-        # Corresponds to the JSON property `licenseType`
-        # @return [String]
-        attr_accessor :license_type
-      
-        # The machine type to create the VM with.
-        # Corresponds to the JSON property `machineType`
-        # @return [String]
-        attr_accessor :machine_type
-      
-        # The machine type series to create the VM with.
-        # Corresponds to the JSON property `machineTypeSeries`
-        # @return [String]
-        attr_accessor :machine_type_series
-      
-        # The metadata key/value pairs to assign to the VM.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,String>]
-        attr_accessor :metadata
-      
-        # The name of the VM to create.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # List of NICs connected to this VM.
-        # Corresponds to the JSON property `networkInterfaces`
-        # @return [Array<Google::Apis::VmmigrationV1::NetworkInterface>]
-        attr_accessor :network_interfaces
-      
-        # A map of network tags to associate with the VM.
-        # Corresponds to the JSON property `networkTags`
-        # @return [Array<String>]
-        attr_accessor :network_tags
-      
-        # The project in which to create the VM.
-        # Corresponds to the JSON property `project`
-        # @return [String]
-        attr_accessor :project
-      
-        # Defines whether the instance has Secure Boot enabled. This can be set to true
-        # only if the vm boot option is EFI.
-        # Corresponds to the JSON property `secureBoot`
-        # @return [Boolean]
-        attr_accessor :secure_boot
-        alias_method :secure_boot?, :secure_boot
-      
-        # The service account to associate the VM with.
-        # Corresponds to the JSON property `serviceAccount`
-        # @return [String]
-        attr_accessor :service_account
-      
-        # The full path of the resource of type TargetProject which represents the
-        # Compute Engine project in which to create this VM.
-        # Corresponds to the JSON property `targetProject`
-        # @return [String]
-        attr_accessor :target_project
-      
-        # The zone in which to create the VM.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @applied_license = args[:applied_license] if args.key?(:applied_license)
-          @boot_option = args[:boot_option] if args.key?(:boot_option)
-          @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
-          @disk_type = args[:disk_type] if args.key?(:disk_type)
-          @labels = args[:labels] if args.key?(:labels)
-          @license_type = args[:license_type] if args.key?(:license_type)
-          @machine_type = args[:machine_type] if args.key?(:machine_type)
-          @machine_type_series = args[:machine_type_series] if args.key?(:machine_type_series)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @name = args[:name] if args.key?(:name)
-          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
-          @network_tags = args[:network_tags] if args.key?(:network_tags)
-          @project = args[:project] if args.key?(:project)
-          @secure_boot = args[:secure_boot] if args.key?(:secure_boot)
-          @service_account = args[:service_account] if args.key?(:service_account)
-          @target_project = args[:target_project] if args.key?(:target_project)
-          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
