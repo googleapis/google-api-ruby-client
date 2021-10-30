@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PersistenceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RescheduleMaintenanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -283,6 +289,8 @@ module Google
           property :name, as: 'name'
           collection :nodes, as: 'nodes', class: Google::Apis::RedisV1beta1::NodeInfo, decorator: Google::Apis::RedisV1beta1::NodeInfo::Representation
       
+          property :persistence_config, as: 'persistenceConfig', class: Google::Apis::RedisV1beta1::PersistenceConfig, decorator: Google::Apis::RedisV1beta1::PersistenceConfig::Representation
+      
           property :persistence_iam_identity, as: 'persistenceIamIdentity'
           property :port, as: 'port'
           property :read_endpoint, as: 'readEndpoint'
@@ -393,6 +401,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::RedisV1beta1::GcsDestination, decorator: Google::Apis::RedisV1beta1::GcsDestination::Representation
       
+        end
+      end
+      
+      class PersistenceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :persistence_mode, as: 'persistenceMode'
+          property :rdb_next_snapshot_time, as: 'rdbNextSnapshotTime'
+          property :rdb_snapshot_period, as: 'rdbSnapshotPeriod'
+          property :rdb_snapshot_start_time, as: 'rdbSnapshotStartTime'
         end
       end
       
