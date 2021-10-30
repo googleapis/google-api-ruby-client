@@ -22,6 +22,38 @@ module Google
   module Apis
     module GkehubV1alpha
       
+      # Spec for App Dev Experience Feature.
+      class AppDevExperienceFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # State for App Dev Exp Feature.
+      class AppDevExperienceFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # Status specifies state for the subcomponent.
+        # Corresponds to the JSON property `networkingInstallSucceeded`
+        # @return [Google::Apis::GkehubV1alpha::Status]
+        attr_accessor :networking_install_succeeded
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @networking_install_succeeded = args[:networking_install_succeeded] if args.key?(:networking_install_succeeded)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -258,6 +290,11 @@ module Google
       class CommonFeatureSpec
         include Google::Apis::Core::Hashable
       
+        # Spec for App Dev Experience Feature.
+        # Corresponds to the JSON property `appdevexperience`
+        # @return [Google::Apis::GkehubV1alpha::AppDevExperienceFeatureSpec]
+        attr_accessor :appdevexperience
+      
         # **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
         # Corresponds to the JSON property `cloudauditlogging`
         # @return [Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec]
@@ -275,6 +312,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @cloudauditlogging = args[:cloudauditlogging] if args.key?(:cloudauditlogging)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
         end
@@ -283,6 +321,11 @@ module Google
       # CommonFeatureState contains Hub-wide Feature status information.
       class CommonFeatureState
         include Google::Apis::Core::Hashable
+      
+        # State for App Dev Exp Feature.
+        # Corresponds to the JSON property `appdevexperience`
+        # @return [Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState]
+        attr_accessor :appdevexperience
       
         # **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub
         # Controller.
@@ -303,6 +346,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
         end
@@ -2102,6 +2146,11 @@ module Google
       class MembershipFeatureState
         include Google::Apis::Core::Hashable
       
+        # State for App Dev Exp Feature.
+        # Corresponds to the JSON property `appdevexperience`
+        # @return [Google::Apis::GkehubV1alpha::AppDevExperienceFeatureState]
+        attr_accessor :appdevexperience
+      
         # **Anthos Config Management**: State for a single cluster.
         # Corresponds to the JSON property `configmanagement`
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementMembershipState]
@@ -2136,6 +2185,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @metering = args[:metering] if args.key?(:metering)
@@ -2719,6 +2769,31 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Status specifies state for the subcomponent.
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # Code specifies AppDevExperienceFeature's subcomponent ready state.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Description is populated if Code is Failed, explaining why it has failed.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
