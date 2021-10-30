@@ -1,5 +1,9 @@
 # Release history for google-apis-oslogin_v1beta
 
+### v0.11.0 (2021-10-30)
+
+* Regenerated from discovery document revision 20211022
+
 ### v0.10.0 (2021-10-21)
 
 * Unspecified changes
