@@ -299,6 +299,11 @@ module Google
       class CaPool
         include Google::Apis::Core::Hashable
       
+        # Output only. The time at which this CaPool was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Defines controls over all certificate issuance within a CaPool.
         # Corresponds to the JSON property `issuancePolicy`
         # @return [Google::Apis::PrivatecaV1::IssuancePolicy]
@@ -328,17 +333,24 @@ module Google
         # @return [String]
         attr_accessor :tier
       
+        # Output only. The time at which this CaPool was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @issuance_policy = args[:issuance_policy] if args.key?(:issuance_policy)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @publishing_options = args[:publishing_options] if args.key?(:publishing_options)
           @tier = args[:tier] if args.key?(:tier)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
