@@ -381,7 +381,7 @@ module Google
         attr_accessor :mysql
       
         # The name of this connection profile resource in the form of projects/`project`/
-        # locations/`location`/instances/`instance`.
+        # locations/`location`/connectionProfiles/`connectionProfile`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -837,7 +837,7 @@ module Google
         attr_accessor :labels
       
         # The name (URI) of this migration job resource, in the form of: projects/`
-        # project`/locations/`location`/instances/`instance`.
+        # project`/locations/`location`/migrationJobs/`migrationJob`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
