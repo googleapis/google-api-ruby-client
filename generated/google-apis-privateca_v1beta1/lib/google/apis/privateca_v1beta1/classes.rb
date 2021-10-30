@@ -135,10 +135,10 @@ module Google
       
         # Optional. Contains valid, fully-qualified host names. Glob patterns are also
         # supported. To allow an explicit wildcard certificate, escape with backlash (i.
-        # e. "\*"). E.g. for globbed entries: '*bar.com' will allow 'foo.bar.com', but
-        # not '*.bar.com', unless the allow_globbing_dns_wildcards field is set. E.g.
-        # for wildcard entries: '\*.bar.com' will allow '*.bar.com', but not 'foo.bar.
-        # com'.
+        # e. `\*`). E.g. for globbed entries: `*bar.com` will allow `foo.bar.com`, but
+        # not `*.bar.com`, unless the allow_globbing_dns_wildcards field is set. E.g.
+        # for wildcard entries: `\*.bar.com` will allow `*.bar.com`, but not `foo.bar.
+        # com`.
         # Corresponds to the JSON property `allowedDnsNames`
         # @return [Array<String>]
         attr_accessor :allowed_dns_names
