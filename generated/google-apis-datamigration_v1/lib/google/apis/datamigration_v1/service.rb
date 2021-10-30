@@ -335,7 +335,7 @@ module Google
         # Update the configuration of a single connection profile.
         # @param [String] name
         #   The name of this connection profile resource in the form of projects/`project`/
-        #   locations/`location`/connectionProfiles/`instance`.
+        #   locations/`location`/connectionProfiles/`connectionProfile`.
         # @param [Google::Apis::DatamigrationV1::ConnectionProfile] connection_profile_object
         # @param [String] request_id
         #   A unique id used to identify the request. If the server receives two requests
@@ -698,7 +698,7 @@ module Google
         # Updates the parameters of a single migration job.
         # @param [String] name
         #   The name (URI) of this migration job resource, in the form of: projects/`
-        #   project`/locations/`location`/instances/`instance`.
+        #   project`/locations/`location`/migrationJobs/`migrationJob`.
         # @param [Google::Apis::DatamigrationV1::MigrationJob] migration_job_object
         # @param [String] request_id
         #   A unique id used to identify the request. If the server receives two requests
