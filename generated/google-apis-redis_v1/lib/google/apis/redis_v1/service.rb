@@ -445,7 +445,8 @@ module Google
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
         #   field. The elements of the repeated paths field may only include these fields
-        #   from Instance: * `displayName` * `labels` * `memorySizeGb` * `redisConfig`
+        #   from Instance: * `displayName` * `labels` * `memorySizeGb` * `redisConfig` * `
+        #   replica_count`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
