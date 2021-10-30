@@ -22,6 +22,18 @@ module Google
   module Apis
     module GkehubV1beta
       
+      class AppDevExperienceFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppDevExperienceFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -334,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -344,6 +362,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppDevExperienceFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AppDevExperienceFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :networking_install_succeeded, as: 'networkingInstallSucceeded', class: Google::Apis::GkehubV1beta::Status, decorator: Google::Apis::GkehubV1beta::Status::Representation
+      
+        end
       end
       
       class AuditConfig
@@ -382,6 +414,8 @@ module Google
       class CommonFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec, decorator: Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec::Representation
+      
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec::Representation
       
         end
@@ -390,6 +424,8 @@ module Google
       class CommonFeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1beta::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1beta::AppDevExperienceFeatureState::Representation
+      
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::FeatureState, decorator: Google::Apis::GkehubV1beta::FeatureState::Representation
       
         end
@@ -806,6 +842,8 @@ module Google
       class MembershipFeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1beta::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1beta::AppDevExperienceFeatureState::Representation
+      
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1beta::ConfigManagementMembershipState, decorator: Google::Apis::GkehubV1beta::ConfigManagementMembershipState::Representation
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1beta::IdentityServiceMembershipState, decorator: Google::Apis::GkehubV1beta::IdentityServiceMembershipState::Representation
@@ -876,6 +914,14 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::GkehubV1beta::Policy, decorator: Google::Apis::GkehubV1beta::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
         end
       end
       
