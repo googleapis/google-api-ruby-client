@@ -249,13 +249,15 @@ module Google
         end
       end
       
-      # A Google Cloud Redis instance. next id = 37
+      # A Google Cloud Redis instance. next id = 38
       class Instance
         include Google::Apis::Core::Hashable
       
-        # Optional. Only applicable to STANDARD_HA tier which protects the instance
-        # against zonal failures by provisioning it across two zones. If provided, it
-        # must be a different zone from the one provided in location_id.
+        # Optional. If specified, at least one node will be provisioned in this zone in
+        # addition to the zone specified in location_id. Only applicable to standard
+        # tier. If provided, it must be a different zone from the one provided in [
+        # location_id]. Additional nodes beyond the first 2 will be placed in zones
+        # selected by the service.
         # Corresponds to the JSON property `alternativeLocationId`
         # @return [String]
         attr_accessor :alternative_location_id
@@ -286,10 +288,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. The current zone where the Redis endpoint is placed. For Basic
-        # Tier instances, this will always be the same as the location_id provided by
-        # the user at creation time. For Standard Tier instances, this can be either
-        # location_id or alternative_location_id and can change after a failover event.
+        # Output only. The current zone where the Redis primary node is located. In
+        # basic tier, this will always be the same as [location_id]. In standard tier,
+        # this can be the zone of any node in the instance.
         # Corresponds to the JSON property `currentLocationId`
         # @return [String]
         attr_accessor :current_location_id
@@ -312,9 +313,9 @@ module Google
       
         # Optional. The zone where the instance will be provisioned. If not provided,
         # the service will choose a zone from the specified region for the instance. For
-        # standard tier, instances will be created across two zones for protection
-        # against zonal failures. If [alternative_location_id] is also provided, it must
-        # be different from [location_id].
+        # standard tier, additional nodes will be added across multiple zones for
+        # protection against zonal failures. If specified, at least one node will be
+        # provisioned in this zone.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -350,6 +351,11 @@ module Google
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::RedisV1::NodeInfo>]
         attr_accessor :nodes
+      
+        # Configuration of the persistence functionality.
+        # Corresponds to the JSON property `persistenceConfig`
+        # @return [Google::Apis::RedisV1::PersistenceConfig]
+        attr_accessor :persistence_config
       
         # Output only. Cloud IAM identity used by import / export operations to transfer
         # data to/from Cloud Storage. Format is "serviceAccount:". The value may change
@@ -402,7 +408,7 @@ module Google
         attr_accessor :redis_version
       
         # Optional. The number of replica nodes. Valid range for standard tier is [1-5]
-        # and defaults to 1. Valid value for basic tier is 0 and defaults to 0.
+        # and defaults to 2. Valid value for basic tier is 0 and defaults to 0.
         # Corresponds to the JSON property `replicaCount`
         # @return [Fixnum]
         attr_accessor :replica_count
@@ -412,7 +418,8 @@ module Google
         # existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode,
         # the name of one allocated IP address ranges associated with this private
         # service access connection. If not provided, the service will choose an unused /
-        # 29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+        # 29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For
+        # READ_REPLICAS_ENABLED the default block size is /28.
         # Corresponds to the JSON property `reservedIpRange`
         # @return [String]
         attr_accessor :reserved_ip_range
@@ -465,6 +472,7 @@ module Google
           @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
           @name = args[:name] if args.key?(:name)
           @nodes = args[:nodes] if args.key?(:nodes)
+          @persistence_config = args[:persistence_config] if args.key?(:persistence_config)
           @persistence_iam_identity = args[:persistence_iam_identity] if args.key?(:persistence_iam_identity)
           @port = args[:port] if args.key?(:port)
           @read_endpoint = args[:read_endpoint] if args.key?(:read_endpoint)
@@ -725,12 +733,12 @@ module Google
       class NodeInfo
         include Google::Apis::Core::Hashable
       
-        # Output only. Output Only. Node identifying string. e.g. 'node-0', 'node-1'
+        # Output only. Node identifying string. e.g. 'node-0', 'node-1'
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Output only. Output Only. Location of the node.
+        # Output only. Location of the node.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -828,6 +836,51 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # Configuration of the persistence functionality.
+      class PersistenceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls whether Persistence features are enabled. If not provided,
+        # the existing value will be used.
+        # Corresponds to the JSON property `persistenceMode`
+        # @return [String]
+        attr_accessor :persistence_mode
+      
+        # Output only. The next time that a snapshot attempt is scheduled to occur.
+        # Corresponds to the JSON property `rdbNextSnapshotTime`
+        # @return [String]
+        attr_accessor :rdb_next_snapshot_time
+      
+        # Optional. Period between RDB snapshots. Snapshots will be attempted every
+        # period starting from the provided snapshot start time. For example, a start
+        # time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until
+        # 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and
+        # 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used
+        # as default.
+        # Corresponds to the JSON property `rdbSnapshotPeriod`
+        # @return [String]
+        attr_accessor :rdb_snapshot_period
+      
+        # Optional. Date and time that the first snapshot was/will be attempted, and to
+        # which future snapshots will be aligned. If not provided, the current time will
+        # be used.
+        # Corresponds to the JSON property `rdbSnapshotStartTime`
+        # @return [String]
+        attr_accessor :rdb_snapshot_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @persistence_mode = args[:persistence_mode] if args.key?(:persistence_mode)
+          @rdb_next_snapshot_time = args[:rdb_next_snapshot_time] if args.key?(:rdb_next_snapshot_time)
+          @rdb_snapshot_period = args[:rdb_snapshot_period] if args.key?(:rdb_snapshot_period)
+          @rdb_snapshot_start_time = args[:rdb_snapshot_start_time] if args.key?(:rdb_snapshot_start_time)
         end
       end
       
