@@ -22,6 +22,18 @@ module Google
   module Apis
     module GkehubV1
       
+      class AppDevExperienceFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppDevExperienceFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -368,6 +386,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppDevExperienceFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AppDevExperienceFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :networking_install_succeeded, as: 'networkingInstallSucceeded', class: Google::Apis::GkehubV1::Status, decorator: Google::Apis::GkehubV1::Status::Representation
+      
+        end
       end
       
       class AuditConfig
@@ -416,6 +448,8 @@ module Google
       class CommonFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1::AppDevExperienceFeatureSpec, decorator: Google::Apis::GkehubV1::AppDevExperienceFeatureSpec::Representation
+      
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1::MultiClusterIngressFeatureSpec::Representation
       
         end
@@ -424,6 +458,8 @@ module Google
       class CommonFeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1::AppDevExperienceFeatureState::Representation
+      
           property :state, as: 'state', class: Google::Apis::GkehubV1::FeatureState, decorator: Google::Apis::GkehubV1::FeatureState::Representation
       
         end
@@ -847,6 +883,8 @@ module Google
       class MembershipFeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1::AppDevExperienceFeatureState, decorator: Google::Apis::GkehubV1::AppDevExperienceFeatureState::Representation
+      
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1::ConfigManagementMembershipState, decorator: Google::Apis::GkehubV1::ConfigManagementMembershipState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1::FeatureState, decorator: Google::Apis::GkehubV1::FeatureState::Representation
@@ -928,6 +966,14 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::GkehubV1::Policy, decorator: Google::Apis::GkehubV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
         end
       end
       
