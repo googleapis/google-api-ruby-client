@@ -792,7 +792,6 @@ module Google
           collection :bindings, as: 'bindings', class: Google::Apis::GameservicesV1::Binding, decorator: Google::Apis::GameservicesV1::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
           collection :rules, as: 'rules', class: Google::Apis::GameservicesV1::Rule, decorator: Google::Apis::GameservicesV1::Rule::Representation
       
           property :version, as: 'version'
