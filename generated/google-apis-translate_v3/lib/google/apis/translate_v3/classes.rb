@@ -22,6 +22,111 @@ module Google
   module Apis
     module TranslateV3
       
+      # Input configuration for BatchTranslateDocument request.
+      class BatchDocumentInputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage location for the input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::TranslateV3::GcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # Output configuration for BatchTranslateDocument request.
+      class BatchDocumentOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage location for the output content.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::TranslateV3::GcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # The BatchTranslateDocument request.
+      class BatchTranslateDocumentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional.
+        # Corresponds to the JSON property `formatConversions`
+        # @return [Hash<String,String>]
+        attr_accessor :format_conversions
+      
+        # Optional. Glossaries to be applied. It's keyed by target language code.
+        # Corresponds to the JSON property `glossaries`
+        # @return [Hash<String,Google::Apis::TranslateV3::TranslateTextGlossaryConfig>]
+        attr_accessor :glossaries
+      
+        # Required. Input configurations. The total number of files matched should be <=
+        # 100. The total content size to translate should be <= 100M Unicode codepoints.
+        # The files must use UTF-8 encoding.
+        # Corresponds to the JSON property `inputConfigs`
+        # @return [Array<Google::Apis::TranslateV3::BatchDocumentInputConfig>]
+        attr_accessor :input_configs
+      
+        # Optional. The models to use for translation. Map's key is target language code.
+        # Map's value is the model name. Value can be a built-in general model, or an
+        # AutoML Translation model. The value format depends on model type: - AutoML
+        # Translation models: `projects/`project-number-or-id`/locations/`location-id`/
+        # models/`model-id`` - General (built-in) models: `projects/`project-number-or-
+        # id`/locations/`location-id`/models/general/nmt`, If the map is empty or a
+        # specific model is not requested for a language pair, then default google model
+        # (nmt) is used.
+        # Corresponds to the JSON property `models`
+        # @return [Hash<String,String>]
+        attr_accessor :models
+      
+        # Output configuration for BatchTranslateDocument request.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::TranslateV3::BatchDocumentOutputConfig]
+        attr_accessor :output_config
+      
+        # Required. The BCP-47 language code of the input document if known, for example,
+        # "en-US" or "sr-Latn". Supported language codes are listed in Language Support
+        # (https://cloud.google.com/translate/docs/languages).
+        # Corresponds to the JSON property `sourceLanguageCode`
+        # @return [String]
+        attr_accessor :source_language_code
+      
+        # Required. The BCP-47 language code to use for translation of the input
+        # document. Specify up to 10 language codes here.
+        # Corresponds to the JSON property `targetLanguageCodes`
+        # @return [Array<String>]
+        attr_accessor :target_language_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format_conversions = args[:format_conversions] if args.key?(:format_conversions)
+          @glossaries = args[:glossaries] if args.key?(:glossaries)
+          @input_configs = args[:input_configs] if args.key?(:input_configs)
+          @models = args[:models] if args.key?(:models)
+          @output_config = args[:output_config] if args.key?(:output_config)
+          @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
+          @target_language_codes = args[:target_language_codes] if args.key?(:target_language_codes)
+        end
+      end
+      
       # The batch translation request.
       class BatchTranslateTextRequest
         include Google::Apis::Core::Hashable
@@ -195,6 +300,111 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
+      # A document translation request input config.
+      class DocumentInputConfig
+        include Google::Apis::Core::Hashable
+      
+        # Document's content represented as a stream of bytes.
+        # Corresponds to the JSON property `content`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :content
+      
+        # The Google Cloud Storage location for the input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::TranslateV3::GcsSource]
+        attr_accessor :gcs_source
+      
+        # Specifies the input document's mime_type. If not specified it will be
+        # determined using the file extension for gcs_source provided files. For a file
+        # provided through bytes content the mime_type must be provided. Currently
+        # supported mime types are: - application/pdf - application/vnd.openxmlformats-
+        # officedocument.wordprocessingml.document - application/vnd.openxmlformats-
+        # officedocument.presentationml.presentation - application/vnd.openxmlformats-
+        # officedocument.spreadsheetml.sheet
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # A document translation request output config.
+      class DocumentOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud Storage location for the output content.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::TranslateV3::GcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Optional. Specifies the translated document's mime_type. If not specified, the
+        # translated file's mime type will be the same as the input file's mime type.
+        # Currently only support the output mime type to be the same as input mime type.
+        # - application/pdf - application/vnd.openxmlformats-officedocument.
+        # wordprocessingml.document - application/vnd.openxmlformats-officedocument.
+        # presentationml.presentation - application/vnd.openxmlformats-officedocument.
+        # spreadsheetml.sheet
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # A translated document message.
+      class DocumentTranslation
+        include Google::Apis::Core::Hashable
+      
+        # The array of translated documents. It is expected to be size 1 for now. We may
+        # produce multiple translated documents in the future for other type of file
+        # formats.
+        # Corresponds to the JSON property `byteStreamOutputs`
+        # @return [Array<String>]
+        attr_accessor :byte_stream_outputs
+      
+        # The detected language for the input document. If the user did not provide the
+        # source language for the input document, this field will have the language code
+        # automatically detected. If the source language was passed, auto-detection of
+        # the language does not occur and this field is empty.
+        # Corresponds to the JSON property `detectedLanguageCode`
+        # @return [String]
+        attr_accessor :detected_language_code
+      
+        # The translated document's mime type.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @byte_stream_outputs = args[:byte_stream_outputs] if args.key?(:byte_stream_outputs)
+          @detected_language_code = args[:detected_language_code] if args.key?(:detected_language_code)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       
@@ -712,6 +922,119 @@ module Google
         # Update properties of this object
         def update!(**args)
           @languages = args[:languages] if args.key?(:languages)
+        end
+      end
+      
+      # A document translation request.
+      class TranslateDocumentRequest
+        include Google::Apis::Core::Hashable
+      
+        # A document translation request input config.
+        # Corresponds to the JSON property `documentInputConfig`
+        # @return [Google::Apis::TranslateV3::DocumentInputConfig]
+        attr_accessor :document_input_config
+      
+        # A document translation request output config.
+        # Corresponds to the JSON property `documentOutputConfig`
+        # @return [Google::Apis::TranslateV3::DocumentOutputConfig]
+        attr_accessor :document_output_config
+      
+        # Configures which glossary should be used for a specific target language, and
+        # defines options for applying that glossary.
+        # Corresponds to the JSON property `glossaryConfig`
+        # @return [Google::Apis::TranslateV3::TranslateTextGlossaryConfig]
+        attr_accessor :glossary_config
+      
+        # Optional. The labels with user-defined metadata for the request. Label keys
+        # and values can be no longer than 63 characters (Unicode codepoints), can only
+        # contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter. See https://cloud.google.com/translate/docs/advanced/
+        # labels for more information.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. The `model` type requested for this translation. The format depends
+        # on model type: - AutoML Translation models: `projects/`project-number-or-id`/
+        # locations/`location-id`/models/`model-id`` - General (built-in) models: `
+        # projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`,
+        # If not provided, the default Google model (NMT) will be used for translation.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Optional. The BCP-47 language code of the input document if known, for example,
+        # "en-US" or "sr-Latn". Supported language codes are listed in Language Support.
+        # If the source language isn't specified, the API attempts to identify the
+        # source language automatically and returns the source language within the
+        # response. Source language must be specified if the request contains a glossary
+        # or a custom model.
+        # Corresponds to the JSON property `sourceLanguageCode`
+        # @return [String]
+        attr_accessor :source_language_code
+      
+        # Required. The BCP-47 language code to use for translation of the input
+        # document, set to one of the language codes listed in Language Support.
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_input_config = args[:document_input_config] if args.key?(:document_input_config)
+          @document_output_config = args[:document_output_config] if args.key?(:document_output_config)
+          @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
+          @labels = args[:labels] if args.key?(:labels)
+          @model = args[:model] if args.key?(:model)
+          @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
+        end
+      end
+      
+      # A translated document response message.
+      class TranslateDocumentResponse
+        include Google::Apis::Core::Hashable
+      
+        # A translated document message.
+        # Corresponds to the JSON property `documentTranslation`
+        # @return [Google::Apis::TranslateV3::DocumentTranslation]
+        attr_accessor :document_translation
+      
+        # Configures which glossary should be used for a specific target language, and
+        # defines options for applying that glossary.
+        # Corresponds to the JSON property `glossaryConfig`
+        # @return [Google::Apis::TranslateV3::TranslateTextGlossaryConfig]
+        attr_accessor :glossary_config
+      
+        # A translated document message.
+        # Corresponds to the JSON property `glossaryDocumentTranslation`
+        # @return [Google::Apis::TranslateV3::DocumentTranslation]
+        attr_accessor :glossary_document_translation
+      
+        # Only present when 'model' is present in the request. 'model' is normalized to
+        # have a project number. For example: If the 'model' field in
+        # TranslateDocumentRequest is: `projects/`project-id`/locations/`location-id`/
+        # models/general/nmt` then `model` here would be normalized to `projects/`
+        # project-number`/locations/`location-id`/models/general/nmt`.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_translation = args[:document_translation] if args.key?(:document_translation)
+          @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
+          @glossary_document_translation = args[:glossary_document_translation] if args.key?(:glossary_document_translation)
+          @model = args[:model] if args.key?(:model)
         end
       end
       
