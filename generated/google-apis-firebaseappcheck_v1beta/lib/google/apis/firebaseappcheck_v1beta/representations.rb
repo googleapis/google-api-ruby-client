@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +179,12 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1betaRecaptchaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -240,6 +258,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaConfig::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig::Representation
       
         end
       end
@@ -337,6 +363,13 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recaptcha_enterprise_token, as: 'recaptchaEnterpriseToken'
+        end
+      end
+      
       class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -401,6 +434,15 @@ module Google
           property :name, as: 'name'
           property :site_secret, as: 'siteSecret'
           property :site_secret_set, as: 'siteSecretSet'
+          property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :site_key, as: 'siteKey'
           property :token_ttl, as: 'tokenTtl'
         end
       end

@@ -171,6 +171,25 @@ module Google
         end
       end
       
+      # Response message for the BatchGetRecaptchaEnterpriseConfigs method.
+      class GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # RecaptchaEnterpriseConfigs retrieved.
+        # Corresponds to the JSON property `configs`
+        # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>]
+        attr_accessor :configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configs = args[:configs] if args.key?(:configs)
+        end
+      end
+      
       # Response message for the BatchGetSafetyNetConfigs method.
       class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
         include Google::Apis::Core::Hashable
@@ -497,6 +516,27 @@ module Google
         end
       end
       
+      # Request message for the ExchangeRecaptchaEnterpriseToken method.
+      class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The reCAPTCHA token as returned by the [reCAPTCHA Enterprise
+        # JavaScript API](https://cloud.google.com/recaptcha-enterprise/docs/instrument-
+        # web-pages).
+        # Corresponds to the JSON property `recaptchaEnterpriseToken`
+        # @return [String]
+        attr_accessor :recaptcha_enterprise_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recaptcha_enterprise_token = args[:recaptcha_enterprise_token] if args.key?(:recaptcha_enterprise_token)
+        end
+      end
+      
       # Request message for the ExchangeRecaptchaToken method.
       class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest
         include Google::Apis::Core::Hashable
@@ -728,6 +768,49 @@ module Google
           @name = args[:name] if args.key?(:name)
           @site_secret = args[:site_secret] if args.key?(:site_secret)
           @site_secret_set = args[:site_secret_set] if args.key?(:site_secret_set)
+          @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
+        end
+      end
+      
+      # An app's reCAPTCHA Enterprise configuration object. This configuration is used
+      # by ExchangeRecaptchaEnterpriseToken to validate reCAPTCHA tokens issued to
+      # apps by reCAPTCHA Enterprise. It also controls certain properties of the
+      # returned App Check token, such as its ttl.
+      class GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The relative resource name of the reCAPTCHA Enterprise configuration
+        # object, in the format: ``` projects/`project_number`/apps/`app_id`/
+        # recaptchaEnterpriseConfig ```
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The score-based site key [created in reCAPTCHA Enterprise](https://cloud.
+        # google.com/recaptcha-enterprise/docs/create-key#creating_a_site_key) used to [
+        # invoke reCAPTCHA and generate the reCAPTCHA tokens](https://cloud.google.com/
+        # recaptcha-enterprise/docs/instrument-web-pages) for your application.
+        # Important: This is *not* the `site_secret` (as it is in reCAPTCHA v3), but
+        # rather your score-based reCAPTCHA Enterprise site key.
+        # Corresponds to the JSON property `siteKey`
+        # @return [String]
+        attr_accessor :site_key
+      
+        # Specifies the duration for which App Check tokens exchanged from reCAPTCHA
+        # Enterprise tokens will be valid. If unset, a default value of 1 hour is
+        # assumed. Must be between 30 minutes and 7 days, inclusive.
+        # Corresponds to the JSON property `tokenTtl`
+        # @return [String]
+        attr_accessor :token_ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @site_key = args[:site_key] if args.key?(:site_key)
           @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
         end
       end
