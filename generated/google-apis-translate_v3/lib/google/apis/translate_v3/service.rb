@@ -175,6 +175,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Translates a large volume of document in asynchronous batch mode. This
+        # function provides real-time output as the inputs are being processed. If
+        # caller cancels a request, the partial results (for an input file, it's all or
+        # nothing) may still be available on the specified output location. This call
+        # returns immediately and you can use google.longrunning.Operation.name to poll
+        # the status of the call.
+        # @param [String] parent
+        #   Required. Location to make a regional call. Format: `projects/`project-number-
+        #   or-id`/locations/`location-id``. The `global` location is not supported for
+        #   batch translation. Only AutoML Translation models or glossaries within the
+        #   same region (have the same location-id) can be used, otherwise an
+        #   INVALID_ARGUMENT (400) error is returned.
+        # @param [Google::Apis::TranslateV3::BatchTranslateDocumentRequest] batch_translate_document_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_location_translate_document(parent, batch_translate_document_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}:batchTranslateDocument', options)
+          command.request_representation = Google::Apis::TranslateV3::BatchTranslateDocumentRequest::Representation
+          command.request_object = batch_translate_document_request_object
+          command.response_representation = Google::Apis::TranslateV3::Operation::Representation
+          command.response_class = Google::Apis::TranslateV3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Translates a large volume of text in asynchronous batch mode. This function
         # provides real-time output as the inputs are being processed. If caller cancels
         # a request, the partial results (for an input file, it's all or nothing) may
@@ -372,6 +414,44 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Translates documents in synchronous mode.
+        # @param [String] parent
+        #   Required. Location to make a regional call. Format: `projects/`project-number-
+        #   or-id`/locations/`location-id``. For global calls, use `projects/`project-
+        #   number-or-id`/locations/global` or `projects/`project-number-or-id``. Non-
+        #   global location is required for requests using AutoML models or custom
+        #   glossaries. Models and glossaries must be within the same region (have the
+        #   same location-id), otherwise an INVALID_ARGUMENT (400) error is returned.
+        # @param [Google::Apis::TranslateV3::TranslateDocumentRequest] translate_document_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::TranslateV3::TranslateDocumentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::TranslateV3::TranslateDocumentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def translate_location_document(parent, translate_document_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}:translateDocument', options)
+          command.request_representation = Google::Apis::TranslateV3::TranslateDocumentRequest::Representation
+          command.request_object = translate_document_request_object
+          command.response_representation = Google::Apis::TranslateV3::TranslateDocumentResponse::Representation
+          command.response_class = Google::Apis::TranslateV3::TranslateDocumentResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
