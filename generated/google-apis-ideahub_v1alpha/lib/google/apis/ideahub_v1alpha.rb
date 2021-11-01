@@ -21,7 +21,7 @@ module Google
   module Apis
     # Idea Hub API
     #
-    # 
+    # This is an invitation-only API.
     #
     # @see https://console.cloud.google.com/apis/library/ideahub.googleapis.com
     module IdeahubV1alpha
