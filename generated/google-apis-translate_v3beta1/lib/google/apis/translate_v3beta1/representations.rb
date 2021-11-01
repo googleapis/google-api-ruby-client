@@ -251,6 +251,7 @@ module Google
       class BatchTranslateDocumentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :format_conversions, as: 'formatConversions'
           hash :glossaries, as: 'glossaries', class: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig::Representation
       
           collection :input_configs, as: 'inputConfigs', class: Google::Apis::TranslateV3beta1::BatchDocumentInputConfig, decorator: Google::Apis::TranslateV3beta1::BatchDocumentInputConfig::Representation

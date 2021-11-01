@@ -64,6 +64,11 @@ module Google
       class BatchTranslateDocumentRequest
         include Google::Apis::Core::Hashable
       
+        # Optional.
+        # Corresponds to the JSON property `formatConversions`
+        # @return [Hash<String,String>]
+        attr_accessor :format_conversions
+      
         # Optional. Glossaries to be applied. It's keyed by target language code.
         # Corresponds to the JSON property `glossaries`
         # @return [Hash<String,Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig>]
@@ -112,6 +117,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @format_conversions = args[:format_conversions] if args.key?(:format_conversions)
           @glossaries = args[:glossaries] if args.key?(:glossaries)
           @input_configs = args[:input_configs] if args.key?(:input_configs)
           @models = args[:models] if args.key?(:models)
