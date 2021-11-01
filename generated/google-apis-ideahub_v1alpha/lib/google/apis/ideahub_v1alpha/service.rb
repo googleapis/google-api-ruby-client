@@ -22,7 +22,7 @@ module Google
     module IdeahubV1alpha
       # Idea Hub API
       #
-      # 
+      # This is an invitation-only API.
       #
       # @example
       #    require 'google/apis/ideahub_v1alpha'
