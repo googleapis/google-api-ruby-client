@@ -22,6 +22,12 @@ module Google
   module Apis
     module RecaptchaenterpriseV1
       
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1Metrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +101,18 @@ module Google
       end
       
       class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +131,18 @@ module Google
       end
       
       class GoogleCloudRecaptchaenterpriseV1ScoreMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +172,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :labels, as: 'labels'
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -142,6 +191,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :annotation, as: 'annotation'
+          property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           collection :reasons, as: 'reasons'
         end
       end
@@ -155,6 +205,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1Assessment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_defender_assessment, as: 'accountDefenderAssessment', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment::Representation
+      
           property :event, as: 'event', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1Event::Representation
       
           property :name, as: 'name'
@@ -179,6 +231,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expected_action, as: 'expectedAction'
+          property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           property :site_key, as: 'siteKey'
           property :token, as: 'token'
           property :user_agent, as: 'userAgent'
@@ -221,6 +274,24 @@ module Google
         end
       end
       
+      class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :related_account_group_memberships, as: 'relatedAccountGroupMemberships', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :related_account_groups, as: 'relatedAccountGroups', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup::Representation
+      
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1Metrics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -236,6 +307,21 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
+          property :name, as: 'name'
         end
       end
       
@@ -260,6 +346,24 @@ module Google
           hash :action_metrics, as: 'actionMetrics', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ScoreDistribution, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ScoreDistribution::Representation
       
           property :overall_metrics, as: 'overallMetrics', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ScoreDistribution, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ScoreDistribution::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :related_account_group_memberships, as: 'relatedAccountGroupMemberships', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership::Representation
       
         end
       end

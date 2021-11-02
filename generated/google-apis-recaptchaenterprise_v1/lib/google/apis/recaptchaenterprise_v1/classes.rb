@@ -22,6 +22,25 @@ module Google
   module Apis
     module RecaptchaenterpriseV1
       
+      # Account Defender risk assessment.
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
+        include Google::Apis::Core::Hashable
+      
+        # Labels for this request.
+        # Corresponds to the JSON property `labels`
+        # @return [Array<String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
       # Settings specific to keys that can be used by Android apps.
       class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings
         include Google::Apis::Core::Hashable
@@ -60,6 +79,16 @@ module Google
         # @return [String]
         attr_accessor :annotation
       
+        # Optional. Optional unique stable hashed user identifier to apply to the
+        # assessment. This is an alternative to setting the hashed_account_id in
+        # CreateAssessment, for example when the account identifier is not yet known in
+        # the initial request. It is recommended that the identifier is hashed using
+        # hmac-sha256 with stable secret.
+        # Corresponds to the JSON property `hashedAccountId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :hashed_account_id
+      
         # Optional. Optional reasons for the annotation that will be assigned to the
         # Event.
         # Corresponds to the JSON property `reasons`
@@ -73,6 +102,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotation = args[:annotation] if args.key?(:annotation)
+          @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @reasons = args[:reasons] if args.key?(:reasons)
         end
       end
@@ -93,6 +123,11 @@ module Google
       # A recaptcha assessment resource.
       class GoogleCloudRecaptchaenterpriseV1Assessment
         include Google::Apis::Core::Hashable
+      
+        # Account Defender risk assessment.
+        # Corresponds to the JSON property `accountDefenderAssessment`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment]
+        attr_accessor :account_defender_assessment
       
         # The event being assessed.
         # Corresponds to the JSON property `event`
@@ -121,6 +156,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_defender_assessment = args[:account_defender_assessment] if args.key?(:account_defender_assessment)
           @event = args[:event] if args.key?(:event)
           @name = args[:name] if args.key?(:name)
           @risk_analysis = args[:risk_analysis] if args.key?(:risk_analysis)
@@ -179,6 +215,13 @@ module Google
         # @return [String]
         attr_accessor :expected_action
       
+        # Optional. Optional unique stable hashed user identifier for the request. The
+        # identifier should ideally be hashed using sha256 with stable secret.
+        # Corresponds to the JSON property `hashedAccountId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :hashed_account_id
+      
         # Optional. The site key that was used to invoke reCAPTCHA on your site and
         # generate the token.
         # Corresponds to the JSON property `siteKey`
@@ -210,6 +253,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expected_action = args[:expected_action] if args.key?(:expected_action)
+          @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @site_key = args[:site_key] if args.key?(:site_key)
           @token = args[:token] if args.key?(:token)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
@@ -332,6 +376,58 @@ module Google
         end
       end
       
+      # The response to a `ListRelatedAccountGroupMemberships` call.
+      class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The memberships listed by the query.
+        # Corresponds to the JSON property `relatedAccountGroupMemberships`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>]
+        attr_accessor :related_account_group_memberships
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @related_account_group_memberships = args[:related_account_group_memberships] if args.key?(:related_account_group_memberships)
+        end
+      end
+      
+      # The response to a `ListRelatedAccountGroups` call.
+      class GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The groups of related accounts listed by the query.
+        # Corresponds to the JSON property `relatedAccountGroups`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>]
+        attr_accessor :related_account_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @related_account_groups = args[:related_account_groups] if args.key?(:related_account_groups)
+        end
+      end
+      
       # Metrics for a single Key.
       class GoogleCloudRecaptchaenterpriseV1Metrics
         include Google::Apis::Core::Hashable
@@ -383,6 +479,55 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A group of related accounts.
+      class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name for the related account group in the format `
+        # projects/`project`/relatedaccountgroups/`related_account_group``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A membership in a group of related accounts.
+      class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership
+        include Google::Apis::Core::Hashable
+      
+        # The unique stable hashed user identifier of the member. The identifier
+        # corresponds to a `hashed_account_id` provided in a previous CreateAssessment
+        # or AnnotateAssessment call.
+        # Corresponds to the JSON property `hashedAccountId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :hashed_account_id
+      
+        # Required. The resource name for this membership in the format `projects/`
+        # project`/relatedaccountgroups/`relatedaccountgroup`/memberships/`membership``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -457,6 +602,72 @@ module Google
         def update!(**args)
           @action_metrics = args[:action_metrics] if args.key?(:action_metrics)
           @overall_metrics = args[:overall_metrics] if args.key?(:overall_metrics)
+        end
+      end
+      
+      # The request message to search related account group memberships.
+      class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The unique stable hashed user identifier we should search
+        # connections to. The identifier should correspond to a `hashed_account_id`
+        # provided in a previous CreateAssessment or AnnotateAssessment call.
+        # Corresponds to the JSON property `hashedAccountId`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :hashed_account_id
+      
+        # Optional. The maximum number of groups to return. The service may return fewer
+        # than this value. If unspecified, at most 50 groups will be returned. The
+        # maximum value is 1000; values above 1000 will be coerced to 1000.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Optional. A page token, received from a previous `
+        # SearchRelatedAccountGroupMemberships` call. Provide this to retrieve the
+        # subsequent page. When paginating, all other parameters provided to `
+        # SearchRelatedAccountGroupMemberships` must match the call that provided the
+        # page token.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+        end
+      end
+      
+      # The response to a `SearchRelatedAccountGroupMemberships` call.
+      class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The queried memberships.
+        # Corresponds to the JSON property `relatedAccountGroupMemberships`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>]
+        attr_accessor :related_account_group_memberships
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @related_account_group_memberships = args[:related_account_group_memberships] if args.key?(:related_account_group_memberships)
         end
       end
       
