@@ -145,7 +145,7 @@ module Google
         end
       end
       
-      # Associates `members` with a `role`.
+      # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
       
@@ -168,7 +168,7 @@ module Google
         # @return [Google::Apis::DatafusionV1beta1::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Cloud Platform resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -198,8 +198,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
-        # , or `roles/owner`.
+        # Role that is assigned to the list of `members`, or principals. For example, `
+        # roles/viewer`, `roles/editor`, or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -373,31 +373,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DatafusionV1beta1::Policy]
         attr_accessor :policy
@@ -465,6 +465,12 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # Output only. If the instance state is DISABLED, the reason for disabling the
+        # instance.
+        # Corresponds to the JSON property `disabledReason`
+        # @return [Array<String>]
+        attr_accessor :disabled_reason
       
         # Display name for an instance.
         # Corresponds to the JSON property `displayName`
@@ -598,6 +604,7 @@ module Google
           @crypto_key_config = args[:crypto_key_config] if args.key?(:crypto_key_config)
           @dataproc_service_account = args[:dataproc_service_account] if args.key?(:dataproc_service_account)
           @description = args[:description] if args.key?(:description)
+          @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_rbac = args[:enable_rbac] if args.key?(:enable_rbac)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
@@ -1011,31 +1018,31 @@ module Google
       
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-      # A `binding` binds one or more `members` to a single `role`. Members can be
-      # user accounts, service accounts, Google groups, and domains (such as G Suite).
-      # A `role` is a named list of permissions; each `role` can be an IAM predefined
-      # role or a user-created custom role. For some types of Google Cloud resources,
-      # a `binding` can also specify a `condition`, which is a logical expression that
-      # allows access to a resource only if the expression evaluates to `true`. A
-      # condition can add constraints based on attributes of the request, the resource,
-      # or both. To learn which resources support conditions in their IAM policies,
-      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-      # title": "expirable access", "description": "Does not grant access after Sep
-      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-      # members: - user:mike@example.com - group:admins@example.com - domain:google.
-      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-      # roles/resourcemanager.organizationViewer condition: title: expirable access
-      # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
-      # description of IAM and its features, see the [IAM documentation](https://cloud.
-      # google.com/iam/docs/).
+      # A `binding` binds one or more `members`, or principals, to a single `role`.
+      # Principals can be user accounts, service accounts, Google groups, and domains (
+      # such as G Suite). A `role` is a named list of permissions; each `role` can be
+      # an IAM predefined role or a user-created custom role. For some types of Google
+      # Cloud resources, a `binding` can also specify a `condition`, which is a
+      # logical expression that allows access to a resource only if the expression
+      # evaluates to `true`. A condition can add constraints based on attributes of
+      # the request, the resource, or both. To learn which resources support
+      # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+      # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+      # ], "condition": ` "title": "expirable access", "description": "Does not grant
+      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+      # bindings: - members: - user:mike@example.com - group:admins@example.com -
+      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+      # access description: Does not grant access after Sep 2020 expression: request.
+      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+      # a description of IAM and its features, see the [IAM documentation](https://
+      # cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1044,9 +1051,14 @@ module Google
         # @return [Array<Google::Apis::DatafusionV1beta1::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a `
-        # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # Associates a list of `members`, or principals, with a `role`. Optionally, may
+        # specify a `condition` that determines how and when the `bindings` are applied.
+        # Each of the `bindings` must contain at least one principal. The `bindings` in
+        # a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        # can be Google groups. Each occurrence of a principal counts towards these
+        # limits. For example, if the `bindings` grant 50 different roles to `user:alice@
+        # example.com`, and not to any other principal, then you can add another 1,450
+        # principals to the `bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::DatafusionV1beta1::Binding>]
         attr_accessor :bindings
@@ -1176,31 +1188,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DatafusionV1beta1::Policy]
         attr_accessor :policy
@@ -1331,6 +1343,11 @@ module Google
         attr_accessor :default_version
         alias_method :default_version?, :default_version
       
+        # Type represents the release availability of the version
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # The version number of the Data Fusion instance, such as '6.0.1.0'.
         # Corresponds to the JSON property `versionNumber`
         # @return [String]
@@ -1344,6 +1361,7 @@ module Google
         def update!(**args)
           @available_features = args[:available_features] if args.key?(:available_features)
           @default_version = args[:default_version] if args.key?(:default_version)
+          @type = args[:type] if args.key?(:type)
           @version_number = args[:version_number] if args.key?(:version_number)
         end
       end
