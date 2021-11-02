@@ -133,7 +133,8 @@ module Google
         # @return [String]
         attr_accessor :offer
       
-        # Optional. Parameters needed to purchase the Offer.
+        # Optional. Parameters needed to purchase the Offer. To view the available
+        # Parameters refer to the Offer.parameter_definitions from the desired offer.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
@@ -173,7 +174,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Entitlement parameters to update. You can only change editable
-        # parameters.
+        # parameters. To view the available Parameters for a request, refer to the Offer.
+        # parameter_definitions from the desired offer.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
@@ -806,8 +808,12 @@ module Google
         # @return [String]
         attr_accessor :offer
       
-        # Extended entitlement parameters. When creating an entitlement, valid
-        # parameters' names and values are defined in the offer's parameter definitions.
+        # Extended entitlement parameters. When creating an entitlement, valid parameter
+        # names and values are defined in the Offer.parameter_definitions. The response
+        # may include the following output-only Parameters: - assigned_units: The number
+        # of licenses assigned to a user. - max_units: The maximum assignable units for
+        # a flexible offer. - num_units: The total commitment for commitment-based
+        # offers.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1Parameter>]
         attr_accessor :parameters
@@ -2597,8 +2603,12 @@ module Google
         # @return [String]
         attr_accessor :offer
       
-        # Extended entitlement parameters. When creating an entitlement, valid
-        # parameters' names and values are defined in the offer's parameter definitions.
+        # Extended entitlement parameters. When creating an entitlement, valid parameter
+        # names and values are defined in the Offer.parameter_definitions. The response
+        # may include the following output-only Parameters: - assigned_units: The number
+        # of licenses assigned to a user. - max_units: The maximum assignable units for
+        # a flexible offer. - num_units: The total commitment for commitment-based
+        # offers.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1alpha1Parameter>]
         attr_accessor :parameters
