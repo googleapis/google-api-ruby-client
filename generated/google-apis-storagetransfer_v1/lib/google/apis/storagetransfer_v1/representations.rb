@@ -563,6 +563,8 @@ module Google
       
           property :object_conditions, as: 'objectConditions', class: Google::Apis::StoragetransferV1::ObjectConditions, decorator: Google::Apis::StoragetransferV1::ObjectConditions::Representation
       
+          property :posix_data_sink, as: 'posixDataSink', class: Google::Apis::StoragetransferV1::PosixFilesystem, decorator: Google::Apis::StoragetransferV1::PosixFilesystem::Representation
+      
           property :posix_data_source, as: 'posixDataSource', class: Google::Apis::StoragetransferV1::PosixFilesystem, decorator: Google::Apis::StoragetransferV1::PosixFilesystem::Representation
       
           property :transfer_options, as: 'transferOptions', class: Google::Apis::StoragetransferV1::TransferOptions, decorator: Google::Apis::StoragetransferV1::TransferOptions::Representation
