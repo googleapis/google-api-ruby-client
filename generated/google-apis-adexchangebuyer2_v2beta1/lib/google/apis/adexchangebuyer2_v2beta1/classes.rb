@@ -3739,7 +3739,7 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # Optional sub-account ID for the seller.
+        # Output only. Ad manager network code for the seller.
         # Corresponds to the JSON property `subAccountId`
         # @return [String]
         attr_accessor :sub_account_id
