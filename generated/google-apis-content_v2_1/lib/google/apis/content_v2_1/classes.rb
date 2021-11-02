@@ -11838,10 +11838,20 @@ module Google
         # @return [String]
         attr_accessor :promotion_display_dates
       
+        # A message that represents a time period.
+        # Corresponds to the JSON property `promotionDisplayTimePeriod`
+        # @return [Google::Apis::ContentV2_1::TimePeriod]
+        attr_accessor :promotion_display_time_period
+      
         # Required. String representation of the promotion effective dates.
         # Corresponds to the JSON property `promotionEffectiveDates`
         # @return [String]
         attr_accessor :promotion_effective_dates
+      
+        # A message that represents a time period.
+        # Corresponds to the JSON property `promotionEffectiveTimePeriod`
+        # @return [Google::Apis::ContentV2_1::TimePeriod]
+        attr_accessor :promotion_effective_time_period
       
         # Required. The user provided promotion id to uniquely identify the promotion.
         # Corresponds to the JSON property `promotionId`
@@ -11899,7 +11909,9 @@ module Google
           @product_type_exclusion = args[:product_type_exclusion] if args.key?(:product_type_exclusion)
           @promotion_destination_ids = args[:promotion_destination_ids] if args.key?(:promotion_destination_ids)
           @promotion_display_dates = args[:promotion_display_dates] if args.key?(:promotion_display_dates)
+          @promotion_display_time_period = args[:promotion_display_time_period] if args.key?(:promotion_display_time_period)
           @promotion_effective_dates = args[:promotion_effective_dates] if args.key?(:promotion_effective_dates)
+          @promotion_effective_time_period = args[:promotion_effective_time_period] if args.key?(:promotion_effective_time_period)
           @promotion_id = args[:promotion_id] if args.key?(:promotion_id)
           @redemption_channel = args[:redemption_channel] if args.key?(:redemption_channel)
           @shipping_service_names = args[:shipping_service_names] if args.key?(:shipping_service_names)
@@ -15577,6 +15589,31 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
+        end
+      end
+      
+      # A message that represents a time period.
+      class TimePeriod
+        include Google::Apis::Core::Hashable
+      
+        # The ending timestamp.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The starting timestamp.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       

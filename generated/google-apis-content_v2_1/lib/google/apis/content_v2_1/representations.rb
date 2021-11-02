@@ -2242,6 +2242,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5485,7 +5491,11 @@ module Google
           collection :product_type_exclusion, as: 'productTypeExclusion'
           collection :promotion_destination_ids, as: 'promotionDestinationIds'
           property :promotion_display_dates, as: 'promotionDisplayDates'
+          property :promotion_display_time_period, as: 'promotionDisplayTimePeriod', class: Google::Apis::ContentV2_1::TimePeriod, decorator: Google::Apis::ContentV2_1::TimePeriod::Representation
+      
           property :promotion_effective_dates, as: 'promotionEffectiveDates'
+          property :promotion_effective_time_period, as: 'promotionEffectiveTimePeriod', class: Google::Apis::ContentV2_1::TimePeriod, decorator: Google::Apis::ContentV2_1::TimePeriod::Representation
+      
           property :promotion_id, as: 'promotionId'
           collection :redemption_channel, as: 'redemptionChannel'
           collection :shipping_service_names, as: 'shippingServiceNames'
@@ -6496,6 +6506,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :phone_number, as: 'phoneNumber'
+        end
+      end
+      
+      class TimePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
