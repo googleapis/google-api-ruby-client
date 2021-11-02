@@ -85,7 +85,8 @@ module Google
         
         # Gets the settings associated with a project, folder, or organization.
         # @param [String] name
-        #   Name of the AccessApprovalSettings to retrieve.
+        #   The name of the AccessApprovalSettings to retrieve. Format: "`projects|folders|
+        #   organizations`/`id`/accessApprovalSettings"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -232,7 +233,8 @@ module Google
         
         # Gets an approval request. Returns NOT_FOUND if the request does not exist.
         # @param [String] name
-        #   Name of the approval request to retrieve.
+        #   The name of the approval request to retrieve. Format: "`projects|folders|
+        #   organizations`/`id`/approvalRequests/`approval_request`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -344,7 +346,8 @@ module Google
         
         # Gets the settings associated with a project, folder, or organization.
         # @param [String] name
-        #   Name of the AccessApprovalSettings to retrieve.
+        #   The name of the AccessApprovalSettings to retrieve. Format: "`projects|folders|
+        #   organizations`/`id`/accessApprovalSettings"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -491,7 +494,8 @@ module Google
         
         # Gets an approval request. Returns NOT_FOUND if the request does not exist.
         # @param [String] name
-        #   Name of the approval request to retrieve.
+        #   The name of the approval request to retrieve. Format: "`projects|folders|
+        #   organizations`/`id`/approvalRequests/`approval_request`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -603,7 +607,8 @@ module Google
         
         # Gets the settings associated with a project, folder, or organization.
         # @param [String] name
-        #   Name of the AccessApprovalSettings to retrieve.
+        #   The name of the AccessApprovalSettings to retrieve. Format: "`projects|folders|
+        #   organizations`/`id`/accessApprovalSettings"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -750,7 +755,8 @@ module Google
         
         # Gets an approval request. Returns NOT_FOUND if the request does not exist.
         # @param [String] name
-        #   Name of the approval request to retrieve.
+        #   The name of the approval request to retrieve. Format: "`projects|folders|
+        #   organizations`/`id`/approvalRequests/`approval_request`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
