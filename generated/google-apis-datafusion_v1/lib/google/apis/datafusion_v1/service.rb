@@ -133,11 +133,11 @@ module Google
         
         # Creates a new Data Fusion instance in the specified project and location.
         # @param [String] parent
-        #   The instance's project and location in the format projects/`project`/locations/
-        #   `location`.
+        #   Required. The instance's project and location in the format projects/`project`/
+        #   locations/`location`.
         # @param [Google::Apis::DatafusionV1::Instance] instance_object
         # @param [String] instance_id
-        #   The name of the instance to create.
+        #   Required. The name of the instance to create.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -170,8 +170,8 @@ module Google
         
         # Deletes a single Date Fusion instance.
         # @param [String] name
-        #   The instance resource name in the format projects/`project`/locations/`
-        #   location`/instances/`instance`
+        #   Required. The instance resource name in the format projects/`project`/
+        #   locations/`location`/instances/`instance`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -201,8 +201,8 @@ module Google
         
         # Gets details of a single Data Fusion instance.
         # @param [String] name
-        #   The instance resource name in the format projects/`project`/locations/`
-        #   location`/instances/`instance`.
+        #   Required. The instance resource name in the format projects/`project`/
+        #   locations/`location`/instances/`instance`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -273,10 +273,10 @@ module Google
         
         # Lists Data Fusion instances in the specified project and location.
         # @param [String] parent
-        #   The project and location for which to retrieve instance information in the
-        #   format projects/`project`/locations/`location`. If the location is specified
-        #   as '-' (wildcard), then all regions available to the project are queried, and
-        #   the results are aggregated.
+        #   Required. The project and location for which to retrieve instance information
+        #   in the format projects/`project`/locations/`location`. If the location is
+        #   specified as '-' (wildcard), then all regions available to the project are
+        #   queried, and the results are aggregated.
         # @param [String] filter
         #   List filter.
         # @param [String] order_by
@@ -361,8 +361,8 @@ module Google
         # Restart a single Data Fusion instance. At the end of an operation instance is
         # fully restarted.
         # @param [String] name
-        #   Name of the Data Fusion instance which need to be restarted in the form of
-        #   projects/`project`/locations/`location`/instances/`instance`
+        #   Required. Name of the Data Fusion instance which need to be restarted in the
+        #   form of projects/`project`/locations/`location`/instances/`instance`
         # @param [Google::Apis::DatafusionV1::RestartInstanceRequest] restart_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
