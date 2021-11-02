@@ -1424,6 +1424,11 @@ module Google
         attr_accessor :object_conditions
       
         # A POSIX filesystem resource.
+        # Corresponds to the JSON property `posixDataSink`
+        # @return [Google::Apis::StoragetransferV1::PosixFilesystem]
+        attr_accessor :posix_data_sink
+      
+        # A POSIX filesystem resource.
         # Corresponds to the JSON property `posixDataSource`
         # @return [Google::Apis::StoragetransferV1::PosixFilesystem]
         attr_accessor :posix_data_source
@@ -1445,6 +1450,7 @@ module Google
           @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
           @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
           @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
+          @posix_data_sink = args[:posix_data_sink] if args.key?(:posix_data_sink)
           @posix_data_source = args[:posix_data_source] if args.key?(:posix_data_source)
           @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
         end
