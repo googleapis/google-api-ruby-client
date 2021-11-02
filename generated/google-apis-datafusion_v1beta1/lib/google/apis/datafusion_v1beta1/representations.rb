@@ -349,6 +349,7 @@ module Google
       
           property :dataproc_service_account, as: 'dataprocServiceAccount'
           property :description, as: 'description'
+          collection :disabled_reason, as: 'disabledReason'
           property :display_name, as: 'displayName'
           property :enable_rbac, as: 'enableRbac'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
@@ -567,6 +568,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :available_features, as: 'availableFeatures'
           property :default_version, as: 'defaultVersion'
+          property :type, as: 'type'
           property :version_number, as: 'versionNumber'
         end
       end

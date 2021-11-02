@@ -133,7 +133,7 @@ module Google
         
         # Remove IAM policy that is currently set on the given resource.
         # @param [String] resource
-        #   The resource on which IAM policy to be removed is attached to.
+        #   Required. The resource on which IAM policy to be removed is attached to.
         # @param [Google::Apis::DatafusionV1beta1::RemoveIamPolicyRequest] remove_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -166,11 +166,11 @@ module Google
         
         # Creates a new Data Fusion instance in the specified project and location.
         # @param [String] parent
-        #   The instance's project and location in the format projects/`project`/locations/
-        #   `location`.
+        #   Required. The instance's project and location in the format projects/`project`/
+        #   locations/`location`.
         # @param [Google::Apis::DatafusionV1beta1::Instance] instance_object
         # @param [String] instance_id
-        #   The name of the instance to create.
+        #   Required. The name of the instance to create.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -203,8 +203,8 @@ module Google
         
         # Deletes a single Data Fusion instance.
         # @param [String] name
-        #   The instance resource name in the format projects/`project`/locations/`
-        #   location`/instances/`instance`
+        #   Required. The instance resource name in the format projects/`project`/
+        #   locations/`location`/instances/`instance`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -234,8 +234,8 @@ module Google
         
         # Gets details of a single Data Fusion instance.
         # @param [String] name
-        #   The instance resource name in the format projects/`project`/locations/`
-        #   location`/instances/`instance`.
+        #   Required. The instance resource name in the format projects/`project`/
+        #   locations/`location`/instances/`instance`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -306,10 +306,10 @@ module Google
         
         # Lists Data Fusion instances in the specified project and location.
         # @param [String] parent
-        #   The project and location for which to retrieve instance information in the
-        #   format projects/`project`/locations/`location`. If the location is specified
-        #   as '-' (wildcard), then all regions available to the project are queried, and
-        #   the results are aggregated.
+        #   Required. The project and location for which to retrieve instance information
+        #   in the format projects/`project`/locations/`location`. If the location is
+        #   specified as '-' (wildcard), then all regions available to the project are
+        #   queried, and the results are aggregated.
         # @param [String] filter
         #   List filter.
         # @param [String] order_by
@@ -394,8 +394,8 @@ module Google
         # Restart a single Data Fusion instance. At the end of an operation instance is
         # fully restarted.
         # @param [String] name
-        #   Name of the Data Fusion instance which need to be restarted in the form of
-        #   projects/`project`/locations/`location`/instances/`instance`
+        #   Required. Name of the Data Fusion instance which need to be restarted in the
+        #   form of projects/`project`/locations/`location`/instances/`instance`
         # @param [Google::Apis::DatafusionV1beta1::RestartInstanceRequest] restart_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -503,9 +503,9 @@ module Google
         # Upgrade a single Data Fusion instance. At the end of an operation instance is
         # fully upgraded.
         # @param [String] name
-        #   Name of the Data Fusion instance which need to be upgraded in the form of
-        #   projects/`project`/locations/`location`/instances/`instance` Instance will be
-        #   upgraded with the latest stable version of the Data Fusion.
+        #   Required. Name of the Data Fusion instance which need to be upgraded in the
+        #   form of projects/`project`/locations/`location`/instances/`instance` Instance
+        #   will be upgraded with the latest stable version of the Data Fusion.
         # @param [Google::Apis::DatafusionV1beta1::UpgradeInstanceRequest] upgrade_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -538,7 +538,7 @@ module Google
         
         # Add DNS peering on the given resource.
         # @param [String] parent
-        #   The resource on which DNS peering will be created.
+        #   Required. The resource on which DNS peering will be created.
         # @param [Google::Apis::DatafusionV1beta1::AddDnsPeeringRequest] add_dns_peering_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -608,7 +608,7 @@ module Google
         
         # Remove DNS peering on the given resource.
         # @param [String] parent
-        #   The resource on which DNS peering will be removed.
+        #   Required. The resource on which DNS peering will be removed.
         # @param [Google::Apis::DatafusionV1beta1::RemoveDnsPeeringRequest] remove_dns_peering_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
