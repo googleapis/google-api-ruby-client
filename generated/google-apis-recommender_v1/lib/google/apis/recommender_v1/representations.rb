@@ -292,6 +292,7 @@ module Google
           property :recommender_subtype, as: 'recommenderSubtype'
           property :state_info, as: 'stateInfo', class: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1RecommendationStateInfo, decorator: Google::Apis::RecommenderV1::GoogleCloudRecommenderV1RecommendationStateInfo::Representation
       
+          property :xor_group_id, as: 'xorGroupId'
         end
       end
       
