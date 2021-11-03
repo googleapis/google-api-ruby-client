@@ -301,8 +301,8 @@ module Google
         attr_accessor :etag
       
         # State properties to include with this state. Overwrites any existing `
-        # state_metadata`. Keys must match the regex /^a-z0-9`0,62`$/. Values must match
-        # the regex /^[a-zA-Z0-9_./-]`0,255`$/.
+        # state_metadata`. Keys must match the regex `/^a-z0-9`0,62`$/`. Values must
+        # match the regex `/^[a-zA-Z0-9_./-]`0,255`$/`.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata
@@ -328,8 +328,8 @@ module Google
         attr_accessor :etag
       
         # State properties to include with this state. Overwrites any existing `
-        # state_metadata`. Keys must match the regex /^a-z0-9`0,62`$/. Values must match
-        # the regex /^[a-zA-Z0-9_./-]`0,255`$/.
+        # state_metadata`. Keys must match the regex `/^a-z0-9`0,62`$/`. Values must
+        # match the regex `/^[a-zA-Z0-9_./-]`0,255`$/`.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata
@@ -355,8 +355,8 @@ module Google
         attr_accessor :etag
       
         # State properties to include with this state. Overwrites any existing `
-        # state_metadata`. Keys must match the regex /^a-z0-9`0,62`$/. Values must match
-        # the regex /^[a-zA-Z0-9_./-]`0,255`$/.
+        # state_metadata`. Keys must match the regex `/^a-z0-9`0,62`$/`. Values must
+        # match the regex `/^[a-zA-Z0-9_./-]`0,255`$/`.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata
@@ -397,12 +397,12 @@ module Google
         # Set of filters to apply if `path` refers to array elements or nested array
         # elements in order to narrow down to a single unique element that is being
         # tested/modified. This is intended to be an exact match per filter. To perform
-        # advanced matching, use path_value_matchers. * Example: ` "/versions/*/name" : "
-        # it-123" "/versions/*/targetSize/percent": 20 ` * Example: ` "/bindings/*/role":
-        # "roles/owner" "/bindings/*/condition" : null ` * Example: ` "/bindings/*/role"
-        # : "roles/owner" "/bindings/*/members/*" : ["x@example.com", "y@example.com"] `
-        # When both path_filters and path_value_matchers are set, an implicit AND must
-        # be performed.
+        # advanced matching, use path_value_matchers. * Example: ``` ` "/versions/*/name"
+        # : "it-123" "/versions/*/targetSize/percent": 20 ` ``` * Example: ``` ` "/
+        # bindings/*/role": "roles/owner" "/bindings/*/condition" : null ` ``` * Example:
+        # ``` ` "/bindings/*/role": "roles/owner" "/bindings/*/members/*" : ["x@example.
+        # com", "y@example.com"] ` ``` When both path_filters and path_value_matchers
+        # are set, an implicit AND must be performed.
         # Corresponds to the JSON property `pathFilters`
         # @return [Hash<String,Object>]
         attr_accessor :path_filters
@@ -563,6 +563,14 @@ module Google
         # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationStateInfo]
         attr_accessor :state_info
       
+        # Corresponds to a mutually exclusive group ID within a recommender. A non-empty
+        # ID indicates that the recommendation belongs to a mutually exclusive group.
+        # This means that only one recommendation within the group is suggested to be
+        # applied.
+        # Corresponds to the JSON property `xorGroupId`
+        # @return [String]
+        attr_accessor :xor_group_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -580,6 +588,7 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @recommender_subtype = args[:recommender_subtype] if args.key?(:recommender_subtype)
           @state_info = args[:state_info] if args.key?(:state_info)
+          @xor_group_id = args[:xor_group_id] if args.key?(:xor_group_id)
         end
       end
       
