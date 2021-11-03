@@ -196,9 +196,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Floor number, used for ordering. 0 indicates the ground level, 1 indicates the
-        # first level above ground level, -1 indicates the first level under ground
-        # level. Non-integer values are OK.
+        # Optional. Floor number, used for ordering. 0 indicates the ground level, 1
+        # indicates the first level above ground level, -1 indicates the first level
+        # under ground level. Non-integer values are OK.
         # Corresponds to the JSON property `number`
         # @return [Float]
         attr_accessor :number
@@ -307,14 +307,14 @@ module Google
       class Photo
         include Google::Apis::Core::Hashable
       
-        # Absolute time when the photo was captured. When the photo has no exif
-        # timestamp, this is used to set a timestamp in the photo metadata.
+        # Optional. Absolute time when the photo was captured. When the photo has no
+        # exif timestamp, this is used to set a timestamp in the photo metadata.
         # Corresponds to the JSON property `captureTime`
         # @return [String]
         attr_accessor :capture_time
       
-        # Connections to other photos. A connection represents the link from this photo
-        # to another photo.
+        # Optional. Connections to other photos. A connection represents the link from
+        # this photo to another photo.
         # Corresponds to the JSON property `connections`
         # @return [Array<Google::Apis::StreetviewpublishV1::Connection>]
         attr_accessor :connections
@@ -326,7 +326,7 @@ module Google
         attr_accessor :download_url
       
         # Output only. Status in Google Maps, whether this photo was published or
-        # rejected. Not currently populated.
+        # rejected.
         # Corresponds to the JSON property `mapsPublishStatus`
         # @return [String]
         attr_accessor :maps_publish_status
@@ -336,7 +336,7 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::PhotoId]
         attr_accessor :photo_id
       
-        # Places where this photo belongs.
+        # Optional. Places where this photo belongs.
         # Corresponds to the JSON property `places`
         # @return [Array<Google::Apis::StreetviewpublishV1::Place>]
         attr_accessor :places
@@ -366,7 +366,7 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::UploadRef]
         attr_accessor :upload_reference
       
-        # Time when the image was uploaded.
+        # Output only. Time when the image was uploaded.
         # Corresponds to the JSON property `uploadTime`
         # @return [String]
         attr_accessor :upload_time
@@ -452,13 +452,13 @@ module Google
       class Place
         include Google::Apis::Core::Hashable
       
-        # Output-only. The language_code that the name is localized with. This should be
+        # Output only. The language_code that the name is localized with. This should be
         # the language_code specified in the request, but may be a fallback.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
-        # Output-only. The name of the place, localized to the language_code.
+        # Output only. The name of the place, localized to the language_code.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -500,8 +500,10 @@ module Google
         # @return [Float]
         attr_accessor :altitude
       
-        # Compass heading, measured at the center of the photo in degrees clockwise from
-        # North. Value must be >=0 and <360. NaN indicates an unmeasured quantity.
+        # The following pose parameters pertain to the center of the photo. They match
+        # https://developers.google.com/streetview/spherical-metadata. Compass heading,
+        # measured at the center of the photo in degrees clockwise from North. Value
+        # must be >=0 and <360. NaN indicates an unmeasured quantity.
         # Corresponds to the JSON property `heading`
         # @return [Float]
         attr_accessor :heading
@@ -602,7 +604,7 @@ module Google
         # metadata in this request. The update fails if invalid fields are specified.
         # Multiple fields can be specified in a comma-delimited list. The following
         # fields are valid: * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.
-        # roll` * `pose.level` * `pose.altitude` * `connections` * `places` *Note:* When
+        # roll` * `pose.level` * `pose.altitude` * `connections` * `places` > Note: When
         # updateMask contains repeated fields, the entire set of repeated values get
         # replaced with the new contents. For example, if updateMask contains `
         # connections` and `UpdatePhotoRequest.photo.connections` is empty, all

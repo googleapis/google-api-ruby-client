@@ -226,7 +226,7 @@ module Google
         #   metadata in this request. The update fails if invalid fields are specified.
         #   Multiple fields can be specified in a comma-delimited list. The following
         #   fields are valid: * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.
-        #   roll` * `pose.level` * `pose.altitude` * `connections` * `places` *Note:* When
+        #   roll` * `pose.level` * `pose.altitude` * `connections` * `places` > Note: When
         #   updateMask contains repeated fields, the entire set of repeated values get
         #   replaced with the new contents. For example, if updateMask contains `
         #   connections` and `UpdatePhotoRequest.photo.connections` is empty, all
@@ -351,7 +351,7 @@ module Google
         # specific failures that can occur per photo. Only the fields specified in
         # updateMask field are used. If `updateMask` is not present, the update applies
         # to all fields. The number of UpdatePhotoRequest messages in a
-        # BatchUpdatePhotosRequest must not exceed 20. *Note:* To update Pose.altitude,
+        # BatchUpdatePhotosRequest must not exceed 20. > Note: To update Pose.altitude,
         # Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
         # @param [Google::Apis::StreetviewpublishV1::BatchUpdatePhotosRequest] batch_update_photos_request_object
         # @param [String] fields
@@ -382,24 +382,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the Photos that belong to the user. *Note:* Recently created photos
+        # Lists all the Photos that belong to the user. > Note: Recently created photos
         # that are still being indexed are not returned in the response.
         # @param [String] filter
         #   Optional. The filter expression. For example: `placeId=
         #   ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters supported at the moment are: `
         #   placeId`.
         # @param [String] language_code
-        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
-        #   see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
-        #   language_code is unspecified, the user's language preference for Google
-        #   services is used.
+        #   Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        #   information, see http://www.unicode.org/reports/tr35/#
+        #   Unicode_locale_identifier. If language_code is unspecified, the user's
+        #   language preference for Google services is used.
         # @param [Fixnum] page_size
-        #   The maximum number of photos to return. `pageSize` must be non-negative. If `
-        #   pageSize` is zero or is not provided, the default page size of 100 is used.
-        #   The number of photos returned in the response may be less than `pageSize` if
-        #   the number of photos that belong to the user is less than `pageSize`.
+        #   Optional. The maximum number of photos to return. `pageSize` must be non-
+        #   negative. If `pageSize` is zero or is not provided, the default page size of
+        #   100 is used. The number of photos returned in the response may be less than `
+        #   pageSize` if the number of photos that belong to the user is less than `
+        #   pageSize`.
         # @param [String] page_token
-        #   The nextPageToken value returned from a previous ListPhotos request, if any.
+        #   Optional. The nextPageToken value returned from a previous ListPhotos request,
+        #   if any.
         # @param [String] view
         #   Required. Specifies if a download URL for the photos bytes should be returned
         #   in the Photos response.
