@@ -212,6 +212,105 @@ module Google
         end
       end
       
+      # Stores information about a certificate.
+      class CertificateInfo
+        include Google::Apis::Core::Hashable
+      
+        # CertificateTemplate (v3 Extension in X.509).
+        # Corresponds to the JSON property `certificateTemplate`
+        # @return [Google::Apis::CloudidentityV1beta1::CertificateTemplate]
+        attr_accessor :certificate_template
+      
+        # The encoded certificate fingerprint.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # The name of the issuer of this certificate.
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # Serial number of the certificate, Example: "123456789".
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
+        # The subject name of this certificate.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # The certificate thumbprint.
+        # Corresponds to the JSON property `thumbprint`
+        # @return [String]
+        attr_accessor :thumbprint
+      
+        # Validation state of this certificate.
+        # Corresponds to the JSON property `validationState`
+        # @return [String]
+        attr_accessor :validation_state
+      
+        # Certificate not valid at or after this timestamp.
+        # Corresponds to the JSON property `validityExpirationTime`
+        # @return [String]
+        attr_accessor :validity_expiration_time
+      
+        # Certificate not valid before this timestamp.
+        # Corresponds to the JSON property `validityStartTime`
+        # @return [String]
+        attr_accessor :validity_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_template = args[:certificate_template] if args.key?(:certificate_template)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+          @subject = args[:subject] if args.key?(:subject)
+          @thumbprint = args[:thumbprint] if args.key?(:thumbprint)
+          @validation_state = args[:validation_state] if args.key?(:validation_state)
+          @validity_expiration_time = args[:validity_expiration_time] if args.key?(:validity_expiration_time)
+          @validity_start_time = args[:validity_start_time] if args.key?(:validity_start_time)
+        end
+      end
+      
+      # CertificateTemplate (v3 Extension in X.509).
+      class CertificateTemplate
+        include Google::Apis::Core::Hashable
+      
+        # The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.
+        # 11768144.5720724.16068415.6889630.81.2472537.7784047".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The Major version of the template. Example: 100.
+        # Corresponds to the JSON property `majorVersion`
+        # @return [Fixnum]
+        attr_accessor :major_version
+      
+        # The minor version of the template. Example: 12.
+        # Corresponds to the JSON property `minorVersion`
+        # @return [Fixnum]
+        attr_accessor :minor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @major_version = args[:major_version] if args.key?(:major_version)
+          @minor_version = args[:minor_version] if args.key?(:minor_version)
+        end
+      end
+      
       # The response message for MembershipsService.CheckTransitiveMembership.
       class CheckTransitiveMembershipResponse
         include Google::Apis::Core::Hashable
@@ -450,6 +549,12 @@ module Google
         # @return [String]
         attr_accessor :encryption_state
       
+        # Resource representing the Endpoint Verification-specific attributes of a
+        # Device.
+        # Corresponds to the JSON property `endpointVerificationSpecificAttributes`
+        # @return [Google::Apis::CloudidentityV1beta1::EndpointVerificationSpecificAttributes]
+        attr_accessor :endpoint_verification_specific_attributes
+      
         # Output only. IMEI number of device if GSM device; empty otherwise.
         # Corresponds to the JSON property `imei`
         # @return [String]
@@ -554,6 +659,7 @@ module Google
           @enabled_developer_options = args[:enabled_developer_options] if args.key?(:enabled_developer_options)
           @enabled_usb_debugging = args[:enabled_usb_debugging] if args.key?(:enabled_usb_debugging)
           @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
+          @endpoint_verification_specific_attributes = args[:endpoint_verification_specific_attributes] if args.key?(:endpoint_verification_specific_attributes)
           @imei = args[:imei] if args.key?(:imei)
           @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
@@ -736,6 +842,26 @@ module Google
         end
       end
       
+      # Resource representing the Endpoint Verification-specific attributes of a
+      # Device.
+      class EndpointVerificationSpecificAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Details of certificates.
+        # Corresponds to the JSON property `certificateInfo`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::CertificateInfo>]
+        attr_accessor :certificate_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_info = args[:certificate_info] if args.key?(:certificate_info)
+        end
+      end
+      
       # A unique identifier for an entity in the Cloud Identity Groups API. An entity
       # can represent either a group with an optional `namespace` or a user without a `
       # namespace`. The combination of `id` and `namespace` must be unique; however,
@@ -787,6 +913,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
+      # Message containing first admin invitation info for customers
+      class FirstAdminInvitationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. To enable First Admin Invitation for Domained Customer
+        # Corresponds to the JSON property `isFirstAdmin`
+        # @return [Boolean]
+        attr_accessor :is_first_admin
+        alias_method :is_first_admin?, :is_first_admin
+      
+        # Optional. Domain information of first admin invited
+        # Corresponds to the JSON property `primaryDomain`
+        # @return [String]
+        attr_accessor :primary_domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_first_admin = args[:is_first_admin] if args.key?(:is_first_admin)
+          @primary_domain = args[:primary_domain] if args.key?(:primary_domain)
         end
       end
       
@@ -2479,12 +2631,18 @@ module Google
       class SendUserInvitationRequest
         include Google::Apis::Core::Hashable
       
+        # Message containing first admin invitation info for customers
+        # Corresponds to the JSON property `firstAdminInvitationInfo`
+        # @return [Google::Apis::CloudidentityV1beta1::FirstAdminInvitationInfo]
+        attr_accessor :first_admin_invitation_info
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @first_admin_invitation_info = args[:first_admin_invitation_info] if args.key?(:first_admin_invitation_info)
         end
       end
       
