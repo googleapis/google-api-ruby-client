@@ -2171,7 +2171,7 @@ module Google
         attr_accessor :default_uri
       
         # Required. Human-readable display name for the Data Stream. The max allowed
-        # display name length is 100 UTF-16 code units.
+        # display name length is 255 UTF-16 code units.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
