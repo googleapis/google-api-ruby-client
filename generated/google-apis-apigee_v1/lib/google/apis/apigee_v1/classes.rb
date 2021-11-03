@@ -2859,16 +2859,16 @@ module Google
         end
       end
       
-      # This message type encapsulates a metric grouped by dimension.
+      # Encapsulates a metric grouped by dimension.
       class GoogleCloudApigeeV1DimensionMetric
         include Google::Apis::Core::Hashable
       
-        # This field contains a list of metrics.
+        # List of metrics.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metric>]
         attr_accessor :metrics
       
-        # This field contains the name of the dimension.
+        # Name of the dimension.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4647,7 +4647,7 @@ module Google
         end
       end
       
-      # This message type encapsulates additional information about query execution.
+      # Encapsulates additional information about query execution.
       class GoogleCloudApigeeV1Metadata
         include Google::Apis::Core::Hashable
       
@@ -4656,10 +4656,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :errors
       
-        # List of additional information such as data source, if result was truncated
-        # etc. E.g "notices": [ "Source:Postgres", "PG Host:uappg0rw.e2e.apigeeks.net", "
-        # query served by:4b64601e-40de-4eb1-bfb9-eeee7ac929ed", "Table used: edge.api.
-        # uapgroup2.agg_api" ]
+        # List of additional information such as data source, if result was truncated.
+        # For example: ``` "notices": [ "Source:Postgres", "PG Host:uappg0rw.e2e.
+        # apigeeks.net", "query served by:4b64601e-40de-4eb1-bfb9-eeee7ac929ed", "Table
+        # used: edge.api.uapgroup2.agg_api" ]```
         # Corresponds to the JSON property `notices`
         # @return [Array<String>]
         attr_accessor :notices
@@ -4675,20 +4675,20 @@ module Google
         end
       end
       
-      # This message type encapsulates the metric data point. Example: ` "name": "sum(
+      # Encapsulates the metric data point. For example: ```` "name": "sum(
       # message_count)", "values" : [ ` "timestamp": 1549004400000, "value": "39.0" `,
-      # ` "timestamp" : 1548997200000, "value" : "0.0" ` ] ` or ` "name": "sum(
-      # message_count)", "values" : ["39.0"] `
+      # ` "timestamp" : 1548997200000, "value" : "0.0" ` ] ```` or ```` "name": "sum(
+      # message_count)", "values" : ["39.0"] ````
       class GoogleCloudApigeeV1Metric
         include Google::Apis::Core::Hashable
       
-        # This field contains the metric name.
+        # Metric name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # List of metric values. Possible value format: "values":["39.0"] or "values":[ `
-        # "value": "39.0", "timestamp": 1232434354` ]
+        # List of metric values. Possible value formats include: `"values":["39.0"]` or `
+        # "values":[ ` "value": "39.0", "timestamp": 1232434354` ]`
         # Corresponds to the JSON property `values`
         # @return [Array<Object>]
         attr_accessor :values
@@ -4937,7 +4937,7 @@ module Google
       class GoogleCloudApigeeV1OptimizedStats
         include Google::Apis::Core::Hashable
       
-        # This message type encapsulates a response format for Js Optimized Scenario.
+        # Encapsulates a response format for JavaScript Optimized Scenario.
         # Corresponds to the JSON property `Response`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OptimizedStatsResponse]
         attr_accessor :response
@@ -4952,11 +4952,11 @@ module Google
         end
       end
       
-      # This message type encapsulates a data node as represented below: ` "identifier"
-      # : ` "names": [ "apiproxy" ], "values": [ "sirjee" ] `, "metric": [ ` "env": "
-      # prod", "name": "sum(message_count)", "values": [ 36.0 ] ` ] ` OR ` "env": "
-      # prod", "name": "sum(message_count)", "values": [ 36.0 ] ` Depending on whether
-      # a dimension is present in the query or not the data node type can be a simple
+      # Encapsulates a data node as represented below: ``` ` "identifier": ` "names": [
+      # "apiproxy" ], "values": [ "sirjee" ] `, "metric": [ ` "env": "prod", "name": "
+      # sum(message_count)", "values": [ 36.0 ] ` ] ```` or ``` ` "env": "prod", "name"
+      # : "sum(message_count)", "values": [ 36.0 ] ```` Depending on whether a
+      # dimension is present in the query or not the data node type can be a simple
       # metric value or dimension identifier with list of metrics.
       class GoogleCloudApigeeV1OptimizedStatsNode
         include Google::Apis::Core::Hashable
@@ -4976,33 +4976,32 @@ module Google
         end
       end
       
-      # This message type encapsulates a response format for Js Optimized Scenario.
+      # Encapsulates a response format for JavaScript Optimized Scenario.
       class GoogleCloudApigeeV1OptimizedStatsResponse
         include Google::Apis::Core::Hashable
       
-        # This field contains a list of time unit values. Time unit refers to an epoch
-        # timestamp value.
+        # List of time unit values. Time unit refers to an epoch timestamp value.
         # Corresponds to the JSON property `TimeUnit`
         # @return [Array<Fixnum>]
         attr_accessor :time_unit
       
-        # This message type encapsulates additional information about query execution.
+        # Encapsulates additional information about query execution.
         # Corresponds to the JSON property `metaData`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metadata]
         attr_accessor :meta_data
       
-        # This ia a boolean field to indicate if the results were truncated based on the
+        # Boolean flag that indicates whether the results were truncated based on the
         # limit parameter.
         # Corresponds to the JSON property `resultTruncated`
         # @return [Boolean]
         attr_accessor :result_truncated
         alias_method :result_truncated?, :result_truncated
       
-        # This message type encapsulates a data node as represented below: ` "identifier"
-        # : ` "names": [ "apiproxy" ], "values": [ "sirjee" ] `, "metric": [ ` "env": "
-        # prod", "name": "sum(message_count)", "values": [ 36.0 ] ` ] ` OR ` "env": "
-        # prod", "name": "sum(message_count)", "values": [ 36.0 ] ` Depending on whether
-        # a dimension is present in the query or not the data node type can be a simple
+        # Encapsulates a data node as represented below: ``` ` "identifier": ` "names": [
+        # "apiproxy" ], "values": [ "sirjee" ] `, "metric": [ ` "env": "prod", "name": "
+        # sum(message_count)", "values": [ 36.0 ] ` ] ```` or ``` ` "env": "prod", "name"
+        # : "sum(message_count)", "values": [ 36.0 ] ```` Depending on whether a
+        # dimension is present in the query or not the data node type can be a simple
         # metric value or dimension identifier with list of metrics.
         # Corresponds to the JSON property `stats`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OptimizedStatsNode]
@@ -6777,21 +6776,21 @@ module Google
         end
       end
       
-      # This message type encapsulates a stats response.
+      # Encapsulates a `stats` response.
       class GoogleCloudApigeeV1Stats
         include Google::Apis::Core::Hashable
       
-        # This field contains a list of query results on environment level.
+        # List of query results on the environment level.
         # Corresponds to the JSON property `environments`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1StatsEnvironmentStats>]
         attr_accessor :environments
       
-        # This field contains a list of query results grouped by host.
+        # List of query results grouped by host.
         # Corresponds to the JSON property `hosts`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1StatsHostStats>]
         attr_accessor :hosts
       
-        # This message type encapsulates additional information about query execution.
+        # Encapsulates additional information about query execution.
         # Corresponds to the JSON property `metaData`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metadata]
         attr_accessor :meta_data
@@ -6808,31 +6807,31 @@ module Google
         end
       end
       
-      # This message type encapsulates the environment wrapper: "environments": [ ` "
-      # metrics": [ ` "name": "sum(message_count)", "values": [ "2.52056245E8" ] ` ], "
-      # name": "prod" ` ]
+      # Encapsulates the environment wrapper: ``` "environments": [ ` "metrics": [ ` "
+      # name": "sum(message_count)", "values": [ "2.52056245E8" ] ` ], "name": "prod" `
+      # ]```
       class GoogleCloudApigeeV1StatsEnvironmentStats
         include Google::Apis::Core::Hashable
       
-        # This field contains the list of metrics grouped under dimensions.
+        # List of metrics grouped under dimensions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DimensionMetric>]
         attr_accessor :dimensions
       
         # In the final response, only one of the following fields will be present based
-        # on the dimensions provided. If no dimensions are provided, then only a top
-        # level metrics is provided. If dimensions are included, then there will be a
-        # top level dimensions field under environments which will contain metrics
-        # values and the dimension name. Example: "environments": [ ` "dimensions": [ ` "
+        # on the dimensions provided. If no dimensions are provided, then only top-level
+        # metrics is provided. If dimensions are included, then there will be a top-
+        # level dimensions field under environments which will contain metrics values
+        # and the dimension name. Example: ``` "environments": [ ` "dimensions": [ ` "
         # metrics": [ ` "name": "sum(message_count)", "values": [ "2.14049521E8" ] ` ], "
-        # name": "nit_proxy" ` ], "name": "prod" ` ] OR "environments": [ ` "metrics": [
-        # ` "name": "sum(message_count)", "values": [ "2.19026331E8" ] ` ], "name": "
-        # prod" ` ] This field contains the list of metric values.
+        # name": "nit_proxy" ` ], "name": "prod" ` ]``` or ```"environments": [ ` "
+        # metrics": [ ` "name": "sum(message_count)", "values": [ "2.19026331E8" ] ` ], "
+        # name": "prod" ` ]``` List of metric values.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metric>]
         attr_accessor :metrics
       
-        # 
+        # Name of the environment.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6849,31 +6848,31 @@ module Google
         end
       end
       
-      # This message type encapsulates the hostname wrapper: "hosts": [ ` "metrics": [
-      # ` "name": "sum(message_count)", "values": [ "2.52056245E8" ] ` ], "name": "
-      # example.com" ` ]
+      # Encapsulates the hostname wrapper: ``` "hosts": [ ` "metrics": [ ` "name": "
+      # sum(message_count)", "values": [ "2.52056245E8" ] ` ], "name": "example.com" `
+      # ]```
       class GoogleCloudApigeeV1StatsHostStats
         include Google::Apis::Core::Hashable
       
-        # This field contains the list of metrics grouped under dimensions.
+        # List of metrics grouped under dimensions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DimensionMetric>]
         attr_accessor :dimensions
       
         # In the final response, only one of the following fields will be present based
-        # on the dimensions provided. If no dimensions are provided, then only a top
-        # level metrics is provided. If dimensions are included, then there will be a
-        # top level dimensions field under hostnames which will contain metrics values
-        # and the dimension name. Example: "hosts": [ ` "dimensions": [ ` "metrics": [ `
-        # "name": "sum(message_count)", "values": [ "2.14049521E8" ] ` ], "name": "
-        # nit_proxy" ` ], "name": "example.com" ` ] OR "hosts": [ ` "metrics": [ ` "name"
-        # : "sum(message_count)", "values": [ "2.19026331E8" ] ` ], "name": "example.com"
-        # ` ] This field contains the list of metric values.
+        # on the dimensions provided. If no dimensions are provided, then only the top-
+        # level metrics are provided. If dimensions are included, then there will be a
+        # top-level dimensions field under hostnames which will contain metrics values
+        # and the dimension name. Example: ``` "hosts": [ ` "dimensions": [ ` "metrics":
+        # [ ` "name": "sum(message_count)", "values": [ "2.14049521E8" ] ` ], "name": "
+        # nit_proxy" ` ], "name": "example.com" ` ]``` OR ```"hosts": [ ` "metrics": [ `
+        # "name": "sum(message_count)", "values": [ "2.19026331E8" ] ` ], "name": "
+        # example.com" ` ]``` List of metric values.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metric>]
         attr_accessor :metrics
       
-        # This field contains the hostname used in query.
+        # Hostname used in query.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

@@ -5685,58 +5685,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This api is similar to GetStats except that the response is less verbose. In
-        # the current scheme, a query parameter _optimized instructs Edge Analytics to
-        # change the response but since this behavior is not possible with protocol
-        # buffer and since this parameter is predominantly used by Edge UI, we are
-        # introducing a separate api.
+        # Similar to GetStats except that the response is less verbose.
         # @param [String] name
-        #   Required. The resource name for which the interactive query will be executed.
-        #   Must be of the form `organizations/`organization_id`/environments/`
-        #   environment_id/optimizedStats/`dimensions`` Dimensions let you view metrics in
-        #   meaningful groupings. E.g. apiproxy, target_host. The value of dimensions
-        #   should be comma separated list as shown below `organizations/`org`/
-        #   environments/`env`/optimizedStats/apiproxy,request_verb`
+        #   Required. Resource name for which the interactive query will be executed. Use
+        #   the following format in your request: `organizations/`org`/environments/`env`/
+        #   optimizedStats/`dimensions`` Dimensions let you view metrics in meaningful
+        #   groupings, such as `apiproxy`, `target_host`. The value of `dimensions` should
+        #   be a comma-separated list as shown below: `organizations/`org`/environments/`
+        #   env`/optimizedStats/apiproxy,request_verb`
         # @param [String] accuracy
-        #   Legacy field: not used anymore.
+        #   No longer used by Apigee. Supported for backwards compatibility.
         # @param [String] agg_table
-        #   If customers want to query custom aggregate tables, then this parameter can be
-        #   used to specify the table name. If this parameter is skipped, then Edge Query
-        #   will try to retrieve the data from fact tables which will be expensive.
+        #   Table name used to query custom aggregate tables. If this parameter is skipped,
+        #   then Apigee will try to retrieve the data from fact tables which will be
+        #   expensive.
         # @param [String] filter
-        #   Enables drill-down on specific dimension values.
+        #   Filter that enables you to drill-down on specific dimension values.
         # @param [String] limit
-        #   This parameter is used to limit the number of result items. Default and the
-        #   max value is 14400.
+        #   Maximum number of result items to return. The default and maximum value that
+        #   can be returned is 14400.
         # @param [String] offset
-        #   Use offset with limit to enable pagination of results. For example, to display
-        #   results 11-20, set limit to '10' and offset to '10'.
+        #   Offset value. Use `offset` with `limit` to enable pagination of results. For
+        #   example, to display results 11-20, set limit to `10` and offset to `10`.
         # @param [Boolean] realtime
-        #   Legacy field: not used anymore.
+        #   No longer used by Apigee. Supported for backwards compatibility.
         # @param [String] select
-        #   Required. The select parameter contains a comma separated list of metrics. E.g.
-        #   sum(message_count),sum(error_count)
+        #   Required. Comma-separated list of metrics. For example: `sum(message_count),
+        #   sum(error_count)`
         # @param [Boolean] sonar
-        #   This parameter routes the query to api monitoring service for last hour.
+        #   Routes the query to API Monitoring for the last hour.
         # @param [String] sort
-        #   This parameter specifies if the sort order should be ascending or descending
-        #   Supported values are DESC and ASC.
+        #   Flag that specifies whether the sort order should be ascending or descending.
+        #   Valid values include `DESC` and `ASC`.
         # @param [String] sortby
-        #   Comma separated list of columns to sort the final result.
+        #   Comma-separated list of columns to sort the final result.
         # @param [String] time_range
-        #   Required. Time interval for the interactive query. Time range is specified as
-        #   start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
+        #   Required. Time interval for the interactive query. Time range is specified in
+        #   GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`
         # @param [String] time_unit
-        #   A value of second, minute, hour, day, week, month. Time Unit specifies the
-        #   granularity of metrics returned.
+        #   Granularity of metrics returned. Valid values include: `second`, `minute`, `
+        #   hour`, `day`, `week`, or `month`.
         # @param [String] topk
-        #   Take 'top k' results from results, for example, to return the top 5 results '
-        #   topk=5'.
+        #   Top number of results to return. For example, to return the top 5 results, set
+        #   `topk=5`.
         # @param [Boolean] ts_ascending
-        #   Lists timestamps in ascending order if set to true. Recommend setting this
-        #   value to true if you are using sortby with sort=DESC.
+        #   Flag that specifies whether to list timestamps in ascending (`true`) or
+        #   descending (`false`) order. Apigee recommends setting this value to `true` if
+        #   you are using `sortby` with `sort=DESC`.
         # @param [String] tzo
-        #   This parameters contains the timezone offset value.
+        #   Timezone offset value.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6464,58 +6461,58 @@ module Google
         
         # Retrieve metrics grouped by dimensions. The types of metrics you can retrieve
         # include traffic, message counts, API call latency, response size, and cache
-        # hits and counts. Dimensions let you view metrics in meaningful groups. The
-        # stats api does accept dimensions as path params. The dimensions are optional
-        # in which case the metrics are computed on the entire data for the given
-        # timerange.
+        # hits and counts. Dimensions let you view metrics in meaningful groups. You can
+        # optionally pass dimensions as path parameters to the `stats` API. If
+        # dimensions are not specified, the metrics are computed on the entire set of
+        # data for the given time range.
         # @param [String] name
-        #   Required. The resource name for which the interactive query will be executed.
-        #   Must be of the form `organizations/`organization_id`/environments/`
-        #   environment_id/stats/`dimensions`` Dimensions let you view metrics in
-        #   meaningful groupings. E.g. apiproxy, target_host. The value of dimensions
-        #   should be comma separated list as shown below `organizations/`org`/
-        #   environments/`env`/stats/apiproxy,request_verb`
+        #   Required. Resource name for which the interactive query will be executed. Use
+        #   the following format in your request: `organizations/`org`/environments/`env`/
+        #   stats/`dimensions`` Dimensions let you view metrics in meaningful groupings,
+        #   such as `apiproxy` or `target_host`. The value of dimensions should be a comma-
+        #   separated list, as shown below: `organizations/`org`/environments/`env`/stats/
+        #   apiproxy,request_verb`
         # @param [String] accuracy
-        #   Legacy field: not used anymore. This field is present to support UI calls
-        #   which still use this parameter.
+        #   No longer used by Apigee. Supported for backwards compatibility.
         # @param [String] agg_table
-        #   If customers want to query custom aggregate tables, then this parameter can be
-        #   used to specify the table name. If this parameter is skipped, then Edge Query
-        #   will try to retrieve the data from fact tables which will be expensive.
+        #   Table name used to query custom aggregate tables. If this parameter is skipped,
+        #   then Apigee will try to retrieve the data from fact tables which will be
+        #   expensive.
         # @param [String] filter
-        #   Enables drill-down on specific dimension values
+        #   Filter that enables you to drill down on specific dimension values.
         # @param [String] limit
-        #   This parameter is used to limit the number of result items. Default and the
-        #   max value is 14400.
+        #   Maximum number of result items to return. The default and maximum value that
+        #   can be returned is 14400.
         # @param [String] offset
-        #   Use offset with limit to enable pagination of results. For example, to display
-        #   results 11-20, set limit to '10' and offset to '10'.
+        #   Offset value. Use `offset` with `limit` to enable pagination of results. For
+        #   example, to display results 11-20, set limit to `10` and offset to `10`.
         # @param [Boolean] realtime
-        #   Legacy field: not used anymore.
+        #   No longer used by Apigee. Supported for backwards compatibility.
         # @param [String] select
-        #   The select parameter contains a comma separated list of metrics. E.g. sum(
-        #   message_count),sum(error_count)
+        #   Comma-separated list of metrics. For example: `sum(message_count),sum(
+        #   error_count)`
         # @param [Boolean] sonar
-        #   This parameter routes the query to api monitoring service for last hour.
+        #   Routes the query to API Monitoring for the last hour.
         # @param [String] sort
-        #   This parameter specifies if the sort order should be ascending or descending
-        #   Supported values are DESC and ASC.
+        #   Flag that specifies whether the sort order should be ascending or descending.
+        #   Valid values include: `DESC` and `ASC`.
         # @param [String] sortby
-        #   Comma separated list of columns to sort the final result.
+        #   Comma-separated list of columns to sort the final result.
         # @param [String] time_range
-        #   Time interval for the interactive query. Time range is specified as start~end
-        #   E.g. 04/15/2017 00:00~05/15/2017 23:59
+        #   Time interval for the interactive query. Time range is specified in GMT as `
+        #   start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`
         # @param [String] time_unit
-        #   A value of second, minute, hour, day, week, month. Time Unit specifies the
-        #   granularity of metrics returned.
+        #   Granularity of metrics returned. Valid values include: `second`, `minute`, `
+        #   hour`, `day`, `week`, or` month`.
         # @param [String] topk
-        #   Take 'top k' results from results, for example, to return the top 5 results '
-        #   topk=5'.
+        #   Top number of results to return. For example, to return the top 5 results, set
+        #   `topk=5`.
         # @param [Boolean] ts_ascending
-        #   Lists timestamps in ascending order if set to true. Recommend setting this
-        #   value to true if you are using sortby with sort=DESC.
+        #   Flag that specifies whether to list timestamps in ascending (`true`) or
+        #   descending (`false`) order. Apigee recommends that you set this value to `true`
+        #   if you are using `sortby` with `sort=DESC`.
         # @param [String] tzo
-        #   This parameters contains the timezone offset value.
+        #   Timezone offset value.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7070,51 +7067,52 @@ module Google
         # Retrieve metrics grouped by dimensions in host level. The types of metrics you
         # can retrieve include traffic, message counts, API call latency, response size,
         # and cache hits and counts. Dimensions let you view metrics in meaningful
-        # groups. The stats api does accept dimensions as path params. The dimensions
-        # are optional in which case the metrics are computed on the entire data for the
-        # given timerange.
+        # groups. You can optionally pass dimensions as path parameters to the `stats`
+        # API. If dimensions are not specified, the metrics are computed on the entire
+        # set of data for the given time range.
         # @param [String] name
-        #   Required. The resource name for which the interactive query will be executed.
-        #   Must be of the form `organizations/`organization_id`/hostStats/`dimensions``.
-        #   Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
-        #   target_host. The value of dimensions should be comma separated list as shown
-        #   below `organizations/`org`/hostStats/apiproxy,request_verb`
+        #   Required. Resource name for which the interactive query will be executed. Use
+        #   the following format in your request: `organizations/`org`/hostStats/`
+        #   dimensions`` Dimensions let you view metrics in meaningful groupings, such as `
+        #   apiproxy`, `target_host`. The value of dimensions should be a comma-separated
+        #   list as shown below `organizations/`org`/hostStats/apiproxy,request_verb`
         # @param [String] accuracy
-        #   Legacy field: not used anymore.
+        #   No longer used by Apigee. Supported for backwards compatibility.
         # @param [String] envgroup_hostname
-        #   Required. The hostname for which the interactive query will be executed.
+        #   Required. Hostname for which the interactive query will be executed.
         # @param [String] filter
-        #   Enables drill-down on specific dimension values.
+        #   Flag that enables drill-down on specific dimension values.
         # @param [String] limit
-        #   This parameter is used to limit the number of result items. Default and the
-        #   max value is 14400.
+        #   Maximum number of result items to return. The default and maximum value that
+        #   can be returned is 14400.
         # @param [String] offset
-        #   Use offset with limit to enable pagination of results. For example, to display
-        #   results 11-20, set limit to '10' and offset to '10'.
+        #   Offset value. Use `offset` with `limit` to enable pagination of results. For
+        #   example, to display results 11-20, set limit to `10` and offset to `10`.
         # @param [Boolean] realtime
-        #   Legacy field: not used anymore.
+        #   No longer used by Apigee. Supported for backwards compatibility.
         # @param [String] select
-        #   The select parameter contains a comma separated list of metrics. E.g. sum(
-        #   message_count),sum(error_count)
+        #   Comma-separated list of metrics. For example: `sum(message_count),sum(
+        #   error_count)`
         # @param [String] sort
-        #   This parameter specifies if the sort order should be ascending or descending
-        #   Supported values are DESC and ASC.
+        #   Flag that specifies if the sort order should be ascending or descending. Valid
+        #   values are `DESC` and `ASC`.
         # @param [String] sortby
-        #   Comma separated list of columns to sort the final result.
+        #   Comma-separated list of columns to sort the final result.
         # @param [String] time_range
-        #   Time interval for the interactive query. Time range is specified as start~end
-        #   E.g. 04/15/2017 00:00~05/15/2017 23:59
+        #   Time interval for the interactive query. Time range is specified in GMT as `
+        #   start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`
         # @param [String] time_unit
-        #   A value of second, minute, hour, day, week, month. Time Unit specifies the
-        #   granularity of metrics returned.
+        #   Granularity of metrics returned. Valid values include: `second`, `minute`, `
+        #   hour`, `day`, `week`, or `month`.
         # @param [String] topk
-        #   Take 'top k' results from results, for example, to return the top 5 results '
-        #   topk=5'.
+        #   Top number of results to return. For example, to return the top 5 results, set
+        #   `topk=5`.
         # @param [Boolean] ts_ascending
-        #   Lists timestamps in ascending order if set to true. Recommend setting this
-        #   value to true if you are using sortby with sort=DESC.
+        #   Flag that specifies whether to list timestamps in ascending (`true`) or
+        #   descending (`false`) order. Apigee recommends that you set this value to `true`
+        #   if you are using `sortby` with `sort=DESC`.
         # @param [String] tzo
-        #   This parameters contains the timezone offset value.
+        #   Timezone offset value.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7887,49 +7885,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This api is similar to GetHostStats except that the response is less verbose.
+        # Similar to GetHostStats except that the response is less verbose.
         # @param [String] name
-        #   Required. The resource name for which the interactive query will be executed.
-        #   Must be of the form `organizations/`organization_id`/optimizedHostStats/`
-        #   dimensions``. Dimensions let you view metrics in meaningful groupings. E.g.
-        #   apiproxy, target_host. The value of dimensions should be comma separated list
-        #   as shown below `organizations/`org`/optimizedHostStats/apiproxy,request_verb`
+        #   Required. Resource name for which the interactive query will be executed. Use
+        #   the following format in your request: `organizations/`organization_id`/
+        #   optimizedHostStats/`dimensions`` Dimensions let you view metrics in meaningful
+        #   groupings, such as `apiproxy`, `target_host`. The value of dimensions should
+        #   be a comma-separated list as shown below: `organizations/`org`/
+        #   optimizedHostStats/apiproxy,request_verb`
         # @param [String] accuracy
-        #   Legacy field: not used anymore.
+        #   No longer used by Apigee. Supported for backwards compatibility.
         # @param [String] envgroup_hostname
-        #   Required. The hostname for which the interactive query will be executed.
+        #   Required. Hostname for which the interactive query will be executed.
         # @param [String] filter
-        #   Enables drill-down on specific dimension values.
+        #   Filter that enables you to drill-down on specific dimension values.
         # @param [String] limit
-        #   This parameter is used to limit the number of result items. Default and the
-        #   max value is 14400.
+        #   Maximum number of result items to return. The default and maximum value that
+        #   can be returned is 14400.
         # @param [String] offset
-        #   Use offset with limit to enable pagination of results. For example, to display
-        #   results 11-20, set limit to '10' and offset to '10'.
+        #   Offset value. Use `offset` with `limit` to enable pagination of results. For
+        #   example, to display results 11-20, set limit to `10` and offset to `10`.
         # @param [Boolean] realtime
-        #   Legacy field: not used anymore.
+        #   No longer used by Apigee. Supported for backwards compatibility.
         # @param [String] select
-        #   Required. The select parameter contains a comma separated list of metrics. E.g.
-        #   sum(message_count),sum(error_count)
+        #   Required. Comma-separated list of metrics. For example: `sum(message_count),
+        #   sum(error_count)`
         # @param [String] sort
-        #   This parameter specifies if the sort order should be ascending or descending
-        #   Supported values are DESC and ASC.
+        #   Flag that specifies whether the sort order should be ascending or descending.
+        #   Valid values include `DESC` and `ASC`.
         # @param [String] sortby
-        #   Comma separated list of columns to sort the final result.
+        #   Comma-separated list of columns used to sort the final result.
         # @param [String] time_range
-        #   Required. Time interval for the interactive query. Time range is specified as
-        #   start~end. E.g 04/15/2017 00:00~05/15/2017 23:59.
+        #   Required. Time interval for the interactive query. Time range is specified in
+        #   GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`.
         # @param [String] time_unit
-        #   A value of second, minute, hour, day, week, month. Time Unit specifies the
-        #   granularity of metrics returned.
+        #   Granularity of metrics returned. Valid values include: `second`, `minute`, `
+        #   hour`, `day`, `week`, or `month`.
         # @param [String] topk
-        #   Take 'top k' results from results, for example, to return the top 5 results '
-        #   topk=5'.
+        #   Top number of results to return. For example, to return the top 5 results, set
+        #   `topk=5`.
         # @param [Boolean] ts_ascending
-        #   Lists timestamps in ascending order if set to true. Recommend setting this
-        #   value to true if you are using sortby with sort=DESC.
+        #   Flag that specifies whether to list timestamps in ascending (`true`) or
+        #   descending (`false`) order. Apigee recommends that you set this value to `true`
+        #   if you are using `sortby` with `sort=DESC`.
         # @param [String] tzo
-        #   This parameters contains the timezone offset value.
+        #   Timezone offset value.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
