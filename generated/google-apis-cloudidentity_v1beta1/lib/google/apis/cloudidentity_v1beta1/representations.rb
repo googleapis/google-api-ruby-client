@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertificateTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckTransitiveMembershipResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndpointVerificationSpecificAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EntityKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +161,12 @@ module Google
       end
       
       class ExpiryDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirstAdminInvitationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,6 +616,31 @@ module Google
         end
       end
       
+      class CertificateInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_template, as: 'certificateTemplate', class: Google::Apis::CloudidentityV1beta1::CertificateTemplate, decorator: Google::Apis::CloudidentityV1beta1::CertificateTemplate::Representation
+      
+          property :fingerprint, as: 'fingerprint'
+          property :issuer, as: 'issuer'
+          property :serial_number, as: 'serialNumber'
+          property :subject, as: 'subject'
+          property :thumbprint, as: 'thumbprint'
+          property :validation_state, as: 'validationState'
+          property :validity_expiration_time, as: 'validityExpirationTime'
+          property :validity_start_time, as: 'validityStartTime'
+        end
+      end
+      
+      class CertificateTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :major_version, as: 'majorVersion'
+          property :minor_version, as: 'minorVersion'
+        end
+      end
+      
       class CheckTransitiveMembershipResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -651,6 +700,8 @@ module Google
           property :enabled_developer_options, as: 'enabledDeveloperOptions'
           property :enabled_usb_debugging, as: 'enabledUsbDebugging'
           property :encryption_state, as: 'encryptionState'
+          property :endpoint_verification_specific_attributes, as: 'endpointVerificationSpecificAttributes', class: Google::Apis::CloudidentityV1beta1::EndpointVerificationSpecificAttributes, decorator: Google::Apis::CloudidentityV1beta1::EndpointVerificationSpecificAttributes::Representation
+      
           property :imei, as: 'imei'
           property :kernel_version, as: 'kernelVersion'
           property :last_sync_time, as: 'lastSyncTime'
@@ -712,6 +763,14 @@ module Google
         end
       end
       
+      class EndpointVerificationSpecificAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :certificate_info, as: 'certificateInfo', class: Google::Apis::CloudidentityV1beta1::CertificateInfo, decorator: Google::Apis::CloudidentityV1beta1::CertificateInfo::Representation
+      
+        end
+      end
+      
       class EntityKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -724,6 +783,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expire_time, as: 'expireTime'
+        end
+      end
+      
+      class FirstAdminInvitationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_first_admin, as: 'isFirstAdmin'
+          property :primary_domain, as: 'primaryDomain'
         end
       end
       
@@ -1229,6 +1296,8 @@ module Google
       class SendUserInvitationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_admin_invitation_info, as: 'firstAdminInvitationInfo', class: Google::Apis::CloudidentityV1beta1::FirstAdminInvitationInfo, decorator: Google::Apis::CloudidentityV1beta1::FirstAdminInvitationInfo::Representation
+      
         end
       end
       
