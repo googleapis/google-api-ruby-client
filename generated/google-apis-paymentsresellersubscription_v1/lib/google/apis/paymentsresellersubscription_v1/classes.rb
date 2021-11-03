@@ -365,6 +365,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Output Only. Specifies the type of the promotion.
+        # Corresponds to the JSON property `promotionType`
+        # @return [String]
+        attr_accessor :promotion_type
+      
         # Output only. 2-letter ISO region code where the promotion is available in. Ex.
         # "US" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1
         # Corresponds to the JSON property `regionCodes`
@@ -392,6 +397,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @free_trial_duration = args[:free_trial_duration] if args.key?(:free_trial_duration)
           @name = args[:name] if args.key?(:name)
+          @promotion_type = args[:promotion_type] if args.key?(:promotion_type)
           @region_codes = args[:region_codes] if args.key?(:region_codes)
           @start_time = args[:start_time] if args.key?(:start_time)
           @titles = args[:titles] if args.key?(:titles)
