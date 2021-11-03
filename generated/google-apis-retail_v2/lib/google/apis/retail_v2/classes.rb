@@ -318,7 +318,7 @@ module Google
         # or the region IDs for "same-day-delivery" to be added for this type. Duplicate
         # IDs will be automatically ignored. At least 1 value is required, and a maximum
         # of 2000 values are allowed. Each value must be a string with a length limit of
-        # 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "
+        # 10 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "
         # REGION-2". Otherwise, an INVALID_ARGUMENT error is returned. If the total
         # number of place IDs exceeds 2000 for this type after adding, then the update
         # will be rejected.
@@ -742,7 +742,7 @@ module Google
         # The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-
         # in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A
         # maximum of 3000 values are allowed. Each value must be a string with a length
-        # limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1"
+        # limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1"
         # or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `placeIds`
         # @return [Array<String>]
@@ -1032,8 +1032,8 @@ module Google
       
         # Unique identifier provided by client, within the ancestor dataset scope.
         # Ensures idempotency and used for request deduplication. Server-generated if
-        # unspecified. Up to 128 characters long and must match the pattern: "[a-zA-Z0-
-        # 9_]+". This is returned as Operation.name in ImportMetadata. Only supported
+        # unspecified. Up to 128 characters long and must match the pattern: `[a-zA-Z0-
+        # 9_]+`. This is returned as Operation.name in ImportMetadata. Only supported
         # when ImportProductsRequest.reconciliation_mode is set to `FULL`.
         # Corresponds to the JSON property `requestId`
         # @return [String]
@@ -1522,7 +1522,7 @@ module Google
         # :[8.1, 6.4]` ``. This field needs to pass all below criteria, otherwise an
         # INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must
         # be a UTF-8 encoded string with a length limit of 128 characters. * For
-        # indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example,
+        # indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example,
         # key0LikeThis or KEY_1_LIKE_THIS.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute>]
@@ -1995,8 +1995,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ID of the promotion. For example, "free gift". The value value must be a UTF-8
-        # encoded string with a length limit of 128 characters, and match the pattern: a-
-        # zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an
+        # encoded string with a length limit of 128 characters, and match the pattern: `
+        # a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an
         # INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion]
         # (https://support.google.com/merchants/answer/7050148).
         # Corresponds to the JSON property `promotionId`
@@ -2257,7 +2257,7 @@ module Google
         # or the region IDs for "same-day-delivery", to be removed for this type. At
         # least 1 value is required, and a maximum of 2000 values are allowed. Each
         # value must be a string with a length limit of 10 characters, matching the
-        # pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an
+        # pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an
         # INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `placeIds`
         # @return [Array<String>]
@@ -3456,6 +3456,35 @@ module Google
         end
       end
       
+      # Metadata related to the progress of the AddLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # AddLocalInventories method.
+      class GoogleCloudRetailV2alphaAddLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the AddLocalInventories API. Currently empty because there is no
+      # meaningful response populated from the AddLocalInventories method.
+      class GoogleCloudRetailV2alphaAddLocalInventoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Configuration of destination for Export related errors.
       class GoogleCloudRetailV2alphaExportErrorsConfig
         include Google::Apis::Core::Hashable
@@ -3801,6 +3830,35 @@ module Google
       # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
       # is no meaningful response populated from the RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the RemoveLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # RemoveLocalInventories method.
+      class GoogleCloudRetailV2alphaRemoveLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the RemoveLocalInventories API. Currently empty because there is
+      # no meaningful response populated from the RemoveLocalInventories method.
+      class GoogleCloudRetailV2alphaRemoveLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
