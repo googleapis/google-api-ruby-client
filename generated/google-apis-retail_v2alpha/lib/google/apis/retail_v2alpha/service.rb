@@ -67,10 +67,10 @@ module Google
         #   cloud-retail, contact Cloud Retail support team first.
         # @param [String] device_type
         #   The device type context for completion suggestions. It is useful to apply
-        #   different suggestions on different device types, e.g. DESKTOP, MOBILE. If it
-        #   is empty, the suggestions are across all device types. Supported formats: *
-        #   UNKNOWN_DEVICE_TYPE * DESKTOP * MOBILE * A customized string starts with
-        #   OTHER_, e.g. OTHER_IPHONE.
+        #   different suggestions on different device types, e.g. `DESKTOP`, `MOBILE`. If
+        #   it is empty, the suggestions are across all device types. Supported formats: *
+        #   `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts with
+        #   `OTHER_`, e.g. `OTHER_IPHONE`.
         # @param [Array<String>, String] language_codes
         #   The list of languages of the query. This is the BCP-47 language code, such as "
         #   en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages]
@@ -359,6 +359,52 @@ module Google
           command = make_simple_command(:post, 'v2alpha/{+product}:addFulfillmentPlaces', options)
           command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAddFulfillmentPlacesRequest::Representation
           command.request_object = google_cloud_retail_v2alpha_add_fulfillment_places_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
+          command.params['product'] = product unless product.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates local inventory information for a Product at a list of places, while
+        # respecting the last update timestamps of each inventory field. This process is
+        # asynchronous and does not require the Product to exist before updating
+        # inventory information. If the request is valid, the update will be enqueued
+        # and processed downstream. As a consequence, when a response is returned,
+        # updates are not immediately manifested in the Product queried by GetProduct or
+        # ListProducts. Store inventory information can only be modified using this
+        # method. CreateProduct and UpdateProduct has no effect on local inventories.
+        # This feature is only available for users who have Retail Search enabled.
+        # Please submit a form [here](https://cloud.google.com/contact) to contact Cloud
+        # sales if you are interested in using Retail Search.
+        # @param [String] product
+        #   Required. Full resource name of Product, such as `projects/*/locations/global/
+        #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
+        #   the caller does not have permission to access the Product, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned.
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAddLocalInventoriesRequest] google_cloud_retail_v2alpha_add_local_inventories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_catalog_branch_product_local_inventories(product, google_cloud_retail_v2alpha_add_local_inventories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+product}:addLocalInventories', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAddLocalInventoriesRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_add_local_inventories_request_object
           command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
           command.params['product'] = product unless product.nil?
@@ -671,6 +717,50 @@ module Google
           command = make_simple_command(:post, 'v2alpha/{+product}:removeFulfillmentPlaces', options)
           command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRemoveFulfillmentPlacesRequest::Representation
           command.request_object = google_cloud_retail_v2alpha_remove_fulfillment_places_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
+          command.params['product'] = product unless product.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Remove local inventory information for a Product at a list of places at a
+        # removal timestamp. This process is asynchronous. If the request is valid, the
+        # removal will be enqueued and processed downstream. As a consequence, when a
+        # response is returned, removals are not immediately manifested in the Product
+        # queried by GetProduct or ListProducts. Store inventory information can only be
+        # removed using this method. CreateProduct and UpdateProduct has no effect on
+        # local inventories. This feature is only available for users who have Retail
+        # Search enabled. Please submit a form [here](https://cloud.google.com/contact)
+        # to contact Cloud sales if you are interested in using Retail Search.
+        # @param [String] product
+        #   Required. Full resource name of Product, such as `projects/*/locations/global/
+        #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
+        #   the caller does not have permission to access the Product, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned.
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest] google_cloud_retail_v2alpha_remove_local_inventories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_catalog_branch_product_local_inventories(product, google_cloud_retail_v2alpha_remove_local_inventories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+product}:removeLocalInventories', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_remove_local_inventories_request_object
           command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
           command.params['product'] = product unless product.nil?
