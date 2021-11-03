@@ -1115,6 +1115,7 @@ module Google
         # Specific type of the event. Read-only. Possible values are:
         # - "default" - A regular event or not further specified.
         # - "outOfOffice" - An out-of-office event.
+        # - "focusTime" - A focus-time event.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
