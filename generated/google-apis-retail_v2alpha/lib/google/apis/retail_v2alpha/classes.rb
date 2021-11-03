@@ -657,7 +657,7 @@ module Google
         # or the region IDs for "same-day-delivery" to be added for this type. Duplicate
         # IDs will be automatically ignored. At least 1 value is required, and a maximum
         # of 2000 values are allowed. Each value must be a string with a length limit of
-        # 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1" or "
+        # 10 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "
         # REGION-2". Otherwise, an INVALID_ARGUMENT error is returned. If the total
         # number of place IDs exceeds 2000 for this type after adding, then the update
         # will be rejected.
@@ -692,6 +692,86 @@ module Google
       # Response of the AddFulfillmentPlacesRequest. Currently empty because there is
       # no meaningful response populated from the AddFulfillmentPlaces method.
       class GoogleCloudRetailV2alphaAddFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the AddLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # AddLocalInventories method.
+      class GoogleCloudRetailV2alphaAddLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for AddLocalInventories method.
+      class GoogleCloudRetailV2alphaAddLocalInventoriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Indicates which inventory fields in the provided list of LocalInventory to
+        # update. The field is updated to the provided value. If a field is set while
+        # the place does not have a previous local inventory, the local inventory at
+        # that store is created. If a field is set while the value of that field is not
+        # provided, the original field value, if it exists, is deleted. If the mask is
+        # not set or set with empty paths, all inventory fields will be updated. If an
+        # unsupported or unknown field is provided, an INVALID_ARGUMENT error is
+        # returned and the entire update will be ignored.
+        # Corresponds to the JSON property `addMask`
+        # @return [String]
+        attr_accessor :add_mask
+      
+        # The time when the inventory updates are issued. Used to prevent out-of-order
+        # updates on local inventory fields. If not provided, the internal system time
+        # will be used.
+        # Corresponds to the JSON property `addTime`
+        # @return [String]
+        attr_accessor :add_time
+      
+        # If set to true, and the Product is not found, the local inventory will still
+        # be processed and retained for at most 1 day and processed once the Product is
+        # created. If set to false, an INVALID_ARGUMENT error is returned if the Product
+        # is not found.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Required. A list of inventory information at difference places. Each place is
+        # identified by its place ID. At most 1000 inventories are allowed per request.
+        # Corresponds to the JSON property `localInventories`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLocalInventory>]
+        attr_accessor :local_inventories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_mask = args[:add_mask] if args.key?(:add_mask)
+          @add_time = args[:add_time] if args.key?(:add_time)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @local_inventories = args[:local_inventories] if args.key?(:local_inventories)
+        end
+      end
+      
+      # Response of the AddLocalInventories API. Currently empty because there is no
+      # meaningful response populated from the AddLocalInventories method.
+      class GoogleCloudRetailV2alphaAddLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1190,7 +1270,7 @@ module Google
         # The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-
         # in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A
         # maximum of 3000 values are allowed. Each value must be a string with a length
-        # limit of 30 characters, matching the pattern [a-zA-Z0-9_-]+, such as "store1"
+        # limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1"
         # or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `placeIds`
         # @return [Array<String>]
@@ -1480,8 +1560,8 @@ module Google
       
         # Unique identifier provided by client, within the ancestor dataset scope.
         # Ensures idempotency and used for request deduplication. Server-generated if
-        # unspecified. Up to 128 characters long and must match the pattern: "[a-zA-Z0-
-        # 9_]+". This is returned as Operation.name in ImportMetadata. Only supported
+        # unspecified. Up to 128 characters long and must match the pattern: `[a-zA-Z0-
+        # 9_]+`. This is returned as Operation.name in ImportMetadata. Only supported
         # when ImportProductsRequest.reconciliation_mode is set to `FULL`.
         # Corresponds to the JSON property `requestId`
         # @return [String]
@@ -1689,6 +1769,43 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @products = args[:products] if args.key?(:products)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # The inventory information at a place (e.g. a store) identified by a place ID.
+      class GoogleCloudRetailV2alphaLocalInventory
+        include Google::Apis::Core::Hashable
+      
+        # Additional local inventory attributes, for example, store name, promotion tags,
+        # etc. * At most 5 values are allowed. Otherwise, an INVALID_ARGUMENT error is
+        # returned. * The key must be a UTF-8 encoded string with a length limit of 10
+        # characters. * The key must match the pattern: `a-zA-Z0-9*`. For example,
+        # key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same
+        # type (text or number). * The max number of values per attribute is 10. * For
+        # text values, the length limit is 10 UTF-8 characters.
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute>]
+        attr_accessor :attributes
+      
+        # The place ID for the current set of inventory information.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
+      
+        # The price information of a Product.
+        # Corresponds to the JSON property `priceInfo`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPriceInfo]
+        attr_accessor :price_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @place_id = args[:place_id] if args.key?(:place_id)
+          @price_info = args[:price_info] if args.key?(:price_info)
         end
       end
       
@@ -2042,7 +2159,7 @@ module Google
         # :[8.1, 6.4]` ``. This field needs to pass all below criteria, otherwise an
         # INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must
         # be a UTF-8 encoded string with a length limit of 128 characters. * For
-        # indexable attribute, the key must match the pattern: a-zA-Z0-9*. For example,
+        # indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example,
         # key0LikeThis or KEY_1_LIKE_THIS.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute>]
@@ -2515,8 +2632,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ID of the promotion. For example, "free gift". The value value must be a UTF-8
-        # encoded string with a length limit of 128 characters, and match the pattern: a-
-        # zA-Z*. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an
+        # encoded string with a length limit of 128 characters, and match the pattern: `
+        # a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an
         # INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion]
         # (https://support.google.com/merchants/answer/7050148).
         # Corresponds to the JSON property `promotionId`
@@ -2777,7 +2894,7 @@ module Google
         # or the region IDs for "same-day-delivery", to be removed for this type. At
         # least 1 value is required, and a maximum of 2000 values are allowed. Each
         # value must be a string with a length limit of 10 characters, matching the
-        # pattern [a-zA-Z0-9_-]+, such as "store1" or "REGION-2". Otherwise, an
+        # pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an
         # INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `placeIds`
         # @return [Array<String>]
@@ -2817,6 +2934,73 @@ module Google
       # Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
       # is no meaningful response populated from the RemoveFulfillmentPlaces method.
       class GoogleCloudRetailV2alphaRemoveFulfillmentPlacesResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the RemoveLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # RemoveLocalInventories method.
+      class GoogleCloudRetailV2alphaRemoveLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for RemoveLocalInventories method.
+      class GoogleCloudRetailV2alphaRemoveLocalInventoriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # If set to true, and the Product is not found, the local inventory removal
+        # request will still be processed and retained for at most 1 day and processed
+        # once the Product is created. If set to false, a NOT_FOUND error is returned if
+        # the Product is not found.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Required. A list of place IDs to have their inventory deleted. At most 1000
+        # place IDs are allowed per request.
+        # Corresponds to the JSON property `placeIds`
+        # @return [Array<String>]
+        attr_accessor :place_ids
+      
+        # The time when the inventory deletions are issued. Used to prevent out-of-order
+        # updates and deletions on local inventory fields. If not provided, the internal
+        # system time will be used.
+        # Corresponds to the JSON property `removeTime`
+        # @return [String]
+        attr_accessor :remove_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @place_ids = args[:place_ids] if args.key?(:place_ids)
+          @remove_time = args[:remove_time] if args.key?(:remove_time)
+        end
+      end
+      
+      # Response of the RemoveLocalInventories API. Currently empty because there is
+      # no meaningful response populated from the RemoveLocalInventories method.
+      class GoogleCloudRetailV2alphaRemoveLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
