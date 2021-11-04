@@ -1,0 +1,13 @@
+--hide-void-return
+--no-private
+--verbose
+--title=google-apis-cloudsupport_v2beta
+--markup-provider=redcarpet
+--markup=markdown
+--main OVERVIEW.md
+lib/google/apis/cloudsupport_v2beta/*.rb
+lib/google/apis/cloudsupport_v2beta.rb
+-
+OVERVIEW.md
+CHANGELOG.md
+LICENSE.md
