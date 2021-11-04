@@ -1247,9 +1247,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :matching_accounts_count
       
-        # When **DataScope** is **HELD_DATA**, the number of accounts in the request
-        # that are not queried because they are not on hold. For other data scopes, this
-        # field is not set.
+        # When **DataScope** is **HELD_DATA** and when account emails are passed in
+        # explicitly, the list of accounts in the request that are not queried because
+        # they are not on hold in the matter. For other data scopes, this field is not
+        # set.
         # Corresponds to the JSON property `nonQueryableAccounts`
         # @return [Array<String>]
         attr_accessor :non_queryable_accounts
