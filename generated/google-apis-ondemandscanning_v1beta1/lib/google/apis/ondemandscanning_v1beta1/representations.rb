@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Material
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +311,36 @@ module Google
       end
       
       class Signature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaBuilder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaCompleteness
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaRecipe
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -435,6 +471,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :intoto_provenance, as: 'intotoProvenance', class: Google::Apis::OndemandscanningV1beta1::InTotoProvenance, decorator: Google::Apis::OndemandscanningV1beta1::InTotoProvenance::Representation
+      
+          property :intoto_statement, as: 'intotoStatement', class: Google::Apis::OndemandscanningV1beta1::InTotoStatement, decorator: Google::Apis::OndemandscanningV1beta1::InTotoStatement::Representation
       
           property :provenance, as: 'provenance', class: Google::Apis::OndemandscanningV1beta1::BuildProvenance, decorator: Google::Apis::OndemandscanningV1beta1::BuildProvenance::Representation
       
@@ -659,12 +697,14 @@ module Google
       class InTotoStatement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :_type, as: '_type'
           property :predicate_type, as: 'predicateType'
           property :provenance, as: 'provenance', class: Google::Apis::OndemandscanningV1beta1::InTotoProvenance, decorator: Google::Apis::OndemandscanningV1beta1::InTotoProvenance::Representation
       
+          property :slsa_provenance, as: 'slsaProvenance', class: Google::Apis::OndemandscanningV1beta1::SlsaProvenance, decorator: Google::Apis::OndemandscanningV1beta1::SlsaProvenance::Representation
+      
           collection :subject, as: 'subject', class: Google::Apis::OndemandscanningV1beta1::Subject, decorator: Google::Apis::OndemandscanningV1beta1::Subject::Representation
       
-          property :type, as: 'type'
         end
       end
       
@@ -708,6 +748,14 @@ module Google
           property :path, as: 'path'
           property :version, as: 'version', class: Google::Apis::OndemandscanningV1beta1::Version, decorator: Google::Apis::OndemandscanningV1beta1::Version::Representation
       
+        end
+      end
+      
+      class Material
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :uri, as: 'uri'
         end
       end
       
@@ -859,6 +907,59 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :public_key_id, as: 'publicKeyId'
           property :signature, :base64 => true, as: 'signature'
+        end
+      end
+      
+      class SlsaBuilder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+        end
+      end
+      
+      class SlsaCompleteness
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :arguments, as: 'arguments'
+          property :environment, as: 'environment'
+          property :materials, as: 'materials'
+        end
+      end
+      
+      class SlsaMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_finished_on, as: 'buildFinishedOn'
+          property :build_invocation_id, as: 'buildInvocationId'
+          property :build_started_on, as: 'buildStartedOn'
+          property :completeness, as: 'completeness', class: Google::Apis::OndemandscanningV1beta1::SlsaCompleteness, decorator: Google::Apis::OndemandscanningV1beta1::SlsaCompleteness::Representation
+      
+          property :reproducible, as: 'reproducible'
+        end
+      end
+      
+      class SlsaProvenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :builder, as: 'builder', class: Google::Apis::OndemandscanningV1beta1::SlsaBuilder, decorator: Google::Apis::OndemandscanningV1beta1::SlsaBuilder::Representation
+      
+          collection :materials, as: 'materials', class: Google::Apis::OndemandscanningV1beta1::Material, decorator: Google::Apis::OndemandscanningV1beta1::Material::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::OndemandscanningV1beta1::SlsaMetadata, decorator: Google::Apis::OndemandscanningV1beta1::SlsaMetadata::Representation
+      
+          property :recipe, as: 'recipe', class: Google::Apis::OndemandscanningV1beta1::SlsaRecipe, decorator: Google::Apis::OndemandscanningV1beta1::SlsaRecipe::Representation
+      
+        end
+      end
+      
+      class SlsaRecipe
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :arguments, as: 'arguments'
+          property :defined_in_material, :numeric_string => true, as: 'definedInMaterial'
+          property :entry_point, as: 'entryPoint'
+          hash :environment, as: 'environment'
+          property :type, as: 'type'
         end
       end
       
