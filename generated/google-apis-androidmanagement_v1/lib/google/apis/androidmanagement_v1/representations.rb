@@ -848,6 +848,7 @@ module Google
           collection :cpu_shutdown_temperatures, as: 'cpuShutdownTemperatures'
           collection :cpu_throttling_temperatures, as: 'cpuThrottlingTemperatures'
           property :device_baseband_version, as: 'deviceBasebandVersion'
+          property :enterprise_specific_id, as: 'enterpriseSpecificId'
           collection :gpu_shutdown_temperatures, as: 'gpuShutdownTemperatures'
           collection :gpu_throttling_temperatures, as: 'gpuThrottlingTemperatures'
           property :hardware, as: 'hardware'

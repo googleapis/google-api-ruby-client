@@ -1603,6 +1603,15 @@ module Google
         # @return [String]
         attr_accessor :device_baseband_version
       
+        # Output only. ID that uniquely identifies a personally-owned device in a
+        # particular organization. On the same physical device when enrolled with the
+        # same organization, this ID persists across setups and even factory resets.
+        # This ID is available on personally-owned devices with a work profile on
+        # devices running Android 12 and above.
+        # Corresponds to the JSON property `enterpriseSpecificId`
+        # @return [String]
+        attr_accessor :enterprise_specific_id
+      
         # GPU shutdown temperature thresholds in Celsius for each GPU on the device.
         # Corresponds to the JSON property `gpuShutdownTemperatures`
         # @return [Array<Float>]
@@ -1655,6 +1664,7 @@ module Google
           @cpu_shutdown_temperatures = args[:cpu_shutdown_temperatures] if args.key?(:cpu_shutdown_temperatures)
           @cpu_throttling_temperatures = args[:cpu_throttling_temperatures] if args.key?(:cpu_throttling_temperatures)
           @device_baseband_version = args[:device_baseband_version] if args.key?(:device_baseband_version)
+          @enterprise_specific_id = args[:enterprise_specific_id] if args.key?(:enterprise_specific_id)
           @gpu_shutdown_temperatures = args[:gpu_shutdown_temperatures] if args.key?(:gpu_shutdown_temperatures)
           @gpu_throttling_temperatures = args[:gpu_throttling_temperatures] if args.key?(:gpu_throttling_temperatures)
           @hardware = args[:hardware] if args.key?(:hardware)
