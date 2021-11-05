@@ -217,7 +217,7 @@ module Google
       end
       
       # Describes a Cloud Function that contains user computation executed in response
-      # to an event. It encapsulate function and triggers configurations. Next tag: 35
+      # to an event. It encapsulate function and triggers configurations. Next tag: 36
       class CloudFunction
         include Google::Apis::Core::Hashable
       
