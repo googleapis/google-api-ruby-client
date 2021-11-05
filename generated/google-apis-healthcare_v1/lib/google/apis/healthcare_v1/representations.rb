@@ -796,6 +796,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ValidationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VersionSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1252,6 +1258,8 @@ module Google
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1::NotificationConfig, decorator: Google::Apis::HealthcareV1::NotificationConfig::Representation
       
           collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1::StreamConfig, decorator: Google::Apis::HealthcareV1::StreamConfig::Representation
+      
+          property :validation_config, as: 'validationConfig', class: Google::Apis::HealthcareV1::ValidationConfig, decorator: Google::Apis::HealthcareV1::ValidationConfig::Representation
       
           property :version, as: 'version'
         end
@@ -1977,6 +1985,15 @@ module Google
           collection :resource_attributes, as: 'resourceAttributes', class: Google::Apis::HealthcareV1::Attribute, decorator: Google::Apis::HealthcareV1::Attribute::Representation
       
           property :user_id, as: 'userId'
+        end
+      end
+      
+      class ValidationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_fhirpath_validation, as: 'disableFhirpathValidation'
+          property :disable_reference_type_validation, as: 'disableReferenceTypeValidation'
+          property :disable_required_field_validation, as: 'disableRequiredFieldValidation'
         end
       end
       

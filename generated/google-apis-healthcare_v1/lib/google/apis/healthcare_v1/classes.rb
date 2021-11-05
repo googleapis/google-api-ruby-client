@@ -1682,6 +1682,11 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1::StreamConfig>]
         attr_accessor :stream_configs
       
+        # Contains the configuration for FHIR profiles and validation.
+        # Corresponds to the JSON property `validationConfig`
+        # @return [Google::Apis::HealthcareV1::ValidationConfig]
+        attr_accessor :validation_config
+      
         # Immutable. The FHIR specification version that this FHIR store supports
         # natively. This field is immutable after store creation. Requests are rejected
         # if they contain FHIR resources of a different version. Version is required for
@@ -1704,6 +1709,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
+          @validation_config = args[:validation_config] if args.key?(:validation_config)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -4335,6 +4341,52 @@ module Google
           @name = args[:name] if args.key?(:name)
           @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Contains the configuration for FHIR profiles and validation.
+      class ValidationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to disable FHIRPath validation for incoming resources. Set this to
+        # true to disable checking incoming resources for conformance against FHIRPath
+        # requirement defined in the FHIR specification. This property only affects
+        # resource types that do not have profiles configured for them, any rules in
+        # enabled implementation guides will still be enforced.
+        # Corresponds to the JSON property `disableFhirpathValidation`
+        # @return [Boolean]
+        attr_accessor :disable_fhirpath_validation
+        alias_method :disable_fhirpath_validation?, :disable_fhirpath_validation
+      
+        # Whether to disable reference type validation for incoming resources. Set this
+        # to true to disable checking incoming resources for conformance against
+        # reference type requirement defined in the FHIR specification. This property
+        # only affects resource types that do not have profiles configured for them, any
+        # rules in enabled implementation guides will still be enforced.
+        # Corresponds to the JSON property `disableReferenceTypeValidation`
+        # @return [Boolean]
+        attr_accessor :disable_reference_type_validation
+        alias_method :disable_reference_type_validation?, :disable_reference_type_validation
+      
+        # Whether to disable required fields validation for incoming resources. Set this
+        # to true to disable checking incoming resources for conformance against
+        # required fields requirement defined in the FHIR specification. This property
+        # only affects resource types that do not have profiles configured for them, any
+        # rules in enabled implementation guides will still be enforced.
+        # Corresponds to the JSON property `disableRequiredFieldValidation`
+        # @return [Boolean]
+        attr_accessor :disable_required_field_validation
+        alias_method :disable_required_field_validation?, :disable_required_field_validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_fhirpath_validation = args[:disable_fhirpath_validation] if args.key?(:disable_fhirpath_validation)
+          @disable_reference_type_validation = args[:disable_reference_type_validation] if args.key?(:disable_reference_type_validation)
+          @disable_required_field_validation = args[:disable_required_field_validation] if args.key?(:disable_required_field_validation)
         end
       end
       
