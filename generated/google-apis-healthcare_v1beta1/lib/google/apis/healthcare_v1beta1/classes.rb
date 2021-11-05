@@ -5189,6 +5189,16 @@ module Google
       class ValidationConfig
         include Google::Apis::Core::Hashable
       
+        # Whether to disable FHIRPath validation for incoming resources. Set this to
+        # true to disable checking incoming resources for conformance against FHIRPath
+        # requirement defined in the FHIR specification. This property only affects
+        # resource types that do not have profiles configured for them, any rules in
+        # enabled implementation guides will still be enforced.
+        # Corresponds to the JSON property `disableFhirpathValidation`
+        # @return [Boolean]
+        attr_accessor :disable_fhirpath_validation
+        alias_method :disable_fhirpath_validation?, :disable_fhirpath_validation
+      
         # Whether to disable profile validation for this FHIR store. Set this to true to
         # disable checking incoming resources for conformance against
         # StructureDefinitions in this FHIR store.
@@ -5196,6 +5206,26 @@ module Google
         # @return [Boolean]
         attr_accessor :disable_profile_validation
         alias_method :disable_profile_validation?, :disable_profile_validation
+      
+        # Whether to disable reference type validation for incoming resources. Set this
+        # to true to disable checking incoming resources for conformance against
+        # reference type requirement defined in the FHIR specification. This property
+        # only affects resource types that do not have profiles configured for them, any
+        # rules in enabled implementation guides will still be enforced.
+        # Corresponds to the JSON property `disableReferenceTypeValidation`
+        # @return [Boolean]
+        attr_accessor :disable_reference_type_validation
+        alias_method :disable_reference_type_validation?, :disable_reference_type_validation
+      
+        # Whether to disable required fields validation for incoming resources. Set this
+        # to true to disable checking incoming resources for conformance against
+        # required fields requirement defined in the FHIR specification. This property
+        # only affects resource types that do not have profiles configured for them, any
+        # rules in enabled implementation guides will still be enforced.
+        # Corresponds to the JSON property `disableRequiredFieldValidation`
+        # @return [Boolean]
+        attr_accessor :disable_required_field_validation
+        alias_method :disable_required_field_validation?, :disable_required_field_validation
       
         # A list of ImplementationGuide URLs in this FHIR store that are used to
         # configure the profiles to use for validation. For example, to use the US Core
@@ -5220,7 +5250,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disable_fhirpath_validation = args[:disable_fhirpath_validation] if args.key?(:disable_fhirpath_validation)
           @disable_profile_validation = args[:disable_profile_validation] if args.key?(:disable_profile_validation)
+          @disable_reference_type_validation = args[:disable_reference_type_validation] if args.key?(:disable_reference_type_validation)
+          @disable_required_field_validation = args[:disable_required_field_validation] if args.key?(:disable_required_field_validation)
           @enabled_implementation_guides = args[:enabled_implementation_guides] if args.key?(:enabled_implementation_guides)
         end
       end
