@@ -1,5 +1,9 @@
 # Release history for google-apis-monitoring_v3
 
+### v0.17.0 (2021-11-05)
+
+* Regenerated from discovery document revision 20211031
+
 ### v0.16.0 (2021-10-22)
 
 * Regenerated from discovery document revision 20211017
