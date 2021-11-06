@@ -16,13 +16,13 @@ module Google
   module Apis
     module ArtifactregistryV1beta2
       # Version of the google-apis-artifactregistry_v1beta2 gem
-      GEM_VERSION = "0.14.0"
+      GEM_VERSION = "0.15.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20211015"
+      REVISION = "20211029"
     end
   end
 end

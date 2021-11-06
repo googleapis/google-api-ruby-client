@@ -913,6 +913,32 @@ module Google
         end
       end
       
+      # The Artifact Registry settings that apply to a Project.
+      class ProjectSettings
+        include Google::Apis::Core::Hashable
+      
+        # The redirection state of the legacy repositories in this project.
+        # Corresponds to the JSON property `legacyRedirectionState`
+        # @return [String]
+        attr_accessor :legacy_redirection_state
+      
+        # The name of the project's settings. Always of the form: projects/`project-id`/
+        # projectSettings In update request: never set In response: always set
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @legacy_redirection_state = args[:legacy_redirection_state] if args.key?(:legacy_redirection_state)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A Repository for storing artifacts with a specific format.
       class Repository
         include Google::Apis::Core::Hashable
