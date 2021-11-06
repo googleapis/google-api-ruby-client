@@ -803,6 +803,7 @@ module Google
           property :backfill_none, as: 'backfillNone', class: Google::Apis::DatastreamV1alpha1::BackfillNoneStrategy, decorator: Google::Apis::DatastreamV1alpha1::BackfillNoneStrategy::Representation
       
           property :create_time, as: 'createTime'
+          property :customer_managed_encryption_key, as: 'customerManagedEncryptionKey'
           property :destination_config, as: 'destinationConfig', class: Google::Apis::DatastreamV1alpha1::DestinationConfig, decorator: Google::Apis::DatastreamV1alpha1::DestinationConfig::Representation
       
           property :display_name, as: 'displayName'
