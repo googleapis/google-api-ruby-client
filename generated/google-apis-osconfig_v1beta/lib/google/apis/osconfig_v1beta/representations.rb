@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOsconfigV1OsPolicyAssignmentOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GuestPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -541,6 +547,17 @@ module Google
       class GooSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudOsconfigV1OsPolicyAssignmentOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_method, as: 'apiMethod'
+          property :os_policy_assignment, as: 'osPolicyAssignment'
+          property :rollout_start_time, as: 'rolloutStartTime'
+          property :rollout_state, as: 'rolloutState'
+          property :rollout_update_time, as: 'rolloutUpdateTime'
         end
       end
       
