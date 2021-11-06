@@ -484,7 +484,6 @@ module Google
       class CaPool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
           property :issuance_policy, as: 'issuancePolicy', class: Google::Apis::PrivatecaV1::IssuancePolicy, decorator: Google::Apis::PrivatecaV1::IssuancePolicy::Representation
       
           hash :labels, as: 'labels'
@@ -492,7 +491,6 @@ module Google
           property :publishing_options, as: 'publishingOptions', class: Google::Apis::PrivatecaV1::PublishingOptions, decorator: Google::Apis::PrivatecaV1::PublishingOptions::Representation
       
           property :tier, as: 'tier'
-          property :update_time, as: 'updateTime'
         end
       end
       
