@@ -567,6 +567,8 @@ module Google
       
           property :posix_data_source, as: 'posixDataSource', class: Google::Apis::StoragetransferV1::PosixFilesystem, decorator: Google::Apis::StoragetransferV1::PosixFilesystem::Representation
       
+          property :sink_agent_pool_name, as: 'sinkAgentPoolName'
+          property :source_agent_pool_name, as: 'sourceAgentPoolName'
           property :transfer_options, as: 'transferOptions', class: Google::Apis::StoragetransferV1::TransferOptions, decorator: Google::Apis::StoragetransferV1::TransferOptions::Representation
       
         end
