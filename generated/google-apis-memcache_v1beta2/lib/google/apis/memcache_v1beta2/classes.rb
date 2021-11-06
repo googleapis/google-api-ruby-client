@@ -775,10 +775,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # The unique ID associated with this set of parameters. Users can use this id to
-        # determine if the parameters associated with the instance differ from the
-        # parameters associated with the nodes. A discrepancy between parameter ids can
-        # inform users that they may need to take action to apply parameters on nodes.
+        # User defined parameters to apply to the memcached process on each node.
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::MemcacheV1beta2::MemcacheParameters]
         attr_accessor :parameters
@@ -1097,14 +1094,15 @@ module Google
         end
       end
       
-      # The unique ID associated with this set of parameters. Users can use this id to
-      # determine if the parameters associated with the instance differ from the
-      # parameters associated with the nodes. A discrepancy between parameter ids can
-      # inform users that they may need to take action to apply parameters on nodes.
+      # 
       class MemcacheParameters
         include Google::Apis::Core::Hashable
       
-        # Output only.
+        # Output only. The unique ID associated with this set of parameters. Users can
+        # use this id to determine if the parameters associated with the instance differ
+        # from the parameters associated with the nodes. A discrepancy between parameter
+        # ids can inform users that they may need to take action to apply parameters on
+        # nodes.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1141,10 +1139,7 @@ module Google
         # @return [String]
         attr_accessor :node_id
       
-        # The unique ID associated with this set of parameters. Users can use this id to
-        # determine if the parameters associated with the instance differ from the
-        # parameters associated with the nodes. A discrepancy between parameter ids can
-        # inform users that they may need to take action to apply parameters on nodes.
+        # User defined parameters currently applied to the node.
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::MemcacheV1beta2::MemcacheParameters]
         attr_accessor :parameters
@@ -1449,10 +1444,7 @@ module Google
       class UpdateParametersRequest
         include Google::Apis::Core::Hashable
       
-        # The unique ID associated with this set of parameters. Users can use this id to
-        # determine if the parameters associated with the instance differ from the
-        # parameters associated with the nodes. A discrepancy between parameter ids can
-        # inform users that they may need to take action to apply parameters on nodes.
+        # The parameters to apply to the instance.
         # Corresponds to the JSON property `parameters`
         # @return [Google::Apis::MemcacheV1beta2::MemcacheParameters]
         attr_accessor :parameters
