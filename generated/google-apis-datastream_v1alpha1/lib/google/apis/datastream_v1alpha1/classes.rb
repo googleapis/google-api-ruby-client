@@ -1609,6 +1609,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Immutable. A reference to a KMS encryption key. If provided, it will be used
+        # to encrypt the data. If left blank, data will be encrypted using an internal
+        # Stream-specific encryption key provisioned through KMS.
+        # Corresponds to the JSON property `customerManagedEncryptionKey`
+        # @return [String]
+        attr_accessor :customer_managed_encryption_key
+      
         # The configuration of the stream destination.
         # Corresponds to the JSON property `destinationConfig`
         # @return [Google::Apis::DatastreamV1alpha1::DestinationConfig]
@@ -1658,6 +1665,7 @@ module Google
           @backfill_all = args[:backfill_all] if args.key?(:backfill_all)
           @backfill_none = args[:backfill_none] if args.key?(:backfill_none)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_managed_encryption_key = args[:customer_managed_encryption_key] if args.key?(:customer_managed_encryption_key)
           @destination_config = args[:destination_config] if args.key?(:destination_config)
           @display_name = args[:display_name] if args.key?(:display_name)
           @errors = args[:errors] if args.key?(:errors)
