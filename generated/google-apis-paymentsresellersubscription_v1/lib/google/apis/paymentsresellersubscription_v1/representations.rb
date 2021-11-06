@@ -100,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudPaymentsResellerSubscriptionV1Subscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -246,12 +258,29 @@ module Google
           property :end_time, as: 'endTime'
           property :free_trial_duration, as: 'freeTrialDuration', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration::Representation
       
+          property :introductory_pricing_details, as: 'introductoryPricingDetails', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails::Representation
+      
           property :name, as: 'name'
           property :promotion_type, as: 'promotionType'
           collection :region_codes, as: 'regionCodes'
           property :start_time, as: 'startTime'
           collection :titles, as: 'titles', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleTypeLocalizedText::Representation
       
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :introductory_pricing_specs, as: 'introductoryPricingSpecs', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recurrence_count, as: 'recurrenceCount'
         end
       end
       

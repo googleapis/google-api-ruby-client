@@ -359,6 +359,11 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Duration]
         attr_accessor :free_trial_duration
       
+        # The details of a introductory pricing promotion.
+        # Corresponds to the JSON property `introductoryPricingDetails`
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails]
+        attr_accessor :introductory_pricing_details
+      
         # Output only. Response only. Resource name of the subscription promotion. It
         # will have the format of "partners/`partner_id`/promotion/`promotion_id`"
         # Corresponds to the JSON property `name`
@@ -396,11 +401,51 @@ module Google
           @applicable_products = args[:applicable_products] if args.key?(:applicable_products)
           @end_time = args[:end_time] if args.key?(:end_time)
           @free_trial_duration = args[:free_trial_duration] if args.key?(:free_trial_duration)
+          @introductory_pricing_details = args[:introductory_pricing_details] if args.key?(:introductory_pricing_details)
           @name = args[:name] if args.key?(:name)
           @promotion_type = args[:promotion_type] if args.key?(:promotion_type)
           @region_codes = args[:region_codes] if args.key?(:region_codes)
           @start_time = args[:start_time] if args.key?(:start_time)
           @titles = args[:titles] if args.key?(:titles)
+        end
+      end
+      
+      # The details of a introductory pricing promotion.
+      class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the introductory pricing periods.
+        # Corresponds to the JSON property `introductoryPricingSpecs`
+        # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>]
+        attr_accessor :introductory_pricing_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @introductory_pricing_specs = args[:introductory_pricing_specs] if args.key?(:introductory_pricing_specs)
+        end
+      end
+      
+      # The duration of an introductory pricing promotion.
+      class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Output Only. The duration of an introductory offer in billing
+        # cycles.
+        # Corresponds to the JSON property `recurrenceCount`
+        # @return [Fixnum]
+        attr_accessor :recurrence_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recurrence_count = args[:recurrence_count] if args.key?(:recurrence_count)
         end
       end
       
