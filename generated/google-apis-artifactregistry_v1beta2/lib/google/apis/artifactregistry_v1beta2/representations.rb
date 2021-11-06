@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Repository
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -489,6 +495,14 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class ProjectSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :legacy_redirection_state, as: 'legacyRedirectionState'
+          property :name, as: 'name'
         end
       end
       
