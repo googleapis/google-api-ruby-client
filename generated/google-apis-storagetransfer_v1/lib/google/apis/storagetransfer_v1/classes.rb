@@ -602,8 +602,8 @@ module Google
       # refers to the time of the last change to the object's content or metadata —
       # specifically, this is the `updated` property of Cloud Storage objects, the `
       # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-      # blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don'
-      # t support `ObjectConditions`.
+      # blobs. Transfers with a PosixFilesystem source or destination don't support `
+      # ObjectConditions`.
       class ObjectConditions
         include Google::Apis::Core::Hashable
       
@@ -1417,8 +1417,8 @@ module Google
         # refers to the time of the last change to the object's content or metadata —
         # specifically, this is the `updated` property of Cloud Storage objects, the `
         # LastModified` field of S3 objects, and the `Last-Modified` header of Azure
-        # blobs. Transfers that use PosixFilesystem and have a Cloud Storage source don'
-        # t support `ObjectConditions`.
+        # blobs. Transfers with a PosixFilesystem source or destination don't support `
+        # ObjectConditions`.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
         attr_accessor :object_conditions
@@ -1432,6 +1432,18 @@ module Google
         # Corresponds to the JSON property `posixDataSource`
         # @return [Google::Apis::StoragetransferV1::PosixFilesystem]
         attr_accessor :posix_data_source
+      
+        # Specifies the agent pool name associated with the posix data sink. When
+        # unspecified, the default name is used.
+        # Corresponds to the JSON property `sinkAgentPoolName`
+        # @return [String]
+        attr_accessor :sink_agent_pool_name
+      
+        # Specifies the agent pool name associated with the posix data source. When
+        # unspecified, the default name is used.
+        # Corresponds to the JSON property `sourceAgentPoolName`
+        # @return [String]
+        attr_accessor :source_agent_pool_name
       
         # TransferOptions define the actions to be performed on objects in a transfer.
         # Corresponds to the JSON property `transferOptions`
@@ -1452,6 +1464,8 @@ module Google
           @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
           @posix_data_sink = args[:posix_data_sink] if args.key?(:posix_data_sink)
           @posix_data_source = args[:posix_data_source] if args.key?(:posix_data_source)
+          @sink_agent_pool_name = args[:sink_agent_pool_name] if args.key?(:sink_agent_pool_name)
+          @source_agent_pool_name = args[:source_agent_pool_name] if args.key?(:source_agent_pool_name)
           @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
         end
       end
