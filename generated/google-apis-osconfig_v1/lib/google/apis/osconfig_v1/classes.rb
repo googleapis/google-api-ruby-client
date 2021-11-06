@@ -432,6 +432,52 @@ module Google
         end
       end
       
+      # OS policy assignment operation metadata provided by OS policy assignment API
+      # methods that return long running operations.
+      class GoogleCloudOsconfigV1OsPolicyAssignmentOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The OS policy assignment API method.
+        # Corresponds to the JSON property `apiMethod`
+        # @return [String]
+        attr_accessor :api_method
+      
+        # Reference to the `OSPolicyAssignment` API resource. Format: `projects/`
+        # project_number`/locations/`location`/osPolicyAssignments/`
+        # os_policy_assignment_id@revision_id``
+        # Corresponds to the JSON property `osPolicyAssignment`
+        # @return [String]
+        attr_accessor :os_policy_assignment
+      
+        # Rollout start time
+        # Corresponds to the JSON property `rolloutStartTime`
+        # @return [String]
+        attr_accessor :rollout_start_time
+      
+        # State of the rollout
+        # Corresponds to the JSON property `rolloutState`
+        # @return [String]
+        attr_accessor :rollout_state
+      
+        # Rollout update time
+        # Corresponds to the JSON property `rolloutUpdateTime`
+        # @return [String]
+        attr_accessor :rollout_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_method = args[:api_method] if args.key?(:api_method)
+          @os_policy_assignment = args[:os_policy_assignment] if args.key?(:os_policy_assignment)
+          @rollout_start_time = args[:rollout_start_time] if args.key?(:rollout_start_time)
+          @rollout_state = args[:rollout_state] if args.key?(:rollout_state)
+          @rollout_update_time = args[:rollout_update_time] if args.key?(:rollout_update_time)
+        end
+      end
+      
       # This API resource represents the available inventory data for a Compute Engine
       # virtual machine (VM) instance at a given point in time. You can use this API
       # resource to determine the inventory data of your VM. For more information, see
