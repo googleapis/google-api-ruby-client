@@ -346,6 +346,11 @@ module Google
       class ManagedZone
         include Google::Apis::Core::Hashable
       
+        # Cloud Logging configurations for publicly visible zones.
+        # Corresponds to the JSON property `cloudLoggingConfig`
+        # @return [Google::Apis::DnsV1::ManagedZoneCloudLoggingConfig]
+        attr_accessor :cloud_logging_config
+      
         # The time that this resource was created on the server. This is in RFC3339 text
         # format. Output only.
         # Corresponds to the JSON property `creationTime`
@@ -448,6 +453,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_logging_config = args[:cloud_logging_config] if args.key?(:cloud_logging_config)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @description = args[:description] if args.key?(:description)
           @dns_name = args[:dns_name] if args.key?(:dns_name)
@@ -464,6 +470,33 @@ module Google
           @reverse_lookup_config = args[:reverse_lookup_config] if args.key?(:reverse_lookup_config)
           @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
           @visibility = args[:visibility] if args.key?(:visibility)
+        end
+      end
+      
+      # Cloud Logging configurations for publicly visible zones.
+      class ManagedZoneCloudLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # If set, enable query logging for this ManagedZone. False by default, making
+        # logging opt-in.
+        # Corresponds to the JSON property `enableLogging`
+        # @return [Boolean]
+        attr_accessor :enable_logging
+        alias_method :enable_logging?, :enable_logging
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_logging = args[:enable_logging] if args.key?(:enable_logging)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
