@@ -1714,6 +1714,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerInstanceLifecyclePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6549,6 +6555,7 @@ module Google
       class AllocationSpecificSkuReservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assured_count, :numeric_string => true, as: 'assuredCount'
           property :count, :numeric_string => true, as: 'count'
           property :in_use_count, :numeric_string => true, as: 'inUseCount'
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationReservedInstanceProperties::Representation
@@ -6588,6 +6595,7 @@ module Google
       class AttachedDiskInitializeParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :description, as: 'description'
           property :disk_name, as: 'diskName'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
@@ -7602,6 +7610,7 @@ module Google
       class Disk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
@@ -9288,6 +9297,7 @@ module Google
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :archive_size_bytes, :numeric_string => true, as: 'archiveSizeBytes'
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeAlpha::DeprecationStatus, decorator: Google::Apis::ComputeAlpha::DeprecationStatus::Representation
@@ -9422,6 +9432,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :instance_encryption_key, as: 'instanceEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+          property :key_revocation_action_type, as: 'keyRevocationActionType'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -9704,11 +9715,20 @@ module Google
       class InstanceGroupManagerAutoHealingPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_healing_triggers, as: 'autoHealingTriggers', class: Google::Apis::ComputeAlpha::InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers::Representation
+      
           property :health_check, as: 'healthCheck'
           property :initial_delay_sec, as: 'initialDelaySec'
           property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
       
           property :update_instances, as: 'updateInstances'
+        end
+      end
+      
+      class InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :on_health_check, as: 'onHealthCheck'
         end
       end
       
@@ -10247,6 +10267,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
       
+          property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Metadata, decorator: Google::Apis::ComputeAlpha::Metadata::Representation
@@ -10494,6 +10515,7 @@ module Google
       class InstantSnapshot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
@@ -13199,7 +13221,6 @@ module Google
           collection :bindings, as: 'bindings', class: Google::Apis::ComputeAlpha::Binding, decorator: Google::Apis::ComputeAlpha::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::Rule, decorator: Google::Apis::ComputeAlpha::Rule::Representation
       
           property :version, as: 'version'
@@ -14783,6 +14804,7 @@ module Google
           property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
           property :tcp_time_wait_timeout_sec, as: 'tcpTimeWaitTimeoutSec'
           property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
+          property :type, as: 'type'
           property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
         end
       end
@@ -14810,7 +14832,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :source_nat_active_ips, as: 'sourceNatActiveIps'
+          collection :source_nat_active_ranges, as: 'sourceNatActiveRanges'
           collection :source_nat_drain_ips, as: 'sourceNatDrainIps'
+          collection :source_nat_drain_ranges, as: 'sourceNatDrainRanges'
         end
       end
       
@@ -15016,12 +15040,15 @@ module Google
           property :location_hint, as: 'locationHint'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :maintenance_interval, as: 'maintenanceInterval'
+          property :max_run_duration, as: 'maxRunDuration', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeAlpha::SchedulingNodeAffinity, decorator: Google::Apis::ComputeAlpha::SchedulingNodeAffinity::Representation
       
           property :on_host_maintenance, as: 'onHostMaintenance'
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
+          property :termination_time, as: 'terminationTime'
         end
       end
       
@@ -15423,6 +15450,7 @@ module Google
           collection :consumer_reject_lists, as: 'consumerRejectLists'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          collection :domain_names, as: 'domainNames'
           property :enable_proxy_protocol, as: 'enableProxyProtocol'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
@@ -15659,6 +15687,7 @@ module Google
       class Snapshot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :auto_created, as: 'autoCreated'
           property :chain_name, as: 'chainName'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -15754,6 +15783,7 @@ module Google
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
       
+          property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Metadata, decorator: Google::Apis::ComputeAlpha::Metadata::Representation
@@ -17130,6 +17160,7 @@ module Google
       class UpcomingMaintenance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_reschedule, as: 'canReschedule'
           property :date, as: 'date'
           property :start_time_window, as: 'startTimeWindow', class: Google::Apis::ComputeAlpha::UpcomingMaintenanceTimeWindow, decorator: Google::Apis::ComputeAlpha::UpcomingMaintenanceTimeWindow::Representation
       
@@ -17311,6 +17342,7 @@ module Google
       class UrlMapsValidateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :load_balancing_schemes, as: 'loadBalancingSchemes'
           property :resource, as: 'resource', class: Google::Apis::ComputeAlpha::UrlMap, decorator: Google::Apis::ComputeAlpha::UrlMap::Representation
       
         end

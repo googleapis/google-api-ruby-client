@@ -1261,6 +1261,11 @@ module Google
       class AllocationSpecificSkuReservation
         include Google::Apis::Core::Hashable
       
+        # [Output Only] Indicates how many instances are actually usable currently.
+        # Corresponds to the JSON property `assuredCount`
+        # @return [Fixnum]
+        attr_accessor :assured_count
+      
         # Specifies the number of resources that are allocated.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
@@ -1282,6 +1287,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assured_count = args[:assured_count] if args.key?(:assured_count)
           @count = args[:count] if args.key?(:count)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
@@ -1479,6 +1485,11 @@ module Google
       class AttachedDiskInitializeParams
         include Google::Apis::Core::Hashable
       
+        # The architecture of the attached disk. Valid values are arm64 or x86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # An optional description. Provide this property when creating the disk.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1623,6 +1634,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @description = args[:description] if args.key?(:description)
           @disk_name = args[:disk_name] if args.key?(:disk_name)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
@@ -3443,8 +3455,8 @@ module Google
         # INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme
         # set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field
         # is not set to MAGLEV or RING_HASH, session affinity settings will not take
-        # effect. Only the default ROUND_ROBIN policy is supported when the backend
-        # service is referenced by a URL map that is bound to target gRPC proxy that has
+        # effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service
+        # is referenced by a URL map that is bound to target gRPC proxy that has
         # validateForProxyless field set to true.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
@@ -3557,11 +3569,11 @@ module Google
         # @return [String]
         attr_accessor :service_lb_policy
       
-        # Type of session affinity to use. The default is NONE. For a detailed
-        # description of session affinity options, see: [Session affinity](https://cloud.
-        # google.com/load-balancing/docs/backend-service#session_affinity). Not
-        # supported when the backend service is referenced by a URL map that is bound to
-        # target gRPC proxy that has validateForProxyless field set to true.
+        # Type of session affinity to use. The default is NONE. Only NONE and
+        # HEADER_FIELD are supported when the backend service is referenced by a URL map
+        # that is bound to target gRPC proxy that has validateForProxyless field set to
+        # true. For more details, see: [Session Affinity](https://cloud.google.com/load-
+        # balancing/docs/backend-service#session_affinity).
         # Corresponds to the JSON property `sessionAffinity`
         # @return [String]
         attr_accessor :session_affinity
@@ -3973,7 +3985,11 @@ module Google
         # healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST,
         # existing connections always persist on unhealthy backends regardless of
         # protocol and session affinity. It is generally not recommended to use this
-        # mode overriding the default.
+        # mode overriding the default. For more details, see [Connection Persistence for
+        # Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/
+        # networklb-backend-service#connection-persistence) and [Connection Persistence
+        # for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/
+        # docs/internal#connection-persistence).
         # Corresponds to the JSON property `connectionPersistenceOnUnhealthyBackends`
         # @return [String]
         attr_accessor :connection_persistence_on_unhealthy_backends
@@ -3986,19 +4002,25 @@ module Google
         alias_method :enable_strong_affinity?, :enable_strong_affinity
       
         # Specifies how long to keep a Connection Tracking entry while there is no
-        # matching traffic (in seconds). For L4 ILB the minimum(default) is 10 minutes
-        # and maximum is 16 hours. For Network Load Balancer the default is 60 seconds.
-        # This option is not available publicly. This field will be supported only if
-        # the Connection Tracking key is less than 5-tuple.
+        # matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The
+        # minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set
+        # only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is
+        # CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is
+        # PER_SESSION). For Network Load Balancer the default is 60 seconds. This option
+        # is not available publicly.
         # Corresponds to the JSON property `idleTimeoutSec`
         # @return [Fixnum]
         attr_accessor :idle_timeout_sec
       
-        # Specifies the key used for connection tracking. There are two options:
+        # Specifies the key used for connection tracking. There are two options: -
         # PER_CONNECTION: This is the default mode. The Connection Tracking is performed
-        # as per the Connection Key (default Hash Method) for the specific protocol.
+        # as per the Connection Key (default Hash Method) for the specific protocol. -
         # PER_SESSION: The Connection Tracking is performed as per the configured
-        # Session Affinity. It matches the configured Session Affinity.
+        # Session Affinity. It matches the configured Session Affinity. For more details,
+        # see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-
+        # balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking
+        # Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-
+        # balancing/docs/internal#tracking-mode).
         # Corresponds to the JSON property `trackingMode`
         # @return [String]
         attr_accessor :tracking_mode
@@ -4718,7 +4740,7 @@ module Google
         end
       end
       
-      # Associates `members` with a `role`.
+      # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
       
@@ -4746,7 +4768,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Cloud Platform resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -4776,8 +4798,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
-        # , or `roles/owner`.
+        # Role that is assigned to the list of `members`, or principals. For example, `
+        # roles/viewer`, `roles/editor`, or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -5805,14 +5827,15 @@ module Google
         end
       end
       
-      # The specification for allowing client side cross-origin requests. Please see
-      # W3C Recommendation for Cross Origin Resource Sharing
+      # The specification for allowing client-side cross-origin requests. For more
+      # information about the W3C recommendation for cross-origin resource sharing (
+      # CORS), see Fetch API Living Standard.
       class CorsPolicy
         include Google::Apis::Core::Hashable
       
         # In response to a preflight request, setting this to true indicates that the
-        # actual request can include user credentials. This translates to the Access-
-        # Control-Allow-Credentials header. Default is false.
+        # actual request can include user credentials. This field translates to the
+        # Access-Control-Allow-Credentials header. Default is false.
         # Corresponds to the JSON property `allowCredentials`
         # @return [Boolean]
         attr_accessor :allow_credentials
@@ -5828,23 +5851,23 @@ module Google
         # @return [Array<String>]
         attr_accessor :allow_methods
       
-        # Specifies the regualar expression patterns that match allowed origins. For
-        # regular expression grammar please see github.com/google/re2/wiki/Syntax An
-        # origin is allowed if it matches either an item in allowOrigins or an item in
+        # Specifies a regular expression that matches allowed origins. For more
+        # information about the regular expression syntax, see Syntax. An origin is
+        # allowed if it matches either an item in allowOrigins or an item in
         # allowOriginRegexes.
         # Corresponds to the JSON property `allowOriginRegexes`
         # @return [Array<String>]
         attr_accessor :allow_origin_regexes
       
-        # Specifies the list of origins that will be allowed to do CORS requests. An
-        # origin is allowed if it matches either an item in allowOrigins or an item in
+        # Specifies the list of origins that is allowed to do CORS requests. An origin
+        # is allowed if it matches either an item in allowOrigins or an item in
         # allowOriginRegexes.
         # Corresponds to the JSON property `allowOrigins`
         # @return [Array<String>]
         attr_accessor :allow_origins
       
-        # If true, specifies the CORS policy is disabled. The default value of false,
-        # which indicates that the CORS policy is in effect.
+        # If true, the setting specifies the CORS policy is disabled. The default value
+        # of false, which indicates that the CORS policy is in effect.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -5856,7 +5879,7 @@ module Google
         attr_accessor :expose_headers
       
         # Specifies how long results of a preflight request can be cached in seconds.
-        # This translates to the Access-Control-Max-Age header.
+        # This field translates to the Access-Control-Max-Age header.
         # Corresponds to the JSON property `maxAge`
         # @return [Fixnum]
         attr_accessor :max_age
@@ -6039,6 +6062,11 @@ module Google
       # resources.
       class Disk
         include Google::Apis::Core::Hashable
+      
+        # The architecture of the disk. Valid values are ARM64 or X86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -6389,6 +6417,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
@@ -10334,31 +10363,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ComputeAlpha::Policy]
         attr_accessor :policy
@@ -10431,31 +10460,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ComputeAlpha::Policy]
         attr_accessor :policy
@@ -10611,8 +10640,11 @@ module Google
       class GuestOsFeature
         include Google::Apis::Core::Hashable
       
-        # The ID of a supported feature. Read Enabling guest operating system features
-        # to see a list of available options.
+        # The ID of a supported feature. To add multiple values, use commas to separate
+        # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
+        # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC -
+        # SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling
+        # guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -12022,7 +12054,8 @@ module Google
         # port numbers in the format host:port. * matches any string of ([a-z0-9-.]*).
         # In that case, * must be the first character and must be followed in the
         # pattern by either - or .. * based matching is not supported when the URL map
-        # is bound to target gRPC proxy that has validateForProxyless field set to true.
+        # is bound to a target gRPC proxy that has the validateForProxyless field set to
+        # true.
         # Corresponds to the JSON property `hosts`
         # @return [Array<String>]
         attr_accessor :hosts
@@ -12049,8 +12082,8 @@ module Google
       class HttpFaultAbort
         include Google::Apis::Core::Hashable
       
-        # The HTTP status code used to abort the request. The value must be between 200
-        # and 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP
+        # The HTTP status code used to abort the request. The value must be from 200 to
+        # 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP
         # status code according to this mapping table. HTTP status 200 is mapped to gRPC
         # status UNKNOWN. Injecting an OK status is currently not supported by Traffic
         # Director.
@@ -12058,8 +12091,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :http_status
       
-        # The percentage of traffic (connections/operations/requests) which will be
-        # aborted as part of fault injection. The value must be between 0.0 and 100.0
+        # The percentage of traffic for connections, operations, or requests that is
+        # aborted as part of fault injection. The value must be from 0.0 to 100.0
         # inclusive.
         # Corresponds to the JSON property `percentage`
         # @return [Float]
@@ -12076,8 +12109,8 @@ module Google
         end
       end
       
-      # Specifies the delay introduced by Loadbalancer before forwarding the request
-      # to the backend service as part of fault injection.
+      # Specifies the delay introduced by the load balancer before forwarding the
+      # request to the backend service as part of fault injection.
       class HttpFaultDelay
         include Google::Apis::Core::Hashable
       
@@ -12089,9 +12122,9 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Duration]
         attr_accessor :fixed_delay
       
-        # The percentage of traffic (connections/operations/requests) on which delay
-        # will be introduced as part of fault injection. The value must be between 0.0
-        # and 100.0 inclusive.
+        # The percentage of traffic for connections, operations, or requests for which a
+        # delay is introduced as part of fault injection. The value must be from 0.0 to
+        # 100.0 inclusive.
         # Corresponds to the JSON property `percentage`
         # @return [Float]
         attr_accessor :percentage
@@ -12110,9 +12143,9 @@ module Google
       # The specification for fault injection introduced into traffic to test the
       # resiliency of clients to backend service failure. As part of fault injection,
       # when clients send requests to a backend service, delays can be introduced by
-      # Loadbalancer on a percentage of requests before sending those request to the
-      # backend service. Similarly requests from clients can be aborted by the
-      # Loadbalancer for a percentage of requests.
+      # the load balancer on a percentage of requests before sending those request to
+      # the backend service. Similarly requests from clients can be aborted by the
+      # load balancer for a percentage of requests.
       class HttpFaultInjection
         include Google::Apis::Core::Hashable
       
@@ -12121,8 +12154,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::HttpFaultAbort]
         attr_accessor :abort
       
-        # Specifies the delay introduced by Loadbalancer before forwarding the request
-        # to the backend service as part of fault injection.
+        # Specifies the delay introduced by the load balancer before forwarding the
+        # request to the backend service as part of fault injection.
         # Corresponds to the JSON property `delay`
         # @return [Google::Apis::ComputeAlpha::HttpFaultDelay]
         attr_accessor :delay
@@ -12180,25 +12213,25 @@ module Google
       class HttpHeaderAction
         include Google::Apis::Core::Hashable
       
-        # Headers to add to a matching request prior to forwarding the request to the
+        # Headers to add to a matching request before forwarding the request to the
         # backendService.
         # Corresponds to the JSON property `requestHeadersToAdd`
         # @return [Array<Google::Apis::ComputeAlpha::HttpHeaderOption>]
         attr_accessor :request_headers_to_add
       
         # A list of header names for headers that need to be removed from the request
-        # prior to forwarding the request to the backendService.
+        # before forwarding the request to the backendService.
         # Corresponds to the JSON property `requestHeadersToRemove`
         # @return [Array<String>]
         attr_accessor :request_headers_to_remove
       
-        # Headers to add the response prior to sending the response back to the client.
+        # Headers to add the response before sending the response back to the client.
         # Corresponds to the JSON property `responseHeadersToAdd`
         # @return [Array<Google::Apis::ComputeAlpha::HttpHeaderOption>]
         attr_accessor :response_headers_to_add
       
         # A list of header names for headers that need to be removed from the response
-        # prior to sending the response back to the client.
+        # before sending the response back to the client.
         # Corresponds to the JSON property `responseHeadersToRemove`
         # @return [Array<String>]
         attr_accessor :response_headers_to_remove
@@ -12228,21 +12261,21 @@ module Google
       
         # The name of the HTTP header to match. For matching against the HTTP request's
         # authority, use a headerMatch with the header name ":authority". For matching a
-        # request's method, use the headerName ":method". When the URL map is bound to
-        # target gRPC proxy that has validateForProxyless field set to true, only non-
-        # binary user-specified custom metadata and the `content-type` header are
+        # request's method, use the headerName ":method". When the URL map is bound to a
+        # target gRPC proxy that has the validateForProxyless field set to true, only
+        # non-binary user-specified custom metadata and the `content-type` header are
         # supported. The following transport-level headers cannot be used in header
         # matching rules: `:authority`, `:method`, `:path`, `:scheme`, `user-agent`, `
         # accept-encoding`, `content-encoding`, `grpc-accept-encoding`, `grpc-encoding`,
         # `grpc-previous-rpc-attempts`, `grpc-tags-bin`, `grpc-timeout` and `grpc-trace-
-        # bin.
+        # bin`.
         # Corresponds to the JSON property `headerName`
         # @return [String]
         attr_accessor :header_name
       
-        # If set to false, the headerMatch is considered a match if the match criteria
-        # above are met. If set to true, the headerMatch is considered a match if the
-        # match criteria above are NOT met. The default setting is false.
+        # If set to false, the headerMatch is considered a match if the preceding match
+        # criteria are met. If set to true, the headerMatch is considered a match if the
+        # preceding match criteria are NOT met. The default setting is false.
         # Corresponds to the JSON property `invertMatch`
         # @return [Boolean]
         attr_accessor :invert_match
@@ -12270,13 +12303,13 @@ module Google
         attr_accessor :range_match
       
         # The value of the header must match the regular expression specified in
-        # regexMatch. For regular expression grammar, please see: github.com/google/re2/
-        # wiki/Syntax For matching against a port specified in the HTTP request, use a
-        # headerMatch with headerName set to PORT and a regular expression that
-        # satisfies the RFC2616 Host header's port specifier. Only one of exactMatch,
-        # prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
-        # Note that regexMatch only applies to Loadbalancers that have their
-        # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # regexMatch. For more information about regular expression syntax, see Syntax.
+        # For matching against a port specified in the HTTP request, use a headerMatch
+        # with headerName set to PORT and a regular expression that satisfies the
+        # RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch,
+        # suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch
+        # only applies to load balancers that have loadBalancingScheme set to
+        # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -12577,8 +12610,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The queryParameterMatch matches if the value of the parameter exactly matches
-        # the contents of exactMatch. Only one of presentMatch, exactMatch or regexMatch
-        # must be set.
+        # the contents of exactMatch. Only one of presentMatch, exactMatch, or
+        # regexMatch must be set.
         # Corresponds to the JSON property `exactMatch`
         # @return [String]
         attr_accessor :exact_match
@@ -12591,17 +12624,17 @@ module Google
       
         # Specifies that the queryParameterMatch matches if the request contains the
         # query parameter, irrespective of whether the parameter has a value or not.
-        # Only one of presentMatch, exactMatch or regexMatch must be set.
+        # Only one of presentMatch, exactMatch, or regexMatch must be set.
         # Corresponds to the JSON property `presentMatch`
         # @return [Boolean]
         attr_accessor :present_match
         alias_method :present_match?, :present_match
       
         # The queryParameterMatch matches if the value of the parameter matches the
-        # regular expression specified by regexMatch. For the regular expression grammar,
-        # please see github.com/google/re2/wiki/Syntax Only one of presentMatch,
-        # exactMatch or regexMatch must be set. Note that regexMatch only applies when
-        # the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        # regular expression specified by regexMatch. For more information about regular
+        # expression syntax, see Syntax. Only one of presentMatch, exactMatch, or
+        # regexMatch must be set. regexMatch only applies when the loadBalancingScheme
+        # is set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -12623,15 +12656,15 @@ module Google
       class HttpRedirectAction
         include Google::Apis::Core::Hashable
       
-        # The host that will be used in the redirect response instead of the one that
-        # was supplied in the request. The value must be between 1 and 255 characters.
+        # The host that is used in the redirect response instead of the one that was
+        # supplied in the request. The value must be from 1 to 255 characters.
         # Corresponds to the JSON property `hostRedirect`
         # @return [String]
         attr_accessor :host_redirect
       
-        # If set to true, the URL scheme in the redirected request is set to https. If
-        # set to false, the URL scheme of the redirected request will remain the same as
-        # that of the request. This must only be set for UrlMaps used in
+        # If set to true, the URL scheme in the redirected request is set to HTTPS. If
+        # set to false, the URL scheme of the redirected request remains the same as
+        # that of the request. This must only be set for URL maps used in
         # TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The
         # default is set to false.
         # Corresponds to the JSON property `httpsRedirect`
@@ -12639,11 +12672,11 @@ module Google
         attr_accessor :https_redirect
         alias_method :https_redirect?, :https_redirect
       
-        # The path that will be used in the redirect response instead of the one that
-        # was supplied in the request. pathRedirect cannot be supplied together with
+        # The path that is used in the redirect response instead of the one that was
+        # supplied in the request. pathRedirect cannot be supplied together with
         # prefixRedirect. Supply one alone or neither. If neither is supplied, the path
-        # of the original request will be used for the redirect. The value must be
-        # between 1 and 1024 characters.
+        # of the original request is used for the redirect. The value must be from 1 to
+        # 1024 characters.
         # Corresponds to the JSON property `pathRedirect`
         # @return [String]
         attr_accessor :path_redirect
@@ -12651,8 +12684,8 @@ module Google
         # The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
         # retaining the remaining portion of the URL before redirecting the request.
         # prefixRedirect cannot be supplied together with pathRedirect. Supply one alone
-        # or neither. If neither is supplied, the path of the original request will be
-        # used for the redirect. The value must be between 1 and 1024 characters.
+        # or neither. If neither is supplied, the path of the original request is used
+        # for the redirect. The value must be from 1 to 1024 characters.
         # Corresponds to the JSON property `prefixRedirect`
         # @return [String]
         attr_accessor :prefix_redirect
@@ -12661,14 +12694,14 @@ module Google
         # MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301. -
         # FOUND, which corresponds to 302. - SEE_OTHER which corresponds to 303. -
         # TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-        # will be retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case,
-        # the request method will be retained.
+        # is retained. - PERMANENT_REDIRECT, which corresponds to 308. In this case, the
+        # request method is retained.
         # Corresponds to the JSON property `redirectResponseCode`
         # @return [String]
         attr_accessor :redirect_response_code
       
         # If set to true, any accompanying query portion of the original URL is removed
-        # prior to redirecting the request. If set to false, the query portion of the
+        # before redirecting the request. If set to false, the query portion of the
         # original URL is retained. The default is set to false.
         # Corresponds to the JSON property `stripQuery`
         # @return [Boolean]
@@ -12709,25 +12742,27 @@ module Google
         attr_accessor :per_try_timeout
       
         # Specifies one or more conditions when this retry policy applies. Valid values
-        # are: - 5xx: Retry will be attempted if the instance or endpoint responds with
-        # any 5xx response code, or if the instance or endpoint does not respond at all,
-        # example: disconnects, reset, read timeout, connection failure, and refused
+        # are: - 5xx: retry is attempted if the instance or endpoint responds with any
+        # 5xx response code, or if the instance or endpoint does not respond at all. For
+        # example, disconnects, reset, read timeout, connection failure, and refused
         # streams. - gateway-error: Similar to 5xx, but only applies to response codes
-        # 502, 503 or 504. - - connect-failure: A retry will be attempted on failures
-        # connecting to the instance or endpoint, for example due to connection timeouts.
-        # - retriable-4xx: A retry will be attempted if the instance or endpoint
-        # responds with a retriable 4xx response code. Currently the only retriable
-        # error supported is 409. - refused-stream: A retry will be attempted if the
-        # instance or endpoint resets the stream with a REFUSED_STREAM error code. This
-        # reset type indicates that it is safe to retry. - cancelled: A retry will be
-        # attempted if the gRPC status code in the response header is set to cancelled. -
-        # deadline-exceeded: A retry will be attempted if the gRPC status code in the
-        # response header is set to deadline-exceeded. - internal: A retry will be
-        # attempted if the gRPC status code in the response header is set to internal. -
-        # resource-exhausted: A retry will be attempted if the gRPC status code in the
-        # response header is set to resource-exhausted. - unavailable: A retry will be
-        # attempted if the gRPC status code in the response header is set to unavailable.
-        # 
+        # 502, 503 or 504. - connect-failure: a retry is attempted on failures
+        # connecting to the instance or endpoint. For example, connection timeouts. -
+        # retriable-4xx: a retry is attempted if the instance or endpoint responds with
+        # a 4xx response code. The only error that you can retry is error code 409. -
+        # refused-stream: a retry is attempted if the instance or endpoint resets the
+        # stream with a REFUSED_STREAM error code. This reset type indicates that it is
+        # safe to retry. - cancelled: a retry is attempted if the gRPC status code in
+        # the response header is set to cancelled. - deadline-exceeded: a retry is
+        # attempted if the gRPC status code in the response header is set to deadline-
+        # exceeded. - internal: a retry is attempted if the gRPC status code in the
+        # response header is set to internal. - resource-exhausted: a retry is attempted
+        # if the gRPC status code in the response header is set to resource-exhausted. -
+        # unavailable: a retry is attempted if the gRPC status code in the response
+        # header is set to unavailable. Only the following codes are supported when the
+        # URL map is bound to target gRPC proxy that has validateForProxyless field set
+        # to true. - cancelled - deadline-exceeded - internal - resource-exhausted -
+        # unavailable
         # Corresponds to the JSON property `retryConditions`
         # @return [Array<String>]
         attr_accessor :retry_conditions
@@ -12748,8 +12783,9 @@ module Google
       class HttpRouteAction
         include Google::Apis::Core::Hashable
       
-        # The specification for allowing client side cross-origin requests. Please see
-        # W3C Recommendation for Cross Origin Resource Sharing
+        # The specification for allowing client-side cross-origin requests. For more
+        # information about the W3C recommendation for cross-origin resource sharing (
+        # CORS), see Fetch API Living Standard.
         # Corresponds to the JSON property `corsPolicy`
         # @return [Google::Apis::ComputeAlpha::CorsPolicy]
         attr_accessor :cors_policy
@@ -12757,9 +12793,9 @@ module Google
         # The specification for fault injection introduced into traffic to test the
         # resiliency of clients to backend service failure. As part of fault injection,
         # when clients send requests to a backend service, delays can be introduced by
-        # Loadbalancer on a percentage of requests before sending those request to the
-        # backend service. Similarly requests from clients can be aborted by the
-        # Loadbalancer for a percentage of requests.
+        # the load balancer on a percentage of requests before sending those request to
+        # the backend service. Similarly requests from clients can be aborted by the
+        # load balancer for a percentage of requests.
         # Corresponds to the JSON property `faultInjectionPolicy`
         # @return [Google::Apis::ComputeAlpha::HttpFaultInjection]
         attr_accessor :fault_injection_policy
@@ -12773,9 +12809,9 @@ module Google
         attr_accessor :max_stream_duration
       
         # A policy that specifies how requests intended for the route's backends are
-        # shadowed to a separate mirrored backend service. Loadbalancer does not wait
-        # for responses from the shadow service. Prior to sending traffic to the shadow
-        # service, the host / authority header is suffixed with -shadow.
+        # shadowed to a separate mirrored backend service. The load balancer doesn't
+        # wait for responses from the shadow service. Before sending traffic to the
+        # shadow service, the host or authority header is suffixed with -shadow.
         # Corresponds to the JSON property `requestMirrorPolicy`
         # @return [Google::Apis::ComputeAlpha::RequestMirrorPolicy]
         attr_accessor :request_mirror_policy
@@ -12803,7 +12839,7 @@ module Google
         # occurs. The weights determine the fraction of traffic that flows to their
         # corresponding backend service. If all traffic needs to go to a single backend
         # service, there must be one weightedBackendService with weight set to a non-
-        # zero number. Once a backendService is identified and before forwarding the
+        # zero number. After a backend service is identified and before forwarding the
         # request to the backend service, advanced routing actions such as URL rewrites
         # and header transformations are applied depending on additional settings
         # specified in this HttpRouteAction.
@@ -12828,8 +12864,8 @@ module Google
         end
       end
       
-      # An HttpRouteRule specifies how to match an HTTP request and the corresponding
-      # routing action that load balancing proxies will perform.
+      # The HttpRouteRule setting specifies how to match an HTTP request and the
+      # corresponding routing action that load balancing proxies perform.
       class HttpRouteRule
         include Google::Apis::Core::Hashable
       
@@ -12846,9 +12882,9 @@ module Google
         attr_accessor :header_action
       
         # Outbound route specific configuration for networkservices.HttpFilter resources
-        # enabled by Traffic Director. httpFilterConfigs only applies for Loadbalancers
+        # enabled by Traffic Director. httpFilterConfigs only applies for load balancers
         # with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for
-        # more details. Not supported when the URL map is bound to target gRPC proxy
+        # more details. Not supported when the URL map is bound to a target gRPC proxy
         # that has validateForProxyless field set to true.
         # Corresponds to the JSON property `httpFilterConfigs`
         # @return [Array<Google::Apis::ComputeAlpha::HttpFilterConfig>]
@@ -12856,10 +12892,10 @@ module Google
       
         # Outbound route specific metadata supplied to networkservices.HttpFilter
         # resources enabled by Traffic Director. httpFilterMetadata only applies for
-        # Loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See
+        # load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See
         # ForwardingRule for more details. The only configTypeUrl supported is type.
         # googleapis.com/google.protobuf.Struct Not supported when the URL map is bound
-        # to target gRPC proxy that has validateForProxyless field set to true.
+        # to a target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `httpFilterMetadata`
         # @return [Array<Google::Apis::ComputeAlpha::HttpFilterConfig>]
         attr_accessor :http_filter_metadata
@@ -12874,11 +12910,11 @@ module Google
         attr_accessor :match_rules
       
         # For routeRules within a given pathMatcher, priority determines the order in
-        # which load balancer will interpret routeRules. RouteRules are evaluated in
-        # order of priority, from the lowest to highest number. The priority of a rule
+        # which a load balancer interprets routeRules. RouteRules are evaluated in order
+        # of priority, from the lowest to highest number. The priority of a rule
         # decreases as its number increases (1, 2, 3, N+1). The first rule that matches
         # the request is applied. You cannot configure two or more routeRules with the
-        # same priority. Priority for each rule must be set to a number between 0 and
+        # same priority. Priority for each rule must be set to a number from 0 to
         # 2147483647 inclusive. Priority numbers can have gaps, which enable you to add
         # or remove rules in the future without affecting the rest of the rules. For
         # example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to
@@ -12889,24 +12925,24 @@ module Google
         attr_accessor :priority
       
         # In response to a matching matchRule, the load balancer performs advanced
-        # routing actions like URL rewrites, header transformations, etc. prior to
+        # routing actions, such as URL rewrites and header transformations, before
         # forwarding the request to the selected backend. If routeAction specifies any
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
         # urlRedirect, service or routeAction.weightedBackendService must be set.
         # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
-        # within a routeRule's routeAction.
+        # within a route rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
       
         # The full or partial URL of the backend service resource to which traffic is
-        # directed if this rule is matched. If routeAction is additionally specified,
-        # advanced routing actions like URL Rewrites, etc. take effect prior to sending
-        # the request to the backend. However, if service is specified, routeAction
-        # cannot contain any weightedBackendService s. Conversely, if routeAction
-        # specifies any weightedBackendServices, service must not be specified. Only one
-        # of urlRedirect, service or routeAction.weightedBackendService must be set.
+        # directed if this rule is matched. If routeAction is also specified, advanced
+        # routing actions, such as URL rewrites, take effect before sending the request
+        # to the backend. However, if service is specified, routeAction cannot contain
+        # any weightedBackendServices. Conversely, if routeAction specifies any
+        # weightedBackendServices, service must not be specified. Only one of
+        # urlRedirect, service or routeAction.weightedBackendService must be set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -12941,9 +12977,9 @@ module Google
       
         # For satisfying the matchRule condition, the path of the request must exactly
         # match the value specified in fullPathMatch after removing any query parameters
-        # and anchor that may be part of the original URL. fullPathMatch must be between
-        # 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch
-        # must be specified.
+        # and anchor that may be part of the original URL. fullPathMatch must be from 1
+        # to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+        # be specified.
         # Corresponds to the JSON property `fullPathMatch`
         # @return [String]
         attr_accessor :full_path_match
@@ -12956,53 +12992,52 @@ module Google
       
         # Specifies that prefixMatch and fullPathMatch matches are case sensitive. The
         # default value is false. ignoreCase must not be used with regexMatch. Not
-        # supported when the URL map is bound to target gRPC proxy.
+        # supported when the URL map is bound to a target gRPC proxy.
         # Corresponds to the JSON property `ignoreCase`
         # @return [Boolean]
         attr_accessor :ignore_case
         alias_method :ignore_case?, :ignore_case
       
-        # Opaque filter criteria used by Loadbalancer to restrict routing configuration
-        # to a limited set of xDS compliant clients. In their xDS requests to
-        # Loadbalancer, xDS clients present node metadata. When there is a match, the
-        # relevant routing configuration is made available to those proxies. For each
-        # metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY,
-        # at least one of the filterLabels must match the corresponding label provided
-        # in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of
-        # its filterLabels must match with corresponding labels provided in the metadata.
-        # If multiple metadataFilters are specified, all of them need to be satisfied
-        # in order to be considered a match. metadataFilters specified here will be
+        # Opaque filter criteria used by the load balancer to restrict routing
+        # configuration to a limited set of xDS compliant clients. In their xDS requests
+        # to the load balancer, xDS clients present node metadata. When there is a match,
+        # the relevant routing configuration is made available to those proxies. For
+        # each metadataFilter in this list, if its filterMatchCriteria is set to
+        # MATCH_ANY, at least one of the filterLabels must match the corresponding label
+        # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
+        # all of its filterLabels must match with corresponding labels provided in the
+        # metadata. If multiple metadata filters are specified, all of them need to be
+        # satisfied in order to be considered a match. metadataFilters specified here is
         # applied after those specified in ForwardingRule that refers to the UrlMap this
-        # HttpRouteRuleMatch belongs to. metadataFilters only applies to Loadbalancers
-        # that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not
-        # supported when the URL map is bound to target gRPC proxy that has
-        # validateForProxyless field set to true.
+        # HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers
+        # that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when
+        # the URL map is bound to a target gRPC proxy that has validateForProxyless
+        # field set to true.
         # Corresponds to the JSON property `metadataFilters`
         # @return [Array<Google::Apis::ComputeAlpha::MetadataFilter>]
         attr_accessor :metadata_filters
       
         # For satisfying the matchRule condition, the request's path must begin with the
-        # specified prefixMatch. prefixMatch must begin with a /. The value must be
-        # between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
-        # regexMatch must be specified.
+        # specified prefixMatch. prefixMatch must begin with a /. The value must be from
+        # 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch
+        # must be specified.
         # Corresponds to the JSON property `prefixMatch`
         # @return [String]
         attr_accessor :prefix_match
       
         # Specifies a list of query parameter match criteria, all of which must match
         # corresponding query parameters in the request. Not supported when the URL map
-        # is bound to target gRPC proxy.
+        # is bound to a target gRPC proxy.
         # Corresponds to the JSON property `queryParameterMatches`
         # @return [Array<Google::Apis::ComputeAlpha::HttpQueryParameterMatch>]
         attr_accessor :query_parameter_matches
       
         # For satisfying the matchRule condition, the path of the request must satisfy
         # the regular expression specified in regexMatch after removing any query
-        # parameters and anchor supplied with the original URL. For regular expression
-        # grammar please see github.com/google/re2/wiki/Syntax Only one of prefixMatch,
-        # fullPathMatch or regexMatch must be specified. Note that regexMatch only
-        # applies to Loadbalancers that have their loadBalancingScheme set to
-        # INTERNAL_SELF_MANAGED.
+        # parameters and anchor supplied with the original URL. For more information
+        # about regular expression syntax, see Syntax. Only one of prefixMatch,
+        # fullPathMatch or regexMatch must be specified. regexMatch only applies to load
+        # balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -13261,6 +13296,11 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
+        # The architecture of the image. Valid values are ARM64 or X86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
         # Corresponds to the JSON property `archiveSizeBytes`
         # @return [Fixnum]
@@ -13296,8 +13336,8 @@ module Google
         attr_accessor :family
       
         # A list of features to enable on the guest operating system. Applicable only
-        # for bootable images. Read Enabling guest operating system features to see a
-        # list of available options.
+        # for bootable images. To see a list of available options, see the
+        # guestOSfeatures[].type parameter.
         # Corresponds to the JSON property `guestOsFeatures`
         # @return [Array<Google::Apis::ComputeAlpha::GuestOsFeature>]
         attr_accessor :guest_os_features
@@ -13516,6 +13556,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @archive_size_bytes = args[:archive_size_bytes] if args.key?(:archive_size_bytes)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deprecated = args[:deprecated] if args.key?(:deprecated)
@@ -13881,6 +13922,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :instance_encryption_key
       
+        # KeyRevocationActionType of the instance.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
         # [Output Only] Type of the resource. Always compute#instance for instances.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -14130,6 +14176,7 @@ module Google
           @hostname = args[:hostname] if args.key?(:hostname)
           @id = args[:id] if args.key?(:id)
           @instance_encryption_key = args[:instance_encryption_key] if args.key?(:instance_encryption_key)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
@@ -15161,6 +15208,11 @@ module Google
       class InstanceGroupManagerAutoHealingPolicy
         include Google::Apis::Core::Hashable
       
+        # Restricts what triggers autohealing.
+        # Corresponds to the JSON property `autoHealingTriggers`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers]
+        attr_accessor :auto_healing_triggers
+      
         # The URL for the health check that signals autohealing.
         # Corresponds to the JSON property `healthCheck`
         # @return [String]
@@ -15192,10 +15244,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_healing_triggers = args[:auto_healing_triggers] if args.key?(:auto_healing_triggers)
           @health_check = args[:health_check] if args.key?(:health_check)
           @initial_delay_sec = args[:initial_delay_sec] if args.key?(:initial_delay_sec)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
           @update_instances = args[:update_instances] if args.key?(:update_instances)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers
+        include Google::Apis::Core::Hashable
+      
+        # If you have configured an application-based health check for the group, this
+        # field controls whether to trigger VM autohealing based on a failed health
+        # check. Valid values are: - ON (default): The group recreates running VMs that
+        # fail the application-based health check. - OFF: When set to OFF, you can still
+        # observe instance health state, but the group does not recreate VMs that fail
+        # the application-based health check. This is useful for troubleshooting and
+        # setting up your health check configuration.
+        # Corresponds to the JSON property `onHealthCheck`
+        # @return [String]
+        attr_accessor :on_health_check
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @on_health_check = args[:on_health_check] if args.key?(:on_health_check)
         end
       end
       
@@ -17062,6 +17140,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
+        # KeyRevocationActionType of the instance.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
         # Labels to apply to instances that are created from these properties.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -17166,6 +17249,7 @@ module Google
           @disks = args[:disks] if args.key?(:disks)
           @display_device = args[:display_device] if args.key?(:display_device)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -17903,6 +17987,12 @@ module Google
       class InstantSnapshot
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The architecture of the instant snapshot. Valid values are ARM64
+        # or X86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -18028,6 +18118,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
@@ -22445,18 +22536,18 @@ module Google
         end
       end
       
-      # Opaque filter criteria used by loadbalancers to restrict routing configuration
-      # to a limited set of loadbalancing proxies. Proxies and sidecars involved in
-      # loadbalancing would typically present metadata to the loadbalancers which need
-      # to match criteria specified here. If a match takes place, the relevant
-      # configuration is made available to those proxies. For each metadataFilter in
-      # this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
-      # filterLabels must match the corresponding label provided in the metadata. If
-      # its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must
-      # match with corresponding labels provided in the metadata. An example for using
-      # metadataFilters would be: if loadbalancing involves Envoys, they will only
-      # receive routing configuration when values in metadataFilters match values
-      # supplied in of their XDS requests to loadbalancers.
+      # Opaque filter criteria used by load balancers to restrict routing
+      # configuration to a limited set of load balancing proxies. Proxies and sidecars
+      # involved in load balancing would typically present metadata to the load
+      # balancers that need to match criteria specified here. If a match takes place,
+      # the relevant configuration is made available to those proxies. For each
+      # metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY,
+      # at least one of the filterLabels must match the corresponding label provided
+      # in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of
+      # its filterLabels must match with corresponding labels provided in the metadata.
+      # An example for using metadataFilters would be: if load balancing involves
+      # Envoys, they receive routing configuration when values in metadataFilters
+      # match values supplied in of their XDS requests to loadbalancers.
       class MetadataFilter
         include Google::Apis::Core::Hashable
       
@@ -22467,11 +22558,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::MetadataFilterLabelMatch>]
         attr_accessor :filter_labels
       
-        # Specifies how individual filterLabel matches within the list of filterLabels
-        # contribute towards the overall metadataFilter match. Supported values are: -
-        # MATCH_ANY: At least one of the filterLabels must have a matching label in the
-        # provided metadata. - MATCH_ALL: All filterLabels must have matching labels in
-        # the provided metadata.
+        # Specifies how individual filter label matches within the list of filterLabels
+        # and contributes toward the overall metadataFilter match. Supported values are:
+        # - MATCH_ANY: at least one of the filterLabels must have a matching label in
+        # the provided metadata. - MATCH_ALL: all filterLabels must have matching labels
+        # in the provided metadata.
         # Corresponds to the JSON property `filterMatchCriteria`
         # @return [String]
         attr_accessor :filter_match_criteria
@@ -22488,7 +22579,7 @@ module Google
       end
       
       # MetadataFilter label name value pairs that are expected to match corresponding
-      # labels presented as metadata to the loadbalancer.
+      # labels presented as metadata to the load balancer.
       class MetadataFilterLabelMatch
         include Google::Apis::Core::Hashable
       
@@ -24086,14 +24177,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # URL of the network resource for this instance. When creating an instance, if
-        # neither the network nor the subnetwork is specified, the default network
-        # global/networks/default is used; if the network is not specified but the
-        # subnetwork is specified, the network is inferred. If you specify this property,
-        # you can specify the network as a full or partial URL. For example, the
-        # following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/
-        # project/global/networks/ network - projects/project/global/networks/network -
-        # global/networks/default
+        # URL of the VPC network resource for this instance. When creating an instance,
+        # if neither the network nor the subnetwork is specified, the default network
+        # global/networks/default is used. If the selected project doesn't have the
+        # default network, you must specify a network or subnet. If the network is not
+        # specified but the subnetwork is specified, the network is inferred. If you
+        # specify this property, you can specify the network as a full or partial URL.
+        # For example, the following are all valid URLs: - https://www.googleapis.com/
+        # compute/v1/projects/project/global/networks/ network - projects/project/global/
+        # networks/network - global/networks/default
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -24363,7 +24455,8 @@ module Google
         attr_accessor :exchange_subnet_routes
         alias_method :exchange_subnet_routes?, :exchange_subnet_routes
       
-        # Whether to export the custom routes to peer network.
+        # Whether to export the custom routes to peer network. The default value is
+        # false.
         # Corresponds to the JSON property `exportCustomRoutes`
         # @return [Boolean]
         attr_accessor :export_custom_routes
@@ -24377,7 +24470,8 @@ module Google
         attr_accessor :export_subnet_routes_with_public_ip
         alias_method :export_subnet_routes_with_public_ip?, :export_subnet_routes_with_public_ip
       
-        # Whether to import the custom routes from peer network.
+        # Whether to import the custom routes from peer network. The default value is
+        # false.
         # Corresponds to the JSON property `importCustomRoutes`
         # @return [Boolean]
         attr_accessor :import_custom_routes
@@ -28370,37 +28464,37 @@ module Google
       
       # A matcher for the path portion of the URL. The BackendService from the longest-
       # matched rule will serve the URL. If no rule was matched, the default service
-      # will be used.
+      # is used.
       class PathMatcher
         include Google::Apis::Core::Hashable
       
         # defaultRouteAction takes effect when none of the pathRules or routeRules match.
-        # The load balancer performs advanced routing actions like URL rewrites, header
-        # transformations, etc. prior to forwarding the request to the selected backend.
+        # The load balancer performs advanced routing actions, such as URL rewrites and
+        # header transformations, before forwarding the request to the selected backend.
         # If defaultRouteAction specifies any weightedBackendServices, defaultService
         # must not be set. Conversely if defaultService is set, defaultRouteAction
         # cannot contain any weightedBackendServices. Only one of defaultRouteAction or
         # defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers
-        # support only the urlRewrite action within a pathMatcher's defaultRouteAction.
+        # support only the urlRewrite action within a path matcher's defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :default_route_action
       
-        # The full or partial URL to the BackendService resource. This will be used if
+        # The full or partial URL to the BackendService resource. This URL is used if
         # none of the pathRules or routeRules defined by this PathMatcher are matched.
         # For example, the following are all valid URLs to a BackendService resource: -
         # https://www.googleapis.com/compute/v1/projects/project /global/backendServices/
         # backendService - compute/v1/projects/project/global/backendServices/
         # backendService - global/backendServices/backendService If defaultRouteAction
-        # is additionally specified, advanced routing actions like URL Rewrites, etc.
-        # take effect prior to sending the request to the backend. However, if
-        # defaultService is specified, defaultRouteAction cannot contain any
-        # weightedBackendServices. Conversely, if defaultRouteAction specifies any
-        # weightedBackendServices, defaultService must not be specified. Only one of
-        # defaultService, defaultUrlRedirect or defaultRouteAction.
-        # weightedBackendService must be set. Authorization requires one or more of the
-        # following Google IAM permissions on the specified resource default_service: -
-        # compute.backendBuckets.use - compute.backendServices.use
+        # is also specified, advanced routing actions, such as URL rewrites, take effect
+        # before sending the request to the backend. However, if defaultService is
+        # specified, defaultRouteAction cannot contain any weightedBackendServices.
+        # Conversely, if defaultRouteAction specifies any weightedBackendServices,
+        # defaultService must not be specified. Only one of defaultService,
+        # defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set.
+        # Authorization requires one or more of the following Google IAM permissions on
+        # the specified resource default_service: - compute.backendBuckets.use - compute.
+        # backendServices.use
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
@@ -28476,23 +28570,23 @@ module Google
         attr_accessor :paths
       
         # In response to a matching path, the load balancer performs advanced routing
-        # actions like URL rewrites, header transformations, etc. prior to forwarding
+        # actions, such as URL rewrites and header transformations, before forwarding
         # the request to the selected backend. If routeAction specifies any
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any weightedBackendServices. Only one of
-        # routeAction or urlRedirect must be set. UrlMaps for external HTTP(S) load
-        # balancers support only the urlRewrite action within a pathRule's routeAction.
+        # routeAction or urlRedirect must be set. URL maps for external HTTP(S) load
+        # balancers support only the urlRewrite action within a path rule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
       
         # The full or partial URL of the backend service resource to which traffic is
-        # directed if this rule is matched. If routeAction is additionally specified,
-        # advanced routing actions like URL Rewrites, etc. take effect prior to sending
-        # the request to the backend. However, if service is specified, routeAction
-        # cannot contain any weightedBackendService s. Conversely, if routeAction
-        # specifies any weightedBackendServices, service must not be specified. Only one
-        # of urlRedirect, service or routeAction.weightedBackendService must be set.
+        # directed if this rule is matched. If routeAction is also specified, advanced
+        # routing actions, such as URL rewrites, take effect before sending the request
+        # to the backend. However, if service is specified, routeAction cannot contain
+        # any weightedBackendServices. Conversely, if routeAction specifies any
+        # weightedBackendServices, service must not be specified. Only one of
+        # urlRedirect, service or routeAction.weightedBackendService must be set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -28680,31 +28774,31 @@ module Google
       
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-      # A `binding` binds one or more `members` to a single `role`. Members can be
-      # user accounts, service accounts, Google groups, and domains (such as G Suite).
-      # A `role` is a named list of permissions; each `role` can be an IAM predefined
-      # role or a user-created custom role. For some types of Google Cloud resources,
-      # a `binding` can also specify a `condition`, which is a logical expression that
-      # allows access to a resource only if the expression evaluates to `true`. A
-      # condition can add constraints based on attributes of the request, the resource,
-      # or both. To learn which resources support conditions in their IAM policies,
-      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-      # title": "expirable access", "description": "Does not grant access after Sep
-      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-      # members: - user:mike@example.com - group:admins@example.com - domain:google.
-      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-      # roles/resourcemanager.organizationViewer condition: title: expirable access
-      # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-      # description of IAM and its features, see the [IAM documentation](https://cloud.
-      # google.com/iam/docs/).
+      # A `binding` binds one or more `members`, or principals, to a single `role`.
+      # Principals can be user accounts, service accounts, Google groups, and domains (
+      # such as G Suite). A `role` is a named list of permissions; each `role` can be
+      # an IAM predefined role or a user-created custom role. For some types of Google
+      # Cloud resources, a `binding` can also specify a `condition`, which is a
+      # logical expression that allows access to a resource only if the expression
+      # evaluates to `true`. A condition can add constraints based on attributes of
+      # the request, the resource, or both. To learn which resources support
+      # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+      # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+      # ], "condition": ` "title": "expirable access", "description": "Does not grant
+      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+      # bindings: - members: - user:mike@example.com - group:admins@example.com -
+      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+      # access description: Does not grant access after Sep 2020 expression: request.
+      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+      # a description of IAM and its features, see the [IAM documentation](https://
+      # cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -28713,9 +28807,14 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a `
-        # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # Associates a list of `members`, or principals, with a `role`. Optionally, may
+        # specify a `condition` that determines how and when the `bindings` are applied.
+        # Each of the `bindings` must contain at least one principal. The `bindings` in
+        # a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        # can be Google groups. Each occurrence of a principal counts towards these
+        # limits. For example, if the `bindings` grant 50 different roles to `user:alice@
+        # example.com`, and not to any other principal, then you can add another 1,450
+        # principals to the `bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::ComputeAlpha::Binding>]
         attr_accessor :bindings
@@ -28735,12 +28834,6 @@ module Google
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
-      
-        # This is deprecated and has no effect. Do not use.
-        # Corresponds to the JSON property `iamOwned`
-        # @return [Boolean]
-        attr_accessor :iam_owned
-        alias_method :iam_owned?, :iam_owned
       
         # This is deprecated and has no effect. Do not use.
         # Corresponds to the JSON property `rules`
@@ -28775,7 +28868,6 @@ module Google
           @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
-          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
           @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
         end
@@ -29336,7 +29428,13 @@ module Google
         # @return [String]
         attr_accessor :shared_secret
       
-        # The status of the public advertised prefix.
+        # The status of the public advertised prefix. Possible values include: - `
+        # INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured
+        # the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `
+        # REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `
+        # PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `
+        # PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `
+        # PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -29621,7 +29719,12 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # [Output Only] The status of the public delegated prefix.
+        # [Output Only] The status of the public delegated prefix, which can be one of
+        # following values: - `INITIALIZING` The public delegated prefix is being
+        # initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The
+        # public delegated prefix is a live migration prefix and is active. - `ANNOUNCED`
+        # The public delegated prefix is active. - `DELETING` The public delegated
+        # prefix is being deprovsioned.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -31792,31 +31895,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ComputeAlpha::Policy]
         attr_accessor :policy
@@ -31857,21 +31960,21 @@ module Google
       class RegionUrlMapsValidateRequest
         include Google::Apis::Core::Hashable
       
-        # Represents a URL Map resource. Google Compute Engine has two URL Map resources:
-        # * [Global](/compute/docs/reference/rest/alpha/urlMaps) * [Regional](/compute/
-        # docs/reference/rest/alpha/regionUrlMaps) A URL map resource is a component of
-        # certain types of GCP load balancers and Traffic Director. * urlMaps are used
+        # Represents a URL Map resource. Compute Engine has two URL Map resources: * [
+        # Global](/compute/docs/reference/rest/alpha/urlMaps) * [Regional](/compute/docs/
+        # reference/rest/alpha/regionUrlMaps) A URL map resource is a component of
+        # certain types of cloud load balancers and Traffic Director: * urlMaps are used
         # by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are
         # used by internal HTTP(S) load balancers. For a list of supported URL map
-        # features by load balancer type, see the Load balancing features: Routing and
-        # traffic management table. For a list of supported URL map features for Traffic
-        # Director, see the Traffic Director features: Routing and traffic management
-        # table. This resource defines mappings from host names and URL paths to either
-        # a backend service or a backend bucket. To use the global urlMaps resource, the
-        # backend service must have a loadBalancingScheme of either EXTERNAL or
-        # INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the backend service
-        # must have a loadBalancingScheme of INTERNAL_MANAGED. For more information,
-        # read URL Map Concepts.
+        # features by the load balancer type, see the Load balancing features: Routing
+        # and traffic management table. For a list of supported URL map features for
+        # Traffic Director, see the Traffic Director features: Routing and traffic
+        # management table. This resource defines mappings from hostnames and URL paths
+        # to either a backend service or a backend bucket. To use the global urlMaps
+        # resource, the backend service must have a loadBalancingScheme of either
+        # EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the
+        # backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For more
+        # information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeAlpha::UrlMap]
         attr_accessor :resource
@@ -31887,9 +31990,9 @@ module Google
       end
       
       # A policy that specifies how requests intended for the route's backends are
-      # shadowed to a separate mirrored backend service. Loadbalancer does not wait
-      # for responses from the shadow service. Prior to sending traffic to the shadow
-      # service, the host / authority header is suffixed with -shadow.
+      # shadowed to a separate mirrored backend service. The load balancer doesn't
+      # wait for responses from the shadow service. Before sending traffic to the
+      # shadow service, the host or authority header is suffixed with -shadow.
       class RequestMirrorPolicy
         include Google::Apis::Core::Hashable
       
@@ -34811,6 +34914,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :tcp_transitory_idle_timeout_sec
       
+        # Indicates whether this NAT is used for public or private IP translation. If
+        # unspecified, it defaults to PUBLIC.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `udpIdleTimeoutSec`
         # @return [Fixnum]
@@ -34838,6 +34947,7 @@ module Google
           @tcp_established_idle_timeout_sec = args[:tcp_established_idle_timeout_sec] if args.key?(:tcp_established_idle_timeout_sec)
           @tcp_time_wait_timeout_sec = args[:tcp_time_wait_timeout_sec] if args.key?(:tcp_time_wait_timeout_sec)
           @tcp_transitory_idle_timeout_sec = args[:tcp_transitory_idle_timeout_sec] if args.key?(:tcp_transitory_idle_timeout_sec)
+          @type = args[:type] if args.key?(:type)
           @udp_idle_timeout_sec = args[:udp_idle_timeout_sec] if args.key?(:udp_idle_timeout_sec)
         end
       end
@@ -34892,7 +35002,8 @@ module Google
         # "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.
         # 0/16')" "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'" The
         # following example is a valid match expression for private NAT: "nexthop.hub ==
-        # '/projects/my-project/global/hub/hub-1'"
+        # 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/
+        # global/hub/hub-1'"
         # Corresponds to the JSON property `match`
         # @return [String]
         attr_accessor :match
@@ -34928,12 +35039,27 @@ module Google
         # @return [Array<String>]
         attr_accessor :source_nat_active_ips
       
+        # A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+        # These subnetworks must have purpose set to PRIVATE_NAT. This field is used for
+        # private NAT.
+        # Corresponds to the JSON property `sourceNatActiveRanges`
+        # @return [Array<String>]
+        attr_accessor :source_nat_active_ranges
+      
         # A list of URLs of the IP resources to be drained. These IPs must be valid
         # static external IPs that have been assigned to the NAT. These IPs should be
         # used for updating/patching a NAT rule only. This field is used for public NAT.
         # Corresponds to the JSON property `sourceNatDrainIps`
         # @return [Array<String>]
         attr_accessor :source_nat_drain_ips
+      
+        # A list of URLs of subnetworks representing source ranges to be drained. This
+        # is only supported on patch/update, and these subnetworks must have previously
+        # been used as active ranges in this NAT Rule. This field is used for private
+        # NAT.
+        # Corresponds to the JSON property `sourceNatDrainRanges`
+        # @return [Array<String>]
+        attr_accessor :source_nat_drain_ranges
       
         def initialize(**args)
            update!(**args)
@@ -34942,7 +35068,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @source_nat_active_ips = args[:source_nat_active_ips] if args.key?(:source_nat_active_ips)
+          @source_nat_active_ranges = args[:source_nat_active_ranges] if args.key?(:source_nat_active_ranges)
           @source_nat_drain_ips = args[:source_nat_drain_ips] if args.key?(:source_nat_drain_ips)
+          @source_nat_drain_ranges = args[:source_nat_drain_ranges] if args.key?(:source_nat_drain_ranges)
         end
       end
       
@@ -35776,6 +35904,14 @@ module Google
         # @return [String]
         attr_accessor :maintenance_interval
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `maxRunDuration`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :max_run_duration
+      
         # The minimum number of virtual CPUs this instance will consume when running on
         # a sole-tenant node.
         # Corresponds to the JSON property `minNodeCpus`
@@ -35810,6 +35946,13 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
+        # Specifies the timestamp, when the instance will be terminated, in RFC3339 text
+        # format. If specified, the instance termination action will be performed at the
+        # termination time.
+        # Corresponds to the JSON property `terminationTime`
+        # @return [String]
+        attr_accessor :termination_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -35826,11 +35969,13 @@ module Google
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
           @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
+          @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @termination_time = args[:termination_time] if args.key?(:termination_time)
         end
       end
       
@@ -37345,6 +37490,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # If specified, the domain name will be used during the integration between the
+        # PSC connected endpoints and the Cloud DNS. For example, this is a valid domain
+        # name: "p.mycompany.com".
+        # Corresponds to the JSON property `domainNames`
+        # @return [Array<String>]
+        attr_accessor :domain_names
+      
         # If true, enable the proxy protocol which is for supplying client TCP/IP
         # address data in TCP connections that traverse proxies on their way to
         # destination servers.
@@ -37433,6 +37585,7 @@ module Google
           @consumer_reject_lists = args[:consumer_reject_lists] if args.key?(:consumer_reject_lists)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @domain_names = args[:domain_names] if args.key?(:domain_names)
           @enable_proxy_protocol = args[:enable_proxy_protocol] if args.key?(:enable_proxy_protocol)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
@@ -37846,9 +37999,8 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::ShareSettingsFolderConfig>]
         attr_accessor :folder_map
       
-        # A map of project id and project config. Using map format to ease add-to/remove-
-        # from the Project list in PATCH command. In future we will deprecate (And later
-        # remove) the array one.
+        # A map of project id and project config. This is only valid when share_type's
+        # value is SPECIFIC_PROJECTS.
         # Corresponds to the JSON property `projectMap`
         # @return [Hash<String,Google::Apis::ComputeAlpha::ShareSettingsProjectConfig>]
         attr_accessor :project_map
@@ -38193,6 +38345,12 @@ module Google
       class Snapshot
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The architecture of the snapshot. Valid values are ARM64 or
+        # X86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # [Output Only] Set to true if snapshots are automatically created by applying
         # resource policy on the target disk.
         # Corresponds to the JSON property `autoCreated`
@@ -38408,6 +38566,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @auto_created = args[:auto_created] if args.key?(:auto_created)
           @chain_name = args[:chain_name] if args.key?(:chain_name)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -38650,6 +38809,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
+        # KeyRevocationActionType of the instance.
+        # Corresponds to the JSON property `keyRevocationActionType`
+        # @return [String]
+        attr_accessor :key_revocation_action_type
+      
         # Labels to apply to instances that are created from this machine image.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -38713,6 +38877,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -39737,8 +39902,9 @@ module Google
       
         # Whether to enable flow logging for this subnetwork. If this field is not
         # explicitly set, it will not appear in get listings. If not set the default
-        # behavior is to disable flow logging. This field isn't supported with the
-        # purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        # behavior is determined by the org policy, if there is no org policy specified,
+        # then it will default to disabled. This field isn't supported with the purpose
+        # field set to INTERNAL_HTTPS_LOAD_BALANCER.
         # Corresponds to the JSON property `enableFlowLogs`
         # @return [Boolean]
         attr_accessor :enable_flow_logs
@@ -39778,8 +39944,8 @@ module Google
         # Can only be specified if VPC flow logging for this subnetwork is enabled. The
         # value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs
         # within the subnetwork where 1.0 means all collected logs are reported and 0.0
-        # means no logs are reported. Default is 0.5, which means half of all collected
-        # logs are reported.
+        # means no logs are reported. Default is 0.5 unless otherwise specified by the
+        # org policy, which means half of all collected logs are reported.
         # Corresponds to the JSON property `flowSampling`
         # @return [Float]
         attr_accessor :flow_sampling
@@ -40254,7 +40420,8 @@ module Google
       
         # Whether to enable flow logging for this subnetwork. If this field is not
         # explicitly set, it will not appear in get listings. If not set the default
-        # behavior is to disable flow logging.
+        # behavior is determined by the org policy, if there is no org policy specified,
+        # then it will default to disabled.
         # Corresponds to the JSON property `enable`
         # @return [Boolean]
         attr_accessor :enable
@@ -40269,8 +40436,8 @@ module Google
         # Can only be specified if VPC flow logging for this subnetwork is enabled. The
         # value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs
         # within the subnetwork where 1.0 means all collected logs are reported and 0.0
-        # means no logs are reported. Default is 0.5, which means half of all collected
-        # logs are reported.
+        # means no logs are reported. Default is 0.5 unless otherwise specified by the
+        # org policy, which means half of all collected logs are reported.
         # Corresponds to the JSON property `flowSampling`
         # @return [Float]
         attr_accessor :flow_sampling
@@ -43886,7 +44053,7 @@ module Google
       class TestFailure
         include Google::Apis::Core::Hashable
       
-        # The actual output URL evaluated by load balancer containing the scheme, host,
+        # The actual output URL evaluated by a load balancer containing the scheme, host,
         # path and query parameters.
         # Corresponds to the JSON property `actualOutputUrl`
         # @return [String]
@@ -43903,8 +44070,8 @@ module Google
         # @return [String]
         attr_accessor :actual_service
       
-        # The expected output URL evaluated by load balancer containing the scheme, host,
-        # path and query parameters.
+        # The expected output URL evaluated by a load balancer containing the scheme,
+        # host, path and query parameters.
         # Corresponds to the JSON property `expectedOutputUrl`
         # @return [String]
         attr_accessor :expected_output_url
@@ -44189,6 +44356,13 @@ module Google
       class UpcomingMaintenance
         include Google::Apis::Core::Hashable
       
+        # Indicates if the maintenance can be customer triggered. From more detail, see
+        # go/sf-ctm-design.
+        # Corresponds to the JSON property `canReschedule`
+        # @return [Boolean]
+        attr_accessor :can_reschedule
+        alias_method :can_reschedule?, :can_reschedule
+      
         # [Output Only] The date when the maintenance will take place. This value is in
         # RFC3339 text format. DEPRECATED: Use start_time_window instead.
         # Corresponds to the JSON property `date`
@@ -44218,6 +44392,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
           @date = args[:date] if args.key?(:date)
           @start_time_window = args[:start_time_window] if args.key?(:start_time_window)
           @time = args[:time] if args.key?(:time)
@@ -44251,21 +44426,21 @@ module Google
         end
       end
       
-      # Represents a URL Map resource. Google Compute Engine has two URL Map resources:
-      # * [Global](/compute/docs/reference/rest/alpha/urlMaps) * [Regional](/compute/
-      # docs/reference/rest/alpha/regionUrlMaps) A URL map resource is a component of
-      # certain types of GCP load balancers and Traffic Director. * urlMaps are used
+      # Represents a URL Map resource. Compute Engine has two URL Map resources: * [
+      # Global](/compute/docs/reference/rest/alpha/urlMaps) * [Regional](/compute/docs/
+      # reference/rest/alpha/regionUrlMaps) A URL map resource is a component of
+      # certain types of cloud load balancers and Traffic Director: * urlMaps are used
       # by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are
       # used by internal HTTP(S) load balancers. For a list of supported URL map
-      # features by load balancer type, see the Load balancing features: Routing and
-      # traffic management table. For a list of supported URL map features for Traffic
-      # Director, see the Traffic Director features: Routing and traffic management
-      # table. This resource defines mappings from host names and URL paths to either
-      # a backend service or a backend bucket. To use the global urlMaps resource, the
-      # backend service must have a loadBalancingScheme of either EXTERNAL or
-      # INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the backend service
-      # must have a loadBalancingScheme of INTERNAL_MANAGED. For more information,
-      # read URL Map Concepts.
+      # features by the load balancer type, see the Load balancing features: Routing
+      # and traffic management table. For a list of supported URL map features for
+      # Traffic Director, see the Traffic Director features: Routing and traffic
+      # management table. This resource defines mappings from hostnames and URL paths
+      # to either a backend service or a backend bucket. To use the global urlMaps
+      # resource, the backend service must have a loadBalancingScheme of either
+      # EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the
+      # backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For more
+      # information, read URL Map Concepts.
       class UrlMap
         include Google::Apis::Core::Hashable
       
@@ -44275,28 +44450,28 @@ module Google
         attr_accessor :creation_timestamp
       
         # defaultRouteAction takes effect when none of the hostRules match. The load
-        # balancer performs advanced routing actions like URL rewrites, header
-        # transformations, etc. prior to forwarding the request to the selected backend.
-        # If defaultRouteAction specifies any weightedBackendServices, defaultService
-        # must not be set. Conversely if defaultService is set, defaultRouteAction
-        # cannot contain any weightedBackendServices. Only one of defaultRouteAction or
+        # balancer performs advanced routing actions, such as URL rewrites and header
+        # transformations, before forwarding the request to the selected backend. If
+        # defaultRouteAction specifies any weightedBackendServices, defaultService must
+        # not be set. Conversely if defaultService is set, defaultRouteAction cannot
+        # contain any weightedBackendServices. Only one of defaultRouteAction or
         # defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers
         # support only the urlRewrite action within defaultRouteAction.
-        # defaultRouteAction has no effect when the URL map is bound to target gRPC
-        # proxy that has validateForProxyless field set to true.
+        # defaultRouteAction has no effect when the URL map is bound to a target gRPC
+        # proxy that has the validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :default_route_action
       
         # The full or partial URL of the defaultService resource to which traffic is
-        # directed if none of the hostRules match. If defaultRouteAction is additionally
-        # specified, advanced routing actions like URL Rewrites, etc. take effect prior
-        # to sending the request to the backend. However, if defaultService is specified,
+        # directed if none of the hostRules match. If defaultRouteAction is also
+        # specified, advanced routing actions, such as URL rewrites, take effect before
+        # sending the request to the backend. However, if defaultService is specified,
         # defaultRouteAction cannot contain any weightedBackendServices. Conversely, if
         # routeAction specifies any weightedBackendServices, service must not be
-        # specified. Only one of defaultService, defaultUrlRedirect or
+        # specified. Only one of defaultService, defaultUrlRedirect , or
         # defaultRouteAction.weightedBackendService must be set. defaultService has no
-        # effect when the URL map is bound to target gRPC proxy that has
+        # effect when the URL map is bound to a target gRPC proxy that has the
         # validateForProxyless field set to true.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
@@ -44314,11 +44489,10 @@ module Google
         attr_accessor :description
       
         # Fingerprint of this resource. A hash of the contents stored in this object.
-        # This field is used in optimistic locking. This field will be ignored when
-        # inserting a UrlMap. An up-to-date fingerprint must be provided in order to
-        # update the UrlMap, otherwise the request will fail with error 412
-        # conditionNotMet. To see the latest fingerprint, make a get() request to
-        # retrieve a UrlMap.
+        # This field is used in optimistic locking. This field is ignored when inserting
+        # a UrlMap. An up-to-date fingerprint must be provided in order to update the
+        # UrlMap, otherwise the request will fail with error 412 conditionNotMet. To see
+        # the latest fingerprint, make a get() request to retrieve a UrlMap.
         # Corresponds to the JSON property `fingerprint`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -44330,7 +44504,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::HttpHeaderAction]
         attr_accessor :header_action
       
-        # The list of HostRules to use against the URL.
+        # The list of host rules to use against the URL.
         # Corresponds to the JSON property `hostRules`
         # @return [Array<Google::Apis::ComputeAlpha::HostRule>]
         attr_accessor :host_rules
@@ -44373,10 +44547,10 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The list of expected URL mapping tests. Request to update this UrlMap will
-        # succeed only if all of the test cases pass. You can specify a maximum of 100
-        # tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy
-        # that has validateForProxyless field set to true.
+        # The list of expected URL mapping tests. Request to update the UrlMap succeeds
+        # only if all test cases pass. You can specify a maximum of 100 tests per UrlMap.
+        # Not supported when the URL map is bound to a target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `tests`
         # @return [Array<Google::Apis::ComputeAlpha::UrlMapTest>]
         attr_accessor :tests
@@ -44556,18 +44730,18 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The expected output URL evaluated by load balancer containing the scheme, host,
-        # path and query parameters. For rules that forward requests to backends, the
-        # test passes only when expectedOutputUrl matches the request forwarded by load
-        # balancer to backends. For rules with urlRewrite, the test verifies that the
-        # forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite
-        # action. When service is specified, expectedOutputUrl`s scheme is ignored. For
-        # rules with urlRedirect, the test passes only if expectedOutputUrl matches the
-        # URL in the load balancer's redirect response. If urlRedirect specifies
-        # https_redirect, the test passes only if the scheme in expectedOutputUrl is
-        # also set to https. If urlRedirect specifies strip_query, the test passes only
-        # if expectedOutputUrl does not contain any query parameters. expectedOutputUrl
-        # is optional when service is specified.
+        # The expected output URL evaluated by the load balancer containing the scheme,
+        # host, path and query parameters. For rules that forward requests to backends,
+        # the test passes only when expectedOutputUrl matches the request forwarded by
+        # the load balancer to backends. For rules with urlRewrite, the test verifies
+        # that the forwarded request matches hostRewrite and pathPrefixRewrite in the
+        # urlRewrite action. When service is specified, expectedOutputUrl`s scheme is
+        # ignored. For rules with urlRedirect, the test passes only if expectedOutputUrl
+        # matches the URL in the load balancer's redirect response. If urlRedirect
+        # specifies https_redirect, the test passes only if the scheme in
+        # expectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query,
+        # the test passes only if expectedOutputUrl does not contain any query
+        # parameters. expectedOutputUrl is optional when service is specified.
         # Corresponds to the JSON property `expectedOutputUrl`
         # @return [String]
         attr_accessor :expected_output_url
@@ -44604,7 +44778,8 @@ module Google
         attr_accessor :path
       
         # Expected BackendService or BackendBucket resource the given URL should be
-        # mapped to. service cannot be set if expectedRedirectResponseCode is set.
+        # mapped to. The service field cannot be set if expectedRedirectResponseCode is
+        # set.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -44911,21 +45086,36 @@ module Google
       class UrlMapsValidateRequest
         include Google::Apis::Core::Hashable
       
-        # Represents a URL Map resource. Google Compute Engine has two URL Map resources:
-        # * [Global](/compute/docs/reference/rest/alpha/urlMaps) * [Regional](/compute/
-        # docs/reference/rest/alpha/regionUrlMaps) A URL map resource is a component of
-        # certain types of GCP load balancers and Traffic Director. * urlMaps are used
+        # Specifies the load balancer type(s) this validation request is for. Use
+        # EXTERNAL_MANAGED for HTTP/HTTPS External Global Load Balancer with Advanced
+        # Traffic Management. Use EXTERNAL for Classic HTTP/HTTPS External Global Load
+        # Balancer. Other load balancer types are not supported. For more information,
+        # refer to Choosing a load balancer. If unspecified, the load balancing scheme
+        # will be inferred from the backend service resources this URL map references.
+        # If that can not be inferred (for example, this URL map only references backend
+        # buckets, or this Url map is for rewrites and redirects only and doesn't
+        # reference any backends), EXTERNAL will be used as the default type. If
+        # specified, the scheme(s) must not conflict with the load balancing scheme of
+        # the backend service resources this Url map references.
+        # Corresponds to the JSON property `loadBalancingSchemes`
+        # @return [Array<String>]
+        attr_accessor :load_balancing_schemes
+      
+        # Represents a URL Map resource. Compute Engine has two URL Map resources: * [
+        # Global](/compute/docs/reference/rest/alpha/urlMaps) * [Regional](/compute/docs/
+        # reference/rest/alpha/regionUrlMaps) A URL map resource is a component of
+        # certain types of cloud load balancers and Traffic Director: * urlMaps are used
         # by external HTTP(S) load balancers and Traffic Director. * regionUrlMaps are
         # used by internal HTTP(S) load balancers. For a list of supported URL map
-        # features by load balancer type, see the Load balancing features: Routing and
-        # traffic management table. For a list of supported URL map features for Traffic
-        # Director, see the Traffic Director features: Routing and traffic management
-        # table. This resource defines mappings from host names and URL paths to either
-        # a backend service or a backend bucket. To use the global urlMaps resource, the
-        # backend service must have a loadBalancingScheme of either EXTERNAL or
-        # INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the backend service
-        # must have a loadBalancingScheme of INTERNAL_MANAGED. For more information,
-        # read URL Map Concepts.
+        # features by the load balancer type, see the Load balancing features: Routing
+        # and traffic management table. For a list of supported URL map features for
+        # Traffic Director, see the Traffic Director features: Routing and traffic
+        # management table. This resource defines mappings from hostnames and URL paths
+        # to either a backend service or a backend bucket. To use the global urlMaps
+        # resource, the backend service must have a loadBalancingScheme of either
+        # EXTERNAL or INTERNAL_SELF_MANAGED. To use the regionUrlMaps resource, the
+        # backend service must have a loadBalancingScheme of INTERNAL_MANAGED. For more
+        # information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeAlpha::UrlMap]
         attr_accessor :resource
@@ -44936,6 +45126,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @load_balancing_schemes = args[:load_balancing_schemes] if args.key?(:load_balancing_schemes)
           @resource = args[:resource] if args.key?(:resource)
         end
       end
@@ -44964,16 +45155,16 @@ module Google
       class UrlRewrite
         include Google::Apis::Core::Hashable
       
-        # Prior to forwarding the request to the selected service, the request's host
-        # header is replaced with contents of hostRewrite. The value must be between 1
-        # and 255 characters.
+        # Before forwarding the request to the selected service, the request's host
+        # header is replaced with contents of hostRewrite. The value must be from 1 to
+        # 255 characters.
         # Corresponds to the JSON property `hostRewrite`
         # @return [String]
         attr_accessor :host_rewrite
       
-        # Prior to forwarding the request to the selected backend service, the matching
+        # Before forwarding the request to the selected backend service, the matching
         # portion of the request's path is replaced by pathPrefixRewrite. The value must
-        # be between 1 and 1024 characters.
+        # be from 1 to 1024 characters.
         # Corresponds to the JSON property `pathPrefixRewrite`
         # @return [String]
         attr_accessor :path_prefix_rewrite
@@ -46690,14 +46881,13 @@ module Google
       
       # In contrast to a single BackendService in HttpRouteAction to which all
       # matching traffic is directed to, WeightedBackendService allows traffic to be
-      # split across multiple BackendServices. The volume of traffic for each
-      # BackendService is proportional to the weight specified in each
-      # WeightedBackendService
+      # split across multiple backend services. The volume of traffic for each backend
+      # service is proportional to the weight specified in each WeightedBackendService
       class WeightedBackendService
         include Google::Apis::Core::Hashable
       
         # The full or partial URL to the default BackendService resource. Before
-        # forwarding the request to backendService, the loadbalancer applies any
+        # forwarding the request to backendService, the load balancer applies any
         # relevant headerActions specified as part of this backendServiceWeight.
         # Corresponds to the JSON property `backendService`
         # @return [String]
@@ -46709,12 +46899,12 @@ module Google
         # @return [Google::Apis::ComputeAlpha::HttpHeaderAction]
         attr_accessor :header_action
       
-        # Specifies the fraction of traffic sent to backendService, computed as weight /
-        # (sum of all weightedBackendService weights in routeAction) . The selection of
-        # a backend service is determined only for new traffic. Once a user's request
-        # has been directed to a backendService, subsequent requests will be sent to the
-        # same backendService as determined by the BackendService's session affinity
-        # policy. The value must be between 0 and 1000
+        # Specifies the fraction of traffic sent to a backend service, computed as
+        # weight / (sum of all weightedBackendService weights in routeAction) . The
+        # selection of a backend service is determined only for new traffic. Once a user'
+        # s request has been directed to a backend service, subsequent requests are sent
+        # to the same backend service as determined by the backend service's session
+        # affinity policy. The value must be from 0 to 1000.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
@@ -47124,31 +47314,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ComputeAlpha::Policy]
         attr_accessor :policy
