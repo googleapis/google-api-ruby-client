@@ -2169,6 +2169,12 @@ module Google
       class WorkerPool
         include Google::Apis::Core::Hashable
       
+        # User specified annotations. See https://google.aip.dev/128#annotations for
+        # more details such as format and size limitations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # Output only. Time at which the request to create the `WorkerPool` was received.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2178,6 +2184,18 @@ module Google
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
+      
+        # A user-specified, human-readable name for the `WorkerPool`. If provided, this
+        # value must be 1-63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Checksum computed by the server. May be sent on update and delete
+        # requests to ensure that the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
       
         # Output only. The resource name of the `WorkerPool`, with format `projects/`
         # project`/locations/`location`/workerPools/`worker_pool``. The value of ``
@@ -2197,6 +2215,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. A unique identifier for the `WorkerPool`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         # Output only. Time at which the request to update the `WorkerPool` was received.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2213,11 +2236,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
         end
