@@ -22,6 +22,12 @@ module Google
   module Apis
     module ChromepolicyV1
       
+      class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromePolicyV1AdditionalTargetKeyName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypeDate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Proto2DescriptorProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -170,6 +182,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :end_support, as: 'endSupport', class: Google::Apis::ChromepolicyV1::GoogleTypeDate, decorator: Google::Apis::ChromepolicyV1::GoogleTypeDate::Representation
+      
+          property :policy_api_lifecycle_stage, as: 'policyApiLifecycleStage'
+        end
       end
       
       class GoogleChromePolicyV1AdditionalTargetKeyName
@@ -237,6 +259,8 @@ module Google
       
           property :name, as: 'name'
           collection :notices, as: 'notices', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaNoticeDescription, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaNoticeDescription::Representation
+      
+          property :policy_api_lifeycle, as: 'policyApiLifeycle', class: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle, decorator: Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle::Representation
       
           property :policy_description, as: 'policyDescription'
           property :schema_name, as: 'schemaName'
@@ -351,6 +375,15 @@ module Google
       class GoogleProtobufEmpty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleTypeDate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
