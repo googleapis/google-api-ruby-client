@@ -909,12 +909,16 @@ module Google
       class WorkerPool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::CloudbuildV1beta1::NetworkConfig, decorator: Google::Apis::CloudbuildV1beta1::NetworkConfig::Representation
       
           property :state, as: 'state'
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :worker_config, as: 'workerConfig', class: Google::Apis::CloudbuildV1beta1::WorkerConfig, decorator: Google::Apis::CloudbuildV1beta1::WorkerConfig::Representation
       
