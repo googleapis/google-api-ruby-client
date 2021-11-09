@@ -790,6 +790,13 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
+        # Optional. EventType allows the user to explicitly set the type of event to
+        # which this BuildTrigger should respond. This field is optional but will be
+        # validated against the rest of the configuration if it is set.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
         # Path, from the source root, to the build configuration file (i.e. cloudbuild.
         # yaml).
         # Corresponds to the JSON property `filename`
@@ -906,6 +913,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @disabled = args[:disabled] if args.key?(:disabled)
+          @event_type = args[:event_type] if args.key?(:event_type)
           @filename = args[:filename] if args.key?(:filename)
           @filter = args[:filter] if args.key?(:filter)
           @git_file_source = args[:git_file_source] if args.key?(:git_file_source)

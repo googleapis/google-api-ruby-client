@@ -641,6 +641,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :disabled, as: 'disabled'
+          property :event_type, as: 'eventType'
           property :filename, as: 'filename'
           property :filter, as: 'filter'
           property :git_file_source, as: 'gitFileSource', class: Google::Apis::CloudbuildV1::GitFileSource, decorator: Google::Apis::CloudbuildV1::GitFileSource::Representation

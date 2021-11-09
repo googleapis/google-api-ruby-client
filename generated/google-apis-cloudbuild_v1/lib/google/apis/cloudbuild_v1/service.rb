@@ -1390,8 +1390,8 @@ module Google
         #   If set to true, and the `WorkerPool` is not found, the request will succeed
         #   but no action will be taken on the server.
         # @param [String] etag
-        #   Optional. If this is provided, it must match the server's etag on the
-        #   workerpool for the request to be processed.
+        #   Optional. If provided, it must match the server's etag on the workerpool for
+        #   the request to be processed.
         # @param [Boolean] validate_only
         #   If set, validate the request and preview the response, but do not actually
         #   post it.
