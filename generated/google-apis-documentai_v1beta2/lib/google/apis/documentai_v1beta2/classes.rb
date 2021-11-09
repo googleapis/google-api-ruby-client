@@ -63,6 +63,16 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
+        # The destination dataset split type.
+        # Corresponds to the JSON property `destDatasetType`
+        # @return [String]
+        attr_accessor :dest_dataset_type
+      
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualBatchMoveStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus>]
+        attr_accessor :individual_batch_move_statuses
+      
         def initialize(**args)
            update!(**args)
         end
@@ -70,6 +80,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @dest_dataset_type = args[:dest_dataset_type] if args.key?(:dest_dataset_type)
+          @individual_batch_move_statuses = args[:individual_batch_move_statuses] if args.key?(:individual_batch_move_statuses)
+        end
+      end
+      
+      # The status of each individual document in the batch move process.
+      class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus
+        include Google::Apis::Core::Hashable
+      
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentId]
+        attr_accessor :document_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -270,6 +312,58 @@ module Google
         end
       end
       
+      # Document Identifier.
+      class GoogleCloudDocumentaiUiv1beta3DocumentId
+        include Google::Apis::Core::Hashable
+      
+        # Identifies a document uniquely within the scope of a dataset in the GCS-based
+        # option.
+        # Corresponds to the JSON property `gcsManagedDocId`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId]
+        attr_accessor :gcs_managed_doc_id
+      
+        # The revision reference specifies which revision on the document to read.
+        # Corresponds to the JSON property `revisionReference`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3RevisionReference]
+        attr_accessor :revision_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_managed_doc_id = args[:gcs_managed_doc_id] if args.key?(:gcs_managed_doc_id)
+          @revision_reference = args[:revision_reference] if args.key?(:revision_reference)
+        end
+      end
+      
+      # Identifies a document uniquely within the scope of a dataset in the GCS-based
+      # option.
+      class GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Id of the document (indexed) managed by Content Warehouse.
+        # Corresponds to the JSON property `cwDocId`
+        # @return [String]
+        attr_accessor :cw_doc_id
+      
+        # Required. The Cloud Storage uri where the actual document is stored.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cw_doc_id = args[:cw_doc_id] if args.key?(:cw_doc_id)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+        end
+      end
+      
       # The long running operation metadata for enable processor method.
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
         include Google::Apis::Core::Hashable
@@ -388,6 +482,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualImportStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus>]
+        attr_accessor :individual_import_statuses
+      
         def initialize(**args)
            update!(**args)
         end
@@ -395,6 +494,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @individual_import_statuses = args[:individual_import_statuses] if args.key?(:individual_import_statuses)
+        end
+      end
+      
+      # The status of each individual document in the import process.
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus
+        include Google::Apis::Core::Hashable
+      
+        # The source Cloud Storage URI of the document.
+        # Corresponds to the JSON property `inputGcsSource`
+        # @return [String]
+        attr_accessor :input_gcs_source
+      
+        # The output_gcs_destination of the processed document if it was successful,
+        # otherwise empty.
+        # Corresponds to the JSON property `outputGcsDestination`
+        # @return [String]
+        attr_accessor :output_gcs_destination
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
+          @output_gcs_destination = args[:output_gcs_destination] if args.key?(:output_gcs_destination)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -408,6 +545,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The revision reference specifies which revision on the document to read.
+      class GoogleCloudDocumentaiUiv1beta3RevisionReference
+        include Google::Apis::Core::Hashable
+      
+        # Read the revision generated by the processor version, returns error if it does
+        # not exist.
+        # Corresponds to the JSON property `latestProcessorVersion`
+        # @return [String]
+        attr_accessor :latest_processor_version
+      
+        # Read the revision by the predefined case.
+        # Corresponds to the JSON property `revisionCase`
+        # @return [String]
+        attr_accessor :revision_case
+      
+        # Read the revision given by the id, returns error if it does not exist.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latest_processor_version = args[:latest_processor_version] if args.key?(:latest_processor_version)
+          @revision_case = args[:revision_case] if args.key?(:revision_case)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
         end
       end
       
