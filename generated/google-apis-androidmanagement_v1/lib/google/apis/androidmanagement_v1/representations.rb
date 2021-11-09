@@ -1200,6 +1200,7 @@ module Google
           property :play_store_mode, as: 'playStoreMode'
           collection :policy_enforcement_rules, as: 'policyEnforcementRules', class: Google::Apis::AndroidmanagementV1::PolicyEnforcementRule, decorator: Google::Apis::AndroidmanagementV1::PolicyEnforcementRule::Representation
       
+          property :preferential_network_service, as: 'preferentialNetworkService'
           property :private_key_selection_enabled, as: 'privateKeySelectionEnabled'
           property :recommended_global_proxy, as: 'recommendedGlobalProxy', class: Google::Apis::AndroidmanagementV1::ProxyInfo, decorator: Google::Apis::AndroidmanagementV1::ProxyInfo::Representation
       

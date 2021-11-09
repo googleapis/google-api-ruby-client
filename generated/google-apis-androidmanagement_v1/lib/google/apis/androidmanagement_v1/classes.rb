@@ -3037,6 +3037,16 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::PolicyEnforcementRule>]
         attr_accessor :policy_enforcement_rules
       
+        # Controls whether preferential network service is enabled on the work profile.
+        # For example, an organization may have an agreement with a carrier that all of
+        # the work data from its employees' devices will be sent via a network service
+        # dedicated for enterprise use. An example of a supported preferential network
+        # service is the enterprise slice on 5G networks. This has no effect on fully
+        # managed devices.
+        # Corresponds to the JSON property `preferentialNetworkService`
+        # @return [String]
+        attr_accessor :preferential_network_service
+      
         # Allows showing UI on a device for a user to choose a private key alias if
         # there are no matching rules in ChoosePrivateKeyRules. For devices below
         # Android P, setting this may leave enterprise keys vulnerable.
@@ -3260,6 +3270,7 @@ module Google
           @personal_usage_policies = args[:personal_usage_policies] if args.key?(:personal_usage_policies)
           @play_store_mode = args[:play_store_mode] if args.key?(:play_store_mode)
           @policy_enforcement_rules = args[:policy_enforcement_rules] if args.key?(:policy_enforcement_rules)
+          @preferential_network_service = args[:preferential_network_service] if args.key?(:preferential_network_service)
           @private_key_selection_enabled = args[:private_key_selection_enabled] if args.key?(:private_key_selection_enabled)
           @recommended_global_proxy = args[:recommended_global_proxy] if args.key?(:recommended_global_proxy)
           @remove_user_disabled = args[:remove_user_disabled] if args.key?(:remove_user_disabled)
