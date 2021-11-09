@@ -63,6 +63,16 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
+        # The destination dataset split type.
+        # Corresponds to the JSON property `destDatasetType`
+        # @return [String]
+        attr_accessor :dest_dataset_type
+      
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualBatchMoveStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus>]
+        attr_accessor :individual_batch_move_statuses
+      
         def initialize(**args)
            update!(**args)
         end
@@ -70,6 +80,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @dest_dataset_type = args[:dest_dataset_type] if args.key?(:dest_dataset_type)
+          @individual_batch_move_statuses = args[:individual_batch_move_statuses] if args.key?(:individual_batch_move_statuses)
+        end
+      end
+      
+      # The status of each individual document in the batch move process.
+      class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus
+        include Google::Apis::Core::Hashable
+      
+        # Document Identifier.
+        # Corresponds to the JSON property `documentId`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentId]
+        attr_accessor :document_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -270,6 +312,58 @@ module Google
         end
       end
       
+      # Document Identifier.
+      class GoogleCloudDocumentaiUiv1beta3DocumentId
+        include Google::Apis::Core::Hashable
+      
+        # Identifies a document uniquely within the scope of a dataset in the GCS-based
+        # option.
+        # Corresponds to the JSON property `gcsManagedDocId`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId]
+        attr_accessor :gcs_managed_doc_id
+      
+        # The revision reference specifies which revision on the document to read.
+        # Corresponds to the JSON property `revisionReference`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3RevisionReference]
+        attr_accessor :revision_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_managed_doc_id = args[:gcs_managed_doc_id] if args.key?(:gcs_managed_doc_id)
+          @revision_reference = args[:revision_reference] if args.key?(:revision_reference)
+        end
+      end
+      
+      # Identifies a document uniquely within the scope of a dataset in the GCS-based
+      # option.
+      class GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Id of the document (indexed) managed by Content Warehouse.
+        # Corresponds to the JSON property `cwDocId`
+        # @return [String]
+        attr_accessor :cw_doc_id
+      
+        # Required. The Cloud Storage uri where the actual document is stored.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cw_doc_id = args[:cw_doc_id] if args.key?(:cw_doc_id)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+        end
+      end
+      
       # The long running operation metadata for enable processor method.
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
         include Google::Apis::Core::Hashable
@@ -388,6 +482,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
         attr_accessor :common_metadata
       
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualImportStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus>]
+        attr_accessor :individual_import_statuses
+      
         def initialize(**args)
            update!(**args)
         end
@@ -395,6 +494,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @individual_import_statuses = args[:individual_import_statuses] if args.key?(:individual_import_statuses)
+        end
+      end
+      
+      # The status of each individual document in the import process.
+      class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataIndividualImportStatus
+        include Google::Apis::Core::Hashable
+      
+        # The source Cloud Storage URI of the document.
+        # Corresponds to the JSON property `inputGcsSource`
+        # @return [String]
+        attr_accessor :input_gcs_source
+      
+        # The output_gcs_destination of the processed document if it was successful,
+        # otherwise empty.
+        # Corresponds to the JSON property `outputGcsDestination`
+        # @return [String]
+        attr_accessor :output_gcs_destination
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
+          @output_gcs_destination = args[:output_gcs_destination] if args.key?(:output_gcs_destination)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -408,6 +545,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The revision reference specifies which revision on the document to read.
+      class GoogleCloudDocumentaiUiv1beta3RevisionReference
+        include Google::Apis::Core::Hashable
+      
+        # Read the revision generated by the processor version, returns error if it does
+        # not exist.
+        # Corresponds to the JSON property `latestProcessorVersion`
+        # @return [String]
+        attr_accessor :latest_processor_version
+      
+        # Read the revision by the predefined case.
+        # Corresponds to the JSON property `revisionCase`
+        # @return [String]
+        attr_accessor :revision_case
+      
+        # Read the revision given by the id, returns error if it does not exist.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latest_processor_version = args[:latest_processor_version] if args.key?(:latest_processor_version)
+          @revision_case = args[:revision_case] if args.key?(:revision_case)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
         end
       end
       
@@ -2525,104 +2694,6 @@ module Google
         end
       end
       
-      # Evaluation metrics, either in aggregate or about a specific entity.
-      class GoogleCloudDocumentaiV1EvaluationMetrics
-        include Google::Apis::Core::Hashable
-      
-        # The calculated f1 score.
-        # Corresponds to the JSON property `f1Score`
-        # @return [Float]
-        attr_accessor :f1_score
-      
-        # The amount of false negatives.
-        # Corresponds to the JSON property `falseNegativesCount`
-        # @return [Fixnum]
-        attr_accessor :false_negatives_count
-      
-        # The amount of false positives.
-        # Corresponds to the JSON property `falsePositivesCount`
-        # @return [Fixnum]
-        attr_accessor :false_positives_count
-      
-        # The amount of occurrences in ground truth documents.
-        # Corresponds to the JSON property `groundTruthOccurrencesCount`
-        # @return [Fixnum]
-        attr_accessor :ground_truth_occurrences_count
-      
-        # The calculated precision.
-        # Corresponds to the JSON property `precision`
-        # @return [Float]
-        attr_accessor :precision
-      
-        # The amount of occurrences in predicted documents.
-        # Corresponds to the JSON property `predictedOccurrencesCount`
-        # @return [Fixnum]
-        attr_accessor :predicted_occurrences_count
-      
-        # The calculated recall.
-        # Corresponds to the JSON property `recall`
-        # @return [Float]
-        attr_accessor :recall
-      
-        # The amount of documents that had an occurrence of this label.
-        # Corresponds to the JSON property `totalDocumentsCount`
-        # @return [Fixnum]
-        attr_accessor :total_documents_count
-      
-        # The amount of true positives.
-        # Corresponds to the JSON property `truePositivesCount`
-        # @return [Fixnum]
-        attr_accessor :true_positives_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @f1_score = args[:f1_score] if args.key?(:f1_score)
-          @false_negatives_count = args[:false_negatives_count] if args.key?(:false_negatives_count)
-          @false_positives_count = args[:false_positives_count] if args.key?(:false_positives_count)
-          @ground_truth_occurrences_count = args[:ground_truth_occurrences_count] if args.key?(:ground_truth_occurrences_count)
-          @precision = args[:precision] if args.key?(:precision)
-          @predicted_occurrences_count = args[:predicted_occurrences_count] if args.key?(:predicted_occurrences_count)
-          @recall = args[:recall] if args.key?(:recall)
-          @total_documents_count = args[:total_documents_count] if args.key?(:total_documents_count)
-          @true_positives_count = args[:true_positives_count] if args.key?(:true_positives_count)
-        end
-      end
-      
-      # Gives a short summary of an evaluation, and links to the evaluation itself.
-      class GoogleCloudDocumentaiV1EvaluationReference
-        include Google::Apis::Core::Hashable
-      
-        # Evaluation metrics, either in aggregate or about a specific entity.
-        # Corresponds to the JSON property `aggregateMetrics`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMetrics]
-        attr_accessor :aggregate_metrics
-      
-        # The resource name of the evaluation.
-        # Corresponds to the JSON property `evaluation`
-        # @return [String]
-        attr_accessor :evaluation
-      
-        # The resource name of the Long Running Operation for the evaluation.
-        # Corresponds to the JSON property `operation`
-        # @return [String]
-        attr_accessor :operation
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @aggregate_metrics = args[:aggregate_metrics] if args.key?(:aggregate_metrics)
-          @evaluation = args[:evaluation] if args.key?(:evaluation)
-          @operation = args[:operation] if args.key?(:operation)
-        end
-      end
-      
       # Response message for fetch processor types.
       class GoogleCloudDocumentaiV1FetchProcessorTypesResponse
         include Google::Apis::Core::Hashable
@@ -3048,22 +3119,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Gives a short summary of an evaluation, and links to the evaluation itself.
-        # Corresponds to the JSON property `latestEvaluation`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationReference]
-        attr_accessor :latest_evaluation
-      
         # The resource name of the processor version. Format: projects/`project`/
         # locations/`location`/processors/`processor`/processorVersions/`
         # processor_version`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
-      
-        # The schema defines the output of the processed document by a processor.
-        # Corresponds to the JSON property `schema`
-        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Schema]
-        attr_accessor :schema
       
         # The state of the processor version.
         # Corresponds to the JSON property `state`
@@ -3078,9 +3139,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
           @name = args[:name] if args.key?(:name)
-          @schema = args[:schema] if args.key?(:schema)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -3181,118 +3240,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
-        end
-      end
-      
-      # The schema defines the output of the processed document by a processor.
-      class GoogleCloudDocumentaiV1Schema
-        include Google::Apis::Core::Hashable
-      
-        # Description of the schema.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Display name to show to users.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Entity types of the schema.
-        # Corresponds to the JSON property `entityTypes`
-        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaEntityType>]
-        attr_accessor :entity_types
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @entity_types = args[:entity_types] if args.key?(:entity_types)
-        end
-      end
-      
-      # EntityType is the wrapper of a label of the corresponding model with detailed
-      # attributes and limitations for entity-based processors. Multiple types can
-      # also compose a dependency tree to represent nested types.
-      class GoogleCloudDocumentaiV1SchemaEntityType
-        include Google::Apis::Core::Hashable
-      
-        # Type of the entity. It must be one of the following: `document` - the entity
-        # represents a classification of a logical document. `object` - if the entity
-        # has properties it is likely an object (or or a document.) `datetime` - the
-        # entity is a date or time value. `money` - the entity represents a money value
-        # amount. `number` - the entity is a number - integer or floating point. `string`
-        # - the entity is a string value. `boolean` - the entity is a boolean value. `
-        # address` - the entity is a location address. `duration` - the entity is a
-        # duration.
-        # Corresponds to the JSON property `baseType`
-        # @return [String]
-        attr_accessor :base_type
-      
-        # Description of the entity type.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # If specified, lists all the possible values for this entity.
-        # Corresponds to the JSON property `enumValues`
-        # @return [Array<String>]
-        attr_accessor :enum_values
-      
-        # Occurrence type limits the number of times an entity type appears in the
-        # document.
-        # Corresponds to the JSON property `occurrenceType`
-        # @return [String]
-        attr_accessor :occurrence_type
-      
-        # Describing the nested structure of an entity. An EntityType may consist of
-        # several other EntityTypes. For example, in a document there can be an
-        # EntityType 'ID', which consists of EntityType 'name' and 'address', with
-        # corresponding attributes, such as TEXT for both types and ONCE for occurrence
-        # types.
-        # Corresponds to the JSON property `properties`
-        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaEntityType>]
-        attr_accessor :properties
-      
-        # Source of this entity type.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # Name of the type. It must satisfy the following constraints: 1. Must be unique
-        # within the set of same level types (with case-insensitive match). 2. Maximum
-        # 50 characters. 3. Must start with a letter. 4. Allowed characters: ASCII
-        # letters [a-zA-Z], ASCII digits [0-9], or one of the following punctuation
-        # characters: * underscore '_' (recommended) * hyphen '-' (allowed, not
-        # recommended) * colon ':' (allowed, not recommended) NOTE: Whitespace
-        # characters are not allowed. 5. Cannot end with a punctuation character. 6.
-        # Cannot contain the following restricted strings: "google", "DocumentAI" (case-
-        # insensitive match). 7. A slash character '/' is reserved as a separator in
-        # flattened representations of nested entity types (e.g., "line_item/amount") in
-        # which case each part (e.g., "line_item", "amount") must comply with the rules
-        # defined above. We recommend using the snake case ("snake_case") in entity type
-        # names.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @base_type = args[:base_type] if args.key?(:base_type)
-          @description = args[:description] if args.key?(:description)
-          @enum_values = args[:enum_values] if args.key?(:enum_values)
-          @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
-          @properties = args[:properties] if args.key?(:properties)
-          @source = args[:source] if args.key?(:source)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
