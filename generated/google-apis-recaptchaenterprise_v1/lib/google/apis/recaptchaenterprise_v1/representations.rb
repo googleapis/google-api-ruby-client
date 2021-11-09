@@ -231,7 +231,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expected_action, as: 'expectedAction'
-          property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
           property :site_key, as: 'siteKey'
           property :token, as: 'token'
           property :user_agent, as: 'userAgent'
