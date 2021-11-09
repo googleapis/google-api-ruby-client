@@ -22,6 +22,44 @@ module Google
   module Apis
     module ChromepolicyV1
       
+      # 
+      class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle
+        include Google::Apis::Core::Hashable
+      
+        # Description about current life cycle.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values * A month
+        # and day value, with a zero year, such as an anniversary * A year on its own,
+        # with zero month and day values * A year and month value, with a zero day, such
+        # as a credit card expiration date Related types are google.type.TimeOfDay and `
+        # google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `endSupport`
+        # @return [Google::Apis::ChromepolicyV1::GoogleTypeDate]
+        attr_accessor :end_support
+      
+        # Indicate current life cycle stage of the policy API.
+        # Corresponds to the JSON property `policyApiLifecycleStage`
+        # @return [String]
+        attr_accessor :policy_api_lifecycle_stage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @end_support = args[:end_support] if args.key?(:end_support)
+          @policy_api_lifecycle_stage = args[:policy_api_lifecycle_stage] if args.key?(:policy_api_lifecycle_stage)
+        end
+      end
+      
       # Additional key names that will be used to identify the target of the policy
       # value.
       class GoogleChromePolicyV1AdditionalTargetKeyName
@@ -186,7 +224,7 @@ module Google
         end
       end
       
-      # Resource representing a policy schema. Next ID: 11
+      # Resource representing a policy schema. Next ID: 12
       class GoogleChromePolicyV1PolicySchema
         include Google::Apis::Core::Hashable
       
@@ -223,6 +261,11 @@ module Google
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaNoticeDescription>]
         attr_accessor :notices
       
+        # Output only. Current life cycle information.
+        # Corresponds to the JSON property `policyApiLifeycle`
+        # @return [Google::Apis::ChromepolicyV1::ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle]
+        attr_accessor :policy_api_lifeycle
+      
         # Output only. Description about the policy schema for user consumption.
         # Corresponds to the JSON property `policyDescription`
         # @return [String]
@@ -257,6 +300,7 @@ module Google
           @field_descriptions = args[:field_descriptions] if args.key?(:field_descriptions)
           @name = args[:name] if args.key?(:name)
           @notices = args[:notices] if args.key?(:notices)
+          @policy_api_lifeycle = args[:policy_api_lifeycle] if args.key?(:policy_api_lifeycle)
           @policy_description = args[:policy_description] if args.key?(:policy_description)
           @schema_name = args[:schema_name] if args.key?(:schema_name)
           @support_uri = args[:support_uri] if args.key?(:support_uri)
@@ -620,6 +664,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values * A month
+      # and day value, with a zero year, such as an anniversary * A year on its own,
+      # with zero month and day values * A year and month value, with a zero day, such
+      # as a credit card expiration date Related types are google.type.TimeOfDay and `
+      # google.protobuf.Timestamp`.
+      class GoogleTypeDate
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
