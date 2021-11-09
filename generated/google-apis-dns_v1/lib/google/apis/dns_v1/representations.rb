@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedZoneCloudLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedZoneDnsSecConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +316,8 @@ module Google
       class ManagedZone
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_logging_config, as: 'cloudLoggingConfig', class: Google::Apis::DnsV1::ManagedZoneCloudLoggingConfig, decorator: Google::Apis::DnsV1::ManagedZoneCloudLoggingConfig::Representation
+      
           property :creation_time, as: 'creationTime'
           property :description, as: 'description'
           property :dns_name, as: 'dnsName'
@@ -332,6 +340,14 @@ module Google
           property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DnsV1::ManagedZoneServiceDirectoryConfig, decorator: Google::Apis::DnsV1::ManagedZoneServiceDirectoryConfig::Representation
       
           property :visibility, as: 'visibility'
+        end
+      end
+      
+      class ManagedZoneCloudLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_logging, as: 'enableLogging'
+          property :kind, as: 'kind'
         end
       end
       
