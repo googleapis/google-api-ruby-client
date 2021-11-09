@@ -215,13 +215,6 @@ module Google
         # @return [String]
         attr_accessor :expected_action
       
-        # Optional. Optional unique stable hashed user identifier for the request. The
-        # identifier should ideally be hashed using sha256 with stable secret.
-        # Corresponds to the JSON property `hashedAccountId`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :hashed_account_id
-      
         # Optional. The site key that was used to invoke reCAPTCHA on your site and
         # generate the token.
         # Corresponds to the JSON property `siteKey`
@@ -253,7 +246,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expected_action = args[:expected_action] if args.key?(:expected_action)
-          @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
           @site_key = args[:site_key] if args.key?(:site_key)
           @token = args[:token] if args.key?(:token)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
