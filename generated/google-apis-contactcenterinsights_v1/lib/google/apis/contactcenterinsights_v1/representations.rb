@@ -671,6 +671,8 @@ module Google
       
           hash :custom_highlighter_matches, as: 'customHighlighterMatches'
           hash :issue_matches, as: 'issueMatches'
+          hash :issue_matches_stats, as: 'issueMatchesStats', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats::Representation
+      
           hash :smart_highlighter_matches, as: 'smartHighlighterMatches'
         end
       end
@@ -1090,6 +1092,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :issue, as: 'issue'
           property :labeled_conversations_count, :numeric_string => true, as: 'labeledConversationsCount'
         end
@@ -1445,6 +1448,7 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
           property :issue, as: 'issue'
           property :labeled_conversations_count, :numeric_string => true, as: 'labeledConversationsCount'
         end
