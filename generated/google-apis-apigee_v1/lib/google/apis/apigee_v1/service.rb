@@ -1767,7 +1767,8 @@ module Google
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollector] google_cloud_apigee_v1_data_collector_object
         # @param [String] data_collector_id
         #   ID of the data collector. Overrides any ID in the data collector resource.
-        #   Must begin with `dc_`.
+        #   Must be a string beginning with `dc_` that contains only letters, numbers, and
+        #   underscores.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
