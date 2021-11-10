@@ -6227,6 +6227,7 @@ module Google
           property :security_settings, as: 'securitySettings', class: Google::Apis::ComputeBeta::SecuritySettings, decorator: Google::Apis::ComputeBeta::SecuritySettings::Representation
       
           property :self_link, as: 'selfLink'
+          collection :service_bindings, as: 'serviceBindings'
           property :session_affinity, as: 'sessionAffinity'
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeBeta::Subsetting, decorator: Google::Apis::ComputeBeta::Subsetting::Representation
       
@@ -9743,6 +9744,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :locations, as: 'locations', class: Google::Apis::ComputeBeta::LocationPolicyLocation, decorator: Google::Apis::ComputeBeta::LocationPolicyLocation::Representation
       
+          property :target_shape, as: 'targetShape'
         end
       end
       
@@ -11426,7 +11428,6 @@ module Google
           collection :bindings, as: 'bindings', class: Google::Apis::ComputeBeta::Binding, decorator: Google::Apis::ComputeBeta::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::Rule, decorator: Google::Apis::ComputeBeta::Rule::Representation
       
           property :version, as: 'version'
@@ -15099,6 +15100,7 @@ module Google
       class ValidateUrlMapsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :load_balancing_schemes, as: 'loadBalancingSchemes'
           property :resource, as: 'resource', class: Google::Apis::ComputeBeta::UrlMap, decorator: Google::Apis::ComputeBeta::UrlMap::Representation
       
         end
