@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecommenderV1beta1InsightTypeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommenderV1beta1ListInsightsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +131,18 @@ module Google
       end
       
       class GoogleCloudRecommenderV1beta1RecommendationStateInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecommenderV1beta1RecommenderConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecommenderV1beta1RecommenderGenerationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -194,6 +218,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state'
           hash :state_metadata, as: 'stateMetadata'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1InsightTypeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :insight_type_generation_config, as: 'insightTypeGenerationConfig', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig::Representation
+      
+          property :name, as: 'name'
+          property :revision_id, as: 'revisionId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :params, as: 'params'
         end
       end
       
@@ -317,6 +362,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :state, as: 'state'
           hash :state_metadata, as: 'stateMetadata'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1RecommenderConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :recommender_generation_config, as: 'recommenderGenerationConfig', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderGenerationConfig, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderGenerationConfig::Representation
+      
+          property :revision_id, as: 'revisionId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1RecommenderGenerationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :params, as: 'params'
         end
       end
       
