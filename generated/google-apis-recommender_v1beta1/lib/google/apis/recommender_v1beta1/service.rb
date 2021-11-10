@@ -719,6 +719,82 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an InsightTypeConfig change. This will create a new revision of the
+        # config.
+        # @param [String] name
+        #   Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]
+        #   /insightTypes/[INSIGHT_TYPE_ID]/config
+        # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig] google_cloud_recommender_v1beta1_insight_type_config_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [Boolean] validate_only
+        #   If true, validate the request and preview the change, but do not actually
+        #   update it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def config_organization_location_insight_type(name, google_cloud_recommender_v1beta1_insight_type_config_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig::Representation
+          command.request_object = google_cloud_recommender_v1beta1_insight_type_config_object
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the requested InsightTypeConfig. There is only one instance of the config
+        # for each InsightType.
+        # @param [String] name
+        #   Required. Name of the InsightTypeConfig to get. Acceptable formats: * `
+        #   projects/[PROJECT_NUMBER]/locations/global/recommenders/[INSIGHT_TYPE_ID]/
+        #   config` * `projects/[PROJECT_ID]/locations/global/recommenders/[
+        #   INSIGHT_TYPE_ID]/config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_insight_type_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the requested insight. Requires the recommender.*.get IAM permission for
         # the specified insight type.
         # @param [String] name
@@ -841,6 +917,81 @@ module Google
           command.request_object = google_cloud_recommender_v1beta1_mark_insight_accepted_request_object
           command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Insight::Representation
           command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Insight
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Recommender Config. This will create a new revision of the config.
+        # @param [String] name
+        #   Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]/config
+        # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig] google_cloud_recommender_v1beta1_recommender_config_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [Boolean] validate_only
+        #   If true, validate the request and preview the change, but do not actually
+        #   update it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def config_organization_location_recommender(name, google_cloud_recommender_v1beta1_recommender_config_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig::Representation
+          command.request_object = google_cloud_recommender_v1beta1_recommender_config_object
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the requested Recommender Config. There is only one instance of the
+        # config for each Recommender.
+        # @param [String] name
+        #   Required. Name of the Recommendation Config to get. Acceptable formats: * `
+        #   projects/[PROJECT_NUMBER]/locations/global/recommenders/[RECOMMENDER_ID]/
+        #   config` * `projects/[PROJECT_ID]/locations/global/recommenders/[RECOMMENDER_ID]
+        #   /config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_recommender_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1054,6 +1205,82 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the requested InsightTypeConfig. There is only one instance of the config
+        # for each InsightType.
+        # @param [String] name
+        #   Required. Name of the InsightTypeConfig to get. Acceptable formats: * `
+        #   projects/[PROJECT_NUMBER]/locations/global/recommenders/[INSIGHT_TYPE_ID]/
+        #   config` * `projects/[PROJECT_ID]/locations/global/recommenders/[
+        #   INSIGHT_TYPE_ID]/config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_insight_type_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an InsightTypeConfig change. This will create a new revision of the
+        # config.
+        # @param [String] name
+        #   Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]
+        #   /insightTypes/[INSIGHT_TYPE_ID]/config
+        # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig] google_cloud_recommender_v1beta1_insight_type_config_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [Boolean] validate_only
+        #   If true, validate the request and preview the change, but do not actually
+        #   update it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_insight_type_config(name, google_cloud_recommender_v1beta1_insight_type_config_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig::Representation
+          command.request_object = google_cloud_recommender_v1beta1_insight_type_config_object
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the requested insight. Requires the recommender.*.get IAM permission for
         # the specified insight type.
         # @param [String] name
@@ -1177,6 +1404,81 @@ module Google
           command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Insight::Representation
           command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Insight
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the requested Recommender Config. There is only one instance of the
+        # config for each Recommender.
+        # @param [String] name
+        #   Required. Name of the Recommendation Config to get. Acceptable formats: * `
+        #   projects/[PROJECT_NUMBER]/locations/global/recommenders/[RECOMMENDER_ID]/
+        #   config` * `projects/[PROJECT_ID]/locations/global/recommenders/[RECOMMENDER_ID]
+        #   /config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_recommender_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Recommender Config. This will create a new revision of the config.
+        # @param [String] name
+        #   Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/
+        #   recommenders/[RECOMMENDER_ID]/config
+        # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig] google_cloud_recommender_v1beta1_recommender_config_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [Boolean] validate_only
+        #   If true, validate the request and preview the change, but do not actually
+        #   update it.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_recommender_config(name, google_cloud_recommender_v1beta1_recommender_config_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig::Representation
+          command.request_object = google_cloud_recommender_v1beta1_recommender_config_object
+          command.response_representation = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig::Representation
+          command.response_class = Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

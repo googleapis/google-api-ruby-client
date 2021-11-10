@@ -213,6 +213,93 @@ module Google
         end
       end
       
+      # Configuration for an InsightType.
+      class GoogleCloudRecommenderV1beta1InsightTypeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Allows clients to store small amounts of arbitrary data. Annotations must
+        # follow the Kubernetes syntax. The total size of all keys and values combined
+        # is limited to 256k. Key can have 2 segments: prefix (optional) and name (
+        # required), separated by a slash (/). Prefix must be a DNS subdomain. Name must
+        # be 63 characters or less, begin and end with alphanumerics, with dashes (-),
+        # underscores (_), dots (.), and alphanumerics between.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # A user-settable field to provide a human-readable name to be used in user
+        # interfaces.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Fingerprint of the InsightTypeConfig. Provides optimistic locking when
+        # updating.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # A configuration to customize the generation of insights. Eg, customizing the
+        # lookback period considered when generating a insight.
+        # Corresponds to the JSON property `insightTypeGenerationConfig`
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig]
+        attr_accessor :insight_type_generation_config
+      
+        # Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]
+        # /insightTypes/[INSIGHT_TYPE_ID]/config
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Immutable. The revision ID of the config. A new revision is
+        # committed whenever the config is changed in any way. The format is an 8-
+        # character hexadecimal string.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # Last time when the config was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @insight_type_generation_config = args[:insight_type_generation_config] if args.key?(:insight_type_generation_config)
+          @name = args[:name] if args.key?(:name)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A configuration to customize the generation of insights. Eg, customizing the
+      # lookback period considered when generating a insight.
+      class GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Parameters for this InsightTypeGenerationConfig. These configs can be used by
+        # or are applied to all subtypes.
+        # Corresponds to the JSON property `params`
+        # @return [Hash<String,Object>]
+        attr_accessor :params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @params = args[:params] if args.key?(:params)
+        end
+      end
+      
       # Response to the `ListInsights` method.
       class GoogleCloudRecommenderV1beta1ListInsightsResponse
         include Google::Apis::Core::Hashable
@@ -661,6 +748,93 @@ module Google
         def update!(**args)
           @state = args[:state] if args.key?(:state)
           @state_metadata = args[:state_metadata] if args.key?(:state_metadata)
+        end
+      end
+      
+      # Configuration for a Recommender.
+      class GoogleCloudRecommenderV1beta1RecommenderConfig
+        include Google::Apis::Core::Hashable
+      
+        # Allows clients to store small amounts of arbitrary data. Annotations must
+        # follow the Kubernetes syntax. The total size of all keys and values combined
+        # is limited to 256k. Key can have 2 segments: prefix (optional) and name (
+        # required), separated by a slash (/). Prefix must be a DNS subdomain. Name must
+        # be 63 characters or less, begin and end with alphanumerics, with dashes (-),
+        # underscores (_), dots (.), and alphanumerics between.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # A user-settable field to provide a human-readable name to be used in user
+        # interfaces.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Fingerprint of the RecommenderConfig. Provides optimistic locking when
+        # updating.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/
+        # recommenders/[RECOMMENDER_ID]/config
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A Configuration to customize the generation of recommendations. Eg,
+        # customizing the lookback period considered when generating a recommendation.
+        # Corresponds to the JSON property `recommenderGenerationConfig`
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommenderGenerationConfig]
+        attr_accessor :recommender_generation_config
+      
+        # Output only. Immutable. The revision ID of the config. A new revision is
+        # committed whenever the config is changed in any way. The format is an 8-
+        # character hexadecimal string.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        # Last time when the config was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @recommender_generation_config = args[:recommender_generation_config] if args.key?(:recommender_generation_config)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A Configuration to customize the generation of recommendations. Eg,
+      # customizing the lookback period considered when generating a recommendation.
+      class GoogleCloudRecommenderV1beta1RecommenderGenerationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Parameters for this RecommenderGenerationConfig. These configs can be used by
+        # or are applied to all subtypes.
+        # Corresponds to the JSON property `params`
+        # @return [Hash<String,Object>]
+        attr_accessor :params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @params = args[:params] if args.key?(:params)
         end
       end
       
