@@ -22,7 +22,8 @@ module Google
     module DatapipelinesV1
       # Data pipelines API
       #
-      # 
+      # Data Pipelines provides an interface for creating, updating, and managing
+      #  recurring Data Analytics jobs.
       #
       # @example
       #    require 'google/apis/datapipelines_v1'
@@ -30,7 +31,7 @@ module Google
       #    Datapipelines = Google::Apis::DatapipelinesV1 # Alias the module
       #    service = Datapipelines::DatapipelinesService.new
       #
-      # @see https://developers.google.com/apis-explorer/#search/dataflow
+      # @see https://cloud.google.com/dataflow/docs/guides/data-pipelines
       class DatapipelinesService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

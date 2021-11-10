@@ -21,9 +21,10 @@ module Google
   module Apis
     # Data pipelines API
     #
-    # 
+    # Data Pipelines provides an interface for creating, updating, and managing
+    # recurring Data Analytics jobs.
     #
-    # @see https://developers.google.com/apis-explorer/#search/dataflow
+    # @see https://cloud.google.com/dataflow/docs/guides/data-pipelines
     module DatapipelinesV1
       # Version of the Data pipelines API this client connects to.
       # This is NOT the gem version.

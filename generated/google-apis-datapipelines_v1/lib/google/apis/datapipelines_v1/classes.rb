@@ -517,6 +517,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Immutable. The sources of the pipeline (for example, Dataplex). The keys and
+        # values are set by the corresponding sources during pipeline creation.
+        # Corresponds to the JSON property `pipelineSources`
+        # @return [Hash<String,String>]
+        attr_accessor :pipeline_sources
+      
         # Details of the schedule the pipeline runs on.
         # Corresponds to the JSON property `scheduleInfo`
         # @return [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ScheduleSpec]
@@ -558,6 +564,7 @@ module Google
           @job_count = args[:job_count] if args.key?(:job_count)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @name = args[:name] if args.key?(:name)
+          @pipeline_sources = args[:pipeline_sources] if args.key?(:pipeline_sources)
           @schedule_info = args[:schedule_info] if args.key?(:schedule_info)
           @scheduler_service_account_email = args[:scheduler_service_account_email] if args.key?(:scheduler_service_account_email)
           @state = args[:state] if args.key?(:state)
