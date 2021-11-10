@@ -287,8 +287,8 @@ module Google
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] query
-        #   Search string in the format given at http://support.google.com/chromeos/a/bin/
-        #   answer.py?answer=1698333
+        #   Search string in the format given at https://developers.google.com/admin-sdk/
+        #   directory/v1/list-query-operators
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Must be used with
         #   the `orderBy` parameter.
