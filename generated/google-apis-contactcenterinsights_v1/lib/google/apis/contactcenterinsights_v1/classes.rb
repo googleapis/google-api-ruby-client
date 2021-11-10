@@ -307,6 +307,13 @@ module Google
         # @return [Hash<String,Fixnum>]
         attr_accessor :issue_matches
       
+        # A map associating each issue resource name with its respective number of
+        # matches in the set of conversations. Key has the format: `projects//locations//
+        # issueModels//issues/`
+        # Corresponds to the JSON property `issueMatchesStats`
+        # @return [Hash<String,Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>]
+        attr_accessor :issue_matches_stats
+      
         # A map associating each smart highlighter display name with its respective
         # number of matches in the set of conversations.
         # Corresponds to the JSON property `smartHighlighterMatches`
@@ -325,6 +332,7 @@ module Google
           @conversation_count_time_series = args[:conversation_count_time_series] if args.key?(:conversation_count_time_series)
           @custom_highlighter_matches = args[:custom_highlighter_matches] if args.key?(:custom_highlighter_matches)
           @issue_matches = args[:issue_matches] if args.key?(:issue_matches)
+          @issue_matches_stats = args[:issue_matches_stats] if args.key?(:issue_matches_stats)
           @smart_highlighter_matches = args[:smart_highlighter_matches] if args.key?(:smart_highlighter_matches)
         end
       end
@@ -1715,6 +1723,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats
         include Google::Apis::Core::Hashable
       
+        # Display name of the issue.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Issue resource. Format: projects/`project`/locations/`location`/issueModels/`
         # issue_model`/issues/`issue`
         # Corresponds to the JSON property `issue`
@@ -1732,6 +1745,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @issue = args[:issue] if args.key?(:issue)
           @labeled_conversations_count = args[:labeled_conversations_count] if args.key?(:labeled_conversations_count)
         end
@@ -2871,6 +2885,11 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats
         include Google::Apis::Core::Hashable
       
+        # Display name of the issue.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Issue resource. Format: projects/`project`/locations/`location`/issueModels/`
         # issue_model`/issues/`issue`
         # Corresponds to the JSON property `issue`
@@ -2888,6 +2907,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @issue = args[:issue] if args.key?(:issue)
           @labeled_conversations_count = args[:labeled_conversations_count] if args.key?(:labeled_conversations_count)
         end
