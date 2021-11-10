@@ -84,6 +84,21 @@ module Google
         # @return [Google::Apis::CloudassetV1::IamPolicyAnalysisOutputConfig]
         attr_accessor :output_config
       
+        # Optional. The name of a saved query, which must be in the format of: *
+        # projects/project_number/savedQueries/saved_query_id * folders/folder_number/
+        # savedQueries/saved_query_id * organizations/organization_number/savedQueries/
+        # saved_query_id If both `analysis_query` and `saved_analysis_query` are
+        # provided, they will be merged together with the `saved_analysis_query` as base
+        # and the `analysis_query` as overrides. For more details of the merge behavior,
+        # please refer to the [MergeFrom](https://developers.google.com/protocol-buffers/
+        # docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details) doc.
+        # Note that you cannot override primitive fields with default value, such as 0
+        # or empty string, etc., because we use proto3, which doesn't support field
+        # presence yet.
+        # Corresponds to the JSON property `savedAnalysisQuery`
+        # @return [String]
+        attr_accessor :saved_analysis_query
+      
         def initialize(**args)
            update!(**args)
         end
@@ -92,6 +107,7 @@ module Google
         def update!(**args)
           @analysis_query = args[:analysis_query] if args.key?(:analysis_query)
           @output_config = args[:output_config] if args.key?(:output_config)
+          @saved_analysis_query = args[:saved_analysis_query] if args.key?(:saved_analysis_query)
         end
       end
       
@@ -3186,6 +3202,32 @@ module Google
         end
       end
       
+      # Response of listing saved queries.
+      class ListSavedQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of savedQueries.
+        # Corresponds to the JSON property `savedQueries`
+        # @return [Array<Google::Apis::CloudassetV1::SavedQuery>]
+        attr_accessor :saved_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @saved_queries = args[:saved_queries] if args.key?(:saved_queries)
+        end
+      end
+      
       # A message to group the analysis information.
       class MoveAnalysis
         include Google::Apis::Core::Hashable
@@ -3662,6 +3704,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # The query content.
+      class QueryContent
+        include Google::Apis::Core::Hashable
+      
+        # ## IAM policy analysis query message.
+        # Corresponds to the JSON property `iamPolicyAnalysisQuery`
+        # @return [Google::Apis::CloudassetV1::IamPolicyAnalysisQuery]
+        attr_accessor :iam_policy_analysis_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_policy_analysis_query = args[:iam_policy_analysis_query] if args.key?(:iam_policy_analysis_query)
         end
       end
       
@@ -4147,6 +4208,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+        end
+      end
+      
+      # A saved query which can be shared with others or used later.
+      class SavedQuery
+        include Google::Apis::Core::Hashable
+      
+        # The query content.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::CloudassetV1::QueryContent]
+        attr_accessor :content
+      
+        # Output only. The create time of this saved query.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The account's email address who has created this saved query.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # The description of this saved query. This value should be fewer than 255
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Labels applied on the resource. This value should not contain more than 10
+        # entries. The key and value of each entry must be non-empty and fewer than 64
+        # characters.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The last update time of this saved query.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # Output only. The account's email address who has updated this saved query most
+        # recently.
+        # Corresponds to the JSON property `lastUpdater`
+        # @return [String]
+        attr_accessor :last_updater
+      
+        # The resource name of the saved query. The format must be: * projects/
+        # project_number/savedQueries/saved_query_id * folders/folder_number/
+        # savedQueries/saved_query_id * organizations/organization_number/savedQueries/
+        # saved_query_id
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @last_updater = args[:last_updater] if args.key?(:last_updater)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

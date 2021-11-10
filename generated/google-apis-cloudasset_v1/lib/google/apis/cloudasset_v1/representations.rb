@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSavedQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MoveAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -514,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RelatedAsset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +569,12 @@ module Google
       end
       
       class ResourceSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SavedQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -668,6 +686,7 @@ module Google
       
           property :output_config, as: 'outputConfig', class: Google::Apis::CloudassetV1::IamPolicyAnalysisOutputConfig, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisOutputConfig::Representation
       
+          property :saved_analysis_query, as: 'savedAnalysisQuery'
         end
       end
       
@@ -1383,6 +1402,15 @@ module Google
         end
       end
       
+      class ListSavedQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :saved_queries, as: 'savedQueries', class: Google::Apis::CloudassetV1::SavedQuery, decorator: Google::Apis::CloudassetV1::SavedQuery::Representation
+      
+        end
+      end
+      
       class MoveAnalysis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1492,6 +1520,14 @@ module Google
         end
       end
       
+      class QueryContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_policy_analysis_query, as: 'iamPolicyAnalysisQuery', class: Google::Apis::CloudassetV1::IamPolicyAnalysisQuery, decorator: Google::Apis::CloudassetV1::IamPolicyAnalysisQuery::Representation
+      
+        end
+      end
+      
       class RelatedAsset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1583,6 +1619,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :full_resource_name, as: 'fullResourceName'
+        end
+      end
+      
+      class SavedQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content', class: Google::Apis::CloudassetV1::QueryContent, decorator: Google::Apis::CloudassetV1::QueryContent::Representation
+      
+          property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :last_update_time, as: 'lastUpdateTime'
+          property :last_updater, as: 'lastUpdater'
+          property :name, as: 'name'
         end
       end
       
