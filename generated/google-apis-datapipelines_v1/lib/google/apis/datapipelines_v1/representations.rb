@@ -243,6 +243,7 @@ module Google
           property :job_count, as: 'jobCount'
           property :last_update_time, as: 'lastUpdateTime'
           property :name, as: 'name'
+          hash :pipeline_sources, as: 'pipelineSources'
           property :schedule_info, as: 'scheduleInfo', class: Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ScheduleSpec, decorator: Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1ScheduleSpec::Representation
       
           property :scheduler_service_account_email, as: 'schedulerServiceAccountEmail'
