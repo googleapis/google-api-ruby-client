@@ -128,6 +128,31 @@ module Google
         end
       end
       
+      # CidrBlock contains an optional name and one CIDR block.
+      class CidrBlock
+        include Google::Apis::Core::Hashable
+      
+        # cidr_block must be specified in CIDR notation.
+        # Corresponds to the JSON property `cidrBlock`
+        # @return [String]
+        attr_accessor :cidr_block
+      
+        # display_name is a field for users to identify CIDR blocks.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cidr_block = args[:cidr_block] if args.key?(:cidr_block)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # The configuration of Cloud SQL instance that is used by the Apache Airflow
       # software. Supported for Cloud Composer environments in versions composer-1.*.*-
       # airflow-*.*.*.
@@ -341,13 +366,21 @@ module Google
         attr_accessor :gke_cluster
       
         # The configuration settings for Cloud Composer maintenance window. The
-        # following example: ` "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-
-        # 01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" ` would define a
+        # following example: ``` ` "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-
+        # 01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" ` ``` would define a
         # maintenance window between 01 and 07 hours UTC during each Tuesday and
         # Wednesday.
         # Corresponds to the JSON property `maintenanceWindow`
         # @return [Google::Apis::ComposerV1beta1::MaintenanceWindow]
         attr_accessor :maintenance_window
+      
+        # Configuration options for the master authorized networks feature. Enabled
+        # master authorized networks will disallow all external traffic to access
+        # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+        # Google Compute Engine Public IPs and Google Prod IPs.
+        # Corresponds to the JSON property `masterAuthorizedNetworksConfig`
+        # @return [Google::Apis::ComposerV1beta1::MasterAuthorizedNetworksConfig]
+        attr_accessor :master_authorized_networks_config
       
         # The configuration information for the Kubernetes Engine nodes running the
         # Apache Airflow software.
@@ -406,6 +439,7 @@ module Google
           @environment_size = args[:environment_size] if args.key?(:environment_size)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
+          @master_authorized_networks_config = args[:master_authorized_networks_config] if args.key?(:master_authorized_networks_config)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
@@ -625,8 +659,8 @@ module Google
       end
       
       # The configuration settings for Cloud Composer maintenance window. The
-      # following example: ` "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-
-      # 01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" ` would define a
+      # following example: ``` ` "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-
+      # 01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" ` ``` would define a
       # maintenance window between 01 and 07 hours UTC during each Tuesday and
       # Wednesday.
       class MaintenanceWindow
@@ -661,6 +695,36 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @recurrence = args[:recurrence] if args.key?(:recurrence)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Configuration options for the master authorized networks feature. Enabled
+      # master authorized networks will disallow all external traffic to access
+      # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
+      # Google Compute Engine Public IPs and Google Prod IPs.
+      class MasterAuthorizedNetworksConfig
+        include Google::Apis::Core::Hashable
+      
+        # cidr_blocks define up to 50 external networks that could access Kubernetes
+        # master through HTTPS.
+        # Corresponds to the JSON property `cidrBlocks`
+        # @return [Array<Google::Apis::ComposerV1beta1::CidrBlock>]
+        attr_accessor :cidr_blocks
+      
+        # Whether or not master authorized networks is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cidr_blocks = args[:cidr_blocks] if args.key?(:cidr_blocks)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
