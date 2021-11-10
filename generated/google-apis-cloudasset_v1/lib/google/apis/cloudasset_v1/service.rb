@@ -331,6 +331,206 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a saved query in a parent project/folder/organization.
+        # @param [String] parent
+        #   Required. The name of the project/folder/organization where this saved_query
+        #   should be created in. It can only be an organization number (such as "
+        #   organizations/123"), a folder number (such as "folders/123"), a project ID (
+        #   such as "projects/my-project-id")", or a project number (such as "projects/
+        #   12345").
+        # @param [Google::Apis::CloudassetV1::SavedQuery] saved_query_object
+        # @param [String] saved_query_id
+        #   Required. The ID to use for the saved query, which must be unique in the
+        #   specified parent. It will become the final component of the saved query's
+        #   resource name. This value should be 4-63 characters, and valid characters are /
+        #   a-z-/. Notice that this field is required in the saved query creation, and the
+        #   `name` field of the `saved_query` will be ignored.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_saved_query(parent, saved_query_object = nil, saved_query_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/savedQueries', options)
+          command.request_representation = Google::Apis::CloudassetV1::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::CloudassetV1::SavedQuery::Representation
+          command.response_class = Google::Apis::CloudassetV1::SavedQuery
+          command.params['parent'] = parent unless parent.nil?
+          command.query['savedQueryId'] = saved_query_id unless saved_query_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a saved query.
+        # @param [String] name
+        #   Required. The name of the saved query to delete. It must be in the format of: *
+        #   projects/project_number/savedQueries/saved_query_id * folders/folder_number/
+        #   savedQueries/saved_query_id * organizations/organization_number/savedQueries/
+        #   saved_query_id
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudassetV1::Empty::Representation
+          command.response_class = Google::Apis::CloudassetV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details about a saved query.
+        # @param [String] name
+        #   Required. The name of the saved query and it must be in the format of: *
+        #   projects/project_number/savedQueries/saved_query_id * folders/folder_number/
+        #   savedQueries/saved_query_id * organizations/organization_number/savedQueries/
+        #   saved_query_id
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_saved_query(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudassetV1::SavedQuery::Representation
+          command.response_class = Google::Apis::CloudassetV1::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all saved queries in a parent project/folder/organization.
+        # @param [String] parent
+        #   Required. The parent project/folder/organization whose savedQueries are to be
+        #   listed. It can only be using project/folder/organization number (such as "
+        #   folders/12345")", or a project ID (such as "projects/my-project-id").
+        # @param [String] filter
+        #   Optional. The expression to filter resources. The expression is a list of zero
+        #   or more restrictions combined via logical operators `AND` and `OR`. When `AND`
+        #   and `OR` are both used in the expression, parentheses must be appropriately
+        #   used to group the combinations. The expression may also contain regular
+        #   expressions. See https://google.aip.dev/160 for more information on the
+        #   grammar.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of saved queries to return per page. The service
+        #   may return fewer than this value. If unspecified, at most 50 will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListSavedQueries` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListSavedQueries` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::ListSavedQueriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::ListSavedQueriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_saved_queries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/savedQueries', options)
+          command.response_representation = Google::Apis::CloudassetV1::ListSavedQueriesResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::ListSavedQueriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a saved query.
+        # @param [String] name
+        #   The resource name of the saved query. The format must be: * projects/
+        #   project_number/savedQueries/saved_query_id * folders/folder_number/
+        #   savedQueries/saved_query_id * organizations/organization_number/savedQueries/
+        #   saved_query_id
+        # @param [Google::Apis::CloudassetV1::SavedQuery] saved_query_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::SavedQuery] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::SavedQuery]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_saved_query(name, saved_query_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudassetV1::SavedQuery::Representation
+          command.request_object = saved_query_object
+          command.response_representation = Google::Apis::CloudassetV1::SavedQuery::Representation
+          command.response_class = Google::Apis::CloudassetV1::SavedQuery
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Analyzes IAM policies to answer which identities have what accesses on which
         # resources.
         # @param [String] scope
@@ -421,6 +621,18 @@ module Google
         #   you will get a response with partial result. Otherwise, your query's execution
         #   will continue until the RPC deadline. If it's not finished until then, you
         #   will get a DEADLINE_EXCEEDED error. Default is empty.
+        # @param [String] saved_analysis_query
+        #   Optional. The name of a saved query, which must be in the format of: *
+        #   projects/project_number/savedQueries/saved_query_id * folders/folder_number/
+        #   savedQueries/saved_query_id * organizations/organization_number/savedQueries/
+        #   saved_query_id If both `analysis_query` and `saved_analysis_query` are
+        #   provided, they will be merged together with the `saved_analysis_query` as base
+        #   and the `analysis_query` as overrides. For more details of the merge behavior,
+        #   please refer to the [MergeFrom](https://developers.google.com/protocol-buffers/
+        #   docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details) page.
+        #   Note that you cannot override primitive fields with default value, such as 0
+        #   or empty string, etc., because we use proto3, which doesn't support field
+        #   presence yet.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -438,7 +650,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def analyze_iam_policy(scope, analysis_query_access_selector_permissions: nil, analysis_query_access_selector_roles: nil, analysis_query_condition_context_access_time: nil, analysis_query_identity_selector_identity: nil, analysis_query_options_analyze_service_account_impersonation: nil, analysis_query_options_expand_groups: nil, analysis_query_options_expand_resources: nil, analysis_query_options_expand_roles: nil, analysis_query_options_output_group_edges: nil, analysis_query_options_output_resource_edges: nil, analysis_query_resource_selector_full_resource_name: nil, execution_timeout: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def analyze_iam_policy(scope, analysis_query_access_selector_permissions: nil, analysis_query_access_selector_roles: nil, analysis_query_condition_context_access_time: nil, analysis_query_identity_selector_identity: nil, analysis_query_options_analyze_service_account_impersonation: nil, analysis_query_options_expand_groups: nil, analysis_query_options_expand_resources: nil, analysis_query_options_expand_roles: nil, analysis_query_options_output_group_edges: nil, analysis_query_options_output_resource_edges: nil, analysis_query_resource_selector_full_resource_name: nil, execution_timeout: nil, saved_analysis_query: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+scope}:analyzeIamPolicy', options)
           command.response_representation = Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse::Representation
           command.response_class = Google::Apis::CloudassetV1::AnalyzeIamPolicyResponse
@@ -455,6 +667,7 @@ module Google
           command.query['analysisQuery.options.outputResourceEdges'] = analysis_query_options_output_resource_edges unless analysis_query_options_output_resource_edges.nil?
           command.query['analysisQuery.resourceSelector.fullResourceName'] = analysis_query_resource_selector_full_resource_name unless analysis_query_resource_selector_full_resource_name.nil?
           command.query['executionTimeout'] = execution_timeout unless execution_timeout.nil?
+          command.query['savedAnalysisQuery'] = saved_analysis_query unless saved_analysis_query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
