@@ -303,10 +303,10 @@ module Google
         # BatchGetPhotosResponse.results. See GetPhoto for specific failures that can
         # occur per photo.
         # @param [String] language_code
-        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
-        #   see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
-        #   language_code is unspecified, the user's language preference for Google
-        #   services is used.
+        #   Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        #   information, see http://www.unicode.org/reports/tr35/#
+        #   Unicode_locale_identifier. If language_code is unspecified, the user's
+        #   language preference for Google services is used.
         # @param [Array<String>, String] photo_ids
         #   Required. IDs of the Photos. For HTTP GET requests, the URL query parameter
         #   should be `photoIds=&photoIds=&...`.
