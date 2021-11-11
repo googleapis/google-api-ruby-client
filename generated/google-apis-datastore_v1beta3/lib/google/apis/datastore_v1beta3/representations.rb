@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDatastoreAdminV1EntityFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -439,6 +445,14 @@ module Google
           property :operation_type, as: 'operationType'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_state, as: 'migrationState'
+          property :migration_step, as: 'migrationStep'
         end
       end
       

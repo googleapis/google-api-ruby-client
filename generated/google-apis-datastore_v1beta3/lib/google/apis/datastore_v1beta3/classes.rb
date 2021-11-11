@@ -353,6 +353,37 @@ module Google
         end
       end
       
+      # Metadata for Datastore to Firestore migration operations. The
+      # DatastoreFirestoreMigration operation is not started by the end-user via an
+      # explicit "creation" method. This is an intentional deviation from the LRO
+      # design pattern. This singleton resource can be accessed at: "projects/`
+      # project_id`/datastore-firestore-migration"
+      class GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The current state of migration from Cloud Datastore to Cloud Firestore in
+        # Datastore mode.
+        # Corresponds to the JSON property `migrationState`
+        # @return [String]
+        attr_accessor :migration_state
+      
+        # The current step of migration from Cloud Datastore to Cloud Firestore in
+        # Datastore mode.
+        # Corresponds to the JSON property `migrationStep`
+        # @return [String]
+        attr_accessor :migration_step
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migration_state = args[:migration_state] if args.key?(:migration_state)
+          @migration_step = args[:migration_step] if args.key?(:migration_step)
+        end
+      end
+      
       # Identifies a subset of entities in a project. This is specified as
       # combinations of kinds and namespaces (either or both of which may be all, as
       # described in the following examples). Example usage: Entire project: kinds=[],
