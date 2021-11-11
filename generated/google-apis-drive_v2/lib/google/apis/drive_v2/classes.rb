@@ -2285,6 +2285,13 @@ module Google
         class Capabilities
           include Google::Apis::Core::Hashable
         
+          # Whether the current user is the pending owner of the file. Not populated for
+          # shared drive files.
+          # Corresponds to the JSON property `canAcceptOwnership`
+          # @return [Boolean]
+          attr_accessor :can_accept_ownership
+          alias_method :can_accept_ownership?, :can_accept_ownership
+        
           # Whether the current user can add children to this folder. This is always false
           # when the item is not a folder.
           # Corresponds to the JSON property `canAddChildren`
@@ -2529,6 +2536,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @can_accept_ownership = args[:can_accept_ownership] if args.key?(:can_accept_ownership)
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
             @can_add_folder_from_another_drive = args[:can_add_folder_from_another_drive] if args.key?(:can_add_folder_from_another_drive)
             @can_add_my_drive_parent = args[:can_add_my_drive_parent] if args.key?(:can_add_my_drive_parent)
@@ -3186,6 +3194,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Whether the account associated with this permission is a pending owner. Only
+        # populated for user type permissions for files that are not in a shared drive.
+        # Corresponds to the JSON property `pendingOwner`
+        # @return [Boolean]
+        attr_accessor :pending_owner
+        alias_method :pending_owner?, :pending_owner
+      
         # Details of whether the permissions on this shared drive item are inherited or
         # directly on this item. This is an output-only field which is present only for
         # shared drive items.
@@ -3264,6 +3279,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @pending_owner = args[:pending_owner] if args.key?(:pending_owner)
           @permission_details = args[:permission_details] if args.key?(:permission_details)
           @photo_link = args[:photo_link] if args.key?(:photo_link)
           @role = args[:role] if args.key?(:role)
