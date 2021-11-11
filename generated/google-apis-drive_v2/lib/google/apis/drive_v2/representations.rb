@@ -897,6 +897,7 @@ module Google
         class Capabilities
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :can_accept_ownership, as: 'canAcceptOwnership'
             property :can_add_children, as: 'canAddChildren'
             property :can_add_folder_from_another_drive, as: 'canAddFolderFromAnotherDrive'
             property :can_add_my_drive_parent, as: 'canAddMyDriveParent'
@@ -1085,6 +1086,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :pending_owner, as: 'pendingOwner'
           collection :permission_details, as: 'permissionDetails', class: Google::Apis::DriveV2::Permission::PermissionDetail, decorator: Google::Apis::DriveV2::Permission::PermissionDetail::Representation
       
           property :photo_link, as: 'photoLink'
