@@ -333,10 +333,18 @@ module Google
       class BuildOccurrence
         include Google::Apis::Core::Hashable
       
-        # In-toto Provenance representation as defined in spec.
+        # Deprecated. See InTotoStatement for the replacement. In-toto Provenance
+        # representation as defined in spec.
         # Corresponds to the JSON property `intotoProvenance`
         # @return [Google::Apis::ContaineranalysisV1::InTotoProvenance]
         attr_accessor :intoto_provenance
+      
+        # Spec defined at https://github.com/in-toto/attestation/tree/main/spec#
+        # statement The serialized InTotoStatement will be stored as Envelope.payload.
+        # Envelope.payloadType is always "application/vnd.in-toto+json".
+        # Corresponds to the JSON property `intotoStatement`
+        # @return [Google::Apis::ContaineranalysisV1::InTotoStatement]
+        attr_accessor :intoto_statement
       
         # Provenance of a build. Contains all information needed to verify the full
         # details about the build from source to completion.
@@ -363,6 +371,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @intoto_provenance = args[:intoto_provenance] if args.key?(:intoto_provenance)
+          @intoto_statement = args[:intoto_statement] if args.key?(:intoto_statement)
           @provenance = args[:provenance] if args.key?(:provenance)
           @provenance_bytes = args[:provenance_bytes] if args.key?(:provenance_bytes)
         end
@@ -460,141 +469,6 @@ module Google
           @source_provenance = args[:source_provenance] if args.key?(:source_provenance)
           @start_time = args[:start_time] if args.key?(:start_time)
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
-        end
-      end
-      
-      # A step in the build pipeline.
-      class BuildStep
-        include Google::Apis::Core::Hashable
-      
-        # A list of arguments that will be presented to the step when it is started. If
-        # the image used to run the step's container has an entrypoint, the `args` are
-        # used as arguments to that entrypoint. If the image does not define an
-        # entrypoint, the first element in args is used as the entrypoint, and the
-        # remainder will be used as arguments.
-        # Corresponds to the JSON property `args`
-        # @return [Array<String>]
-        attr_accessor :args
-      
-        # Working directory to use when running this step's container. If this value is
-        # a relative path, it is relative to the build's working directory. If this
-        # value is absolute, it may be outside the build's working directory, in which
-        # case the contents of the path may not be persisted across build step
-        # executions, unless a `volume` for that path is specified. If the build
-        # specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies
-        # an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
-        # Corresponds to the JSON property `dir`
-        # @return [String]
-        attr_accessor :dir
-      
-        # Entrypoint to be used instead of the build step image's default entrypoint. If
-        # unset, the image's default entrypoint is used.
-        # Corresponds to the JSON property `entrypoint`
-        # @return [String]
-        attr_accessor :entrypoint
-      
-        # A list of environment variable definitions to be used when running a step. The
-        # elements are of the form "KEY=VALUE" for the environment variable "KEY" being
-        # given the value "VALUE".
-        # Corresponds to the JSON property `env`
-        # @return [Array<String>]
-        attr_accessor :env
-      
-        # Unique identifier for this build step, used in `wait_for` to reference this
-        # build step as a dependency.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Required. The name of the container image that will run this particular build
-        # step. If the image is available in the host's Docker daemon's cache, it will
-        # be run directly. If not, the host will attempt to pull the image first, using
-        # the builder service account's credentials if necessary. The Docker daemon's
-        # cache will already have the latest versions of all of the officially supported
-        # build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://
-        # github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also
-        # have cached many of the layers for some popular images, like "ubuntu", "debian"
-        # , but they will be refreshed at the time you attempt to use them. If you built
-        # an image in a previous build step, it will be stored in the host's Docker
-        # daemon's cache and is available to use as the name for a later build step.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Start and end times for a build execution phase.
-        # Corresponds to the JSON property `pullTiming`
-        # @return [Google::Apis::ContaineranalysisV1::TimeSpan]
-        attr_accessor :pull_timing
-      
-        # A shell script to be executed in the step. When script is provided, the user
-        # cannot specify the entrypoint or args.
-        # Corresponds to the JSON property `script`
-        # @return [String]
-        attr_accessor :script
-      
-        # A list of environment variables which are encrypted using a Cloud Key
-        # Management Service crypto key. These values must be specified in the build's `
-        # Secret`.
-        # Corresponds to the JSON property `secretEnv`
-        # @return [Array<String>]
-        attr_accessor :secret_env
-      
-        # Output only. Status of the build step. At this time, build step status is only
-        # updated on build completion; step status is not updated in real-time as the
-        # build progresses.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # Time limit for executing this build step. If not defined, the step has no time
-        # limit and will be allowed to continue to run until either it completes or the
-        # build itself times out.
-        # Corresponds to the JSON property `timeout`
-        # @return [String]
-        attr_accessor :timeout
-      
-        # Start and end times for a build execution phase.
-        # Corresponds to the JSON property `timing`
-        # @return [Google::Apis::ContaineranalysisV1::TimeSpan]
-        attr_accessor :timing
-      
-        # List of volumes to mount into the build step. Each volume is created as an
-        # empty volume prior to execution of the build step. Upon completion of the
-        # build, volumes and their contents are discarded. Using a named volume in only
-        # one step is not valid as it is indicative of a build request with an incorrect
-        # configuration.
-        # Corresponds to the JSON property `volumes`
-        # @return [Array<Google::Apis::ContaineranalysisV1::Volume>]
-        attr_accessor :volumes
-      
-        # The ID(s) of the step(s) that this build step depends on. This build step will
-        # not start until all the build steps in `wait_for` have completed successfully.
-        # If `wait_for` is empty, this build step will start when all previous build
-        # steps in the `Build.Steps` list have completed successfully.
-        # Corresponds to the JSON property `waitFor`
-        # @return [Array<String>]
-        attr_accessor :wait_for
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @args = args[:args] if args.key?(:args)
-          @dir = args[:dir] if args.key?(:dir)
-          @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
-          @env = args[:env] if args.key?(:env)
-          @id = args[:id] if args.key?(:id)
-          @name = args[:name] if args.key?(:name)
-          @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
-          @script = args[:script] if args.key?(:script)
-          @secret_env = args[:secret_env] if args.key?(:secret_env)
-          @status = args[:status] if args.key?(:status)
-          @timeout = args[:timeout] if args.key?(:timeout)
-          @timing = args[:timing] if args.key?(:timing)
-          @volumes = args[:volumes] if args.key?(:volumes)
-          @wait_for = args[:wait_for] if args.key?(:wait_for)
         end
       end
       
@@ -992,6 +866,1241 @@ module Google
         end
       end
       
+      # ApprovalConfig describes configuration for manual approval of a build.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not approval is needed. If this is set on a build, it will become
+        # pending when created, and will need to be explicitly approved to start.
+        # Corresponds to the JSON property `approvalRequired`
+        # @return [Boolean]
+        attr_accessor :approval_required
+        alias_method :approval_required?, :approval_required
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_required = args[:approval_required] if args.key?(:approval_required)
+        end
+      end
+      
+      # ApprovalResult describes the decision and associated metadata of a manual
+      # approval of a build.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the approval decision was made.
+        # Corresponds to the JSON property `approvalTime`
+        # @return [String]
+        attr_accessor :approval_time
+      
+        # Output only. Email of the user that called the ApproveBuild API to approve or
+        # reject a build at the time that the API was called.
+        # Corresponds to the JSON property `approverAccount`
+        # @return [String]
+        attr_accessor :approver_account
+      
+        # Optional. An optional comment for this manual approval result.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Required. The decision of this manual approval.
+        # Corresponds to the JSON property `decision`
+        # @return [String]
+        attr_accessor :decision
+      
+        # Optional. An optional URL tied to this manual approval result. This field is
+        # essentially the same as comment, except that it will be rendered by the UI
+        # differently. An example use case is a link to an external job that approved
+        # this Build.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_time = args[:approval_time] if args.key?(:approval_time)
+          @approver_account = args[:approver_account] if args.key?(:approver_account)
+          @comment = args[:comment] if args.key?(:comment)
+          @decision = args[:decision] if args.key?(:decision)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Artifacts produced by a build that should be uploaded upon successful
+      # completion of all build steps.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts
+        include Google::Apis::Core::Hashable
+      
+        # A list of images to be pushed upon the successful completion of all build
+        # steps. The images will be pushed using the builder service account's
+        # credentials. The digests of the pushed images will be stored in the Build
+        # resource's results field. If any of the images fail to be pushed, the build is
+        # marked FAILURE.
+        # Corresponds to the JSON property `images`
+        # @return [Array<String>]
+        attr_accessor :images
+      
+        # Files in the workspace to upload to Cloud Storage upon successful completion
+        # of all build steps.
+        # Corresponds to the JSON property `objects`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects]
+        attr_accessor :objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @images = args[:images] if args.key?(:images)
+          @objects = args[:objects] if args.key?(:objects)
+        end
+      end
+      
+      # Files in the workspace to upload to Cloud Storage upon successful completion
+      # of all build steps.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage bucket and optional object path, in the form "gs://bucket/path/
+        # to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/
+        # storage/docs/bucket-naming#requirements)). Files in the workspace matching any
+        # path pattern will be uploaded to Cloud Storage with this location as a prefix.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Path globs used to match files in the build's workspace.
+        # Corresponds to the JSON property `paths`
+        # @return [Array<String>]
+        attr_accessor :paths
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `timing`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :timing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @paths = args[:paths] if args.key?(:paths)
+          @timing = args[:timing] if args.key?(:timing)
+        end
+      end
+      
+      # A build resource in the Cloud Build API. At a high level, a `Build` describes
+      # where to find source code, how to build it (for example, the builder image to
+      # run on the source), and where to store the built artifacts. Fields can include
+      # the following variables, which will be expanded when the build is created: - $
+      # PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number
+      # of the build. - $LOCATION: the location/region of the build. - $BUILD_ID: the
+      # autogenerated ID of the build. - $REPO_NAME: the source repository name
+      # specified by RepoSource. - $BRANCH_NAME: the branch name specified by
+      # RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID
+      # or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the
+      # specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $
+      # COMMIT_SHA.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Build
+        include Google::Apis::Core::Hashable
+      
+        # BuildApproval describes a build's approval configuration, state, and result.
+        # Corresponds to the JSON property `approval`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildApproval]
+        attr_accessor :approval
+      
+        # Artifacts produced by a build that should be uploaded upon successful
+        # completion of all build steps.
+        # Corresponds to the JSON property `artifacts`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts]
+        attr_accessor :artifacts
+      
+        # Secrets and secret environment variables.
+        # Corresponds to the JSON property `availableSecrets`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Secrets]
+        attr_accessor :available_secrets
+      
+        # Output only. The ID of the `BuildTrigger` that triggered this build, if it was
+        # triggered automatically.
+        # Corresponds to the JSON property `buildTriggerId`
+        # @return [String]
+        attr_accessor :build_trigger_id
+      
+        # Output only. Time at which the request to create the build was received.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A fatal problem encountered during the execution of the build.
+        # Corresponds to the JSON property `failureInfo`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo]
+        attr_accessor :failure_info
+      
+        # Output only. Time at which execution of the build was finished. The difference
+        # between finish_time and start_time is the duration of the build's execution.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
+      
+        # Output only. Unique identifier of the build.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of images to be pushed upon the successful completion of all build
+        # steps. The images are pushed using the builder service account's credentials.
+        # The digests of the pushed images will be stored in the `Build` resource's
+        # results field. If any of the images fail to be pushed, the build status is
+        # marked `FAILURE`.
+        # Corresponds to the JSON property `images`
+        # @return [Array<String>]
+        attr_accessor :images
+      
+        # Output only. URL to logs for this build in Google Cloud Console.
+        # Corresponds to the JSON property `logUrl`
+        # @return [String]
+        attr_accessor :log_url
+      
+        # Google Cloud Storage bucket where logs should be written (see [Bucket Name
+        # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
+        # ). Logs file names will be of the format `$`logs_bucket`/log-$`build_id`.txt`.
+        # Corresponds to the JSON property `logsBucket`
+        # @return [String]
+        attr_accessor :logs_bucket
+      
+        # Output only. The 'Build' name with format: `projects/`project`/locations/`
+        # location`/builds/`build``, where `build` is a unique identifier generated by
+        # the service.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional arguments to enable specific features of builds.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions]
+        attr_accessor :options
+      
+        # Output only. ID of the project.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # TTL in queue for this build. If provided and the build is enqueued longer than
+        # this value, the build will expire and the build status will be `EXPIRED`. The
+        # TTL starts ticking from create_time.
+        # Corresponds to the JSON property `queueTtl`
+        # @return [String]
+        attr_accessor :queue_ttl
+      
+        # Artifacts created by the build pipeline.
+        # Corresponds to the JSON property `results`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Results]
+        attr_accessor :results
+      
+        # Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is
+        # the recommended technique for managing sensitive data with Cloud Build. Use `
+        # available_secrets` to configure builds to access secrets from Secret Manager.
+        # For instructions, see: https://cloud.google.com/cloud-build/docs/securing-
+        # builds/use-secrets
+        # Corresponds to the JSON property `secrets`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Secret>]
+        attr_accessor :secrets
+      
+        # IAM service account whose credentials will be used at build runtime. Must be
+        # of the format `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``. ACCOUNT can
+        # be email address or uniqueId of the service account.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Location of the source in a supported storage service.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Source]
+        attr_accessor :source
+      
+        # Provenance of the source. Ways to find the original source, or verify that
+        # some source was used for this build.
+        # Corresponds to the JSON property `sourceProvenance`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1SourceProvenance]
+        attr_accessor :source_provenance
+      
+        # Output only. Time at which execution of the build was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. Status of the build.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. Customer-readable message about the current status.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # Required. The operations to be performed on the workspace.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep>]
+        attr_accessor :steps
+      
+        # Substitutions data for `Build` resource.
+        # Corresponds to the JSON property `substitutions`
+        # @return [Hash<String,String>]
+        attr_accessor :substitutions
+      
+        # Tags for annotation of a `Build`. These are not docker tags.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Amount of time that this build should be allowed to run, to second granularity.
+        # If this amount of time elapses, work on the build will cease and the build
+        # status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default
+        # time is ten minutes.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        # Output only. Stores timing information for phases of the build. Valid keys are:
+        # * BUILD: time to execute all build steps. * PUSH: time to push all specified
+        # images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up
+        # build. If the build does not specify source or images, these keys will not be
+        # included.
+        # Corresponds to the JSON property `timing`
+        # @return [Hash<String,Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan>]
+        attr_accessor :timing
+      
+        # Output only. Non-fatal problems encountered during the execution of the build.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildWarning>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval = args[:approval] if args.key?(:approval)
+          @artifacts = args[:artifacts] if args.key?(:artifacts)
+          @available_secrets = args[:available_secrets] if args.key?(:available_secrets)
+          @build_trigger_id = args[:build_trigger_id] if args.key?(:build_trigger_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_info = args[:failure_info] if args.key?(:failure_info)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @id = args[:id] if args.key?(:id)
+          @images = args[:images] if args.key?(:images)
+          @log_url = args[:log_url] if args.key?(:log_url)
+          @logs_bucket = args[:logs_bucket] if args.key?(:logs_bucket)
+          @name = args[:name] if args.key?(:name)
+          @options = args[:options] if args.key?(:options)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @queue_ttl = args[:queue_ttl] if args.key?(:queue_ttl)
+          @results = args[:results] if args.key?(:results)
+          @secrets = args[:secrets] if args.key?(:secrets)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @source = args[:source] if args.key?(:source)
+          @source_provenance = args[:source_provenance] if args.key?(:source_provenance)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @status = args[:status] if args.key?(:status)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @steps = args[:steps] if args.key?(:steps)
+          @substitutions = args[:substitutions] if args.key?(:substitutions)
+          @tags = args[:tags] if args.key?(:tags)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @timing = args[:timing] if args.key?(:timing)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # BuildApproval describes a build's approval configuration, state, and result.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildApproval
+        include Google::Apis::Core::Hashable
+      
+        # ApprovalConfig describes configuration for manual approval of a build.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalConfig]
+        attr_accessor :config
+      
+        # ApprovalResult describes the decision and associated metadata of a manual
+        # approval of a build.
+        # Corresponds to the JSON property `result`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalResult]
+        attr_accessor :result
+      
+        # Output only. The state of this build's approval.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @result = args[:result] if args.key?(:result)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A fatal problem encountered during the execution of the build.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo
+        include Google::Apis::Core::Hashable
+      
+        # Explains the failure issue in more detail using hard-coded text.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # The name of the failure.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Optional arguments to enable specific features of builds.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions
+        include Google::Apis::Core::Hashable
+      
+        # Requested disk size for the VM that runs the build. Note that this is *NOT* "
+        # disk free"; some of the space will be used by the operating system and build
+        # utilities. Also note that this is the minimum disk size that will be allocated
+        # for the build -- the build may run with a larger disk than requested. At
+        # present, the maximum disk size is 1000GB; builds that request more than the
+        # maximum are rejected with an error.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Option to specify whether or not to apply bash style string operations to the
+        # substitutions. NOTE: this is always enabled for triggered builds and cannot be
+        # overridden in the build configuration file.
+        # Corresponds to the JSON property `dynamicSubstitutions`
+        # @return [Boolean]
+        attr_accessor :dynamic_substitutions
+        alias_method :dynamic_substitutions?, :dynamic_substitutions
+      
+        # A list of global environment variable definitions that will exist for all
+        # build steps in this build. If a variable is defined in both globally and in a
+        # build step, the variable will use the build step value. The elements are of
+        # the form "KEY=VALUE" for the environment variable "KEY" being given the value "
+        # VALUE".
+        # Corresponds to the JSON property `env`
+        # @return [Array<String>]
+        attr_accessor :env
+      
+        # Option to define build log streaming behavior to Google Cloud Storage.
+        # Corresponds to the JSON property `logStreamingOption`
+        # @return [String]
+        attr_accessor :log_streaming_option
+      
+        # Option to specify the logging mode, which determines if and where build logs
+        # are stored.
+        # Corresponds to the JSON property `logging`
+        # @return [String]
+        attr_accessor :logging
+      
+        # Compute Engine machine type on which to run the build.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Details about how a build should be executed on a `WorkerPool`. See [running
+        # builds in a private pool](https://cloud.google.com/build/docs/private-pools/
+        # run-builds-in-private-pool) for more information.
+        # Corresponds to the JSON property `pool`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOption]
+        attr_accessor :pool
+      
+        # Requested verifiability options.
+        # Corresponds to the JSON property `requestedVerifyOption`
+        # @return [String]
+        attr_accessor :requested_verify_option
+      
+        # A list of global environment variables, which are encrypted using a Cloud Key
+        # Management Service crypto key. These values must be specified in the build's `
+        # Secret`. These variables will be available to all build steps in this build.
+        # Corresponds to the JSON property `secretEnv`
+        # @return [Array<String>]
+        attr_accessor :secret_env
+      
+        # Requested hash for SourceProvenance.
+        # Corresponds to the JSON property `sourceProvenanceHash`
+        # @return [Array<String>]
+        attr_accessor :source_provenance_hash
+      
+        # Option to specify behavior when there is an error in the substitution checks.
+        # NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be
+        # overridden in the build configuration file.
+        # Corresponds to the JSON property `substitutionOption`
+        # @return [String]
+        attr_accessor :substitution_option
+      
+        # Global list of volumes to mount for ALL build steps Each volume is created as
+        # an empty volume prior to starting the build process. Upon completion of the
+        # build, volumes and their contents are discarded. Global volume names and paths
+        # cannot conflict with the volumes defined a build step. Using a global volume
+        # in a build with only one step is not valid as it is indicative of a build
+        # request with an incorrect configuration.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Volume>]
+        attr_accessor :volumes
+      
+        # This field deprecated; please use `pool.name` instead.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @dynamic_substitutions = args[:dynamic_substitutions] if args.key?(:dynamic_substitutions)
+          @env = args[:env] if args.key?(:env)
+          @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
+          @logging = args[:logging] if args.key?(:logging)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @pool = args[:pool] if args.key?(:pool)
+          @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
+          @secret_env = args[:secret_env] if args.key?(:secret_env)
+          @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
+          @substitution_option = args[:substitution_option] if args.key?(:substitution_option)
+          @volumes = args[:volumes] if args.key?(:volumes)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # Details about how a build should be executed on a `WorkerPool`. See [running
+      # builds in a private pool](https://cloud.google.com/build/docs/private-pools/
+      # run-builds-in-private-pool) for more information.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOption
+        include Google::Apis::Core::Hashable
+      
+        # The `WorkerPool` resource to execute the build on. You must have `cloudbuild.
+        # workerpools.use` on the project hosting the WorkerPool. Format projects/`
+        # project`/locations/`location`/workerPools/`workerPoolId`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A step in the build pipeline.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep
+        include Google::Apis::Core::Hashable
+      
+        # A list of arguments that will be presented to the step when it is started. If
+        # the image used to run the step's container has an entrypoint, the `args` are
+        # used as arguments to that entrypoint. If the image does not define an
+        # entrypoint, the first element in args is used as the entrypoint, and the
+        # remainder will be used as arguments.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Working directory to use when running this step's container. If this value is
+        # a relative path, it is relative to the build's working directory. If this
+        # value is absolute, it may be outside the build's working directory, in which
+        # case the contents of the path may not be persisted across build step
+        # executions, unless a `volume` for that path is specified. If the build
+        # specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies
+        # an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # Entrypoint to be used instead of the build step image's default entrypoint. If
+        # unset, the image's default entrypoint is used.
+        # Corresponds to the JSON property `entrypoint`
+        # @return [String]
+        attr_accessor :entrypoint
+      
+        # A list of environment variable definitions to be used when running a step. The
+        # elements are of the form "KEY=VALUE" for the environment variable "KEY" being
+        # given the value "VALUE".
+        # Corresponds to the JSON property `env`
+        # @return [Array<String>]
+        attr_accessor :env
+      
+        # Unique identifier for this build step, used in `wait_for` to reference this
+        # build step as a dependency.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required. The name of the container image that will run this particular build
+        # step. If the image is available in the host's Docker daemon's cache, it will
+        # be run directly. If not, the host will attempt to pull the image first, using
+        # the builder service account's credentials if necessary. The Docker daemon's
+        # cache will already have the latest versions of all of the officially supported
+        # build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://
+        # github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also
+        # have cached many of the layers for some popular images, like "ubuntu", "debian"
+        # , but they will be refreshed at the time you attempt to use them. If you built
+        # an image in a previous build step, it will be stored in the host's Docker
+        # daemon's cache and is available to use as the name for a later build step.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pullTiming`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :pull_timing
+      
+        # A shell script to be executed in the step. When script is provided, the user
+        # cannot specify the entrypoint or args.
+        # Corresponds to the JSON property `script`
+        # @return [String]
+        attr_accessor :script
+      
+        # A list of environment variables which are encrypted using a Cloud Key
+        # Management Service crypto key. These values must be specified in the build's `
+        # Secret`.
+        # Corresponds to the JSON property `secretEnv`
+        # @return [Array<String>]
+        attr_accessor :secret_env
+      
+        # Output only. Status of the build step. At this time, build step status is only
+        # updated on build completion; step status is not updated in real-time as the
+        # build progresses.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Time limit for executing this build step. If not defined, the step has no time
+        # limit and will be allowed to continue to run until either it completes or the
+        # build itself times out.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `timing`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :timing
+      
+        # List of volumes to mount into the build step. Each volume is created as an
+        # empty volume prior to execution of the build step. Upon completion of the
+        # build, volumes and their contents are discarded. Using a named volume in only
+        # one step is not valid as it is indicative of a build request with an incorrect
+        # configuration.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Volume>]
+        attr_accessor :volumes
+      
+        # The ID(s) of the step(s) that this build step depends on. This build step will
+        # not start until all the build steps in `wait_for` have completed successfully.
+        # If `wait_for` is empty, this build step will start when all previous build
+        # steps in the `Build.Steps` list have completed successfully.
+        # Corresponds to the JSON property `waitFor`
+        # @return [Array<String>]
+        attr_accessor :wait_for
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @dir = args[:dir] if args.key?(:dir)
+          @entrypoint = args[:entrypoint] if args.key?(:entrypoint)
+          @env = args[:env] if args.key?(:env)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @script = args[:script] if args.key?(:script)
+          @secret_env = args[:secret_env] if args.key?(:secret_env)
+          @status = args[:status] if args.key?(:status)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @timing = args[:timing] if args.key?(:timing)
+          @volumes = args[:volumes] if args.key?(:volumes)
+          @wait_for = args[:wait_for] if args.key?(:wait_for)
+        end
+      end
+      
+      # A non-fatal problem encountered during the execution of the build.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildWarning
+        include Google::Apis::Core::Hashable
+      
+        # The priority for this warning.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
+        # Explanation of the warning generated.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @priority = args[:priority] if args.key?(:priority)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # An image built by the pipeline.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage
+        include Google::Apis::Core::Hashable
+      
+        # Docker Registry 2.0 digest.
+        # Corresponds to the JSON property `digest`
+        # @return [String]
+        attr_accessor :digest
+      
+        # Name used to push the container image to Google Container Registry, as
+        # presented to `docker push`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :push_timing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @name = args[:name] if args.key?(:name)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+        end
+      end
+      
+      # Container message for hashes of byte content of files, used in
+      # SourceProvenance messages to verify integrity of source input to the build.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
+        include Google::Apis::Core::Hashable
+      
+        # Collection of file hashes.
+        # Corresponds to the JSON property `fileHash`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1Hash>]
+        attr_accessor :file_hash
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # Container message for hash values.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Hash
+        include Google::Apis::Core::Hashable
+      
+        # The type of hash that was performed.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The hash value.
+        # Corresponds to the JSON property `value`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Pairs a set of secret environment variables mapped to encrypted values with
+      # the Cloud KMS key to use to decrypt the value.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1InlineSecret
+        include Google::Apis::Core::Hashable
+      
+        # Map of environment variable name to its encrypted value. Secret environment
+        # variables must be unique across all of a build's secrets, and must be used by
+        # at least one build step. Values can be at most 64 KB in size. There can be at
+        # most 100 secret values across all of a build's secrets.
+        # Corresponds to the JSON property `envMap`
+        # @return [Hash<String,String>]
+        attr_accessor :env_map
+      
+        # Resource name of Cloud KMS crypto key to decrypt the encrypted value. In
+        # format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @env_map = args[:env_map] if args.key?(:env_map)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # Location of the source in a Google Cloud Source Repository.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource
+        include Google::Apis::Core::Hashable
+      
+        # Regex matching branches to build. The syntax of the regular expressions
+        # accepted is the syntax accepted by RE2 and described at https://github.com/
+        # google/re2/wiki/Syntax
+        # Corresponds to the JSON property `branchName`
+        # @return [String]
+        attr_accessor :branch_name
+      
+        # Explicit commit SHA to build.
+        # Corresponds to the JSON property `commitSha`
+        # @return [String]
+        attr_accessor :commit_sha
+      
+        # Directory, relative to the source root, in which to run the build. This must
+        # be a relative path. If a step's `dir` is specified and is an absolute path,
+        # this value is ignored for that step's execution.
+        # Corresponds to the JSON property `dir`
+        # @return [String]
+        attr_accessor :dir
+      
+        # Only trigger a build if the revision regex does NOT match the revision regex.
+        # Corresponds to the JSON property `invertRegex`
+        # @return [Boolean]
+        attr_accessor :invert_regex
+        alias_method :invert_regex?, :invert_regex
+      
+        # ID of the project that owns the Cloud Source Repository. If omitted, the
+        # project ID requesting the build is assumed.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Name of the Cloud Source Repository.
+        # Corresponds to the JSON property `repoName`
+        # @return [String]
+        attr_accessor :repo_name
+      
+        # Substitutions to use in a triggered build. Should only be used with
+        # RunBuildTrigger
+        # Corresponds to the JSON property `substitutions`
+        # @return [Hash<String,String>]
+        attr_accessor :substitutions
+      
+        # Regex matching tags to build. The syntax of the regular expressions accepted
+        # is the syntax accepted by RE2 and described at https://github.com/google/re2/
+        # wiki/Syntax
+        # Corresponds to the JSON property `tagName`
+        # @return [String]
+        attr_accessor :tag_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch_name = args[:branch_name] if args.key?(:branch_name)
+          @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
+          @dir = args[:dir] if args.key?(:dir)
+          @invert_regex = args[:invert_regex] if args.key?(:invert_regex)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @repo_name = args[:repo_name] if args.key?(:repo_name)
+          @substitutions = args[:substitutions] if args.key?(:substitutions)
+          @tag_name = args[:tag_name] if args.key?(:tag_name)
+        end
+      end
+      
+      # Artifacts created by the build pipeline.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Results
+        include Google::Apis::Core::Hashable
+      
+        # Path to the artifact manifest. Only populated when artifacts are uploaded.
+        # Corresponds to the JSON property `artifactManifest`
+        # @return [String]
+        attr_accessor :artifact_manifest
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `artifactTiming`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :artifact_timing
+      
+        # List of build step digests, in the order corresponding to build step indices.
+        # Corresponds to the JSON property `buildStepImages`
+        # @return [Array<String>]
+        attr_accessor :build_step_images
+      
+        # List of build step outputs, produced by builder images, in the order
+        # corresponding to build step indices. [Cloud Builders](https://cloud.google.com/
+        # cloud-build/docs/cloud-builders) can produce this output by writing to `$
+        # BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+        # Corresponds to the JSON property `buildStepOutputs`
+        # @return [Array<String>]
+        attr_accessor :build_step_outputs
+      
+        # Container images that were built as a part of the build.
+        # Corresponds to the JSON property `images`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage>]
+        attr_accessor :images
+      
+        # Number of artifacts uploaded. Only populated when artifacts are uploaded.
+        # Corresponds to the JSON property `numArtifacts`
+        # @return [Fixnum]
+        attr_accessor :num_artifacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_manifest = args[:artifact_manifest] if args.key?(:artifact_manifest)
+          @artifact_timing = args[:artifact_timing] if args.key?(:artifact_timing)
+          @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
+          @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
+          @images = args[:images] if args.key?(:images)
+          @num_artifacts = args[:num_artifacts] if args.key?(:num_artifacts)
+        end
+      end
+      
+      # Pairs a set of secret environment variables containing encrypted values with
+      # the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `
+      # available_secrets` instead of using `kmsKeyName` with `secret`. For
+      # instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/
+      # use-encrypted-credentials.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Secret
+        include Google::Apis::Core::Hashable
+      
+        # Cloud KMS key name to use to decrypt these envs.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Map of environment variable name to its encrypted value. Secret environment
+        # variables must be unique across all of a build's secrets, and must be used by
+        # at least one build step. Values can be at most 64 KB in size. There can be at
+        # most 100 secret values across all of a build's secrets.
+        # Corresponds to the JSON property `secretEnv`
+        # @return [Hash<String,String>]
+        attr_accessor :secret_env
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @secret_env = args[:secret_env] if args.key?(:secret_env)
+        end
+      end
+      
+      # Pairs a secret environment variable with a SecretVersion in Secret Manager.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1SecretManagerSecret
+        include Google::Apis::Core::Hashable
+      
+        # Environment variable name to associate with the secret. Secret environment
+        # variables must be unique across all of a build's secrets, and must be used by
+        # at least one build step.
+        # Corresponds to the JSON property `env`
+        # @return [String]
+        attr_accessor :env
+      
+        # Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+        # Corresponds to the JSON property `versionName`
+        # @return [String]
+        attr_accessor :version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @env = args[:env] if args.key?(:env)
+          @version_name = args[:version_name] if args.key?(:version_name)
+        end
+      end
+      
+      # Secrets and secret environment variables.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Secrets
+        include Google::Apis::Core::Hashable
+      
+        # Secrets encrypted with KMS key and the associated secret environment variable.
+        # Corresponds to the JSON property `inline`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1InlineSecret>]
+        attr_accessor :inline
+      
+        # Secrets in Secret Manager and associated secret environment variable.
+        # Corresponds to the JSON property `secretManager`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1SecretManagerSecret>]
+        attr_accessor :secret_manager
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline = args[:inline] if args.key?(:inline)
+          @secret_manager = args[:secret_manager] if args.key?(:secret_manager)
+        end
+      end
+      
+      # Location of the source in a supported storage service.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Source
+        include Google::Apis::Core::Hashable
+      
+        # Location of the source in a Google Cloud Source Repository.
+        # Corresponds to the JSON property `repoSource`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource]
+        attr_accessor :repo_source
+      
+        # Location of the source in an archive file in Google Cloud Storage.
+        # Corresponds to the JSON property `storageSource`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource]
+        attr_accessor :storage_source
+      
+        # Location of the source manifest in Google Cloud Storage. This feature is in
+        # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
+        # builders/tree/master/gcs-fetcher).
+        # Corresponds to the JSON property `storageSourceManifest`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest]
+        attr_accessor :storage_source_manifest
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repo_source = args[:repo_source] if args.key?(:repo_source)
+          @storage_source = args[:storage_source] if args.key?(:storage_source)
+          @storage_source_manifest = args[:storage_source_manifest] if args.key?(:storage_source_manifest)
+        end
+      end
+      
+      # Provenance of the source. Ways to find the original source, or verify that
+      # some source was used for this build.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1SourceProvenance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Hash(es) of the build source, which can be used to verify that
+        # the original source integrity was maintained in the build. Note that `
+        # FileHashes` will only be populated if `BuildOptions` has requested a `
+        # SourceProvenanceHash`. The keys to this map are file paths used as build
+        # source and the values contain the hash values for those files. If the build
+        # source came in a single package such as a gzipped tarfile (`.tar.gz`), the `
+        # FileHash` will be for the single path to that file.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Hash<String,Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes>]
+        attr_accessor :file_hashes
+      
+        # Location of the source in a Google Cloud Source Repository.
+        # Corresponds to the JSON property `resolvedRepoSource`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource]
+        attr_accessor :resolved_repo_source
+      
+        # Location of the source in an archive file in Google Cloud Storage.
+        # Corresponds to the JSON property `resolvedStorageSource`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource]
+        attr_accessor :resolved_storage_source
+      
+        # Location of the source manifest in Google Cloud Storage. This feature is in
+        # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
+        # builders/tree/master/gcs-fetcher).
+        # Corresponds to the JSON property `resolvedStorageSourceManifest`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest]
+        attr_accessor :resolved_storage_source_manifest
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @resolved_repo_source = args[:resolved_repo_source] if args.key?(:resolved_repo_source)
+          @resolved_storage_source = args[:resolved_storage_source] if args.key?(:resolved_storage_source)
+          @resolved_storage_source_manifest = args[:resolved_storage_source_manifest] if args.key?(:resolved_storage_source_manifest)
+        end
+      end
+      
+      # Location of the source in an archive file in Google Cloud Storage.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage bucket containing the source (see [Bucket Name
+        # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
+        # ).
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Google Cloud Storage generation for the object. If the generation is omitted,
+        # the latest generation will be used.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Google Cloud Storage object containing the source. This object must be a
+        # zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
+          @object = args[:object] if args.key?(:object)
+        end
+      end
+      
+      # Location of the source manifest in Google Cloud Storage. This feature is in
+      # Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-
+      # builders/tree/master/gcs-fetcher).
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage bucket containing the source manifest (see [Bucket Name
+        # Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)
+        # ).
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Google Cloud Storage generation for the object. If the generation is omitted,
+        # the latest generation will be used.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Google Cloud Storage object containing the source manifest. This object must
+        # be a JSON file.
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
+          @object = args[:object] if args.key?(:object)
+        end
+      end
+      
+      # Start and end times for a build execution phase.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan
+        include Google::Apis::Core::Hashable
+      
+        # End of time span.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start of time span.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Volume describes a Docker container volume which is mounted into build steps
+      # in order to persist files across build step execution.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Volume
+        include Google::Apis::Core::Hashable
+      
+        # Name of the volume to mount. Volume names must be unique per build step and
+        # must be valid names for Docker volumes. Each named volume must be used by at
+        # least two build steps.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Path at which to mount the volume. Paths must be absolute and cannot conflict
+        # with other volume paths on the same build step or with certain reserved volume
+        # paths.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
       # 
       class DsseAttestationNote
         include Google::Apis::Core::Hashable
@@ -1016,7 +2125,8 @@ module Google
         end
       end
       
-      # 
+      # Deprecated. Prefer to use a regular Occurrence, and populate the Envelope at
+      # the top level of the Occurrence.
       class DsseAttestationOccurrence
         include Google::Apis::Core::Hashable
       
@@ -1656,13 +2766,16 @@ module Google
       class GetPolicyOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The policy format version to be returned. Valid values are 0, 1, and
-        # 3. Requests specifying an invalid value will be rejected. Requests for
-        # policies with any conditional bindings must specify version 3. Policies
-        # without any conditional bindings may specify any valid value or leave the
-        # field unset. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies).
+        # Optional. The maximum policy version that will be used to format the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected. Requests for policies with any conditional role bindings must
+        # specify version 3. Policies with no conditional role bindings may specify any
+        # valid value or leave the field unset. The policy in the response might use the
+        # policy version that you specified, or it might use a lower policy version. For
+        # example, if you specify version 3, but the policy has no conditional role
+        # bindings, the response uses version 1. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies).
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -1921,7 +3034,12 @@ module Google
       class InTotoStatement
         include Google::Apis::Core::Hashable
       
-        # "https://in-toto.io/Provenance/v0.1" for InTotoProvenance.
+        # Always "https://in-toto.io/Statement/v0.1".
+        # Corresponds to the JSON property `_type`
+        # @return [String]
+        attr_accessor :_type
+      
+        # "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
         # Corresponds to the JSON property `predicateType`
         # @return [String]
         attr_accessor :predicate_type
@@ -1932,14 +3050,14 @@ module Google
         attr_accessor :provenance
       
         # 
+        # Corresponds to the JSON property `slsaProvenance`
+        # @return [Google::Apis::ContaineranalysisV1::SlsaProvenance]
+        attr_accessor :slsa_provenance
+      
+        # 
         # Corresponds to the JSON property `subject`
         # @return [Array<Google::Apis::ContaineranalysisV1::Subject>]
         attr_accessor :subject
-      
-        # Always "https://in-toto.io/Statement/v0.1".
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
       
         def initialize(**args)
            update!(**args)
@@ -1947,10 +3065,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @_type = args[:_type] if args.key?(:_type)
           @predicate_type = args[:predicate_type] if args.key?(:predicate_type)
           @provenance = args[:provenance] if args.key?(:provenance)
+          @slsa_provenance = args[:slsa_provenance] if args.key?(:slsa_provenance)
           @subject = args[:subject] if args.key?(:subject)
-          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2159,6 +3278,31 @@ module Google
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
           @path = args[:path] if args.key?(:path)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class Material
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -2431,7 +3575,8 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::DiscoveryOccurrence]
         attr_accessor :discovery
       
-        # Describes an attestation of an artifact using dsse.
+        # Deprecated. Prefer to use a regular Occurrence, and populate the Envelope at
+        # the top level of the Occurrence.
         # Corresponds to the JSON property `dsseAttestation`
         # @return [Google::Apis::ContaineranalysisV1::DsseAttestationOccurrence]
         attr_accessor :dsse_attestation
@@ -3045,6 +4190,210 @@ module Google
         end
       end
       
+      # 
+      class SlsaBuilder
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Indicates that the builder claims certain fields in this message to be
+      # complete.
+      class SlsaCompleteness
+        include Google::Apis::Core::Hashable
+      
+        # If true, the builder claims that recipe.arguments is complete, meaning that
+        # all external inputs are properly captured in the recipe.
+        # Corresponds to the JSON property `arguments`
+        # @return [Boolean]
+        attr_accessor :arguments
+        alias_method :arguments?, :arguments
+      
+        # If true, the builder claims that recipe.environment is claimed to be complete.
+        # Corresponds to the JSON property `environment`
+        # @return [Boolean]
+        attr_accessor :environment
+        alias_method :environment?, :environment
+      
+        # If true, the builder claims that materials are complete, usually through some
+        # controls to prevent network access. Sometimes called "hermetic".
+        # Corresponds to the JSON property `materials`
+        # @return [Boolean]
+        attr_accessor :materials
+        alias_method :materials?, :materials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments = args[:arguments] if args.key?(:arguments)
+          @environment = args[:environment] if args.key?(:environment)
+          @materials = args[:materials] if args.key?(:materials)
+        end
+      end
+      
+      # Other properties of the build.
+      class SlsaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp of when the build completed.
+        # Corresponds to the JSON property `buildFinishedOn`
+        # @return [String]
+        attr_accessor :build_finished_on
+      
+        # Identifies the particular build invocation, which can be useful for finding
+        # associated logs or other ad-hoc analysis. The value SHOULD be globally unique,
+        # per in-toto Provenance spec.
+        # Corresponds to the JSON property `buildInvocationId`
+        # @return [String]
+        attr_accessor :build_invocation_id
+      
+        # The timestamp of when the build started.
+        # Corresponds to the JSON property `buildStartedOn`
+        # @return [String]
+        attr_accessor :build_started_on
+      
+        # Indicates that the builder claims certain fields in this message to be
+        # complete.
+        # Corresponds to the JSON property `completeness`
+        # @return [Google::Apis::ContaineranalysisV1::SlsaCompleteness]
+        attr_accessor :completeness
+      
+        # If true, the builder claims that running the recipe on materials will produce
+        # bit-for-bit identical output.
+        # Corresponds to the JSON property `reproducible`
+        # @return [Boolean]
+        attr_accessor :reproducible
+        alias_method :reproducible?, :reproducible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_finished_on = args[:build_finished_on] if args.key?(:build_finished_on)
+          @build_invocation_id = args[:build_invocation_id] if args.key?(:build_invocation_id)
+          @build_started_on = args[:build_started_on] if args.key?(:build_started_on)
+          @completeness = args[:completeness] if args.key?(:completeness)
+          @reproducible = args[:reproducible] if args.key?(:reproducible)
+        end
+      end
+      
+      # 
+      class SlsaProvenance
+        include Google::Apis::Core::Hashable
+      
+        # required
+        # Corresponds to the JSON property `builder`
+        # @return [Google::Apis::ContaineranalysisV1::SlsaBuilder]
+        attr_accessor :builder
+      
+        # The collection of artifacts that influenced the build including sources,
+        # dependencies, build tools, base images, and so on. This is considered to be
+        # incomplete unless metadata.completeness.materials is true. Unset or null is
+        # equivalent to empty.
+        # Corresponds to the JSON property `materials`
+        # @return [Array<Google::Apis::ContaineranalysisV1::Material>]
+        attr_accessor :materials
+      
+        # Other properties of the build.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ContaineranalysisV1::SlsaMetadata]
+        attr_accessor :metadata
+      
+        # Steps taken to build the artifact. For a TaskRun, typically each container
+        # corresponds to one step in the recipe.
+        # Corresponds to the JSON property `recipe`
+        # @return [Google::Apis::ContaineranalysisV1::SlsaRecipe]
+        attr_accessor :recipe
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @builder = args[:builder] if args.key?(:builder)
+          @materials = args[:materials] if args.key?(:materials)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @recipe = args[:recipe] if args.key?(:recipe)
+        end
+      end
+      
+      # Steps taken to build the artifact. For a TaskRun, typically each container
+      # corresponds to one step in the recipe.
+      class SlsaRecipe
+        include Google::Apis::Core::Hashable
+      
+        # Collection of all external inputs that influenced the build on top of recipe.
+        # definedInMaterial and recipe.entryPoint. For example, if the recipe type were "
+        # make", then this might be the flags passed to make aside from the target,
+        # which is captured in recipe.entryPoint. Depending on the recipe Type, the
+        # structure may be different.
+        # Corresponds to the JSON property `arguments`
+        # @return [Hash<String,Object>]
+        attr_accessor :arguments
+      
+        # Index in materials containing the recipe steps that are not implied by recipe.
+        # type. For example, if the recipe type were "make", then this would point to
+        # the source containing the Makefile, not the make program itself. Set to -1 if
+        # the recipe doesn't come from a material, as zero is default unset value for
+        # int64.
+        # Corresponds to the JSON property `definedInMaterial`
+        # @return [Fixnum]
+        attr_accessor :defined_in_material
+      
+        # String identifying the entry point into the build. This is often a path to a
+        # configuration file and/or a target label within that file. The syntax and
+        # meaning are defined by recipe.type. For example, if the recipe type were "make"
+        # , then this would reference the directory in which to run make as well as
+        # which target to use.
+        # Corresponds to the JSON property `entryPoint`
+        # @return [String]
+        attr_accessor :entry_point
+      
+        # Any other builder-controlled inputs necessary for correctly evaluating the
+        # recipe. Usually only needed for reproducing the build but not evaluated as
+        # part of policy. Depending on the recipe Type, the structure may be different.
+        # Corresponds to the JSON property `environment`
+        # @return [Hash<String,Object>]
+        attr_accessor :environment
+      
+        # URI indicating what type of recipe was performed. It determines the meaning of
+        # recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments = args[:arguments] if args.key?(:arguments)
+          @defined_in_material = args[:defined_in_material] if args.key?(:defined_in_material)
+          @entry_point = args[:entry_point] if args.key?(:entry_point)
+          @environment = args[:environment] if args.key?(:environment)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Source describes the location of the source used for the build.
       class Source
         include Google::Apis::Core::Hashable
@@ -3173,7 +4522,8 @@ module Google
       class Subject
         include Google::Apis::Core::Hashable
       
-        # "": ""
+        # "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/
+        # attestation/blob/main/spec/field_types.md#DigestSet
         # Corresponds to the JSON property `digest`
         # @return [Hash<String,String>]
         attr_accessor :digest
@@ -3231,31 +4581,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Start and end times for a build execution phase.
-      class TimeSpan
-        include Google::Apis::Core::Hashable
-      
-        # End of time span.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # Start of time span.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -3444,36 +4769,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @revision = args[:revision] if args.key?(:revision)
-        end
-      end
-      
-      # Volume describes a Docker container volume which is mounted into build steps
-      # in order to persist files across build step execution.
-      class Volume
-        include Google::Apis::Core::Hashable
-      
-        # Name of the volume to mount. Volume names must be unique per build step and
-        # must be valid names for Docker volumes. Each named volume must be used by at
-        # least two build steps.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Path at which to mount the volume. Paths must be absolute and cannot conflict
-        # with other volume paths on the same build step or with certain reserved volume
-        # paths.
-        # Corresponds to the JSON property `path`
-        # @return [String]
-        attr_accessor :path
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @path = args[:path] if args.key?(:path)
         end
       end
       
