@@ -76,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BuildStep
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BuildType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +119,162 @@ module Google
       end
       
       class ComplianceVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Build
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildApproval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildWarning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Hash
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1InlineSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Results
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1SecretManagerSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Secrets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Source
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1SourceProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -394,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Material
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -514,6 +670,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SlsaBuilder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaCompleteness
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlsaRecipe
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -550,12 +736,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TimeSpan
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UpdateOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -581,12 +761,6 @@ module Google
       end
       
       class Version
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -705,29 +879,6 @@ module Google
         end
       end
       
-      class BuildStep
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :args, as: 'args'
-          property :dir, as: 'dir'
-          property :entrypoint, as: 'entrypoint'
-          collection :env, as: 'env'
-          property :id, as: 'id'
-          property :name, as: 'name'
-          property :pull_timing, as: 'pullTiming', class: Google::Apis::ContaineranalysisV1alpha1::TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::TimeSpan::Representation
-      
-          property :script, as: 'script'
-          collection :secret_env, as: 'secretEnv'
-          property :status, as: 'status'
-          property :timeout, as: 'timeout'
-          property :timing, as: 'timing', class: Google::Apis::ContaineranalysisV1alpha1::TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::TimeSpan::Representation
-      
-          collection :volumes, as: 'volumes', class: Google::Apis::ContaineranalysisV1alpha1::Volume, decorator: Google::Apis::ContaineranalysisV1alpha1::Volume::Representation
-      
-          collection :wait_for, as: 'waitFor'
-        end
-      end
-      
       class BuildType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -802,6 +953,316 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpe_uri, as: 'cpeUri'
           property :version, as: 'version'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_required, as: 'approvalRequired'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_time, as: 'approvalTime'
+          property :approver_account, as: 'approverAccount'
+          property :comment, as: 'comment'
+          property :decision, as: 'decision'
+          property :url, as: 'url'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :images, as: 'images'
+          property :objects, as: 'objects', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          collection :paths, as: 'paths'
+          property :timing, as: 'timing', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Build
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval, as: 'approval', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildApproval, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildApproval::Representation
+      
+          property :artifacts, as: 'artifacts', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts::Representation
+      
+          property :available_secrets, as: 'availableSecrets', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Secrets, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Secrets::Representation
+      
+          property :build_trigger_id, as: 'buildTriggerId'
+          property :create_time, as: 'createTime'
+          property :failure_info, as: 'failureInfo', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo::Representation
+      
+          property :finish_time, as: 'finishTime'
+          property :id, as: 'id'
+          collection :images, as: 'images'
+          property :log_url, as: 'logUrl'
+          property :logs_bucket, as: 'logsBucket'
+          property :name, as: 'name'
+          property :options, as: 'options', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions::Representation
+      
+          property :project_id, as: 'projectId'
+          property :queue_ttl, as: 'queueTtl'
+          property :results, as: 'results', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Results, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Results::Representation
+      
+          collection :secrets, as: 'secrets', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Secret, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Secret::Representation
+      
+          property :service_account, as: 'serviceAccount'
+          property :source, as: 'source', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Source, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Source::Representation
+      
+          property :source_provenance, as: 'sourceProvenance', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1SourceProvenance, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1SourceProvenance::Representation
+      
+          property :start_time, as: 'startTime'
+          property :status, as: 'status'
+          property :status_detail, as: 'statusDetail'
+          collection :steps, as: 'steps', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep::Representation
+      
+          hash :substitutions, as: 'substitutions'
+          collection :tags, as: 'tags'
+          property :timeout, as: 'timeout'
+          hash :timing, as: 'timing', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildWarning, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildWarning::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildApproval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalConfig, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalConfig::Representation
+      
+          property :result, as: 'result', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalResult, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1ApprovalResult::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :dynamic_substitutions, as: 'dynamicSubstitutions'
+          collection :env, as: 'env'
+          property :log_streaming_option, as: 'logStreamingOption'
+          property :logging, as: 'logging'
+          property :machine_type, as: 'machineType'
+          property :pool, as: 'pool', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOption, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOption::Representation
+      
+          property :requested_verify_option, as: 'requestedVerifyOption'
+          collection :secret_env, as: 'secretEnv'
+          collection :source_provenance_hash, as: 'sourceProvenanceHash'
+          property :substitution_option, as: 'substitutionOption'
+          collection :volumes, as: 'volumes', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Volume, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Volume::Representation
+      
+          property :worker_pool, as: 'workerPool'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          property :dir, as: 'dir'
+          property :entrypoint, as: 'entrypoint'
+          collection :env, as: 'env'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :pull_timing, as: 'pullTiming', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          property :script, as: 'script'
+          collection :secret_env, as: 'secretEnv'
+          property :status, as: 'status'
+          property :timeout, as: 'timeout'
+          property :timing, as: 'timing', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          collection :volumes, as: 'volumes', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Volume, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Volume::Representation
+      
+          collection :wait_for, as: 'waitFor'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :priority, as: 'priority'
+          property :text, as: 'text'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :digest, as: 'digest'
+          property :name, as: 'name'
+          property :push_timing, as: 'pushTiming', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_hash, as: 'fileHash', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Hash, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1Hash::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Hash
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :value, :base64 => true, as: 'value'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1InlineSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :env_map, as: 'envMap'
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_name, as: 'branchName'
+          property :commit_sha, as: 'commitSha'
+          property :dir, as: 'dir'
+          property :invert_regex, as: 'invertRegex'
+          property :project_id, as: 'projectId'
+          property :repo_name, as: 'repoName'
+          hash :substitutions, as: 'substitutions'
+          property :tag_name, as: 'tagName'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Results
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_manifest, as: 'artifactManifest'
+          property :artifact_timing, as: 'artifactTiming', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          collection :build_step_images, as: 'buildStepImages'
+          collection :build_step_outputs, as: 'buildStepOutputs'
+          collection :images, as: 'images', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage::Representation
+      
+          property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+          hash :secret_env, as: 'secretEnv'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1SecretManagerSecret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :env, as: 'env'
+          property :version_name, as: 'versionName'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Secrets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inline, as: 'inline', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1InlineSecret, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1InlineSecret::Representation
+      
+          collection :secret_manager, as: 'secretManager', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1SecretManagerSecret, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1SecretManagerSecret::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Source
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :repo_source, as: 'repoSource', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource::Representation
+      
+          property :storage_source, as: 'storageSource', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource::Representation
+      
+          property :storage_source_manifest, as: 'storageSourceManifest', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1SourceProvenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :file_hashes, as: 'fileHashes', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :resolved_repo_source, as: 'resolvedRepoSource', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource::Representation
+      
+          property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource::Representation
+      
+          property :resolved_storage_source_manifest, as: 'resolvedStorageSourceManifest', class: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest, decorator: Google::Apis::ContaineranalysisV1alpha1::ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest::Representation
+      
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :path, as: 'path'
         end
       end
       
@@ -1155,12 +1616,14 @@ module Google
       class InTotoStatement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :_type, as: '_type'
           property :predicate_type, as: 'predicateType'
           property :provenance, as: 'provenance', class: Google::Apis::ContaineranalysisV1alpha1::InTotoProvenance, decorator: Google::Apis::ContaineranalysisV1alpha1::InTotoProvenance::Representation
       
+          property :slsa_provenance, as: 'slsaProvenance', class: Google::Apis::ContaineranalysisV1alpha1::SlsaProvenance, decorator: Google::Apis::ContaineranalysisV1alpha1::SlsaProvenance::Representation
+      
           collection :subject, as: 'subject', class: Google::Apis::ContaineranalysisV1alpha1::Subject, decorator: Google::Apis::ContaineranalysisV1alpha1::Subject::Representation
       
-          property :type, as: 'type'
         end
       end
       
@@ -1232,6 +1695,14 @@ module Google
           property :path, as: 'path'
           property :version, as: 'version', class: Google::Apis::ContaineranalysisV1alpha1::Version, decorator: Google::Apis::ContaineranalysisV1alpha1::Version::Representation
       
+        end
+      end
+      
+      class Material
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :digest, as: 'digest'
+          property :uri, as: 'uri'
         end
       end
       
@@ -1523,6 +1994,59 @@ module Google
         end
       end
       
+      class SlsaBuilder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+        end
+      end
+      
+      class SlsaCompleteness
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :arguments, as: 'arguments'
+          property :environment, as: 'environment'
+          property :materials, as: 'materials'
+        end
+      end
+      
+      class SlsaMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_finished_on, as: 'buildFinishedOn'
+          property :build_invocation_id, as: 'buildInvocationId'
+          property :build_started_on, as: 'buildStartedOn'
+          property :completeness, as: 'completeness', class: Google::Apis::ContaineranalysisV1alpha1::SlsaCompleteness, decorator: Google::Apis::ContaineranalysisV1alpha1::SlsaCompleteness::Representation
+      
+          property :reproducible, as: 'reproducible'
+        end
+      end
+      
+      class SlsaProvenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :builder, as: 'builder', class: Google::Apis::ContaineranalysisV1alpha1::SlsaBuilder, decorator: Google::Apis::ContaineranalysisV1alpha1::SlsaBuilder::Representation
+      
+          collection :materials, as: 'materials', class: Google::Apis::ContaineranalysisV1alpha1::Material, decorator: Google::Apis::ContaineranalysisV1alpha1::Material::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::ContaineranalysisV1alpha1::SlsaMetadata, decorator: Google::Apis::ContaineranalysisV1alpha1::SlsaMetadata::Representation
+      
+          property :recipe, as: 'recipe', class: Google::Apis::ContaineranalysisV1alpha1::SlsaRecipe, decorator: Google::Apis::ContaineranalysisV1alpha1::SlsaRecipe::Representation
+      
+        end
+      end
+      
+      class SlsaRecipe
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :arguments, as: 'arguments'
+          property :defined_in_material, :numeric_string => true, as: 'definedInMaterial'
+          property :entry_point, as: 'entryPoint'
+          hash :environment, as: 'environment'
+          property :type, as: 'type'
+        end
+      end
+      
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1581,14 +2105,6 @@ module Google
         end
       end
       
-      class TimeSpan
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :start_time, as: 'startTime'
-        end
-      end
-      
       class UpdateOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1638,14 +2154,6 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :revision, as: 'revision'
-        end
-      end
-      
-      class Volume
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :path, as: 'path'
         end
       end
       
