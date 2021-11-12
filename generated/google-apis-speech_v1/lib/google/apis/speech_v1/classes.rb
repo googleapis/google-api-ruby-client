@@ -22,6 +22,159 @@ module Google
   module Apis
     module SpeechV1
       
+      # An item of the class.
+      class ClassItem
+        include Google::Apis::Core::Hashable
+      
+        # The class item's value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Message sent by the client for the `CreateCustomClass` method.
+      class CreateCustomClassRequest
+        include Google::Apis::Core::Hashable
+      
+        # A set of words or phrases that represents a common concept likely to appear in
+        # your audio, for example a list of passenger ship names. CustomClass items can
+        # be substituted into placeholders that you set in PhraseSet phrases.
+        # Corresponds to the JSON property `customClass`
+        # @return [Google::Apis::SpeechV1::CustomClass]
+        attr_accessor :custom_class
+      
+        # Required. The ID to use for the custom class, which will become the final
+        # component of the custom class' resource name. This value should be 4-63
+        # characters, and valid characters are /a-z-/.
+        # Corresponds to the JSON property `customClassId`
+        # @return [String]
+        attr_accessor :custom_class_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_class = args[:custom_class] if args.key?(:custom_class)
+          @custom_class_id = args[:custom_class_id] if args.key?(:custom_class_id)
+        end
+      end
+      
+      # Message sent by the client for the `CreatePhraseSet` method.
+      class CreatePhraseSetRequest
+        include Google::Apis::Core::Hashable
+      
+        # Provides "hints" to the speech recognizer to favor specific words and phrases
+        # in the results.
+        # Corresponds to the JSON property `phraseSet`
+        # @return [Google::Apis::SpeechV1::PhraseSet]
+        attr_accessor :phrase_set
+      
+        # Required. The ID to use for the phrase set, which will become the final
+        # component of the phrase set's resource name. This value should be 4-63
+        # characters, and valid characters are /a-z-/.
+        # Corresponds to the JSON property `phraseSetId`
+        # @return [String]
+        attr_accessor :phrase_set_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phrase_set = args[:phrase_set] if args.key?(:phrase_set)
+          @phrase_set_id = args[:phrase_set_id] if args.key?(:phrase_set_id)
+        end
+      end
+      
+      # A set of words or phrases that represents a common concept likely to appear in
+      # your audio, for example a list of passenger ship names. CustomClass items can
+      # be substituted into placeholders that you set in PhraseSet phrases.
+      class CustomClass
+        include Google::Apis::Core::Hashable
+      
+        # If this custom class is a resource, the custom_class_id is the resource id of
+        # the CustomClass. Case sensitive.
+        # Corresponds to the JSON property `customClassId`
+        # @return [String]
+        attr_accessor :custom_class_id
+      
+        # A collection of class items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::SpeechV1::ClassItem>]
+        attr_accessor :items
+      
+        # The resource name of the custom class.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_class_id = args[:custom_class_id] if args.key?(:custom_class_id)
+          @items = args[:items] if args.key?(:items)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message returned to the client by the `ListCustomClasses` method.
+      class ListCustomClassesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The custom classes.
+        # Corresponds to the JSON property `customClasses`
+        # @return [Array<Google::Apis::SpeechV1::CustomClass>]
+        attr_accessor :custom_classes
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_classes = args[:custom_classes] if args.key?(:custom_classes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -44,6 +197,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Message returned to the client by the `ListPhraseSet` method.
+      class ListPhraseSetResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The phrase set.
+        # Corresponds to the JSON property `phraseSets`
+        # @return [Array<Google::Apis::SpeechV1::PhraseSet>]
+        attr_accessor :phrase_sets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @phrase_sets = args[:phrase_sets] if args.key?(:phrase_sets)
         end
       end
       
@@ -232,6 +411,94 @@ module Google
         end
       end
       
+      # A phrases containing words and phrase "hints" so that the speech recognition
+      # is more likely to recognize them. This can be used to improve the accuracy for
+      # specific words and phrases, for example, if specific commands are typically
+      # spoken by the user. This can also be used to add additional words to the
+      # vocabulary of the recognizer. See [usage limits](https://cloud.google.com/
+      # speech-to-text/quotas#content). List items can also include pre-built or
+      # custom classes containing groups of words that represent common concepts that
+      # occur in natural language. For example, rather than providing a phrase hint
+      # for every month of the year (e.g. "i was born in january", "i was born in
+      # febuary", ...), use the pre-built `$MONTH` class improves the likelihood of
+      # correctly transcribing audio that includes months (e.g. "i was born in $month")
+      # . To refer to pre-built classes, use the class' symbol prepended with `$` e.g.
+      # `$MONTH`. To refer to custom classes that were defined inline in the request,
+      # set the class's `custom_class_id` to a string unique to all class resources
+      # and inline classes. Then use the class' id wrapped in $``...`` e.g. "$`my-
+      # months`". To refer to custom classes resources, use the class' id wrapped in `$
+      # ``` (e.g. `$`my-months``).
+      class Phrase
+        include Google::Apis::Core::Hashable
+      
+        # Hint Boost. Overrides the boost set at the phrase set level. Positive value
+        # will increase the probability that a specific phrase will be recognized over
+        # other similar sounding phrases. The higher the boost, the higher the chance of
+        # false positive recognition as well. Negative boost will simply be ignored.
+        # Though `boost` can accept a wide range of positive values, most use cases are
+        # best served with values between 0 and 20. We recommend using a binary search
+        # approach to finding the optimal value for your use case. Speech recognition
+        # will skip PhraseSets with a boost value of 0.
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # The phrase itself.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Provides "hints" to the speech recognizer to favor specific words and phrases
+      # in the results.
+      class PhraseSet
+        include Google::Apis::Core::Hashable
+      
+        # Hint Boost. Positive value will increase the probability that a specific
+        # phrase will be recognized over other similar sounding phrases. The higher the
+        # boost, the higher the chance of false positive recognition as well. Negative
+        # boost values would correspond to anti-biasing. Anti-biasing is not enabled, so
+        # negative boost will simply be ignored. Though `boost` can accept a wide range
+        # of positive values, most use cases are best served with values between 0 (
+        # exclusive) and 20. We recommend using a binary search approach to finding the
+        # optimal value for your use case. Speech recognition will skip PhraseSets with
+        # a boost value of 0.
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # The resource name of the phrase set.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A list of word and phrases.
+        # Corresponds to the JSON property `phrases`
+        # @return [Array<Google::Apis::SpeechV1::Phrase>]
+        attr_accessor :phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @name = args[:name] if args.key?(:name)
+          @phrases = args[:phrases] if args.key?(:phrases)
+        end
+      end
+      
       # Contains audio data in the encoding specified in the `RecognitionConfig`.
       # Either `content` or `uri` must be supplied. Supplying both or neither returns
       # google.rpc.Code.INVALID_ARGUMENT. See [content limits](https://cloud.google.
@@ -272,6 +539,11 @@ module Google
       # request.
       class RecognitionConfig
         include Google::Apis::Core::Hashable
+      
+        # Speech adaptation configuration.
+        # Corresponds to the JSON property `adaptation`
+        # @return [Google::Apis::SpeechV1::SpeechAdaptation]
+        attr_accessor :adaptation
       
         # A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.
         # txt) language tags, listing possible alternative languages of the supplied
@@ -444,6 +716,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adaptation = args[:adaptation] if args.key?(:adaptation)
           @alternative_language_codes = args[:alternative_language_codes] if args.key?(:alternative_language_codes)
           @audio_channel_count = args[:audio_channel_count] if args.key?(:audio_channel_count)
           @diarization_config = args[:diarization_config] if args.key?(:diarization_config)
@@ -634,10 +907,58 @@ module Google
         end
       end
       
+      # Speech adaptation configuration.
+      class SpeechAdaptation
+        include Google::Apis::Core::Hashable
+      
+        # A collection of custom classes. To specify the classes inline, leave the class'
+        # `name` blank and fill in the rest of its fields, giving it a unique `
+        # custom_class_id`. Refer to the inline defined class in phrase hints by its `
+        # custom_class_id`.
+        # Corresponds to the JSON property `customClasses`
+        # @return [Array<Google::Apis::SpeechV1::CustomClass>]
+        attr_accessor :custom_classes
+      
+        # A collection of phrase set resource names to use.
+        # Corresponds to the JSON property `phraseSetReferences`
+        # @return [Array<String>]
+        attr_accessor :phrase_set_references
+      
+        # A collection of phrase sets. To specify the hints inline, leave the phrase set'
+        # s `name` blank and fill in the rest of its fields. Any phrase set can use any
+        # custom class.
+        # Corresponds to the JSON property `phraseSets`
+        # @return [Array<Google::Apis::SpeechV1::PhraseSet>]
+        attr_accessor :phrase_sets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_classes = args[:custom_classes] if args.key?(:custom_classes)
+          @phrase_set_references = args[:phrase_set_references] if args.key?(:phrase_set_references)
+          @phrase_sets = args[:phrase_sets] if args.key?(:phrase_sets)
+        end
+      end
+      
       # Provides "hints" to the speech recognizer to favor specific words and phrases
       # in the results.
       class SpeechContext
         include Google::Apis::Core::Hashable
+      
+        # Hint Boost. Positive value will increase the probability that a specific
+        # phrase will be recognized over other similar sounding phrases. The higher the
+        # boost, the higher the chance of false positive recognition as well. Negative
+        # boost values would correspond to anti-biasing. Anti-biasing is not enabled, so
+        # negative boost will simply be ignored. Though `boost` can accept a wide range
+        # of positive values, most use cases are best served with values between 0 and
+        # 20. We recommend using a binary search approach to finding the optimal value
+        # for your use case.
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
       
         # A list of strings containing words and phrases "hints" so that the speech
         # recognition is more likely to recognize them. This can be used to improve the
@@ -659,6 +980,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
           @phrases = args[:phrases] if args.key?(:phrases)
         end
       end
@@ -727,6 +1049,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Time offset of the end of this result relative to the beginning of the audio.
+        # Corresponds to the JSON property `resultEndTime`
+        # @return [String]
+        attr_accessor :result_end_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -736,6 +1063,7 @@ module Google
           @alternatives = args[:alternatives] if args.key?(:alternatives)
           @channel_tag = args[:channel_tag] if args.key?(:channel_tag)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @result_end_time = args[:result_end_time] if args.key?(:result_end_time)
         end
       end
       
