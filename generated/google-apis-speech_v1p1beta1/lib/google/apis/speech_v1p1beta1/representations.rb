@@ -461,6 +461,7 @@ module Google
       
           property :channel_tag, as: 'channelTag'
           property :language_code, as: 'languageCode'
+          property :result_end_time, as: 'resultEndTime'
         end
       end
       

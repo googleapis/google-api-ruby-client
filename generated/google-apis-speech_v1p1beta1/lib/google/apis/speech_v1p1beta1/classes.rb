@@ -472,12 +472,11 @@ module Google
         # Hint Boost. Overrides the boost set at the phrase set level. Positive value
         # will increase the probability that a specific phrase will be recognized over
         # other similar sounding phrases. The higher the boost, the higher the chance of
-        # false positive recognition as well. Negative boost values would correspond to
-        # anti-biasing. Anti-biasing is not enabled, so negative boost will simply be
-        # ignored. Though `boost` can accept a wide range of positive values, most use
-        # cases are best served with values between 0 and 20. We recommend using a
-        # binary search approach to finding the optimal value for your use case. Speech
-        # recognition will skip PhraseSets with a boost value of 0.
+        # false positive recognition as well. Negative boost will simply be ignored.
+        # Though `boost` can accept a wide range of positive values, most use cases are
+        # best served with values between 0 and 20. We recommend using a binary search
+        # approach to finding the optimal value for your use case. Speech recognition
+        # will skip PhraseSets with a boost value of 0.
         # Corresponds to the JSON property `boost`
         # @return [Float]
         attr_accessor :boost
@@ -1121,6 +1120,11 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Time offset of the end of this result relative to the beginning of the audio.
+        # Corresponds to the JSON property `resultEndTime`
+        # @return [String]
+        attr_accessor :result_end_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1130,6 +1134,7 @@ module Google
           @alternatives = args[:alternatives] if args.key?(:alternatives)
           @channel_tag = args[:channel_tag] if args.key?(:channel_tag)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @result_end_time = args[:result_end_time] if args.key?(:result_end_time)
         end
       end
       
