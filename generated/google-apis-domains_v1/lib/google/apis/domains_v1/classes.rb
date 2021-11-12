@@ -204,7 +204,7 @@ module Google
       
         # Required. The field mask describing which fields to update as a comma-
         # separated list. For example, if only the registrant contact is being updated,
-        # the `update_mask` would be `"registrant_contact"`.
+        # the `update_mask` is `"registrant_contact"`.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -240,11 +240,11 @@ module Google
       
         # Required. The field mask describing which fields to update as a comma-
         # separated list. For example, if only the name servers are being updated for an
-        # existing Custom DNS configuration, the `update_mask` would be `"custom_dns.
+        # existing Custom DNS configuration, the `update_mask` is `"custom_dns.
         # name_servers"`. When changing the DNS provider from one type to another, pass
         # the new provider's field name as part of the field mask. For example, when
         # changing from a Google Domains DNS configuration to a Custom DNS configuration,
-        # the `update_mask` would be `"custom_dns"`. //
+        # the `update_mask` is `"custom_dns"`. //
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -278,7 +278,7 @@ module Google
       
         # Required. The field mask describing which fields to update as a comma-
         # separated list. For example, if only the transfer lock is being updated, the `
-        # update_mask` would be `"transfer_lock_state"`.
+        # update_mask` is `"transfer_lock_state"`.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -1186,7 +1186,7 @@ module Google
         # @return [Google::Apis::DomainsV1::Registration]
         attr_accessor :registration
       
-        # When true, only validation will be performed, without actually registering the
+        # When true, only validation is performed, without actually registering the
         # domain. Follows: https://cloud.google.com/apis/design/design_patterns#
         # request_validation
         # Corresponds to the JSON property `validateOnly`
