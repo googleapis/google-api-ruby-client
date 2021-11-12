@@ -584,6 +584,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_delete, as: 'canDelete'
+          property :can_have_business_calls, as: 'canHaveBusinessCalls'
           property :can_have_food_menus, as: 'canHaveFoodMenus'
           property :can_modify_service_list, as: 'canModifyServiceList'
           property :can_operate_health_data, as: 'canOperateHealthData'

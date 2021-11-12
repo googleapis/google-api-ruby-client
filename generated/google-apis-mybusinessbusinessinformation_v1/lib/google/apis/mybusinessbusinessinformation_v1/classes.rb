@@ -943,6 +943,12 @@ module Google
         attr_accessor :can_delete
         alias_method :can_delete?, :can_delete
       
+        # Output only. Indicates if the listing is eligible for business calls.
+        # Corresponds to the JSON property `canHaveBusinessCalls`
+        # @return [Boolean]
+        attr_accessor :can_have_business_calls
+        alias_method :can_have_business_calls?, :can_have_business_calls
+      
         # Output only. Indicates if the listing is eligible for food menu.
         # Corresponds to the JSON property `canHaveFoodMenus`
         # @return [Boolean]
@@ -1019,6 +1025,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @can_delete = args[:can_delete] if args.key?(:can_delete)
+          @can_have_business_calls = args[:can_have_business_calls] if args.key?(:can_have_business_calls)
           @can_have_food_menus = args[:can_have_food_menus] if args.key?(:can_have_food_menus)
           @can_modify_service_list = args[:can_modify_service_list] if args.key?(:can_modify_service_list)
           @can_operate_health_data = args[:can_operate_health_data] if args.key?(:can_operate_health_data)
