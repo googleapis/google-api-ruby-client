@@ -624,6 +624,35 @@ module Google
         end
       end
       
+      # A widget that displays a stream of log.
+      class LogsPanel
+        include Google::Apis::Core::Hashable
+      
+        # A filter that chooses which log entries to return. See Advanced Logs Queries (
+        # https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries
+        # that match the filter are returned. An empty filter matches all log entries.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The names of logging resources to collect logs for. Does not implicitly
+        # include the current host project. Currently only projects are supported. There
+        # must be at least one resource_name.
+        # Corresponds to the JSON property `resourceNames`
+        # @return [Array<String>]
+        attr_accessor :resource_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @resource_names = args[:resource_names] if args.key?(:resource_names)
+        end
+      end
+      
       # Represents a Metrics Scope (https://cloud.google.com/monitoring/settings#
       # concept-scope) in Cloud Monitoring, which specifies one or more Google
       # projects and zero or more AWS accounts to monitor together.
@@ -1791,6 +1820,11 @@ module Google
         # @return [Google::Apis::MonitoringV1::Empty]
         attr_accessor :blank
       
+        # A widget that displays a stream of log.
+        # Corresponds to the JSON property `logsPanel`
+        # @return [Google::Apis::MonitoringV1::LogsPanel]
+        attr_accessor :logs_panel
+      
         # A widget showing the latest value of a metric, and how this value relates to
         # one or more thresholds.
         # Corresponds to the JSON property `scorecard`
@@ -1825,6 +1859,7 @@ module Google
         def update!(**args)
           @alert_chart = args[:alert_chart] if args.key?(:alert_chart)
           @blank = args[:blank] if args.key?(:blank)
+          @logs_panel = args[:logs_panel] if args.key?(:logs_panel)
           @scorecard = args[:scorecard] if args.key?(:scorecard)
           @text = args[:text] if args.key?(:text)
           @time_series_table = args[:time_series_table] if args.key?(:time_series_table)

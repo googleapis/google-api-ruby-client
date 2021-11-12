@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogsPanel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetricsScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -456,6 +462,14 @@ module Google
         end
       end
       
+      class LogsPanel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          collection :resource_names, as: 'resourceNames'
+        end
+      end
+      
       class MetricsScope
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -751,6 +765,8 @@ module Google
           property :alert_chart, as: 'alertChart', class: Google::Apis::MonitoringV1::AlertChart, decorator: Google::Apis::MonitoringV1::AlertChart::Representation
       
           property :blank, as: 'blank', class: Google::Apis::MonitoringV1::Empty, decorator: Google::Apis::MonitoringV1::Empty::Representation
+      
+          property :logs_panel, as: 'logsPanel', class: Google::Apis::MonitoringV1::LogsPanel, decorator: Google::Apis::MonitoringV1::LogsPanel::Representation
       
           property :scorecard, as: 'scorecard', class: Google::Apis::MonitoringV1::Scorecard, decorator: Google::Apis::MonitoringV1::Scorecard::Representation
       
