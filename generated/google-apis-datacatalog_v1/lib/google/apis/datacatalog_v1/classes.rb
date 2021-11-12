@@ -187,13 +187,16 @@ module Google
       class GetPolicyOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The policy format version to be returned. Valid values are 0, 1, and
-        # 3. Requests specifying an invalid value will be rejected. Requests for
-        # policies with any conditional bindings must specify version 3. Policies
-        # without any conditional bindings may specify any valid value or leave the
-        # field unset. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies).
+        # Optional. The maximum policy version that will be used to format the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected. Requests for policies with any conditional role bindings must
+        # specify version 3. Policies with no conditional role bindings may specify any
+        # valid value or leave the field unset. The policy in the response might use the
+        # policy version that you specified, or it might use a lower policy version. For
+        # example, if you specify version 3, but the policy has no conditional role
+        # bindings, the response uses version 1. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies).
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -1333,10 +1336,11 @@ module Google
         attr_accessor :page_token
       
         # Optional. The query string with a minimum of 3 characters and specific syntax.
-        # For more information, see [Data Catalog search syntax](/data-catalog/docs/how-
-        # to/search-reference). An empty query string returns all data assets (in the
-        # specified scope) that you have access to. A query string can be a simple `xyz`
-        # or qualified by predicates: * `name:x` * `column:y` * `description:z`
+        # For more information, see [Data Catalog search syntax](https://cloud.google.
+        # com/data-catalog/docs/how-to/search-reference). An empty query string returns
+        # all data assets (in the specified scope) that you have access to. A query
+        # string can be a simple `xyz` or qualified by predicates: * `name:x` * `column:
+        # y` * `description:z`
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -1389,7 +1393,7 @@ module Google
         # Optional. If `true`, include public tag templates in the search results. By
         # default, they are included only if you have explicit permissions on them to
         # view them. For example, if you are the owner. Other scope fields, for example,
-        # ``include_org_ids``, still restrict the returned public tag templates and at
+        # `include_org_ids`, still restrict the returned public tag templates and at
         # least one of them is required.
         # Corresponds to the JSON property `includePublicTagTemplates`
         # @return [Boolean]
