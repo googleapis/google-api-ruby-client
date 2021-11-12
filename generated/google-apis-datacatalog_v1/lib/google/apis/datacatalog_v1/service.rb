@@ -754,14 +754,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a tag and assigns it to: * An Entry if the method name is ``projects.
-        # locations.entryGroups.entries.tags.create``. * Or EntryGroupif the method name
-        # is ``projects.locations.entryGroups.tags.create``. Note: The project
-        # identified by the `parent` parameter for the [tag] (https://cloud.google.com/
-        # data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.
-        # tags/create#path-parameters) and the [tag template] (https://cloud.google.com/
-        # data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates/create#
-        # path-parameters) used to create the tag must be in the same organization.
+        # Creates a tag and assigns it to: * An Entry if the method name is `projects.
+        # locations.entryGroups.entries.tags.create`. * Or EntryGroupif the method name
+        # is `projects.locations.entryGroups.tags.create`. Note: The project identified
+        # by the `parent` parameter for the [tag] (https://cloud.google.com/data-catalog/
+        # docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-
+        # parameters) and the [tag template] (https://cloud.google.com/data-catalog/docs/
+        # reference/rest/v1/projects.locations.tagTemplates/create#path-parameters) used
+        # to create the tag must be in the same organization.
         # @param [String] parent
         #   Required. The name of the resource to attach this tag to. Tags can be attached
         #   to entries or entry groups. An entry can have up to 1000 attached tags. Note:
@@ -907,14 +907,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a tag and assigns it to: * An Entry if the method name is ``projects.
-        # locations.entryGroups.entries.tags.create``. * Or EntryGroupif the method name
-        # is ``projects.locations.entryGroups.tags.create``. Note: The project
-        # identified by the `parent` parameter for the [tag] (https://cloud.google.com/
-        # data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.
-        # tags/create#path-parameters) and the [tag template] (https://cloud.google.com/
-        # data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates/create#
-        # path-parameters) used to create the tag must be in the same organization.
+        # Creates a tag and assigns it to: * An Entry if the method name is `projects.
+        # locations.entryGroups.entries.tags.create`. * Or EntryGroupif the method name
+        # is `projects.locations.entryGroups.tags.create`. Note: The project identified
+        # by the `parent` parameter for the [tag] (https://cloud.google.com/data-catalog/
+        # docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-
+        # parameters) and the [tag template] (https://cloud.google.com/data-catalog/docs/
+        # reference/rest/v1/projects.locations.tagTemplates/create#path-parameters) used
+        # to create the tag must be in the same organization.
         # @param [String] parent
         #   Required. The name of the resource to attach this tag to. Tags can be attached
         #   to entries or entry groups. An entry can have up to 1000 attached tags. Note:
@@ -1228,9 +1228,9 @@ module Google
         #   display_name` and `is_publicly_readable` can be overwritten. If this parameter
         #   is absent or empty, all modifiable fields are overwritten. If such fields are
         #   non-required and omitted in the request body, their values are emptied. Note:
-        #   Updating the ``is_publicly_readable`` field may require up to 12 hours to take
-        #   effect in search results. Additionally, it also requires the ``tagTemplates.
-        #   getIamPolicy`` and ``tagTemplates.setIamPolicy`` permissions.
+        #   Updating the `is_publicly_readable` field may require up to 12 hours to take
+        #   effect in search results. Additionally, it also requires the `tagTemplates.
+        #   getIamPolicy` and `tagTemplates.setIamPolicy` permissions.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1475,7 +1475,7 @@ module Google
         # Catalog resource project] (https://cloud.google.com/data-catalog/docs/concepts/
         # resource-project).
         # @param [String] name
-        #   Required. The name of the tag template.
+        #   Required. The name of the tag template field.
         # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest] google_cloud_datacatalog_v1_rename_tag_template_field_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
