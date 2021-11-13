@@ -435,6 +435,14 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::ConfigManagementGitConfig]
         attr_accessor :git
       
+        # Set to true to enable the Config Sync admission webhook to prevent drifts. If
+        # set to `false`, disables the Config Sync admission webhook and does not
+        # prevent drifts.
+        # Corresponds to the JSON property `preventDrift`
+        # @return [Boolean]
+        attr_accessor :prevent_drift
+        alias_method :prevent_drift?, :prevent_drift
+      
         # Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured”
         # mode.
         # Corresponds to the JSON property `sourceFormat`
@@ -449,6 +457,7 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
+          @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
         end
       end
@@ -683,7 +692,9 @@ module Google
         # @return [String]
         attr_accessor :policy_dir
       
-        # Type of secret configured for access to the Git repo.
+        # Type of secret configured for access to the Git repo. Must be one of ssh,
+        # cookiefile, gcenode, token, gcpserviceaccount or none. The validation of this
+        # is case-sensitive. Required.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
@@ -1777,6 +1788,61 @@ module Google
         end
       end
       
+      # KubernetesResource contains the YAML manifests and configuration for
+      # Membership Kubernetes resources in the cluster. After CreateMembership or
+      # UpdateMembership, these resources should be re-applied in the cluster.
+      class KubernetesResource
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Kubernetes resources for installing the GKE Connect agent
+        # This field is only populated in the Membership returned from a successful long-
+        # running operation from CreateMembership or UpdateMembership. It is not
+        # populated during normal GetMembership or ListMemberships requests. To get the
+        # resource manifest after the initial registration, the caller should make a
+        # UpdateMembership call with an empty field mask.
+        # Corresponds to the JSON property `connectResources`
+        # @return [Array<Google::Apis::GkehubV1alpha::ResourceManifest>]
+        attr_accessor :connect_resources
+      
+        # Input only. The YAML representation of the Membership CR. This field is
+        # ignored for GKE clusters where Hub can read the CR directly. Callers should
+        # provide the CR that is currently present in the cluster during
+        # CreateMembership or UpdateMembership, or leave this field empty if none exists.
+        # The CR manifest is used to validate the cluster has not been registered with
+        # another Membership.
+        # Corresponds to the JSON property `membershipCrManifest`
+        # @return [String]
+        attr_accessor :membership_cr_manifest
+      
+        # Output only. Additional Kubernetes resources that need to be applied to the
+        # cluster after Membership creation, and after every update. This field is only
+        # populated in the Membership returned from a successful long-running operation
+        # from CreateMembership or UpdateMembership. It is not populated during normal
+        # GetMembership or ListMemberships requests. To get the resource manifest after
+        # the initial registration, the caller should make a UpdateMembership call with
+        # an empty field mask.
+        # Corresponds to the JSON property `membershipResources`
+        # @return [Array<Google::Apis::GkehubV1alpha::ResourceManifest>]
+        attr_accessor :membership_resources
+      
+        # ResourceOptions represent options for Kubernetes resource generation.
+        # Corresponds to the JSON property `resourceOptions`
+        # @return [Google::Apis::GkehubV1alpha::ResourceOptions]
+        attr_accessor :resource_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connect_resources = args[:connect_resources] if args.key?(:connect_resources)
+          @membership_cr_manifest = args[:membership_cr_manifest] if args.key?(:membership_cr_manifest)
+          @membership_resources = args[:membership_resources] if args.key?(:membership_resources)
+          @resource_options = args[:resource_options] if args.key?(:resource_options)
+        end
+      end
+      
       # Response message for the `GkeHub.ListAdminClusterMemberships` method.
       class ListAdminClusterMembershipsResponse
         include Google::Apis::Core::Hashable
@@ -2085,6 +2151,13 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::KubernetesMetadata]
         attr_accessor :kubernetes_metadata
       
+        # KubernetesResource contains the YAML manifests and configuration for
+        # Membership Kubernetes resources in the cluster. After CreateMembership or
+        # UpdateMembership, these resources should be re-applied in the cluster.
+        # Corresponds to the JSON property `kubernetesResource`
+        # @return [Google::Apis::GkehubV1alpha::KubernetesResource]
+        attr_accessor :kubernetes_resource
+      
         # MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
         # Corresponds to the JSON property `multiCloudCluster`
         # @return [Google::Apis::GkehubV1alpha::MultiCloudCluster]
@@ -2103,6 +2176,7 @@ module Google
         def update!(**args)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @kubernetes_metadata = args[:kubernetes_metadata] if args.key?(:kubernetes_metadata)
+          @kubernetes_resource = args[:kubernetes_resource] if args.key?(:kubernetes_resource)
           @multi_cloud_cluster = args[:multi_cloud_cluster] if args.key?(:multi_cloud_cluster)
           @on_prem_cluster = args[:on_prem_cluster] if args.key?(:on_prem_cluster)
         end
@@ -2548,6 +2622,65 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # ResourceManifest represents a single Kubernetes resource to be applied to the
+      # cluster.
+      class ResourceManifest
+        include Google::Apis::Core::Hashable
+      
+        # Whether the resource provided in the manifest is `cluster_scoped`. If unset,
+        # the manifest is assumed to be namespace scoped. This field is used for REST
+        # mapping when applying the resource in a cluster.
+        # Corresponds to the JSON property `clusterScoped`
+        # @return [Boolean]
+        attr_accessor :cluster_scoped
+        alias_method :cluster_scoped?, :cluster_scoped
+      
+        # YAML manifest of the resource.
+        # Corresponds to the JSON property `manifest`
+        # @return [String]
+        attr_accessor :manifest
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_scoped = args[:cluster_scoped] if args.key?(:cluster_scoped)
+          @manifest = args[:manifest] if args.key?(:manifest)
+        end
+      end
+      
+      # ResourceOptions represent options for Kubernetes resource generation.
+      class ResourceOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Connect agent version to use for connect_resources. Defaults to
+        # the latest GKE Connect version. The version must be a currently supported
+        # version, obsolete versions will be rejected.
+        # Corresponds to the JSON property `connectVersion`
+        # @return [String]
+        attr_accessor :connect_version
+      
+        # Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for
+        # CustomResourceDefinition resources. This option should be set for clusters
+        # with Kubernetes apiserver versions <1.16.
+        # Corresponds to the JSON property `v1beta1Crd`
+        # @return [Boolean]
+        attr_accessor :v1beta1_crd
+        alias_method :v1beta1_crd?, :v1beta1_crd
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connect_version = args[:connect_version] if args.key?(:connect_version)
+          @v1beta1_crd = args[:v1beta1_crd] if args.key?(:v1beta1_crd)
         end
       end
       
