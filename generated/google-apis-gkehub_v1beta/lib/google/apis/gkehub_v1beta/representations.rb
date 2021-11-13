@@ -460,6 +460,7 @@ module Google
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1beta::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1beta::ConfigManagementGitConfig::Representation
       
+          property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
         end
       end

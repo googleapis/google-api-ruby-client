@@ -345,6 +345,14 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementGitConfig]
         attr_accessor :git
       
+        # Set to true to enable the Config Sync admission webhook to prevent drifts. If
+        # set to `false`, disables the Config Sync admission webhook and does not
+        # prevent drifts.
+        # Corresponds to the JSON property `preventDrift`
+        # @return [Boolean]
+        attr_accessor :prevent_drift
+        alias_method :prevent_drift?, :prevent_drift
+      
         # Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured”
         # mode.
         # Corresponds to the JSON property `sourceFormat`
@@ -359,6 +367,7 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @git = args[:git] if args.key?(:git)
+          @prevent_drift = args[:prevent_drift] if args.key?(:prevent_drift)
           @source_format = args[:source_format] if args.key?(:source_format)
         end
       end
@@ -587,7 +596,9 @@ module Google
         # @return [String]
         attr_accessor :policy_dir
       
-        # Type of secret configured for access to the Git repo.
+        # Type of secret configured for access to the Git repo. Must be one of ssh,
+        # cookiefile, gcenode, token, gcpserviceaccount or none. The validation of this
+        # is case-sensitive. Required.
         # Corresponds to the JSON property `secretType`
         # @return [String]
         attr_accessor :secret_type
