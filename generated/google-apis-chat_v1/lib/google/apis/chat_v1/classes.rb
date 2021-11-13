@@ -604,7 +604,7 @@ module Google
         # @return [String]
         attr_accessor :dialog_event_type
       
-        # The timestamp indicating when the event was dispatched.
+        # The timestamp indicating when the event occurred.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
