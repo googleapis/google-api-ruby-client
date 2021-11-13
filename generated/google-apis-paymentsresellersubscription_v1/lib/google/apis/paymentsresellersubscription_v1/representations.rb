@@ -299,6 +299,7 @@ module Google
           collection :products, as: 'products'
           collection :promotions, as: 'promotions'
           property :redirect_uri, as: 'redirectUri'
+          property :renewal_time, as: 'renewalTime'
           property :service_location, as: 'serviceLocation', class: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Location, decorator: Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Location::Representation
       
           property :state, as: 'state'

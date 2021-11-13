@@ -523,6 +523,15 @@ module Google
         # @return [String]
         attr_accessor :redirect_uri
       
+        # Output only. The time at which the subscription is expected to be renewed by
+        # Google - a new charge will be incurred and the service entitlement will be
+        # renewed. A non-immediate cancellation will take place at this time too, before
+        # which, the service entitlement for the end user will remain valid. UTC
+        # timezone in ISO 8061 format. For example: "2019-08-31T17:28:54.564Z"
+        # Corresponds to the JSON property `renewalTime`
+        # @return [String]
+        attr_accessor :renewal_time
+      
         # Describes a location of an end user.
         # Corresponds to the JSON property `serviceLocation`
         # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Location]
@@ -564,6 +573,7 @@ module Google
           @products = args[:products] if args.key?(:products)
           @promotions = args[:promotions] if args.key?(:promotions)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+          @renewal_time = args[:renewal_time] if args.key?(:renewal_time)
           @service_location = args[:service_location] if args.key?(:service_location)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
