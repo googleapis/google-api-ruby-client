@@ -68,10 +68,10 @@ module Google
       
         # An image name pattern to allowlist, in the form `registry/path/to/image`. This
         # supports a trailing `*` as a wildcard, but this is allowed only in text after
-        # the `registry/` part. `*` wildcard does not match `/`, i.e., gcr.io/nginx*
-        # matches gcr.io/nginx@latest, but it does not match gcr.io/nginx/image. This
-        # also supports a trailing `**` wildcard which matches subdirectories, i.e., gcr.
-        # io/nginx** matches gcr.io/nginx/image.
+        # the `registry/` part. `*` wildcard does not match `/`, i.e., `gcr.io/nginx*`
+        # matches `gcr.io/nginx@latest`, but it does not match `gcr.io/nginx/image`.
+        # This also supports a trailing `**` wildcard which matches subdirectories, i.e.,
+        # `gcr.io/nginx**` matches `gcr.io/nginx/image`.
         # Corresponds to the JSON property `namePattern`
         # @return [String]
         attr_accessor :name_pattern
@@ -576,20 +576,20 @@ module Google
         attr_accessor :global_policy_evaluation_mode
       
         # Optional. Per-istio-service-identity admission rules. Istio service identity
-        # spec format: spiffe:///ns//sa/ or /ns//sa/ e.g. spiffe://example.com/ns/test-
-        # ns/sa/default
+        # spec format: `spiffe:///ns//sa/` or `/ns//sa/` e.g. `spiffe://example.com/ns/
+        # test-ns/sa/default`
         # Corresponds to the JSON property `istioServiceIdentityAdmissionRules`
         # @return [Hash<String,Google::Apis::BinaryauthorizationV1beta1::AdmissionRule>]
         attr_accessor :istio_service_identity_admission_rules
       
         # Optional. Per-kubernetes-namespace admission rules. K8s namespace spec format:
-        # [a-z.-]+, e.g. 'some-namespace'
+        # `[a-z.-]+`, e.g. `some-namespace`
         # Corresponds to the JSON property `kubernetesNamespaceAdmissionRules`
         # @return [Hash<String,Google::Apis::BinaryauthorizationV1beta1::AdmissionRule>]
         attr_accessor :kubernetes_namespace_admission_rules
       
         # Optional. Per-kubernetes-service-account admission rules. Service account spec
-        # format: `namespace:serviceaccount`. e.g. 'test-ns:default'
+        # format: `namespace:serviceaccount`. e.g. `test-ns:default`
         # Corresponds to the JSON property `kubernetesServiceAccountAdmissionRules`
         # @return [Hash<String,Google::Apis::BinaryauthorizationV1beta1::AdmissionRule>]
         attr_accessor :kubernetes_service_account_admission_rules
