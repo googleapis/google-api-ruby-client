@@ -249,7 +249,7 @@ module Google
         end
       end
       
-      # A Google Cloud Redis instance. next id = 38
+      # A Google Cloud Redis instance.
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -384,7 +384,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :read_endpoint_port
       
-        # Optional. Read replica mode.
+        # Optional. Read replica mode. Can only be specified when trying to create the
+        # instance.
         # Corresponds to the JSON property `readReplicasMode`
         # @return [String]
         attr_accessor :read_replicas_mode
@@ -407,8 +408,10 @@ module Google
         # @return [String]
         attr_accessor :redis_version
       
-        # Optional. The number of replica nodes. Valid range for standard tier is [1-5]
-        # and defaults to 2. Valid value for basic tier is 0 and defaults to 0.
+        # Optional. The number of replica nodes. The valid range for the Standard Tier
+        # with read replicas enabled is [1-5] and defaults to 2. If read replicas are
+        # not enabled for a Standard Tier instance, the only valid value is 1 and the
+        # default is 1. The valid value for basic tier is 0 and the default is also 0.
         # Corresponds to the JSON property `replicaCount`
         # @return [Fixnum]
         attr_accessor :replica_count
