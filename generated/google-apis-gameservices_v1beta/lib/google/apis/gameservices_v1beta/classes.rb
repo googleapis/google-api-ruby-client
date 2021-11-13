@@ -1957,9 +1957,9 @@ module Google
       # specified by start_time and end_time. If the scheduled event's timespan is
       # larger than the cron_spec + cron_job_duration, the event will be recurring. If
       # only cron_spec + cron_job_duration are specified, the event is effective
-      # starting at the local time specified by cron_spec, and is recurring.
+      # starting at the local time specified by cron_spec, and is recurring. ```
       # start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time
-      # cron job: cron spec start time + duration
+      # cron job: cron spec start time + duration ```
       class Schedule
         include Google::Apis::Core::Hashable
       
