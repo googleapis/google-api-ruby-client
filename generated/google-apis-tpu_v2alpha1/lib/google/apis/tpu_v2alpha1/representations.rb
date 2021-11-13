@@ -349,6 +349,7 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_ip_forward, as: 'canIpForward'
           property :enable_external_ips, as: 'enableExternalIps'
           property :network, as: 'network'
           property :subnetwork, as: 'subnetwork'
