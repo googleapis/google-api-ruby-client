@@ -777,9 +777,7 @@ module Google
       class GooglePlayAnalytics
         include Google::Apis::Core::Hashable
       
-        # [AdWords autotagging parameter](https://support.google.com/analytics/answer/
-        # 1033981?hl=en); used to measure Google AdWords ads. This value is generated
-        # dynamically and should never be modified.
+        # Deprecated; FDL SDK does not process nor log it.
         # Corresponds to the JSON property `gclid`
         # @return [String]
         attr_accessor :gclid
