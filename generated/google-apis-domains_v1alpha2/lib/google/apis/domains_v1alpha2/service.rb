@@ -302,16 +302,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a `Registration` resource. For `Registration` resources using usage
-        # billing, this method works if: * `state` is `EXPORTED` with `expire_time` in
+        # Deletes a `Registration` resource. This method works on any `Registration`
+        # resource using [Subscription or Commitment billing](/domains/pricing#billing-
+        # models), provided that the resource was created at least 1 day in the past.
+        # For `Registration` resources using [Monthly billing](/domains/pricing#billing-
+        # models), this method works if: * `state` is `EXPORTED` with `expire_time` in
         # the past * `state` is `REGISTRATION_FAILED` * `state` is `TRANSFER_FAILED`
-        # This method works on any `Registration` resource using subscription billing,
-        # provided that the resource was created at least 1 day in the past. When an
-        # active domain is successfully deleted, you can continue to use the domain in [
-        # Google Domains](https://domains.google/) until it expires. The calling user
-        # becomes the domain's sole owner in Google Domains, and permissions for the
-        # domain are subsequently managed there. The domain will not renew automatically
-        # unless the new owner sets up billing in Google Domains.
+        # When an active registration is successfully deleted, you can continue to use
+        # the domain in [Google Domains](https://domains.google/) until it expires. The
+        # calling user becomes the domain's sole owner in Google Domains, and
+        # permissions for the domain are subsequently managed there. The domain does not
+        # renew automatically unless the new owner sets up billing in Google Domains.
         # @param [String] name
         #   Required. The name of the `Registration` to delete, in the format `projects/*/
         #   locations/*/registrations/*`.
@@ -346,7 +347,7 @@ module Google
         # Domains. When an active domain is successfully exported, you can continue to
         # use the domain in [Google Domains](https://domains.google/) until it expires.
         # The calling user becomes the domain's sole owner in Google Domains, and
-        # permissions for the domain are subsequently managed there. The domain will not
+        # permissions for the domain are subsequently managed there. The domain does not
         # renew automatically unless the new owner sets up billing in Google Domains.
         # @param [String] name
         #   Required. The name of the `Registration` to export, in the format `projects/*/
@@ -418,13 +419,16 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
-        #   3. Requests specifying an invalid value will be rejected. Requests for
-        #   policies with any conditional bindings must specify version 3. Policies
-        #   without any conditional bindings may specify any valid value or leave the
-        #   field unset. To learn which resources support conditions in their IAM policies,
-        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        #   resource-policies).
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -516,7 +520,7 @@ module Google
         # @param [String] update_mask
         #   Required. The field mask describing which fields to update as a comma-
         #   separated list. For example, if only the labels are being updated, the `
-        #   update_mask` would be `"labels"`.
+        #   update_mask` is `"labels"`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -695,7 +699,7 @@ module Google
         
         # Gets parameters needed to transfer a domain name from another registrar to
         # Cloud Domains. For domains managed by Google Domains, transferring to Cloud
-        # Domains is not yet supported. Use the returned values to call `TransferDomain`.
+        # Domains is not supported. Use the returned values to call `TransferDomain`.
         # @param [String] location
         #   Required. The location. Must be in the format `projects/*/locations/*`.
         # @param [String] domain_name
@@ -840,7 +844,7 @@ module Google
         end
         
         # Transfers a domain name from another registrar to Cloud Domains. For domains
-        # managed by Google Domains, transferring to Cloud Domains is not yet supported.
+        # managed by Google Domains, transferring to Cloud Domains is not supported.
         # Before calling this method, go to the domain's current registrar to unlock the
         # domain for transfer and retrieve the domain's transfer authorization code.
         # Then call `RetrieveTransferParameters` to confirm that the domain is unlocked
