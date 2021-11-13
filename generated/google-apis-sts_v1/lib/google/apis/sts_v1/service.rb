@@ -83,11 +83,11 @@ module Google
         end
         
         # Exchanges a credential for a Google OAuth 2.0 access token. The token asserts
-        # an external identity within a workload identity pool, or it applies a
-        # Credential Access Boundary to a Google access token. When you call this method,
-        # do not send the `Authorization` HTTP header in the request. This method does
-        # not require the `Authorization` header, and using the header can cause the
-        # request to fail.
+        # an external identity within an identity pool, or it applies a Credential
+        # Access Boundary to a Google access token. When you call this method, do not
+        # send the `Authorization` HTTP header in the request. This method does not
+        # require the `Authorization` header, and using the header can cause the request
+        # to fail.
         # @param [Google::Apis::StsV1::GoogleIdentityStsV1ExchangeTokenRequest] google_identity_sts_v1_exchange_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
