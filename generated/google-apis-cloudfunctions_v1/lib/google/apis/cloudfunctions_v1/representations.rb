@@ -254,6 +254,7 @@ module Google
           property :build_name, as: 'buildName'
           property :build_worker_pool, as: 'buildWorkerPool'
           property :description, as: 'description'
+          property :docker_repository, as: 'dockerRepository'
           property :entry_point, as: 'entryPoint'
           hash :environment_variables, as: 'environmentVariables'
           property :event_trigger, as: 'eventTrigger', class: Google::Apis::CloudfunctionsV1::EventTrigger, decorator: Google::Apis::CloudfunctionsV1::EventTrigger::Representation
@@ -261,6 +262,7 @@ module Google
           property :https_trigger, as: 'httpsTrigger', class: Google::Apis::CloudfunctionsV1::HttpsTrigger, decorator: Google::Apis::CloudfunctionsV1::HttpsTrigger::Representation
       
           property :ingress_settings, as: 'ingressSettings'
+          property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :max_instances, as: 'maxInstances'
           property :min_instances, as: 'minInstances'
