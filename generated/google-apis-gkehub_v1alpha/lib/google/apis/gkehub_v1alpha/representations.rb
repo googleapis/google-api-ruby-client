@@ -310,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KubernetesResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAdminClusterMembershipsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +419,18 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceManifest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -601,6 +619,7 @@ module Google
           property :enabled, as: 'enabled'
           property :git, as: 'git', class: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig, decorator: Google::Apis::GkehubV1alpha::ConfigManagementGitConfig::Representation
       
+          property :prevent_drift, as: 'preventDrift'
           property :source_format, as: 'sourceFormat'
         end
       end
@@ -971,6 +990,19 @@ module Google
         end
       end
       
+      class KubernetesResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connect_resources, as: 'connectResources', class: Google::Apis::GkehubV1alpha::ResourceManifest, decorator: Google::Apis::GkehubV1alpha::ResourceManifest::Representation
+      
+          property :membership_cr_manifest, as: 'membershipCrManifest'
+          collection :membership_resources, as: 'membershipResources', class: Google::Apis::GkehubV1alpha::ResourceManifest, decorator: Google::Apis::GkehubV1alpha::ResourceManifest::Representation
+      
+          property :resource_options, as: 'resourceOptions', class: Google::Apis::GkehubV1alpha::ResourceOptions, decorator: Google::Apis::GkehubV1alpha::ResourceOptions::Representation
+      
+        end
+      end
+      
       class ListAdminClusterMembershipsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1056,6 +1088,8 @@ module Google
           property :gke_cluster, as: 'gkeCluster', class: Google::Apis::GkehubV1alpha::GkeCluster, decorator: Google::Apis::GkehubV1alpha::GkeCluster::Representation
       
           property :kubernetes_metadata, as: 'kubernetesMetadata', class: Google::Apis::GkehubV1alpha::KubernetesMetadata, decorator: Google::Apis::GkehubV1alpha::KubernetesMetadata::Representation
+      
+          property :kubernetes_resource, as: 'kubernetesResource', class: Google::Apis::GkehubV1alpha::KubernetesResource, decorator: Google::Apis::GkehubV1alpha::KubernetesResource::Representation
       
           property :multi_cloud_cluster, as: 'multiCloudCluster', class: Google::Apis::GkehubV1alpha::MultiCloudCluster, decorator: Google::Apis::GkehubV1alpha::MultiCloudCluster::Representation
       
@@ -1168,6 +1202,22 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class ResourceManifest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_scoped, as: 'clusterScoped'
+          property :manifest, as: 'manifest'
+        end
+      end
+      
+      class ResourceOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connect_version, as: 'connectVersion'
+          property :v1beta1_crd, as: 'v1beta1Crd'
         end
       end
       
