@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSnapshotsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +197,12 @@ module Google
       end
       
       class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Snapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -390,6 +402,7 @@ module Google
           property :etag, as: 'etag'
           collection :file_shares, as: 'fileShares', class: Google::Apis::FileV1::FileShareConfig, decorator: Google::Apis::FileV1::FileShareConfig::Representation
       
+          property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1::NetworkConfig, decorator: Google::Apis::FileV1::NetworkConfig::Representation
@@ -397,6 +410,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
+          collection :suspension_reasons, as: 'suspensionReasons'
           property :tier, as: 'tier'
         end
       end
@@ -439,6 +453,15 @@ module Google
         end
       end
       
+      class ListSnapshotsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :snapshots, as: 'snapshots', class: Google::Apis::FileV1::Snapshot, decorator: Google::Apis::FileV1::Snapshot::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -477,6 +500,7 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :connect_mode, as: 'connectMode'
           collection :ip_addresses, as: 'ipAddresses'
           collection :modes, as: 'modes'
           property :network, as: 'network'
@@ -535,6 +559,18 @@ module Google
           property :duration, as: 'duration'
           property :start_time, as: 'startTime', class: Google::Apis::FileV1::TimeOfDay, decorator: Google::Apis::FileV1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class Snapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :filesystem_used_bytes, :numeric_string => true, as: 'filesystemUsedBytes'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       

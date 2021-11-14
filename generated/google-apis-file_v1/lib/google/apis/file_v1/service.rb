@@ -360,6 +360,9 @@ module Google
         # @param [String] name
         #   Required. The instance resource name, in the format `projects/`project_id`/
         #   locations/`location`/instances/`instance_id``
+        # @param [Boolean] force
+        #   If set to true, all snapshots of the instance will also be deleted. (Otherwise,
+        #   the request will only work if the instance has no snapshots.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -377,11 +380,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_instance(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_instance(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FileV1::Operation::Representation
           command.response_class = Google::Apis::FileV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -535,6 +539,191 @@ module Google
           command.response_representation = Google::Apis::FileV1::Operation::Representation
           command.response_class = Google::Apis::FileV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a snapshot.
+        # @param [String] parent
+        #   Required. The Filestore Instance to create the snapshots of, in the format `
+        #   projects/`project_id`/locations/`location`/instances/`instance_id``
+        # @param [Google::Apis::FileV1::Snapshot] snapshot_object
+        # @param [String] snapshot_id
+        #   Required. The ID to use for the snapshot. The ID must be unique within the
+        #   specified instance. This value must start with a lowercase letter followed by
+        #   up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_instance_snapshot(parent, snapshot_object = nil, snapshot_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/snapshots', options)
+          command.request_representation = Google::Apis::FileV1::Snapshot::Representation
+          command.request_object = snapshot_object
+          command.response_representation = Google::Apis::FileV1::Operation::Representation
+          command.response_class = Google::Apis::FileV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['snapshotId'] = snapshot_id unless snapshot_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a snapshot.
+        # @param [String] name
+        #   Required. The snapshot resource name, in the format `projects/`project_id`/
+        #   locations/`location`/instances/`instance_id`/snapshots/`snapshot_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_instance_snapshot(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FileV1::Operation::Representation
+          command.response_class = Google::Apis::FileV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details of a specific snapshot.
+        # @param [String] name
+        #   Required. The snapshot resource name, in the format `projects/`project_id`/
+        #   locations/`location`/instances/`instance_id`/snapshots/`snapshot_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::Snapshot] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::Snapshot]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_instance_snapshot(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::FileV1::Snapshot::Representation
+          command.response_class = Google::Apis::FileV1::Snapshot
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all snapshots in a project for either a specified location or for all
+        # locations.
+        # @param [String] parent
+        #   Required. The instance for which to retrieve snapshot information, in the
+        #   format `projects/`project_id`/locations/`location`/instances/`instance_id``.
+        # @param [String] filter
+        #   List filter.
+        # @param [String] order_by
+        #   Sort results. Supported values are "name", "name desc" or "" (unsorted).
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.
+        # @param [String] page_token
+        #   The next_page_token value to use if there are additional results to retrieve
+        #   for this list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::ListSnapshotsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::ListSnapshotsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_instance_snapshots(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/snapshots', options)
+          command.response_representation = Google::Apis::FileV1::ListSnapshotsResponse::Representation
+          command.response_class = Google::Apis::FileV1::ListSnapshotsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the settings of a specific snapshot.
+        # @param [String] name
+        #   Output only. The resource name of the snapshot, in the format `projects/`
+        #   project_id`/locations/`location_id`/instances/`instance_id`/snapshots/`
+        #   snapshot_id``.
+        # @param [Google::Apis::FileV1::Snapshot] snapshot_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_instance_snapshot(name, snapshot_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::FileV1::Snapshot::Representation
+          command.request_object = snapshot_object
+          command.response_representation = Google::Apis::FileV1::Operation::Representation
+          command.response_class = Google::Apis::FileV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
