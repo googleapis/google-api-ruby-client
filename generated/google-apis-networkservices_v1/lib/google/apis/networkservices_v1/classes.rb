@@ -288,8 +288,7 @@ module Google
         # Optional. This field specifies the URL of AuthorizationPolicy resource that
         # applies authorization policies to the inbound traffic at the matched endpoints.
         # Refer to Authorization. If this field is not specified, authorization is
-        # disabled(no authz checks) for this endpoint. Applicable only when
-        # EndpointPolicyType is SIDECAR_PROXY.
+        # disabled(no authz checks) for this endpoint.
         # Corresponds to the JSON property `authorizationPolicy`
         # @return [String]
         attr_accessor :authorization_policy
