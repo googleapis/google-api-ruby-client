@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Consumer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataCatalogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -288,6 +300,14 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class Consumer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint_uri, as: 'endpointUri'
+          property :subnetwork, as: 'subnetwork'
         end
       end
       
@@ -504,6 +524,14 @@ module Google
         end
       end
       
+      class NetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consumers, as: 'consumers', class: Google::Apis::MetastoreV1alpha::Consumer, decorator: Google::Apis::MetastoreV1alpha::Consumer::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -588,6 +616,8 @@ module Google
       
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_config, as: 'networkConfig', class: Google::Apis::MetastoreV1alpha::NetworkConfig, decorator: Google::Apis::MetastoreV1alpha::NetworkConfig::Representation
+      
           property :port, as: 'port'
           property :release_channel, as: 'releaseChannel'
           property :state, as: 'state'
