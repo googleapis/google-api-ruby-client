@@ -1,0 +1,7 @@
+{
+    "api_id": "datastream:v1",
+    "name_pretty": "Datastream API",
+    "distribution_name": "google-apis-datastream_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
