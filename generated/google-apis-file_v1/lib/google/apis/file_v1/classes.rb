@@ -706,6 +706,11 @@ module Google
         # @return [Array<Google::Apis::FileV1::FileShareConfig>]
         attr_accessor :file_shares
       
+        # KMS key name used for data encryption.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -739,6 +744,12 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
+        # Output only. field indicates all the reasons the instance is in "SUSPENDED"
+        # state.
+        # Corresponds to the JSON property `suspensionReasons`
+        # @return [Array<String>]
+        attr_accessor :suspension_reasons
+      
         # The service tier of the instance.
         # Corresponds to the JSON property `tier`
         # @return [String]
@@ -754,12 +765,14 @@ module Google
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @file_shares = args[:file_shares] if args.key?(:file_shares)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
+          @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
           @tier = args[:tier] if args.key?(:tier)
         end
       end
@@ -883,6 +896,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # ListSnapshotsResponse is the result of ListSnapshotsRequest.
+      class ListSnapshotsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token you can use to retrieve the next page of results. Not returned if
+        # there are no more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of snapshots in the project for the specified instance.
+        # Corresponds to the JSON property `snapshots`
+        # @return [Array<Google::Apis::FileV1::Snapshot>]
+        attr_accessor :snapshots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @snapshots = args[:snapshots] if args.key?(:snapshots)
         end
       end
       
@@ -1024,6 +1063,12 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
+        # The network connect mode of the Filestore instance. If not provided, the
+        # connect mode defaults to DIRECT_PEERING.
+        # Corresponds to the JSON property `connectMode`
+        # @return [String]
+        attr_accessor :connect_mode
+      
         # Output only. IPv4 addresses in the format ``octet1`.`octet2`.`octet3`.`octet4``
         # or IPv6 addresses in the format ``block1`:`block2`:`block3`:`block4`:`block5`:
         # `block6`:`block7`:`block8``.
@@ -1043,12 +1088,19 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.
-        # net/reference/research/statistics/address_filters/) that identifies the range
-        # of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.
-        # 168.0.0/29. The range you specify can't overlap with either existing subnets
-        # or assigned IP address ranges for other Cloud Filestore instances in the
-        # selected VPC network.
+        # Optional, reserved_ip_range can have one of the following two types of values.
+        # * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP
+        # address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-
+        # static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode.
+        # When the name of an allocated IP address range is specified, it must be one of
+        # the ranges associated with the private service access connection. When
+        # specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier
+        # or a /24 CIDR block for High Scale or Enterprise tier in one of the [internal
+        # IP address ranges](https://www.arin.net/reference/research/statistics/
+        # address_filters/) that identifies the range of IP addresses reserved for this
+        # instance. For example, 10.0.0.0/29 or 192.168.0.0/24. The range you specify
+        # can't overlap with either existing subnets or assigned IP address ranges for
+        # other Cloud Filestore instances in the selected VPC network.
         # Corresponds to the JSON property `reservedIpRange`
         # @return [String]
         attr_accessor :reserved_ip_range
@@ -1059,6 +1111,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connect_mode = args[:connect_mode] if args.key?(:connect_mode)
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @modes = args[:modes] if args.key?(:modes)
           @network = args[:network] if args.key?(:network)
@@ -1300,6 +1353,59 @@ module Google
           @day = args[:day] if args.key?(:day)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A Filestore snapshot.
+      class Snapshot
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the snapshot was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of the snapshot with 2048 characters or less. Requests with
+        # longer descriptions will be rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The amount of bytes needed to allocate a full copy of the
+        # snapshot content
+        # Corresponds to the JSON property `filesystemUsedBytes`
+        # @return [Fixnum]
+        attr_accessor :filesystem_used_bytes
+      
+        # Resource labels to represent user provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name of the snapshot, in the format `projects/`
+        # project_id`/locations/`location_id`/instances/`instance_id`/snapshots/`
+        # snapshot_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The snapshot state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @filesystem_used_bytes = args[:filesystem_used_bytes] if args.key?(:filesystem_used_bytes)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
