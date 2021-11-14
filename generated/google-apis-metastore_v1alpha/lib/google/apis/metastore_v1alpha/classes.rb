@@ -220,6 +220,36 @@ module Google
         end
       end
       
+      # Contains information of the customer's network configurations.
+      class Consumer
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The URI of the endpoint used to access the metastore service.
+        # Corresponds to the JSON property `endpointUri`
+        # @return [String]
+        attr_accessor :endpoint_uri
+      
+        # The subnetwork of the customer project from which an IP address is reserved
+        # and used as the Dataproc Metastore service's endpoint. It is accessible to
+        # hosts in the subnet and to all hosts in a subnet in the same region and same
+        # network. There must be at least one IP address available in the subnet's
+        # primary range. The subnet is specified in the following form:`projects/`
+        # project_number`/regions/`region_id`/subnetworks/`subnetwork_id`
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+        end
+      end
+      
       # Specifies how metastore metadata should be integrated with the Data Catalog
       # service.
       class DataCatalogConfig
@@ -951,6 +981,26 @@ module Google
         end
       end
       
+      # Network configuration for the Dataproc Metastore service.
+      class NetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The consumer-side network configuration for the Dataproc Metastore
+        # instance.
+        # Corresponds to the JSON property `consumers`
+        # @return [Array<Google::Apis::MetastoreV1alpha::Consumer>]
+        attr_accessor :consumers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumers = args[:consumers] if args.key?(:consumers)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1343,6 +1393,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Network configuration for the Dataproc Metastore service.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::MetastoreV1alpha::NetworkConfig]
+        attr_accessor :network_config
+      
         # The TCP port at which the metastore service is reached. Default: 9083.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
@@ -1397,6 +1452,7 @@ module Google
           @metadata_management_activity = args[:metadata_management_activity] if args.key?(:metadata_management_activity)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_config = args[:network_config] if args.key?(:network_config)
           @port = args[:port] if args.key?(:port)
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @state = args[:state] if args.key?(:state)
