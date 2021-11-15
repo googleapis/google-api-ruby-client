@@ -639,6 +639,10 @@ module Google
           property :name, as: 'name'
           property :policy, as: 'policy', class: Google::Apis::VmmigrationV1::SchedulePolicy, decorator: Google::Apis::VmmigrationV1::SchedulePolicy::Representation
       
+          collection :recent_clone_jobs, as: 'recentCloneJobs', class: Google::Apis::VmmigrationV1::CloneJob, decorator: Google::Apis::VmmigrationV1::CloneJob::Representation
+      
+          collection :recent_cutover_jobs, as: 'recentCutoverJobs', class: Google::Apis::VmmigrationV1::CutoverJob, decorator: Google::Apis::VmmigrationV1::CutoverJob::Representation
+      
           property :source_vm_id, as: 'sourceVmId'
           property :state, as: 'state'
           property :state_time, as: 'stateTime'

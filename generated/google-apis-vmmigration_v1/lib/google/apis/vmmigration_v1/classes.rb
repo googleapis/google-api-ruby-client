@@ -1171,6 +1171,22 @@ module Google
         # @return [Google::Apis::VmmigrationV1::SchedulePolicy]
         attr_accessor :policy
       
+        # Output only. The recent clone jobs performed on the migrating VM. This field
+        # holds the vm's last completed clone job and the vm's running clone job, if one
+        # exists. Note: To have this field populated you need to explicitly request it
+        # via the "view" parameter of the Get/List request.
+        # Corresponds to the JSON property `recentCloneJobs`
+        # @return [Array<Google::Apis::VmmigrationV1::CloneJob>]
+        attr_accessor :recent_clone_jobs
+      
+        # Output only. The recent cutover jobs performed on the migrating VM. This field
+        # holds the vm's last completed cutover job and the vm's running cutover job, if
+        # one exists. Note: To have this field populated you need to explicitly request
+        # it via the "view" parameter of the Get/List request.
+        # Corresponds to the JSON property `recentCutoverJobs`
+        # @return [Array<Google::Apis::VmmigrationV1::CutoverJob>]
+        attr_accessor :recent_cutover_jobs
+      
         # The unique ID of the VM in the source. The VM's name in vSphere can be changed,
         # so this is not the VM's name but rather its moRef id. This id is of the form
         # vm-.
@@ -1210,6 +1226,8 @@ module Google
           @last_sync = args[:last_sync] if args.key?(:last_sync)
           @name = args[:name] if args.key?(:name)
           @policy = args[:policy] if args.key?(:policy)
+          @recent_clone_jobs = args[:recent_clone_jobs] if args.key?(:recent_clone_jobs)
+          @recent_cutover_jobs = args[:recent_cutover_jobs] if args.key?(:recent_cutover_jobs)
           @source_vm_id = args[:source_vm_id] if args.key?(:source_vm_id)
           @state = args[:state] if args.key?(:state)
           @state_time = args[:state_time] if args.key?(:state_time)
