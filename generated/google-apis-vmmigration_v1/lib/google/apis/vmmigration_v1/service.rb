@@ -1096,6 +1096,8 @@ module Google
         # Gets details of a single MigratingVm.
         # @param [String] name
         #   Required. The name of the MigratingVm.
+        # @param [String] view
+        #   Optional. The level of details of the migrating VM.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1113,11 +1115,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_source_migrating_vm(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_source_migrating_vm(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::VmmigrationV1::MigratingVm::Representation
           command.response_class = Google::Apis::VmmigrationV1::MigratingVm
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1140,6 +1143,8 @@ module Google
         #   Provide this to retrieve the subsequent page. When paginating, all other
         #   parameters provided to `ListMigratingVms` must match the call that provided
         #   the page token.
+        # @param [String] view
+        #   Optional. The level of details of each migrating VM.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1157,7 +1162,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_source_migrating_vms(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_source_migrating_vms(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/migratingVms', options)
           command.response_representation = Google::Apis::VmmigrationV1::ListMigratingVmsResponse::Representation
           command.response_class = Google::Apis::VmmigrationV1::ListMigratingVmsResponse
@@ -1166,6 +1171,7 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
