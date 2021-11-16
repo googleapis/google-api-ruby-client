@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkMuteFindingsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cve
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,18 @@ module Google
       end
       
       class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ExternalSystem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1MuteConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMuteConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListNotificationConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +329,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetMuteRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -399,6 +429,14 @@ module Google
         end
       end
       
+      class BulkMuteFindingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :mute_annotation, as: 'muteAnnotation'
+        end
+      end
+      
       class Cve
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -448,10 +486,15 @@ module Google
           property :category, as: 'category'
           property :create_time, as: 'createTime'
           property :event_time, as: 'eventTime'
+          hash :external_systems, as: 'externalSystems', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem::Representation
+      
           property :external_uri, as: 'externalUri'
           property :finding_class, as: 'findingClass'
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1::Indicator, decorator: Google::Apis::SecuritycenterV1::Indicator::Representation
       
+          property :mute, as: 'mute'
+          property :mute_initiator, as: 'muteInitiator'
+          property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :resource_name, as: 'resourceName'
@@ -485,6 +528,30 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :requested_policy_version, as: 'requestedPolicyVersion'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ExternalSystem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assignees, as: 'assignees'
+          property :external_system_update_time, as: 'externalSystemUpdateTime'
+          property :external_uid, as: 'externalUid'
+          property :name, as: 'name'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1MuteConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :filter, as: 'filter'
+          property :most_recent_editor, as: 'mostRecentEditor'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -709,6 +776,15 @@ module Google
         end
       end
       
+      class ListMuteConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mute_configs, as: 'muteConfigs', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListNotificationConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -850,6 +926,13 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::SecuritycenterV1::Policy, decorator: Google::Apis::SecuritycenterV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class SetMuteRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mute, as: 'mute'
         end
       end
       
