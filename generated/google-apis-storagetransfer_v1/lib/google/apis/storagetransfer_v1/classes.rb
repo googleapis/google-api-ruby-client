@@ -545,6 +545,18 @@ module Google
         attr_accessor :enable_onprem_gcs_transfer_logs
         alias_method :enable_onprem_gcs_transfer_logs?, :enable_onprem_gcs_transfer_logs
       
+        # States in which `log_actions` are logged. If empty, no logs are generated.
+        # This is not yet supported for transfers with PosixFilesystem data sources.
+        # Corresponds to the JSON property `logActionStates`
+        # @return [Array<String>]
+        attr_accessor :log_action_states
+      
+        # Actions to be logged. If empty, no logs are generated. This is not yet
+        # supported for transfers with PosixFilesystem data sources.
+        # Corresponds to the JSON property `logActions`
+        # @return [Array<String>]
+        attr_accessor :log_actions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -552,6 +564,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_onprem_gcs_transfer_logs = args[:enable_onprem_gcs_transfer_logs] if args.key?(:enable_onprem_gcs_transfer_logs)
+          @log_action_states = args[:log_action_states] if args.key?(:log_action_states)
+          @log_actions = args[:log_actions] if args.key?(:log_actions)
         end
       end
       
@@ -1229,6 +1243,29 @@ module Google
         end
       end
       
+      # Specifies where the manifest is located.
+      class TransferManifest
+        include Google::Apis::Core::Hashable
+      
+        # Holds URI-encoded path to find the manifest. It can be located in data_source,
+        # data_sink, or separately in GCS. For data_source and data_sink, the manifest
+        # location is relative to the path specified by that data_source or data_sink.
+        # If manifest is in GCS, use format "gs:///". If manifest is in data_source, use
+        # format "source://". If manifest is in data_sink, use format "sink://".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
       # A description of the execution of a transfer.
       class TransferOperation
         include Google::Apis::Core::Hashable
@@ -1445,6 +1482,11 @@ module Google
         # @return [String]
         attr_accessor :source_agent_pool_name
       
+        # Specifies where the manifest is located.
+        # Corresponds to the JSON property `transferManifest`
+        # @return [Google::Apis::StoragetransferV1::TransferManifest]
+        attr_accessor :transfer_manifest
+      
         # TransferOptions define the actions to be performed on objects in a transfer.
         # Corresponds to the JSON property `transferOptions`
         # @return [Google::Apis::StoragetransferV1::TransferOptions]
@@ -1466,6 +1508,7 @@ module Google
           @posix_data_source = args[:posix_data_source] if args.key?(:posix_data_source)
           @sink_agent_pool_name = args[:sink_agent_pool_name] if args.key?(:sink_agent_pool_name)
           @source_agent_pool_name = args[:source_agent_pool_name] if args.key?(:source_agent_pool_name)
+          @transfer_manifest = args[:transfer_manifest] if args.key?(:transfer_manifest)
           @transfer_options = args[:transfer_options] if args.key?(:transfer_options)
         end
       end
