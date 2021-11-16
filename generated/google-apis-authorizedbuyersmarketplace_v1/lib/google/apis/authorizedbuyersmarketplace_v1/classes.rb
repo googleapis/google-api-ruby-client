@@ -1296,8 +1296,8 @@ module Google
       class PauseFinalizedDealRequest
         include Google::Apis::Core::Hashable
       
-        # The reason to pause the finalized deal, will be displayed to the seller.
-        # Maximum length is 1000 characters.
+        # Required. The reason to pause the finalized deal, will be displayed to the
+        # seller. Maximum length is 1000 characters.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
