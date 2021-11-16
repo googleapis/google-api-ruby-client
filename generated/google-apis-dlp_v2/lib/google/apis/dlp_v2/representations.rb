@@ -916,6 +916,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ReplaceDictionaryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2ReplaceValueConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2507,6 +2513,8 @@ module Google
       
           property :replace_config, as: 'replaceConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ReplaceValueConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ReplaceValueConfig::Representation
       
+          property :replace_dictionary_config, as: 'replaceDictionaryConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ReplaceDictionaryConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ReplaceDictionaryConfig::Representation
+      
           property :replace_with_info_type_config, as: 'replaceWithInfoTypeConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ReplaceWithInfoTypeConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ReplaceWithInfoTypeConfig::Representation
       
           property :time_part_config, as: 'timePartConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TimePartConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TimePartConfig::Representation
@@ -2720,6 +2728,14 @@ module Google
           property :item, as: 'item', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem::Representation
       
           property :overview, as: 'overview', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationOverview, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationOverview::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2ReplaceDictionaryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :word_list, as: 'wordList', class: Google::Apis::DlpV2::GooglePrivacyDlpV2WordList, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2WordList::Representation
       
         end
       end
