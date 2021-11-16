@@ -4589,6 +4589,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ReplaceValueConfig]
         attr_accessor :replace_config
       
+        # Replace each input value with a value randomly selected from the dictionary.
+        # Corresponds to the JSON property `replaceDictionaryConfig`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ReplaceDictionaryConfig]
+        attr_accessor :replace_dictionary_config
+      
         # Replace each matching finding with the name of the info_type.
         # Corresponds to the JSON property `replaceWithInfoTypeConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ReplaceWithInfoTypeConfig]
@@ -4615,6 +4620,7 @@ module Google
           @fixed_size_bucketing_config = args[:fixed_size_bucketing_config] if args.key?(:fixed_size_bucketing_config)
           @redact_config = args[:redact_config] if args.key?(:redact_config)
           @replace_config = args[:replace_config] if args.key?(:replace_config)
+          @replace_dictionary_config = args[:replace_dictionary_config] if args.key?(:replace_dictionary_config)
           @replace_with_info_type_config = args[:replace_with_info_type_config] if args.key?(:replace_with_info_type_config)
           @time_part_config = args[:time_part_config] if args.key?(:time_part_config)
         end
@@ -5258,6 +5264,25 @@ module Google
         def update!(**args)
           @item = args[:item] if args.key?(:item)
           @overview = args[:overview] if args.key?(:overview)
+        end
+      end
+      
+      # Replace each input value with a value randomly selected from the dictionary.
+      class GooglePrivacyDlpV2ReplaceDictionaryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Message defining a list of words or phrases to search for in the data.
+        # Corresponds to the JSON property `wordList`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2WordList]
+        attr_accessor :word_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @word_list = args[:word_list] if args.key?(:word_list)
         end
       end
       
