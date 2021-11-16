@@ -596,6 +596,334 @@ module Google
         end
       end
       
+      # Operation metadata to give request details of CreateWorkload.
+      class GoogleCloudAssuredworkloadsVersioningV1mainCreateWorkloadOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Compliance controls that should be applied to the resources managed
+        # by the workload.
+        # Corresponds to the JSON property `complianceRegime`
+        # @return [String]
+        attr_accessor :compliance_regime
+      
+        # Optional. Time when the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The display name of the workload.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The parent of the workload.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Optional. Resource properties in the input that are used for creating/
+        # customizing workload resources.
+        # Corresponds to the JSON property `resourceSettings`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings>]
+        attr_accessor :resource_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @parent = args[:parent] if args.key?(:parent)
+          @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
+        end
+      end
+      
+      # An Workload object for managing highly regulated workloads of cloud customers.
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Input only. The billing account used for the resources which are direct
+        # children of workload. This billing account is initially associated with the
+        # resources created as part of Workload creation. After the initial creation of
+        # these resources, the customer can change the assigned billing account. The
+        # resource name has the form `billingAccounts/`billing_account_id``. For example,
+        # `billingAccounts/012345-567890-ABCDEF`.
+        # Corresponds to the JSON property `billingAccount`
+        # @return [String]
+        attr_accessor :billing_account
+      
+        # Settings specific to resources needed for CJIS.
+        # Corresponds to the JSON property `cjisSettings`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadCjisSettings]
+        attr_accessor :cjis_settings
+      
+        # Required. Immutable. Compliance Regime associated with this workload.
+        # Corresponds to the JSON property `complianceRegime`
+        # @return [String]
+        attr_accessor :compliance_regime
+      
+        # Output only. Immutable. The Workload creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The user-assigned display name of the Workload. When present it must
+        # be between 4 to 30 characters. Allowed characters are: lowercase and uppercase
+        # letters, numbers, hyphen, and spaces. Example: My Workload
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. ETag of the workload, it is calculated on the basis of the Workload
+        # contents. It will be used in Update & Delete operations.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Settings specific to resources needed for FedRAMP High.
+        # Corresponds to the JSON property `fedrampHighSettings`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings]
+        attr_accessor :fedramp_high_settings
+      
+        # Settings specific to resources needed for FedRAMP Moderate.
+        # Corresponds to the JSON property `fedrampModerateSettings`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampModerateSettings]
+        attr_accessor :fedramp_moderate_settings
+      
+        # Settings specific to resources needed for IL4.
+        # Corresponds to the JSON property `il4Settings`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIl4Settings]
+        attr_accessor :il4_settings
+      
+        # Settings specific to the Key Management Service.
+        # Corresponds to the JSON property `kmsSettings`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings]
+        attr_accessor :kms_settings
+      
+        # Optional. Labels applied to the workload.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. The resource name of the workload. Format: organizations/`
+        # organization`/locations/`location`/workloads/`workload` Read-only.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Input only. The parent resource for the resources managed by this Assured
+        # Workload. May be either empty or a folder resource which is a child of the
+        # Workload parent. If not specified all resources are created under the parent
+        # organization. Format: folders/`folder_id`
+        # Corresponds to the JSON property `provisionedResourcesParent`
+        # @return [String]
+        attr_accessor :provisioned_resources_parent
+      
+        # Input only. Resource properties that are used to customize workload resources.
+        # These properties (such as custom project id) will be used to create workload
+        # resources if possible. This field is optional.
+        # Corresponds to the JSON property `resourceSettings`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings>]
+        attr_accessor :resource_settings
+      
+        # Output only. The resources associated with this workload. These resources will
+        # be created when creating the workload. If any of the projects already exist,
+        # the workload creation will fail. Always read only.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_account = args[:billing_account] if args.key?(:billing_account)
+          @cjis_settings = args[:cjis_settings] if args.key?(:cjis_settings)
+          @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @fedramp_high_settings = args[:fedramp_high_settings] if args.key?(:fedramp_high_settings)
+          @fedramp_moderate_settings = args[:fedramp_moderate_settings] if args.key?(:fedramp_moderate_settings)
+          @il4_settings = args[:il4_settings] if args.key?(:il4_settings)
+          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
+          @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Settings specific to resources needed for CJIS.
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadCjisSettings
+        include Google::Apis::Core::Hashable
+      
+        # Settings specific to the Key Management Service.
+        # Corresponds to the JSON property `kmsSettings`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings]
+        attr_accessor :kms_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
+        end
+      end
+      
+      # Settings specific to resources needed for FedRAMP High.
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings
+        include Google::Apis::Core::Hashable
+      
+        # Settings specific to the Key Management Service.
+        # Corresponds to the JSON property `kmsSettings`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings]
+        attr_accessor :kms_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
+        end
+      end
+      
+      # Settings specific to resources needed for FedRAMP Moderate.
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampModerateSettings
+        include Google::Apis::Core::Hashable
+      
+        # Settings specific to the Key Management Service.
+        # Corresponds to the JSON property `kmsSettings`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings]
+        attr_accessor :kms_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
+        end
+      end
+      
+      # Settings specific to resources needed for IL4.
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIl4Settings
+        include Google::Apis::Core::Hashable
+      
+        # Settings specific to the Key Management Service.
+        # Corresponds to the JSON property `kmsSettings`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings]
+        attr_accessor :kms_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
+        end
+      end
+      
+      # Settings specific to the Key Management Service.
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. Immutable. The time at which the Key Management Service
+        # will automatically create a new version of the crypto key and mark it as the
+        # primary.
+        # Corresponds to the JSON property `nextRotationTime`
+        # @return [String]
+        attr_accessor :next_rotation_time
+      
+        # Required. Input only. Immutable. [next_rotation_time] will be advanced by this
+        # period when the Key Management Service automatically rotates a key. Must be at
+        # least 24 hours and at most 876,000 hours.
+        # Corresponds to the JSON property `rotationPeriod`
+        # @return [String]
+        attr_accessor :rotation_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
+          @rotation_period = args[:rotation_period] if args.key?(:rotation_period)
+        end
+      end
+      
+      # Represent the resources that are children of this Workload.
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Resource identifier. For a project this represents project_number.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Fixnum]
+        attr_accessor :resource_id
+      
+        # Indicates the type of resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # Represent the custom settings for the resources to be created.
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings
+        include Google::Apis::Core::Hashable
+      
+        # User-assigned resource display name. If not empty it will be used to create a
+        # resource with the specified name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource identifier. For a project this represents project_id. If the project
+        # is already taken, the workload creation will fail.
+        # Corresponds to the JSON property `resourceId`
+        # @return [String]
+        attr_accessor :resource_id
+      
+        # Indicates the type of resource. This field should be specified to correspond
+        # the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class GoogleLongrunningListOperationsResponse
         include Google::Apis::Core::Hashable
