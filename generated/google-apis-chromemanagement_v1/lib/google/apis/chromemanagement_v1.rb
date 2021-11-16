@@ -36,6 +36,9 @@ module Google
 
       # See reports about devices and Chrome browsers managed within your organization
       AUTH_CHROME_MANAGEMENT_REPORTS_READONLY = 'https://www.googleapis.com/auth/chrome.management.reports.readonly'
+
+      # See basic device and telemetry information collected from Chrome OS devices or users managed within your organization
+      AUTH_CHROME_MANAGEMENT_TELEMETRY_READONLY = 'https://www.googleapis.com/auth/chrome.management.telemetry.readonly'
     end
   end
 end

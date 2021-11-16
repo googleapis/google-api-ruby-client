@@ -40,6 +40,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1BatteryInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1BatterySampleReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1BatteryStatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1BrowserVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,7 +106,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1CpuInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CpuStatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1CpuTemperatureInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1Device
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1DiskInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1DisplayInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,13 +148,91 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1GraphicsAdapterInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1GraphicsInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1GraphicsStatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1InstalledApp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1ListTelemetryDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1MemoryInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1MemoryStatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1NetworkStatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1OsUpdateStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1StorageInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1StorageInfoDiskVolume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1StorageStatusReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1TelemetryDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleRpcStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -152,6 +278,46 @@ module Google
           property :service_error, as: 'serviceError', class: Google::Apis::ChromemanagementV1::GoogleRpcStatus, decorator: Google::Apis::ChromemanagementV1::GoogleRpcStatus::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleChromeManagementV1BatteryInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :design_capacity, :numeric_string => true, as: 'designCapacity'
+          property :design_min_voltage, as: 'designMinVoltage'
+          property :manufacture_date, as: 'manufactureDate', class: Google::Apis::ChromemanagementV1::GoogleTypeDate, decorator: Google::Apis::ChromemanagementV1::GoogleTypeDate::Representation
+      
+          property :manufacturer, as: 'manufacturer'
+          property :serial_number, as: 'serialNumber'
+          property :technology, as: 'technology'
+        end
+      end
+      
+      class GoogleChromeManagementV1BatterySampleReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :charge_rate, as: 'chargeRate'
+          property :current, :numeric_string => true, as: 'current'
+          property :discharge_rate, as: 'dischargeRate'
+          property :remaining_capacity, :numeric_string => true, as: 'remainingCapacity'
+          property :report_time, as: 'reportTime'
+          property :status, as: 'status'
+          property :temperature, as: 'temperature'
+          property :voltage, :numeric_string => true, as: 'voltage'
+        end
+      end
+      
+      class GoogleChromeManagementV1BatteryStatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :battery_health, as: 'batteryHealth'
+          property :cycle_count, as: 'cycleCount'
+          property :full_charge_capacity, :numeric_string => true, as: 'fullChargeCapacity'
+          property :report_time, as: 'reportTime'
+          collection :sample, as: 'sample', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatterySampleReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatterySampleReport::Representation
+      
+          property :serial_number, as: 'serialNumber'
         end
       end
       
@@ -240,11 +406,69 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1CpuInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :max_clock_speed, as: 'maxClockSpeed'
+          property :model, as: 'model'
+        end
+      end
+      
+      class GoogleChromeManagementV1CpuStatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cpu_temperature_info, as: 'cpuTemperatureInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuTemperatureInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuTemperatureInfo::Representation
+      
+          property :cpu_utilization_pct, as: 'cpuUtilizationPct'
+          property :report_time, as: 'reportTime'
+          property :sample_frequency, as: 'sampleFrequency'
+        end
+      end
+      
+      class GoogleChromeManagementV1CpuTemperatureInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :temperature_celsius, as: 'temperatureCelsius'
+        end
+      end
+      
       class GoogleChromeManagementV1Device
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_id, as: 'deviceId'
           property :machine, as: 'machine'
+        end
+      end
+      
+      class GoogleChromeManagementV1DiskInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_read_this_session, :numeric_string => true, as: 'bytesReadThisSession'
+          property :bytes_written_this_session, :numeric_string => true, as: 'bytesWrittenThisSession'
+          property :discard_time_this_session, as: 'discardTimeThisSession'
+          property :health, as: 'health'
+          property :io_time_this_session, as: 'ioTimeThisSession'
+          property :manufacturer, as: 'manufacturer'
+          property :model, as: 'model'
+          property :read_time_this_session, as: 'readTimeThisSession'
+          property :serial_number, as: 'serialNumber'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :type, as: 'type'
+          collection :volume_ids, as: 'volumeIds'
+          property :write_time_this_session, as: 'writeTimeThisSession'
+        end
+      end
+      
+      class GoogleChromeManagementV1DisplayInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, :numeric_string => true, as: 'deviceId'
+          property :is_internal, as: 'isInternal'
+          property :refresh_rate, as: 'refreshRate'
+          property :resolution_height, as: 'resolutionHeight'
+          property :resolution_width, as: 'resolutionWidth'
         end
       end
       
@@ -255,6 +479,32 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1GraphicsAdapterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adapter, as: 'adapter'
+          property :device_id, :numeric_string => true, as: 'deviceId'
+          property :driver_version, as: 'driverVersion'
+        end
+      end
+      
+      class GoogleChromeManagementV1GraphicsInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adapter_info, as: 'adapterInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsAdapterInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsAdapterInfo::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementV1GraphicsStatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :displays, as: 'displays', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DisplayInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DisplayInfo::Representation
+      
+          property :report_time, as: 'reportTime'
         end
       end
       
@@ -275,12 +525,134 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1ListTelemetryDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :devices, as: 'devices', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDevice, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryDevice::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleChromeManagementV1MemoryInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_ram_bytes, :numeric_string => true, as: 'availableRamBytes'
+          property :total_ram_bytes, :numeric_string => true, as: 'totalRamBytes'
+        end
+      end
+      
+      class GoogleChromeManagementV1MemoryStatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_faults, as: 'pageFaults'
+          property :report_time, as: 'reportTime'
+          property :sample_frequency, as: 'sampleFrequency'
+          property :system_ram_free_bytes, :numeric_string => true, as: 'systemRamFreeBytes'
+        end
+      end
+      
+      class GoogleChromeManagementV1NetworkStatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gateway_ip_address, as: 'gatewayIpAddress'
+          property :lan_ip_address, as: 'lanIpAddress'
+          property :report_time, as: 'reportTime'
+          property :sample_frequency, as: 'sampleFrequency'
+          property :signal_strength_dbm, as: 'signalStrengthDbm'
+        end
+      end
+      
+      class GoogleChromeManagementV1OsUpdateStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_reboot_time, as: 'lastRebootTime'
+          property :last_update_check_time, as: 'lastUpdateCheckTime'
+          property :last_update_time, as: 'lastUpdateTime'
+          property :new_platform_version, as: 'newPlatformVersion'
+          property :new_requested_platform_version, as: 'newRequestedPlatformVersion'
+          property :update_state, as: 'updateState'
+        end
+      end
+      
+      class GoogleChromeManagementV1StorageInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_disk_bytes, :numeric_string => true, as: 'availableDiskBytes'
+          property :total_disk_bytes, :numeric_string => true, as: 'totalDiskBytes'
+          collection :volume, as: 'volume', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfoDiskVolume, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfoDiskVolume::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementV1StorageInfoDiskVolume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_free_bytes, :numeric_string => true, as: 'storageFreeBytes'
+          property :storage_total_bytes, :numeric_string => true, as: 'storageTotalBytes'
+          property :volume_id, as: 'volumeId'
+        end
+      end
+      
+      class GoogleChromeManagementV1StorageStatusReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disk, as: 'disk', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DiskInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1DiskInfo::Representation
+      
+          property :report_time, as: 'reportTime'
+        end
+      end
+      
+      class GoogleChromeManagementV1TelemetryDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :battery_info, as: 'batteryInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryInfo::Representation
+      
+          collection :battery_status_report, as: 'batteryStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BatteryStatusReport::Representation
+      
+          collection :cpu_info, as: 'cpuInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuInfo::Representation
+      
+          collection :cpu_status_report, as: 'cpuStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CpuStatusReport::Representation
+      
+          property :customer, as: 'customer'
+          property :device_id, as: 'deviceId'
+          property :graphics_info, as: 'graphicsInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsInfo::Representation
+      
+          collection :graphics_status_report, as: 'graphicsStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1GraphicsStatusReport::Representation
+      
+          property :memory_info, as: 'memoryInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryInfo::Representation
+      
+          collection :memory_status_report, as: 'memoryStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1MemoryStatusReport::Representation
+      
+          property :name, as: 'name'
+          collection :network_status_report, as: 'networkStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1NetworkStatusReport::Representation
+      
+          property :org_unit_id, as: 'orgUnitId'
+          collection :os_update_status, as: 'osUpdateStatus', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1OsUpdateStatus, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1OsUpdateStatus::Representation
+      
+          property :serial_number, as: 'serialNumber'
+          property :storage_info, as: 'storageInfo', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfo, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageInfo::Representation
+      
+          collection :storage_status_report, as: 'storageStatusReport', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageStatusReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1StorageStatusReport::Representation
+      
+        end
+      end
+      
       class GoogleRpcStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class GoogleTypeDate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
     end
