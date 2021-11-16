@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedPrometheusConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Master
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1533,6 +1539,13 @@ module Google
         end
       end
       
+      class ManagedPrometheusConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class Master
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1596,6 +1609,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :component_config, as: 'componentConfig', class: Google::Apis::ContainerV1beta1::MonitoringComponentConfig, decorator: Google::Apis::ContainerV1beta1::MonitoringComponentConfig::Representation
+      
+          property :managed_prometheus_config, as: 'managedPrometheusConfig', class: Google::Apis::ContainerV1beta1::ManagedPrometheusConfig, decorator: Google::Apis::ContainerV1beta1::ManagedPrometheusConfig::Representation
       
         end
       end
