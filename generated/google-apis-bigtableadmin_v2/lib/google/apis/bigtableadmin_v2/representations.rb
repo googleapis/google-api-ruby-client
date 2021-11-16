@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingLimits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingTargets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +83,18 @@ module Google
       end
       
       class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterAutoscalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartialUpdateClusterMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartialUpdateClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartialUpdateInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,6 +460,21 @@ module Google
         end
       end
       
+      class AutoscalingLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_serve_nodes, as: 'maxServeNodes'
+          property :min_serve_nodes, as: 'minServeNodes'
+        end
+      end
+      
+      class AutoscalingTargets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_utilization_percent, as: 'cpuUtilizationPercent'
+        end
+      end
+      
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -476,6 +527,8 @@ module Google
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_config, as: 'clusterConfig', class: Google::Apis::BigtableadminV2::ClusterConfig, decorator: Google::Apis::BigtableadminV2::ClusterConfig::Representation
+      
           property :default_storage_type, as: 'defaultStorageType'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::BigtableadminV2::EncryptionConfig, decorator: Google::Apis::BigtableadminV2::EncryptionConfig::Representation
       
@@ -483,6 +536,24 @@ module Google
           property :name, as: 'name'
           property :serve_nodes, as: 'serveNodes'
           property :state, as: 'state'
+        end
+      end
+      
+      class ClusterAutoscalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_limits, as: 'autoscalingLimits', class: Google::Apis::BigtableadminV2::AutoscalingLimits, decorator: Google::Apis::BigtableadminV2::AutoscalingLimits::Representation
+      
+          property :autoscaling_targets, as: 'autoscalingTargets', class: Google::Apis::BigtableadminV2::AutoscalingTargets, decorator: Google::Apis::BigtableadminV2::AutoscalingTargets::Representation
+      
+        end
+      end
+      
+      class ClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_autoscaling_config, as: 'clusterAutoscalingConfig', class: Google::Apis::BigtableadminV2::ClusterAutoscalingConfig, decorator: Google::Apis::BigtableadminV2::ClusterAutoscalingConfig::Representation
+      
         end
       end
       
@@ -817,6 +888,25 @@ module Google
           property :name, as: 'name'
           property :progress, as: 'progress', class: Google::Apis::BigtableadminV2::OperationProgress, decorator: Google::Apis::BigtableadminV2::OperationProgress::Representation
       
+        end
+      end
+      
+      class PartialUpdateClusterMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finish_time, as: 'finishTime'
+          property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::PartialUpdateClusterRequest, decorator: Google::Apis::BigtableadminV2::PartialUpdateClusterRequest::Representation
+      
+          property :request_time, as: 'requestTime'
+        end
+      end
+      
+      class PartialUpdateClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster', class: Google::Apis::BigtableadminV2::Cluster, decorator: Google::Apis::BigtableadminV2::Cluster::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
