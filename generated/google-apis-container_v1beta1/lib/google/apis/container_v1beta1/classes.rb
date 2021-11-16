@@ -2683,6 +2683,27 @@ module Google
         end
       end
       
+      # ManagedPrometheusConfig defines the configuration for Google Cloud Managed
+      # Service for Prometheus.
+      class ManagedPrometheusConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable Managed Collection.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Master is the configuration for components on master.
       class Master
         include Google::Apis::Core::Hashable
@@ -2899,6 +2920,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::MonitoringComponentConfig]
         attr_accessor :component_config
       
+        # ManagedPrometheusConfig defines the configuration for Google Cloud Managed
+        # Service for Prometheus.
+        # Corresponds to the JSON property `managedPrometheusConfig`
+        # @return [Google::Apis::ContainerV1beta1::ManagedPrometheusConfig]
+        attr_accessor :managed_prometheus_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2906,6 +2933,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @component_config = args[:component_config] if args.key?(:component_config)
+          @managed_prometheus_config = args[:managed_prometheus_config] if args.key?(:managed_prometheus_config)
         end
       end
       
