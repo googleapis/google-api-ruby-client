@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TransferManifest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TransferOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -374,6 +380,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_onprem_gcs_transfer_logs, as: 'enableOnpremGcsTransferLogs'
+          collection :log_action_states, as: 'logActionStates'
+          collection :log_actions, as: 'logActions'
         end
       end
       
@@ -519,6 +527,13 @@ module Google
         end
       end
       
+      class TransferManifest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+        end
+      end
+      
       class TransferOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -569,6 +584,8 @@ module Google
       
           property :sink_agent_pool_name, as: 'sinkAgentPoolName'
           property :source_agent_pool_name, as: 'sourceAgentPoolName'
+          property :transfer_manifest, as: 'transferManifest', class: Google::Apis::StoragetransferV1::TransferManifest, decorator: Google::Apis::StoragetransferV1::TransferManifest::Representation
+      
           property :transfer_options, as: 'transferOptions', class: Google::Apis::StoragetransferV1::TransferOptions, decorator: Google::Apis::StoragetransferV1::TransferOptions::Representation
       
         end
