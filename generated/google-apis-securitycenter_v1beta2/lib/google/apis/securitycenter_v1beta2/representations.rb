@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1ExternalSystem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1MuteConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1NotificationMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,10 +263,15 @@ module Google
           property :category, as: 'category'
           property :create_time, as: 'createTime'
           property :event_time, as: 'eventTime'
+          hash :external_systems, as: 'externalSystems', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExternalSystem, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExternalSystem::Representation
+      
           property :external_uri, as: 'externalUri'
           property :finding_class, as: 'findingClass'
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta2::Indicator, decorator: Google::Apis::SecuritycenterV1beta2::Indicator::Representation
       
+          property :mute, as: 'mute'
+          property :mute_initiator, as: 'muteInitiator'
+          property :mute_update_time, as: 'muteUpdateTime'
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :resource_name, as: 'resourceName'
@@ -273,6 +290,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_folder, as: 'resourceFolder'
           property :resource_folder_display_name, as: 'resourceFolderDisplayName'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ExternalSystem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assignees, as: 'assignees'
+          property :external_system_update_time, as: 'externalSystemUpdateTime'
+          property :external_uid, as: 'externalUid'
+          property :name, as: 'name'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1MuteConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :filter, as: 'filter'
+          property :most_recent_editor, as: 'mostRecentEditor'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
