@@ -1938,6 +1938,15 @@ module Google
       class FhirConfig
         include Google::Apis::Core::Hashable
       
+        # The behaviour for handling FHIR extensions that aren't otherwise specified for
+        # de-identification. If true, all extensions are preserved during de-
+        # identification by default. If false or unspecified, all extensions are removed
+        # during de-identification by default.
+        # Corresponds to the JSON property `defaultKeepExtensions`
+        # @return [Boolean]
+        attr_accessor :default_keep_extensions
+        alias_method :default_keep_extensions?, :default_keep_extensions
+      
         # Specifies FHIR paths to match and how to transform them. Any field that is not
         # matched by a FieldMetadata is passed through to the output dataset unmodified.
         # All extensions will be processed according to `default_keep_extensions`. If a
@@ -1953,6 +1962,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_keep_extensions = args[:default_keep_extensions] if args.key?(:default_keep_extensions)
           @field_metadata_list = args[:field_metadata_list] if args.key?(:field_metadata_list)
         end
       end

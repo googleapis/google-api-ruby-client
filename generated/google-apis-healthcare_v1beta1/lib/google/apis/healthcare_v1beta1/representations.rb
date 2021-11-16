@@ -1530,6 +1530,7 @@ module Google
       class FhirConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_keep_extensions, as: 'defaultKeepExtensions'
           collection :field_metadata_list, as: 'fieldMetadataList', class: Google::Apis::HealthcareV1beta1::FieldMetadata, decorator: Google::Apis::HealthcareV1beta1::FieldMetadata::Representation
       
         end
