@@ -1510,7 +1510,7 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # Output only. Time at which the Connectors Platform add-on expires in in
+        # Output only. Time at which the Connectors Platform add-on expires in
         # milliseconds since epoch. If unspecified, the add-on will never expire.
         # Corresponds to the JSON property `expiresAt`
         # @return [Fixnum]
@@ -1567,7 +1567,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :scopes
       
-        # Status of the credential.
+        # Status of the credential. Valid values include `approved` or `revoked`.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
