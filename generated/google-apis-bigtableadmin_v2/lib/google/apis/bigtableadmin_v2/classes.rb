@@ -149,6 +149,51 @@ module Google
         end
       end
       
+      # Limits for the number of nodes a Cluster can autoscale up/down to.
+      class AutoscalingLimits
+        include Google::Apis::Core::Hashable
+      
+        # Required. Maximum number of nodes to scale up to.
+        # Corresponds to the JSON property `maxServeNodes`
+        # @return [Fixnum]
+        attr_accessor :max_serve_nodes
+      
+        # Required. Minimum number of nodes to scale down to.
+        # Corresponds to the JSON property `minServeNodes`
+        # @return [Fixnum]
+        attr_accessor :min_serve_nodes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_serve_nodes = args[:max_serve_nodes] if args.key?(:max_serve_nodes)
+          @min_serve_nodes = args[:min_serve_nodes] if args.key?(:min_serve_nodes)
+        end
+      end
+      
+      # The Autoscaling targets for a Cluster. These determine the recommended nodes.
+      class AutoscalingTargets
+        include Google::Apis::Core::Hashable
+      
+        # The cpu utilization that the Autoscaler should be trying to achieve. This
+        # number is on a scale from 0 (no utilization) to 100 (total utilization).
+        # Corresponds to the JSON property `cpuUtilizationPercent`
+        # @return [Fixnum]
+        attr_accessor :cpu_utilization_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_utilization_percent = args[:cpu_utilization_percent] if args.key?(:cpu_utilization_percent)
+        end
+      end
+      
       # A backup of a Cloud Bigtable table.
       class Backup
         include Google::Apis::Core::Hashable
@@ -264,7 +309,7 @@ module Google
         end
       end
       
-      # Associates `members` with a `role`.
+      # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
       
@@ -287,7 +332,7 @@ module Google
         # @return [Google::Apis::BigtableadminV2::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # Specifies the principals requesting access for a Cloud Platform resource. `
         # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
@@ -317,8 +362,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
-        # , or `roles/owner`.
+        # Role that is assigned to the list of `members`, or principals. For example, `
+        # roles/viewer`, `roles/editor`, or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -382,6 +427,11 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
+        # Configuration for a cluster.
+        # Corresponds to the JSON property `clusterConfig`
+        # @return [Google::Apis::BigtableadminV2::ClusterConfig]
+        attr_accessor :cluster_config
+      
         # Immutable. The type of storage used by this cluster to serve its parent
         # instance's tables, unless explicitly overridden.
         # Corresponds to the JSON property `defaultStorageType`
@@ -424,12 +474,57 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_config = args[:cluster_config] if args.key?(:cluster_config)
           @default_storage_type = args[:default_storage_type] if args.key?(:default_storage_type)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @serve_nodes = args[:serve_nodes] if args.key?(:serve_nodes)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Autoscaling config for a cluster.
+      class ClusterAutoscalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Limits for the number of nodes a Cluster can autoscale up/down to.
+        # Corresponds to the JSON property `autoscalingLimits`
+        # @return [Google::Apis::BigtableadminV2::AutoscalingLimits]
+        attr_accessor :autoscaling_limits
+      
+        # The Autoscaling targets for a Cluster. These determine the recommended nodes.
+        # Corresponds to the JSON property `autoscalingTargets`
+        # @return [Google::Apis::BigtableadminV2::AutoscalingTargets]
+        attr_accessor :autoscaling_targets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autoscaling_limits = args[:autoscaling_limits] if args.key?(:autoscaling_limits)
+          @autoscaling_targets = args[:autoscaling_targets] if args.key?(:autoscaling_targets)
+        end
+      end
+      
+      # Configuration for a cluster.
+      class ClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Autoscaling config for a cluster.
+        # Corresponds to the JSON property `clusterAutoscalingConfig`
+        # @return [Google::Apis::BigtableadminV2::ClusterAutoscalingConfig]
+        attr_accessor :cluster_autoscaling_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_autoscaling_config = args[:cluster_autoscaling_config] if args.key?(:cluster_autoscaling_config)
         end
       end
       
@@ -1047,7 +1142,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. A server-assigned timestamp representing when this Instance was
-        # created.
+        # created. For instances created before this field was added (August 2021), this
+        # value is `seconds: 0, nanos: 1`.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1581,6 +1677,64 @@ module Google
         end
       end
       
+      # The metadata for the Operation returned by PartialUpdateCluster.
+      class PartialUpdateClusterMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
+      
+        # Request message for BigtableInstanceAdmin.PartialUpdateCluster.
+        # Corresponds to the JSON property `originalRequest`
+        # @return [Google::Apis::BigtableadminV2::PartialUpdateClusterRequest]
+        attr_accessor :original_request
+      
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
+        end
+      end
+      
+      # Request message for BigtableInstanceAdmin.PartialUpdateCluster.
+      class PartialUpdateClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # A resizable group of nodes in a particular cloud location, capable of serving
+        # all Tables in the parent Instance.
+        # Corresponds to the JSON property `cluster`
+        # @return [Google::Apis::BigtableadminV2::Cluster]
+        attr_accessor :cluster
+      
+        # Required. The subset of Cluster fields which should be replaced. Must be
+        # explicitly set.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
       # Request message for BigtableInstanceAdmin.PartialUpdateInstance.
       class PartialUpdateInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1610,31 +1764,31 @@ module Google
       
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-      # A `binding` binds one or more `members` to a single `role`. Members can be
-      # user accounts, service accounts, Google groups, and domains (such as G Suite).
-      # A `role` is a named list of permissions; each `role` can be an IAM predefined
-      # role or a user-created custom role. For some types of Google Cloud resources,
-      # a `binding` can also specify a `condition`, which is a logical expression that
-      # allows access to a resource only if the expression evaluates to `true`. A
-      # condition can add constraints based on attributes of the request, the resource,
-      # or both. To learn which resources support conditions in their IAM policies,
-      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-      # title": "expirable access", "description": "Does not grant access after Sep
-      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-      # members: - user:mike@example.com - group:admins@example.com - domain:google.
-      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-      # roles/resourcemanager.organizationViewer condition: title: expirable access
-      # description: Does not grant access after Sep 2020 expression: request.time <
-      # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-      # description of IAM and its features, see the [IAM documentation](https://cloud.
-      # google.com/iam/docs/).
+      # A `binding` binds one or more `members`, or principals, to a single `role`.
+      # Principals can be user accounts, service accounts, Google groups, and domains (
+      # such as G Suite). A `role` is a named list of permissions; each `role` can be
+      # an IAM predefined role or a user-created custom role. For some types of Google
+      # Cloud resources, a `binding` can also specify a `condition`, which is a
+      # logical expression that allows access to a resource only if the expression
+      # evaluates to `true`. A condition can add constraints based on attributes of
+      # the request, the resource, or both. To learn which resources support
+      # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+      # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+      # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+      # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+      # ], "condition": ` "title": "expirable access", "description": "Does not grant
+      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+      # bindings: - members: - user:mike@example.com - group:admins@example.com -
+      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+      # access description: Does not grant access after Sep 2020 expression: request.
+      # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+      # a description of IAM and its features, see the [IAM documentation](https://
+      # cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1643,9 +1797,14 @@ module Google
         # @return [Array<Google::Apis::BigtableadminV2::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a `
-        # condition` that determines how and when the `bindings` are applied. Each of
-        # the `bindings` must contain at least one member.
+        # Associates a list of `members`, or principals, with a `role`. Optionally, may
+        # specify a `condition` that determines how and when the `bindings` are applied.
+        # Each of the `bindings` must contain at least one principal. The `bindings` in
+        # a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        # can be Google groups. Each occurrence of a principal counts towards these
+        # limits. For example, if the `bindings` grant 50 different roles to `user:alice@
+        # example.com`, and not to any other principal, then you can add another 1,450
+        # principals to the `bindings` in the `Policy`.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::BigtableadminV2::Binding>]
         attr_accessor :bindings
@@ -1808,31 +1967,31 @@ module Google
       
         # An Identity and Access Management (IAM) policy, which specifies access
         # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
-        # A `binding` binds one or more `members` to a single `role`. Members can be
-        # user accounts, service accounts, Google groups, and domains (such as G Suite).
-        # A `role` is a named list of permissions; each `role` can be an IAM predefined
-        # role or a user-created custom role. For some types of Google Cloud resources,
-        # a `binding` can also specify a `condition`, which is a logical expression that
-        # allows access to a resource only if the expression evaluates to `true`. A
-        # condition can add constraints based on attributes of the request, the resource,
-        # or both. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
-        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
-        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
-        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
-        # title": "expirable access", "description": "Does not grant access after Sep
-        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
-        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
-        # members: - user:mike@example.com - group:admins@example.com - domain:google.
-        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
-        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-        # roles/resourcemanager.organizationViewer condition: title: expirable access
-        # description: Does not grant access after Sep 2020 expression: request.time <
-        # timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a
-        # description of IAM and its features, see the [IAM documentation](https://cloud.
-        # google.com/iam/docs/).
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::BigtableadminV2::Policy]
         attr_accessor :policy
