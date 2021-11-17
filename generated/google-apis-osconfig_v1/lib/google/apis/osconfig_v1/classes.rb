@@ -3420,6 +3420,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :installed_inventory_item_ids
       
+        # List of items affected by the vulnerability.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityItem>]
+        attr_accessor :items
+      
         # The timestamp for when the vulnerability was last modified.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -3435,6 +3440,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @details = args[:details] if args.key?(:details)
           @installed_inventory_item_ids = args[:installed_inventory_item_ids] if args.key?(:installed_inventory_item_ids)
+          @items = args[:items] if args.key?(:items)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -3517,6 +3523,53 @@ module Google
         end
       end
       
+      # OS inventory item that is affected by a vulnerability or fixed as a result of
+      # a vulnerability.
+      class VulnerabilityReportVulnerabilityItem
+        include Google::Apis::Core::Hashable
+      
+        # Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM. If the
+        # vulnerability report was not updated after the VM inventory update, these
+        # values might not display in VM inventory. If there is no available fix, the
+        # field is empty. The `inventory_item` value specifies the latest `
+        # SoftwarePackage` available to the VM that fixes the vulnerability.
+        # Corresponds to the JSON property `availableInventoryItemId`
+        # @return [String]
+        attr_accessor :available_inventory_item_id
+      
+        # The recommended [CPE URI](https://cpe.mitre.org/specification/) update that
+        # contains a fix for this vulnerability.
+        # Corresponds to the JSON property `fixedCpeUri`
+        # @return [String]
+        attr_accessor :fixed_cpe_uri
+      
+        # Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM. This field
+        # displays the inventory items affected by this vulnerability. If the
+        # vulnerability report was not updated after the VM inventory update, these
+        # values might not display in VM inventory. For some operating systems, this
+        # field might be empty.
+        # Corresponds to the JSON property `installedInventoryItemId`
+        # @return [String]
+        attr_accessor :installed_inventory_item_id
+      
+        # The upstream OS patch, packages or KB that fixes the vulnerability.
+        # Corresponds to the JSON property `upstreamFix`
+        # @return [String]
+        attr_accessor :upstream_fix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_inventory_item_id = args[:available_inventory_item_id] if args.key?(:available_inventory_item_id)
+          @fixed_cpe_uri = args[:fixed_cpe_uri] if args.key?(:fixed_cpe_uri)
+          @installed_inventory_item_id = args[:installed_inventory_item_id] if args.key?(:installed_inventory_item_id)
+          @upstream_fix = args[:upstream_fix] if args.key?(:upstream_fix)
+        end
+      end
+      
       # Represents one week day in a month. An example is "the 4th Sunday".
       class WeekDayOfMonth
         include Google::Apis::Core::Hashable
@@ -3525,6 +3578,17 @@ module Google
         # Corresponds to the JSON property `dayOfWeek`
         # @return [String]
         attr_accessor :day_of_week
+      
+        # Optional. Represents the number of days before or after the given week day of
+        # month that the patch deployment is scheduled for. For example if `week_ordinal`
+        # and `day_of_week` values point to the second day of the month and this `
+        # day_offset` value is set to `3`, the patch deployment takes place three days
+        # after the second Tuesday of the month. If this value is negative, for example -
+        # 5, the patches are deployed five days before before the second Tuesday of the
+        # month. Allowed values are in range [-30, 30].
+        # Corresponds to the JSON property `dayOffset`
+        # @return [Fixnum]
+        attr_accessor :day_offset
       
         # Required. Week number in a month. 1-4 indicates the 1st to 4th week of the
         # month. -1 indicates the last week of the month.
@@ -3539,6 +3603,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
+          @day_offset = args[:day_offset] if args.key?(:day_offset)
           @week_ordinal = args[:week_ordinal] if args.key?(:week_ordinal)
         end
       end
