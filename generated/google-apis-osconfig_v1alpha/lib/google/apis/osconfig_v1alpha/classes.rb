@@ -2676,6 +2676,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :installed_inventory_item_ids
       
+        # List of items affected by the vulnerability.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::OsconfigV1alpha::VulnerabilityReportVulnerabilityItem>]
+        attr_accessor :items
+      
         # The timestamp for when the vulnerability was last modified.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2691,6 +2696,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @details = args[:details] if args.key?(:details)
           @installed_inventory_item_ids = args[:installed_inventory_item_ids] if args.key?(:installed_inventory_item_ids)
+          @items = args[:items] if args.key?(:items)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -2770,6 +2776,53 @@ module Google
         def update!(**args)
           @source = args[:source] if args.key?(:source)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # OS inventory item that is affected by a vulnerability or fixed as a result of
+      # a vulnerability.
+      class VulnerabilityReportVulnerabilityItem
+        include Google::Apis::Core::Hashable
+      
+        # Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM. If the
+        # vulnerability report was not updated after the VM inventory update, these
+        # values might not display in VM inventory. If there is no available fix, the
+        # field is empty. The `inventory_item` value specifies the latest `
+        # SoftwarePackage` available to the VM that fixes the vulnerability.
+        # Corresponds to the JSON property `availableInventoryItemId`
+        # @return [String]
+        attr_accessor :available_inventory_item_id
+      
+        # The recommended [CPE URI](https://cpe.mitre.org/specification/) update that
+        # contains a fix for this vulnerability.
+        # Corresponds to the JSON property `fixedCpeUri`
+        # @return [String]
+        attr_accessor :fixed_cpe_uri
+      
+        # Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM. This field
+        # displays the inventory items affected by this vulnerability. If the
+        # vulnerability report was not updated after the VM inventory update, these
+        # values might not display in VM inventory. For some operating systems, this
+        # field might be empty.
+        # Corresponds to the JSON property `installedInventoryItemId`
+        # @return [String]
+        attr_accessor :installed_inventory_item_id
+      
+        # The upstream OS patch, packages or KB that fixes the vulnerability.
+        # Corresponds to the JSON property `upstreamFix`
+        # @return [String]
+        attr_accessor :upstream_fix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_inventory_item_id = args[:available_inventory_item_id] if args.key?(:available_inventory_item_id)
+          @fixed_cpe_uri = args[:fixed_cpe_uri] if args.key?(:fixed_cpe_uri)
+          @installed_inventory_item_id = args[:installed_inventory_item_id] if args.key?(:installed_inventory_item_id)
+          @upstream_fix = args[:upstream_fix] if args.key?(:upstream_fix)
         end
       end
     end
