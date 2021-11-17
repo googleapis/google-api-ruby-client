@@ -526,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VulnerabilityReportVulnerabilityItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WeekDayOfMonth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1461,6 +1467,8 @@ module Google
           property :details, as: 'details', class: Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityDetails, decorator: Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityDetails::Representation
       
           collection :installed_inventory_item_ids, as: 'installedInventoryItemIds'
+          collection :items, as: 'items', class: Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityItem, decorator: Google::Apis::OsconfigV1::VulnerabilityReportVulnerabilityItem::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -1487,10 +1495,21 @@ module Google
         end
       end
       
+      class VulnerabilityReportVulnerabilityItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_inventory_item_id, as: 'availableInventoryItemId'
+          property :fixed_cpe_uri, as: 'fixedCpeUri'
+          property :installed_inventory_item_id, as: 'installedInventoryItemId'
+          property :upstream_fix, as: 'upstreamFix'
+        end
+      end
+      
       class WeekDayOfMonth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :day_of_week, as: 'dayOfWeek'
+          property :day_offset, as: 'dayOffset'
           property :week_ordinal, as: 'weekOrdinal'
         end
       end
