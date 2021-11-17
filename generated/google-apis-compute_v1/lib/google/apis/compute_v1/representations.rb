@@ -406,12 +406,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BackendServiceConnectionTrackingPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BackendServiceFailoverPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -474,24 +468,6 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BfdPacket
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BfdStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BfdStatusPacketCounts
-        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2500,12 +2476,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NetworkPerformanceConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class NetworkRoutingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2897,12 +2867,6 @@ module Google
       end
       
       class OutlierDetection
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PacketIntervals
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4080,18 +4044,6 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ShareSettings
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ShareSettingsProjectConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5844,7 +5796,6 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
-          property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCdn'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
@@ -5931,15 +5882,12 @@ module Google
       
           property :connection_draining, as: 'connectionDraining', class: Google::Apis::ComputeV1::ConnectionDraining, decorator: Google::Apis::ComputeV1::ConnectionDraining::Representation
       
-          property :connection_tracking_policy, as: 'connectionTrackingPolicy', class: Google::Apis::ComputeV1::BackendServiceConnectionTrackingPolicy, decorator: Google::Apis::ComputeV1::BackendServiceConnectionTrackingPolicy::Representation
-      
           property :consistent_hash, as: 'consistentHash', class: Google::Apis::ComputeV1::ConsistentHashLoadBalancerSettings, decorator: Google::Apis::ComputeV1::ConsistentHashLoadBalancerSettings::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
           collection :custom_request_headers, as: 'customRequestHeaders'
           collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
-          property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCDN'
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeV1::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeV1::BackendServiceFailoverPolicy::Representation
       
@@ -6040,15 +5988,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :ttl, as: 'ttl'
-        end
-      end
-      
-      class BackendServiceConnectionTrackingPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :connection_persistence_on_unhealthy_backends, as: 'connectionPersistenceOnUnhealthyBackends'
-          property :idle_timeout_sec, as: 'idleTimeoutSec'
-          property :tracking_mode, as: 'trackingMode'
         end
       end
       
@@ -6153,58 +6092,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class BfdPacket
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authentication_present, as: 'authenticationPresent'
-          property :control_plane_independent, as: 'controlPlaneIndependent'
-          property :demand, as: 'demand'
-          property :diagnostic, as: 'diagnostic'
-          property :final, as: 'final'
-          property :length, as: 'length'
-          property :min_echo_rx_interval_ms, as: 'minEchoRxIntervalMs'
-          property :min_rx_interval_ms, as: 'minRxIntervalMs'
-          property :min_tx_interval_ms, as: 'minTxIntervalMs'
-          property :multiplier, as: 'multiplier'
-          property :multipoint, as: 'multipoint'
-          property :my_discriminator, as: 'myDiscriminator'
-          property :poll, as: 'poll'
-          property :state, as: 'state'
-          property :version, as: 'version'
-          property :your_discriminator, as: 'yourDiscriminator'
-        end
-      end
-      
-      class BfdStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bfd_session_initialization_mode, as: 'bfdSessionInitializationMode'
-          property :config_update_timestamp_micros, :numeric_string => true, as: 'configUpdateTimestampMicros'
-          property :control_packet_counts, as: 'controlPacketCounts', class: Google::Apis::ComputeV1::BfdStatusPacketCounts, decorator: Google::Apis::ComputeV1::BfdStatusPacketCounts::Representation
-      
-          collection :control_packet_intervals, as: 'controlPacketIntervals', class: Google::Apis::ComputeV1::PacketIntervals, decorator: Google::Apis::ComputeV1::PacketIntervals::Representation
-      
-          property :local_diagnostic, as: 'localDiagnostic'
-          property :local_state, as: 'localState'
-          property :negotiated_local_control_tx_interval_ms, as: 'negotiatedLocalControlTxIntervalMs'
-          property :rx_packet, as: 'rxPacket', class: Google::Apis::ComputeV1::BfdPacket, decorator: Google::Apis::ComputeV1::BfdPacket::Representation
-      
-          property :tx_packet, as: 'txPacket', class: Google::Apis::ComputeV1::BfdPacket, decorator: Google::Apis::ComputeV1::BfdPacket::Representation
-      
-          property :uptime_ms, :numeric_string => true, as: 'uptimeMs'
-        end
-      end
-      
-      class BfdStatusPacketCounts
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :num_rx, as: 'numRx'
-          property :num_rx_rejected, as: 'numRxRejected'
-          property :num_rx_successful, as: 'numRxSuccessful'
-          property :num_tx, as: 'numTx'
         end
       end
       
@@ -8030,8 +7917,6 @@ module Google
           property :name, as: 'name'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterface::Representation
       
-          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeV1::NetworkPerformanceConfig, decorator: Google::Apis::ComputeV1::NetworkPerformanceConfig::Representation
-      
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
@@ -8341,7 +8226,6 @@ module Google
           property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeV1::FixedOrPercent, decorator: Google::Apis::ComputeV1::FixedOrPercent::Representation
       
           property :minimal_action, as: 'minimalAction'
-          property :most_disruptive_allowed_action, as: 'mostDisruptiveAllowedAction'
           property :replacement_method, as: 'replacementMethod'
           property :type, as: 'type'
         end
@@ -8722,8 +8606,6 @@ module Google
       
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterface::Representation
-      
-          property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeV1::NetworkPerformanceConfig, decorator: Google::Apis::ComputeV1::NetworkPerformanceConfig::Representation
       
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
@@ -9989,13 +9871,6 @@ module Google
         end
       end
       
-      class NetworkPerformanceConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :total_egress_bandwidth_tier, as: 'totalEgressBandwidthTier'
-        end
-      end
-      
       class NetworkRoutingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10735,18 +10610,6 @@ module Google
         end
       end
       
-      class PacketIntervals
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :avg_ms, :numeric_string => true, as: 'avgMs'
-          property :duration, as: 'duration'
-          property :max_ms, :numeric_string => true, as: 'maxMs'
-          property :min_ms, :numeric_string => true, as: 'minMs'
-          property :num_intervals, :numeric_string => true, as: 'numIntervals'
-          property :type, as: 'type'
-        end
-      end
-      
       class PacketMirroring
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10965,6 +10828,7 @@ module Google
           collection :bindings, as: 'bindings', class: Google::Apis::ComputeV1::Binding, decorator: Google::Apis::ComputeV1::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
+          property :iam_owned, as: 'iamOwned'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::Rule, decorator: Google::Apis::ComputeV1::Rule::Representation
       
           property :version, as: 'version'
@@ -11693,8 +11557,6 @@ module Google
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
-          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::ShareSettings, decorator: Google::Apis::ComputeV1::ShareSettings::Representation
-      
           property :specific_reservation, as: 'specificReservation', class: Google::Apis::ComputeV1::AllocationSpecificSkuReservation, decorator: Google::Apis::ComputeV1::AllocationSpecificSkuReservation::Representation
       
           property :specific_reservation_required, as: 'specificReservationRequired'
@@ -12310,12 +12172,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :drain_nat_ips, as: 'drainNatIps'
-          property :enable_dynamic_port_allocation, as: 'enableDynamicPortAllocation'
           property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::RouterNatLogConfig, decorator: Google::Apis::ComputeV1::RouterNatLogConfig::Representation
       
-          property :max_ports_per_vm, as: 'maxPortsPerVm'
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
@@ -12387,8 +12247,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advertised_routes, as: 'advertisedRoutes', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::Route::Representation
-      
-          property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeV1::BfdStatus, decorator: Google::Apis::ComputeV1::BfdStatus::Representation
       
           property :ip_address, as: 'ipAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
@@ -12573,7 +12431,6 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::SecurityPolicyRule, decorator: Google::Apis::ComputeV1::SecurityPolicyRule::Representation
       
           property :self_link, as: 'selfLink'
-          property :type, as: 'type'
         end
       end
       
@@ -12837,22 +12694,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class ShareSettings
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :project_map, as: 'projectMap', class: Google::Apis::ComputeV1::ShareSettingsProjectConfig, decorator: Google::Apis::ComputeV1::ShareSettingsProjectConfig::Representation
-      
-          property :share_type, as: 'shareType'
-        end
-      end
-      
-      class ShareSettingsProjectConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :project_id, as: 'projectId'
         end
       end
       
