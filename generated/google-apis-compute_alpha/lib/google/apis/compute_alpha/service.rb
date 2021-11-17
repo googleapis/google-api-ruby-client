@@ -58,24 +58,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -185,24 +181,20 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -263,24 +255,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -490,24 +478,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -664,24 +648,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -892,24 +872,20 @@ module Google
         #   Name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -1396,24 +1372,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -1758,24 +1730,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -2108,24 +2076,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -2471,24 +2435,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -2598,24 +2558,20 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -2730,24 +2686,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -3067,24 +3019,20 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -3583,24 +3531,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -4120,24 +4064,20 @@ module Google
         # organization.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -4674,24 +4614,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -4894,24 +4830,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -5122,24 +5054,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -5405,24 +5333,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -5682,24 +5606,20 @@ module Google
         #   Name of the zone for this request. Name should conform to RFC1035.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -5987,24 +5907,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -6276,24 +6192,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -6772,24 +6684,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -6852,24 +6760,20 @@ module Google
         #   of included network endpoints. It should comply with RFC1035.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -6930,24 +6834,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -7085,24 +6985,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -7277,24 +7173,20 @@ module Google
         # organization.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -7489,24 +7381,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -7620,24 +7508,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -7837,24 +7721,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -8189,24 +8069,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -8541,24 +8417,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -9067,24 +8939,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -9381,24 +9249,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -9826,24 +9690,20 @@ module Google
         #   The name of the zone where the managed instance group is located.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -9912,24 +9772,20 @@ module Google
         #   pattern: (?:[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?)|1-9`0,19`.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -10000,24 +9856,20 @@ module Google
         #   The name of the managed instance group.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -10085,24 +9937,20 @@ module Google
         #   The name of the managed instance group. It should conform to RFC1035.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -11134,24 +10982,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -11367,24 +11211,20 @@ module Google
         #   The name of the zone where the instance group is located.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -11452,24 +11292,20 @@ module Google
         # @param [Google::Apis::ComputeAlpha::InstanceGroupsListInstancesRequest] instance_groups_list_instances_request_object
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -11861,24 +11697,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -12130,24 +11962,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -12896,24 +12724,20 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -12982,24 +12806,20 @@ module Google
         #   span over all instances in the container.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -14256,7 +14076,7 @@ module Google
         # instances incur reduced per-minute, virtual machine usage charges while they
         # are suspended. Any resources the virtual machine is using, such as persistent
         # disks and static IP addresses, will continue to be charged until they are
-        # deleted. For more information, see Suspending and resuming an instance.
+        # deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -14705,91 +14525,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of instantSnapshots.
-        # @param [String] project
-        #   Project ID for this request.
-        # @param [String] filter
-        #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
-        #   example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
-        # @param [Boolean] include_all_scopes
-        #   Indicates whether every visible scope for each scope type (zone, region,
-        #   global) should be included in the response. For new resource types added after
-        #   this field, the flag has no effect as new resource types will always include
-        #   every visible scope for each scope type in response. For resource types which
-        #   predate this field, if this flag is omitted or false, only scopes of the scope
-        #   types where the resource type is expected to be found will be included.
-        # @param [Fixnum] max_results
-        #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than `maxResults`, Compute Engine returns a `
-        #   nextPageToken` that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
-        # @param [String] order_by
-        #   Sorts list results by a certain order. By default, results are returned in
-        #   alphanumerical order based on the resource name. You can also sort results in
-        #   descending order based on the creation timestamp using `orderBy="
-        #   creationTimestamp desc"`. This sorts results based on the `creationTimestamp`
-        #   field in reverse chronological order (newest result first). Use this to sort
-        #   resources like operations so that the newest operation is returned first.
-        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
-        # @param [String] page_token
-        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
-        #   by a previous list request to get the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case of
-        #   failure. The default value is false.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] user_ip
-        #   Legacy name for parameter that has been superseded by `quotaUser`.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ComputeAlpha::InstantSnapshotAggregatedList] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ComputeAlpha::InstantSnapshotAggregatedList]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_instant_snapshot_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'projects/{project}/aggregated/instantSnapshots', options)
-          command.response_representation = Google::Apis::ComputeAlpha::InstantSnapshotAggregatedList::Representation
-          command.response_class = Google::Apis::ComputeAlpha::InstantSnapshotAggregatedList
-          command.params['project'] = project unless project.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Deletes the specified InstantSnapshot resource. Keep in mind that deleting a
         # single instantSnapshot might not necessarily delete all the data on that
         # instantSnapshot. If any data on the instantSnapshot that is marked for
@@ -15039,24 +14774,20 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -15256,24 +14987,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -15530,24 +15257,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -15840,24 +15563,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -16200,24 +15919,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -16792,24 +16507,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -17130,24 +16841,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -17286,24 +16993,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -17413,24 +17116,20 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -17492,24 +17191,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -17778,24 +17473,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -18125,24 +17816,20 @@ module Google
         #   comply with RFC1035.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -18210,24 +17897,20 @@ module Google
         # @param [Google::Apis::ComputeAlpha::NetworkEndpointGroupsListEndpointsRequest] network_endpoint_groups_list_endpoints_request_object
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -18745,24 +18428,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -19322,24 +19001,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -19401,24 +19076,20 @@ module Google
         #   Name of the network for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -19485,24 +19156,20 @@ module Google
         #   Name of the network to return.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [String] ip_cidr_range
         #   (Optional) IP CIDR range filter, example: "10.128.10.0/30".
         # @param [Fixnum] max_results
@@ -19582,24 +19249,20 @@ module Google
         #   The direction of the exchanged routes.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -19961,24 +19624,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -20290,24 +19949,20 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -20372,24 +20027,20 @@ module Google
         #   Name of the NodeGroup resource whose nodes you want to list.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -20642,24 +20293,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -20913,24 +20560,20 @@ module Google
         #   The name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -21076,24 +20719,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -21203,24 +20842,20 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -21624,24 +21259,20 @@ module Google
         # List all the policies that have been configured for the specified project.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -21974,24 +21605,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -22202,24 +21829,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -22629,24 +22252,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -22707,24 +22326,20 @@ module Google
         # @param [Google::Apis::ComputeAlpha::ProjectsListXpnHostsRequest] projects_list_xpn_hosts_request_object
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -23208,24 +22823,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -23339,24 +22950,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -23568,24 +23175,20 @@ module Google
         #   Name of the region of this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -23844,24 +23447,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -24301,24 +23900,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -24574,24 +24169,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -24752,24 +24343,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -25027,24 +24614,20 @@ module Google
         #   The name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -25408,24 +24991,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -25791,24 +25370,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -26021,24 +25596,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -26340,24 +25911,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -26987,24 +26554,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -27072,24 +26635,20 @@ module Google
         #   pattern: (?:[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?)|1-9`0,19`.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -27157,24 +26716,20 @@ module Google
         #   The name of the managed instance group.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -27241,24 +26796,20 @@ module Google
         #   The name of the managed instance group. It should conform to RFC1035.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -28263,24 +27814,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -28349,24 +27896,20 @@ module Google
         # @param [Google::Apis::ComputeAlpha::RegionInstanceGroupsListInstancesRequest] region_instance_groups_list_instances_request_object
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -28820,24 +28363,20 @@ module Google
         #   The name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -29187,24 +28726,20 @@ module Google
         #   comply with RFC1035.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -29745,24 +29280,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -30124,24 +29655,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -30353,24 +29880,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -30551,24 +30074,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -30823,24 +30342,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -31100,24 +30615,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -31364,24 +30875,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -31683,24 +31190,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -32086,24 +31589,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -32378,24 +31877,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -32455,24 +31950,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -32726,24 +32217,20 @@ module Google
         #   Name of the zone for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -33001,24 +32488,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -33271,24 +32754,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -33434,24 +32913,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -33614,24 +33089,20 @@ module Google
         #   endpoints.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -33790,24 +33261,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -34196,24 +33663,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -34355,24 +33818,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -34613,24 +34072,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -34691,24 +34146,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -34984,24 +34435,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -35256,24 +34703,20 @@ module Google
         #   Name of the region of this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -35653,24 +35096,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -35850,24 +35289,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -36070,24 +35505,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -36320,24 +35751,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -36398,24 +35825,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -36565,24 +35988,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -36889,24 +36308,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -36967,24 +36382,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -37386,24 +36797,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -37556,24 +36963,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -37774,24 +37177,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -37994,24 +37393,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -38212,24 +37607,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -38637,24 +38028,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -38866,24 +38253,20 @@ module Google
         #   Name of the zone scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -39092,24 +38475,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -39363,24 +38742,20 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -39778,24 +39153,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -40282,24 +39653,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -40498,24 +39865,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -40727,24 +40090,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -40902,24 +40261,20 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -41171,24 +40526,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -41429,24 +40780,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -41696,24 +41043,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -41870,24 +41213,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Boolean] include_all_scopes
         #   Indicates whether every visible scope for each scope type (zone, region,
         #   global) should be included in the response. For new resource types added after
@@ -42099,24 +41438,20 @@ module Google
         #   Name of the region for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -42351,24 +41686,20 @@ module Google
         #   Name of the zone for request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
@@ -42514,24 +41845,20 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
-        #   expression must specify the field name, an operator, and the value that you
-        #   want to use for filtering. The value must be a string, a number, or a boolean.
-        #   The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For
         #   example, if you are filtering Compute Engine instances, you can exclude
         #   instances named `example-instance` by specifying `name != example-instance`.
-        #   The `:` operator can be used with string fields to match substrings. For non-
-        #   string fields it is equivalent to the `=` operator. The `:*` comparison can be
-        #   used to test whether a key has been defined. For example, to find all objects
-        #   with `owner` label use: ``` labels.owner:* ``` You can also filter nested
-        #   fields. For example, you could specify `scheduling.automaticRestart = false`
-        #   to include instances only if they are not scheduled for automatic restarts.
-        #   You can use filtering on nested fields to filter based on resource labels. To
-        #   filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
-        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
-        #   expression. However, you can include `AND` and `OR` expressions explicitly.
-        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
-        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels. To filter on multiple expressions, provide each separate
+        #   expression within parentheses. For example: ``` (scheduling.automaticRestart =
+        #   true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `
+        #   AND` expression. However, you can include `AND` and `OR` expressions
+        #   explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform =
+        #   "Intel Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
         #   of available results is larger than `maxResults`, Compute Engine returns a `
