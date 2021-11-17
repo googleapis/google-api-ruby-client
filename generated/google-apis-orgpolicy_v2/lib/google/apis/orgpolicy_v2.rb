@@ -21,7 +21,7 @@ module Google
   module Apis
     # Organization Policy API
     #
-    # The Org Policy API allows users to configure governance ruleson their GCP
+    # The Org Policy API allows users to configure governance rules on their GCP
     # resources across the Cloud Resource Hierarchy.
     #
     # @see https://cloud.google.com/orgpolicy/docs/reference/rest/index.html
