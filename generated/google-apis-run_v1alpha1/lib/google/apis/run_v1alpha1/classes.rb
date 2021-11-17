@@ -1515,12 +1515,12 @@ module Google
         attr_accessor :limits
       
         # (Optional) Only memory and CPU are supported. Note: The only supported values
-        # for CPU are '1' and '2'. Requests describes the minimum amount of compute
-        # resources required. If Requests is omitted for a container, it defaults to
-        # Limits if that is explicitly specified, otherwise to an implementation-defined
-        # value. The values of the map is string form of the 'quantity' k8s type: https:/
-        # /github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/
-        # pkg/api/resource/quantity.go
+        # for CPU are '1', '2', and '4'. Requests describes the minimum amount of
+        # compute resources required. If Requests is omitted for a container, it
+        # defaults to Limits if that is explicitly specified, otherwise to an
+        # implementation-defined value. The values of the map is string form of the '
+        # quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/
+        # staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         # Corresponds to the JSON property `requests`
         # @return [Hash<String,String>]
         attr_accessor :requests
