@@ -1827,9 +1827,9 @@ module Google
       
         # String representing the destination to import for, all if left empty. List of
         # possible values can be found here. [https://support.google.com/merchants/
-        # answer/7501026] List of allowed string values: "shopping-ads", "buy-on-google-
-        # listings", "display-ads", "local-inventory -ads", "free-listings", "free-local-
-        # listings" NOTE: The string values are case sensitive.
+        # answer/7501026] List of allowed string values: "Shopping_ads", "
+        # Buy_on_google_listings", "Display_ads", "Local_inventory _ads", "Free_listings"
+        # , "Free_local_listings" NOTE: The string values are case sensitive.
         # Corresponds to the JSON property `destinations`
         # @return [Array<String>]
         attr_accessor :destinations
@@ -3141,10 +3141,11 @@ module Google
         # fulfillmentId". E.g., in "pickupInStore.store123", "pickupInStore" is
         # fulfillment type and "store123" is the store ID. Supported keys are: *
         # colorFamilies * price * originalPrice * discount * inventory(place_id,price) *
-        # attributes.key, where key is any key in the Product.attributes map. *
-        # pickupInStore.id, where id is any FulfillmentInfo.place_ids for
-        # FulfillmentInfo.type "pickup-in-store". * shipToStore.id, where id is any
-        # FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". *
+        # inventory(place_id,attributes.key), where key is any key in the Product.
+        # inventories.attributes map. * attributes.key, where key is any key in the
+        # Product.attributes map. * pickupInStore.id, where id is any FulfillmentInfo.
+        # place_ids for FulfillmentInfo.type "pickup-in-store". * shipToStore.id, where
+        # id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". *
         # sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for
         # FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id, where id is
         # any FulfillmentInfo.place_ids for FulfillmentInfo.type "next-day-delivery". *
@@ -3369,9 +3370,10 @@ module Google
         # colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key"
         # * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "
         # customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "
-        # customFulfillment4" * "customFulfillment5" * numerical_field = * "price" * "
-        # discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,
-        # price)"
+        # customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.
+        # key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "
+        # attributes.key" * "inventory(place_id,price)" * "inventory(place_id,attributes.
+        # key)"
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
