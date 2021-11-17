@@ -969,6 +969,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :day_of_week, as: 'dayOfWeek'
+          property :day_offset, as: 'dayOffset'
           property :week_ordinal, as: 'weekOrdinal'
         end
       end
