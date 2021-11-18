@@ -605,7 +605,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :reset_password_flags
       
-        # The type of the command.
+        # The type of the command. See also params
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
