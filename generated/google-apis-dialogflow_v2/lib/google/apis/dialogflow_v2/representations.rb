@@ -1012,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2AssistQueryParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2AutomatedAgentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3938,6 +3944,8 @@ module Google
       class GoogleCloudDialogflowV2AnalyzeContentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters::Representation
+      
           property :event_input, as: 'eventInput', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EventInput::Representation
       
           property :query_params, as: 'queryParams', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryParameters, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2QueryParameters::Representation
@@ -4011,6 +4019,13 @@ module Google
           collection :snippets, as: 'snippets'
           property :title, as: 'title'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2AssistQueryParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :documents_metadata_filters, as: 'documentsMetadataFilters'
         end
       end
       
@@ -5117,6 +5132,7 @@ module Google
       class GoogleCloudDialogflowV2Participant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :documents_metadata_filters, as: 'documentsMetadataFilters'
           property :name, as: 'name'
           property :role, as: 'role'
           property :sip_recording_media_label, as: 'sipRecordingMediaLabel'
@@ -5254,6 +5270,8 @@ module Google
       class GoogleCloudDialogflowV2SuggestArticlesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters::Representation
+      
           property :context_size, as: 'contextSize'
           property :latest_message, as: 'latestMessage'
         end
@@ -5272,6 +5290,8 @@ module Google
       class GoogleCloudDialogflowV2SuggestFaqAnswersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2AssistQueryParameters::Representation
+      
           property :context_size, as: 'contextSize'
           property :latest_message, as: 'latestMessage'
         end
