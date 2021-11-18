@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudiot_v1
 
+### v0.11.0 (2021-11-18)
+
+* Regenerated from discovery document revision 20211108
+
 ### v0.10.0 (2021-10-20)
 
 * Regenerated from discovery document revision 20211004
