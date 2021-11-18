@@ -8632,6 +8632,18 @@ module Google
       class GoogleCloudDialogflowCxV3beta1WebhookGenericWebService
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies a list of allowed custom CA certificates (in DER format)
+        # for HTTPS verification. This overrides the default SSL trust store. If this is
+        # empty or unspecified, Dialogflow will use Google's default trust store to
+        # verify certificates. N.B. Make sure the HTTPS server certificates are signed
+        # with "subject alt name". For instance a certificate can be self-signed using
+        # the following command, openssl x509 -req -days 200 -in example.com.csr \ -
+        # signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\
+        # nsubjectAltName='DNS:www.example.com'")
+        # Corresponds to the JSON property `allowedCaCerts`
+        # @return [Array<String>]
+        attr_accessor :allowed_ca_certs
+      
         # The password for HTTP Basic authentication.
         # Corresponds to the JSON property `password`
         # @return [String]
@@ -8659,6 +8671,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_ca_certs = args[:allowed_ca_certs] if args.key?(:allowed_ca_certs)
           @password = args[:password] if args.key?(:password)
           @request_headers = args[:request_headers] if args.key?(:request_headers)
           @uri = args[:uri] if args.key?(:uri)
