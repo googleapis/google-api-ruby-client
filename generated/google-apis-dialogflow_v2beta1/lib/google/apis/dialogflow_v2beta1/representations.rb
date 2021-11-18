@@ -1366,6 +1366,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1AssistQueryParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1AutomatedAgentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4712,6 +4718,8 @@ module Google
       class GoogleCloudDialogflowV2beta1AnalyzeContentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters::Representation
+      
           property :event_input, as: 'eventInput', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EventInput, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EventInput::Representation
       
           property :message_send_time, as: 'messageSendTime'
@@ -4785,6 +4793,13 @@ module Google
           collection :snippets, as: 'snippets'
           property :title, as: 'title'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AssistQueryParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :documents_metadata_filters, as: 'documentsMetadataFilters'
         end
       end
       
@@ -6153,6 +6168,7 @@ module Google
       class GoogleCloudDialogflowV2beta1Participant
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :documents_metadata_filters, as: 'documentsMetadataFilters'
           property :name, as: 'name'
           property :obfuscated_external_user_id, as: 'obfuscatedExternalUserId'
           property :role, as: 'role'
@@ -6359,6 +6375,8 @@ module Google
       class GoogleCloudDialogflowV2beta1SuggestArticlesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters::Representation
+      
           property :context_size, as: 'contextSize'
           property :latest_message, as: 'latestMessage'
         end
@@ -6377,6 +6395,8 @@ module Google
       class GoogleCloudDialogflowV2beta1SuggestFaqAnswersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assist_query_params, as: 'assistQueryParams', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters::Representation
+      
           property :context_size, as: 'contextSize'
           property :latest_message, as: 'latestMessage'
         end

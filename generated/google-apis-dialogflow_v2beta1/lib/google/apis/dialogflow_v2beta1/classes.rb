@@ -8024,6 +8024,11 @@ module Google
       class GoogleCloudDialogflowV2beta1AnalyzeContentRequest
         include Google::Apis::Core::Hashable
       
+        # Represents the parameters of human assist query.
+        # Corresponds to the JSON property `assistQueryParams`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters]
+        attr_accessor :assist_query_params
+      
         # Events allow for matching intents by event name instead of the natural
         # language input. For instance, input `` can trigger a personalized welcome
         # response. The parameter `name` may be used by the agent in the response: `"
@@ -8075,6 +8080,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assist_query_params = args[:assist_query_params] if args.key?(:assist_query_params)
           @event_input = args[:event_input] if args.key?(:event_input)
           @message_send_time = args[:message_send_time] if args.key?(:message_send_time)
           @query_params = args[:query_params] if args.key?(:query_params)
@@ -8322,6 +8328,31 @@ module Google
           @snippets = args[:snippets] if args.key?(:snippets)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Represents the parameters of human assist query.
+      class GoogleCloudDialogflowV2beta1AssistQueryParameters
+        include Google::Apis::Core::Hashable
+      
+        # Key-value filters on the metadata of documents returned by article suggestion.
+        # If specified, article suggestion only returns suggested documents that match
+        # all filters in their Document.metadata. Multiple values for a metadata key
+        # should be concatenated by comma. For example, filters to match all documents
+        # that have 'US' or 'CA' in their market metadata values and 'agent' in their
+        # user metadata values will be ``` documents_metadata_filters ` key: "market"
+        # value: "US,CA" ` documents_metadata_filters ` key: "user" value: "agent" ` ```
+        # Corresponds to the JSON property `documentsMetadataFilters`
+        # @return [Hash<String,String>]
+        attr_accessor :documents_metadata_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents_metadata_filters = args[:documents_metadata_filters] if args.key?(:documents_metadata_filters)
         end
       end
       
@@ -13213,6 +13244,18 @@ module Google
       class GoogleCloudDialogflowV2beta1Participant
         include Google::Apis::Core::Hashable
       
+        # Optional. Key-value filters on the metadata of documents returned by article
+        # suggestion. If specified, article suggestion only returns suggested documents
+        # that match all filters in their Document.metadata. Multiple values for a
+        # metadata key should be concatenated by comma. For example, filters to match
+        # all documents that have 'US' or 'CA' in their market metadata values and '
+        # agent' in their user metadata values will be ``` documents_metadata_filters `
+        # key: "market" value: "US,CA" ` documents_metadata_filters ` key: "user" value:
+        # "agent" ` ```
+        # Corresponds to the JSON property `documentsMetadataFilters`
+        # @return [Hash<String,String>]
+        attr_accessor :documents_metadata_filters
+      
         # Optional. The unique identifier of this participant. Format: `projects//
         # locations//conversations//participants/`.
         # Corresponds to the JSON property `name`
@@ -13249,6 +13292,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @documents_metadata_filters = args[:documents_metadata_filters] if args.key?(:documents_metadata_filters)
           @name = args[:name] if args.key?(:name)
           @obfuscated_external_user_id = args[:obfuscated_external_user_id] if args.key?(:obfuscated_external_user_id)
           @role = args[:role] if args.key?(:role)
@@ -14024,6 +14068,11 @@ module Google
       class GoogleCloudDialogflowV2beta1SuggestArticlesRequest
         include Google::Apis::Core::Hashable
       
+        # Represents the parameters of human assist query.
+        # Corresponds to the JSON property `assistQueryParams`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters]
+        attr_accessor :assist_query_params
+      
         # Optional. Max number of messages prior to and including latest_message to use
         # as context when compiling the suggestion. By default 20 and at most 50.
         # Corresponds to the JSON property `contextSize`
@@ -14043,6 +14092,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assist_query_params = args[:assist_query_params] if args.key?(:assist_query_params)
           @context_size = args[:context_size] if args.key?(:context_size)
           @latest_message = args[:latest_message] if args.key?(:latest_message)
         end
@@ -14086,6 +14136,11 @@ module Google
       class GoogleCloudDialogflowV2beta1SuggestFaqAnswersRequest
         include Google::Apis::Core::Hashable
       
+        # Represents the parameters of human assist query.
+        # Corresponds to the JSON property `assistQueryParams`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AssistQueryParameters]
+        attr_accessor :assist_query_params
+      
         # Optional. Max number of messages prior to and including [latest_message] to
         # use as context when compiling the suggestion. By default 20 and at most 50.
         # Corresponds to the JSON property `contextSize`
@@ -14105,6 +14160,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assist_query_params = args[:assist_query_params] if args.key?(:assist_query_params)
           @context_size = args[:context_size] if args.key?(:context_size)
           @latest_message = args[:latest_message] if args.key?(:latest_message)
         end
