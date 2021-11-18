@@ -4803,6 +4803,7 @@ module Google
       class GoogleCloudDialogflowCxV3beta1WebhookGenericWebService
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_ca_certs, as: 'allowedCaCerts'
           property :password, as: 'password'
           hash :request_headers, as: 'requestHeaders'
           property :uri, as: 'uri'
