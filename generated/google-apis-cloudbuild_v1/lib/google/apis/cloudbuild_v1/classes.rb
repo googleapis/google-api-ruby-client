@@ -204,6 +204,39 @@ module Google
         end
       end
       
+      # Metadata for `BatchCreateBitbucketServerConnectedRepositories` operation.
+      class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # The name of the `BitbucketServerConfig` that added connected repositories.
+        # Format: `projects/`project`/locations/`location`/bitbucketServerConfigs/`
+        # config``
+        # Corresponds to the JSON property `config`
+        # @return [String]
+        attr_accessor :config
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # A build resource in the Cloud Build API. At a high level, a `Build` describes
       # where to find source code, how to build it (for example, the builder image to
       # run on the source), and where to store the built artifacts. Fields can include
