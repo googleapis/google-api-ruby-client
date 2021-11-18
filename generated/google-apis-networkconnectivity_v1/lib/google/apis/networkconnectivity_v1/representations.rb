@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +334,13 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :location_features, as: 'locationFeatures'
         end
       end
       
