@@ -61,6 +61,49 @@ module Google
         end
       end
       
+      # Represents a backfill job on a specific stream object.
+      class BackfillJob
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Errors which caused the backfill job to fail.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DatastreamV1alpha1::Error>]
+        attr_accessor :errors
+      
+        # Output only. Backfill job's end time.
+        # Corresponds to the JSON property `lastEndTime`
+        # @return [String]
+        attr_accessor :last_end_time
+      
+        # Output only. Backfill job's start time.
+        # Corresponds to the JSON property `lastStartTime`
+        # @return [String]
+        attr_accessor :last_start_time
+      
+        # Backfill job state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Backfill job's triggering reason.
+        # Corresponds to the JSON property `trigger`
+        # @return [String]
+        attr_accessor :trigger
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @last_end_time = args[:last_end_time] if args.key?(:last_end_time)
+          @last_start_time = args[:last_start_time] if args.key?(:last_start_time)
+          @state = args[:state] if args.key?(:state)
+          @trigger = args[:trigger] if args.key?(:trigger)
+        end
+      end
+      
       # Backfill strategy to disable automatic backfill for the Stream's objects.
       class BackfillNoneStrategy
         include Google::Apis::Core::Hashable
@@ -683,6 +726,31 @@ module Google
         end
       end
       
+      # Response containing the objects for a stream.
+      class ListStreamObjectsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of stream objects.
+        # Corresponds to the JSON property `streamObjects`
+        # @return [Array<Google::Apis::DatastreamV1alpha1::StreamObject>]
+        attr_accessor :stream_objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @stream_objects = args[:stream_objects] if args.key?(:stream_objects)
+        end
+      end
+      
       # 
       class ListStreamsResponse
         include Google::Apis::Core::Hashable
@@ -842,6 +910,31 @@ module Google
         def update!(**args)
           @database_name = args[:database_name] if args.key?(:database_name)
           @mysql_tables = args[:mysql_tables] if args.key?(:mysql_tables)
+        end
+      end
+      
+      # Mysql data source object identifier.
+      class MysqlObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # The database name.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # The table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @table = args[:table] if args.key?(:table)
         end
       end
       
@@ -1224,6 +1317,31 @@ module Google
         end
       end
       
+      # Oracle data source object identifier.
+      class OracleObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # The schema name.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # The table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # Oracle database profile.
       class OracleProfile
         include Google::Apis::Core::Hashable
@@ -1537,6 +1655,50 @@ module Google
         end
       end
       
+      # Represents an identifier of an object in the data source.
+      class SourceObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # Mysql data source object identifier.
+        # Corresponds to the JSON property `mysqlIdentifier`
+        # @return [Google::Apis::DatastreamV1alpha1::MysqlObjectIdentifier]
+        attr_accessor :mysql_identifier
+      
+        # Oracle data source object identifier.
+        # Corresponds to the JSON property `oracleIdentifier`
+        # @return [Google::Apis::DatastreamV1alpha1::OracleObjectIdentifier]
+        attr_accessor :oracle_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mysql_identifier = args[:mysql_identifier] if args.key?(:mysql_identifier)
+          @oracle_identifier = args[:oracle_identifier] if args.key?(:oracle_identifier)
+        end
+      end
+      
+      # Response for manually initiating a backfill job for a specific stream object.
+      class StartBackfillJobResponse
+        include Google::Apis::Core::Hashable
+      
+        # A specific stream object (e.g a specific DB table).
+        # Corresponds to the JSON property `object`
+        # @return [Google::Apis::DatastreamV1alpha1::StreamObject]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object = args[:object] if args.key?(:object)
+        end
+      end
+      
       # Static IP address connectivity.
       class StaticServiceIpConnectivity
         include Google::Apis::Core::Hashable
@@ -1586,6 +1748,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Response for manually stop a backfill job for a specific stream object.
+      class StopBackfillJobResponse
+        include Google::Apis::Core::Hashable
+      
+        # A specific stream object (e.g a specific DB table).
+        # Corresponds to the JSON property `object`
+        # @return [Google::Apis::DatastreamV1alpha1::StreamObject]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object = args[:object] if args.key?(:object)
         end
       end
       
@@ -1673,6 +1854,61 @@ module Google
           @name = args[:name] if args.key?(:name)
           @source_config = args[:source_config] if args.key?(:source_config)
           @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A specific stream object (e.g a specific DB table).
+      class StreamObject
+        include Google::Apis::Core::Hashable
+      
+        # Represents a backfill job on a specific stream object.
+        # Corresponds to the JSON property `backfillJob`
+        # @return [Google::Apis::DatastreamV1alpha1::BackfillJob]
+        attr_accessor :backfill_job
+      
+        # Output only. The creation time of the object.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Active errors on the object.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DatastreamV1alpha1::Error>]
+        attr_accessor :errors
+      
+        # Output only. The object's name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents an identifier of an object in the data source.
+        # Corresponds to the JSON property `sourceObject`
+        # @return [Google::Apis::DatastreamV1alpha1::SourceObjectIdentifier]
+        attr_accessor :source_object
+      
+        # Output only. The last update time of the object.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backfill_job = args[:backfill_job] if args.key?(:backfill_job)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @errors = args[:errors] if args.key?(:errors)
+          @name = args[:name] if args.key?(:name)
+          @source_object = args[:source_object] if args.key?(:source_object)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

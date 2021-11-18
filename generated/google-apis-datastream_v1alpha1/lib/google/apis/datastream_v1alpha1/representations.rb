@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackfillJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackfillNoneStrategy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListStreamObjectsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListStreamsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +185,12 @@ module Google
       end
       
       class MysqlDatabase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MysqlObjectIdentifier
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OracleObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OracleProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +310,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SourceObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartBackfillJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StaticServiceIpConnectivity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,7 +334,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StopBackfillJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Stream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreamObject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +389,18 @@ module Google
       
           property :oracle_excluded_objects, as: 'oracleExcludedObjects', class: Google::Apis::DatastreamV1alpha1::OracleRdbms, decorator: Google::Apis::DatastreamV1alpha1::OracleRdbms::Representation
       
+        end
+      end
+      
+      class BackfillJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::DatastreamV1alpha1::Error, decorator: Google::Apis::DatastreamV1alpha1::Error::Representation
+      
+          property :last_end_time, as: 'lastEndTime'
+          property :last_start_time, as: 'lastStartTime'
+          property :state, as: 'state'
+          property :trigger, as: 'trigger'
         end
       end
       
@@ -543,6 +603,15 @@ module Google
         end
       end
       
+      class ListStreamObjectsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :stream_objects, as: 'streamObjects', class: Google::Apis::DatastreamV1alpha1::StreamObject, decorator: Google::Apis::DatastreamV1alpha1::StreamObject::Representation
+      
+        end
+      end
+      
       class ListStreamsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -583,6 +652,14 @@ module Google
           property :database_name, as: 'databaseName'
           collection :mysql_tables, as: 'mysqlTables', class: Google::Apis::DatastreamV1alpha1::MysqlTable, decorator: Google::Apis::DatastreamV1alpha1::MysqlTable::Representation
       
+        end
+      end
+      
+      class MysqlObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :table, as: 'table'
         end
       end
       
@@ -685,6 +762,14 @@ module Google
         end
       end
       
+      class OracleObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema'
+          property :table, as: 'table'
+        end
+      end
+      
       class OracleProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -780,6 +865,24 @@ module Google
         end
       end
       
+      class SourceObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mysql_identifier, as: 'mysqlIdentifier', class: Google::Apis::DatastreamV1alpha1::MysqlObjectIdentifier, decorator: Google::Apis::DatastreamV1alpha1::MysqlObjectIdentifier::Representation
+      
+          property :oracle_identifier, as: 'oracleIdentifier', class: Google::Apis::DatastreamV1alpha1::OracleObjectIdentifier, decorator: Google::Apis::DatastreamV1alpha1::OracleObjectIdentifier::Representation
+      
+        end
+      end
+      
+      class StartBackfillJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object, as: 'object', class: Google::Apis::DatastreamV1alpha1::StreamObject, decorator: Google::Apis::DatastreamV1alpha1::StreamObject::Representation
+      
+        end
+      end
+      
       class StaticServiceIpConnectivity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -792,6 +895,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopBackfillJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object, as: 'object', class: Google::Apis::DatastreamV1alpha1::StreamObject, decorator: Google::Apis::DatastreamV1alpha1::StreamObject::Representation
+      
         end
       end
       
@@ -814,6 +925,22 @@ module Google
           property :source_config, as: 'sourceConfig', class: Google::Apis::DatastreamV1alpha1::SourceConfig, decorator: Google::Apis::DatastreamV1alpha1::SourceConfig::Representation
       
           property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class StreamObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backfill_job, as: 'backfillJob', class: Google::Apis::DatastreamV1alpha1::BackfillJob, decorator: Google::Apis::DatastreamV1alpha1::BackfillJob::Representation
+      
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :errors, as: 'errors', class: Google::Apis::DatastreamV1alpha1::Error, decorator: Google::Apis::DatastreamV1alpha1::Error::Representation
+      
+          property :name, as: 'name'
+          property :source_object, as: 'sourceObject', class: Google::Apis::DatastreamV1alpha1::SourceObjectIdentifier, decorator: Google::Apis::DatastreamV1alpha1::SourceObjectIdentifier::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
