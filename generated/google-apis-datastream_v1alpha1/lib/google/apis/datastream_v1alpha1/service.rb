@@ -1177,6 +1177,136 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Use this method to get details about a stream object.
+        # @param [String] name
+        #   Required. The name of the stream object resource to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastreamV1alpha1::StreamObject] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastreamV1alpha1::StreamObject]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_stream_object(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::DatastreamV1alpha1::StreamObject::Representation
+          command.response_class = Google::Apis::DatastreamV1alpha1::StreamObject
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Use this method to list the objects of a specific stream.
+        # @param [String] parent
+        #   Required. The parent stream that owns the collection of objects.
+        # @param [Fixnum] page_size
+        #   Maximum number of objects to return. Default is 50. The maximum value is 1000;
+        #   values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Page token received from a previous `ListStreamObjectsRequest` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListStreamObjectsRequest` must match the call that provided the
+        #   page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastreamV1alpha1::ListStreamObjectsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastreamV1alpha1::ListStreamObjectsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_stream_objects(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/objects', options)
+          command.response_representation = Google::Apis::DatastreamV1alpha1::ListStreamObjectsResponse::Representation
+          command.response_class = Google::Apis::DatastreamV1alpha1::ListStreamObjectsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts backfill job for the specified stream object.
+        # @param [String] object
+        #   Required. The name of the stream object resource to start a backfill job for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastreamV1alpha1::StartBackfillJobResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastreamV1alpha1::StartBackfillJobResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_location_stream_object_backfill_job(object, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+object}:startBackfillJob', options)
+          command.response_representation = Google::Apis::DatastreamV1alpha1::StartBackfillJobResponse::Representation
+          command.response_class = Google::Apis::DatastreamV1alpha1::StartBackfillJobResponse
+          command.params['object'] = object unless object.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops the backfill job for the specified stream object.
+        # @param [String] object
+        #   Required. The name of the stream object resource to stop the backfill job for.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastreamV1alpha1::StopBackfillJobResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastreamV1alpha1::StopBackfillJobResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_project_location_stream_object_backfill_job(object, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+object}:stopBackfillJob', options)
+          command.response_representation = Google::Apis::DatastreamV1alpha1::StopBackfillJobResponse::Representation
+          command.response_class = Google::Apis::DatastreamV1alpha1::StopBackfillJobResponse
+          command.params['object'] = object unless object.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
