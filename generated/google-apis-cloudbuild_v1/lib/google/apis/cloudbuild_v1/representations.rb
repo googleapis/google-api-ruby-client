@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Build
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -517,6 +523,15 @@ module Google
           collection :images, as: 'images'
           property :objects, as: 'objects', class: Google::Apis::CloudbuildV1::ArtifactObjects, decorator: Google::Apis::CloudbuildV1::ArtifactObjects::Representation
       
+        end
+      end
+      
+      class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :config, as: 'config'
+          property :create_time, as: 'createTime'
         end
       end
       
