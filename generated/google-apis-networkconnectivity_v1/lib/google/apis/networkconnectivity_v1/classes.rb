@@ -674,6 +674,25 @@ module Google
         end
       end
       
+      # Metadata about locations
+      class LocationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # List of supported features
+        # Corresponds to the JSON property `locationFeatures`
+        # @return [Array<String>]
+        attr_accessor :location_features
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_features = args[:location_features] if args.key?(:location_features)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class OperationMetadata
         include Google::Apis::Core::Hashable
