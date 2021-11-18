@@ -841,6 +841,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :intoto_provenance, as: 'intotoProvenance', class: Google::Apis::ContaineranalysisV1alpha1::InTotoProvenance, decorator: Google::Apis::ContaineranalysisV1alpha1::InTotoProvenance::Representation
       
+          property :intoto_statement, as: 'intotoStatement', class: Google::Apis::ContaineranalysisV1alpha1::InTotoStatement, decorator: Google::Apis::ContaineranalysisV1alpha1::InTotoStatement::Representation
+      
           property :provenance, as: 'provenance', class: Google::Apis::ContaineranalysisV1alpha1::BuildProvenance, decorator: Google::Apis::ContaineranalysisV1alpha1::BuildProvenance::Representation
       
           property :provenance_bytes, as: 'provenanceBytes'

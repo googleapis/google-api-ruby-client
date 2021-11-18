@@ -259,10 +259,18 @@ module Google
       class BuildDetails
         include Google::Apis::Core::Hashable
       
-        # In-toto Provenance representation as defined in spec.
+        # Deprecated. See InTotoStatement for the replacement. In-toto Provenance
+        # representation as defined in spec.
         # Corresponds to the JSON property `intotoProvenance`
         # @return [Google::Apis::ContaineranalysisV1alpha1::InTotoProvenance]
         attr_accessor :intoto_provenance
+      
+        # Spec defined at https://github.com/in-toto/attestation/tree/main/spec#
+        # statement The serialized InTotoStatement will be stored as Envelope.payload.
+        # Envelope.payloadType is always "application/vnd.in-toto+json".
+        # Corresponds to the JSON property `intotoStatement`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::InTotoStatement]
+        attr_accessor :intoto_statement
       
         # Provenance of a build. Contains all information needed to verify the full
         # details about the build from source to completion.
@@ -289,6 +297,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @intoto_provenance = args[:intoto_provenance] if args.key?(:intoto_provenance)
+          @intoto_statement = args[:intoto_statement] if args.key?(:intoto_statement)
           @provenance = args[:provenance] if args.key?(:provenance)
           @provenance_bytes = args[:provenance_bytes] if args.key?(:provenance_bytes)
         end
