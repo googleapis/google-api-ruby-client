@@ -630,6 +630,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_disk_size
       
+        # Output only. The databaseInstalledVersion stores the current fully resolved
+        # database version running on the instance including minor version such as
+        # MYSQL_5_6_50
+        # Corresponds to the JSON property `databaseInstalledVersion`
+        # @return [String]
+        attr_accessor :database_installed_version
+      
         # The database engine type and version. The **databaseVersion** field cannot be
         # changed after instance creation.
         # Corresponds to the JSON property `databaseVersion`
@@ -664,10 +671,7 @@ module Google
         # @return [String]
         attr_accessor :gce_zone
       
-        # The instance type. This can be one of the following: * **CLOUD_SQL_INSTANCE**:
-        # A Cloud SQL instance that is not replicating from a primary instance. * **
-        # ON_PREMISES_INSTANCE**: An instance running on the customer's premises. * **
-        # READ_REPLICA_INSTANCE**: A Cloud SQL instance configured as a read-replica.
+        # The instance type.
         # Corresponds to the JSON property `instanceType`
         # @return [String]
         attr_accessor :instance_type
@@ -802,6 +806,7 @@ module Google
           @connection_name = args[:connection_name] if args.key?(:connection_name)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
+          @database_installed_version = args[:database_installed_version] if args.key?(:database_installed_version)
           @database_version = args[:database_version] if args.key?(:database_version)
           @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
           @disk_encryption_status = args[:disk_encryption_status] if args.key?(:disk_encryption_status)
@@ -1114,22 +1119,20 @@ module Google
         # @return [Google::Apis::SqladminV1::ExportContext::CsvExportOptions]
         attr_accessor :csv_export_options
       
-        # Databases to be exported. * **MySQL instances:** If **fileType** is **SQL**
-        # and no database is specified, all databases are exported, except for the **
-        # mysql** system database. If **fileType** is **CSV**, you can specify one
-        # database, either by using this property or by using the **csvExportOptions.
-        # selectQuery** property, which takes precedence over this property. * **
-        # PostgreSQL instances:** You must specify one database to be exported. If **
-        # fileType** is **CSV**, this database must match the one specified in the **
-        # csvExportOptions.selectQuery** property. * **SQL Server instances:** You must
-        # specify one database to be exported, and the **fileType** must be **BAK**.
+        # Databases to be exported. **MySQL instances:** If **fileType** is **SQL** and
+        # no database is specified, all databases are exported, except for the **mysql**
+        # system database. If **fileType** is **CSV**, you can specify one database,
+        # either by using this property or by using the **csvExportOptions.selectQuery**
+        # property, which takes precedence over this property. **PostgreSQL instances:**
+        # You must specify one database to be exported. If **fileType** is **CSV**, this
+        # database must match the one specified in the **csvExportOptions.selectQuery**
+        # property. **SQL Server instances:** You must specify one database to be
+        # exported, and the **fileType** must be **BAK**.
         # Corresponds to the JSON property `databases`
         # @return [Array<String>]
         attr_accessor :databases
       
-        # The file type for the specified uri. * **SQL**: The file contains SQL
-        # statements. * **CSV**: The file contains CSV data. * **BAK**: The file
-        # contains backup data for a SQL Server instance.
+        # The file type for the specified uri.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
@@ -1256,10 +1259,10 @@ module Google
           class MysqlExportOptions
             include Google::Apis::Core::Hashable
           
-            # Option to include SQL statement required to set up replication. * If set to **
-            # 1**, the dump file includes a CHANGE MASTER TO statement with the binary log
-            # coordinates, and --set-gtid-purged is set to ON. * If set to **2**, the CHANGE
-            # MASTER TO statement is written as a SQL comment and has no effect. * If set to
+            # Option to include SQL statement required to set up replication. If set to **1**
+            # , the dump file includes a CHANGE MASTER TO statement with the binary log
+            # coordinates, and --set-gtid-purged is set to ON. If set to **2**, the CHANGE
+            # MASTER TO statement is written as a SQL comment and has no effect. If set to
             # any value other than **1**, --set-gtid-purged is set to OFF.
             # Corresponds to the JSON property `masterData`
             # @return [Fixnum]
@@ -1949,7 +1952,6 @@ module Google
         # created in the allocated range. The range name must comply with [RFC 1035](
         # https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63
         # characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
-        # Reserved for future use.
         # Corresponds to the JSON property `allocatedIpRange`
         # @return [String]
         attr_accessor :allocated_ip_range
@@ -2355,8 +2357,7 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # The status of an operation. Valid values are: * **PENDING** * **RUNNING** * **
-        # DONE** * **SQL_OPERATION_STATUS_UNSPECIFIED**
+        # The status of an operation.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -2491,6 +2492,76 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Read-only password status.
+      class PasswordStatus
+        include Google::Apis::Core::Hashable
+      
+        # If true, user does not have login privileges.
+        # Corresponds to the JSON property `locked`
+        # @return [Boolean]
+        attr_accessor :locked
+        alias_method :locked?, :locked
+      
+        # The expiration time of the current password.
+        # Corresponds to the JSON property `passwordExpirationTime`
+        # @return [String]
+        attr_accessor :password_expiration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locked = args[:locked] if args.key?(:locked)
+          @password_expiration_time = args[:password_expiration_time] if args.key?(:password_expiration_time)
+        end
+      end
+      
+      # Database instance local user password validation policy
+      class PasswordValidationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The complexity of the password.
+        # Corresponds to the JSON property `complexity`
+        # @return [String]
+        attr_accessor :complexity
+      
+        # Disallow username as a part of the password.
+        # Corresponds to the JSON property `disallowUsernameSubstring`
+        # @return [Boolean]
+        attr_accessor :disallow_username_substring
+        alias_method :disallow_username_substring?, :disallow_username_substring
+      
+        # Minimum number of characters allowed.
+        # Corresponds to the JSON property `minLength`
+        # @return [Fixnum]
+        attr_accessor :min_length
+      
+        # Minimum interval after which the password can be changed.
+        # Corresponds to the JSON property `passwordChangeInterval`
+        # @return [String]
+        attr_accessor :password_change_interval
+      
+        # Number of previous passwords that cannot be reused.
+        # Corresponds to the JSON property `reuseInterval`
+        # @return [Fixnum]
+        attr_accessor :reuse_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complexity = args[:complexity] if args.key?(:complexity)
+          @disallow_username_substring = args[:disallow_username_substring] if args.key?(:disallow_username_substring)
+          @min_length = args[:min_length] if args.key?(:min_length)
+          @password_change_interval = args[:password_change_interval] if args.key?(:password_change_interval)
+          @reuse_interval = args[:reuse_interval] if args.key?(:reuse_interval)
         end
       end
       
@@ -2730,6 +2801,11 @@ module Google
         # @return [Google::Apis::SqladminV1::MaintenanceWindow]
         attr_accessor :maintenance_window
       
+        # Database instance local user password validation policy
+        # Corresponds to the JSON property `passwordValidationPolicy`
+        # @return [Google::Apis::SqladminV1::PasswordValidationPolicy]
+        attr_accessor :password_validation_policy
+      
         # The pricing plan for this instance. This can be either **PER_USE** or **
         # PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
         # Corresponds to the JSON property `pricingPlan`
@@ -2803,6 +2879,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @location_preference = args[:location_preference] if args.key?(:location_preference)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
+          @password_validation_policy = args[:password_validation_policy] if args.key?(:password_validation_policy)
           @pricing_plan = args[:pricing_plan] if args.key?(:pricing_plan)
           @replication_type = args[:replication_type] if args.key?(:replication_type)
           @settings_version = args[:settings_version] if args.key?(:settings_version)
@@ -3470,9 +3547,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The host name from which the user can connect. For **insert** operations, host
-        # defaults to an empty string. For **update** operations, host is specified as
-        # part of the request URL. The host name cannot be updated after insertion.
+        # Optional. The host name from which the user can connect. For **insert**
+        # operations, host defaults to an empty string. For **update** operations, host
+        # is specified as part of the request URL. The host name cannot be updated after
+        # insertion. For a MySQL instance, it's required; for a PostgreSQL or SQL Server
+        # instance, it's optional.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -3498,6 +3577,11 @@ module Google
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
+      
+        # User level password validation policy.
+        # Corresponds to the JSON property `passwordPolicy`
+        # @return [Google::Apis::SqladminV1::UserPasswordValidationPolicy]
+        attr_accessor :password_policy
       
         # The project ID of the project containing the Cloud SQL database. The Google
         # apps domain is prefixed if applicable. Can be omitted for **update** since it
@@ -3529,9 +3613,48 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @password = args[:password] if args.key?(:password)
+          @password_policy = args[:password_policy] if args.key?(:password_policy)
           @project = args[:project] if args.key?(:project)
           @sqlserver_user_details = args[:sqlserver_user_details] if args.key?(:sqlserver_user_details)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # User level password validation policy.
+      class UserPasswordValidationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Number of failed login attempts allowed before user get locked.
+        # Corresponds to the JSON property `allowedFailedAttempts`
+        # @return [Fixnum]
+        attr_accessor :allowed_failed_attempts
+      
+        # If true, failed login attempts check will be enabled.
+        # Corresponds to the JSON property `enableFailedAttemptsCheck`
+        # @return [Boolean]
+        attr_accessor :enable_failed_attempts_check
+        alias_method :enable_failed_attempts_check?, :enable_failed_attempts_check
+      
+        # Expiration duration after password is updated.
+        # Corresponds to the JSON property `passwordExpirationDuration`
+        # @return [String]
+        attr_accessor :password_expiration_duration
+      
+        # Read-only password status.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::SqladminV1::PasswordStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_failed_attempts = args[:allowed_failed_attempts] if args.key?(:allowed_failed_attempts)
+          @enable_failed_attempts_check = args[:enable_failed_attempts_check] if args.key?(:enable_failed_attempts_check)
+          @password_expiration_duration = args[:password_expiration_duration] if args.key?(:password_expiration_duration)
+          @status = args[:status] if args.key?(:status)
         end
       end
       

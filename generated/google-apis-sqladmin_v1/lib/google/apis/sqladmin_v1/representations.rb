@@ -364,6 +364,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PasswordStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PasswordValidationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +533,12 @@ module Google
       end
       
       class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserPasswordValidationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -684,6 +702,7 @@ module Google
           property :connection_name, as: 'connectionName'
           property :create_time, as: 'createTime'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
+          property :database_installed_version, as: 'databaseInstalledVersion'
           property :database_version, as: 'databaseVersion'
           property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqladminV1::DiskEncryptionConfiguration, decorator: Google::Apis::SqladminV1::DiskEncryptionConfiguration::Representation
       
@@ -1181,6 +1200,25 @@ module Google
         end
       end
       
+      class PasswordStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locked, as: 'locked'
+          property :password_expiration_time, as: 'passwordExpirationTime'
+        end
+      end
+      
+      class PasswordValidationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complexity, as: 'complexity'
+          property :disallow_username_substring, as: 'disallowUsernameSubstring'
+          property :min_length, as: 'minLength'
+          property :password_change_interval, as: 'passwordChangeInterval'
+          property :reuse_interval, as: 'reuseInterval'
+        end
+      end
+      
       class ReplicaConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1244,6 +1282,8 @@ module Google
           property :location_preference, as: 'locationPreference', class: Google::Apis::SqladminV1::LocationPreference, decorator: Google::Apis::SqladminV1::LocationPreference::Representation
       
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::SqladminV1::MaintenanceWindow, decorator: Google::Apis::SqladminV1::MaintenanceWindow::Representation
+      
+          property :password_validation_policy, as: 'passwordValidationPolicy', class: Google::Apis::SqladminV1::PasswordValidationPolicy, decorator: Google::Apis::SqladminV1::PasswordValidationPolicy::Representation
       
           property :pricing_plan, as: 'pricingPlan'
           property :replication_type, as: 'replicationType'
@@ -1462,10 +1502,23 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :password, as: 'password'
+          property :password_policy, as: 'passwordPolicy', class: Google::Apis::SqladminV1::UserPasswordValidationPolicy, decorator: Google::Apis::SqladminV1::UserPasswordValidationPolicy::Representation
+      
           property :project, as: 'project'
           property :sqlserver_user_details, as: 'sqlserverUserDetails', class: Google::Apis::SqladminV1::SqlServerUserDetails, decorator: Google::Apis::SqladminV1::SqlServerUserDetails::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class UserPasswordValidationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed_failed_attempts, as: 'allowedFailedAttempts'
+          property :enable_failed_attempts_check, as: 'enableFailedAttemptsCheck'
+          property :password_expiration_duration, as: 'passwordExpirationDuration'
+          property :status, as: 'status', class: Google::Apis::SqladminV1::PasswordStatus, decorator: Google::Apis::SqladminV1::PasswordStatus::Representation
+      
         end
       end
       
