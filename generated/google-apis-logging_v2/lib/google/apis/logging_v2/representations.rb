@@ -563,6 +563,8 @@ module Google
       class LogBucket
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cmek_settings, as: 'cmekSettings', class: Google::Apis::LoggingV2::CmekSettings, decorator: Google::Apis::LoggingV2::CmekSettings::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :lifecycle_state, as: 'lifecycleState'
