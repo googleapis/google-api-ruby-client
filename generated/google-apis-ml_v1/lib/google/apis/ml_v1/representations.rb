@@ -895,6 +895,7 @@ module Google
           property :error_message, as: 'errorMessage'
           property :etag, :base64 => true, as: 'etag'
           property :job_id, as: 'jobId'
+          property :job_position, :numeric_string => true, as: 'jobPosition'
           hash :labels, as: 'labels'
           property :prediction_input, as: 'predictionInput', class: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput, decorator: Google::Apis::MlV1::GoogleCloudMlV1PredictionInput::Representation
       

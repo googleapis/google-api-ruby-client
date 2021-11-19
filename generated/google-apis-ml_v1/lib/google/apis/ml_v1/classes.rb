@@ -1384,6 +1384,13 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
+        # Output only. It's only effect when the job is in QUEUED state. If it's
+        # positive, it indicates the job's position in the job scheduler. It's 0 when
+        # the job is already scheduled.
+        # Corresponds to the JSON property `jobPosition`
+        # @return [Fixnum]
+        attr_accessor :job_position
+      
         # Optional. One or more labels that you can add, to organize your jobs. Each
         # label is a key-value pair, where both the key and the value are arbitrary
         # strings that you supply. For more information, see the documentation on using
@@ -1437,6 +1444,7 @@ module Google
           @error_message = args[:error_message] if args.key?(:error_message)
           @etag = args[:etag] if args.key?(:etag)
           @job_id = args[:job_id] if args.key?(:job_id)
+          @job_position = args[:job_position] if args.key?(:job_position)
           @labels = args[:labels] if args.key?(:labels)
           @prediction_input = args[:prediction_input] if args.key?(:prediction_input)
           @prediction_output = args[:prediction_output] if args.key?(:prediction_output)
