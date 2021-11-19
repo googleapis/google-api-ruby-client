@@ -131,9 +131,9 @@ module Google
       
       # Describes the customer-managed encryption key (CMEK) settings associated with
       # a project, folder, organization, billing account, or flexible resource.Note:
-      # CMEK for the Logs Router can currently only be configured for Google Cloud
+      # CMEK for the Log Router can currently only be configured for Google Cloud
       # organizations. Once configured, it applies to all projects and folders in the
-      # Google Cloud organization.See Enabling CMEK for Logs Router (https://cloud.
+      # Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.
       # google.com/logging/docs/routing/managed-encryption) for more information.
       class CmekSettings
         include Google::Apis::Core::Hashable
@@ -141,17 +141,17 @@ module Google
         # The resource name for the configured Cloud KMS key.KMS key name format: "
         # projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
         # For example:"projects/my-project/locations/us-central1/keyRings/my-ring/
-        # cryptoKeys/my-key"To enable CMEK for the Logs Router, set this field to a
-        # valid kms_key_name for which the associated service account has the required
+        # cryptoKeys/my-key"To enable CMEK for the Log Router, set this field to a valid
+        # kms_key_name for which the associated service account has the required
         # cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.The Cloud KMS
         # key used by the Log Router can be updated by changing the kms_key_name to a
         # new valid key name or disabled by setting the key name to an empty string.
         # Encryption operations that are in progress will be completed with the key that
         # was in use when they started. Decryption operations will be completed using
         # the key that was used at the time of encryption unless access to that key has
-        # been revoked.To disable CMEK for the Logs Router, set this field to an empty
-        # string.See Enabling CMEK for Logs Router (https://cloud.google.com/logging/
-        # docs/routing/managed-encryption) for more information.
+        # been revoked.To disable CMEK for the Log Router, set this field to an empty
+        # string.See Enabling CMEK for Log Router (https://cloud.google.com/logging/docs/
+        # routing/managed-encryption) for more information.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -161,13 +161,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The service account that will be used by the Logs Router to
-        # access your Cloud KMS key.Before enabling CMEK for Logs Router, you must first
-        # assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account
-        # that the Logs Router will use to access your Cloud KMS key. Use
-        # GetCmekSettings to obtain the service account ID.See Enabling CMEK for Logs
-        # Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-        # more information.
+        # Output only. The service account that will be used by the Log Router to access
+        # your Cloud KMS key.Before enabling CMEK for Log Router, you must first assign
+        # the cloudkms.cryptoKeyEncrypterDecrypter role to the service account that the
+        # Log Router will use to access your Cloud KMS key. Use GetCmekSettings to
+        # obtain the service account ID.See Enabling CMEK for Logs Router (https://cloud.
+        # google.com/logging/docs/routing/managed-encryption) for more information.
         # Corresponds to the JSON property `serviceAccountId`
         # @return [String]
         attr_accessor :service_account_id
@@ -959,6 +958,16 @@ module Google
       class LogBucket
         include Google::Apis::Core::Hashable
       
+        # Describes the customer-managed encryption key (CMEK) settings associated with
+        # a project, folder, organization, billing account, or flexible resource.Note:
+        # CMEK for the Log Router can currently only be configured for Google Cloud
+        # organizations. Once configured, it applies to all projects and folders in the
+        # Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.
+        # google.com/logging/docs/routing/managed-encryption) for more information.
+        # Corresponds to the JSON property `cmekSettings`
+        # @return [Google::Apis::LoggingV2::CmekSettings]
+        attr_accessor :cmek_settings
+      
         # Output only. The creation timestamp of the bucket. This is not set for any of
         # the default buckets.
         # Corresponds to the JSON property `createTime`
@@ -1019,6 +1028,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cmek_settings = args[:cmek_settings] if args.key?(:cmek_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
