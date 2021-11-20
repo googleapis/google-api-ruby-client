@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LoadEnvironmentStateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoreEnvironmentStateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -367,6 +379,12 @@ module Google
         end
       end
       
+      class LoadEnvironmentStateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class MaintenanceWindow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -439,6 +457,7 @@ module Google
       class PrivateEnvironmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_composer_connection_subnetwork, as: 'cloudComposerConnectionSubnetwork'
           property :cloud_composer_network_ipv4_cidr_block, as: 'cloudComposerNetworkIpv4CidrBlock'
           property :cloud_composer_network_ipv4_reserved_range, as: 'cloudComposerNetworkIpv4ReservedRange'
           property :cloud_sql_ipv4_cidr_block, as: 'cloudSqlIpv4CidrBlock'
@@ -485,6 +504,13 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StoreEnvironmentStateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_location, as: 'snapshotLocation'
         end
       end
       
