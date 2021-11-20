@@ -339,8 +339,7 @@ module Google
         # @return [Google::Apis::ComposerV1::WebServerConfig]
         attr_accessor :web_server_config
       
-        # Network-level access control policy for the Airflow web server. Supported for
-        # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        # Network-level access control policy for the Airflow web server.
         # Corresponds to the JSON property `webServerNetworkAccessControl`
         # @return [Google::Apis::ComposerV1::WebServerNetworkAccessControl]
         attr_accessor :web_server_network_access_control
@@ -1111,8 +1110,7 @@ module Google
         end
       end
       
-      # Network-level access control policy for the Airflow web server. Supported for
-      # Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+      # Network-level access control policy for the Airflow web server.
       class WebServerNetworkAccessControl
         include Google::Apis::Core::Hashable
       
