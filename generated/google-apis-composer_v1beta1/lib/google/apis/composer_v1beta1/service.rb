@@ -267,12 +267,11 @@ module Google
         #   provided in the `config.nodeCount` field. Supported for Cloud Composer
         #   environments in versions composer-1.*.*-airflow-*.*.*. * `config.
         #   webServerNetworkAccessControl` * Replace the environment's current
-        #   WebServerNetworkAccessControl. Supported for Cloud Composer environments in
-        #   versions composer-1.*.*-airflow-*.*.*. * `config.softwareConfig.
-        #   airflowConfigOverrides` * Replace all Apache Airflow config overrides. If a
-        #   replacement config overrides map is not included in `environment`, all config
-        #   overrides are cleared. It is an error to provide both this mask and a mask
-        #   specifying one or more individual config overrides. * `config.softwareConfig.
+        #   WebServerNetworkAccessControl. * `config.softwareConfig.airflowConfigOverrides`
+        #   * Replace all Apache Airflow config overrides. If a replacement config
+        #   overrides map is not included in `environment`, all config overrides are
+        #   cleared. It is an error to provide both this mask and a mask specifying one or
+        #   more individual config overrides. * `config.softwareConfig.
         #   airflowConfigOverrides.`section-name * Override the Apache Airflow config
         #   property *name* in the section named *section*, preserving other properties.
         #   To delete the property override, include it in `updateMask` and omit its
