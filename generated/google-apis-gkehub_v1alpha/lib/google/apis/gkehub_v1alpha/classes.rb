@@ -1471,6 +1471,72 @@ module Google
         end
       end
       
+      # Fleet contains the Fleet-wide metadata and configuration.
+      class Fleet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. When the Fleet was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the Fleet was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. A user-assigned display name of the Fleet. When present, it must be
+        # between 4 to 30 characters. Allowed characters are: lowercase and uppercase
+        # letters, numbers, hyphen, single-quote, double-quote, space, and exclamation
+        # point. Example: `Production Fleet`
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The name for the fleet. The name must meet the following constraints: + The
+        # name of a fleet should be unique within the organization; + It must consist of
+        # lower case alphanumeric characters or `-`; + The length of the name must be
+        # less than or equal to 63; + Unicode names must be expressed in Punycode format
+        # (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
+        # Corresponds to the JSON property `fleetName`
+        # @return [String]
+        attr_accessor :fleet_name
+      
+        # Output only. The full, unique resource name of this fleet in the format of `
+        # projects/`project`/locations/`location`/fleets/`fleet``. Each GCP project can
+        # have at most one fleet resource, named "default".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Google-generated UUID for this resource. This is unique across
+        # all Fleet resources. If a Fleet resource is deleted and another resource with
+        # the same name is created, it gets a different uid.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. When the Fleet was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @fleet_name = args[:fleet_name] if args.key?(:fleet_name)
+          @name = args[:name] if args.key?(:name)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # GenerateConnectManifestResponse contains manifest information for installing/
       # upgrading a Connect agent.
       class GenerateConnectManifestResponse
