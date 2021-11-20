@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Fleet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenerateConnectManifestResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -903,6 +909,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :description, as: 'description'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Fleet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :fleet_name, as: 'fleetName'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
       end
