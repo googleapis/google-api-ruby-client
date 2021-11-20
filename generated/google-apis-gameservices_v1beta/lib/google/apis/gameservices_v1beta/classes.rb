@@ -672,14 +672,6 @@ module Google
       class GameServerCluster
         include Google::Apis::Core::Hashable
       
-        # Optional. The allocation priority assigned to the game server cluster. Game
-        # server clusters receive new game server allocations based on the relative
-        # allocation priorites set for each cluster, if the realm is configured for
-        # multicluster allocation.
-        # Corresponds to the JSON property `allocationPriority`
-        # @return [String]
-        attr_accessor :allocation_priority
-      
         # The state of the Kubernetes cluster.
         # Corresponds to the JSON property `clusterState`
         # @return [Google::Apis::GameservicesV1beta::KubernetesClusterState]
@@ -730,7 +722,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allocation_priority = args[:allocation_priority] if args.key?(:allocation_priority)
           @cluster_state = args[:cluster_state] if args.key?(:cluster_state)
           @connection_info = args[:connection_info] if args.key?(:connection_info)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -751,12 +742,6 @@ module Google
         # @return [Google::Apis::GameservicesV1beta::GkeClusterReference]
         attr_accessor :gke_cluster_reference
       
-        # GkeHubClusterReference represents a reference to a Kubernetes cluster
-        # registered through GKE Hub.
-        # Corresponds to the JSON property `gkeHubClusterReference`
-        # @return [Google::Apis::GameservicesV1beta::GkeHubClusterReference]
-        attr_accessor :gke_hub_cluster_reference
-      
         # Namespace designated on the game server cluster where the Agones game server
         # instances will be created. Existence of the namespace will be validated during
         # creation.
@@ -771,7 +756,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gke_cluster_reference = args[:gke_cluster_reference] if args.key?(:gke_cluster_reference)
-          @gke_hub_cluster_reference = args[:gke_hub_cluster_reference] if args.key?(:gke_hub_cluster_reference)
           @namespace = args[:namespace] if args.key?(:namespace)
         end
       end
@@ -990,31 +974,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
-        end
-      end
-      
-      # GkeHubClusterReference represents a reference to a Kubernetes cluster
-      # registered through GKE Hub.
-      class GkeHubClusterReference
-        include Google::Apis::Core::Hashable
-      
-        # The full or partial name of a GKE Hub membership, using one of the following
-        # forms: * `https://gkehub.googleapis.com/v1beta1/projects/`project_id`/
-        # locations/global/memberships/`membership_id`` * `projects/`project_id`/
-        # locations/global/memberships/`membership_id`` * ``membership_id`` If project
-        # is not specified, the project of the GameServerCluster resource is used to
-        # generate the full name of the GKE Hub membership.
-        # Corresponds to the JSON property `membership`
-        # @return [String]
-        attr_accessor :membership
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @membership = args[:membership] if args.key?(:membership)
         end
       end
       
