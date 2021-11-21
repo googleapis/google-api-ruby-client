@@ -375,10 +375,12 @@ module Google
         attr_accessor :etag
       
         # Labels are attributes that can be set and used by both the user and by Google
-        # Cloud Deploy. Labels must meet the following constraints: Each resource is
-        # limited to 64 labels. Keys must conform to the regexp: `a-zA-Z`0,62``. Values
-        # must conform to the regexp: `[a-zA-Z0-9_-]`0,63``. Both keys and values are
-        # additionally constrained to be <= 128 bytes in size.
+        # Cloud Deploy. Labels must meet the following constraints: * Keys and values
+        # can contain only lowercase letters, numeric characters, underscores, and
+        # dashes. * All characters must use UTF-8 encoding, and international characters
+        # are allowed. * Keys must start with a lowercase letter or international
+        # character. * Each resource is limited to a maximum of 64 labels. Both keys and
+        # values are additionally constrained to be <= 128 bytes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1120,10 +1122,12 @@ module Google
         attr_accessor :etag
       
         # Labels are attributes that can be set and used by both the user and by Google
-        # Cloud Deploy. Labels must meet the following constraints: Each resource is
-        # limited to 64 labels. Keys must conform to the regexp: `a-zA-Z`0,62``. Values
-        # must conform to the regexp: `[a-zA-Z0-9_-]`0,63``. Both keys and values are
-        # additionally constrained to be <= 128 bytes in size.
+        # Cloud Deploy. Labels must meet the following constraints: * Keys and values
+        # can contain only lowercase letters, numeric characters, underscores, and
+        # dashes. * All characters must use UTF-8 encoding, and international characters
+        # are allowed. * Keys must start with a lowercase letter or international
+        # character. * Each resource is limited to a maximum of 64 labels. Both keys and
+        # values are additionally constrained to be <= 128 bytes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1283,10 +1287,12 @@ module Google
         attr_accessor :failure_reason
       
         # Labels are attributes that can be set and used by both the user and by Google
-        # Cloud Deploy. Labels must meet the following constraints: Each resource is
-        # limited to 64 labels. Keys must conform to the regexp: `a-zA-Z`0,62``. Values
-        # must conform to the regexp: `[a-zA-Z0-9_-]`0,63``. Both keys and values are
-        # additionally constrained to be <= 128 bytes in size.
+        # Cloud Deploy. Labels must meet the following constraints: * Keys and values
+        # can contain only lowercase letters, numeric characters, underscores, and
+        # dashes. * All characters must use UTF-8 encoding, and international characters
+        # are allowed. * Keys must start with a lowercase letter or international
+        # character. * Each resource is limited to a maximum of 64 labels. Both keys and
+        # values are additionally constrained to be <= 128 bytes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1556,10 +1562,12 @@ module Google
         attr_accessor :gke
       
         # Optional. Labels are attributes that can be set and used by both the user and
-        # by Google Cloud Deploy. Labels must meet the following constraints: Each
-        # resource is limited to 64 labels. Keys must conform to the regexp: `a-zA-Z`0,
-        # 62``. Values must conform to the regexp: `[a-zA-Z0-9_-]`0,63``. Both keys and
-        # values are additionally constrained to be <= 128 bytes in size.
+        # by Google Cloud Deploy. Labels must meet the following constraints: * Keys and
+        # values can contain only lowercase letters, numeric characters, underscores,
+        # and dashes. * All characters must use UTF-8 encoding, and international
+        # characters are allowed. * Keys must start with a lowercase letter or
+        # international character. * Each resource is limited to a maximum of 64 labels.
+        # Both keys and values are additionally constrained to be <= 128 bytes.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
