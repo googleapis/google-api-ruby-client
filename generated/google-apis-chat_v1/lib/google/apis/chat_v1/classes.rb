@@ -756,6 +756,46 @@ module Google
         end
       end
       
+      # JSON payload of error messages. If the Cloud Logging API is enabled, these
+      # error messages are logged to [Google Cloud Logging](https://cloud.google.com/
+      # logging/docs).
+      class DynamiteIntegrationLogEntry
+        include Google::Apis::Core::Hashable
+      
+        # The deployment that caused the error. For Chat bots built in Apps Script, this
+        # is the deployment ID defined by Apps Script.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # The unencrypted `callback_method` name that was running when the error was
+        # encountered.
+        # Corresponds to the JSON property `deploymentFunction`
+        # @return [String]
+        attr_accessor :deployment_function
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ChatV1::Status]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @deployment_function = args[:deployment_function] if args.key?(:deployment_function)
+          @error = args[:error] if args.key?(:error)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -2660,6 +2700,45 @@ module Google
           @single_user_bot_dm = args[:single_user_bot_dm] if args.key?(:single_user_bot_dm)
           @threaded = args[:threaded] if args.key?(:threaded)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
