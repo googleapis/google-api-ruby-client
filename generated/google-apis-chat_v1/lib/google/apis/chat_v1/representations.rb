@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DynamiteIntegrationLogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -406,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StringInputs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -650,6 +662,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :drive_file_id, as: 'driveFileId'
+        end
+      end
+      
+      class DynamiteIntegrationLogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment'
+          property :deployment_function, as: 'deploymentFunction'
+          property :error, as: 'error', class: Google::Apis::ChatV1::Status, decorator: Google::Apis::ChatV1::Status::Representation
+      
         end
       end
       
@@ -1177,6 +1199,15 @@ module Google
           property :single_user_bot_dm, as: 'singleUserBotDm'
           property :threaded, as: 'threaded'
           property :type, as: 'type'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
