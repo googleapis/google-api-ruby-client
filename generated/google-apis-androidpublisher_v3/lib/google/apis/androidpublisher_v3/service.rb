@@ -417,6 +417,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets country availability.
+        # @param [String] package_name
+        #   Package name of the app.
+        # @param [String] edit_id
+        #   Identifier of the edit.
+        # @param [String] track
+        #   The track to read from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::TrackCountryAvailability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::TrackCountryAvailability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_edit_countryavailability(package_name, edit_id, track, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/edits/{editId}/countryAvailability/{track}', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::TrackCountryAvailability::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::TrackCountryAvailability
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['editId'] = edit_id unless edit_id.nil?
+          command.params['track'] = track unless track.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Uploads a new deobfuscation file and attaches to the specified APK.
         # @param [String] package_name
         #   Unique identifier for the Android app.
@@ -1397,6 +1433,82 @@ module Google
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['track'] = track unless track.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Downloads a single signed APK generated from an app bundle.
+        # @param [String] package_name
+        #   Package name of the app.
+        # @param [Fixnum] version_code
+        #   Version code of the app bundle.
+        # @param [String] download_id
+        #   Download ID, which uniquely identifies the APK to download. Can be obtained
+        #   from the response of `generatedapks.list` method.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def download_generatedapk(package_name, version_code, download_id, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
+          if download_dest.nil?
+            command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}/downloads/{downloadId}:download', options)
+          else
+            command = make_download_command(:get, 'androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}/downloads/{downloadId}:download', options)
+            command.download_dest = download_dest
+          end
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['versionCode'] = version_code unless version_code.nil?
+          command.params['downloadId'] = download_id unless download_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns download metadata for all APKs that were generated from a given app
+        # bundle.
+        # @param [String] package_name
+        #   Package name of the app.
+        # @param [Fixnum] version_code
+        #   Version code of the app bundle.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::GeneratedApksListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::GeneratedApksListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_generatedapks(package_name, version_code, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::GeneratedApksListResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::GeneratedApksListResponse
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['versionCode'] = version_code unless version_code.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

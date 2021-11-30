@@ -748,6 +748,194 @@ module Google
         end
       end
       
+      # Response to list generated APKs.
+      class GeneratedApksListResponse
+        include Google::Apis::Core::Hashable
+      
+        # All generated APKs, grouped by the APK signing key.
+        # Corresponds to the JSON property `generatedApks`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedApksPerSigningKey>]
+        attr_accessor :generated_apks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generated_apks = args[:generated_apks] if args.key?(:generated_apks)
+        end
+      end
+      
+      # Download metadata for split, standalone and universal APKs, as well as asset
+      # pack slices, signed with a given key.
+      class GeneratedApksPerSigningKey
+        include Google::Apis::Core::Hashable
+      
+        # SHA256 hash of the APK signing public key certificate.
+        # Corresponds to the JSON property `certificateSha256Hash`
+        # @return [String]
+        attr_accessor :certificate_sha256_hash
+      
+        # List of asset pack slices which will be served for this app bundle, signed
+        # with a key corresponding to certificate_sha256_hash.
+        # Corresponds to the JSON property `generatedAssetPackSlices`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedAssetPackSlice>]
+        attr_accessor :generated_asset_pack_slices
+      
+        # List of generated split APKs, signed with a key corresponding to
+        # certificate_sha256_hash.
+        # Corresponds to the JSON property `generatedSplitApks`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedSplitApk>]
+        attr_accessor :generated_split_apks
+      
+        # List of generated standalone APKs, signed with a key corresponding to
+        # certificate_sha256_hash.
+        # Corresponds to the JSON property `generatedStandaloneApks`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedStandaloneApk>]
+        attr_accessor :generated_standalone_apks
+      
+        # Download metadata for a universal APK.
+        # Corresponds to the JSON property `generatedUniversalApk`
+        # @return [Google::Apis::AndroidpublisherV3::GeneratedUniversalApk]
+        attr_accessor :generated_universal_apk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_sha256_hash = args[:certificate_sha256_hash] if args.key?(:certificate_sha256_hash)
+          @generated_asset_pack_slices = args[:generated_asset_pack_slices] if args.key?(:generated_asset_pack_slices)
+          @generated_split_apks = args[:generated_split_apks] if args.key?(:generated_split_apks)
+          @generated_standalone_apks = args[:generated_standalone_apks] if args.key?(:generated_standalone_apks)
+          @generated_universal_apk = args[:generated_universal_apk] if args.key?(:generated_universal_apk)
+        end
+      end
+      
+      # Download metadata for an asset pack slice.
+      class GeneratedAssetPackSlice
+        include Google::Apis::Core::Hashable
+      
+        # Download ID, which uniquely identifies the APK to download. Should be supplied
+        # to `generatedapks.download` method.
+        # Corresponds to the JSON property `downloadId`
+        # @return [String]
+        attr_accessor :download_id
+      
+        # Name of the module that this asset slice belongs to.
+        # Corresponds to the JSON property `moduleName`
+        # @return [String]
+        attr_accessor :module_name
+      
+        # Asset slice ID.
+        # Corresponds to the JSON property `sliceId`
+        # @return [String]
+        attr_accessor :slice_id
+      
+        # Asset module version.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_id = args[:download_id] if args.key?(:download_id)
+          @module_name = args[:module_name] if args.key?(:module_name)
+          @slice_id = args[:slice_id] if args.key?(:slice_id)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Download metadata for a split APK.
+      class GeneratedSplitApk
+        include Google::Apis::Core::Hashable
+      
+        # Download ID, which uniquely identifies the APK to download. Should be supplied
+        # to `generatedapks.download` method.
+        # Corresponds to the JSON property `downloadId`
+        # @return [String]
+        attr_accessor :download_id
+      
+        # Name of the module that this APK belongs to.
+        # Corresponds to the JSON property `moduleName`
+        # @return [String]
+        attr_accessor :module_name
+      
+        # Split ID. Empty for the main split of the base module.
+        # Corresponds to the JSON property `splitId`
+        # @return [String]
+        attr_accessor :split_id
+      
+        # ID of the generated variant.
+        # Corresponds to the JSON property `variantId`
+        # @return [Fixnum]
+        attr_accessor :variant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_id = args[:download_id] if args.key?(:download_id)
+          @module_name = args[:module_name] if args.key?(:module_name)
+          @split_id = args[:split_id] if args.key?(:split_id)
+          @variant_id = args[:variant_id] if args.key?(:variant_id)
+        end
+      end
+      
+      # Download metadata for a standalone APK.
+      class GeneratedStandaloneApk
+        include Google::Apis::Core::Hashable
+      
+        # Download ID, which uniquely identifies the APK to download. Should be supplied
+        # to `generatedapks.download` method.
+        # Corresponds to the JSON property `downloadId`
+        # @return [String]
+        attr_accessor :download_id
+      
+        # ID of the generated variant.
+        # Corresponds to the JSON property `variantId`
+        # @return [Fixnum]
+        attr_accessor :variant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_id = args[:download_id] if args.key?(:download_id)
+          @variant_id = args[:variant_id] if args.key?(:variant_id)
+        end
+      end
+      
+      # Download metadata for a universal APK.
+      class GeneratedUniversalApk
+        include Google::Apis::Core::Hashable
+      
+        # Download ID, which uniquely identifies the APK to download. Should be supplied
+        # to `generatedapks.download` method.
+        # Corresponds to the JSON property `downloadId`
+        # @return [String]
+        attr_accessor :download_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @download_id = args[:download_id] if args.key?(:download_id)
+        end
+      end
+      
       # An access grant resource.
       class Grant
         include Google::Apis::Core::Hashable
@@ -2226,6 +2414,45 @@ module Google
         end
       end
       
+      # Resource for per-track country availability information.
+      class TrackCountryAvailability
+        include Google::Apis::Core::Hashable
+      
+        # A list of one or more countries where artifacts in this track are available.
+        # This list includes all countries that are targeted by the track, even if only
+        # specific carriers are targeted in that country.
+        # Corresponds to the JSON property `countries`
+        # @return [Array<Google::Apis::AndroidpublisherV3::TrackTargetedCountry>]
+        attr_accessor :countries
+      
+        # Whether artifacts in this track are available to "rest of the world" countries.
+        # Corresponds to the JSON property `restOfWorld`
+        # @return [Boolean]
+        attr_accessor :rest_of_world
+        alias_method :rest_of_world?, :rest_of_world
+      
+        # Whether this track's availability is synced with the default production track.
+        # See https://support.google.com/googleplay/android-developer/answer/7550024 for
+        # more information on syncing country availability with production. Note that if
+        # this is true, the returned "countries" and "rest_of_world" fields will reflect
+        # the values for the default production track.
+        # Corresponds to the JSON property `syncWithProduction`
+        # @return [Boolean]
+        attr_accessor :sync_with_production
+        alias_method :sync_with_production?, :sync_with_production
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @countries = args[:countries] if args.key?(:countries)
+          @rest_of_world = args[:rest_of_world] if args.key?(:rest_of_world)
+          @sync_with_production = args[:sync_with_production] if args.key?(:sync_with_production)
+        end
+      end
+      
       # A release within a track.
       class TrackRelease
         include Google::Apis::Core::Hashable
@@ -2286,6 +2513,25 @@ module Google
           @status = args[:status] if args.key?(:status)
           @user_fraction = args[:user_fraction] if args.key?(:user_fraction)
           @version_codes = args[:version_codes] if args.key?(:version_codes)
+        end
+      end
+      
+      # Representation of a single country where the contents of a track are available.
+      class TrackTargetedCountry
+        include Google::Apis::Core::Hashable
+      
+        # The country to target, as a two-letter CLDR code.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_code = args[:country_code] if args.key?(:country_code)
         end
       end
       
