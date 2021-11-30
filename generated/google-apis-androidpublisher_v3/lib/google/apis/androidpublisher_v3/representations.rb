@@ -160,6 +160,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeneratedApksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeneratedApksPerSigningKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeneratedAssetPackSlice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeneratedSplitApk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeneratedStandaloneApk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeneratedUniversalApk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Grant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,7 +430,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrackCountryAvailability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TrackRelease
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrackTargetedCountry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -662,6 +710,64 @@ module Google
       
           property :version_code, as: 'versionCode'
           property :version_name, as: 'versionName'
+        end
+      end
+      
+      class GeneratedApksListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generated_apks, as: 'generatedApks', class: Google::Apis::AndroidpublisherV3::GeneratedApksPerSigningKey, decorator: Google::Apis::AndroidpublisherV3::GeneratedApksPerSigningKey::Representation
+      
+        end
+      end
+      
+      class GeneratedApksPerSigningKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_sha256_hash, as: 'certificateSha256Hash'
+          collection :generated_asset_pack_slices, as: 'generatedAssetPackSlices', class: Google::Apis::AndroidpublisherV3::GeneratedAssetPackSlice, decorator: Google::Apis::AndroidpublisherV3::GeneratedAssetPackSlice::Representation
+      
+          collection :generated_split_apks, as: 'generatedSplitApks', class: Google::Apis::AndroidpublisherV3::GeneratedSplitApk, decorator: Google::Apis::AndroidpublisherV3::GeneratedSplitApk::Representation
+      
+          collection :generated_standalone_apks, as: 'generatedStandaloneApks', class: Google::Apis::AndroidpublisherV3::GeneratedStandaloneApk, decorator: Google::Apis::AndroidpublisherV3::GeneratedStandaloneApk::Representation
+      
+          property :generated_universal_apk, as: 'generatedUniversalApk', class: Google::Apis::AndroidpublisherV3::GeneratedUniversalApk, decorator: Google::Apis::AndroidpublisherV3::GeneratedUniversalApk::Representation
+      
+        end
+      end
+      
+      class GeneratedAssetPackSlice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_id, as: 'downloadId'
+          property :module_name, as: 'moduleName'
+          property :slice_id, as: 'sliceId'
+          property :version, :numeric_string => true, as: 'version'
+        end
+      end
+      
+      class GeneratedSplitApk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_id, as: 'downloadId'
+          property :module_name, as: 'moduleName'
+          property :split_id, as: 'splitId'
+          property :variant_id, as: 'variantId'
+        end
+      end
+      
+      class GeneratedStandaloneApk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_id, as: 'downloadId'
+          property :variant_id, as: 'variantId'
+        end
+      end
+      
+      class GeneratedUniversalApk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :download_id, as: 'downloadId'
         end
       end
       
@@ -1060,6 +1166,16 @@ module Google
         end
       end
       
+      class TrackCountryAvailability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :countries, as: 'countries', class: Google::Apis::AndroidpublisherV3::TrackTargetedCountry, decorator: Google::Apis::AndroidpublisherV3::TrackTargetedCountry::Representation
+      
+          property :rest_of_world, as: 'restOfWorld'
+          property :sync_with_production, as: 'syncWithProduction'
+        end
+      end
+      
       class TrackRelease
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1072,6 +1188,13 @@ module Google
           property :status, as: 'status'
           property :user_fraction, as: 'userFraction'
           collection :version_codes, as: 'versionCodes'
+        end
+      end
+      
+      class TrackTargetedCountry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country_code, as: 'countryCode'
         end
       end
       
