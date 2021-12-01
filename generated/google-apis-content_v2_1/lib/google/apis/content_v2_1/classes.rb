@@ -64,8 +64,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :css_id
       
-        # The GMB account which is linked or in the process of being linked with the
-        # Merchant Center account.
+        # The Business Profile which is linked or in the process of being linked with
+        # the Merchant Center account.
         # Corresponds to the JSON property `googleMyBusinessLink`
         # @return [Google::Apis::ContentV2_1::AccountGoogleMyBusinessLink]
         attr_accessor :google_my_business_link
@@ -337,21 +337,22 @@ module Google
       class AccountGoogleMyBusinessLink
         include Google::Apis::Core::Hashable
       
-        # The ID of the GMB account. If this is provided, then `gmbEmail` is ignored.
-        # The value of this field should match the `accountId` used by the GMB API.
+        # The ID of the Business Profile. If this is provided, then `gmbEmail` is
+        # ignored. The value of this field should match the `accountId` used by the
+        # Business Profile API.
         # Corresponds to the JSON property `gmbAccountId`
         # @return [String]
         attr_accessor :gmb_account_id
       
-        # The GMB email address of which a specific account within a GMB account. A
-        # sample account within a GMB account could be a business account with set of
-        # locations, managed under the GMB account.
+        # The Business Profile email address of a specific account within a Business
+        # Profile. A sample account within a Business Profile could be a business
+        # account with set of locations, managed under the Business Profile.
         # Corresponds to the JSON property `gmbEmail`
         # @return [String]
         attr_accessor :gmb_email
       
-        # Status of the link between this Merchant Center account and the GMB account.
-        # Acceptable values are: - "`active`" - "`pending`"
+        # Status of the link between this Merchant Center account and the Business
+        # Profile. Acceptable values are: - "`active`" - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3478,7 +3479,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # A list of GMB accounts which are available to the merchant.
+        # A list of Business Profiles which are available to the merchant.
         # Corresponds to the JSON property `gmbAccounts`
         # @return [Array<Google::Apis::ContentV2_1::GmbAccountsGmbAccount>]
         attr_accessor :gmb_accounts
@@ -3498,7 +3499,7 @@ module Google
       class GmbAccountsGmbAccount
         include Google::Apis::Core::Hashable
       
-        # The email which identifies the GMB account.
+        # The email which identifies the Business Profile.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
@@ -3508,12 +3509,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :listing_count
       
-        # The name of the GMB account.
+        # The name of the Business Profile.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The type of the GMB account (User or Business).
+        # The type of the Business Profile (User or Business).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4074,7 +4075,7 @@ module Google
         # @return [String]
         attr_accessor :country
       
-        # The GMB account. Required only for RequestGmbAccess.
+        # The Business Profile. Required only for RequestGmbAccess.
         # Corresponds to the JSON property `gmbEmail`
         # @return [String]
         attr_accessor :gmb_email
@@ -4168,7 +4169,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # The list of accessible GMB accounts.
+        # The list of accessible Business Profiles.
         # Corresponds to the JSON property `gmbAccounts`
         # @return [Google::Apis::ContentV2_1::GmbAccounts]
         attr_accessor :gmb_accounts
@@ -4214,7 +4215,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # A list of GMB accounts which are available to the merchant.
+        # A list of Business Profiles which are available to the merchant.
         # Corresponds to the JSON property `gmbAccounts`
         # @return [Array<Google::Apis::ContentV2_1::GmbAccountsGmbAccount>]
         attr_accessor :gmb_accounts
@@ -6989,7 +6990,7 @@ module Google
         # @return [String]
         attr_accessor :product_title
       
-        # Required. The quantity of the line item in the order.
+        # The quantity of the line item in the order.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -7033,7 +7034,7 @@ module Google
         # @return [String]
         attr_accessor :line_item_id
       
-        # Required. The line item quantity in the shipment.
+        # The line item quantity in the shipment.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -9597,7 +9598,7 @@ module Google
         attr_accessor :quantity
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in Google My Business.
+        # inserted via the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -9660,7 +9661,7 @@ module Google
         attr_accessor :quantity
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in Google My Business.
+        # inserted via the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -9728,7 +9729,7 @@ module Google
         attr_accessor :quantity
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in Google My Business.
+        # inserted via the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -9829,7 +9830,7 @@ module Google
         attr_accessor :sale_id
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in Google My Business.
+        # inserted via the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -9899,7 +9900,7 @@ module Google
         attr_accessor :sale_id
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in Google My Business.
+        # inserted via the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -9974,7 +9975,7 @@ module Google
         attr_accessor :sale_id
       
         # Required. The identifier of the merchant's store. Either a `storeCode`
-        # inserted via the API or the code of the store in Google My Business.
+        # inserted via the API or the code of the store in a Business Profile.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code

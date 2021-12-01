@@ -2141,14 +2141,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of accessible Google My Business accounts.
+        # Retrieves the list of accessible Business Profiles.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and `accountId` must be the
         #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
-        #   The ID of the account for which to retrieve accessible Google My Business
-        #   accounts.
+        #   The ID of the account for which to retrieve accessible Business Profiles.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2241,15 +2240,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Requests access to a specified Google My Business account.
+        # Requests access to a specified Business Profile.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and `accountId` must be the
         #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
-        #   The ID of the account for which GMB access is requested.
+        #   The ID of the account for which Business Profile access is requested.
         # @param [String] gmb_email
-        #   The email of the Google My Business account.
+        #   The email of the Business Profile.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2372,8 +2371,7 @@ module Google
         #   then this account must be a multi-client account and `accountId` must be the
         #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
-        #   The ID of the account for which to retrieve accessible Google My Business
-        #   accounts.
+        #   The ID of the account for which to retrieve accessible Business Profiles.
         # @param [String] country
         #   The country for which the POS data provider is selected.
         # @param [Fixnum] pos_data_provider_id
