@@ -55,7 +55,7 @@ module Google
         # response.
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
-        #   AAAAMpdlehY
+        #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
         #   Optional. A unique request ID for this message. If a message has already been
@@ -104,7 +104,7 @@ module Google
         # response.
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
-        #   AAAAMpdlehY
+        #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
         #   Optional. A unique request ID for this message. If a message has already been
@@ -153,7 +153,7 @@ module Google
         # response.
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
-        #   AAAAMpdlehY
+        #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
         #   Optional. A unique request ID for this message. If a message has already been
@@ -240,7 +240,7 @@ module Google
         # response.
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
-        #   AAAAMpdlehY
+        #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
         #   Optional. A unique request ID for this message. If a message has already been
@@ -289,7 +289,7 @@ module Google
         # response.
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
-        #   AAAAMpdlehY
+        #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
         #   Optional. A unique request ID for this message. If a message has already been
@@ -338,7 +338,7 @@ module Google
         # response.
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
-        #   AAAAMpdlehY
+        #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
         #   Optional. A unique request ID for this message. If a message has already been
@@ -452,7 +452,7 @@ module Google
         # response.
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
-        #   AAAAMpdlehY
+        #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
         #   Optional. A unique request ID for this message. If a message has already been
@@ -569,7 +569,7 @@ module Google
         # Creates a message.
         # @param [String] parent
         #   Required. Space resource name, in the form "spaces/*". Example: spaces/
-        #   AAAAMpdlehY
+        #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
         #   Optional. A unique request ID for this message. If a message has already been
@@ -617,7 +617,7 @@ module Google
         # Deletes a message.
         # @param [String] name
         #   Required. Resource name of the message to be deleted, in the form "spaces/*/
-        #   messages/*" Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+        #   messages/*" Example: spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -648,7 +648,7 @@ module Google
         # Returns a message.
         # @param [String] name
         #   Required. Resource name of the message to be retrieved, in the form "spaces/*/
-        #   messages/*". Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+        #   messages/*". Example: spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -678,8 +678,8 @@ module Google
         
         # Updates a message.
         # @param [String] name
-        #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAMpdlehY/
-        #   messages/UMxbHmzDlr4.UMxbHmzDlr4`
+        #   Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
+        #   messages/BBBBBBBBBBB.BBBBBBBBBBB`
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] update_mask
         #   Required. The field paths to be updated, comma separated if there are multiple.
