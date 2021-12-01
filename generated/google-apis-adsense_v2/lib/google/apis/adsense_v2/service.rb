@@ -52,7 +52,7 @@ module Google
         
         # Gets information about the selected AdSense account.
         # @param [String] name
-        #   Required. Account to get information about. Format: accounts/`account_id`
+        #   Required. Account to get information about. Format: accounts/`account`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -235,8 +235,8 @@ module Google
         
         # Gets an ad unit from a specified account and ad client.
         # @param [String] name
-        #   Required. AdUnit to get information about. Format: accounts/`account_id`/
-        #   adclient/`adclient_id`/adunit/`adunit_id`
+        #   Required. AdUnit to get information about. Format: accounts/`account`/
+        #   adclients/`adclient`/adunits/`adunit`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
