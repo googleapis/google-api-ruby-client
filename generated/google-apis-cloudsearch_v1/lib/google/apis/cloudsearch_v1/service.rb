@@ -1831,8 +1831,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initializes the customer. **Note:** This API requires an admin account to
-        # execute.
+        # Enables `third party` support in Google Cloud Search. **Note:** This API
+        # requires an admin account to execute.
         # @param [Google::Apis::CloudsearchV1::InitializeCustomerRequest] initialize_customer_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
