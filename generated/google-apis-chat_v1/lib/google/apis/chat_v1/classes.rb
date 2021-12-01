@@ -2373,8 +2373,8 @@ module Google
       class Membership
         include Google::Apis::Core::Hashable
       
-        # The creation time of the membership a.k.a. the time at which the member joined
-        # the space, if applicable.
+        # Output only. The creation time of the membership a.k.a. the time at which the
+        # member joined the space, if applicable.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2389,7 +2389,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # State of the membership.
+        # State of the membership. Required for `CreateMembership`. Read-only for other
+        # usage.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -2456,8 +2457,8 @@ module Google
         # @return [String]
         attr_accessor :last_update_time
       
-        # Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAMpdlehY/
-        # messages/UMxbHmzDlr4.UMxbHmzDlr4`
+        # Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
+        # messages/BBBBBBBBBBB.BBBBBBBBBBB`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2659,8 +2660,8 @@ module Google
       class Space
         include Google::Apis::Core::Hashable
       
-        # The display name (only if the space is of type `ROOM`). Please note that this
-        # field might not be populated in direct messages between humans.
+        # The space's display name. For direct messages between humans, this field might
+        # be empty.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2671,20 +2672,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Whether the space is a DM between a bot and a single human.
+        # Output only. Whether the space is a DM between a bot and a single human.
         # Corresponds to the JSON property `singleUserBotDm`
         # @return [Boolean]
         attr_accessor :single_user_bot_dm
         alias_method :single_user_bot_dm?, :single_user_bot_dm
       
-        # Whether the messages are threaded in this space.
+        # Output only. Whether the messages are threaded in this space.
         # Corresponds to the JSON property `threaded`
         # @return [Boolean]
         attr_accessor :threaded
         alias_method :threaded?, :threaded
       
-        # Output only. The type of a space. This is deprecated. Use `single_user_bot_dm`
-        # instead.
+        # Deprecated. Use `single_user_bot_dm` instead. Output only. The type of a space.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2811,8 +2811,8 @@ module Google
       class Thread
         include Google::Apis::Core::Hashable
       
-        # Resource name, in the form "spaces/*/threads/*". Example: spaces/AAAAMpdlehY/
-        # threads/UMxbHmzDlr4
+        # Resource name, in the form "spaces/*/threads/*". Example: spaces/AAAAAAAAAAA/
+        # threads/TTTTTTTTTTT
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
