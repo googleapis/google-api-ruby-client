@@ -80,7 +80,7 @@ module Google
       class AdClient
         include Google::Apis::Core::Hashable
       
-        # Resource name of the ad client. Format: accounts/`account`/adclient/`adclient`
+        # Resource name of the ad client. Format: accounts/`account`/adclients/`adclient`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -157,7 +157,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of the ad unit. Format: accounts/`account`/adclient/`adclient`/
+        # Resource name of the ad unit. Format: accounts/`account`/adclients/`adclient`/
         # adunits/`adunit`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -987,7 +987,7 @@ module Google
       class UrlChannel
         include Google::Apis::Core::Hashable
       
-        # Resource name of the URL channel. Format: accounts/`account`/adclient/`
+        # Resource name of the URL channel. Format: accounts/`account`/adclients/`
         # adclient`/urlchannels/`urlchannel`
         # Corresponds to the JSON property `name`
         # @return [String]
