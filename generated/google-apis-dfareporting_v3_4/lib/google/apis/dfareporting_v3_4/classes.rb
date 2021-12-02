@@ -2422,7 +2422,8 @@ module Google
         attr_accessor :child_directed_treatment
         alias_method :child_directed_treatment?, :child_directed_treatment
       
-        # Custom floodlight variables.
+        # Custom floodlight variables. This field may only be used when calling
+        # batchinsert; it is not supported by batchupdate.
         # Corresponds to the JSON property `customVariables`
         # @return [Array<Google::Apis::DfareportingV3_4::CustomFloodlightVariable>]
         attr_accessor :custom_variables
@@ -4946,7 +4947,8 @@ module Google
         end
       end
       
-      # A custom floodlight variable.
+      # A custom floodlight variable. This field may only be used when calling
+      # batchinsert; it is not supported by batchupdate.
       class CustomFloodlightVariable
         include Google::Apis::Core::Hashable
       
