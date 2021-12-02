@@ -3142,6 +3142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreservedStatePreservedNetworkIp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreservedStatePreservedNetworkIpIpAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3461,6 +3473,12 @@ module Google
       end
       
       class RegionInstanceGroupManagersRecreateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersResizeAdvancedRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4006,6 +4024,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SavedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScalingScheduleStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4086,6 +4110,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRecaptchaOptionsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4487,6 +4517,12 @@ module Google
       end
       
       class StatefulPolicyPreservedStateDiskDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatefulPolicyPreservedStateNetworkIp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6221,6 +6257,7 @@ module Google
           property :security_settings, as: 'securitySettings', class: Google::Apis::ComputeBeta::SecuritySettings, decorator: Google::Apis::ComputeBeta::SecuritySettings::Representation
       
           property :self_link, as: 'selfLink'
+          collection :service_bindings, as: 'serviceBindings'
           property :session_affinity, as: 'sessionAffinity'
           property :subsetting, as: 'subsetting', class: Google::Apis::ComputeBeta::Subsetting, decorator: Google::Apis::ComputeBeta::Subsetting::Representation
       
@@ -6534,6 +6571,7 @@ module Google
       class Commitment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_renew, as: 'autoRenew'
           property :category, as: 'category'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -9737,6 +9775,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :locations, as: 'locations', class: Google::Apis::ComputeBeta::LocationPolicyLocation, decorator: Google::Apis::ComputeBeta::LocationPolicyLocation::Representation
       
+          property :target_shape, as: 'targetShape'
         end
       end
       
@@ -9800,11 +9839,15 @@ module Google
           property :description, as: 'description'
           property :guest_flush, as: 'guestFlush'
           property :id, :numeric_string => true, as: 'id'
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeBeta::InstanceProperties, decorator: Google::Apis::ComputeBeta::InstanceProperties::Representation
+      
           property :kind, as: 'kind'
           property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :name, as: 'name'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          collection :saved_disks, as: 'savedDisks', class: Google::Apis::ComputeBeta::SavedDisk, decorator: Google::Apis::ComputeBeta::SavedDisk::Representation
+      
           property :self_link, as: 'selfLink'
           collection :source_disk_encryption_keys, as: 'sourceDiskEncryptionKeys', class: Google::Apis::ComputeBeta::SourceDiskEncryptionKey, decorator: Google::Apis::ComputeBeta::SourceDiskEncryptionKey::Representation
       
@@ -11420,7 +11463,6 @@ module Google
           collection :bindings, as: 'bindings', class: Google::Apis::ComputeBeta::Binding, decorator: Google::Apis::ComputeBeta::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::Rule, decorator: Google::Apis::ComputeBeta::Rule::Representation
       
           property :version, as: 'version'
@@ -11440,6 +11482,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :disks, as: 'disks', class: Google::Apis::ComputeBeta::PreservedStatePreservedDisk, decorator: Google::Apis::ComputeBeta::PreservedStatePreservedDisk::Representation
       
+          hash :external_i_ps, as: 'externalIPs', class: Google::Apis::ComputeBeta::PreservedStatePreservedNetworkIp, decorator: Google::Apis::ComputeBeta::PreservedStatePreservedNetworkIp::Representation
+      
+          hash :internal_i_ps, as: 'internalIPs', class: Google::Apis::ComputeBeta::PreservedStatePreservedNetworkIp, decorator: Google::Apis::ComputeBeta::PreservedStatePreservedNetworkIp::Representation
+      
           hash :metadata, as: 'metadata'
         end
       end
@@ -11450,6 +11496,23 @@ module Google
           property :auto_delete, as: 'autoDelete'
           property :mode, as: 'mode'
           property :source, as: 'source'
+        end
+      end
+      
+      class PreservedStatePreservedNetworkIp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :ip_address, as: 'ipAddress', class: Google::Apis::ComputeBeta::PreservedStatePreservedNetworkIpIpAddress, decorator: Google::Apis::ComputeBeta::PreservedStatePreservedNetworkIpIpAddress::Representation
+      
+        end
+      end
+      
+      class PreservedStatePreservedNetworkIpIpAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :literal, as: 'literal'
         end
       end
       
@@ -12006,6 +12069,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersResizeAdvancedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :no_creation_retries, as: 'noCreationRetries'
+          property :target_size, as: 'targetSize'
         end
       end
       
@@ -12721,12 +12792,15 @@ module Google
           property :bfd, as: 'bfd', class: Google::Apis::ComputeBeta::RouterBgpPeerBfd, decorator: Google::Apis::ComputeBeta::RouterBgpPeerBfd::Representation
       
           property :enable, as: 'enable'
+          property :enable_ipv6, as: 'enableIpv6'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
+          property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :management_type, as: 'managementType'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
+          property :peer_ipv6_nexthop_address, as: 'peerIpv6NexthopAddress'
           property :router_appliance_instance, as: 'routerApplianceInstance'
         end
       end
@@ -12791,10 +12865,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :drain_nat_ips, as: 'drainNatIps'
+          property :enable_dynamic_port_allocation, as: 'enableDynamicPortAllocation'
           property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::RouterNatLogConfig, decorator: Google::Apis::ComputeBeta::RouterNatLogConfig::Representation
       
+          property :max_ports_per_vm, as: 'maxPortsPerVm'
           property :min_ports_per_vm, as: 'minPortsPerVm'
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
@@ -13005,6 +13081,16 @@ module Google
         end
       end
       
+      class SavedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :source_disk, as: 'sourceDisk'
+          property :storage_bytes, :numeric_string => true, as: 'storageBytes'
+          property :storage_bytes_status, as: 'storageBytesStatus'
+        end
+      end
+      
       class ScalingScheduleStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13084,6 +13170,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :parent, as: 'parent'
+          property :recaptcha_options_config, as: 'recaptchaOptionsConfig', class: Google::Apis::ComputeBeta::SecurityPolicyRecaptchaOptionsConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyRecaptchaOptionsConfig::Representation
+      
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::SecurityPolicyRule, decorator: Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
       
@@ -13155,6 +13243,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SecurityPolicyRecaptchaOptionsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :redirect_site_key, as: 'redirectSiteKey'
         end
       end
       
@@ -13245,6 +13340,8 @@ module Google
           property :enforce_on_key, as: 'enforceOnKey'
           property :enforce_on_key_name, as: 'enforceOnKeyName'
           property :exceed_action, as: 'exceedAction'
+          property :exceed_redirect_options, as: 'exceedRedirectOptions', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRedirectOptions, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRedirectOptions::Representation
+      
           property :rate_limit_threshold, as: 'rateLimitThreshold', class: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsThreshold, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleRateLimitOptionsThreshold::Representation
       
         end
@@ -13870,10 +13967,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :disks, as: 'disks', class: Google::Apis::ComputeBeta::StatefulPolicyPreservedStateDiskDevice, decorator: Google::Apis::ComputeBeta::StatefulPolicyPreservedStateDiskDevice::Representation
       
+          hash :external_i_ps, as: 'externalIPs', class: Google::Apis::ComputeBeta::StatefulPolicyPreservedStateNetworkIp, decorator: Google::Apis::ComputeBeta::StatefulPolicyPreservedStateNetworkIp::Representation
+      
+          hash :internal_i_ps, as: 'internalIPs', class: Google::Apis::ComputeBeta::StatefulPolicyPreservedStateNetworkIp, decorator: Google::Apis::ComputeBeta::StatefulPolicyPreservedStateNetworkIp::Representation
+      
         end
       end
       
       class StatefulPolicyPreservedStateDiskDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+        end
+      end
+      
+      class StatefulPolicyPreservedStateNetworkIp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_delete, as: 'autoDelete'
@@ -14043,6 +14151,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy'
+          property :subset_size, as: 'subsetSize'
         end
       end
       
@@ -15082,6 +15191,7 @@ module Google
       class ValidateUrlMapsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :load_balancing_schemes, as: 'loadBalancingSchemes'
           property :resource, as: 'resource', class: Google::Apis::ComputeBeta::UrlMap, decorator: Google::Apis::ComputeBeta::UrlMap::Representation
       
         end
@@ -15228,6 +15338,7 @@ module Google
           property :network, as: 'network'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :stack_type, as: 'stackType'
           collection :vpn_interfaces, as: 'vpnInterfaces', class: Google::Apis::ComputeBeta::VpnGatewayVpnGatewayInterface, decorator: Google::Apis::ComputeBeta::VpnGatewayVpnGatewayInterface::Representation
       
         end
