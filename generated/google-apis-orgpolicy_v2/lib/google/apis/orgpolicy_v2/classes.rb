@@ -137,6 +137,69 @@ module Google
         end
       end
       
+      # A custom constraint defined by customers which can *only* be applied to the
+      # given resource types and organization. By creating a custom constraint,
+      # customers can applied policies of this custom constraint. *Creating a custom
+      # constraint itself does NOT apply any policy enforcement*.
+      class GoogleCloudOrgpolicyV2CustomConstraint
+        include Google::Apis::Core::Hashable
+      
+        # Allow or deny type.
+        # Corresponds to the JSON property `actionType`
+        # @return [String]
+        attr_accessor :action_type
+      
+        # Org policy condition/expression. For example: `resource.instanceName.matches("[
+        # production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # Detailed information about this custom policy constraint.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # One line display name for the UI.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # All the operations being applied for this constraint.
+        # Corresponds to the JSON property `methodTypes`
+        # @return [Array<String>]
+        attr_accessor :method_types
+      
+        # Immutable. Name of the constraint. This is unique within the organization.
+        # Format of the name should be * `organizations/`organization_id`/
+        # customConstraints/`custom_constraint_id`` Example : "organizations/123/
+        # customConstraints/custom.createOnlyE2TypeVms"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The Resource Instance type on which this policy applies to. Format
+        # will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+        # Corresponds to the JSON property `resourceTypes`
+        # @return [Array<String>]
+        attr_accessor :resource_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_type = args[:action_type] if args.key?(:action_type)
+          @condition = args[:condition] if args.key?(:condition)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @method_types = args[:method_types] if args.key?(:method_types)
+          @name = args[:name] if args.key?(:name)
+          @resource_types = args[:resource_types] if args.key?(:resource_types)
+        end
+      end
+      
       # The response returned from the ListConstraints method.
       class GoogleCloudOrgpolicyV2ListConstraintsResponse
         include Google::Apis::Core::Hashable

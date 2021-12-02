@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOrgpolicyV2CustomConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudOrgpolicyV2ListConstraintsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :supports_in, as: 'supportsIn'
           property :supports_under, as: 'supportsUnder'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV2CustomConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :condition, as: 'condition'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :method_types, as: 'methodTypes'
+          property :name, as: 'name'
+          collection :resource_types, as: 'resourceTypes'
         end
       end
       
