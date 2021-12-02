@@ -633,6 +633,7 @@ module Google
           property :etag, as: 'etag'
           property :name, as: 'name'
           property :parent, as: 'parent'
+          collection :scopes, as: 'scopes'
           property :title, as: 'title'
         end
       end
