@@ -26,8 +26,7 @@ module Google
       class AgentPool
         include Google::Apis::Core::Hashable
       
-        # Specifies the BandwidthLimit to describe the non-negative bandwidth rate in
-        # mbps for the agent pool.
+        # Specifies a bandwidth limit for an agent pool.
         # Corresponds to the JSON property `bandwidthLimit`
         # @return [Google::Apis::StoragetransferV1::BandwidthLimit]
         attr_accessor :bandwidth_limit
@@ -37,8 +36,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Specifies a unique string that identifies the agent pool. Format:
-        # projects/`project_id`/agentPools/`agent_pool_id`
+        # Required. Specifies a unique string that identifies the agent pool. Format: `
+        # projects/`project_id`/agentPools/`agent_pool_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -211,12 +210,12 @@ module Google
         end
       end
       
-      # Specifies the BandwidthLimit to describe the non-negative bandwidth rate in
-      # mbps for the agent pool.
+      # Specifies a bandwidth limit for an agent pool.
       class BandwidthLimit
         include Google::Apis::Core::Hashable
       
-        # Specifies bandwidth rate in mbps distributed across all the agents in the pool.
+        # Bandwidth rate in megabytes per second, distributed across all the agents in
+        # the pool.
         # Corresponds to the JSON property `limitMbps`
         # @return [Fixnum]
         attr_accessor :limit_mbps
@@ -820,8 +819,7 @@ module Google
       class RunTransferJobRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The ID of the Google Cloud Platform Console project that owns the
-        # transfer job.
+        # Required. The ID of the Google Cloud project that owns the transfer job.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1198,7 +1196,7 @@ module Google
         # @return [Google::Apis::StoragetransferV1::NotificationConfig]
         attr_accessor :notification_config
       
-        # The ID of the Google Cloud Platform Project that owns the job.
+        # The ID of the Google Cloud project that owns the job.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1247,11 +1245,9 @@ module Google
       class TransferManifest
         include Google::Apis::Core::Hashable
       
-        # Holds URI-encoded path to find the manifest. It can be located in data_source,
-        # data_sink, or separately in GCS. For data_source and data_sink, the manifest
-        # location is relative to the path specified by that data_source or data_sink.
-        # If manifest is in GCS, use format "gs:///". If manifest is in data_source, use
-        # format "source://". If manifest is in data_sink, use format "sink://".
+        # Specifies the path to the manifest in Cloud Storage. The Google-managed
+        # service account for the transfer must have `storage.objects.get` permission
+        # for this object. An example path is `gs://bucket_name/path/manifest.csv`.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1303,7 +1299,7 @@ module Google
         # @return [Google::Apis::StoragetransferV1::NotificationConfig]
         attr_accessor :notification_config
       
-        # The ID of the Google Cloud Platform Project that owns the operation.
+        # The ID of the Google Cloud project that owns the operation.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1517,8 +1513,7 @@ module Google
       class UpdateTransferJobRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The ID of the Google Cloud Platform Console project that owns the
-        # job.
+        # Required. The ID of the Google Cloud project that owns the job.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id

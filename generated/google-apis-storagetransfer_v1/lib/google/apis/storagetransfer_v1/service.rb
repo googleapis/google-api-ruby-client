@@ -52,14 +52,14 @@ module Google
         
         # Returns the Google service account that is used by Storage Transfer Service to
         # access buckets in the project where transfers run or in other projects. Each
-        # Google service account is associated with one Google Cloud Platform Console
-        # project. Users should add this service account to the Google Cloud Storage
-        # bucket ACLs to grant access to Storage Transfer Service. This service account
-        # is created and owned by Storage Transfer Service and can only be used by
-        # Storage Transfer Service.
+        # Google service account is associated with one Google Cloud project. Users
+        # should add this service account to the Google Cloud Storage bucket ACLs to
+        # grant access to Storage Transfer Service. This service account is created and
+        # owned by Storage Transfer Service and can only be used by Storage Transfer
+        # Service.
         # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform Console project that the Google
-        #   service account is associated with.
+        #   Required. The ID of the Google Cloud project that the Google service account
+        #   is associated with.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -89,14 +89,16 @@ module Google
         
         # Creates an agent pool resource.
         # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform Console project that owns the
-        #   agent pool.
+        #   Required. The ID of the Google Cloud project that owns the agent pool.
         # @param [Google::Apis::StoragetransferV1::AgentPool] agent_pool_object
         # @param [String] agent_pool_id
-        #   Required. The id of the agent pool to create. The agent_pool_id must be non-
-        #   empty, less than or equal to 128 characters, and satisfy the following regex: "
-        #   ^[a-z]([a-z0-9-._~]*[a-z0-9])?$". Also, agent pool names cannot start with the
-        #   string "goog".
+        #   Required. The ID of the agent pool to create. The `agent_pool_id` must meet
+        #   the following requirements: * Length of 128 characters or less. * Not start
+        #   with the string `goog`. * Start with a lowercase ASCII character, followed by:
+        #   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`),
+        #   periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or
+        #   lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[
+        #   a-z]([a-z0-9-._~]*[a-z0-9])?$`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -129,7 +131,7 @@ module Google
         
         # Deletes an agent pool.
         # @param [String] name
-        #   Required. The agent pool name to delete.
+        #   Required. The name of the agent pool to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -159,7 +161,7 @@ module Google
         
         # Gets an agent pool.
         # @param [String] name
-        #   Required. The agent pool to get.
+        #   Required. The name of the agent pool to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -189,16 +191,15 @@ module Google
         
         # Lists agent pools.
         # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform Console project that owns the
-        #   job.
+        #   Required. The ID of the Google Cloud project that owns the job.
         # @param [String] filter
-        #   A list of optional query parameters specified as JSON text in the form of: ``"
+        #   An optional list of query parameters specified as JSON text in the form of: ``"
         #   agentPoolNames":["agentpool1","agentpool2",...]`` Since `agentPoolNames`
-        #   support multiple values, its values must be specified with array notation. `
-        #   agentPoolNames` is an optional field. The list returns all agent pools for the
-        #   project when the filter is not provided or empty.
+        #   support multiple values, its values must be specified with array notation.
+        #   When the filter is either empty or not provided, the list returns all agent
+        #   pools for the project.
         # @param [Fixnum] page_size
-        #   The list page size. The max allowed value is 256.
+        #   The list page size. The max allowed value is `256`.
         # @param [String] page_token
         #   The list page token.
         # @param [String] fields
@@ -233,13 +234,14 @@ module Google
         
         # Updates an existing agent pool resource.
         # @param [String] name
-        #   Required. Specifies a unique string that identifies the agent pool. Format:
-        #   projects/`project_id`/agentPools/`agent_pool_id`
+        #   Required. Specifies a unique string that identifies the agent pool. Format: `
+        #   projects/`project_id`/agentPools/`agent_pool_id``
         # @param [Google::Apis::StoragetransferV1::AgentPool] agent_pool_object
         # @param [String] update_mask
-        #   The field mask of the fields in `agentPool` that are to be updated in this
-        #   request. Fields in `agentPool` that can be updated are: display_name,
-        #   bandwidth_limit,
+        #   The [field mask] (https://developers.google.com/protocol-buffers/docs/
+        #   reference/google.protobuf) of the fields in `agentPool` to update in this
+        #   request. The following `agentPool` fields can be updated: * display_name *
+        #   bandwidth_limit
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -304,8 +306,7 @@ module Google
         # @param [String] job_name
         #   Required. The job to get.
         # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform Console project that owns the
-        #   job.
+        #   Required. The ID of the Google Cloud project that owns the job.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
