@@ -190,6 +190,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaDataStream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDataStreamWebStreamData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +299,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListCustomMetricsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListDataStreamsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -683,6 +713,48 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaDataStream
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_app_stream_data, as: 'androidAppStreamData', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData::Representation
+      
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :ios_app_stream_data, as: 'iosAppStreamData', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData::Representation
+      
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+          property :web_stream_data, as: 'webStreamData', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamWebStreamData, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamWebStreamData::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :firebase_app_id, as: 'firebaseAppId'
+          property :package_name, as: 'packageName'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_id, as: 'bundleId'
+          property :firebase_app_id, as: 'firebaseAppId'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaDataStreamWebStreamData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_uri, as: 'defaultUri'
+          property :firebase_app_id, as: 'firebaseAppId'
+          property :measurement_id, as: 'measurementId'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -826,6 +898,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :custom_metrics, as: 'customMetrics', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListDataStreamsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_streams, as: 'dataStreams', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

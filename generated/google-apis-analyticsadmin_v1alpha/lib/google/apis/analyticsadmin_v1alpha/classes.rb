@@ -1004,6 +1004,158 @@ module Google
         end
       end
       
+      # A resource message representing a data stream.
+      class GoogleAnalyticsAdminV1alphaDataStream
+        include Google::Apis::Core::Hashable
+      
+        # Data specific to Android app streams.
+        # Corresponds to the JSON property `androidAppStreamData`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData]
+        attr_accessor :android_app_stream_data
+      
+        # Output only. Time when this stream was originally created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Human-readable display name for the Data Stream. Required for web data streams.
+        # The max allowed display name length is 255 UTF-16 code units.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Data specific to iOS app streams.
+        # Corresponds to the JSON property `iosAppStreamData`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData]
+        attr_accessor :ios_app_stream_data
+      
+        # Output only. Resource name of this Data Stream. Format: properties/`
+        # property_id`/dataStreams/`stream_id` Example: "properties/1000/dataStreams/
+        # 2000"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The type of this DataStream resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Time when stream payload fields were last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Data specific to web streams.
+        # Corresponds to the JSON property `webStreamData`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamWebStreamData]
+        attr_accessor :web_stream_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @android_app_stream_data = args[:android_app_stream_data] if args.key?(:android_app_stream_data)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @ios_app_stream_data = args[:ios_app_stream_data] if args.key?(:ios_app_stream_data)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @web_stream_data = args[:web_stream_data] if args.key?(:web_stream_data)
+        end
+      end
+      
+      # Data specific to Android app streams.
+      class GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData
+        include Google::Apis::Core::Hashable
+      
+        # Output only. ID of the corresponding Android app in Firebase, if any. This ID
+        # can change if the Android app is deleted and recreated.
+        # Corresponds to the JSON property `firebaseAppId`
+        # @return [String]
+        attr_accessor :firebase_app_id
+      
+        # Immutable. The package name for the app being measured. Example: "com.example.
+        # myandroidapp"
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @firebase_app_id = args[:firebase_app_id] if args.key?(:firebase_app_id)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
+      # Data specific to iOS app streams.
+      class GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The Apple App Store Bundle ID for the app Example: "com.
+        # example.myiosapp"
+        # Corresponds to the JSON property `bundleId`
+        # @return [String]
+        attr_accessor :bundle_id
+      
+        # Output only. ID of the corresponding iOS app in Firebase, if any. This ID can
+        # change if the iOS app is deleted and recreated.
+        # Corresponds to the JSON property `firebaseAppId`
+        # @return [String]
+        attr_accessor :firebase_app_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
+          @firebase_app_id = args[:firebase_app_id] if args.key?(:firebase_app_id)
+        end
+      end
+      
+      # Data specific to web streams.
+      class GoogleAnalyticsAdminV1alphaDataStreamWebStreamData
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Domain name of the web app being measured, or empty. Example: "http:
+        # //www.google.com", "https://www.google.com"
+        # Corresponds to the JSON property `defaultUri`
+        # @return [String]
+        attr_accessor :default_uri
+      
+        # Output only. ID of the corresponding web app in Firebase, if any. This ID can
+        # change if the web app is deleted and recreated.
+        # Corresponds to the JSON property `firebaseAppId`
+        # @return [String]
+        attr_accessor :firebase_app_id
+      
+        # Output only. Analytics "Measurement ID", without the "G-" prefix. Example: "G-
+        # 1A2BCD345E" would just be "1A2BCD345E"
+        # Corresponds to the JSON property `measurementId`
+        # @return [String]
+        attr_accessor :measurement_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_uri = args[:default_uri] if args.key?(:default_uri)
+          @firebase_app_id = args[:firebase_app_id] if args.key?(:firebase_app_id)
+          @measurement_id = args[:measurement_id] if args.key?(:measurement_id)
+        end
+      end
+      
       # Request message for DeleteUserLink RPC.
       class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest
         include Google::Apis::Core::Hashable
@@ -1563,6 +1715,32 @@ module Google
         end
       end
       
+      # Response message for ListDataStreams RPC.
+      class GoogleAnalyticsAdminV1alphaListDataStreamsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of DataStreams.
+        # Corresponds to the JSON property `dataStreams`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream>]
+        attr_accessor :data_streams
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_streams = args[:data_streams] if args.key?(:data_streams)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListDisplayVideo360AdvertiserLinkProposals RPC.
       class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse
         include Google::Apis::Core::Hashable
@@ -1935,7 +2113,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaPropertySummary
         include Google::Apis::Core::Hashable
       
-        # Display name for the property referred to in this account summary.
+        # Display name for the property referred to in this property summary.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
