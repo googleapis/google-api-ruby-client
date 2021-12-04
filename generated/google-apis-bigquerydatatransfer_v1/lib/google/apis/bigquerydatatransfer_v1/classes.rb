@@ -845,8 +845,9 @@ module Google
         # 3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first
         # sunday of quarter 00:00`. See more explanation about the format here: https://
         # cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#
-        # the_schedule_format NOTE: the granularity should be at least 8 hours, or less
-        # frequent.
+        # the_schedule_format NOTE: The minimum interval time between recurring
+        # transfers depends on the data source; refer to the documentation for your data
+        # source.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
