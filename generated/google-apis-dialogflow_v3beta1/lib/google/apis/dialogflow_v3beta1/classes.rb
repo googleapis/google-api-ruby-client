@@ -1760,6 +1760,12 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessagePlayAudio]
         attr_accessor :play_audio
       
+        # Represents the signal that telles the client to transfer the phone call
+        # connected to the agent to a third-party endpoint.
+        # Corresponds to the JSON property `telephonyTransferCall`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall]
+        attr_accessor :telephony_transfer_call
+      
         # The text response message.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3ResponseMessageText]
@@ -1778,6 +1784,7 @@ module Google
           @output_audio_text = args[:output_audio_text] if args.key?(:output_audio_text)
           @payload = args[:payload] if args.key?(:payload)
           @play_audio = args[:play_audio] if args.key?(:play_audio)
+          @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -1967,6 +1974,27 @@ module Google
         def update!(**args)
           @allow_playback_interruption = args[:allow_playback_interruption] if args.key?(:allow_playback_interruption)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+        end
+      end
+      
+      # Represents the signal that telles the client to transfer the phone call
+      # connected to the agent to a third-party endpoint.
+      class GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall
+        include Google::Apis::Core::Hashable
+      
+        # Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/
+        # wiki/E.164).
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
       
@@ -6906,6 +6934,12 @@ module Google
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio]
         attr_accessor :play_audio
       
+        # Represents the signal that telles the client to transfer the phone call
+        # connected to the agent to a third-party endpoint.
+        # Corresponds to the JSON property `telephonyTransferCall`
+        # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall]
+        attr_accessor :telephony_transfer_call
+      
         # The text response message.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageText]
@@ -6924,6 +6958,7 @@ module Google
           @output_audio_text = args[:output_audio_text] if args.key?(:output_audio_text)
           @payload = args[:payload] if args.key?(:payload)
           @play_audio = args[:play_audio] if args.key?(:play_audio)
+          @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -7113,6 +7148,27 @@ module Google
         def update!(**args)
           @allow_playback_interruption = args[:allow_playback_interruption] if args.key?(:allow_playback_interruption)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+        end
+      end
+      
+      # Represents the signal that telles the client to transfer the phone call
+      # connected to the agent to a third-party endpoint.
+      class GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall
+        include Google::Apis::Core::Hashable
+      
+        # Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/
+        # wiki/E.164).
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
       
