@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3ResponseMessageText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -821,6 +827,12 @@ module Google
       end
       
       class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2996,6 +3008,8 @@ module Google
           hash :payload, as: 'payload'
           property :play_audio, as: 'playAudio', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessagePlayAudio, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessagePlayAudio::Representation
       
+          property :telephony_transfer_call, as: 'telephonyTransferCall', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall::Representation
+      
           property :text, as: 'text', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageText, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3ResponseMessageText::Representation
       
         end
@@ -3052,6 +3066,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_playback_interruption, as: 'allowPlaybackInterruption'
           property :audio_uri, as: 'audioUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phone_number, as: 'phoneNumber'
         end
       end
       
@@ -3755,6 +3776,8 @@ module Google
           hash :payload, as: 'payload'
           property :play_audio, as: 'playAudio', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio::Representation
       
+          property :telephony_transfer_call, as: 'telephonyTransferCall', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall::Representation
+      
           property :text, as: 'text', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageText, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageText::Representation
       
         end
@@ -3811,6 +3834,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_playback_interruption, as: 'allowPlaybackInterruption'
           property :audio_uri, as: 'audioUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phone_number, as: 'phoneNumber'
         end
       end
       
