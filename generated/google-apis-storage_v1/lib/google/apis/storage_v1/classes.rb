@@ -389,7 +389,7 @@ module Google
           # @return [Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly]
           attr_accessor :bucket_policy_only
         
-          # The bucket's Public Access Prevention configuration. Currently, 'unspecified'
+          # The bucket's Public Access Prevention configuration. Currently, 'inherited'
           # and 'enforced' are supported.
           # Corresponds to the JSON property `publicAccessPrevention`
           # @return [String]
