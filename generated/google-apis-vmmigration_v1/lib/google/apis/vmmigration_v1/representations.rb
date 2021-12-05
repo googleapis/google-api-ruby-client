@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddGroupMigrationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppliedLicense
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -40,7 +46,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelCloneJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelCutoverJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelCutoverJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +119,12 @@ module Google
       end
       
       class FinalizeMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FinalizeMigrationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,7 +250,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PauseMigrationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoveGroupMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveGroupMigrationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -245,6 +281,12 @@ module Google
       end
       
       class ResumeMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeMigrationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -269,6 +311,12 @@ module Google
       end
       
       class StartMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartMigrationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +377,12 @@ module Google
         end
       end
       
+      class AddGroupMigrationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AppliedLicense
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -343,7 +397,19 @@ module Google
         end
       end
       
+      class CancelCloneJobResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelCutoverJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CancelCutoverJobResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -479,6 +545,12 @@ module Google
       end
       
       class FinalizeMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FinalizeMigrationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -705,10 +777,22 @@ module Google
         end
       end
       
+      class PauseMigrationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RemoveGroupMigrationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :migrating_vm, as: 'migratingVm'
+        end
+      end
+      
+      class RemoveGroupMigrationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -728,6 +812,12 @@ module Google
       end
       
       class ResumeMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResumeMigrationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -764,6 +854,12 @@ module Google
       end
       
       class StartMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class StartMigrationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
