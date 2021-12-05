@@ -1895,7 +1895,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :network_tags
       
-        # The project in which to create the VM.
+        # Output only. The project in which to create the VM.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
