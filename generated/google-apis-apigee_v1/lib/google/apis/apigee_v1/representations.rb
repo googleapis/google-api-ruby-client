@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1AdvancedApiOpsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1276,6 +1282,14 @@ module Google
           property :integration_config, as: 'integrationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig::Representation
       
           property :monetization_config, as: 'monetizationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment, as: 'adjustment', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
       
         end
       end

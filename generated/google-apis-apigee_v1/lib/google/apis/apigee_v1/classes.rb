@@ -285,6 +285,25 @@ module Google
         end
       end
       
+      # Request for AdjustDeveloperBalance.
+      class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `adjustment`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeMoney]
+        attr_accessor :adjustment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjustment = args[:adjustment] if args.key?(:adjustment)
+        end
+      end
+      
       # Configuration for the Advanced API Ops add-on.
       class GoogleCloudApigeeV1AdvancedApiOpsConfig
         include Google::Apis::Core::Hashable
