@@ -308,6 +308,15 @@ module Google
         # @return [String]
         attr_accessor :gke_cluster
       
+        # The configuration settings for Cloud Composer maintenance window. The
+        # following example: ``` ` "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-
+        # 01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" ` ``` would define a
+        # maintenance window between 01 and 07 hours UTC during each Tuesday and
+        # Wednesday.
+        # Corresponds to the JSON property `maintenanceWindow`
+        # @return [Google::Apis::ComposerV1::MaintenanceWindow]
+        attr_accessor :maintenance_window
+      
         # The configuration information for the Kubernetes Engine nodes running the
         # Apache Airflow software.
         # Corresponds to the JSON property `nodeConfig`
@@ -363,6 +372,7 @@ module Google
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @environment_size = args[:environment_size] if args.key?(:environment_size)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
+          @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
@@ -574,6 +584,46 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # The configuration settings for Cloud Composer maintenance window. The
+      # following example: ``` ` "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-
+      # 01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" ` ``` would define a
+      # maintenance window between 01 and 07 hours UTC during each Tuesday and
+      # Wednesday.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. Maintenance window end time. It is used only to calculate the
+        # duration of the maintenance window. The value for end-time must be in the
+        # future, relative to `start_time`.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. Maintenance window recurrence. Format is a subset of [RFC-5545](
+        # https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `
+        # FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=
+        # WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        # Corresponds to the JSON property `recurrence`
+        # @return [String]
+        attr_accessor :recurrence
+      
+        # Required. Start time of the first recurrence of the maintenance window.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @recurrence = args[:recurrence] if args.key?(:recurrence)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
