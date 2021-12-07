@@ -2158,6 +2158,7 @@ module Google
       
           property :id, as: 'id'
           collection :parent, as: 'parent'
+          collection :parent_ids, as: 'parentIds'
           property :processor, as: 'processor'
         end
       end
@@ -2810,6 +2811,7 @@ module Google
       
           property :id, as: 'id'
           collection :parent, as: 'parent'
+          collection :parent_ids, as: 'parentIds'
           property :processor, as: 'processor'
         end
       end
@@ -3308,6 +3310,7 @@ module Google
       
           property :id, as: 'id'
           collection :parent, as: 'parent'
+          collection :parent_ids, as: 'parentIds'
           property :processor, as: 'processor'
         end
       end

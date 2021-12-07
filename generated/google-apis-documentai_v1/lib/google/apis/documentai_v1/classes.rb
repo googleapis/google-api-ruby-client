@@ -2248,8 +2248,8 @@ module Google
         end
       end
       
-      # Structure for referencing parent provenances. When an element replaces one of
-      # more other elements parent references identify the elements that are replaced.
+      # The parent element the current element is based on. Used for referencing/
+      # aligning, removal and replacement operations.
       class GoogleCloudDocumentaiV1DocumentProvenanceParent
         include Google::Apis::Core::Hashable
       
@@ -2264,7 +2264,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :index
       
-        # The index of the [Document.revisions] identifying the parent revision.
+        # The index of the index into current revision's parent_ids list.
         # Corresponds to the JSON property `revision`
         # @return [Fixnum]
         attr_accessor :revision
@@ -2312,6 +2312,13 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :parent
       
+        # The revisions that this revision is based on. Must include all the ids that
+        # have anything to do with this revision - eg. there are `provenance.parent.
+        # revision` fields that index into this field.
+        # Corresponds to the JSON property `parentIds`
+        # @return [Array<String>]
+        attr_accessor :parent_ids
+      
         # If the annotation was made by processor identify the processor by its resource
         # name.
         # Corresponds to the JSON property `processor`
@@ -2329,6 +2336,7 @@ module Google
           @human_review = args[:human_review] if args.key?(:human_review)
           @id = args[:id] if args.key?(:id)
           @parent = args[:parent] if args.key?(:parent)
+          @parent_ids = args[:parent_ids] if args.key?(:parent_ids)
           @processor = args[:processor] if args.key?(:processor)
         end
       end
@@ -4465,8 +4473,8 @@ module Google
         end
       end
       
-      # Structure for referencing parent provenances. When an element replaces one of
-      # more other elements parent references identify the elements that are replaced.
+      # The parent element the current element is based on. Used for referencing/
+      # aligning, removal and replacement operations.
       class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent
         include Google::Apis::Core::Hashable
       
@@ -4481,7 +4489,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :index
       
-        # The index of the [Document.revisions] identifying the parent revision.
+        # The index of the index into current revision's parent_ids list.
         # Corresponds to the JSON property `revision`
         # @return [Fixnum]
         attr_accessor :revision
@@ -4529,6 +4537,13 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :parent
       
+        # The revisions that this revision is based on. Must include all the ids that
+        # have anything to do with this revision - eg. there are `provenance.parent.
+        # revision` fields that index into this field.
+        # Corresponds to the JSON property `parentIds`
+        # @return [Array<String>]
+        attr_accessor :parent_ids
+      
         # If the annotation was made by processor identify the processor by its resource
         # name.
         # Corresponds to the JSON property `processor`
@@ -4546,6 +4561,7 @@ module Google
           @human_review = args[:human_review] if args.key?(:human_review)
           @id = args[:id] if args.key?(:id)
           @parent = args[:parent] if args.key?(:parent)
+          @parent_ids = args[:parent_ids] if args.key?(:parent_ids)
           @processor = args[:processor] if args.key?(:processor)
         end
       end
@@ -6221,8 +6237,8 @@ module Google
         end
       end
       
-      # Structure for referencing parent provenances. When an element replaces one of
-      # more other elements parent references identify the elements that are replaced.
+      # The parent element the current element is based on. Used for referencing/
+      # aligning, removal and replacement operations.
       class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent
         include Google::Apis::Core::Hashable
       
@@ -6237,7 +6253,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :index
       
-        # The index of the [Document.revisions] identifying the parent revision.
+        # The index of the index into current revision's parent_ids list.
         # Corresponds to the JSON property `revision`
         # @return [Fixnum]
         attr_accessor :revision
@@ -6285,6 +6301,13 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :parent
       
+        # The revisions that this revision is based on. Must include all the ids that
+        # have anything to do with this revision - eg. there are `provenance.parent.
+        # revision` fields that index into this field.
+        # Corresponds to the JSON property `parentIds`
+        # @return [Array<String>]
+        attr_accessor :parent_ids
+      
         # If the annotation was made by processor identify the processor by its resource
         # name.
         # Corresponds to the JSON property `processor`
@@ -6302,6 +6325,7 @@ module Google
           @human_review = args[:human_review] if args.key?(:human_review)
           @id = args[:id] if args.key?(:id)
           @parent = args[:parent] if args.key?(:parent)
+          @parent_ids = args[:parent_ids] if args.key?(:parent_ids)
           @processor = args[:processor] if args.key?(:processor)
         end
       end
