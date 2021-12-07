@@ -1310,6 +1310,11 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Options for what to do if the destination table already exists.
+        # Corresponds to the JSON property `writeDisposition`
+        # @return [String]
+        attr_accessor :write_disposition
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1320,6 +1325,7 @@ module Google
           @filter = args[:filter] if args.key?(:filter)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @parent = args[:parent] if args.key?(:parent)
+          @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
       end
       
@@ -2697,6 +2703,11 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Options for what to do if the destination table already exists.
+        # Corresponds to the JSON property `writeDisposition`
+        # @return [String]
+        attr_accessor :write_disposition
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2707,6 +2718,7 @@ module Google
           @filter = args[:filter] if args.key?(:filter)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @parent = args[:parent] if args.key?(:parent)
+          @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
       end
       

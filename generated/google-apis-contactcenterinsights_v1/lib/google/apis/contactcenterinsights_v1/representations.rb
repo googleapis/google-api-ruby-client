@@ -971,6 +971,7 @@ module Google
           property :filter, as: 'filter'
           property :kms_key, as: 'kmsKey'
           property :parent, as: 'parent'
+          property :write_disposition, as: 'writeDisposition'
         end
       end
       
@@ -1393,6 +1394,7 @@ module Google
           property :filter, as: 'filter'
           property :kms_key, as: 'kmsKey'
           property :parent, as: 'parent'
+          property :write_disposition, as: 'writeDisposition'
         end
       end
       
