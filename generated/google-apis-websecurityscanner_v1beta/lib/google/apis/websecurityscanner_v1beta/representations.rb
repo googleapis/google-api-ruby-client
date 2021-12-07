@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Xxe
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Authentication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -257,6 +263,8 @@ module Google
           property :vulnerable_parameters, as: 'vulnerableParameters', class: Google::Apis::WebsecurityscannerV1beta::VulnerableParameters, decorator: Google::Apis::WebsecurityscannerV1beta::VulnerableParameters::Representation
       
           property :xss, as: 'xss', class: Google::Apis::WebsecurityscannerV1beta::Xss, decorator: Google::Apis::WebsecurityscannerV1beta::Xss::Representation
+      
+          property :xxe, as: 'xxe', class: Google::Apis::WebsecurityscannerV1beta::Xxe, decorator: Google::Apis::WebsecurityscannerV1beta::Xxe::Representation
       
         end
       end
@@ -479,6 +487,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :error_message, as: 'errorMessage'
           collection :stack_traces, as: 'stackTraces'
+        end
+      end
+      
+      class Xxe
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :payload_location, as: 'payloadLocation'
+          property :payload_value, as: 'payloadValue'
         end
       end
     end
