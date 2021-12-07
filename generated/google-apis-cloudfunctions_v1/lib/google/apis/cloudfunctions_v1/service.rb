@@ -487,7 +487,7 @@ module Google
         #   and match pattern `projects/*/locations/*/functions/*`
         # @param [Google::Apis::CloudfunctionsV1::CloudFunction] cloud_function_object
         # @param [String] update_mask
-        #   Required list of fields to be updated in this request.
+        #   Required. The list of fields in `CloudFunction` that have to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
