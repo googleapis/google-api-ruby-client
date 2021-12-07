@@ -154,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AudioContentTypeAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AudioContentTypeTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AudioVideoOffset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1766,6 +1778,8 @@ module Google
           property :assigned_targeting_option_id, as: 'assignedTargetingOptionId'
           property :audience_group_details, as: 'audienceGroupDetails', class: Google::Apis::DisplayvideoV1::AudienceGroupAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::AudienceGroupAssignedTargetingOptionDetails::Representation
       
+          property :audio_content_type_details, as: 'audioContentTypeDetails', class: Google::Apis::DisplayvideoV1::AudioContentTypeAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::AudioContentTypeAssignedTargetingOptionDetails::Representation
+      
           property :authorized_seller_status_details, as: 'authorizedSellerStatusDetails', class: Google::Apis::DisplayvideoV1::AuthorizedSellerStatusAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::AuthorizedSellerStatusAssignedTargetingOptionDetails::Representation
       
           property :browser_details, as: 'browserDetails', class: Google::Apis::DisplayvideoV1::BrowserAssignedTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::BrowserAssignedTargetingOptionDetails::Representation
@@ -1871,6 +1885,21 @@ module Google
       
           property :included_google_audience_group, as: 'includedGoogleAudienceGroup', class: Google::Apis::DisplayvideoV1::GoogleAudienceGroup, decorator: Google::Apis::DisplayvideoV1::GoogleAudienceGroup::Representation
       
+        end
+      end
+      
+      class AudioContentTypeAssignedTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_content_type, as: 'audioContentType'
+          property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
+      class AudioContentTypeTargetingOptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_content_type, as: 'audioContentType'
         end
       end
       
@@ -4040,6 +4069,8 @@ module Google
           property :age_range_details, as: 'ageRangeDetails', class: Google::Apis::DisplayvideoV1::AgeRangeTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::AgeRangeTargetingOptionDetails::Representation
       
           property :app_category_details, as: 'appCategoryDetails', class: Google::Apis::DisplayvideoV1::AppCategoryTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::AppCategoryTargetingOptionDetails::Representation
+      
+          property :audio_content_type_details, as: 'audioContentTypeDetails', class: Google::Apis::DisplayvideoV1::AudioContentTypeTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::AudioContentTypeTargetingOptionDetails::Representation
       
           property :authorized_seller_status_details, as: 'authorizedSellerStatusDetails', class: Google::Apis::DisplayvideoV1::AuthorizedSellerStatusTargetingOptionDetails, decorator: Google::Apis::DisplayvideoV1::AuthorizedSellerStatusTargetingOptionDetails::Representation
       

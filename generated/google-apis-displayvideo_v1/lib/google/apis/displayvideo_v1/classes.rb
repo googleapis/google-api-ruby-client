@@ -721,6 +721,15 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::AudienceGroupAssignedTargetingOptionDetails]
         attr_accessor :audience_group_details
       
+        # Details for audio content type assigned targeting option. This will be
+        # populated in the audio_content_type_details field when targeting_type is `
+        # TARGETING_TYPE_AUDIO_CONTENT_TYPE`. Explicitly targeting all options is not
+        # supported. Remove all audio content type targeting options to achieve this
+        # effect.
+        # Corresponds to the JSON property `audioContentTypeDetails`
+        # @return [Google::Apis::DisplayvideoV1::AudioContentTypeAssignedTargetingOptionDetails]
+        attr_accessor :audio_content_type_details
+      
         # Represents an assigned authorized seller status. This will be populated in the
         # details field of an AssignedTargetingOption when targeting_type is `
         # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
@@ -1009,6 +1018,7 @@ module Google
           @app_details = args[:app_details] if args.key?(:app_details)
           @assigned_targeting_option_id = args[:assigned_targeting_option_id] if args.key?(:assigned_targeting_option_id)
           @audience_group_details = args[:audience_group_details] if args.key?(:audience_group_details)
+          @audio_content_type_details = args[:audio_content_type_details] if args.key?(:audio_content_type_details)
           @authorized_seller_status_details = args[:authorized_seller_status_details] if args.key?(:authorized_seller_status_details)
           @browser_details = args[:browser_details] if args.key?(:browser_details)
           @business_chain_details = args[:business_chain_details] if args.key?(:business_chain_details)
@@ -1151,6 +1161,57 @@ module Google
           @included_custom_list_group = args[:included_custom_list_group] if args.key?(:included_custom_list_group)
           @included_first_and_third_party_audience_groups = args[:included_first_and_third_party_audience_groups] if args.key?(:included_first_and_third_party_audience_groups)
           @included_google_audience_group = args[:included_google_audience_group] if args.key?(:included_google_audience_group)
+        end
+      end
+      
+      # Details for audio content type assigned targeting option. This will be
+      # populated in the audio_content_type_details field when targeting_type is `
+      # TARGETING_TYPE_AUDIO_CONTENT_TYPE`. Explicitly targeting all options is not
+      # supported. Remove all audio content type targeting options to achieve this
+      # effect.
+      class AudioContentTypeAssignedTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The audio content type.
+        # Corresponds to the JSON property `audioContentType`
+        # @return [String]
+        attr_accessor :audio_content_type
+      
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
+        # Corresponds to the JSON property `targetingOptionId`
+        # @return [String]
+        attr_accessor :targeting_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_content_type = args[:audio_content_type] if args.key?(:audio_content_type)
+          @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
+        end
+      end
+      
+      # Represents a targetable audio content type. This will be populated in the
+      # audio_content_type_details field when targeting_type is `
+      # TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
+      class AudioContentTypeTargetingOptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The audio content type.
+        # Corresponds to the JSON property `audioContentType`
+        # @return [String]
+        attr_accessor :audio_content_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audio_content_type = args[:audio_content_type] if args.key?(:audio_content_type)
         end
       end
       
@@ -9118,6 +9179,13 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::AppCategoryTargetingOptionDetails]
         attr_accessor :app_category_details
       
+        # Represents a targetable audio content type. This will be populated in the
+        # audio_content_type_details field when targeting_type is `
+        # TARGETING_TYPE_AUDIO_CONTENT_TYPE`.
+        # Corresponds to the JSON property `audioContentTypeDetails`
+        # @return [Google::Apis::DisplayvideoV1::AudioContentTypeTargetingOptionDetails]
+        attr_accessor :audio_content_type_details
+      
         # Represents a targetable authorized seller status. This will be populated in
         # the authorized_seller_status_details field when targeting_type is `
         # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
@@ -9328,6 +9396,7 @@ module Google
         def update!(**args)
           @age_range_details = args[:age_range_details] if args.key?(:age_range_details)
           @app_category_details = args[:app_category_details] if args.key?(:app_category_details)
+          @audio_content_type_details = args[:audio_content_type_details] if args.key?(:audio_content_type_details)
           @authorized_seller_status_details = args[:authorized_seller_status_details] if args.key?(:authorized_seller_status_details)
           @browser_details = args[:browser_details] if args.key?(:browser_details)
           @business_chain_details = args[:business_chain_details] if args.key?(:business_chain_details)
