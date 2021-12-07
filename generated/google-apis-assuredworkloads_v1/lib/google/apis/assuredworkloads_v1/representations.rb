@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsVersioningV1mainCreateWorkloadOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +173,12 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -216,7 +234,9 @@ module Google
           property :compliance_regime, as: 'complianceRegime'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :enable_sovereign_controls, as: 'enableSovereignControls'
           property :etag, as: 'etag'
+          property :kaj_enrollment_state, as: 'kajEnrollmentState'
           property :kms_settings, as: 'kmsSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadKmsSettings::Representation
       
           hash :labels, as: 'labels'
@@ -225,6 +245,8 @@ module Google
           collection :resource_settings, as: 'resourceSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceSettings::Representation
       
           collection :resources, as: 'resources', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceInfo, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceInfo::Representation
+      
+          property :saa_enrollment_response, as: 'saaEnrollmentResponse', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse::Representation
       
         end
       end
@@ -254,6 +276,14 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :setup_errors, as: 'setupErrors'
+          property :setup_status, as: 'setupStatus'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -275,6 +305,7 @@ module Google
           property :compliance_regime, as: 'complianceRegime'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :enable_sovereign_controls, as: 'enableSovereignControls'
           property :etag, as: 'etag'
           property :fedramp_high_settings, as: 'fedrampHighSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings::Representation
       
@@ -282,6 +313,7 @@ module Google
       
           property :il4_settings, as: 'il4Settings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadIl4Settings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadIl4Settings::Representation
       
+          property :kaj_enrollment_state, as: 'kajEnrollmentState'
           property :kms_settings, as: 'kmsSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadKmsSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadKmsSettings::Representation
       
           hash :labels, as: 'labels'
@@ -290,6 +322,8 @@ module Google
           collection :resource_settings, as: 'resourceSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings::Representation
       
           collection :resources, as: 'resources', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo::Representation
+      
+          property :saa_enrollment_response, as: 'saaEnrollmentResponse', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse::Representation
       
         end
       end
@@ -351,6 +385,14 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :setup_errors, as: 'setupErrors'
+          property :setup_status, as: 'setupStatus'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsVersioningV1mainCreateWorkloadOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -372,6 +414,7 @@ module Google
           property :compliance_regime, as: 'complianceRegime'
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :enable_sovereign_controls, as: 'enableSovereignControls'
           property :etag, as: 'etag'
           property :fedramp_high_settings, as: 'fedrampHighSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadFedrampHighSettings::Representation
       
@@ -379,6 +422,7 @@ module Google
       
           property :il4_settings, as: 'il4Settings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIl4Settings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIl4Settings::Representation
       
+          property :kaj_enrollment_state, as: 'kajEnrollmentState'
           property :kms_settings, as: 'kmsSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadKmsSettings::Representation
       
           hash :labels, as: 'labels'
@@ -387,6 +431,8 @@ module Google
           collection :resource_settings, as: 'resourceSettings', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceSettings::Representation
       
           collection :resources, as: 'resources', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo::Representation
+      
+          property :saa_enrollment_response, as: 'saaEnrollmentResponse', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse::Representation
       
         end
       end
@@ -445,6 +491,14 @@ module Google
           property :display_name, as: 'displayName'
           property :resource_id, as: 'resourceId'
           property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :setup_errors, as: 'setupErrors'
+          property :setup_status, as: 'setupStatus'
         end
       end
       
