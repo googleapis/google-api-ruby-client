@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1PersonalDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1PolicyTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +292,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1StarEntryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1StarEntryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1SystemTimestamps
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +347,18 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1Taxonomy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1UnstarEntryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1UnstarEntryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -528,6 +558,8 @@ module Google
           hash :labels, as: 'labels'
           property :linked_resource, as: 'linkedResource'
           property :name, as: 'name'
+          property :personal_details, as: 'personalDetails', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PersonalDetails, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PersonalDetails::Representation
+      
           property :routine_spec, as: 'routineSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1RoutineSpec::Representation
       
           property :schema, as: 'schema', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Schema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Schema::Representation
@@ -675,6 +707,14 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1PersonalDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :star_time, as: 'starTime'
+          property :starred, as: 'starred'
+        end
+      end
+      
       class GoogleCloudDatacatalogV1PolicyTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -759,6 +799,7 @@ module Google
           collection :include_project_ids, as: 'includeProjectIds'
           property :include_public_tag_templates, as: 'includePublicTagTemplates'
           collection :restricted_locations, as: 'restrictedLocations'
+          property :starred_only, as: 'starredOnly'
         end
       end
       
@@ -807,6 +848,18 @@ module Google
           property :display_name, as: 'displayName'
           collection :policy_tags, as: 'policyTags', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SerializedPolicyTag, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SerializedPolicyTag::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1StarEntryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1StarEntryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -894,6 +947,18 @@ module Google
           property :policy_tag_count, as: 'policyTagCount'
           property :taxonomy_timestamps, as: 'taxonomyTimestamps', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1UnstarEntryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1UnstarEntryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

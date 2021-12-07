@@ -611,6 +611,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Entry metadata relevant only to the user and private to them.
+        # Corresponds to the JSON property `personalDetails`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PersonalDetails]
+        attr_accessor :personal_details
+      
         # Specification that applies to a routine. Valid only for entries with the `
         # ROUTINE` type.
         # Corresponds to the JSON property `routineSpec`
@@ -681,6 +686,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
           @name = args[:name] if args.key?(:name)
+          @personal_details = args[:personal_details] if args.key?(:personal_details)
           @routine_spec = args[:routine_spec] if args.key?(:routine_spec)
           @schema = args[:schema] if args.key?(:schema)
           @source_system_timestamps = args[:source_system_timestamps] if args.key?(:source_system_timestamps)
@@ -1089,6 +1095,32 @@ module Google
         end
       end
       
+      # Entry metadata relevant only to the user and private to them.
+      class GoogleCloudDatacatalogV1PersonalDetails
+        include Google::Apis::Core::Hashable
+      
+        # Set if the entry is starred; unset otherwise.
+        # Corresponds to the JSON property `starTime`
+        # @return [String]
+        attr_accessor :star_time
+      
+        # True if the entry is starred by the user; false otherwise.
+        # Corresponds to the JSON property `starred`
+        # @return [Boolean]
+        attr_accessor :starred
+        alias_method :starred?, :starred
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @star_time = args[:star_time] if args.key?(:star_time)
+          @starred = args[:starred] if args.key?(:starred)
+        end
+      end
+      
       # Denotes one policy tag in a taxonomy, for example, SSN. Policy tags can be
       # defined in a hierarchy. For example: ``` + Geolocation + LatLong + City +
       # ZipCode ``` Where the "Geolocation" policy tag contains three children.
@@ -1314,8 +1346,8 @@ module Google
       
         # Specifies the order of results. Currently supported case-sensitive values are:
         # * `relevance` that can only be descending * `last_modified_timestamp [asc|desc]
-        # ` with descending (`desc`) as default If this parameter is omitted, it
-        # defaults to the descending `relevance`.
+        # ` with descending (`desc`) as default * `default` that can only be descending
+        # If this parameter is omitted, it defaults to the descending `relevance`.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -1411,6 +1443,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :restricted_locations
       
+        # Optional. If `true`, search only among starred entries. By default, all
+        # results are returned, starred or not.
+        # Corresponds to the JSON property `starredOnly`
+        # @return [Boolean]
+        attr_accessor :starred_only
+        alias_method :starred_only?, :starred_only
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1422,6 +1461,7 @@ module Google
           @include_project_ids = args[:include_project_ids] if args.key?(:include_project_ids)
           @include_public_tag_templates = args[:include_public_tag_templates] if args.key?(:include_public_tag_templates)
           @restricted_locations = args[:restricted_locations] if args.key?(:restricted_locations)
+          @starred_only = args[:starred_only] if args.key?(:starred_only)
         end
       end
       
@@ -1626,6 +1666,32 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @policy_tags = args[:policy_tags] if args.key?(:policy_tags)
+        end
+      end
+      
+      # Request message for StarEntry.
+      class GoogleCloudDatacatalogV1StarEntryRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for StarEntry. Empty for now
+      class GoogleCloudDatacatalogV1StarEntryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2016,6 +2082,32 @@ module Google
           @name = args[:name] if args.key?(:name)
           @policy_tag_count = args[:policy_tag_count] if args.key?(:policy_tag_count)
           @taxonomy_timestamps = args[:taxonomy_timestamps] if args.key?(:taxonomy_timestamps)
+        end
+      end
+      
+      # Request message for UnstarEntry.
+      class GoogleCloudDatacatalogV1UnstarEntryRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for UnstarEntry. Empty for now
+      class GoogleCloudDatacatalogV1UnstarEntryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
