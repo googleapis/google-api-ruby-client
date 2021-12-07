@@ -237,6 +237,11 @@ module Google
         # @return [Google::Apis::WebsecurityscannerV1::Xss]
         attr_accessor :xss
       
+        # Information reported for an XXE.
+        # Corresponds to the JSON property `xxe`
+        # @return [Google::Apis::WebsecurityscannerV1::Xxe]
+        attr_accessor :xxe
+      
         def initialize(**args)
            update!(**args)
         end
@@ -260,6 +265,7 @@ module Google
           @vulnerable_headers = args[:vulnerable_headers] if args.key?(:vulnerable_headers)
           @vulnerable_parameters = args[:vulnerable_parameters] if args.key?(:vulnerable_parameters)
           @xss = args[:xss] if args.key?(:xss)
+          @xxe = args[:xxe] if args.key?(:xxe)
         end
       end
       
@@ -997,6 +1003,32 @@ module Google
           @error_message = args[:error_message] if args.key?(:error_message)
           @stack_traces = args[:stack_traces] if args.key?(:stack_traces)
           @stored_xss_seeding_url = args[:stored_xss_seeding_url] if args.key?(:stored_xss_seeding_url)
+        end
+      end
+      
+      # Information reported for an XXE.
+      class Xxe
+        include Google::Apis::Core::Hashable
+      
+        # Location within the request where the payload was placed.
+        # Corresponds to the JSON property `payloadLocation`
+        # @return [String]
+        attr_accessor :payload_location
+      
+        # The XML string that triggered the XXE vulnerability. Non-payload values might
+        # be redacted.
+        # Corresponds to the JSON property `payloadValue`
+        # @return [String]
+        attr_accessor :payload_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload_location = args[:payload_location] if args.key?(:payload_location)
+          @payload_value = args[:payload_value] if args.key?(:payload_value)
         end
       end
     end
