@@ -116,11 +116,23 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Indicates the sovereignty status of the given workload. Currently
+        # meant to be used by Europe/Canada customers.
+        # Corresponds to the JSON property `enableSovereignControls`
+        # @return [Boolean]
+        attr_accessor :enable_sovereign_controls
+        alias_method :enable_sovereign_controls?, :enable_sovereign_controls
+      
         # Optional. ETag of the workload, it is calculated on the basis of the Workload
         # contents. It will be used in Update & Delete operations.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # Output only. Represents the KAJ enrollment state of the given workload.
+        # Corresponds to the JSON property `kajEnrollmentState`
+        # @return [String]
+        attr_accessor :kaj_enrollment_state
       
         # Settings specific to the Key Management Service.
         # Corresponds to the JSON property `kmsSettings`
@@ -160,6 +172,11 @@ module Google
         # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>]
         attr_accessor :resources
       
+        # Signed Access Approvals (SAA) enrollment response.
+        # Corresponds to the JSON property `saaEnrollmentResponse`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse]
+        attr_accessor :saa_enrollment_response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -170,13 +187,16 @@ module Google
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_sovereign_controls = args[:enable_sovereign_controls] if args.key?(:enable_sovereign_controls)
           @etag = args[:etag] if args.key?(:etag)
+          @kaj_enrollment_state = args[:kaj_enrollment_state] if args.key?(:kaj_enrollment_state)
           @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
+          @saa_enrollment_response = args[:saa_enrollment_response] if args.key?(:saa_enrollment_response)
         end
       end
       
@@ -268,6 +288,31 @@ module Google
         end
       end
       
+      # Signed Access Approvals (SAA) enrollment response.
+      class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Indicates SAA enrollment setup error if any.
+        # Corresponds to the JSON property `setupErrors`
+        # @return [Array<String>]
+        attr_accessor :setup_errors
+      
+        # Indicates SAA enrollment status of a given workload.
+        # Corresponds to the JSON property `setupStatus`
+        # @return [String]
+        attr_accessor :setup_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @setup_errors = args[:setup_errors] if args.key?(:setup_errors)
+          @setup_status = args[:setup_status] if args.key?(:setup_status)
+        end
+      end
+      
       # Operation metadata to give request details of CreateWorkload.
       class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
         include Google::Apis::Core::Hashable
@@ -349,6 +394,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Indicates the sovereignty status of the given workload. Currently
+        # meant to be used by Europe/Canada customers.
+        # Corresponds to the JSON property `enableSovereignControls`
+        # @return [Boolean]
+        attr_accessor :enable_sovereign_controls
+        alias_method :enable_sovereign_controls?, :enable_sovereign_controls
+      
         # Optional. ETag of the workload, it is calculated on the basis of the Workload
         # contents. It will be used in Update & Delete operations.
         # Corresponds to the JSON property `etag`
@@ -369,6 +421,11 @@ module Google
         # Corresponds to the JSON property `il4Settings`
         # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadIl4Settings]
         attr_accessor :il4_settings
+      
+        # Output only. Represents the KAJ enrollment state of the given workload.
+        # Corresponds to the JSON property `kajEnrollmentState`
+        # @return [String]
+        attr_accessor :kaj_enrollment_state
       
         # Settings specific to the Key Management Service.
         # Corresponds to the JSON property `kmsSettings`
@@ -408,6 +465,11 @@ module Google
         # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo>]
         attr_accessor :resources
       
+        # Signed Access Approvals (SAA) enrollment response.
+        # Corresponds to the JSON property `saaEnrollmentResponse`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse]
+        attr_accessor :saa_enrollment_response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -419,16 +481,19 @@ module Google
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_sovereign_controls = args[:enable_sovereign_controls] if args.key?(:enable_sovereign_controls)
           @etag = args[:etag] if args.key?(:etag)
           @fedramp_high_settings = args[:fedramp_high_settings] if args.key?(:fedramp_high_settings)
           @fedramp_moderate_settings = args[:fedramp_moderate_settings] if args.key?(:fedramp_moderate_settings)
           @il4_settings = args[:il4_settings] if args.key?(:il4_settings)
+          @kaj_enrollment_state = args[:kaj_enrollment_state] if args.key?(:kaj_enrollment_state)
           @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
+          @saa_enrollment_response = args[:saa_enrollment_response] if args.key?(:saa_enrollment_response)
         end
       end
       
@@ -596,6 +661,31 @@ module Google
         end
       end
       
+      # Signed Access Approvals (SAA) enrollment response.
+      class GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Indicates SAA enrollment setup error if any.
+        # Corresponds to the JSON property `setupErrors`
+        # @return [Array<String>]
+        attr_accessor :setup_errors
+      
+        # Indicates SAA enrollment status of a given workload.
+        # Corresponds to the JSON property `setupStatus`
+        # @return [String]
+        attr_accessor :setup_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @setup_errors = args[:setup_errors] if args.key?(:setup_errors)
+          @setup_status = args[:setup_status] if args.key?(:setup_status)
+        end
+      end
+      
       # Operation metadata to give request details of CreateWorkload.
       class GoogleCloudAssuredworkloadsVersioningV1mainCreateWorkloadOperationMetadata
         include Google::Apis::Core::Hashable
@@ -677,6 +767,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Indicates the sovereignty status of the given workload. Currently
+        # meant to be used by Europe/Canada customers.
+        # Corresponds to the JSON property `enableSovereignControls`
+        # @return [Boolean]
+        attr_accessor :enable_sovereign_controls
+        alias_method :enable_sovereign_controls?, :enable_sovereign_controls
+      
         # Optional. ETag of the workload, it is calculated on the basis of the Workload
         # contents. It will be used in Update & Delete operations.
         # Corresponds to the JSON property `etag`
@@ -697,6 +794,11 @@ module Google
         # Corresponds to the JSON property `il4Settings`
         # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadIl4Settings]
         attr_accessor :il4_settings
+      
+        # Output only. Represents the KAJ enrollment state of the given workload.
+        # Corresponds to the JSON property `kajEnrollmentState`
+        # @return [String]
+        attr_accessor :kaj_enrollment_state
       
         # Settings specific to the Key Management Service.
         # Corresponds to the JSON property `kmsSettings`
@@ -736,6 +838,11 @@ module Google
         # @return [Array<Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadResourceInfo>]
         attr_accessor :resources
       
+        # Signed Access Approvals (SAA) enrollment response.
+        # Corresponds to the JSON property `saaEnrollmentResponse`
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse]
+        attr_accessor :saa_enrollment_response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -747,16 +854,19 @@ module Google
           @compliance_regime = args[:compliance_regime] if args.key?(:compliance_regime)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_sovereign_controls = args[:enable_sovereign_controls] if args.key?(:enable_sovereign_controls)
           @etag = args[:etag] if args.key?(:etag)
           @fedramp_high_settings = args[:fedramp_high_settings] if args.key?(:fedramp_high_settings)
           @fedramp_moderate_settings = args[:fedramp_moderate_settings] if args.key?(:fedramp_moderate_settings)
           @il4_settings = args[:il4_settings] if args.key?(:il4_settings)
+          @kaj_enrollment_state = args[:kaj_enrollment_state] if args.key?(:kaj_enrollment_state)
           @kms_settings = args[:kms_settings] if args.key?(:kms_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @provisioned_resources_parent = args[:provisioned_resources_parent] if args.key?(:provisioned_resources_parent)
           @resource_settings = args[:resource_settings] if args.key?(:resource_settings)
           @resources = args[:resources] if args.key?(:resources)
+          @saa_enrollment_response = args[:saa_enrollment_response] if args.key?(:saa_enrollment_response)
         end
       end
       
@@ -921,6 +1031,31 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # Signed Access Approvals (SAA) enrollment response.
+      class GoogleCloudAssuredworkloadsVersioningV1mainWorkloadSaaEnrollmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Indicates SAA enrollment setup error if any.
+        # Corresponds to the JSON property `setupErrors`
+        # @return [Array<String>]
+        attr_accessor :setup_errors
+      
+        # Indicates SAA enrollment status of a given workload.
+        # Corresponds to the JSON property `setupStatus`
+        # @return [String]
+        attr_accessor :setup_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @setup_errors = args[:setup_errors] if args.key?(:setup_errors)
+          @setup_status = args[:setup_status] if args.key?(:setup_status)
         end
       end
       
