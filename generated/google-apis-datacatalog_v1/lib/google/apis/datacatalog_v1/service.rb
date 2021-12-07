@@ -715,6 +715,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Marks an Entry as starred by the current user. Starring information is private
+        # to each user.
+        # @param [String] name
+        #   Required. The name of the entry to mark as starred.
+        # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1StarEntryRequest] google_cloud_datacatalog_v1_star_entry_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1StarEntryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1StarEntryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def star_project_location_entry_group_entry(name, google_cloud_datacatalog_v1_star_entry_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:star', options)
+          command.request_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1StarEntryRequest::Representation
+          command.request_object = google_cloud_datacatalog_v1_star_entry_request_object
+          command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1StarEntryResponse::Representation
+          command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1StarEntryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets your permissions on a resource. Returns an empty set of permissions if
         # the resource doesn't exist. Supported resources are: - Tag templates - Entry
         # groups Note: This method gets policies only within Data Catalog and can't be
@@ -749,6 +783,40 @@ module Google
           command.response_representation = Google::Apis::DatacatalogV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::DatacatalogV1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks an Entry as NOT starred by the current user. Starring information is
+        # private to each user.
+        # @param [String] name
+        #   Required. The name of the entry to mark as **not** starred.
+        # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UnstarEntryRequest] google_cloud_datacatalog_v1_unstar_entry_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UnstarEntryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UnstarEntryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unstar_project_location_entry_group_entry(name, google_cloud_datacatalog_v1_unstar_entry_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:unstar', options)
+          command.request_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UnstarEntryRequest::Representation
+          command.request_object = google_cloud_datacatalog_v1_unstar_entry_request_object
+          command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UnstarEntryResponse::Representation
+          command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1UnstarEntryResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
