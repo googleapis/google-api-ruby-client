@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +257,8 @@ module Google
       
           property :environment_size, as: 'environmentSize'
           property :gke_cluster, as: 'gkeCluster'
+          property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComposerV1::MaintenanceWindow, decorator: Google::Apis::ComposerV1::MaintenanceWindow::Representation
+      
           property :node_config, as: 'nodeConfig', class: Google::Apis::ComposerV1::NodeConfig, decorator: Google::Apis::ComposerV1::NodeConfig::Representation
       
           property :node_count, as: 'nodeCount'
@@ -315,6 +323,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ComposerV1::Operation, decorator: Google::Apis::ComposerV1::Operation::Representation
       
+        end
+      end
+      
+      class MaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :recurrence, as: 'recurrence'
+          property :start_time, as: 'startTime'
         end
       end
       
