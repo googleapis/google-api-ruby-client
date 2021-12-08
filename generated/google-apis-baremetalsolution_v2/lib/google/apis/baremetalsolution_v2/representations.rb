@@ -22,6 +22,18 @@ module Google
   module Apis
     module BaremetalsolutionV2
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,6 +58,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListNetworksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSnapshotSchedulePoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListVolumeSnapshotsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListVolumesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,10 +106,76 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResetInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreVolumeSnapshotRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotReservationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotSchedulePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Vrf
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VolumeSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class Instance
@@ -117,6 +225,54 @@ module Google
         end
       end
       
+      class ListNetworksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::Network, decorator: Google::Apis::BaremetalsolutionV2::Network::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::BaremetalsolutionV2::Operation, decorator: Google::Apis::BaremetalsolutionV2::Operation::Representation
+      
+        end
+      end
+      
+      class ListSnapshotSchedulePoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :snapshot_schedule_policies, as: 'snapshotSchedulePolicies', class: Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy, decorator: Google::Apis::BaremetalsolutionV2::SnapshotSchedulePolicy::Representation
+      
+        end
+      end
+      
+      class ListVolumeSnapshotsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volume_snapshots, as: 'volumeSnapshots', class: Google::Apis::BaremetalsolutionV2::VolumeSnapshot, decorator: Google::Apis::BaremetalsolutionV2::VolumeSnapshot::Representation
+      
+        end
+      end
+      
+      class ListVolumesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::Volume, decorator: Google::Apis::BaremetalsolutionV2::Volume::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -159,6 +315,68 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::BaremetalsolutionV2::Status, decorator: Google::Apis::BaremetalsolutionV2::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class ResetInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RestoreVolumeSnapshotRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Schedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crontab_spec, as: 'crontabSpec'
+          property :prefix, as: 'prefix'
+          property :retention_count, as: 'retentionCount'
+        end
+      end
+      
+      class SnapshotReservationDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reserved_space_gib, :numeric_string => true, as: 'reservedSpaceGib'
+          property :reserved_space_remaining_gib, :numeric_string => true, as: 'reservedSpaceRemainingGib'
+          property :reserved_space_used_percent, as: 'reservedSpaceUsedPercent'
+        end
+      end
+      
+      class SnapshotSchedulePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          collection :schedules, as: 'schedules', class: Google::Apis::BaremetalsolutionV2::Schedule, decorator: Google::Apis::BaremetalsolutionV2::Schedule::Representation
+      
+          collection :volumes, as: 'volumes'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class Vrf
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -167,6 +385,34 @@ module Google
           property :name, as: 'name'
           property :route_target, :numeric_string => true, as: 'routeTarget'
           property :state, as: 'state'
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_grown_size_gib, :numeric_string => true, as: 'autoGrownSizeGib'
+          property :current_size_gib, :numeric_string => true, as: 'currentSizeGib'
+          property :name, as: 'name'
+          property :remaining_space_gib, :numeric_string => true, as: 'remainingSpaceGib'
+          property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
+          property :snapshot_auto_delete_behavior, as: 'snapshotAutoDeleteBehavior'
+          property :snapshot_reservation_detail, as: 'snapshotReservationDetail', class: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail, decorator: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail::Representation
+      
+          property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy'
+          property :state, as: 'state'
+          property :storage_type, as: 'storageType'
+        end
+      end
+      
+      class VolumeSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :storage_volume, as: 'storageVolume'
         end
       end
     end
