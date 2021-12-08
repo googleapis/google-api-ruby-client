@@ -853,6 +853,7 @@ module Google
           property :model, as: 'model'
           property :notes, as: 'notes'
           property :order_number, as: 'orderNumber'
+          property :org_unit_id, as: 'orgUnitId'
           property :org_unit_path, as: 'orgUnitPath'
           property :os_version, as: 'osVersion'
           property :platform_version, as: 'platformVersion'
@@ -1707,6 +1708,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_language, as: 'customLanguage'
           property :language_code, as: 'languageCode'
+          property :preference, as: 'preference'
         end
       end
       

@@ -891,6 +891,16 @@ module Google
         # @return [String]
         attr_accessor :order_number
       
+        # The unique ID of the organizational unit. orgUnitPath is the human readable
+        # version of orgUnitId. While orgUnitPath may change by renaming an
+        # organizational unit within the path, orgUnitId is unchangeable for one
+        # organizational unit. This property can be [updated](/admin-sdk/directory/v1/
+        # guides/manage-chrome-devices#update_chrome_device) using the API, and this
+        # will be supported in the future.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
         # The full parent path with the organizational unit's name associated with the
         # device. Path names are case insensitive. If the parent organizational unit is
         # the top-level organization, it is represented as a forward slash, `/`. This
@@ -994,6 +1004,7 @@ module Google
           @model = args[:model] if args.key?(:model)
           @notes = args[:notes] if args.key?(:notes)
           @order_number = args[:order_number] if args.key?(:order_number)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
           @org_unit_path = args[:org_unit_path] if args.key?(:org_unit_path)
           @os_version = args[:os_version] if args.key?(:os_version)
           @platform_version = args[:platform_version] if args.key?(:platform_version)
@@ -4390,17 +4401,28 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Other language. User can provide own language name if there is no
-        # corresponding Google III language code. If this is set LanguageCode can't be
-        # set
+        # corresponding ISO 639 language code. If this is set `languageCode` can't be
+        # set.
         # Corresponds to the JSON property `customLanguage`
         # @return [String]
         attr_accessor :custom_language
       
-        # Language Code. Should be used for storing Google III LanguageCode string
-        # representation for language. Illegal values cause SchemaException.
+        # Language Code. Should be used for storing ISO 639 LanguageCode string
+        # representation for language. See the [Language Codes](/admin-sdk/directory/v1/
+        # languages) page for the list of supported codes. Valid language codes outside
+        # the supported set will be accepted by the API but may lead to unexpected
+        # behavior. Illegal values cause SchemaException. If this is set `customLanguage`
+        # can't be set.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
+      
+        # Preference. Optional field, which if present, controls whether the specified `
+        # languageCode` is stored as the user's preferred language. If `customLanguage`
+        # is set, this can't be set. Allowed values are `preferred` and `not_preferred`.
+        # Corresponds to the JSON property `preference`
+        # @return [String]
+        attr_accessor :preference
       
         def initialize(**args)
            update!(**args)
@@ -4410,6 +4432,7 @@ module Google
         def update!(**args)
           @custom_language = args[:custom_language] if args.key?(:custom_language)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @preference = args[:preference] if args.key?(:preference)
         end
       end
       
