@@ -213,7 +213,7 @@ module Google
       end
       
       # Stores information about a certificate.
-      class CertificateInfo
+      class CertificateAttributes
         include Google::Apis::Core::Hashable
       
         # CertificateTemplate (v3 Extension in X.509).
@@ -550,7 +550,7 @@ module Google
         attr_accessor :encryption_state
       
         # Resource representing the Endpoint Verification-specific attributes of a
-        # Device.
+        # Device. https://cloud.google.com/endpoint-verification/docs/overview
         # Corresponds to the JSON property `endpointVerificationSpecificAttributes`
         # @return [Google::Apis::CloudidentityV1beta1::EndpointVerificationSpecificAttributes]
         attr_accessor :endpoint_verification_specific_attributes
@@ -843,14 +843,14 @@ module Google
       end
       
       # Resource representing the Endpoint Verification-specific attributes of a
-      # Device.
+      # Device. https://cloud.google.com/endpoint-verification/docs/overview
       class EndpointVerificationSpecificAttributes
         include Google::Apis::Core::Hashable
       
         # Details of certificates.
-        # Corresponds to the JSON property `certificateInfo`
-        # @return [Array<Google::Apis::CloudidentityV1beta1::CertificateInfo>]
-        attr_accessor :certificate_info
+        # Corresponds to the JSON property `certificateAttributes`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::CertificateAttributes>]
+        attr_accessor :certificate_attributes
       
         def initialize(**args)
            update!(**args)
@@ -858,7 +858,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @certificate_info = args[:certificate_info] if args.key?(:certificate_info)
+          @certificate_attributes = args[:certificate_attributes] if args.key?(:certificate_attributes)
         end
       end
       

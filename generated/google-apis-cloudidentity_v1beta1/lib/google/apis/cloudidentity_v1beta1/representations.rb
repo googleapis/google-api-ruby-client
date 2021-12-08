@@ -82,7 +82,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CertificateInfo
+      class CertificateAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -616,7 +616,7 @@ module Google
         end
       end
       
-      class CertificateInfo
+      class CertificateAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_template, as: 'certificateTemplate', class: Google::Apis::CloudidentityV1beta1::CertificateTemplate, decorator: Google::Apis::CloudidentityV1beta1::CertificateTemplate::Representation
@@ -766,7 +766,7 @@ module Google
       class EndpointVerificationSpecificAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :certificate_info, as: 'certificateInfo', class: Google::Apis::CloudidentityV1beta1::CertificateInfo, decorator: Google::Apis::CloudidentityV1beta1::CertificateInfo::Representation
+          collection :certificate_attributes, as: 'certificateAttributes', class: Google::Apis::CloudidentityV1beta1::CertificateAttributes, decorator: Google::Apis::CloudidentityV1beta1::CertificateAttributes::Representation
       
         end
       end
