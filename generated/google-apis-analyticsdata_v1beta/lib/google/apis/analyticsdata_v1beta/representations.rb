@@ -777,6 +777,7 @@ module Google
           property :empty_reason, as: 'emptyReason'
           property :schema_restriction_response, as: 'schemaRestrictionResponse', class: Google::Apis::AnalyticsdataV1beta::SchemaRestrictionResponse, decorator: Google::Apis::AnalyticsdataV1beta::SchemaRestrictionResponse::Representation
       
+          property :thresholding_applied, as: 'thresholdingApplied'
           property :time_zone, as: 'timeZone'
         end
       end
