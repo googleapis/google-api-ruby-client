@@ -119,9 +119,8 @@ module Google
       class AsymmetricSignRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. This field will only be honored for RAW_PKCS1 keys. The data to sign.
-        # A digest is computed over the data that will be signed, PKCS #1 padding is
-        # applied to the digest directly and then encrypted.
+        # Optional. The data to sign. It can't be supplied if AsymmetricSignRequest.
+        # digest is supplied.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
