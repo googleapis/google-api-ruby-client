@@ -1272,6 +1272,8 @@ module Google
       
           collection :identifying_fields, as: 'identifyingFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
       
+          collection :included_fields, as: 'includedFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
+      
           property :rows_limit, :numeric_string => true, as: 'rowsLimit'
           property :rows_limit_percent, as: 'rowsLimitPercent'
           property :sample_method, as: 'sampleMethod'

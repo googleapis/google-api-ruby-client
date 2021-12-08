@@ -293,6 +293,11 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :identifying_fields
       
+        # Limit scanning only to these fields.
+        # Corresponds to the JSON property `includedFields`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
+        attr_accessor :included_fields
+      
         # Max number of rows to scan. If the table has more rows than this value, the
         # rest of the rows are omitted. If not set, or if set to 0, all rows will be
         # scanned. Only one of rows_limit and rows_limit_percent can be specified.
@@ -330,6 +335,7 @@ module Google
         def update!(**args)
           @excluded_fields = args[:excluded_fields] if args.key?(:excluded_fields)
           @identifying_fields = args[:identifying_fields] if args.key?(:identifying_fields)
+          @included_fields = args[:included_fields] if args.key?(:included_fields)
           @rows_limit = args[:rows_limit] if args.key?(:rows_limit)
           @rows_limit_percent = args[:rows_limit_percent] if args.key?(:rows_limit_percent)
           @sample_method = args[:sample_method] if args.key?(:sample_method)
