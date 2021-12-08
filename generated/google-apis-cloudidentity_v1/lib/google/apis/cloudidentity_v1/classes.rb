@@ -1538,6 +1538,39 @@ module Google
         end
       end
       
+      # The definition of MemberRestriction
+      class MemberRestriction
+        include Google::Apis::Core::Hashable
+      
+        # The evaluated state of this restriction.
+        # Corresponds to the JSON property `evaluation`
+        # @return [Google::Apis::CloudidentityV1::RestrictionEvaluation]
+        attr_accessor :evaluation
+      
+        # Member Restriction as defined by CEL expression. Supported restrictions are: `
+        # member.customer_id` and `member.type`. Valid values for `member.type` are `1`,
+        # `2` and `3`. They correspond to USER, SERVICE_ACCOUNT, and GROUP respectively.
+        # The value for `member.customer_id` only supports `groupCustomerId()` currently
+        # which means the customer id of the group will be used for restriction.
+        # Supported operators are `&&`, `||` and `==`, corresponding to AND, OR, and
+        # EQUAL. Examples: Allow only service accounts of given customer to be members. `
+        # member.type == 2 && member.customer_id == groupCustomerId()` Allow only users
+        # or groups to be members. `member.type == 1 || member.type == 3`
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
       # A membership within the Cloud Identity Groups API. A `Membership` defines a
       # relationship between a `Group` and an entity belonging to that `Group`,
       # referred to as a "member".
@@ -1639,6 +1672,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Evaluations of restrictions applied to parent group on this membership.
+        # Corresponds to the JSON property `restrictionEvaluations`
+        # @return [Google::Apis::CloudidentityV1::RestrictionEvaluations]
+        attr_accessor :restriction_evaluations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1647,6 +1685,26 @@ module Google
         def update!(**args)
           @expiry_detail = args[:expiry_detail] if args.key?(:expiry_detail)
           @name = args[:name] if args.key?(:name)
+          @restriction_evaluations = args[:restriction_evaluations] if args.key?(:restriction_evaluations)
+        end
+      end
+      
+      # The evaluated state of this restriction.
+      class MembershipRoleRestrictionEvaluation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the restriction
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1772,6 +1830,44 @@ module Google
         end
       end
       
+      # The evaluated state of this restriction.
+      class RestrictionEvaluation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The current state of the restriction
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Evaluations of restrictions applied to parent group on this membership.
+      class RestrictionEvaluations
+        include Google::Apis::Core::Hashable
+      
+        # The evaluated state of this restriction.
+        # Corresponds to the JSON property `memberRestrictionEvaluation`
+        # @return [Google::Apis::CloudidentityV1::MembershipRoleRestrictionEvaluation]
+        attr_accessor :member_restriction_evaluation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @member_restriction_evaluation = args[:member_restriction_evaluation] if args.key?(:member_restriction_evaluation)
+        end
+      end
+      
       # The response message for GroupsService.SearchGroups.
       class SearchGroupsResponse
         include Google::Apis::Core::Hashable
@@ -1847,6 +1943,32 @@ module Google
         def update!(**args)
           @memberships = args[:memberships] if args.key?(:memberships)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The definition of security settings.
+      class SecuritySettings
+        include Google::Apis::Core::Hashable
+      
+        # The definition of MemberRestriction
+        # Corresponds to the JSON property `memberRestriction`
+        # @return [Google::Apis::CloudidentityV1::MemberRestriction]
+        attr_accessor :member_restriction
+      
+        # Output only. The resource name of the security settings. Shall be of the form `
+        # groups/`group_id`/securitySettings`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @member_restriction = args[:member_restriction] if args.key?(:member_restriction)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
