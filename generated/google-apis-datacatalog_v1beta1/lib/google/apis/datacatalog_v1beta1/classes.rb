@@ -959,8 +959,8 @@ module Google
       
         # Specifies the ordering of results, currently supported case-sensitive choices
         # are: * `relevance`, only supports descending * `last_modified_timestamp [asc|
-        # desc]`, defaults to descending if not specified If not specified, defaults to `
-        # relevance` descending.
+        # desc]`, defaults to descending if not specified * `default` that can only be
+        # descending If not specified, defaults to `relevance` descending.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
