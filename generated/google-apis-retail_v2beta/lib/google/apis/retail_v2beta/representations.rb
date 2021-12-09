@@ -298,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaUserEventImportSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1142,6 +1154,18 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudRetailV2alphaUserEventImportSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1763,6 +1787,7 @@ module Google
       class GoogleCloudRetailV2betaSearchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applied_controls, as: 'appliedControls'
           property :attribution_token, as: 'attributionToken'
           property :corrected_query, as: 'correctedQuery'
           collection :facets, as: 'facets', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseFacet, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseFacet::Representation
