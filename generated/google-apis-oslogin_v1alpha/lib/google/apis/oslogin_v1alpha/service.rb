@@ -190,7 +190,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_user_ssh_public_key(parent, ssh_public_key_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/{+parent}/sshPublicKey', options)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/sshPublicKeys', options)
           command.request_representation = Google::Apis::OsloginV1alpha::SshPublicKey::Representation
           command.request_object = ssh_public_key_object
           command.response_representation = Google::Apis::OsloginV1alpha::SshPublicKey::Representation
