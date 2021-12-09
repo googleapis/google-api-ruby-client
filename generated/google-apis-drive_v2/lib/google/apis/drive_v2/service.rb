@@ -1605,8 +1605,8 @@ module Google
         
         # Updates a file's metadata and/or content. When calling this method, only
         # populate fields in the request that you want to modify. When updating fields,
-        # some fields might might change automatically, such as modifiedDate. This
-        # method supports patch semantics.
+        # some fields might change automatically, such as modifiedDate. This method
+        # supports patch semantics.
         # @param [String] file_id
         #   The ID of the file to update.
         # @param [Google::Apis::DriveV2::File] file_object
