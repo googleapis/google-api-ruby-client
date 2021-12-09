@@ -491,6 +491,96 @@ module Google
         end
       end
       
+      # Common Vulnerability Scoring System. For details, see https://www.first.org/
+      # cvss/specification-document This is a message we will try to use for storing
+      # multiple versions of CVSS. The intention is that as new versions of CVSS
+      # scores get added, we will be able to modify this message rather than adding
+      # new protos for each new version of the score.
+      class Cvss
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attackComplexity`
+        # @return [String]
+        attr_accessor :attack_complexity
+      
+        # Base Metrics Represents the intrinsic characteristics of a vulnerability that
+        # are constant over time and across user environments.
+        # Corresponds to the JSON property `attackVector`
+        # @return [String]
+        attr_accessor :attack_vector
+      
+        # 
+        # Corresponds to the JSON property `authentication`
+        # @return [String]
+        attr_accessor :authentication
+      
+        # 
+        # Corresponds to the JSON property `availabilityImpact`
+        # @return [String]
+        attr_accessor :availability_impact
+      
+        # The base score is a function of the base metric scores.
+        # Corresponds to the JSON property `baseScore`
+        # @return [Float]
+        attr_accessor :base_score
+      
+        # 
+        # Corresponds to the JSON property `confidentialityImpact`
+        # @return [String]
+        attr_accessor :confidentiality_impact
+      
+        # 
+        # Corresponds to the JSON property `exploitabilityScore`
+        # @return [Float]
+        attr_accessor :exploitability_score
+      
+        # 
+        # Corresponds to the JSON property `impactScore`
+        # @return [Float]
+        attr_accessor :impact_score
+      
+        # 
+        # Corresponds to the JSON property `integrityImpact`
+        # @return [String]
+        attr_accessor :integrity_impact
+      
+        # 
+        # Corresponds to the JSON property `privilegesRequired`
+        # @return [String]
+        attr_accessor :privileges_required
+      
+        # 
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # 
+        # Corresponds to the JSON property `userInteraction`
+        # @return [String]
+        attr_accessor :user_interaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
+          @authentication = args[:authentication] if args.key?(:authentication)
+          @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
+          @base_score = args[:base_score] if args.key?(:base_score)
+          @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @exploitability_score = args[:exploitability_score] if args.key?(:exploitability_score)
+          @impact_score = args[:impact_score] if args.key?(:impact_score)
+          @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
+          @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
+          @scope = args[:scope] if args.key?(:scope)
+          @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+        end
+      end
+      
       # Common Vulnerability Scoring System version 3. For details, see https://www.
       # first.org/cvss/specification-document
       class CvsSv3
@@ -569,19 +659,6 @@ module Google
           @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
           @scope = args[:scope] if args.key?(:scope)
           @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
-        end
-      end
-      
-      # The request message for Operations.CancelOperation.
-      class CancelOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -3223,31 +3300,6 @@ module Google
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::ContaineranalysisV1::Operation>]
-        attr_accessor :operations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-        end
-      end
-      
       # An occurrence of a particular package installation found within a system's
       # filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
       class Location
@@ -3672,68 +3724,6 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @upgrade = args[:upgrade] if args.key?(:upgrade)
           @vulnerability = args[:vulnerability] if args.key?(:vulnerability)
-        end
-      end
-      
-      # This resource represents a long-running operation that is the result of a
-      # network API call.
-      class Operation
-        include Google::Apis::Core::Hashable
-      
-        # If the value is `false`, it means the operation is still in progress. If `true`
-        # , the operation is completed, and either `error` or `response` is available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details. You can find out more
-        # about this error model and how to work with it in the [API Design Guide](https:
-        # //cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::ContaineranalysisV1::Status]
-        attr_accessor :error
-      
-        # Service-specific metadata associated with the operation. It typically contains
-        # progress information and common metadata such as create time. Some services
-        # might not provide such metadata. Any method that returns a long-running
-        # operation should document the metadata type, if any.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the `name` should
-        # be a resource name ending with `operations/`unique_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The normal response of the operation in case of success. If the original
-        # method returns no data on success, such as `Delete`, the response is `google.
-        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
-        # the response should be the resource. For other methods, the response should
-        # have the type `XxxResponse`, where `Xxx` is the original method name. For
-        # example, if the original method name is `TakeSnapshot()`, the inferred
-        # response type is `TakeSnapshotResponse`.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @done = args[:done] if args.key?(:done)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @name = args[:name] if args.key?(:name)
-          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -4838,6 +4828,15 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
+        # Common Vulnerability Scoring System. For details, see https://www.first.org/
+        # cvss/specification-document This is a message we will try to use for storing
+        # multiple versions of CVSS. The intention is that as new versions of CVSS
+        # scores get added, we will be able to modify this message rather than adding
+        # new protos for each new version of the score.
+        # Corresponds to the JSON property `cvssv3`
+        # @return [Google::Apis::ContaineranalysisV1::Cvss]
+        attr_accessor :cvssv3
+      
         # The distro assigned severity for this vulnerability when it is available,
         # otherwise this is the note provider assigned severity. When there are multiple
         # PackageIssues for this vulnerability, they can have different effective
@@ -4895,6 +4894,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
+          @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @fix_available = args[:fix_available] if args.key?(:fix_available)
           @long_description = args[:long_description] if args.key?(:long_description)

@@ -100,13 +100,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CvsSv3
+      class Cvss
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CancelOperationRequest
+      class CvsSv3
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -520,12 +520,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,12 +551,6 @@ module Google
       end
       
       class Occurrence
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -875,6 +863,24 @@ module Google
         end
       end
       
+      class Cvss
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_complexity, as: 'attackComplexity'
+          property :attack_vector, as: 'attackVector'
+          property :authentication, as: 'authentication'
+          property :availability_impact, as: 'availabilityImpact'
+          property :base_score, as: 'baseScore'
+          property :confidentiality_impact, as: 'confidentialityImpact'
+          property :exploitability_score, as: 'exploitabilityScore'
+          property :impact_score, as: 'impactScore'
+          property :integrity_impact, as: 'integrityImpact'
+          property :privileges_required, as: 'privilegesRequired'
+          property :scope, as: 'scope'
+          property :user_interaction, as: 'userInteraction'
+        end
+      end
+      
       class CvsSv3
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -889,12 +895,6 @@ module Google
           property :privileges_required, as: 'privilegesRequired'
           property :scope, as: 'scope'
           property :user_interaction, as: 'userInteraction'
-        end
-      end
-      
-      class CancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1612,15 +1612,6 @@ module Google
         end
       end
       
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::ContaineranalysisV1::Operation, decorator: Google::Apis::ContaineranalysisV1::Operation::Representation
-      
-        end
-      end
-      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1728,18 +1719,6 @@ module Google
       
           property :vulnerability, as: 'vulnerability', class: Google::Apis::ContaineranalysisV1::VulnerabilityOccurrence, decorator: Google::Apis::ContaineranalysisV1::VulnerabilityOccurrence::Representation
       
-        end
-      end
-      
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          property :error, as: 'error', class: Google::Apis::ContaineranalysisV1::Status, decorator: Google::Apis::ContaineranalysisV1::Status::Representation
-      
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-          hash :response, as: 'response'
         end
       end
       
@@ -2017,6 +1996,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :cvssv3, as: 'cvssv3', class: Google::Apis::ContaineranalysisV1::Cvss, decorator: Google::Apis::ContaineranalysisV1::Cvss::Representation
+      
           property :effective_severity, as: 'effectiveSeverity'
           property :fix_available, as: 'fixAvailable'
           property :long_description, as: 'longDescription'
