@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Cvss
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Category
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -507,6 +513,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+        end
+      end
+      
+      class Cvss
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attack_complexity, as: 'attackComplexity'
+          property :attack_vector, as: 'attackVector'
+          property :authentication, as: 'authentication'
+          property :availability_impact, as: 'availabilityImpact'
+          property :base_score, as: 'baseScore'
+          property :confidentiality_impact, as: 'confidentialityImpact'
+          property :exploitability_score, as: 'exploitabilityScore'
+          property :impact_score, as: 'impactScore'
+          property :integrity_impact, as: 'integrityImpact'
+          property :privileges_required, as: 'privilegesRequired'
+          property :scope, as: 'scope'
+          property :user_interaction, as: 'userInteraction'
         end
       end
       
@@ -1046,6 +1070,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cvss_score, as: 'cvssScore'
+          property :cvssv3, as: 'cvssv3', class: Google::Apis::OndemandscanningV1::Cvss, decorator: Google::Apis::OndemandscanningV1::Cvss::Representation
+      
           property :effective_severity, as: 'effectiveSeverity'
           property :fix_available, as: 'fixAvailable'
           property :long_description, as: 'longDescription'

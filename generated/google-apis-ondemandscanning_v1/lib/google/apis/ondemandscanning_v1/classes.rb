@@ -419,6 +419,96 @@ module Google
         end
       end
       
+      # Common Vulnerability Scoring System. For details, see https://www.first.org/
+      # cvss/specification-document This is a message we will try to use for storing
+      # multiple versions of CVSS. The intention is that as new versions of CVSS
+      # scores get added, we will be able to modify this message rather than adding
+      # new protos for each new version of the score.
+      class Cvss
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attackComplexity`
+        # @return [String]
+        attr_accessor :attack_complexity
+      
+        # Base Metrics Represents the intrinsic characteristics of a vulnerability that
+        # are constant over time and across user environments.
+        # Corresponds to the JSON property `attackVector`
+        # @return [String]
+        attr_accessor :attack_vector
+      
+        # 
+        # Corresponds to the JSON property `authentication`
+        # @return [String]
+        attr_accessor :authentication
+      
+        # 
+        # Corresponds to the JSON property `availabilityImpact`
+        # @return [String]
+        attr_accessor :availability_impact
+      
+        # The base score is a function of the base metric scores.
+        # Corresponds to the JSON property `baseScore`
+        # @return [Float]
+        attr_accessor :base_score
+      
+        # 
+        # Corresponds to the JSON property `confidentialityImpact`
+        # @return [String]
+        attr_accessor :confidentiality_impact
+      
+        # 
+        # Corresponds to the JSON property `exploitabilityScore`
+        # @return [Float]
+        attr_accessor :exploitability_score
+      
+        # 
+        # Corresponds to the JSON property `impactScore`
+        # @return [Float]
+        attr_accessor :impact_score
+      
+        # 
+        # Corresponds to the JSON property `integrityImpact`
+        # @return [String]
+        attr_accessor :integrity_impact
+      
+        # 
+        # Corresponds to the JSON property `privilegesRequired`
+        # @return [String]
+        attr_accessor :privileges_required
+      
+        # 
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # 
+        # Corresponds to the JSON property `userInteraction`
+        # @return [String]
+        attr_accessor :user_interaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
+          @authentication = args[:authentication] if args.key?(:authentication)
+          @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
+          @base_score = args[:base_score] if args.key?(:base_score)
+          @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @exploitability_score = args[:exploitability_score] if args.key?(:exploitability_score)
+          @impact_score = args[:impact_score] if args.key?(:impact_score)
+          @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
+          @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
+          @scope = args[:scope] if args.key?(:scope)
+          @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+        end
+      end
+      
       # The category to which the update belongs.
       class Category
         include Google::Apis::Core::Hashable
@@ -2398,6 +2488,15 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
+        # Common Vulnerability Scoring System. For details, see https://www.first.org/
+        # cvss/specification-document This is a message we will try to use for storing
+        # multiple versions of CVSS. The intention is that as new versions of CVSS
+        # scores get added, we will be able to modify this message rather than adding
+        # new protos for each new version of the score.
+        # Corresponds to the JSON property `cvssv3`
+        # @return [Google::Apis::OndemandscanningV1::Cvss]
+        attr_accessor :cvssv3
+      
         # The distro assigned severity for this vulnerability when it is available,
         # otherwise this is the note provider assigned severity. When there are multiple
         # PackageIssues for this vulnerability, they can have different effective
@@ -2455,6 +2554,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
+          @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @fix_available = args[:fix_available] if args.key?(:fix_available)
           @long_description = args[:long_description] if args.key?(:long_description)
