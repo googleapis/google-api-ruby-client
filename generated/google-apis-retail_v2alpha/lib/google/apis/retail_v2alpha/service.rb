@@ -373,7 +373,7 @@ module Google
         # inventory information. If the request is valid, the update will be enqueued
         # and processed downstream. As a consequence, when a response is returned,
         # updates are not immediately manifested in the Product queried by GetProduct or
-        # ListProducts. Store inventory information can only be modified using this
+        # ListProducts. Local inventory information can only be modified using this
         # method. CreateProduct and UpdateProduct has no effect on local inventories.
         # This feature is only available for users who have Retail Search enabled.
         # Please submit a form [here](https://cloud.google.com/contact) to contact Cloud
@@ -729,7 +729,7 @@ module Google
         # removal timestamp. This process is asynchronous. If the request is valid, the
         # removal will be enqueued and processed downstream. As a consequence, when a
         # response is returned, removals are not immediately manifested in the Product
-        # queried by GetProduct or ListProducts. Store inventory information can only be
+        # queried by GetProduct or ListProducts. Local inventory information can only be
         # removed using this method. CreateProduct and UpdateProduct has no effect on
         # local inventories. This feature is only available for users who have Retail
         # Search enabled. Please submit a form [here](https://cloud.google.com/contact)
@@ -816,6 +816,59 @@ module Google
           command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Set local inventory information for a Product with the provided list of places
+        # at a set timestamp. If a place in the provided list does not exist, the place
+        # will be created. If a place in the provided list already exists, it will be
+        # updated while respecting the last update timestamps of each inventory field.
+        # If an existing place is not in the provided list, it will be removed. This
+        # process is asynchronous. If the request is valid, the set operation will be
+        # enqueued and processed downstream. As a consequence, when a response is
+        # returned, set operations are not immediately manifested in the Product queried
+        # by GetProduct or ListProducts. When applying the set operation, this process
+        # takes a snapshot of currently existing places and their corresponding
+        # timestamps to determine the places to update. Avoid concurrent
+        # AddLocalInventories and RemoveLocalInventories calls, since they can introduce
+        # asynchronous updates that could be missed by the set operation. Local
+        # inventory information can only be updated with this method and other local
+        # inventory-specific methods. CreateProduct and UpdateProduct has no effect on
+        # local inventories. This feature is only available for users who have Retail
+        # Search enabled. Please submit a form [here](https://cloud.google.com/contact)
+        # to contact Cloud sales if you are interested in using Retail Search.
+        # @param [String] product
+        #   Required. Full resource name of Product, such as `projects/*/locations/global/
+        #   catalogs/default_catalog/branches/default_branch/products/some_product_id`. If
+        #   the caller does not have permission to access the Product, regardless of
+        #   whether or not it exists, a PERMISSION_DENIED error is returned.
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSetLocalInventoriesRequest] google_cloud_retail_v2alpha_set_local_inventories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_catalog_branch_product_local_inventories(product, google_cloud_retail_v2alpha_set_local_inventories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+product}:setLocalInventories', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSetLocalInventoriesRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_set_local_inventories_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
+          command.params['product'] = product unless product.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

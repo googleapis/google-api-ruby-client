@@ -634,6 +634,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaSetLocalInventoriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaUserEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1338,7 +1356,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch_id, as: 'branchId'
           collection :destinations, as: 'destinations'
+          property :language_code, as: 'languageCode'
           property :merchant_center_account_id, :numeric_string => true, as: 'merchantCenterAccountId'
+          property :region_code, as: 'regionCode'
         end
       end
       
@@ -1691,6 +1711,7 @@ module Google
       class GoogleCloudRetailV2alphaSearchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applied_controls, as: 'appliedControls'
           property :attribution_token, as: 'attributionToken'
           property :corrected_query, as: 'correctedQuery'
           collection :facets, as: 'facets', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponseFacet, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponseFacet::Representation
@@ -1771,6 +1792,28 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaSetInventoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaSetLocalInventoriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          collection :local_inventories, as: 'localInventories', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLocalInventory, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLocalInventory::Representation
+      
+          property :set_time, as: 'setTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
