@@ -22,6 +22,12 @@ module Google
   module Apis
     module SecuritycenterV1beta2
       
+      class Access
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,18 @@ module Google
       end
       
       class Folder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Geolocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MitreAttack
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -188,6 +212,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Access
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :caller_ip, as: 'callerIp'
+          property :caller_ip_geo, as: 'callerIpGeo', class: Google::Apis::SecuritycenterV1beta2::Geolocation, decorator: Google::Apis::SecuritycenterV1beta2::Geolocation::Representation
+      
+          property :method_name, as: 'methodName'
+          property :principal_email, as: 'principalEmail'
+          property :service_name, as: 'serviceName'
+          property :user_agent_family, as: 'userAgentFamily'
+        end
       end
       
       class Config
@@ -259,6 +296,8 @@ module Google
       class Finding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access, as: 'access', class: Google::Apis::SecuritycenterV1beta2::Access, decorator: Google::Apis::SecuritycenterV1beta2::Access::Representation
+      
           property :canonical_name, as: 'canonicalName'
           property :category, as: 'category'
           property :create_time, as: 'createTime'
@@ -268,6 +307,8 @@ module Google
           property :external_uri, as: 'externalUri'
           property :finding_class, as: 'findingClass'
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta2::Indicator, decorator: Google::Apis::SecuritycenterV1beta2::Indicator::Representation
+      
+          property :mitre_attack, as: 'mitreAttack', class: Google::Apis::SecuritycenterV1beta2::MitreAttack, decorator: Google::Apis::SecuritycenterV1beta2::MitreAttack::Representation
       
           property :mute, as: 'mute'
           property :mute_initiator, as: 'muteInitiator'
@@ -290,6 +331,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_folder, as: 'resourceFolder'
           property :resource_folder_display_name, as: 'resourceFolderDisplayName'
+        end
+      end
+      
+      class Geolocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -432,6 +486,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :domains, as: 'domains'
           collection :ip_addresses, as: 'ipAddresses'
+        end
+      end
+      
+      class MitreAttack
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_tactics, as: 'additionalTactics'
+          collection :additional_techniques, as: 'additionalTechniques'
+          property :primary_tactic, as: 'primaryTactic'
+          collection :primary_techniques, as: 'primaryTechniques'
+          property :version, as: 'version'
         end
       end
       
