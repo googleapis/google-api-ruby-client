@@ -269,7 +269,7 @@ module Google
         #   Required. The parent catalog resource name, such as `projects/*/locations/
         #   global/catalogs/default_catalog`.
         # @param [String] filter
-        #   Optional. A filter to apply on the list results.
+        #   Optional. Use of this field is not supported by version v1beta1.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of results to return per page. If zero, the service
         #   will choose a reasonable default.
