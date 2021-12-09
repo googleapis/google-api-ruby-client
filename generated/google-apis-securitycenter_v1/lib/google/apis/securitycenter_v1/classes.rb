@@ -22,6 +22,57 @@ module Google
   module Apis
     module SecuritycenterV1
       
+      # Represents an access event.
+      class Access
+        include Google::Apis::Core::Hashable
+      
+        # Caller's IP address, such as "1.1.1.1".
+        # Corresponds to the JSON property `callerIp`
+        # @return [String]
+        attr_accessor :caller_ip
+      
+        # Represents a geographical location for a given access.
+        # Corresponds to the JSON property `callerIpGeo`
+        # @return [Google::Apis::SecuritycenterV1::Geolocation]
+        attr_accessor :caller_ip_geo
+      
+        # The method that the service account called, e.g. "SetIamPolicy".
+        # Corresponds to the JSON property `methodName`
+        # @return [String]
+        attr_accessor :method_name
+      
+        # Associated email, such as "foo@google.com".
+        # Corresponds to the JSON property `principalEmail`
+        # @return [String]
+        attr_accessor :principal_email
+      
+        # This is the API service that the service account made a call to, e.g. "iam.
+        # googleapis.com"
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # What kind of user agent is associated, e.g. operating system shells, embedded
+        # or stand-alone applications, etc.
+        # Corresponds to the JSON property `userAgentFamily`
+        # @return [String]
+        attr_accessor :user_agent_family
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @caller_ip = args[:caller_ip] if args.key?(:caller_ip)
+          @caller_ip_geo = args[:caller_ip_geo] if args.key?(:caller_ip_geo)
+          @method_name = args[:method_name] if args.key?(:method_name)
+          @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @user_agent_family = args[:user_agent_family] if args.key?(:user_agent_family)
+        end
+      end
+      
       # Security Command Center representation of a Google Cloud resource. The Asset
       # is a Security Command Center resource that captures information about a single
       # Google Cloud resource. All modifications to an Asset are only within the
@@ -498,6 +549,11 @@ module Google
       class Finding
         include Google::Apis::Core::Hashable
       
+        # Represents an access event.
+        # Corresponds to the JSON property `access`
+        # @return [Google::Apis::SecuritycenterV1::Access]
+        attr_accessor :access
+      
         # The canonical name of the finding. It's either "organizations/`organization_id`
         # /sources/`source_id`/findings/`finding_id`", "folders/`folder_id`/sources/`
         # source_id`/findings/`finding_id`" or "projects/`project_number`/sources/`
@@ -553,6 +609,12 @@ module Google
         # Corresponds to the JSON property `indicator`
         # @return [Google::Apis::SecuritycenterV1::Indicator]
         attr_accessor :indicator
+      
+        # MITRE ATT&CK tactics and techniques related to this finding. See: https://
+        # attack.mitre.org
+        # Corresponds to the JSON property `mitreAttack`
+        # @return [Google::Apis::SecuritycenterV1::MitreAttack]
+        attr_accessor :mitre_attack
       
         # Indicates the mute state of a finding (either unspecified, muted, unmuted or
         # undefined).
@@ -634,6 +696,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access = args[:access] if args.key?(:access)
           @canonical_name = args[:canonical_name] if args.key?(:canonical_name)
           @category = args[:category] if args.key?(:category)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -642,6 +705,7 @@ module Google
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @finding_class = args[:finding_class] if args.key?(:finding_class)
           @indicator = args[:indicator] if args.key?(:indicator)
+          @mitre_attack = args[:mitre_attack] if args.key?(:mitre_attack)
           @mute = args[:mute] if args.key?(:mute)
           @mute_initiator = args[:mute_initiator] if args.key?(:mute_initiator)
           @mute_update_time = args[:mute_update_time] if args.key?(:mute_update_time)
@@ -679,6 +743,25 @@ module Google
         def update!(**args)
           @resource_folder = args[:resource_folder] if args.key?(:resource_folder)
           @resource_folder_display_name = args[:resource_folder_display_name] if args.key?(:resource_folder_display_name)
+        end
+      end
+      
+      # Represents a geographical location for a given access.
+      class Geolocation
+        include Google::Apis::Core::Hashable
+      
+        # A CLDR.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
       
@@ -726,6 +809,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @requested_policy_version = args[:requested_policy_version] if args.key?(:requested_policy_version)
+        end
+      end
+      
+      # The response to a BulkMute request. Contains the LRO information.
+      class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1906,6 +2002,56 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # MITRE ATT&CK tactics and techniques related to this finding. See: https://
+      # attack.mitre.org
+      class MitreAttack
+        include Google::Apis::Core::Hashable
+      
+        # Additional MITRE ATT&CK tactics related to this finding, if any.
+        # Corresponds to the JSON property `additionalTactics`
+        # @return [Array<String>]
+        attr_accessor :additional_tactics
+      
+        # Additional MITRE ATT&CK techniques related to this finding, if any, along with
+        # any of their respective parent techniques.
+        # Corresponds to the JSON property `additionalTechniques`
+        # @return [Array<String>]
+        attr_accessor :additional_techniques
+      
+        # The MITRE ATT&CK tactic most closely represented by this finding, if any.
+        # Corresponds to the JSON property `primaryTactic`
+        # @return [String]
+        attr_accessor :primary_tactic
+      
+        # The MITRE ATT&CK technique most closely represented by this finding, if any.
+        # primary_techniques is a repeated field because there are multiple levels of
+        # MITRE ATT&CK techniques. If the technique most closely represented by this
+        # finding is a sub-technique (e.g. SCANNING_IP_BLOCKS), both the sub-technique
+        # and its parent technique(s) will be listed (e.g. SCANNING_IP_BLOCKS,
+        # ACTIVE_SCANNING).
+        # Corresponds to the JSON property `primaryTechniques`
+        # @return [Array<String>]
+        attr_accessor :primary_techniques
+      
+        # The MITRE ATT&CK version referenced by the above fields. E.g. "8".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_tactics = args[:additional_tactics] if args.key?(:additional_tactics)
+          @additional_techniques = args[:additional_techniques] if args.key?(:additional_techniques)
+          @primary_tactic = args[:primary_tactic] if args.key?(:primary_tactic)
+          @primary_techniques = args[:primary_techniques] if args.key?(:primary_techniques)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
