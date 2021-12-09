@@ -696,9 +696,8 @@ module Google
         alias_method :indexable?, :indexable
       
         # The numerical values of this custom attribute. For example, `[2.3, 15.4]` when
-        # the key is "lengths_cm". At most 400 values are allowed.Otherwise, an
-        # INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be
-        # set. Otherwise, an INVALID_ARGUMENT error is returned.
+        # the key is "lengths_cm". Exactly one of text or numbers should be set.
+        # Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `numbers`
         # @return [Array<Float>]
         attr_accessor :numbers
@@ -712,11 +711,8 @@ module Google
         alias_method :searchable?, :searchable
       
         # The textual values of this custom attribute. For example, `["yellow", "green"]`
-        # when the key is "color". At most 400 values are allowed. Empty values are not
-        # allowed. Each value must be a UTF-8 encoded string with a length limit of 256
-        # characters. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of
-        # text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is
-        # returned.
+        # when the key is "color". Exactly one of text or numbers should be set.
+        # Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -1523,7 +1519,10 @@ module Google
         # INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must
         # be a UTF-8 encoded string with a length limit of 128 characters. * For
         # indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example,
-        # key0LikeThis or KEY_1_LIKE_THIS.
+        # `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400
+        # values are allowed. Empty values are not allowed. Each value must be a UTF-8
+        # encoded string with a length limit of 256 characters. * For number attributes,
+        # at most 400 values are allowed.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute>]
         attr_accessor :attributes
@@ -1534,9 +1533,9 @@ module Google
         attr_accessor :audience
       
         # The online availability of the Product. Default to Availability.IN_STOCK.
-        # Google Merchant Center Property [availability](https://support.google.com/
-        # merchants/answer/6324448). Schema.org Property [Offer.availability](https://
-        # schema.org/availability).
+        # Corresponding properties: Google Merchant Center property [availability](https:
+        # //support.google.com/merchants/answer/6324448). Schema.org property [Offer.
+        # availability](https://schema.org/availability).
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
@@ -1553,9 +1552,9 @@ module Google
       
         # The brands of the product. A maximum of 30 brands are allowed. Each brand must
         # be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise,
-        # an INVALID_ARGUMENT error is returned. Google Merchant Center property [brand](
-        # https://support.google.com/merchants/answer/6324351). Schema.org property [
-        # Product.brand](https://schema.org/brand).
+        # an INVALID_ARGUMENT error is returned. Corresponding properties: Google
+        # Merchant Center property [brand](https://support.google.com/merchants/answer/
+        # 6324351). Schema.org property [Product.brand](https://schema.org/brand).
         # Corresponds to the JSON property `brands`
         # @return [Array<String>]
         attr_accessor :brands
@@ -1572,10 +1571,10 @@ module Google
         # INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product.
         # Empty values are not allowed. Each value must be a UTF-8 encoded string with
         # a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is
-        # returned. Google Merchant Center property google_product_category. Schema.org
-        # property [Product.category] (https://schema.org/category). [
-        # mc_google_product_category]: https://support.google.com/merchants/answer/
-        # 6324436
+        # returned. Corresponding properties: Google Merchant Center property
+        # google_product_category. Schema.org property [Product.category] (https://
+        # schema.org/category). [mc_google_product_category]: https://support.google.com/
+        # merchants/answer/6324436
         # Corresponds to the JSON property `categories`
         # @return [Array<String>]
         attr_accessor :categories
@@ -1595,19 +1594,19 @@ module Google
         # The condition of the product. Strongly encouraged to use the standard values: "
         # new", "refurbished", "used". A maximum of 5 values are allowed per Product.
         # Each value must be a UTF-8 encoded string with a length limit of 128
-        # characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant
-        # Center property [condition](https://support.google.com/merchants/answer/
-        # 6324469). Schema.org property [Offer.itemCondition](https://schema.org/
-        # itemCondition).
+        # characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding
+        # properties: Google Merchant Center property [condition](https://support.google.
+        # com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https:
+        # //schema.org/itemCondition).
         # Corresponds to the JSON property `conditions`
         # @return [Array<String>]
         attr_accessor :conditions
       
         # Product description. This field must be a UTF-8 encoded string with a length
         # limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        # Google Merchant Center property [description](https://support.google.com/
-        # merchants/answer/6324468). schema.org property [Product.description](https://
-        # schema.org/description).
+        # Corresponding properties: Google Merchant Center property [description](https:/
+        # /support.google.com/merchants/answer/6324468). Schema.org property [Product.
+        # description](https://schema.org/description).
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1617,8 +1616,8 @@ module Google
         # expire_time. However, the product can still be retrieved by ProductService.
         # GetProduct and ProductService.ListProducts. expire_time must be later than
         # available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown.
-        # Google Merchant Center property [expiration_date](https://support.google.com/
-        # merchants/answer/6324499).
+        # Corresponding properties: Google Merchant Center property [expiration_date](
+        # https://support.google.com/merchants/answer/6324499).
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -1633,12 +1632,13 @@ module Google
         # The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8
         # encoded string with a length limit of 128 characters. Otherwise, an
         # INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise,
-        # an INVALID_ARGUMENT error is returned. Google Merchant Center property [gtin](
-        # https://support.google.com/merchants/answer/6324461). Schema.org property [
-        # Product.isbn](https://schema.org/isbn) or [Product.gtin8](https://schema.org/
-        # gtin8) or [Product.gtin12](https://schema.org/gtin12) or [Product.gtin13](
-        # https://schema.org/gtin13) or [Product.gtin14](https://schema.org/gtin14). If
-        # the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
+        # an INVALID_ARGUMENT error is returned. Corresponding properties: Google
+        # Merchant Center property [gtin](https://support.google.com/merchants/answer/
+        # 6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [
+        # Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/
+        # gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](
+        # https://schema.org/gtin14). If the value is not a valid GTIN, an
+        # INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `gtin`
         # @return [String]
         attr_accessor :gtin
@@ -1647,27 +1647,28 @@ module Google
         # example, this field is "id_1", if name is `projects/*/locations/global/
         # catalogs/default_catalog/branches/default_branch/products/id_1`. This field
         # must be a UTF-8 encoded string with a length limit of 128 characters.
-        # Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center
-        # property [id](https://support.google.com/merchants/answer/6324405). Schema.org
-        # Property [Product.sku](https://schema.org/sku).
+        # Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties:
+        # Google Merchant Center property [id](https://support.google.com/merchants/
+        # answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
         # Product images for the product.Highly recommended to put the main image to the
-        # first. A maximum of 300 images are allowed. Google Merchant Center property [
-        # image_link](https://support.google.com/merchants/answer/6324350). Schema.org
-        # property [Product.image](https://schema.org/image).
+        # first. A maximum of 300 images are allowed. Corresponding properties: Google
+        # Merchant Center property [image_link](https://support.google.com/merchants/
+        # answer/6324350). Schema.org property [Product.image](https://schema.org/image).
         # Corresponds to the JSON property `images`
         # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2Image>]
         attr_accessor :images
       
         # Language of the title/description and other string attributes. Use language
-        # tags defined by BCP 47. For product prediction, this field is ignored and the
-        # model automatically detects the text language. The Product can include text in
-        # different languages, but duplicating Products to provide text in multiple
-        # languages can result in degraded model performance. For product search this
-        # field is in use. It defaults to "en-US" if unset.
+        # tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For
+        # product prediction, this field is ignored and the model automatically detects
+        # the text language. The Product can include text in different languages, but
+        # duplicating Products to provide text in multiple languages can result in
+        # degraded model performance. For product search this field is in use. It
+        # defaults to "en-US" if unset.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -1675,9 +1676,9 @@ module Google
         # The material of the product. For example, "leather", "wooden". A maximum of 20
         # values are allowed. Each value must be a UTF-8 encoded string with a length
         # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        # Google Merchant Center property [material](https://support.google.com/
-        # merchants/answer/6324410). Schema.org property [Product.material](https://
-        # schema.org/material).
+        # Corresponding properties: Google Merchant Center property [material](https://
+        # support.google.com/merchants/answer/6324410). Schema.org property [Product.
+        # material](https://schema.org/material).
         # Corresponds to the JSON property `materials`
         # @return [Array<String>]
         attr_accessor :materials
@@ -1691,9 +1692,10 @@ module Google
         # The pattern or graphic print of the product. For example, "striped", "polka
         # dot", "paisley". A maximum of 20 values are allowed per Product. Each value
         # must be a UTF-8 encoded string with a length limit of 128 characters.
-        # Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center
-        # property [pattern](https://support.google.com/merchants/answer/6324483).
-        # Schema.org property [Product.pattern](https://schema.org/pattern).
+        # Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties:
+        # Google Merchant Center property [pattern](https://support.google.com/merchants/
+        # answer/6324483). Schema.org property [Product.pattern](https://schema.org/
+        # pattern).
         # Corresponds to the JSON property `patterns`
         # @return [Array<String>]
         attr_accessor :patterns
@@ -1708,10 +1710,9 @@ module Google
         # can only be empty or set to the same value as id. For VARIANT Products, this
         # field cannot be empty. A maximum of 2,000 products are allowed to share the
         # same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned.
-        # Google Merchant Center Property [item_group_id](https://support.google.com/
-        # merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](
-        # https://schema.org/inProductGroupWithID). This field must be enabled before it
-        # can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+        # Corresponding properties: Google Merchant Center property [item_group_id](
+        # https://support.google.com/merchants/answer/6324507). Schema.org property [
+        # Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
         # Corresponds to the JSON property `primaryProductId`
         # @return [String]
         attr_accessor :primary_product_id
@@ -1760,10 +1761,11 @@ module Google
         # system and size type are empty, while size value is "32 inches". A maximum of
         # 20 values are allowed per Product. Each value must be a UTF-8 encoded string
         # with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is
-        # returned. Google Merchant Center property [size](https://support.google.com/
-        # merchants/answer/6324492), [size_type](https://support.google.com/merchants/
-        # answer/6324497) and [size_system](https://support.google.com/merchants/answer/
-        # 6324502). Schema.org property [Product.size](https://schema.org/size).
+        # returned. Corresponding properties: Google Merchant Center property [size](
+        # https://support.google.com/merchants/answer/6324492), [size_type](https://
+        # support.google.com/merchants/answer/6324497), and [size_system](https://
+        # support.google.com/merchants/answer/6324502). Schema.org property [Product.
+        # size](https://schema.org/size).
         # Corresponds to the JSON property `sizes`
         # @return [Array<String>]
         attr_accessor :sizes
@@ -1772,17 +1774,18 @@ module Google
         # Product. This value must be a UTF-8 encoded string with a length limit of 1,
         # 000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can
         # be used for filtering recommendation results by passing the tag as part of the
-        # PredictRequest.filter. Google Merchant Center property [custom_label_0–4](
-        # https://support.google.com/merchants/answer/6324473).
+        # PredictRequest.filter. Corresponding properties: Google Merchant Center
+        # property [custom_label_0–4](https://support.google.com/merchants/answer/
+        # 6324473).
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
       
         # Required. Product title. This field must be a UTF-8 encoded string with a
         # length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is
-        # returned. Google Merchant Center property [title](https://support.google.com/
-        # merchants/answer/6324415). Schema.org property [Product.name](https://schema.
-        # org/name).
+        # returned. Corresponding properties: Google Merchant Center property [title](
+        # https://support.google.com/merchants/answer/6324415). Schema.org property [
+        # Product.name](https://schema.org/name).
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -1808,9 +1811,9 @@ module Google
         # recommended to provide a valid uri for the product, otherwise the service
         # performance could be significantly degraded. This field must be a UTF-8
         # encoded string with a length limit of 5,000 characters. Otherwise, an
-        # INVALID_ARGUMENT error is returned. Google Merchant Center property [link](
-        # https://support.google.com/merchants/answer/6324416). Schema.org property [
-        # Offer.url](https://schema.org/url).
+        # INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant
+        # Center property [link](https://support.google.com/merchants/answer/6324416).
+        # Schema.org property [Offer.url](https://schema.org/url).
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2420,25 +2423,26 @@ module Google
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2UserInfo]
         attr_accessor :user_info
       
-        # The keys to fetch and rollup the matching variant Products attributes. The
-        # attributes from all the matching variant Products are merged and de-duplicated.
-        # Notice that rollup variant Products attributes will lead to extra query
-        # latency. Maximum number of keys is 10. For FulfillmentInfo, a fulfillment type
-        # and a fulfillment ID must be provided in the format of "fulfillmentType.
-        # fulfillmentId". E.g., in "pickupInStore.store123", "pickupInStore" is
-        # fulfillment type and "store123" is the store ID. Supported keys are: *
-        # colorFamilies * price * originalPrice * discount * inventory(place_id,price) *
-        # inventory(place_id,attributes.key), where key is any key in the Product.
-        # inventories.attributes map. * attributes.key, where key is any key in the
-        # Product.attributes map. * pickupInStore.id, where id is any FulfillmentInfo.
-        # place_ids for FulfillmentInfo.type "pickup-in-store". * shipToStore.id, where
-        # id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". *
-        # sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for
-        # FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id, where id is
-        # any FulfillmentInfo.place_ids for FulfillmentInfo.type "next-day-delivery". *
-        # customFulfillment1.id, where id is any FulfillmentInfo.place_ids for
-        # FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is any
-        # FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-2". *
+        # The keys to fetch and rollup the matching variant Products attributes,
+        # FulfillmentInfo or LocalInventorys attributes. The attributes from all the
+        # matching variant Products or LocalInventorys are merged and de-duplicated.
+        # Notice that rollup attributes will lead to extra query latency. Maximum number
+        # of keys is 30. For FulfillmentInfo, a fulfillment type and a fulfillment ID
+        # must be provided in the format of "fulfillmentType.fulfillmentId". E.g., in "
+        # pickupInStore.store123", "pickupInStore" is fulfillment type and "store123" is
+        # the store ID. Supported keys are: * colorFamilies * price * originalPrice *
+        # discount * variantId * inventory(place_id,price) * inventory(place_id,
+        # original_price) * inventory(place_id,attributes.key), where key is any key in
+        # the Product.inventories.attributes map. * attributes.key, where key is any key
+        # in the Product.attributes map. * pickupInStore.id, where id is any
+        # FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". *
+        # shipToStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.
+        # type "ship-to-store". * sameDayDelivery.id, where id is any FulfillmentInfo.
+        # place_ids for FulfillmentInfo.type "same-day-delivery". * nextDayDelivery.id,
+        # where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "next-day-
+        # delivery". * customFulfillment1.id, where id is any FulfillmentInfo.place_ids
+        # for FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is
+        # any FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-2". *
         # customFulfillment3.id, where id is any FulfillmentInfo.place_ids for
         # FulfillmentInfo.type "custom-type-3". * customFulfillment4.id, where id is any
         # FulfillmentInfo.place_ids for FulfillmentInfo.type "custom-type-4". *
@@ -2658,8 +2662,8 @@ module Google
         # customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "
         # customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.
         # key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "
-        # attributes.key" * "inventory(place_id,price)" * "inventory(place_id,attributes.
-        # key)"
+        # attributes.key" * "inventory(place_id,price)" * "inventory(place_id,
+        # original_price)" * "inventory(place_id,attributes.key)"
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -2758,6 +2762,12 @@ module Google
       class GoogleCloudRetailV2SearchResponse
         include Google::Apis::Core::Hashable
       
+        # The fully qualified resource name of applied [controls](https://cloud.google.
+        # com/retail/docs/serving-control-rules).
+        # Corresponds to the JSON property `appliedControls`
+        # @return [Array<String>]
+        attr_accessor :applied_controls
+      
         # A unique search token. This should be included in the UserEvent logs resulting
         # from this search, which enables accurate attribution of search model
         # performance.
@@ -2812,6 +2822,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @applied_controls = args[:applied_controls] if args.key?(:applied_controls)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @corrected_query = args[:corrected_query] if args.key?(:corrected_query)
           @facets = args[:facets] if args.key?(:facets)
@@ -3084,12 +3095,15 @@ module Google
       class GoogleCloudRetailV2UserEvent
         include Google::Apis::Core::Hashable
       
-        # Extra user event features to include in the recommendation model. The key must
-        # be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise,
-        # an INVALID_ARGUMENT error is returned. For product recommendation, an example
-        # of extra user information is traffic_channel, i.e. how user arrives at the
-        # site. Users can arrive at the site by coming to the site directly, or coming
-        # through Google search, and etc.
+        # Extra user event features to include in the recommendation model. This field
+        # needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is
+        # returned: * The key must be a UTF-8 encoded string with a length limit of 5,
+        # 000 characters. * For text attributes, at most 400 values are allowed. Empty
+        # values are not allowed. Each value must be a UTF-8 encoded string with a
+        # length limit of 256 characters. * For number attributes, at most 400 values
+        # are allowed. For product recommendation, an example of extra user information
+        # is traffic_channel, i.e. how user arrives at the site. Users can arrive at the
+        # site by coming to the site directly, or coming through Google search, and etc.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute>]
         attr_accessor :attributes
@@ -3131,12 +3145,11 @@ module Google
       
         # Required. User event type. Allowed values are: * `add-to-cart`: Products being
         # added to cart. * `category-page-view`: Special pages such as sale or promotion
-        # pages viewed. * `completion`: Completion query result showed/clicked. * `
-        # detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage
-        # viewed. * `promotion-offered`: Promotion is offered to a user. * `promotion-
-        # not-offered`: Promotion is not offered to a user. * `purchase-complete`: User
-        # finishing a purchase. * `search`: Product search. * `shopping-cart-page-view`:
-        # User viewing a shopping cart.
+        # pages viewed. * `detail-page-view`: Products detail page viewed. * `home-page-
+        # view`: Homepage viewed. * `promotion-offered`: Promotion is offered to a user.
+        # * `promotion-not-offered`: Promotion is not offered to a user. * `purchase-
+        # complete`: User finishing a purchase. * `search`: Product search. * `shopping-
+        # cart-page-view`: User viewing a shopping cart.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -3890,6 +3903,35 @@ module Google
       # Response of the SetInventoryRequest. Currently empty because there is no
       # meaningful response populated from the SetInventory method.
       class GoogleCloudRetailV2alphaSetInventoryResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the SetLocalInventories operation.
+      # Currently empty because there is no meaningful metadata populated from the
+      # SetLocalInventories method.
+      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response of the SetLocalInventories API. Currently empty because there is no
+      # meaningful response populated from the SetLocalInventories method.
+      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
