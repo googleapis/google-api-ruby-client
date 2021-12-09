@@ -767,7 +767,8 @@ module Google
         #   Required. Name of the InsightTypeConfig to get. Acceptable formats: * `
         #   projects/[PROJECT_NUMBER]/locations/global/recommenders/[INSIGHT_TYPE_ID]/
         #   config` * `projects/[PROJECT_ID]/locations/global/recommenders/[
-        #   INSIGHT_TYPE_ID]/config`
+        #   INSIGHT_TYPE_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/global/
+        #   recommenders/[INSIGHT_TYPE_ID]/config`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -968,9 +969,10 @@ module Google
         # config for each Recommender.
         # @param [String] name
         #   Required. Name of the Recommendation Config to get. Acceptable formats: * `
-        #   projects/[PROJECT_NUMBER]/locations/global/recommenders/[RECOMMENDER_ID]/
-        #   config` * `projects/[PROJECT_ID]/locations/global/recommenders/[RECOMMENDER_ID]
-        #   /config`
+        #   projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/
+        #   config` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]
+        #   /recommenders/[RECOMMENDER_ID]/config`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1211,7 +1213,8 @@ module Google
         #   Required. Name of the InsightTypeConfig to get. Acceptable formats: * `
         #   projects/[PROJECT_NUMBER]/locations/global/recommenders/[INSIGHT_TYPE_ID]/
         #   config` * `projects/[PROJECT_ID]/locations/global/recommenders/[
-        #   INSIGHT_TYPE_ID]/config`
+        #   INSIGHT_TYPE_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/global/
+        #   recommenders/[INSIGHT_TYPE_ID]/config`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1413,9 +1416,10 @@ module Google
         # config for each Recommender.
         # @param [String] name
         #   Required. Name of the Recommendation Config to get. Acceptable formats: * `
-        #   projects/[PROJECT_NUMBER]/locations/global/recommenders/[RECOMMENDER_ID]/
-        #   config` * `projects/[PROJECT_ID]/locations/global/recommenders/[RECOMMENDER_ID]
-        #   /config`
+        #   projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/
+        #   config` * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]/config` * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]
+        #   /recommenders/[RECOMMENDER_ID]/config`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
