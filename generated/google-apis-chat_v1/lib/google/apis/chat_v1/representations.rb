@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MatchedUrl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Media
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1099,6 +1105,13 @@ module Google
         end
       end
       
+      class MatchedUrl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+        end
+      end
+      
       class Media
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1132,6 +1145,8 @@ module Google
           property :create_time, as: 'createTime'
           property :fallback_text, as: 'fallbackText'
           property :last_update_time, as: 'lastUpdateTime'
+          property :matched_url, as: 'matchedUrl', class: Google::Apis::ChatV1::MatchedUrl, decorator: Google::Apis::ChatV1::MatchedUrl::Representation
+      
           property :name, as: 'name'
           property :preview_text, as: 'previewText'
           property :sender, as: 'sender', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
