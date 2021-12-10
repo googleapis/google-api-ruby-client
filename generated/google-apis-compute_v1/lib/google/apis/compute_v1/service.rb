@@ -2434,7 +2434,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a snapshot of a specified persistent disk.
+        # Creates a snapshot of a specified persistent disk. For regular snapshot
+        # creation, consider using snapshots.insert instead, as that method supports
+        # more features, such as creating snapshots in a project different from the
+        # source disk project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6280,8 +6283,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6364,8 +6366,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6493,8 +6494,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17917,8 +17917,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18001,8 +18000,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18130,8 +18128,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18268,8 +18265,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18358,8 +18354,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18493,8 +18488,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19722,7 +19716,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a snapshot of this regional disk.
+        # Creates a snapshot of a specified persistent disk. For regular snapshot
+        # creation, consider using snapshots.insert instead, as that method supports
+        # more features, such as creating snapshots in a project different from the
+        # source disk project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -22608,8 +22605,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22698,8 +22694,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23034,8 +23029,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23125,8 +23119,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23533,8 +23526,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23624,8 +23616,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23758,8 +23749,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23812,8 +23802,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26687,8 +26676,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26820,8 +26808,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26956,8 +26943,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27207,7 +27193,9 @@ module Google
         end
         
         # Creates a snapshot in the specified project using the data included in the
-        # request.
+        # request. For regular snapshot creation, consider using this method instead of
+        # disks.createSnapshot, as this method supports more features, such as creating
+        # snapshots in a project different from the source disk project.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Snapshot] snapshot_object
@@ -27551,8 +27539,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27636,8 +27623,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28786,8 +28772,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28870,8 +28855,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28999,8 +28983,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29348,8 +29331,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29747,8 +29729,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
