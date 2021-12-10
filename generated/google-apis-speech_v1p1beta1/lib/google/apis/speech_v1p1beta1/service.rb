@@ -129,7 +129,11 @@ module Google
         # Create a custom class.
         # @param [String] parent
         #   Required. The parent resource where this custom class will be created. Format:
-        #   `api_version`/projects/`project`/locations/`location`/customClasses
+        #   `projects/`project`/locations/`location`/customClasses` Speech-to-Text
+        #   supports three locations: `global`, `us` (US North America), and `eu` (Europe).
+        #   If you are calling the `speech.googleapis.com` endpoint, use the `global`
+        #   location. To specify a region, use a [regional endpoint](/speech-to-text/docs/
+        #   endpoints) with matching `us` or `eu` location value.
         # @param [Google::Apis::SpeechV1p1beta1::CreateCustomClassRequest] create_custom_class_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -162,8 +166,12 @@ module Google
         
         # Delete a custom class.
         # @param [String] name
-        #   Required. The name of the custom class to delete. Format: `api_version`/
-        #   projects/`project`/locations/`location`/customClasses/`custom_class`
+        #   Required. The name of the custom class to delete. Format: `projects/`project`/
+        #   locations/`location`/customClasses/`custom_class`` Speech-to-Text supports
+        #   three locations: `global`, `us` (US North America), and `eu` (Europe). If you
+        #   are calling the `speech.googleapis.com` endpoint, use the `global` location.
+        #   To specify a region, use a [regional endpoint](/speech-to-text/docs/endpoints)
+        #   with matching `us` or `eu` location value.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -193,8 +201,8 @@ module Google
         
         # Get a custom class.
         # @param [String] name
-        #   Required. The name of the custom class to retrieve. Format: `api_version`/
-        #   projects/`project`/locations/`location`/customClasses/`custom_class`
+        #   Required. The name of the custom class to retrieve. Format: `projects/`project`
+        #   /locations/`location`/customClasses/`custom_class``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -225,7 +233,11 @@ module Google
         # List custom classes.
         # @param [String] parent
         #   Required. The parent, which owns this collection of custom classes. Format: `
-        #   api_version`/projects/`project`/locations/`location`/customClasses
+        #   projects/`project`/locations/`location`/customClasses` Speech-to-Text supports
+        #   three locations: `global`, `us` (US North America), and `eu` (Europe). If you
+        #   are calling the `speech.googleapis.com` endpoint, use the `global` location.
+        #   To specify a region, use a [regional endpoint](/speech-to-text/docs/endpoints)
+        #   with matching `us` or `eu` location value.
         # @param [Fixnum] page_size
         #   The maximum number of custom classes to return. The service may return fewer
         #   than this value. If unspecified, at most 50 custom classes will be returned.
@@ -304,7 +316,11 @@ module Google
         # model when you send a call that includes the PhraseSet.
         # @param [String] parent
         #   Required. The parent resource where this phrase set will be created. Format: `
-        #   api_version`/projects/`project`/locations/`location`/phraseSets
+        #   projects/`project`/locations/`location`/phraseSets` Speech-to-Text supports
+        #   three locations: `global`, `us` (US North America), and `eu` (Europe). If you
+        #   are calling the `speech.googleapis.com` endpoint, use the `global` location.
+        #   To specify a region, use a [regional endpoint](/speech-to-text/docs/endpoints)
+        #   with matching `us` or `eu` location value.
         # @param [Google::Apis::SpeechV1p1beta1::CreatePhraseSetRequest] create_phrase_set_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -337,8 +353,8 @@ module Google
         
         # Delete a phrase set.
         # @param [String] name
-        #   Required. The name of the phrase set to delete. Format: `api_version`/projects/
-        #   `project`/locations/`location`/phraseSets/`phrase_set`
+        #   Required. The name of the phrase set to delete. Format: `projects/`project`/
+        #   locations/`location`/phraseSets/`phrase_set``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -368,8 +384,12 @@ module Google
         
         # Get a phrase set.
         # @param [String] name
-        #   Required. The name of the phrase set to retrieve. Format: `api_version`/
-        #   projects/`project`/locations/`location`/phraseSets/`phrase_set`
+        #   Required. The name of the phrase set to retrieve. Format: `projects/`project`/
+        #   locations/`location`/phraseSets/`phrase_set`` Speech-to-Text supports three
+        #   locations: `global`, `us` (US North America), and `eu` (Europe). If you are
+        #   calling the `speech.googleapis.com` endpoint, use the `global` location. To
+        #   specify a region, use a [regional endpoint](/speech-to-text/docs/endpoints)
+        #   with matching `us` or `eu` location value.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -399,8 +419,12 @@ module Google
         
         # List phrase sets.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of phrase set. Format:
-        #   projects/`project`/locations/`location`
+        #   Required. The parent, which owns this collection of phrase set. Format: `
+        #   projects/`project`/locations/`location`` Speech-to-Text supports three
+        #   locations: `global`, `us` (US North America), and `eu` (Europe). If you are
+        #   calling the `speech.googleapis.com` endpoint, use the `global` location. To
+        #   specify a region, use a [regional endpoint](/speech-to-text/docs/endpoints)
+        #   with matching `us` or `eu` location value.
         # @param [Fixnum] page_size
         #   The maximum number of phrase sets to return. The service may return fewer than
         #   this value. If unspecified, at most 50 phrase sets will be returned. The
