@@ -10520,10 +10520,11 @@ module Google
       class GoogleCloudDialogflowV2SpeechToTextConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The speech model used in speech to text. `
-        # SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `
-        # USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and
-        # StreamingAnalyzeContentRequest request.
+        # The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `
+        # USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in
+        # AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced
+        # model variant is specified and an enhanced version of the specified model for
+        # the language does not exist, then it would emit an error.
         # Corresponds to the JSON property `speechModelVariant`
         # @return [String]
         attr_accessor :speech_model_variant
