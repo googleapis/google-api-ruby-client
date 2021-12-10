@@ -2350,6 +2350,26 @@ module Google
         end
       end
       
+      # A matched url in a Chat message. Chat bots can unfurl matched URLs. For more
+      # information, refer to [Unfurl links](/chat/how-tos/link-unfurling).
+      class MatchedUrl
+        include Google::Apis::Core::Hashable
+      
+        # The url that was matched.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Media resource.
       class Media
         include Google::Apis::Core::Hashable
@@ -2457,6 +2477,12 @@ module Google
         # @return [String]
         attr_accessor :last_update_time
       
+        # A matched url in a Chat message. Chat bots can unfurl matched URLs. For more
+        # information, refer to [Unfurl links](/chat/how-tos/link-unfurling).
+        # Corresponds to the JSON property `matchedUrl`
+        # @return [Google::Apis::ChatV1::MatchedUrl]
+        attr_accessor :matched_url
+      
         # Resource name in the form `spaces/*/messages/*`. Example: `spaces/AAAAAAAAAAA/
         # messages/BBBBBBBBBBB.BBBBBBBBBBB`
         # Corresponds to the JSON property `name`
@@ -2510,6 +2536,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @matched_url = args[:matched_url] if args.key?(:matched_url)
           @name = args[:name] if args.key?(:name)
           @preview_text = args[:preview_text] if args.key?(:preview_text)
           @sender = args[:sender] if args.key?(:sender)
