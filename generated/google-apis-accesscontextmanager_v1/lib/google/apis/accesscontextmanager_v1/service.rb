@@ -49,10 +49,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Create an `AccessPolicy`. Fails if this organization already has a `
-        # AccessPolicy`. The longrunning Operation will have a successful status once
-        # the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic
-        # semantic errors will be returned in `metadata` as a BadRequest proto.
+        # Creates an access policy. This method fails if the organization already has an
+        # access policy. The long-running operation has a successful status after the
+        # access policy propagates to long-lasting storage. Syntactic and basic semantic
+        # errors are returned in `metadata` as a BadRequest proto.
         # @param [Google::Apis::AccesscontextmanagerV1::AccessPolicy] access_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -82,9 +82,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete an AccessPolicy by resource name. The longrunning Operation will have a
-        # successful status once the AccessPolicy has been removed from long-lasting
-        # storage.
+        # Deletes an access policy based on the resource name. The long-running
+        # operation has a successful status after the access policy is removed from long-
+        # lasting storage.
         # @param [String] name
         #   Required. Resource name for the access policy to delete. Format `
         #   accessPolicies/`policy_id``
@@ -115,7 +115,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get an AccessPolicy by name.
+        # Returns an access policy based on the name.
         # @param [String] name
         #   Required. Resource name for the access policy to get. Format `accessPolicies/`
         #   policy_id``
@@ -146,7 +146,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all AccessPolicies under a container.
+        # Gets the IAM policy for the specified Access Context Manager access policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::AccesscontextmanagerV1::GetIamPolicyRequest] get_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_access_policy_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::GetIamPolicyRequest::Representation
+          command.request_object = get_iam_policy_request_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Policy::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all access policies in an organization.
         # @param [Fixnum] page_size
         #   Number of AccessPolicy instances to include in the list. Default 100.
         # @param [String] page_token
@@ -184,10 +218,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update an AccessPolicy. The longrunning Operation from this RPC will have a
-        # successful status once the changes to the AccessPolicy have propagated to long-
-        # lasting storage. Syntactic and basic semantic errors will be returned in `
-        # metadata` as a BadRequest proto.
+        # Updates an access policy. The long-running operation from this RPC has a
+        # successful status after the changes to the access policy propagate to long-
+        # lasting storage.
         # @param [String] name
         #   Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/`
         #   access_policy``
@@ -224,10 +257,83 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create an Access Level. The longrunning operation from this RPC will have a
-        # successful status once the Access Level has propagated to long-lasting storage.
-        # Access Levels containing errors will result in an error response for the
-        # first error encountered.
+        # Sets the IAM policy for the specified Access Context Manager access policy.
+        # This method replaces the existing IAM policy on the access policy. The IAM
+        # policy controls the set of users who can perform specific operations on the
+        # Access Context Manager access policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::AccesscontextmanagerV1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_access_policy_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Policy::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the IAM permissions that the caller has on the specified Access
+        # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
+        # ServicePerimeter. This method does not support other resources.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_access_policy_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an access level. The long-running operation from this RPC has a
+        # successful status after the access level propagates to long-lasting storage.
+        # If access levels contain errors, an error response is returned for the first
+        # error encountered.
         # @param [String] parent
         #   Required. Resource name for the access policy which owns this Access Level.
         #   Format: `accessPolicies/`policy_id``
@@ -261,9 +367,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete an Access Level by resource name. The longrunning operation from this
-        # RPC will have a successful status once the Access Level has been removed from
-        # long-lasting storage.
+        # Deletes an access level based on the resource name. The long-running operation
+        # from this RPC has a successful status after the access level has been removed
+        # from long-lasting storage.
         # @param [String] name
         #   Required. Resource name for the Access Level. Format: `accessPolicies/`
         #   policy_id`/accessLevels/`access_level_id``
@@ -294,7 +400,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get an Access Level by resource name.
+        # Gets an access level based on the resource name.
         # @param [String] name
         #   Required. Resource name for the Access Level. Format: `accessPolicies/`
         #   policy_id`/accessLevels/`access_level_id``
@@ -332,7 +438,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all Access Levels for an access policy.
+        # Lists all access levels for an access policy.
         # @param [String] parent
         #   Required. Resource name for the access policy to list Access Levels from.
         #   Format: `accessPolicies/`policy_id``
@@ -375,10 +481,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update an Access Level. The longrunning operation from this RPC will have a
-        # successful status once the changes to the Access Level have propagated to long-
-        # lasting storage. Access Levels containing errors will result in an error
-        # response for the first error encountered.
+        # Updates an access level. The long-running operation from this RPC has a
+        # successful status after the changes to the access level propagate to long-
+        # lasting storage. If access levels contain errors, an error response is
+        # returned for the first error encountered.
         # @param [String] name
         #   Required. Resource name for the Access Level. The `short_name` component must
         #   begin with a letter and only include alphanumeric and '_'. Format: `
@@ -417,14 +523,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replace all existing Access Levels in an Access Policy with the Access Levels
-        # provided. This is done atomically. The longrunning operation from this RPC
-        # will have a successful status once all replacements have propagated to long-
-        # lasting storage. Replacements containing errors will result in an error
-        # response for the first error encountered. Replacement will be cancelled on
-        # error, existing Access Levels will not be affected. Operation.response field
-        # will contain ReplaceAccessLevelsResponse. Removing Access Levels contained in
-        # existing Service Perimeters will result in error.
+        # Replaces all existing access levels in an access policy with the access levels
+        # provided. This is done atomically. The long-running operation from this RPC
+        # has a successful status after all replacements propagate to long-lasting
+        # storage. If the replacement contains errors, an error response is returned for
+        # the first error encountered. Upon error, the replacement is cancelled, and
+        # existing access levels are not affected. The Operation.response field contains
+        # ReplaceAccessLevelsResponse. Removing access levels contained in existing
+        # service perimeters result in an error.
         # @param [String] parent
         #   Required. Resource name for the access policy which owns these Access Levels.
         #   Format: `accessPolicies/`policy_id``
@@ -458,16 +564,52 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Commit the dry-run spec for all the Service Perimeters in an Access Policy. A
-        # commit operation on a Service Perimeter involves copying its `spec` field to
-        # that Service Perimeter's `status` field. Only Service Perimeters with `
-        # use_explicit_dry_run_spec` field set to true are affected by a commit
-        # operation. The longrunning operation from this RPC will have a successful
-        # status once the dry-run specs for all the Service Perimeters have been
-        # committed. If a commit fails, it will cause the longrunning operation to
-        # return an error response and the entire commit operation will be cancelled.
-        # When successful, Operation.response field will contain
-        # CommitServicePerimetersResponse. The `dry_run` and the `spec` fields will be
+        # Returns the IAM permissions that the caller has on the specified Access
+        # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
+        # ServicePerimeter. This method does not support other resources.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_access_level_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Commits the dry-run specification for all the service perimeters in an access
+        # policy. A commit operation on a service perimeter involves copying its `spec`
+        # field to the `status` field of the service perimeter. Only service perimeters
+        # with `use_explicit_dry_run_spec` field set to true are affected by a commit
+        # operation. The long-running operation from this RPC has a successful status
+        # after the dry-run specifications for all the service perimeters have been
+        # committed. If a commit fails, it causes the long-running operation to return
+        # an error response and the entire commit operation is cancelled. When
+        # successful, the Operation.response field contains
+        # CommitServicePerimetersResponse. The `dry_run` and the `spec` fields are
         # cleared after a successful commit operation.
         # @param [String] parent
         #   Required. Resource name for the parent Access Policy which owns all Service
@@ -503,9 +645,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a Service Perimeter. The longrunning operation from this RPC will have
-        # a successful status once the Service Perimeter has propagated to long-lasting
-        # storage. Service Perimeters containing errors will result in an error response
+        # Creates a service perimeter. The long-running operation from this RPC has a
+        # successful status after the service perimeter propagates to long-lasting
+        # storage. If a service perimeter contains errors, an error response is returned
         # for the first error encountered.
         # @param [String] parent
         #   Required. Resource name for the access policy which owns this Service
@@ -540,8 +682,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a Service Perimeter by resource name. The longrunning operation from
-        # this RPC will have a successful status once the Service Perimeter has been
+        # Deletes a service perimeter based on the resource name. The long-running
+        # operation from this RPC has a successful status after the service perimeter is
         # removed from long-lasting storage.
         # @param [String] name
         #   Required. Resource name for the Service Perimeter. Format: `accessPolicies/`
@@ -573,7 +715,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a Service Perimeter by resource name.
+        # Gets a service perimeter based on the resource name.
         # @param [String] name
         #   Required. Resource name for the Service Perimeter. Format: `accessPolicies/`
         #   policy_id`/servicePerimeters/`service_perimeters_id``
@@ -604,7 +746,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all Service Perimeters for an access policy.
+        # Lists all service perimeters for an access policy.
         # @param [String] parent
         #   Required. Resource name for the access policy to list Service Perimeters from.
         #   Format: `accessPolicies/`policy_id``
@@ -642,10 +784,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a Service Perimeter. The longrunning operation from this RPC will have
-        # a successful status once the changes to the Service Perimeter have propagated
-        # to long-lasting storage. Service Perimeter containing errors will result in an
-        # error response for the first error encountered.
+        # Updates a service perimeter. The long-running operation from this RPC has a
+        # successful status after the service perimeter propagates to long-lasting
+        # storage. If a service perimeter contains errors, an error response is returned
+        # for the first error encountered.
         # @param [String] name
         #   Required. Resource name for the ServicePerimeter. The `short_name` component
         #   must begin with a letter and only include alphanumeric and '_'. Format: `
@@ -683,13 +825,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replace all existing Service Perimeters in an Access Policy with the Service
-        # Perimeters provided. This is done atomically. The longrunning operation from
-        # this RPC will have a successful status once all replacements have propagated
-        # to long-lasting storage. Replacements containing errors will result in an
-        # error response for the first error encountered. Replacement will be cancelled
-        # on error, existing Service Perimeters will not be affected. Operation.response
-        # field will contain ReplaceServicePerimetersResponse.
+        # Replace all existing service perimeters in an access policy with the service
+        # perimeters provided. This is done atomically. The long-running operation from
+        # this RPC has a successful status after all replacements propagate to long-
+        # lasting storage. Replacements containing errors result in an error response
+        # for the first error encountered. Upon an error, replacement are cancelled and
+        # existing service perimeters are not affected. The Operation.response field
+        # contains ReplaceServicePerimetersResponse.
         # @param [String] parent
         #   Required. Resource name for the access policy which owns these Service
         #   Perimeters. Format: `accessPolicies/`policy_id``
@@ -718,6 +860,42 @@ module Google
           command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the IAM permissions that the caller has on the specified Access
+        # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
+        # ServicePerimeter. This method does not support other resources.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_service_perimeter_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -874,7 +1052,7 @@ module Google
         end
         
         # Creates a GcpUserAccessBinding. If the client specifies a name, the server
-        # will ignore it. Fails if a resource already exists with the same group_key.
+        # ignores it. Fails if a resource already exists with the same group_key.
         # Completion of this long-running operation does not necessarily signify that
         # the new binding is deployed onto all affected users, which may take more time.
         # @param [String] parent
