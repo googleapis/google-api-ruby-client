@@ -1245,6 +1245,12 @@ module Google
         # @return [Google::Apis::PubsubV1::RetryPolicy]
         attr_accessor :retry_policy
       
+        # Output only. An output-only field indicating whether or not the subscription
+        # can receive messages.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Required. The name of the topic from which this subscription is receiving
         # messages. Format is `projects/`project`/topics/`topic``. The value of this
         # field will be `_deleted-topic_` if the topic has been deleted.
@@ -1280,6 +1286,7 @@ module Google
           @push_config = args[:push_config] if args.key?(:push_config)
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @state = args[:state] if args.key?(:state)
           @topic = args[:topic] if args.key?(:topic)
           @topic_message_retention_duration = args[:topic_message_retention_duration] if args.key?(:topic_message_retention_duration)
         end

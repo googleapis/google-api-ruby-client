@@ -579,6 +579,7 @@ module Google
           property :retain_acked_messages, as: 'retainAckedMessages'
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::PubsubV1::RetryPolicy, decorator: Google::Apis::PubsubV1::RetryPolicy::Representation
       
+          property :state, as: 'state'
           property :topic, as: 'topic'
           property :topic_message_retention_duration, as: 'topicMessageRetentionDuration'
         end
