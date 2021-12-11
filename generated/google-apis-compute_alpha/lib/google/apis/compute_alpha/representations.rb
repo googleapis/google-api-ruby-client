@@ -2074,6 +2074,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2262,6 +2268,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstantSnapshotResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -6668,6 +6680,7 @@ module Google
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+          property :source_instant_snapshot, as: 'sourceInstantSnapshot'
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
@@ -8299,11 +8312,13 @@ module Google
           collection :dest_address_groups, as: 'destAddressGroups'
           collection :dest_fqdns, as: 'destFqdns'
           collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :dest_region_codes, as: 'destRegionCodes'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config::Representation
       
           collection :src_address_groups, as: 'srcAddressGroups'
           collection :src_fqdns, as: 'srcFqdns'
           collection :src_ip_ranges, as: 'srcIpRanges'
+          collection :src_region_codes, as: 'srcRegionCodes'
           collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag::Representation
       
         end
@@ -8341,6 +8356,7 @@ module Google
           property :ip_protocol, as: 'IPProtocol'
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
+          property :allow_psc_global_access, as: 'allowPscGlobalAccess'
           property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -9506,6 +9522,8 @@ module Google
       
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeAlpha::NetworkPerformanceConfig, decorator: Google::Apis::ComputeAlpha::NetworkPerformanceConfig::Representation
       
+          property :params, as: 'params', class: Google::Apis::ComputeAlpha::InstanceParams, decorator: Google::Apis::ComputeAlpha::InstanceParams::Representation
+      
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :preserved_state_size_gb, :numeric_string => true, as: 'preservedStateSizeGb'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
@@ -10329,6 +10347,13 @@ module Google
         end
       end
       
+      class InstanceParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
       class InstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10358,6 +10383,7 @@ module Google
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
+          hash :resource_manager_tags, as: 'resourceManagerTags'
           collection :resource_policies, as: 'resourcePolicies'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
@@ -10603,6 +10629,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :region, as: 'region'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::InstantSnapshotResourceStatus, decorator: Google::Apis::ComputeAlpha::InstantSnapshotResourceStatus::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -10687,6 +10715,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class InstantSnapshotResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_size_bytes, :numeric_string => true, as: 'storageSizeBytes'
         end
       end
       
@@ -12385,7 +12420,7 @@ module Google
           property :cpu_overcommit_type, as: 'cpuOvercommitType'
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::LocalDisk, decorator: Google::Apis::ComputeAlpha::LocalDisk::Representation
       
-          collection :instance_consumption_datas, as: 'instanceConsumptionDatas', class: Google::Apis::ComputeAlpha::InstanceConsumptionData, decorator: Google::Apis::ComputeAlpha::InstanceConsumptionData::Representation
+          collection :instance_consumption_data, as: 'instanceConsumptionData', class: Google::Apis::ComputeAlpha::InstanceConsumptionData, decorator: Google::Apis::ComputeAlpha::InstanceConsumptionData::Representation
       
           collection :instances, as: 'instances'
           property :name, as: 'name'
@@ -15804,6 +15839,7 @@ module Google
           property :self_link_with_id, as: 'selfLinkWithId'
           property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
+          property :snapshot_type, as: 'snapshotType'
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
