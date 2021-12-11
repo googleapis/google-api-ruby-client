@@ -464,15 +464,15 @@ module Google
       class AccessConfig
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The first IPv6 address of the external IPv6 range associated
-        # with this instance, prefix length is stored in externalIpv6PrefixLength in
+        # The first IPv6 address of the external IPv6 range associated with this
+        # instance, prefix length is stored in externalIpv6PrefixLength in
         # ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork
         # associated with the instance will be allocated dynamically.
         # Corresponds to the JSON property `externalIpv6`
         # @return [String]
         attr_accessor :external_ipv6
       
-        # [Output Only] The prefix length of the external IPv6 range.
+        # The prefix length of the external IPv6 range.
         # Corresponds to the JSON property `externalIpv6PrefixLength`
         # @return [Fixnum]
         attr_accessor :external_ipv6_prefix_length
@@ -1462,6 +1462,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # A list of publicly visible licenses. Reserved for Google's use.
+        # Corresponds to the JSON property `licenses`
+        # @return [Array<String>]
+        attr_accessor :licenses
+      
         # Indicates whether or not the disk can be read/write attached to more than one
         # instance.
         # Corresponds to the JSON property `multiWriter`
@@ -1542,6 +1547,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @labels = args[:labels] if args.key?(:labels)
+          @licenses = args[:licenses] if args.key?(:licenses)
           @multi_writer = args[:multi_writer] if args.key?(:multi_writer)
           @on_update_action = args[:on_update_action] if args.key?(:on_update_action)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
@@ -12603,6 +12609,11 @@ module Google
         # @return [Google::Apis::ComputeBeta::NetworkPerformanceConfig]
         attr_accessor :network_performance_config
       
+        # Additional instance params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeBeta::InstanceParams]
+        attr_accessor :params
+      
         # PostKeyRevocationActionType of the instance.
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
@@ -12746,6 +12757,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
+          @params = args[:params] if args.key?(:params)
           @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
@@ -15289,6 +15301,28 @@ module Google
         end
       end
       
+      # Additional instance params.
+      class InstanceParams
+        include Google::Apis::Core::Hashable
+      
+        # Resource manager tags to be bound to the instance. Tag keys and values have
+        # the same definition as resource manager tags. Keys must be in the format `
+        # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
+        # is ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
       # 
       class InstanceProperties
         include Google::Apis::Core::Hashable
@@ -15392,7 +15426,15 @@ module Google
         # @return [Google::Apis::ComputeBeta::ReservationAffinity]
         attr_accessor :reservation_affinity
       
-        # Resource policies (names, not ULRs) applied to instances created from these
+        # Resource manager tags to be bound to the instance. Tag keys and values have
+        # the same definition as resource manager tags. Keys must be in the format `
+        # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
+        # is ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        # Resource policies (names, not URLs) applied to instances created from these
         # properties. Note that for MachineImage, this is not supported yet.
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Array<String>]
@@ -15448,6 +15490,7 @@ module Google
           @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
@@ -16402,6 +16445,17 @@ module Google
         # @return [String]
         attr_accessor :bandwidth
       
+        # Up to 16 candidate prefixes that control the allocation of
+        # cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each
+        # prefix must be in the Global Unique Address (GUA) space. It is highly
+        # recommended that it be in a range owned by the requestor. A GUA in a range
+        # owned by Google will cause the request to fail. Google will select an
+        # available prefix from the supplied candidates or fail the request. If not
+        # supplied, a /125 from a Google-owned GUA block will be selected.
+        # Corresponds to the JSON property `candidateIpv6Subnets`
+        # @return [Array<String>]
+        attr_accessor :candidate_ipv6_subnets
+      
         # Up to 16 candidate prefixes that can be used to restrict the allocation of
         # cloudRouterIpAddress and customerRouterIpAddress for this attachment. All
         # prefixes must be within link-local address space (169.254.0.0/16) and must be /
@@ -16419,6 +16473,20 @@ module Google
         # @return [String]
         attr_accessor :cloud_router_ip_address
       
+        # [Output Only] IPv6 address + prefix length to be configured on Cloud Router
+        # Interface for this interconnect attachment.
+        # Corresponds to the JSON property `cloudRouterIpv6Address`
+        # @return [String]
+        attr_accessor :cloud_router_ipv6_address
+      
+        # If supplied, the interface id (index within the subnet) to be used for the
+        # cloud router address. The id must be in the range of 1 to 6. If a subnet mask
+        # is supplied, it must be /125, and the subnet should either be 0 or match the
+        # selected subnet.
+        # Corresponds to the JSON property `cloudRouterIpv6InterfaceId`
+        # @return [String]
+        attr_accessor :cloud_router_ipv6_interface_id
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -16429,6 +16497,20 @@ module Google
         # Corresponds to the JSON property `customerRouterIpAddress`
         # @return [String]
         attr_accessor :customer_router_ip_address
+      
+        # [Output Only] IPv6 address + prefix length to be configured on the customer
+        # router subinterface for this interconnect attachment.
+        # Corresponds to the JSON property `customerRouterIpv6Address`
+        # @return [String]
+        attr_accessor :customer_router_ipv6_address
+      
+        # If supplied, the interface id (index within the subnet) to be used for the
+        # customer router address. The id must be in the range of 1 to 6. If a subnet
+        # mask is supplied, it must be /125, and the subnet should either be 0 or match
+        # the selected subnet.
+        # Corresponds to the JSON property `customerRouterIpv6InterfaceId`
+        # @return [String]
+        attr_accessor :customer_router_ipv6_interface_id
       
         # [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.
         # ] Dataplane version for this InterconnectAttachment. This field is only
@@ -16611,6 +16693,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # The stack type for this interconnect attachment to identify whether the IPv6
+        # feature is enabled or not. If not specified, IPV4_ONLY will be used. This
+        # field can be both set at interconnect attachments creation and update
+        # interconnect attachment operations.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
         # [Output Only] The current state of this attachment's functionality. Enum
         # values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and
         # PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER,
@@ -16653,10 +16743,15 @@ module Google
         def update!(**args)
           @admin_enabled = args[:admin_enabled] if args.key?(:admin_enabled)
           @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
+          @candidate_ipv6_subnets = args[:candidate_ipv6_subnets] if args.key?(:candidate_ipv6_subnets)
           @candidate_subnets = args[:candidate_subnets] if args.key?(:candidate_subnets)
           @cloud_router_ip_address = args[:cloud_router_ip_address] if args.key?(:cloud_router_ip_address)
+          @cloud_router_ipv6_address = args[:cloud_router_ipv6_address] if args.key?(:cloud_router_ipv6_address)
+          @cloud_router_ipv6_interface_id = args[:cloud_router_ipv6_interface_id] if args.key?(:cloud_router_ipv6_interface_id)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @customer_router_ip_address = args[:customer_router_ip_address] if args.key?(:customer_router_ip_address)
+          @customer_router_ipv6_address = args[:customer_router_ipv6_address] if args.key?(:customer_router_ipv6_address)
+          @customer_router_ipv6_interface_id = args[:customer_router_ipv6_interface_id] if args.key?(:customer_router_ipv6_interface_id)
           @dataplane_version = args[:dataplane_version] if args.key?(:dataplane_version)
           @description = args[:description] if args.key?(:description)
           @edge_availability_domain = args[:edge_availability_domain] if args.key?(:edge_availability_domain)
@@ -16679,6 +16774,7 @@ module Google
           @router = args[:router] if args.key?(:router)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @vlan_tag8021q = args[:vlan_tag8021q] if args.key?(:vlan_tag8021q)
@@ -20595,7 +20691,7 @@ module Google
         # @return [String]
         attr_accessor :ipv6_access_type
       
-        # [Output Only] An IPv6 internal network address for this network interface.
+        # An IPv6 internal network address for this network interface.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
@@ -32385,6 +32481,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # If specified, the domain name will be used during the integration between the
+        # PSC connected endpoints and the Cloud DNS. For example, this is a valid domain
+        # name: "p.mycompany.com.". Current max number of domain names supported is 1.
+        # Corresponds to the JSON property `domainNames`
+        # @return [Array<String>]
+        attr_accessor :domain_names
+      
         # If true, enable the proxy protocol which is for supplying client TCP/IP
         # address data in TCP connections that traverse proxies on their way to
         # destination servers.
@@ -32473,6 +32576,7 @@ module Google
           @consumer_reject_lists = args[:consumer_reject_lists] if args.key?(:consumer_reject_lists)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @domain_names = args[:domain_names] if args.key?(:domain_names)
           @enable_proxy_protocol = args[:enable_proxy_protocol] if args.key?(:enable_proxy_protocol)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
@@ -34730,7 +34834,7 @@ module Google
         attr_accessor :ipv6_access_type
       
         # [Output Only] The range of internal IPv6 addresses that are owned by this
-        # subnetwork.
+        # subnetwork. Note this will be for private google access only eventually.
         # Corresponds to the JSON property `ipv6CidrRange`
         # @return [String]
         attr_accessor :ipv6_cidr_range

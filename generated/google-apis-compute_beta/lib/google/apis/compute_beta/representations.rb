@@ -1834,6 +1834,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5854,6 +5860,7 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
           hash :labels, as: 'labels'
+          collection :licenses, as: 'licenses'
           property :multi_writer, as: 'multiWriter'
           property :on_update_action, as: 'onUpdateAction'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
@@ -8358,6 +8365,8 @@ module Google
       
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeBeta::NetworkPerformanceConfig, decorator: Google::Apis::ComputeBeta::NetworkPerformanceConfig::Representation
       
+          property :params, as: 'params', class: Google::Apis::ComputeBeta::InstanceParams, decorator: Google::Apis::ComputeBeta::InstanceParams::Representation
+      
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
@@ -9057,6 +9066,13 @@ module Google
         end
       end
       
+      class InstanceParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
       class InstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9085,6 +9101,7 @@ module Google
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
       
+          hash :resource_manager_tags, as: 'resourceManagerTags'
           collection :resource_policies, as: 'resourcePolicies'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::Scheduling, decorator: Google::Apis::ComputeBeta::Scheduling::Representation
       
@@ -9350,10 +9367,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_enabled, as: 'adminEnabled'
           property :bandwidth, as: 'bandwidth'
+          collection :candidate_ipv6_subnets, as: 'candidateIpv6Subnets'
           collection :candidate_subnets, as: 'candidateSubnets'
           property :cloud_router_ip_address, as: 'cloudRouterIpAddress'
+          property :cloud_router_ipv6_address, as: 'cloudRouterIpv6Address'
+          property :cloud_router_ipv6_interface_id, as: 'cloudRouterIpv6InterfaceId'
           property :creation_timestamp, as: 'creationTimestamp'
           property :customer_router_ip_address, as: 'customerRouterIpAddress'
+          property :customer_router_ipv6_address, as: 'customerRouterIpv6Address'
+          property :customer_router_ipv6_interface_id, as: 'customerRouterIpv6InterfaceId'
           property :dataplane_version, as: 'dataplaneVersion'
           property :description, as: 'description'
           property :edge_availability_domain, as: 'edgeAvailabilityDomain'
@@ -9378,6 +9400,7 @@ module Google
           property :router, as: 'router'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
+          property :stack_type, as: 'stackType'
           property :state, as: 'state'
           property :type, as: 'type'
           property :vlan_tag8021q, as: 'vlanTag8021q'
@@ -13409,6 +13432,7 @@ module Google
           collection :consumer_reject_lists, as: 'consumerRejectLists'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          collection :domain_names, as: 'domainNames'
           property :enable_proxy_protocol, as: 'enableProxyProtocol'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
