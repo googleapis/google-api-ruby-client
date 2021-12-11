@@ -239,6 +239,11 @@ module Google
         attr_accessor :auto_storage_increase
         alias_method :auto_storage_increase?, :auto_storage_increase
       
+        # The KMS key name used for the csql instance.
+        # Corresponds to the JSON property `cmekKeyName`
+        # @return [String]
+        attr_accessor :cmek_key_name
+      
         # The Cloud SQL default instance level collation.
         # Corresponds to the JSON property `collation`
         # @return [String]
@@ -326,6 +331,7 @@ module Google
         def update!(**args)
           @activation_policy = args[:activation_policy] if args.key?(:activation_policy)
           @auto_storage_increase = args[:auto_storage_increase] if args.key?(:auto_storage_increase)
+          @cmek_key_name = args[:cmek_key_name] if args.key?(:cmek_key_name)
           @collation = args[:collation] if args.key?(:collation)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)

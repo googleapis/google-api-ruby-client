@@ -323,6 +323,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activation_policy, as: 'activationPolicy'
           property :auto_storage_increase, as: 'autoStorageIncrease'
+          property :cmek_key_name, as: 'cmekKeyName'
           property :collation, as: 'collation'
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'
