@@ -2810,7 +2810,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a snapshot of a specified persistent disk.
+        # Creates a snapshot of a specified persistent disk. For regular snapshot
+        # creation, consider using snapshots.insert instead, as that method supports
+        # more features, such as creating snapshots in a project different from the
+        # source disk project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -3386,8 +3389,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the specified disk with the data included in the request. Update is
-        # performed only on selected fields included as part of update-mask. Only the
+        # Updates the specified disk with the data included in the request. The update
+        # is performed only on selected fields included as part of update-mask. Only the
         # following fields can be modified: user_license.
         # @param [String] project
         #   Project ID for this request.
@@ -7365,8 +7368,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7449,8 +7451,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7578,8 +7579,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10775,20 +10775,17 @@ module Google
         # stopInstances operation is marked DONE if the stopInstances request is
         # successful. The underlying actions take additional time. You must separately
         # verify the status of the STOPPING action with the listmanagedinstances method.
-        # If the instanceLifecyclePolicy.metadataBasedReadinessSignal field is set on
-        # the Instance Group Manager, each instance will be initialized before it is
-        # stopped, to give user programs time to perform necessary tasks. To initialize
-        # an instance, the Instance Group Manager sets the metadata key google-compute-
-        # initialization-intent to value INITIALIZE_AND_STOP on the instance, and waits
-        # for the user program to signal it is ready. This is done by setting the guest
-        # attribute path google-compute/initialization-state to value INITIALIZED. If
-        # the instance does not signal successful initialization (does not set the guest
-        # attribute to INITIALIZED) before timeout, the initialization is considered
-        # failed and the instance is not stopped. If the group is part of a backend
-        # service that has enabled connection draining, it can take up to 60 seconds
-        # after the connection draining duration has elapsed before the VM instance is
-        # suspended. Stopped instances can be started using the startInstances method.
-        # You can specify a maximum of 1000 instances with this method per request.
+        # If the standbyPolicy.initialDelaySec field is set, the group delays stopping
+        # the instances until initialDelaySec have passed from instance.
+        # creationTimestamp (that is, when the instance was created). This delay gives
+        # your application time to set itself up and initialize on the instance. If more
+        # than initialDelaySec seconds have passed since instance.creationTimestamp when
+        # this method is called, there will be zero delay. If the group is part of a
+        # backend service that has enabled connection draining, it can take up to 60
+        # seconds after the connection draining duration has elapsed before the VM
+        # instance is stopped. Stopped instances can be started using the startInstances
+        # method. You can specify a maximum of 1000 instances with this method per
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -10848,21 +10845,17 @@ module Google
         # suspendInstances operation is marked DONE if the suspendInstances request is
         # successful. The underlying actions take additional time. You must separately
         # verify the status of the SUSPENDING action with the listmanagedinstances
-        # method. If the instanceLifecyclePolicy.metadataBasedReadinessSignal field is
-        # set on the Instance Group Manager, each instance will be initialized before it
-        # is suspended, to give user programs time to perform necessary tasks. To
-        # initialize an instance, the Instance Group Manager sets the metadata key
-        # google-compute-initialization-intent to value INITIALIZE_AND_SUSPEND on the
-        # instance, and waits for the user program to signal it is ready. This is done
-        # by setting the guest attribute path google-compute/initialization-state to
-        # value INITIALIZED. If the instance does not signal successful initialization (
-        # does not set the guest attribute to INITIALIZED) before timeout, the
-        # initialization is considered failed and the instance is not suspended. If the
-        # group is part of a backend service that has enabled connection draining, it
-        # can take up to 60 seconds after the connection draining duration has elapsed
-        # before the VM instance is suspended. Suspended instances can be resumed using
-        # the resumeInstances method. You can specify a maximum of 1000 instances with
-        # this method per request.
+        # method. If the standbyPolicy.initialDelaySec field is set, the group delays
+        # suspension of the instances until initialDelaySec have passed from instance.
+        # creationTimestamp (that is, when the instance was created). This delay gives
+        # your application time to set itself up and initialize on the instance. If more
+        # than initialDelaySec seconds have passed since instance.creationTimestamp when
+        # this method is called, there will be zero delay. If the group is part of a
+        # backend service that has enabled connection draining, it can take up to 60
+        # seconds after the connection draining duration has elapsed before the VM
+        # instance is suspended. Suspended instances can be resumed using the
+        # resumeInstances method. You can specify a maximum of 1000 instances with this
+        # method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -23095,8 +23088,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23179,8 +23171,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23308,8 +23299,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23446,8 +23436,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23536,8 +23525,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23671,8 +23659,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25165,7 +25152,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a snapshot of this regional disk.
+        # Creates a snapshot of a specified persistent disk. For regular snapshot
+        # creation, consider using snapshots.insert instead, as that method supports
+        # more features, such as creating snapshots in a project different from the
+        # source disk project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -27929,20 +27919,17 @@ module Google
         # stopInstances operation is marked DONE if the stopInstances request is
         # successful. The underlying actions take additional time. You must separately
         # verify the status of the STOPPING action with the listmanagedinstances method.
-        # If the instanceLifecyclePolicy.metadataBasedReadinessSignal field is set on
-        # the Instance Group Manager, each instance will be initialized before it is
-        # stopped, to give user programs time to perform necessary tasks. To initialize
-        # an instance, the Instance Group Manager sets the metadata key google-compute-
-        # initialization-intent to value INITIALIZE_AND_STOP on the instance, and waits
-        # for the user program to signal it is ready. This is done by setting the guest
-        # attribute path google-compute/initialization-state to value INITIALIZED. If
-        # the instance does not signal successful initialization (does not set the guest
-        # attribute to INITIALIZED) before timeout, the initialization is considered
-        # failed and the instance is not stopped. If the group is part of a backend
-        # service that has enabled connection draining, it can take up to 60 seconds
-        # after the connection draining duration has elapsed before the VM instance is
-        # suspended. Stopped instances can be started using the startInstances method.
-        # You can specify a maximum of 1000 instances with this method per request.
+        # If the standbyPolicy.initialDelaySec field is set, the group delays stopping
+        # the instances until initialDelaySec have passed from instance.
+        # creationTimestamp (that is, when the instance was created). This delay gives
+        # your application time to set itself up and initialize on the instance. If more
+        # than initialDelaySec seconds have passed since instance.creationTimestamp when
+        # this method is called, there will be zero delay. If the group is part of a
+        # backend service that has enabled connection draining, it can take up to 60
+        # seconds after the connection draining duration has elapsed before the VM
+        # instance is stopped. Stopped instances can be started using the startInstances
+        # method. You can specify a maximum of 1000 instances with this method per
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -28002,21 +27989,17 @@ module Google
         # suspendInstances operation is marked DONE if the suspendInstances request is
         # successful. The underlying actions take additional time. You must separately
         # verify the status of the SUSPENDING action with the listmanagedinstances
-        # method. If the instanceLifecyclePolicy.metadataBasedReadinessSignal field is
-        # set on the Instance Group Manager, each instance will be initialized before it
-        # is suspended, to give user programs time to perform necessary tasks. To
-        # initialize an instance, the Instance Group Manager sets the metadata key
-        # google-compute-initialization-intent to value INITIALIZE_AND_SUSPEND on the
-        # instance, and waits for the user program to signal it is ready. This is done
-        # by setting the guest attribute path google-compute/initialization-state to
-        # value INITIALIZED. If the instance does not signal successful initialization (
-        # does not set the guest attribute to INITIALIZED) before timeout, the
-        # initialization is considered failed and the instance is not suspended. If the
-        # group is part of a backend service that has enabled connection draining, it
-        # can take up to 60 seconds after the connection draining duration has elapsed
-        # before the VM instance is suspended. Suspended instances can be resumed using
-        # the resumeInstances method. You can specify a maximum of 1000 instances with
-        # this method per request.
+        # method. If the standbyPolicy.initialDelaySec field is set, the group delays
+        # suspension of the instances until initialDelaySec have passed from instance.
+        # creationTimestamp (that is, when the instance was created). This delay gives
+        # your application time to set itself up and initialize on the instance. If more
+        # than initialDelaySec seconds have passed since instance.creationTimestamp when
+        # this method is called, there will be zero delay. If the group is part of a
+        # backend service that has enabled connection draining, it can take up to 60
+        # seconds after the connection draining duration has elapsed before the VM
+        # instance is suspended. Suspended instances can be resumed using the
+        # resumeInstances method. You can specify a maximum of 1000 instances with this
+        # method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -30231,8 +30214,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30321,8 +30303,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30976,8 +30957,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31067,8 +31047,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32003,8 +31982,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32094,8 +32072,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32228,8 +32205,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32282,8 +32258,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35548,8 +35523,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35681,8 +35655,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35817,8 +35790,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36068,7 +36040,9 @@ module Google
         end
         
         # Creates a snapshot in the specified project using the data included in the
-        # request.
+        # request. For regular snapshot creation, consider using this method instead of
+        # disks.createSnapshot, as this method supports more features, such as creating
+        # snapshots in a project different from the source disk project.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeAlpha::Snapshot] snapshot_object
@@ -36412,8 +36386,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36497,8 +36470,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37816,8 +37788,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37900,8 +37871,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38029,8 +37999,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38417,8 +38386,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38855,8 +38823,7 @@ module Google
         #   operation with the same request ID was received, and if so, will ignore the
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface:
-        #   MixerMutationRequestBuilder
+        #   UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

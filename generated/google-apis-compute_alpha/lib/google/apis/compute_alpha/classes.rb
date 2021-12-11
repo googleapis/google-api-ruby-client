@@ -470,15 +470,15 @@ module Google
       class AccessConfig
         include Google::Apis::Core::Hashable
       
-        # [Output Only] The first IPv6 address of the external IPv6 range associated
-        # with this instance, prefix length is stored in externalIpv6PrefixLength in
+        # The first IPv6 address of the external IPv6 range associated with this
+        # instance, prefix length is stored in externalIpv6PrefixLength in
         # ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork
         # associated with the instance will be allocated dynamically.
         # Corresponds to the JSON property `externalIpv6`
         # @return [String]
         attr_accessor :external_ipv6
       
-        # [Output Only] The prefix length of the external IPv6 range.
+        # The prefix length of the external IPv6 range.
         # Corresponds to the JSON property `externalIpv6PrefixLength`
         # @return [Fixnum]
         attr_accessor :external_ipv6_prefix_length
@@ -1614,6 +1614,17 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :source_image_encryption_key
       
+        # The source instant-snapshot to create this disk. When creating a new instance,
+        # one of initializeParams.sourceSnapshot or initializeParams.
+        # sourceInstantSnapshot initializeParams.sourceImage or disks.source is required
+        # except for local SSD. To create a disk with a snapshot that you created,
+        # specify the snapshot name in the following format: us-central1-a/
+        # instantSnapshots/my-backup If the source instant-snapshot is deleted later,
+        # this field will not be set.
+        # Corresponds to the JSON property `sourceInstantSnapshot`
+        # @return [String]
+        attr_accessor :source_instant_snapshot
+      
         # The source snapshot to create this disk. When creating a new instance, one of
         # initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.
         # source is required except for local SSD. To create a disk with a snapshot that
@@ -1652,6 +1663,7 @@ module Google
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
+          @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
         end
@@ -8845,6 +8857,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :dest_ip_ranges
       
+        # Region codes whose IP addresses will be used to match for destination of
+        # traffic. Should be specified as 2 letter country code defined as per ISO 3166
+        # alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is
+        # 5000.
+        # Corresponds to the JSON property `destRegionCodes`
+        # @return [Array<String>]
+        attr_accessor :dest_region_codes
+      
         # Pairs of IP protocols and ports that the rule should match.
         # Corresponds to the JSON property `layer4Configs`
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config>]
@@ -8867,6 +8887,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
       
+        # Region codes whose IP addresses will be used to match for source of traffic.
+        # Should be specified as 2 letter country code defined as per ISO 3166 alpha-2
+        # country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        # Corresponds to the JSON property `srcRegionCodes`
+        # @return [Array<String>]
+        attr_accessor :src_region_codes
+      
         # List of secure tag values, which should be matched at the source of the
         # traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there
         # is no srcIpRange, this rule will be ignored. Maximum number of source tag
@@ -8884,10 +8911,12 @@ module Google
           @dest_address_groups = args[:dest_address_groups] if args.key?(:dest_address_groups)
           @dest_fqdns = args[:dest_fqdns] if args.key?(:dest_fqdns)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
+          @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_address_groups = args[:src_address_groups] if args.key?(:src_address_groups)
           @src_fqdns = args[:src_fqdns] if args.key?(:src_fqdns)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
+          @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
         end
       end
@@ -9045,6 +9074,13 @@ module Google
         # @return [Boolean]
         attr_accessor :allow_global_access
         alias_method :allow_global_access?, :allow_global_access
+      
+        # This is used in PSC consumer ForwardingRule to control whether the PSC
+        # endpoint can be accessed from another region.
+        # Corresponds to the JSON property `allowPscGlobalAccess`
+        # @return [Boolean]
+        attr_accessor :allow_psc_global_access
+        alias_method :allow_psc_global_access?, :allow_psc_global_access
       
         # Identifies the backend service to which the forwarding rule sends traffic.
         # Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must
@@ -9291,6 +9327,7 @@ module Google
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @all_ports = args[:all_ports] if args.key?(:all_ports)
           @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
+          @allow_psc_global_access = args[:allow_psc_global_access] if args.key?(:allow_psc_global_access)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -14042,6 +14079,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::NetworkPerformanceConfig]
         attr_accessor :network_performance_config
       
+        # Additional instance params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputeAlpha::InstanceParams]
+        attr_accessor :params
+      
         # PostKeyRevocationActionType of the instance.
         # Corresponds to the JSON property `postKeyRevocationActionType`
         # @return [String]
@@ -14217,6 +14259,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
+          @params = args[:params] if args.key?(:params)
           @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @preserved_state_size_gb = args[:preserved_state_size_gb] if args.key?(:preserved_state_size_gb)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
@@ -17178,6 +17221,28 @@ module Google
         end
       end
       
+      # Additional instance params.
+      class InstanceParams
+        include Google::Apis::Core::Hashable
+      
+        # Resource manager tags to be bound to the instance. Tag keys and values have
+        # the same definition as resource manager tags. Keys must be in the format `
+        # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
+        # is ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
       # 
       class InstanceProperties
         include Google::Apis::Core::Hashable
@@ -17286,7 +17351,15 @@ module Google
         # @return [Google::Apis::ComputeAlpha::ReservationAffinity]
         attr_accessor :reservation_affinity
       
-        # Resource policies (names, not ULRs) applied to instances created from these
+        # Resource manager tags to be bound to the instance. Tag keys and values have
+        # the same definition as resource manager tags. Keys must be in the format `
+        # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
+        # is ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        # Resource policies (names, not URLs) applied to instances created from these
         # properties. Note that for MachineImage, this is not supported yet.
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Array<String>]
@@ -17349,6 +17422,7 @@ module Google
           @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @secure_tags = args[:secure_tags] if args.key?(:secure_tags)
@@ -18154,6 +18228,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] Status information for the instant snapshot resource.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeAlpha::InstantSnapshotResourceStatus]
+        attr_accessor :resource_status
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -18219,6 +18298,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -18516,6 +18596,25 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class InstantSnapshotResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The storage size of this instant snapshot.
+        # Corresponds to the JSON property `storageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :storage_size_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_size_bytes = args[:storage_size_bytes] if args.key?(:storage_size_bytes)
         end
       end
       
@@ -24235,7 +24334,7 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # [Output Only] The prefix length of the primary internal IPv6 range.
+        # The prefix length of the primary internal IPv6 range.
         # Corresponds to the JSON property `internalIpv6PrefixLength`
         # @return [Fixnum]
         attr_accessor :internal_ipv6_prefix_length
@@ -24254,7 +24353,7 @@ module Google
         # @return [String]
         attr_accessor :ipv6_access_type
       
-        # [Output Only] An IPv6 internal network address for this network interface.
+        # An IPv6 internal network address for this network interface.
         # Corresponds to the JSON property `ipv6Address`
         # @return [String]
         attr_accessor :ipv6_address
@@ -25361,9 +25460,9 @@ module Google
         attr_accessor :disks
       
         # Instance data that shows consumed resources on the node.
-        # Corresponds to the JSON property `instanceConsumptionDatas`
+        # Corresponds to the JSON property `instanceConsumptionData`
         # @return [Array<Google::Apis::ComputeAlpha::InstanceConsumptionData>]
-        attr_accessor :instance_consumption_datas
+        attr_accessor :instance_consumption_data
       
         # Instances scheduled on this node.
         # Corresponds to the JSON property `instances`
@@ -25416,7 +25515,7 @@ module Google
           @consumed_resources = args[:consumed_resources] if args.key?(:consumed_resources)
           @cpu_overcommit_type = args[:cpu_overcommit_type] if args.key?(:cpu_overcommit_type)
           @disks = args[:disks] if args.key?(:disks)
-          @instance_consumption_datas = args[:instance_consumption_datas] if args.key?(:instance_consumption_datas)
+          @instance_consumption_data = args[:instance_consumption_data] if args.key?(:instance_consumption_data)
           @instances = args[:instances] if args.key?(:instances)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
@@ -37655,7 +37754,7 @@ module Google
       
         # If specified, the domain name will be used during the integration between the
         # PSC connected endpoints and the Cloud DNS. For example, this is a valid domain
-        # name: "p.mycompany.com".
+        # name: "p.mycompany.com.". Current max number of domain names supported is 1.
         # Corresponds to the JSON property `domainNames`
         # @return [Array<String>]
         attr_accessor :domain_names
@@ -38655,6 +38754,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CustomerEncryptionKey]
         attr_accessor :snapshot_encryption_key
       
+        # Indicates the type of the snapshot.
+        # Corresponds to the JSON property `snapshotType`
+        # @return [String]
+        attr_accessor :snapshot_type
+      
         # The source disk used to create this snapshot.
         # Corresponds to the JSON property `sourceDisk`
         # @return [String]
@@ -38751,6 +38855,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @snapshot_encryption_key = args[:snapshot_encryption_key] if args.key?(:snapshot_encryption_key)
+          @snapshot_type = args[:snapshot_type] if args.key?(:snapshot_type)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_encryption_key = args[:source_disk_encryption_key] if args.key?(:source_disk_encryption_key)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
@@ -40374,7 +40479,7 @@ module Google
         attr_accessor :ipv6_access_type
       
         # [Output Only] The range of internal IPv6 addresses that are owned by this
-        # subnetwork.
+        # subnetwork. Note this will be for private google access only eventually.
         # Corresponds to the JSON property `ipv6CidrRange`
         # @return [String]
         attr_accessor :ipv6_cidr_range
