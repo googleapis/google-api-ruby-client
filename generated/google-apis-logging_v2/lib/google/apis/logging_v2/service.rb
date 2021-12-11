@@ -53,7 +53,7 @@ module Google
         # Router can be configured for Google Cloud projects, folders, organizations and
         # billing accounts. Once configured for an organization, it applies to all
         # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
+        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
         # for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
@@ -1613,7 +1613,7 @@ module Google
         # Router can be configured for Google Cloud projects, folders, organizations and
         # billing accounts. Once configured for an organization, it applies to all
         # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
+        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
         # for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
@@ -3613,7 +3613,7 @@ module Google
         # Router can be configured for Google Cloud projects, folders, organizations and
         # billing accounts. Once configured for an organization, it applies to all
         # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
+        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
         # for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
@@ -4904,7 +4904,7 @@ module Google
         # Router can be configured for Google Cloud projects, folders, organizations and
         # billing accounts. Once configured for an organization, it applies to all
         # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
+        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
         # for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
@@ -6538,7 +6538,7 @@ module Google
         # Router can be configured for Google Cloud projects, folders, organizations and
         # billing accounts. Once configured for an organization, it applies to all
         # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Logs Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
+        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
         # for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
