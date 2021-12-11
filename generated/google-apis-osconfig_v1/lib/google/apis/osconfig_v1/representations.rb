@@ -478,7 +478,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PausePatchDeploymentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecurringSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumePatchDeploymentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1314,6 +1326,7 @@ module Google
       
           property :rollout, as: 'rollout', class: Google::Apis::OsconfigV1::PatchRollout, decorator: Google::Apis::OsconfigV1::PatchRollout::Representation
       
+          property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1403,6 +1416,12 @@ module Google
         end
       end
       
+      class PausePatchDeploymentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RecurringSchedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1419,6 +1438,12 @@ module Google
       
           property :weekly, as: 'weekly', class: Google::Apis::OsconfigV1::WeeklySchedule, decorator: Google::Apis::OsconfigV1::WeeklySchedule::Representation
       
+        end
+      end
+      
+      class ResumePatchDeploymentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

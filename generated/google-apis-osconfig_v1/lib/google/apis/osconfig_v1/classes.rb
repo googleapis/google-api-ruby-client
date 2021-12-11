@@ -2765,6 +2765,11 @@ module Google
         # @return [Google::Apis::OsconfigV1::PatchRollout]
         attr_accessor :rollout
       
+        # Output only. Current state of the patch deployment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Output only. Time the patch deployment was last updated. Timestamp is in [
         # RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `updateTime`
@@ -2787,6 +2792,7 @@ module Google
           @patch_config = args[:patch_config] if args.key?(:patch_config)
           @recurring_schedule = args[:recurring_schedule] if args.key?(:recurring_schedule)
           @rollout = args[:rollout] if args.key?(:rollout)
+          @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -3171,6 +3177,19 @@ module Google
         end
       end
       
+      # A request message for pausing a patch deployment.
+      class PausePatchDeploymentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Sets the time for recurring patch deployments.
       class RecurringSchedule
         include Google::Apis::Core::Hashable
@@ -3241,6 +3260,19 @@ module Google
           @time_of_day = args[:time_of_day] if args.key?(:time_of_day)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @weekly = args[:weekly] if args.key?(:weekly)
+        end
+      end
+      
+      # A request message for resuming a patch deployment.
+      class ResumePatchDeploymentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
