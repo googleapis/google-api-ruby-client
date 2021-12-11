@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetadataOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NotificationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -385,6 +391,16 @@ module Google
         end
       end
       
+      class MetadataOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gid, as: 'gid'
+          property :mode, as: 'mode'
+          property :symlink, as: 'symlink'
+          property :uid, as: 'uid'
+        end
+      end
+      
       class NotificationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -559,6 +575,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delete_objects_from_source_after_transfer, as: 'deleteObjectsFromSourceAfterTransfer'
           property :delete_objects_unique_in_sink, as: 'deleteObjectsUniqueInSink'
+          property :metadata_options, as: 'metadataOptions', class: Google::Apis::StoragetransferV1::MetadataOptions, decorator: Google::Apis::StoragetransferV1::MetadataOptions::Representation
+      
           property :overwrite_objects_already_existing_in_sink, as: 'overwriteObjectsAlreadyExistingInSink'
         end
       end
@@ -573,6 +591,8 @@ module Google
           property :gcs_data_sink, as: 'gcsDataSink', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
       
           property :gcs_data_source, as: 'gcsDataSource', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
+      
+          property :gcs_intermediate_data_location, as: 'gcsIntermediateDataLocation', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
       
           property :http_data_source, as: 'httpDataSource', class: Google::Apis::StoragetransferV1::HttpData, decorator: Google::Apis::StoragetransferV1::HttpData::Representation
       

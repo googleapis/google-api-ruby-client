@@ -190,12 +190,10 @@ module Google
       class AzureCredentials
         include Google::Apis::Core::Hashable
       
-        # Required. Azure shared access signature (SAS). *Note:*Copying data from Azure
-        # Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-
-        # stages). During Preview, if you are copying data from ADLS Gen 2, you must use
-        # an account SAS. For more information about SAS, see [Grant limited access to
-        # Azure Storage resources using shared access signatures (SAS)](https://docs.
-        # microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+        # Required. Azure shared access signature (SAS). For more information about SAS,
+        # see [Grant limited access to Azure Storage resources using shared access
+        # signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/
+        # storage-sas-overview).
         # Corresponds to the JSON property `sasToken`
         # @return [String]
         attr_accessor :sas_token
@@ -532,26 +530,33 @@ module Google
         end
       end
       
-      # Logging configuration.
+      # Specifies the logging behavior for transfer operations. For cloud-to-cloud
+      # transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://
+      # cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For
+      # transfers to or from a POSIX file system, logs are stored in the Cloud Storage
+      # bucket that is the source or sink of the transfer. See [Managing Transfer for
+      # on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-
+      # prem-jobs#viewing-logs) for details.
       class LoggingConfig
         include Google::Apis::Core::Hashable
       
-        # Enables the Cloud Storage transfer logs for this transfer. This is only
-        # supported for transfer jobs with PosixFilesystem sources. The default is that
-        # logs are not generated for this transfer.
+        # For transfers with a PosixFilesystem source, this option enables the Cloud
+        # Storage transfer logs for this transfer.
         # Corresponds to the JSON property `enableOnpremGcsTransferLogs`
         # @return [Boolean]
         attr_accessor :enable_onprem_gcs_transfer_logs
         alias_method :enable_onprem_gcs_transfer_logs?, :enable_onprem_gcs_transfer_logs
       
-        # States in which `log_actions` are logged. If empty, no logs are generated.
-        # This is not yet supported for transfers with PosixFilesystem data sources.
+        # States in which `log_actions` are logged. If empty, no logs are generated. Not
+        # supported for transfers with PosixFilesystem data sources; use
+        # enable_onprem_gcs_transfer_logs instead.
         # Corresponds to the JSON property `logActionStates`
         # @return [Array<String>]
         attr_accessor :log_action_states
       
-        # Actions to be logged. If empty, no logs are generated. This is not yet
-        # supported for transfers with PosixFilesystem data sources.
+        # Specifies the actions to be logged. If empty, no logs are generated. Not
+        # supported for transfers with PosixFilesystem data sources; use
+        # enable_onprem_gcs_transfer_logs instead.
         # Corresponds to the JSON property `logActions`
         # @return [Array<String>]
         attr_accessor :log_actions
@@ -565,6 +570,51 @@ module Google
           @enable_onprem_gcs_transfer_logs = args[:enable_onprem_gcs_transfer_logs] if args.key?(:enable_onprem_gcs_transfer_logs)
           @log_action_states = args[:log_action_states] if args.key?(:log_action_states)
           @log_actions = args[:log_actions] if args.key?(:log_actions)
+        end
+      end
+      
+      # Specifies the metadata options for running a transfer.
+      class MetadataOptions
+        include Google::Apis::Core::Hashable
+      
+        # Specifies how each file's GID attribute should be handled by the transfer. If
+        # unspecified, the default behavior is the same as GID_SKIP when the source is a
+        # POSIX file system.
+        # Corresponds to the JSON property `gid`
+        # @return [String]
+        attr_accessor :gid
+      
+        # Specifies how each file's mode attribute should be handled by the transfer. If
+        # unspecified, the default behavior is the same as MODE_SKIP when the source is
+        # a POSIX file system.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Specifies how symlinks should be handled by the transfer. If unspecified, the
+        # default behavior is the same as SYMLINK_SKIP when the source is a POSIX file
+        # system.
+        # Corresponds to the JSON property `symlink`
+        # @return [String]
+        attr_accessor :symlink
+      
+        # Specifies how each file's UID attribute should be handled by the transfer. If
+        # unspecified, the default behavior is the same as UID_SKIP when the source is a
+        # POSIX file system.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gid = args[:gid] if args.key?(:gid)
+          @mode = args[:mode] if args.key?(:mode)
+          @symlink = args[:symlink] if args.key?(:symlink)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -1167,7 +1217,13 @@ module Google
         # @return [String]
         attr_accessor :latest_operation_name
       
-        # Logging configuration.
+        # Specifies the logging behavior for transfer operations. For cloud-to-cloud
+        # transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://
+        # cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For
+        # transfers to or from a POSIX file system, logs are stored in the Cloud Storage
+        # bucket that is the source or sink of the transfer. See [Managing Transfer for
+        # on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-
+        # prem-jobs#viewing-logs) for details.
         # Corresponds to the JSON property `loggingConfig`
         # @return [Google::Apis::StoragetransferV1::LoggingConfig]
         attr_accessor :logging_config
@@ -1368,6 +1424,11 @@ module Google
         attr_accessor :delete_objects_unique_in_sink
         alias_method :delete_objects_unique_in_sink?, :delete_objects_unique_in_sink
       
+        # Specifies the metadata options for running a transfer.
+        # Corresponds to the JSON property `metadataOptions`
+        # @return [Google::Apis::StoragetransferV1::MetadataOptions]
+        attr_accessor :metadata_options
+      
         # When to overwrite objects that already exist in the sink. The default is that
         # only objects that are different from the source are ovewritten. If true, all
         # objects in the sink whose name matches an object in the source are overwritten
@@ -1385,6 +1446,7 @@ module Google
         def update!(**args)
           @delete_objects_from_source_after_transfer = args[:delete_objects_from_source_after_transfer] if args.key?(:delete_objects_from_source_after_transfer)
           @delete_objects_unique_in_sink = args[:delete_objects_unique_in_sink] if args.key?(:delete_objects_unique_in_sink)
+          @metadata_options = args[:metadata_options] if args.key?(:metadata_options)
           @overwrite_objects_already_existing_in_sink = args[:overwrite_objects_already_existing_in_sink] if args.key?(:overwrite_objects_already_existing_in_sink)
         end
       end
@@ -1425,6 +1487,14 @@ module Google
         # Corresponds to the JSON property `gcsDataSource`
         # @return [Google::Apis::StoragetransferV1::GcsData]
         attr_accessor :gcs_data_source
+      
+        # In a GcsData resource, an object's name is the Cloud Storage object's name and
+        # its "last modification time" refers to the object's `updated` property of
+        # Cloud Storage objects, which changes when the content or the metadata of the
+        # object is updated.
+        # Corresponds to the JSON property `gcsIntermediateDataLocation`
+        # @return [Google::Apis::StoragetransferV1::GcsData]
+        attr_accessor :gcs_intermediate_data_location
       
         # An HttpData resource specifies a list of objects on the web to be transferred
         # over HTTP. The information of the objects to be transferred is contained in a
@@ -1504,6 +1574,7 @@ module Google
           @azure_blob_storage_data_source = args[:azure_blob_storage_data_source] if args.key?(:azure_blob_storage_data_source)
           @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
           @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
+          @gcs_intermediate_data_location = args[:gcs_intermediate_data_location] if args.key?(:gcs_intermediate_data_location)
           @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
           @object_conditions = args[:object_conditions] if args.key?(:object_conditions)
           @posix_data_sink = args[:posix_data_sink] if args.key?(:posix_data_sink)
