@@ -22,6 +22,36 @@ module Google
   module Apis
     module GkehubV1alpha
       
+      # **Anthosobservability**: Per-Membership Feature spec.
+      class AnthosObservabilityMembershipSpec
+        include Google::Apis::Core::Hashable
+      
+        # use full of metrics rather than optimized metrics. See https://cloud.google.
+        # com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#
+        # optimized_metrics_default_metrics
+        # Corresponds to the JSON property `doNotOptimizeMetrics`
+        # @return [Boolean]
+        attr_accessor :do_not_optimize_metrics
+        alias_method :do_not_optimize_metrics?, :do_not_optimize_metrics
+      
+        # enable collecting and reporting metrics and logs from user apps See go/onyx-
+        # application-metrics-logs-user-guide
+        # Corresponds to the JSON property `enableStackdriverOnApplications`
+        # @return [Boolean]
+        attr_accessor :enable_stackdriver_on_applications
+        alias_method :enable_stackdriver_on_applications?, :enable_stackdriver_on_applications
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @do_not_optimize_metrics = args[:do_not_optimize_metrics] if args.key?(:do_not_optimize_metrics)
+          @enable_stackdriver_on_applications = args[:enable_stackdriver_on_applications] if args.key?(:enable_stackdriver_on_applications)
+        end
+      end
+      
       # Spec for App Dev Experience Feature.
       class AppDevExperienceFeatureSpec
         include Google::Apis::Core::Hashable
@@ -2253,6 +2283,11 @@ module Google
       class MembershipFeatureSpec
         include Google::Apis::Core::Hashable
       
+        # **Anthosobservability**: Per-Membership Feature spec.
+        # Corresponds to the JSON property `anthosobservability`
+        # @return [Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec]
+        attr_accessor :anthosobservability
+      
         # **Anthos Config Management**: Configuration for a single cluster. Intended to
         # parallel the ConfigManagement CR.
         # Corresponds to the JSON property `configmanagement`
@@ -2275,6 +2310,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @anthosobservability = args[:anthosobservability] if args.key?(:anthosobservability)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @mesh = args[:mesh] if args.key?(:mesh)
@@ -2731,6 +2767,13 @@ module Google
         # @return [String]
         attr_accessor :connect_version
       
+        # Optional. Major version of the Kubernetes cluster. This is only used to
+        # determine which version to use for the CustomResourceDefinition resources, `
+        # apiextensions/v1beta1` or`apiextensions/v1`.
+        # Corresponds to the JSON property `k8sVersion`
+        # @return [String]
+        attr_accessor :k8s_version
+      
         # Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for
         # CustomResourceDefinition resources. This option should be set for clusters
         # with Kubernetes apiserver versions <1.16.
@@ -2746,6 +2789,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connect_version = args[:connect_version] if args.key?(:connect_version)
+          @k8s_version = args[:k8s_version] if args.key?(:k8s_version)
           @v1beta1_crd = args[:v1beta1_crd] if args.key?(:v1beta1_crd)
         end
       end
