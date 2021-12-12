@@ -1198,6 +1198,13 @@ module Google
         # @return [String]
         attr_accessor :connect_version
       
+        # Optional. Major version of the Kubernetes cluster. This is only used to
+        # determine which version to use for the CustomResourceDefinition resources, `
+        # apiextensions/v1beta1` or`apiextensions/v1`.
+        # Corresponds to the JSON property `k8sVersion`
+        # @return [String]
+        attr_accessor :k8s_version
+      
         # Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for
         # CustomResourceDefinition resources. This option should be set for clusters
         # with Kubernetes apiserver versions <1.16.
@@ -1213,6 +1220,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connect_version = args[:connect_version] if args.key?(:connect_version)
+          @k8s_version = args[:k8s_version] if args.key?(:k8s_version)
           @v1beta1_crd = args[:v1beta1_crd] if args.key?(:v1beta1_crd)
         end
       end
