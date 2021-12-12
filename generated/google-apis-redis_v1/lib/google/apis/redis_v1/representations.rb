@@ -22,7 +22,25 @@ module Google
   module Apis
     module RedisV1
       
+      class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterSlots
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Endpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateServiceConnect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RescheduleMaintenanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,9 +214,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Cluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uid, as: 'clusterUid'
+          property :create_time, as: 'createTime'
+          property :customer_managed_key, as: 'customerManagedKey'
+          property :default_replica_count, as: 'defaultReplicaCount'
+          property :display_name, as: 'displayName'
+          collection :endpoints, as: 'endpoints', class: Google::Apis::RedisV1::Endpoint, decorator: Google::Apis::RedisV1::Endpoint::Representation
+      
+          property :name, as: 'name'
+          property :private_service_connect, as: 'privateServiceConnect', class: Google::Apis::RedisV1::PrivateServiceConnect, decorator: Google::Apis::RedisV1::PrivateServiceConnect::Representation
+      
+          hash :redis_configs, as: 'redisConfigs'
+          collection :slots, as: 'slots', class: Google::Apis::RedisV1::ClusterSlots, decorator: Google::Apis::RedisV1::ClusterSlots::Representation
+      
+          property :state, as: 'state'
+          property :total_memory_size_gb, as: 'totalMemorySizeGb'
+        end
+      end
+      
+      class ClusterSlots
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_slots_exclusive, as: 'endSlotsExclusive'
+          property :memory_size_gb, as: 'memorySizeGb'
+          property :replica_count, as: 'replicaCount'
+          property :start_slots_inclusive, as: 'startSlotsInclusive'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Endpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :port, as: 'port'
         end
       end
       
@@ -411,6 +474,14 @@ module Google
           property :rdb_next_snapshot_time, as: 'rdbNextSnapshotTime'
           property :rdb_snapshot_period, as: 'rdbSnapshotPeriod'
           property :rdb_snapshot_start_time, as: 'rdbSnapshotStartTime'
+        end
+      end
+      
+      class PrivateServiceConnect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :psc_service, as: 'pscService'
+          property :psc_service_route, as: 'pscServiceRoute'
         end
       end
       

@@ -22,6 +22,137 @@ module Google
   module Apis
     module RedisV1
       
+      # A cluster instance.
+      class Cluster
+        include Google::Apis::Core::Hashable
+      
+        # Output only. UID of the cluster for use by Pantheon for analytics.
+        # Corresponds to the JSON property `clusterUid`
+        # @return [String]
+        attr_accessor :cluster_uid
+      
+        # Output only. The timestamp associated with the cluster creation request.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Input only. The KMS key reference that the customer provides when trying to
+        # create the instance.
+        # Corresponds to the JSON property `customerManagedKey`
+        # @return [String]
+        attr_accessor :customer_managed_key
+      
+        # Optional. The number of replica nodes per shard. Valid range is [1-2] and
+        # defaults to 1.
+        # Corresponds to the JSON property `defaultReplicaCount`
+        # @return [Fixnum]
+        attr_accessor :default_replica_count
+      
+        # Optional. An arbitrary and optional user-provided name for the cluster.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Hostname or IP address and port pairs used to connect to the
+        # cluster.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::RedisV1::Endpoint>]
+        attr_accessor :endpoints
+      
+        # Required. Unique name of the resource in this scope including project and
+        # location using the form: `projects/`project_id`/locations/`location_id`/
+        # clusters/`cluster_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Contains private service connect specific options.
+        # Corresponds to the JSON property `privateServiceConnect`
+        # @return [Google::Apis::RedisV1::PrivateServiceConnect]
+        attr_accessor :private_service_connect
+      
+        # Optional. Redis configuration parameters, according to http://redis.io/topics/
+        # config. Currently, the only supported parameters are: Redis version 6.x and
+        # newer: * lfu-decay-time * lfu-log-factor * maxmemory-policy
+        # Corresponds to the JSON property `redisConfigs`
+        # @return [Hash<String,String>]
+        attr_accessor :redis_configs
+      
+        # Output only. The slots making up the cluster. Read-only. In future versions
+        # this will be writable to allow for heterogeneous clusters.
+        # Corresponds to the JSON property `slots`
+        # @return [Array<Google::Apis::RedisV1::ClusterSlots>]
+        attr_accessor :slots
+      
+        # Output only. The current state of this cluster. Can be CREATING, READY,
+        # UPDATING, DELETING and SUSPENDED
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. Redis memory size in GiB for the entire cluster. Defaults to 32.
+        # Corresponds to the JSON property `totalMemorySizeGb`
+        # @return [Fixnum]
+        attr_accessor :total_memory_size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_managed_key = args[:customer_managed_key] if args.key?(:customer_managed_key)
+          @default_replica_count = args[:default_replica_count] if args.key?(:default_replica_count)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @name = args[:name] if args.key?(:name)
+          @private_service_connect = args[:private_service_connect] if args.key?(:private_service_connect)
+          @redis_configs = args[:redis_configs] if args.key?(:redis_configs)
+          @slots = args[:slots] if args.key?(:slots)
+          @state = args[:state] if args.key?(:state)
+          @total_memory_size_gb = args[:total_memory_size_gb] if args.key?(:total_memory_size_gb)
+        end
+      end
+      
+      # A series of slots belonging to a cluster.
+      class ClusterSlots
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The end of the slots that make up this series.
+        # Corresponds to the JSON property `endSlotsExclusive`
+        # @return [Fixnum]
+        attr_accessor :end_slots_exclusive
+      
+        # Output only. The total size of keyspace this series has.
+        # Corresponds to the JSON property `memorySizeGb`
+        # @return [Fixnum]
+        attr_accessor :memory_size_gb
+      
+        # Output only. The number of replicas this series has.
+        # Corresponds to the JSON property `replicaCount`
+        # @return [Fixnum]
+        attr_accessor :replica_count
+      
+        # Output only. The start of the slots that make up this series.
+        # Corresponds to the JSON property `startSlotsInclusive`
+        # @return [Fixnum]
+        attr_accessor :start_slots_inclusive
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_slots_exclusive = args[:end_slots_exclusive] if args.key?(:end_slots_exclusive)
+          @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
+          @replica_count = args[:replica_count] if args.key?(:replica_count)
+          @start_slots_inclusive = args[:start_slots_inclusive] if args.key?(:start_slots_inclusive)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -36,6 +167,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # An endpoint exposed by a cluster. In the future we will add an enum to
+      # identify whether this endpoint is read/write or read-only when the feature is
+      # ready.
+      class Endpoint
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Hostname or IP address of the exposed Redis endpoint used by
+        # clients to connect to the service.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Output only. The port number of the exposed Redis endpoint.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @port = args[:port] if args.key?(:port)
         end
       end
       
@@ -884,6 +1043,33 @@ module Google
           @rdb_next_snapshot_time = args[:rdb_next_snapshot_time] if args.key?(:rdb_next_snapshot_time)
           @rdb_snapshot_period = args[:rdb_snapshot_period] if args.key?(:rdb_snapshot_period)
           @rdb_snapshot_start_time = args[:rdb_snapshot_start_time] if args.key?(:rdb_snapshot_start_time)
+        end
+      end
+      
+      # Contains private service connect specific options.
+      class PrivateServiceConnect
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The address of the Private Service Connect (PSC) service that the
+        # customer can use to connect this instance to their local network.
+        # Corresponds to the JSON property `pscService`
+        # @return [String]
+        attr_accessor :psc_service
+      
+        # Optional. The service route to connect using Private Service Connect. On
+        # Instance creation, this will automatically connect this route to this instance.
+        # Corresponds to the JSON property `pscServiceRoute`
+        # @return [String]
+        attr_accessor :psc_service_route
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @psc_service = args[:psc_service] if args.key?(:psc_service)
+          @psc_service_route = args[:psc_service_route] if args.key?(:psc_service_route)
         end
       end
       
