@@ -22,6 +22,12 @@ module Google
   module Apis
     module GkehubV1alpha
       
+      class AnthosObservabilityMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppDevExperienceFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -506,6 +512,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnthosObservabilityMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :do_not_optimize_metrics, as: 'doNotOptimizeMetrics'
+          property :enable_stackdriver_on_applications, as: 'enableStackdriverOnApplications'
+        end
       end
       
       class AppDevExperienceFeatureSpec
@@ -1120,6 +1134,8 @@ module Google
       class MembershipFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :anthosobservability, as: 'anthosobservability', class: Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec::Representation
+      
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec::Representation
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1alpha::IdentityServiceMembershipSpec::Representation
@@ -1236,6 +1252,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connect_version, as: 'connectVersion'
+          property :k8s_version, as: 'k8sVersion'
           property :v1beta1_crd, as: 'v1beta1Crd'
         end
       end
