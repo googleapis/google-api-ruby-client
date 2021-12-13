@@ -196,7 +196,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create an instance within a project.
+        # Create an instance within a project. Note that exactly one of Cluster.
+        # serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set.
+        # If serve_nodes is set to non-zero, then the cluster is manually scaled. If
+        # cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is
+        # enabled.
         # @param [String] parent
         #   Required. The unique name of the project in which to create the new instance.
         #   Values are of the form `projects/`project``.
@@ -697,7 +701,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a cluster within an instance.
+        # Creates a cluster within an instance. Note that exactly one of Cluster.
+        # serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set.
+        # If serve_nodes is set to non-zero, then the cluster is manually scaled. If
+        # cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is
+        # enabled.
         # @param [String] parent
         #   Required. The unique name of the instance in which to create the new cluster.
         #   Values are of the form `projects/`project`/instances/`instance``.
@@ -835,14 +843,20 @@ module Google
         end
         
         # Partially updates a cluster within a project. This method is the preferred way
-        # to update a Cluster.
+        # to update a Cluster. To enable and update autoscaling, set cluster_config.
+        # cluster_autoscaling_config. When autoscaling is enabled, serve_nodes is
+        # treated as an OUTPUT_ONLY field, meaning that updates to it are ignored. Note
+        # that an update cannot simultaneously set serve_nodes to non-zero and
+        # cluster_config.cluster_autoscaling_config to non-empty, and also specify both
+        # in the update_mask. To disable autoscaling, clear cluster_config.
+        # cluster_autoscaling_config, and explicitly set a serve_node count via the
+        # update_mask.
         # @param [String] name
         #   The unique name of the cluster. Values are of the form `projects/`project`/
         #   instances/`instance`/clusters/a-z*`.
         # @param [Google::Apis::BigtableadminV2::Cluster] cluster_object
         # @param [String] update_mask
-        #   Required. The subset of Cluster fields which should be replaced. Must be
-        #   explicitly set.
+        #   Required. The subset of Cluster fields which should be replaced.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -873,8 +887,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a cluster within an instance. UpdateCluster is deprecated. Please use
-        # PartialUpdateCluster instead.
+        # Updates a cluster within an instance. Note that UpdateCluster does not support
+        # updating cluster_config.cluster_autoscaling_config. In order to update it, you
+        # must use PartialUpdateCluster.
         # @param [String] name
         #   The unique name of the cluster. Values are of the form `projects/`project`/
         #   instances/`instance`/clusters/a-z*`.
