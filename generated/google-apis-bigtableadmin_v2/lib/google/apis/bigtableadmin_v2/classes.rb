@@ -457,8 +457,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The number of nodes allocated to this cluster. More nodes enable
-        # higher throughput and more consistent performance.
+        # The number of nodes allocated to this cluster. More nodes enable higher
+        # throughput and more consistent performance.
         # Corresponds to the JSON property `serveNodes`
         # @return [Fixnum]
         attr_accessor :serve_nodes
@@ -1115,13 +1115,16 @@ module Google
       class GetPolicyOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The policy format version to be returned. Valid values are 0, 1, and
-        # 3. Requests specifying an invalid value will be rejected. Requests for
-        # policies with any conditional bindings must specify version 3. Policies
-        # without any conditional bindings may specify any valid value or leave the
-        # field unset. To learn which resources support conditions in their IAM policies,
-        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        # resource-policies).
+        # Optional. The maximum policy version that will be used to format the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected. Requests for policies with any conditional role bindings must
+        # specify version 3. Policies with no conditional role bindings may specify any
+        # valid value or leave the field unset. The policy in the response might use the
+        # policy version that you specified, or it might use a lower policy version. For
+        # example, if you specify version 3, but the policy has no conditional role
+        # bindings, the response uses version 1. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies).
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -1718,8 +1721,7 @@ module Google
         # @return [Google::Apis::BigtableadminV2::Cluster]
         attr_accessor :cluster
       
-        # Required. The subset of Cluster fields which should be replaced. Must be
-        # explicitly set.
+        # Required. The subset of Cluster fields which should be replaced.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -2226,6 +2228,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Metadata type for the operation returned by google.bigtable.admin.v2.
+      # BigtableTableAdmin.UndeleteTable.
+      class UndeleteTableMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was cancelled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The name of the table being restored.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time at which this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
