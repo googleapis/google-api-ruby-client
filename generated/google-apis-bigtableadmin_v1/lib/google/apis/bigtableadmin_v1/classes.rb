@@ -217,8 +217,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The number of nodes allocated to this cluster. More nodes enable
-        # higher throughput and more consistent performance.
+        # The number of nodes allocated to this cluster. More nodes enable higher
+        # throughput and more consistent performance.
         # Corresponds to the JSON property `serveNodes`
         # @return [Fixnum]
         attr_accessor :serve_nodes
@@ -754,8 +754,7 @@ module Google
         # @return [Google::Apis::BigtableadminV1::Cluster]
         attr_accessor :cluster
       
-        # Required. The subset of Cluster fields which should be replaced. Must be
-        # explicitly set.
+        # Required. The subset of Cluster fields which should be replaced.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -917,6 +916,38 @@ module Google
           @estimated_copied_bytes = args[:estimated_copied_bytes] if args.key?(:estimated_copied_bytes)
           @estimated_size_bytes = args[:estimated_size_bytes] if args.key?(:estimated_size_bytes)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Metadata type for the operation returned by google.bigtable.admin.v2.
+      # BigtableTableAdmin.UndeleteTable.
+      class UndeleteTableMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was cancelled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The name of the table being restored.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time at which this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       

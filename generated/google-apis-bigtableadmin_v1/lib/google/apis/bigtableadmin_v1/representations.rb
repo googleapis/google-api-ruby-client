@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteTableMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateAppProfileMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +443,15 @@ module Google
           property :estimated_copied_bytes, :numeric_string => true, as: 'estimatedCopiedBytes'
           property :estimated_size_bytes, :numeric_string => true, as: 'estimatedSizeBytes'
           property :state, as: 'state'
+        end
+      end
+      
+      class UndeleteTableMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
         end
       end
       
