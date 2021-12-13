@@ -12,4 +12,5 @@ python3 -m pip install gcp-docuploader
 gem install --no-document toys
 
 # This is not called from autorelease, so don't run publish-reporter-script
-toys release perform -v --base-dir=generated --all=^google-apis- --enable-docs < /dev/null
+# TODO: Uncomment to re-enable releases on Jan 3, 2022.
+# toys release perform -v --base-dir=generated --all=^google-apis- --enable-docs < /dev/null
