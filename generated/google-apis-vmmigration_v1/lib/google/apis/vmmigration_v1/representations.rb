@@ -438,6 +438,7 @@ module Google
       class ComputeEngineTargetDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1::AppliedLicense, decorator: Google::Apis::VmmigrationV1::AppliedLicense::Representation
       
           property :boot_option, as: 'bootOption'
@@ -463,6 +464,7 @@ module Google
       class ComputeEngineTargetDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1::AppliedLicense, decorator: Google::Apis::VmmigrationV1::AppliedLicense::Representation
       
           property :boot_option, as: 'bootOption'

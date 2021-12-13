@@ -213,6 +213,11 @@ module Google
       class ComputeEngineTargetDefaults
         include Google::Apis::Core::Hashable
       
+        # Additional licenses to assign to the VM.
+        # Corresponds to the JSON property `additionalLicenses`
+        # @return [Array<String>]
+        attr_accessor :additional_licenses
+      
         # AppliedLicense holds the license data returned by adaptation module report.
         # Corresponds to the JSON property `appliedLicense`
         # @return [Google::Apis::VmmigrationV1::AppliedLicense]
@@ -303,6 +308,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @applied_license = args[:applied_license] if args.key?(:applied_license)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
@@ -326,6 +332,11 @@ module Google
       # target Compute Engine project.
       class ComputeEngineTargetDetails
         include Google::Apis::Core::Hashable
+      
+        # Additional licenses to assign to the VM.
+        # Corresponds to the JSON property `additionalLicenses`
+        # @return [Array<String>]
+        attr_accessor :additional_licenses
       
         # AppliedLicense holds the license data returned by adaptation module report.
         # Corresponds to the JSON property `appliedLicense`
@@ -416,6 +427,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @applied_license = args[:applied_license] if args.key?(:applied_license)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
