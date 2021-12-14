@@ -1,5 +1,9 @@
 # Release history for google-apis-dfareporting_v3_5
 
+### v0.6.0 (2021-12-14)
+
+* Unspecified changes
+
 ### v0.5.0 (2021-12-05)
 
 * Regenerated from discovery document revision 20211130
