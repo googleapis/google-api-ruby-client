@@ -639,7 +639,7 @@ module Google
         # @return [String]
         attr_accessor :apiproduct
       
-        # Status of the API product.
+        # Status of the API product. Valid values are `approved` or `revoked`.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -5224,7 +5224,13 @@ module Google
         # @return [String]
         attr_accessor :organization
       
-        # List of GCP projects associated with the Apigee organization.
+        # GCP project associated with the Apigee organization
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # DEPRECATED: Use `project_id`. An Apigee Organization is mapped to a single
+        # project.
         # Corresponds to the JSON property `projectIds`
         # @return [Array<String>]
         attr_accessor :project_ids
@@ -5236,6 +5242,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @organization = args[:organization] if args.key?(:organization)
+          @project_id = args[:project_id] if args.key?(:project_id)
           @project_ids = args[:project_ids] if args.key?(:project_ids)
         end
       end
