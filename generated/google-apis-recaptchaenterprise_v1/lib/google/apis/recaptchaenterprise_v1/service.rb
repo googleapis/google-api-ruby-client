@@ -361,7 +361,7 @@ module Google
         end
         
         # Search group memberships related to a given account.
-        # @param [String] parent
+        # @param [String] project
         #   Required. The name of the project to search related account group memberships
         #   from, in the format "projects/`project`".
         # @param [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest] google_cloud_recaptchaenterprise_v1_search_related_account_group_memberships_request_object
@@ -382,13 +382,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_relatedaccountgroupmemberships(parent, google_cloud_recaptchaenterprise_v1_search_related_account_group_memberships_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/relatedaccountgroupmemberships:search', options)
+        def search_project_relatedaccountgroupmemberships(project, google_cloud_recaptchaenterprise_v1_search_related_account_group_memberships_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+project}/relatedaccountgroupmemberships:search', options)
           command.request_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest::Representation
           command.request_object = google_cloud_recaptchaenterprise_v1_search_related_account_group_memberships_request_object
           command.response_representation = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse::Representation
           command.response_class = Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse
-          command.params['parent'] = parent unless parent.nil?
+          command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
