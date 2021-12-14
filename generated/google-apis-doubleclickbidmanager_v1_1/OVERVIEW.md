@@ -51,7 +51,7 @@ require "google/apis/doubleclickbidmanager_v1_1"
 client = Google::Apis::DoubleclickbidmanagerV1_1::DoubleClickBidManagerService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
