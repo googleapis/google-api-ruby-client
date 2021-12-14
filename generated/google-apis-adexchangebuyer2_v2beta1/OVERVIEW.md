@@ -51,7 +51,7 @@ require "google/apis/adexchangebuyer2_v2beta1"
 client = Google::Apis::Adexchangebuyer2V2beta1::AdExchangeBuyerIIService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
