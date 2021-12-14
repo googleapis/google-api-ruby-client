@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/google-api-ruby-client.git",
-        "sha": "047d1a2f2734b714a176329efbc3514bc107d438"
+        "sha": "fca0151534f544564e420ac01718dfc0faad12dd"
       }
     }
   ]
