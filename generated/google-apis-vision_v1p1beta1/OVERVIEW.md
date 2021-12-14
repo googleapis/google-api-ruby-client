@@ -51,7 +51,7 @@ require "google/apis/vision_v1p1beta1"
 client = Google::Apis::VisionV1p1beta1::VisionService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
