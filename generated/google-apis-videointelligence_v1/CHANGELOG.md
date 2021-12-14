@@ -1,5 +1,9 @@
 # Release history for google-apis-videointelligence_v1
 
+### v0.10.0 (2021-12-14)
+
+* Unspecified changes
+
 ### v0.9.0 (2021-10-21)
 
 * Unspecified changes
