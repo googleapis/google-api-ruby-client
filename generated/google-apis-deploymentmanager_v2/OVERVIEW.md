@@ -51,7 +51,7 @@ require "google/apis/deploymentmanager_v2"
 client = Google::Apis::DeploymentmanagerV2::DeploymentManagerService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
