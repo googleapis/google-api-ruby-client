@@ -688,6 +688,7 @@ module Google
           property :measurement_unit, as: 'measurementUnit'
           property :name, as: 'name'
           property :parameter_name, as: 'parameterName'
+          collection :restricted_metric_type, as: 'restrictedMetricType'
           property :scope, as: 'scope'
         end
       end
