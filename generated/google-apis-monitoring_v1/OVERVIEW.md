@@ -51,7 +51,7 @@ require "google/apis/monitoring_v1"
 client = Google::Apis::MonitoringV1::MonitoringService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
