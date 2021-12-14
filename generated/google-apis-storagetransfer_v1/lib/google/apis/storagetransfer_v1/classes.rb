@@ -1603,10 +1603,10 @@ module Google
       
         # The field mask of the fields in `transferJob` that are to be updated in this
         # request. Fields in `transferJob` that can be updated are: description,
-        # transfer_spec, notification_config, and status. To update the `transfer_spec`
-        # of the job, a complete transfer specification must be provided. An incomplete
-        # specification missing any required fields is rejected with the error
-        # INVALID_ARGUMENT.
+        # transfer_spec, notification_config, logging_config, and status. To update the `
+        # transfer_spec` of the job, a complete transfer specification must be provided.
+        # An incomplete specification missing any required fields is rejected with the
+        # error INVALID_ARGUMENT.
         # Corresponds to the JSON property `updateTransferJobFieldMask`
         # @return [String]
         attr_accessor :update_transfer_job_field_mask
