@@ -31,6 +31,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :labels
       
+        # Recommended action after this request.
+        # Corresponds to the JSON property `recommendedAction`
+        # @return [String]
+        attr_accessor :recommended_action
+      
         def initialize(**args)
            update!(**args)
         end
@@ -38,6 +43,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
+          @recommended_action = args[:recommended_action] if args.key?(:recommended_action)
         end
       end
       
@@ -320,6 +326,11 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TestingOptions]
         attr_accessor :testing_options
       
+        # Settings specific to keys that can be used for WAF (Web Application Firewall).
+        # Corresponds to the JSON property `wafSettings`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WafSettings]
+        attr_accessor :waf_settings
+      
         # Settings specific to keys that can be used by websites.
         # Corresponds to the JSON property `webSettings`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettings]
@@ -338,6 +349,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @testing_options = args[:testing_options] if args.key?(:testing_options)
+          @waf_settings = args[:waf_settings] if args.key?(:waf_settings)
           @web_settings = args[:web_settings] if args.key?(:web_settings)
         end
       end
@@ -735,6 +747,31 @@ module Google
           @hostname = args[:hostname] if args.key?(:hostname)
           @invalid_reason = args[:invalid_reason] if args.key?(:invalid_reason)
           @valid = args[:valid] if args.key?(:valid)
+        end
+      end
+      
+      # Settings specific to keys that can be used for WAF (Web Application Firewall).
+      class GoogleCloudRecaptchaenterpriseV1WafSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. The WAF feature for which this key is enabled.
+        # Corresponds to the JSON property `wafFeature`
+        # @return [String]
+        attr_accessor :waf_feature
+      
+        # Required. The WAF service that uses this key.
+        # Corresponds to the JSON property `wafService`
+        # @return [String]
+        attr_accessor :waf_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @waf_feature = args[:waf_feature] if args.key?(:waf_feature)
+          @waf_service = args[:waf_service] if args.key?(:waf_service)
         end
       end
       

@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1WafSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1WebKeySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -176,6 +182,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :labels, as: 'labels'
+          property :recommended_action, as: 'recommendedAction'
         end
       end
       
@@ -258,6 +265,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :testing_options, as: 'testingOptions', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TestingOptions, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TestingOptions::Representation
+      
+          property :waf_settings, as: 'wafSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WafSettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WafSettings::Representation
       
           property :web_settings, as: 'webSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettings::Representation
       
@@ -383,6 +392,14 @@ module Google
           property :hostname, as: 'hostname'
           property :invalid_reason, as: 'invalidReason'
           property :valid, as: 'valid'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1WafSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :waf_feature, as: 'wafFeature'
+          property :waf_service, as: 'wafService'
         end
       end
       
