@@ -891,6 +891,13 @@ module Google
         # @return [String]
         attr_accessor :parameter_name
       
+        # Optional. Types of restricted data that this metric may contain. Required for
+        # metrics with CURRENCY measurement unit. Must be empty for metrics with a non-
+        # CURRENCY measurement unit.
+        # Corresponds to the JSON property `restrictedMetricType`
+        # @return [Array<String>]
+        attr_accessor :restricted_metric_type
+      
         # Required. Immutable. The scope of this custom metric.
         # Corresponds to the JSON property `scope`
         # @return [String]
@@ -907,6 +914,7 @@ module Google
           @measurement_unit = args[:measurement_unit] if args.key?(:measurement_unit)
           @name = args[:name] if args.key?(:name)
           @parameter_name = args[:parameter_name] if args.key?(:parameter_name)
+          @restricted_metric_type = args[:restricted_metric_type] if args.key?(:restricted_metric_type)
           @scope = args[:scope] if args.key?(:scope)
         end
       end
