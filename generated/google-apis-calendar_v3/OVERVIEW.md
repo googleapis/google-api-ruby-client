@@ -51,7 +51,7 @@ require "google/apis/calendar_v3"
 client = Google::Apis::CalendarV3::CalendarService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
