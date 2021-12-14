@@ -51,7 +51,7 @@ require "google/apis/networkmanagement_v1beta1"
 client = Google::Apis::NetworkmanagementV1beta1::NetworkManagementService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
