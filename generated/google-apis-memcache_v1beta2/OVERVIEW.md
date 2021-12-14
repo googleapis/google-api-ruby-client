@@ -51,7 +51,7 @@ require "google/apis/memcache_v1beta2"
 client = Google::Apis::MemcacheV1beta2::CloudMemorystoreforMemcachedService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
