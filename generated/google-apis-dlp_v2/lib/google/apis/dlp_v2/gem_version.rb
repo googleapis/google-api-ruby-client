@@ -16,7 +16,7 @@ module Google
   module Apis
     module DlpV2
       # Version of the google-apis-dlp_v2 gem
-      GEM_VERSION = "0.15.0"
+      GEM_VERSION = "0.16.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
