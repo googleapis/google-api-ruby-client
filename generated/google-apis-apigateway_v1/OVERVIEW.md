@@ -51,7 +51,7 @@ require "google/apis/apigateway_v1"
 client = Google::Apis::ApigatewayV1::ApigatewayService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
