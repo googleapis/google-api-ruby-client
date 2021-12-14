@@ -51,7 +51,7 @@ require "google/apis/domains_v1alpha2"
 client = Google::Apis::DomainsV1alpha2::CloudDomainsService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
