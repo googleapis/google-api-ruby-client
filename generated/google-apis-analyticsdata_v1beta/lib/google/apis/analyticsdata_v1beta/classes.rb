@@ -488,7 +488,7 @@ module Google
       
       # Dimensions are attributes of your data. For example, the dimension city
       # indicates the city from which an event originates. Dimension values in report
-      # responses are strings; for example, city could be "Paris" or "New York".
+      # responses are strings; for example, the city could be "Paris" or "New York".
       # Requests are allowed up to 9 dimensions.
       class Dimension
         include Google::Apis::Core::Hashable
@@ -1483,18 +1483,6 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1beta::SchemaRestrictionResponse]
         attr_accessor :schema_restriction_response
       
-        # If `thresholdingApplied` is true, this report has thresholding applied and
-        # only returns data that meets the minimum aggregation thresholds. This boolean
-        # only indicates if thresholding was applied. It is possible for thresholding to
-        # be applied and no data is absent from the report, and this happens when all
-        # data is above the thresholds. To learn more, see [Data thresholds](https://
-        # support.google.com/analytics/answer/9383630) and [About Demographics and
-        # Interests](https://support.google.com/analytics/answer/2799357).
-        # Corresponds to the JSON property `thresholdingApplied`
-        # @return [Boolean]
-        attr_accessor :thresholding_applied
-        alias_method :thresholding_applied?, :thresholding_applied
-      
         # The property's current timezone. Intended to be used to interpret time-based
         # dimensions like `hour` and `minute`. Formatted as strings from the IANA Time
         # Zone database (https://www.iana.org/time-zones); for example "America/New_York"
@@ -1513,7 +1501,6 @@ module Google
           @data_loss_from_other_row = args[:data_loss_from_other_row] if args.key?(:data_loss_from_other_row)
           @empty_reason = args[:empty_reason] if args.key?(:empty_reason)
           @schema_restriction_response = args[:schema_restriction_response] if args.key?(:schema_restriction_response)
-          @thresholding_applied = args[:thresholding_applied] if args.key?(:thresholding_applied)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
