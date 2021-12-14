@@ -51,7 +51,7 @@ require "google/apis/dataproc_v1"
 client = Google::Apis::DataprocV1::DataprocService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
