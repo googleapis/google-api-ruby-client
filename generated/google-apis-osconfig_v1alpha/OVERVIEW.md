@@ -51,7 +51,7 @@ require "google/apis/osconfig_v1alpha"
 client = Google::Apis::OsconfigV1alpha::OSConfigService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
