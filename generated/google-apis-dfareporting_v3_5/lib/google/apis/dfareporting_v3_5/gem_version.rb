@@ -16,7 +16,7 @@ module Google
   module Apis
     module DfareportingV3_5
       # Version of the google-apis-dfareporting_v3_5 gem
-      GEM_VERSION = "0.5.0"
+      GEM_VERSION = "0.6.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.0"
