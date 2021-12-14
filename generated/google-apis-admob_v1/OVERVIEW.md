@@ -51,7 +51,7 @@ require "google/apis/admob_v1"
 client = Google::Apis::AdmobV1::AdMobService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
