@@ -51,7 +51,7 @@ require "google/apis/cloudbuild_v1alpha1"
 client = Google::Apis::CloudbuildV1alpha1::CloudBuildService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
