@@ -51,7 +51,7 @@ require "google/apis/androidpublisher_v3"
 client = Google::Apis::AndroidpublisherV3::AndroidPublisherService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
