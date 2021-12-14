@@ -2613,6 +2613,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :organization, as: 'organization'
+          property :project_id, as: 'projectId'
           collection :project_ids, as: 'projectIds'
         end
       end
