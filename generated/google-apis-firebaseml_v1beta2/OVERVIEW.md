@@ -51,7 +51,7 @@ require "google/apis/firebaseml_v1beta2"
 client = Google::Apis::FirebasemlV1beta2::FirebaseMLService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
