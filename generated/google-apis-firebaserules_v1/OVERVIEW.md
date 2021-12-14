@@ -51,7 +51,7 @@ require "google/apis/firebaserules_v1"
 client = Google::Apis::FirebaserulesV1::FirebaseRulesService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
