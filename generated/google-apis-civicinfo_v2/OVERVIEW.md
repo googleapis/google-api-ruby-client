@@ -51,7 +51,7 @@ require "google/apis/civicinfo_v2"
 client = Google::Apis::CivicinfoV2::CivicInfoService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
