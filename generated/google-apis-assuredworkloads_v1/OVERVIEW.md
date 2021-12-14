@@ -51,7 +51,7 @@ require "google/apis/assuredworkloads_v1"
 client = Google::Apis::AssuredworkloadsV1::AssuredworkloadsService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
