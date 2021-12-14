@@ -51,7 +51,7 @@ require "google/apis/sqladmin_v1beta4"
 client = Google::Apis::SqladminV1beta4::SQLAdminService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
