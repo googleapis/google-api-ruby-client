@@ -51,7 +51,7 @@ require "google/apis/jobs_v3p1beta1"
 client = Google::Apis::JobsV3p1beta1::CloudTalentSolutionService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
