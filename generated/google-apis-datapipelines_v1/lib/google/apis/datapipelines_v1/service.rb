@@ -50,8 +50,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Lists pipelines. Returns a "NOT_FOUND" error if the list is empty. Returns a "
-        # FORBIDDEN" error if the caller doesn't have permission to access it.
+        # Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have
+        # permission to access it.
         # @param [String] parent
         #   Required. The location name. For example: `projects/PROJECT_ID/locations/
         #   LOCATION_ID`.
@@ -60,11 +60,9 @@ module Google
         #   pipelines will be returned. Multiple filters can be applied and must be comma
         #   separated. Fields eligible for filtering are: + `type`: The type of the
         #   pipeline (streaming or batch). Allowed values are `ALL`, `BATCH`, and `
-        #   STREAMING`. + `executor_type`: The type of pipeline execution layer. This is
-        #   always Dataflow for now, but more executors may be added later. Allowed values
-        #   are `ALL` and `DATAFLOW`. + `status`: The activity status of the pipeline.
-        #   Allowed values are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`. For example, to
-        #   limit results to active batch processing pipelines: type:BATCH,status:ACTIVE
+        #   STREAMING`. + `status`: The activity status of the pipeline. Allowed values
+        #   are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`. For example, to limit results
+        #   to active batch processing pipelines: type:BATCH,status:ACTIVE
         # @param [Fixnum] page_size
         #   The maximum number of entities to return. The service may return fewer than
         #   this value, even if there are additional pages. If unspecified, the max limit
@@ -176,7 +174,7 @@ module Google
         # exists. Returns a "FORBIDDEN" error if the caller doesn't have permission to
         # access it.
         # @param [String] name
-        #   Required. The pipeeline name. For example: `projects/PROJECT_ID/locations/
+        #   Required. The pipeline name. For example: `projects/PROJECT_ID/locations/
         #   LOCATION_ID/pipelines/PIPELINE_ID`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -205,8 +203,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a pipeline. If successful, the updated [Pipeline] is returned. Returns
-        # `NOT_FOUND` if the pipeline doesn't exist. If UpdatePipeline does not return
+        # Updates a pipeline. If successful, the updated Pipeline is returned. Returns `
+        # NOT_FOUND` if the pipeline doesn't exist. If UpdatePipeline does not return
         # successfully, you can retry the UpdatePipeline request until you receive a
         # successful response.
         # @param [String] name
@@ -214,13 +212,13 @@ module Google
         #   pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers
         #   ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [
         #   Identifying projects](https://cloud.google.com/resource-manager/docs/creating-
-        #   managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID
+        #   managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID
         #   for the pipeline's location. The list of available locations can be obtained
-        #   by calling ListLocations. Note that the Data Pipelines service is not
-        #   available in all regions. It depends on Cloud Scheduler, an App Engine
-        #   application, so it's only available in [App Engine regions](https://cloud.
-        #   google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline.
-        #   Must be unique for the selected project and location.
+        #   by calling `google.cloud.location.Locations.ListLocations`. Note that the Data
+        #   Pipelines service is not available in all regions. It depends on Cloud
+        #   Scheduler, an App Engine application, so it's only available in [App Engine
+        #   regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is
+        #   the ID of the pipeline. Must be unique for the selected project and location.
         # @param [Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Pipeline] google_cloud_datapipelines_v1_pipeline_object
         # @param [String] update_mask
         #   The list of fields to be updated.
@@ -257,7 +255,7 @@ module Google
         # Creates a job for the specified pipeline directly. You can use this method
         # when the internal scheduler is not configured and you want to trigger the job
         # directly or through an external system. Returns a "NOT_FOUND" error if the
-        # pipeline doesn't exist. Returns a "FOBIDDEN" error if the user doesn't have
+        # pipeline doesn't exist. Returns a "FORBIDDEN" error if the user doesn't have
         # permission to access the pipeline or run jobs for the pipeline.
         # @param [String] name
         #   Required. The pipeline name. For example: `projects/PROJECT_ID/locations/
@@ -294,8 +292,7 @@ module Google
         
         # Freezes pipeline execution permanently. If there's a corresponding scheduler
         # entry, it's deleted, and the pipeline state is changed to "ARCHIVED". However,
-        # pipeline metadata is retained. Upon success, the pipeline state is updated to
-        # ARCHIVED.
+        # pipeline metadata is retained.
         # @param [String] name
         #   Required. The pipeline name. For example: `projects/PROJECT_ID/locations/
         #   LOCATION_ID/pipelines/PIPELINE_ID`.

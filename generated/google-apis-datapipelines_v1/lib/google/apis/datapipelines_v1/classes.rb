@@ -474,8 +474,8 @@ module Google
         end
       end
       
-      # The main pipeline entity and all the needed metadata to launch and manage
-      # linked jobs.
+      # The main pipeline entity and all the necessary metadata for launching and
+      # managing linked jobs.
       class GoogleCloudDatapipelinesV1Pipeline
         include Google::Apis::Core::Hashable
       
@@ -506,13 +506,13 @@ module Google
         # pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers
         # ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [
         # Identifying projects](https://cloud.google.com/resource-manager/docs/creating-
-        # managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID
+        # managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID
         # for the pipeline's location. The list of available locations can be obtained
-        # by calling ListLocations. Note that the Data Pipelines service is not
-        # available in all regions. It depends on Cloud Scheduler, an App Engine
-        # application, so it's only available in [App Engine regions](https://cloud.
-        # google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline.
-        # Must be unique for the selected project and location.
+        # by calling `google.cloud.location.Locations.ListLocations`. Note that the Data
+        # Pipelines service is not available in all regions. It depends on Cloud
+        # Scheduler, an App Engine application, so it's only available in [App Engine
+        # regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is
+        # the ID of the pipeline. Must be unique for the selected project and location.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
