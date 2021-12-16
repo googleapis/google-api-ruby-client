@@ -51,7 +51,7 @@ require "google/apis/resourcesettings_v1"
 client = Google::Apis::ResourcesettingsV1::ResourceSettingsService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
