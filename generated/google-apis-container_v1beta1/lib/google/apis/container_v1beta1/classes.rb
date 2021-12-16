@@ -1807,6 +1807,28 @@ module Google
         end
       end
       
+      # Allows filtering to one or more specific event types. If event types are
+      # present, those and only those event types will be transmitted to the cluster.
+      # Other types will be skipped. If no filter is specified, or no event types are
+      # present, all event types will be sent
+      class Filter
+        include Google::Apis::Core::Hashable
+      
+        # Event types to allowlist.
+        # Corresponds to the JSON property `eventType`
+        # @return [Array<String>]
+        attr_accessor :event_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
       # Configuration for the Compute Engine PD CSI driver.
       class GcePersistentDiskCsiDriverConfig
         include Google::Apis::Core::Hashable
@@ -2622,6 +2644,25 @@ module Google
         end
       end
       
+      # Represents the Maintenance exclusion option.
+      class MaintenanceExclusionOptions
+        include Google::Apis::Core::Hashable
+      
+        # Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
       # MaintenancePolicy defines the maintenance policy to be used for the cluster.
       class MaintenancePolicy
         include Google::Apis::Core::Hashable
@@ -3367,8 +3408,8 @@ module Google
       
         # Control the CPU management policy on the node. See https://kubernetes.io/docs/
         # tasks/administer-cluster/cpu-management-policies/ The following values are
-        # allowed. - "none": the default, which represents the existing scheduling
-        # behavior. - "static": allows pods with certain resource characteristics to be
+        # allowed. * "none": the default, which represents the existing scheduling
+        # behavior. * "static": allows pods with certain resource characteristics to be
         # granted increased CPU affinity and exclusivity on the node. The default value
         # is 'none' if unspecified.
         # Corresponds to the JSON property `cpuManagerPolicy`
@@ -4035,6 +4076,14 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Allows filtering to one or more specific event types. If event types are
+        # present, those and only those event types will be transmitted to the cluster.
+        # Other types will be skipped. If no filter is specified, or no event types are
+        # present, all event types will be sent
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::ContainerV1beta1::Filter]
+        attr_accessor :filter
+      
         # The desired Pub/Sub topic to which notifications will be sent by GKE. Format
         # is `projects/`project`/topics/`topic``.
         # Corresponds to the JSON property `topic`
@@ -4048,6 +4097,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @filter = args[:filter] if args.key?(:filter)
           @topic = args[:topic] if args.key?(:topic)
         end
       end
@@ -4326,6 +4376,89 @@ module Google
         def update!(**args)
           @sandbox_type = args[:sandbox_type] if args.key?(:sandbox_type)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # SecurityBulletinEvent is a notification sent to customers when a security
+      # bulletin has been posted that they are vulnerable to.
+      class SecurityBulletinEvent
+        include Google::Apis::Core::Hashable
+      
+        # The GKE minor versions affected by this vulnerability.
+        # Corresponds to the JSON property `affectedSupportedMinors`
+        # @return [Array<String>]
+        attr_accessor :affected_supported_minors
+      
+        # A brief description of the bulletin. See the bulletin pointed to by the
+        # bulletin_uri field for an expanded description.
+        # Corresponds to the JSON property `briefDescription`
+        # @return [String]
+        attr_accessor :brief_description
+      
+        # The ID of the bulletin corresponding to the vulnerability.
+        # Corresponds to the JSON property `bulletinId`
+        # @return [String]
+        attr_accessor :bulletin_id
+      
+        # The URI link to the bulletin on the website for more information.
+        # Corresponds to the JSON property `bulletinUri`
+        # @return [String]
+        attr_accessor :bulletin_uri
+      
+        # The CVEs associated with this bulletin.
+        # Corresponds to the JSON property `cveIds`
+        # @return [Array<String>]
+        attr_accessor :cve_ids
+      
+        # If this field is specified, it means there are manual steps that the user must
+        # take to make their clusters safe.
+        # Corresponds to the JSON property `manualStepsRequired`
+        # @return [Boolean]
+        attr_accessor :manual_steps_required
+        alias_method :manual_steps_required?, :manual_steps_required
+      
+        # The GKE versions where this vulnerability is patched.
+        # Corresponds to the JSON property `patchedVersions`
+        # @return [Array<String>]
+        attr_accessor :patched_versions
+      
+        # The resource type (node/control plane) that has the vulnerability. Multiple
+        # notifications (1 notification per resource type) will be sent for a
+        # vulnerability that affects > 1 resource type.
+        # Corresponds to the JSON property `resourceTypeAffected`
+        # @return [String]
+        attr_accessor :resource_type_affected
+      
+        # The severity of this bulletin as it relates to GKE.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # This represents a version selected from the patched_versions field that the
+        # cluster receiving this notification should most likely want to upgrade to
+        # based on its current version. Note that if this notification is being received
+        # by a given cluster, it means that this version is currently available as an
+        # upgrade target in that cluster's location.
+        # Corresponds to the JSON property `suggestedUpgradeTarget`
+        # @return [String]
+        attr_accessor :suggested_upgrade_target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @affected_supported_minors = args[:affected_supported_minors] if args.key?(:affected_supported_minors)
+          @brief_description = args[:brief_description] if args.key?(:brief_description)
+          @bulletin_id = args[:bulletin_id] if args.key?(:bulletin_id)
+          @bulletin_uri = args[:bulletin_uri] if args.key?(:bulletin_uri)
+          @cve_ids = args[:cve_ids] if args.key?(:cve_ids)
+          @manual_steps_required = args[:manual_steps_required] if args.key?(:manual_steps_required)
+          @patched_versions = args[:patched_versions] if args.key?(:patched_versions)
+          @resource_type_affected = args[:resource_type_affected] if args.key?(:resource_type_affected)
+          @severity = args[:severity] if args.key?(:severity)
+          @suggested_upgrade_target = args[:suggested_upgrade_target] if args.key?(:suggested_upgrade_target)
         end
       end
       
@@ -5242,6 +5375,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Represents the Maintenance exclusion option.
+        # Corresponds to the JSON property `maintenanceExclusionOptions`
+        # @return [Google::Apis::ContainerV1beta1::MaintenanceExclusionOptions]
+        attr_accessor :maintenance_exclusion_options
+      
         # The time that the window first starts.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -5254,6 +5392,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @maintenance_exclusion_options = args[:maintenance_exclusion_options] if args.key?(:maintenance_exclusion_options)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
