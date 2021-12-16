@@ -51,7 +51,7 @@ require "google/apis/retail_v2alpha"
 client = Google::Apis::RetailV2alpha::CloudRetailService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
