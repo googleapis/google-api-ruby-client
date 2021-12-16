@@ -1785,9 +1785,9 @@ module Google
         # example: Patient, HumanName. For "choice" types (those defined in the FHIR
         # spec with the form: field[x]) we use two separate components. For example, "
         # deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are:
-        # AdministrativeGenderCode, Code, Date, DateTime, Decimal, HumanName, Id,
-        # LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml. Base64Binary is also
-        # supported, but may only be kept as-is or have all the content removed.
+        # AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal,
+        # HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt,
+        # String, UnsignedInt, Uri, Uuid, Xhtml.
         # Corresponds to the JSON property `paths`
         # @return [Array<String>]
         attr_accessor :paths
@@ -3394,8 +3394,9 @@ module Google
         # @return [String]
         attr_accessor :segment_terminator
       
-        # Immutable. Determines the version of the unschematized parser to be used when `
-        # schema` is not given. This field is immutable after store creation.
+        # Immutable. Determines the version of both the default parser to be used when `
+        # schema` is not given, as well as the schematized parser used when `schema` is
+        # specified. This field is immutable after HL7v2 store creation.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -4368,6 +4369,14 @@ module Google
         attr_accessor :disable_fhirpath_validation
         alias_method :disable_fhirpath_validation?, :disable_fhirpath_validation
       
+        # Whether to disable profile validation for this FHIR store. Set this to true to
+        # disable checking incoming resources for conformance against structure
+        # definitions in this FHIR store.
+        # Corresponds to the JSON property `disableProfileValidation`
+        # @return [Boolean]
+        attr_accessor :disable_profile_validation
+        alias_method :disable_profile_validation?, :disable_profile_validation
+      
         # Whether to disable reference type validation for incoming resources. Set this
         # to true to disable checking incoming resources for conformance against
         # reference type requirement defined in the FHIR specification. This property
@@ -4388,6 +4397,23 @@ module Google
         attr_accessor :disable_required_field_validation
         alias_method :disable_required_field_validation?, :disable_required_field_validation
       
+        # A list of implementation guide URLs in this FHIR store that are used to
+        # configure the profiles to use for validation. For example, to use the US Core
+        # profiles for validation, set `enabled_implementation_guides` to `["http://hl7.
+        # org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides`
+        # is empty or omitted, then incoming resources are only required to conform to
+        # the base FHIR profiles. Otherwise, a resource must conform to at least one
+        # profile listed in the `global` property of one of the enabled
+        # ImplementationGuides. The Cloud Healthcare API does not currently enforce all
+        # of the rules in a StructureDefinition. The following rules are supported: -
+        # min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on
+        # simple types - slicing, when using "value" as the discriminator type When a
+        # URL cannot be resolved (for example, in a type assertion), the server does not
+        # return an error.
+        # Corresponds to the JSON property `enabledImplementationGuides`
+        # @return [Array<String>]
+        attr_accessor :enabled_implementation_guides
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4395,8 +4421,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_fhirpath_validation = args[:disable_fhirpath_validation] if args.key?(:disable_fhirpath_validation)
+          @disable_profile_validation = args[:disable_profile_validation] if args.key?(:disable_profile_validation)
           @disable_reference_type_validation = args[:disable_reference_type_validation] if args.key?(:disable_reference_type_validation)
           @disable_required_field_validation = args[:disable_required_field_validation] if args.key?(:disable_required_field_validation)
+          @enabled_implementation_guides = args[:enabled_implementation_guides] if args.key?(:enabled_implementation_guides)
         end
       end
       
