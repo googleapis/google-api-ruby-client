@@ -51,7 +51,7 @@ require "google/apis/script_v1"
 client = Google::Apis::ScriptV1::ScriptService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
@@ -60,8 +60,8 @@ See the class reference docs for information on the methods you can call from a 
 
 More detailed descriptions of the Google simple REST clients are available in two documents.
 
- *  The [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/usage-guide.md) discusses how to make API calls, how to use the provided data structures, and how to work the various features of the client library, including media upload and download, error handling, retries, pagination, and logging.
- *  The [Auth Guide](https://github.com/googleapis/google-api-ruby-client/blob/master/docs/auth-guide.md) discusses authentication in the client libraries, including API keys, OAuth 2.0, service accounts, and environment variables.
+ *  The [Usage Guide](https://github.com/googleapis/google-api-ruby-client/blob/main/docs/usage-guide.md) discusses how to make API calls, how to use the provided data structures, and how to work the various features of the client library, including media upload and download, error handling, retries, pagination, and logging.
+ *  The [Auth Guide](https://github.com/googleapis/google-api-ruby-client/blob/main/docs/auth-guide.md) discusses authentication in the client libraries, including API keys, OAuth 2.0, service accounts, and environment variables.
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Script service in particular.)
 
