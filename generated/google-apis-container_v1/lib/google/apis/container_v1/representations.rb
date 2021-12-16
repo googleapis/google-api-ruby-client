@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Filter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +317,12 @@ module Google
       end
       
       class LoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceExclusionOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -526,7 +538,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityBulletinEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceExternalIPsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -998,6 +1022,8 @@ module Google
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
       
+          property :desired_service_external_ips_config, as: 'desiredServiceExternalIpsConfig', class: Google::Apis::ContainerV1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1::ServiceExternalIPsConfig::Representation
+      
           property :desired_shielded_nodes, as: 'desiredShieldedNodes', class: Google::Apis::ContainerV1::ShieldedNodes, decorator: Google::Apis::ContainerV1::ShieldedNodes::Representation
       
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1::VerticalPodAutoscaling::Representation
@@ -1103,6 +1129,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Filter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_type, as: 'eventType'
         end
       end
       
@@ -1294,6 +1327,13 @@ module Google
         end
       end
       
+      class MaintenanceExclusionOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+        end
+      end
+      
       class MaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1388,6 +1428,8 @@ module Google
           property :enable_l4ilb_subsetting, as: 'enableL4ilbSubsetting'
           property :network, as: 'network'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
+          property :service_external_ips_config, as: 'serviceExternalIpsConfig', class: Google::Apis::ContainerV1::ServiceExternalIPsConfig, decorator: Google::Apis::ContainerV1::ServiceExternalIPsConfig::Representation
+      
           property :subnetwork, as: 'subnetwork'
         end
       end
@@ -1611,6 +1653,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :filter, as: 'filter', class: Google::Apis::ContainerV1::Filter, decorator: Google::Apis::ContainerV1::Filter::Representation
+      
           property :topic, as: 'topic'
         end
       end
@@ -1687,6 +1731,22 @@ module Google
         end
       end
       
+      class SecurityBulletinEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :affected_supported_minors, as: 'affectedSupportedMinors'
+          property :brief_description, as: 'briefDescription'
+          property :bulletin_id, as: 'bulletinId'
+          property :bulletin_uri, as: 'bulletinUri'
+          collection :cve_ids, as: 'cveIds'
+          property :manual_steps_required, as: 'manualStepsRequired'
+          collection :patched_versions, as: 'patchedVersions'
+          property :resource_type_affected, as: 'resourceTypeAffected'
+          property :severity, as: 'severity'
+          property :suggested_upgrade_target, as: 'suggestedUpgradeTarget'
+        end
+      end
+      
       class ServerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1697,6 +1757,13 @@ module Google
           collection :valid_image_types, as: 'validImageTypes'
           collection :valid_master_versions, as: 'validMasterVersions'
           collection :valid_node_versions, as: 'validNodeVersions'
+        end
+      end
+      
+      class ServiceExternalIPsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -1891,6 +1958,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :maintenance_exclusion_options, as: 'maintenanceExclusionOptions', class: Google::Apis::ContainerV1::MaintenanceExclusionOptions, decorator: Google::Apis::ContainerV1::MaintenanceExclusionOptions::Representation
+      
           property :start_time, as: 'startTime'
         end
       end
