@@ -856,7 +856,7 @@ module Google
         # @return [String]
         attr_accessor :input_gcs_source
       
-        # The output_gcs_destination (in the request as 'output_gcs_destination') of the
+        # The output_gcs_destination (in the request as `output_gcs_destination`) of the
         # processed document if it was successful, otherwise empty.
         # Corresponds to the JSON property `outputGcsDestination`
         # @return [String]
@@ -1363,7 +1363,7 @@ module Google
         end
       end
       
-      # An entity that could be a phrase in the text or a property belongs to the
+      # An entity that could be a phrase in the text or a property that belongs to the
       # document. It is a known entity type, such as a person, an organization, or
       # location.
       class GoogleCloudDocumentaiV1beta1DocumentEntity
@@ -1521,8 +1521,8 @@ module Google
         attr_accessor :money_value
       
         # Optional. An optional field to store a normalized string. For some entity
-        # types, one of respective 'structured_value' fields may also be populated. Also
-        # not all the types of 'structured_value' will be normalized. For example, some
+        # types, one of respective `structured_value` fields may also be populated. Also
+        # not all the types of `structured_value` will be normalized. For example, some
         # processors may not generate float or int normalized text by default. Below are
         # sample formats mapped to structured values. - Money/Currency type (`
         # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
@@ -2324,7 +2324,7 @@ module Google
         attr_accessor :id
       
         # The index of the parent item in the corresponding item list (eg. list of
-        # entities, properties within entities, etc.) on parent revision.
+        # entities, properties within entities, etc.) in the parent revision.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -3130,7 +3130,7 @@ module Google
         end
       end
       
-      # An entity that could be a phrase in the text or a property belongs to the
+      # An entity that could be a phrase in the text or a property that belongs to the
       # document. It is a known entity type, such as a person, an organization, or
       # location.
       class GoogleCloudDocumentaiV1beta2DocumentEntity
@@ -3288,8 +3288,8 @@ module Google
         attr_accessor :money_value
       
         # Optional. An optional field to store a normalized string. For some entity
-        # types, one of respective 'structured_value' fields may also be populated. Also
-        # not all the types of 'structured_value' will be normalized. For example, some
+        # types, one of respective `structured_value` fields may also be populated. Also
+        # not all the types of `structured_value` will be normalized. For example, some
         # processors may not generate float or int normalized text by default. Below are
         # sample formats mapped to structured values. - Money/Currency type (`
         # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
@@ -4128,7 +4128,7 @@ module Google
         attr_accessor :id
       
         # The index of the parent item in the corresponding item list (eg. list of
-        # entities, properties within entities, etc.) on parent revision.
+        # entities, properties within entities, etc.) in the parent revision.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -5070,7 +5070,7 @@ module Google
         # @return [String]
         attr_accessor :input_gcs_source
       
-        # The output_gcs_destination (in the request as 'output_gcs_destination') of the
+        # The output_gcs_destination (in the request as `output_gcs_destination`) of the
         # processed document if it was successful, otherwise empty.
         # Corresponds to the JSON property `outputGcsDestination`
         # @return [String]
