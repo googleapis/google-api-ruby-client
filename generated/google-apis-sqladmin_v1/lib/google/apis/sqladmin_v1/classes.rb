@@ -630,9 +630,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_disk_size
       
-        # Output only. The databaseInstalledVersion stores the current fully resolved
-        # database version running on the instance including minor version such as
-        # MYSQL_5_6_50
+        # Output only. Stores the current database version running on the instance
+        # including minor version such as **MYSQL_8_0_18**.
         # Corresponds to the JSON property `databaseInstalledVersion`
         # @return [String]
         attr_accessor :database_installed_version
@@ -666,7 +665,8 @@ module Google
       
         # The Compute Engine zone that the instance is currently serving from. This
         # value could be different from the zone that was specified when the instance
-        # was created if the instance has failed over to its secondary zone.
+        # was created if the instance has failed over to its secondary zone. WARNING:
+        # Changing this might restart the instance.
         # Corresponds to the JSON property `gceZone`
         # @return [String]
         attr_accessor :gce_zone
@@ -1958,7 +1958,7 @@ module Google
       
         # The list of external networks that are allowed to connect to the instance
         # using the IP. In 'CIDR' notation, also known as 'slash' notation (for example:
-        # **192.168.100.0/24**).
+        # **157.197.200.0/24**).
         # Corresponds to the JSON property `authorizedNetworks`
         # @return [Array<Google::Apis::SqladminV1::AclEntry>]
         attr_accessor :authorized_networks
@@ -2040,7 +2040,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The App Engine application to follow, it must be in the same region as the
-        # Cloud SQL instance.
+        # Cloud SQL instance. WARNING: Changing this might restart the instance.
         # Corresponds to the JSON property `followGaeApplication`
         # @return [String]
         attr_accessor :follow_gae_application
@@ -2057,7 +2057,7 @@ module Google
         attr_accessor :secondary_zone
       
         # The preferred Compute Engine zone (for example: us-central1-a, us-central1-b,
-        # etc.).
+        # etc.). WARNING: Changing this might restart the instance.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -2761,7 +2761,7 @@ module Google
         attr_accessor :database_flags
       
         # Configuration specific to read replica instances. Indicates whether
-        # replication is enabled or not.
+        # replication is enabled or not. WARNING: Changing this restarts the instance.
         # Corresponds to the JSON property `databaseReplicationEnabled`
         # @return [Boolean]
         attr_accessor :database_replication_enabled
@@ -2846,6 +2846,7 @@ module Google
         attr_accessor :storage_auto_resize_limit
       
         # The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+        # WARNING: Changing this restarts the instance.
         # Corresponds to the JSON property `tier`
         # @return [String]
         attr_accessor :tier
