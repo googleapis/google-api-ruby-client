@@ -1,5 +1,9 @@
 # Release history for google-apis-servicenetworking_v1beta
 
+### v0.16.0 (2021-12-16)
+
+* Regenerated from discovery document revision 20211210
+
 ### v0.15.0 (2021-10-20)
 
 * Unspecified changes

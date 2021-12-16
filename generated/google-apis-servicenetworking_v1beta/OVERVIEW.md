@@ -51,7 +51,7 @@ require "google/apis/servicenetworking_v1beta"
 client = Google::Apis::ServicenetworkingV1beta::ServiceNetworkingService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
