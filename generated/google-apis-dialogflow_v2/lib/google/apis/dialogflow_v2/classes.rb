@@ -13450,6 +13450,11 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # The name of the knowledge base interacted with during the operation.
+        # Corresponds to the JSON property `knowledgeBase`
+        # @return [String]
+        attr_accessor :knowledge_base
+      
         # Required. Output only. The current state of this operation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -13461,6 +13466,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @knowledge_base = args[:knowledge_base] if args.key?(:knowledge_base)
           @state = args[:state] if args.key?(:state)
         end
       end
