@@ -51,7 +51,7 @@ require "google/apis/cloudtasks_v2beta2"
 client = Google::Apis::CloudtasksV2beta2::CloudTasksService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
