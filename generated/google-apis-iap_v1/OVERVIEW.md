@@ -51,7 +51,7 @@ require "google/apis/iap_v1"
 client = Google::Apis::IapV1::CloudIAPService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
