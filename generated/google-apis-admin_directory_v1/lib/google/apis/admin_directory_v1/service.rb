@@ -279,7 +279,8 @@ module Google
         # @param [String] order_by
         #   Device property to use for sorting results.
         # @param [String] org_unit_path
-        #   The full path of the organizational unit or its unique ID.
+        #   The full path of the organizational unit (minus the leading `/`) or its unique
+        #   ID.
         # @param [String] page_token
         #   The `pageToken` query parameter is used to request the next page of query
         #   results. The follow-on request's `pageToken` query parameter is the `
@@ -1924,7 +1925,8 @@ module Google
         #   account's `customerId`. The `customerId` is also returned as part of the [
         #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
-        #   The full path of the organizational unit or its unique ID.
+        #   The full path of the organizational unit (minus the leading `/`) or its unique
+        #   ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1958,7 +1960,8 @@ module Google
         #   account's `customerId`. The `customerId` is also returned as part of the [
         #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
-        #   The full path of the organizational unit or its unique ID.
+        #   The full path of the organizational unit (minus the leading `/`) or its unique
+        #   ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2071,7 +2074,8 @@ module Google
         #   account's `customerId`. The `customerId` is also returned as part of the [
         #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
-        #   The full path of the organizational unit or its unique ID.
+        #   The full path of the organizational unit (minus the leading `/`) or its unique
+        #   ID.
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2110,7 +2114,8 @@ module Google
         #   account's `customerId`. The `customerId` is also returned as part of the [
         #   Users resource](/admin-sdk/directory/v1/reference/users).
         # @param [String] org_unit_path
-        #   The full path of the organizational unit or its unique ID.
+        #   The full path of the organizational unit (minus the leading `/`) or its unique
+        #   ID.
         # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
