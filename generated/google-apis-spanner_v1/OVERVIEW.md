@@ -51,7 +51,7 @@ require "google/apis/spanner_v1"
 client = Google::Apis::SpannerV1::SpannerService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.

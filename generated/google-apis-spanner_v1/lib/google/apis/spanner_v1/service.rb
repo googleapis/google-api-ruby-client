@@ -1129,7 +1129,9 @@ module Google
         end
         
         # Drops (aka deletes) a Cloud Spanner database. Completed backups for the
-        # database will be retained according to their `expire_time`.
+        # database will be retained according to their `expire_time`. Note: Cloud
+        # Spanner might continue to accept requests for a few seconds after the database
+        # has been deleted.
         # @param [String] database
         #   Required. The database to be dropped.
         # @param [String] fields
