@@ -54,8 +54,8 @@ module Google
         # Fetches processor types.
         # @param [String] parent
         #   Required. The project of processor type to list. The available processor types
-        #   may depend on the whitelisting on projects. Format: projects/`project`/
-        #   locations/`location`
+        #   may depend on the allow-listing on projects. Format: `projects/`project`/
+        #   locations/`location``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -273,10 +273,10 @@ module Google
         # LRO endpoint to batch process many documents. The output is written to Cloud
         # Storage as JSON in the [Document] format.
         # @param [String] name
-        #   Required. The resource name of Processor or ProcessorVersion. Format: projects/
-        #   `project`/locations/`location`/processors/`processor`, or projects/`project`/
-        #   locations/`location`/processors/`processor`/processorVersions/`
-        #   processorVersion`
+        #   Required. The resource name of Processor or ProcessorVersion. Format: `
+        #   projects/`project`/locations/`location`/processors/`processor``, or `projects/`
+        #   project`/locations/`location`/processors/`processor`/processorVersions/`
+        #   processorVersion``
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequest] google_cloud_documentai_v1beta3_batch_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -311,7 +311,7 @@ module Google
         # will be at "ENABLED" state by default after its creation.
         # @param [String] parent
         #   Required. The parent (project and location) under which to create the
-        #   processor. Format: projects/`project`/locations/`location`
+        #   processor. Format: `projects/`project`/locations/`location``
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Processor] google_cloud_documentai_v1beta3_processor_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -472,7 +472,7 @@ module Google
         # Lists all processors which belong to this project.
         # @param [String] parent
         #   Required. The parent (project and location) which owns this collection of
-        #   Processors. Format: projects/`project`/locations/`location`
+        #   Processors. Format: `projects/`project`/locations/`location``
         # @param [Fixnum] page_size
         #   The maximum number of processors to return. If unspecified, at most 50
         #   processors will be returned. The maximum value is 100; values above 100 will
@@ -513,9 +513,9 @@ module Google
         # @param [String] name
         #   Required. The resource name of the Processor or ProcessorVersion to use for
         #   processing. If a Processor is specified, the server will use its default
-        #   version. Format: projects/`project`/locations/`location`/processors/`processor`
-        #   , or projects/`project`/locations/`location`/processors/`processor`/
-        #   processorVersions/`processorVersion`
+        #   version. Format: `projects/`project`/locations/`location`/processors/`
+        #   processor``, or `projects/`project`/locations/`location`/processors/`processor`
+        #   /processorVersions/`processorVersion``
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessRequest] google_cloud_documentai_v1beta3_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -618,10 +618,10 @@ module Google
         # LRO endpoint to batch process many documents. The output is written to Cloud
         # Storage as JSON in the [Document] format.
         # @param [String] name
-        #   Required. The resource name of Processor or ProcessorVersion. Format: projects/
-        #   `project`/locations/`location`/processors/`processor`, or projects/`project`/
-        #   locations/`location`/processors/`processor`/processorVersions/`
-        #   processorVersion`
+        #   Required. The resource name of Processor or ProcessorVersion. Format: `
+        #   projects/`project`/locations/`location`/processors/`processor``, or `projects/`
+        #   project`/locations/`location`/processors/`processor`/processorVersions/`
+        #   processorVersion``
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3BatchProcessRequest] google_cloud_documentai_v1beta3_batch_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -749,7 +749,7 @@ module Google
         # Lists all versions of a processor.
         # @param [String] parent
         #   Required. The parent (project, location and processor) to list all versions.
-        #   Format: projects/`project`/locations/`location`/processors/`processor`
+        #   Format: `projects/`project`/locations/`location`/processors/`processor``
         # @param [Fixnum] page_size
         #   The maximum number of processor versions to return. If unspecified, at most 10
         #   processor versions will be returned. The maximum value is 20; values above 20
@@ -790,9 +790,9 @@ module Google
         # @param [String] name
         #   Required. The resource name of the Processor or ProcessorVersion to use for
         #   processing. If a Processor is specified, the server will use its default
-        #   version. Format: projects/`project`/locations/`location`/processors/`processor`
-        #   , or projects/`project`/locations/`location`/processors/`processor`/
-        #   processorVersions/`processorVersion`
+        #   version. Format: `projects/`project`/locations/`location`/processors/`
+        #   processor``, or `projects/`project`/locations/`location`/processors/`processor`
+        #   /processorVersions/`processorVersion``
         # @param [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessRequest] google_cloud_documentai_v1beta3_process_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

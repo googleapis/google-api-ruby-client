@@ -856,7 +856,7 @@ module Google
         # @return [String]
         attr_accessor :input_gcs_source
       
-        # The output_gcs_destination (in the request as 'output_gcs_destination') of the
+        # The output_gcs_destination (in the request as `output_gcs_destination`) of the
         # processed document if it was successful, otherwise empty.
         # Corresponds to the JSON property `outputGcsDestination`
         # @return [String]
@@ -1363,7 +1363,7 @@ module Google
         end
       end
       
-      # An entity that could be a phrase in the text or a property belongs to the
+      # An entity that could be a phrase in the text or a property that belongs to the
       # document. It is a known entity type, such as a person, an organization, or
       # location.
       class GoogleCloudDocumentaiV1beta1DocumentEntity
@@ -1521,8 +1521,8 @@ module Google
         attr_accessor :money_value
       
         # Optional. An optional field to store a normalized string. For some entity
-        # types, one of respective 'structured_value' fields may also be populated. Also
-        # not all the types of 'structured_value' will be normalized. For example, some
+        # types, one of respective `structured_value` fields may also be populated. Also
+        # not all the types of `structured_value` will be normalized. For example, some
         # processors may not generate float or int normalized text by default. Below are
         # sample formats mapped to structured values. - Money/Currency type (`
         # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
@@ -2324,7 +2324,7 @@ module Google
         attr_accessor :id
       
         # The index of the parent item in the corresponding item list (eg. list of
-        # entities, properties within entities, etc.) on parent revision.
+        # entities, properties within entities, etc.) in the parent revision.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -3090,7 +3090,7 @@ module Google
         end
       end
       
-      # An entity that could be a phrase in the text or a property belongs to the
+      # An entity that could be a phrase in the text or a property that belongs to the
       # document. It is a known entity type, such as a person, an organization, or
       # location.
       class GoogleCloudDocumentaiV1beta2DocumentEntity
@@ -3248,8 +3248,8 @@ module Google
         attr_accessor :money_value
       
         # Optional. An optional field to store a normalized string. For some entity
-        # types, one of respective 'structured_value' fields may also be populated. Also
-        # not all the types of 'structured_value' will be normalized. For example, some
+        # types, one of respective `structured_value` fields may also be populated. Also
+        # not all the types of `structured_value` will be normalized. For example, some
         # processors may not generate float or int normalized text by default. Below are
         # sample formats mapped to structured values. - Money/Currency type (`
         # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
@@ -4088,7 +4088,7 @@ module Google
         attr_accessor :id
       
         # The index of the parent item in the corresponding item list (eg. list of
-        # entities, properties within entities, etc.) on parent revision.
+        # entities, properties within entities, etc.) in the parent revision.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -4802,7 +4802,7 @@ module Google
         # @return [String]
         attr_accessor :input_gcs_source
       
-        # The output_gcs_destination (in the request as 'output_gcs_destination') of the
+        # The output_gcs_destination (in the request as `output_gcs_destination`) of the
         # processed document if it was successful, otherwise empty.
         # Corresponds to the JSON property `outputGcsDestination`
         # @return [String]
@@ -5239,7 +5239,7 @@ module Google
         end
       end
       
-      # An entity that could be a phrase in the text or a property belongs to the
+      # An entity that could be a phrase in the text or a property that belongs to the
       # document. It is a known entity type, such as a person, an organization, or
       # location.
       class GoogleCloudDocumentaiV1beta3DocumentEntity
@@ -5397,8 +5397,8 @@ module Google
         attr_accessor :money_value
       
         # Optional. An optional field to store a normalized string. For some entity
-        # types, one of respective 'structured_value' fields may also be populated. Also
-        # not all the types of 'structured_value' will be normalized. For example, some
+        # types, one of respective `structured_value` fields may also be populated. Also
+        # not all the types of `structured_value` will be normalized. For example, some
         # processors may not generate float or int normalized text by default. Below are
         # sample formats mapped to structured values. - Money/Currency type (`
         # money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in
@@ -6239,7 +6239,7 @@ module Google
         attr_accessor :id
       
         # The index of the parent item in the corresponding item list (eg. list of
-        # entities, properties within entities, etc.) on parent revision.
+        # entities, properties within entities, etc.) in the parent revision.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -6956,7 +6956,7 @@ module Google
         end
       end
       
-      # The first-class citizen for DAI. Each processor defines how to extract
+      # The first-class citizen for Document AI. Each processor defines how to extract
       # structural information from a document.
       class GoogleCloudDocumentaiV1beta3Processor
         include Google::Apis::Core::Hashable
@@ -6982,8 +6982,8 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # Output only. Immutable. The resource name of the processor. Format: projects/`
-        # project`/locations/`location`/processors/`processor`
+        # Output only. Immutable. The resource name of the processor. Format: `projects/`
+        # project`/locations/`location`/processors/`processor``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7022,26 +7022,12 @@ module Google
       end
       
       # A processor type is responsible for performing a certain document
-      # understanding task on a certain type of document. All processor types are
-      # created by the documentai service internally. User will only list all
-      # available processor types via UI. For different users (projects), the
-      # available processor types may be different since we'll expose the access of
-      # some types via EAP whitelisting. We make the ProcessorType a resource under
-      # location so we have a unified API and keep the possibility that UI will load
-      # different available processor types from different regions. But for alpha the
-      # behavior is that the user will always get the union of all available processor
-      # types among all regions no matter which regionalized endpoint is called, and
-      # then we use the 'available_locations' field to show under which regions a
-      # processor type is available. For example, users can call either the 'US' or '
-      # EU' endpoint to feach processor types. In the return, we will have an 'invoice
-      # parsing' processor with 'available_locations' field only containing 'US'. So
-      # the user can try to create an 'invoice parsing' processor under the location '
-      # US'. Such attempt of creating under the location 'EU' will fail. Next ID: 9.
+      # understanding task on a certain type of document.
       class GoogleCloudDocumentaiV1beta3ProcessorType
         include Google::Apis::Core::Hashable
       
-        # Whether the processor type allows creation. If yes, user can create a
-        # processor of this processor type. Otherwise, user needs to request access.
+        # Whether the processor type allows creation. If true, users can create a
+        # processor of this processor type. Otherwise, users need to request access.
         # Corresponds to the JSON property `allowCreation`
         # @return [Boolean]
         attr_accessor :allow_creation
@@ -7125,9 +7111,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the processor version. Format: projects/`project`/
+        # The resource name of the processor version. Format: `projects/`project`/
         # locations/`location`/processors/`processor`/processorVersions/`
-        # processor_version`
+        # processor_version``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7220,7 +7206,7 @@ module Google
         end
       end
       
-      # Request message for review document method. Next Id: 6.
+      # Request message for review document method.
       class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest
         include Google::Apis::Core::Hashable
       
