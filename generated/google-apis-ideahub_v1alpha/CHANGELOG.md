@@ -1,5 +1,9 @@
 # Release history for google-apis-ideahub_v1alpha
 
+### v0.11.0 (2021-12-16)
+
+* Unspecified changes
+
 ### v0.10.0 (2021-11-01)
 
 * Regenerated from discovery document revision 20211029
