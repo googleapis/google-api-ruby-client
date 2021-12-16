@@ -1746,6 +1746,8 @@ module Google
         # recommendations-ai/docs/upload-catalog#mc). Supported values for user events
         # imports: * `user_event` (default): One JSON UserEvent per line. * `
         # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719.
+        # Supported values for control imports: * 'control' (default): One JSON Control
+        # per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -2399,8 +2401,8 @@ module Google
         attr_accessor :original_price
       
         # Price of the product. Google Merchant Center property [price](https://support.
-        # google.com/merchants/answer/6324371). Schema.org property [Offer.
-        # priceSpecification](https://schema.org/priceSpecification).
+        # google.com/merchants/answer/6324371). Schema.org property [Offer.price](https:/
+        # /schema.org/price).
         # Corresponds to the JSON property `price`
         # @return [Float]
         attr_accessor :price
@@ -3425,9 +3427,9 @@ module Google
         # Required. A unique identifier for tracking visitors. For example, this could
         # be implemented with an HTTP cookie, which should be able to uniquely identify
         # a visitor on a single device. This unique identifier should not change if the
-        # visitor logs in or out of the website. The field must be a UTF-8 encoded
-        # string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
-        # error is returned.
+        # visitor logs in or out of the website. This should be the same identifier as
+        # UserEvent.visitor_id. The field must be a UTF-8 encoded string with a length
+        # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -4017,10 +4019,9 @@ module Google
         # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProduct]
         attr_accessor :inventory
       
-        # Indicates which inventory fields in the provided Product to update. If not set
-        # or set with empty paths, all inventory fields will be updated. If an
-        # unsupported or unknown field is provided, an INVALID_ARGUMENT error is
-        # returned and the entire update will be ignored.
+        # Indicates which inventory fields in the provided Product to update. At least
+        # one field must be provided. If an unsupported or unknown field is provided, an
+        # INVALID_ARGUMENT error is returned and the entire update will be ignored.
         # Corresponds to the JSON property `setMask`
         # @return [String]
         attr_accessor :set_mask
