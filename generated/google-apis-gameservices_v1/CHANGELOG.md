@@ -1,5 +1,9 @@
 # Release history for google-apis-gameservices_v1
 
+### v0.14.0 (2021-12-16)
+
+* Unspecified changes
+
 ### v0.13.0 (2021-11-13)
 
 * Regenerated from discovery document revision 20211103
