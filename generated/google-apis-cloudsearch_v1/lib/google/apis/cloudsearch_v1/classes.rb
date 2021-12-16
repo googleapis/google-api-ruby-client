@@ -250,6 +250,35 @@ module Google
         end
       end
       
+      # Search application stats for a customer for the given date.
+      class CustomerSearchApplicationStats
+        include Google::Apis::Core::Hashable
+      
+        # The count of search applications for the date.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Represents a whole calendar date, for example a date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/
+        # wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date
+        # between the year 1 and 9999.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::CloudsearchV1::Date]
+        attr_accessor :date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @date = args[:date] if args.key?(:date)
+        end
+      end
+      
       # 
       class CustomerSessionStats
         include Google::Apis::Core::Hashable
@@ -398,6 +427,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :operation_ids
       
+        # Can a user request to get thumbnail URI for Items indexed in this data source.
+        # Corresponds to the JSON property `returnThumbnailUrls`
+        # @return [Boolean]
+        attr_accessor :return_thumbnail_urls
+        alias_method :return_thumbnail_urls?, :return_thumbnail_urls
+      
         # A short name or alias for the source. This value will be used to match the '
         # source' operator. For example, if the short name is *<value>* then queries
         # like *source:<value>* will only return results for this source. The value must
@@ -422,6 +457,7 @@ module Google
           @items_visibility = args[:items_visibility] if args.key?(:items_visibility)
           @name = args[:name] if args.key?(:name)
           @operation_ids = args[:operation_ids] if args.key?(:operation_ids)
+          @return_thumbnail_urls = args[:return_thumbnail_urls] if args.key?(:return_thumbnail_urls)
           @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
@@ -1319,6 +1355,11 @@ module Google
       class GetCustomerIndexStatsResponse
         include Google::Apis::Core::Hashable
       
+        # Average item count for the given date range for which billing is done.
+        # Corresponds to the JSON property `averageIndexedItemCount`
+        # @return [Fixnum]
+        attr_accessor :average_indexed_item_count
+      
         # Summary of indexed item counts, one for each day in the requested range.
         # Corresponds to the JSON property `stats`
         # @return [Array<Google::Apis::CloudsearchV1::CustomerIndexStats>]
@@ -1330,6 +1371,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @average_indexed_item_count = args[:average_indexed_item_count] if args.key?(:average_indexed_item_count)
           @stats = args[:stats] if args.key?(:stats)
         end
       end
@@ -1343,12 +1385,43 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::CustomerQueryStats>]
         attr_accessor :stats
       
+        # Total successful query count (status code 200) for the given date range.
+        # Corresponds to the JSON property `totalQueryCount`
+        # @return [Fixnum]
+        attr_accessor :total_query_count
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @stats = args[:stats] if args.key?(:stats)
+          @total_query_count = args[:total_query_count] if args.key?(:total_query_count)
+        end
+      end
+      
+      # Response format for search application stats for a customer.
+      class GetCustomerSearchApplicationStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Average search application count for the given date range.
+        # Corresponds to the JSON property `averageSearchApplicationCount`
+        # @return [Fixnum]
+        attr_accessor :average_search_application_count
+      
+        # Search application stats by date.
+        # Corresponds to the JSON property `stats`
+        # @return [Array<Google::Apis::CloudsearchV1::CustomerSearchApplicationStats>]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_search_application_count = args[:average_search_application_count] if args.key?(:average_search_application_count)
           @stats = args[:stats] if args.key?(:stats)
         end
       end
@@ -1395,6 +1468,11 @@ module Google
       class GetDataSourceIndexStatsResponse
         include Google::Apis::Core::Hashable
       
+        # Average item count for the given date range for which billing is done.
+        # Corresponds to the JSON property `averageIndexedItemCount`
+        # @return [Fixnum]
+        attr_accessor :average_indexed_item_count
+      
         # Summary of indexed item counts, one for each day in the requested range.
         # Corresponds to the JSON property `stats`
         # @return [Array<Google::Apis::CloudsearchV1::DataSourceIndexStats>]
@@ -1406,6 +1484,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @average_indexed_item_count = args[:average_indexed_item_count] if args.key?(:average_indexed_item_count)
           @stats = args[:stats] if args.key?(:stats)
         end
       end
@@ -1420,6 +1499,11 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::SearchApplicationQueryStats>]
         attr_accessor :stats
       
+        # Total successful query count (status code 200) for the given date range.
+        # Corresponds to the JSON property `totalQueryCount`
+        # @return [Fixnum]
+        attr_accessor :total_query_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1427,6 +1511,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @stats = args[:stats] if args.key?(:stats)
+          @total_query_count = args[:total_query_count] if args.key?(:total_query_count)
         end
       end
       
@@ -1832,6 +1917,9 @@ module Google
         # Item using lexical ordering. Cloud Search Indexing won't index or delete any
         # queued item with a version value that is less than or equal to the version of
         # the currently indexed item. The maximum length for this field is 1024 bytes.
+        # See [this guide](https://developers.devsite.corp.google.com/cloud-search/docs/
+        # guides/operations) to understand how item version affects reindexing after
+        # delete item.
         # Corresponds to the JSON property `version`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1972,6 +2060,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
+        # Number of items matching the status code for which billing is done. This
+        # excludes virtual container items from the total count. This count would not be
+        # applicable for items with ERROR or NEW_ITEM status code.
+        # Corresponds to the JSON property `indexedItemsCount`
+        # @return [Fixnum]
+        attr_accessor :indexed_items_count
+      
         # Status of the items.
         # Corresponds to the JSON property `statusCode`
         # @return [String]
@@ -1984,6 +2079,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
+          @indexed_items_count = args[:indexed_items_count] if args.key?(:indexed_items_count)
           @status_code = args[:status_code] if args.key?(:status_code)
         end
       end
@@ -2420,6 +2516,11 @@ module Google
         # @return [Google::Apis::CloudsearchV1::Source]
         attr_accessor :source
       
+        # The thumbnail URL of the result.
+        # Corresponds to the JSON property `thumbnailUrl`
+        # @return [String]
+        attr_accessor :thumbnail_url
+      
         # The last modified date for the object in the search result. If not set in the
         # item, the value returned here is empty. When `updateTime` is used for
         # calculating freshness and is not set, this value defaults to 2 years from the
@@ -2441,6 +2542,7 @@ module Google
           @object_type = args[:object_type] if args.key?(:object_type)
           @owner = args[:owner] if args.key?(:owner)
           @source = args[:source] if args.key?(:source)
+          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -3969,6 +4071,12 @@ module Google
         # @return [Google::Apis::CloudsearchV1::QueryInterpretationConfig]
         attr_accessor :query_interpretation_config
       
+        # With each result we should return the URI for its thumbnail (when applicable)
+        # Corresponds to the JSON property `returnResultThumbnailUrls`
+        # @return [Boolean]
+        attr_accessor :return_result_thumbnail_urls
+        alias_method :return_result_thumbnail_urls?, :return_result_thumbnail_urls
+      
         # Scoring configurations for a source while processing a Search or Suggest
         # request.
         # Corresponds to the JSON property `scoringConfig`
@@ -3994,6 +4102,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @operation_ids = args[:operation_ids] if args.key?(:operation_ids)
           @query_interpretation_config = args[:query_interpretation_config] if args.key?(:query_interpretation_config)
+          @return_result_thumbnail_urls = args[:return_result_thumbnail_urls] if args.key?(:return_result_thumbnail_urls)
           @scoring_config = args[:scoring_config] if args.key?(:scoring_config)
           @source_config = args[:source_config] if args.key?(:source_config)
         end

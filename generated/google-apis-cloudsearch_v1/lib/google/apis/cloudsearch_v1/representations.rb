@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomerSearchApplicationStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerSessionStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,12 @@ module Google
       end
       
       class GetCustomerQueryStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetCustomerSearchApplicationStatsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1039,6 +1051,15 @@ module Google
         end
       end
       
+      class CustomerSearchApplicationStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :date, as: 'date', class: Google::Apis::CloudsearchV1::Date, decorator: Google::Apis::CloudsearchV1::Date::Representation
+      
+        end
+      end
+      
       class CustomerSessionStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1080,6 +1101,7 @@ module Google
       
           property :name, as: 'name'
           collection :operation_ids, as: 'operationIds'
+          property :return_thumbnail_urls, as: 'returnThumbnailUrls'
           property :short_name, as: 'shortName'
         end
       end
@@ -1347,6 +1369,7 @@ module Google
       class GetCustomerIndexStatsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_indexed_item_count, :numeric_string => true, as: 'averageIndexedItemCount'
           collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::CustomerIndexStats, decorator: Google::Apis::CloudsearchV1::CustomerIndexStats::Representation
       
         end
@@ -1356,6 +1379,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::CustomerQueryStats, decorator: Google::Apis::CloudsearchV1::CustomerQueryStats::Representation
+      
+          property :total_query_count, :numeric_string => true, as: 'totalQueryCount'
+        end
+      end
+      
+      class GetCustomerSearchApplicationStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_search_application_count, :numeric_string => true, as: 'averageSearchApplicationCount'
+          collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::CustomerSearchApplicationStats, decorator: Google::Apis::CloudsearchV1::CustomerSearchApplicationStats::Representation
       
         end
       end
@@ -1379,6 +1412,7 @@ module Google
       class GetDataSourceIndexStatsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_indexed_item_count, :numeric_string => true, as: 'averageIndexedItemCount'
           collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::DataSourceIndexStats, decorator: Google::Apis::CloudsearchV1::DataSourceIndexStats::Representation
       
         end
@@ -1389,6 +1423,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::SearchApplicationQueryStats, decorator: Google::Apis::CloudsearchV1::SearchApplicationQueryStats::Representation
       
+          property :total_query_count, :numeric_string => true, as: 'totalQueryCount'
         end
       end
       
@@ -1546,6 +1581,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
+          property :indexed_items_count, :numeric_string => true, as: 'indexedItemsCount'
           property :status_code, as: 'statusCode'
         end
       end
@@ -1683,6 +1719,7 @@ module Google
       
           property :source, as: 'source', class: Google::Apis::CloudsearchV1::Source, decorator: Google::Apis::CloudsearchV1::Source::Representation
       
+          property :thumbnail_url, as: 'thumbnailUrl'
           property :update_time, as: 'updateTime'
         end
       end
@@ -2126,6 +2163,7 @@ module Google
           collection :operation_ids, as: 'operationIds'
           property :query_interpretation_config, as: 'queryInterpretationConfig', class: Google::Apis::CloudsearchV1::QueryInterpretationConfig, decorator: Google::Apis::CloudsearchV1::QueryInterpretationConfig::Representation
       
+          property :return_result_thumbnail_urls, as: 'returnResultThumbnailUrls'
           property :scoring_config, as: 'scoringConfig', class: Google::Apis::CloudsearchV1::ScoringConfig, decorator: Google::Apis::CloudsearchV1::ScoringConfig::Representation
       
           collection :source_config, as: 'sourceConfig', class: Google::Apis::CloudsearchV1::SourceConfig, decorator: Google::Apis::CloudsearchV1::SourceConfig::Representation
