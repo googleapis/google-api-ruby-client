@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Filter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -365,6 +371,12 @@ module Google
       end
       
       class LoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaintenanceExclusionOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -611,6 +623,12 @@ module Google
       end
       
       class SandboxConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityBulletinEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1289,6 +1307,13 @@ module Google
         end
       end
       
+      class Filter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_type, as: 'eventType'
+        end
+      end
+      
       class GcePersistentDiskCsiDriverConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1515,6 +1540,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :component_config, as: 'componentConfig', class: Google::Apis::ContainerV1beta1::LoggingComponentConfig, decorator: Google::Apis::ContainerV1beta1::LoggingComponentConfig::Representation
       
+        end
+      end
+      
+      class MaintenanceExclusionOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
         end
       end
       
@@ -1884,6 +1916,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :filter, as: 'filter', class: Google::Apis::ContainerV1beta1::Filter, decorator: Google::Apis::ContainerV1beta1::Filter::Representation
+      
           property :topic, as: 'topic'
         end
       end
@@ -1960,6 +1994,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sandbox_type, as: 'sandboxType'
           property :type, as: 'type'
+        end
+      end
+      
+      class SecurityBulletinEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :affected_supported_minors, as: 'affectedSupportedMinors'
+          property :brief_description, as: 'briefDescription'
+          property :bulletin_id, as: 'bulletinId'
+          property :bulletin_uri, as: 'bulletinUri'
+          collection :cve_ids, as: 'cveIds'
+          property :manual_steps_required, as: 'manualStepsRequired'
+          collection :patched_versions, as: 'patchedVersions'
+          property :resource_type_affected, as: 'resourceTypeAffected'
+          property :severity, as: 'severity'
+          property :suggested_upgrade_target, as: 'suggestedUpgradeTarget'
         end
       end
       
@@ -2176,6 +2226,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :maintenance_exclusion_options, as: 'maintenanceExclusionOptions', class: Google::Apis::ContainerV1beta1::MaintenanceExclusionOptions, decorator: Google::Apis::ContainerV1beta1::MaintenanceExclusionOptions::Representation
+      
           property :start_time, as: 'startTime'
         end
       end
