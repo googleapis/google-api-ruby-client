@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VirtualMachineThreatDetectionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Vulnerability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,6 +551,18 @@ module Google
       
           property :name, as: 'name'
           property :tier, as: 'tier'
+        end
+      end
+      
+      class VirtualMachineThreatDetectionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :modules, as: 'modules', class: Google::Apis::SecuritycenterV1beta2::Config, decorator: Google::Apis::SecuritycenterV1beta2::Config::Representation
+      
+          property :name, as: 'name'
+          property :service_account, as: 'serviceAccount'
+          property :service_enablement_state, as: 'serviceEnablementState'
+          property :update_time, as: 'updateTime'
         end
       end
       

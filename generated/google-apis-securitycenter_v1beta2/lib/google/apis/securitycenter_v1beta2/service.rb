@@ -149,6 +149,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get the VirtualMachineThreatDetectionSettings resource.
+        # @param [String] name
+        #   Required. The name of the VirtualMachineThreatDetectionSettings to retrieve.
+        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
+        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   virtualMachineThreatDetectionSettings
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_virtual_machine_threat_detection_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get the WebSecurityScannerSettings resource.
         # @param [String] name
         #   Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
@@ -298,6 +331,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Update the VirtualMachineThreatDetectionSettings resource.
+        # @param [String] name
+        #   The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        #   organizations/`organization`/virtualMachineThreatDetectionSettings * folders/`
+        #   folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   virtualMachineThreatDetectionSettings
+        # @param [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] virtual_machine_threat_detection_settings_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_folder_virtual_machine_threat_detection_settings(name, virtual_machine_threat_detection_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta2/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.request_object = virtual_machine_threat_detection_settings_object
+          command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Update the WebSecurityScannerSettings resource.
         # @param [String] name
         #   The resource name of the WebSecurityScannerSettings. Formats: * organizations/`
@@ -432,6 +504,40 @@ module Google
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Calculates the effective VirtualMachineThreatDetectionSettings based on its
+        # level in the resource hierarchy and its settings.
+        # @param [String] name
+        #   Required. The name of the VirtualMachineThreatDetectionSettings to calculate.
+        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
+        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   virtualMachineThreatDetectionSettings
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def calculate_folder_virtual_machine_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
+          command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -632,6 +738,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get the VirtualMachineThreatDetectionSettings resource.
+        # @param [String] name
+        #   Required. The name of the VirtualMachineThreatDetectionSettings to retrieve.
+        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
+        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   virtualMachineThreatDetectionSettings
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_virtual_machine_threat_detection_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get the WebSecurityScannerSettings resource.
         # @param [String] name
         #   Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
@@ -781,6 +920,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Update the VirtualMachineThreatDetectionSettings resource.
+        # @param [String] name
+        #   The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        #   organizations/`organization`/virtualMachineThreatDetectionSettings * folders/`
+        #   folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   virtualMachineThreatDetectionSettings
+        # @param [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] virtual_machine_threat_detection_settings_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_virtual_machine_threat_detection_settings(name, virtual_machine_threat_detection_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta2/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.request_object = virtual_machine_threat_detection_settings_object
+          command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Update the WebSecurityScannerSettings resource.
         # @param [String] name
         #   The resource name of the WebSecurityScannerSettings. Formats: * organizations/`
@@ -921,6 +1099,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Calculates the effective VirtualMachineThreatDetectionSettings based on its
+        # level in the resource hierarchy and its settings.
+        # @param [String] name
+        #   Required. The name of the VirtualMachineThreatDetectionSettings to calculate.
+        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
+        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   virtualMachineThreatDetectionSettings
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def calculate_organization_virtual_machine_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
+          command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Calculates the effective WebSecurityScannerSettings based on its level in the
         # resource hierarchy and its settings.
         # @param [String] name
@@ -1047,6 +1259,39 @@ module Google
           command = make_simple_command(:get, 'v1beta2/{+name}', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the VirtualMachineThreatDetectionSettings resource.
+        # @param [String] name
+        #   Required. The name of the VirtualMachineThreatDetectionSettings to retrieve.
+        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
+        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   virtualMachineThreatDetectionSettings
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_virtual_machine_threat_detection_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta2/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1195,6 +1440,45 @@ module Google
           command.request_object = security_health_analytics_settings_object
           command.response_representation = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the VirtualMachineThreatDetectionSettings resource.
+        # @param [String] name
+        #   The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        #   organizations/`organization`/virtualMachineThreatDetectionSettings * folders/`
+        #   folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   virtualMachineThreatDetectionSettings
+        # @param [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] virtual_machine_threat_detection_settings_object
+        # @param [String] update_mask
+        #   The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_virtual_machine_threat_detection_settings(name, virtual_machine_threat_detection_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta2/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.request_object = virtual_machine_threat_detection_settings_object
+          command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1445,6 +1729,40 @@ module Google
           command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
           command.response_representation = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings::Representation
           command.response_class = Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Calculates the effective VirtualMachineThreatDetectionSettings based on its
+        # level in the resource hierarchy and its settings.
+        # @param [String] name
+        #   Required. The name of the VirtualMachineThreatDetectionSettings to calculate.
+        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
+        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        #   virtualMachineThreatDetectionSettings
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def calculate_project_virtual_machine_threat_detection_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta2/{+name}:calculate', options)
+          command.response_representation = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -1409,6 +1409,57 @@ module Google
         end
       end
       
+      # Resource capturing the settings for the Virtual Machine Threat Detection
+      # service.
+      class VirtualMachineThreatDetectionSettings
+        include Google::Apis::Core::Hashable
+      
+        # The configurations including the state of enablement for the service's
+        # different modules. The absence of a module in the map implies its
+        # configuration is inherited from its parent's.
+        # Corresponds to the JSON property `modules`
+        # @return [Hash<String,Google::Apis::SecuritycenterV1beta2::Config>]
+        attr_accessor :modules
+      
+        # The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        # organizations/`organization`/virtualMachineThreatDetectionSettings * folders/`
+        # folder`/virtualMachineThreatDetectionSettings * projects/`project`/
+        # virtualMachineThreatDetectionSettings
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The service account used by Virtual Machine Threat Detection
+        # detectors.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # The state of enablement for the service at its level of the resource hierarchy.
+        # A DISABLED state will override all module enablement_states to DISABLED.
+        # Corresponds to the JSON property `serviceEnablementState`
+        # @return [String]
+        attr_accessor :service_enablement_state
+      
+        # Output only. The time the settings were last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modules = args[:modules] if args.key?(:modules)
+          @name = args[:name] if args.key?(:name)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @service_enablement_state = args[:service_enablement_state] if args.key?(:service_enablement_state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
       class Vulnerability
         include Google::Apis::Core::Hashable
