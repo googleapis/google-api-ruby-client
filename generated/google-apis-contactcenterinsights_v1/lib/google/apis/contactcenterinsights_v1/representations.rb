@@ -738,6 +738,7 @@ module Google
       
           property :medium, as: 'medium'
           property :name, as: 'name'
+          property :obfuscated_user_id, as: 'obfuscatedUserId'
           collection :runtime_annotations, as: 'runtimeAnnotations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotation::Representation
       
           property :start_time, as: 'startTime'

@@ -536,6 +536,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Obfuscated user ID which the customer sent to us.
+        # Corresponds to the JSON property `obfuscatedUserId`
+        # @return [String]
+        attr_accessor :obfuscated_user_id
+      
         # Output only. The annotations that were generated during the customer and agent
         # interaction.
         # Corresponds to the JSON property `runtimeAnnotations`
@@ -586,6 +591,7 @@ module Google
           @latest_analysis = args[:latest_analysis] if args.key?(:latest_analysis)
           @medium = args[:medium] if args.key?(:medium)
           @name = args[:name] if args.key?(:name)
+          @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
           @runtime_annotations = args[:runtime_annotations] if args.key?(:runtime_annotations)
           @start_time = args[:start_time] if args.key?(:start_time)
           @transcript = args[:transcript] if args.key?(:transcript)
