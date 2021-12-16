@@ -5996,6 +5996,7 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :knowledge_base, as: 'knowledgeBase'
           property :state, as: 'state'
         end
       end
