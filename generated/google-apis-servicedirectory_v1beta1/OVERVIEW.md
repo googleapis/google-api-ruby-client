@@ -51,7 +51,7 @@ require "google/apis/servicedirectory_v1beta1"
 client = Google::Apis::ServicedirectoryV1beta1::ServiceDirectoryService.new
 
 # Authenticate calls
-client.authentication = # ... use the googleauth gem to create credentials
+client.authorization = # ... use the googleauth gem to create credentials
 ```
 
 See the class reference docs for information on the methods you can call from a client.
