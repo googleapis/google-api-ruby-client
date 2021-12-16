@@ -880,6 +880,15 @@ module Google
       class RoutingVpc
         include Google::Apis::Core::Hashable
       
+        # Output only. If true, indicates that this VPC network is currently associated
+        # with spokes that use the data transfer feature (spokes where the
+        # site_to_site_data_transfer field is set to true). If you create new spokes
+        # that use data transfer, they must be associated with this VPC network.
+        # Corresponds to the JSON property `requiredForNewSiteToSiteDataTransferSpokes`
+        # @return [Boolean]
+        attr_accessor :required_for_new_site_to_site_data_transfer_spokes
+        alias_method :required_for_new_site_to_site_data_transfer_spokes?, :required_for_new_site_to_site_data_transfer_spokes
+      
         # The URI of the VPC network.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -891,6 +900,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @required_for_new_site_to_site_data_transfer_spokes = args[:required_for_new_site_to_site_data_transfer_spokes] if args.key?(:required_for_new_site_to_site_data_transfer_spokes)
           @uri = args[:uri] if args.key?(:uri)
         end
       end

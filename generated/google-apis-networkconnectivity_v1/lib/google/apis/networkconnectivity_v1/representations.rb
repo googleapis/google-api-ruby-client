@@ -380,6 +380,7 @@ module Google
       class RoutingVpc
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_for_new_site_to_site_data_transfer_spokes, as: 'requiredForNewSiteToSiteDataTransferSpokes'
           property :uri, as: 'uri'
         end
       end
