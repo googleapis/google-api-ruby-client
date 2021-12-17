@@ -744,6 +744,7 @@ module Google
           property :name, as: 'name'
           collection :quota_buckets, as: 'quotaBuckets', class: Google::Apis::ServiceusageV1beta1::QuotaBucket, decorator: Google::Apis::ServiceusageV1beta1::QuotaBucket::Representation
       
+          collection :supported_locations, as: 'supportedLocations'
           property :unit, as: 'unit'
         end
       end
