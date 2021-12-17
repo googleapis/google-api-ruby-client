@@ -544,13 +544,20 @@ module Google
       end
       
       # Selects and configures the service controller used by the service. The service
-      # controller handles features like abuse, quota, billing, logging, monitoring,
-      # etc.
+      # controller handles two things: - **What is allowed:** for each API request,
+      # Chemist checks the project status, activation status, abuse status, billing
+      # status, service status, location restrictions, VPC Service Controls,
+      # SuperQuota, and other policies. - **What has happened:** for each API response,
+      # Chemist reports the telemetry data to analytics, auditing, billing, eventing,
+      # logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data
+      # not associated with API traffic, such as billing metrics. Example: control:
+      # environment: servicecontrol.googleapis.com
       class Control
         include Google::Apis::Core::Hashable
       
-        # The service control environment to use. If empty, no control plane feature (
-        # like quota and billing) will be enabled.
+        # The service controller environment to use. If empty, no control plane feature (
+        # like quota and billing) will be enabled. The recommended value for most
+        # services is servicecontrol.googleapis.com
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
@@ -2287,8 +2294,14 @@ module Google
         attr_accessor :context
       
         # Selects and configures the service controller used by the service. The service
-        # controller handles features like abuse, quota, billing, logging, monitoring,
-        # etc.
+        # controller handles two things: - **What is allowed:** for each API request,
+        # Chemist checks the project status, activation status, abuse status, billing
+        # status, service status, location restrictions, VPC Service Controls,
+        # SuperQuota, and other policies. - **What has happened:** for each API response,
+        # Chemist reports the telemetry data to analytics, auditing, billing, eventing,
+        # logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data
+        # not associated with API traffic, such as billing metrics. Example: control:
+        # environment: servicecontrol.googleapis.com
         # Corresponds to the JSON property `control`
         # @return [Google::Apis::ServiceconsumermanagementV1beta1::Control]
         attr_accessor :control
@@ -2894,6 +2907,12 @@ module Google
         # @return [Array<Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaBucket>]
         attr_accessor :quota_buckets
       
+        # List of all supported locations. This field is present only if the limit has a
+        # `region` or `zone` dimension.
+        # Corresponds to the JSON property `supportedLocations`
+        # @return [Array<String>]
+        attr_accessor :supported_locations
+      
         # The limit unit. An example unit would be: `1/`project`/`region`` Note that ``
         # project`` and ``region`` are not placeholders in this example; the literal
         # characters ``` and ``` occur in the string.
@@ -2911,6 +2930,7 @@ module Google
           @metric = args[:metric] if args.key?(:metric)
           @name = args[:name] if args.key?(:name)
           @quota_buckets = args[:quota_buckets] if args.key?(:quota_buckets)
+          @supported_locations = args[:supported_locations] if args.key?(:supported_locations)
           @unit = args[:unit] if args.key?(:unit)
         end
       end

@@ -1104,6 +1104,7 @@ module Google
           property :name, as: 'name'
           collection :quota_buckets, as: 'quotaBuckets', class: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaBucket, decorator: Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaBucket::Representation
       
+          collection :supported_locations, as: 'supportedLocations'
           property :unit, as: 'unit'
         end
       end
