@@ -978,9 +978,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An AES 128/192/256 bit key. Causes the hash to be computed based on this key.
-        # A default key is generated for each Deidentify operation and is used when
-        # neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `
-        # kms_wrapped` is set.
+        # A default key is generated for each Deidentify operation and is used wherever
+        # crypto_key is not specified.
         # Corresponds to the JSON property `cryptoKey`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1034,9 +1033,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An AES 128/192/256 bit key. Causes the shift to be computed based on this key
-        # and the patient ID. A default key is generated for each de-identification
-        # operation and is used when neither `crypto_key` nor `kms_wrapped` is specified.
-        # Must not be set if `kms_wrapped` is set.
+        # and the patient ID. A default key is generated for each Deidentify operation
+        # and is used wherever crypto_key is not specified.
         # Corresponds to the JSON property `cryptoKey`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2183,10 +2181,9 @@ module Google
         # by "Address.String". For "choice" types (those defined in the FHIR spec with
         # the form: field[x]), use two separate components. For example, "deceasedAge.
         # unit" is matched by "Deceased.Age.unit". Supported types are:
-        # AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal,
-        # HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt,
-        # String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName(for example
-        # HumanName.given, HumanName.family) can be omitted.
+        # AdministrativeGenderCode, Code, Date, DateTime, Decimal, HumanName, Id,
+        # LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml. The sub-type for
+        # HumanName, such as HumanName.given or HumanName.family, can be omitted.
         # Corresponds to the JSON property `paths`
         # @return [Array<String>]
         attr_accessor :paths
@@ -4148,9 +4145,8 @@ module Google
         # @return [String]
         attr_accessor :segment_terminator
       
-        # Immutable. Determines the version of both the default parser to be used when `
-        # schema` is not given, as well as the schematized parser used when `schema` is
-        # specified. This field is immutable after HL7v2 store creation.
+        # Immutable. Determines the version of the unschematized parser to be used when `
+        # schema` is not given. This field is immutable after store creation.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
