@@ -1252,6 +1252,12 @@ module Google
         # @return [String]
         attr_accessor :deploy_end_time
       
+        # Output only. The reason this deploy failed. This will always be unspecified
+        # while the deploy in progress.
+        # Corresponds to the JSON property `deployFailureCause`
+        # @return [String]
+        attr_accessor :deploy_failure_cause
+      
         # Output only. Time at which the `Rollout` started deploying.
         # Corresponds to the JSON property `deployStartTime`
         # @return [String]
@@ -1330,6 +1336,7 @@ module Google
           @approve_time = args[:approve_time] if args.key?(:approve_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deploy_end_time = args[:deploy_end_time] if args.key?(:deploy_end_time)
+          @deploy_failure_cause = args[:deploy_failure_cause] if args.key?(:deploy_failure_cause)
           @deploy_start_time = args[:deploy_start_time] if args.key?(:deploy_start_time)
           @deploying_build = args[:deploying_build] if args.key?(:deploying_build)
           @description = args[:description] if args.key?(:description)
@@ -1658,6 +1665,12 @@ module Google
       class TargetRender
         include Google::Apis::Core::Hashable
       
+        # Output only. Reason this render failed. This will always be unspecified while
+        # the render in progress.
+        # Corresponds to the JSON property `failureCause`
+        # @return [String]
+        attr_accessor :failure_cause
+      
         # Output only. The resource name of the Cloud Build `Build` object that is used
         # to render the manifest for this target. Format is `projects/`project`/
         # locations/`location`/builds/`build``.
@@ -1676,6 +1689,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @failure_cause = args[:failure_cause] if args.key?(:failure_cause)
           @rendering_build = args[:rendering_build] if args.key?(:rendering_build)
           @rendering_state = args[:rendering_state] if args.key?(:rendering_state)
         end
