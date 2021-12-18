@@ -571,6 +571,7 @@ module Google
           property :approve_time, as: 'approveTime'
           property :create_time, as: 'createTime'
           property :deploy_end_time, as: 'deployEndTime'
+          property :deploy_failure_cause, as: 'deployFailureCause'
           property :deploy_start_time, as: 'deployStartTime'
           property :deploying_build, as: 'deployingBuild'
           property :description, as: 'description'
@@ -660,6 +661,7 @@ module Google
       class TargetRender
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_cause, as: 'failureCause'
           property :rendering_build, as: 'renderingBuild'
           property :rendering_state, as: 'renderingState'
         end
