@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MergeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Notification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -444,6 +450,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dashboard_uri, as: 'dashboardUri'
+          property :incident_tracking_id, as: 'incidentTrackingId'
+          property :merge_info, as: 'mergeInfo', class: Google::Apis::AlertcenterV1beta1::MergeInfo, decorator: Google::Apis::AlertcenterV1beta1::MergeInfo::Representation
+      
           property :next_update_time, as: 'nextUpdateTime'
           collection :products, as: 'products'
           property :resolution_time, as: 'resolutionTime'
@@ -663,6 +672,14 @@ module Google
       
           property :user_defined_detector, as: 'userDefinedDetector', class: Google::Apis::AlertcenterV1beta1::UserDefinedDetectorInfo, decorator: Google::Apis::AlertcenterV1beta1::UserDefinedDetectorInfo::Representation
       
+        end
+      end
+      
+      class MergeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_alert_id, as: 'newAlertId'
+          property :new_incident_tracking_id, as: 'newIncidentTrackingId'
         end
       end
       

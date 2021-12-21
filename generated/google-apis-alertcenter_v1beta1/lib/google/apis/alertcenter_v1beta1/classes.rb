@@ -492,6 +492,16 @@ module Google
         # @return [String]
         attr_accessor :dashboard_uri
       
+        # Incident tracking ID.
+        # Corresponds to the JSON property `incidentTrackingId`
+        # @return [String]
+        attr_accessor :incident_tracking_id
+      
+        # New alert tracking numbers.
+        # Corresponds to the JSON property `mergeInfo`
+        # @return [Google::Apis::AlertcenterV1beta1::MergeInfo]
+        attr_accessor :merge_info
+      
         # Timestamp by which the next update is expected to arrive.
         # Corresponds to the JSON property `nextUpdateTime`
         # @return [String]
@@ -520,6 +530,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dashboard_uri = args[:dashboard_uri] if args.key?(:dashboard_uri)
+          @incident_tracking_id = args[:incident_tracking_id] if args.key?(:incident_tracking_id)
+          @merge_info = args[:merge_info] if args.key?(:merge_info)
           @next_update_time = args[:next_update_time] if args.key?(:next_update_time)
           @products = args[:products] if args.key?(:products)
           @resolution_time = args[:resolution_time] if args.key?(:resolution_time)
@@ -1207,6 +1219,32 @@ module Google
         def update!(**args)
           @predefined_detector = args[:predefined_detector] if args.key?(:predefined_detector)
           @user_defined_detector = args[:user_defined_detector] if args.key?(:user_defined_detector)
+        end
+      end
+      
+      # New alert tracking numbers.
+      class MergeInfo
+        include Google::Apis::Core::Hashable
+      
+        # New alert ID. Reference the [google.apps.alertcenter.Alert] with this ID for
+        # the current state.
+        # Corresponds to the JSON property `newAlertId`
+        # @return [String]
+        attr_accessor :new_alert_id
+      
+        # The new tracking ID from the parent incident.
+        # Corresponds to the JSON property `newIncidentTrackingId`
+        # @return [String]
+        attr_accessor :new_incident_tracking_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_alert_id = args[:new_alert_id] if args.key?(:new_alert_id)
+          @new_incident_tracking_id = args[:new_incident_tracking_id] if args.key?(:new_incident_tracking_id)
         end
       end
       
