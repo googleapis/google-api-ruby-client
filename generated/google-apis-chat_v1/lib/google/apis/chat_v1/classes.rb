@@ -2915,7 +2915,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Obfuscated domain information.
+        # Unique identifier of the user's Google Workspace domain.
         # Corresponds to the JSON property `domainId`
         # @return [String]
         attr_accessor :domain_id
@@ -2926,7 +2926,9 @@ module Google
         attr_accessor :is_anonymous
         alias_method :is_anonymous?, :is_anonymous
       
-        # Resource name, in the format "users/*".
+        # Resource name for a Google Chat user. Formatted as `users/AAAAAAAAAAA`.
+        # Represents a [person](https://developers.google.com/people/api/rest/v1/people#
+        # Person) in the People API.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
