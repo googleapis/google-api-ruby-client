@@ -1865,7 +1865,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a paginated list of all mobile devices for an account.
+        # Retrieves a paginated list of all user-owned mobile devices for an account. To
+        # retrieve a list that includes company-owned devices, use the Cloud Identity [
+        # Devices API](https://cloud.google.com/identity/docs/concepts/overview-devices)
+        # instead.
         # @param [String] customer_id
         #   The unique ID for the customer's Google Workspace account. As an account
         #   administrator, you can also use the `my_customer` alias to represent your
