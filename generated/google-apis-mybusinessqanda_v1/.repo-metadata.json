@@ -1,0 +1,7 @@
+{
+    "api_id": "mybusinessqanda:v1",
+    "name_pretty": "My Business Q&A API",
+    "distribution_name": "google-apis-mybusinessqanda_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
