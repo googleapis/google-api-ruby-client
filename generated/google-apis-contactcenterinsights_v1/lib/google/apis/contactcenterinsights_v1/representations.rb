@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ListViewsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1PhraseMatchData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -443,6 +449,12 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1View
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1152,6 +1164,15 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1ListViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :views, as: 'views', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1View, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1View::Representation
+      
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1PhraseMatchData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1304,6 +1325,17 @@ module Google
       class GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1View
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+          property :value, as: 'value'
         end
       end
       

@@ -1767,7 +1767,8 @@ module Google
       class GoogleCloudContactcenterinsightsV1IssueModelResult
         include Google::Apis::Core::Hashable
       
-        # Issue model that generates the result.
+        # Issue model that generates the result. Format: projects/`project`/locations/`
+        # location`/issueModels/`issue_model`
         # Corresponds to the JSON property `issueModel`
         # @return [String]
         attr_accessor :issue_model
@@ -1902,6 +1903,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @phrase_matchers = args[:phrase_matchers] if args.key?(:phrase_matchers)
+        end
+      end
+      
+      # The response of listing views.
+      class GoogleCloudContactcenterinsightsV1ListViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The views that match the request.
+        # Corresponds to the JSON property `views`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1View>]
+        attr_accessor :views
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @views = args[:views] if args.key?(:views)
         end
       end
       
@@ -2441,6 +2468,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The View resource.
+      class GoogleCloudContactcenterinsightsV1View
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which this view was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The human-readable display name of the view.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Immutable. The resource name of the view. Format: projects/`project`/locations/
+        # `location`/views/`view`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The most recent time at which the view was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # String with specific view properties.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
