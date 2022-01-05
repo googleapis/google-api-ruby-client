@@ -809,7 +809,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the tags on an Entry.
+        # Lists tags assigned to an Entry. The columns in the response are lowercased.
         # @param [String] parent
         #   Required. The name of the Data Catalog resource to list the tags of. The
         #   resource could be an Entry or an EntryGroup. Examples: * projects/`project_id`/
@@ -965,7 +965,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the tags on an Entry.
+        # Lists tags assigned to an Entry. The columns in the response are lowercased.
         # @param [String] parent
         #   Required. The name of the Data Catalog resource to list the tags of. The
         #   resource could be an Entry or an EntryGroup. Examples: * projects/`project_id`/
