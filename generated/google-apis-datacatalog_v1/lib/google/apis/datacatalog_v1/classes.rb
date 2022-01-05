@@ -338,6 +338,31 @@ module Google
         end
       end
       
+      # Business Context of the entry.
+      class GoogleCloudDatacatalogV1BusinessContext
+        include Google::Apis::Core::Hashable
+      
+        # Contact people for the entry.
+        # Corresponds to the JSON property `contacts`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts]
+        attr_accessor :contacts
+      
+        # Entry overview fields for rich text descriptions of entries.
+        # Corresponds to the JSON property `entryOverview`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview]
+        attr_accessor :entry_overview
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contacts = args[:contacts] if args.key?(:contacts)
+          @entry_overview = args[:entry_overview] if args.key?(:entry_overview)
+        end
+      end
+      
       # Specification for the BigQuery connection to a Cloud SQL instance.
       class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
         include Google::Apis::Core::Hashable
@@ -414,6 +439,50 @@ module Google
           @mode = args[:mode] if args.key?(:mode)
           @subcolumns = args[:subcolumns] if args.key?(:subcolumns)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Contact people for the entry.
+      class GoogleCloudDatacatalogV1Contacts
+        include Google::Apis::Core::Hashable
+      
+        # The list of contact people for the entry.
+        # Corresponds to the JSON property `people`
+        # @return [Array<Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ContactsPerson>]
+        attr_accessor :people
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @people = args[:people] if args.key?(:people)
+        end
+      end
+      
+      # A contact person for the entry.
+      class GoogleCloudDatacatalogV1ContactsPerson
+        include Google::Apis::Core::Hashable
+      
+        # Designation of the person, for example, Data Steward.
+        # Corresponds to the JSON property `designation`
+        # @return [String]
+        attr_accessor :designation
+      
+        # Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @designation = args[:designation] if args.key?(:designation)
+          @email = args[:email] if args.key?(:email)
         end
       end
       
@@ -525,6 +594,11 @@ module Google
         # Corresponds to the JSON property `bigqueryTableSpec`
         # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BigQueryTableSpec]
         attr_accessor :bigquery_table_spec
+      
+        # Business Context of the entry.
+        # Corresponds to the JSON property `businessContext`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BusinessContext]
+        attr_accessor :business_context
       
         # Physical location of an entry.
         # Corresponds to the JSON property `dataSource`
@@ -675,6 +749,7 @@ module Google
         def update!(**args)
           @bigquery_date_sharded_spec = args[:bigquery_date_sharded_spec] if args.key?(:bigquery_date_sharded_spec)
           @bigquery_table_spec = args[:bigquery_table_spec] if args.key?(:bigquery_table_spec)
+          @business_context = args[:business_context] if args.key?(:business_context)
           @data_source = args[:data_source] if args.key?(:data_source)
           @data_source_connection_spec = args[:data_source_connection_spec] if args.key?(:data_source_connection_spec)
           @database_table_spec = args[:database_table_spec] if args.key?(:database_table_spec)
@@ -736,6 +811,28 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Entry overview fields for rich text descriptions of entries.
+      class GoogleCloudDatacatalogV1EntryOverview
+        include Google::Apis::Core::Hashable
+      
+        # Entry overview with support for rich text. The overview must only contain
+        # Unicode characters, and should be formatted using HTML. The maximum length is
+        # 10 MiB as this value holds HTML descriptions including encoded images. The
+        # maximum length of the text without images is 100 KiB.
+        # Corresponds to the JSON property `overview`
+        # @return [String]
+        attr_accessor :overview
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overview = args[:overview] if args.key?(:overview)
         end
       end
       
@@ -1092,6 +1189,44 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @taxonomies = args[:taxonomies] if args.key?(:taxonomies)
+        end
+      end
+      
+      # Request message for ModifyEntryContacts.
+      class GoogleCloudDatacatalogV1ModifyEntryContactsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Contact people for the entry.
+        # Corresponds to the JSON property `contacts`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts]
+        attr_accessor :contacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contacts = args[:contacts] if args.key?(:contacts)
+        end
+      end
+      
+      # Request message for ModifyEntryOverview.
+      class GoogleCloudDatacatalogV1ModifyEntryOverviewRequest
+        include Google::Apis::Core::Hashable
+      
+        # Entry overview fields for rich text descriptions of entries.
+        # Corresponds to the JSON property `entryOverview`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview]
+        attr_accessor :entry_overview
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entry_overview = args[:entry_overview] if args.key?(:entry_overview)
         end
       end
       
