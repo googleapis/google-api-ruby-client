@@ -666,6 +666,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Modifies contacts, part of the business context of an Entry. To call this
+        # method, you must have the `datacatalog.entries.updateContacts` IAM permission
+        # on the corresponding project.
+        # @param [String] name
+        #   Required. The full resource name of the entry.
+        # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ModifyEntryContactsRequest] google_cloud_datacatalog_v1_modify_entry_contacts_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_project_location_entry_group_entry_entry_contacts(name, google_cloud_datacatalog_v1_modify_entry_contacts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:modifyEntryContacts', options)
+          command.request_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ModifyEntryContactsRequest::Representation
+          command.request_object = google_cloud_datacatalog_v1_modify_entry_contacts_request_object
+          command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts::Representation
+          command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modifies entry overview, part of the business context of an Entry. To call
+        # this method, you must have the `datacatalog.entries.updateOverview` IAM
+        # permission on the corresponding project.
+        # @param [String] name
+        #   Required. The full resource name of the entry.
+        # @param [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ModifyEntryOverviewRequest] google_cloud_datacatalog_v1_modify_entry_overview_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_project_location_entry_group_entry_entry_overview(name, google_cloud_datacatalog_v1_modify_entry_overview_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:modifyEntryOverview', options)
+          command.request_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ModifyEntryOverviewRequest::Representation
+          command.request_object = google_cloud_datacatalog_v1_modify_entry_overview_request_object
+          command.response_representation = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview::Representation
+          command.response_class = Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates an existing entry. You must enable the Data Catalog API in the project
         # identified by the `entry.name` parameter. For more information, see [Data
         # Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/
@@ -895,7 +965,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists tags assigned to an Entry.
+        # Lists tags assigned to an Entry. The columns in the response are lowercased.
         # @param [String] parent
         #   Required. The name of the Data Catalog resource to list the tags of. The
         #   resource can be an Entry or an EntryGroup (without `/entries/`entries`` at the
@@ -1048,7 +1118,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists tags assigned to an Entry.
+        # Lists tags assigned to an Entry. The columns in the response are lowercased.
         # @param [String] parent
         #   Required. The name of the Data Catalog resource to list the tags of. The
         #   resource can be an Entry or an EntryGroup (without `/entries/`entries`` at the

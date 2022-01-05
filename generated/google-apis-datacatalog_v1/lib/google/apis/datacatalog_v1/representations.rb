@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1BusinessContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,18 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1ColumnSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1Contacts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ContactsPerson
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -119,6 +137,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1EntryGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1EntryOverview
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -203,6 +227,18 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1ListTaxonomiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ModifyEntryContactsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1ModifyEntryOverviewRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -485,6 +521,16 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1BusinessContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contacts, as: 'contacts', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts::Representation
+      
+          property :entry_overview, as: 'entryOverview', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview::Representation
+      
+        end
+      end
+      
       class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -503,6 +549,22 @@ module Google
           collection :subcolumns, as: 'subcolumns', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ColumnSchema::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1Contacts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :people, as: 'people', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ContactsPerson, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ContactsPerson::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ContactsPerson
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :designation, as: 'designation'
+          property :email, as: 'email'
         end
       end
       
@@ -543,6 +605,8 @@ module Google
       
           property :bigquery_table_spec, as: 'bigqueryTableSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BigQueryTableSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BigQueryTableSpec::Representation
       
+          property :business_context, as: 'businessContext', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BusinessContext, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1BusinessContext::Representation
+      
           property :data_source, as: 'dataSource', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSource, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSource::Representation
       
           property :data_source_connection_spec, as: 'dataSourceConnectionSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSourceConnectionSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataSourceConnectionSpec::Representation
@@ -582,6 +646,13 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1EntryOverview
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :overview, as: 'overview'
         end
       end
       
@@ -703,6 +774,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :taxonomies, as: 'taxonomies', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Taxonomy, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Taxonomy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ModifyEntryContactsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contacts, as: 'contacts', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1Contacts::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1ModifyEntryOverviewRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entry_overview, as: 'entryOverview', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1EntryOverview::Representation
       
         end
       end
