@@ -1483,6 +1483,18 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1beta::SchemaRestrictionResponse]
         attr_accessor :schema_restriction_response
       
+        # If `subjectToThresholding` is true, this report is subject to thresholding and
+        # only returns data that meets the minimum aggregation thresholds. It is
+        # possible for a request to be subject to thresholding thresholding and no data
+        # is absent from the report, and this happens when all data is above the
+        # thresholds. To learn more, see [Data thresholds](https://support.google.com/
+        # analytics/answer/9383630) and [About Demographics and Interests](https://
+        # support.google.com/analytics/answer/2799357).
+        # Corresponds to the JSON property `subjectToThresholding`
+        # @return [Boolean]
+        attr_accessor :subject_to_thresholding
+        alias_method :subject_to_thresholding?, :subject_to_thresholding
+      
         # The property's current timezone. Intended to be used to interpret time-based
         # dimensions like `hour` and `minute`. Formatted as strings from the IANA Time
         # Zone database (https://www.iana.org/time-zones); for example "America/New_York"
@@ -1501,6 +1513,7 @@ module Google
           @data_loss_from_other_row = args[:data_loss_from_other_row] if args.key?(:data_loss_from_other_row)
           @empty_reason = args[:empty_reason] if args.key?(:empty_reason)
           @schema_restriction_response = args[:schema_restriction_response] if args.key?(:schema_restriction_response)
+          @subject_to_thresholding = args[:subject_to_thresholding] if args.key?(:subject_to_thresholding)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
