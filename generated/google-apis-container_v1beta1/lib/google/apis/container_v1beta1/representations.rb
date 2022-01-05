@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkeBackupAgentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HorizontalPodAutoscaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -551,6 +557,12 @@ module Google
       end
       
       class OperationProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlacementPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -871,6 +883,8 @@ module Google
           property :gce_persistent_disk_csi_driver_config, as: 'gcePersistentDiskCsiDriverConfig', class: Google::Apis::ContainerV1beta1::GcePersistentDiskCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::GcePersistentDiskCsiDriverConfig::Representation
       
           property :gcp_filestore_csi_driver_config, as: 'gcpFilestoreCsiDriverConfig', class: Google::Apis::ContainerV1beta1::GcpFilestoreCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::GcpFilestoreCsiDriverConfig::Representation
+      
+          property :gke_backup_agent_config, as: 'gkeBackupAgentConfig', class: Google::Apis::ContainerV1beta1::GkeBackupAgentConfig, decorator: Google::Apis::ContainerV1beta1::GkeBackupAgentConfig::Representation
       
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1beta1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::HorizontalPodAutoscaling::Representation
       
@@ -1360,6 +1374,13 @@ module Google
         end
       end
       
+      class GkeBackupAgentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class HorizontalPodAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1794,6 +1815,8 @@ module Google
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::ContainerV1beta1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1beta1::NodeNetworkConfig::Representation
       
+          property :placement_policy, as: 'placementPolicy', class: Google::Apis::ContainerV1beta1::PlacementPolicy, decorator: Google::Apis::ContainerV1beta1::PlacementPolicy::Representation
+      
           property :pod_ipv4_cidr_size, as: 'podIpv4CidrSize'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -1881,6 +1904,13 @@ module Google
           collection :stages, as: 'stages', class: Google::Apis::ContainerV1beta1::OperationProgress, decorator: Google::Apis::ContainerV1beta1::OperationProgress::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class PlacementPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       

@@ -86,6 +86,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::GcpFilestoreCsiDriverConfig]
         attr_accessor :gcp_filestore_csi_driver_config
       
+        # Configuration for the Backup for GKE Agent.
+        # Corresponds to the JSON property `gkeBackupAgentConfig`
+        # @return [Google::Apis::ContainerV1beta1::GkeBackupAgentConfig]
+        attr_accessor :gke_backup_agent_config
+      
         # Configuration options for the horizontal pod autoscaling feature, which
         # increases or decreases the number of replica pods a replication controller has
         # based on the resource usage of the existing pods.
@@ -132,6 +137,7 @@ module Google
           @dns_cache_config = args[:dns_cache_config] if args.key?(:dns_cache_config)
           @gce_persistent_disk_csi_driver_config = args[:gce_persistent_disk_csi_driver_config] if args.key?(:gce_persistent_disk_csi_driver_config)
           @gcp_filestore_csi_driver_config = args[:gcp_filestore_csi_driver_config] if args.key?(:gcp_filestore_csi_driver_config)
+          @gke_backup_agent_config = args[:gke_backup_agent_config] if args.key?(:gke_backup_agent_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @istio_config = args[:istio_config] if args.key?(:istio_config)
@@ -1976,6 +1982,26 @@ module Google
         end
       end
       
+      # Configuration for the Backup for GKE Agent.
+      class GkeBackupAgentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the Backup for GKE agent is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Configuration options for the horizontal pod autoscaling feature, which
       # increases or decreases the number of replica pods a replication controller has
       # based on the resource usage of the existing pods.
@@ -3614,6 +3640,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeNetworkConfig]
         attr_accessor :network_config
       
+        # PlacementPolicy defines the placement policy used by the node pool.
+        # Corresponds to the JSON property `placementPolicy`
+        # @return [Google::Apis::ContainerV1beta1::PlacementPolicy]
+        attr_accessor :placement_policy
+      
         # [Output only] The pod CIDR block size per node in this node pool.
         # Corresponds to the JSON property `podIpv4CidrSize`
         # @return [Fixnum]
@@ -3661,6 +3692,7 @@ module Google
           @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
+          @placement_policy = args[:placement_policy] if args.key?(:placement_policy)
           @pod_ipv4_cidr_size = args[:pod_ipv4_cidr_size] if args.key?(:pod_ipv4_cidr_size)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -3960,6 +3992,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @stages = args[:stages] if args.key?(:stages)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # PlacementPolicy defines the placement policy used by the node pool.
+      class PlacementPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The type of placement.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
