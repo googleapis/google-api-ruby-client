@@ -118,12 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Empty
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class EnvFromSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,12 +149,6 @@ module Google
       end
       
       class GoogleCloudRunV1Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -608,12 +596,6 @@ module Google
         end
       end
       
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class EnvFromSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -671,12 +653,6 @@ module Google
           property :severity, as: 'severity'
           property :status, as: 'status'
           property :type, as: 'type'
-        end
-      end
-      
-      class GoogleLongrunningCancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -917,6 +893,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_concurrency, as: 'containerConcurrency'
           collection :containers, as: 'containers', class: Google::Apis::RunV1::Container, decorator: Google::Apis::RunV1::Container::Representation
+      
+          property :enable_service_links, as: 'enableServiceLinks'
+          collection :image_pull_secrets, as: 'imagePullSecrets', class: Google::Apis::RunV1::LocalObjectReference, decorator: Google::Apis::RunV1::LocalObjectReference::Representation
       
           property :service_account_name, as: 'serviceAccountName'
           property :timeout_seconds, as: 'timeoutSeconds'
