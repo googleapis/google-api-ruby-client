@@ -51,7 +51,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Fetches processor types.
+        # Fetches processor types. Note that we do not use ListProcessorTypes here
+        # because it is not paginated.
         # @param [String] parent
         #   Required. The project of processor type to list. The available processor types
         #   may depend on the allow-listing on projects. Format: `projects/`project`/
