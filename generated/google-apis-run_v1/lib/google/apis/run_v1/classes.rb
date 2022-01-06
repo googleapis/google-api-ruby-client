@@ -784,23 +784,6 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated empty
-      # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
-      class Empty
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Not supported by Cloud Run EnvFromSource represents the source of a set of
       # ConfigMaps
       class EnvFromSource
@@ -1027,19 +1010,6 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @status = args[:status] if args.key?(:status)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # The request message for Operations.CancelOperation.
-      class GoogleLongrunningCancelOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -2062,11 +2032,11 @@ module Google
       class RevisionSpec
         include Google::Apis::Core::Hashable
       
-        # Optional. ContainerConcurrency specifies the maximum allowed in-flight (
-        # concurrent) requests per container instance of the Revision. Cloud Run fully
-        # managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults
-        # to 0, which means concurrency to the application is not limited, and the
-        # system decides the target concurrency for the autoscaler.
+        # ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
+        # requests per container instance of the Revision. Cloud Run fully managed:
+        # supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0,
+        # which means concurrency to the application is not limited, and the system
+        # decides the target concurrency for the autoscaler.
         # Corresponds to the JSON property `containerConcurrency`
         # @return [Fixnum]
         attr_accessor :container_concurrency
@@ -2079,6 +2049,25 @@ module Google
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV1::Container>]
         attr_accessor :containers
+      
+        # Indicates whether information about services should be injected into pod's
+        # environment variables, matching the syntax of Docker links. Cloud Run fully
+        # managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+        # Corresponds to the JSON property `enableServiceLinks`
+        # @return [Boolean]
+        attr_accessor :enable_service_links
+        alias_method :enable_service_links?, :enable_service_links
+      
+        # ImagePullSecrets is a list of references to secrets in the same namespace to
+        # use for pulling any images in pods that reference this ServiceAccount.
+        # ImagePullSecrets are distinct from Secrets because Secrets can be mounted in
+        # the pod, but ImagePullSecrets are only accessed by the kubelet. More info:
+        # https://kubernetes.io/docs/concepts/containers/images/#specifying-
+        # imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run
+        # for Anthos: supported.
+        # Corresponds to the JSON property `imagePullSecrets`
+        # @return [Array<Google::Apis::RunV1::LocalObjectReference>]
+        attr_accessor :image_pull_secrets
       
         # Email address of the IAM service account associated with the revision of the
         # service. The service account represents the identity of the running revision,
@@ -2110,6 +2099,8 @@ module Google
         def update!(**args)
           @container_concurrency = args[:container_concurrency] if args.key?(:container_concurrency)
           @containers = args[:containers] if args.key?(:containers)
+          @enable_service_links = args[:enable_service_links] if args.key?(:enable_service_links)
+          @image_pull_secrets = args[:image_pull_secrets] if args.key?(:image_pull_secrets)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
           @volumes = args[:volumes] if args.key?(:volumes)
