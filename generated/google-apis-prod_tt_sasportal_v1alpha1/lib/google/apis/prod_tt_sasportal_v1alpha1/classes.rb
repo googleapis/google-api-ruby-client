@@ -138,16 +138,6 @@ module Google
       class SasPortalDeployment
         include Google::Apis::Core::Hashable
       
-        # The allowed billing modes under this deployment.
-        # Corresponds to the JSON property `allowedBillingModes`
-        # @return [Array<String>]
-        attr_accessor :allowed_billing_modes
-      
-        # Default billing mode for the deployment and devices under it.
-        # Corresponds to the JSON property `defaultBillingMode`
-        # @return [String]
-        attr_accessor :default_billing_mode
-      
         # The deployment's display name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -175,8 +165,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @allowed_billing_modes = args[:allowed_billing_modes] if args.key?(:allowed_billing_modes)
-          @default_billing_mode = args[:default_billing_mode] if args.key?(:default_billing_mode)
           @display_name = args[:display_name] if args.key?(:display_name)
           @frns = args[:frns] if args.key?(:frns)
           @name = args[:name] if args.key?(:name)
