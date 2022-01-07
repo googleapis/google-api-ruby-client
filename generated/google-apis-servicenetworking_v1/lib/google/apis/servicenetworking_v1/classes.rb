@@ -4269,6 +4269,13 @@ module Google
       class ValidateConsumerConfigRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The IAM permission check determines whether the consumer project has
+        # 'servicenetworking.services.use' permission or not.
+        # Corresponds to the JSON property `checkServiceNetworkingUsePermission`
+        # @return [Boolean]
+        attr_accessor :check_service_networking_use_permission
+        alias_method :check_service_networking_use_permission?, :check_service_networking_use_permission
+      
         # Required. The network that the consumer is using to connect with services.
         # Must be in the form of projects/`project`/global/networks/`network` `project`
         # is a project number, as in '12345' `network` is network name.
@@ -4303,6 +4310,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @check_service_networking_use_permission = args[:check_service_networking_use_permission] if args.key?(:check_service_networking_use_permission)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
           @range_reservation = args[:range_reservation] if args.key?(:range_reservation)
