@@ -884,6 +884,14 @@ module Google
         # @return [String]
         attr_accessor :boot_disk_type
       
+        # Optional. Interface type of local SSDs (default is "scsi"). Valid values: "
+        # scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        # See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#
+        # performance).
+        # Corresponds to the JSON property `localSsdInterface`
+        # @return [String]
+        attr_accessor :local_ssd_interface
+      
         # Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not
         # attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.
         # apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are
@@ -901,6 +909,7 @@ module Google
         def update!(**args)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @boot_disk_type = args[:boot_disk_type] if args.key?(:boot_disk_type)
+          @local_ssd_interface = args[:local_ssd_interface] if args.key?(:local_ssd_interface)
           @num_local_ssds = args[:num_local_ssds] if args.key?(:num_local_ssds)
         end
       end
@@ -1897,14 +1906,19 @@ module Google
         # Optional. Maximum number of times per hour a driver may be restarted as a
         # result of driver exiting with non-zero code before job is reported failed.A
         # job may be reported as thrashing if driver exits with non-zero code 4 times
-        # within 10 minute window.Maximum value is 10.
+        # within 10 minute window.Maximum value is 10.Note: Currently, this restartable
+        # job option is not supported in Dataproc workflow template (https://cloud.
+        # google.com/dataproc/docs/concepts/workflows/using-workflows#
+        # adding_jobs_to_a_template) jobs.
         # Corresponds to the JSON property `maxFailuresPerHour`
         # @return [Fixnum]
         attr_accessor :max_failures_per_hour
       
         # Optional. Maximum number of times in total a driver may be restarted as a
         # result of driver exiting with non-zero code before job is reported failed.
-        # Maximum value is 240.
+        # Maximum value is 240.Note: Currently, this restartable job option is not
+        # supported in Dataproc workflow template (https://cloud.google.com/dataproc/
+        # docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
         # Corresponds to the JSON property `maxFailuresTotal`
         # @return [Fixnum]
         attr_accessor :max_failures_total

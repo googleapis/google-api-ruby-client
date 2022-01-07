@@ -782,6 +782,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
           property :boot_disk_type, as: 'bootDiskType'
+          property :local_ssd_interface, as: 'localSsdInterface'
           property :num_local_ssds, as: 'numLocalSsds'
         end
       end
