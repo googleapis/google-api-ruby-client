@@ -548,11 +548,6 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount]
         attr_accessor :account
       
-        # A resource message representing a Google Analytics Android app stream.
-        # Corresponds to the JSON property `androidAppDataStream`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream]
-        attr_accessor :android_app_data_stream
-      
         # A conversion event in a Google Analytics property.
         # Corresponds to the JSON property `conversionEvent`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent]
@@ -572,6 +567,11 @@ module Google
         # Corresponds to the JSON property `dataRetentionSettings`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRetentionSettings]
         attr_accessor :data_retention_settings
+      
+        # A resource message representing a data stream.
+        # Corresponds to the JSON property `dataStream`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream]
+        attr_accessor :data_stream
       
         # A link between a GA4 property and a Display & Video 360 advertiser.
         # Corresponds to the JSON property `displayVideo360AdvertiserLink`
@@ -601,11 +601,6 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleSignalsSettings]
         attr_accessor :google_signals_settings
       
-        # A resource message representing a Google Analytics IOS app stream.
-        # Corresponds to the JSON property `iosAppDataStream`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream]
-        attr_accessor :ios_app_data_stream
-      
         # A secret value used for sending hits to Measurement Protocol.
         # Corresponds to the JSON property `measurementProtocolSecret`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret]
@@ -616,11 +611,6 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
         attr_accessor :property
       
-        # A resource message representing a Google Analytics web stream.
-        # Corresponds to the JSON property `webDataStream`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream]
-        attr_accessor :web_data_stream
-      
         def initialize(**args)
            update!(**args)
         end
@@ -628,20 +618,18 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account = args[:account] if args.key?(:account)
-          @android_app_data_stream = args[:android_app_data_stream] if args.key?(:android_app_data_stream)
           @conversion_event = args[:conversion_event] if args.key?(:conversion_event)
           @custom_dimension = args[:custom_dimension] if args.key?(:custom_dimension)
           @custom_metric = args[:custom_metric] if args.key?(:custom_metric)
           @data_retention_settings = args[:data_retention_settings] if args.key?(:data_retention_settings)
+          @data_stream = args[:data_stream] if args.key?(:data_stream)
           @display_video360_advertiser_link = args[:display_video360_advertiser_link] if args.key?(:display_video360_advertiser_link)
           @display_video360_advertiser_link_proposal = args[:display_video360_advertiser_link_proposal] if args.key?(:display_video360_advertiser_link_proposal)
           @firebase_link = args[:firebase_link] if args.key?(:firebase_link)
           @google_ads_link = args[:google_ads_link] if args.key?(:google_ads_link)
           @google_signals_settings = args[:google_signals_settings] if args.key?(:google_signals_settings)
-          @ios_app_data_stream = args[:ios_app_data_stream] if args.key?(:ios_app_data_stream)
           @measurement_protocol_secret = args[:measurement_protocol_secret] if args.key?(:measurement_protocol_secret)
           @property = args[:property] if args.key?(:property)
-          @web_data_stream = args[:web_data_stream] if args.key?(:web_data_stream)
         end
       end
       
