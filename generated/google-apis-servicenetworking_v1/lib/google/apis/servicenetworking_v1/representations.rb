@@ -1629,6 +1629,7 @@ module Google
       class ValidateConsumerConfigRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_service_networking_use_permission, as: 'checkServiceNetworkingUsePermission'
           property :consumer_network, as: 'consumerNetwork'
           property :consumer_project, as: 'consumerProject', class: Google::Apis::ServicenetworkingV1::ConsumerProject, decorator: Google::Apis::ServicenetworkingV1::ConsumerProject::Representation
       
