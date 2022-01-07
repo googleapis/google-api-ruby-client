@@ -59,8 +59,7 @@ module Google
         end
       end
       
-      # Represents data source metadata. Metadata is sufficient to render UI and
-      # request proper OAuth tokens.
+      # Defines the properties and custom parameters for a data source.
       class DataSource
         include Google::Apis::Core::Hashable
       
@@ -194,11 +193,7 @@ module Google
         end
       end
       
-      # Represents a data source parameter with validation rules, so that parameters
-      # can be rendered in the UI. These parameters are given to us by supported data
-      # sources, and include all needed information for rendering and validation. Thus,
-      # whoever uses this api can decide to generate either generic ui, or custom
-      # data source specific forms.
+      # A parameter used to define custom fields in a data source definition.
       class DataSourceParameter
         include Google::Apis::Core::Hashable
       

@@ -89,10 +89,7 @@ module Google
         end
         
         # Returns true if valid credentials exist for the given data source and
-        # requesting user. Some data sources doesn't support service account, so we need
-        # to talk to them on behalf of the end user. This API just checks whether we
-        # have OAuth token for the particular user, which is a pre-requisite before user
-        # can create a transfer config.
+        # requesting user.
         # @param [String] name
         #   Required. The data source in the form: `projects/`project_id`/dataSources/`
         #   data_source_id`` or `projects/`project_id`/locations/`location_id`/dataSources/
@@ -127,8 +124,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a supported data source and returns its settings, which can be used
-        # for UI rendering.
+        # Retrieves a supported data source and returns its settings.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example: `
         #   projects/`project_id`/dataSources/`data_source_id`` or `projects/`project_id`/
@@ -160,8 +156,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists supported data sources and returns their settings, which can be used for
-        # UI rendering.
+        # Lists supported data sources and returns their settings.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned.
         #   Must be in the form: `projects/`project_id`` or `projects/`project_id`/
@@ -314,10 +309,7 @@ module Google
         end
         
         # Returns true if valid credentials exist for the given data source and
-        # requesting user. Some data sources doesn't support service account, so we need
-        # to talk to them on behalf of the end user. This API just checks whether we
-        # have OAuth token for the particular user, which is a pre-requisite before user
-        # can create a transfer config.
+        # requesting user.
         # @param [String] name
         #   Required. The data source in the form: `projects/`project_id`/dataSources/`
         #   data_source_id`` or `projects/`project_id`/locations/`location_id`/dataSources/
@@ -352,8 +344,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a supported data source and returns its settings, which can be used
-        # for UI rendering.
+        # Retrieves a supported data source and returns its settings.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example: `
         #   projects/`project_id`/dataSources/`data_source_id`` or `projects/`project_id`/
@@ -385,8 +376,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists supported data sources and returns their settings, which can be used for
-        # UI rendering.
+        # Lists supported data sources and returns their settings.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned.
         #   Must be in the form: `projects/`project_id`` or `projects/`project_id`/
@@ -805,7 +795,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns information about running and completed jobs.
+        # Returns information about running and completed transfer runs.
         # @param [String] parent
         #   Required. Name of transfer configuration for which transfer runs should be
         #   retrieved. Format of transfer configuration resource name is: `projects/`
@@ -853,7 +843,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns user facing log messages for the data transfer run.
+        # Returns log messages for the transfer run.
         # @param [String] parent
         #   Required. Transfer run name in the form: `projects/`project_id`/
         #   transferConfigs/`config_id`/runs/`run_id`` or `projects/`project_id`/locations/
@@ -1276,7 +1266,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns information about running and completed jobs.
+        # Returns information about running and completed transfer runs.
         # @param [String] parent
         #   Required. Name of transfer configuration for which transfer runs should be
         #   retrieved. Format of transfer configuration resource name is: `projects/`
@@ -1324,7 +1314,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns user facing log messages for the data transfer run.
+        # Returns log messages for the transfer run.
         # @param [String] parent
         #   Required. Transfer run name in the form: `projects/`project_id`/
         #   transferConfigs/`config_id`/runs/`run_id`` or `projects/`project_id`/locations/
