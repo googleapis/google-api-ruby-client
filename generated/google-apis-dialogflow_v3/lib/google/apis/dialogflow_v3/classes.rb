@@ -3678,6 +3678,12 @@ module Google
         # @return [String]
         attr_accessor :current_page
       
+        # Always present for WebhookRequest. Ignored for WebhookResponse. The display
+        # name of the current page.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Represents form information.
         # Corresponds to the JSON property `formInfo`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3PageInfoFormInfo]
@@ -3690,6 +3696,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @current_page = args[:current_page] if args.key?(:current_page)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @form_info = args[:form_info] if args.key?(:form_info)
         end
       end
@@ -7820,6 +7827,12 @@ module Google
         # @return [String]
         attr_accessor :current_page
       
+        # Always present for WebhookRequest. Ignored for WebhookResponse. The display
+        # name of the current page.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Represents form information.
         # Corresponds to the JSON property `formInfo`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1PageInfoFormInfo]
@@ -7832,6 +7845,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @current_page = args[:current_page] if args.key?(:current_page)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @form_info = args[:form_info] if args.key?(:form_info)
         end
       end
@@ -10816,7 +10830,7 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # Output only. The time when the message was created.
+        # Output only. The time when the message was created in Contact Center AI.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -10832,7 +10846,7 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2MessageAnnotation]
         attr_accessor :message_annotation
       
-        # The unique identifier of the message. Format: `projects//locations//
+        # Optional. The unique identifier of the message. Format: `projects//locations//
         # conversations//messages/`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -10848,6 +10862,23 @@ module Google
         # @return [String]
         attr_accessor :participant_role
       
+        # Optional. The time when the message was sent.
+        # Corresponds to the JSON property `sendTime`
+        # @return [String]
+        attr_accessor :send_time
+      
+        # The result of sentiment analysis. Sentiment analysis inspects user input and
+        # identifies the prevailing subjective opinion, especially to determine a user's
+        # attitude as positive, negative, or neutral. For Participants.DetectIntent, it
+        # needs to be configured in DetectIntentRequest.query_params. For Participants.
+        # StreamingDetectIntent, it needs to be configured in
+        # StreamingDetectIntentRequest.query_params. And for Participants.AnalyzeContent
+        # and Participants.StreamingAnalyzeContent, it needs to be configured in
+        # ConversationProfile.human_agent_assistant_config
+        # Corresponds to the JSON property `sentimentAnalysis`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SentimentAnalysisResult]
+        attr_accessor :sentiment_analysis
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10861,6 +10892,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @participant = args[:participant] if args.key?(:participant)
           @participant_role = args[:participant_role] if args.key?(:participant_role)
+          @send_time = args[:send_time] if args.key?(:send_time)
+          @sentiment_analysis = args[:sentiment_analysis] if args.key?(:sentiment_analysis)
         end
       end
       
@@ -11191,6 +11224,40 @@ module Google
         end
       end
       
+      # Represents a smart reply answer.
+      class GoogleCloudDialogflowV2SmartReplyAnswer
+        include Google::Apis::Core::Hashable
+      
+        # The name of answer record, in the format of "projects//locations//
+        # answerRecords/"
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # Smart reply confidence. The system's confidence score that this reply is a
+        # good match for this conversation, as a value from 0.0 (completely uncertain)
+        # to 1.0 (completely certain).
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The content of the reply.
+        # Corresponds to the JSON property `reply`
+        # @return [String]
+        attr_accessor :reply
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @reply = args[:reply] if args.key?(:reply)
+        end
+      end
+      
       # The response message for Participants.SuggestArticles.
       class GoogleCloudDialogflowV2SuggestArticlesResponse
         include Google::Apis::Core::Hashable
@@ -11259,6 +11326,42 @@ module Google
         end
       end
       
+      # The response message for Participants.SuggestSmartReplies.
+      class GoogleCloudDialogflowV2SuggestSmartRepliesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of messages prior to and including latest_message to compile the
+        # suggestion. It may be smaller than the SuggestSmartRepliesRequest.context_size
+        # field in the request if there aren't that many messages in the conversation.
+        # Corresponds to the JSON property `contextSize`
+        # @return [Fixnum]
+        attr_accessor :context_size
+      
+        # The name of the latest conversation message used to compile suggestion for.
+        # Format: `projects//locations//conversations//messages/`.
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        # Output only. Multiple reply options provided by smart reply service. The order
+        # is based on the rank of the model prediction. The maximum number of the
+        # returned replies is set in SmartReplyConfig.
+        # Corresponds to the JSON property `smartReplyAnswers`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SmartReplyAnswer>]
+        attr_accessor :smart_reply_answers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_size = args[:context_size] if args.key?(:context_size)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+          @smart_reply_answers = args[:smart_reply_answers] if args.key?(:smart_reply_answers)
+        end
+      end
+      
       # One response of different type of suggestion response which is used in the
       # response of Participants.AnalyzeContent and Participants.AnalyzeContent, as
       # well as HumanAgentAssistantEvent.
@@ -11285,6 +11388,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SuggestFaqAnswersResponse]
         attr_accessor :suggest_faq_answers_response
       
+        # The response message for Participants.SuggestSmartReplies.
+        # Corresponds to the JSON property `suggestSmartRepliesResponse`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SuggestSmartRepliesResponse]
+        attr_accessor :suggest_smart_replies_response
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11294,6 +11402,7 @@ module Google
           @error = args[:error] if args.key?(:error)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
+          @suggest_smart_replies_response = args[:suggest_smart_replies_response] if args.key?(:suggest_smart_replies_response)
         end
       end
       
