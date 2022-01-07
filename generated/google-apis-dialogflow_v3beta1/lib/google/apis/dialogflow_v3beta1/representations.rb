@@ -1858,6 +1858,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2SmartReplyAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2SuggestArticlesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1865,6 +1871,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2SuggestFaqAnswersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SuggestSmartRepliesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2847,6 +2859,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_page, as: 'currentPage'
+          property :display_name, as: 'displayName'
           property :form_info, as: 'formInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3PageInfoFormInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3PageInfoFormInfo::Representation
       
         end
@@ -4214,6 +4227,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_page, as: 'currentPage'
+          property :display_name, as: 'displayName'
           property :form_info, as: 'formInfo', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PageInfoFormInfo, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1PageInfoFormInfo::Representation
       
         end
@@ -5430,6 +5444,9 @@ module Google
           property :name, as: 'name'
           property :participant, as: 'participant'
           property :participant_role, as: 'participantRole'
+          property :send_time, as: 'sendTime'
+          property :sentiment_analysis, as: 'sentimentAnalysis', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SentimentAnalysisResult, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SentimentAnalysisResult::Representation
+      
         end
       end
       
@@ -5503,6 +5520,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2SmartReplyAnswer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_record, as: 'answerRecord'
+          property :confidence, as: 'confidence'
+          property :reply, as: 'reply'
+        end
+      end
+      
       class GoogleCloudDialogflowV2SuggestArticlesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5523,6 +5549,16 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2SuggestSmartRepliesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_size, as: 'contextSize'
+          property :latest_message, as: 'latestMessage'
+          collection :smart_reply_answers, as: 'smartReplyAnswers', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SmartReplyAnswer, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SmartReplyAnswer::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2SuggestionResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5531,6 +5567,8 @@ module Google
           property :suggest_articles_response, as: 'suggestArticlesResponse', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SuggestArticlesResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SuggestArticlesResponse::Representation
       
           property :suggest_faq_answers_response, as: 'suggestFaqAnswersResponse', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SuggestFaqAnswersResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SuggestFaqAnswersResponse::Representation
+      
+          property :suggest_smart_replies_response, as: 'suggestSmartRepliesResponse', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SuggestSmartRepliesResponse, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowV2SuggestSmartRepliesResponse::Representation
       
         end
       end
