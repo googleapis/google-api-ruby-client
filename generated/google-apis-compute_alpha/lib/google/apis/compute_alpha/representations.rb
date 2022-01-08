@@ -14673,6 +14673,7 @@ module Google
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
+          property :route_status, as: 'routeStatus'
           property :route_type, as: 'routeType'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'

@@ -21478,7 +21478,7 @@ module Google
       class LocationPolicyLocation
         include Google::Apis::Core::Hashable
       
-        # Preference for a given location: ALLOW or DENY.
+        # Preference for a given location.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
@@ -33971,6 +33971,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
+        # [Output only] The status of the route.
+        # Corresponds to the JSON property `routeStatus`
+        # @return [String]
+        attr_accessor :route_status
+      
         # [Output Only] The type of this route, which can be one of the following values:
         # - 'TRANSIT' for a transit route that this router learned from another Cloud
         # Router and will readvertise to one of its BGP peers - 'SUBNET' for a route
@@ -34026,6 +34031,7 @@ module Google
           @next_hop_peering = args[:next_hop_peering] if args.key?(:next_hop_peering)
           @next_hop_vpn_tunnel = args[:next_hop_vpn_tunnel] if args.key?(:next_hop_vpn_tunnel)
           @priority = args[:priority] if args.key?(:priority)
+          @route_status = args[:route_status] if args.key?(:route_status)
           @route_type = args[:route_type] if args.key?(:route_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
