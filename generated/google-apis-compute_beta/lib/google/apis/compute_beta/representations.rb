@@ -5778,6 +5778,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          property :enable_uefi_networking, as: 'enableUefiNetworking'
           property :threads_per_core, as: 'threadsPerCore'
         end
       end
@@ -5816,6 +5817,7 @@ module Google
       class AllocationSpecificSkuReservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assured_count, :numeric_string => true, as: 'assuredCount'
           property :count, :numeric_string => true, as: 'count'
           property :in_use_count, :numeric_string => true, as: 'inUseCount'
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationReservedInstanceProperties, decorator: Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationReservedInstanceProperties::Representation
@@ -8565,6 +8567,10 @@ module Google
           property :recreating, as: 'recreating'
           property :refreshing, as: 'refreshing'
           property :restarting, as: 'restarting'
+          property :resuming, as: 'resuming'
+          property :starting, as: 'starting'
+          property :stopping, as: 'stopping'
+          property :suspending, as: 'suspending'
           property :verifying, as: 'verifying'
         end
       end
