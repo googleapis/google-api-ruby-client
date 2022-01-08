@@ -5602,6 +5602,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          property :enable_uefi_networking, as: 'enableUefiNetworking'
           property :threads_per_core, as: 'threadsPerCore'
         end
       end
@@ -8327,6 +8328,10 @@ module Google
           property :recreating, as: 'recreating'
           property :refreshing, as: 'refreshing'
           property :restarting, as: 'restarting'
+          property :resuming, as: 'resuming'
+          property :starting, as: 'starting'
+          property :stopping, as: 'stopping'
+          property :suspending, as: 'suspending'
           property :verifying, as: 'verifying'
         end
       end
@@ -8835,6 +8840,7 @@ module Google
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
+          hash :resource_manager_tags, as: 'resourceManagerTags'
           collection :resource_policies, as: 'resourcePolicies'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
       

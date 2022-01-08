@@ -1051,6 +1051,12 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
+        # Whether to enable UEFI networking for instance creation.
+        # Corresponds to the JSON property `enableUefiNetworking`
+        # @return [Boolean]
+        attr_accessor :enable_uefi_networking
+        alias_method :enable_uefi_networking?, :enable_uefi_networking
+      
         # The number of threads per physical core. To disable simultaneous
         # multithreading (SMT) set this to 1. If unset, the maximum number of threads
         # supported per core by the underlying processor is assumed.
@@ -1065,6 +1071,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @enable_uefi_networking = args[:enable_uefi_networking] if args.key?(:enable_uefi_networking)
           @threads_per_core = args[:threads_per_core] if args.key?(:threads_per_core)
         end
       end
@@ -13140,6 +13147,30 @@ module Google
         attr_accessor :restarting
       
         # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be resumed or are currently being resumed.
+        # Corresponds to the JSON property `resuming`
+        # @return [Fixnum]
+        attr_accessor :resuming
+      
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be started or are currently being started.
+        # Corresponds to the JSON property `starting`
+        # @return [Fixnum]
+        attr_accessor :starting
+      
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be stopped or are currently being stopped.
+        # Corresponds to the JSON property `stopping`
+        # @return [Fixnum]
+        attr_accessor :stopping
+      
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be suspended or are currently being suspended.
+        # Corresponds to the JSON property `suspending`
+        # @return [Fixnum]
+        attr_accessor :suspending
+      
+        # [Output Only] The number of instances in the managed instance group that are
         # being verified. See the managedInstances[].currentAction property in the
         # listManagedInstances method documentation.
         # Corresponds to the JSON property `verifying`
@@ -13160,6 +13191,10 @@ module Google
           @recreating = args[:recreating] if args.key?(:recreating)
           @refreshing = args[:refreshing] if args.key?(:refreshing)
           @restarting = args[:restarting] if args.key?(:restarting)
+          @resuming = args[:resuming] if args.key?(:resuming)
+          @starting = args[:starting] if args.key?(:starting)
+          @stopping = args[:stopping] if args.key?(:stopping)
+          @suspending = args[:suspending] if args.key?(:suspending)
           @verifying = args[:verifying] if args.key?(:verifying)
         end
       end
@@ -14932,6 +14967,14 @@ module Google
         # @return [Google::Apis::ComputeV1::ReservationAffinity]
         attr_accessor :reservation_affinity
       
+        # Resource manager tags to be bound to the instance. Tag keys and values have
+        # the same definition as resource manager tags. Keys must be in the format `
+        # tagKeys/`tag_key_id``, and values are in the format `tagValues/456`. The field
+        # is ignored (both PUT & PATCH) when empty.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
         # Resource policies (names, not URLs) applied to instances created from these
         # properties. Note that for MachineImage, this is not supported yet.
         # Corresponds to the JSON property `resourcePolicies`
@@ -14981,6 +15024,7 @@ module Google
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
@@ -17648,7 +17692,7 @@ module Google
       class LocationPolicyLocation
         include Google::Apis::Core::Hashable
       
-        # Preference for a given location: ALLOW or DENY.
+        # Preference for a given location.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
