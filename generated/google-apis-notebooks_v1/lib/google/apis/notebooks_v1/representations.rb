@@ -394,6 +394,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateInstanceMetadataItemsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateInstanceMetadataItemsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateShieldedInstanceConfigRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1070,6 +1082,20 @@ module Google
         end
       end
       
+      class UpdateInstanceMetadataItemsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :items, as: 'items'
+        end
+      end
+      
+      class UpdateInstanceMetadataItemsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :items, as: 'items'
+        end
+      end
+      
       class UpdateShieldedInstanceConfigRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1097,6 +1123,7 @@ module Google
       class UpgradeInstanceInternalRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
           property :vm_id, as: 'vmId'
         end
       end
@@ -1104,6 +1131,7 @@ module Google
       class UpgradeInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       

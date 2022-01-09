@@ -2585,6 +2585,44 @@ module Google
         end
       end
       
+      # Request for adding/changing metadata items for an instance.
+      class UpdateInstanceMetadataItemsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Metadata items to add/update for the instance.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,String>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # Response for adding/changing metadata items for an instance.
+      class UpdateInstanceMetadataItemsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Map of items that were added/updated to/in the metadata.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,String>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
       # Request for updating the Shielded Instance config for a notebook instance. You
       # can only use this method on a stopped instance
       class UpdateShieldedInstanceConfigRequest
@@ -2683,6 +2721,12 @@ module Google
       class UpgradeInstanceInternalRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The optional UpgradeType. Setting this field will search for
+        # additional compute images to upgrade this instance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Required. The VM hardware token for authenticating the VM. https://cloud.
         # google.com/compute/docs/instances/verifying-instance-identity
         # Corresponds to the JSON property `vmId`
@@ -2695,6 +2739,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @type = args[:type] if args.key?(:type)
           @vm_id = args[:vm_id] if args.key?(:vm_id)
         end
       end
@@ -2703,12 +2748,19 @@ module Google
       class UpgradeInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The optional UpgradeType. Setting this field will search for
+        # additional compute images to upgrade this instance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

@@ -506,13 +506,16 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
-        #   3. Requests specifying an invalid value will be rejected. Requests for
-        #   policies with any conditional bindings must specify version 3. Policies
-        #   without any conditional bindings may specify any valid value or leave the
-        #   field unset. To learn which resources support conditions in their IAM policies,
-        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        #   resource-policies).
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -576,6 +579,9 @@ module Google
         # @param [String] notebook_instance
         #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
         #   instance_id``
+        # @param [String] type
+        #   Optional. The optional UpgradeType. Setting this field will search for
+        #   additional compute images to upgrade this instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -593,11 +599,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def is_project_location_instance_upgradeable(notebook_instance, fields: nil, quota_user: nil, options: nil, &block)
+        def is_project_location_instance_upgradeable(notebook_instance, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+notebookInstance}:isUpgradeable', options)
           command.response_representation = Google::Apis::NotebooksV1::IsInstanceUpgradeableResponse::Representation
           command.response_class = Google::Apis::NotebooksV1::IsInstanceUpgradeableResponse
           command.params['notebookInstance'] = notebook_instance unless notebook_instance.nil?
+          command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1058,6 +1065,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Add/update metadata items for an instance.
+        # @param [String] name
+        #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
+        #   instance_id``
+        # @param [Google::Apis::NotebooksV1::UpdateInstanceMetadataItemsRequest] update_instance_metadata_items_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV1::UpdateInstanceMetadataItemsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV1::UpdateInstanceMetadataItemsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_instance_metadata_items(name, update_instance_metadata_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}:updateMetadataItems', options)
+          command.request_representation = Google::Apis::NotebooksV1::UpdateInstanceMetadataItemsRequest::Representation
+          command.request_object = update_instance_metadata_items_request_object
+          command.response_representation = Google::Apis::NotebooksV1::UpdateInstanceMetadataItemsResponse::Representation
+          command.response_class = Google::Apis::NotebooksV1::UpdateInstanceMetadataItemsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the Shielded instance configuration of a single Instance.
         # @param [String] name
         #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
@@ -1416,13 +1457,16 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
-        #   3. Requests specifying an invalid value will be rejected. Requests for
-        #   policies with any conditional bindings must specify version 3. Policies
-        #   without any conditional bindings may specify any valid value or leave the
-        #   field unset. To learn which resources support conditions in their IAM policies,
-        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        #   resource-policies).
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
