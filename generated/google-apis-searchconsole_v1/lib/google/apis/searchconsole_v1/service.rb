@@ -88,7 +88,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a sitemap from this site.
+        # Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling
+        # this sitemap or the URLs that were previously crawled in the deleted sitemap.
         # @param [String] site_url
         #   The site's URL, including protocol. For example: `http://www.example.com/`.
         # @param [String] feedpath
