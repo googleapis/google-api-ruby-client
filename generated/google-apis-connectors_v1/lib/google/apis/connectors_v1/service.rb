@@ -22,7 +22,8 @@ module Google
     module ConnectorsV1
       # Connectors API
       #
-      # 
+      # Enables users to create and manage connections to Google Cloud services and
+      #  third-party business applications using the Connectors interface.
       #
       # @example
       #    require 'google/apis/connectors_v1'

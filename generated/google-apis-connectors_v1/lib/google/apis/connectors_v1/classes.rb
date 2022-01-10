@@ -568,6 +568,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Output only. Flag to mark the version indicating the launch stage.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
         # Output only. Resource name of the Connector. Format: projects/`project`/
         # locations/`location`/providers/`provider`/connectors/`connector`
         # Corresponds to the JSON property `name`
@@ -596,6 +601,7 @@ module Google
           @documentation_uri = args[:documentation_uri] if args.key?(:documentation_uri)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @labels = args[:labels] if args.key?(:labels)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @web_assets_location = args[:web_assets_location] if args.key?(:web_assets_location)
@@ -1601,6 +1607,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Output only. Flag to mark the version indicating the launch stage.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
         # Output only. Resource name of the Provider. Format: projects/`project`/
         # locations/`location`/providers/`provider`
         # Corresponds to the JSON property `name`
@@ -1629,6 +1640,7 @@ module Google
           @documentation_uri = args[:documentation_uri] if args.key?(:documentation_uri)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
           @labels = args[:labels] if args.key?(:labels)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @web_assets_location = args[:web_assets_location] if args.key?(:web_assets_location)

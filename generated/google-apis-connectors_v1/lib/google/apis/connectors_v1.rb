@@ -21,7 +21,8 @@ module Google
   module Apis
     # Connectors API
     #
-    # 
+    # Enables users to create and manage connections to Google Cloud services and
+    # third-party business applications using the Connectors interface.
     #
     # @see https://cloud.google.com/apigee/docs/api-platform/connectors/about-connectors
     module ConnectorsV1
