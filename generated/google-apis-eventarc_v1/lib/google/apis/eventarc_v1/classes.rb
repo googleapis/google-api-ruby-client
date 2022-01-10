@@ -169,8 +169,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The relative path on the Cloud Run service the events should be sent
-        # to. The value must conform to the definition of URI path segment (section 3.3
-        # of RFC2396). Examples: "/route", "route", "route/subroute".
+        # to. The value must conform to the definition of a URI path segment (section 3.
+        # 3 of RFC2396). Examples: "/route", "route", "route/subroute".
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -182,7 +182,7 @@ module Google
       
         # Required. The name of the Cloud Run service being addressed. See https://cloud.
         # google.com/run/docs/reference/rest/v1/namespaces.services. Only services
-        # located in the same project of the trigger object can be addressed.
+        # located in the same project as the trigger object can be addressed.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -333,8 +333,8 @@ module Google
         attr_accessor :cluster
       
         # Required. The name of the Google Compute Engine in which the cluster resides,
-        # which can either be compute zone (e.g. us-central1-a) for the zonal clusters
-        # or region (e.g. us-central1) for regional clusters.
+        # which can either be compute zone (for example, us-central1-a) for the zonal
+        # clusters or region (for example, us-central1) for regional clusters.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -345,7 +345,7 @@ module Google
         attr_accessor :namespace
       
         # Optional. The relative path on the GKE service the events should be sent to.
-        # The value must conform to the definition of URI path segment (section 3.3 of
+        # The value must conform to the definition of a URI path segment (section 3.3 of
         # RFC2396). Examples: "/route", "route", "route/subroute".
         # Corresponds to the JSON property `path`
         # @return [String]
@@ -772,17 +772,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The name of the Pub/Sub subscription created and managed by
-        # Eventarc system as a transport for the event delivery. Format: `projects/`
-        # PROJECT_ID`/subscriptions/`SUBSCRIPTION_NAME``.
+        # Eventarc as a transport for the event delivery. Format: `projects/`PROJECT_ID`/
+        # subscriptions/`SUBSCRIPTION_NAME``.
         # Corresponds to the JSON property `subscription`
         # @return [String]
         attr_accessor :subscription
       
-        # Optional. The name of the Pub/Sub topic created and managed by Eventarc system
-        # as a transport for the event delivery. Format: `projects/`PROJECT_ID`/topics/`
-        # TOPIC_NAME``. You may set an existing topic for triggers of the type `google.
-        # cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will
-        # not be deleted by Eventarc at trigger deletion.
+        # Optional. The name of the Pub/Sub topic created and managed by Eventarc as a
+        # transport for the event delivery. Format: `projects/`PROJECT_ID`/topics/`
+        # TOPIC_NAME``. You can set an existing topic for triggers of the type `google.
+        # cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not
+        # deleted by Eventarc at trigger deletion.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -891,8 +891,8 @@ module Google
         end
       end
       
-      # Represents the transport intermediaries created for the trigger in order to
-      # deliver events.
+      # Represents the transport intermediaries created for the trigger to deliver
+      # events.
       class Transport
         include Google::Apis::Core::Hashable
       
@@ -926,14 +926,14 @@ module Google
         attr_accessor :destination
       
         # Output only. This checksum is computed by the server based on the value of
-        # other fields, and may be sent only on create requests to ensure the client has
-        # an up-to-date value before proceeding.
+        # other fields, and might be sent only on create requests to ensure that the
+        # client has an up-to-date value before proceeding.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
         # Required. null The list of filters that applies to event attributes. Only
-        # events that match all the provided filters will be sent to the destination.
+        # events that match all the provided filters are sent to the destination.
         # Corresponds to the JSON property `eventFilters`
         # @return [Array<Google::Apis::EventarcV1::EventFilter>]
         attr_accessor :event_filters
@@ -945,7 +945,7 @@ module Google
         attr_accessor :labels
       
         # Required. The resource name of the trigger. Must be unique within the location
-        # on the project and must be in `projects/`project`/locations/`location`/
+        # of the project and must be in `projects/`project`/locations/`location`/
         # triggers/`trigger`` format.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -953,25 +953,25 @@ module Google
       
         # Optional. The IAM service account email associated with the trigger. The
         # service account represents the identity of the trigger. The principal who
-        # calls this API must have `iam.serviceAccounts.actAs` permission in the service
-        # account. See https://cloud.google.com/iam/docs/understanding-service-accounts?
-        # hl=en#sa_common for more information. For Cloud Run destinations, this service
-        # account is used to generate identity tokens when invoking the service. See
-        # https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-
-        # account for information on how to invoke authenticated Cloud Run services. In
-        # order to create Audit Log triggers, the service account should also have `
-        # roles/eventarc.eventReceiver` IAM role.
+        # calls this API must have the `iam.serviceAccounts.actAs` permission in the
+        # service account. See https://cloud.google.com/iam/docs/understanding-service-
+        # accounts?hl=en#sa_common for more information. For Cloud Run destinations,
+        # this service account is used to generate identity tokens when invoking the
+        # service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-
+        # service-account for information on how to invoke authenticated Cloud Run
+        # services. To create Audit Log triggers, the service account should also have
+        # the `roles/eventarc.eventReceiver` IAM role.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
       
-        # Represents the transport intermediaries created for the trigger in order to
-        # deliver events.
+        # Represents the transport intermediaries created for the trigger to deliver
+        # events.
         # Corresponds to the JSON property `transport`
         # @return [Google::Apis::EventarcV1::Transport]
         attr_accessor :transport
       
-        # Output only. Server assigned unique identifier for the trigger. The value is a
+        # Output only. Server-assigned unique identifier for the trigger. The value is a
         # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         # Corresponds to the JSON property `uid`
         # @return [String]
