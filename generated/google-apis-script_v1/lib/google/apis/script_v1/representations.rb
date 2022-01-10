@@ -377,6 +377,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          collection :parameters, as: 'parameters'
         end
       end
       

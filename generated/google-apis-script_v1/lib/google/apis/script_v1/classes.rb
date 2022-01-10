@@ -499,6 +499,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The ordered list of parameter names of the function in the script project.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<String>]
+        attr_accessor :parameters
+      
         def initialize(**args)
            update!(**args)
         end
@@ -506,6 +511,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
       
