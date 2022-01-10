@@ -471,7 +471,9 @@ module Google
       
         # A mapping of Hive metastore configuration key-value pairs to apply to the Hive
         # metastore (configured in hive-site.xml). The mappings override system defaults
-        # (some keys cannot be overridden).
+        # (some keys cannot be overridden). These overrides are also applied to
+        # auxiliary versions and can be further customized in the auxiliary version's
+        # AuxiliaryVersionConfig.
         # Corresponds to the JSON property `configOverrides`
         # @return [Hash<String,String>]
         attr_accessor :config_overrides
