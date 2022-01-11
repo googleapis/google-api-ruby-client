@@ -4034,9 +4034,14 @@ module Google
       class PosStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gcid_category, as: 'gcidCategory'
           property :kind, as: 'kind'
+          property :phone_number, as: 'phoneNumber'
+          property :place_id, as: 'placeId'
           property :store_address, as: 'storeAddress'
           property :store_code, as: 'storeCode'
+          property :store_name, as: 'storeName'
+          property :website_url, as: 'websiteUrl'
         end
       end
       
