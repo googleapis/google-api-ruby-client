@@ -7163,7 +7163,6 @@ module Google
         attr_accessor :key_alias
       
         # Required if `client_auth_enabled` is true. The resource ID of the keystore.
-        # References not yet supported.
         # Corresponds to the JSON property `keyStore`
         # @return [String]
         attr_accessor :key_store
@@ -7173,7 +7172,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :protocols
       
-        # The resource ID of the truststore. References not yet supported.
+        # The resource ID of the truststore.
         # Corresponds to the JSON property `trustStore`
         # @return [String]
         attr_accessor :trust_store
