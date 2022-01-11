@@ -1,5 +1,9 @@
 # Release history for google-apis-orgpolicy_v2
 
+### v0.12.0 (2022-01-11)
+
+* Regenerated from discovery document revision 20220107
+
 ### v0.11.0 (2021-12-14)
 
 * Unspecified changes
