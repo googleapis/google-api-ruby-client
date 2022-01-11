@@ -1,5 +1,12 @@
 # Release History
 
+### [0.4.1](https://www.github.com/googleapis/google-api-ruby-client/compare/google-apis-generator/v0.4.0...google-apis-generator/v0.4.1) (2022-01-11)
+
+
+### Bug Fixes
+
+* **generator:** Fix field name in authorization example ([2ac44c2](https://www.github.com/googleapis/google-api-ruby-client/commit/2ac44c2145d111033cf344c624dad4c1d3188f25))
+
 ## 0.4.0 (2021-06-28)
 
 * Update core dependency to require at least 0.4 and allow 1.x versions
