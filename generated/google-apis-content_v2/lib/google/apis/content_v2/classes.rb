@@ -8737,11 +8737,26 @@ module Google
       class PosStore
         include Google::Apis::Core::Hashable
       
+        # The business type of the store.
+        # Corresponds to the JSON property `gcidCategory`
+        # @return [Array<String>]
+        attr_accessor :gcid_category
+      
         # Identifies what kind of resource this is. Value: the fixed string "`content#
         # posStore`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # The store phone number.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # The Google Place Id of the store location.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
       
         # Required. The street address of the store.
         # Corresponds to the JSON property `storeAddress`
@@ -8753,15 +8768,30 @@ module Google
         # @return [String]
         attr_accessor :store_code
       
+        # The merchant or store name.
+        # Corresponds to the JSON property `storeName`
+        # @return [String]
+        attr_accessor :store_name
+      
+        # The website url for the store or merchant.
+        # Corresponds to the JSON property `websiteUrl`
+        # @return [String]
+        attr_accessor :website_url
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @gcid_category = args[:gcid_category] if args.key?(:gcid_category)
           @kind = args[:kind] if args.key?(:kind)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @place_id = args[:place_id] if args.key?(:place_id)
           @store_address = args[:store_address] if args.key?(:store_address)
           @store_code = args[:store_code] if args.key?(:store_code)
+          @store_name = args[:store_name] if args.key?(:store_name)
+          @website_url = args[:website_url] if args.key?(:website_url)
         end
       end
       
