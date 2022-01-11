@@ -281,7 +281,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve a list of all connection profiles in a given project and location.
+        # Retrieves a list of all connection profiles in a given project and location.
         # @param [String] parent
         #   Required. The parent, which owns this collection of connection profiles.
         # @param [String] filter
@@ -294,7 +294,7 @@ module Google
         #   example, you could specify **mySql.username = %lt;my_username%gt;** to list
         #   all connection profiles configured to connect with a specific username.
         # @param [String] order_by
-        #   the order by fields for the result.
+        #   A comma-separated list of fields to order results according to.
         # @param [Fixnum] page_size
         #   The maximum number of connection profiles to return. The service may return
         #   fewer than this value. If unspecified, at most 50 connection profiles will be
