@@ -184,6 +184,26 @@ module Google
         end
       end
       
+      # Response of BatchCreateBitbucketServerConnectedRepositories RPC method
+      # including all successfully connected Bitbucket Server repositories.
+      class BatchCreateBitbucketServerConnectedRepositoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The connected Bitbucket Server repositories.
+        # Corresponds to the JSON property `bitbucketServerConnectedRepositories`
+        # @return [Array<Google::Apis::CloudbuildV1beta1::BitbucketServerConnectedRepository>]
+        attr_accessor :bitbucket_server_connected_repositories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_connected_repositories = args[:bitbucket_server_connected_repositories] if args.key?(:bitbucket_server_connected_repositories)
+        end
+      end
+      
       # Metadata for `BatchCreateBitbucketServerConnectedRepositories` operation.
       class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
         include Google::Apis::Core::Hashable
@@ -214,6 +234,79 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
+      # / BitbucketServerConnectedRepository represents a connected Bitbucket Server /
+      # repository.
+      class BitbucketServerConnectedRepository
+        include Google::Apis::Core::Hashable
+      
+        # The name of the `BitbucketServerConfig` that added connected repository.
+        # Format: `projects/`project`/locations/`location`/bitbucketServerConfigs/`
+        # config``
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # BitbucketServerRepositoryId identifies a specific repository hosted on a
+        # Bitbucket Server.
+        # Corresponds to the JSON property `repo`
+        # @return [Google::Apis::CloudbuildV1beta1::BitbucketServerRepositoryId]
+        attr_accessor :repo
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::CloudbuildV1beta1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @repo = args[:repo] if args.key?(:repo)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # BitbucketServerRepositoryId identifies a specific repository hosted on a
+      # Bitbucket Server.
+      class BitbucketServerRepositoryId
+        include Google::Apis::Core::Hashable
+      
+        # Required. Identifier for the project storing the repository.
+        # Corresponds to the JSON property `projectKey`
+        # @return [String]
+        attr_accessor :project_key
+      
+        # Required. Identifier for the repository.
+        # Corresponds to the JSON property `repoSlug`
+        # @return [String]
+        attr_accessor :repo_slug
+      
+        # Output only. The ID of the webhook that was created for receiving events from
+        # this repo. We only create and manage a single webhook for each repo.
+        # Corresponds to the JSON property `webhookId`
+        # @return [Fixnum]
+        attr_accessor :webhook_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_key = args[:project_key] if args.key?(:project_key)
+          @repo_slug = args[:repo_slug] if args.key?(:repo_slug)
+          @webhook_id = args[:webhook_id] if args.key?(:webhook_id)
         end
       end
       
@@ -799,6 +892,38 @@ module Google
         end
       end
       
+      # Metadata for `CreateBitbucketServerConfig` operation.
+      class CreateBitbucketServerConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the BitbucketServerConfig to be created. Format: `
+        # projects/`project`/locations/`location`/bitbucketServerConfigs/`id``.
+        # Corresponds to the JSON property `bitbucketServerConfig`
+        # @return [String]
+        attr_accessor :bitbucket_server_config
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_config = args[:bitbucket_server_config] if args.key?(:bitbucket_server_config)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # Metadata for `CreateGithubEnterpriseConfig` operation.
       class CreateGitHubEnterpriseConfigOperationMetadata
         include Google::Apis::Core::Hashable
@@ -828,6 +953,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
+      # Metadata for `CreateGitLabConfig` operation.
+      class CreateGitLabConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitLabConfig to be created. Format: `projects/`
+        # project`/locations/`location`/gitlabConfigs/`id``.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [String]
+        attr_accessor :gitlab_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       
@@ -863,6 +1020,38 @@ module Google
         end
       end
       
+      # Metadata for `DeleteBitbucketServerConfig` operation.
+      class DeleteBitbucketServerConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the BitbucketServerConfig to be deleted. Format: `
+        # projects/`project`/locations/`location`/bitbucketServerConfigs/`id``.
+        # Corresponds to the JSON property `bitbucketServerConfig`
+        # @return [String]
+        attr_accessor :bitbucket_server_config
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_config = args[:bitbucket_server_config] if args.key?(:bitbucket_server_config)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # Metadata for `DeleteGitHubEnterpriseConfig` operation.
       class DeleteGitHubEnterpriseConfigOperationMetadata
         include Google::Apis::Core::Hashable
@@ -892,6 +1081,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
+      # Metadata for `DeleteGitLabConfig` operation.
+      class DeleteGitLabConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitLabConfig to be created. Format: `projects/`
+        # project`/locations/`location`/gitlabConfigs/`id``.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [String]
+        attr_accessor :gitlab_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       
@@ -2031,6 +2252,38 @@ module Google
         end
       end
       
+      # Metadata for `UpdateBitbucketServerConfig` operation.
+      class UpdateBitbucketServerConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the BitbucketServerConfig to be updated. Format: `
+        # projects/`project`/locations/`location`/bitbucketServerConfigs/`id``.
+        # Corresponds to the JSON property `bitbucketServerConfig`
+        # @return [String]
+        attr_accessor :bitbucket_server_config
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_config = args[:bitbucket_server_config] if args.key?(:bitbucket_server_config)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # Metadata for `UpdateGitHubEnterpriseConfig` operation.
       class UpdateGitHubEnterpriseConfigOperationMetadata
         include Google::Apis::Core::Hashable
@@ -2060,6 +2313,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
+      # Metadata for `UpdateGitLabConfig` operation.
+      class UpdateGitLabConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitLabConfig to be created. Format: `projects/`
+        # project`/locations/`location`/gitlabConfigs/`id``.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [String]
+        attr_accessor :gitlab_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       

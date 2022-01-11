@@ -52,7 +52,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateBitbucketServerConnectedRepositoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketServerConnectedRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketServerRepositoryId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,7 +118,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateBitbucketServerConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateGitHubEnterpriseConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,7 +142,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteBitbucketServerConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteGitHubEnterpriseConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,7 +358,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateBitbucketServerConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateGitHubEnterpriseConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -398,12 +452,40 @@ module Google
         end
       end
       
+      class BatchCreateBitbucketServerConnectedRepositoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bitbucket_server_connected_repositories, as: 'bitbucketServerConnectedRepositories', class: Google::Apis::CloudbuildV1beta1::BitbucketServerConnectedRepository, decorator: Google::Apis::CloudbuildV1beta1::BitbucketServerConnectedRepository::Representation
+      
+        end
+      end
+      
       class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :config, as: 'config'
           property :create_time, as: 'createTime'
+        end
+      end
+      
+      class BitbucketServerConnectedRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          property :repo, as: 'repo', class: Google::Apis::CloudbuildV1beta1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1beta1::BitbucketServerRepositoryId::Representation
+      
+          property :status, as: 'status', class: Google::Apis::CloudbuildV1beta1::Status, decorator: Google::Apis::CloudbuildV1beta1::Status::Representation
+      
+        end
+      end
+      
+      class BitbucketServerRepositoryId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_key, as: 'projectKey'
+          property :repo_slug, as: 'repoSlug'
+          property :webhook_id, as: 'webhookId'
         end
       end
       
@@ -533,12 +615,30 @@ module Google
         end
       end
       
+      class CreateBitbucketServerConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_config, as: 'bitbucketServerConfig'
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
       class CreateGitHubEnterpriseConfigOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
+        end
+      end
+      
+      class CreateGitLabConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       
@@ -551,12 +651,30 @@ module Google
         end
       end
       
+      class DeleteBitbucketServerConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_config, as: 'bitbucketServerConfig'
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
       class DeleteGitHubEnterpriseConfigOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
+        end
+      end
+      
+      class DeleteGitLabConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       
@@ -878,12 +996,30 @@ module Google
         end
       end
       
+      class UpdateBitbucketServerConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_config, as: 'bitbucketServerConfig'
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
       class UpdateGitHubEnterpriseConfigOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
+        end
+      end
+      
+      class UpdateGitLabConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       
