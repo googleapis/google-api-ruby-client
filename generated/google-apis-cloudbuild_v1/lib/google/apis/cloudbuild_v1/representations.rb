@@ -22,6 +22,18 @@ module Google
   module Apis
     module CloudbuildV1
       
+      class AddBitbucketServerConnectedRepositoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddBitbucketServerConnectedRepositoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApprovalConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,7 +70,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateBitbucketServerConnectedRepositoriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchCreateBitbucketServerConnectedRepositoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketServerConnectedRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketServerRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketServerRepositoryId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketServerSecrets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BitbucketServerTriggerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,7 +178,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateBitbucketServerConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateBitbucketServerConnectedRepositoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateGitHubEnterpriseConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,7 +208,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteBitbucketServerConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteGitHubEnterpriseConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +305,18 @@ module Google
       end
       
       class InlineSecret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBitbucketServerConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBitbucketServerRepositoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveBitbucketServerConnectedRepositoryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RepoSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,7 +538,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateBitbucketServerConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateGitHubEnterpriseConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -470,6 +590,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddBitbucketServerConnectedRepositoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connected_repository, as: 'connectedRepository', class: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId::Representation
+      
+        end
+      end
+      
+      class AddBitbucketServerConnectedRepositoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config'
+          property :connected_repository, as: 'connectedRepository', class: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId::Representation
+      
+        end
       end
       
       class ApprovalConfig
@@ -526,12 +663,102 @@ module Google
         end
       end
       
+      class BatchCreateBitbucketServerConnectedRepositoriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::CloudbuildV1::CreateBitbucketServerConnectedRepositoryRequest, decorator: Google::Apis::CloudbuildV1::CreateBitbucketServerConnectedRepositoryRequest::Representation
+      
+        end
+      end
+      
+      class BatchCreateBitbucketServerConnectedRepositoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bitbucket_server_connected_repositories, as: 'bitbucketServerConnectedRepositories', class: Google::Apis::CloudbuildV1::BitbucketServerConnectedRepository, decorator: Google::Apis::CloudbuildV1::BitbucketServerConnectedRepository::Representation
+      
+        end
+      end
+      
       class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :config, as: 'config'
           property :create_time, as: 'createTime'
+        end
+      end
+      
+      class BitbucketServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key, as: 'apiKey'
+          collection :connected_repositories, as: 'connectedRepositories', class: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId::Representation
+      
+          property :create_time, as: 'createTime'
+          property :host_uri, as: 'hostUri'
+          property :name, as: 'name'
+          property :peered_network, as: 'peeredNetwork'
+          property :secrets, as: 'secrets', class: Google::Apis::CloudbuildV1::BitbucketServerSecrets, decorator: Google::Apis::CloudbuildV1::BitbucketServerSecrets::Representation
+      
+          property :ssl_ca, as: 'sslCa'
+          property :username, as: 'username'
+          property :webhook_key, as: 'webhookKey'
+        end
+      end
+      
+      class BitbucketServerConnectedRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          property :repo, as: 'repo', class: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId::Representation
+      
+          property :status, as: 'status', class: Google::Apis::CloudbuildV1::Status, decorator: Google::Apis::CloudbuildV1::Status::Representation
+      
+        end
+      end
+      
+      class BitbucketServerRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :browse_uri, as: 'browseUri'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :repo_id, as: 'repoId', class: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId::Representation
+      
+        end
+      end
+      
+      class BitbucketServerRepositoryId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_key, as: 'projectKey'
+          property :repo_slug, as: 'repoSlug'
+          property :webhook_id, as: 'webhookId'
+        end
+      end
+      
+      class BitbucketServerSecrets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_access_token_version_name, as: 'adminAccessTokenVersionName'
+          property :read_access_token_version_name, as: 'readAccessTokenVersionName'
+          property :webhook_secret_version_name, as: 'webhookSecretVersionName'
+        end
+      end
+      
+      class BitbucketServerTriggerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_config, as: 'bitbucketServerConfig', class: Google::Apis::CloudbuildV1::BitbucketServerConfig, decorator: Google::Apis::CloudbuildV1::BitbucketServerConfig::Representation
+      
+          property :bitbucket_server_config_resource, as: 'bitbucketServerConfigResource'
+          property :project_key, as: 'projectKey'
+          property :pull_request, as: 'pullRequest', class: Google::Apis::CloudbuildV1::PullRequestFilter, decorator: Google::Apis::CloudbuildV1::PullRequestFilter::Representation
+      
+          property :push, as: 'push', class: Google::Apis::CloudbuildV1::PushFilter, decorator: Google::Apis::CloudbuildV1::PushFilter::Representation
+      
+          property :repo_slug, as: 'repoSlug'
         end
       end
       
@@ -651,6 +878,8 @@ module Google
           property :approval_config, as: 'approvalConfig', class: Google::Apis::CloudbuildV1::ApprovalConfig, decorator: Google::Apis::CloudbuildV1::ApprovalConfig::Representation
       
           property :autodetect, as: 'autodetect'
+          property :bitbucket_server_trigger_config, as: 'bitbucketServerTriggerConfig', class: Google::Apis::CloudbuildV1::BitbucketServerTriggerConfig, decorator: Google::Apis::CloudbuildV1::BitbucketServerTriggerConfig::Representation
+      
           property :build, as: 'build', class: Google::Apis::CloudbuildV1::Build, decorator: Google::Apis::CloudbuildV1::Build::Representation
       
           property :create_time, as: 'createTime'
@@ -707,12 +936,39 @@ module Google
         end
       end
       
+      class CreateBitbucketServerConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_config, as: 'bitbucketServerConfig'
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
+      class CreateBitbucketServerConnectedRepositoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_connected_repository, as: 'bitbucketServerConnectedRepository', class: Google::Apis::CloudbuildV1::BitbucketServerConnectedRepository, decorator: Google::Apis::CloudbuildV1::BitbucketServerConnectedRepository::Representation
+      
+          property :parent, as: 'parent'
+        end
+      end
+      
       class CreateGitHubEnterpriseConfigOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
+        end
+      end
+      
+      class CreateGitLabConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       
@@ -725,12 +981,30 @@ module Google
         end
       end
       
+      class DeleteBitbucketServerConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_config, as: 'bitbucketServerConfig'
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
       class DeleteGitHubEnterpriseConfigOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
+        end
+      end
+      
+      class DeleteGitLabConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       
@@ -870,6 +1144,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :env_map, as: 'envMap'
           property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class ListBitbucketServerConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bitbucket_server_configs, as: 'bitbucketServerConfigs', class: Google::Apis::CloudbuildV1::BitbucketServerConfig, decorator: Google::Apis::CloudbuildV1::BitbucketServerConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListBitbucketServerRepositoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bitbucket_server_repositories, as: 'bitbucketServerRepositories', class: Google::Apis::CloudbuildV1::BitbucketServerRepository, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepository::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1060,6 +1352,14 @@ module Google
         end
       end
       
+      class RemoveBitbucketServerConnectedRepositoryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connected_repository, as: 'connectedRepository', class: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId::Representation
+      
+        end
+      end
+      
       class RepoSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1215,12 +1515,30 @@ module Google
         end
       end
       
+      class UpdateBitbucketServerConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_config, as: 'bitbucketServerConfig'
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
       class UpdateGitHubEnterpriseConfigOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
+        end
+      end
+      
+      class UpdateGitLabConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       

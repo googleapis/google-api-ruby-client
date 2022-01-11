@@ -22,6 +22,56 @@ module Google
   module Apis
     module CloudbuildV1
       
+      # RPC request object accepted by the AddBitbucketServerConnectedRepository RPC
+      # method.
+      class AddBitbucketServerConnectedRepositoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # BitbucketServerRepositoryId identifies a specific repository hosted on a
+        # Bitbucket Server.
+        # Corresponds to the JSON property `connectedRepository`
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerRepositoryId]
+        attr_accessor :connected_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
+        end
+      end
+      
+      # RPC request object returned by the AddBitbucketServerConnectedRepository RPC
+      # method.
+      class AddBitbucketServerConnectedRepositoryResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the `BitbucketServerConfig` that added connected repository.
+        # Format: `projects/`project`/locations/`location`/bitbucketServerConfigs/`
+        # config``
+        # Corresponds to the JSON property `config`
+        # @return [String]
+        attr_accessor :config
+      
+        # BitbucketServerRepositoryId identifies a specific repository hosted on a
+        # Bitbucket Server.
+        # Corresponds to the JSON property `connectedRepository`
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerRepositoryId]
+        attr_accessor :connected_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
+        end
+      end
+      
       # ApprovalConfig describes configuration for manual approval of a build.
       class ApprovalConfig
         include Google::Apis::Core::Hashable
@@ -204,6 +254,46 @@ module Google
         end
       end
       
+      # RPC request object accepted by BatchCreateBitbucketServerConnectedRepositories
+      # RPC method.
+      class BatchCreateBitbucketServerConnectedRepositoriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Requests to connect Bitbucket Server repositories.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::CloudbuildV1::CreateBitbucketServerConnectedRepositoryRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response of BatchCreateBitbucketServerConnectedRepositories RPC method
+      # including all successfully connected Bitbucket Server repositories.
+      class BatchCreateBitbucketServerConnectedRepositoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The connected Bitbucket Server repositories.
+        # Corresponds to the JSON property `bitbucketServerConnectedRepositories`
+        # @return [Array<Google::Apis::CloudbuildV1::BitbucketServerConnectedRepository>]
+        attr_accessor :bitbucket_server_connected_repositories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_connected_repositories = args[:bitbucket_server_connected_repositories] if args.key?(:bitbucket_server_connected_repositories)
+        end
+      end
+      
       # Metadata for `BatchCreateBitbucketServerConnectedRepositories` operation.
       class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
         include Google::Apis::Core::Hashable
@@ -234,6 +324,299 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
+      # BitbucketServerConfig represents the configuration for a Bitbucket Server.
+      class BitbucketServerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. API Key that will be attached to webhook. Once this field
+        # has been set, it cannot be changed. If you need to change it, please create
+        # another BitbucketServerConfig.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Output only. Connected Bitbucket Server repositories for this config.
+        # Corresponds to the JSON property `connectedRepositories`
+        # @return [Array<Google::Apis::CloudbuildV1::BitbucketServerRepositoryId>]
+        attr_accessor :connected_repositories
+      
+        # Time when the config was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Immutable. The URI of the Bitbucket Server host. Once this field has
+        # been set, it cannot be changed. If you need to change it, please create
+        # another BitbucketServerConfig.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # The resource name for the config.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The network to be used when reaching out to the Bitbucket Server
+        # instance. The VPC network must be enabled for private service connection. This
+        # should be set if the Bitbucket Server instance is hosted on-premises and not
+        # reachable by public internet. If this field is left empty, no network peering
+        # will occur and calls to the Bitbucket Server instance will be made over the
+        # public internet. Must be in the format `projects/`project`/global/networks/`
+        # network``, where `project` is a project number or id and `network` is the name
+        # of a VPC network in the project.
+        # Corresponds to the JSON property `peeredNetwork`
+        # @return [String]
+        attr_accessor :peered_network
+      
+        # BitbucketServerSecrets represents the secrets in Secret Manager for a
+        # Bitbucket Server.
+        # Corresponds to the JSON property `secrets`
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerSecrets]
+        attr_accessor :secrets
+      
+        # Optional. SSL certificate to use for requests to Bitbucket Server. The format
+        # should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        # Corresponds to the JSON property `sslCa`
+        # @return [String]
+        attr_accessor :ssl_ca
+      
+        # Username of the account Cloud Build will use on Bitbucket Server.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        # Output only. UUID included in webhook requests. The UUID is used to look up
+        # the corresponding config.
+        # Corresponds to the JSON property `webhookKey`
+        # @return [String]
+        attr_accessor :webhook_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @connected_repositories = args[:connected_repositories] if args.key?(:connected_repositories)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @name = args[:name] if args.key?(:name)
+          @peered_network = args[:peered_network] if args.key?(:peered_network)
+          @secrets = args[:secrets] if args.key?(:secrets)
+          @ssl_ca = args[:ssl_ca] if args.key?(:ssl_ca)
+          @username = args[:username] if args.key?(:username)
+          @webhook_key = args[:webhook_key] if args.key?(:webhook_key)
+        end
+      end
+      
+      # / BitbucketServerConnectedRepository represents a connected Bitbucket Server /
+      # repository.
+      class BitbucketServerConnectedRepository
+        include Google::Apis::Core::Hashable
+      
+        # The name of the `BitbucketServerConfig` that added connected repository.
+        # Format: `projects/`project`/locations/`location`/bitbucketServerConfigs/`
+        # config``
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # BitbucketServerRepositoryId identifies a specific repository hosted on a
+        # Bitbucket Server.
+        # Corresponds to the JSON property `repo`
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerRepositoryId]
+        attr_accessor :repo
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::CloudbuildV1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @repo = args[:repo] if args.key?(:repo)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # BitbucketServerRepository represents a repository hosted on a Bitbucket Server.
+      class BitbucketServerRepository
+        include Google::Apis::Core::Hashable
+      
+        # Link to the browse repo page on the Bitbucket Server instance.
+        # Corresponds to the JSON property `browseUri`
+        # @return [String]
+        attr_accessor :browse_uri
+      
+        # Description of the repository.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name of the repository.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the repository.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # BitbucketServerRepositoryId identifies a specific repository hosted on a
+        # Bitbucket Server.
+        # Corresponds to the JSON property `repoId`
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerRepositoryId]
+        attr_accessor :repo_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @browse_uri = args[:browse_uri] if args.key?(:browse_uri)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @repo_id = args[:repo_id] if args.key?(:repo_id)
+        end
+      end
+      
+      # BitbucketServerRepositoryId identifies a specific repository hosted on a
+      # Bitbucket Server.
+      class BitbucketServerRepositoryId
+        include Google::Apis::Core::Hashable
+      
+        # Required. Identifier for the project storing the repository.
+        # Corresponds to the JSON property `projectKey`
+        # @return [String]
+        attr_accessor :project_key
+      
+        # Required. Identifier for the repository.
+        # Corresponds to the JSON property `repoSlug`
+        # @return [String]
+        attr_accessor :repo_slug
+      
+        # Output only. The ID of the webhook that was created for receiving events from
+        # this repo. We only create and manage a single webhook for each repo.
+        # Corresponds to the JSON property `webhookId`
+        # @return [Fixnum]
+        attr_accessor :webhook_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_key = args[:project_key] if args.key?(:project_key)
+          @repo_slug = args[:repo_slug] if args.key?(:repo_slug)
+          @webhook_id = args[:webhook_id] if args.key?(:webhook_id)
+        end
+      end
+      
+      # BitbucketServerSecrets represents the secrets in Secret Manager for a
+      # Bitbucket Server.
+      class BitbucketServerSecrets
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name for the admin access token's secret version.
+        # Corresponds to the JSON property `adminAccessTokenVersionName`
+        # @return [String]
+        attr_accessor :admin_access_token_version_name
+      
+        # Required. The resource name for the read access token's secret version.
+        # Corresponds to the JSON property `readAccessTokenVersionName`
+        # @return [String]
+        attr_accessor :read_access_token_version_name
+      
+        # Required. Immutable. The resource name for the webhook secret's secret version.
+        # Once this field has been set, it cannot be changed. If you need to change it,
+        # please create another BitbucketServerConfig.
+        # Corresponds to the JSON property `webhookSecretVersionName`
+        # @return [String]
+        attr_accessor :webhook_secret_version_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_access_token_version_name = args[:admin_access_token_version_name] if args.key?(:admin_access_token_version_name)
+          @read_access_token_version_name = args[:read_access_token_version_name] if args.key?(:read_access_token_version_name)
+          @webhook_secret_version_name = args[:webhook_secret_version_name] if args.key?(:webhook_secret_version_name)
+        end
+      end
+      
+      # BitbucketServerTriggerConfig describes the configuration of a trigger that
+      # creates a build whenever a Bitbucket Server event is received.
+      class BitbucketServerTriggerConfig
+        include Google::Apis::Core::Hashable
+      
+        # BitbucketServerConfig represents the configuration for a Bitbucket Server.
+        # Corresponds to the JSON property `bitbucketServerConfig`
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerConfig]
+        attr_accessor :bitbucket_server_config
+      
+        # Required. The Bitbucket server config resource that this trigger config maps
+        # to.
+        # Corresponds to the JSON property `bitbucketServerConfigResource`
+        # @return [String]
+        attr_accessor :bitbucket_server_config_resource
+      
+        # Required. Key of the project that the repo is in. For example: The key for
+        # http://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+        # Corresponds to the JSON property `projectKey`
+        # @return [String]
+        attr_accessor :project_key
+      
+        # PullRequestFilter contains filter properties for matching GitHub Pull Requests.
+        # Corresponds to the JSON property `pullRequest`
+        # @return [Google::Apis::CloudbuildV1::PullRequestFilter]
+        attr_accessor :pull_request
+      
+        # Push contains filter properties for matching GitHub git pushes.
+        # Corresponds to the JSON property `push`
+        # @return [Google::Apis::CloudbuildV1::PushFilter]
+        attr_accessor :push
+      
+        # Required. Slug of the repository. A repository slug is a URL-friendly version
+        # of a repository name, automatically generated by Bitbucket for use in the URL.
+        # For example, if the repository name is 'test repo', in the URL it would become
+        # 'test-repo' as in http://mybitbucket.server/projects/TEST/repos/test-repo.
+        # Corresponds to the JSON property `repoSlug`
+        # @return [String]
+        attr_accessor :repo_slug
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_config = args[:bitbucket_server_config] if args.key?(:bitbucket_server_config)
+          @bitbucket_server_config_resource = args[:bitbucket_server_config_resource] if args.key?(:bitbucket_server_config_resource)
+          @project_key = args[:project_key] if args.key?(:project_key)
+          @pull_request = args[:pull_request] if args.key?(:pull_request)
+          @push = args[:push] if args.key?(:push)
+          @repo_slug = args[:repo_slug] if args.key?(:repo_slug)
         end
       end
       
@@ -791,6 +1174,12 @@ module Google
         attr_accessor :autodetect
         alias_method :autodetect?, :autodetect
       
+        # BitbucketServerTriggerConfig describes the configuration of a trigger that
+        # creates a build whenever a Bitbucket Server event is received.
+        # Corresponds to the JSON property `bitbucketServerTriggerConfig`
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerTriggerConfig]
+        attr_accessor :bitbucket_server_trigger_config
+      
         # A build resource in the Cloud Build API. At a high level, a `Build` describes
         # where to find source code, how to build it (for example, the builder image to
         # run on the source), and where to store the built artifacts. Fields can include
@@ -823,9 +1212,9 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. EventType allows the user to explicitly set the type of event to
-        # which this BuildTrigger should respond. This field is optional but will be
-        # validated against the rest of the configuration if it is set.
+        # EventType allows the user to explicitly set the type of event to which this
+        # BuildTrigger should respond. This field will be validated against the rest of
+        # the configuration if it is set.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -942,6 +1331,7 @@ module Google
         def update!(**args)
           @approval_config = args[:approval_config] if args.key?(:approval_config)
           @autodetect = args[:autodetect] if args.key?(:autodetect)
+          @bitbucket_server_trigger_config = args[:bitbucket_server_trigger_config] if args.key?(:bitbucket_server_trigger_config)
           @build = args[:build] if args.key?(:build)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -1043,6 +1433,66 @@ module Google
         end
       end
       
+      # Metadata for `CreateBitbucketServerConfig` operation.
+      class CreateBitbucketServerConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the BitbucketServerConfig to be created. Format: `
+        # projects/`project`/locations/`location`/bitbucketServerConfigs/`id``.
+        # Corresponds to the JSON property `bitbucketServerConfig`
+        # @return [String]
+        attr_accessor :bitbucket_server_config
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_config = args[:bitbucket_server_config] if args.key?(:bitbucket_server_config)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
+      # Request to connect a repository from a connected Bitbucket Server host.
+      class CreateBitbucketServerConnectedRepositoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # / BitbucketServerConnectedRepository represents a connected Bitbucket Server /
+        # repository.
+        # Corresponds to the JSON property `bitbucketServerConnectedRepository`
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerConnectedRepository]
+        attr_accessor :bitbucket_server_connected_repository
+      
+        # Required. The name of the `BitbucketServerConfig` that added connected
+        # repository. Format: `projects/`project`/locations/`location`/
+        # bitbucketServerConfigs/`config``
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_connected_repository = args[:bitbucket_server_connected_repository] if args.key?(:bitbucket_server_connected_repository)
+          @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
       # Metadata for `CreateGithubEnterpriseConfig` operation.
       class CreateGitHubEnterpriseConfigOperationMetadata
         include Google::Apis::Core::Hashable
@@ -1072,6 +1522,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
+      # Metadata for `CreateGitLabConfig` operation.
+      class CreateGitLabConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitLabConfig to be created. Format: `projects/`
+        # project`/locations/`location`/gitlabConfigs/`id``.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [String]
+        attr_accessor :gitlab_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       
@@ -1107,6 +1589,38 @@ module Google
         end
       end
       
+      # Metadata for `DeleteBitbucketServerConfig` operation.
+      class DeleteBitbucketServerConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the BitbucketServerConfig to be deleted. Format: `
+        # projects/`project`/locations/`location`/bitbucketServerConfigs/`id``.
+        # Corresponds to the JSON property `bitbucketServerConfig`
+        # @return [String]
+        attr_accessor :bitbucket_server_config
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_config = args[:bitbucket_server_config] if args.key?(:bitbucket_server_config)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # Metadata for `DeleteGitHubEnterpriseConfig` operation.
       class DeleteGitHubEnterpriseConfigOperationMetadata
         include Google::Apis::Core::Hashable
@@ -1136,6 +1650,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
+      # Metadata for `DeleteGitLabConfig` operation.
+      class DeleteGitLabConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitLabConfig to be created. Format: `projects/`
+        # project`/locations/`location`/gitlabConfigs/`id``.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [String]
+        attr_accessor :gitlab_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       
@@ -1681,6 +2227,58 @@ module Google
         def update!(**args)
           @env_map = args[:env_map] if args.key?(:env_map)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # RPC response object returned by ListBitbucketServerConfigs RPC method.
+      class ListBitbucketServerConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of BitbucketServerConfigs
+        # Corresponds to the JSON property `bitbucketServerConfigs`
+        # @return [Array<Google::Apis::CloudbuildV1::BitbucketServerConfig>]
+        attr_accessor :bitbucket_server_configs
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_configs = args[:bitbucket_server_configs] if args.key?(:bitbucket_server_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # RPC response object returned by the ListBitbucketServerRepositories RPC method.
+      class ListBitbucketServerRepositoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Bitbucket Server repositories.
+        # Corresponds to the JSON property `bitbucketServerRepositories`
+        # @return [Array<Google::Apis::CloudbuildV1::BitbucketServerRepository>]
+        attr_accessor :bitbucket_server_repositories
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_repositories = args[:bitbucket_server_repositories] if args.key?(:bitbucket_server_repositories)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2331,6 +2929,27 @@ module Google
         end
       end
       
+      # RPC request object accepted by RemoveBitbucketServerConnectedRepository RPC
+      # method.
+      class RemoveBitbucketServerConnectedRepositoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # BitbucketServerRepositoryId identifies a specific repository hosted on a
+        # Bitbucket Server.
+        # Corresponds to the JSON property `connectedRepository`
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerRepositoryId]
+        attr_accessor :connected_repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connected_repository = args[:connected_repository] if args.key?(:connected_repository)
+        end
+      end
+      
       # Location of the source in a Google Cloud Source Repository.
       class RepoSource
         include Google::Apis::Core::Hashable
@@ -2889,6 +3508,38 @@ module Google
         end
       end
       
+      # Metadata for `UpdateBitbucketServerConfig` operation.
+      class UpdateBitbucketServerConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the BitbucketServerConfig to be updated. Format: `
+        # projects/`project`/locations/`location`/bitbucketServerConfigs/`id``.
+        # Corresponds to the JSON property `bitbucketServerConfig`
+        # @return [String]
+        attr_accessor :bitbucket_server_config
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bitbucket_server_config = args[:bitbucket_server_config] if args.key?(:bitbucket_server_config)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+        end
+      end
+      
       # Metadata for `UpdateGitHubEnterpriseConfig` operation.
       class UpdateGitHubEnterpriseConfigOperationMetadata
         include Google::Apis::Core::Hashable
@@ -2918,6 +3569,38 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
+        end
+      end
+      
+      # Metadata for `UpdateGitLabConfig` operation.
+      class UpdateGitLabConfigOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Time the operation was completed.
+        # Corresponds to the JSON property `completeTime`
+        # @return [String]
+        attr_accessor :complete_time
+      
+        # Time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The resource name of the GitLabConfig to be created. Format: `projects/`
+        # project`/locations/`location`/gitlabConfigs/`id``.
+        # Corresponds to the JSON property `gitlabConfig`
+        # @return [String]
+        attr_accessor :gitlab_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @complete_time = args[:complete_time] if args.key?(:complete_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
         end
       end
       
