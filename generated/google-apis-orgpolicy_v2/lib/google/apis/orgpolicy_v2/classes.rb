@@ -22,6 +22,34 @@ module Google
   module Apis
     module OrgpolicyV2
       
+      # Similar to PolicySpec but with an extra 'launch' field for launch reference.
+      # The PolicySpec here is specific for dry-run/darklaunch.
+      class GoogleCloudOrgpolicyV2AlternatePolicySpec
+        include Google::Apis::Core::Hashable
+      
+        # Reference to the launch that will be used while audit logging and to control
+        # the launch. Should be set only in the alternate policy.
+        # Corresponds to the JSON property `launch`
+        # @return [String]
+        attr_accessor :launch
+      
+        # Defines a Cloud Organization `PolicySpec` which is used to specify `
+        # Constraints` for configurations of Cloud Platform resources.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @launch = args[:launch] if args.key?(:launch)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
       # A `constraint` describes a way to restrict resource's configuration. For
       # example, you could enforce a constraint that controls which cloud services can
       # be activated across an organization, or whether a Compute Engine instance can
@@ -258,6 +286,12 @@ module Google
       class GoogleCloudOrgpolicyV2Policy
         include Google::Apis::Core::Hashable
       
+        # Similar to PolicySpec but with an extra 'launch' field for launch reference.
+        # The PolicySpec here is specific for dry-run/darklaunch.
+        # Corresponds to the JSON property `alternate`
+        # @return [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2AlternatePolicySpec]
+        attr_accessor :alternate
+      
         # Immutable. The resource name of the Policy. Must be one of the following forms,
         # where constraint_name is the name of the constraint which this Policy
         # configures: * `projects/`project_number`/policies/`constraint_name`` * `
@@ -282,6 +316,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternate = args[:alternate] if args.key?(:alternate)
           @name = args[:name] if args.key?(:name)
           @spec = args[:spec] if args.key?(:spec)
         end

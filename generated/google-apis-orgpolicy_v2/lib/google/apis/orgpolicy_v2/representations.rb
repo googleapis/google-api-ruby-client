@@ -22,6 +22,12 @@ module Google
   module Apis
     module OrgpolicyV2
       
+      class GoogleCloudOrgpolicyV2AlternatePolicySpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudOrgpolicyV2Constraint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,6 +100,15 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOrgpolicyV2AlternatePolicySpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :launch, as: 'launch'
+          property :spec, as: 'spec', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec::Representation
+      
+        end
+      end
+      
       class GoogleCloudOrgpolicyV2Constraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -156,6 +171,8 @@ module Google
       class GoogleCloudOrgpolicyV2Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alternate, as: 'alternate', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2AlternatePolicySpec, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2AlternatePolicySpec::Representation
+      
           property :name, as: 'name'
           property :spec, as: 'spec', class: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec, decorator: Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2PolicySpec::Representation
       
