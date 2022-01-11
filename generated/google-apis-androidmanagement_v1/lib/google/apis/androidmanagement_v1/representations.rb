@@ -1140,6 +1140,7 @@ module Google
           property :bluetooth_config_disabled, as: 'bluetoothConfigDisabled'
           property :bluetooth_contact_sharing_disabled, as: 'bluetoothContactSharingDisabled'
           property :bluetooth_disabled, as: 'bluetoothDisabled'
+          property :camera_access, as: 'cameraAccess'
           property :camera_disabled, as: 'cameraDisabled'
           property :cell_broadcasts_config_disabled, as: 'cellBroadcastsConfigDisabled'
           collection :choose_private_key_rules, as: 'choosePrivateKeyRules', class: Google::Apis::AndroidmanagementV1::ChoosePrivateKeyRule, decorator: Google::Apis::AndroidmanagementV1::ChoosePrivateKeyRule::Representation
@@ -1171,6 +1172,7 @@ module Google
           property :long_support_message, as: 'longSupportMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
           property :maximum_time_to_lock, :numeric_string => true, as: 'maximumTimeToLock'
+          property :microphone_access, as: 'microphoneAccess'
           property :minimum_api_level, as: 'minimumApiLevel'
           property :mobile_networks_config_disabled, as: 'mobileNetworksConfigDisabled'
           property :modify_accounts_disabled, as: 'modifyAccountsDisabled'

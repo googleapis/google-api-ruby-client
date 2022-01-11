@@ -171,7 +171,7 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ManagedProperty>]
         attr_accessor :managed_properties
       
-        # The name of the app in the form enterprises/`enterpriseId`/applications/`
+        # The name of the app in the form enterprises/`enterprise`/applications/`
         # package_name`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2761,6 +2761,12 @@ module Google
         attr_accessor :bluetooth_disabled
         alias_method :bluetooth_disabled?, :bluetooth_disabled
       
+        # Controls the use of the camera and whether the user has access to the camera
+        # access toggle.
+        # Corresponds to the JSON property `cameraAccess`
+        # @return [String]
+        attr_accessor :camera_access
+      
         # Whether all cameras on the device are disabled.
         # Corresponds to the JSON property `cameraDisabled`
         # @return [Boolean]
@@ -2914,6 +2920,12 @@ module Google
         # Corresponds to the JSON property `maximumTimeToLock`
         # @return [Fixnum]
         attr_accessor :maximum_time_to_lock
+      
+        # Controls the use of the microphone and whether the user has access to the
+        # microphone access toggle. This applies only on fully managed devices.
+        # Corresponds to the JSON property `microphoneAccess`
+        # @return [String]
+        attr_accessor :microphone_access
       
         # The minimum allowed Android API level.
         # Corresponds to the JSON property `minimumApiLevel`
@@ -3225,6 +3237,7 @@ module Google
           @bluetooth_config_disabled = args[:bluetooth_config_disabled] if args.key?(:bluetooth_config_disabled)
           @bluetooth_contact_sharing_disabled = args[:bluetooth_contact_sharing_disabled] if args.key?(:bluetooth_contact_sharing_disabled)
           @bluetooth_disabled = args[:bluetooth_disabled] if args.key?(:bluetooth_disabled)
+          @camera_access = args[:camera_access] if args.key?(:camera_access)
           @camera_disabled = args[:camera_disabled] if args.key?(:camera_disabled)
           @cell_broadcasts_config_disabled = args[:cell_broadcasts_config_disabled] if args.key?(:cell_broadcasts_config_disabled)
           @choose_private_key_rules = args[:choose_private_key_rules] if args.key?(:choose_private_key_rules)
@@ -3250,6 +3263,7 @@ module Google
           @location_mode = args[:location_mode] if args.key?(:location_mode)
           @long_support_message = args[:long_support_message] if args.key?(:long_support_message)
           @maximum_time_to_lock = args[:maximum_time_to_lock] if args.key?(:maximum_time_to_lock)
+          @microphone_access = args[:microphone_access] if args.key?(:microphone_access)
           @minimum_api_level = args[:minimum_api_level] if args.key?(:minimum_api_level)
           @mobile_networks_config_disabled = args[:mobile_networks_config_disabled] if args.key?(:mobile_networks_config_disabled)
           @modify_accounts_disabled = args[:modify_accounts_disabled] if args.key?(:modify_accounts_disabled)
