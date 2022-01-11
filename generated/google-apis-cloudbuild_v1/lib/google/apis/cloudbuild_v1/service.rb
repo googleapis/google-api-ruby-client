@@ -49,6 +49,44 @@ module Google
           @batch_path = 'batch'
         end
         
+        # ReceiveRegionalWebhook is called when the API receives a regional GitHub
+        # webhook.
+        # @param [String] location
+        #   Required. The location where the webhook should be sent.
+        # @param [Google::Apis::CloudbuildV1::HttpBody] http_body_object
+        # @param [String] webhook_key
+        #   For GitHub Enterprise webhooks, this key is used to associate the webhook
+        #   request with the GitHubEnterpriseConfig to use for validation.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def regional_location_webhook(location, http_body_object = nil, webhook_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+location}/regionalWebhook', options)
+          command.request_representation = Google::Apis::CloudbuildV1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Empty
+          command.params['location'] = location unless location.nil?
+          command.query['webhookKey'] = webhook_key unless webhook_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous cancellation on a long-running operation. The server makes
         # a best effort to cancel the operation, but success is not guaranteed. If the
         # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -555,6 +593,335 @@ module Google
           command.response_class = Google::Apis::CloudbuildV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Add a Bitbucket Server repository to a given BitbucketServerConfig's connected
+        # repositories. This API is experimental.
+        # @param [String] config
+        #   Required. The name of the `BitbucketServerConfig` to add a connected
+        #   repository. Format: `projects/`project`/locations/`location`/
+        #   bitbucketServerConfigs/`config``
+        # @param [Google::Apis::CloudbuildV1::AddBitbucketServerConnectedRepositoryRequest] add_bitbucket_server_connected_repository_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::AddBitbucketServerConnectedRepositoryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::AddBitbucketServerConnectedRepositoryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_bitbucket_server_config_bitbucket_server_connected_repository(config, add_bitbucket_server_connected_repository_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+config}:addBitbucketServerConnectedRepository', options)
+          command.request_representation = Google::Apis::CloudbuildV1::AddBitbucketServerConnectedRepositoryRequest::Representation
+          command.request_object = add_bitbucket_server_connected_repository_request_object
+          command.response_representation = Google::Apis::CloudbuildV1::AddBitbucketServerConnectedRepositoryResponse::Representation
+          command.response_class = Google::Apis::CloudbuildV1::AddBitbucketServerConnectedRepositoryResponse
+          command.params['config'] = config unless config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new `BitbucketServerConfig`. This API is experimental.
+        # @param [String] parent
+        #   Required. Name of the parent resource.
+        # @param [Google::Apis::CloudbuildV1::BitbucketServerConfig] bitbucket_server_config_object
+        # @param [String] bitbucket_server_config_id
+        #   Optional. The ID to use for the BitbucketServerConfig, which will become the
+        #   final component of the BitbucketServerConfig's resource name.
+        #   bitbucket_server_config_id must meet the following requirements: + They must
+        #   contain only alphanumeric characters and dashes. + They can be 1-64 characters
+        #   long. + They must begin and end with an alphanumeric character.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_bitbucket_server_config(parent, bitbucket_server_config_object = nil, bitbucket_server_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/bitbucketServerConfigs', options)
+          command.request_representation = Google::Apis::CloudbuildV1::BitbucketServerConfig::Representation
+          command.request_object = bitbucket_server_config_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bitbucketServerConfigId'] = bitbucket_server_config_id unless bitbucket_server_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a `BitbucketServerConfig`. This API is experimental.
+        # @param [String] name
+        #   Required. The config resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_bitbucket_server_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve a `BitbucketServerConfig`. This API is experimental.
+        # @param [String] name
+        #   Required. The config resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::BitbucketServerConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::BitbucketServerConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_bitbucket_server_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbuildV1::BitbucketServerConfig::Representation
+          command.response_class = Google::Apis::CloudbuildV1::BitbucketServerConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all `BitbucketServerConfigs` for a given project. This API is
+        # experimental.
+        # @param [String] parent
+        #   Required. Name of the parent resource.
+        # @param [Fixnum] page_size
+        #   The maximum number of configs to return. The service may return fewer than
+        #   this value. If unspecified, at most 50 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListBitbucketServerConfigsRequest`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListBitbucketServerConfigsRequest` must match the call
+        #   that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::ListBitbucketServerConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::ListBitbucketServerConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_bitbucket_server_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/bitbucketServerConfigs', options)
+          command.response_representation = Google::Apis::CloudbuildV1::ListBitbucketServerConfigsResponse::Representation
+          command.response_class = Google::Apis::CloudbuildV1::ListBitbucketServerConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing `BitbucketServerConfig`. This API is experimental.
+        # @param [String] name
+        #   The resource name for the config.
+        # @param [Google::Apis::CloudbuildV1::BitbucketServerConfig] bitbucket_server_config_object
+        # @param [String] update_mask
+        #   Update mask for the resource. If this is set, the server will only update the
+        #   fields specified in the field mask. Otherwise, a full update of the mutable
+        #   resource fields will be performed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_bitbucket_server_config(name, bitbucket_server_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudbuildV1::BitbucketServerConfig::Representation
+          command.request_object = bitbucket_server_config_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Remove a Bitbucket Server repository from an given BitbucketServerConfig’s
+        # connected repositories. This API is experimental.
+        # @param [String] config
+        #   Required. The name of the `BitbucketServerConfig` to remove a connected
+        #   repository. Format: `projects/`project`/locations/`location`/
+        #   bitbucketServerConfigs/`config``
+        # @param [Google::Apis::CloudbuildV1::RemoveBitbucketServerConnectedRepositoryRequest] remove_bitbucket_server_connected_repository_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_bitbucket_server_config_bitbucket_server_connected_repository(config, remove_bitbucket_server_connected_repository_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+config}:removeBitbucketServerConnectedRepository', options)
+          command.request_representation = Google::Apis::CloudbuildV1::RemoveBitbucketServerConnectedRepositoryRequest::Representation
+          command.request_object = remove_bitbucket_server_connected_repository_request_object
+          command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Empty
+          command.params['config'] = config unless config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Batch connecting Bitbucket Server repositories to Cloud Build.
+        # @param [String] parent
+        #   The name of the `BitbucketServerConfig` that added connected repository.
+        #   Format: `projects/`project`/locations/`location`/bitbucketServerConfigs/`
+        #   config``
+        # @param [Google::Apis::CloudbuildV1::BatchCreateBitbucketServerConnectedRepositoriesRequest] batch_create_bitbucket_server_connected_repositories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_connected_repository_create_bitbucket_server_connected_repositories(parent, batch_create_bitbucket_server_connected_repositories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/connectedRepositories:batchCreate', options)
+          command.request_representation = Google::Apis::CloudbuildV1::BatchCreateBitbucketServerConnectedRepositoriesRequest::Representation
+          command.request_object = batch_create_bitbucket_server_connected_repositories_request_object
+          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
+          command.response_class = Google::Apis::CloudbuildV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all repositories for a given `BitbucketServerConfig`. This API is
+        # experimental.
+        # @param [String] parent
+        #   Required. Name of the parent resource.
+        # @param [Fixnum] page_size
+        #   The maximum number of configs to return. The service may return fewer than
+        #   this value. If unspecified, at most 50 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListBitbucketServerRepositoriesRequest`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all
+        #   other parameters provided to `ListBitbucketServerConfigsRequest` must match
+        #   the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbuildV1::ListBitbucketServerRepositoriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbuildV1::ListBitbucketServerRepositoriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_bitbucket_server_config_repos(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/repos', options)
+          command.response_representation = Google::Apis::CloudbuildV1::ListBitbucketServerRepositoriesResponse::Representation
+          command.response_class = Google::Apis::CloudbuildV1::ListBitbucketServerRepositoriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
