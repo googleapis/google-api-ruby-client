@@ -49,6 +49,12 @@ module Google
         attr_accessor :adult_content
         alias_method :adult_content?, :adult_content
       
+        # The automatic improvements of the account can be used to automatically update
+        # items, improve images and shipping.
+        # Corresponds to the JSON property `automaticImprovements`
+        # @return [Google::Apis::ContentV2_1::AccountAutomaticImprovements]
+        attr_accessor :automatic_improvements
+      
         # Automatically created label IDs that are assigned to the account by CSS Center.
         # Corresponds to the JSON property `automaticLabelIds`
         # @return [Array<Fixnum>]
@@ -125,6 +131,7 @@ module Google
           @account_management = args[:account_management] if args.key?(:account_management)
           @ads_links = args[:ads_links] if args.key?(:ads_links)
           @adult_content = args[:adult_content] if args.key?(:adult_content)
+          @automatic_improvements = args[:automatic_improvements] if args.key?(:automatic_improvements)
           @automatic_label_ids = args[:automatic_label_ids] if args.key?(:automatic_label_ids)
           @business_information = args[:business_information] if args.key?(:business_information)
           @css_id = args[:css_id] if args.key?(:css_id)
@@ -218,6 +225,54 @@ module Google
         def update!(**args)
           @ads_id = args[:ads_id] if args.key?(:ads_id)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The automatic improvements of the account can be used to automatically update
+      # items, improve images and shipping.
+      class AccountAutomaticImprovements
+        include Google::Apis::Core::Hashable
+      
+        # This improvement will attempt to automatically correct submitted images if
+        # they don't meet the [image requirements](https://support.google.com/merchants/
+        # answer/6324350), for example, removing overlays. If successful, the image will
+        # be replaced and approved. This improvement is only applied to images of
+        # disapproved offers. For more information see: [Automatic image improvements](
+        # https://support.google.com/merchants/answer/9242973)
+        # Corresponds to the JSON property `imageImprovements`
+        # @return [Google::Apis::ContentV2_1::AccountImageImprovements]
+        attr_accessor :image_improvements
+      
+        # Turning on [item updates](https://support.google.com/merchants/answer/3246284)
+        # allows Google to automatically update items for you. When item updates are on,
+        # Google uses the structured data markup on the website and advanced data
+        # extractors to update the price and availability of the items. When the item
+        # updates are off, items with mismatched data aren't shown.
+        # Corresponds to the JSON property `itemUpdates`
+        # @return [Google::Apis::ContentV2_1::AccountItemUpdates]
+        attr_accessor :item_updates
+      
+        # Not available for MCAs [accounts](https://support.google.com/merchants/answer/
+        # 188487). By turning on [automatic shipping improvements](https://support.
+        # google.com/merchants/answer/10027038), you are allowing Google to improve the
+        # accuracy of your delivery times shown to shoppers using Google. More accurate
+        # delivery times, especially when faster, typically lead to better conversion
+        # rates. Google will improve your estimated delivery times based on various
+        # factors: * Delivery address of an order * Current handling time and shipping
+        # time settings * Estimated weekdays or business days * Parcel tracking data
+        # Corresponds to the JSON property `shippingImprovements`
+        # @return [Google::Apis::ContentV2_1::AccountShippingImprovements]
+        attr_accessor :shipping_improvements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_improvements = args[:image_improvements] if args.key?(:image_improvements)
+          @item_updates = args[:item_updates] if args.key?(:item_updates)
+          @shipping_improvements = args[:shipping_improvements] if args.key?(:shipping_improvements)
         end
       end
       
@@ -395,6 +450,152 @@ module Google
         end
       end
       
+      # This improvement will attempt to automatically correct submitted images if
+      # they don't meet the [image requirements](https://support.google.com/merchants/
+      # answer/6324350), for example, removing overlays. If successful, the image will
+      # be replaced and approved. This improvement is only applied to images of
+      # disapproved offers. For more information see: [Automatic image improvements](
+      # https://support.google.com/merchants/answer/9242973)
+      class AccountImageImprovements
+        include Google::Apis::Core::Hashable
+      
+        # Settings for the Automatic Image Improvements.
+        # Corresponds to the JSON property `accountImageImprovementsSettings`
+        # @return [Google::Apis::ContentV2_1::AccountImageImprovementsSettings]
+        attr_accessor :account_image_improvements_settings
+      
+        # Output only. The effective value of allow_automatic_image_improvements. If
+        # account_image_improvements_settings is present, then this value is the same.
+        # Otherwise, it represents the inherited value of the parent account. Read-only.
+        # Corresponds to the JSON property `effectiveAllowAutomaticImageImprovements`
+        # @return [Boolean]
+        attr_accessor :effective_allow_automatic_image_improvements
+        alias_method :effective_allow_automatic_image_improvements?, :effective_allow_automatic_image_improvements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_image_improvements_settings = args[:account_image_improvements_settings] if args.key?(:account_image_improvements_settings)
+          @effective_allow_automatic_image_improvements = args[:effective_allow_automatic_image_improvements] if args.key?(:effective_allow_automatic_image_improvements)
+        end
+      end
+      
+      # Settings for the Automatic Image Improvements.
+      class AccountImageImprovementsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Enables automatic image improvements.
+        # Corresponds to the JSON property `allowAutomaticImageImprovements`
+        # @return [Boolean]
+        attr_accessor :allow_automatic_image_improvements
+        alias_method :allow_automatic_image_improvements?, :allow_automatic_image_improvements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_automatic_image_improvements = args[:allow_automatic_image_improvements] if args.key?(:allow_automatic_image_improvements)
+        end
+      end
+      
+      # Turning on [item updates](https://support.google.com/merchants/answer/3246284)
+      # allows Google to automatically update items for you. When item updates are on,
+      # Google uses the structured data markup on the website and advanced data
+      # extractors to update the price and availability of the items. When the item
+      # updates are off, items with mismatched data aren't shown.
+      class AccountItemUpdates
+        include Google::Apis::Core::Hashable
+      
+        # Settings for the Automatic Item Updates.
+        # Corresponds to the JSON property `accountItemUpdatesSettings`
+        # @return [Google::Apis::ContentV2_1::AccountItemUpdatesSettings]
+        attr_accessor :account_item_updates_settings
+      
+        # Output only. The effective value of allow_availability_updates. If
+        # account_item_updates_settings is present, then this value is the same.
+        # Otherwise, it represents the inherited value of the parent account. Read-only.
+        # Corresponds to the JSON property `effectiveAllowAvailabilityUpdates`
+        # @return [Boolean]
+        attr_accessor :effective_allow_availability_updates
+        alias_method :effective_allow_availability_updates?, :effective_allow_availability_updates
+      
+        # Output only. The effective value of allow_price_updates. If
+        # account_item_updates_settings is present, then this value is the same.
+        # Otherwise, it represents the inherited value of the parent account. Read-only.
+        # Corresponds to the JSON property `effectiveAllowPriceUpdates`
+        # @return [Boolean]
+        attr_accessor :effective_allow_price_updates
+        alias_method :effective_allow_price_updates?, :effective_allow_price_updates
+      
+        # Output only. The effective value of allow_strict_availability_updates. If
+        # account_item_updates_settings is present, then this value is the same.
+        # Otherwise, it represents the inherited value of the parent account. Read-only.
+        # Corresponds to the JSON property `effectiveAllowStrictAvailabilityUpdates`
+        # @return [Boolean]
+        attr_accessor :effective_allow_strict_availability_updates
+        alias_method :effective_allow_strict_availability_updates?, :effective_allow_strict_availability_updates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_item_updates_settings = args[:account_item_updates_settings] if args.key?(:account_item_updates_settings)
+          @effective_allow_availability_updates = args[:effective_allow_availability_updates] if args.key?(:effective_allow_availability_updates)
+          @effective_allow_price_updates = args[:effective_allow_price_updates] if args.key?(:effective_allow_price_updates)
+          @effective_allow_strict_availability_updates = args[:effective_allow_strict_availability_updates] if args.key?(:effective_allow_strict_availability_updates)
+        end
+      end
+      
+      # Settings for the Automatic Item Updates.
+      class AccountItemUpdatesSettings
+        include Google::Apis::Core::Hashable
+      
+        # If availability updates are enabled, any previous availability values get
+        # overwritten if Google finds an out-of-stock annotation on the offer's page. If
+        # additionally `allow_availability_updates` field is set to true, values get
+        # overwritten if Google finds an in-stock annotation on the offer’s page.
+        # Corresponds to the JSON property `allowAvailabilityUpdates`
+        # @return [Boolean]
+        attr_accessor :allow_availability_updates
+        alias_method :allow_availability_updates?, :allow_availability_updates
+      
+        # If price updates are enabled, Google always updates the active price with the
+        # crawled information.
+        # Corresponds to the JSON property `allowPriceUpdates`
+        # @return [Boolean]
+        attr_accessor :allow_price_updates
+        alias_method :allow_price_updates?, :allow_price_updates
+      
+        # If allow_availability_updates is enabled, items are automatically updated in
+        # all your Shopping target countries. By default, availability updates will only
+        # be applied to items that are 'out of stock' on your website but 'in stock' on
+        # Shopping. Set this to true to also update items that are 'in stock' on your
+        # website, but 'out of stock' on Google Shopping. In order for this field to
+        # have an effect, you must also allow availability updates.
+        # Corresponds to the JSON property `allowStrictAvailabilityUpdates`
+        # @return [Boolean]
+        attr_accessor :allow_strict_availability_updates
+        alias_method :allow_strict_availability_updates?, :allow_strict_availability_updates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_availability_updates = args[:allow_availability_updates] if args.key?(:allow_availability_updates)
+          @allow_price_updates = args[:allow_price_updates] if args.key?(:allow_price_updates)
+          @allow_strict_availability_updates = args[:allow_strict_availability_updates] if args.key?(:allow_strict_availability_updates)
+        end
+      end
+      
       # Label assigned by CSS domain or CSS group to one of its sub-accounts.
       class AccountLabel
         include Google::Apis::Core::Hashable
@@ -474,6 +675,33 @@ module Google
           @carrier_account_name = args[:carrier_account_name] if args.key?(:carrier_account_name)
           @carrier_account_number = args[:carrier_account_number] if args.key?(:carrier_account_number)
           @carrier_code = args[:carrier_code] if args.key?(:carrier_code)
+        end
+      end
+      
+      # Not available for MCAs [accounts](https://support.google.com/merchants/answer/
+      # 188487). By turning on [automatic shipping improvements](https://support.
+      # google.com/merchants/answer/10027038), you are allowing Google to improve the
+      # accuracy of your delivery times shown to shoppers using Google. More accurate
+      # delivery times, especially when faster, typically lead to better conversion
+      # rates. Google will improve your estimated delivery times based on various
+      # factors: * Delivery address of an order * Current handling time and shipping
+      # time settings * Estimated weekdays or business days * Parcel tracking data
+      class AccountShippingImprovements
+        include Google::Apis::Core::Hashable
+      
+        # Enables automatic shipping improvements.
+        # Corresponds to the JSON property `allowShippingImprovements`
+        # @return [Boolean]
+        attr_accessor :allow_shipping_improvements
+        alias_method :allow_shipping_improvements?, :allow_shipping_improvements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_shipping_improvements = args[:allow_shipping_improvements] if args.key?(:allow_shipping_improvements)
         end
       end
       
@@ -2727,9 +2955,7 @@ module Google
       
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
-        # unless provided in `excludedDestinations`. List of supported destinations (if
-        # available to the account): - DisplayAds - Shopping - ShoppingActions -
-        # SurfacesAcrossGoogle
+        # unless provided in `excludedDestinations`.
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -10013,11 +10239,26 @@ module Google
       class PosStore
         include Google::Apis::Core::Hashable
       
+        # The business type of the store.
+        # Corresponds to the JSON property `gcidCategory`
+        # @return [Array<String>]
+        attr_accessor :gcid_category
+      
         # Identifies what kind of resource this is. Value: the fixed string "`content#
         # posStore`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # The store phone number.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # The Google Place Id of the store location.
+        # Corresponds to the JSON property `placeId`
+        # @return [String]
+        attr_accessor :place_id
       
         # Required. The street address of the store.
         # Corresponds to the JSON property `storeAddress`
@@ -10029,15 +10270,30 @@ module Google
         # @return [String]
         attr_accessor :store_code
       
+        # The merchant or store name.
+        # Corresponds to the JSON property `storeName`
+        # @return [String]
+        attr_accessor :store_name
+      
+        # The website url for the store or merchant.
+        # Corresponds to the JSON property `websiteUrl`
+        # @return [String]
+        attr_accessor :website_url
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @gcid_category = args[:gcid_category] if args.key?(:gcid_category)
           @kind = args[:kind] if args.key?(:kind)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @place_id = args[:place_id] if args.key?(:place_id)
           @store_address = args[:store_address] if args.key?(:store_address)
           @store_code = args[:store_code] if args.key?(:store_code)
+          @store_name = args[:store_name] if args.key?(:store_name)
+          @website_url = args[:website_url] if args.key?(:website_url)
         end
       end
       
