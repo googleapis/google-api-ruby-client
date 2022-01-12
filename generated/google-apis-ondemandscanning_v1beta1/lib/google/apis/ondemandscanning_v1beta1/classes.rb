@@ -777,6 +777,12 @@ module Google
         # @return [Google::Apis::OndemandscanningV1beta1::Status]
         attr_accessor :analysis_status_error
       
+        # Output only. The time occurrences related to this discovery occurrence were
+        # archived.
+        # Corresponds to the JSON property `archiveTime`
+        # @return [String]
+        attr_accessor :archive_time
+      
         # Whether the resource is continuously analyzed.
         # Corresponds to the JSON property `continuousAnalysis`
         # @return [String]
@@ -800,6 +806,7 @@ module Google
         def update!(**args)
           @analysis_status = args[:analysis_status] if args.key?(:analysis_status)
           @analysis_status_error = args[:analysis_status_error] if args.key?(:analysis_status_error)
+          @archive_time = args[:archive_time] if args.key?(:archive_time)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @cpe = args[:cpe] if args.key?(:cpe)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
@@ -1139,12 +1146,12 @@ module Google
       class InTotoStatement
         include Google::Apis::Core::Hashable
       
-        # Always "https://in-toto.io/Statement/v0.1".
+        # Always `https://in-toto.io/Statement/v0.1`.
         # Corresponds to the JSON property `_type`
         # @return [String]
         attr_accessor :_type
       
-        # "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
+        # `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
         # Corresponds to the JSON property `predicateType`
         # @return [String]
         attr_accessor :predicate_type
@@ -1383,7 +1390,10 @@ module Google
         end
       end
       
-      # Details about files that caused a compliance check to fail.
+      # Details about files that caused a compliance check to fail. display_command is
+      # a single command that can be used to display a list of non compliant files.
+      # When there is no such command, we can also iterate a list of non compliant
+      # file using 'path'.
       class NonCompliantFile
         include Google::Apis::Core::Hashable
       
@@ -1392,9 +1402,7 @@ module Google
         # @return [String]
         attr_accessor :display_command
       
-        # display_command is a single command that can be used to display a list of non
-        # compliant files. When there is no such command, we can also iterate a list of
-        # non compliant file using 'path'. Empty if `display_command` is set.
+        # Empty if `display_command` is set.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -2303,7 +2311,7 @@ module Google
       class Subject
         include Google::Apis::Core::Hashable
       
-        # "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/
+        # `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/
         # attestation/blob/main/spec/field_types.md#DigestSet
         # Corresponds to the JSON property `digest`
         # @return [Hash<String,String>]
