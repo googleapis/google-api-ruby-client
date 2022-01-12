@@ -259,32 +259,6 @@ module Google
         end
       end
       
-      # ContainerStatus holds the information of container name and image digest value.
-      class GoogleCloudRunOpV2ContainerStatus
-        include Google::Apis::Core::Hashable
-      
-        # ImageDigest holds the resolved digest for the image specified, regardless of
-        # whether a tag or digest was originally specified in the Container object.
-        # Corresponds to the JSON property `imageDigest`
-        # @return [String]
-        attr_accessor :image_digest
-      
-        # The name of the container, if specified.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image_digest = args[:image_digest] if args.key?(:image_digest)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # EnvVar represents an environment variable present in a Container.
       class GoogleCloudRunOpV2EnvVar
         include Google::Apis::Core::Hashable
@@ -452,11 +426,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :container_concurrency
       
-        # Output only. Status information for each of the containers specified.
-        # Corresponds to the JSON property `containerStatuses`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2ContainerStatus>]
-        attr_accessor :container_statuses
-      
         # Holds the single container that defines the unit of execution for this
         # Revision.
         # Corresponds to the JSON property `containers`
@@ -605,7 +574,6 @@ module Google
           @conditions = args[:conditions] if args.key?(:conditions)
           @confidential = args[:confidential] if args.key?(:confidential)
           @container_concurrency = args[:container_concurrency] if args.key?(:container_concurrency)
-          @container_statuses = args[:container_statuses] if args.key?(:container_statuses)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
