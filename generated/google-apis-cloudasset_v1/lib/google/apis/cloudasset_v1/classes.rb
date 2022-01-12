@@ -3410,7 +3410,11 @@ module Google
         # service account SA has permission P to the GCP folder F, then user A
         # potentially has access to the GCP folder F. And those advanced analysis
         # results will be included in AnalyzeIamPolicyResponse.
-        # service_account_impersonation_analysis. Default is false.
+        # service_account_impersonation_analysis. Only the following permissions are
+        # considered in this analysis: * `iam.serviceAccounts.actAs` * `iam.
+        # serviceAccounts.signBlob` * `iam.serviceAccounts.signJwt` * `iam.
+        # serviceAccounts.getAccessToken` * `iam.serviceAccounts.getOpenIdToken` * `iam.
+        # serviceAccounts.implicitDelegation` Default is false.
         # Corresponds to the JSON property `analyzeServiceAccountImpersonation`
         # @return [Boolean]
         attr_accessor :analyze_service_account_impersonation
