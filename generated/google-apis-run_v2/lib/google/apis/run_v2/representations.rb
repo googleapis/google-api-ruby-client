@@ -52,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRunOpV2ContainerStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRunOpV2EnvVar
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -289,14 +283,6 @@ module Google
         end
       end
       
-      class GoogleCloudRunOpV2ContainerStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image_digest, as: 'imageDigest'
-          property :name, as: 'name'
-        end
-      end
-      
       class GoogleCloudRunOpV2EnvVar
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -349,8 +335,6 @@ module Google
       
           property :confidential, as: 'confidential'
           property :container_concurrency, as: 'containerConcurrency'
-          collection :container_statuses, as: 'containerStatuses', class: Google::Apis::RunV2::GoogleCloudRunOpV2ContainerStatus, decorator: Google::Apis::RunV2::GoogleCloudRunOpV2ContainerStatus::Representation
-      
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunOpV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunOpV2Container::Representation
       
           property :create_time, as: 'createTime'
