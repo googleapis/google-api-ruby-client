@@ -2537,8 +2537,8 @@ module Google
         end
       end
       
-      # Configuration to control the number of findings returned. Cannot be set if de-
-      # identification is requested.
+      # Configuration to control the number of findings returned for inspection. This
+      # is not used for de-identification or data profiling.
       class GooglePrivacyDlpV2FindingLimits
         include Google::Apis::Core::Hashable
       
@@ -3111,8 +3111,7 @@ module Google
       class GooglePrivacyDlpV2InspectConfig
         include Google::Apis::Core::Hashable
       
-        # List of options defining data content to scan. If empty, text, images, and
-        # other content will be included.
+        # Deprecated and unused.
         # Corresponds to the JSON property `contentOptions`
         # @return [Array<String>]
         attr_accessor :content_options
@@ -3123,14 +3122,16 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2CustomInfoType>]
         attr_accessor :custom_info_types
       
-        # When true, excludes type information of the findings.
+        # When true, excludes type information of the findings. This is not used for
+        # data profiling.
         # Corresponds to the JSON property `excludeInfoTypes`
         # @return [Boolean]
         attr_accessor :exclude_info_types
         alias_method :exclude_info_types?, :exclude_info_types
       
         # When true, a contextual quote from the data that triggered a finding is
-        # included in the response; see Finding.quote.
+        # included in the response; see Finding.quote. This is not used for data
+        # profiling.
         # Corresponds to the JSON property `includeQuote`
         # @return [Boolean]
         attr_accessor :include_quote
@@ -3148,8 +3149,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
       
-        # Configuration to control the number of findings returned. Cannot be set if de-
-        # identification is requested.
+        # Configuration to control the number of findings returned for inspection. This
+        # is not used for de-identification or data profiling.
         # Corresponds to the JSON property `limits`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FindingLimits]
         attr_accessor :limits
