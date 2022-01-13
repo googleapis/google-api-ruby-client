@@ -684,6 +684,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The organizational unit of this shared drive. This field is only populated on
+        # drives.list responses when the useDomainAdminAccess parameter is set to true.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
         # A set of restrictions that apply to this shared drive or items inside this
         # shared drive.
         # Corresponds to the JSON property `restrictions`
@@ -714,6 +720,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
           @restrictions = args[:restrictions] if args.key?(:restrictions)
           @theme_id = args[:theme_id] if args.key?(:theme_id)
         end
@@ -2734,6 +2741,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The organizational unit of this shared drive. This field is only populated on
+        # drives.list responses when the useDomainAdminAccess parameter is set to true.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
         # A set of restrictions that apply to this Team Drive or items inside this Team
         # Drive.
         # Corresponds to the JSON property `restrictions`
@@ -2764,6 +2777,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
           @restrictions = args[:restrictions] if args.key?(:restrictions)
           @theme_id = args[:theme_id] if args.key?(:theme_id)
         end
