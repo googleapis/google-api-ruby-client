@@ -733,6 +733,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :org_unit_id, as: 'orgUnitId'
           property :restrictions, as: 'restrictions', class: Google::Apis::DriveV2::Drive::Restrictions, decorator: Google::Apis::DriveV2::Drive::Restrictions::Representation
       
           property :theme_id, as: 'themeId'
@@ -1226,6 +1227,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :org_unit_id, as: 'orgUnitId'
           property :restrictions, as: 'restrictions', class: Google::Apis::DriveV2::TeamDrive::Restrictions, decorator: Google::Apis::DriveV2::TeamDrive::Restrictions::Representation
       
           property :theme_id, as: 'themeId'
