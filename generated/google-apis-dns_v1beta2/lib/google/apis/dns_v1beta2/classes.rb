@@ -1490,12 +1490,14 @@ module Google
       class RrSetRoutingPolicy
         include Google::Apis::Core::Hashable
       
-        # 
+        # Configures a RRSetRoutingPolicy that routes based on the geo location of the
+        # querying user.
         # Corresponds to the JSON property `geo`
         # @return [Google::Apis::DnsV1beta2::RrSetRoutingPolicyGeoPolicy]
         attr_accessor :geo
       
-        # 
+        # Configures a RRSetRoutingPolicy that routes based on the geo location of the
+        # querying user.
         # Corresponds to the JSON property `geoPolicy`
         # @return [Google::Apis::DnsV1beta2::RrSetRoutingPolicyGeoPolicy]
         attr_accessor :geo_policy
@@ -1505,12 +1507,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
         # Corresponds to the JSON property `wrr`
         # @return [Google::Apis::DnsV1beta2::RrSetRoutingPolicyWrrPolicy]
         attr_accessor :wrr
       
-        # 
+        # Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
         # Corresponds to the JSON property `wrrPolicy`
         # @return [Google::Apis::DnsV1beta2::RrSetRoutingPolicyWrrPolicy]
         attr_accessor :wrr_policy
@@ -1529,7 +1531,8 @@ module Google
         end
       end
       
-      # 
+      # Configures a RRSetRoutingPolicy that routes based on the geo location of the
+      # querying user.
       class RrSetRoutingPolicyGeoPolicy
         include Google::Apis::Core::Hashable
       
@@ -1555,7 +1558,7 @@ module Google
         end
       end
       
-      # 
+      # ResourceRecordSet data for one geo location.
       class RrSetRoutingPolicyGeoPolicyGeoPolicyItem
         include Google::Apis::Core::Hashable
       
@@ -1576,7 +1579,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :rrdatas
       
-        # DNSSEC generated signatures for the above geo_rrdata.
+        # DNSSEC generated signatures for all the rrdata within this item. Note that if
+        # health checked targets are provided for DNSSEC enabled zones, there's a
+        # restriction of 1 ip per item. .
         # Corresponds to the JSON property `signatureRrdatas`
         # @return [Array<String>]
         attr_accessor :signature_rrdatas
@@ -1594,7 +1599,7 @@ module Google
         end
       end
       
-      # 
+      # Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
       class RrSetRoutingPolicyWrrPolicy
         include Google::Apis::Core::Hashable
       
@@ -1619,7 +1624,7 @@ module Google
         end
       end
       
-      # 
+      # A routing block which contains the routing information for one WRR item.
       class RrSetRoutingPolicyWrrPolicyWrrPolicyItem
         include Google::Apis::Core::Hashable
       
@@ -1633,7 +1638,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :rrdatas
       
-        # DNSSEC generated signatures for the above wrr_rrdata.
+        # DNSSEC generated signatures for all the rrdata within this item. Note that if
+        # health checked targets are provided for DNSSEC enabled zones, there's a
+        # restriction of 1 ip per item. .
         # Corresponds to the JSON property `signatureRrdatas`
         # @return [Array<String>]
         attr_accessor :signature_rrdatas
