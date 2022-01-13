@@ -1369,6 +1369,7 @@ module Google
           property :analysis_status, as: 'analysisStatus'
           property :analysis_status_error, as: 'analysisStatusError', class: Google::Apis::ContaineranalysisV1::Status, decorator: Google::Apis::ContaineranalysisV1::Status::Representation
       
+          property :archive_time, as: 'archiveTime'
           property :continuous_analysis, as: 'continuousAnalysis'
           property :cpe, as: 'cpe'
           property :last_scan_time, as: 'lastScanTime'
