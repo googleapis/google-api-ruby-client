@@ -1262,15 +1262,15 @@ module Google
         # to a member by using the GCP Console. Inviting a member will deliver an
         # invitation email that they must accept. An invitation email is not generated
         # if you are granting a role other than owner, or if both the member you are
-        # inviting and the project are part of your organization. + Membership changes
-        # that leave the project without any owners that have accepted the Terms of
-        # Service (ToS) will be rejected. + If the project is not part of an
-        # organization, there must be at least one owner who has accepted the Terms of
-        # Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the
-        # last ToS-accepted owner from the policy will fail. This restriction also
-        # applies to legacy projects that no longer have owners who have accepted the
-        # ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting
-        # owner is rectified. Authorization requires the Google IAM permission `
+        # inviting and the project are part of your organization. + If the project is
+        # not part of an organization, there must be at least one owner who has accepted
+        # the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()`
+        # to remove the last ToS-accepted owner from the policy will fail. This
+        # restriction also applies to legacy projects that no longer have owners who
+        # have accepted the ToS. Edits to IAM policies will be rejected until the lack
+        # of a ToS-accepting owner is rectified. If the project is part of an
+        # organization, you can remove all owners, potentially making the organization
+        # inaccessible. Authorization requires the Google IAM permission `
         # resourcemanager.projects.setIamPolicy` on the project
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified. See the
