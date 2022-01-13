@@ -634,24 +634,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudRetailV2alphaSetLocalInventoriesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRetailV2alphaUserEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1792,28 +1774,6 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaSetInventoryResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudRetailV2alphaSetLocalInventoriesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allow_missing, as: 'allowMissing'
-          collection :local_inventories, as: 'localInventories', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLocalInventory, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLocalInventory::Representation
-      
-          property :set_time, as: 'setTime'
-        end
-      end
-      
-      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
