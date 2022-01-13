@@ -93,7 +93,9 @@ module Google
         
         # Create a new contact group owned by the authenticated user. Created contact
         # group names must be unique to the users contact groups. Attempting to create a
-        # group with a duplicate name will return a HTTP 409 error.
+        # group with a duplicate name will return a HTTP 409 error. Mutate requests for
+        # the same user should be sent sequentially to avoid increased latency and
+        # failures.
         # @param [Google::Apis::PeopleV1::CreateContactGroupRequest] create_contact_group_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -124,7 +126,8 @@ module Google
         end
         
         # Delete an existing contact group owned by the authenticated user by specifying
-        # a contact group resource name.
+        # a contact group resource name. Mutate requests for the same user should be
+        # sent sequentially to avoid increased latency and failures.
         # @param [String] resource_name
         #   Required. The resource name of the contact group to delete.
         # @param [Boolean] delete_contacts
@@ -248,7 +251,8 @@ module Google
         # Update the name of an existing contact group owned by the authenticated user.
         # Updated contact group names must be unique to the users contact groups.
         # Attempting to create a group with a duplicate name will return a HTTP 409
-        # error.
+        # error. Mutate requests for the same user should be sent sequentially to avoid
+        # increased latency and failures.
         # @param [String] resource_name
         #   The resource name for the contact group, assigned by the server. An ASCII
         #   string, in the form of `contactGroups/`contact_group_id``.
@@ -319,6 +323,8 @@ module Google
         end
         
         # Copies an "Other contact" to a new contact in the user's "myContacts" group
+        # Mutate requests for the same user should be sent sequentially to avoid
+        # increased latency and failures.
         # @param [String] resource_name
         #   Required. The resource name of the "Other contact" to copy.
         # @param [Google::Apis::PeopleV1::CopyOtherContactToMyContactsGroupRequest] copy_other_contact_to_my_contacts_group_request_object
@@ -479,7 +485,8 @@ module Google
         end
         
         # Create a batch of new contacts and return the PersonResponses for the newly
-        # created contacts. Limited to 10 parallel requests per user.
+        # Mutate requests for the same user should be sent sequentially to avoid
+        # increased latency and failures.
         # @param [Google::Apis::PeopleV1::BatchCreateContactsRequest] batch_create_contacts_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -509,8 +516,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a batch of contacts. Any non-contact data will not be deleted. Limited
-        # to 10 parallel requests per user.
+        # Delete a batch of contacts. Any non-contact data will not be deleted. Mutate
+        # requests for the same user should be sent sequentially to avoid increased
+        # latency and failures.
         # @param [Google::Apis::PeopleV1::BatchDeleteContactsRequest] batch_delete_contacts_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -541,8 +549,8 @@ module Google
         end
         
         # Update a batch of contacts and return a map of resource names to
-        # PersonResponses for the updated contacts. Limited to 10 parallel requests per
-        # user.
+        # PersonResponses for the updated contacts. Mutate requests for the same user
+        # should be sent sequentially to avoid increased latency and failures.
         # @param [Google::Apis::PeopleV1::BatchUpdateContactsRequest] batch_update_contacts_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -575,7 +583,8 @@ module Google
         # Create a new contact and return the person resource for that contact. The
         # request returns a 400 error if more than one field is specified on a field
         # that is a singleton for contact sources: * biographies * birthdays * genders *
-        # names
+        # names Mutate requests for the same user should be sent sequentially to avoid
+        # increased latency and failures.
         # @param [Google::Apis::PeopleV1::Person] person_object
         # @param [String] person_fields
         #   Required. A field mask to restrict which fields on each person are returned.
@@ -619,7 +628,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a contact person. Any non-contact data will not be deleted.
+        # Delete a contact person. Any non-contact data will not be deleted. Mutate
+        # requests for the same user should be sent sequentially to avoid increased
+        # latency and failures.
         # @param [String] resource_name
         #   Required. The resource name of the contact to delete.
         # @param [String] fields
@@ -649,7 +660,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a contact's photo.
+        # Delete a contact's photo. Mutate requests for the same user should be done
+        # sequentially to avoid // lock contention.
         # @param [String] resource_name
         #   Required. The resource name of the contact whose photo will be deleted.
         # @param [String] person_fields
@@ -1001,7 +1013,8 @@ module Google
         # are being updated and there are no contact group memberships specified on the
         # person. The server returns a 400 error if more than one field is specified on
         # a field that is a singleton for contact sources: * biographies * birthdays *
-        # genders * names
+        # genders * names Mutate requests for the same user should be sent sequentially
+        # to avoid increased latency and failures.
         # @param [String] resource_name
         #   The resource name for the person, assigned by the server. An ASCII string with
         #   a max length of 27 characters, in the form of `people/`person_id``.
@@ -1058,7 +1071,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a contact's photo.
+        # Update a contact's photo. Mutate requests for the same user should be sent
+        # sequentially to avoid increased latency and failures.
         # @param [String] resource_name
         #   Required. Person resource name
         # @param [Google::Apis::PeopleV1::UpdateContactPhotoRequest] update_contact_photo_request_object
