@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatapipelinesV1ListJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatapipelinesV1ListPipelinesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -223,6 +229,15 @@ module Google
           property :location, as: 'location'
           property :project_id, as: 'projectId'
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleCloudDatapipelinesV1ListJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :jobs, as: 'jobs', class: Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Job, decorator: Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Job::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

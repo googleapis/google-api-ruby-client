@@ -447,6 +447,33 @@ module Google
         end
       end
       
+      # Response message for ListJobs
+      class GoogleCloudDatapipelinesV1ListJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Results that were accessible to the caller. Results are always in descending
+        # order of job creation date.
+        # Corresponds to the JSON property `jobs`
+        # @return [Array<Google::Apis::DatapipelinesV1::GoogleCloudDatapipelinesV1Job>]
+        attr_accessor :jobs
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jobs = args[:jobs] if args.key?(:jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListPipelines.
       class GoogleCloudDatapipelinesV1ListPipelinesResponse
         include Google::Apis::Core::Hashable
