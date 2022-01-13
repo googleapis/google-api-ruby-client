@@ -2051,8 +2051,8 @@ module Google
         #   ACCOUNT` value can be the `email` address or the `unique_id` of the service
         #   account.
         # @param [String] public_key_type
-        #   The output format of the public key requested. X509_PEM is the default output
-        #   format.
+        #   Optional. The output format of the public key. The default is `TYPE_NONE`,
+        #   which means that the public key is not returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
