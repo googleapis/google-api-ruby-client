@@ -2252,12 +2252,12 @@ module Google
         attr_accessor :color_info
       
         # The condition of the product. Strongly encouraged to use the standard values: "
-        # new", "refurbished", "used". A maximum of 5 values are allowed per Product.
-        # Each value must be a UTF-8 encoded string with a length limit of 128
-        # characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding
-        # properties: Google Merchant Center property [condition](https://support.google.
-        # com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https:
-        # //schema.org/itemCondition).
+        # new", "refurbished", "used". A maximum of 1 value is allowed per Product. Each
+        # value must be a UTF-8 encoded string with a length limit of 128 characters.
+        # Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties:
+        # Google Merchant Center property [condition](https://support.google.com/
+        # merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://
+        # schema.org/itemCondition).
         # Corresponds to the JSON property `conditions`
         # @return [Array<String>]
         attr_accessor :conditions
@@ -3825,76 +3825,6 @@ module Google
         end
       end
       
-      # Metadata related to the progress of the SetLocalInventories operation.
-      # Currently empty because there is no meaningful metadata populated from the
-      # SetLocalInventories method.
-      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Request message for SetLocalInventories method.
-      class GoogleCloudRetailV2alphaSetLocalInventoriesRequest
-        include Google::Apis::Core::Hashable
-      
-        # If set to true, and the Product is not found, the local inventory will still
-        # be processed and retained for at most 1 day and processed once the Product is
-        # created. If set to false, a NOT_FOUND error is returned if the Product is not
-        # found.
-        # Corresponds to the JSON property `allowMissing`
-        # @return [Boolean]
-        attr_accessor :allow_missing
-        alias_method :allow_missing?, :allow_missing
-      
-        # A list of inventory information at difference places. Each place is identified
-        # by its place ID. For example, if `place1` and `place2` are stored, and this
-        # list is `[place1, place3]` with a fresher set timestamp, then the stored
-        # places will become `place1` and `place3`. An empty list removes all existing
-        # places with staler fields. At most 3000 inventories are allowed per request.
-        # Corresponds to the JSON property `localInventories`
-        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaLocalInventory>]
-        attr_accessor :local_inventories
-      
-        # The time when the inventory updates are issued. Used to prevent out-of-order
-        # updates on local inventory fields. If not provided, the internal system time
-        # will be used.
-        # Corresponds to the JSON property `setTime`
-        # @return [String]
-        attr_accessor :set_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
-          @local_inventories = args[:local_inventories] if args.key?(:local_inventories)
-          @set_time = args[:set_time] if args.key?(:set_time)
-        end
-      end
-      
-      # Response of the SetLocalInventories API. Currently empty because there is no
-      # meaningful response populated from the SetLocalInventories method.
-      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # UserEvent captures all metadata information Retail API needs to know about how
       # end users interact with customers' website.
       class GoogleCloudRetailV2alphaUserEvent
@@ -4021,12 +3951,12 @@ module Google
       
         # The main product details related to the event. This field is required for the
         # following event types: * `add-to-cart` * `detail-page-view` * `purchase-
-        # complete` In a `search` event, this field represents the products returned to
-        # the end user on the current page (the end user may have not finished browsing
-        # the whole page yet). When a new page is returned to the end user, after
-        # pagination/filtering/ordering even for the same query, a new `search` event
-        # with different product_details is desired. The end user may have not finished
-        # browsing the whole page yet.
+        # complete` * `search` In a `search` event, this field represents the products
+        # returned to the end user on the current page (the end user may have not
+        # finished browsing the whole page yet). When a new page is returned to the end
+        # user, after pagination/filtering/ordering even for the same query, a new `
+        # search` event with different product_details is desired. The end user may have
+        # not finished browsing the whole page yet.
         # Corresponds to the JSON property `productDetails`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductDetail>]
         attr_accessor :product_details
