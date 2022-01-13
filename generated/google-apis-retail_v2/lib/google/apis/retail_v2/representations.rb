@@ -628,18 +628,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRetailV2alphaUserEventImportSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1763,18 +1751,6 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaSetInventoryResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

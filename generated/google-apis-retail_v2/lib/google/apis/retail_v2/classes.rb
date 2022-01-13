@@ -1594,12 +1594,12 @@ module Google
         attr_accessor :color_info
       
         # The condition of the product. Strongly encouraged to use the standard values: "
-        # new", "refurbished", "used". A maximum of 5 values are allowed per Product.
-        # Each value must be a UTF-8 encoded string with a length limit of 128
-        # characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding
-        # properties: Google Merchant Center property [condition](https://support.google.
-        # com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https:
-        # //schema.org/itemCondition).
+        # new", "refurbished", "used". A maximum of 1 value is allowed per Product. Each
+        # value must be a UTF-8 encoded string with a length limit of 128 characters.
+        # Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties:
+        # Google Merchant Center property [condition](https://support.google.com/
+        # merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://
+        # schema.org/itemCondition).
         # Corresponds to the JSON property `conditions`
         # @return [Array<String>]
         attr_accessor :conditions
@@ -3217,12 +3217,12 @@ module Google
       
         # The main product details related to the event. This field is required for the
         # following event types: * `add-to-cart` * `detail-page-view` * `purchase-
-        # complete` In a `search` event, this field represents the products returned to
-        # the end user on the current page (the end user may have not finished browsing
-        # the whole page yet). When a new page is returned to the end user, after
-        # pagination/filtering/ordering even for the same query, a new `search` event
-        # with different product_details is desired. The end user may have not finished
-        # browsing the whole page yet.
+        # complete` * `search` In a `search` event, this field represents the products
+        # returned to the end user on the current page (the end user may have not
+        # finished browsing the whole page yet). When a new page is returned to the end
+        # user, after pagination/filtering/ordering even for the same query, a new `
+        # search` event with different product_details is desired. The end user may have
+        # not finished browsing the whole page yet.
         # Corresponds to the JSON property `productDetails`
         # @return [Array<Google::Apis::RetailV2::GoogleCloudRetailV2ProductDetail>]
         attr_accessor :product_details
@@ -3904,35 +3904,6 @@ module Google
       # Response of the SetInventoryRequest. Currently empty because there is no
       # meaningful response populated from the SetInventory method.
       class GoogleCloudRetailV2alphaSetInventoryResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Metadata related to the progress of the SetLocalInventories operation.
-      # Currently empty because there is no meaningful metadata populated from the
-      # SetLocalInventories method.
-      class GoogleCloudRetailV2alphaSetLocalInventoriesMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response of the SetLocalInventories API. Currently empty because there is no
-      # meaningful response populated from the SetLocalInventories method.
-      class GoogleCloudRetailV2alphaSetLocalInventoriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
