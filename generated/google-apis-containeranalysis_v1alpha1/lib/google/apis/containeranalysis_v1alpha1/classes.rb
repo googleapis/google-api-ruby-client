@@ -492,6 +492,94 @@ module Google
         end
       end
       
+      # Common Vulnerability Scoring System. This is the storage level proto that is
+      # intended to store similar data as the CVSS proto in google3/third_party/
+      # grafeas/proto/v1/cvss.proto
+      class Cvss
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `attackComplexity`
+        # @return [String]
+        attr_accessor :attack_complexity
+      
+        # Base Metrics Represents the intrinsic characteristics of a vulnerability that
+        # are constant over time and across user environments.
+        # Corresponds to the JSON property `attackVector`
+        # @return [String]
+        attr_accessor :attack_vector
+      
+        # 
+        # Corresponds to the JSON property `authentication`
+        # @return [String]
+        attr_accessor :authentication
+      
+        # 
+        # Corresponds to the JSON property `availabilityImpact`
+        # @return [String]
+        attr_accessor :availability_impact
+      
+        # The base score is a function of the base metric scores.
+        # Corresponds to the JSON property `baseScore`
+        # @return [Float]
+        attr_accessor :base_score
+      
+        # 
+        # Corresponds to the JSON property `confidentialityImpact`
+        # @return [String]
+        attr_accessor :confidentiality_impact
+      
+        # 
+        # Corresponds to the JSON property `exploitabilityScore`
+        # @return [Float]
+        attr_accessor :exploitability_score
+      
+        # 
+        # Corresponds to the JSON property `impactScore`
+        # @return [Float]
+        attr_accessor :impact_score
+      
+        # 
+        # Corresponds to the JSON property `integrityImpact`
+        # @return [String]
+        attr_accessor :integrity_impact
+      
+        # 
+        # Corresponds to the JSON property `privilegesRequired`
+        # @return [String]
+        attr_accessor :privileges_required
+      
+        # 
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # 
+        # Corresponds to the JSON property `userInteraction`
+        # @return [String]
+        attr_accessor :user_interaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
+          @authentication = args[:authentication] if args.key?(:authentication)
+          @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
+          @base_score = args[:base_score] if args.key?(:base_score)
+          @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @exploitability_score = args[:exploitability_score] if args.key?(:exploitability_score)
+          @impact_score = args[:impact_score] if args.key?(:impact_score)
+          @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
+          @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
+          @scope = args[:scope] if args.key?(:scope)
+          @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+        end
+      end
+      
       # A compliance check that is a CIS benchmark.
       class CisBenchmark
         include Google::Apis::Core::Hashable
@@ -2282,6 +2370,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::Status]
         attr_accessor :analysis_status_error
       
+        # The time occurrences related to this discovery occurrence were archived.
+        # Corresponds to the JSON property `archiveTime`
+        # @return [String]
+        attr_accessor :archive_time
+      
         # Whether the resource is continuously analyzed.
         # Corresponds to the JSON property `continuousAnalysis`
         # @return [String]
@@ -2291,6 +2384,11 @@ module Google
         # Corresponds to the JSON property `cpe`
         # @return [String]
         attr_accessor :cpe
+      
+        # The last time this resource was scanned.
+        # Corresponds to the JSON property `lastScanTime`
+        # @return [String]
+        attr_accessor :last_scan_time
       
         # This resource represents a long-running operation that is the result of a
         # network API call.
@@ -2306,8 +2404,10 @@ module Google
         def update!(**args)
           @analysis_status = args[:analysis_status] if args.key?(:analysis_status)
           @analysis_status_error = args[:analysis_status_error] if args.key?(:analysis_status_error)
+          @archive_time = args[:archive_time] if args.key?(:archive_time)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @cpe = args[:cpe] if args.key?(:cpe)
+          @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
           @operation = args[:operation] if args.key?(:operation)
         end
       end
@@ -5343,6 +5443,13 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
+        # Common Vulnerability Scoring System. This is the storage level proto that is
+        # intended to store similar data as the CVSS proto in google3/third_party/
+        # grafeas/proto/v1/cvss.proto
+        # Corresponds to the JSON property `cvssV3`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Cvss]
+        attr_accessor :cvss_v3
+      
         # The distro assigned severity for this vulnerability when that is available and
         # note provider assigned severity when distro has not yet assigned a severity
         # for this vulnerability. When there are multiple package issues for this
@@ -5382,6 +5489,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
+          @cvss_v3 = args[:cvss_v3] if args.key?(:cvss_v3)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
           @severity = args[:severity] if args.key?(:severity)
