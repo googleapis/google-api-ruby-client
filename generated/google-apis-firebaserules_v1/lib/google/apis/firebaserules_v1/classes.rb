@@ -105,7 +105,7 @@ module Google
       class File
         include Google::Apis::Core::Hashable
       
-        # Textual Content.
+        # Required. Textual Content.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -116,7 +116,7 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # File name.
+        # Required. File name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -465,7 +465,7 @@ module Google
       class Source
         include Google::Apis::Core::Hashable
       
-        # `File` set constituting the `Source` bundle.
+        # Required. `File` set constituting the `Source` bundle.
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::FirebaserulesV1::File>]
         attr_accessor :files
