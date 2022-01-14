@@ -245,6 +245,131 @@ module Google
         end
       end
       
+      # A representation of a batch workload in the service.
+      class Batch
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the batch was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The email address of the user who created the batch.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # Environment configuration for a workload.
+        # Corresponds to the JSON property `environmentConfig`
+        # @return [Google::Apis::DataprocV1::EnvironmentConfig]
+        attr_accessor :environment_config
+      
+        # Optional. The labels to associate with this batch. Label keys must contain 1
+        # to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/
+        # rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63
+        # characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt)
+        # . No more than 32 labels can be associated with a batch.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name of the batch.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resource name of the operation associated with this batch.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # A configuration for running an Apache PySpark (https://spark.apache.org/docs/
+        # latest/api/python/getting_started/quickstart.html) batch workload.
+        # Corresponds to the JSON property `pysparkBatch`
+        # @return [Google::Apis::DataprocV1::PySparkBatch]
+        attr_accessor :pyspark_batch
+      
+        # Runtime configuration for a workload.
+        # Corresponds to the JSON property `runtimeConfig`
+        # @return [Google::Apis::DataprocV1::RuntimeConfig]
+        attr_accessor :runtime_config
+      
+        # Runtime information about workload execution.
+        # Corresponds to the JSON property `runtimeInfo`
+        # @return [Google::Apis::DataprocV1::RuntimeInfo]
+        attr_accessor :runtime_info
+      
+        # A configuration for running an Apache Spark (http://spark.apache.org/) batch
+        # workload.
+        # Corresponds to the JSON property `sparkBatch`
+        # @return [Google::Apis::DataprocV1::SparkBatch]
+        attr_accessor :spark_batch
+      
+        # A configuration for running an Apache SparkR (https://spark.apache.org/docs/
+        # latest/sparkr.html) batch workload.
+        # Corresponds to the JSON property `sparkRBatch`
+        # @return [Google::Apis::DataprocV1::SparkRBatch]
+        attr_accessor :spark_r_batch
+      
+        # A configuration for running Apache Spark SQL (http://spark.apache.org/sql/)
+        # queries as a batch workload.
+        # Corresponds to the JSON property `sparkSqlBatch`
+        # @return [Google::Apis::DataprocV1::SparkSqlBatch]
+        attr_accessor :spark_sql_batch
+      
+        # Output only. The state of the batch.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Historical state information for the batch.
+        # Corresponds to the JSON property `stateHistory`
+        # @return [Array<Google::Apis::DataprocV1::StateHistory>]
+        attr_accessor :state_history
+      
+        # Output only. Batch state details, such as a failure description if the state
+        # is FAILED.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # Output only. The time when the batch entered a current state.
+        # Corresponds to the JSON property `stateTime`
+        # @return [String]
+        attr_accessor :state_time
+      
+        # Output only. A batch UUID (Unique Universal Identifier). The service generates
+        # this value when it creates the batch.
+        # Corresponds to the JSON property `uuid`
+        # @return [String]
+        attr_accessor :uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @environment_config = args[:environment_config] if args.key?(:environment_config)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @operation = args[:operation] if args.key?(:operation)
+          @pyspark_batch = args[:pyspark_batch] if args.key?(:pyspark_batch)
+          @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
+          @runtime_info = args[:runtime_info] if args.key?(:runtime_info)
+          @spark_batch = args[:spark_batch] if args.key?(:spark_batch)
+          @spark_r_batch = args[:spark_r_batch] if args.key?(:spark_r_batch)
+          @spark_sql_batch = args[:spark_sql_batch] if args.key?(:spark_sql_batch)
+          @state = args[:state] if args.key?(:state)
+          @state_history = args[:state_history] if args.key?(:state_history)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @state_time = args[:state_time] if args.key?(:state_time)
+          @uuid = args[:uuid] if args.key?(:uuid)
+        end
+      end
+      
       # Metadata describing the Batch operation.
       class BatchOperationMetadata
         include Google::Apis::Core::Hashable
@@ -976,6 +1101,74 @@ module Google
         def update!(**args)
           @enable_http_port_access = args[:enable_http_port_access] if args.key?(:enable_http_port_access)
           @http_ports = args[:http_ports] if args.key?(:http_ports)
+        end
+      end
+      
+      # Environment configuration for a workload.
+      class EnvironmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Execution configuration for a workload.
+        # Corresponds to the JSON property `executionConfig`
+        # @return [Google::Apis::DataprocV1::ExecutionConfig]
+        attr_accessor :execution_config
+      
+        # Auxiliary services configuration for a workload.
+        # Corresponds to the JSON property `peripheralsConfig`
+        # @return [Google::Apis::DataprocV1::PeripheralsConfig]
+        attr_accessor :peripherals_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_config = args[:execution_config] if args.key?(:execution_config)
+          @peripherals_config = args[:peripherals_config] if args.key?(:peripherals_config)
+        end
+      end
+      
+      # Execution configuration for a workload.
+      class ExecutionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Cloud KMS key to use for encryption.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Optional. Tags used for network traffic control.
+        # Corresponds to the JSON property `networkTags`
+        # @return [Array<String>]
+        attr_accessor :network_tags
+      
+        # Optional. Network URI to connect workload to.
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Optional. Service account that used to execute workload.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Optional. Subnetwork URI to connect workload to.
+        # Corresponds to the JSON property `subnetworkUri`
+        # @return [String]
+        attr_accessor :subnetwork_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @network_tags = args[:network_tags] if args.key?(:network_tags)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
         end
       end
       
@@ -2168,6 +2361,32 @@ module Google
         end
       end
       
+      # A list of batch workloads.
+      class ListBatchesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The batches from the specified collection.
+        # Corresponds to the JSON property `batches`
+        # @return [Array<Google::Apis::DataprocV1::Batch>]
+        attr_accessor :batches
+      
+        # A token, which can be sent as page_token to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batches = args[:batches] if args.key?(:batches)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The list of all clusters in a project.
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -2654,6 +2873,32 @@ module Google
         end
       end
       
+      # Auxiliary services configuration for a workload.
+      class PeripheralsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource name of an existing Dataproc Metastore service.Example:
+        # projects/[project_id]/locations/[region]/services/[service_id]
+        # Corresponds to the JSON property `metastoreService`
+        # @return [String]
+        attr_accessor :metastore_service
+      
+        # Spark History Server configuration for the workload.
+        # Corresponds to the JSON property `sparkHistoryServerConfig`
+        # @return [Google::Apis::DataprocV1::SparkHistoryServerConfig]
+        attr_accessor :spark_history_server_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metastore_service = args[:metastore_service] if args.key?(:metastore_service)
+          @spark_history_server_config = args[:spark_history_server_config] if args.key?(:spark_history_server_config)
+        end
+      end
+      
       # A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on
       # YARN.
       class PigJob
@@ -2869,6 +3114,63 @@ module Google
         end
       end
       
+      # A configuration for running an Apache PySpark (https://spark.apache.org/docs/
+      # latest/api/python/getting_started/quickstart.html) batch workload.
+      class PySparkBatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. HCFS URIs of archives to be extracted into the working directory of
+        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        # Corresponds to the JSON property `archiveUris`
+        # @return [Array<String>]
+        attr_accessor :archive_uris
+      
+        # Optional. The arguments to pass to the driver. Do not include arguments that
+        # can be set as batch properties, such as --conf, since a collision can occur
+        # that causes an incorrect batch submission.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Optional. HCFS URIs of files to be placed in the working directory of each
+        # executor.
+        # Corresponds to the JSON property `fileUris`
+        # @return [Array<String>]
+        attr_accessor :file_uris
+      
+        # Optional. HCFS URIs of jar files to add to the classpath of the Spark driver
+        # and tasks.
+        # Corresponds to the JSON property `jarFileUris`
+        # @return [Array<String>]
+        attr_accessor :jar_file_uris
+      
+        # Required. The HCFS URI of the main Python file to use as the Spark driver.
+        # Must be a .py file.
+        # Corresponds to the JSON property `mainPythonFileUri`
+        # @return [String]
+        attr_accessor :main_python_file_uri
+      
+        # Optional. HCFS file URIs of Python files to pass to the PySpark framework.
+        # Supported file types: .py, .egg, and .zip.
+        # Corresponds to the JSON property `pythonFileUris`
+        # @return [Array<String>]
+        attr_accessor :python_file_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_uris = args[:archive_uris] if args.key?(:archive_uris)
+          @args = args[:args] if args.key?(:args)
+          @file_uris = args[:file_uris] if args.key?(:file_uris)
+          @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
+          @main_python_file_uri = args[:main_python_file_uri] if args.key?(:main_python_file_uri)
+          @python_file_uris = args[:python_file_uris] if args.key?(:python_file_uris)
+        end
+      end
+      
       # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/
       # python-programming-guide.html) applications on YARN.
       class PySparkJob
@@ -3045,6 +3347,72 @@ module Google
           @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
           @key = args[:key] if args.key?(:key)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Runtime configuration for a workload.
+      class RuntimeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional custom container image for the job runtime environment. If
+        # not specified, a default container image will be used.
+        # Corresponds to the JSON property `containerImage`
+        # @return [String]
+        attr_accessor :container_image
+      
+        # Optional. A mapping of property names to values, which are used to configure
+        # workload execution.
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        # Optional. Version of the batch runtime.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_image = args[:container_image] if args.key?(:container_image)
+          @properties = args[:properties] if args.key?(:properties)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Runtime information about workload execution.
+      class RuntimeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A URI pointing to the location of the diagnostics tarball.
+        # Corresponds to the JSON property `diagnosticOutputUri`
+        # @return [String]
+        attr_accessor :diagnostic_output_uri
+      
+        # Output only. Map of remote access endpoints (such as web interfaces and APIs)
+        # to their URIs.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Hash<String,String>]
+        attr_accessor :endpoints
+      
+        # Output only. A URI pointing to the location of the stdout and stderr of the
+        # workload.
+        # Corresponds to the JSON property `outputUri`
+        # @return [String]
+        attr_accessor :output_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @diagnostic_output_uri = args[:diagnostic_output_uri] if args.key?(:diagnostic_output_uri)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @output_uri = args[:output_uri] if args.key?(:output_uri)
         end
       end
       
@@ -3258,6 +3626,83 @@ module Google
         end
       end
       
+      # A configuration for running an Apache Spark (http://spark.apache.org/) batch
+      # workload.
+      class SparkBatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. HCFS URIs of archives to be extracted into the working directory of
+        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        # Corresponds to the JSON property `archiveUris`
+        # @return [Array<String>]
+        attr_accessor :archive_uris
+      
+        # Optional. The arguments to pass to the driver. Do not include arguments that
+        # can be set as batch properties, such as --conf, since a collision can occur
+        # that causes an incorrect batch submission.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Optional. HCFS URIs of files to be placed in the working directory of each
+        # executor.
+        # Corresponds to the JSON property `fileUris`
+        # @return [Array<String>]
+        attr_accessor :file_uris
+      
+        # Optional. HCFS URIs of jar files to add to the classpath of the Spark driver
+        # and tasks.
+        # Corresponds to the JSON property `jarFileUris`
+        # @return [Array<String>]
+        attr_accessor :jar_file_uris
+      
+        # Optional. The name of the driver main class. The jar file that contains the
+        # class must be in the classpath or specified in jar_file_uris.
+        # Corresponds to the JSON property `mainClass`
+        # @return [String]
+        attr_accessor :main_class
+      
+        # Optional. The HCFS URI of the jar file that contains the main class.
+        # Corresponds to the JSON property `mainJarFileUri`
+        # @return [String]
+        attr_accessor :main_jar_file_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_uris = args[:archive_uris] if args.key?(:archive_uris)
+          @args = args[:args] if args.key?(:args)
+          @file_uris = args[:file_uris] if args.key?(:file_uris)
+          @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
+          @main_class = args[:main_class] if args.key?(:main_class)
+          @main_jar_file_uri = args[:main_jar_file_uri] if args.key?(:main_jar_file_uri)
+        end
+      end
+      
+      # Spark History Server configuration for the workload.
+      class SparkHistoryServerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource name of an existing Dataproc Cluster to act as a Spark
+        # History Server for the workload.Example: projects/[project_id]/regions/[region]
+        # /clusters/[cluster_name]
+        # Corresponds to the JSON property `dataprocCluster`
+        # @return [String]
+        attr_accessor :dataproc_cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataproc_cluster = args[:dataproc_cluster] if args.key?(:dataproc_cluster)
+        end
+      end
+      
       # A Dataproc job for running Apache Spark (http://spark.apache.org/)
       # applications on YARN.
       class SparkJob
@@ -3329,6 +3774,49 @@ module Google
         end
       end
       
+      # A configuration for running an Apache SparkR (https://spark.apache.org/docs/
+      # latest/sparkr.html) batch workload.
+      class SparkRBatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. HCFS URIs of archives to be extracted into the working directory of
+        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        # Corresponds to the JSON property `archiveUris`
+        # @return [Array<String>]
+        attr_accessor :archive_uris
+      
+        # Optional. The arguments to pass to the Spark driver. Do not include arguments
+        # that can be set as batch properties, such as --conf, since a collision can
+        # occur that causes an incorrect batch submission.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Optional. HCFS URIs of files to be placed in the working directory of each
+        # executor.
+        # Corresponds to the JSON property `fileUris`
+        # @return [Array<String>]
+        attr_accessor :file_uris
+      
+        # Required. The HCFS URI of the main R file to use as the driver. Must be a .R
+        # or .r file.
+        # Corresponds to the JSON property `mainRFileUri`
+        # @return [String]
+        attr_accessor :main_r_file_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_uris = args[:archive_uris] if args.key?(:archive_uris)
+          @args = args[:args] if args.key?(:args)
+          @file_uris = args[:file_uris] if args.key?(:file_uris)
+          @main_r_file_uri = args[:main_r_file_uri] if args.key?(:main_r_file_uri)
+        end
+      end
+      
       # A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/
       # sparkr.html) applications on YARN.
       class SparkRJob
@@ -3384,6 +3872,40 @@ module Google
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @main_r_file_uri = args[:main_r_file_uri] if args.key?(:main_r_file_uri)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # A configuration for running Apache Spark SQL (http://spark.apache.org/sql/)
+      # queries as a batch workload.
+      class SparkSqlBatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        # Corresponds to the JSON property `jarFileUris`
+        # @return [Array<String>]
+        attr_accessor :jar_file_uris
+      
+        # Required. The HCFS URI of the script that contains Spark SQL queries to
+        # execute.
+        # Corresponds to the JSON property `queryFileUri`
+        # @return [String]
+        attr_accessor :query_file_uri
+      
+        # Optional. Mapping of query variable names to values (equivalent to the Spark
+        # SQL command: SET name="value";).
+        # Corresponds to the JSON property `queryVariables`
+        # @return [Hash<String,String>]
+        attr_accessor :query_variables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
+          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
+          @query_variables = args[:query_variables] if args.key?(:query_variables)
         end
       end
       
@@ -3533,6 +4055,37 @@ module Google
         def update!(**args)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Historical state information.
+      class StateHistory
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the batch at this point in history.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Details about the state at this point in history.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # Output only. The time when the batch entered the historical state.
+        # Corresponds to the JSON property `stateStartTime`
+        # @return [String]
+        attr_accessor :state_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @state_start_time = args[:state_start_time] if args.key?(:state_start_time)
         end
       end
       
