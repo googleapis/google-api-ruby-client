@@ -106,18 +106,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FailureTrace
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Frame
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,12 +155,6 @@ module Google
       end
       
       class TableProgress
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UndeleteTableMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,23 +322,6 @@ module Google
         end
       end
       
-      class FailureTrace
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :frames, as: 'frames', class: Google::Apis::BigtableadminV1::Frame, decorator: Google::Apis::BigtableadminV1::Frame::Representation
-      
-        end
-      end
-      
-      class Frame
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :target_name, as: 'targetName'
-          property :workflow_guid, as: 'workflowGuid'
-          property :zone_id, as: 'zoneId'
-        end
-      end
-      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -443,15 +408,6 @@ module Google
           property :estimated_copied_bytes, :numeric_string => true, as: 'estimatedCopiedBytes'
           property :estimated_size_bytes, :numeric_string => true, as: 'estimatedSizeBytes'
           property :state, as: 'state'
-        end
-      end
-      
-      class UndeleteTableMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :name, as: 'name'
-          property :start_time, as: 'startTime'
         end
       end
       
