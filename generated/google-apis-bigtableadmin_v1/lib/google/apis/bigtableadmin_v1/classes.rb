@@ -541,56 +541,6 @@ module Google
         end
       end
       
-      # Added to the error payload.
-      class FailureTrace
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `frames`
-        # @return [Array<Google::Apis::BigtableadminV1::Frame>]
-        attr_accessor :frames
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @frames = args[:frames] if args.key?(:frames)
-        end
-      end
-      
-      # 
-      class Frame
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `targetName`
-        # @return [String]
-        attr_accessor :target_name
-      
-        # 
-        # Corresponds to the JSON property `workflowGuid`
-        # @return [String]
-        attr_accessor :workflow_guid
-      
-        # 
-        # Corresponds to the JSON property `zoneId`
-        # @return [String]
-        attr_accessor :zone_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @target_name = args[:target_name] if args.key?(:target_name)
-          @workflow_guid = args[:workflow_guid] if args.key?(:workflow_guid)
-          @zone_id = args[:zone_id] if args.key?(:zone_id)
-        end
-      end
-      
       # A collection of Bigtable Tables and the resources that serve them. All tables
       # in an instance are served from all Clusters in the instance.
       class Instance
@@ -916,38 +866,6 @@ module Google
           @estimated_copied_bytes = args[:estimated_copied_bytes] if args.key?(:estimated_copied_bytes)
           @estimated_size_bytes = args[:estimated_size_bytes] if args.key?(:estimated_size_bytes)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Metadata type for the operation returned by google.bigtable.admin.v2.
-      # BigtableTableAdmin.UndeleteTable.
-      class UndeleteTableMetadata
-        include Google::Apis::Core::Hashable
-      
-        # If set, the time at which this operation finished or was cancelled.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
-        # The name of the table being restored.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The time at which this operation started.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_time = args[:end_time] if args.key?(:end_time)
-          @name = args[:name] if args.key?(:name)
-          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
