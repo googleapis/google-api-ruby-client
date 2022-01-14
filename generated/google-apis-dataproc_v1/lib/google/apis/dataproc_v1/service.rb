@@ -352,6 +352,155 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a batch workload that executes asynchronously.
+        # @param [String] parent
+        #   Required. The parent resource where this batch will be created.
+        # @param [Google::Apis::DataprocV1::Batch] batch_object
+        # @param [String] batch_id
+        #   Optional. The ID to use for the batch, which will become the final component
+        #   of the batch's resource name.This value must be 4-63 characters. Valid
+        #   characters are /[a-z][0-9]-/.
+        # @param [String] request_id
+        #   Optional. A unique ID used to identify the request. If the service receives
+        #   two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
+        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with
+        #   the same request_id, the second request is ignored and the Operation that
+        #   corresponds to the first Batch created and stored in the backend is returned.
+        #   Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/
+        #   Universally_unique_identifier).The value must contain only letters (a-z, A-Z),
+        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+        #   characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_batch(parent, batch_object = nil, batch_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/batches', options)
+          command.request_representation = Google::Apis::DataprocV1::Batch::Representation
+          command.request_object = batch_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['batchId'] = batch_id unless batch_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the batch workload resource. If the batch is not in terminal state,
+        # the delete fails and the response returns FAILED_PRECONDITION.
+        # @param [String] name
+        #   Required. The name of the batch resource to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_batch(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Empty::Representation
+          command.response_class = Google::Apis::DataprocV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the batch workload resource representation.
+        # @param [String] name
+        #   Required. The name of the batch to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Batch] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Batch]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_batch(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DataprocV1::Batch::Representation
+          command.response_class = Google::Apis::DataprocV1::Batch
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists batch workloads.
+        # @param [String] parent
+        #   Required. The parent, which owns this collection of batches.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of batches to return in each response. The
+        #   service may return fewer than this value. The default page size is 20; the
+        #   maximum page size is 1000.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous ListBatches call. Provide this
+        #   token to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::ListBatchesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::ListBatchesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_batches(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/batches', options)
+          command.response_representation = Google::Apis::DataprocV1::ListBatchesResponse::Representation
+          command.response_class = Google::Apis::DataprocV1::ListBatchesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates new workflow template.
         # @param [String] parent
         #   Required. The resource name of the region or location, as described in https://
