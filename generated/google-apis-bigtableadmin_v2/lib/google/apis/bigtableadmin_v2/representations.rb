@@ -178,18 +178,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FailureTrace
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Frame
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GcRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,12 +389,6 @@ module Google
       end
       
       class TestIamPermissionsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UndeleteTableMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -683,23 +665,6 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
-        end
-      end
-      
-      class FailureTrace
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :frames, as: 'frames', class: Google::Apis::BigtableadminV2::Frame, decorator: Google::Apis::BigtableadminV2::Frame::Representation
-      
-        end
-      end
-      
-      class Frame
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :target_name, as: 'targetName'
-          property :workflow_guid, as: 'workflowGuid'
-          property :zone_id, as: 'zoneId'
         end
       end
       
@@ -1034,15 +999,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
-        end
-      end
-      
-      class UndeleteTableMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :name, as: 'name'
-          property :start_time, as: 'startTime'
         end
       end
       
