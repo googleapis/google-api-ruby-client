@@ -4556,7 +4556,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :first_and_third_party_audience_id
       
-        # Output only. Whether the audience is a first or third party audience.
+        # Whether the audience is a first or third party audience.
         # Corresponds to the JSON property `firstAndThirdPartyAudienceType`
         # @return [String]
         attr_accessor :first_and_third_party_audience_type
