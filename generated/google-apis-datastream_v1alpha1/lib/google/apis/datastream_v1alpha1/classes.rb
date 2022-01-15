@@ -917,12 +917,12 @@ module Google
       class MysqlObjectIdentifier
         include Google::Apis::Core::Hashable
       
-        # The database name.
+        # Required. The database name.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
       
-        # The table name.
+        # Required. The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
@@ -1321,12 +1321,12 @@ module Google
       class OracleObjectIdentifier
         include Google::Apis::Core::Hashable
       
-        # The schema name.
+        # Required. The schema name.
         # Corresponds to the JSON property `schema`
         # @return [String]
         attr_accessor :schema
       
-        # The table name.
+        # Required. The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
