@@ -784,6 +784,19 @@ module Google
         end
       end
       
+      # Metadata type for longrunning-operations, currently empty.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Packages are named collections of versions.
       class Package
         include Google::Apis::Core::Hashable
