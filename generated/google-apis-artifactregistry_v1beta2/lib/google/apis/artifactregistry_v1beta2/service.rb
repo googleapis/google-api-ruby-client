@@ -50,7 +50,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Retrieves the Settings for the Project
+        # Retrieves the Settings for the Project.
         # @param [String] name
         #   Required. The name of the projectSettings resource.
         # @param [String] fields
@@ -80,7 +80,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the Settings for the Project
+        # Updates the Settings for the Project.
         # @param [String] name
         #   The name of the project's settings. Always of the form: projects/`project-id`/
         #   projectSettings In update request: never set In response: always set
@@ -224,7 +224,7 @@ module Google
         # Creates a repository. The returned Operation will finish once the repository
         # has been created. Its response will be the created Repository.
         # @param [String] parent
-        #   The name of the parent resource where the repository will be created.
+        #   Required. The name of the parent resource where the repository will be created.
         # @param [Google::Apis::ArtifactregistryV1beta2::Repository] repository_object
         # @param [String] repository_id
         #   The repository id to use for this repository.
@@ -262,7 +262,7 @@ module Google
         # finish once the repository has been deleted. It will not have any Operation
         # metadata and will return a google.protobuf.Empty response.
         # @param [String] name
-        #   The name of the repository to delete.
+        #   Required. The name of the repository to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -292,7 +292,7 @@ module Google
         
         # Gets a repository.
         # @param [String] name
-        #   The name of the repository to retrieve.
+        #   Required. The name of the repository to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -365,7 +365,7 @@ module Google
         
         # Lists repositories.
         # @param [String] parent
-        #   The name of the parent resource whose repositories will be listed.
+        #   Required. The name of the parent resource whose repositories will be listed.
         # @param [Fixnum] page_size
         #   The maximum number of repositories to return. Maximum page size is 1,000.
         # @param [String] page_token
@@ -665,7 +665,7 @@ module Google
         # Deletes a package and all of its versions and tags. The returned operation
         # will complete once the package has been deleted.
         # @param [String] name
-        #   The name of the package to delete.
+        #   Required. The name of the package to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -695,7 +695,7 @@ module Google
         
         # Gets a package.
         # @param [String] name
-        #   The name of the package to retrieve.
+        #   Required. The name of the package to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -725,7 +725,7 @@ module Google
         
         # Lists packages.
         # @param [String] parent
-        #   The name of the parent resource whose packages will be listed.
+        #   Required. The name of the parent resource whose packages will be listed.
         # @param [Fixnum] page_size
         #   The maximum number of packages to return. Maximum page size is 1,000.
         # @param [String] page_token
