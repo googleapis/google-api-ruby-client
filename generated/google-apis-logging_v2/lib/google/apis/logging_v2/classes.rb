@@ -1486,11 +1486,11 @@ module Google
         # nginx/requests".Metric identifiers are limited to 100 characters and can
         # include only the following characters: A-Z, a-z, 0-9, and the special
         # characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy
-        # of name pieces, and it cannot be the first character of the name.The metric
-        # identifier in this field must not be URL-encoded (https://en.wikipedia.org/
-        # wiki/Percent-encoding). However, when the metric identifier appears as the [
-        # METRIC_ID] part of a metric_name API parameter, then the metric identifier
-        # must be URL-encoded. Example: "projects/my-project/metrics/nginx%2Frequests".
+        # of name pieces, and it cannot be the first character of the name.This field is
+        # the [METRIC_ID] part of a metric resource name in the format "projects/
+        # PROJECT_ID/metrics/METRIC_ID". Example: If the resource name of a metric is "
+        # projects/my-project/metrics/nginx%2Frequests", this field's value is "nginx/
+        # requests".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1921,7 +1921,9 @@ module Google
       
         # Required. The monitored resource type. This field must match the type field of
         # a MonitoredResourceDescriptor object. For example, the type of a Compute
-        # Engine VM instance is gce_instance.
+        # Engine VM instance is gce_instance. Some descriptors include the service name
+        # in the type; for example, the type of a Datastream stream is datastream.
+        # googleapis.com/Stream.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
