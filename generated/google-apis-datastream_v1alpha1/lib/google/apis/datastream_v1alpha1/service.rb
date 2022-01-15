@@ -49,9 +49,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # The FetchStaticIps API call exposes the static ips used by Datastream.
-        # Typically, a request returns children data objects under a parent data object
-        # that's optionally supplied in the request.
+        # The FetchStaticIps API call exposes the static IP addresses used by Datastream.
         # @param [String] name
         #   Required. The name resource of the Response type. Must be in the format `
         #   projects/*/locations/*`.
