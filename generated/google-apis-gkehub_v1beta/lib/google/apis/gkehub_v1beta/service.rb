@@ -124,22 +124,22 @@ module Google
         
         # Adds a new Feature.
         # @param [String] parent
-        #   The parent (project and location) where the Feature will be created. Specified
-        #   in the format `projects/*/locations/*`.
+        #   Required. The parent (project and location) where the Feature will be created.
+        #   Specified in the format `projects/*/locations/*`.
         # @param [Google::Apis::GkehubV1beta::Feature] feature_object
         # @param [String] feature_id
         #   The ID of the feature to create.
         # @param [String] request_id
-        #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   A request ID to identify requests. Specify a unique request ID so that if you
+        #   must retry your request, the server will know to ignore the request if it has
+        #   already been completed. The server will guarantee that for at least 60 minutes
+        #   after the first request. For example, consider a situation where you make an
+        #   initial request and the request times out. If you make the request again with
+        #   the same request ID, the server can check if original operation with the same
+        #   request ID was received, and if so, will ignore the second request. This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -173,7 +173,8 @@ module Google
         
         # Removes a Feature.
         # @param [String] name
-        #   The Feature resource name in the format `projects/*/locations/*/features/*`.
+        #   Required. The Feature resource name in the format `projects/*/locations/*/
+        #   features/*`.
         # @param [Boolean] force
         #   If set to true, the delete will ignore any outstanding resources for this
         #   Feature (that is, `FeatureState.has_resources` is set to true). These
@@ -220,7 +221,8 @@ module Google
         
         # Gets details of a single Feature.
         # @param [String] name
-        #   The Feature resource name in the format `projects/*/locations/*/features/*`
+        #   Required. The Feature resource name in the format `projects/*/locations/*/
+        #   features/*`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -294,8 +296,8 @@ module Google
         
         # Lists Features in a given project and location.
         # @param [String] parent
-        #   The parent (project and location) where the Features will be listed. Specified
-        #   in the format `projects/*/locations/*`.
+        #   Required. The parent (project and location) where the Features will be listed.
+        #   Specified in the format `projects/*/locations/*`.
         # @param [String] filter
         #   Lists Features that match the filter expression, following the syntax outlined
         #   in https://google.aip.dev/160. Examples: - Feature with the name "servicemesh"
@@ -345,19 +347,20 @@ module Google
         
         # Updates an existing Feature.
         # @param [String] name
-        #   The Feature resource name in the format `projects/*/locations/*/features/*`.
+        #   Required. The Feature resource name in the format `projects/*/locations/*/
+        #   features/*`.
         # @param [Google::Apis::GkehubV1beta::Feature] feature_object
         # @param [String] request_id
-        #   Optional. A request ID to identify requests. Specify a unique request ID so
-        #   that if you must retry your request, the server will know to ignore the
-        #   request if it has already been completed. The server will guarantee that for
-        #   at least 60 minutes after the first request. For example, consider a situation
-        #   where you make an initial request and the request times out. If you make the
-        #   request again with the same request ID, the server can check if original
-        #   operation with the same request ID was received, and if so, will ignore the
-        #   second request. This prevents clients from accidentally creating duplicate
-        #   commitments. The request ID must be a valid UUID with the exception that zero
-        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        #   A request ID to identify requests. Specify a unique request ID so that if you
+        #   must retry your request, the server will know to ignore the request if it has
+        #   already been completed. The server will guarantee that for at least 60 minutes
+        #   after the first request. For example, consider a situation where you make an
+        #   initial request and the request times out. If you make the request again with
+        #   the same request ID, the server can check if original operation with the same
+        #   request ID was received, and if so, will ignore the second request. This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Mask of fields to update.
         # @param [String] fields
