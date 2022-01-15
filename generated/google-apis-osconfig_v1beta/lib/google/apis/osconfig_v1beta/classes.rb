@@ -1059,6 +1059,12 @@ module Google
         # @return [Google::Apis::OsconfigV1beta::GooSettings]
         attr_accessor :goo
       
+        # Allows the patch job to run on Managed instance groups (MIGs).
+        # Corresponds to the JSON property `migInstancesAllowed`
+        # @return [Boolean]
+        attr_accessor :mig_instances_allowed
+        alias_method :mig_instances_allowed?, :mig_instances_allowed
+      
         # A step that runs an executable for a PatchJob.
         # Corresponds to the JSON property `postStep`
         # @return [Google::Apis::OsconfigV1beta::ExecStep]
@@ -1100,6 +1106,7 @@ module Google
         def update!(**args)
           @apt = args[:apt] if args.key?(:apt)
           @goo = args[:goo] if args.key?(:goo)
+          @mig_instances_allowed = args[:mig_instances_allowed] if args.key?(:mig_instances_allowed)
           @post_step = args[:post_step] if args.key?(:post_step)
           @pre_step = args[:pre_step] if args.key?(:pre_step)
           @reboot_config = args[:reboot_config] if args.key?(:reboot_config)

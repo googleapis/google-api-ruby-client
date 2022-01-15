@@ -694,6 +694,7 @@ module Google
       
           property :goo, as: 'goo', class: Google::Apis::OsconfigV1beta::GooSettings, decorator: Google::Apis::OsconfigV1beta::GooSettings::Representation
       
+          property :mig_instances_allowed, as: 'migInstancesAllowed'
           property :post_step, as: 'postStep', class: Google::Apis::OsconfigV1beta::ExecStep, decorator: Google::Apis::OsconfigV1beta::ExecStep::Representation
       
           property :pre_step, as: 'preStep', class: Google::Apis::OsconfigV1beta::ExecStep, decorator: Google::Apis::OsconfigV1beta::ExecStep::Representation
