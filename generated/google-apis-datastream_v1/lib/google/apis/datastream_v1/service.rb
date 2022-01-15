@@ -49,12 +49,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # The FetchStaticIps API call exposes the static ips used by Datastream.
-        # Typically, a request returns children data objects under a parent data object
-        # that's optionally supplied in the request.
+        # The FetchStaticIps API call exposes the static IP addresses used by Datastream.
         # @param [String] name
-        #   Required. The name resource of the Response type. Must be in the format `
-        #   projects/*/locations/*`.
+        #   Required. The resource name for the location for which static IPs should be
+        #   returned. Must be in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of Ips to return, will likely not be specified.
         # @param [String] page_token
@@ -181,6 +179,9 @@ module Google
         #   second request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the connection profile, but don't create any resources.
+        #   The default is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -198,7 +199,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_connection_profile(parent, connection_profile_object = nil, connection_profile_id: nil, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_connection_profile(parent, connection_profile_object = nil, connection_profile_id: nil, force: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/connectionProfiles', options)
           command.request_representation = Google::Apis::DatastreamV1::ConnectionProfile::Representation
           command.request_object = connection_profile_object
@@ -208,12 +209,13 @@ module Google
           command.query['connectionProfileId'] = connection_profile_id unless connection_profile_id.nil?
           command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Use this method to delete a connection profile..
+        # Use this method to delete a connection profile.
         # @param [String] name
         #   Required. The name of the connection profile resource to delete.
         # @param [String] request_id
@@ -257,7 +259,7 @@ module Google
         
         # Use this method to discover a connection profile. The discover API call
         # exposes the data objects and metadata belonging to the profile. Typically, a
-        # request returns children data objects under a parent data object that's
+        # request returns children data objects of a parent data object that's
         # optionally supplied in the request.
         # @param [String] parent
         #   Required. The parent resource of the connection profile type. Must be in the
@@ -374,7 +376,7 @@ module Google
         #   Output only. The resource's name.
         # @param [Google::Apis::DatastreamV1::ConnectionProfile] connection_profile_object
         # @param [Boolean] force
-        #   Optional. Execute the update without validating it.
+        #   Optional. Update the connection profile without validating it.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -392,6 +394,9 @@ module Google
         #   update_mask are relative to the resource, not the full request. A field will
         #   be overwritten if it is in the mask. If the user does not provide a mask then
         #   all fields will be overwritten.
+        # @param [Boolean] validate_only
+        #   Optional. Only validate the connection profile, but don't update any resources.
+        #   The default is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -409,7 +414,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_connection_profile(name, connection_profile_object = nil, force: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_connection_profile(name, connection_profile_object = nil, force: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::DatastreamV1::ConnectionProfile::Representation
           command.request_object = connection_profile_object
@@ -419,6 +424,7 @@ module Google
           command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -747,8 +753,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Use this method to create a route for a private connectivity in a project and
-        # location.
+        # Use this method to create a route for a private connectivity configuration in
+        # a project and location.
         # @param [String] parent
         #   Required. The parent that owns the collection of Routes.
         # @param [Google::Apis::DatastreamV1::Route] route_object
@@ -868,8 +874,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Use this method to list routes created for a private connectivity in a project
-        # and location.
+        # Use this method to list routes created for a private connectivity
+        # configuration in a project and location.
         # @param [String] parent
         #   Required. The parent that owns the collection of Routess.
         # @param [String] filter
@@ -935,7 +941,7 @@ module Google
         # @param [String] stream_id
         #   Required. The stream identifier.
         # @param [Boolean] validate_only
-        #   Optional. Only validate the stream, but do not create any resources. The
+        #   Optional. Only validate the stream, but don't create any resources. The
         #   default is false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1093,7 +1099,7 @@ module Google
         #   Output only. The stream's name.
         # @param [Google::Apis::DatastreamV1::Stream] stream_object
         # @param [Boolean] force
-        #   Optional. Create the stream without validating it.
+        #   Optional. Update the stream without validating it.
         # @param [String] request_id
         #   Optional. A request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -1250,7 +1256,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts backfill job for the specified stream object.
+        # Use this method to start a backfill job for the specified stream object.
         # @param [String] object
         #   Required. The name of the stream object resource to start a backfill job for.
         # @param [Google::Apis::DatastreamV1::StartBackfillJobRequest] start_backfill_job_request_object
@@ -1283,7 +1289,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Stops the backfill job for the specified stream object.
+        # Use this method to stop a backfill job for the specified stream object.
         # @param [String] object
         #   Required. The name of the stream object resource to stop the backfill job for.
         # @param [Google::Apis::DatastreamV1::StopBackfillJobRequest] stop_backfill_job_request_object
