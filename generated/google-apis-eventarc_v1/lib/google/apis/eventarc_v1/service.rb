@@ -515,8 +515,8 @@ module Google
         # @param [String] trigger_id
         #   Required. The user-provided ID to be assigned to the trigger.
         # @param [Boolean] validate_only
-        #   Required. If set, validate the request and preview the review, but do not
-        #   actually post it.
+        #   Required. If set, validate the request and preview the review, but do not post
+        #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -558,8 +558,8 @@ module Google
         #   If provided, the trigger will only be deleted if the etag matches the current
         #   etag on the resource.
         # @param [Boolean] validate_only
-        #   Required. If set, validate the request and preview the review, but do not
-        #   actually post it.
+        #   Required. If set, validate the request and preview the review, but do not post
+        #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -668,10 +668,10 @@ module Google
         # @param [String] parent
         #   Required. The parent collection to list triggers on.
         # @param [String] order_by
-        #   The sorting order of the resources returned. Value should be a comma separated
-        #   list of fields. The default sorting oder is ascending. To specify descending
-        #   order for a field, append a ` desc` suffix; for example: `name desc,
-        #   trigger_id`.
+        #   The sorting order of the resources returned. Value should be a comma-separated
+        #   list of fields. The default sorting order is ascending. To specify descending
+        #   order for a field, append a `desc` suffix; for example: `name desc, trigger_id`
+        #   .
         # @param [Fixnum] page_size
         #   The maximum number of triggers to return on each page. Note: The service may
         #   send fewer.
@@ -720,12 +720,12 @@ module Google
         #   If set to true, and the trigger is not found, a new trigger will be created.
         #   In this situation, `update_mask` is ignored.
         # @param [String] update_mask
-        #   The fields to be updated; only fields explicitly provided will be updated. If
-        #   no field mask is provided, all provided fields in the request will be updated.
-        #   To update all fields, provide a field mask of "*".
+        #   The fields to be updated; only fields explicitly provided are updated. If no
+        #   field mask is provided, all provided fields in the request are updated. To
+        #   update all fields, provide a field mask of "*".
         # @param [Boolean] validate_only
-        #   Required. If set, validate the request and preview the review, but do not
-        #   actually post it.
+        #   Required. If set, validate the request and preview the review, but do not post
+        #   it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

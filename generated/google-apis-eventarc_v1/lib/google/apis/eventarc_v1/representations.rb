@@ -205,6 +205,7 @@ module Google
       class Destination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_function, as: 'cloudFunction'
           property :cloud_run, as: 'cloudRun', class: Google::Apis::EventarcV1::CloudRun, decorator: Google::Apis::EventarcV1::CloudRun::Representation
       
           property :gke, as: 'gke', class: Google::Apis::EventarcV1::Gke, decorator: Google::Apis::EventarcV1::Gke::Representation
