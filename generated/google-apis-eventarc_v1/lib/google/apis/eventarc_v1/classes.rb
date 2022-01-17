@@ -203,6 +203,12 @@ module Google
       class Destination
         include Google::Apis::Core::Hashable
       
+        # The Cloud Function resource name. Only Cloud Functions V2 is supported. Format:
+        # projects/`project`/locations/`location`/functions/`function`
+        # Corresponds to the JSON property `cloudFunction`
+        # @return [String]
+        attr_accessor :cloud_function
+      
         # Represents a Cloud Run destination.
         # Corresponds to the JSON property `cloudRun`
         # @return [Google::Apis::EventarcV1::CloudRun]
@@ -219,6 +225,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @gke = args[:gke] if args.key?(:gke)
         end
@@ -534,7 +541,7 @@ module Google
         end
       end
       
-      # The response message for the ListTriggers method.
+      # The response message for the `ListTriggers` method.
       class ListTriggersResponse
         include Google::Apis::Core::Hashable
       
