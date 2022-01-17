@@ -363,6 +363,7 @@ module Google
           property :redis_version, as: 'redisVersion'
           property :replica_count, as: 'replicaCount'
           property :reserved_ip_range, as: 'reservedIpRange'
+          property :secondary_ip_range, as: 'secondaryIpRange'
           collection :server_ca_certs, as: 'serverCaCerts', class: Google::Apis::RedisV1beta1::TlsCertificate, decorator: Google::Apis::RedisV1beta1::TlsCertificate::Representation
       
           property :state, as: 'state'
