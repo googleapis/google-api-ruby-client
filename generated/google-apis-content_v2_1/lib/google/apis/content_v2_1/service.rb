@@ -84,9 +84,10 @@ module Google
         # @param [Fixnum] account_id
         #   The ID of the account whose website is claimed.
         # @param [Boolean] overwrite
-        #   Only available to selected merchants. When set to `True`, this flag removes
-        #   any existing claim on the requested website by another account and replaces it
-        #   with a claim from this account.
+        #   Only available to selected merchants, for example multi-client accounts (MCAs)
+        #   and their sub-accounts. When set to `True`, this flag removes any existing
+        #   claim on the requested website and replaces it with a claim from the account
+        #   that makes the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
