@@ -211,7 +211,8 @@ module Google
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect. If not set uses
         #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time.
+        #   active immediately preceding this time. Must be smaller or equal to the server
+        #   time.
         # @param [String] update_mask
         #   The FieldMask to use when updating the security marks resource. The field mask
         #   must not contain duplicate fields. If empty or set to "marks", all marks will
@@ -789,7 +790,8 @@ module Google
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect. If not set uses
         #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time.
+        #   active immediately preceding this time. Must be smaller or equal to the server
+        #   time.
         # @param [String] update_mask
         #   The FieldMask to use when updating the security marks resource. The field mask
         #   must not contain duplicate fields. If empty or set to "marks", all marks will
@@ -1132,7 +1134,8 @@ module Google
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect. If not set uses
         #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time.
+        #   active immediately preceding this time. Must be smaller or equal to the server
+        #   time.
         # @param [String] update_mask
         #   The FieldMask to use when updating the security marks resource. The field mask
         #   must not contain duplicate fields. If empty or set to "marks", all marks will
@@ -2284,7 +2287,8 @@ module Google
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect. If not set uses
         #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time.
+        #   active immediately preceding this time. Must be smaller or equal to the server
+        #   time.
         # @param [String] update_mask
         #   The FieldMask to use when updating the security marks resource. The field mask
         #   must not contain duplicate fields. If empty or set to "marks", all marks will
@@ -2521,7 +2525,8 @@ module Google
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect. If not set uses
         #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time.
+        #   active immediately preceding this time. Must be smaller or equal to the server
+        #   time.
         # @param [String] update_mask
         #   The FieldMask to use when updating the security marks resource. The field mask
         #   must not contain duplicate fields. If empty or set to "marks", all marks will
@@ -3099,7 +3104,8 @@ module Google
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect. If not set uses
         #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time.
+        #   active immediately preceding this time. Must be smaller or equal to the server
+        #   time.
         # @param [String] update_mask
         #   The FieldMask to use when updating the security marks resource. The field mask
         #   must not contain duplicate fields. If empty or set to "marks", all marks will
