@@ -28,6 +28,7 @@ module Google
     RequestOptions = Struct.new(
       :authorization,
       :retries,
+      :max_elapsed_time,
       :header,
       :normalize_unicode,
       :skip_serialization,
@@ -66,6 +67,8 @@ module Google
       #   @return [Signet::OAuth2::Client, #apply(Hash)] OAuth2 credentials.
       # @!attribute [rw] retries
       #   @return [Fixnum] Number of times to retry requests on server error.
+      # @!attribute [rw] max_elapsed_time
+      #   @return [Fixnum] Total time in seconds that requests are allowed to keep being retried.
       # @!attribute [rw] header
       #   @return [Hash<String,String>] Additional HTTP headers to include in requests.
       # @!attribute [rw] normalize_unicode
@@ -106,6 +109,7 @@ module Google
     ClientOptions.default.application_version = '0.0.0'
     ClientOptions.default.transparent_gzip_decompression = true
     RequestOptions.default.retries = 0
+    RequestOptions.default.max_elapsed_time = 900
     RequestOptions.default.normalize_unicode = false
     RequestOptions.default.skip_serialization = false
     RequestOptions.default.skip_deserialization = false

@@ -100,6 +100,7 @@ module Google
           opencensus_begin_span
           begin
             Retriable.retriable tries: options.retries + 1,
+                                max_elapsed_time: options.max_elapsed_time,
                                 base_interval: 1,
                                 multiplier: 2,
                                 on: RETRIABLE_ERRORS do |try|
