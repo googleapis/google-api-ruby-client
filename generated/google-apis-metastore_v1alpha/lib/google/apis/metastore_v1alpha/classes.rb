@@ -1345,6 +1345,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Immutable. The database type that the Metastore service stores its data.
+        # Corresponds to the JSON property `databaseType`
+        # @return [String]
+        attr_accessor :database_type
+      
         # Encryption settings for the service.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::MetastoreV1alpha::EncryptionConfig]
@@ -1445,6 +1450,7 @@ module Google
         def update!(**args)
           @artifact_gcs_uri = args[:artifact_gcs_uri] if args.key?(:artifact_gcs_uri)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @database_type = args[:database_type] if args.key?(:database_type)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
           @hive_metastore_config = args[:hive_metastore_config] if args.key?(:hive_metastore_config)
