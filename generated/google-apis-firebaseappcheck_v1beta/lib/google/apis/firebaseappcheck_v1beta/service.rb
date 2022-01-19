@@ -123,13 +123,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Accepts an App Attest CBOR attestation and verifies it with Apple using the
-        # developer's preconfigured team and bundle IDs. If valid, returns an
-        # attestation artifact that can later be exchanged for an
-        # AttestationTokenResponse using ExchangeAppAttestAssertion. For convenience and
-        # performance, this method's response object will also contain an App Check
-        # token encapsulated in an AttestationTokenResponse (if the verification is
-        # successful).
+        # Accepts an App Attest CBOR attestation and verifies it with Apple using your
+        # preconfigured team and bundle IDs. If valid, returns an attestation artifact
+        # that can later be exchanged for an AttestationTokenResponse using
+        # ExchangeAppAttestAssertion. For convenience and performance, this method's
+        # response object will also contain an App Check token encapsulated in an
+        # AttestationTokenResponse (if the verification is successful).
         # @param [String] app
         #   Required. The relative resource name of the iOS app, in the format: ```
         #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
@@ -441,7 +440,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the AppAttestConfigs for the specified list of apps atomically.
+        # Atomically gets the AppAttestConfigs for the specified list of apps.
         # @param [String] parent
         #   Required. The parent project name shared by all AppAttestConfigs being
         #   retrieved, in the format ``` projects/`project_number` ``` The parent
@@ -740,7 +739,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the DeviceCheckConfigs for the specified list of apps atomically. For
+        # Atomically gets the DeviceCheckConfigs for the specified list of apps. For
         # security reasons, the `private_key` field is never populated in the response.
         # @param [String] parent
         #   Required. The parent project name shared by all DeviceCheckConfigs being
@@ -853,7 +852,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the RecaptchaConfigs for the specified list of apps atomically. For
+        # Atomically gets the RecaptchaConfigs for the specified list of apps. For
         # security reasons, the `site_secret` field is never populated in the response.
         # @param [String] parent
         #   Required. The parent project name shared by all RecaptchaConfigs being
@@ -965,7 +964,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the RecaptchaEnterpriseConfigs for the specified list of apps atomically.
+        # Atomically gets the RecaptchaEnterpriseConfigs for the specified list of apps.
         # @param [String] parent
         #   Required. The parent project name shared by all RecaptchaEnterpriseConfigs
         #   being retrieved, in the format ``` projects/`project_number` ``` The parent
@@ -1077,7 +1076,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the SafetyNetConfigs for the specified list of apps atomically.
+        # Atomically gets the SafetyNetConfigs for the specified list of apps.
         # @param [String] parent
         #   Required. The parent project name shared by all SafetyNetConfigs being
         #   retrieved, in the format ``` projects/`project_number` ``` The parent
@@ -1186,7 +1185,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified Service configurations atomically.
+        # Atomically updates the specified Service configurations.
         # @param [String] parent
         #   Required. The parent project name shared by all Service configurations being
         #   updated, in the format ``` projects/`project_number` ``` The parent collection
