@@ -602,6 +602,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_gcs_uri, as: 'artifactGcsUri'
           property :create_time, as: 'createTime'
+          property :database_type, as: 'databaseType'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::MetastoreV1beta::EncryptionConfig, decorator: Google::Apis::MetastoreV1beta::EncryptionConfig::Representation
       
           property :endpoint_uri, as: 'endpointUri'
