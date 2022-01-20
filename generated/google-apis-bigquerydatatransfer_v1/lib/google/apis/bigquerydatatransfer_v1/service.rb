@@ -160,7 +160,7 @@ module Google
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned.
         #   Must be in the form: `projects/`project_id`` or `projects/`project_id`/
-        #   locations/`location_id`
+        #   locations/`location_id``
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
@@ -380,7 +380,7 @@ module Google
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned.
         #   Must be in the form: `projects/`project_id`` or `projects/`project_id`/
-        #   locations/`location_id`
+        #   locations/`location_id``
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
@@ -547,8 +547,9 @@ module Google
         # Returns information about all transfer configs owned by a project in the
         # specified location.
         # @param [String] parent
-        #   Required. The BigQuery project id for which data sources should be returned: `
-        #   projects/`project_id`` or `projects/`project_id`/locations/`location_id``
+        #   Required. The BigQuery project id for which transfer configs should be
+        #   returned: `projects/`project_id`` or `projects/`project_id`/locations/`
+        #   location_id``
         # @param [Array<String>, String] data_source_ids
         #   When specified, only configurations of requested data sources are returned.
         # @param [Fixnum] page_size
@@ -1018,8 +1019,9 @@ module Google
         # Returns information about all transfer configs owned by a project in the
         # specified location.
         # @param [String] parent
-        #   Required. The BigQuery project id for which data sources should be returned: `
-        #   projects/`project_id`` or `projects/`project_id`/locations/`location_id``
+        #   Required. The BigQuery project id for which transfer configs should be
+        #   returned: `projects/`project_id`` or `projects/`project_id`/locations/`
+        #   location_id``
         # @param [Array<String>, String] data_source_ids
         #   When specified, only configurations of requested data sources are returned.
         # @param [Fixnum] page_size
