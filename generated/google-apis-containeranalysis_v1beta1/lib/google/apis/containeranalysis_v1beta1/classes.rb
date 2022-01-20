@@ -1267,6 +1267,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration per workload for both Private Pools and Hybrid Pools.
+        # Corresponds to the JSON property `workerConfig`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig]
+        attr_accessor :worker_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1274,6 +1279,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @worker_config = args[:worker_config] if args.key?(:worker_config)
+        end
+      end
+      
+      # Configuration per workload for both Private Pools and Hybrid Pools.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig
+        include Google::Apis::Core::Hashable
+      
+        # The disk size (in GB) which is requested for the build container. If unset, a
+        # value of 10 GB will be used.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # The memory (in GB) which is requested for the build container. If unset, a
+        # value of 4 GB will be used.
+        # Corresponds to the JSON property `memoryGb`
+        # @return [Float]
+        attr_accessor :memory_gb
+      
+        # The number of vCPUs which are requested for the build container. If unset, a
+        # value of 1 will be used.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Float]
+        attr_accessor :vcpu_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
         end
       end
       
