@@ -634,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KmsWrappedCryptoKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LinkedEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1252,6 +1258,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crypto_key, :base64 => true, as: 'cryptoKey'
+          property :kms_wrapped, as: 'kmsWrapped', class: Google::Apis::HealthcareV1beta1::KmsWrappedCryptoKey, decorator: Google::Apis::HealthcareV1beta1::KmsWrappedCryptoKey::Representation
+      
         end
       end
       
@@ -1267,6 +1275,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crypto_key, :base64 => true, as: 'cryptoKey'
+          property :kms_wrapped, as: 'kmsWrapped', class: Google::Apis::HealthcareV1beta1::KmsWrappedCryptoKey, decorator: Google::Apis::HealthcareV1beta1::KmsWrappedCryptoKey::Representation
+      
         end
       end
       
@@ -1918,6 +1928,14 @@ module Google
           property :hl7_ack, :base64 => true, as: 'hl7Ack'
           property :message, as: 'message', class: Google::Apis::HealthcareV1beta1::Message, decorator: Google::Apis::HealthcareV1beta1::Message::Representation
       
+        end
+      end
+      
+      class KmsWrappedCryptoKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crypto_key, as: 'cryptoKey'
+          property :wrapped_key, :base64 => true, as: 'wrappedKey'
         end
       end
       

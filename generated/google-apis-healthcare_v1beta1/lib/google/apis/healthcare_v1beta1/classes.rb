@@ -986,6 +986,15 @@ module Google
         # @return [String]
         attr_accessor :crypto_key
       
+        # Include to use an existing data crypto key wrapped by KMS. The wrapped key
+        # must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM
+        # permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud
+        # Healthcare Service Agent service account. For more information, see [Creating
+        # a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+        # Corresponds to the JSON property `kmsWrapped`
+        # @return [Google::Apis::HealthcareV1beta1::KmsWrappedCryptoKey]
+        attr_accessor :kms_wrapped
+      
         def initialize(**args)
            update!(**args)
         end
@@ -993,6 +1002,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+          @kms_wrapped = args[:kms_wrapped] if args.key?(:kms_wrapped)
         end
       end
       
@@ -1042,6 +1052,15 @@ module Google
         # @return [String]
         attr_accessor :crypto_key
       
+        # Include to use an existing data crypto key wrapped by KMS. The wrapped key
+        # must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM
+        # permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud
+        # Healthcare Service Agent service account. For more information, see [Creating
+        # a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+        # Corresponds to the JSON property `kmsWrapped`
+        # @return [Google::Apis::HealthcareV1beta1::KmsWrappedCryptoKey]
+        attr_accessor :kms_wrapped
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1049,6 +1068,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+          @kms_wrapped = args[:kms_wrapped] if args.key?(:kms_wrapped)
         end
       end
       
@@ -3392,6 +3412,36 @@ module Google
         def update!(**args)
           @hl7_ack = args[:hl7_ack] if args.key?(:hl7_ack)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Include to use an existing data crypto key wrapped by KMS. The wrapped key
+      # must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM
+      # permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud
+      # Healthcare Service Agent service account. For more information, see [Creating
+      # a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+      class KmsWrappedCryptoKey
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the KMS CryptoKey to use for unwrapping.
+        # Corresponds to the JSON property `cryptoKey`
+        # @return [String]
+        attr_accessor :crypto_key
+      
+        # Required. The wrapped data crypto key.
+        # Corresponds to the JSON property `wrappedKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :wrapped_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key = args[:crypto_key] if args.key?(:crypto_key)
+          @wrapped_key = args[:wrapped_key] if args.key?(:wrapped_key)
         end
       end
       
