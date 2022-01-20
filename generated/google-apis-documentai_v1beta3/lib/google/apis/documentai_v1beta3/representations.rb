@@ -1813,6 +1813,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata::Representation
       
+          property :question_id, as: 'questionId'
         end
       end
       
@@ -3572,6 +3573,7 @@ module Google
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata::Representation
       
           property :create_time, as: 'createTime'
+          property :question_id, as: 'questionId'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
           property :update_time, as: 'updateTime'

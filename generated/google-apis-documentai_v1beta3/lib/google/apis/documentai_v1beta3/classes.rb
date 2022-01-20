@@ -1120,6 +1120,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1CommonOperationMetadata]
         attr_accessor :common_metadata
       
+        # The Crowd Compute question ID.
+        # Corresponds to the JSON property `questionId`
+        # @return [String]
+        attr_accessor :question_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1127,6 +1132,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @question_id = args[:question_id] if args.key?(:question_id)
         end
       end
       
@@ -7176,6 +7182,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The Crowd Compute question ID.
+        # Corresponds to the JSON property `questionId`
+        # @return [String]
+        attr_accessor :question_id
+      
         # Used only when Operation.done is false.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -7200,6 +7211,7 @@ module Google
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @question_id = args[:question_id] if args.key?(:question_id)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
           @update_time = args[:update_time] if args.key?(:update_time)
