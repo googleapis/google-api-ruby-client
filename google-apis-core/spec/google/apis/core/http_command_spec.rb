@@ -147,6 +147,18 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     it 'should call block if present' do
       expect { |b| command.execute(client, &b) }.to yield_with_args('Hello world', nil)
     end
+
+    it 'should retry with max elapsed_time and retries' do
+      expect(Retriable).to receive(:retriable).with(
+        tries: Google::Apis::RequestOptions.default.retries + 1,
+        max_elapsed_time: Google::Apis::RequestOptions.default.max_elapsed_time,
+        base_interval: 1,
+        multiplier: 2,
+        on: described_class::RETRIABLE_ERRORS).and_call_original
+      allow(Retriable).to receive(:retriable).and_call_original
+
+      command.execute(client)
+    end
   end
 
   context('with server errors') do

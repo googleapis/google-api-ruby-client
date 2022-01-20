@@ -17,6 +17,7 @@ require 'google/apis/options'
 
 RSpec.describe Google::Apis::RequestOptions do
   let(:options) { Google::Apis::RequestOptions.new }
+  let(:defaults) { described_class.default }
 
   it 'should not merge nil values' do
     options.retries = 1
@@ -37,4 +38,15 @@ RSpec.describe Google::Apis::RequestOptions do
   it 'should allow nil in merge' do
     expect(options.merge(nil)).to be_an_instance_of(Google::Apis::RequestOptions)
   end
+
+  it 'sets default values' do
+    expect(defaults.retries).to eq(5) # Overriden in spec_helper.rb
+    expect(defaults.max_elapsed_time).to eq(900)
+    expect(defaults.normalize_unicode).to be false
+    expect(defaults.skip_serialization).to be false
+    expect(defaults.skip_deserialization).to be false
+    expect(defaults.api_format_version).to be nil
+    expect(defaults.use_opencensus).to be true
+    expect(defaults.quota_project).to be_nil
+ end
 end
