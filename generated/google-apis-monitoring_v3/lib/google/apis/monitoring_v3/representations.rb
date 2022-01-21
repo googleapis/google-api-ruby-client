@@ -1630,6 +1630,7 @@ module Google
       class UptimeCheckConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :checker_type, as: 'checkerType'
           collection :content_matchers, as: 'contentMatchers', class: Google::Apis::MonitoringV3::ContentMatcher, decorator: Google::Apis::MonitoringV3::ContentMatcher::Representation
       
           property :display_name, as: 'displayName'
