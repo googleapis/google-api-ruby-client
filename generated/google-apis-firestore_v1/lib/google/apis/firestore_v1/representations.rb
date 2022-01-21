@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1UpdateDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -722,7 +728,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :concurrency_mode, as: 'concurrencyMode'
-          property :earliest_version_time, as: 'earliestVersionTime'
           property :etag, as: 'etag'
           property :location_id, as: 'locationId'
           property :name, as: 'name'
@@ -899,6 +904,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :completed_work, :numeric_string => true, as: 'completedWork'
           property :estimated_work, :numeric_string => true, as: 'estimatedWork'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1UpdateDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
