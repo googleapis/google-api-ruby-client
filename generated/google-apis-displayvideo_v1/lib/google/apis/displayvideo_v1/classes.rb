@@ -2725,6 +2725,75 @@ module Google
         end
       end
       
+      # Contact information defining a Customer Match audience member.
+      class ContactInfo
+        include Google::Apis::Core::Hashable
+      
+        # Country code of the member.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # A list of SHA256 hashed email of the member.
+        # Corresponds to the JSON property `hashedEmails`
+        # @return [Array<String>]
+        attr_accessor :hashed_emails
+      
+        # SHA256 hashed first name of the member.
+        # Corresponds to the JSON property `hashedFirstName`
+        # @return [String]
+        attr_accessor :hashed_first_name
+      
+        # SHA256 hashed last name of the member.
+        # Corresponds to the JSON property `hashedLastName`
+        # @return [String]
+        attr_accessor :hashed_last_name
+      
+        # A list of SHA256 hashed phone numbers of the member.
+        # Corresponds to the JSON property `hashedPhoneNumbers`
+        # @return [Array<String>]
+        attr_accessor :hashed_phone_numbers
+      
+        # A list of zip codes of the member.
+        # Corresponds to the JSON property `zipCodes`
+        # @return [Array<String>]
+        attr_accessor :zip_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_code = args[:country_code] if args.key?(:country_code)
+          @hashed_emails = args[:hashed_emails] if args.key?(:hashed_emails)
+          @hashed_first_name = args[:hashed_first_name] if args.key?(:hashed_first_name)
+          @hashed_last_name = args[:hashed_last_name] if args.key?(:hashed_last_name)
+          @hashed_phone_numbers = args[:hashed_phone_numbers] if args.key?(:hashed_phone_numbers)
+          @zip_codes = args[:zip_codes] if args.key?(:zip_codes)
+        end
+      end
+      
+      # Wrapper message for a list of contact information defining Customer Match
+      # audience members.
+      class ContactInfoList
+        include Google::Apis::Core::Hashable
+      
+        # A list of ContactInfo objects defining Customer Match audience members.
+        # Corresponds to the JSON property `contactInfos`
+        # @return [Array<Google::Apis::DisplayvideoV1::ContactInfo>]
+        attr_accessor :contact_infos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact_infos = args[:contact_infos] if args.key?(:contact_infos)
+        end
+      end
+      
       # Assigned content instream position targeting option details. This will be
       # populated in the content_instream_position_details field when targeting_type
       # is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
@@ -4245,6 +4314,59 @@ module Google
         end
       end
       
+      # Request message for FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
+      class EditCustomerMatchMembersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Wrapper message for a list of contact information defining Customer Match
+        # audience members.
+        # Corresponds to the JSON property `addedContactInfoList`
+        # @return [Google::Apis::DisplayvideoV1::ContactInfoList]
+        attr_accessor :added_contact_info_list
+      
+        # Wrapper message for a list of mobile device IDs defining Customer Match
+        # audience members.
+        # Corresponds to the JSON property `addedMobileDeviceIdList`
+        # @return [Google::Apis::DisplayvideoV1::MobileDeviceIdList]
+        attr_accessor :added_mobile_device_id_list
+      
+        # Required. The ID of the owner advertiser of the updated Customer Match
+        # FirstAndThirdPartyAudience.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @added_contact_info_list = args[:added_contact_info_list] if args.key?(:added_contact_info_list)
+          @added_mobile_device_id_list = args[:added_mobile_device_id_list] if args.key?(:added_mobile_device_id_list)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+        end
+      end
+      
+      # The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
+      class EditCustomerMatchMembersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the updated Customer Match FirstAndThirdPartyAudience.
+        # Corresponds to the JSON property `firstAndThirdPartyAudienceId`
+        # @return [Fixnum]
+        attr_accessor :first_and_third_party_audience_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_and_third_party_audience_id = args[:first_and_third_party_audience_id] if args.key?(:first_and_third_party_audience_id)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -4499,7 +4621,7 @@ module Google
         # @return [String]
         attr_accessor :audience_source
       
-        # Output only. The type of the audience.
+        # The type of the audience.
         # Corresponds to the JSON property `audienceType`
         # @return [String]
         attr_accessor :audience_type
@@ -4570,7 +4692,11 @@ module Google
         attr_accessor :gmail_audience_size
       
         # The duration in days that an entry remains in the audience after the
-        # qualifying event. Only applicable to first party audiences.
+        # qualifying event. If the audience has no expiration, the value of this field
+        # should be set 10000. Otherwise, the set value must be greater than 0 and less
+        # than or equal to 540. Only applicable to first party audiences. This field is
+        # required for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `
+        # CUSTOMER_MATCH_DEVICE_ID`
         # Corresponds to the JSON property `membershipDurationDays`
         # @return [Fixnum]
         attr_accessor :membership_duration_days
@@ -5263,6 +5389,11 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::PerformanceGoal]
         attr_accessor :performance_goal
       
+        # Output only. The reservation type of the insertion order.
+        # Corresponds to the JSON property `reservationType`
+        # @return [String]
+        attr_accessor :reservation_type
+      
         # Output only. The timestamp when the insertion order was last updated. Assigned
         # by the system.
         # Corresponds to the JSON property `updateTime`
@@ -5289,6 +5420,7 @@ module Google
           @pacing = args[:pacing] if args.key?(:pacing)
           @partner_costs = args[:partner_costs] if args.key?(:partner_costs)
           @performance_goal = args[:performance_goal] if args.key?(:performance_goal)
+          @reservation_type = args[:reservation_type] if args.key?(:reservation_type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -6105,6 +6237,13 @@ module Google
         # @return [String]
         attr_accessor :entity_status
       
+        # Whether to exclude new exchanges from automatically being targeted by the line
+        # item. This field is false by default.
+        # Corresponds to the JSON property `excludeNewExchanges`
+        # @return [Boolean]
+        attr_accessor :exclude_new_exchanges
+        alias_method :exclude_new_exchanges?, :exclude_new_exchanges
+      
         # Settings that control the active duration of a line item.
         # Corresponds to the JSON property `flight`
         # @return [Google::Apis::DisplayvideoV1::LineItemFlight]
@@ -6169,6 +6308,11 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::PartnerRevenueModel]
         attr_accessor :partner_revenue_model
       
+        # Output only. The reservation type of the line item.
+        # Corresponds to the JSON property `reservationType`
+        # @return [String]
+        attr_accessor :reservation_type
+      
         # Settings that control the targeting expansion of the line item. Targeting
         # expansion allows the line item to reach a larger audience based on the
         # original audience list and the targeting expansion level.
@@ -6203,6 +6347,7 @@ module Google
           @creative_ids = args[:creative_ids] if args.key?(:creative_ids)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
+          @exclude_new_exchanges = args[:exclude_new_exchanges] if args.key?(:exclude_new_exchanges)
           @flight = args[:flight] if args.key?(:flight)
           @frequency_cap = args[:frequency_cap] if args.key?(:frequency_cap)
           @insertion_order_id = args[:insertion_order_id] if args.key?(:insertion_order_id)
@@ -6215,6 +6360,7 @@ module Google
           @pacing = args[:pacing] if args.key?(:pacing)
           @partner_costs = args[:partner_costs] if args.key?(:partner_costs)
           @partner_revenue_model = args[:partner_revenue_model] if args.key?(:partner_revenue_model)
+          @reservation_type = args[:reservation_type] if args.key?(:reservation_type)
           @targeting_expansion = args[:targeting_expansion] if args.key?(:targeting_expansion)
           @update_time = args[:update_time] if args.key?(:update_time)
           @warning_messages = args[:warning_messages] if args.key?(:warning_messages)
@@ -7378,6 +7524,26 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @platform = args[:platform] if args.key?(:platform)
           @publisher = args[:publisher] if args.key?(:publisher)
+        end
+      end
+      
+      # Wrapper message for a list of mobile device IDs defining Customer Match
+      # audience members.
+      class MobileDeviceIdList
+        include Google::Apis::Core::Hashable
+      
+        # A list of mobile device IDs defining Customer Match audience members.
+        # Corresponds to the JSON property `mobileDeviceIds`
+        # @return [Array<String>]
+        attr_accessor :mobile_device_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mobile_device_ids = args[:mobile_device_ids] if args.key?(:mobile_device_ids)
         end
       end
       
