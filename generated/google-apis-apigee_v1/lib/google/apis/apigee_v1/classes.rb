@@ -3758,6 +3758,18 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Optional. IP range represents the customer-provided CIDR block of length 22
+        # that will be used for the Apigee instance creation. This optional range, if
+        # provided, should be freely available as part of larger named range the
+        # customer has allocated to the Service Networking peering. If this is not
+        # provided, Apigee will automatically request for any available /22 CIDR block
+        # from Service Networking. The customer should use this CIDR block for
+        # configuring their firewall needs to allow traffic from Apigee. Input format: "
+        # a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+        # Corresponds to the JSON property `ipRange`
+        # @return [String]
+        attr_accessor :ip_range
+      
         # Output only. Time the instance was last modified in milliseconds since epoch.
         # Corresponds to the JSON property `lastModifiedAt`
         # @return [Fixnum]
@@ -3810,6 +3822,7 @@ module Google
           @disk_encryption_key_name = args[:disk_encryption_key_name] if args.key?(:disk_encryption_key_name)
           @display_name = args[:display_name] if args.key?(:display_name)
           @host = args[:host] if args.key?(:host)
+          @ip_range = args[:ip_range] if args.key?(:ip_range)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
@@ -3992,17 +4005,18 @@ module Google
         end
       end
       
-      # A collection of key, value string pairs
+      # Collection of key/value string pairs.
       class GoogleCloudApigeeV1KeyValueMap
         include Google::Apis::Core::Hashable
       
-        # Optional. If `true` entry values will be encrypted.
+        # Optional. Flag that specifies whether entry values will be encrypted. Enable
+        # to encrypt entry values.
         # Corresponds to the JSON property `encrypted`
         # @return [Boolean]
         attr_accessor :encrypted
         alias_method :encrypted?, :encrypted
       
-        # Required. The id of the key value map.
+        # Required. ID of the key value map.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7018,7 +7032,7 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
-        # TLS configuration information for VirtualHosts and TargetServers.
+        # TLS configuration information for virtual hosts and TargetServers.
         # Corresponds to the JSON property `sSLInfo`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfo]
         attr_accessor :s_sl_info
@@ -7116,7 +7130,7 @@ module Google
         end
       end
       
-      # TLS configuration information for VirtualHosts and TargetServers.
+      # TLS configuration information for virtual hosts and TargetServers.
       class GoogleCloudApigeeV1TlsInfo
         include Google::Apis::Core::Hashable
       

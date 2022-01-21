@@ -1454,10 +1454,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a key value map in an api proxy.
+        # Creates a key value map in an API proxy.
         # @param [String] parent
-        #   Required. The name of the environment in which to create the key value map.
-        #   Must be of the form `organizations/`organization`/apis/`api``.
+        #   Required. Name of the environment in which to create the key value map. Use
+        #   the following structure in your request: `organizations/`org`/apis/`api``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] google_cloud_apigee_v1_key_value_map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1488,10 +1488,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a key value map in an api proxy.
+        # Deletes a key value map from an API proxy.
         # @param [String] name
-        #   Required. The name of the key value map. Must be of the form `organizations/`
-        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``.
+        #   Required. Name of the key value map. Use the following structure in your
+        #   request: `organizations/`org`/apis/`api`/keyvaluemaps/`keyvaluemap``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4165,7 +4165,8 @@ module Google
         # existing properties to the API, even if they are not being changed. If you
         # omit properties from the payload, the properties are removed. To get the
         # current list of properties for the environment, use the [Get Environment API](
-        # get).
+        # get). **Note**: Both `PUT` and `POST` methods are supported for updating an
+        # existing environment.
         # @param [String] name
         #   Required. Name of the environment. Use the following structure in your request:
         #   `organizations/`org`/environments/`env``
@@ -4244,7 +4245,8 @@ module Google
         # existing properties to the API, even if they are not being changed. If you
         # omit properties from the payload, the properties are removed. To get the
         # current list of properties for the environment, use the [Get Environment API](
-        # get).
+        # get). **Note**: Both `PUT` and `POST` methods are supported for updating an
+        # existing environment.
         # @param [String] name
         #   Required. Name of the environment. Use the following structure in your request:
         #   `organizations/`org`/environments/`env``
@@ -5661,8 +5663,9 @@ module Google
         
         # Creates a key value map in an environment.
         # @param [String] parent
-        #   Required. The name of the environment in which to create the key value map.
-        #   Must be of the form `organizations/`organization`/environments/`environment``.
+        #   Required. Name of the environment in which to create the key value map. Use
+        #   the following structure in your request: `organizations/`org`/environments/`
+        #   env``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] google_cloud_apigee_v1_key_value_map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5693,10 +5696,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a key value map in an environment.
+        # Deletes a key value map from an environment.
         # @param [String] name
-        #   Required. The name of the key value map. Must be of the form `organizations/`
-        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap``.
+        #   Required. Name of the key value map. Use the following structure in your
+        #   request: `organizations/`org`/environments/`env`/keyvaluemaps/`keyvaluemap``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7784,8 +7787,8 @@ module Google
         
         # Creates a key value map in an organization.
         # @param [String] parent
-        #   Required. The name of the organization in which to create the key value map
-        #   file. Must be of the form `organizations/`organization``.
+        #   Required. Name of the organization in which to create the key value map file.
+        #   Use the following structure in your request: `organizations/`org``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] google_cloud_apigee_v1_key_value_map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7816,10 +7819,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a key value map in an organization.
+        # Deletes a key value map from an organization.
         # @param [String] name
-        #   Required. The name of the key value map. Must be of the form `organizations/`
-        #   organization`/keyvaluemaps/`keyvaluemap``.
+        #   Required. Name of the key value map. Use the following structure in your
+        #   request: `organizations/`org`/keyvaluemaps/`keyvaluemap``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

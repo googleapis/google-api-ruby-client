@@ -2158,6 +2158,7 @@ module Google
           property :disk_encryption_key_name, as: 'diskEncryptionKeyName'
           property :display_name, as: 'displayName'
           property :host, as: 'host'
+          property :ip_range, as: 'ipRange'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :location, as: 'location'
           property :name, as: 'name'
