@@ -451,12 +451,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
+          property :data_crc32c, :numeric_string => true, as: 'dataCrc32c'
         end
       end
       
       class SecretVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_specified_payload_checksum, as: 'clientSpecifiedPayloadChecksum'
           property :create_time, as: 'createTime'
           property :destroy_time, as: 'destroyTime'
           property :etag, as: 'etag'

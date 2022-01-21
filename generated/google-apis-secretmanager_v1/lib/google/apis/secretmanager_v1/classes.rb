@@ -892,6 +892,19 @@ module Google
         # @return [String]
         attr_accessor :data
       
+        # Optional. If specified, SecretManagerService will verify the integrity of the
+        # received data on SecretManagerService.AddSecretVersion calls using the crc32c
+        # checksum and store it to include in future SecretManagerService.
+        # AccessSecretVersion responses. If a checksum is not provided in the
+        # SecretManagerService.AddSecretVersion request, the SecretManagerService will
+        # generate and store one for you. The CRC32C value is encoded as a Int64 for
+        # compatibility, and can be safely downconverted to uint32 in languages that
+        # support this type. https://cloud.google.com/apis/design/design_patterns#
+        # integer_types
+        # Corresponds to the JSON property `dataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :data_crc32c
+      
         def initialize(**args)
            update!(**args)
         end
@@ -899,12 +912,20 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data = args[:data] if args.key?(:data)
+          @data_crc32c = args[:data_crc32c] if args.key?(:data_crc32c)
         end
       end
       
       # A secret version resource in the Secret Manager API.
       class SecretVersion
         include Google::Apis::Core::Hashable
+      
+        # Output only. True if payload checksum specified in SecretPayload object has
+        # been received by SecretManagerService on SecretManagerService.AddSecretVersion.
+        # Corresponds to the JSON property `clientSpecifiedPayloadChecksum`
+        # @return [Boolean]
+        attr_accessor :client_specified_payload_checksum
+        alias_method :client_specified_payload_checksum?, :client_specified_payload_checksum
       
         # Output only. The time at which the SecretVersion was created.
         # Corresponds to the JSON property `createTime`
@@ -945,6 +966,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_specified_payload_checksum = args[:client_specified_payload_checksum] if args.key?(:client_specified_payload_checksum)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destroy_time = args[:destroy_time] if args.key?(:destroy_time)
           @etag = args[:etag] if args.key?(:etag)
