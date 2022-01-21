@@ -1252,6 +1252,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2GcsSources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2HumanAgentAssistantConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1349,6 +1355,24 @@ module Google
       end
       
       class GoogleCloudDialogflowV2ImportAgentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ImportDocumentTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ImportDocumentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4477,6 +4501,13 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2GcsSources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :uris, as: 'uris'
+        end
+      end
+      
       class GoogleCloudDialogflowV2HumanAgentAssistantConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4635,6 +4666,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ImportDocumentTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :knowledge_types, as: 'knowledgeTypes'
+          hash :metadata, as: 'metadata'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ImportDocumentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_template, as: 'documentTemplate', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ImportDocumentTemplate, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ImportDocumentTemplate::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GcsSources, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GcsSources::Representation
+      
+          property :import_gcs_custom_metadata, as: 'importGcsCustomMetadata'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -5036,6 +5095,7 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :knowledge_base, as: 'knowledgeBase'
           property :state, as: 'state'
         end
       end

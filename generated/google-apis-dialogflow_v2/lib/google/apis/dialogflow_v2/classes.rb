@@ -476,7 +476,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether to run test cases in TestCasesConfig.test_cases periodically. Default
-        # false. If set to ture, run once a day.
+        # false. If set to true, run once a day.
         # Corresponds to the JSON property `enableContinuousRun`
         # @return [Boolean]
         attr_accessor :enable_continuous_run
@@ -7485,6 +7485,27 @@ module Google
         end
       end
       
+      # Google Cloud Storage location for the inputs.
+      class GoogleCloudDialogflowV2GcsSources
+        include Google::Apis::Core::Hashable
+      
+        # Required. Google Cloud Storage URIs for the inputs. A URI is of the form: gs://
+        # bucket/object-prefix-or-name Whether a prefix or name is used depends on the
+        # use case.
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uris = args[:uris] if args.key?(:uris)
+        end
+      end
+      
       # Defines the Human Agent Assist to connect to a conversation.
       class GoogleCloudDialogflowV2HumanAgentAssistantConfig
         include Google::Apis::Core::Hashable
@@ -8022,6 +8043,92 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
+        end
+      end
+      
+      # The template used for importing documents.
+      class GoogleCloudDialogflowV2ImportDocumentTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Required. The knowledge type of document content.
+        # Corresponds to the JSON property `knowledgeTypes`
+        # @return [Array<String>]
+        attr_accessor :knowledge_types
+      
+        # Metadata for the document. The metadata supports arbitrary key-value pairs.
+        # Suggested use cases include storing a document's title, an external URL
+        # distinct from the document's content_uri, etc. The max size of a `key` or a `
+        # value` of the metadata is 1024 bytes.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Required. The MIME type of the document.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @knowledge_types = args[:knowledge_types] if args.key?(:knowledge_types)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Request message for Documents.ImportDocuments.
+      class GoogleCloudDialogflowV2ImportDocumentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The template used for importing documents.
+        # Corresponds to the JSON property `documentTemplate`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ImportDocumentTemplate]
+        attr_accessor :document_template
+      
+        # Google Cloud Storage location for the inputs.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GcsSources]
+        attr_accessor :gcs_source
+      
+        # Whether to import custom metadata from Google Cloud Storage. Only valid when
+        # the document source is Google Cloud Storage URI.
+        # Corresponds to the JSON property `importGcsCustomMetadata`
+        # @return [Boolean]
+        attr_accessor :import_gcs_custom_metadata
+        alias_method :import_gcs_custom_metadata?, :import_gcs_custom_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_template = args[:document_template] if args.key?(:document_template)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @import_gcs_custom_metadata = args[:import_gcs_custom_metadata] if args.key?(:import_gcs_custom_metadata)
+        end
+      end
+      
+      # Response message for Documents.ImportDocuments.
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Includes details about skipped documents or any other warnings.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleRpcStatus>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -9448,6 +9555,11 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # The name of the knowledge base interacted with during the operation.
+        # Corresponds to the JSON property `knowledgeBase`
+        # @return [String]
+        attr_accessor :knowledge_base
+      
         # Output only. The current state of this operation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -9459,6 +9571,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @knowledge_base = args[:knowledge_base] if args.key?(:knowledge_base)
           @state = args[:state] if args.key?(:state)
         end
       end
