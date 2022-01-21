@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1UpdateDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1beta2ExportDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
