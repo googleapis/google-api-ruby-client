@@ -775,6 +775,19 @@ module Google
         end
       end
       
+      # Metadata related to the update database operation.
+      class GoogleFirestoreAdminV1UpdateDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata for ExportDocuments operations.
       class GoogleFirestoreAdminV1beta1ExportDocumentsMetadata
         include Google::Apis::Core::Hashable
