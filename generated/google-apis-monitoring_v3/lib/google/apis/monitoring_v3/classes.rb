@@ -793,9 +793,9 @@ module Google
         # Information in the labels field identifies the actual resource and its
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
-        # zone": "us-central1-a" ``
+        # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+        # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+        # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
@@ -2636,9 +2636,9 @@ module Google
       # Information in the labels field identifies the actual resource and its
       # attributes according to the schema. For example, a particular Compute Engine
       # VM instance could be represented by the following object, because the
-      # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-      # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
-      # zone": "us-central1-a" ``
+      # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+      # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+      # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
       class MonitoredResource
         include Google::Apis::Core::Hashable
       
@@ -3863,9 +3863,9 @@ module Google
         # Information in the labels field identifies the actual resource and its
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
-        # zone": "us-central1-a" ``
+        # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+        # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+        # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
@@ -4139,6 +4139,11 @@ module Google
       class UptimeCheckConfig
         include Google::Apis::Core::Hashable
       
+        # The type of checkers to use to execute the Uptime check.
+        # Corresponds to the JSON property `checkerType`
+        # @return [String]
+        attr_accessor :checker_type
+      
         # The content that is expected to appear in the data returned by the target
         # server against which the check is run. Currently, only the first entry in the
         # content_matchers list is supported, and additional entries will be ignored.
@@ -4183,9 +4188,9 @@ module Google
         # Information in the labels field identifies the actual resource and its
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
-        # zone": "us-central1-a" ``
+        # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+        # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+        # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
         # Corresponds to the JSON property `monitoredResource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :monitored_resource
@@ -4238,6 +4243,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @checker_type = args[:checker_type] if args.key?(:checker_type)
           @content_matchers = args[:content_matchers] if args.key?(:content_matchers)
           @display_name = args[:display_name] if args.key?(:display_name)
           @http_check = args[:http_check] if args.key?(:http_check)
