@@ -1042,6 +1042,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2Intent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4204,6 +4210,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :warnings, as: 'warnings', class: Google::Apis::DialogflowV2beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2beta1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2Intent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4568,6 +4582,7 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :knowledge_base, as: 'knowledgeBase'
           property :state, as: 'state'
         end
       end
