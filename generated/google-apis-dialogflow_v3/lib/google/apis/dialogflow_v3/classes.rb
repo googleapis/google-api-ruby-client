@@ -1202,7 +1202,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether to run test cases in TestCasesConfig.test_cases periodically. Default
-        # false. If set to ture, run once a day.
+        # false. If set to true, run once a day.
         # Corresponds to the JSON property `enableContinuousRun`
         # @return [Boolean]
         attr_accessor :enable_continuous_run
@@ -3356,7 +3356,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The event that matched the query. Only filled for `EVENT` match type.
+        # The event that matched the query. Filled for `EVENT`, `NO_MATCH` and `NO_INPUT`
+        # match types.
         # Corresponds to the JSON property `event`
         # @return [String]
         attr_accessor :event
@@ -4739,7 +4740,7 @@ module Google
         attr_accessor :display_name
       
         # Settings for exporting conversations to [Insights](https://cloud.google.com/
-        # dialogflow/priv/docs/insights).
+        # contact-center/insights/docs).
         # Corresponds to the JSON property `insightsExportSettings`
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings]
         attr_accessor :insights_export_settings
@@ -4810,7 +4811,7 @@ module Google
       end
       
       # Settings for exporting conversations to [Insights](https://cloud.google.com/
-      # dialogflow/priv/docs/insights).
+      # contact-center/insights/docs).
       class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings
         include Google::Apis::Core::Hashable
       
@@ -9551,6 +9552,25 @@ module Google
         end
       end
       
+      # Response message for Documents.ImportDocuments.
+      class GoogleCloudDialogflowV2ImportDocumentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Includes details about skipped documents or any other warnings.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleRpcStatus>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
       # An intent categorizes an end-user's intention for one conversation turn. For
       # each agent, you define many intents, where your combined intents can handle a
       # complete conversation. When an end-user writes or says something, referred to
@@ -10806,6 +10826,11 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
       
+        # The name of the knowledge base interacted with during the operation.
+        # Corresponds to the JSON property `knowledgeBase`
+        # @return [String]
+        attr_accessor :knowledge_base
+      
         # Output only. The current state of this operation.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -10817,6 +10842,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @knowledge_base = args[:knowledge_base] if args.key?(:knowledge_base)
           @state = args[:state] if args.key?(:state)
         end
       end
