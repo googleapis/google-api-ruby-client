@@ -635,9 +635,8 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # The names of logging resources to collect logs for. Does not implicitly
-        # include the current host project. Currently only projects are supported. There
-        # must be at least one resource_name.
+        # The names of logging resources to collect logs for. Currently only projects
+        # are supported. If empty, the widget will default to the host project.
         # Corresponds to the JSON property `resourceNames`
         # @return [Array<String>]
         attr_accessor :resource_names
