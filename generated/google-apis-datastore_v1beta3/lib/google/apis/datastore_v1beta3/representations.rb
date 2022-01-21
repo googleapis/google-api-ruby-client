@@ -130,7 +130,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDatastoreAdminV1MigrationProgressEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1MigrationStateEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1PrepareStepDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDatastoreAdminV1Progress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDatastoreAdminV1RedirectWritesStepDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -512,11 +536,43 @@ module Google
         end
       end
       
+      class GoogleDatastoreAdminV1MigrationProgressEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prepare_step_details, as: 'prepareStepDetails', class: Google::Apis::DatastoreV1beta3::GoogleDatastoreAdminV1PrepareStepDetails, decorator: Google::Apis::DatastoreV1beta3::GoogleDatastoreAdminV1PrepareStepDetails::Representation
+      
+          property :redirect_writes_step_details, as: 'redirectWritesStepDetails', class: Google::Apis::DatastoreV1beta3::GoogleDatastoreAdminV1RedirectWritesStepDetails, decorator: Google::Apis::DatastoreV1beta3::GoogleDatastoreAdminV1RedirectWritesStepDetails::Representation
+      
+          property :step, as: 'step'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1MigrationStateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1PrepareStepDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency_mode, as: 'concurrencyMode'
+        end
+      end
+      
       class GoogleDatastoreAdminV1Progress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :work_completed, :numeric_string => true, as: 'workCompleted'
           property :work_estimated, :numeric_string => true, as: 'workEstimated'
+        end
+      end
+      
+      class GoogleDatastoreAdminV1RedirectWritesStepDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency_mode, as: 'concurrencyMode'
         end
       end
       
