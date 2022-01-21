@@ -442,6 +442,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContactInfoList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContentInstreamPositionAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -653,6 +665,18 @@ module Google
       end
       
       class DoubleVerifyVideoViewability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EditCustomerMatchMembersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EditCustomerMatchMembersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1163,6 +1187,12 @@ module Google
       end
       
       class MobileApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MobileDeviceIdList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2340,6 +2370,26 @@ module Google
         end
       end
       
+      class ContactInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country_code, as: 'countryCode'
+          collection :hashed_emails, as: 'hashedEmails'
+          property :hashed_first_name, as: 'hashedFirstName'
+          property :hashed_last_name, as: 'hashedLastName'
+          collection :hashed_phone_numbers, as: 'hashedPhoneNumbers'
+          collection :zip_codes, as: 'zipCodes'
+        end
+      end
+      
+      class ContactInfoList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :contact_infos, as: 'contactInfos', class: Google::Apis::DisplayvideoV1::ContactInfo, decorator: Google::Apis::DisplayvideoV1::ContactInfo::Representation
+      
+        end
+      end
+      
       class ContentInstreamPositionAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2725,6 +2775,24 @@ module Google
         end
       end
       
+      class EditCustomerMatchMembersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :added_contact_info_list, as: 'addedContactInfoList', class: Google::Apis::DisplayvideoV1::ContactInfoList, decorator: Google::Apis::DisplayvideoV1::ContactInfoList::Representation
+      
+          property :added_mobile_device_id_list, as: 'addedMobileDeviceIdList', class: Google::Apis::DisplayvideoV1::MobileDeviceIdList, decorator: Google::Apis::DisplayvideoV1::MobileDeviceIdList::Representation
+      
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+        end
+      end
+      
+      class EditCustomerMatchMembersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_and_third_party_audience_id, :numeric_string => true, as: 'firstAndThirdPartyAudienceId'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2999,6 +3067,7 @@ module Google
       
           property :performance_goal, as: 'performanceGoal', class: Google::Apis::DisplayvideoV1::PerformanceGoal, decorator: Google::Apis::DisplayvideoV1::PerformanceGoal::Representation
       
+          property :reservation_type, as: 'reservationType'
           property :update_time, as: 'updateTime'
         end
       end
@@ -3200,6 +3269,7 @@ module Google
           collection :creative_ids, as: 'creativeIds'
           property :display_name, as: 'displayName'
           property :entity_status, as: 'entityStatus'
+          property :exclude_new_exchanges, as: 'excludeNewExchanges'
           property :flight, as: 'flight', class: Google::Apis::DisplayvideoV1::LineItemFlight, decorator: Google::Apis::DisplayvideoV1::LineItemFlight::Representation
       
           property :frequency_cap, as: 'frequencyCap', class: Google::Apis::DisplayvideoV1::FrequencyCap, decorator: Google::Apis::DisplayvideoV1::FrequencyCap::Representation
@@ -3219,6 +3289,7 @@ module Google
       
           property :partner_revenue_model, as: 'partnerRevenueModel', class: Google::Apis::DisplayvideoV1::PartnerRevenueModel, decorator: Google::Apis::DisplayvideoV1::PartnerRevenueModel::Representation
       
+          property :reservation_type, as: 'reservationType'
           property :targeting_expansion, as: 'targetingExpansion', class: Google::Apis::DisplayvideoV1::TargetingExpansionConfig, decorator: Google::Apis::DisplayvideoV1::TargetingExpansionConfig::Representation
       
           property :update_time, as: 'updateTime'
@@ -3578,6 +3649,13 @@ module Google
           property :display_name, as: 'displayName'
           property :platform, as: 'platform'
           property :publisher, as: 'publisher'
+        end
+      end
+      
+      class MobileDeviceIdList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mobile_device_ids, as: 'mobileDeviceIds'
         end
       end
       
