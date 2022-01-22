@@ -859,6 +859,197 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a Control. If the Control to create already exists, an ALREADY_EXISTS
+        # error is returned.
+        # @param [String] parent
+        #   Required. Full resource name of parent catalog. Format: projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl] google_cloud_retail_v2alpha_control_object
+        # @param [String] control_id
+        #   Required. The ID to use for the Control, which will become the final component
+        #   of the Control's resource name. This value should be 4-63 characters, and
+        #   valid characters are /a-z-_/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_catalog_control(parent, google_cloud_retail_v2alpha_control_object = nil, control_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+parent}/controls', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl::Representation
+          command.request_object = google_cloud_retail_v2alpha_control_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl
+          command.params['parent'] = parent unless parent.nil?
+          command.query['controlId'] = control_id unless control_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error
+        # is returned.
+        # @param [String] name
+        #   Required. The resource name of the Control to delete. Format: projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/controls/`
+        #   control_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_catalog_control(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2alpha/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Control.
+        # @param [String] name
+        #   Required. The resource name of the Control to delete. Format: projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/controls/`
+        #   control_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_catalog_control(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2alpha/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all Controls linked to this catalog.
+        # @param [String] parent
+        #   Required. The catalog resource name. Format: projects/`project_number`/
+        #   locations/`location_id`/catalogs/`catalog_id`
+        # @param [String] filter
+        #   Optional. A filter to apply on the list results. Supported features: * List
+        #   all the products under the parent branch if filter is unset. * List controls
+        #   that are used in a single ServingConfig: 'serving_config = "
+        #   boosted_home_page_cvr"'
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. If unspecified, defaults to 50.
+        #   Max allowed value is 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListControls` call. Provide
+        #   this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListControlsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListControlsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_catalog_controls(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2alpha/{+parent}/controls', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListControlsResponse::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListControlsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a Control. Control cannot be set to a different oneof field, if so an
+        # INVALID_ARGUMENT is returned. If the Control to delete does not exist, a
+        # NOT_FOUND error is returned.
+        # @param [String] name
+        #   Immutable. Fully qualified name projects/*/locations/global/catalogs/*/
+        #   controls/*
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl] google_cloud_retail_v2alpha_control_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided Control to update. The following are
+        #   NOT supported: * Control.name If not set or empty, all supported fields are
+        #   updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_catalog_control(name, google_cloud_retail_v2alpha_control_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2alpha/{+name}', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl::Representation
+          command.request_object = google_cloud_retail_v2alpha_control_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -1008,6 +1199,267 @@ module Google
           command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponse::Representation
           command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponse
           command.params['placement'] = placement unless placement.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enables a Control on the specified ServingConfig. The control is added in the
+        # last position of the list of controls it belongs to (e.g. if it's a facet spec
+        # control it will be applied in the last position of servingConfig.facetSpecIds)
+        # Returns a ALREADY_EXISTS error if the control has already been applied.
+        # Returns a FAILED_PRECONDITION error if the addition could exceed maximum
+        # number of control allowed for that type of control.
+        # @param [String] serving_config
+        #   Required. The source ServingConfig resource name . Format: projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/servingConfigs/`
+        #   serving_config_id`
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAddControlRequest] google_cloud_retail_v2alpha_add_control_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_catalog_serving_config_control(serving_config, google_cloud_retail_v2alpha_add_control_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+servingConfig}:addControl', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaAddControlRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_add_control_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a ServingConfig. A maximum of 100 ServingConfigs are allowed in a
+        # Catalog, otherwise a FAILED_PRECONDITION error is returned.
+        # @param [String] parent
+        #   Required. Full resource name of parent. Format: projects/`project_number`/
+        #   locations/`location_id`/catalogs/`catalog_id`
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig] google_cloud_retail_v2alpha_serving_config_object
+        # @param [String] serving_config_id
+        #   Required. The ID to use for the ServingConfig, which will become the final
+        #   component of the ServingConfig's resource name. This value should be 4-63
+        #   characters, and valid characters are /a-z-_/.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_catalog_serving_config(parent, google_cloud_retail_v2alpha_serving_config_object = nil, serving_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+parent}/servingConfigs', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig::Representation
+          command.request_object = google_cloud_retail_v2alpha_serving_config_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['servingConfigId'] = serving_config_id unless serving_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a ServingConfig. Returns a NotFound error if the ServingConfig does
+        # not exist.
+        # @param [String] name
+        #   Required. The resource name of the ServingConfig to delete. Format: projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/servingConfigs/`
+        #   serving_config_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_catalog_serving_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2alpha/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not
+        # exist.
+        # @param [String] name
+        #   Required. The resource name of the ServingConfig to get. Format: projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/servingConfigs/`
+        #   serving_config_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_catalog_serving_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2alpha/{+name}', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all ServingConfigs linked to this catalog.
+        # @param [String] parent
+        #   Required. The catalog resource name. Format: projects/`project_number`/
+        #   locations/`location_id`/catalogs/`catalog_id`
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. If unspecified, defaults to 100.
+        #   If a value greater than 100 is provided, at most 100 results are returned.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListServingConfigs` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListServingConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListServingConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_catalog_serving_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2alpha/{+parent}/servingConfigs', options)
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListServingConfigsResponse::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaListServingConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a ServingConfig.
+        # @param [String] name
+        #   Immutable. Fully qualified name projects/*/locations/global/catalogs/*/
+        #   servingConfig/*
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig] google_cloud_retail_v2alpha_serving_config_object
+        # @param [String] update_mask
+        #   Indicates which fields in the provided ServingConfig to update. The following
+        #   are NOT supported: * ServingConfig.name If not set, all supported fields are
+        #   updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_catalog_serving_config(name, google_cloud_retail_v2alpha_serving_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2alpha/{+name}', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig::Representation
+          command.request_object = google_cloud_retail_v2alpha_serving_config_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disables a Control on the specified ServingConfig. The control is removed from
+        # the ServingConfig. Returns a NOT_FOUND error if the Control is not enabled for
+        # the ServingConfig.
+        # @param [String] serving_config
+        #   Required. The source ServingConfig resource name . Format: projects/`
+        #   project_number`/locations/`location_id`/catalogs/`catalog_id`/servingConfigs/`
+        #   serving_config_id`
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRemoveControlRequest] google_cloud_retail_v2alpha_remove_control_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_catalog_serving_config_control(serving_config, google_cloud_retail_v2alpha_remove_control_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+servingConfig}:removeControl', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRemoveControlRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_remove_control_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaServingConfig
+          command.params['servingConfig'] = serving_config unless serving_config.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
