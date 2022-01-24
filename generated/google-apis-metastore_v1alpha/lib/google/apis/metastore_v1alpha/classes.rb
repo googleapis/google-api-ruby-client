@@ -93,6 +93,42 @@ module Google
         end
       end
       
+      # Configuration information for the auxiliary service versions.
+      class AuxiliaryVersionConfig
+        include Google::Apis::Core::Hashable
+      
+        # A mapping of Hive metastore configuration key-value pairs to apply to the
+        # auxiliary Hive metastore (configured in hive-site.xml) in addition to the
+        # primary version's overrides. If keys are present in both the auxiliary version'
+        # s overrides and the primary version's overrides, the value from the auxiliary
+        # version's overrides takes precedence.
+        # Corresponds to the JSON property `configOverrides`
+        # @return [Hash<String,String>]
+        attr_accessor :config_overrides
+      
+        # Network configuration for the Dataproc Metastore service.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::MetastoreV1alpha::NetworkConfig]
+        attr_accessor :network_config
+      
+        # The Hive metastore version of the auxiliary service. It must be less than the
+        # primary Hive metastore service's version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_overrides = args[:config_overrides] if args.key?(:config_overrides)
+          @network_config = args[:network_config] if args.key?(:network_config)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # The details of a backup resource.
       class Backup
         include Google::Apis::Core::Hashable
@@ -469,6 +505,17 @@ module Google
       class HiveMetastoreConfig
         include Google::Apis::Core::Hashable
       
+        # A mapping of Hive metastore version to the auxiliary version configuration.
+        # When specified, a secondary Hive metastore service is created along with the
+        # primary service. All auxiliary versions must be less than the service's
+        # primary version. The key is the auxiliary service name and it must match the
+        # regular expression a-z?. This means that the first character must be a
+        # lowercase letter, and all the following characters must be hyphens, lowercase
+        # letters, or digits, except the last character, which cannot be a hyphen.
+        # Corresponds to the JSON property `auxiliaryVersions`
+        # @return [Hash<String,Google::Apis::MetastoreV1alpha::AuxiliaryVersionConfig>]
+        attr_accessor :auxiliary_versions
+      
         # A mapping of Hive metastore configuration key-value pairs to apply to the Hive
         # metastore (configured in hive-site.xml). The mappings override system defaults
         # (some keys cannot be overridden). These overrides are also applied to
@@ -500,6 +547,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auxiliary_versions = args[:auxiliary_versions] if args.key?(:auxiliary_versions)
           @config_overrides = args[:config_overrides] if args.key?(:config_overrides)
           @endpoint_protocol = args[:endpoint_protocol] if args.key?(:endpoint_protocol)
           @kerberos_config = args[:kerberos_config] if args.key?(:kerberos_config)
