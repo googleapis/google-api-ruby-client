@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuxiliaryVersionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -279,6 +285,16 @@ module Google
         end
       end
       
+      class AuxiliaryVersionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config_overrides, as: 'configOverrides'
+          property :network_config, as: 'networkConfig', class: Google::Apis::MetastoreV1alpha::NetworkConfig, decorator: Google::Apis::MetastoreV1alpha::NetworkConfig::Representation
+      
+          property :version, as: 'version'
+        end
+      end
+      
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -371,6 +387,8 @@ module Google
       class HiveMetastoreConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :auxiliary_versions, as: 'auxiliaryVersions', class: Google::Apis::MetastoreV1alpha::AuxiliaryVersionConfig, decorator: Google::Apis::MetastoreV1alpha::AuxiliaryVersionConfig::Representation
+      
           hash :config_overrides, as: 'configOverrides'
           property :endpoint_protocol, as: 'endpointProtocol'
           property :kerberos_config, as: 'kerberosConfig', class: Google::Apis::MetastoreV1alpha::KerberosConfig, decorator: Google::Apis::MetastoreV1alpha::KerberosConfig::Representation
