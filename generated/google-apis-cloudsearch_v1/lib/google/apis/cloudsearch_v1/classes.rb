@@ -2013,8 +2013,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents an upload session reference. This reference is created via upload
-        # method. Updating of item content may refer to this uploaded content via
-        # contentDataRef.
+        # method. UploadItemRef may be used upto 30 days since creation. Updating of
+        # item content may refer to this uploaded content via contentDataRef.
         # Corresponds to the JSON property `contentDataRef`
         # @return [Google::Apis::CloudsearchV1::UploadItemRef]
         attr_accessor :content_data_ref
@@ -5210,8 +5210,8 @@ module Google
       end
       
       # Represents an upload session reference. This reference is created via upload
-      # method. Updating of item content may refer to this uploaded content via
-      # contentDataRef.
+      # method. UploadItemRef may be used upto 30 days since creation. Updating of
+      # item content may refer to this uploaded content via contentDataRef.
       class UploadItemRef
         include Google::Apis::Core::Hashable
       
