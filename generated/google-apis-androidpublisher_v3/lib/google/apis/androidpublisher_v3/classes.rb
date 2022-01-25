@@ -1412,7 +1412,7 @@ module Google
         end
       end
       
-      # Release notes specification, i.e. language and text.
+      # Localized text in given language.
       class LocalizedText
         include Google::Apis::Core::Hashable
       
