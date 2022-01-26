@@ -76,6 +76,97 @@ module Google
         end
       end
       
+      # Message used to check for the existence of multiple digital asset links within
+      # a single RPC.
+      class BulkCheckRequest
+        include Google::Apis::Core::Hashable
+      
+        # Same configuration as in Check request, all statements checks will use same
+        # configurations.
+        # Corresponds to the JSON property `allowGoogleInternalDataSources`
+        # @return [Boolean]
+        attr_accessor :allow_google_internal_data_sources
+        alias_method :allow_google_internal_data_sources?, :allow_google_internal_data_sources
+      
+        # If specified, will be used in any given template statement that doesn’t
+        # specify a relation.
+        # Corresponds to the JSON property `defaultRelation`
+        # @return [String]
+        attr_accessor :default_relation
+      
+        # Uniquely identifies an asset. A digital asset is an identifiable and
+        # addressable online entity that typically provides some service or content.
+        # Examples of assets are websites, Android apps, Twitter feeds, and Plus Pages.
+        # Corresponds to the JSON property `defaultSource`
+        # @return [Google::Apis::DigitalassetlinksV1::Asset]
+        attr_accessor :default_source
+      
+        # Uniquely identifies an asset. A digital asset is an identifiable and
+        # addressable online entity that typically provides some service or content.
+        # Examples of assets are websites, Android apps, Twitter feeds, and Plus Pages.
+        # Corresponds to the JSON property `defaultTarget`
+        # @return [Google::Apis::DigitalassetlinksV1::Asset]
+        attr_accessor :default_target
+      
+        # Same configuration as in Check request, all statements checks will use same
+        # configurations.
+        # Corresponds to the JSON property `skipCacheLookup`
+        # @return [Boolean]
+        attr_accessor :skip_cache_lookup
+        alias_method :skip_cache_lookup?, :skip_cache_lookup
+      
+        # List of statements to check. For each statement, you can omit a field if the
+        # corresponding default_* field below was supplied. Minimum 1 statement; maximum
+        # 1,000 statements. Any additional statements will be ignored.
+        # Corresponds to the JSON property `statements`
+        # @return [Array<Google::Apis::DigitalassetlinksV1::StatementTemplate>]
+        attr_accessor :statements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_google_internal_data_sources = args[:allow_google_internal_data_sources] if args.key?(:allow_google_internal_data_sources)
+          @default_relation = args[:default_relation] if args.key?(:default_relation)
+          @default_source = args[:default_source] if args.key?(:default_source)
+          @default_target = args[:default_target] if args.key?(:default_target)
+          @skip_cache_lookup = args[:skip_cache_lookup] if args.key?(:skip_cache_lookup)
+          @statements = args[:statements] if args.key?(:statements)
+        end
+      end
+      
+      # Response for BulkCheck call. Results are sent in a list in the same order in
+      # which they were sent. Individual check errors are described in the appropriate
+      # check_results entry. If the entire call fails, the response will include a
+      # bulk_error_code field describing the error.
+      class BulkCheckResponse
+        include Google::Apis::Core::Hashable
+      
+        # Error code for the entire request. Present only if the entire request failed.
+        # Individual check errors will not trigger the presence of this field.
+        # Corresponds to the JSON property `bulkErrorCode`
+        # @return [String]
+        attr_accessor :bulk_error_code
+      
+        # List of results for each check request. Results are returned in the same order
+        # in which they were sent in the request.
+        # Corresponds to the JSON property `checkResults`
+        # @return [Array<Google::Apis::DigitalassetlinksV1::CheckResponse>]
+        attr_accessor :check_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bulk_error_code = args[:bulk_error_code] if args.key?(:bulk_error_code)
+          @check_results = args[:check_results] if args.key?(:check_results)
+        end
+      end
+      
       # Describes an X509 certificate.
       class CertificateInfo
         include Google::Apis::Core::Hashable
@@ -213,6 +304,43 @@ module Google
         # specific use case of the statement. Refer to [our API documentation](/digital-
         # asset-links/v1/relation-strings) for the current list of supported relations.
         # Example: `delegate_permission/common.handle_all_urls` REQUIRED
+        # Corresponds to the JSON property `relation`
+        # @return [String]
+        attr_accessor :relation
+      
+        # Uniquely identifies an asset. A digital asset is an identifiable and
+        # addressable online entity that typically provides some service or content.
+        # Examples of assets are websites, Android apps, Twitter feeds, and Plus Pages.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::DigitalassetlinksV1::Asset]
+        attr_accessor :source
+      
+        # Uniquely identifies an asset. A digital asset is an identifiable and
+        # addressable online entity that typically provides some service or content.
+        # Examples of assets are websites, Android apps, Twitter feeds, and Plus Pages.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::DigitalassetlinksV1::Asset]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @relation = args[:relation] if args.key?(:relation)
+          @source = args[:source] if args.key?(:source)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # A single statement to check in a bulk call using BulkCheck. See CheckRequest
+      # for details about each field.
+      class StatementTemplate
+        include Google::Apis::Core::Hashable
+      
+        # The relationship being asserted between the source and target. If omitted, you
+        # must specify a BulkCheckRequest.default_relation value to use here.
         # Corresponds to the JSON property `relation`
         # @return [String]
         attr_accessor :relation
