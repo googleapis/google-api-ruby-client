@@ -768,9 +768,11 @@ module Google
         # @return [Google::Apis::AdsenseV2::Date]
         attr_accessor :date
       
-        # Resource name of the payment. Format: accounts/`account`/payments/unpaid for
-        # unpaid (current) earnings. accounts/`account`/payments/yyyy-MM-dd for paid
-        # earnings.
+        # Resource name of the payment. Format: - accounts/`account`/payments/unpaid for
+        # unpaid (current) AdSense earnings. - accounts/`account`/payments/youtube-
+        # unpaid for unpaid (current) YouTube earnings. - accounts/`account`/payments/
+        # yyyy-MM-dd for paid AdSense earnings. - accounts/`account`/payments/youtube-
+        # yyyy-MM-dd for paid YouTube earnings.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
