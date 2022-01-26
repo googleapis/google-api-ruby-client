@@ -585,7 +585,9 @@ module Google
         #   Optional. If true, the identities section of the result will expand any Google
         #   groups appearing in an IAM policy binding. If IamPolicyAnalysisQuery.
         #   identity_selector is specified, the identity in the result will be determined
-        #   by the selector, and this flag is not allowed to set. Default is false.
+        #   by the selector, and this flag is not allowed to set. If true, the default max
+        #   expansion per group is 1000 for AssetService.AnalyzeIamPolicy][]. Default is
+        #   false.
         # @param [Boolean] analysis_query_options_expand_resources
         #   Optional. If true and IamPolicyAnalysisQuery.resource_selector is not
         #   specified, the resource section of the result will expand any resource
@@ -599,7 +601,9 @@ module Google
         #   Folder and organization resource cannot be used together with this option.
         #   For example, if the request analyzes for which users have permission P on a
         #   GCP project with this option enabled, the results will include all users who
-        #   have permission P on that project or any lower resource. Default is false.
+        #   have permission P on that project or any lower resource. If true, the default
+        #   max expansion per resource is 1000 for AssetService.AnalyzeIamPolicy][] and
+        #   100000 for AssetService.AnalyzeIamPolicyLongrunning][]. Default is false.
         # @param [Boolean] analysis_query_options_expand_roles
         #   Optional. If true, the access section of result will expand any roles
         #   appearing in IAM policy bindings to include their permissions. If
