@@ -653,6 +653,32 @@ module Google
         end
       end
       
+      # ContainerStatus holds the information of container name and image digest value.
+      class ContainerStatus
+        include Google::Apis::Core::Hashable
+      
+        # ImageDigest holds the resolved digest for the image specified, regardless of
+        # whether a tag or digest was originally specified in the Container object.
+        # Corresponds to the JSON property `imageDigest`
+        # @return [String]
+        attr_accessor :image_digest
+      
+        # The name of the container, if specified.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_digest = args[:image_digest] if args.key?(:image_digest)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Resource to hold the state and status of a user's domain mapping. NOTE: This
       # resource is currently in Beta.
       class DomainMapping
@@ -906,6 +932,221 @@ module Google
         end
       end
       
+      # Execution represents the configuration of a single execution. A execution an
+      # immutable resource that references a container image which is run to
+      # completion.
+      class Execution
+        include Google::Apis::Core::Hashable
+      
+        # Optional. APIVersion defines the versioned schema of this representation of an
+        # object. Servers should convert recognized schemas to the latest internal value,
+        # and may reject unrecognized values. More info: https://git.k8s.io/community/
+        # contributors/devel/sig-architecture/api-conventions.md#resources +optional
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Optional. Kind is a string value representing the REST resource this object
+        # represents. Servers may infer this from the endpoint the client submits
+        # requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/
+        # community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +
+        # optional
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
+        # resources must have, which includes all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # ExecutionSpec describes how the execution will look.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1::ExecutionSpec]
+        attr_accessor :spec
+      
+        # ExecutionStatus represents the current state of a Execution.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1::ExecutionStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Reference to an Execution. Use /Executions.GetExecution with the given name to
+      # get full execution including the latest status.
+      class ExecutionReference
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Creation timestamp of the execution.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Optional. Name of the execution.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # ExecutionSpec describes how the execution will look.
+      class ExecutionSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the maximum desired number of tasks the execution should
+        # run at any given time. Must be <= task_count. The actual number of tasks
+        # running in steady state will be less than this number when ((.spec.task_count -
+        # .status.successful) < .spec.parallelism), i.e. when the work left to do is
+        # less than max parallelism. More info: https://kubernetes.io/docs/concepts/
+        # workloads/controllers/jobs-run-to-completion/ +optional
+        # Corresponds to the JSON property `parallelism`
+        # @return [Fixnum]
+        attr_accessor :parallelism
+      
+        # Optional. Specifies the desired number of tasks the execution should run.
+        # Setting to 1 means that parallelism is limited to 1 and the success of that
+        # task signals the success of the execution. More info: https://kubernetes.io/
+        # docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        # Corresponds to the JSON property `taskCount`
+        # @return [Fixnum]
+        attr_accessor :task_count
+      
+        # TaskTemplateSpec describes the data a task should have when created from a
+        # template.
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV1::TaskTemplateSpec]
+        attr_accessor :template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parallelism = args[:parallelism] if args.key?(:parallelism)
+          @task_count = args[:task_count] if args.key?(:task_count)
+          @template = args[:template] if args.key?(:template)
+        end
+      end
+      
+      # ExecutionStatus represents the current state of a Execution.
+      class ExecutionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Represents time when the execution was completed. It is not
+        # guaranteed to be set in happens-before order across separate operations. It is
+        # represented in RFC3339 form and is in UTC. +optional
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # Optional. The latest available observations of an execution's current state.
+        # More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-
+        # to-completion/ +optional
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
+        attr_accessor :conditions
+      
+        # Optional. The number of tasks which reached phase Failed. +optional
+        # Corresponds to the JSON property `failedCount`
+        # @return [Fixnum]
+        attr_accessor :failed_count
+      
+        # Optional. URI where logs for this execution can be found in Cloud Console.
+        # Corresponds to the JSON property `logUri`
+        # @return [String]
+        attr_accessor :log_uri
+      
+        # Optional. The 'generation' of the execution that was last processed by the
+        # controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # Optional. The number of actively running tasks. +optional
+        # Corresponds to the JSON property `runningCount`
+        # @return [Fixnum]
+        attr_accessor :running_count
+      
+        # Optional. Represents time when the execution started to run. It is not
+        # guaranteed to be set in happens-before order across separate operations. It is
+        # represented in RFC3339 form and is in UTC. +optional
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Optional. The number of tasks which reached phase Succeeded. +optional
+        # Corresponds to the JSON property `succeededCount`
+        # @return [Fixnum]
+        attr_accessor :succeeded_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @failed_count = args[:failed_count] if args.key?(:failed_count)
+          @log_uri = args[:log_uri] if args.key?(:log_uri)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @running_count = args[:running_count] if args.key?(:running_count)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @succeeded_count = args[:succeeded_count] if args.key?(:succeeded_count)
+        end
+      end
+      
+      # ExecutionTemplateSpec describes the metadata and spec an Execution should have
+      # when created from a job. Based on: https://github.com/kubernetes/api/blob/
+      # e771f807/core/v1/types.go#L3179-L3190
+      class ExecutionTemplateSpec
+        include Google::Apis::Core::Hashable
+      
+        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
+        # resources must have, which includes all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # ExecutionSpec describes how the execution will look.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1::ExecutionSpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -1013,6 +1254,45 @@ module Google
         end
       end
       
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
+      class GoogleRpcStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details. There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get
       # requests.
       class HttpGetAction
@@ -1075,6 +1355,126 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Job represents the configuration of a single job. A job an immutable resource
+      # that references a container image which is run to completion.
+      class Job
+        include Google::Apis::Core::Hashable
+      
+        # Optional. APIVersion defines the versioned schema of this representation of an
+        # object. Servers should convert recognized schemas to the latest internal value,
+        # and may reject unrecognized values. More info: https://git.k8s.io/community/
+        # contributors/devel/sig-architecture/api-conventions.md#resources +optional
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Optional. Kind is a string value representing the REST resource this object
+        # represents. Servers may infer this from the endpoint the client submits
+        # requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/
+        # community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +
+        # optional
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
+        # resources must have, which includes all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # JobSpec describes how the job will look.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1::JobSpec]
+        attr_accessor :spec
+      
+        # JobStatus represents the current state of a Job.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1::JobStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # JobSpec describes how the job will look.
+      class JobSpec
+        include Google::Apis::Core::Hashable
+      
+        # ExecutionTemplateSpec describes the metadata and spec an Execution should have
+        # when created from a job. Based on: https://github.com/kubernetes/api/blob/
+        # e771f807/core/v1/types.go#L3179-L3190
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::RunV1::ExecutionTemplateSpec]
+        attr_accessor :template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @template = args[:template] if args.key?(:template)
+        end
+      end
+      
+      # JobStatus represents the current state of a Job.
+      class JobStatus
+        include Google::Apis::Core::Hashable
+      
+        # The latest available observations of a job's current state. More info: https://
+        # kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
+        attr_accessor :conditions
+      
+        # Status information for each of the specified containers. The status includes
+        # the resolved digest for specified images, which occurs during creation of the
+        # job.
+        # Corresponds to the JSON property `containerStatuses`
+        # @return [Array<Google::Apis::RunV1::ContainerStatus>]
+        attr_accessor :container_statuses
+      
+        # Number of executions created for this job.
+        # Corresponds to the JSON property `executionCount`
+        # @return [Fixnum]
+        attr_accessor :execution_count
+      
+        # Reference to an Execution. Use /Executions.GetExecution with the given name to
+        # get full execution including the latest status.
+        # Corresponds to the JSON property `latestCreatedExecution`
+        # @return [Google::Apis::RunV1::ExecutionReference]
+        attr_accessor :latest_created_execution
+      
+        # The 'generation' of the job that was last processed by the controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @container_statuses = args[:container_statuses] if args.key?(:container_statuses)
+          @execution_count = args[:execution_count] if args.key?(:execution_count)
+          @latest_created_execution = args[:latest_created_execution] if args.key?(:latest_created_execution)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
         end
       end
       
@@ -1205,6 +1605,96 @@ module Google
         attr_accessor :items
       
         # The kind of this resource, in this case "DomainMappingList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of `ObjectMeta,
+        # ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListExecutionsResponse is a list of Executions resources.
+      class ListExecutionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "run.googleapis.com/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Executions.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::Execution>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "ExecutionsList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of `ObjectMeta,
+        # ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListJobsResponse is a list of Jobs resources.
+      class ListJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "run.googleapis.com/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Jobs.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::Job>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "JobsList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1410,6 +1900,51 @@ module Google
         attr_accessor :items
       
         # The kind of this resource, in this case "ServiceList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of `ObjectMeta,
+        # ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListTasksResponse is a list of Tasks resources.
+      class ListTasksResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "run.googleapis.com/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Tasks.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::Task>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "TasksList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2315,6 +2850,19 @@ module Google
         end
       end
       
+      # Request message for creating a new execution of a job.
+      class RunJobRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Not supported by Cloud Run SecretEnvSource selects a Secret to populate the
       # environment variables with. The contents of the target Secret's Data field
       # will represent the key-value pairs as environment variables.
@@ -2884,6 +3432,229 @@ module Google
         end
       end
       
+      # Task represents a single run of a container to completion.
+      class Task
+        include Google::Apis::Core::Hashable
+      
+        # Optional. APIVersion defines the versioned schema of this representation of an
+        # object. Servers should convert recognized schemas to the latest internal value,
+        # and may reject unrecognized values. More info: https://git.k8s.io/community/
+        # contributors/devel/sig-architecture/api-conventions.md#resources +optional
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Optional. Kind is a string value representing the REST resource this object
+        # represents. Servers may infer this from the endpoint the client submits
+        # requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/
+        # community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +
+        # optional
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
+        # resources must have, which includes all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # TaskSpec is a description of a task.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1::TaskSpec]
+        attr_accessor :spec
+      
+        # TaskStatus represents the status of a task of a job execution.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1::TaskStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Result of a task attempt.
+      class TaskAttemptResult
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The exit code of this attempt. This may be unset if the container
+        # was unable to exit cleanly with a code due to some other failure. See status
+        # field for possible failure details.
+        # Corresponds to the JSON property `exitCode`
+        # @return [Fixnum]
+        attr_accessor :exit_code
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exit_code = args[:exit_code] if args.key?(:exit_code)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # TaskSpec is a description of a task.
+      class TaskSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of containers belonging to the task. We disallow a number of
+        # fields on this Container. Only a single container may be provided.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::RunV1::Container>]
+        attr_accessor :containers
+      
+        # Optional. Number of retries allowed per task, before marking this job failed.
+        # Corresponds to the JSON property `maxRetries`
+        # @return [Fixnum]
+        attr_accessor :max_retries
+      
+        # Optional. Email address of the IAM service account associated with the task of
+        # a job execution. The service account represents the identity of the running
+        # task, and determines what permissions the task has. If not provided, the task
+        # will use the project's default service account. +optional
+        # Corresponds to the JSON property `serviceAccountName`
+        # @return [String]
+        attr_accessor :service_account_name
+      
+        # Optional. Optional duration in seconds the task may be active before the
+        # system will actively try to mark it failed and kill associated containers.
+        # This applies per attempt of a task, meaning each retry can run for the full
+        # timeout. +optional
+        # Corresponds to the JSON property `timeoutSeconds`
+        # @return [Fixnum]
+        attr_accessor :timeout_seconds
+      
+        # Optional. List of volumes that can be mounted by containers belonging to the
+        # task. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::RunV1::Volume>]
+        attr_accessor :volumes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @containers = args[:containers] if args.key?(:containers)
+          @max_retries = args[:max_retries] if args.key?(:max_retries)
+          @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
+          @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
+      # TaskStatus represents the status of a task of a job execution.
+      class TaskStatus
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Represents time when the task was completed. It is not guaranteed to
+        # be set in happens-before order across separate operations. It is represented
+        # in RFC3339 form and is in UTC. +optional
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # Optional. The latest available observations of a task's current state. More
+        # info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-
+        # completion/ +optional
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
+        attr_accessor :conditions
+      
+        # Required. Index of the task, unique per execution, and beginning at 0.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Result of a task attempt.
+        # Corresponds to the JSON property `lastAttemptResult`
+        # @return [Google::Apis::RunV1::TaskAttemptResult]
+        attr_accessor :last_attempt_result
+      
+        # Optional. URI where logs for this task can be found in Cloud Console.
+        # Corresponds to the JSON property `logUri`
+        # @return [String]
+        attr_accessor :log_uri
+      
+        # Optional. The 'generation' of the execution that was last processed by the
+        # controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # Optional. The number of times this task was retried. Instances are retried
+        # when they fail up to the maxRetries limit. +optional
+        # Corresponds to the JSON property `retried`
+        # @return [Fixnum]
+        attr_accessor :retried
+      
+        # Optional. Represents time when the task started to run. It is not guaranteed
+        # to be set in happens-before order across separate operations. It is
+        # represented in RFC3339 form and is in UTC. +optional
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @index = args[:index] if args.key?(:index)
+          @last_attempt_result = args[:last_attempt_result] if args.key?(:last_attempt_result)
+          @log_uri = args[:log_uri] if args.key?(:log_uri)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @retried = args[:retried] if args.key?(:retried)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # TaskTemplateSpec describes the data a task should have when created from a
+      # template.
+      class TaskTemplateSpec
+        include Google::Apis::Core::Hashable
+      
+        # TaskSpec is a description of a task.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1::TaskSpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -2948,15 +3719,13 @@ module Google
         alias_method :latest_revision?, :latest_revision
       
         # Percent specifies percent of the traffic to this Revision or Configuration.
-        # This defaults to zero if unspecified. Cloud Run currently requires 100 percent
-        # for a single ConfigurationName TrafficTarget entry.
+        # This defaults to zero if unspecified.
         # Corresponds to the JSON property `percent`
         # @return [Fixnum]
         attr_accessor :percent
       
         # RevisionName of a specific revision to which to send this portion of traffic.
-        # This is mutually exclusive with ConfigurationName. Providing RevisionName in
-        # spec is not currently supported by Cloud Run.
+        # This is mutually exclusive with ConfigurationName.
         # Corresponds to the JSON property `revisionName`
         # @return [String]
         attr_accessor :revision_name

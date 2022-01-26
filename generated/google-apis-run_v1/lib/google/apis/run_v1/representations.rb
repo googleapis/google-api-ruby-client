@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DomainMapping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +148,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Execution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionTemplateSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleRpcStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpGetAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +203,24 @@ module Google
       end
       
       class HttpHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +245,18 @@ module Google
       end
       
       class ListDomainMappingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +287,12 @@ module Google
       end
       
       class ListServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTasksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecretEnvSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +461,36 @@ module Google
       end
       
       class TcpSocketAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Task
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaskAttemptResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaskSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaskStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TaskTemplateSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -560,6 +674,14 @@ module Google
         end
       end
       
+      class ContainerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_digest, as: 'imageDigest'
+          property :name, as: 'name'
+        end
+      end
+      
       class DomainMapping
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -634,6 +756,63 @@ module Google
         end
       end
       
+      class Execution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1::ExecutionSpec, decorator: Google::Apis::RunV1::ExecutionSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1::ExecutionStatus, decorator: Google::Apis::RunV1::ExecutionStatus::Representation
+      
+        end
+      end
+      
+      class ExecutionReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :name, as: 'name'
+        end
+      end
+      
+      class ExecutionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parallelism, as: 'parallelism'
+          property :task_count, as: 'taskCount'
+          property :template, as: 'template', class: Google::Apis::RunV1::TaskTemplateSpec, decorator: Google::Apis::RunV1::TaskTemplateSpec::Representation
+      
+        end
+      end
+      
+      class ExecutionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_time, as: 'completionTime'
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1::GoogleCloudRunV1Condition, decorator: Google::Apis::RunV1::GoogleCloudRunV1Condition::Representation
+      
+          property :failed_count, as: 'failedCount'
+          property :log_uri, as: 'logUri'
+          property :observed_generation, as: 'observedGeneration'
+          property :running_count, as: 'runningCount'
+          property :start_time, as: 'startTime'
+          property :succeeded_count, as: 'succeededCount'
+        end
+      end
+      
+      class ExecutionTemplateSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1::ExecutionSpec, decorator: Google::Apis::RunV1::ExecutionSpec::Representation
+      
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -656,6 +835,15 @@ module Google
         end
       end
       
+      class GoogleRpcStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class HttpGetAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -672,6 +860,42 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class Job
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1::JobSpec, decorator: Google::Apis::RunV1::JobSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1::JobStatus, decorator: Google::Apis::RunV1::JobStatus::Representation
+      
+        end
+      end
+      
+      class JobSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :template, as: 'template', class: Google::Apis::RunV1::ExecutionTemplateSpec, decorator: Google::Apis::RunV1::ExecutionTemplateSpec::Representation
+      
+        end
+      end
+      
+      class JobStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1::GoogleCloudRunV1Condition, decorator: Google::Apis::RunV1::GoogleCloudRunV1Condition::Representation
+      
+          collection :container_statuses, as: 'containerStatuses', class: Google::Apis::RunV1::ContainerStatus, decorator: Google::Apis::RunV1::ContainerStatus::Representation
+      
+          property :execution_count, as: 'executionCount'
+          property :latest_created_execution, as: 'latestCreatedExecution', class: Google::Apis::RunV1::ExecutionReference, decorator: Google::Apis::RunV1::ExecutionReference::Representation
+      
+          property :observed_generation, as: 'observedGeneration'
         end
       end
       
@@ -711,6 +935,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           collection :items, as: 'items', class: Google::Apis::RunV1::DomainMapping, decorator: Google::Apis::RunV1::DomainMapping::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListExecutionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1::Execution, decorator: Google::Apis::RunV1::Execution::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1::Job, decorator: Google::Apis::RunV1::Job::Representation
       
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
@@ -768,6 +1018,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           collection :items, as: 'items', class: Google::Apis::RunV1::Service, decorator: Google::Apis::RunV1::Service::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListTasksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1::Task, decorator: Google::Apis::RunV1::Task::Representation
       
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
@@ -962,6 +1225,12 @@ module Google
         end
       end
       
+      class RunJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SecretEnvSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1091,6 +1360,66 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host, as: 'host'
           property :port, as: 'port'
+        end
+      end
+      
+      class Task
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1::TaskSpec, decorator: Google::Apis::RunV1::TaskSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1::TaskStatus, decorator: Google::Apis::RunV1::TaskStatus::Representation
+      
+        end
+      end
+      
+      class TaskAttemptResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exit_code, as: 'exitCode'
+          property :status, as: 'status', class: Google::Apis::RunV1::GoogleRpcStatus, decorator: Google::Apis::RunV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class TaskSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :containers, as: 'containers', class: Google::Apis::RunV1::Container, decorator: Google::Apis::RunV1::Container::Representation
+      
+          property :max_retries, as: 'maxRetries'
+          property :service_account_name, as: 'serviceAccountName'
+          property :timeout_seconds, :numeric_string => true, as: 'timeoutSeconds'
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
+      
+        end
+      end
+      
+      class TaskStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_time, as: 'completionTime'
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1::GoogleCloudRunV1Condition, decorator: Google::Apis::RunV1::GoogleCloudRunV1Condition::Representation
+      
+          property :index, as: 'index'
+          property :last_attempt_result, as: 'lastAttemptResult', class: Google::Apis::RunV1::TaskAttemptResult, decorator: Google::Apis::RunV1::TaskAttemptResult::Representation
+      
+          property :log_uri, as: 'logUri'
+          property :observed_generation, as: 'observedGeneration'
+          property :retried, as: 'retried'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class TaskTemplateSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spec, as: 'spec', class: Google::Apis::RunV1::TaskSpec, decorator: Google::Apis::RunV1::TaskSpec::Representation
+      
         end
       end
       
