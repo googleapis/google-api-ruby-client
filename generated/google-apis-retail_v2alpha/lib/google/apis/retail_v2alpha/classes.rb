@@ -1473,7 +1473,8 @@ module Google
         # imports: * `user_event` (default): One JSON UserEvent per line. * `
         # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719.
         # Supported values for control imports: * 'control' (default): One JSON Control
-        # per line.
+        # per line. Supported values for catalog attribute imports: * 'catalog_attribute'
+        # (default): One CSV CatalogAttribute per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -2456,7 +2457,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :categories
       
-        # The id of the collection members when type is Type.COLLECTION. Should not set
+        # The id of the collection members when type is Type.COLLECTION. Non-existent
+        # product ids are allowed. The type of the members must be either Type.PRIMARY
+        # or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set
         # it for other types. A maximum of 1000 values are allowed. Otherwise, an
         # INVALID_ARGUMENT error is return.
         # Corresponds to the JSON property `collectionMemberIds`
@@ -3390,7 +3393,7 @@ module Google
         # fields are the same as a filter expression. See SearchRequest.filter for
         # detail syntax and limitations. Examples: * To boost products with product ID "
         # product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "
-        # product_2")) * *AND * *(colorFamily: ANY("Red", "Blue")) *
+        # product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
         # Corresponds to the JSON property `productsFilter`
         # @return [String]
         attr_accessor :products_filter
@@ -3454,7 +3457,7 @@ module Google
         # more details at the Retail Search [user guide](/retail/search/docs/filter-and-
         # order#filter). * To filter products with product ID "product_1" or "product_2",
         # and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(
-        # colorFamily: ANY("Red", "Blue")) *
+        # colorFamilies: ANY("Red", "Blue")) *
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
