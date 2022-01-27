@@ -1086,7 +1086,7 @@ module Google
         # @param [String] parent
         #   The name of the parent resource whose versions will be listed.
         # @param [String] order_by
-        #   Optional. Sorting field and order
+        #   Optional. The field to order the results by.
         # @param [Fixnum] page_size
         #   The maximum number of versions to return. Maximum page size is 1,000.
         # @param [String] page_token
