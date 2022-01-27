@@ -97,10 +97,12 @@ module Google
         # @return [String]
         attr_accessor :argument_kind
       
-        # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
-        # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
-        # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
-        # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
+        # The data type of a variable such as a function argument. Examples include: *
+        # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
+        # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
+        # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+        # DATE"` ` ` ] ` `
         # Corresponds to the JSON property `dataType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :data_type
@@ -1615,6 +1617,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<Google::Apis::BigqueryV2::Dataset::Tag>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1639,6 +1646,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @tags = args[:tags] if args.key?(:tags)
         end
         
         # 
@@ -1733,6 +1741,32 @@ module Google
             @view = args[:view] if args.key?(:view)
           end
         end
+        
+        # 
+        class Tag
+          include Google::Apis::Core::Hashable
+        
+          # [Required] The namespaced friendly name of the tag key, e.g. "12345/
+          # environment" where 12345 is org id.
+          # Corresponds to the JSON property `tagKey`
+          # @return [String]
+          attr_accessor :tag_key
+        
+          # [Required] Friendly short name of the tag value, e.g. "production".
+          # Corresponds to the JSON property `tagValue`
+          # @return [String]
+          attr_accessor :tag_value
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @tag_key = args[:tag_key] if args.key?(:tag_key)
+            @tag_value = args[:tag_value] if args.key?(:tag_value)
+          end
+        end
       end
       
       # 
@@ -1746,7 +1780,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `target_types`
-        # @return [Array<Google::Apis::BigqueryV2::DatasetAccessEntry::TargetType>]
+        # @return [Array<String>]
         attr_accessor :target_types
       
         def initialize(**args)
@@ -1757,27 +1791,6 @@ module Google
         def update!(**args)
           @dataset = args[:dataset] if args.key?(:dataset)
           @target_types = args[:target_types] if args.key?(:target_types)
-        end
-        
-        # 
-        class TargetType
-          include Google::Apis::Core::Hashable
-        
-          # [Required] Which resources in the dataset this entry applies to. Currently,
-          # only views are supported, but additional target types may be added in the
-          # future. Possible values: VIEWS: This entry applies to all views in the dataset.
-          # Corresponds to the JSON property `targetType`
-          # @return [String]
-          attr_accessor :target_type
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @target_type = args[:target_type] if args.key?(:target_type)
-          end
         end
       end
       
@@ -5668,10 +5681,12 @@ module Google
         # @return [Google::Apis::BigqueryV2::StandardSqlTableType]
         attr_accessor :return_table_type
       
-        # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
-        # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
-        # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
-        # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
+        # The data type of a variable such as a function argument. Examples include: *
+        # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
+        # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
+        # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+        # DATE"` ` ` ] ` `
         # Corresponds to the JSON property `returnType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :return_type
@@ -6060,17 +6075,21 @@ module Google
         end
       end
       
-      # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
-      # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
-      # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
-      # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
+      # The data type of a variable such as a function argument. Examples include: *
+      # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
+      # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
+      # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
+      # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+      # DATE"` ` ` ] ` `
       class StandardSqlDataType
         include Google::Apis::Core::Hashable
       
-        # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
-        # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
-        # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
-        # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
+        # The data type of a variable such as a function argument. Examples include: *
+        # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
+        # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
+        # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+        # DATE"` ` ` ] ` `
         # Corresponds to the JSON property `arrayElementType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :array_element_type
@@ -6107,10 +6126,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
-        # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
-        # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
-        # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
+        # The data type of a variable such as a function argument. Examples include: *
+        # INT64: ``"typeKind": "INT64"`` * ARRAY: ` "typeKind": "ARRAY", "
+        # arrayElementType": `"typeKind": "STRING"` ` * STRUCT>: ` "typeKind": "STRUCT",
+        # "structType": ` "fields": [ ` "name": "x", "type": `"typeKind: "STRING"` `, ` "
+        # name": "y", "type": ` "typeKind": "ARRAY", "arrayElementType": `"typekind": "
+        # DATE"` ` ` ] ` `
         # Corresponds to the JSON property `type`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :type

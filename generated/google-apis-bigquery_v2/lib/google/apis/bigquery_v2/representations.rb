@@ -234,18 +234,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+        
+        class Tag
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class DatasetAccessEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class TargetType
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1266,6 +1266,8 @@ module Google
           property :location, as: 'location'
           property :satisfies_pzs, as: 'satisfiesPZS'
           property :self_link, as: 'selfLink'
+          collection :tags, as: 'tags', class: Google::Apis::BigqueryV2::Dataset::Tag, decorator: Google::Apis::BigqueryV2::Dataset::Tag::Representation
+      
         end
         
         class Access
@@ -1285,6 +1287,14 @@ module Google
         
           end
         end
+        
+        class Tag
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :tag_key, as: 'tagKey'
+            property :tag_value, as: 'tagValue'
+          end
+        end
       end
       
       class DatasetAccessEntry
@@ -1292,15 +1302,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
-          collection :target_types, as: 'target_types', class: Google::Apis::BigqueryV2::DatasetAccessEntry::TargetType, decorator: Google::Apis::BigqueryV2::DatasetAccessEntry::TargetType::Representation
-      
-        end
-        
-        class TargetType
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :target_type, as: 'targetType'
-          end
+          collection :target_types, as: 'target_types'
         end
       end
       
