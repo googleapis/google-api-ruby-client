@@ -207,7 +207,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The severity of this case.
+        # The priority of this case. If this is set, do not set severity.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
+        # The severity of this case. Deprecated. Use priority instead.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
@@ -254,6 +259,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @escalated = args[:escalated] if args.key?(:escalated)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @severity = args[:severity] if args.key?(:severity)
           @state = args[:state] if args.key?(:state)
           @subscriber_email_addresses = args[:subscriber_email_addresses] if args.key?(:subscriber_email_addresses)

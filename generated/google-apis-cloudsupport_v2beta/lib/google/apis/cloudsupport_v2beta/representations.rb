@@ -224,6 +224,7 @@ module Google
           property :display_name, as: 'displayName'
           property :escalated, as: 'escalated'
           property :name, as: 'name'
+          property :priority, as: 'priority'
           property :severity, as: 'severity'
           property :state, as: 'state'
           collection :subscriber_email_addresses, as: 'subscriberEmailAddresses'
