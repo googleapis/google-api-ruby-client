@@ -270,11 +270,6 @@ module Google
         #   or S4) - creator.email with the operators equals (=) and AND. Additionally, a
         #   global restriction (with no operator) can be used to search across displayName,
         #   description, and comments (e.g. "my search").
-        # @param [String] order_by
-        #   A comma separated list of fields to order by, followed by `asc` or `desc`
-        #   postfix. This list is case-insensitive, default sorting order is ascending,
-        #   redundant space characters are insignificant. Example: `name asc,update_time,
-        #   create_time desc`
         # @param [Fixnum] page_size
         #   The maximum number of cases fetched with each request. Defaults to 10.
         # @param [String] page_token
@@ -297,13 +292,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_cases(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_cases(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+parent}/cases', options)
           command.response_representation = Google::Apis::CloudsupportV2beta::ListCasesResponse::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::ListCasesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
