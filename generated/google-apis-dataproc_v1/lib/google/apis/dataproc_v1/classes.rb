@@ -299,7 +299,7 @@ module Google
         # @return [Google::Apis::DataprocV1::RuntimeInfo]
         attr_accessor :runtime_info
       
-        # A configuration for running an Apache Spark (http://spark.apache.org/) batch
+        # A configuration for running an Apache Spark (https://spark.apache.org/) batch
         # workload.
         # Corresponds to the JSON property `sparkBatch`
         # @return [Google::Apis::DataprocV1::SparkBatch]
@@ -311,7 +311,7 @@ module Google
         # @return [Google::Apis::DataprocV1::SparkRBatch]
         attr_accessor :spark_r_batch
       
-        # A configuration for running Apache Spark SQL (http://spark.apache.org/sql/)
+        # A configuration for running Apache Spark SQL (https://spark.apache.org/sql/)
         # queries as a batch workload.
         # Corresponds to the JSON property `sparkSqlBatch`
         # @return [Google::Apis::DataprocV1::SparkSqlBatch]
@@ -1011,8 +1011,8 @@ module Google
       
         # Optional. Interface type of local SSDs (default is "scsi"). Valid values: "
         # scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
-        # See SSD Interface types (https://cloud.google.com/compute/docs/disks/local-ssd#
-        # performance).
+        # See local SSD performance (https://cloud.google.com/compute/docs/disks/local-
+        # ssd#performance).
         # Corresponds to the JSON property `localSsdInterface`
         # @return [String]
         attr_accessor :local_ssd_interface
@@ -1931,7 +1931,7 @@ module Google
         # @return [Google::Apis::DataprocV1::JobScheduling]
         attr_accessor :scheduling
       
-        # A Dataproc job for running Apache Spark (http://spark.apache.org/)
+        # A Dataproc job for running Apache Spark (https://spark.apache.org/)
         # applications on YARN.
         # Corresponds to the JSON property `sparkJob`
         # @return [Google::Apis::DataprocV1::SparkJob]
@@ -1943,7 +1943,7 @@ module Google
         # @return [Google::Apis::DataprocV1::SparkRJob]
         attr_accessor :spark_r_job
       
-        # A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
+        # A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/)
         # queries.
         # Corresponds to the JSON property `sparkSqlJob`
         # @return [Google::Apis::DataprocV1::SparkSqlJob]
@@ -2799,7 +2799,7 @@ module Google
         # @return [Google::Apis::DataprocV1::JobScheduling]
         attr_accessor :scheduling
       
-        # A Dataproc job for running Apache Spark (http://spark.apache.org/)
+        # A Dataproc job for running Apache Spark (https://spark.apache.org/)
         # applications on YARN.
         # Corresponds to the JSON property `sparkJob`
         # @return [Google::Apis::DataprocV1::SparkJob]
@@ -2811,7 +2811,7 @@ module Google
         # @return [Google::Apis::DataprocV1::SparkRJob]
         attr_accessor :spark_r_job
       
-        # A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
+        # A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/)
         # queries.
         # Corresponds to the JSON property `sparkSqlJob`
         # @return [Google::Apis::DataprocV1::SparkSqlJob]
@@ -3626,7 +3626,7 @@ module Google
         end
       end
       
-      # A configuration for running an Apache Spark (http://spark.apache.org/) batch
+      # A configuration for running an Apache Spark (https://spark.apache.org/) batch
       # workload.
       class SparkBatch
         include Google::Apis::Core::Hashable
@@ -3703,7 +3703,7 @@ module Google
         end
       end
       
-      # A Dataproc job for running Apache Spark (http://spark.apache.org/)
+      # A Dataproc job for running Apache Spark (https://spark.apache.org/)
       # applications on YARN.
       class SparkJob
         include Google::Apis::Core::Hashable
@@ -3875,7 +3875,7 @@ module Google
         end
       end
       
-      # A configuration for running Apache Spark SQL (http://spark.apache.org/sql/)
+      # A configuration for running Apache Spark SQL (https://spark.apache.org/sql/)
       # queries as a batch workload.
       class SparkSqlBatch
         include Google::Apis::Core::Hashable
@@ -3909,7 +3909,7 @@ module Google
         end
       end
       
-      # A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
+      # A Dataproc job for running Apache Spark SQL (https://spark.apache.org/sql/)
       # queries.
       class SparkSqlJob
         include Google::Apis::Core::Hashable
