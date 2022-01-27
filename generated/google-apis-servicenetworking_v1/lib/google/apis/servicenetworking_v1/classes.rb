@@ -215,6 +215,13 @@ module Google
       class AddSubnetworkRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The IAM permission check determines whether the consumer project has
+        # 'servicenetworking.services.use' permission or not.
+        # Corresponds to the JSON property `checkServiceNetworkingUsePermission`
+        # @return [Boolean]
+        attr_accessor :check_service_networking_use_permission
+        alias_method :check_service_networking_use_permission?, :check_service_networking_use_permission
+      
         # Required. A resource that represents the service consumer, such as `projects/
         # 123456`. The project number can be different from the value in the consumer
         # network parameter. For example, the network might be part of a Shared VPC
@@ -318,6 +325,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @check_service_networking_use_permission = args[:check_service_networking_use_permission] if args.key?(:check_service_networking_use_permission)
           @consumer = args[:consumer] if args.key?(:consumer)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @description = args[:description] if args.key?(:description)
