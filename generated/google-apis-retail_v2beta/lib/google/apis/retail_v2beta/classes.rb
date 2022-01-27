@@ -1117,6 +1117,26 @@ module Google
         end
       end
       
+      # Request for AddControl method.
+      class GoogleCloudRetailV2betaAddControlRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The id of the control to apply. Assumed to be in the same catalog as
+        # the serving config - if id is not found a NOT_FOUND error is returned.
+        # Corresponds to the JSON property `controlId`
+        # @return [String]
+        attr_accessor :control_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_id = args[:control_id] if args.key?(:control_id)
+        end
+      end
+      
       # Metadata related to the progress of the AddFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
       # AddFulfillmentPlaces method.
@@ -1520,6 +1540,153 @@ module Google
         end
       end
       
+      # Metadata that is used to define a condition that triggers an action. A valid
+      # condition must specify at least one of 'query_terms' or 'products_filter'. If
+      # multiple fields are specified, the condition is met if all the fields are
+      # satisfied e.g. if a set of query terms and product_filter are set, then only
+      # items matching the product_filter for requests with a query matching the query
+      # terms wil get boosted.
+      class GoogleCloudRetailV2betaCondition
+        include Google::Apis::Core::Hashable
+      
+        # Range of time(s) specifying when Condition is active. Condition true if any
+        # time range matches.
+        # Corresponds to the JSON property `activeTimeRange`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConditionTimeRange>]
+        attr_accessor :active_time_range
+      
+        # A list (up to 10 entries) of terms to match the query on. If not specified,
+        # match all queries. If many query terms are specified, the condition is matched
+        # if any of the terms is a match (i.e. using the OR operator).
+        # Corresponds to the JSON property `queryTerms`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConditionQueryTerm>]
+        attr_accessor :query_terms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_time_range = args[:active_time_range] if args.key?(:active_time_range)
+          @query_terms = args[:query_terms] if args.key?(:query_terms)
+        end
+      end
+      
+      # Query terms that we want to match on.
+      class GoogleCloudRetailV2betaConditionQueryTerm
+        include Google::Apis::Core::Hashable
+      
+        # Whether this is supposed to be a full or partial match.
+        # Corresponds to the JSON property `fullMatch`
+        # @return [Boolean]
+        attr_accessor :full_match
+        alias_method :full_match?, :full_match
+      
+        # The value of the term to match on. Value cannot be empty. Value can have at
+        # most 3 terms if specified as a partial match. Each space separated string is
+        # considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is
+        # 4 terms and not allowed for partial match.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_match = args[:full_match] if args.key?(:full_match)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Used for time-dependent conditions. Example: Want to have rule applied for
+      # week long sale.
+      class GoogleCloudRetailV2betaConditionTimeRange
+        include Google::Apis::Core::Hashable
+      
+        # End of time range. Range is inclusive.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Start of time range. Range is inclusive.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Configures dynamic serving time metadata that is used to pre and post process
+      # search/recommendation model results.
+      class GoogleCloudRetailV2betaControl
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of serving configuration ids that that are associated with
+        # this control. Note the association is managed via the ServingConfig, this is
+        # an output only denormalizeed view. Assumed to be in the same catalog.
+        # Corresponds to the JSON property `associatedServingConfigIds`
+        # @return [Array<String>]
+        attr_accessor :associated_serving_config_ids
+      
+        # Required. The human readable control display name. Used in Retail UI. This
+        # field must be a UTF-8 encoded string with a length limit of 128 characters.
+        # Otherwise, an INVALID_ARGUMENT error is thrown.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A facet specification to perform faceted search.
+        # Corresponds to the JSON property `facetSpec`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestFacetSpec]
+        attr_accessor :facet_spec
+      
+        # Immutable. Fully qualified name projects/*/locations/global/catalogs/*/
+        # controls/*
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A rule is a condition-action pair * A condition defines when a rule is to be
+        # triggered. * An action specifies what occurs on that trigger. Currently only
+        # boost rules are supported. Currently only supported by the search endpoint.
+        # Corresponds to the JSON property `rule`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRule]
+        attr_accessor :rule
+      
+        # Required. Immutable. The solution types that the serving config is used for.
+        # Currently we support setting only one type of solution at creation time. Only `
+        # SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        # Corresponds to the JSON property `solutionTypes`
+        # @return [Array<String>]
+        attr_accessor :solution_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_serving_config_ids = args[:associated_serving_config_ids] if args.key?(:associated_serving_config_ids)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @facet_spec = args[:facet_spec] if args.key?(:facet_spec)
+          @name = args[:name] if args.key?(:name)
+          @rule = args[:rule] if args.key?(:rule)
+          @solution_types = args[:solution_types] if args.key?(:solution_types)
+        end
+      end
+      
       # A custom attribute that is not explicitly modeled in Product.
       class GoogleCloudRetailV2betaCustomAttribute
         include Google::Apis::Core::Hashable
@@ -1718,7 +1885,8 @@ module Google
         # imports: * `user_event` (default): One JSON UserEvent per line. * `
         # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719.
         # Supported values for control imports: * 'control' (default): One JSON Control
-        # per line.
+        # per line. Supported values for catalog attribute imports: * 'catalog_attribute'
+        # (default): One CSV CatalogAttribute per line.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -2147,6 +2315,31 @@ module Google
         end
       end
       
+      # Response for ListControls method.
+      class GoogleCloudRetailV2betaListControlsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All the Controls for a given catalog.
+        # Corresponds to the JSON property `controls`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaControl>]
+        attr_accessor :controls
+      
+        # Pagination token, if not returned indicates the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @controls = args[:controls] if args.key?(:controls)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ProductService.ListProducts method.
       class GoogleCloudRetailV2betaListProductsResponse
         include Google::Apis::Core::Hashable
@@ -2170,6 +2363,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @products = args[:products] if args.key?(:products)
+        end
+      end
+      
+      # Response for ListServingConfigs method.
+      class GoogleCloudRetailV2betaListServingConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Pagination token, if not returned indicates the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # All the ServingConfigs for a given catalog.
+        # Corresponds to the JSON property `servingConfigs`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaServingConfig>]
+        attr_accessor :serving_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @serving_configs = args[:serving_configs] if args.key?(:serving_configs)
         end
       end
       
@@ -2521,7 +2739,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :categories
       
-        # The id of the collection members when type is Type.COLLECTION. Should not set
+        # The id of the collection members when type is Type.COLLECTION. Non-existent
+        # product ids are allowed. The type of the members must be either Type.PRIMARY
+        # or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set
         # it for other types. A maximum of 1000 values are allowed. Otherwise, an
         # INVALID_ARGUMENT error is return.
         # Corresponds to the JSON property `collectionMemberIds`
@@ -3170,6 +3390,26 @@ module Google
         end
       end
       
+      # Request for RemoveControl method.
+      class GoogleCloudRetailV2betaRemoveControlRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The id of the control to apply. Assumed to be in the same catalog as
+        # the serving config.
+        # Corresponds to the JSON property `controlId`
+        # @return [String]
+        attr_accessor :control_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_id = args[:control_id] if args.key?(:control_id)
+        end
+      end
+      
       # Metadata related to the progress of the RemoveFulfillmentPlaces operation.
       # Currently empty because there is no meaningful metadata populated from the
       # RemoveFulfillmentPlaces method.
@@ -3250,6 +3490,333 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A rule is a condition-action pair * A condition defines when a rule is to be
+      # triggered. * An action specifies what occurs on that trigger. Currently only
+      # boost rules are supported. Currently only supported by the search endpoint.
+      class GoogleCloudRetailV2betaRule
+        include Google::Apis::Core::Hashable
+      
+        # A boost action to apply to results matching condition specified above.
+        # Corresponds to the JSON property `boostAction`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleBoostAction]
+        attr_accessor :boost_action
+      
+        # Metadata that is used to define a condition that triggers an action. A valid
+        # condition must specify at least one of 'query_terms' or 'products_filter'. If
+        # multiple fields are specified, the condition is met if all the fields are
+        # satisfied e.g. if a set of query terms and product_filter are set, then only
+        # items matching the product_filter for requests with a query matching the query
+        # terms wil get boosted.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCondition]
+        attr_accessor :condition
+      
+        # Prevents `query_term` from being associated with specified terms during search.
+        # Example: Don't associate "gShoe" and "cheap".
+        # Corresponds to the JSON property `doNotAssociateAction`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleDoNotAssociateAction]
+        attr_accessor :do_not_associate_action
+      
+        # * Rule Condition: - No Condition provided is a global match. - 1 or more
+        # Condition provided is combined with OR operator. * Action Input: The request
+        # query and filter that will be applied to the retrieved products, in addition
+        # to any filters already provided with the SearchRequest. The AND operator is
+        # used to combine the query's existing filters with the filter rule(s). NOTE:
+        # May result in 0 results when filters conflict. * Action Result: Filters the
+        # returned objects to be ONLY those that passed the filter.
+        # Corresponds to the JSON property `filterAction`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleFilterAction]
+        attr_accessor :filter_action
+      
+        # Prevents a term in the query from being used in search. Example: Don't search
+        # for "shoddy".
+        # Corresponds to the JSON property `ignoreAction`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleIgnoreAction]
+        attr_accessor :ignore_action
+      
+        # Maps a set of terms to a set of synonyms. Set of synonyms will be treated as
+        # synonyms of each query term only. `query_terms` will not be treated as
+        # synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "
+        # shoes" will not use a synonym of "sneakers".
+        # Corresponds to the JSON property `onewaySynonymsAction`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleOnewaySynonymsAction]
+        attr_accessor :oneway_synonyms_action
+      
+        # Redirects a shopper to a specific page. * Rule Condition: - Must specify
+        # Condition. * Action Input: Request Query * Action Result: Redirects shopper to
+        # provided uri.
+        # Corresponds to the JSON property `redirectAction`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleRedirectAction]
+        attr_accessor :redirect_action
+      
+        # Replaces a term in the query. Multiple replacement candidates can be specified.
+        # All `query_terms` will be replaced with the replacement term. Example:
+        # Replace "gShoe" with "google shoe".
+        # Corresponds to the JSON property `replacementAction`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleReplacementAction]
+        attr_accessor :replacement_action
+      
+        # Creates a set of terms that will be treated as synonyms of each other. Example:
+        # synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes"
+        # . * "shoes" will use a synonym of "sneakers".
+        # Corresponds to the JSON property `twowaySynonymsAction`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaRuleTwowaySynonymsAction]
+        attr_accessor :twoway_synonyms_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost_action = args[:boost_action] if args.key?(:boost_action)
+          @condition = args[:condition] if args.key?(:condition)
+          @do_not_associate_action = args[:do_not_associate_action] if args.key?(:do_not_associate_action)
+          @filter_action = args[:filter_action] if args.key?(:filter_action)
+          @ignore_action = args[:ignore_action] if args.key?(:ignore_action)
+          @oneway_synonyms_action = args[:oneway_synonyms_action] if args.key?(:oneway_synonyms_action)
+          @redirect_action = args[:redirect_action] if args.key?(:redirect_action)
+          @replacement_action = args[:replacement_action] if args.key?(:replacement_action)
+          @twoway_synonyms_action = args[:twoway_synonyms_action] if args.key?(:twoway_synonyms_action)
+        end
+      end
+      
+      # A boost action to apply to results matching condition specified above.
+      class GoogleCloudRetailV2betaRuleBoostAction
+        include Google::Apis::Core::Hashable
+      
+        # Strength of the condition boost, which must be in [-1, 1]. Negative boost
+        # means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion.
+        # However, it does not necessarily mean that the boosted item will be the top
+        # result at all times, nor that other items will be excluded. Results could
+        # still be shown even when none of them matches the condition. And results that
+        # are significantly more relevant to the search query can still trump your
+        # heavily favored but irrelevant items. Setting to -1.0 gives the item a big
+        # demotion. However, results that are deeply relevant might still be shown. The
+        # item will have an upstream battle to get a fairly high ranking, but it is not
+        # blocked out completely. Setting to 0.0 means no boost applied. The boosting
+        # condition is ignored.
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # The filter can have a max size of 5000 characters. An expression which
+        # specifies which products to apply an action to. The syntax and supported
+        # fields are the same as a filter expression. See SearchRequest.filter for
+        # detail syntax and limitations. Examples: * To boost products with product ID "
+        # product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "
+        # product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        # Corresponds to the JSON property `productsFilter`
+        # @return [String]
+        attr_accessor :products_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @products_filter = args[:products_filter] if args.key?(:products_filter)
+        end
+      end
+      
+      # Prevents `query_term` from being associated with specified terms during search.
+      # Example: Don't associate "gShoe" and "cheap".
+      class GoogleCloudRetailV2betaRuleDoNotAssociateAction
+        include Google::Apis::Core::Hashable
+      
+        # Cannot contain duplicates or the query term. Can specify up to 100 terms.
+        # Corresponds to the JSON property `doNotAssociateTerms`
+        # @return [Array<String>]
+        attr_accessor :do_not_associate_terms
+      
+        # Terms from the search query. Will not consider do_not_associate_terms for
+        # search if in search query. Can specify up to 100 terms.
+        # Corresponds to the JSON property `queryTerms`
+        # @return [Array<String>]
+        attr_accessor :query_terms
+      
+        # Will be [deprecated = true] post migration;
+        # Corresponds to the JSON property `terms`
+        # @return [Array<String>]
+        attr_accessor :terms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @do_not_associate_terms = args[:do_not_associate_terms] if args.key?(:do_not_associate_terms)
+          @query_terms = args[:query_terms] if args.key?(:query_terms)
+          @terms = args[:terms] if args.key?(:terms)
+        end
+      end
+      
+      # * Rule Condition: - No Condition provided is a global match. - 1 or more
+      # Condition provided is combined with OR operator. * Action Input: The request
+      # query and filter that will be applied to the retrieved products, in addition
+      # to any filters already provided with the SearchRequest. The AND operator is
+      # used to combine the query's existing filters with the filter rule(s). NOTE:
+      # May result in 0 results when filters conflict. * Action Result: Filters the
+      # returned objects to be ONLY those that passed the filter.
+      class GoogleCloudRetailV2betaRuleFilterAction
+        include Google::Apis::Core::Hashable
+      
+        # A filter to apply on the matching condition results. Supported features: *
+        # filter must be set. * Filter syntax is identical to SearchRequest.filter. See
+        # more details at the Retail Search [user guide](/retail/search/docs/filter-and-
+        # order#filter). * To filter products with product ID "product_1" or "product_2",
+        # and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(
+        # colorFamilies: ANY("Red", "Blue")) *
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # Prevents a term in the query from being used in search. Example: Don't search
+      # for "shoddy".
+      class GoogleCloudRetailV2betaRuleIgnoreAction
+        include Google::Apis::Core::Hashable
+      
+        # Terms to ignore in the search query.
+        # Corresponds to the JSON property `ignoreTerms`
+        # @return [Array<String>]
+        attr_accessor :ignore_terms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ignore_terms = args[:ignore_terms] if args.key?(:ignore_terms)
+        end
+      end
+      
+      # Maps a set of terms to a set of synonyms. Set of synonyms will be treated as
+      # synonyms of each query term only. `query_terms` will not be treated as
+      # synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "
+      # shoes" will not use a synonym of "sneakers".
+      class GoogleCloudRetailV2betaRuleOnewaySynonymsAction
+        include Google::Apis::Core::Hashable
+      
+        # Will be [deprecated = true] post migration;
+        # Corresponds to the JSON property `onewayTerms`
+        # @return [Array<String>]
+        attr_accessor :oneway_terms
+      
+        # Terms from the search query. Will treat synonyms as their synonyms. Not
+        # themselves synonyms of the synonyms. Can specify up to 100 terms.
+        # Corresponds to the JSON property `queryTerms`
+        # @return [Array<String>]
+        attr_accessor :query_terms
+      
+        # Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100
+        # synonyms.
+        # Corresponds to the JSON property `synonyms`
+        # @return [Array<String>]
+        attr_accessor :synonyms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oneway_terms = args[:oneway_terms] if args.key?(:oneway_terms)
+          @query_terms = args[:query_terms] if args.key?(:query_terms)
+          @synonyms = args[:synonyms] if args.key?(:synonyms)
+        end
+      end
+      
+      # Redirects a shopper to a specific page. * Rule Condition: - Must specify
+      # Condition. * Action Input: Request Query * Action Result: Redirects shopper to
+      # provided uri.
+      class GoogleCloudRetailV2betaRuleRedirectAction
+        include Google::Apis::Core::Hashable
+      
+        # URL must have length equal or less than 2000 characters.
+        # Corresponds to the JSON property `redirectUri`
+        # @return [String]
+        attr_accessor :redirect_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
+        end
+      end
+      
+      # Replaces a term in the query. Multiple replacement candidates can be specified.
+      # All `query_terms` will be replaced with the replacement term. Example:
+      # Replace "gShoe" with "google shoe".
+      class GoogleCloudRetailV2betaRuleReplacementAction
+        include Google::Apis::Core::Hashable
+      
+        # Terms from the search query. Will be replaced by replacement term. Can specify
+        # up to 100 terms.
+        # Corresponds to the JSON property `queryTerms`
+        # @return [Array<String>]
+        attr_accessor :query_terms
+      
+        # Term that will be used for replacement.
+        # Corresponds to the JSON property `replacementTerm`
+        # @return [String]
+        attr_accessor :replacement_term
+      
+        # Will be [deprecated = true] post migration;
+        # Corresponds to the JSON property `term`
+        # @return [String]
+        attr_accessor :term
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_terms = args[:query_terms] if args.key?(:query_terms)
+          @replacement_term = args[:replacement_term] if args.key?(:replacement_term)
+          @term = args[:term] if args.key?(:term)
+        end
+      end
+      
+      # Creates a set of terms that will be treated as synonyms of each other. Example:
+      # synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes"
+      # . * "shoes" will use a synonym of "sneakers".
+      class GoogleCloudRetailV2betaRuleTwowaySynonymsAction
+        include Google::Apis::Core::Hashable
+      
+        # Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at
+        # least 2 synonyms.
+        # Corresponds to the JSON property `synonyms`
+        # @return [Array<String>]
+        attr_accessor :synonyms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @synonyms = args[:synonyms] if args.key?(:synonyms)
         end
       end
       
@@ -3924,6 +4491,183 @@ module Google
           @matching_variant_fields = args[:matching_variant_fields] if args.key?(:matching_variant_fields)
           @product = args[:product] if args.key?(:product)
           @variant_rollup_values = args[:variant_rollup_values] if args.key?(:variant_rollup_values)
+        end
+      end
+      
+      # Configures metadata that is used to generate serving time results (e.g. search
+      # results or recommendation predictions). The ServingConfig is passed in the
+      # search and predict request and together with the Catalog.default_branch,
+      # generates results.
+      class GoogleCloudRetailV2betaServingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Condition boost specifications. If a product matches multiple conditions in
+        # the specifications, boost scores from these specifications are all applied and
+        # combined in a non-linear way. Maximum number of specifications is 10. Notice
+        # that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec]
+        # are set, the boost conditions from both places are evaluated. If a search
+        # request matches multiple boost conditions, the final boost score is equal to
+        # the sum of the boost scores from all matched boost conditions. Can only be set
+        # if solution_types is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `boostControlIds`
+        # @return [Array<String>]
+        attr_accessor :boost_control_ids
+      
+        # Required. The human readable serving config display name. Used in Retail UI.
+        # This field must be a UTF-8 encoded string with a length limit of 128
+        # characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # How much diversity to use in recommendation model results e.g. 'medium-
+        # diversity' or 'high-diversity'. Currently supported values: * 'no-diversity' *
+        # 'low-diversity' * 'medium-diversity' * 'high-diversity' * 'auto-diversity' If
+        # not specified, we choose default based on recommendation model type. Default
+        # value: 'no-diversity'. Can only be set if solution_types is
+        # SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `diversityLevel`
+        # @return [String]
+        attr_accessor :diversity_level
+      
+        # Condition do not associate specifications. If multiple do not associate
+        # conditions match, all matching do not associate controls in the list will
+        # execute. - Order does not matter. - Maximum number of specifications is 100.
+        # Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `doNotAssociateControlIds`
+        # @return [Array<String>]
+        attr_accessor :do_not_associate_control_ids
+      
+        # The specifications of dynamically generated facets.
+        # Corresponds to the JSON property `dynamicFacetSpec`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec]
+        attr_accessor :dynamic_facet_spec
+      
+        # Whether to add additional category filters on the 'similar-items' model. If
+        # not specified, we enable it by default. Allowed values are: * 'no-category-
+        # match': No additional filtering of original results from the model and the
+        # customer's filters. * 'relaxed-category-match': Only keep results with
+        # categories that match at least one item categories in the PredictRequests's
+        # context item. * If customer also sends filters in the PredictRequest, then the
+        # results will satisfy both conditions (user given and category match). Can only
+        # be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `enableCategoryFilterLevel`
+        # @return [String]
+        attr_accessor :enable_category_filter_level
+      
+        # Facet specifications for faceted search. If empty, no facets are returned. The
+        # ids refer to the ids of Control resources with only the Facet control set.
+        # These controls are assumed to be in the same Catalog as the ServingConfig. A
+        # maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is
+        # returned. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `facetControlIds`
+        # @return [Array<String>]
+        attr_accessor :facet_control_ids
+      
+        # Condition filter specifications. If a product matches multiple conditions in
+        # the specifications, filters from these specifications are all applied and
+        # combined via the AND operator. Maximum number of specifications is 100. Can
+        # only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `filterControlIds`
+        # @return [Array<String>]
+        attr_accessor :filter_control_ids
+      
+        # Condition ignore specifications. If multiple ignore conditions match, all
+        # matching ignore controls in the list will execute. - Order does not matter. -
+        # Maximum number of specifications is 100. Can only be set if solution_types is
+        # SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `ignoreControlIds`
+        # @return [Array<String>]
+        attr_accessor :ignore_control_ids
+      
+        # The id of the model to use at serving time. Currently only
+        # RecommendationModels are supported: https://cloud.google.com/retail/
+        # recommendations-ai/docs/create-models Can be changed but only to a compatible
+        # model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when
+        # solution_types is SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # Immutable. Fully qualified name projects/*/locations/global/catalogs/*/
+        # servingConfig/*
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Condition oneway synonyms specifications. If multiple oneway synonyms
+        # conditions match, all matching oneway synonyms controls in the list will
+        # execute. Order of controls in the list will not matter. Maximum number of
+        # specifications is 100. Can only be set if solution_types is
+        # SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `onewaySynonymsControlIds`
+        # @return [Array<String>]
+        attr_accessor :oneway_synonyms_control_ids
+      
+        # How much price ranking we want in serving results. Price reranking causes
+        # product items with a similar recommendation probability to be ordered by price,
+        # with the highest-priced items first. This setting could result in a decrease
+        # in click-through and conversion rates. Allowed values are: * 'no-price-
+        # reranking' * 'low-price-raranking' * 'medium-price-reranking' * 'high-price-
+        # reranking' If not specified, we choose default based on model type. Default
+        # value: 'no-price-reranking'. Can only be set if solution_types is
+        # SOLUTION_TYPE_RECOMMENDATION.
+        # Corresponds to the JSON property `priceRerankingLevel`
+        # @return [String]
+        attr_accessor :price_reranking_level
+      
+        # Condition redirect specifications. Only the first triggered redirect action is
+        # applied, even if multiple apply. Maximum number of specifications is 100. Can
+        # only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `redirectControlIds`
+        # @return [Array<String>]
+        attr_accessor :redirect_control_ids
+      
+        # Condition replacement specifications. - Applied according to the order in the
+        # list. - A previously replaced term can not be re-replaced. - Maximum number of
+        # specifications is 100. Can only be set if solution_types is
+        # SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `replacementControlIds`
+        # @return [Array<String>]
+        attr_accessor :replacement_control_ids
+      
+        # Required. Immutable. Specifies the solution types that a serving config can be
+        # associated with. Currently we support setting only one type of solution.
+        # Corresponds to the JSON property `solutionTypes`
+        # @return [Array<String>]
+        attr_accessor :solution_types
+      
+        # Condition synonyms specifications. If multiple syonyms conditions match, all
+        # matching synonyms control in the list will execute. Order of controls in the
+        # list will not matter. Maximum number of specifications is 100. Can only be set
+        # if solution_types is SOLUTION_TYPE_SEARCH.
+        # Corresponds to the JSON property `twowaySynonymsControlIds`
+        # @return [Array<String>]
+        attr_accessor :twoway_synonyms_control_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost_control_ids = args[:boost_control_ids] if args.key?(:boost_control_ids)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @diversity_level = args[:diversity_level] if args.key?(:diversity_level)
+          @do_not_associate_control_ids = args[:do_not_associate_control_ids] if args.key?(:do_not_associate_control_ids)
+          @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
+          @enable_category_filter_level = args[:enable_category_filter_level] if args.key?(:enable_category_filter_level)
+          @facet_control_ids = args[:facet_control_ids] if args.key?(:facet_control_ids)
+          @filter_control_ids = args[:filter_control_ids] if args.key?(:filter_control_ids)
+          @ignore_control_ids = args[:ignore_control_ids] if args.key?(:ignore_control_ids)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @name = args[:name] if args.key?(:name)
+          @oneway_synonyms_control_ids = args[:oneway_synonyms_control_ids] if args.key?(:oneway_synonyms_control_ids)
+          @price_reranking_level = args[:price_reranking_level] if args.key?(:price_reranking_level)
+          @redirect_control_ids = args[:redirect_control_ids] if args.key?(:redirect_control_ids)
+          @replacement_control_ids = args[:replacement_control_ids] if args.key?(:replacement_control_ids)
+          @solution_types = args[:solution_types] if args.key?(:solution_types)
+          @twoway_synonyms_control_ids = args[:twoway_synonyms_control_ids] if args.key?(:twoway_synonyms_control_ids)
         end
       end
       
