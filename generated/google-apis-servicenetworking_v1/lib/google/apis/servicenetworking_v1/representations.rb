@@ -701,6 +701,7 @@ module Google
       class AddSubnetworkRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_service_networking_use_permission, as: 'checkServiceNetworkingUsePermission'
           property :consumer, as: 'consumer'
           property :consumer_network, as: 'consumerNetwork'
           property :description, as: 'description'
