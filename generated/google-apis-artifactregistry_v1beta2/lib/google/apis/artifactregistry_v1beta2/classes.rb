@@ -368,11 +368,11 @@ module Google
         end
       end
       
-      # The response message from importing artifacts.
+      # The response message from importing APT artifacts.
       class ImportAptArtifactsResponse
         include Google::Apis::Core::Hashable
       
-        # The Apt artifacts updated.
+        # The Apt artifacts imported.
         # Corresponds to the JSON property `aptArtifacts`
         # @return [Array<Google::Apis::ArtifactregistryV1beta2::AptArtifact>]
         attr_accessor :apt_artifacts
@@ -468,7 +468,7 @@ module Google
         end
       end
       
-      # The response message from importing artifacts.
+      # The response message from importing YUM artifacts.
       class ImportYumArtifactsResponse
         include Google::Apis::Core::Hashable
       
@@ -477,7 +477,7 @@ module Google
         # @return [Array<Google::Apis::ArtifactregistryV1beta2::ImportYumArtifactsErrorInfo>]
         attr_accessor :errors
       
-        # The yum artifacts updated.
+        # The yum artifacts imported.
         # Corresponds to the JSON property `yumArtifacts`
         # @return [Array<Google::Apis::ArtifactregistryV1beta2::YumArtifact>]
         attr_accessor :yum_artifacts
