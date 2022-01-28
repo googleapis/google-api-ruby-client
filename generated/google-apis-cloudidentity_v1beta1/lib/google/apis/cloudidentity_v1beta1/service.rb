@@ -1658,6 +1658,111 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # List OrgMembership resources in an OrgUnit treated as 'parent'. Parent format:
+        # orgUnits/`$orgUnitId` where `$orgUnitId` is the `orgUnitId` from the [Admin
+        # SDK `OrgUnit` resource](https://developers.google.com/admin-sdk/directory/
+        # reference/rest/v1/orgunits)
+        # @param [String] parent
+        #   Required. Immutable. OrgUnit which is queried for a list of memberships.
+        #   Format: orgUnits/`$orgUnitId` where `$orgUnitId` is the `orgUnitId` from the [
+        #   Admin SDK `OrgUnit` resource](https://developers.google.com/admin-sdk/
+        #   directory/reference/rest/v1/orgunits).
+        # @param [String] customer
+        #   Required. Immutable. Customer that this OrgMembership belongs to. All
+        #   authorization will happen on the role assignments of this customer. Format:
+        #   customers/`$customerId` where `$customerId` is the `id` from the [Admin SDK `
+        #   Customer` resource](https://developers.google.com/admin-sdk/directory/
+        #   reference/rest/v1/customers). You may also use `customers/my_customer` to
+        #   specify your own organization.
+        # @param [String] filter
+        #   The search query. Must be specified in [Common Expression Language](https://
+        #   opensource.google/projects/cel). May only contain equality operators on the `
+        #   type` (e.g., `type == 'shared_drive'`).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. The service may return fewer than
+        #   this value. If omitted (or defaulted to zero) the server will default to 50.
+        #   The maximum allowed value is 100, though requests with page_size greater than
+        #   that will be silently interpreted as 100.
+        # @param [String] page_token
+        #   A page token, received from a previous `OrgMembershipsService.
+        #   ListOrgMemberships` call. Provide this to retrieve the subsequent page. When
+        #   paginating, all other parameters provided to `ListOrgMembershipsRequest` must
+        #   match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::ListOrgMembershipsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::ListOrgMembershipsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_org_unit_memberships(parent, customer: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memberships', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::ListOrgMembershipsResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::ListOrgMembershipsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Move an OrgMembership to a new OrgUnit. NOTE: This is an atomic copy-and-
+        # delete. The resource will have a new copy under the destination OrgUnit and be
+        # deleted from the source OrgUnit. The resource can only be searched under the
+        # destination OrgUnit afterwards.
+        # @param [String] name
+        #   Required. Immutable. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the OrgMembership. Format: orgUnits/`$orgUnitId`/
+        #   memberships/`$membership` The `$orgUnitId` is the `orgUnitId` from the [Admin
+        #   SDK `OrgUnit` resource](https://developers.google.com/admin-sdk/directory/
+        #   reference/rest/v1/orgunits), The `$membership` shall be of the form ``$
+        #   entityType`;`$memberId``, where `$entityType` is the enum value of
+        #   OrgMembership.EntityType, and `memberId` is the `id` from [Drive API (V3) `
+        #   Drive` resource](https://developers.google.com/drive/api/v3/reference/drives#
+        #   resource) for OrgMembership.EntityType.SHARED_DRIVE.
+        # @param [Google::Apis::CloudidentityV1beta1::MoveOrgMembershipRequest] move_org_membership_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_org_membership(name, move_org_membership_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:move', options)
+          command.request_representation = Google::Apis::CloudidentityV1beta1::MoveOrgMembershipRequest::Representation
+          command.request_object = move_org_membership_request_object
+          command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

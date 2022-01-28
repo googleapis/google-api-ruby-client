@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOrgMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListUserInvitationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -442,7 +448,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MoveOrgMembershipRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrgMembership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1106,6 +1124,15 @@ module Google
         end
       end
       
+      class ListOrgMembershipsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :org_memberships, as: 'orgMemberships', class: Google::Apis::CloudidentityV1beta1::OrgMembership, decorator: Google::Apis::CloudidentityV1beta1::OrgMembership::Representation
+      
+        end
+      end
+      
       class ListUserInvitationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1221,6 +1248,14 @@ module Google
         end
       end
       
+      class MoveOrgMembershipRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+          property :destination_org_unit, as: 'destinationOrgUnit'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1230,6 +1265,16 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OrgMembership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :member, as: 'member'
+          property :member_uri, as: 'memberUri'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
