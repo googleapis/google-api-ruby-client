@@ -2008,6 +2008,32 @@ module Google
         end
       end
       
+      # The response message for OrgMembershipsService.ListOrgMemberships.
+      class ListOrgMembershipsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The non-vacuous membership in an orgUnit.
+        # Corresponds to the JSON property `orgMemberships`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::OrgMembership>]
+        attr_accessor :org_memberships
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @org_memberships = args[:org_memberships] if args.key?(:org_memberships)
+        end
+      end
+      
       # Response message for UserInvitation listing request.
       class ListUserInvitationsResponse
         include Google::Apis::Core::Hashable
@@ -2390,6 +2416,39 @@ module Google
         end
       end
       
+      # The request message for OrgMembershipsService.MoveOrgMembership.
+      class MoveOrgMembershipRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. Customer on whose membership change is made. All
+        # authorization will happen on the role assignments of this customer. Format:
+        # customers/`$customerId` where `$customerId` is the `id` from the [Admin SDK `
+        # Customer` resource](https://developers.google.com/admin-sdk/directory/
+        # reference/rest/v1/customers). You may also use `customers/my_customer` to
+        # specify your own organization.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Required. Immutable. OrgUnit where the membership will be moved to. Format:
+        # orgUnits/`$orgUnitId` where `$orgUnitId` is the `orgUnitId` from the [Admin
+        # SDK `OrgUnit` resource](https://developers.google.com/admin-sdk/directory/
+        # reference/rest/v1/orgunits).
+        # Corresponds to the JSON property `destinationOrgUnit`
+        # @return [String]
+        attr_accessor :destination_org_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @destination_org_unit = args[:destination_org_unit] if args.key?(:destination_org_unit)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -2449,6 +2508,60 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # A membership in an OrgUnit. An `OrgMembership` defines a relationship between
+      # an `OrgUnit` and an entity belonging to that `OrgUnit`, referred to as a "
+      # member".
+      class OrgMembership
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Org member id as full resource name. Format for shared drive
+        # resource: //drive.googleapis.com/drives/`$memberId` where `$memberId` is the `
+        # id` from [Drive API (V3) `Drive` resource](https://developers.google.com/drive/
+        # api/v3/reference/drives#resource).
+        # Corresponds to the JSON property `member`
+        # @return [String]
+        attr_accessor :member
+      
+        # Uri with which you can read the member. This follows https://aip.dev/122
+        # Format for shared drive resource: https://drive.googleapis.com/drive/v3/drives/
+        # `$memberId` where `$memberId` is the `id` from [Drive API (V3) `Drive`
+        # resource](https://developers.google.com/drive/api/v3/reference/drives#resource)
+        # .
+        # Corresponds to the JSON property `memberUri`
+        # @return [String]
+        attr_accessor :member_uri
+      
+        # Required. Immutable. The [resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the OrgMembership. Format: orgUnits/`$orgUnitId`/
+        # memberships/`$membership` The `$orgUnitId` is the `orgUnitId` from the [Admin
+        # SDK `OrgUnit` resource](https://developers.google.com/admin-sdk/directory/
+        # reference/rest/v1/orgunits). The `$membership` shall be of the form ``$
+        # entityType`;`$memberId``, where `$entityType` is the enum value of [
+        # OrgMembership.EntityType], and `memberId` is the `id` from [Drive API (V3) `
+        # Drive` resource](https://developers.google.com/drive/api/v3/reference/drives#
+        # resource) for OrgMembership.EntityType.SHARED_DRIVE.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. Entity type for the org member.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @member = args[:member] if args.key?(:member)
+          @member_uri = args[:member_uri] if args.key?(:member_uri)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
