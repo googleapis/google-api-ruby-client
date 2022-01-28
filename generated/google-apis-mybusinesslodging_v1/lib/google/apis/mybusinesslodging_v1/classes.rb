@@ -3974,7 +3974,7 @@ module Google
         attr_accessor :vegan_meals_exception
       
         # Vegetarian meals. The property provides vegetarian menu options for guests.
-        # Vegetarian food does not contain animal products.
+        # Vegetarian food does not contain meat, poultry, fish, or seafood.
         # Corresponds to the JSON property `vegetarianMeals`
         # @return [Boolean]
         attr_accessor :vegetarian_meals
