@@ -390,6 +390,82 @@ module Google
         end
       end
       
+      # A Certificate represents an X.509 certificate used to authenticate HTTPS
+      # connections to EKM replicas.
+      class Certificate
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The issuer distinguished name in RFC 2253 format. Only present if
+        # parsed is true.
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # Output only. The certificate is not valid after this time. Only present if
+        # parsed is true.
+        # Corresponds to the JSON property `notAfterTime`
+        # @return [String]
+        attr_accessor :not_after_time
+      
+        # Output only. The certificate is not valid before this time. Only present if
+        # parsed is true.
+        # Corresponds to the JSON property `notBeforeTime`
+        # @return [String]
+        attr_accessor :not_before_time
+      
+        # Output only. True if the certificate was parsed successfully.
+        # Corresponds to the JSON property `parsed`
+        # @return [Boolean]
+        attr_accessor :parsed
+        alias_method :parsed?, :parsed
+      
+        # Required. The raw certificate bytes in DER format.
+        # Corresponds to the JSON property `rawDer`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw_der
+      
+        # Output only. The certificate serial number as a hex string. Only present if
+        # parsed is true.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
+        # Output only. The SHA-256 certificate fingerprint as a hex string. Only present
+        # if parsed is true.
+        # Corresponds to the JSON property `sha256Fingerprint`
+        # @return [String]
+        attr_accessor :sha256_fingerprint
+      
+        # Output only. The subject distinguished name in RFC 2253 format. Only present
+        # if parsed is true.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # Output only. The subject Alternative DNS names. Only present if parsed is true.
+        # Corresponds to the JSON property `subjectAlternativeDnsNames`
+        # @return [Array<String>]
+        attr_accessor :subject_alternative_dns_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @not_after_time = args[:not_after_time] if args.key?(:not_after_time)
+          @not_before_time = args[:not_before_time] if args.key?(:not_before_time)
+          @parsed = args[:parsed] if args.key?(:parsed)
+          @raw_der = args[:raw_der] if args.key?(:raw_der)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+          @sha256_fingerprint = args[:sha256_fingerprint] if args.key?(:sha256_fingerprint)
+          @subject = args[:subject] if args.key?(:subject)
+          @subject_alternative_dns_names = args[:subject_alternative_dns_names] if args.key?(:subject_alternative_dns_names)
+        end
+      end
+      
       # Certificate chains needed to verify the attestation. Certificates in chains
       # are PEM-encoded and are ordered based on https://tools.ietf.org/html/rfc5246#
       # section-7.4.2.
@@ -433,6 +509,16 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Immutable. The resource name of the backend environment where the key material
+        # for all CryptoKeyVersions associated with this CryptoKey reside and where all
+        # related cryptographic operations are performed. Only applicable if
+        # CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource
+        # name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list
+        # is non-exhaustive and may apply to additional ProtectionLevels in the future.
+        # Corresponds to the JSON property `cryptoKeyBackend`
+        # @return [String]
+        attr_accessor :crypto_key_backend
       
         # Immutable. The period of time that versions of this key spend in the
         # DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at
@@ -507,6 +593,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @crypto_key_backend = args[:crypto_key_backend] if args.key?(:crypto_key_backend)
           @destroy_scheduled_duration = args[:destroy_scheduled_duration] if args.key?(:destroy_scheduled_duration)
           @import_only = args[:import_only] if args.key?(:import_only)
           @labels = args[:labels] if args.key?(:labels)
@@ -559,7 +646,7 @@ module Google
       
         # ExternalProtectionLevelOptions stores a group of additional fields for
         # configuring a CryptoKeyVersion that are specific to the EXTERNAL protection
-        # level.
+        # level and EXTERNAL_VPC protection levels.
         # Corresponds to the JSON property `externalProtectionLevelOptions`
         # @return [Google::Apis::CloudkmsV1::ExternalProtectionLevelOptions]
         attr_accessor :external_protection_level_options
@@ -823,6 +910,51 @@ module Google
         end
       end
       
+      # An EkmConnection represents an individual EKM connection. It can be used for
+      # creating CryptoKeys and CryptoKeyVersions with a ProtectionLevel of
+      # EXTERNAL_VPC, as well as performing cryptographic operations using keys
+      # created within the EkmConnection.
+      class EkmConnection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the EkmConnection was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update requests to ensure the client has an up-to-date
+        # value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The resource name for the EkmConnection in the format `projects/*/
+        # locations/*/ekmConnections/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A list of ServiceResolvers where the EKM can be reached. There should be one
+        # ServiceResolver per EKM replica. Currently, only a single ServiceResolver is
+        # supported.
+        # Corresponds to the JSON property `serviceResolvers`
+        # @return [Array<Google::Apis::CloudkmsV1::ServiceResolver>]
+        attr_accessor :service_resolvers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @service_resolvers = args[:service_resolvers] if args.key?(:service_resolvers)
+        end
+      end
+      
       # Request message for KeyManagementService.Encrypt.
       class EncryptRequest
         include Google::Apis::Core::Hashable
@@ -1021,9 +1153,16 @@ module Google
       
       # ExternalProtectionLevelOptions stores a group of additional fields for
       # configuring a CryptoKeyVersion that are specific to the EXTERNAL protection
-      # level.
+      # level and EXTERNAL_VPC protection levels.
       class ExternalProtectionLevelOptions
         include Google::Apis::Core::Hashable
+      
+        # The path to the external key material on the EKM when using EkmConnection e.g.,
+        # "v0/my/key". Set this field instead of external_key_uri when using an
+        # EkmConnection.
+        # Corresponds to the JSON property `ekmConnectionKeyPath`
+        # @return [String]
+        attr_accessor :ekm_connection_key_path
       
         # The URI for an external resource that this CryptoKeyVersion represents.
         # Corresponds to the JSON property `externalKeyUri`
@@ -1036,6 +1175,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ekm_connection_key_path = args[:ekm_connection_key_path] if args.key?(:ekm_connection_key_path)
           @external_key_uri = args[:external_key_uri] if args.key?(:external_key_uri)
         end
       end
@@ -1376,6 +1516,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crypto_keys = args[:crypto_keys] if args.key?(:crypto_keys)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response message for KeyManagementService.ListEkmConnections.
+      class ListEkmConnectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of EkmConnections.
+        # Corresponds to the JSON property `ekmConnections`
+        # @return [Array<Google::Apis::CloudkmsV1::EkmConnection>]
+        attr_accessor :ekm_connections
+      
+        # A token to retrieve next page of results. Pass this value in
+        # ListEkmConnectionsRequest.page_token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The total number of EkmConnections that matched the query.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ekm_connections = args[:ekm_connections] if args.key?(:ekm_connections)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @total_size = args[:total_size] if args.key?(:total_size)
         end
@@ -1933,6 +2105,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A ServiceResolver represents an EKM replica that can be reached within an
+      # EkmConnection.
+      class ServiceResolver
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The filter applied to the endpoints of the resolved service. If no
+        # filter is specified, all endpoints will be considered. An endpoint will be
+        # chosen arbitrarily from the filtered list for each request. For endpoint
+        # filter syntax and examples, see https://cloud.google.com/service-directory/
+        # docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        # Corresponds to the JSON property `endpointFilter`
+        # @return [String]
+        attr_accessor :endpoint_filter
+      
+        # Required. The hostname of the EKM replica used at TLS and HTTP layers.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Required. A list of leaf server certificates used to authenticate HTTPS
+        # connections to the EKM replica.
+        # Corresponds to the JSON property `serverCertificates`
+        # @return [Array<Google::Apis::CloudkmsV1::Certificate>]
+        attr_accessor :server_certificates
+      
+        # Required. The resource name of the Service Directory service pointing to an
+        # EKM replica, in the format `projects/*/locations/*/namespaces/*/services/*`.
+        # Corresponds to the JSON property `serviceDirectoryService`
+        # @return [String]
+        attr_accessor :service_directory_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_filter = args[:endpoint_filter] if args.key?(:endpoint_filter)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @server_certificates = args[:server_certificates] if args.key?(:server_certificates)
+          @service_directory_service = args[:service_directory_service] if args.key?(:service_directory_service)
         end
       end
       

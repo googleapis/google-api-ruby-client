@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Certificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CertificateChains
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,12 @@ module Google
       end
       
       class Digest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EkmConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListEkmConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListImportJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +269,12 @@ module Google
       end
       
       class RestoreCryptoKeyVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceResolver
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -354,6 +378,21 @@ module Google
         end
       end
       
+      class Certificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issuer, as: 'issuer'
+          property :not_after_time, as: 'notAfterTime'
+          property :not_before_time, as: 'notBeforeTime'
+          property :parsed, as: 'parsed'
+          property :raw_der, :base64 => true, as: 'rawDer'
+          property :serial_number, as: 'serialNumber'
+          property :sha256_fingerprint, as: 'sha256Fingerprint'
+          property :subject, as: 'subject'
+          collection :subject_alternative_dns_names, as: 'subjectAlternativeDnsNames'
+        end
+      end
+      
       class CertificateChains
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -367,6 +406,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :crypto_key_backend, as: 'cryptoKeyBackend'
           property :destroy_scheduled_duration, as: 'destroyScheduledDuration'
           property :import_only, as: 'importOnly'
           hash :labels, as: 'labels'
@@ -446,6 +486,17 @@ module Google
         end
       end
       
+      class EkmConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          collection :service_resolvers, as: 'serviceResolvers', class: Google::Apis::CloudkmsV1::ServiceResolver, decorator: Google::Apis::CloudkmsV1::ServiceResolver::Representation
+      
+        end
+      end
+      
       class EncryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -481,6 +532,7 @@ module Google
       class ExternalProtectionLevelOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ekm_connection_key_path, as: 'ekmConnectionKeyPath'
           property :external_key_uri, as: 'externalKeyUri'
         end
       end
@@ -561,6 +613,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :crypto_keys, as: 'cryptoKeys', class: Google::Apis::CloudkmsV1::CryptoKey, decorator: Google::Apis::CloudkmsV1::CryptoKey::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class ListEkmConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ekm_connections, as: 'ekmConnections', class: Google::Apis::CloudkmsV1::EkmConnection, decorator: Google::Apis::CloudkmsV1::EkmConnection::Representation
       
           property :next_page_token, as: 'nextPageToken'
           property :total_size, as: 'totalSize'
@@ -682,6 +744,17 @@ module Google
       class RestoreCryptoKeyVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ServiceResolver
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint_filter, as: 'endpointFilter'
+          property :hostname, as: 'hostname'
+          collection :server_certificates, as: 'serverCertificates', class: Google::Apis::CloudkmsV1::Certificate, decorator: Google::Apis::CloudkmsV1::Certificate::Representation
+      
+          property :service_directory_service, as: 'serviceDirectoryService'
         end
       end
       
