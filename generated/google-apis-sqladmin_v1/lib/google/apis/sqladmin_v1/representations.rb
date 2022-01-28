@@ -648,6 +648,7 @@ module Google
       class CloneContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_ip_range, as: 'allocatedIpRange'
           property :bin_log_coordinates, as: 'binLogCoordinates', class: Google::Apis::SqladminV1::BinLogCoordinates, decorator: Google::Apis::SqladminV1::BinLogCoordinates::Representation
       
           property :destination_instance_name, as: 'destinationInstanceName'
