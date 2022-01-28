@@ -2868,8 +2868,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_display_audience_size, :numeric_string => true, as: 'activeDisplayAudienceSize'
+          property :app_id, as: 'appId'
           property :audience_source, as: 'audienceSource'
           property :audience_type, as: 'audienceType'
+          property :contact_info_list, as: 'contactInfoList', class: Google::Apis::DisplayvideoV1::ContactInfoList, decorator: Google::Apis::DisplayvideoV1::ContactInfoList::Representation
+      
           property :description, as: 'description'
           property :display_audience_size, :numeric_string => true, as: 'displayAudienceSize'
           property :display_desktop_audience_size, :numeric_string => true, as: 'displayDesktopAudienceSize'
@@ -2880,6 +2883,8 @@ module Google
           property :first_and_third_party_audience_type, as: 'firstAndThirdPartyAudienceType'
           property :gmail_audience_size, :numeric_string => true, as: 'gmailAudienceSize'
           property :membership_duration_days, :numeric_string => true, as: 'membershipDurationDays'
+          property :mobile_device_id_list, as: 'mobileDeviceIdList', class: Google::Apis::DisplayvideoV1::MobileDeviceIdList, decorator: Google::Apis::DisplayvideoV1::MobileDeviceIdList::Representation
+      
           property :name, as: 'name'
           property :youtube_audience_size, :numeric_string => true, as: 'youtubeAudienceSize'
         end

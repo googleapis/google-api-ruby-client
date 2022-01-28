@@ -715,8 +715,8 @@ module Google
         # the details field of an AssignedTargetingOption when targeting_type is `
         # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
         # except for excluded_first_and_third_party_audience_group and
-        # excluded_google_audience_group, of which COMPLEMENT is UNION'ed with other
-        # groups.
+        # excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION
+        # with other groups.
         # Corresponds to the JSON property `audienceGroupDetails`
         # @return [Google::Apis::DisplayvideoV1::AudienceGroupAssignedTargetingOptionDetails]
         attr_accessor :audience_group_details
@@ -1104,8 +1104,8 @@ module Google
       # the details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
       # except for excluded_first_and_third_party_audience_group and
-      # excluded_google_audience_group, of which COMPLEMENT is UNION'ed with other
-      # groups.
+      # excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION
+      # with other groups.
       class AudienceGroupAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -4616,6 +4616,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :active_display_audience_size
       
+        # The app_id matches with the type of the mobile_device_ids being uploaded. Only
+        # applicable to audience_type `CUSTOMER_MATCH_DEVICE_ID`
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
         # Output only. The source of the audience.
         # Corresponds to the JSON property `audienceSource`
         # @return [String]
@@ -4625,6 +4631,12 @@ module Google
         # Corresponds to the JSON property `audienceType`
         # @return [String]
         attr_accessor :audience_type
+      
+        # Wrapper message for a list of contact information defining Customer Match
+        # audience members.
+        # Corresponds to the JSON property `contactInfoList`
+        # @return [Google::Apis::DisplayvideoV1::ContactInfoList]
+        attr_accessor :contact_info_list
       
         # The user-provided description of the audience. Only applicable to first party
         # audiences.
@@ -4695,11 +4707,17 @@ module Google
         # qualifying event. If the audience has no expiration, the value of this field
         # should be set 10000. Otherwise, the set value must be greater than 0 and less
         # than or equal to 540. Only applicable to first party audiences. This field is
-        # required for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `
-        # CUSTOMER_MATCH_DEVICE_ID`
+        # required if one of the following audience_type is used: * `
+        # CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
         # Corresponds to the JSON property `membershipDurationDays`
         # @return [Fixnum]
         attr_accessor :membership_duration_days
+      
+        # Wrapper message for a list of mobile device IDs defining Customer Match
+        # audience members.
+        # Corresponds to the JSON property `mobileDeviceIdList`
+        # @return [Google::Apis::DisplayvideoV1::MobileDeviceIdList]
+        attr_accessor :mobile_device_id_list
       
         # Output only. The resource name of the first and third party audience.
         # Corresponds to the JSON property `name`
@@ -4721,8 +4739,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @active_display_audience_size = args[:active_display_audience_size] if args.key?(:active_display_audience_size)
+          @app_id = args[:app_id] if args.key?(:app_id)
           @audience_source = args[:audience_source] if args.key?(:audience_source)
           @audience_type = args[:audience_type] if args.key?(:audience_type)
+          @contact_info_list = args[:contact_info_list] if args.key?(:contact_info_list)
           @description = args[:description] if args.key?(:description)
           @display_audience_size = args[:display_audience_size] if args.key?(:display_audience_size)
           @display_desktop_audience_size = args[:display_desktop_audience_size] if args.key?(:display_desktop_audience_size)
@@ -4733,6 +4753,7 @@ module Google
           @first_and_third_party_audience_type = args[:first_and_third_party_audience_type] if args.key?(:first_and_third_party_audience_type)
           @gmail_audience_size = args[:gmail_audience_size] if args.key?(:gmail_audience_size)
           @membership_duration_days = args[:membership_duration_days] if args.key?(:membership_duration_days)
+          @mobile_device_id_list = args[:mobile_device_id_list] if args.key?(:mobile_device_id_list)
           @name = args[:name] if args.key?(:name)
           @youtube_audience_size = args[:youtube_audience_size] if args.key?(:youtube_audience_size)
         end
