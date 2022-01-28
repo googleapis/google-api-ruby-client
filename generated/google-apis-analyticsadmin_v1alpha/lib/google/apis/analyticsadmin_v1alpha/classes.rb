@@ -151,6 +151,60 @@ module Google
         end
       end
       
+      # A resource message representing a Google Analytics Android app stream.
+      class GoogleAnalyticsAdminV1alphaAndroidAppDataStream
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when this stream was originally created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Human-readable display name for the Data Stream. The max allowed display name
+        # length is 255 UTF-16 code units.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. ID of the corresponding Android app in Firebase, if any. This ID
+        # can change if the Android app is deleted and recreated.
+        # Corresponds to the JSON property `firebaseAppId`
+        # @return [String]
+        attr_accessor :firebase_app_id
+      
+        # Output only. Resource name of this Data Stream. Format: properties/`
+        # property_id`/androidAppDataStreams/`stream_id` Example: "properties/1000/
+        # androidAppDataStreams/2000"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The package name for the app being measured. Example: "com.example.
+        # myandroidapp"
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Output only. Time when stream payload fields were last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @firebase_app_id = args[:firebase_app_id] if args.key?(:firebase_app_id)
+          @name = args[:name] if args.key?(:name)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Request message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.
       class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
         include Google::Apis::Core::Hashable
@@ -1416,6 +1470,60 @@ module Google
         end
       end
       
+      # A resource message representing a Google Analytics IOS app stream.
+      class GoogleAnalyticsAdminV1alphaIosAppDataStream
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The Apple App Store Bundle ID for the app Example: "com.
+        # example.myiosapp"
+        # Corresponds to the JSON property `bundleId`
+        # @return [String]
+        attr_accessor :bundle_id
+      
+        # Output only. Time when this stream was originally created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Human-readable display name for the Data Stream. The max allowed display name
+        # length is 255 UTF-16 code units.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. ID of the corresponding iOS app in Firebase, if any. This ID can
+        # change if the iOS app is deleted and recreated.
+        # Corresponds to the JSON property `firebaseAppId`
+        # @return [String]
+        attr_accessor :firebase_app_id
+      
+        # Output only. Resource name of this Data Stream. Format: properties/`
+        # property_id`/iosAppDataStreams/`stream_id` Example: "properties/1000/
+        # iosAppDataStreams/2000"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Time when stream payload fields were last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @firebase_app_id = args[:firebase_app_id] if args.key?(:firebase_app_id)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Status information for a link proposal.
       class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
         include Google::Apis::Core::Hashable
@@ -1495,6 +1603,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accounts = args[:accounts] if args.key?(:accounts)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Request message for ListAndroidDataStreams RPC.
+      class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Results that matched the filter criteria and were accessible to the caller.
+        # Corresponds to the JSON property `androidAppDataStreams`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream>]
+        attr_accessor :android_app_data_streams
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @android_app_data_streams = args[:android_app_data_streams] if args.key?(:android_app_data_streams)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1708,6 +1842,32 @@ module Google
         end
       end
       
+      # Request message for ListIosAppDataStreams RPC.
+      class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Results that matched the filter criteria and were accessible to the caller.
+        # Corresponds to the JSON property `iosAppDataStreams`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream>]
+        attr_accessor :ios_app_data_streams
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ios_app_data_streams = args[:ios_app_data_streams] if args.key?(:ios_app_data_streams)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListMeasurementProtocolSecret RPC
       class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
         include Google::Apis::Core::Hashable
@@ -1783,6 +1943,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @user_links = args[:user_links] if args.key?(:user_links)
+        end
+      end
+      
+      # Request message for ListWebDataStreams RPC.
+      class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Results that matched the filter criteria and were accessible to the caller.
+        # Corresponds to the JSON property `webDataStreams`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream>]
+        attr_accessor :web_data_streams
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @web_data_streams = args[:web_data_streams] if args.key?(:web_data_streams)
         end
       end
       
@@ -2140,6 +2326,67 @@ module Google
           @direct_roles = args[:direct_roles] if args.key?(:direct_roles)
           @email_address = args[:email_address] if args.key?(:email_address)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A resource message representing a Google Analytics web stream.
+      class GoogleAnalyticsAdminV1alphaWebDataStream
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when this stream was originally created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Immutable. Domain name of the web app being measured, or empty. Example: "http:
+        # //www.google.com", "https://www.google.com"
+        # Corresponds to the JSON property `defaultUri`
+        # @return [String]
+        attr_accessor :default_uri
+      
+        # Required. Human-readable display name for the Data Stream. The max allowed
+        # display name length is 255 UTF-16 code units.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. ID of the corresponding web app in Firebase, if any. This ID can
+        # change if the web app is deleted and recreated.
+        # Corresponds to the JSON property `firebaseAppId`
+        # @return [String]
+        attr_accessor :firebase_app_id
+      
+        # Output only. Analytics "Measurement ID", without the "G-" prefix. Example: "G-
+        # 1A2BCD345E" would just be "1A2BCD345E"
+        # Corresponds to the JSON property `measurementId`
+        # @return [String]
+        attr_accessor :measurement_id
+      
+        # Output only. Resource name of this Data Stream. Format: properties/`
+        # property_id`/webDataStreams/`stream_id` Example: "properties/1000/
+        # webDataStreams/2000"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Time when stream payload fields were last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_uri = args[:default_uri] if args.key?(:default_uri)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @firebase_app_id = args[:firebase_app_id] if args.key?(:firebase_app_id)
+          @measurement_id = args[:measurement_id] if args.key?(:measurement_id)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

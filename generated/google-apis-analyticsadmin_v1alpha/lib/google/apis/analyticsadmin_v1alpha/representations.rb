@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaAndroidAppDataStream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaIosAppDataStream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +275,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListAccountsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +353,12 @@ module Google
       end
       
       class GoogleAnalyticsAdminV1alphaListUserLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAnalyticsAdminV1alphaWebDataStream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -427,6 +463,18 @@ module Google
       class GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaAndroidAppDataStream
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :firebase_app_id, as: 'firebaseAppId'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -777,6 +825,18 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaIosAppDataStream
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_id, as: 'bundleId'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :firebase_app_id, as: 'firebaseAppId'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -799,6 +859,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accounts, as: 'accounts', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :android_app_data_streams, as: 'androidAppDataStreams', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAndroidAppDataStream::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -876,6 +945,15 @@ module Google
         end
       end
       
+      class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ios_app_data_streams, as: 'iosAppDataStreams', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaIosAppDataStream::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -899,6 +977,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :user_links, as: 'userLinks', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserLink::Representation
+      
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :web_data_streams, as: 'webDataStreams', class: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream, decorator: Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaWebDataStream::Representation
       
         end
       end
@@ -991,6 +1078,19 @@ module Google
           collection :direct_roles, as: 'directRoles'
           property :email_address, as: 'emailAddress'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleAnalyticsAdminV1alphaWebDataStream
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :default_uri, as: 'defaultUri'
+          property :display_name, as: 'displayName'
+          property :firebase_app_id, as: 'firebaseAppId'
+          property :measurement_id, as: 'measurementId'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
