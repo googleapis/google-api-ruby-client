@@ -158,6 +158,74 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new EkmConnection in a given Project and Location.
+        # @param [String] parent
+        #   Required. The resource name of the location associated with the EkmConnection,
+        #   in the format `projects/*/locations/*`.
+        # @param [Google::Apis::CloudkmsV1::EkmConnection] ekm_connection_object
+        # @param [String] ekm_connection_id
+        #   Required. It must be unique within a location and match the regular expression
+        #   `[a-zA-Z0-9_-]`1,63``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::EkmConnection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::EkmConnection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_ekm_connection(parent, ekm_connection_object = nil, ekm_connection_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/ekmConnections', options)
+          command.request_representation = Google::Apis::CloudkmsV1::EkmConnection::Representation
+          command.request_object = ekm_connection_object
+          command.response_representation = Google::Apis::CloudkmsV1::EkmConnection::Representation
+          command.response_class = Google::Apis::CloudkmsV1::EkmConnection
+          command.params['parent'] = parent unless parent.nil?
+          command.query['ekmConnectionId'] = ekm_connection_id unless ekm_connection_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns metadata for a given EkmConnection.
+        # @param [String] name
+        #   Required. The name of the EkmConnection to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::EkmConnection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::EkmConnection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_ekm_connection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::EkmConnection::Representation
+          command.response_class = Google::Apis::CloudkmsV1::EkmConnection
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource. Returns an empty policy if the
         # resource exists and does not have a policy set.
         # @param [String] resource
@@ -197,6 +265,95 @@ module Google
           command.response_class = Google::Apis::CloudkmsV1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists EkmConnections.
+        # @param [String] parent
+        #   Required. The resource name of the location associated with the EkmConnections
+        #   to list, in the format `projects/*/locations/*`.
+        # @param [String] filter
+        #   Optional. Only include resources that match the filter in the response. For
+        #   more information, see [Sorting and filtering list results](https://cloud.
+        #   google.com/kms/docs/sorting-and-filtering).
+        # @param [String] order_by
+        #   Optional. Specify how the results should be sorted. If not specified, the
+        #   results will be sorted in the default order. For more information, see [
+        #   Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
+        #   and-filtering).
+        # @param [Fixnum] page_size
+        #   Optional. Optional limit on the number of EkmConnections to include in the
+        #   response. Further EkmConnections can subsequently be obtained by including the
+        #   ListEkmConnectionsResponse.next_page_token in a subsequent request. If
+        #   unspecified, the server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. Optional pagination token, returned earlier via
+        #   ListEkmConnectionsResponse.next_page_token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ListEkmConnectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ListEkmConnectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_ekm_connections(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/ekmConnections', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ListEkmConnectionsResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ListEkmConnectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an EkmConnection's metadata.
+        # @param [String] name
+        #   Output only. The resource name for the EkmConnection in the format `projects/*/
+        #   locations/*/ekmConnections/*`.
+        # @param [Google::Apis::CloudkmsV1::EkmConnection] ekm_connection_object
+        # @param [String] update_mask
+        #   Required. List of fields to be updated in this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::EkmConnection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::EkmConnection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_ekm_connection(name, ekm_connection_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudkmsV1::EkmConnection::Representation
+          command.request_object = ekm_connection_object
+          command.response_representation = Google::Apis::CloudkmsV1::EkmConnection::Representation
+          command.response_class = Google::Apis::CloudkmsV1::EkmConnection
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
