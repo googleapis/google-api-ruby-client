@@ -1272,7 +1272,7 @@ module Google
         #   to represent your account's `customerId`. The `customerId` is also returned as
         #   part of the [Users](/admin-sdk/directory/v1/reference/users)
         # @param [String] domain
-        #   The domain name. Use this field to get fields from only one domain. To return
+        #   The domain name. Use this field to get groups from only one domain. To return
         #   all domains for a customer account, use the `customer` query parameter instead.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Max allowed value is 200.
@@ -3682,7 +3682,7 @@ module Google
         #   /admin-sdk/directory/v1/reference/users). Either the `customer` or the `domain`
         #   parameter must be provided.
         # @param [String] domain
-        #   The domain name. Use this field to get fields from only one domain. To return
+        #   The domain name. Use this field to get groups from only one domain. To return
         #   all domains for a customer account, use the `customer` query parameter instead.
         #   Either the `customer` or the `domain` parameter must be provided.
         # @param [String] event
