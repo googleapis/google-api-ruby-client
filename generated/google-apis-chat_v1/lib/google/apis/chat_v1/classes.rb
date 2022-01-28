@@ -2409,8 +2409,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # State of the membership. Required for `CreateMembership`. Read-only for other
-        # usage.
+        # State of the membership. Output only.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
