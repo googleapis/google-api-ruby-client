@@ -27,12 +27,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The time when this access control entry expires in [RFC 3339](https://tools.
-        # ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        # ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
         attr_accessor :expiration_time
       
-        # This is always **sql#aclEntry**.
+        # This is always `sql#aclEntry`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -114,7 +114,7 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # This is always **sql#backupConfiguration**.
+        # This is always `sql#backupConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -137,7 +137,7 @@ module Google
         alias_method :replication_log_archiving_enabled?, :replication_log_archiving_enabled
       
         # Start time for the daily backup configuration in UTC timezone in the 24 hour
-        # format - **HH:MM**.
+        # format - `HH:MM`.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -175,7 +175,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :backup_id
       
-        # This is always **sql#backupContext**.
+        # This is always `sql#backupContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -244,13 +244,13 @@ module Google
         attr_accessor :disk_encryption_status
       
         # The time the backup operation completed in UTC timezone in [RFC 3339](https://
-        # tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        # tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
         # The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.
-        # org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        # org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `enqueuedTime`
         # @return [String]
         attr_accessor :enqueued_time
@@ -271,7 +271,7 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # This is always **sql#backupRun**.
+        # This is always `sql#backupRun`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -287,8 +287,8 @@ module Google
         attr_accessor :self_link
       
         # The time the backup operation actually started in UTC timezone in [RFC 3339](
-        # https://tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.
-        # 094Z**.
+        # https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.
+        # 094Z`.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -305,8 +305,8 @@ module Google
         attr_accessor :type
       
         # The start time of the backup window during which this the backup was attempted
-        # in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example **2012-
-        # 11-15T16:19:00.094Z**.
+        # in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-
+        # 11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `windowStartTime`
         # @return [String]
         attr_accessor :window_start_time
@@ -345,7 +345,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::BackupRun>]
         attr_accessor :items
       
-        # This is always **sql#backupRunsList**.
+        # This is always `sql#backupRunsList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -382,7 +382,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :bin_log_position
       
-        # This is always **sql#binLogCoordinates**.
+        # This is always `sql#binLogCoordinates`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -403,6 +403,16 @@ module Google
       class CloneContext
         include Google::Apis::Core::Hashable
       
+        # The name of the allocated ip range for the private ip CloudSQL instance. For
+        # example: "google-managed-services-default". If set, the cloned instance ip
+        # will be created in the allocated range. The range name must comply with [RFC
+        # 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-
+        # 63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
+        # Reserved for future use.
+        # Corresponds to the JSON property `allocatedIpRange`
+        # @return [String]
+        attr_accessor :allocated_ip_range
+      
         # Binary log coordinates.
         # Corresponds to the JSON property `binLogCoordinates`
         # @return [Google::Apis::SqladminV1::BinLogCoordinates]
@@ -413,7 +423,7 @@ module Google
         # @return [String]
         attr_accessor :destination_instance_name
       
-        # This is always **sql#cloneContext**.
+        # This is always `sql#cloneContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -435,6 +445,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allocated_ip_range = args[:allocated_ip_range] if args.key?(:allocated_ip_range)
           @bin_log_coordinates = args[:bin_log_coordinates] if args.key?(:bin_log_coordinates)
           @destination_instance_name = args[:destination_instance_name] if args.key?(:destination_instance_name)
           @kind = args[:kind] if args.key?(:kind)
@@ -447,19 +458,21 @@ module Google
       class ConnectSettings
         include Google::Apis::Core::Hashable
       
-        # **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server
-        # that is not managed by Google. This property is read-only; use the **tier**
-        # property in the **settings** object to determine the database type.
+        # `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that
+        # is not managed by Google. This property is read-only; use the `tier` property
+        # in the `settings` object to determine the database type.
         # Corresponds to the JSON property `backendType`
         # @return [String]
         attr_accessor :backend_type
       
-        # The database engine type and version. The **databaseVersion** field cannot be
-        # changed after instance creation. MySQL instances: **MYSQL_8_0**, **MYSQL_5_7**
-        # (default), or **MYSQL_5_6**. PostgreSQL instances: **POSTGRES_9_6**, **
-        # POSTGRES_10**, **POSTGRES_11** or **POSTGRES_12** (default). SQL Server
-        # instances: **SQLSERVER_2017_STANDARD** (default), **SQLSERVER_2017_ENTERPRISE**
-        # , **SQLSERVER_2017_EXPRESS**, or **SQLSERVER_2017_WEB**.
+        # The database engine type and version. The `databaseVersion` field cannot be
+        # changed after instance creation. MySQL instances: `MYSQL_8_0`, `MYSQL_5_7` (
+        # default), or `MYSQL_5_6`. PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`,
+        # `POSTGRES_11`, `POSTGRES_12` (default), `POSTGRES_13`, or `POSTGRES_14`. SQL
+        # Server instances: `SQLSERVER_2017_STANDARD` (default), `
+        # SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `
+        # SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`
+        # , or `SQLSERVER_2019_WEB`.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
         attr_accessor :database_version
@@ -474,8 +487,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The cloud region for the instance. e.g. **us-central1**, **europe-west1**. The
-        # region cannot be changed after instance creation.
+        # The cloud region for the instance. For example, `us-central1`, `europe-west1`.
+        # The region cannot be changed after instance creation.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -524,7 +537,7 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # This is always **sql#database**.
+        # This is always `sql#database`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -581,7 +594,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The value of the flag. Booleans are set to **on** for true and **off** for
+        # The value of the flag. Boolean flags are set to `on` for true and `off` for
         # false. This field must be omitted if the flag doesn't take a value.
         # Corresponds to the JSON property `value`
         # @return [String]
@@ -602,10 +615,9 @@ module Google
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
-        # The backend type. **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A
+        # The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A
         # database server that is not managed by Google. This property is read-only; use
-        # the **tier** property in the **settings** object to determine the database
-        # type.
+        # the `tier` property in the `settings` object to determine the database type.
         # Corresponds to the JSON property `backendType`
         # @return [String]
         attr_accessor :backend_type
@@ -616,7 +628,7 @@ module Google
         attr_accessor :connection_name
       
         # Output only. The time when the instance was created in [RFC 3339](https://
-        # tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        # tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -631,12 +643,12 @@ module Google
         attr_accessor :current_disk_size
       
         # Output only. Stores the current database version running on the instance
-        # including minor version such as **MYSQL_8_0_18**.
+        # including minor version such as `MYSQL_8_0_18`.
         # Corresponds to the JSON property `databaseInstalledVersion`
         # @return [String]
         attr_accessor :database_installed_version
       
-        # The database engine type and version. The **databaseVersion** field cannot be
+        # The database engine type and version. The `databaseVersion` field cannot be
         # changed after instance creation.
         # Corresponds to the JSON property `databaseVersion`
         # @return [String]
@@ -653,7 +665,7 @@ module Google
         attr_accessor :disk_encryption_status
       
         # This field is deprecated and will be removed from a future version of the API.
-        # Use the **settings.settingsVersion** field instead.
+        # Use the `settings.settingsVersion` field instead.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -687,7 +699,7 @@ module Google
         # @return [String]
         attr_accessor :ipv6_address
       
-        # This is always **sql#instance**.
+        # This is always `sql#instance`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -723,10 +735,10 @@ module Google
         # @return [String]
         attr_accessor :project
       
-        # The geographical region. Can be: * **us-central** (**FIRST_GEN** instances
-        # only) * **us-central1** (**SECOND_GEN** instances only) * **asia-east1** or **
-        # europe-west1**. Defaults to **us-central** or **us-central1** depending on the
-        # instance type. The region cannot be changed after instance creation.
+        # The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) *
+        # `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`.
+        # Defaults to `us-central` or `us-central1` depending on the instance type. The
+        # region cannot be changed after instance creation.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -775,7 +787,7 @@ module Google
         # @return [Google::Apis::SqladminV1::SslCert]
         attr_accessor :server_ca_cert
       
-        # The service account email address assigned to the instance. This property is
+        # The service account email address assigned to the instance.\This property is
         # read-only.
         # Corresponds to the JSON property `serviceAccountEmailAddress`
         # @return [String]
@@ -878,7 +890,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::Database>]
         attr_accessor :items
       
-        # This is always **sql#databasesList**.
+        # This is always `sql#databasesList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -898,7 +910,7 @@ module Google
       class DemoteMasterConfiguration
         include Google::Apis::Core::Hashable
       
-        # This is always **sql#demoteMasterConfiguration**.
+        # This is always `sql#demoteMasterConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -923,7 +935,7 @@ module Google
       class DemoteMasterContext
         include Google::Apis::Core::Hashable
       
-        # This is always **sql#demoteMasterContext**.
+        # This is always `sql#demoteMasterContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -945,12 +957,12 @@ module Google
         attr_accessor :skip_replication_setup
         alias_method :skip_replication_setup?, :skip_replication_setup
       
-        # Verify GTID consistency for demote operation. Default value: **True**. Setting
-        # this flag to false enables you to bypass GTID consistency check between on-
-        # premises primary instance and Cloud SQL instance during the demotion operation
-        # but also exposes you to the risk of future replication failures. Change the
-        # value only if you know the reason for the GTID divergence and are confident
-        # that doing so will not cause any replication issues.
+        # Verify the GTID consistency for demote operation. Default value: `True`.
+        # Setting this flag to `false` enables you to bypass the GTID consistency check
+        # between on-premises primary instance and Cloud SQL instance during the
+        # demotion operation but also exposes you to the risk of future replication
+        # failures. Change the value only if you know the reason for the GTID divergence
+        # and are confident that doing so will not cause any replication issues.
         # Corresponds to the JSON property `verifyGtidConsistency`
         # @return [Boolean]
         attr_accessor :verify_gtid_consistency
@@ -991,7 +1003,7 @@ module Google
         # @return [String]
         attr_accessor :client_key
       
-        # This is always **sql#demoteMasterMysqlReplicaConfiguration**.
+        # This is always `sql#demoteMasterMysqlReplicaConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1064,7 +1076,7 @@ module Google
       class DiskEncryptionConfiguration
         include Google::Apis::Core::Hashable
       
-        # This is always **sql#diskEncryptionConfiguration**.
+        # This is always `sql#diskEncryptionConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1089,7 +1101,7 @@ module Google
       class DiskEncryptionStatus
         include Google::Apis::Core::Hashable
       
-        # This is always **sql#diskEncryptionStatus**.
+        # This is always `sql#diskEncryptionStatus`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1114,20 +1126,20 @@ module Google
       class ExportContext
         include Google::Apis::Core::Hashable
       
-        # Options for exporting data as CSV. **MySQL** and **PostgreSQL** instances only.
+        # Options for exporting data as CSV. `MySQL` and `PostgreSQL` instances only.
         # Corresponds to the JSON property `csvExportOptions`
         # @return [Google::Apis::SqladminV1::ExportContext::CsvExportOptions]
         attr_accessor :csv_export_options
       
-        # Databases to be exported. **MySQL instances:** If **fileType** is **SQL** and
-        # no database is specified, all databases are exported, except for the **mysql**
-        # system database. If **fileType** is **CSV**, you can specify one database,
-        # either by using this property or by using the **csvExportOptions.selectQuery**
-        # property, which takes precedence over this property. **PostgreSQL instances:**
-        # You must specify one database to be exported. If **fileType** is **CSV**, this
-        # database must match the one specified in the **csvExportOptions.selectQuery**
-        # property. **SQL Server instances:** You must specify one database to be
-        # exported, and the **fileType** must be **BAK**.
+        # Databases to be exported. `MySQL instances:` If `fileType` is `SQL` and no
+        # database is specified, all databases are exported, except for the `mysql`
+        # system database. If `fileType` is `CSV`, you can specify one database, either
+        # by using this property or by using the `csvExportOptions.selectQuery` property,
+        # which takes precedence over this property. `PostgreSQL instances:` You must
+        # specify one database to be exported. If `fileType` is `CSV`, this database
+        # must match the one specified in the `csvExportOptions.selectQuery` property. `
+        # SQL Server instances:` You must specify one database to be exported, and the `
+        # fileType` must be `BAK`.
         # Corresponds to the JSON property `databases`
         # @return [Array<String>]
         attr_accessor :databases
@@ -1137,7 +1149,7 @@ module Google
         # @return [String]
         attr_accessor :file_type
       
-        # This is always **sql#exportContext**.
+        # This is always `sql#exportContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1154,9 +1166,9 @@ module Google
         attr_accessor :sql_export_options
       
         # The path to the file in Google Cloud Storage where the export will be stored.
-        # The URI is in the form **gs://bucketName/fileName**. If the file already
-        # exists, the request succeeds, but the operation fails. If **fileType** is **
-        # SQL** and the filename ends with .gz, the contents are compressed.
+        # The URI is in the form `gs://bucketName/fileName`. If the file already exists,
+        # the request succeeds, but the operation fails. If `fileType` is `SQL` and the
+        # filename ends with .gz, the contents are compressed.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1176,7 +1188,7 @@ module Google
           @uri = args[:uri] if args.key?(:uri)
         end
         
-        # Options for exporting data as CSV. **MySQL** and **PostgreSQL** instances only.
+        # Options for exporting data as CSV. `MySQL` and `PostgreSQL` instances only.
         class CsvExportOptions
           include Google::Apis::Core::Hashable
         
@@ -1259,11 +1271,11 @@ module Google
           class MysqlExportOptions
             include Google::Apis::Core::Hashable
           
-            # Option to include SQL statement required to set up replication. If set to **1**
-            # , the dump file includes a CHANGE MASTER TO statement with the binary log
-            # coordinates, and --set-gtid-purged is set to ON. If set to **2**, the CHANGE
+            # Option to include SQL statement required to set up replication. If set to `1`,
+            # the dump file includes a CHANGE MASTER TO statement with the binary log
+            # coordinates, and --set-gtid-purged is set to ON. If set to `2`, the CHANGE
             # MASTER TO statement is written as a SQL comment and has no effect. If set to
-            # any value other than **1**, --set-gtid-purged is set to OFF.
+            # any value other than `1`, --set-gtid-purged is set to OFF.
             # Corresponds to the JSON property `masterData`
             # @return [Fixnum]
             attr_accessor :master_data
@@ -1284,7 +1296,7 @@ module Google
       class FailoverContext
         include Google::Apis::Core::Hashable
       
-        # This is always **sql#failoverContext**.
+        # This is always `sql#failoverContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1316,13 +1328,18 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :allowed_int_values
       
-        # For **STRING** flags, a list of strings that the value can be set to.
+        # For `STRING` flags, a list of strings that the value can be set to.
         # Corresponds to the JSON property `allowedStringValues`
         # @return [Array<String>]
         attr_accessor :allowed_string_values
       
-        # The database version this flag applies to. Can be **MYSQL_8_0**, **MYSQL_5_6**,
-        # or **MYSQL_5_7**.
+        # The database version this flag applies to. Can be MySQL instances: `MYSQL_8_0`,
+        # `MYSQL_8_0_18`, `MYSQL_8_0_26`, `MYSQL_5_7`, or `MYSQL_5_6`. PostgreSQL
+        # instances: `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11` or `POSTGRES_12`. SQL
+        # Server instances: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `
+        # SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_2019_STANDARD`, `
+        # SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`, or `SQLSERVER_2019_WEB`.
+        # See [the complete list](/sql/docs/mysql/admin-api/rest/v1/SqlDatabaseVersion).
         # Corresponds to the JSON property `appliesTo`
         # @return [Array<String>]
         attr_accessor :applies_to
@@ -1333,23 +1350,23 @@ module Google
         attr_accessor :in_beta
         alias_method :in_beta?, :in_beta
       
-        # This is always **sql#flag**.
+        # This is always `sql#flag`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # For **INTEGER** flags, the maximum allowed value.
+        # For `INTEGER` flags, the maximum allowed value.
         # Corresponds to the JSON property `maxValue`
         # @return [Fixnum]
         attr_accessor :max_value
       
-        # For **INTEGER** flags, the minimum allowed value.
+        # For `INTEGER` flags, the minimum allowed value.
         # Corresponds to the JSON property `minValue`
         # @return [Fixnum]
         attr_accessor :min_value
       
         # This is the name of the flag. Flag names always use underscores, not hyphens,
-        # for example: **max_allowed_packet**
+        # for example: `max_allowed_packet`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1361,9 +1378,9 @@ module Google
         attr_accessor :requires_restart
         alias_method :requires_restart?, :requires_restart
       
-        # The type of the flag. Flags are typed to being **BOOLEAN**, **STRING**, **
-        # INTEGER** or **NONE**. **NONE** is used for flags which do not take a value,
-        # such as **skip_grant_tables**.
+        # The type of the flag. Flags are typed to being `BOOLEAN`, `STRING`, `INTEGER`
+        # or `NONE`. `NONE` is used for flags that do not take a value, such as `
+        # skip_grant_tables`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1396,7 +1413,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::Flag>]
         attr_accessor :items
       
-        # This is always **sql#flagsList**.
+        # This is always `sql#flagsList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1482,16 +1499,16 @@ module Google
         # @return [Google::Apis::SqladminV1::ImportContext::CsvImportOptions]
         attr_accessor :csv_import_options
       
-        # The target database for the import. If **fileType** is **SQL**, this field is
+        # The target database for the import. If `fileType` is `SQL`, this field is
         # required only if the import file does not specify a database, and is
-        # overridden by any database specification in the import file. If **fileType**
-        # is **CSV**, one database must be specified.
+        # overridden by any database specification in the import file. If `fileType` is `
+        # CSV`, one database must be specified.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
       
-        # The file type for the specified uri. **SQL**: The file contains SQL statements.
-        # **CSV**: The file contains CSV data.
+        # The file type for the specified uri.\`SQL`: The file contains SQL statements. \
+        # `CSV`: The file contains CSV data.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
@@ -1501,15 +1518,15 @@ module Google
         # @return [String]
         attr_accessor :import_user
       
-        # This is always **sql#importContext**.
+        # This is always `sql#importContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Path to the import file in Cloud Storage, in the form **gs://bucketName/
-        # fileName**. Compressed gzip files (.gz) are supported when **fileType** is **
-        # SQL**. The instance must have write permissions to the bucket and read access
-        # to the file.
+        # Path to the import file in Cloud Storage, in the form `gs://bucketName/
+        # fileName`. Compressed gzip files (.gz) are supported when `fileType` is `SQL`.
+        # The instance must have write permissions to the bucket and read access to the
+        # file.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1551,8 +1568,8 @@ module Google
           class EncryptionOptions
             include Google::Apis::Core::Hashable
           
-            # Path to the Certificate (.cer) in Cloud Storage, in the form **gs://bucketName/
-            # fileName**. The instance must have write permissions to the bucket and read
+            # Path to the Certificate (.cer) in Cloud Storage, in the form `gs://bucketName/
+            # fileName`. The instance must have write permissions to the bucket and read
             # access to the file.
             # Corresponds to the JSON property `certPath`
             # @return [String]
@@ -1563,8 +1580,8 @@ module Google
             # @return [String]
             attr_accessor :pvk_password
           
-            # Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form **gs:/
-            # /bucketName/fileName**. The instance must have write permissions to the bucket
+            # Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form `gs://
+            # bucketName/fileName`. The instance must have write permissions to the bucket
             # and read access to the file.
             # Corresponds to the JSON property `pvkPath`
             # @return [String]
@@ -1825,7 +1842,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::DatabaseInstance>]
         attr_accessor :items
       
-        # This is always **sql#instancesList**.
+        # This is always `sql#instancesList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1868,7 +1885,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::SslCert>]
         attr_accessor :certs
       
-        # This is always **sql#instancesListServerCas**.
+        # This is always `sql#instancesListServerCas`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1958,7 +1975,7 @@ module Google
       
         # The list of external networks that are allowed to connect to the instance
         # using the IP. In 'CIDR' notation, also known as 'slash' notation (for example:
-        # **157.197.200.0/24**).
+        # `157.197.200.0/24`).
         # Corresponds to the JSON property `authorizedNetworks`
         # @return [Array<Google::Apis::SqladminV1::AclEntry>]
         attr_accessor :authorized_networks
@@ -1970,8 +1987,8 @@ module Google
         alias_method :ipv4_enabled?, :ipv4_enabled
       
         # The resource link for the VPC network from which the Cloud SQL instance is
-        # accessible for private IP. For example, **/projects/myProject/global/networks/
-        # default**. This setting can be updated, but it cannot be removed after it is
+        # accessible for private IP. For example, `/projects/myProject/global/networks/
+        # default`. This setting can be updated, but it cannot be removed after it is
         # set.
         # Corresponds to the JSON property `privateNetwork`
         # @return [String]
@@ -2007,16 +2024,16 @@ module Google
         attr_accessor :ip_address
       
         # The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/
-        # html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**. This field is
+        # html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. This field is
         # only available when the IP is scheduled to be retired.
         # Corresponds to the JSON property `timeToRetire`
         # @return [String]
         attr_accessor :time_to_retire
       
-        # The type of this IP address. A **PRIMARY** address is a public address that
-        # can accept incoming connections. A **PRIVATE** address is a private address
-        # that can accept incoming connections. An **OUTGOING** address is the source
-        # address of connections originating from the instance, if supported.
+        # The type of this IP address. A `PRIMARY` address is a public address that can
+        # accept incoming connections. A `PRIVATE` address is a private address that can
+        # accept incoming connections. An `OUTGOING` address is the source address of
+        # connections originating from the instance, if supported.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2045,7 +2062,7 @@ module Google
         # @return [String]
         attr_accessor :follow_gae_application
       
-        # This is always **sql#locationPreference**.
+        # This is always `sql#locationPreference`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2090,12 +2107,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :hour
       
-        # This is always **sql#maintenanceWindow**.
+        # This is always `sql#maintenanceWindow`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Maintenance timing setting: **canary** (Earlier) or **stable** (Later). [Learn
+        # Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn
         # more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-
         # timing-2ndgen).
         # Corresponds to the JSON property `updateTrack`
@@ -2149,7 +2166,7 @@ module Google
         # @return [String]
         attr_accessor :dump_file_path
       
-        # This is always **sql#mysqlReplicaConfiguration**.
+        # This is always `sql#mysqlReplicaConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2250,7 +2267,7 @@ module Google
         # @return [String]
         attr_accessor :host_port
       
-        # This is always **sql#onPremisesConfiguration**.
+        # This is always `sql#onPremisesConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2300,7 +2317,7 @@ module Google
         attr_accessor :backup_context
       
         # The time this operation finished in UTC timezone in [RFC 3339](https://tools.
-        # ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        # ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -2321,12 +2338,12 @@ module Google
         attr_accessor :import_context
       
         # The time this operation was enqueued in UTC timezone in [RFC 3339](https://
-        # tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        # tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
       
-        # This is always **sql#operation**.
+        # This is always `sql#operation`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2338,10 +2355,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The type of the operation. Valid values are: * **CREATE** * **DELETE** * **
-        # UPDATE** * **RESTART** * **IMPORT** * **EXPORT** * **BACKUP_VOLUME** * **
-        # RESTORE_VOLUME** * **CREATE_USER** * **DELETE_USER** * **CREATE_DATABASE** * **
-        # DELETE_DATABASE**
+        # The type of the operation. Valid values are: * `CREATE` * `DELETE` * `UPDATE` *
+        # `RESTART` * `IMPORT` * `EXPORT` * `BACKUP_VOLUME` * `RESTORE_VOLUME` * `
+        # CREATE_USER` * `DELETE_USER` * `CREATE_DATABASE` * `DELETE_DATABASE`
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -2352,7 +2368,7 @@ module Google
         attr_accessor :self_link
       
         # The time this operation actually started in UTC timezone in [RFC 3339](https://
-        # tools.ietf.org/html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        # tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -2416,7 +2432,7 @@ module Google
         # @return [String]
         attr_accessor :code
       
-        # This is always **sql#operationError**.
+        # This is always `sql#operationError`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2447,7 +2463,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::OperationError>]
         attr_accessor :errors
       
-        # This is always **sql#operationErrors**.
+        # This is always `sql#operationErrors`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2472,7 +2488,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::Operation>]
         attr_accessor :items
       
-        # This is always **sql#operationsList**.
+        # This is always `sql#operationsList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2541,7 +2557,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_length
       
-        # Minimum interval after which the password can be changed.
+        # Minimum interval after which the password can be changed. This flag is only
+        # supported for PostgresSQL.
         # Corresponds to the JSON property `passwordChangeInterval`
         # @return [String]
         attr_accessor :password_change_interval
@@ -2569,8 +2586,8 @@ module Google
       class ReplicaConfiguration
         include Google::Apis::Core::Hashable
       
-        # Specifies if the replica is the failover target. If the field is set to **true*
-        # * the replica will be designated as a failover replica. In case the primary
+        # Specifies if the replica is the failover target. If the field is set to `true`,
+        # the replica will be designated as a failover replica. In case the primary
         # instance fails, the replica instance will be promoted as the new primary
         # instance. Only one replica can be specified as failover target, and the
         # replica has to be in different zone with the primary instance.
@@ -2579,7 +2596,7 @@ module Google
         attr_accessor :failover_target
         alias_method :failover_target?, :failover_target
       
-        # This is always **sql#replicaConfiguration**.
+        # This is always `sql#replicaConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2612,7 +2629,7 @@ module Google
       
         # Optional. Timestamp when the maintenance shall be rescheduled to if
         # reschedule_type=SPECIFIC_TIME, in [RFC 3339](https://tools.ietf.org/html/
-        # rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        # rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
@@ -2643,7 +2660,7 @@ module Google
         # @return [String]
         attr_accessor :instance_id
       
-        # This is always **sql#restoreBackupContext**.
+        # This is always `sql#restoreBackupContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2670,7 +2687,7 @@ module Google
       class RotateServerCaContext
         include Google::Apis::Core::Hashable
       
-        # This is always **sql#rotateServerCaContext**.
+        # This is always `sql#rotateServerCaContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2697,10 +2714,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The activation policy specifies when the instance is activated; it is
-        # applicable only when the instance state is RUNNABLE. Valid values: * **ALWAYS**
-        # : The instance is on, and remains so even in the absence of connection
-        # requests. * **NEVER**: The instance is off; it is not activated, even if a
-        # connection request arrives.
+        # applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`:
+        # The instance is on, and remains so even in the absence of connection requests.
+        # * `NEVER`: The instance is off; it is not activated, even if a connection
+        # request arrives.
         # Corresponds to the JSON property `activationPolicy`
         # @return [String]
         attr_accessor :activation_policy
@@ -2716,12 +2733,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
       
-        # Availability type. Potential values: * **ZONAL**: The instance serves data
-        # from only one zone. Outages in that zone affect data accessibility. * **
-        # REGIONAL**: The instance can serve data from more than one zone in a region (
-        # it is highly available)./ For more information, see [Overview of the High
-        # Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-
-        # availability).
+        # Availability type. Potential values: * `ZONAL`: The instance serves data from
+        # only one zone. Outages in that zone affect data accessibility. * `REGIONAL`:
+        # The instance can serve data from more than one zone in a region (it is highly
+        # available)./ For more information, see [Overview of the High Availability
+        # Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         # Corresponds to the JSON property `availabilityType`
         # @return [String]
         attr_accessor :availability_type
@@ -2749,7 +2765,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :data_disk_size_gb
       
-        # The type of data disk: **PD_SSD** (default) or **PD_HDD**. Not used for First
+        # The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First
         # Generation instances.
         # Corresponds to the JSON property `dataDiskType`
         # @return [String]
@@ -2783,7 +2799,7 @@ module Google
         # @return [Google::Apis::SqladminV1::IpConfiguration]
         attr_accessor :ip_configuration
       
-        # This is always **sql#settings**.
+        # This is always `sql#settings`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2806,14 +2822,14 @@ module Google
         # @return [Google::Apis::SqladminV1::PasswordValidationPolicy]
         attr_accessor :password_validation_policy
       
-        # The pricing plan for this instance. This can be either **PER_USE** or **
-        # PACKAGE**. Only **PER_USE** is supported for Second Generation instances.
+        # The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`.
+        # Only `PER_USE` is supported for Second Generation instances.
         # Corresponds to the JSON property `pricingPlan`
         # @return [String]
         attr_accessor :pricing_plan
       
-        # The type of replication this instance uses. This can be either **ASYNCHRONOUS**
-        # or **SYNCHRONOUS**. (Deprecated) This property was only applicable to First
+        # The type of replication this instance uses. This can be either `ASYNCHRONOUS`
+        # or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First
         # Generation instances.
         # Corresponds to the JSON property `replicationType`
         # @return [String]
@@ -2845,7 +2861,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_auto_resize_limit
       
-        # The tier (or machine type) for this instance, for example **db-custom-1-3840**.
+        # The tier (or machine type) for this instance, for example `db-custom-1-3840`.
         # WARNING: Changing this restarts the instance.
         # Corresponds to the JSON property `tier`
         # @return [String]
@@ -2926,7 +2942,7 @@ module Google
         # @return [String]
         attr_accessor :detail
       
-        # Can be **sql#externalSyncSettingError** or **sql#externalSyncSettingWarning**.
+        # Can be `sql#externalSyncSettingError` or `sql#externalSyncSettingWarning`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3047,7 +3063,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::SqlExternalSyncSettingError>]
         attr_accessor :errors
       
-        # This is always **sql#migrationSettingErrorList**.
+        # This is always `sql#migrationSettingErrorList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3233,13 +3249,13 @@ module Google
         attr_accessor :common_name
       
         # The time when the certificate was created in [RFC 3339](https://tools.ietf.org/
-        # html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**
+        # html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
         # The time when the certificate expires in [RFC 3339](https://tools.ietf.org/
-        # html/rfc3339) format, for example **2012-11-15T16:19:00.094Z**.
+        # html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
         attr_accessor :expiration_time
@@ -3249,7 +3265,7 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # This is always **sql#sslCert**.
+        # This is always `sql#sslCert`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3362,7 +3378,7 @@ module Google
         # @return [Google::Apis::SqladminV1::SslCertDetail]
         attr_accessor :client_cert
       
-        # This is always **sql#sslCertsInsert**.
+        # This is always `sql#sslCertsInsert`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3401,7 +3417,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::SslCert>]
         attr_accessor :items
       
-        # This is always **sql#sslCertsList**.
+        # This is always `sql#sslCertsList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3458,7 +3474,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ram
       
-        # This is always **sql#tier**.
+        # This is always `sql#tier`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3468,8 +3484,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :region
       
-        # An identifier for the machine type, for example, db-custom-1-3840. For related
-        # information, see [Pricing](/sql/pricing).
+        # An identifier for the machine type, for example, `db-custom-1-3840`. For
+        # related information, see [Pricing](/sql/pricing).
         # Corresponds to the JSON property `tier`
         # @return [String]
         attr_accessor :tier
@@ -3497,7 +3513,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::Tier>]
         attr_accessor :items
       
-        # This is always **sql#tiersList**.
+        # This is always `sql#tiersList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3517,13 +3533,13 @@ module Google
       class TruncateLogContext
         include Google::Apis::Core::Hashable
       
-        # This is always **sql#truncateLogContext**.
+        # This is always `sql#truncateLogContext`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The type of log to truncate. Valid values are **MYSQL_GENERAL_TABLE** and **
-        # MYSQL_SLOW_TABLE**.
+        # The type of log to truncate. Valid values are `MYSQL_GENERAL_TABLE` and `
+        # MYSQL_SLOW_TABLE`.
         # Corresponds to the JSON property `logType`
         # @return [String]
         attr_accessor :log_type
@@ -3548,28 +3564,28 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. The host name from which the user can connect. For **insert**
-        # operations, host defaults to an empty string. For **update** operations, host
-        # is specified as part of the request URL. The host name cannot be updated after
-        # insertion. For a MySQL instance, it's required; for a PostgreSQL or SQL Server
-        # instance, it's optional.
+        # Optional. The host from which the user can connect. For `insert` operations,
+        # host defaults to an empty string. For `update` operations, host is specified
+        # as part of the request URL. The host name cannot be updated after insertion.
+        # For a MySQL instance, it's required; for a PostgreSQL or SQL Server instance,
+        # it's optional.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
         # The name of the Cloud SQL instance. This does not include the project ID. Can
-        # be omitted for **update** since it is already specified on the URL.
+        # be omitted for `update` because it is already specified on the URL.
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
       
-        # This is always **sql#user**.
+        # This is always `sql#user`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The name of the user in the Cloud SQL instance. Can be omitted for **update**
-        # since it is already specified in the URL.
+        # The name of the user in the Cloud SQL instance. Can be omitted for `update`
+        # because it is already specified in the URL.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3585,7 +3601,7 @@ module Google
         attr_accessor :password_policy
       
         # The project ID of the project containing the Cloud SQL database. The Google
-        # apps domain is prefixed if applicable. Can be omitted for **update** since it
+        # apps domain is prefixed if applicable. Can be omitted for `update` because it
         # is already specified on the URL.
         # Corresponds to the JSON property `project`
         # @return [String]
@@ -3668,7 +3684,7 @@ module Google
         # @return [Array<Google::Apis::SqladminV1::User>]
         attr_accessor :items
       
-        # This is always **sql#usersList**.
+        # This is always `sql#usersList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
