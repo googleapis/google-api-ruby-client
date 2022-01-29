@@ -4570,6 +4570,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterMd5AuthenticationKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterNat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8241,6 +8247,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :short_name, as: 'shortName'
+          property :vpc_network_scope, as: 'vpcNetworkScope'
         end
       end
       
@@ -11795,6 +11802,7 @@ module Google
           property :network_firewall_policy_enforcement_order, as: 'networkFirewallPolicyEnforcementOrder'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeAlpha::NetworkPeering, decorator: Google::Apis::ComputeAlpha::NetworkPeering::Representation
       
+          property :region, as: 'region'
           property :routing_config, as: 'routingConfig', class: Google::Apis::ComputeAlpha::NetworkRoutingConfig, decorator: Google::Apis::ComputeAlpha::NetworkRoutingConfig::Representation
       
           property :self_link, as: 'selfLink'
@@ -14755,6 +14763,8 @@ module Google
           collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeAlpha::RouterInterface, decorator: Google::Apis::ComputeAlpha::RouterInterface::Representation
       
           property :kind, as: 'kind'
+          collection :md5_authentication_keys, as: 'md5AuthenticationKeys', class: Google::Apis::ComputeAlpha::RouterMd5AuthenticationKey, decorator: Google::Apis::ComputeAlpha::RouterMd5AuthenticationKey::Representation
+      
           property :name, as: 'name'
           collection :nats, as: 'nats', class: Google::Apis::ComputeAlpha::RouterNat, decorator: Google::Apis::ComputeAlpha::RouterNat::Representation
       
@@ -14834,6 +14844,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :management_type, as: 'managementType'
+          property :md5_authentication_key_name, as: 'md5AuthenticationKeyName'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
@@ -14898,6 +14909,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class RouterMd5AuthenticationKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :name, as: 'name'
         end
       end
       
@@ -14992,6 +15011,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
+          property :md5_auth_enabled, as: 'md5AuthEnabled'
           property :name, as: 'name'
           property :num_learned_routes, as: 'numLearnedRoutes'
           property :peer_ip_address, as: 'peerIpAddress'
@@ -14999,6 +15019,7 @@ module Google
           property :router_appliance_instance, as: 'routerApplianceInstance'
           property :state, as: 'state'
           property :status, as: 'status'
+          property :status_reason, as: 'statusReason'
           property :uptime, as: 'uptime'
           property :uptime_seconds, as: 'uptimeSeconds'
         end
