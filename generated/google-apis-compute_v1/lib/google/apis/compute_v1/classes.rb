@@ -30327,8 +30327,8 @@ module Google
       
         # Defines the maintenance behavior for this instance. For standard instances,
         # the default behavior is MIGRATE. For preemptible instances, the default and
-        # only possible behavior is TERMINATE. For more information, see Setting
-        # Instance Scheduling Options.
+        # only possible behavior is TERMINATE. For more information, see Set VM
+        # availability policies.
         # Corresponds to the JSON property `onHostMaintenance`
         # @return [String]
         attr_accessor :on_host_maintenance
