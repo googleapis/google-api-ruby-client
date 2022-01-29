@@ -13000,7 +13000,9 @@ module Google
         
         # Sets an instance's scheduling options. You can only call this method on a
         # stopped instance, that is, a VM instance that is in a `TERMINATED` state. See
-        # Instance Life Cycle for more information on the possible instance states.
+        # Instance Life Cycle for more information on the possible instance states. For
+        # more information about setting scheduling options for a VM, see Set VM
+        # availability policies.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -13271,7 +13273,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Simulates a maintenance event on the instance.
+        # Simulates a host maintenance event on a VM. For more information, see Simulate
+        # a host maintenance event.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -13471,10 +13474,11 @@ module Google
         
         # This method suspends a running instance, saving its state to persistent
         # storage, and allows you to resume the instance at a later time. Suspended
-        # instances incur reduced per-minute, virtual machine usage charges while they
-        # are suspended. Any resources the virtual machine is using, such as persistent
-        # disks and static IP addresses, will continue to be charged until they are
-        # deleted. For more information, see Suspending and resuming an instance.
+        # instances have no compute costs (cores or RAM), and incur only storage charges
+        # for the saved VM memory and localSSD data. Any charged resources the virtual
+        # machine was using, such as persistent disks and static IP addresses, will
+        # continue to be charged while the instance is suspended. For more information,
+        # see Suspending and resuming an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
