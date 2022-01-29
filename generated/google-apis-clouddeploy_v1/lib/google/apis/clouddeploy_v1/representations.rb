@@ -22,6 +22,12 @@ module Google
   module Apis
     module ClouddeployV1
       
+      class AnthosCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApproveRolloutRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +274,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnthosCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership, as: 'membership'
+        end
+      end
+      
       class ApproveRolloutRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -376,11 +389,14 @@ module Google
       class ExecutionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_storage, as: 'artifactStorage'
           property :default_pool, as: 'defaultPool', class: Google::Apis::ClouddeployV1::DefaultPool, decorator: Google::Apis::ClouddeployV1::DefaultPool::Representation
       
           property :private_pool, as: 'privatePool', class: Google::Apis::ClouddeployV1::PrivatePool, decorator: Google::Apis::ClouddeployV1::PrivatePool::Representation
       
+          property :service_account, as: 'serviceAccount'
           collection :usages, as: 'usages'
+          property :worker_pool, as: 'workerPool'
         end
       end
       
@@ -633,6 +649,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :anthos_cluster, as: 'anthosCluster', class: Google::Apis::ClouddeployV1::AnthosCluster, decorator: Google::Apis::ClouddeployV1::AnthosCluster::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :etag, as: 'etag'

@@ -1216,7 +1216,7 @@ module Google
         # Updates the parameters of a single Target.
         # @param [String] name
         #   Optional. Name of the `Target`. Format is projects/`project`/locations/`
-        #   location`/ deliveryPipelines/`deliveryPipeline`/targets/a-z`0,62`.
+        #   location`/targets/a-z`0,62`.
         # @param [Google::Apis::ClouddeployV1::Target] target_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, updating a `Target` that does not exist will result

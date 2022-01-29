@@ -22,6 +22,27 @@ module Google
   module Apis
     module ClouddeployV1
       
+      # Information specifying an Anthos Cluster.
+      class AnthosCluster
+        include Google::Apis::Core::Hashable
+      
+        # Membership of the GKE Hub registered cluster that the Skaffold configuration
+        # should be applied to. Format is `projects/`project`/locations/`location`/
+        # memberships/`membership_name``.
+        # Corresponds to the JSON property `membership`
+        # @return [String]
+        attr_accessor :membership
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @membership = args[:membership] if args.key?(:membership)
+        end
+      end
+      
       # The request object used by `ApproveRollout`.
       class ApproveRolloutRequest
         include Google::Apis::Core::Hashable
@@ -446,6 +467,14 @@ module Google
       class ExecutionConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Cloud Storage location where execution outputs should be stored.
+        # This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs:/
+        # /my-bucket/my-dir"). If unspecified, a default bucket located in the same
+        # region will be used.
+        # Corresponds to the JSON property `artifactStorage`
+        # @return [String]
+        attr_accessor :artifact_storage
+      
         # Execution using the default Cloud Build pool.
         # Corresponds to the JSON property `defaultPool`
         # @return [Google::Apis::ClouddeployV1::DefaultPool]
@@ -456,10 +485,24 @@ module Google
         # @return [Google::Apis::ClouddeployV1::PrivatePool]
         attr_accessor :private_pool
       
+        # Optional. Google service account to use for execution. If unspecified, the
+        # project execution service account (-compute@developer.gserviceaccount.com)
+        # will be used.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Required. Usages when this configuration should be applied.
         # Corresponds to the JSON property `usages`
         # @return [Array<String>]
         attr_accessor :usages
+      
+        # Optional. The resource name of the `WorkerPool`, with the format `projects/`
+        # project`/locations/`location`/workerPools/`worker_pool``. If this optional
+        # field is unspecified, the default Cloud Build pool will be used.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
       
         def initialize(**args)
            update!(**args)
@@ -467,9 +510,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_storage = args[:artifact_storage] if args.key?(:artifact_storage)
           @default_pool = args[:default_pool] if args.key?(:default_pool)
           @private_pool = args[:private_pool] if args.key?(:private_pool)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @usages = args[:usages] if args.key?(:usages)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
         end
       end
       
@@ -1182,8 +1228,7 @@ module Google
         # @return [Hash<String,Google::Apis::ClouddeployV1::TargetRender>]
         attr_accessor :target_renders
       
-        # Output only. Snapshot of the parent pipeline's targets taken at release
-        # creation time.
+        # Output only. Snapshot of the targets taken at release creation time.
         # Corresponds to the JSON property `targetSnapshots`
         # @return [Array<Google::Apis::ClouddeployV1::Target>]
         attr_accessor :target_snapshots
@@ -1467,9 +1512,9 @@ module Google
       
         # The target_id to which this stage points. This field refers exclusively to the
         # last segment of a target name. For example, this field would just be `my-
-        # target` (rather than `projects/project/deliveryPipelines/pipeline/targets/my-
-        # target`). The parent `DeliveryPipeline` of the `Target` is inferred to be the
-        # parent `DeliveryPipeline` of the `Release` in which this `Stage` lives.
+        # target` (rather than `projects/project/locations/location/targets/my-target`).
+        # The location of the `Target` is inferred to be the same as the location of the
+        # `DeliveryPipeline` that contains this `Stage`.
         # Corresponds to the JSON property `targetId`
         # @return [String]
         attr_accessor :target_id
@@ -1536,6 +1581,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Information specifying an Anthos Cluster.
+        # Corresponds to the JSON property `anthosCluster`
+        # @return [Google::Apis::ClouddeployV1::AnthosCluster]
+        attr_accessor :anthos_cluster
+      
         # Output only. Time at which the `Target` was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1580,7 +1630,7 @@ module Google
         attr_accessor :labels
       
         # Optional. Name of the `Target`. Format is projects/`project`/locations/`
-        # location`/ deliveryPipelines/`deliveryPipeline`/targets/a-z`0,62`.
+        # location`/targets/a-z`0,62`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1613,6 +1663,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @anthos_cluster = args[:anthos_cluster] if args.key?(:anthos_cluster)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
