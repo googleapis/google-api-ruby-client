@@ -8544,6 +8544,17 @@ module Google
         # @return [String]
         attr_accessor :short_name
       
+        # The scope of networks allowed to be associated with the firewall policy. This
+        # field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall
+        # policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached
+        # only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the
+        # firewall policy is allowed to be attached only to regional networks in the
+        # same scope as the firewall policy. Note: if not specified then
+        # GLOBAL_VPC_NETWORK will be used.
+        # Corresponds to the JSON property `vpcNetworkScope`
+        # @return [String]
+        attr_accessor :vpc_network_scope
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8565,6 +8576,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @short_name = args[:short_name] if args.key?(:short_name)
+          @vpc_network_scope = args[:vpc_network_scope] if args.key?(:vpc_network_scope)
         end
       end
       
@@ -22948,6 +22960,13 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkPeering>]
         attr_accessor :peerings
       
+        # [Output Only] URL of the region where the regional network resides. This field
+        # is not applicable to global network. You must specify this field as part of
+        # the HTTP request URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # A routing configuration attached to a network resource. The message includes
         # the list of routers associated with the network, and a flag indicating the
         # type of routing behavior to enforce network-wide.
@@ -22991,6 +23010,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_firewall_policy_enforcement_order = args[:network_firewall_policy_enforcement_order] if args.key?(:network_firewall_policy_enforcement_order)
           @peerings = args[:peerings] if args.key?(:peerings)
+          @region = args[:region] if args.key?(:region)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -34305,6 +34325,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Keys used for MD5 authentication.
+        # Corresponds to the JSON property `md5AuthenticationKeys`
+        # @return [Array<Google::Apis::ComputeAlpha::RouterMd5AuthenticationKey>]
+        attr_accessor :md5_authentication_keys
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -34356,6 +34381,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @interfaces = args[:interfaces] if args.key?(:interfaces)
           @kind = args[:kind] if args.key?(:kind)
+          @md5_authentication_keys = args[:md5_authentication_keys] if args.key?(:md5_authentication_keys)
           @name = args[:name] if args.key?(:name)
           @nats = args[:nats] if args.key?(:nats)
           @network = args[:network] if args.key?(:network)
@@ -34652,6 +34678,13 @@ module Google
         # @return [String]
         attr_accessor :management_type
       
+        # Present if MD5 authentication is enabled for the peering. Must be the name of
+        # one of the entries in the Router.md5_authentication_keys. The field must
+        # comply with RFC1035.
+        # Corresponds to the JSON property `md5AuthenticationKeyName`
+        # @return [String]
+        attr_accessor :md5_authentication_key_name
+      
         # Name of this BGP peer. The name must be 1-63 characters long, and comply with
         # RFC1035. Specifically, the name must be 1-63 characters long and match the
         # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
@@ -34704,6 +34737,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @management_type = args[:management_type] if args.key?(:management_type)
+          @md5_authentication_key_name = args[:md5_authentication_key_name] if args.key?(:md5_authentication_key_name)
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
@@ -35003,6 +35037,35 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class RouterMd5AuthenticationKey
+        include Google::Apis::Core::Hashable
+      
+        # [Input only] Value of the key. For patch and update calls, it can be skipped
+        # to copy the value from the previous configuration. This is allowed if the key
+        # with the same name existed before the operation. Maximum length is 80
+        # characters. Can only contain printable ASCII characters.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Name used to identify the key. Must be unique within a router. Must be
+        # referenced by at least one bgpPeer. Must comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -35405,6 +35468,12 @@ module Google
         # @return [String]
         attr_accessor :linked_vpn_tunnel
       
+        # Informs whether MD5 authentication is enabled on this BGP peer.
+        # Corresponds to the JSON property `md5AuthEnabled`
+        # @return [Boolean]
+        attr_accessor :md5_auth_enabled
+        alias_method :md5_auth_enabled?, :md5_auth_enabled
+      
         # Name of this BGP peer. Unique within the Routers resource.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -35442,6 +35511,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Indicates why particular status was returned.
+        # Corresponds to the JSON property `statusReason`
+        # @return [String]
+        attr_accessor :status_reason
+      
         # Time this session has been up. Format: 14 years, 51 weeks, 6 days, 23 hours,
         # 59 minutes, 59 seconds
         # Corresponds to the JSON property `uptime`
@@ -35465,6 +35539,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
+          @md5_auth_enabled = args[:md5_auth_enabled] if args.key?(:md5_auth_enabled)
           @name = args[:name] if args.key?(:name)
           @num_learned_routes = args[:num_learned_routes] if args.key?(:num_learned_routes)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
@@ -35472,6 +35547,7 @@ module Google
           @router_appliance_instance = args[:router_appliance_instance] if args.key?(:router_appliance_instance)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
+          @status_reason = args[:status_reason] if args.key?(:status_reason)
           @uptime = args[:uptime] if args.key?(:uptime)
           @uptime_seconds = args[:uptime_seconds] if args.key?(:uptime_seconds)
         end
@@ -36144,8 +36220,8 @@ module Google
       
         # Defines the maintenance behavior for this instance. For standard instances,
         # the default behavior is MIGRATE. For preemptible instances, the default and
-        # only possible behavior is TERMINATE. For more information, see Setting
-        # Instance Scheduling Options.
+        # only possible behavior is TERMINATE. For more information, see Set VM
+        # availability policies.
         # Corresponds to the JSON property `onHostMaintenance`
         # @return [String]
         attr_accessor :on_host_maintenance
