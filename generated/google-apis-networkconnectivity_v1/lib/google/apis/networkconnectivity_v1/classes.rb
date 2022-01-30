@@ -403,11 +403,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The VPC network associated with this hub's spokes. All of the VPN tunnels,
-        # VLAN attachments, and router appliance instances referenced by this hub's
-        # spokes must belong to this VPC network. This field is read-only. Network
-        # Connectivity Center automatically populates it based on the set of spokes
-        # attached to the hub.
+        # The VPC networks associated with this hub's spokes. This field is read-only.
+        # Network Connectivity Center automatically populates it based on the set of
+        # spokes attached to the hub.
         # Corresponds to the JSON property `routingVpcs`
         # @return [Array<Google::Apis::NetworkconnectivityV1::RoutingVpc>]
         attr_accessor :routing_vpcs
@@ -454,8 +452,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A value that controls whether site-to-site data transfer is enabled for these
-        # resources. This field is set to false by default, but you must set it to true.
-        # Note that data transfer is available only in supported locations.
+        # resources. Data transfer is available only in [supported locations](https://
+        # cloud.google.com/network-connectivity/docs/network-connectivity-center/
+        # concepts/locations).
         # Corresponds to the JSON property `siteToSiteDataTransfer`
         # @return [Boolean]
         attr_accessor :site_to_site_data_transfer
@@ -489,8 +488,9 @@ module Google
         attr_accessor :instances
       
         # A value that controls whether site-to-site data transfer is enabled for these
-        # resources. This field is set to false by default, but you must set it to true.
-        # Note that data transfer is available only in supported locations.
+        # resources. Data transfer is available only in [supported locations](https://
+        # cloud.google.com/network-connectivity/docs/network-connectivity-center/
+        # concepts/locations).
         # Corresponds to the JSON property `siteToSiteDataTransfer`
         # @return [Boolean]
         attr_accessor :site_to_site_data_transfer
@@ -515,8 +515,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A value that controls whether site-to-site data transfer is enabled for these
-        # resources. This field is set to false by default, but you must set it to true.
-        # Note that data transfer is available only in supported locations.
+        # resources. Data transfer is available only in [supported locations](https://
+        # cloud.google.com/network-connectivity/docs/network-connectivity-center/
+        # concepts/locations).
         # Corresponds to the JSON property `siteToSiteDataTransfer`
         # @return [Boolean]
         attr_accessor :site_to_site_data_transfer
@@ -875,15 +876,16 @@ module Google
         end
       end
       
-      # RoutingVPC contains information about the VPC network that is associated with
-      # a hub's spokes.
+      # RoutingVPC contains information about the VPC networks that are associated
+      # with a hub's spokes.
       class RoutingVpc
         include Google::Apis::Core::Hashable
       
         # Output only. If true, indicates that this VPC network is currently associated
         # with spokes that use the data transfer feature (spokes where the
         # site_to_site_data_transfer field is set to true). If you create new spokes
-        # that use data transfer, they must be associated with this VPC network.
+        # that use data transfer, they must be associated with this VPC network. At most,
+        # one VPC network will have this field set to true.
         # Corresponds to the JSON property `requiredForNewSiteToSiteDataTransferSpokes`
         # @return [Boolean]
         attr_accessor :required_for_new_site_to_site_data_transfer_spokes
