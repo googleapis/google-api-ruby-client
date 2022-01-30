@@ -22,6 +22,97 @@ module Google
   module Apis
     module SearchconsoleV1
       
+      # AMP inspection result of the live page or the current information from Google'
+      # s index, depending on whether you requested a live inspection or not.
+      class AmpInspectionResult
+        include Google::Apis::Core::Hashable
+      
+        # Index status of the AMP URL.
+        # Corresponds to the JSON property `ampIndexStatusVerdict`
+        # @return [String]
+        attr_accessor :amp_index_status_verdict
+      
+        # URL of the AMP that was inspected. If the submitted URL is a desktop page that
+        # refers to an AMP version, the AMP version will be inspected.
+        # Corresponds to the JSON property `ampUrl`
+        # @return [String]
+        attr_accessor :amp_url
+      
+        # Whether or not the page blocks indexing through a noindex rule.
+        # Corresponds to the JSON property `indexingState`
+        # @return [String]
+        attr_accessor :indexing_state
+      
+        # A list of zero or more AMP issues found for the inspected URL.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::SearchconsoleV1::AmpIssue>]
+        attr_accessor :issues
+      
+        # Last time this AMP version was crawled by Google. Absent if the URL was never
+        # crawled successfully.
+        # Corresponds to the JSON property `lastCrawlTime`
+        # @return [String]
+        attr_accessor :last_crawl_time
+      
+        # Whether or not Google could fetch the AMP.
+        # Corresponds to the JSON property `pageFetchState`
+        # @return [String]
+        attr_accessor :page_fetch_state
+      
+        # Whether or not the page is blocked to Google by a robots.txt rule.
+        # Corresponds to the JSON property `robotsTxtState`
+        # @return [String]
+        attr_accessor :robots_txt_state
+      
+        # The status of the most severe error on the page. If a page has both warnings
+        # and errors, the page status is error. Error status means the page cannot be
+        # shown in Search results.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amp_index_status_verdict = args[:amp_index_status_verdict] if args.key?(:amp_index_status_verdict)
+          @amp_url = args[:amp_url] if args.key?(:amp_url)
+          @indexing_state = args[:indexing_state] if args.key?(:indexing_state)
+          @issues = args[:issues] if args.key?(:issues)
+          @last_crawl_time = args[:last_crawl_time] if args.key?(:last_crawl_time)
+          @page_fetch_state = args[:page_fetch_state] if args.key?(:page_fetch_state)
+          @robots_txt_state = args[:robots_txt_state] if args.key?(:robots_txt_state)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
+      # AMP issue.
+      class AmpIssue
+        include Google::Apis::Core::Hashable
+      
+        # Brief description of this issue.
+        # Corresponds to the JSON property `issueMessage`
+        # @return [String]
+        attr_accessor :issue_message
+      
+        # Severity of this issue: WARNING or ERROR.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue_message = args[:issue_message] if args.key?(:issue_message)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # 
       class ApiDataRow
         include Google::Apis::Core::Hashable
@@ -147,6 +238,31 @@ module Google
         end
       end
       
+      # Rich Results items grouped by type.
+      class DetectedItems
+        include Google::Apis::Core::Hashable
+      
+        # List of Rich Results items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::SearchconsoleV1::Item>]
+        attr_accessor :items
+      
+        # Rich Results type
+        # Corresponds to the JSON property `richResultType`
+        # @return [String]
+        attr_accessor :rich_result_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @rich_result_type = args[:rich_result_type] if args.key?(:rich_result_type)
+        end
+      end
+      
       # Describe image data.
       class Image
         include Google::Apis::Core::Hashable
@@ -174,6 +290,178 @@ module Google
         end
       end
       
+      # Results of index status inspection for either the live page or the version in
+      # Google's index, depending on whether you requested a live inspection or not.
+      # For more information, see the [Index coverage report documentation](https://
+      # support.google.com/webmasters/answer/7440203).
+      class IndexStatusInspectionResult
+        include Google::Apis::Core::Hashable
+      
+        # Could Google find and index the page. More details about page indexing appear
+        # in 'indexing_state'.
+        # Corresponds to the JSON property `coverageState`
+        # @return [String]
+        attr_accessor :coverage_state
+      
+        # Primary crawler that was used by Google to crawl your site.
+        # Corresponds to the JSON property `crawledAs`
+        # @return [String]
+        attr_accessor :crawled_as
+      
+        # The URL of the page that Google selected as canonical. If the page was not
+        # indexed, this field is absent.
+        # Corresponds to the JSON property `googleCanonical`
+        # @return [String]
+        attr_accessor :google_canonical
+      
+        # Whether or not the page blocks indexing through a noindex rule.
+        # Corresponds to the JSON property `indexingState`
+        # @return [String]
+        attr_accessor :indexing_state
+      
+        # Last time this URL was crawled by Google using the [primary crawler](https://
+        # support.google.com/webmasters/answer/7440203#primary_crawler). Absent if the
+        # URL was never crawled successfully.
+        # Corresponds to the JSON property `lastCrawlTime`
+        # @return [String]
+        attr_accessor :last_crawl_time
+      
+        # Whether or not Google could retrieve the page from your server. Equivalent to [
+        # "page fetch"](https://support.google.com/webmasters/answer/9012289#
+        # index_coverage) in the URL inspection report.
+        # Corresponds to the JSON property `pageFetchState`
+        # @return [String]
+        attr_accessor :page_fetch_state
+      
+        # URLs that link to the inspected URL, directly and indirectly.
+        # Corresponds to the JSON property `referringUrls`
+        # @return [Array<String>]
+        attr_accessor :referring_urls
+      
+        # Whether or not the page is blocked to Google by a robots.txt rule.
+        # Corresponds to the JSON property `robotsTxtState`
+        # @return [String]
+        attr_accessor :robots_txt_state
+      
+        # Any sitemaps that this URL was listed in, as known by Google. Not guaranteed
+        # to be an exhaustive list, especially if Google did not discover this URL
+        # through a sitemap. Absent if no sitemaps were found.
+        # Corresponds to the JSON property `sitemap`
+        # @return [Array<String>]
+        attr_accessor :sitemap
+      
+        # The URL that your page or site [declares as canonical](https://developers.
+        # google.com/search/docs/advanced/crawling/consolidate-duplicate-urls?#define-
+        # canonical). If you did not declare a canonical URL, this field is absent.
+        # Corresponds to the JSON property `userCanonical`
+        # @return [String]
+        attr_accessor :user_canonical
+      
+        # High level verdict about whether the URL *is* indexed (indexed status), or *
+        # can be* indexed (live inspection).
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @coverage_state = args[:coverage_state] if args.key?(:coverage_state)
+          @crawled_as = args[:crawled_as] if args.key?(:crawled_as)
+          @google_canonical = args[:google_canonical] if args.key?(:google_canonical)
+          @indexing_state = args[:indexing_state] if args.key?(:indexing_state)
+          @last_crawl_time = args[:last_crawl_time] if args.key?(:last_crawl_time)
+          @page_fetch_state = args[:page_fetch_state] if args.key?(:page_fetch_state)
+          @referring_urls = args[:referring_urls] if args.key?(:referring_urls)
+          @robots_txt_state = args[:robots_txt_state] if args.key?(:robots_txt_state)
+          @sitemap = args[:sitemap] if args.key?(:sitemap)
+          @user_canonical = args[:user_canonical] if args.key?(:user_canonical)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
+      # Index inspection request.
+      class InspectUrlIndexRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. URL to inspect. Must be under the property specified in "site_url".
+        # Corresponds to the JSON property `inspectionUrl`
+        # @return [String]
+        attr_accessor :inspection_url
+      
+        # Optional. An [IETF BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag)
+        # language code representing the requested language for translated issue
+        # messages, e.g. "en-US", "or "de-CH". Default value is "en-US".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. The URL of the property as defined in Search Console. **Examples:** `
+        # http://www.example.com/` for a URL-prefix property, or `sc-domain:example.com`
+        # for a Domain property.
+        # Corresponds to the JSON property `siteUrl`
+        # @return [String]
+        attr_accessor :site_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inspection_url = args[:inspection_url] if args.key?(:inspection_url)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @site_url = args[:site_url] if args.key?(:site_url)
+        end
+      end
+      
+      # Index-Status inspection response.
+      class InspectUrlIndexResponse
+        include Google::Apis::Core::Hashable
+      
+        # URL inspection result, including all inspection results.
+        # Corresponds to the JSON property `inspectionResult`
+        # @return [Google::Apis::SearchconsoleV1::UrlInspectionResult]
+        attr_accessor :inspection_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inspection_result = args[:inspection_result] if args.key?(:inspection_result)
+        end
+      end
+      
+      # A specific rich result found on the page.
+      class Item
+        include Google::Apis::Core::Hashable
+      
+        # A list of zero or more rich result issues found for this instance.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::SearchconsoleV1::RichResultsIssue>]
+        attr_accessor :issues
+      
+        # The user-provided name of this item.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issues = args[:issues] if args.key?(:issues)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Mobile-friendly issue.
       class MobileFriendlyIssue
         include Google::Apis::Core::Hashable
@@ -193,6 +481,62 @@ module Google
         end
       end
       
+      # Mobile-usability inspection results.
+      class MobileUsabilityInspectionResult
+        include Google::Apis::Core::Hashable
+      
+        # A list of zero or more mobile-usability issues detected for this URL.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::SearchconsoleV1::MobileUsabilityIssue>]
+        attr_accessor :issues
+      
+        # High-level mobile-usability inspection result for this URL.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issues = args[:issues] if args.key?(:issues)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
+      # Mobile-usability issue.
+      class MobileUsabilityIssue
+        include Google::Apis::Core::Hashable
+      
+        # Mobile-usability issue type.
+        # Corresponds to the JSON property `issueType`
+        # @return [String]
+        attr_accessor :issue_type
+      
+        # Additional information regarding the issue.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Not returned; reserved for future use.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue_type = args[:issue_type] if args.key?(:issue_type)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # Information about a resource with issue.
       class ResourceIssue
         include Google::Apis::Core::Hashable
@@ -209,6 +553,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @blocked_resource = args[:blocked_resource] if args.key?(:blocked_resource)
+        end
+      end
+      
+      # Rich-Results inspection result, including any rich results found at this URL.
+      class RichResultsInspectionResult
+        include Google::Apis::Core::Hashable
+      
+        # A list of zero or more rich results detected on this page. Rich results that
+        # cannot even be parsed due to syntactic issues will not be listed here.
+        # Corresponds to the JSON property `detectedItems`
+        # @return [Array<Google::Apis::SearchconsoleV1::DetectedItems>]
+        attr_accessor :detected_items
+      
+        # High-level rich results inspection result for this URL.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_items = args[:detected_items] if args.key?(:detected_items)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
+      # Severity and status of a single issue affecting a single rich result instance
+      # on a page.
+      class RichResultsIssue
+        include Google::Apis::Core::Hashable
+      
+        # Rich Results issue type.
+        # Corresponds to the JSON property `issueMessage`
+        # @return [String]
+        attr_accessor :issue_message
+      
+        # Severity of this issue: WARNING, or ERROR. Items with an issue of status ERROR
+        # cannot appear with rich result features in Google Search results.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issue_message = args[:issue_message] if args.key?(:issue_message)
+          @severity = args[:severity] if args.key?(:severity)
         end
       end
       
@@ -468,6 +865,53 @@ module Google
         def update!(**args)
           @details = args[:details] if args.key?(:details)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # URL inspection result, including all inspection results.
+      class UrlInspectionResult
+        include Google::Apis::Core::Hashable
+      
+        # AMP inspection result of the live page or the current information from Google'
+        # s index, depending on whether you requested a live inspection or not.
+        # Corresponds to the JSON property `ampResult`
+        # @return [Google::Apis::SearchconsoleV1::AmpInspectionResult]
+        attr_accessor :amp_result
+      
+        # Results of index status inspection for either the live page or the version in
+        # Google's index, depending on whether you requested a live inspection or not.
+        # For more information, see the [Index coverage report documentation](https://
+        # support.google.com/webmasters/answer/7440203).
+        # Corresponds to the JSON property `indexStatusResult`
+        # @return [Google::Apis::SearchconsoleV1::IndexStatusInspectionResult]
+        attr_accessor :index_status_result
+      
+        # Link to Search Console URL inspection.
+        # Corresponds to the JSON property `inspectionResultLink`
+        # @return [String]
+        attr_accessor :inspection_result_link
+      
+        # Mobile-usability inspection results.
+        # Corresponds to the JSON property `mobileUsabilityResult`
+        # @return [Google::Apis::SearchconsoleV1::MobileUsabilityInspectionResult]
+        attr_accessor :mobile_usability_result
+      
+        # Rich-Results inspection result, including any rich results found at this URL.
+        # Corresponds to the JSON property `richResultsResult`
+        # @return [Google::Apis::SearchconsoleV1::RichResultsInspectionResult]
+        attr_accessor :rich_results_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amp_result = args[:amp_result] if args.key?(:amp_result)
+          @index_status_result = args[:index_status_result] if args.key?(:index_status_result)
+          @inspection_result_link = args[:inspection_result_link] if args.key?(:inspection_result_link)
+          @mobile_usability_result = args[:mobile_usability_result] if args.key?(:mobile_usability_result)
+          @rich_results_result = args[:rich_results_result] if args.key?(:rich_results_result)
         end
       end
       

@@ -22,6 +22,18 @@ module Google
   module Apis
     module SearchconsoleV1
       
+      class AmpInspectionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AmpIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApiDataRow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,7 +58,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DetectedItems
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Image
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IndexStatusInspectionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InspectUrlIndexRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InspectUrlIndexResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Item
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,7 +100,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MobileUsabilityInspectionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MobileUsabilityIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RichResultsInspectionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RichResultsIssue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UrlInspectionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WmxSite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -122,6 +194,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AmpInspectionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amp_index_status_verdict, as: 'ampIndexStatusVerdict'
+          property :amp_url, as: 'ampUrl'
+          property :indexing_state, as: 'indexingState'
+          collection :issues, as: 'issues', class: Google::Apis::SearchconsoleV1::AmpIssue, decorator: Google::Apis::SearchconsoleV1::AmpIssue::Representation
+      
+          property :last_crawl_time, as: 'lastCrawlTime'
+          property :page_fetch_state, as: 'pageFetchState'
+          property :robots_txt_state, as: 'robotsTxtState'
+          property :verdict, as: 'verdict'
+        end
+      end
+      
+      class AmpIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_message, as: 'issueMessage'
+          property :severity, as: 'severity'
+        end
       end
       
       class ApiDataRow
@@ -160,11 +255,63 @@ module Google
         end
       end
       
+      class DetectedItems
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::SearchconsoleV1::Item, decorator: Google::Apis::SearchconsoleV1::Item::Representation
+      
+          property :rich_result_type, as: 'richResultType'
+        end
+      end
+      
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
           property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class IndexStatusInspectionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :coverage_state, as: 'coverageState'
+          property :crawled_as, as: 'crawledAs'
+          property :google_canonical, as: 'googleCanonical'
+          property :indexing_state, as: 'indexingState'
+          property :last_crawl_time, as: 'lastCrawlTime'
+          property :page_fetch_state, as: 'pageFetchState'
+          collection :referring_urls, as: 'referringUrls'
+          property :robots_txt_state, as: 'robotsTxtState'
+          collection :sitemap, as: 'sitemap'
+          property :user_canonical, as: 'userCanonical'
+          property :verdict, as: 'verdict'
+        end
+      end
+      
+      class InspectUrlIndexRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inspection_url, as: 'inspectionUrl'
+          property :language_code, as: 'languageCode'
+          property :site_url, as: 'siteUrl'
+        end
+      end
+      
+      class InspectUrlIndexResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inspection_result, as: 'inspectionResult', class: Google::Apis::SearchconsoleV1::UrlInspectionResult, decorator: Google::Apis::SearchconsoleV1::UrlInspectionResult::Representation
+      
+        end
+      end
+      
+      class Item
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :issues, as: 'issues', class: Google::Apis::SearchconsoleV1::RichResultsIssue, decorator: Google::Apis::SearchconsoleV1::RichResultsIssue::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -175,11 +322,46 @@ module Google
         end
       end
       
+      class MobileUsabilityInspectionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :issues, as: 'issues', class: Google::Apis::SearchconsoleV1::MobileUsabilityIssue, decorator: Google::Apis::SearchconsoleV1::MobileUsabilityIssue::Representation
+      
+          property :verdict, as: 'verdict'
+        end
+      end
+      
+      class MobileUsabilityIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_type, as: 'issueType'
+          property :message, as: 'message'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class ResourceIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blocked_resource, as: 'blockedResource', class: Google::Apis::SearchconsoleV1::BlockedResource, decorator: Google::Apis::SearchconsoleV1::BlockedResource::Representation
       
+        end
+      end
+      
+      class RichResultsInspectionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :detected_items, as: 'detectedItems', class: Google::Apis::SearchconsoleV1::DetectedItems, decorator: Google::Apis::SearchconsoleV1::DetectedItems::Representation
+      
+          property :verdict, as: 'verdict'
+        end
+      end
+      
+      class RichResultsIssue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issue_message, as: 'issueMessage'
+          property :severity, as: 'severity'
         end
       end
       
@@ -253,6 +435,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :details, as: 'details'
           property :status, as: 'status'
+        end
+      end
+      
+      class UrlInspectionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amp_result, as: 'ampResult', class: Google::Apis::SearchconsoleV1::AmpInspectionResult, decorator: Google::Apis::SearchconsoleV1::AmpInspectionResult::Representation
+      
+          property :index_status_result, as: 'indexStatusResult', class: Google::Apis::SearchconsoleV1::IndexStatusInspectionResult, decorator: Google::Apis::SearchconsoleV1::IndexStatusInspectionResult::Representation
+      
+          property :inspection_result_link, as: 'inspectionResultLink'
+          property :mobile_usability_result, as: 'mobileUsabilityResult', class: Google::Apis::SearchconsoleV1::MobileUsabilityInspectionResult, decorator: Google::Apis::SearchconsoleV1::MobileUsabilityInspectionResult::Representation
+      
+          property :rich_results_result, as: 'richResultsResult', class: Google::Apis::SearchconsoleV1::RichResultsInspectionResult, decorator: Google::Apis::SearchconsoleV1::RichResultsInspectionResult::Representation
+      
         end
       end
       
