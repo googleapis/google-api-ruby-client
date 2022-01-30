@@ -258,6 +258,27 @@ module Google
         end
       end
       
+      # EdgeCluster contains information specific to Google Edge Clusters.
+      class EdgeCluster
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //
+        # edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/
+        # my-cluster
+        # Corresponds to the JSON property `resourceLink`
+        # @return [String]
+        attr_accessor :resource_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_link = args[:resource_link] if args.key?(:resource_link)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -816,6 +837,11 @@ module Google
       class MembershipEndpoint
         include Google::Apis::Core::Hashable
       
+        # EdgeCluster contains information specific to Google Edge Clusters.
+        # Corresponds to the JSON property `edgeCluster`
+        # @return [Google::Apis::GkehubV1alpha2::EdgeCluster]
+        attr_accessor :edge_cluster
+      
         # GkeCluster contains information specific to GKE clusters.
         # Corresponds to the JSON property `gkeCluster`
         # @return [Google::Apis::GkehubV1alpha2::GkeCluster]
@@ -851,6 +877,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edge_cluster = args[:edge_cluster] if args.key?(:edge_cluster)
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @kubernetes_metadata = args[:kubernetes_metadata] if args.key?(:kubernetes_metadata)
           @kubernetes_resource = args[:kubernetes_resource] if args.key?(:kubernetes_resource)
