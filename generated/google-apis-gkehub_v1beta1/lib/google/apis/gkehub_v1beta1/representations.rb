@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EdgeCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -272,6 +278,13 @@ module Google
         end
       end
       
+      class EdgeCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_link, as: 'resourceLink'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -410,6 +423,8 @@ module Google
       class MembershipEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edge_cluster, as: 'edgeCluster', class: Google::Apis::GkehubV1beta1::EdgeCluster, decorator: Google::Apis::GkehubV1beta1::EdgeCluster::Representation
+      
           property :gke_cluster, as: 'gkeCluster', class: Google::Apis::GkehubV1beta1::GkeCluster, decorator: Google::Apis::GkehubV1beta1::GkeCluster::Representation
       
           property :kubernetes_metadata, as: 'kubernetesMetadata', class: Google::Apis::GkehubV1beta1::KubernetesMetadata, decorator: Google::Apis::GkehubV1beta1::KubernetesMetadata::Representation
