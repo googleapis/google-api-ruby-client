@@ -942,6 +942,8 @@ module Google
           property :idle_shutdown, as: 'idleShutdown'
           property :idle_shutdown_timeout, as: 'idleShutdownTimeout'
           property :install_gpu_driver, as: 'installGpuDriver'
+          collection :kernels, as: 'kernels', class: Google::Apis::NotebooksV1::ContainerImage, decorator: Google::Apis::NotebooksV1::ContainerImage::Representation
+      
           property :notebook_upgrade_schedule, as: 'notebookUpgradeSchedule'
           property :post_startup_script, as: 'postStartupScript'
         end
