@@ -2013,7 +2013,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents an upload session reference. This reference is created via upload
-        # method. UploadItemRef may be used upto 30 days since creation. Updating of
+        # method. This reference is valid for 30 days after its creation. Updating of
         # item content may refer to this uploaded content via contentDataRef.
         # Corresponds to the JSON property `contentDataRef`
         # @return [Google::Apis::CloudsearchV1::UploadItemRef]
@@ -2155,8 +2155,8 @@ module Google
         # @return [Google::Apis::CloudsearchV1::SearchQualityMetadata]
         attr_accessor :search_quality_metadata
       
-        # Link to the source repository serving the data. Search results apply this link
-        # to the title. Whitespace or special characters may cause Cloud Search result
+        # Link to the source repository serving the data. Seach results apply this link
+        # to the title. Whitespace or special characters may cause Cloud Seach result
         # links to trigger a redirect notice; to avoid this, encode the URL. The maximum
         # length is 2048 characters.
         # Corresponds to the JSON property `sourceRepositoryUrl`
@@ -5210,7 +5210,7 @@ module Google
       end
       
       # Represents an upload session reference. This reference is created via upload
-      # method. UploadItemRef may be used upto 30 days since creation. Updating of
+      # method. This reference is valid for 30 days after its creation. Updating of
       # item content may refer to this uploaded content via contentDataRef.
       class UploadItemRef
         include Google::Apis::Core::Hashable
