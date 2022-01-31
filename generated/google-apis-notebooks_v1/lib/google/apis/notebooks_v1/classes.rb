@@ -1872,7 +1872,7 @@ module Google
         # Specifies the selection and configuration of software inside the runtime. The
         # properties to set on runtime. Properties keys are specified in `key:value`
         # format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `
-        # report-system-health: true`
+        # enable_health_monitoring: true`
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::NotebooksV1::RuntimeSoftwareConfig]
         attr_accessor :software_config
@@ -2064,7 +2064,7 @@ module Google
       # Specifies the selection and configuration of software inside the runtime. The
       # properties to set on runtime. Properties keys are specified in `key:value`
       # format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `
-      # report-system-health: true`
+      # enable_health_monitoring: true`
       class RuntimeSoftwareConfig
         include Google::Apis::Core::Hashable
       
@@ -2097,6 +2097,12 @@ module Google
         attr_accessor :install_gpu_driver
         alias_method :install_gpu_driver?, :install_gpu_driver
       
+        # Optional. Use a list of container images to use as Kernels in the notebook
+        # instance.
+        # Corresponds to the JSON property `kernels`
+        # @return [Array<Google::Apis::NotebooksV1::ContainerImage>]
+        attr_accessor :kernels
+      
         # Cron expression in UTC timezone, used to schedule instance auto upgrade.
         # Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         # Corresponds to the JSON property `notebookUpgradeSchedule`
@@ -2121,6 +2127,7 @@ module Google
           @idle_shutdown = args[:idle_shutdown] if args.key?(:idle_shutdown)
           @idle_shutdown_timeout = args[:idle_shutdown_timeout] if args.key?(:idle_shutdown_timeout)
           @install_gpu_driver = args[:install_gpu_driver] if args.key?(:install_gpu_driver)
+          @kernels = args[:kernels] if args.key?(:kernels)
           @notebook_upgrade_schedule = args[:notebook_upgrade_schedule] if args.key?(:notebook_upgrade_schedule)
           @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
         end
@@ -2841,7 +2848,8 @@ module Google
         # @return [Google::Apis::NotebooksV1::RuntimeAcceleratorConfig]
         attr_accessor :accelerator_config
       
-        # Optional. Use a list of container images to start the notebook instance.
+        # Optional. Use a list of container images to use as Kernels in the notebook
+        # instance.
         # Corresponds to the JSON property `containerImages`
         # @return [Array<Google::Apis::NotebooksV1::ContainerImage>]
         attr_accessor :container_images
