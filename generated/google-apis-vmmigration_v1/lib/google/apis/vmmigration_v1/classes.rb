@@ -41,19 +41,6 @@ module Google
         end
       end
       
-      # Response message for 'AddGroupMigration' request.
-      class AddGroupMigrationResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # AppliedLicense holds the license data returned by adaptation module report.
       class AppliedLicense
         include Google::Apis::Core::Hashable
@@ -92,34 +79,8 @@ module Google
         end
       end
       
-      # Response message for 'CancelCloneJob' request.
-      class CancelCloneJobResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Request message for 'CancelCutoverJob' request.
       class CancelCutoverJobRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response message for 'CancelCutoverJob' request.
-      class CancelCutoverJobResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -693,19 +654,6 @@ module Google
       
       # Request message for 'FinalizeMigration' request.
       class FinalizeMigrationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response message for 'FinalizeMigration' request.
-      class FinalizeMigrationResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1519,19 +1467,6 @@ module Google
         end
       end
       
-      # Response message for 'PauseMigration' request.
-      class PauseMigrationResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Request message for 'RemoveMigration' request.
       class RemoveGroupMigrationRequest
         include Google::Apis::Core::Hashable
@@ -1548,19 +1483,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @migrating_vm = args[:migrating_vm] if args.key?(:migrating_vm)
-        end
-      end
-      
-      # Response message for 'RemoveMigration' request.
-      class RemoveGroupMigrationResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -1611,19 +1533,6 @@ module Google
       
       # Request message for 'ResumeMigration' request.
       class ResumeMigrationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response message for 'ResumeMigration' request.
-      class ResumeMigrationResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1749,19 +1658,6 @@ module Google
       
       # Request message for 'StartMigrationRequest' request.
       class StartMigrationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Response message for 'StartMigration' request.
-      class StartMigrationResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
