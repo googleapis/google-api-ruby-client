@@ -1404,7 +1404,7 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
-        # The name (project, location, cluster id) of the cluster to complete IP
+        # The name (project, location, cluster name) of the cluster to complete IP
         # rotation. Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1442,7 +1442,7 @@ module Google
       class ConfidentialNodes
         include Google::Apis::Core::Hashable
       
-        # Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        # Whether Confidential Nodes feature is enabled.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -1574,8 +1574,8 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodePool]
         attr_accessor :node_pool
       
-        # The parent (project, location, cluster id) where the node pool will be created.
-        # Specified in the format `projects/*/locations/*/clusters/*`.
+        # The parent (project, location, cluster name) where the node pool will be
+        # created. Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -4659,7 +4659,7 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # The name (project, location, cluster id) of the cluster to set labels.
+        # The name (project, location, cluster name) of the cluster to set labels.
         # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4716,7 +4716,7 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # The name (project, location, cluster id) of the cluster to set legacy abac.
+        # The name (project, location, cluster name) of the cluster to set legacy abac.
         # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4873,7 +4873,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::MaintenancePolicy]
         attr_accessor :maintenance_policy
       
-        # The name (project, location, cluster id) of the cluster to set maintenance
+        # The name (project, location, cluster name) of the cluster to set maintenance
         # policy. Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5026,7 +5026,7 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
-        # The name (project, location, cluster id) of the cluster to set networking
+        # The name (project, location, cluster name) of the cluster to set networking
         # policy. Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5304,7 +5304,7 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
-        # The name (project, location, cluster id) of the cluster to start IP rotation.
+        # The name (project, location, cluster name) of the cluster to start IP rotation.
         # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
