@@ -274,6 +274,12 @@ module Google
         # @return [String]
         attr_accessor :enrollment_code
       
+        # The gradebook settings for a course. See the [help center article](https://
+        # support.google.com/edu/classroom/answer/9184995) for details.
+        # Corresponds to the JSON property `gradebookSettings`
+        # @return [Google::Apis::ClassroomV1::GradebookSettings]
+        attr_accessor :gradebook_settings
+      
         # Whether or not guardian notifications are enabled for this course. Read-only.
         # Corresponds to the JSON property `guardiansEnabled`
         # @return [Boolean]
@@ -350,6 +356,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @description_heading = args[:description_heading] if args.key?(:description_heading)
           @enrollment_code = args[:enrollment_code] if args.key?(:enrollment_code)
+          @gradebook_settings = args[:gradebook_settings] if args.key?(:gradebook_settings)
           @guardians_enabled = args[:guardians_enabled] if args.key?(:guardians_enabled)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
@@ -545,6 +552,14 @@ module Google
         # @return [Google::Apis::ClassroomV1::TimeOfDay]
         attr_accessor :due_time
       
+        # Details for a grade category in a course. Coursework may have zero or one
+        # grade category, and the category may be used in computing the overall grade.
+        # See the [help center article](https://support.google.com/edu/classroom/answer/
+        # 9184995) for details.
+        # Corresponds to the JSON property `gradeCategory`
+        # @return [Google::Apis::ClassroomV1::GradeCategory]
+        attr_accessor :grade_category
+      
         # Classroom-assigned identifier of this course work, unique per course. Read-
         # only.
         # Corresponds to the JSON property `id`
@@ -628,6 +643,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @due_date = args[:due_date] if args.key?(:due_date)
           @due_time = args[:due_time] if args.key?(:due_time)
+          @grade_category = args[:grade_category] if args.key?(:grade_category)
           @id = args[:id] if args.key?(:id)
           @individual_students_options = args[:individual_students_options] if args.key?(:individual_students_options)
           @materials = args[:materials] if args.key?(:materials)
@@ -983,6 +999,50 @@ module Google
         end
       end
       
+      # Details for a grade category in a course. Coursework may have zero or one
+      # grade category, and the category may be used in computing the overall grade.
+      # See the [help center article](https://support.google.com/edu/classroom/answer/
+      # 9184995) for details.
+      class GradeCategory
+        include Google::Apis::Core::Hashable
+      
+        # Default value of denominator. Only applicable when grade calculation type is
+        # TOTAL_POINTS.
+        # Corresponds to the JSON property `defaultGradeDenominator`
+        # @return [Fixnum]
+        attr_accessor :default_grade_denominator
+      
+        # ID of the grade category.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Name of the grade category.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The weight of the category average as part of overall average. A weight of 12.
+        # 34% is represented as 123400 (100% is 1,000,000). The last two digits should
+        # always be zero since we use two decimal precision. Only applicable when grade
+        # calculation type is WEIGHTED_CATEGORIES.
+        # Corresponds to the JSON property `weight`
+        # @return [Fixnum]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_grade_denominator = args[:default_grade_denominator] if args.key?(:default_grade_denominator)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
       # The history of each grade on this submission.
       class GradeHistory
         include Google::Apis::Core::Hashable
@@ -1023,6 +1083,38 @@ module Google
           @grade_timestamp = args[:grade_timestamp] if args.key?(:grade_timestamp)
           @max_points = args[:max_points] if args.key?(:max_points)
           @points_earned = args[:points_earned] if args.key?(:points_earned)
+        end
+      end
+      
+      # The gradebook settings for a course. See the [help center article](https://
+      # support.google.com/edu/classroom/answer/9184995) for details.
+      class GradebookSettings
+        include Google::Apis::Core::Hashable
+      
+        # Indicates how the overall grade is calculated.
+        # Corresponds to the JSON property `calculationType`
+        # @return [String]
+        attr_accessor :calculation_type
+      
+        # Indicates who can see the overall grade..
+        # Corresponds to the JSON property `displaySetting`
+        # @return [String]
+        attr_accessor :display_setting
+      
+        # Grade categories that are available for coursework in the course.
+        # Corresponds to the JSON property `gradeCategories`
+        # @return [Array<Google::Apis::ClassroomV1::GradeCategory>]
+        attr_accessor :grade_categories
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calculation_type = args[:calculation_type] if args.key?(:calculation_type)
+          @display_setting = args[:display_setting] if args.key?(:display_setting)
+          @grade_categories = args[:grade_categories] if args.key?(:grade_categories)
         end
       end
       

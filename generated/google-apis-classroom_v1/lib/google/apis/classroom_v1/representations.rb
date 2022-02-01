@@ -142,7 +142,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GradeCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GradeHistory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GradebookSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -458,6 +470,8 @@ module Google
           property :description, as: 'description'
           property :description_heading, as: 'descriptionHeading'
           property :enrollment_code, as: 'enrollmentCode'
+          property :gradebook_settings, as: 'gradebookSettings', class: Google::Apis::ClassroomV1::GradebookSettings, decorator: Google::Apis::ClassroomV1::GradebookSettings::Representation
+      
           property :guardians_enabled, as: 'guardiansEnabled'
           property :id, as: 'id'
           property :name, as: 'name'
@@ -523,6 +537,8 @@ module Google
           property :due_date, as: 'dueDate', class: Google::Apis::ClassroomV1::Date, decorator: Google::Apis::ClassroomV1::Date::Representation
       
           property :due_time, as: 'dueTime', class: Google::Apis::ClassroomV1::TimeOfDay, decorator: Google::Apis::ClassroomV1::TimeOfDay::Representation
+      
+          property :grade_category, as: 'gradeCategory', class: Google::Apis::ClassroomV1::GradeCategory, decorator: Google::Apis::ClassroomV1::GradeCategory::Representation
       
           property :id, as: 'id'
           property :individual_students_options, as: 'individualStudentsOptions', class: Google::Apis::ClassroomV1::IndividualStudentsOptions, decorator: Google::Apis::ClassroomV1::IndividualStudentsOptions::Representation
@@ -633,6 +649,16 @@ module Google
         end
       end
       
+      class GradeCategory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_grade_denominator, as: 'defaultGradeDenominator'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :weight, as: 'weight'
+        end
+      end
+      
       class GradeHistory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -641,6 +667,16 @@ module Google
           property :grade_timestamp, as: 'gradeTimestamp'
           property :max_points, as: 'maxPoints'
           property :points_earned, as: 'pointsEarned'
+        end
+      end
+      
+      class GradebookSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :calculation_type, as: 'calculationType'
+          property :display_setting, as: 'displaySetting'
+          collection :grade_categories, as: 'gradeCategories', class: Google::Apis::ClassroomV1::GradeCategory, decorator: Google::Apis::ClassroomV1::GradeCategory::Representation
+      
         end
       end
       
