@@ -306,7 +306,7 @@ module Google
         end
         
         # Update the specified case. Only a subset of fields (display_name, description,
-        # time_zone, subscriber_email_addresses, related_resources, severity,
+        # time_zone, subscriber_email_addresses, related_resources, severity, priority,
         # primary_contact, and labels) can be updated.
         # @param [String] name
         #   The resource name for the case.
