@@ -890,14 +890,15 @@ module Google
         # default. Returns an empty list if no relevant properties are found.
         # @param [String] filter
         #   Required. An expression for filtering the results of the request. Fields
-        #   eligible for filtering are: `parent:`(The resource name of the parent account)
-        #   or `ancestor:`(The resource name of the parent account) or `firebase_project:`(
-        #   The id or number of the linked firebase project). Some examples of filters: ```
-        #   | Filter | Description | |-----------------------------|----------------------
-        #   ---------------------| | parent:accounts/123 | The account with account id:
-        #   123. | | ancestor:accounts/123 | The account with account id: 123. | |
-        #   firebase_project:project-id | The firebase project with id: project-id. | |
-        #   firebase_project:123 | The firebase project with number: 123. | ```
+        #   eligible for filtering are: `parent:`(The resource name of the parent account/
+        #   property) or `ancestor:`(The resource name of the parent account) or `
+        #   firebase_project:`(The id or number of the linked firebase project). Some
+        #   examples of filters: ``` | Filter | Description | |----------------------------
+        #   -|-------------------------------------------| | parent:accounts/123 | The
+        #   account with account id: 123. | | parent:properties/123 | The property with
+        #   property id: 123. | | ancestor:accounts/123 | The account with account id: 123.
+        #   | | firebase_project:project-id | The firebase project with id: project-id. |
+        #   | firebase_project:123 | The firebase project with number: 123. | ```
         # @param [Fixnum] page_size
         #   The maximum number of resources to return. The service may return fewer than
         #   this value, even if there are additional pages. If unspecified, at most 50
