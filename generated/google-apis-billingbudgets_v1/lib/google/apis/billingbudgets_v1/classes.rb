@@ -120,26 +120,14 @@ module Google
       class GoogleCloudBillingBudgetsV1CustomPeriod
         include Google::Apis::Core::Hashable
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Optional. The end date of the time period. Budgets with elapsed end date won't
+        # be processed. If unset, specifies to track all usage incurred since the
+        # start_date.
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::BillingbudgetsV1::GoogleTypeDate]
         attr_accessor :end_date
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Required. The start date must be after January 1, 2017.
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::BillingbudgetsV1::GoogleTypeDate]
         attr_accessor :start_date
@@ -418,14 +406,7 @@ module Google
         end
       end
       
-      # Represents a whole or partial calendar date, such as a birthday. The time of
-      # day and time zone are either specified elsewhere or are insignificant. The
-      # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # 
       class GoogleTypeDate
         include Google::Apis::Core::Hashable
       
