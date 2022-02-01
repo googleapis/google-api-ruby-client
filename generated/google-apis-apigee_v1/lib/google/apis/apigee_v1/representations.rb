@@ -1727,6 +1727,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
+          property :create_time, as: 'createTime'
           property :filter, as: 'filter'
           property :name, as: 'name'
           property :timeout, :numeric_string => true, as: 'timeout'
