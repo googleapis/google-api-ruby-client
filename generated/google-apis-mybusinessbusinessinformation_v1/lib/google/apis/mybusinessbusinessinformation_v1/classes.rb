@@ -448,14 +448,7 @@ module Google
         end
       end
       
-      # Represents a whole or partial calendar date, such as a birthday. The time of
-      # day and time zone are either specified elsewhere or are insignificant. The
-      # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # 
       class Date
         include Google::Apis::Core::Hashable
       
@@ -1144,14 +1137,9 @@ module Google
         attr_accessor :can_reopen
         alias_method :can_reopen?, :can_reopen
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Optional. The date on which the location first opened. If the exact day is not
+        # known, month and year only can be provided. The date must be in the past or be
+        # no more than one year in the future.
         # Corresponds to the JSON property `openingDate`
         # @return [Google::Apis::MybusinessbusinessinformationV1::Date]
         attr_accessor :opening_date
@@ -1707,14 +1695,9 @@ module Google
         attr_accessor :closed
         alias_method :closed?, :closed
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Optional. The calendar date this special hour period ends on. If `end_date`
+        # field is not set, default to the date specified in `start_date`. If set, this
+        # field must be equal to or at most 1 day after `start_date`.
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::MybusinessbusinessinformationV1::Date]
         attr_accessor :end_date
@@ -1726,14 +1709,7 @@ module Google
         # @return [Google::Apis::MybusinessbusinessinformationV1::TimeOfDay]
         attr_accessor :open_time
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Required. The calendar date this special hour period starts on.
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::MybusinessbusinessinformationV1::Date]
         attr_accessor :start_date
