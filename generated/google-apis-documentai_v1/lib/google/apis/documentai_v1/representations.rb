@@ -700,6 +700,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1alpha1AnalyzeHitlDataMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1alpha1CommonOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2464,6 +2476,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :x, as: 'x'
           property :y, as: 'y'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1alpha1AnalyzeHitlDataMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1alpha1CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1alpha1CommonOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1alpha1CommonOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :resource, as: 'resource'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+          property :update_time, as: 'updateTime'
         end
       end
       
