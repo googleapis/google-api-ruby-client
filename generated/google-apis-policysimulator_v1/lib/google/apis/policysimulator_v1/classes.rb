@@ -505,14 +505,7 @@ module Google
         # @return [Google::Apis::PolicysimulatorV1::GoogleRpcStatus]
         attr_accessor :error
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # The latest date this access tuple was seen in the logs.
         # Corresponds to the JSON property `lastSeenDate`
         # @return [Google::Apis::PolicysimulatorV1::GoogleTypeDate]
         attr_accessor :last_seen_date
@@ -567,26 +560,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :log_count
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # The date of the newest log entry replayed.
         # Corresponds to the JSON property `newestDate`
         # @return [Google::Apis::PolicysimulatorV1::GoogleTypeDate]
         attr_accessor :newest_date
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # The date of the oldest log entry replayed.
         # Corresponds to the JSON property `oldestDate`
         # @return [Google::Apis::PolicysimulatorV1::GoogleTypeDate]
         attr_accessor :oldest_date
@@ -725,26 +704,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :log_count
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # The date of the newest log entry replayed.
         # Corresponds to the JSON property `newestDate`
         # @return [Google::Apis::PolicysimulatorV1::GoogleTypeDate]
         attr_accessor :newest_date
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # The date of the oldest log entry replayed.
         # Corresponds to the JSON property `oldestDate`
         # @return [Google::Apis::PolicysimulatorV1::GoogleTypeDate]
         attr_accessor :oldest_date
@@ -1133,14 +1098,7 @@ module Google
         end
       end
       
-      # Represents a whole or partial calendar date, such as a birthday. The time of
-      # day and time zone are either specified elsewhere or are insignificant. The
-      # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # 
       class GoogleTypeDate
         include Google::Apis::Core::Hashable
       
