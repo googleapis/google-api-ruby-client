@@ -1,5 +1,10 @@
 # Release history for google-apis-fcmdata_v1beta1
 
+### v0.5.0 (2022-02-01)
+
+* Regenerated from discovery document revision 20220129
+* Regenerated using generator version 0.4.1
+
 ### v0.4.0 (2021-12-14)
 
 * Unspecified changes
