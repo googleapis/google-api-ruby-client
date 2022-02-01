@@ -1219,6 +1219,68 @@ module Google
         end
       end
       
+      # The long running operation metadata for AnalyzeHitlData.
+      class GoogleCloudDocumentaiV1alpha1AnalyzeHitlDataMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1alpha1CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The common metadata for long running operations.
+      class GoogleCloudDocumentaiV1alpha1CommonOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A related resource to this operation.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # The state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @resource = args[:resource] if args.key?(:resource)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Response to an batch document processing request. This is returned in the LRO
       # Operation after the operation is complete.
       class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
@@ -1481,14 +1543,8 @@ module Google
         attr_accessor :boolean_value
         alias_method :boolean_value?, :boolean_value
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Date value. Includes year, month, day. See also: https://github.com/googleapis/
+        # googleapis/blob/master/google/type/date.proto
         # Corresponds to the JSON property `dateValue`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDate]
         attr_accessor :date_value
@@ -3248,14 +3304,8 @@ module Google
         attr_accessor :boolean_value
         alias_method :boolean_value?, :boolean_value
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Date value. Includes year, month, day. See also: https://github.com/googleapis/
+        # googleapis/blob/master/google/type/date.proto
         # Corresponds to the JSON property `dateValue`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDate]
         attr_accessor :date_value
@@ -5671,14 +5721,7 @@ module Google
         end
       end
       
-      # Represents a whole or partial calendar date, such as a birthday. The time of
-      # day and time zone are either specified elsewhere or are insignificant. The
-      # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # 
       class GoogleTypeDate
         include Google::Apis::Core::Hashable
       
