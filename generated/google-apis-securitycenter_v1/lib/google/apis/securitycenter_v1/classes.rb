@@ -617,14 +617,16 @@ module Google
         attr_accessor :mitre_attack
       
         # Indicates the mute state of a finding (either unspecified, muted, unmuted or
-        # undefined).
+        # undefined). Unlike other attributes of a finding, a finding provider shouldn't
+        # set the value of mute.
         # Corresponds to the JSON property `mute`
         # @return [String]
         attr_accessor :mute
       
         # First known as mute_annotation. Records additional information about the mute
         # operation e.g. mute config that muted the finding, user who muted the finding,
-        # etc.
+        # etc. Unlike other attributes of a finding, a finding provider shouldn't set
+        # the value of mute.
         # Corresponds to the JSON property `muteInitiator`
         # @return [String]
         attr_accessor :mute_initiator
