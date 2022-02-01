@@ -577,12 +577,27 @@ module Google
       class MetadataOptions
         include Google::Apis::Core::Hashable
       
+        # Specifies how each object's ACLs should be preserved for transfers between
+        # Google Cloud Storage buckets. If unspecified, the default behavior is the same
+        # as ACL_DESTINATION_BUCKET_DEFAULT.
+        # Corresponds to the JSON property `acl`
+        # @return [String]
+        attr_accessor :acl
+      
         # Specifies how each file's GID attribute should be handled by the transfer. If
         # unspecified, the default behavior is the same as GID_SKIP when the source is a
         # POSIX file system.
         # Corresponds to the JSON property `gid`
         # @return [String]
         attr_accessor :gid
+      
+        # Specifies how each object's Cloud KMS customer-managed encryption key (CMEK)
+        # is preserved for transfers between Google Cloud Storage buckets. If
+        # unspecified, the default behavior is the same as
+        # KMS_KEY_DESTINATION_BUCKET_DEFAULT.
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
       
         # Specifies how each file's mode attribute should be handled by the transfer. If
         # unspecified, the default behavior is the same as MODE_SKIP when the source is
@@ -591,12 +606,26 @@ module Google
         # @return [String]
         attr_accessor :mode
       
+        # Specifies the storage class to set on objects being transferred to Google
+        # Cloud Storage buckets. If unspecified, the default behavior is the same as
+        # STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
+        # Corresponds to the JSON property `storageClass`
+        # @return [String]
+        attr_accessor :storage_class
+      
         # Specifies how symlinks should be handled by the transfer. If unspecified, the
         # default behavior is the same as SYMLINK_SKIP when the source is a POSIX file
         # system.
         # Corresponds to the JSON property `symlink`
         # @return [String]
         attr_accessor :symlink
+      
+        # Specifies how each object's temporary hold status should be preserved for
+        # transfers between Google Cloud Storage buckets. If unspecified, the default
+        # behavior is the same as TEMPORARY_HOLD_PRESERVE.
+        # Corresponds to the JSON property `temporaryHold`
+        # @return [String]
+        attr_accessor :temporary_hold
       
         # Specifies how each file's UID attribute should be handled by the transfer. If
         # unspecified, the default behavior is the same as UID_SKIP when the source is a
@@ -611,9 +640,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acl = args[:acl] if args.key?(:acl)
           @gid = args[:gid] if args.key?(:gid)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
           @mode = args[:mode] if args.key?(:mode)
+          @storage_class = args[:storage_class] if args.key?(:storage_class)
           @symlink = args[:symlink] if args.key?(:symlink)
+          @temporary_hold = args[:temporary_hold] if args.key?(:temporary_hold)
           @uid = args[:uid] if args.key?(:uid)
         end
       end

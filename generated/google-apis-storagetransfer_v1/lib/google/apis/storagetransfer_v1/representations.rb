@@ -394,9 +394,13 @@ module Google
       class MetadataOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl, as: 'acl'
           property :gid, as: 'gid'
+          property :kms_key, as: 'kmsKey'
           property :mode, as: 'mode'
+          property :storage_class, as: 'storageClass'
           property :symlink, as: 'symlink'
+          property :temporary_hold, as: 'temporaryHold'
           property :uid, as: 'uid'
         end
       end
