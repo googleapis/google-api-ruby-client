@@ -75,7 +75,9 @@ module Google
         # @return [String]
         attr_accessor :disclosure_date
       
-        # A list of excluded destinations.
+        # A list of excluded destinations such as "ClientExport", "ClientShoppingCatalog"
+        # or "PartnerShoppingCatalog". For more information, see https://support.google.
+        # com/manufacturers/answer/7443550
         # Corresponds to the JSON property `excludedDestination`
         # @return [Array<String>]
         attr_accessor :excluded_destination
@@ -115,7 +117,9 @@ module Google
         # @return [Google::Apis::ManufacturersV1::Image]
         attr_accessor :image_link
       
-        # A list of included destinations.
+        # A list of included destinations such as "ClientExport", "ClientShoppingCatalog"
+        # or "PartnerShoppingCatalog". For more information, see https://support.google.
+        # com/manufacturers/answer/7443550
         # Corresponds to the JSON property `includedDestination`
         # @return [Array<String>]
         attr_accessor :included_destination
@@ -222,6 +226,8 @@ module Google
         attr_accessor :suggested_retail_price
       
         # The target client id. Should only be used in the accounts of the data partners.
+        # For more information, see https://support.google.com/manufacturers/answer/
+        # 10857344
         # Corresponds to the JSON property `targetClientId`
         # @return [String]
         attr_accessor :target_client_id
