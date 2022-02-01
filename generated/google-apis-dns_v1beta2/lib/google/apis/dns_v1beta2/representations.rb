@@ -706,6 +706,7 @@ module Google
           property :managed_zones_per_network, as: 'managedZonesPerNetwork'
           property :networks_per_managed_zone, as: 'networksPerManagedZone'
           property :networks_per_policy, as: 'networksPerPolicy'
+          property :peering_zones_per_target_network, as: 'peeringZonesPerTargetNetwork'
           property :policies, as: 'policies'
           property :resource_records_per_rrset, as: 'resourceRecordsPerRrset'
           property :response_policy_rules_per_response_policy, as: 'responsePolicyRulesPerResponsePolicy'
