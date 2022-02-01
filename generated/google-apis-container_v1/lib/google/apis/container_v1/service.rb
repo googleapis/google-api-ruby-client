@@ -140,7 +140,7 @@ module Google
         
         # Completes master IP rotation.
         # @param [String] name
-        #   The name (project, location, cluster id) of the cluster to complete IP
+        #   The name (project, location, cluster name) of the cluster to complete IP
         #   rotation. Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [Google::Apis::ContainerV1::CompleteIpRotationRequest] complete_ip_rotation_request_object
         # @param [String] fields
@@ -311,8 +311,8 @@ module Google
         # This API is not yet intended for general use, and is not available for all
         # clusters.
         # @param [String] parent
-        #   The cluster (project, location, cluster id) to get keys for. Specified in the
-        #   format `projects/*/locations/*/clusters/*`.
+        #   The cluster (project, location, cluster name) to get keys for. Specified in
+        #   the format `projects/*/locations/*/clusters/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -419,7 +419,7 @@ module Google
         
         # Enables or disables the ABAC authorization mechanism on a cluster.
         # @param [String] name
-        #   The name (project, location, cluster id) of the cluster to set legacy abac.
+        #   The name (project, location, cluster name) of the cluster to set legacy abac.
         #   Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [Google::Apis::ContainerV1::SetLegacyAbacRequest] set_legacy_abac_request_object
         # @param [String] fields
@@ -523,7 +523,7 @@ module Google
         
         # Sets the maintenance policy for a cluster.
         # @param [String] name
-        #   The name (project, location, cluster id) of the cluster to set maintenance
+        #   The name (project, location, cluster name) of the cluster to set maintenance
         #   policy. Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [Google::Apis::ContainerV1::SetMaintenancePolicyRequest] set_maintenance_policy_request_object
         # @param [String] fields
@@ -627,7 +627,7 @@ module Google
         
         # Enables or disables Network Policy for a cluster.
         # @param [String] name
-        #   The name (project, location, cluster id) of the cluster to set networking
+        #   The name (project, location, cluster name) of the cluster to set networking
         #   policy. Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [Google::Apis::ContainerV1::SetNetworkPolicyRequest] set_network_policy_request_object
         # @param [String] fields
@@ -661,7 +661,7 @@ module Google
         
         # Sets labels on a cluster.
         # @param [String] name
-        #   The name (project, location, cluster id) of the cluster to set labels.
+        #   The name (project, location, cluster name) of the cluster to set labels.
         #   Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [Google::Apis::ContainerV1::SetLabelsRequest] set_labels_request_object
         # @param [String] fields
@@ -695,7 +695,7 @@ module Google
         
         # Starts master IP rotation.
         # @param [String] name
-        #   The name (project, location, cluster id) of the cluster to start IP rotation.
+        #   The name (project, location, cluster name) of the cluster to start IP rotation.
         #   Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [Google::Apis::ContainerV1::StartIpRotationRequest] start_ip_rotation_request_object
         # @param [String] fields
@@ -797,8 +797,8 @@ module Google
         
         # Creates a node pool for a cluster.
         # @param [String] parent
-        #   The parent (project, location, cluster id) where the node pool will be created.
-        #   Specified in the format `projects/*/locations/*/clusters/*`.
+        #   The parent (project, location, cluster name) where the node pool will be
+        #   created. Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [Google::Apis::ContainerV1::CreateNodePoolRequest] create_node_pool_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -929,8 +929,8 @@ module Google
         
         # Lists the node pools for a cluster.
         # @param [String] parent
-        #   The parent (project, location, cluster id) where the node pools will be listed.
-        #   Specified in the format `projects/*/locations/*/clusters/*`.
+        #   The parent (project, location, cluster name) where the node pools will be
+        #   listed. Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [String] cluster_id
         #   Deprecated. The name of the cluster. This field has been deprecated and
         #   replaced by the parent field.
@@ -1152,8 +1152,8 @@ module Google
         # 1_0.html) for details. This API is not yet intended for general use, and is
         # not available for all clusters.
         # @param [String] parent
-        #   The cluster (project, location, cluster id) to get the discovery document for.
-        #   Specified in the format `projects/*/locations/*/clusters/*`.
+        #   The cluster (project, location, cluster name) to get the discovery document
+        #   for. Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2303,8 +2303,8 @@ module Google
         #   Deprecated. The name of the cluster. This field has been deprecated and
         #   replaced by the parent field.
         # @param [String] parent
-        #   The parent (project, location, cluster id) where the node pools will be listed.
-        #   Specified in the format `projects/*/locations/*/clusters/*`.
+        #   The parent (project, location, cluster name) where the node pools will be
+        #   listed. Specified in the format `projects/*/locations/*/clusters/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
