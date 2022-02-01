@@ -325,14 +325,7 @@ module Google
         end
       end
       
-      # Represents a whole or partial calendar date, such as a birthday. The time of
-      # day and time zone are either specified elsewhere or are insignificant. The
-      # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # 
       class Date
         include Google::Apis::Core::Hashable
       
@@ -756,14 +749,9 @@ module Google
         # @return [String]
         attr_accessor :amount
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Output only. For paid earnings, the date that the payment was credited. For
+        # unpaid earnings, this field is empty. Payment dates are always returned in the
+        # billing timezone (America/Los_Angeles).
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::AdsenseV2::Date]
         attr_accessor :date
@@ -798,14 +786,7 @@ module Google
         # @return [Google::Apis::AdsenseV2::Row]
         attr_accessor :averages
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Required. End date of the range (inclusive).
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::AdsenseV2::Date]
         attr_accessor :end_date
@@ -822,14 +803,7 @@ module Google
         # @return [Array<Google::Apis::AdsenseV2::Row>]
         attr_accessor :rows
       
-        # Represents a whole or partial calendar date, such as a birthday. The time of
-        # day and time zone are either specified elsewhere or are insignificant. The
-        # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # Required. Start date of the range (inclusive).
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::AdsenseV2::Date]
         attr_accessor :start_date
