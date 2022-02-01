@@ -1404,6 +1404,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :networks_per_policy
       
+        # Maximum allowed number of consumer peering zones per target network owned by
+        # this producer project
+        # Corresponds to the JSON property `peeringZonesPerTargetNetwork`
+        # @return [Fixnum]
+        attr_accessor :peering_zones_per_target_network
+      
         # Maximum allowed number of policies per project.
         # Corresponds to the JSON property `policies`
         # @return [Fixnum]
@@ -1471,6 +1477,7 @@ module Google
           @managed_zones_per_network = args[:managed_zones_per_network] if args.key?(:managed_zones_per_network)
           @networks_per_managed_zone = args[:networks_per_managed_zone] if args.key?(:networks_per_managed_zone)
           @networks_per_policy = args[:networks_per_policy] if args.key?(:networks_per_policy)
+          @peering_zones_per_target_network = args[:peering_zones_per_target_network] if args.key?(:peering_zones_per_target_network)
           @policies = args[:policies] if args.key?(:policies)
           @resource_records_per_rrset = args[:resource_records_per_rrset] if args.key?(:resource_records_per_rrset)
           @response_policy_rules_per_response_policy = args[:response_policy_rules_per_response_policy] if args.key?(:response_policy_rules_per_response_policy)
