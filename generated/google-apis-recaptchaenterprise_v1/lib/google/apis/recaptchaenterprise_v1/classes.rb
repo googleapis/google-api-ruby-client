@@ -31,11 +31,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :labels
       
-        # Recommended action after this request.
-        # Corresponds to the JSON property `recommendedAction`
-        # @return [String]
-        attr_accessor :recommended_action
-      
         def initialize(**args)
            update!(**args)
         end
@@ -43,7 +38,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
-          @recommended_action = args[:recommended_action] if args.key?(:recommended_action)
         end
       end
       
