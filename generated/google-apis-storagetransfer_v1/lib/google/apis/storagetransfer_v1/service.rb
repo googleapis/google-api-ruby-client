@@ -414,7 +414,7 @@ module Google
         
         # Attempts to start a new TransferOperation for the current TransferJob. A
         # TransferJob has a maximum of one active TransferOperation. If this method is
-        # called while a TransferOperation is active, an error wil be returned.
+        # called while a TransferOperation is active, an error will be returned.
         # @param [String] job_name
         #   Required. The name of the transfer job.
         # @param [Google::Apis::StoragetransferV1::RunTransferJobRequest] run_transfer_job_request_object
