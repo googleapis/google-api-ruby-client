@@ -2094,6 +2094,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
+        # Output only. The first transaction creation timestamp, recorded by UAP.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Optional. A conditional statement which is evaluated against the request
         # message to determine if it should be traced. Syntax matches that of on API
         # Proxy bundle flow Condition.
@@ -2132,6 +2137,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @filter = args[:filter] if args.key?(:filter)
           @name = args[:name] if args.key?(:name)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -6643,7 +6649,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The first transaction creation timestamp in millisecond, recoreded by UAP.
+        # The first transaction creation timestamp in millisecond, recorded by UAP.
         # Corresponds to the JSON property `timestampMs`
         # @return [Fixnum]
         attr_accessor :timestamp_ms
