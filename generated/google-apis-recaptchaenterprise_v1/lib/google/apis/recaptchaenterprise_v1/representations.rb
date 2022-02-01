@@ -182,7 +182,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :labels, as: 'labels'
-          property :recommended_action, as: 'recommendedAction'
         end
       end
       
