@@ -1726,7 +1726,8 @@ module Google
         attr_accessor :bitrate_bps
       
         # Target CRF level. Must be between 10 and 36, where 10 is the highest quality
-        # and 36 is the most efficient compression. The default is 21.
+        # and 36 is the most efficient compression. The default is 21. *Note*: This
+        # field is not supported.
         # Corresponds to the JSON property `crfLevel`
         # @return [Fixnum]
         attr_accessor :crf_level
@@ -1781,7 +1782,7 @@ module Google
         attr_accessor :profile
       
         # Specify the `rate_control_mode`. The default is `vbr`. Supported rate control
-        # modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        # modes: - `vbr` - variable bitrate
         # Corresponds to the JSON property `rateControlMode`
         # @return [String]
         attr_accessor :rate_control_mode
