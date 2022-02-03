@@ -2880,7 +2880,8 @@ module Google
         attr_accessor :primary_product_id
       
         # The promotions applied to the product. A maximum of 10 values are allowed per
-        # Product.
+        # Product. Only Promotion.promotion_id will be used, other fields will be
+        # ignored if set.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaPromotion>]
         attr_accessor :promotions
@@ -3159,7 +3160,7 @@ module Google
       class GoogleCloudRetailV2betaPromotion
         include Google::Apis::Core::Hashable
       
-        # ID of the promotion. For example, "free gift". The value value must be a UTF-8
+        # ID of the promotion. For example, "free gift". The value must be a UTF-8
         # encoded string with a length limit of 128 characters, and match the pattern: `
         # a-zA-Z*`. For example, id0LikeThis or ID_1_LIKE_THIS. Otherwise, an
         # INVALID_ARGUMENT error is returned. Google Merchant Center property [promotion]
@@ -3911,6 +3912,11 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
+        # The specification for personalization.
+        # Corresponds to the JSON property `personalizationSpec`
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestPersonalizationSpec]
+        attr_accessor :personalization_spec
+      
         # Raw search query.
         # Corresponds to the JSON property `query`
         # @return [String]
@@ -3989,6 +3995,7 @@ module Google
           @page_categories = args[:page_categories] if args.key?(:page_categories)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
+          @personalization_spec = args[:personalization_spec] if args.key?(:personalization_spec)
           @query = args[:query] if args.key?(:query)
           @query_expansion_spec = args[:query_expansion_spec] if args.key?(:query_expansion_spec)
           @search_mode = args[:search_mode] if args.key?(:search_mode)
@@ -4235,6 +4242,25 @@ module Google
           @prefixes = args[:prefixes] if args.key?(:prefixes)
           @query = args[:query] if args.key?(:query)
           @restricted_values = args[:restricted_values] if args.key?(:restricted_values)
+        end
+      end
+      
+      # The specification for personalization.
+      class GoogleCloudRetailV2betaSearchRequestPersonalizationSpec
+        include Google::Apis::Core::Hashable
+      
+        # Defaults to Mode.AUTO.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
