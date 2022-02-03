@@ -1,5 +1,9 @@
 # Release history for google-apis-firebaserules_v1
 
+### v0.13.0 (2022-02-03)
+
+* Regenerated from discovery document revision 20220127
+
 ### v0.12.0 (2022-01-14)
 
 * Regenerated from discovery document revision 20220104
