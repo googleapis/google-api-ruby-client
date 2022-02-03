@@ -275,6 +275,50 @@ module Google
         end
       end
       
+      # A representation of the event type resource.
+      class EventType
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Human friendly description of what the event type is about. For
+        # example "Bucket created in Cloud Storage".
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. URI for the event schema. For example "https://github.com/
+        # googleapis/google-cloudevents/blob/master/proto/google/events/cloud/storage/v1/
+        # events.proto"
+        # Corresponds to the JSON property `eventSchemaUri`
+        # @return [String]
+        attr_accessor :event_schema_uri
+      
+        # Output only. Filtering attributes for the event type.
+        # Corresponds to the JSON property `filteringAttributes`
+        # @return [Array<Google::Apis::EventarcV1::FilteringAttribute>]
+        attr_accessor :filtering_attributes
+      
+        # Output only. The full name of the event type (for example, "google.cloud.
+        # storage.object.v1.finalized"). In the form of `provider-id`.`resource`.`
+        # version`.`verb`. Types MUST be versioned and event schemas are guaranteed to
+        # remain backward compatible within one version. Note that event type versions
+        # and API versions do not need to match.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @event_schema_uri = args[:event_schema_uri] if args.key?(:event_schema_uri)
+          @filtering_attributes = args[:filtering_attributes] if args.key?(:filtering_attributes)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -326,6 +370,48 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A representation of the FilteringAttribute resource. Filtering attributes are
+      # per event type.
+      class FilteringAttribute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Attribute used for filtering the event type.
+        # Corresponds to the JSON property `attribute`
+        # @return [String]
+        attr_accessor :attribute
+      
+        # Output only. Description of the purpose of the attribute.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. If true, the attribute accepts matching expressions in the
+        # Eventarc PathPattern format.
+        # Corresponds to the JSON property `pathPatternSupported`
+        # @return [Boolean]
+        attr_accessor :path_pattern_supported
+        alias_method :path_pattern_supported?, :path_pattern_supported
+      
+        # Output only. If true, the triggers for this provider should always specify a
+        # filter on these attributes. Trigger creation will fail otherwise.
+        # Corresponds to the JSON property `required`
+        # @return [Boolean]
+        attr_accessor :required
+        alias_method :required?, :required
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute = args[:attribute] if args.key?(:attribute)
+          @description = args[:description] if args.key?(:description)
+          @path_pattern_supported = args[:path_pattern_supported] if args.key?(:path_pattern_supported)
+          @required = args[:required] if args.key?(:required)
         end
       end
       
@@ -538,6 +624,38 @@ module Google
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for the `ListProviders` method.
+      class ListProvidersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A page token that can be sent to ListProviders to request the next page. If
+        # this is empty, then there are no more pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The requested providers, up to the number specified in `page_size`.
+        # Corresponds to the JSON property `providers`
+        # @return [Array<Google::Apis::EventarcV1::Provider>]
+        attr_accessor :providers
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @providers = args[:providers] if args.key?(:providers)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -771,6 +889,38 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # A representation of the Provider resource.
+      class Provider
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Human friendly name for the Provider. For example "Cloud Storage".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Event types for this provider.
+        # Corresponds to the JSON property `eventTypes`
+        # @return [Array<Google::Apis::EventarcV1::EventType>]
+        attr_accessor :event_types
+      
+        # Output only. In `projects/`project`/locations/`location`/providers/`provider-
+        # id`` format.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @event_types = args[:event_types] if args.key?(:event_types)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

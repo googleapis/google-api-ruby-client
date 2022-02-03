@@ -64,7 +64,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilteringAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListProvidersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTriggersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +143,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Provider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -227,6 +251,17 @@ module Google
         end
       end
       
+      class EventType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :event_schema_uri, as: 'eventSchemaUri'
+          collection :filtering_attributes, as: 'filteringAttributes', class: Google::Apis::EventarcV1::FilteringAttribute, decorator: Google::Apis::EventarcV1::FilteringAttribute::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -234,6 +269,16 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class FilteringAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute, as: 'attribute'
+          property :description, as: 'description'
+          property :path_pattern_supported, as: 'pathPatternSupported'
+          property :required, as: 'required'
         end
       end
       
@@ -293,6 +338,16 @@ module Google
         end
       end
       
+      class ListProvidersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :providers, as: 'providers', class: Google::Apis::EventarcV1::Provider, decorator: Google::Apis::EventarcV1::Provider::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListTriggersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -336,6 +391,16 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class Provider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          collection :event_types, as: 'eventTypes', class: Google::Apis::EventarcV1::EventType, decorator: Google::Apis::EventarcV1::EventType::Representation
+      
+          property :name, as: 'name'
         end
       end
       
