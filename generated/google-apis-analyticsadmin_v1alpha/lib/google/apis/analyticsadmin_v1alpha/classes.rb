@@ -1349,12 +1349,13 @@ module Google
       end
       
       # Read-only resource with the tag for sending data from a website to a
-      # WebDataStream.
+      # DataStream. Only present for web DataStream resources.
       class GoogleAnalyticsAdminV1alphaGlobalSiteTag
         include Google::Apis::Core::Hashable
       
         # Output only. Resource name for this GlobalSiteTag resource. Format: properties/
-        # `propertyId`/globalSiteTag
+        # `property_id`/dataStreams/`stream_id`/globalSiteTag Example: "properties/123/
+        # dataStreams/456/globalSiteTag"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
