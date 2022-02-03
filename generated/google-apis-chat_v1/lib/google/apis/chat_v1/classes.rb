@@ -2409,7 +2409,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # State of the membership. Output only.
+        # Output only. State of the membership.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
