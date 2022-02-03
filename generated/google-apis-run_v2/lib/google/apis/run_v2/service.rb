@@ -23,8 +23,9 @@ module Google
       # Cloud Run Admin API
       #
       # Deploy and manage user provided container images that scale automatically
-      #  based on incoming requests. The Cloud Run Admin API follows the Knative
-      #  Serving API specification.
+      #  based on incoming requests. The Cloud Run Admin API v1 follows the Knative
+      #  Serving API specification, while v2 is aligned with Google Cloud AIP-based API
+      #  standards, as described in https://google.aip.dev/.
       #
       # @example
       #    require 'google/apis/run_v2'
@@ -124,13 +125,19 @@ module Google
         # the operations collection id, however overriding users must ensure the name
         # binding is the parent resource, without the operations collection id.
         # @param [String] name
-        #   The name of the operation's parent resource.
+        #   Required. To query for all of the operations for a project.
         # @param [String] filter
-        #   The standard list filter.
+        #   Optional. A filter for matching the completed or in-progress operations. The
+        #   supported formats of *filter* are: To query for only completed operations:
+        #   done:true To query for only ongoing operations: done:false Must be empty to
+        #   query for all of the latest operations for the given parent project.
         # @param [Fixnum] page_size
-        #   The standard list page size.
+        #   The maximum number of records that should be returned. Requested page size
+        #   cannot exceed 100. If not set or set to less than or equal to 0, the default
+        #   page size is 100. .
         # @param [String] page_token
-        #   The standard list page token.
+        #   Token identifying which result to start with, which is returned by a previous
+        #   list call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
