@@ -40,6 +40,11 @@ module Google
         # @return [String]
         attr_accessor :database
       
+        # Output only. The database dialect information for the backup.
+        # Corresponds to the JSON property `databaseDialect`
+        # @return [String]
+        attr_accessor :database_dialect
+      
         # Encryption information for a Cloud Spanner database or backup.
         # Corresponds to the JSON property `encryptionInfo`
         # @return [Google::Apis::SpannerV1::EncryptionInfo]
@@ -100,6 +105,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database = args[:database] if args.key?(:database)
+          @database_dialect = args[:database_dialect] if args.key?(:database_dialect)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @name = args[:name] if args.key?(:name)
@@ -864,6 +870,11 @@ module Google
         # @return [String]
         attr_accessor :create_statement
       
+        # Optional. The dialect of the Cloud Spanner Database.
+        # Corresponds to the JSON property `databaseDialect`
+        # @return [String]
+        attr_accessor :database_dialect
+      
         # Encryption configuration for a Cloud Spanner database.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::SpannerV1::EncryptionConfig]
@@ -884,6 +895,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_statement = args[:create_statement] if args.key?(:create_statement)
+          @database_dialect = args[:database_dialect] if args.key?(:database_dialect)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @extra_statements = args[:extra_statements] if args.key?(:extra_statements)
         end
@@ -982,6 +994,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The dialect of the Cloud Spanner Database.
+        # Corresponds to the JSON property `databaseDialect`
+        # @return [String]
+        attr_accessor :database_dialect
+      
         # Output only. The read-write region which contains the database's leader
         # replicas. This is the same as the value of default_leader database option set
         # using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not
@@ -1046,6 +1063,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @database_dialect = args[:database_dialect] if args.key?(:database_dialect)
           @default_leader = args[:default_leader] if args.key?(:default_leader)
           @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
@@ -1984,11 +2002,12 @@ module Google
         attr_accessor :next_page_token
       
         # The list of matching backup long-running operations. Each operation's name
-        # will be prefixed by the backup's name and the operation's metadata will be of
-        # type CreateBackupMetadata. Operations returned include those that are pending
-        # or have completed/failed/canceled within the last 7 days. Operations returned
-        # are ordered by `operation.metadata.value.progress.start_time` in descending
-        # order starting from the most recently started operation.
+        # will be prefixed by the backup's name. The operation's metadata field type `
+        # metadata.type_url` describes the type of the metadata. Operations returned
+        # include those that are pending or have completed/failed/canceled within the
+        # last 7 days. Operations returned are ordered by `operation.metadata.value.
+        # progress.start_time` in descending order starting from the most recently
+        # started operation.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::SpannerV1::Operation>]
         attr_accessor :operations
@@ -4583,6 +4602,16 @@ module Google
         # @return [Google::Apis::SpannerV1::StructType]
         attr_accessor :struct_type
       
+        # The TypeAnnotationCode that disambiguates SQL type that Spanner will use to
+        # represent values of this type during query processing. This is necessary for
+        # some type codes because a single TypeCode can be mapped to different SQL types
+        # depending on the SQL dialect. type_annotation typically is not needed to
+        # process the content of a value (it doesn't affect serialization) and clients
+        # can ignore it on the read path.
+        # Corresponds to the JSON property `typeAnnotation`
+        # @return [String]
+        attr_accessor :type_annotation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4592,6 +4621,7 @@ module Google
           @array_element_type = args[:array_element_type] if args.key?(:array_element_type)
           @code = args[:code] if args.key?(:code)
           @struct_type = args[:struct_type] if args.key?(:struct_type)
+          @type_annotation = args[:type_annotation] if args.key?(:type_annotation)
         end
       end
       
