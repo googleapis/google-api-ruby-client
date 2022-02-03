@@ -606,6 +606,11 @@ module Google
         # @return [String]
         attr_accessor :config_bucket
       
+        # Contains dataproc metric config.
+        # Corresponds to the JSON property `dataprocMetricConfig`
+        # @return [Google::Apis::DataprocV1::DataprocMetricConfig]
+        attr_accessor :dataproc_metric_config
+      
         # Encryption settings for the cluster.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::DataprocV1::EncryptionConfig]
@@ -698,6 +703,7 @@ module Google
         def update!(**args)
           @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
+          @dataproc_metric_config = args[:dataproc_metric_config] if args.key?(:dataproc_metric_config)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @endpoint_config = args[:endpoint_config] if args.key?(:endpoint_config)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
@@ -956,6 +962,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+        end
+      end
+      
+      # Contains dataproc metric config.
+      class DataprocMetricConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Metrics to be enabled.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::DataprocV1::Metric>]
+        attr_accessor :metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
         end
       end
       
@@ -2595,6 +2620,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataproc_metastore_service = args[:dataproc_metastore_service] if args.key?(:dataproc_metastore_service)
+        end
+      end
+      
+      # Metric source to enable along with any optional metrics for this source that
+      # override the dataproc defaults
+      class Metric
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional Metrics to override the dataproc default metrics configured
+        # for the metric source
+        # Corresponds to the JSON property `metricOverrides`
+        # @return [Array<String>]
+        attr_accessor :metric_overrides
+      
+        # Required. MetricSource that should be enabled
+        # Corresponds to the JSON property `metricSource`
+        # @return [String]
+        attr_accessor :metric_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_overrides = args[:metric_overrides] if args.key?(:metric_overrides)
+          @metric_source = args[:metric_source] if args.key?(:metric_source)
         end
       end
       
