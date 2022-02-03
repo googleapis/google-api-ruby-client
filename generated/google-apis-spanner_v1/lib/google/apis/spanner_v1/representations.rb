@@ -639,6 +639,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :database, as: 'database'
+          property :database_dialect, as: 'databaseDialect'
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::SpannerV1::EncryptionInfo, decorator: Google::Apis::SpannerV1::EncryptionInfo::Representation
       
           property :expire_time, as: 'expireTime'
@@ -769,6 +770,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_statement, as: 'createStatement'
+          property :database_dialect, as: 'databaseDialect'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::EncryptionConfig, decorator: Google::Apis::SpannerV1::EncryptionConfig::Representation
       
           collection :extra_statements, as: 'extraStatements'
@@ -807,6 +809,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :database_dialect, as: 'databaseDialect'
           property :default_leader, as: 'defaultLeader'
           property :earliest_version_time, as: 'earliestVersionTime'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::EncryptionConfig, decorator: Google::Apis::SpannerV1::EncryptionConfig::Representation
@@ -1622,6 +1625,7 @@ module Google
           property :code, as: 'code'
           property :struct_type, as: 'structType', class: Google::Apis::SpannerV1::StructType, decorator: Google::Apis::SpannerV1::StructType::Representation
       
+          property :type_annotation, as: 'typeAnnotation'
         end
       end
       
