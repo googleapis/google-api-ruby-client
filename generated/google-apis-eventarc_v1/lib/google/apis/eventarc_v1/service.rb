@@ -508,6 +508,83 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get a single Provider.
+        # @param [String] name
+        #   Required. The name of the provider to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::Provider] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::Provider]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_provider(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::EventarcV1::Provider::Representation
+          command.response_class = Google::Apis::EventarcV1::Provider
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List providers.
+        # @param [String] parent
+        #   Required. The parent of the provider to get.
+        # @param [String] filter
+        #   The filter field that the list request will filter on.
+        # @param [String] order_by
+        #   The sorting order of the resources returned. Value should be a comma-separated
+        #   list of fields. The default sorting oder is ascending. To specify descending
+        #   order for a field, append a `desc` suffix; for example: `name desc, _id`.
+        # @param [Fixnum] page_size
+        #   The maximum number of providers to return on each page.
+        # @param [String] page_token
+        #   The page token; provide the value from the `next_page_token` field in a
+        #   previous `ListProviders` call to retrieve the subsequent page. When paginating,
+        #   all other parameters provided to `ListProviders` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::EventarcV1::ListProvidersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::EventarcV1::ListProvidersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_providers(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/providers', options)
+          command.response_representation = Google::Apis::EventarcV1::ListProvidersResponse::Representation
+          command.response_class = Google::Apis::EventarcV1::ListProvidersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new trigger in a particular project and location.
         # @param [String] parent
         #   Required. The parent collection in which to add this trigger.
