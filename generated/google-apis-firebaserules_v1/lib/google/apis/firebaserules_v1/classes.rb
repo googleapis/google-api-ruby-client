@@ -363,13 +363,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Format: `projects/`project_id`/releases/`release_id``
+        # Required. Format: `projects/`project_id`/releases/`release_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist
-        # the `Release` to be created.
+        # Required. Name of the `Ruleset` referred to by this `Release`. The `Ruleset`
+        # must exist the `Release` to be created.
         # Corresponds to the JSON property `rulesetName`
         # @return [String]
         attr_accessor :ruleset_name
