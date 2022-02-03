@@ -487,7 +487,7 @@ module Google
         # Set the launch stage to a preview stage on write to allow use of preview
         # features in that stage. On read, describes whether the resource uses preview
         # features. Launch Stages are defined at [Google Cloud Platform Launch Stages](
-        # http://cloud.google.com/terms/launch-stages).
+        # https://cloud.google.com/terms/launch-stages).
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage
@@ -817,7 +817,7 @@ module Google
         # arbitrary metadata. They are not queryable and should be preserved when
         # modifying objects. Cloud Run will populate some annotations using 'run.
         # googleapis.com' or 'serving.knative.dev' namespaces. This field follows
-        # Kubernetes annotations' namespacing, limits, and rules. More info: http://
+        # Kubernetes annotations' namespacing, limits, and rules. More info: https://
         # kubernetes.io/docs/user-guide/annotations
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
@@ -921,7 +921,7 @@ module Google
         # @return [String]
         attr_accessor :latest_ready_revision
       
-        # The launch stage as defined by [Google Cloud Platform Launch Stages](http://
+        # The launch stage as defined by [Google Cloud Platform Launch Stages](https://
         # cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and
         # `GA`. If no value is specified, GA is assumed.
         # Corresponds to the JSON property `launchStage`
