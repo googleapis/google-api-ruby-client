@@ -3702,7 +3702,7 @@ module Google
         # @param [String] show_deleted
         #   If set to `true`, retrieves the list of deleted users. (Default: `false`)
         # @param [String] sort_order
-        #   Whether to return results in ascending or descending order.
+        #   Whether to return results in ascending or descending order, ignoring case.
         # @param [String] view_type
         #   Whether to fetch the administrator-only or domain-wide public view of the user.
         #   For more information, see [Retrieve a user as a non-administrator](/admin-sdk/
