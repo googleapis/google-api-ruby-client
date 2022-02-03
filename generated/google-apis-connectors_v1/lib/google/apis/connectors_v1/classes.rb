@@ -403,12 +403,6 @@ module Google
         # @return [String]
         attr_accessor :image_location
       
-        # Optional. Inactive indicates the connection is active to use or not.
-        # Corresponds to the JSON property `inactive`
-        # @return [Boolean]
-        attr_accessor :inactive
-        alias_method :inactive?, :inactive
-      
         # Optional. Resource labels to represent user-provided metadata. Refer to cloud
         # documentation on labels for more details. https://cloud.google.com/compute/
         # docs/labeling-resources
@@ -446,6 +440,12 @@ module Google
         # @return [Google::Apis::ConnectorsV1::ConnectionStatus]
         attr_accessor :status
       
+        # Optional. Suspended indicates if a user has suspended a connection or not.
+        # Corresponds to the JSON property `suspended`
+        # @return [Boolean]
+        attr_accessor :suspended
+        alias_method :suspended?, :suspended
+      
         # Output only. Updated time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -465,13 +465,13 @@ module Google
           @egress_backends = args[:egress_backends] if args.key?(:egress_backends)
           @envoy_image_location = args[:envoy_image_location] if args.key?(:envoy_image_location)
           @image_location = args[:image_location] if args.key?(:image_location)
-          @inactive = args[:inactive] if args.key?(:inactive)
           @labels = args[:labels] if args.key?(:labels)
           @lock_config = args[:lock_config] if args.key?(:lock_config)
           @name = args[:name] if args.key?(:name)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_directory = args[:service_directory] if args.key?(:service_directory)
           @status = args[:status] if args.key?(:status)
+          @suspended = args[:suspended] if args.key?(:suspended)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
