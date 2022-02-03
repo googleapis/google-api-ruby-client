@@ -424,7 +424,6 @@ module Google
           collection :egress_backends, as: 'egressBackends'
           property :envoy_image_location, as: 'envoyImageLocation'
           property :image_location, as: 'imageLocation'
-          property :inactive, as: 'inactive'
           hash :labels, as: 'labels'
           property :lock_config, as: 'lockConfig', class: Google::Apis::ConnectorsV1::LockConfig, decorator: Google::Apis::ConnectorsV1::LockConfig::Representation
       
@@ -433,6 +432,7 @@ module Google
           property :service_directory, as: 'serviceDirectory'
           property :status, as: 'status', class: Google::Apis::ConnectorsV1::ConnectionStatus, decorator: Google::Apis::ConnectorsV1::ConnectionStatus::Representation
       
+          property :suspended, as: 'suspended'
           property :update_time, as: 'updateTime'
         end
       end
