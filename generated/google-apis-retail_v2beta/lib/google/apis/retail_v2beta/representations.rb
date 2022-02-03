@@ -766,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaSearchRequestPersonalizationSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1960,6 +1966,8 @@ module Google
           collection :page_categories, as: 'pageCategories'
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
+          property :personalization_spec, as: 'personalizationSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestPersonalizationSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestPersonalizationSpec::Representation
+      
           property :query, as: 'query'
           property :query_expansion_spec, as: 'queryExpansionSpec', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestQueryExpansionSpec::Representation
       
@@ -2016,6 +2024,13 @@ module Google
           collection :prefixes, as: 'prefixes'
           property :query, as: 'query'
           collection :restricted_values, as: 'restrictedValues'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaSearchRequestPersonalizationSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
       
