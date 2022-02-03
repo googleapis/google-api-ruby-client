@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataprocMetricConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiagnoseClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,6 +365,12 @@ module Google
       end
       
       class MetastoreConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Metric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -777,6 +789,8 @@ module Google
           property :autoscaling_config, as: 'autoscalingConfig', class: Google::Apis::DataprocV1::AutoscalingConfig, decorator: Google::Apis::DataprocV1::AutoscalingConfig::Representation
       
           property :config_bucket, as: 'configBucket'
+          property :dataproc_metric_config, as: 'dataprocMetricConfig', class: Google::Apis::DataprocV1::DataprocMetricConfig, decorator: Google::Apis::DataprocV1::DataprocMetricConfig::Representation
+      
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DataprocV1::EncryptionConfig, decorator: Google::Apis::DataprocV1::EncryptionConfig::Representation
       
           property :endpoint_config, as: 'endpointConfig', class: Google::Apis::DataprocV1::EndpointConfig, decorator: Google::Apis::DataprocV1::EndpointConfig::Representation
@@ -870,6 +884,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
+      class DataprocMetricConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics', class: Google::Apis::DataprocV1::Metric, decorator: Google::Apis::DataprocV1::Metric::Representation
+      
         end
       end
       
@@ -1285,6 +1307,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataproc_metastore_service, as: 'dataprocMetastoreService'
+        end
+      end
+      
+      class Metric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metric_overrides, as: 'metricOverrides'
+          property :metric_source, as: 'metricSource'
         end
       end
       
