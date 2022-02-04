@@ -1367,8 +1367,7 @@ module Google
         #   is absent or empty, all modifiable fields are overwritten. If such fields are
         #   non-required and omitted in the request body, their values are emptied. Note:
         #   Updating the `is_publicly_readable` field may require up to 12 hours to take
-        #   effect in search results. Additionally, it also requires the `tagTemplates.
-        #   getIamPolicy` and `tagTemplates.setIamPolicy` permissions.
+        #   effect in search results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
