@@ -346,7 +346,8 @@ module Google
       
       # A person's birthday. At least one of the `date` and `text` fields are
       # specified. The `date` and `text` fields typically represent the same date, but
-      # are not guaranteed to.
+      # are not guaranteed to. Clients should always set the `date` field when
+      # mutating birthdays.
       class Birthday
         include Google::Apis::Core::Hashable
       
@@ -367,7 +368,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # A free-form string representing the user's birthday.
+        # Prefer to use the `date` field if set. A free-form string representing the
+        # user's birthday. This value is not validated.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
