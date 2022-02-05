@@ -2048,6 +2048,40 @@ module Google
         end
       end
       
+      # Configuration per workload for both Private Pools and Hybrid Pools.
+      class GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig
+        include Google::Apis::Core::Hashable
+      
+        # The disk size (in GB) which is requested for the build container. If unset, a
+        # value of 10 GB will be used.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # The memory (in GB) which is requested for the build container. If unset, a
+        # value of 4 GB will be used.
+        # Corresponds to the JSON property `memoryGb`
+        # @return [Float]
+        attr_accessor :memory_gb
+      
+        # The number of vCPUs which are requested for the build container. If unset, a
+        # value of 1 will be used.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Float]
+        attr_accessor :vcpu_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class GoogleDevtoolsCloudbuildV2OperationMetadata
         include Google::Apis::Core::Hashable
@@ -2197,6 +2231,66 @@ module Google
           @content_type = args[:content_type] if args.key?(:content_type)
           @data = args[:data] if args.key?(:data)
           @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # Configuration for a Hybrid Worker Pool Next ID: 6
+      class HybridPoolConfig
+        include Google::Apis::Core::Hashable
+      
+        # These settings can be applied to a user's build operations. Next ID: 4
+        # Corresponds to the JSON property `defaultWorkerConfig`
+        # @return [Google::Apis::CloudbuildV1::HybridWorkerConfig]
+        attr_accessor :default_worker_config
+      
+        # Required. Immutable. The Anthos/GKE Hub membership of the cluster which will
+        # run the actual build operations. Example: projects/`project`/locations/`
+        # location`/memberships/`cluster_name`
+        # Corresponds to the JSON property `membership`
+        # @return [String]
+        attr_accessor :membership
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_worker_config = args[:default_worker_config] if args.key?(:default_worker_config)
+          @membership = args[:membership] if args.key?(:membership)
+        end
+      end
+      
+      # These settings can be applied to a user's build operations. Next ID: 4
+      class HybridWorkerConfig
+        include Google::Apis::Core::Hashable
+      
+        # The disk size (in GB) which is requested for the build container. Defaults to
+        # 10 GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # The memory (in GB) which is requested for the build container. Defaults to 4
+        # GB.
+        # Corresponds to the JSON property `memoryGb`
+        # @return [Float]
+        attr_accessor :memory_gb
+      
+        # The number of vCPUs which are requested for the build container. Defaults to 1.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Float]
+        attr_accessor :vcpu_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
         end
       end
       
@@ -2735,6 +2829,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration per workload for both Private Pools and Hybrid Pools.
+        # Corresponds to the JSON property `workerConfig`
+        # @return [Google::Apis::CloudbuildV1::GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig]
+        attr_accessor :worker_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2742,6 +2841,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @worker_config = args[:worker_config] if args.key?(:worker_config)
         end
       end
       
@@ -3788,6 +3888,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Configuration for a Hybrid Worker Pool Next ID: 6
+        # Corresponds to the JSON property `hybridPoolConfig`
+        # @return [Google::Apis::CloudbuildV1::HybridPoolConfig]
+        attr_accessor :hybrid_pool_config
+      
         # Output only. The resource name of the `WorkerPool`, with format `projects/`
         # project`/locations/`location`/workerPools/`worker_pool``. The value of ``
         # worker_pool`` is provided by `worker_pool_id` in `CreateWorkerPool` request
@@ -3827,6 +3932,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @hybrid_pool_config = args[:hybrid_pool_config] if args.key?(:hybrid_pool_config)
           @name = args[:name] if args.key?(:name)
           @private_pool_v1_config = args[:private_pool_v1_config] if args.key?(:private_pool_v1_config)
           @state = args[:state] if args.key?(:state)
