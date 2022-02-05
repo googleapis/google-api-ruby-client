@@ -45,11 +45,6 @@ module Google
         # @return [Array<Google::Apis::GameservicesV1beta::AuditLogConfig>]
         attr_accessor :audit_log_configs
       
-        # 
-        # Corresponds to the JSON property `exemptedMembers`
-        # @return [Array<String>]
-        attr_accessor :exempted_members
-      
         # Specifies a service that will be enabled for audit logging. For example, `
         # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
         # value that covers all services.
@@ -64,7 +59,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
-          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @service = args[:service] if args.key?(:service)
         end
       end
