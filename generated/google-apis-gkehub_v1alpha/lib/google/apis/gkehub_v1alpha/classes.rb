@@ -361,6 +361,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec]
         attr_accessor :multiclusteringress
       
+        # **Workload Certificate**: The Hub-wide input for the WorkloadCertificate
+        # feature.
+        # Corresponds to the JSON property `workloadcertificate`
+        # @return [Google::Apis::GkehubV1alpha::FeatureSpec]
+        attr_accessor :workloadcertificate
+      
         def initialize(**args)
            update!(**args)
         end
@@ -370,6 +376,7 @@ module Google
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @cloudauditlogging = args[:cloudauditlogging] if args.key?(:cloudauditlogging)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
+          @workloadcertificate = args[:workloadcertificate] if args.key?(:workloadcertificate)
         end
       end
       
@@ -1514,6 +1521,33 @@ module Google
         end
       end
       
+      # **Workload Certificate**: The Hub-wide input for the WorkloadCertificate
+      # feature.
+      class FeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # **Workload Certificate**: The membership-specific input for
+        # WorkloadCertificate feature.
+        # Corresponds to the JSON property `defaultConfig`
+        # @return [Google::Apis::GkehubV1alpha::MembershipSpec]
+        attr_accessor :default_config
+      
+        # Immutable. Specifies CA configuration.
+        # Corresponds to the JSON property `provisionGoogleCa`
+        # @return [String]
+        attr_accessor :provision_google_ca
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_config = args[:default_config] if args.key?(:default_config)
+          @provision_google_ca = args[:provision_google_ca] if args.key?(:provision_google_ca)
+        end
+      end
+      
       # FeatureState describes the high-level state of a Feature. It may be used to
       # describe a Feature's state at the environ-level, or per-membershop, depending
       # on the context.
@@ -2367,6 +2401,12 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::PolicycontrollerMembershipSpec]
         attr_accessor :policycontroller
       
+        # **Workload Certificate**: The membership-specific input for
+        # WorkloadCertificate feature.
+        # Corresponds to the JSON property `workloadcertificate`
+        # @return [Google::Apis::GkehubV1alpha::MembershipSpec]
+        attr_accessor :workloadcertificate
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2379,6 +2419,7 @@ module Google
           @identityservice = args[:identityservice] if args.key?(:identityservice)
           @mesh = args[:mesh] if args.key?(:mesh)
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
+          @workloadcertificate = args[:workloadcertificate] if args.key?(:workloadcertificate)
         end
       end
       
@@ -2438,6 +2479,26 @@ module Google
           @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
           @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # **Workload Certificate**: The membership-specific input for
+      # WorkloadCertificate feature.
+      class MembershipSpec
+        include Google::Apis::Core::Hashable
+      
+        # Specifies workload certificate management.
+        # Corresponds to the JSON property `certificateManagement`
+        # @return [String]
+        attr_accessor :certificate_management
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_management = args[:certificate_management] if args.key?(:certificate_management)
         end
       end
       

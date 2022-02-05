@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FeatureState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +401,12 @@ module Google
       end
       
       class MembershipFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -662,6 +674,8 @@ module Google
           property :cloudauditlogging, as: 'cloudauditlogging', class: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec, decorator: Google::Apis::GkehubV1alpha::CloudAuditLoggingFeatureSpec::Representation
       
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1alpha::MultiClusterIngressFeatureSpec::Representation
+      
+          property :workloadcertificate, as: 'workloadcertificate', class: Google::Apis::GkehubV1alpha::FeatureSpec, decorator: Google::Apis::GkehubV1alpha::FeatureSpec::Representation
       
         end
       end
@@ -993,6 +1007,15 @@ module Google
         end
       end
       
+      class FeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_config, as: 'defaultConfig', class: Google::Apis::GkehubV1alpha::MembershipSpec, decorator: Google::Apis::GkehubV1alpha::MembershipSpec::Representation
+      
+          property :provision_google_ca, as: 'provisionGoogleCa'
+        end
+      end
+      
       class FeatureState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1223,6 +1246,8 @@ module Google
       
           property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1alpha::PolicycontrollerMembershipSpec, decorator: Google::Apis::GkehubV1alpha::PolicycontrollerMembershipSpec::Representation
       
+          property :workloadcertificate, as: 'workloadcertificate', class: Google::Apis::GkehubV1alpha::MembershipSpec, decorator: Google::Apis::GkehubV1alpha::MembershipSpec::Representation
+      
         end
       end
       
@@ -1243,6 +1268,13 @@ module Google
       
           property :state, as: 'state', class: Google::Apis::GkehubV1alpha::FeatureState, decorator: Google::Apis::GkehubV1alpha::FeatureState::Representation
       
+        end
+      end
+      
+      class MembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_management, as: 'certificateManagement'
         end
       end
       
