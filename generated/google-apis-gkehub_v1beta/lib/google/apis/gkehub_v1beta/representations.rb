@@ -22,6 +22,12 @@ module Google
   module Apis
     module GkehubV1beta
       
+      class AnthosObservabilityMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppDevExperienceFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -404,6 +410,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnthosObservabilityMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :do_not_optimize_metrics, as: 'doNotOptimizeMetrics'
+          property :enable_stackdriver_on_applications, as: 'enableStackdriverOnApplications'
+        end
       end
       
       class AppDevExperienceFeatureSpec
@@ -875,6 +889,8 @@ module Google
       class MembershipFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :anthosobservability, as: 'anthosobservability', class: Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec::Representation
+      
           property :cloudbuild, as: 'cloudbuild', class: Google::Apis::GkehubV1beta::MembershipSpec, decorator: Google::Apis::GkehubV1beta::MembershipSpec::Representation
       
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec::Representation
