@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV2OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -709,6 +715,15 @@ module Google
         end
       end
       
+      class GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :memory_gb, as: 'memoryGb'
+          property :vcpu_count, as: 'vcpuCount'
+        end
+      end
+      
       class GoogleDevtoolsCloudbuildV2OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -848,6 +863,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :worker_config, as: 'workerConfig', class: Google::Apis::CloudbuildV1beta1::GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig, decorator: Google::Apis::CloudbuildV1beta1::GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig::Representation
+      
         end
       end
       
