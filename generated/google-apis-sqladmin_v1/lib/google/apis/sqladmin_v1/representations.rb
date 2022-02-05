@@ -699,6 +699,7 @@ module Google
       class DatabaseInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :backend_type, as: 'backendType'
           property :connection_name, as: 'connectionName'
           property :create_time, as: 'createTime'
@@ -718,6 +719,7 @@ module Google
       
           property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
+          property :maintenance_version, as: 'maintenanceVersion'
           property :master_instance_name, as: 'masterInstanceName'
           property :max_disk_size, :numeric_string => true, as: 'maxDiskSize'
           property :name, as: 'name'
