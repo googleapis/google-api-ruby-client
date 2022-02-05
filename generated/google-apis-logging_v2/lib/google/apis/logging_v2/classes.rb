@@ -1136,9 +1136,9 @@ module Google
         # Information in the labels field identifies the actual resource and its
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
-        # zone": "us-central1-a" ``
+        # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+        # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+        # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::LoggingV2::MonitoredResource]
         attr_accessor :resource
@@ -1906,9 +1906,9 @@ module Google
       # Information in the labels field identifies the actual resource and its
       # attributes according to the schema. For example, a particular Compute Engine
       # VM instance could be represented by the following object, because the
-      # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-      # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
-      # zone": "us-central1-a" ``
+      # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+      # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+      # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
       class MonitoredResource
         include Google::Apis::Core::Hashable
       
@@ -2334,6 +2334,44 @@ module Google
         end
       end
       
+      # Describes the settings associated with a project, folder, organization,
+      # billing account, or flexible resource.
+      class Settings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, the _Default sink in newly created projects and
+        # folders will created in a disabled state. This can be used to automatically
+        # disable log ingestion if there is already an aggregated sink configured in the
+        # hierarchy. The _Default sink can be re-enabled manually if needed.
+        # Corresponds to the JSON property `disableDefaultSink`
+        # @return [Boolean]
+        attr_accessor :disable_default_sink
+        alias_method :disable_default_sink?, :disable_default_sink
+      
+        # Output only. The resource name of the settings.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The Cloud region that will be used for _Default and _Required log
+        # buckets for newly created projects and folders. For example europe-west1. This
+        # setting does not affect the location of custom log buckets.
+        # Corresponds to the JSON property `storageLocation`
+        # @return [String]
+        attr_accessor :storage_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disable_default_sink = args[:disable_default_sink] if args.key?(:disable_default_sink)
+          @name = args[:name] if args.key?(:name)
+          @storage_location = args[:storage_location] if args.key?(:storage_location)
+        end
+      end
+      
       # Specifies a location in a source code file.
       class SourceLocation
         include Google::Apis::Core::Hashable
@@ -2621,9 +2659,9 @@ module Google
         # Information in the labels field identifies the actual resource and its
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
-        # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
-        # zone": "us-central1-a" ``
+        # MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "
+        # instance_id" and "zone": ` "type": "gce_instance", "labels": ` "project_id": "
+        # my-project", "instance_id": "12345678901234", "zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::LoggingV2::MonitoredResource]
         attr_accessor :resource

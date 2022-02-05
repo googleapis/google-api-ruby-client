@@ -90,6 +90,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the Log Router settings for the given resource.Note: Settings for the Log
+        # Router can be get for Google Cloud projects, folders, organizations and
+        # billing accounts. Currently it can only be configured for organizations. Once
+        # configured for an organization, it applies to all projects and folders in the
+        # Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.
+        # google.com/logging/docs/routing/managed-encryption) for more information.
+        # @param [String] name
+        #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
+        #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
+        #   BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"
+        #   organizations/12345/settings"Note: Settings for the Log Router can be get for
+        #   Google Cloud projects, folders, organizations and billing accounts. Currently
+        #   it can only be configured for organizations. Once configured for an
+        #   organization, it applies to all projects and folders in the Google Cloud
+        #   organization.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Settings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Settings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_billing_account_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}/settings', options)
+          command.response_representation = Google::Apis::LoggingV2::Settings::Representation
+          command.response_class = Google::Apis::LoggingV2::Settings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a log bucket.
         # @param [String] name
         #   Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[
@@ -1644,6 +1686,48 @@ module Google
           command = make_simple_command(:get, 'v2/{+name}/cmekSettings', options)
           command.response_representation = Google::Apis::LoggingV2::CmekSettings::Representation
           command.response_class = Google::Apis::LoggingV2::CmekSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the Log Router settings for the given resource.Note: Settings for the Log
+        # Router can be get for Google Cloud projects, folders, organizations and
+        # billing accounts. Currently it can only be configured for organizations. Once
+        # configured for an organization, it applies to all projects and folders in the
+        # Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.
+        # google.com/logging/docs/routing/managed-encryption) for more information.
+        # @param [String] name
+        #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
+        #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
+        #   BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"
+        #   organizations/12345/settings"Note: Settings for the Log Router can be get for
+        #   Google Cloud projects, folders, organizations and billing accounts. Currently
+        #   it can only be configured for organizations. Once configured for an
+        #   organization, it applies to all projects and folders in the Google Cloud
+        #   organization.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Settings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Settings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}/settings', options)
+          command.response_representation = Google::Apis::LoggingV2::Settings::Representation
+          command.response_class = Google::Apis::LoggingV2::Settings
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3650,6 +3734,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the Log Router settings for the given resource.Note: Settings for the Log
+        # Router can be get for Google Cloud projects, folders, organizations and
+        # billing accounts. Currently it can only be configured for organizations. Once
+        # configured for an organization, it applies to all projects and folders in the
+        # Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.
+        # google.com/logging/docs/routing/managed-encryption) for more information.
+        # @param [String] name
+        #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
+        #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
+        #   BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"
+        #   organizations/12345/settings"Note: Settings for the Log Router can be get for
+        #   Google Cloud projects, folders, organizations and billing accounts. Currently
+        #   it can only be configured for organizations. Once configured for an
+        #   organization, it applies to all projects and folders in the Google Cloud
+        #   organization.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Settings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Settings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}/settings', options)
+          command.response_representation = Google::Apis::LoggingV2::Settings::Representation
+          command.response_class = Google::Apis::LoggingV2::Settings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the Log Router CMEK settings for the given resource.Note: CMEK for the
         # Log Router can currently only be configured for Google Cloud organizations.
         # Once configured, it applies to all projects and folders in the Google Cloud
@@ -3695,6 +3821,57 @@ module Google
           command.request_object = cmek_settings_object
           command.response_representation = Google::Apis::LoggingV2::CmekSettings::Representation
           command.response_class = Google::Apis::LoggingV2::CmekSettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Log Router settings for the given resource.Note: Settings for the
+        # Log Router can currently only be configured for Google Cloud organizations.
+        # Once configured, it applies to all projects and folders in the Google Cloud
+        # organization.UpdateSettings will fail if 1) kms_key_name is invalid, or 2) the
+        # associated service account does not have the required roles/cloudkms.
+        # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
+        # is disabled. 4) location_id is not supported by Logging. 5) location_id
+        # violate OrgPolicy.See Enabling CMEK for Log Router (https://cloud.google.com/
+        # logging/docs/routing/managed-encryption) for more information.
+        # @param [String] name
+        #   Required. The resource name for the settings to update. "organizations/[
+        #   ORGANIZATION_ID]/settings" For example:"organizations/12345/settings"Note:
+        #   Settings for the Log Router can currently only be configured for Google Cloud
+        #   organizations. Once configured, it applies to all projects and folders in the
+        #   Google Cloud organization.
+        # @param [Google::Apis::LoggingV2::Settings] settings_object
+        # @param [String] update_mask
+        #   Optional. Field mask identifying which fields from settings should be updated.
+        #   A field will be overwritten if and only if it is in the update mask. Output
+        #   only fields cannot be updated.See FieldMask for more information.For example: "
+        #   updateMask=kmsKeyName"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Settings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Settings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_settings(name, settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}/settings', options)
+          command.request_representation = Google::Apis::LoggingV2::Settings::Representation
+          command.request_object = settings_object
+          command.response_representation = Google::Apis::LoggingV2::Settings::Representation
+          command.response_class = Google::Apis::LoggingV2::Settings
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4935,6 +5112,48 @@ module Google
           command = make_simple_command(:get, 'v2/{+name}/cmekSettings', options)
           command.response_representation = Google::Apis::LoggingV2::CmekSettings::Representation
           command.response_class = Google::Apis::LoggingV2::CmekSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the Log Router settings for the given resource.Note: Settings for the Log
+        # Router can be get for Google Cloud projects, folders, organizations and
+        # billing accounts. Currently it can only be configured for organizations. Once
+        # configured for an organization, it applies to all projects and folders in the
+        # Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.
+        # google.com/logging/docs/routing/managed-encryption) for more information.
+        # @param [String] name
+        #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
+        #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
+        #   BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"
+        #   organizations/12345/settings"Note: Settings for the Log Router can be get for
+        #   Google Cloud projects, folders, organizations and billing accounts. Currently
+        #   it can only be configured for organizations. Once configured for an
+        #   organization, it applies to all projects and folders in the Google Cloud
+        #   organization.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Settings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Settings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}/settings', options)
+          command.response_representation = Google::Apis::LoggingV2::Settings::Representation
+          command.response_class = Google::Apis::LoggingV2::Settings
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -6575,6 +6794,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the Log Router settings for the given resource.Note: Settings for the Log
+        # Router can be get for Google Cloud projects, folders, organizations and
+        # billing accounts. Currently it can only be configured for organizations. Once
+        # configured for an organization, it applies to all projects and folders in the
+        # Google Cloud organization.See Enabling CMEK for Log Router (https://cloud.
+        # google.com/logging/docs/routing/managed-encryption) for more information.
+        # @param [String] name
+        #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
+        #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
+        #   BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"
+        #   organizations/12345/settings"Note: Settings for the Log Router can be get for
+        #   Google Cloud projects, folders, organizations and billing accounts. Currently
+        #   it can only be configured for organizations. Once configured for an
+        #   organization, it applies to all projects and folders in the Google Cloud
+        #   organization.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Settings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Settings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}/settings', options)
+          command.response_representation = Google::Apis::LoggingV2::Settings::Representation
+          command.response_class = Google::Apis::LoggingV2::Settings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the Log Router CMEK settings for the given resource.Note: CMEK for the
         # Log Router can currently only be configured for Google Cloud organizations.
         # Once configured, it applies to all projects and folders in the Google Cloud
@@ -6620,6 +6881,57 @@ module Google
           command.request_object = cmek_settings_object
           command.response_representation = Google::Apis::LoggingV2::CmekSettings::Representation
           command.response_class = Google::Apis::LoggingV2::CmekSettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Log Router settings for the given resource.Note: Settings for the
+        # Log Router can currently only be configured for Google Cloud organizations.
+        # Once configured, it applies to all projects and folders in the Google Cloud
+        # organization.UpdateSettings will fail if 1) kms_key_name is invalid, or 2) the
+        # associated service account does not have the required roles/cloudkms.
+        # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
+        # is disabled. 4) location_id is not supported by Logging. 5) location_id
+        # violate OrgPolicy.See Enabling CMEK for Log Router (https://cloud.google.com/
+        # logging/docs/routing/managed-encryption) for more information.
+        # @param [String] name
+        #   Required. The resource name for the settings to update. "organizations/[
+        #   ORGANIZATION_ID]/settings" For example:"organizations/12345/settings"Note:
+        #   Settings for the Log Router can currently only be configured for Google Cloud
+        #   organizations. Once configured, it applies to all projects and folders in the
+        #   Google Cloud organization.
+        # @param [Google::Apis::LoggingV2::Settings] settings_object
+        # @param [String] update_mask
+        #   Optional. Field mask identifying which fields from settings should be updated.
+        #   A field will be overwritten if and only if it is in the update mask. Output
+        #   only fields cannot be updated.See FieldMask for more information.For example: "
+        #   updateMask=kmsKeyName"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::Settings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::Settings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_settings(name, settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}/settings', options)
+          command.request_representation = Google::Apis::LoggingV2::Settings::Representation
+          command.request_object = settings_object
+          command.response_representation = Google::Apis::LoggingV2::Settings::Representation
+          command.response_class = Google::Apis::LoggingV2::Settings
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
