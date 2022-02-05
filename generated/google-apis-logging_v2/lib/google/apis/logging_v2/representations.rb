@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -803,6 +809,15 @@ module Google
           property :user_agent, as: 'userAgent'
           property :version_id, as: 'versionId'
           property :was_loading_request, as: 'wasLoadingRequest'
+        end
+      end
+      
+      class Settings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_default_sink, as: 'disableDefaultSink'
+          property :name, as: 'name'
+          property :storage_location, as: 'storageLocation'
         end
       end
       
