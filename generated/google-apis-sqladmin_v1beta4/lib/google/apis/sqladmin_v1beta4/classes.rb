@@ -615,6 +615,11 @@ module Google
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
+        # List all maintenance versions applicable on the instance
+        # Corresponds to the JSON property `availableMaintenanceVersions`
+        # @return [Array<String>]
+        attr_accessor :available_maintenance_versions
+      
         # The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A
         # database server that is not managed by Google. This property is read-only; use
         # the `tier` property in the `settings` object to determine the database type.
@@ -703,6 +708,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # The current software version on the instance.
+        # Corresponds to the JSON property `maintenanceVersion`
+        # @return [String]
+        attr_accessor :maintenance_version
       
         # The name of the instance which will act as primary in the replication setup.
         # Corresponds to the JSON property `masterInstanceName`
@@ -814,6 +824,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @available_maintenance_versions = args[:available_maintenance_versions] if args.key?(:available_maintenance_versions)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
           @connection_name = args[:connection_name] if args.key?(:connection_name)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -829,6 +840,7 @@ module Google
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @kind = args[:kind] if args.key?(:kind)
+          @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @master_instance_name = args[:master_instance_name] if args.key?(:master_instance_name)
           @max_disk_size = args[:max_disk_size] if args.key?(:max_disk_size)
           @name = args[:name] if args.key?(:name)
