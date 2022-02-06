@@ -1265,6 +1265,39 @@ module Google
         end
       end
       
+      # Request message for DataprocMetastore.RemoveIamPolicy.
+      class RemoveIamPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for DataprocMetastore.RemoveIamPolicy.
+      class RemoveIamPolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # whether related policies are removed
+        # Corresponds to the JSON property `success`
+        # @return [Boolean]
+        attr_accessor :success
+        alias_method :success?, :success
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @success = args[:success] if args.key?(:success)
+        end
+      end
+      
       # The details of a metadata restore operation.
       class Restore
         include Google::Apis::Core::Hashable
