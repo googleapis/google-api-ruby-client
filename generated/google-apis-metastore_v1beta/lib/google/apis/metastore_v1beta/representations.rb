@@ -220,6 +220,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveIamPolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Restore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -584,6 +596,19 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class RemoveIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RemoveIamPolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :success, as: 'success'
         end
       end
       
