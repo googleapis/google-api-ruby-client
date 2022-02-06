@@ -538,6 +538,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Removes the attached IAM policies for a resource
+        # @param [String] resource
+        #   Required. The relative resource name of the dataplane resource to remove IAM
+        #   policy, in the following form:projects/`project_id`/locations/`location_id`/
+        #   services/`service_id`/databases/`database_id` or projects/`project_id`/
+        #   locations/`location_id`/services/`service_id`/databases/`database_id`/tables/`
+        #   table_id`.
+        # @param [Google::Apis::MetastoreV1beta::RemoveIamPolicyRequest] remove_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MetastoreV1beta::RemoveIamPolicyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MetastoreV1beta::RemoveIamPolicyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_service_iam_policy(resource, remove_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+resource}:removeIamPolicy', options)
+          command.request_representation = Google::Apis::MetastoreV1beta::RemoveIamPolicyRequest::Representation
+          command.request_object = remove_iam_policy_request_object
+          command.response_representation = Google::Apis::MetastoreV1beta::RemoveIamPolicyResponse::Representation
+          command.response_class = Google::Apis::MetastoreV1beta::RemoveIamPolicyResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Restores a service from a backup.
         # @param [String] service
         #   Required. The relative resource name of the metastore service to run restore,
