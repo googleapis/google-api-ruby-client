@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudsearchV1
       
+      class AclInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditLoggingSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -340,6 +346,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDocsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDocsResultInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HtmlOperatorOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +371,12 @@ module Google
       end
       
       class HtmlValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Id
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -808,6 +832,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShareScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Snippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -934,6 +964,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TypeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UnmappedIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -980,6 +1016,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AclInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :groups_count, as: 'groupsCount'
+          property :scope, as: 'scope'
+          property :users_count, as: 'usersCount'
+        end
       end
       
       class AuditLoggingSettings
@@ -1443,6 +1494,35 @@ module Google
         end
       end
       
+      class GoogleDocsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl_info, as: 'aclInfo', class: Google::Apis::CloudsearchV1::AclInfo, decorator: Google::Apis::CloudsearchV1::AclInfo::Representation
+      
+          property :document_type, as: 'documentType'
+          property :file_extension, as: 'fileExtension'
+          property :last_content_modified_timestamp, :numeric_string => true, as: 'lastContentModifiedTimestamp'
+          property :result_info, as: 'resultInfo', class: Google::Apis::CloudsearchV1::GoogleDocsResultInfo, decorator: Google::Apis::CloudsearchV1::GoogleDocsResultInfo::Representation
+      
+          property :type_info, as: 'typeInfo', class: Google::Apis::CloudsearchV1::TypeInfo, decorator: Google::Apis::CloudsearchV1::TypeInfo::Representation
+      
+        end
+      end
+      
+      class GoogleDocsResultInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_sha1, as: 'attachmentSha1'
+          property :cosmo_id, as: 'cosmoId', class: Google::Apis::CloudsearchV1::Id, decorator: Google::Apis::CloudsearchV1::Id::Representation
+      
+          property :cosmo_name_space, as: 'cosmoNameSpace'
+          property :encrypted_id, as: 'encryptedId'
+          property :mime_type, as: 'mimeType'
+          property :share_scope, as: 'shareScope', class: Google::Apis::CloudsearchV1::ShareScope, decorator: Google::Apis::CloudsearchV1::ShareScope::Representation
+      
+        end
+      end
+      
       class HtmlOperatorOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1464,6 +1544,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values'
+        end
+      end
+      
+      class Id
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creator_user_id, :numeric_string => true, as: 'creatorUserId'
+          property :local_id, as: 'localId'
+          property :name_space, as: 'nameSpace'
         end
       end
       
@@ -2289,6 +2378,14 @@ module Google
         end
       end
       
+      class ShareScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :scope, as: 'scope'
+        end
+      end
+      
       class Snippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2474,6 +2571,14 @@ module Google
         end
       end
       
+      class TypeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :video_info, as: 'videoInfo', class: Google::Apis::CloudsearchV1::VideoInfo, decorator: Google::Apis::CloudsearchV1::VideoInfo::Representation
+      
+        end
+      end
+      
       class UnmappedIdentity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2547,6 +2652,13 @@ module Google
           property :operator_name, as: 'operatorName'
           property :value, as: 'value', class: Google::Apis::CloudsearchV1::Value, decorator: Google::Apis::CloudsearchV1::Value::Representation
       
+        end
+      end
+      
+      class VideoInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
         end
       end
     end

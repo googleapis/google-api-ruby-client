@@ -22,6 +22,37 @@ module Google
   module Apis
     module CloudsearchV1
       
+      # Next tag: 4
+      class AclInfo
+        include Google::Apis::Core::Hashable
+      
+        # Number of groups which have at least read access to the document.
+        # Corresponds to the JSON property `groupsCount`
+        # @return [Fixnum]
+        attr_accessor :groups_count
+      
+        # The scope to which the content was shared.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Number of users which have at least read access to the document.
+        # Corresponds to the JSON property `usersCount`
+        # @return [Fixnum]
+        attr_accessor :users_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @groups_count = args[:groups_count] if args.key?(:groups_count)
+          @scope = args[:scope] if args.key?(:scope)
+          @users_count = args[:users_count] if args.key?(:users_count)
+        end
+      end
+      
       # Represents the settings for Cloud audit logging
       class AuditLoggingSettings
         include Google::Apis::Core::Hashable
@@ -1553,6 +1584,119 @@ module Google
         end
       end
       
+      # The corpus specific metadata for office-type documents, from Google Docs and
+      # other sources. This message is passed to the scorer and beyond. Next tag: 7
+      class GoogleDocsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Next tag: 4
+        # Corresponds to the JSON property `aclInfo`
+        # @return [Google::Apis::CloudsearchV1::AclInfo]
+        attr_accessor :acl_info
+      
+        # The conceptual type (presentation, document, etc.) of this document.
+        # Corresponds to the JSON property `documentType`
+        # @return [String]
+        attr_accessor :document_type
+      
+        # The file extension of the document. NOTE: As of October 2018 this field is not
+        # backfilled for old documents.
+        # Corresponds to the JSON property `fileExtension`
+        # @return [String]
+        attr_accessor :file_extension
+      
+        # The last time this document was modified, in seconds since epoch. Only counts
+        # content modifications.
+        # Corresponds to the JSON property `lastContentModifiedTimestamp`
+        # @return [Fixnum]
+        attr_accessor :last_content_modified_timestamp
+      
+        # A message containing information about a specific result. This information is
+        # passed to the scorer and beyond; in particular, GWS relies on it to format the
+        # result in the UI. Split from GoogleDocsMetadata in case we later want to reuse
+        # the message.
+        # Corresponds to the JSON property `resultInfo`
+        # @return [Google::Apis::CloudsearchV1::GoogleDocsResultInfo]
+        attr_accessor :result_info
+      
+        # Next tag: 2
+        # Corresponds to the JSON property `typeInfo`
+        # @return [Google::Apis::CloudsearchV1::TypeInfo]
+        attr_accessor :type_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acl_info = args[:acl_info] if args.key?(:acl_info)
+          @document_type = args[:document_type] if args.key?(:document_type)
+          @file_extension = args[:file_extension] if args.key?(:file_extension)
+          @last_content_modified_timestamp = args[:last_content_modified_timestamp] if args.key?(:last_content_modified_timestamp)
+          @result_info = args[:result_info] if args.key?(:result_info)
+          @type_info = args[:type_info] if args.key?(:type_info)
+        end
+      end
+      
+      # A message containing information about a specific result. This information is
+      # passed to the scorer and beyond; in particular, GWS relies on it to format the
+      # result in the UI. Split from GoogleDocsMetadata in case we later want to reuse
+      # the message.
+      class GoogleDocsResultInfo
+        include Google::Apis::Core::Hashable
+      
+        # The SHA1 hash of the object in Drive, if any.
+        # Corresponds to the JSON property `attachmentSha1`
+        # @return [String]
+        attr_accessor :attachment_sha1
+      
+        # Identifies a particular object, including both Users and DirEntries. This Id
+        # is unique across the entire server instance, such as the production or qa
+        # instance.
+        # Corresponds to the JSON property `cosmoId`
+        # @return [Google::Apis::CloudsearchV1::Id]
+        attr_accessor :cosmo_id
+      
+        # For Cosmo objects, the Cosmo namespace the object was in. This allows
+        # downstream clients to identify whether a document was created in Writely or
+        # Kix, Presently or Punch, or whether it was uploaded from GDrive. See
+        # storage_cosmo.Id.NAME_SPACE for a list of all Cosmo name spaces.
+        # Corresponds to the JSON property `cosmoNameSpace`
+        # @return [Fixnum]
+        attr_accessor :cosmo_name_space
+      
+        # The encrypted (user-visible) id of this object. Knowing the id is sufficient
+        # to create a canonical URL for this document.
+        # Corresponds to the JSON property `encryptedId`
+        # @return [String]
+        attr_accessor :encrypted_id
+      
+        # The mimetype of the document.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # The visibility indicator in the UI will be based upon this.
+        # Corresponds to the JSON property `shareScope`
+        # @return [Google::Apis::CloudsearchV1::ShareScope]
+        attr_accessor :share_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_sha1 = args[:attachment_sha1] if args.key?(:attachment_sha1)
+          @cosmo_id = args[:cosmo_id] if args.key?(:cosmo_id)
+          @cosmo_name_space = args[:cosmo_name_space] if args.key?(:cosmo_name_space)
+          @encrypted_id = args[:encrypted_id] if args.key?(:encrypted_id)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @share_scope = args[:share_scope] if args.key?(:share_scope)
+        end
+      end
+      
       # Used to provide a search operator for html properties. This is optional.
       # Search operators let users restrict the query to specific fields relevant to
       # the type of item being searched.
@@ -1625,6 +1769,48 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Identifies a particular object, including both Users and DirEntries. This Id
+      # is unique across the entire server instance, such as the production or qa
+      # instance.
+      class Id
+        include Google::Apis::Core::Hashable
+      
+        # The User account in which the DirEntry was originally created. If name_space==
+        # GAIA, then it's the gaia_id of the user this id is referring to.
+        # Corresponds to the JSON property `creatorUserId`
+        # @return [Fixnum]
+        attr_accessor :creator_user_id
+      
+        # The local identifier for the DirEntry (local to the creator's account).
+        # local_id + app_name is guaranteed to be unique within the creator account, but
+        # not across all User accounts. The string is case sensitive. Ignore if
+        # name_space==GAIA. NB For name_space==COSMO, all local_id's should be defined
+        # in google3/java/com/google/storage/cosmo/server/api/SpecialObjectIds.java as
+        # they have a special predefined meaning. See cosmo.client.CosmoIdFactory.
+        # createObjectId(long,String) for IMPORTANT recommendations when generating IDs.
+        # Corresponds to the JSON property `localId`
+        # @return [String]
+        attr_accessor :local_id
+      
+        # The name space in which this id is unique (typically the application that
+        # created it). Values should be drawn from the above enum, but for
+        # experimentation, use values greater than 1000.
+        # Corresponds to the JSON property `nameSpace`
+        # @return [Fixnum]
+        attr_accessor :name_space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
+          @local_id = args[:local_id] if args.key?(:local_id)
+          @name_space = args[:name_space] if args.key?(:name_space)
         end
       end
       
@@ -1917,9 +2103,9 @@ module Google
         # Item using lexical ordering. Cloud Search Indexing won't index or delete any
         # queued item with a version value that is less than or equal to the version of
         # the currently indexed item. The maximum length for this field is 1024 bytes.
-        # See [this guide](https://developers.devsite.corp.google.com/cloud-search/docs/
-        # guides/operations) to understand how item version affects reindexing after
-        # delete item.
+        # For information on how item version affects the deletion process, refer to [
+        # Handle revisions after manual deletes](https://developers.google.com/cloud-
+        # search/docs/guides/operations).
         # Corresponds to the JSON property `version`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4493,6 +4679,32 @@ module Google
         end
       end
       
+      # 
+      class ShareScope
+        include Google::Apis::Core::Hashable
+      
+        # If scope is DOMAIN, this field contains the dasher domain, for example "google.
+        # com".
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # The scope to which the content was shared.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
       # Snippet of the search result, which summarizes the content of the resulting
       # page.
       class Snippet
@@ -5092,6 +5304,25 @@ module Google
         end
       end
       
+      # Next tag: 2
+      class TypeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Next tag: 2
+        # Corresponds to the JSON property `videoInfo`
+        # @return [Google::Apis::CloudsearchV1::VideoInfo]
+        attr_accessor :video_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @video_info = args[:video_info] if args.key?(:video_info)
+        end
+      end
+      
       # 
       class UnmappedIdentity
         include Google::Apis::Core::Hashable
@@ -5334,6 +5565,26 @@ module Google
         def update!(**args)
           @operator_name = args[:operator_name] if args.key?(:operator_name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Next tag: 2
+      class VideoInfo
+        include Google::Apis::Core::Hashable
+      
+        # Duration of the video in milliseconds. This field can be absent for recently
+        # uploaded video or inaccurate sometimes.
+        # Corresponds to the JSON property `duration`
+        # @return [Fixnum]
+        attr_accessor :duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
         end
       end
     end
