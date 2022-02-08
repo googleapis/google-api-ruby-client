@@ -27,6 +27,7 @@ include :git_cache
 include :terminal
 
 def run
+  require "json"
   require "pull_request_generator"
   extend PullRequestGenerator
   ensure_pull_request_generation_dependencies
@@ -37,8 +38,9 @@ def run
   end
 
   @timestamp = Time.now.utc.strftime("%Y%m%d-%H%M%S")
-  list_apis_versions.each do |(api, version)|
-    pr_single_gem api, version
+  apis_versions = list_apis_versions
+  apis_versions.each_with_index do |(api, version), index|
+    pr_single_gem api, version, index + 1, apis_versions.size
   end
   pr_clean_old_gems
 end
@@ -52,9 +54,13 @@ def list_apis_versions
   apis_versions.compact.shuffle
 end
 
-def pr_single_gem api, version
+def pr_single_gem api, version, index, total
   branch_name = "gen/#{api}-#{version}-#{@timestamp}"
   commit_message = "feat: Automated regeneration of #{api} #{version} client"
+  if open_pr_exists? commit_message
+    puts "(#{index}/#{total}) Pull request already exists for google-apis-#{api}_#{version}", :yellow
+    return
+  end
   result = generate_pull_request git_remote: git_remote,
                                  branch_name: branch_name,
                                  commit_message: commit_message do
@@ -62,15 +68,21 @@ def pr_single_gem api, version
   end
   case result
   when :opened
-    puts "Opened pull request for google-apis-#{api}_#{version}", :green, :bold
-  when :uknchanged
-    puts "No changes for google-apis-#{api}_#{version}", :magenta
+    puts "(#{index}/#{total}) Opened pull request for google-apis-#{api}_#{version}", :green, :bold
+  when :unchanged
+    puts "(#{index}/#{total}) No changes for google-apis-#{api}_#{version}", :magenta
+  else
+    puts "(#{index}/#{total}) Generated google-apis-#{api}_#{version}", :cyan
   end
 end
 
 def pr_clean_old_gems
   branch_name = "gen/clean-#{@timestamp}"
   commit_message = "feat: Automated cleanup of obsolete clients"
+  if open_pr_exists? commit_message
+    puts "Pull request already exists for cleaning obsolete gems", :yellow
+    return
+  end
   result = generate_pull_request git_remote: git_remote,
                                  branch_name: branch_name,
                                  commit_message: commit_message do
@@ -79,9 +91,15 @@ def pr_clean_old_gems
   case result
   when :opened
     puts "Opened pull request for cleaning obsolete gems", :green, :bold
-  when :uknchanged
+  when :unchanged
     puts "No obsolete gems to clean", :magenta
   end
+end
+
+def open_pr_exists? title
+  content = capture ["gh", "pr", "list", "--search", "\"#{title}\" in:title", "--state=open", "--json=number"]
+  result = JSON.parse content
+  !result.empty?
 end
 
 def regen_single_gem api, version
