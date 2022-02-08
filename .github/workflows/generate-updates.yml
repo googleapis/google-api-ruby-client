@@ -1,7 +1,7 @@
 name: Generate-Updates
 on:
-#  schedule:
-#    - cron: '02 11 * * *'
+  schedule:
+    - cron: '02 11 * * *'
   workflow_dispatch:
     inputs:
       args:
