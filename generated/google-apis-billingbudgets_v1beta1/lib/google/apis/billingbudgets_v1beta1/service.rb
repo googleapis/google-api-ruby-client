@@ -50,8 +50,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a new budget. See Quotas and limits for more information on the limits
-        # of the number of budgets you can create.
+        # Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/
+        # quotas) for more information on the limits of the number of budgets you can
+        # create.
         # @param [String] parent
         #   Required. The name of the billing account to create the budget in. Values are
         #   of the form `billingAccounts/`billingAccountId``.
