@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://cloud.google.com/
+    # @see https://cloud.google.com/certificate-manager
     module CertificatemanagerV1
       # Version of the Certificate Manager API this client connects to.
       # This is NOT the gem version.
