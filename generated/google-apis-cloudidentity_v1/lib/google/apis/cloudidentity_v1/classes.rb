@@ -22,6 +22,19 @@ module Google
   module Apis
     module CloudidentityV1
       
+      # Request to cancel sent invitation for target email in UserInvitation.
+      class CancelUserInvitationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The response message for MembershipsService.CheckTransitiveMembership.
       class CheckTransitiveMembershipResponse
         include Google::Apis::Core::Hashable
@@ -234,6 +247,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
+      # Message containing first admin invitation info for customers
+      class FirstAdminInvitationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. To enable First Admin Invitation for Domained Customer
+        # Corresponds to the JSON property `isFirstAdmin`
+        # @return [Boolean]
+        attr_accessor :is_first_admin
+        alias_method :is_first_admin?, :is_first_admin
+      
+        # Optional. Domain information of first admin invited
+        # Corresponds to the JSON property `primaryDomain`
+        # @return [String]
+        attr_accessor :primary_domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_first_admin = args[:is_first_admin] if args.key?(:is_first_admin)
+          @primary_domain = args[:primary_domain] if args.key?(:primary_domain)
         end
       end
       
@@ -1407,6 +1446,26 @@ module Google
         end
       end
       
+      # Response for IsInvitableUser RPC.
+      class IsInvitableUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # Returns true if the email address is invitable.
+        # Corresponds to the JSON property `isInvitableUser`
+        # @return [Boolean]
+        attr_accessor :is_invitable_user
+        alias_method :is_invitable_user?, :is_invitable_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_invitable_user = args[:is_invitable_user] if args.key?(:is_invitable_user)
+        end
+      end
+      
       # Response message for ListGroups operation.
       class ListGroupsResponse
         include Google::Apis::Core::Hashable
@@ -1456,6 +1515,34 @@ module Google
         def update!(**args)
           @memberships = args[:memberships] if args.key?(:memberships)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for UserInvitation listing request.
+      class ListUserInvitationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token for the next page. If not empty, indicates that there may be more `
+        # UserInvitation` resources that match the listing request; this value can be
+        # used in a subsequent ListUserInvitationsRequest to get continued results with
+        # the current list call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of UserInvitation resources.
+        # Corresponds to the JSON property `userInvitations`
+        # @return [Array<Google::Apis::CloudidentityV1::UserInvitation>]
+        attr_accessor :user_invitations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_invitations = args[:user_invitations] if args.key?(:user_invitations)
         end
       end
       
@@ -1969,6 +2056,26 @@ module Google
         def update!(**args)
           @member_restriction = args[:member_restriction] if args.key?(:member_restriction)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A request to send email for inviting target user corresponding to the
+      # UserInvitation.
+      class SendUserInvitationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message containing first admin invitation info for customers
+        # Corresponds to the JSON property `firstAdminInvitationInfo`
+        # @return [Google::Apis::CloudidentityV1::FirstAdminInvitationInfo]
+        attr_accessor :first_admin_invitation_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_admin_invitation_info = args[:first_admin_invitation_info] if args.key?(:first_admin_invitation_info)
         end
       end
       

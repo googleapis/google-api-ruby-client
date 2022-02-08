@@ -22,6 +22,12 @@ module Google
   module Apis
     module CloudidentityV1
       
+      class CancelUserInvitationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckTransitiveMembershipResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +83,12 @@ module Google
       end
       
       class ExpiryDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirstAdminInvitationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IsInvitableUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +335,12 @@ module Google
       end
       
       class ListMembershipsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserInvitationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SendUserInvitationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -458,6 +488,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelUserInvitationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class CheckTransitiveMembershipResponse
@@ -529,6 +565,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expire_time, as: 'expireTime'
+        end
+      end
+      
+      class FirstAdminInvitationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_first_admin, as: 'isFirstAdmin'
+          property :primary_domain, as: 'primaryDomain'
         end
       end
       
@@ -872,6 +916,13 @@ module Google
         end
       end
       
+      class IsInvitableUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_invitable_user, as: 'isInvitableUser'
+        end
+      end
+      
       class ListGroupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -887,6 +938,15 @@ module Google
           collection :memberships, as: 'memberships', class: Google::Apis::CloudidentityV1::Membership, decorator: Google::Apis::CloudidentityV1::Membership::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListUserInvitationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_invitations, as: 'userInvitations', class: Google::Apis::CloudidentityV1::UserInvitation, decorator: Google::Apis::CloudidentityV1::UserInvitation::Representation
+      
         end
       end
       
@@ -1045,6 +1105,14 @@ module Google
           property :member_restriction, as: 'memberRestriction', class: Google::Apis::CloudidentityV1::MemberRestriction, decorator: Google::Apis::CloudidentityV1::MemberRestriction::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class SendUserInvitationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_admin_invitation_info, as: 'firstAdminInvitationInfo', class: Google::Apis::CloudidentityV1::FirstAdminInvitationInfo, decorator: Google::Apis::CloudidentityV1::FirstAdminInvitationInfo::Representation
+      
         end
       end
       

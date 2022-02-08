@@ -49,6 +49,204 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Cancels a UserInvitation that was already sent.
+        # @param [String] name
+        #   Required. `UserInvitation` name in the format `customers/`customer`/
+        #   userinvitations/`user_email_address``
+        # @param [Google::Apis::CloudidentityV1::CancelUserInvitationRequest] cancel_user_invitation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_userinvitation_user_invitation(name, cancel_user_invitation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::CloudidentityV1::CancelUserInvitationRequest::Representation
+          command.request_object = cancel_user_invitation_request_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a UserInvitation resource. **Note:** New consumer accounts with the
+        # customer's verified domain created within the previous 48 hours will not
+        # appear in the result. This delay also applies to newly-verified domains.
+        # @param [String] name
+        #   Required. `UserInvitation` name in the format `customers/`customer`/
+        #   userinvitations/`user_email_address``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::UserInvitation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::UserInvitation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_userinvitation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::UserInvitation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::UserInvitation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Verifies whether a user account is eligible to receive a UserInvitation (is an
+        # unmanaged account). Eligibility is based on the following criteria: * the
+        # email address is a consumer account and it's the primary email address of the
+        # account, and * the domain of the email address matches an existing verified
+        # Google Workspace or Cloud Identity domain If both conditions are met, the user
+        # is eligible. **Note:** This method is not supported for Workspace Essentials
+        # customers.
+        # @param [String] name
+        #   Required. `UserInvitation` name in the format `customers/`customer`/
+        #   userinvitations/`user_email_address``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::IsInvitableUserResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::IsInvitableUserResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def is_customer_userinvitation_invitable_user(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:isInvitableUser', options)
+          command.response_representation = Google::Apis::CloudidentityV1::IsInvitableUserResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::IsInvitableUserResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of UserInvitation resources. **Note:** New consumer accounts
+        # with the customer's verified domain created within the previous 48 hours will
+        # not appear in the result. This delay also applies to newly-verified domains.
+        # @param [String] parent
+        #   Required. The customer ID of the Google Workspace or Cloud Identity account
+        #   the UserInvitation resources are associated with.
+        # @param [String] filter
+        #   Optional. A query string for filtering `UserInvitation` results by their
+        #   current state, in the format: `"state=='invited'"`.
+        # @param [String] order_by
+        #   Optional. The sort order of the list results. You can sort the results in
+        #   descending order based on either email or last update timestamp but not both,
+        #   using `order_by="email desc"`. Currently, sorting is supported for `
+        #   update_time asc`, `update_time desc`, `email asc`, and `email desc`. If not
+        #   specified, results will be returned based on `email asc` order.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of UserInvitation resources to return. If
+        #   unspecified, at most 100 resources will be returned. The maximum value is 200;
+        #   values above 200 will be set to 200.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListUserInvitations` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListBooks` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::ListUserInvitationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::ListUserInvitationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_userinvitations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/userinvitations', options)
+          command.response_representation = Google::Apis::CloudidentityV1::ListUserInvitationsResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::ListUserInvitationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends a UserInvitation to email. If the `UserInvitation` does not exist for
+        # this request and it is a valid request, the request creates a `UserInvitation`.
+        # **Note:** The `get` and `list` methods have a 48-hour delay where newly-
+        # created consumer accounts will not appear in the results. You can still send a
+        # `UserInvitation` to those accounts if you know the unmanaged email address and
+        # IsInvitableUser==True.
+        # @param [String] name
+        #   Required. `UserInvitation` name in the format `customers/`customer`/
+        #   userinvitations/`user_email_address``
+        # @param [Google::Apis::CloudidentityV1::SendUserInvitationRequest] send_user_invitation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_userinvitation_user_invitation(name, send_user_invitation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:send', options)
+          command.request_representation = Google::Apis::CloudidentityV1::SendUserInvitationRequest::Representation
+          command.request_object = send_user_invitation_request_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cancels an unfinished device wipe. This operation can be used to cancel device
         # wipe in the gap between the wipe operation returning success and the device
         # being wiped. This operation is possible when the device is in a "pending wipe"
