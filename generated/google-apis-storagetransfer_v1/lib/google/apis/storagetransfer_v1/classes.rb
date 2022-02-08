@@ -245,10 +245,10 @@ module Google
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
       # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+      # DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -573,7 +573,9 @@ module Google
         end
       end
       
-      # Specifies the metadata options for running a transfer.
+      # Specifies the metadata options for running a transfer. These options only
+      # apply to transfers involving a POSIX filesystem and are ignored for other
+      # transfers.
       class MetadataOptions
         include Google::Apis::Core::Hashable
       
@@ -584,9 +586,8 @@ module Google
         # @return [String]
         attr_accessor :acl
       
-        # Specifies how each file's GID attribute should be handled by the transfer. If
-        # unspecified, the default behavior is the same as GID_SKIP when the source is a
-        # POSIX file system.
+        # Specifies how each file's POSIX group ID (GID) attribute should be handled by
+        # the transfer. By default, GID is not preserved.
         # Corresponds to the JSON property `gid`
         # @return [String]
         attr_accessor :gid
@@ -599,9 +600,8 @@ module Google
         # @return [String]
         attr_accessor :kms_key
       
-        # Specifies how each file's mode attribute should be handled by the transfer. If
-        # unspecified, the default behavior is the same as MODE_SKIP when the source is
-        # a POSIX file system.
+        # Specifies how each file's mode attribute should be handled by the transfer. By
+        # default, mode is not preserved.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -613,9 +613,8 @@ module Google
         # @return [String]
         attr_accessor :storage_class
       
-        # Specifies how symlinks should be handled by the transfer. If unspecified, the
-        # default behavior is the same as SYMLINK_SKIP when the source is a POSIX file
-        # system.
+        # Specifies how symlinks should be handled by the transfer. By default, symlinks
+        # are not preserved.
         # Corresponds to the JSON property `symlink`
         # @return [String]
         attr_accessor :symlink
@@ -627,9 +626,8 @@ module Google
         # @return [String]
         attr_accessor :temporary_hold
       
-        # Specifies how each file's UID attribute should be handled by the transfer. If
-        # unspecified, the default behavior is the same as UID_SKIP when the source is a
-        # POSIX file system.
+        # Specifies how each file's POSIX user ID (UID) attribute should be handled by
+        # the transfer. By default, UID is not preserved.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -944,10 +942,10 @@ module Google
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
         # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+        # DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `scheduleEndDate`
         # @return [Google::Apis::StoragetransferV1::Date]
         attr_accessor :schedule_end_date
@@ -956,10 +954,10 @@ module Google
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
         # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+        # DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `scheduleStartDate`
         # @return [Google::Apis::StoragetransferV1::Date]
         attr_accessor :schedule_start_date
@@ -1457,7 +1455,9 @@ module Google
         attr_accessor :delete_objects_unique_in_sink
         alias_method :delete_objects_unique_in_sink?, :delete_objects_unique_in_sink
       
-        # Specifies the metadata options for running a transfer.
+        # Specifies the metadata options for running a transfer. These options only
+        # apply to transfers involving a POSIX filesystem and are ignored for other
+        # transfers.
         # Corresponds to the JSON property `metadataOptions`
         # @return [Google::Apis::StoragetransferV1::MetadataOptions]
         attr_accessor :metadata_options
