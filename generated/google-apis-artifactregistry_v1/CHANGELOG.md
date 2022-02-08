@@ -1,5 +1,9 @@
 # Release history for google-apis-artifactregistry_v1
 
+### v0.18.0 (2022-02-08)
+
+* Regenerated from discovery document revision 20220203
+
 ### v0.17.0 (2022-01-27)
 
 * Regenerated from discovery document revision 20220121

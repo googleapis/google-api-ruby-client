@@ -497,7 +497,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_aptartifact_apt_artifact(parent, upload_apt_artifact_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_apt_artifact(parent, upload_apt_artifact_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:post, 'v1/{+parent}/aptArtifacts:create', options)
           else
@@ -719,7 +719,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_googetartifact_goo_get_artifact(parent, upload_goo_get_artifact_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_googet_artifact_goo_get_artifact(parent, upload_goo_get_artifact_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:post, 'v1/{+parent}/googetArtifacts:create', options)
           else
@@ -1188,7 +1188,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_yumartifact_yum_artifact(parent, upload_yum_artifact_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_yum_artifact(parent, upload_yum_artifact_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:post, 'v1/{+parent}/yumArtifacts:create', options)
           else
