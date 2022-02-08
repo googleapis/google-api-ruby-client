@@ -30,7 +30,7 @@ module Google
       #    Certificatemanager = Google::Apis::CertificatemanagerV1 # Alias the module
       #    service = Certificatemanager::CertificateManagerService.new
       #
-      # @see https://cloud.google.com/
+      # @see https://cloud.google.com/certificate-manager
       class CertificateManagerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
