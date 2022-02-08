@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityServiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IntraNodeVisibilityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -897,6 +903,8 @@ module Google
           property :endpoint, as: 'endpoint'
           property :expire_time, as: 'expireTime'
           property :id, as: 'id'
+          property :identity_service_config, as: 'identityServiceConfig', class: Google::Apis::ContainerV1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1::IdentityServiceConfig::Representation
+      
           property :initial_cluster_version, as: 'initialClusterVersion'
           property :initial_node_count, as: 'initialNodeCount'
           collection :instance_group_urls, as: 'instanceGroupUrls'
@@ -991,6 +999,8 @@ module Google
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
       
           property :desired_gcfs_config, as: 'desiredGcfsConfig', class: Google::Apis::ContainerV1::GcfsConfig, decorator: Google::Apis::ContainerV1::GcfsConfig::Representation
+      
+          property :desired_identity_service_config, as: 'desiredIdentityServiceConfig', class: Google::Apis::ContainerV1::IdentityServiceConfig, decorator: Google::Apis::ContainerV1::IdentityServiceConfig::Representation
       
           property :desired_image_type, as: 'desiredImageType'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1::IntraNodeVisibilityConfig::Representation
@@ -1231,6 +1241,13 @@ module Google
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :use_ip_aliases, as: 'useIpAliases'
           property :use_routes, as: 'useRoutes'
+        end
+      end
+      
+      class IdentityServiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
