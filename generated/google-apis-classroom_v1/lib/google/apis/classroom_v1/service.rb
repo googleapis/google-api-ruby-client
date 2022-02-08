@@ -1577,12 +1577,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a user as a student of a course. This method returns the following error
-        # codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create
-        # students in this course or for access errors. * `NOT_FOUND` if the requested
-        # course ID does not exist. * `FAILED_PRECONDITION` if the requested user's
-        # account is disabled, for the following request errors: *
-        # CourseMemberLimitReached * CourseNotModifiable *
+        # Adds a user as a student of a course. Domain administrators are permitted to [
+        # directly add](https://developers.google.com/classroom/guides/manage-users)
+        # users within their domain as students to courses within their domain. Students
+        # are permitted to add themselves to a course using an enrollment code. This
+        # method returns the following error codes: * `PERMISSION_DENIED` if the
+        # requesting user is not permitted to create students in this course or for
+        # access errors. * `NOT_FOUND` if the requested course ID does not exist. * `
+        # FAILED_PRECONDITION` if the requested user's account is disabled, for the
+        # following request errors: * CourseMemberLimitReached * CourseNotModifiable *
         # UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a
         # student or teacher in the course.
         # @param [String] course_id
