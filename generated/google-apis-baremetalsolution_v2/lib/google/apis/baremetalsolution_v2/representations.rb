@@ -22,12 +22,6 @@ module Google
   module Apis
     module BaremetalsolutionV2
       
-      class CancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,12 +53,6 @@ module Google
       end
       
       class ListNetworksResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QosPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResetInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VlanAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Volume
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -164,12 +164,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
       end
       
       class Empty
@@ -183,6 +177,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :hyperthreading_enabled, as: 'hyperthreadingEnabled'
+          property :id, as: 'id'
           property :interactive_serial_console_enabled, as: 'interactiveSerialConsoleEnabled'
           hash :labels, as: 'labels'
           collection :luns, as: 'luns', class: Google::Apis::BaremetalsolutionV2::Lun, decorator: Google::Apis::BaremetalsolutionV2::Lun::Representation
@@ -235,15 +230,6 @@ module Google
         end
       end
       
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::BaremetalsolutionV2::Operation, decorator: Google::Apis::BaremetalsolutionV2::Operation::Representation
-      
-        end
-      end
-      
       class ListSnapshotSchedulePoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -288,6 +274,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :boot_lun, as: 'bootLun'
+          property :id, as: 'id'
           property :multiprotocol_type, as: 'multiprotocolType'
           property :name, as: 'name'
           property :shareable, as: 'shareable'
@@ -303,10 +290,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cidr, as: 'cidr'
+          property :id, as: 'id'
           property :ip_address, as: 'ipAddress'
+          hash :labels, as: 'labels'
           collection :mac_address, as: 'macAddress'
           property :name, as: 'name'
-          property :network, as: 'network'
+          property :services_cidr, as: 'servicesCidr'
           property :state, as: 'state'
           property :type, as: 'type'
           property :vlan_id, as: 'vlanId'
@@ -324,6 +313,13 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class QosPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bandwidth_gbps, as: 'bandwidthGbps'
         end
       end
       
@@ -361,10 +357,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :id, as: 'id'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           collection :schedules, as: 'schedules', class: Google::Apis::BaremetalsolutionV2::Schedule, decorator: Google::Apis::BaremetalsolutionV2::Schedule::Representation
       
-          collection :volumes, as: 'volumes'
         end
       end
       
@@ -380,11 +377,21 @@ module Google
       class Vrf
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :autonomous_system_number, as: 'autonomousSystemNumber'
-          property :juniper_alias, as: 'juniperAlias'
           property :name, as: 'name'
-          property :route_target, :numeric_string => true, as: 'routeTarget'
+          property :qos_policy, as: 'qosPolicy', class: Google::Apis::BaremetalsolutionV2::QosPolicy, decorator: Google::Apis::BaremetalsolutionV2::QosPolicy::Representation
+      
           property :state, as: 'state'
+          collection :vlan_attachments, as: 'vlanAttachments', class: Google::Apis::BaremetalsolutionV2::VlanAttachment, decorator: Google::Apis::BaremetalsolutionV2::VlanAttachment::Representation
+      
+        end
+      end
+      
+      class VlanAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :peer_ip, as: 'peerIp'
+          property :peer_vlan_id, :numeric_string => true, as: 'peerVlanId'
+          property :router_ip, as: 'routerIp'
         end
       end
       
@@ -393,6 +400,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_grown_size_gib, :numeric_string => true, as: 'autoGrownSizeGib'
           property :current_size_gib, :numeric_string => true, as: 'currentSizeGib'
+          property :id, as: 'id'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
           property :remaining_space_gib, :numeric_string => true, as: 'remainingSpaceGib'
           property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
@@ -410,6 +419,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :id, as: 'id'
           property :name, as: 'name'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :storage_volume, as: 'storageVolume'
