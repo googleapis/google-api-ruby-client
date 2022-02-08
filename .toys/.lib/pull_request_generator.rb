@@ -12,15 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require "json"
+
 module PullRequestGenerator
   def ensure_pull_request_generation_dependencies
     PullRequestGenerator.ensure_dependencies context: self
   end
 
   def ensure_pull_request_generation_fork git_remote: nil
-    git_remote ||= "pull-request-fork"
     PullRequestGenerator.ensure_fork context: self, git_remote: git_remote
-    git_remote
   end
 
   def generate_pull_request git_remote:,
@@ -70,9 +70,12 @@ module PullRequestGenerator
     end
 
     def ensure_fork context:, git_remote:
+      git_remote ||= "pull-request-fork"
       context.exec ["gh", "repo", "fork", "--remote=true", "--remote-name=#{git_remote}"]
-      branch_name = context.capture(["git", "branch", "--show-current"]).strip
-      context.exec ["git", "push", git_remote, branch_name]
+      repo = ::JSON.parse(context.capture(["gh", "repo", "view", "--json=name"]))["name"]
+      owner = ::JSON.parse(context.capture(["gh", "api", "/user"]))["login"]
+      context.exec ["gh", "repo", "sync", "#{owner}/#{repo}"]
+      git_remote
     end
 
     def ensure_gh_binary context:
