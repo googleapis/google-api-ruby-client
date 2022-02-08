@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1EndpointAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1EntityMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +647,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListEndpointAttachmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1933,6 +1945,16 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1EndpointAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :location, as: 'location'
+          property :name, as: 'name'
+          property :service_attachment, as: 'serviceAttachment'
+        end
+      end
+      
       class GoogleCloudApigeeV1EntityMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2357,6 +2379,15 @@ module Google
           collection :developer_subscriptions, as: 'developerSubscriptions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperSubscription, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperSubscription::Representation
       
           property :next_start_key, as: 'nextStartKey'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListEndpointAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoint_attachments, as: 'endpointAttachments', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

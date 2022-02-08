@@ -2909,6 +2909,45 @@ module Google
         end
       end
       
+      # Apigee Endpoint Attachment.
+      class GoogleCloudApigeeV1EndpointAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Host that can be used in either HTTP Target Endpoint directly, or
+        # as the host in Target Server.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Required. Location of the endpoint attachment.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Name of the Endpoint Attachment in the following format: `organizations/`
+        # organization`/endpointAttachments/`endpoint_attachment``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Format: projects/*/regions/*/serviceAttachments/*
+        # Corresponds to the JSON property `serviceAttachment`
+        # @return [String]
+        attr_accessor :service_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+          @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
+        end
+      end
+      
       # Metadata common to many entities in this API.
       class GoogleCloudApigeeV1EntityMetadata
         include Google::Apis::Core::Hashable
@@ -4387,6 +4426,32 @@ module Google
         def update!(**args)
           @developer_subscriptions = args[:developer_subscriptions] if args.key?(:developer_subscriptions)
           @next_start_key = args[:next_start_key] if args.key?(:next_start_key)
+        end
+      end
+      
+      # Response for ListEndpointAttachments method.
+      class GoogleCloudApigeeV1ListEndpointAttachmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Endpoint Attachments in the specified organization.
+        # Corresponds to the JSON property `endpointAttachments`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment>]
+        attr_accessor :endpoint_attachments
+      
+        # Page token that you can include in a ListEndpointAttachments request to
+        # retrieve the next page. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_attachments = args[:endpoint_attachments] if args.key?(:endpoint_attachments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

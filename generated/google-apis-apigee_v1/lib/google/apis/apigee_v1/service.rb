@@ -3470,6 +3470,144 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an EndpointAttachment. **Note:** Not supported for Apigee hybrid.
+        # @param [String] parent
+        #   Required. The Organization this EndpointAttachment will be created in.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment] google_cloud_apigee_v1_endpoint_attachment_object
+        # @param [String] endpoint_attachment_id
+        #   The ID to use for the endpoint attachment. ID must be a 1-20 characters string
+        #   with lowercase letters and numbers and must start with a letter.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_endpoint_attachment(parent, google_cloud_apigee_v1_endpoint_attachment_object = nil, endpoint_attachment_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/endpointAttachments', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment::Representation
+          command.request_object = google_cloud_apigee_v1_endpoint_attachment_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['endpointAttachmentId'] = endpoint_attachment_id unless endpoint_attachment_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an endpoint attachment.
+        # @param [String] name
+        #   Required. Name of the Endpoint Attachment in the following format: `
+        #   organizations/`organization`/endpointAttachments/`endpoint_attachment``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_endpoint_attachment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified EndpointAttachment.
+        # @param [String] name
+        #   Required. Name of the Endpoint Attachment in the following format: `
+        #   organizations/`organization`/endpointAttachments/`endpoint_attachment``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_endpoint_attachment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the EndpointAttachments in the specified Organization.
+        # @param [String] parent
+        #   Required. Name of the Organization for which to list Endpoint Attachments in
+        #   the format: `organizations/`organization``.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of Endpoint Attachments to return. If unspecified, at
+        #   most 25 attachments will be returned.
+        # @param [String] page_token
+        #   Optional. Page token, returned from a previous ListEndpointAttachments call,
+        #   that you can use to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListEndpointAttachmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListEndpointAttachmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_endpoint_attachments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/endpointAttachments', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListEndpointAttachmentsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListEndpointAttachmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new environment group.
         # @param [String] parent
         #   Required. Name of the organization in which to create the environment group in
