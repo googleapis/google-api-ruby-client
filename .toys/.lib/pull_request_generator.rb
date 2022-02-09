@@ -13,7 +13,6 @@
 # limitations under the License.
 
 require "json"
-require "base64"
 
 module PullRequestGenerator
   def ensure_pull_request_generation_dependencies
@@ -82,10 +81,10 @@ module PullRequestGenerator
                                 e: false, out: :capture, err: :capture).success?
       if !has_remote && github_token
         username = fork_name.split("/").first
-        credential = Base64.encode64 "#{username}:#{github_token}"
-        context.exec ["git", "config", "--local", "--replace-all", "http.https://github.com/.extraheader",
-                      "AUTHORIZATION: basic #{credential}"]
-        context.exec ["git", "remote", "add", git_remote, "https://github.com/#{fork_name}.git"]
+        context.exec ["git", "config", "--local", "--unset-all", "http.https://github.com/.extraheader"]
+        cmd = ["git", "remote", "add", git_remote, "https://#{username}:#{github_token}@github.com/#{fork_name}.git"]
+        log = ["git", "remote", "add", git_remote, "https://github.com/#{fork_name}.git"]
+        context.exec cmd, log_cmd: "exec: #{log.inspect}"
       end
       git_remote
     end
