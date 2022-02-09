@@ -66,7 +66,7 @@ module PullRequestGenerator
       context.logger.info "Checking for PullRequestGenerator dependencies"
       ensure_gh_binary context: context
       ensure_git_binary context: context
-      ensure_git_config context: context
+      ensure_git_identity context: context
       @dependencies_checked = true
     end
 
