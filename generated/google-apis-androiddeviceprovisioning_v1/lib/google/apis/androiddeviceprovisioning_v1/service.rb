@@ -55,7 +55,8 @@ module Google
         #   The maximum number of customers to show in a page of results. A number between
         #   1 and 100 (inclusive).
         # @param [String] page_token
-        #   A token specifying which result page to return.
+        #   A token specifying which result page to return. This field has custom
+        #   validations in ListCustomersRequestValidator
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -88,7 +89,8 @@ module Google
         # configuration to devices.
         # @param [String] parent
         #   Required. The customer that manages the configuration. An API resource name in
-        #   the format `customers/[CUSTOMER_ID]`.
+        #   the format `customers/[CUSTOMER_ID]`. This field has custom validation in
+        #   CreateConfigurationRequestValidator
         # @param [Google::Apis::AndroiddeviceprovisioningV1::Configuration] configuration_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
