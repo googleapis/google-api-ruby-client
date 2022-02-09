@@ -2083,49 +2083,6 @@ module Google
           @membership_role = args[:membership_role] if args.key?(:membership_role)
         end
       end
-      
-      # The `UserInvitation` resource represents an email that can be sent to an
-      # unmanaged user account inviting them to join the customer's Google Workspace
-      # or Cloud Identity account. An unmanaged account shares an email address domain
-      # with the Google Workspace or Cloud Identity account but is not managed by it
-      # yet. If the user accepts the `UserInvitation`, the user account will become
-      # managed.
-      class UserInvitation
-        include Google::Apis::Core::Hashable
-      
-        # Number of invitation emails sent to the user.
-        # Corresponds to the JSON property `mailsSentCount`
-        # @return [Fixnum]
-        attr_accessor :mails_sent_count
-      
-        # Shall be of the form `customers/`customer`/userinvitations/`user_email_address`
-        # `.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # State of the `UserInvitation`.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Time when the `UserInvitation` was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @mails_sent_count = args[:mails_sent_count] if args.key?(:mails_sent_count)
-          @name = args[:name] if args.key?(:name)
-          @state = args[:state] if args.key?(:state)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
     end
   end
 end
