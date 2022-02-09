@@ -52,7 +52,7 @@ module PullRequestGenerator
                  approve: false
       if git_remote
         ensure_dependencies context: context
-        approval_token = ENV["APPROVAL_GITHUB_TOKEN"] || environment_fork_name context: context if approve
+        approval_token = ENV["APPROVAL_GITHUB_TOKEN"] || environment_fork_name(context: context) if approve
         approve = "Auto-approved using the Toys pull request generator" if approve == true
         impl = Impl.new context: context,
                         git_remote: git_remote,
@@ -87,7 +87,7 @@ module PullRequestGenerator
       fork_name = environment_fork_name context: context
       context.exec ["gh", "repo", "fork", "--remote=false"]
       context.exec ["gh", "repo", "sync", fork_name]
-      github_token = ENV["GITHUB_TOKEN"] || environment_github_token context: context
+      github_token = ENV["GITHUB_TOKEN"] || environment_github_token(context: context)
       has_remote = context.exec(["git", "remote", "get-url", git_remote],
                                 e: false, out: :capture, err: :capture).success?
       if !has_remote && github_token
