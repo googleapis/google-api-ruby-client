@@ -10,7 +10,7 @@ on:
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
-    if: contains(github.head_ref, 'autosynth')
+    if: contains(github.head_ref, 'gen/')
     env:
       ENABLE_AUTO_APPROVE: ${{ secrets.ENABLE_AUTO_APPROVE }}
     steps:
@@ -19,7 +19,7 @@ jobs:
         with:
           github-token: ${{secrets.YOSHI_APPROVER_TOKEN}}
           script: |
-            if (context.payload.sender.login != "yoshi-automation") {
+            if (context.payload.sender.login != "yoshi-code-bot") {
               core.error("AutoApprove: Not running for this sender.");
               return;
             }
