@@ -20,6 +20,16 @@ end
 flag :enable_fork, "--fork" do
   desc "The github user for whom to create/use a fork"
 end
+flag :all do
+  desc "Generate all APIs"
+end
+flag :clean do
+  desc "Open a PR to clean out old APIs if needed"
+end
+
+remaining_args :requested do
+  desc "Requested apis in api:version format"
+end
 
 include :bundler, gemfile_path: "#{context_directory}/google-apis-generator/Gemfile"
 include :exec, e: true
@@ -42,10 +52,11 @@ def run
   apis_versions.each_with_index do |(api, version), index|
     pr_single_gem api, version, index + 1, apis_versions.size
   end
-  pr_clean_old_gems
+  pr_clean_old_gems if clean
 end
 
 def list_apis_versions
+  return requested.map { |request| request.split(":") } unless all
   path = git_cache.find("https://github.com/googleapis/discovery-artifact-manager.git",
                         path: "discoveries", update: true)
   apis_versions = Dir.children(path).map do |name|
@@ -62,9 +73,12 @@ def pr_single_gem api, version, index, total
     puts "(#{index}/#{total}) Pull request already exists for google-apis-#{api}_#{version}", :yellow
     return
   end
+  approval_message = "Rubber-stamped client auto-generation!"
   result = generate_pull_request git_remote: git_remote,
                                  branch_name: branch_name,
-                                 commit_message: commit_message do
+                                 commit_message: commit_message,
+                                 labels: ["automerge"],
+                                 approve: approval_message do
     regen_single_gem api, version
   end
   case result
@@ -79,14 +93,17 @@ end
 
 def pr_clean_old_gems
   branch_name = "gen/clean-#{@timestamp}"
-  commit_message = "feat: Automated cleanup of obsolete clients"
+  commit_message = "feat: Automated cleanup of obsolete gems"
   if open_pr_exists? commit_message
     puts "Pull request already exists for cleaning obsolete gems", :yellow
     return
   end
+  approval_message = "Rubber-stamped cleanup of obsolete gems!"
   result = generate_pull_request git_remote: git_remote,
                                  branch_name: branch_name,
-                                 commit_message: commit_message do
+                                 commit_message: commit_message,
+                                 labels: ["automerge"],
+                                 approve: approval_message do
     clean_old_gems
   end
   case result

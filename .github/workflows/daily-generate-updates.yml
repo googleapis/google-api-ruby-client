@@ -1,10 +1,7 @@
-name: Generate-Updates
+name: Daily-Generate-Updates
 on:
-  workflow_dispatch:
-    inputs:
-      args:
-        description: "Extra command line arguments."
-        required: false
+  schedule:
+    - cron: '02 11 * * *'
 
 jobs:
   generate-updates:
@@ -24,4 +21,4 @@ jobs:
         run: "gem install --no-document toys"
       - name: execute
         run: |
-          toys generate-updates -v --fork ${{ github.event.inputs.args }}
+          toys generate-updates -v --fork --all --clean
