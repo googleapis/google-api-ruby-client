@@ -27,12 +27,16 @@ module PullRequestGenerator
                             branch_name: nil,
                             commit_message: nil,
                             pr_body: nil,
+                            labels: nil,
+                            approve: false,
                             &block
     PullRequestGenerator.generate context: self,
                                   git_remote: git_remote,
                                   branch_name: branch_name,
                                   commit_message: commit_message,
                                   pr_body: pr_body,
+                                  labels: labels,
+                                  approve: approve,
                                   &block
   end
 
@@ -43,14 +47,21 @@ module PullRequestGenerator
                  git_remote:,
                  branch_name: nil,
                  commit_message: nil,
-                 pr_body: nil
+                 pr_body: nil,
+                 labels: nil,
+                 approve: false
       if git_remote
         ensure_dependencies context: context
+        approval_token = ENV["APPROVAL_GITHUB_TOKEN"] || environment_fork_name context: context if approve
+        approve = "Auto-approved using the Toys pull request generator" if approve == true
         impl = Impl.new context: context,
                         git_remote: git_remote,
                         branch_name: branch_name,
                         commit_message: commit_message,
-                        pr_body: pr_body
+                        pr_body: pr_body,
+                        labels: labels,
+                        approval_message: approve,
+                        approval_token: approval_token
         impl.start
         yield
         impl.finish ? :opened : :unchanged
@@ -76,7 +87,7 @@ module PullRequestGenerator
       fork_name = environment_fork_name context: context
       context.exec ["gh", "repo", "fork", "--remote=false"]
       context.exec ["gh", "repo", "sync", fork_name]
-      github_token = environment_github_token context: context
+      github_token = ENV["GITHUB_TOKEN"] || environment_github_token context: context
       has_remote = context.exec(["git", "remote", "get-url", git_remote],
                                 e: false, out: :capture, err: :capture).success?
       if !has_remote && github_token
@@ -141,11 +152,13 @@ module PullRequestGenerator
     end
 
     def environment_github_token context:
-      @github_token ||= ENV["GITHUB_TOKEN"] || begin
-        result = context.exec ["gh", "auth", "status", "-t"], e: false, out: :capture, err: [:child, :out]
-        raise "Failed to get github token" unless result.success? && result.captured_out =~ /Token: (\w+)/
-        Regexp.last_match[1]
+      unless defined? @github_token
+        @github_token = begin
+          result = context.exec ["gh", "auth", "status", "-t"], e: false, out: :capture, err: [:child, :out]
+          Regexp.last_match[1] if unless result.success? && result.captured_out =~ /Token: (\w+)/
+        end
       end
+      @github_token
     end
   end
 
@@ -154,12 +167,18 @@ module PullRequestGenerator
                    context:,
                    branch_name: nil,
                    commit_message: nil,
-                   pr_body: nil
+                   pr_body: nil,
+                   labels: nil,
+                   approval_message: nil,
+                   approval_token: nil
       @git_remote = git_remote
       @context = context
       @branch_name = branch_name || generate_default_branch_name
       @commit_message = commit_message || generate_default_commit_message
       @pr_body = pr_body || generate_default_pr_body
+      @labels = Array(labels)
+      @approval_message = approval_message
+      @approval_token = approval_token
     end
 
     def start
@@ -180,10 +199,21 @@ module PullRequestGenerator
         @context.exec ["git", "add", "."]
         @context.exec ["git", "commit", "-m", @commit_message]
         @context.exec ["git", "push", "-u", @git_remote, @branch_name]
-        @context.exec ["gh", "pr", "create",
-                       "--title", @commit_message,
-                       "--body", @pr_body]
+        cmd = ["gh", "pr", "create", "--title", @commit_message, "--body", @pr_body]
+        @labels.each { |label| cmd += ["--label", label] }
+        output = @context.capture cmd
+        puts output
+        pr_number = output.split("\n").last.split("/").last
         @context.logger.info "Created pull request"
+        if approval_token
+          old_token = ENV["GITHUB_TOKEN"]
+          ENV["GITHUB_TOKEN"] = @approval_token
+          begin
+            @context.exec ["gh", "pr", "review", pr_number, "--approve", "--body", @approval_message]
+          ensure
+            ENV["GITHUB_TOKEN"] = old_token
+          end
+        end
         @context.exec ["git", "switch", @orig_branch_name]
       else
         @context.logger.info "No files changed; no pull request created"
