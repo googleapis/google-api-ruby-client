@@ -72,11 +72,16 @@ module PullRequestGenerator
 
     def ensure_fork context:, git_remote:
       git_remote ||= "pull-request-fork"
-      context.exec ["gh", "repo", "fork", "--remote=true", "--remote-name=#{git_remote}"]
+      context.exec ["gh", "repo", "fork", "--remote=false"]
       repo = ::JSON.parse(context.capture(["gh", "repo", "view", "--json=name"]))["name"]
       owner = ::JSON.parse(context.capture(["gh", "api", "/user"]))["login"]
       context.exec ["gh", "repo", "sync", "#{owner}/#{repo}"]
-      context.exec ["gh", "auth", "setup-git"]
+      unless context.exec(["git", "remote", "get-url", git_remote], e: false, out: :capture, err: :capture).success?
+        token = environment_github_token context: context
+        cmd = ["git", "remote", "add", git_remote, "https://#{owner}:#{token}@github.com/#{owner}/#{repo}.git"]
+        log = ["git", "remote", "add", git_remote, "https://#{owner}:xxxxxxxx@github.com/#{owner}/#{repo}.git"]
+        context.exec cmd, log_cmd: log.inspect
+      end
       git_remote
     end
 
@@ -121,6 +126,14 @@ module PullRequestGenerator
                 context.exec(["git", "config", "--get", "user.email"], e: false).success?
       context.exec ["git", "config", "--global", "user.email", "yoshi-automation@google.com"]
       context.exec ["git", "config", "--global", "user.name", "Yoshi Automation Bot"]
+    end
+
+    def environment_github_token context:
+      @environment_github_token ||= ENV["GITHUB_TOKEN"] || begin
+        result = context.exec ["gh", "auth", "status", "-t"], e: false, out: :capture, err: [:child, :out]
+        raise "Failed to get github token" unless result.success? && result.captured_out =~ /Token: (\w+)/
+        Regexp.last_match[1]
+      end
     end
   end
 
