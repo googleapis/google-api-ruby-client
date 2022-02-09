@@ -52,8 +52,11 @@ module PullRequestGenerator
                  approve: false
       if git_remote
         ensure_dependencies context: context
-        approval_token = ENV["APPROVAL_GITHUB_TOKEN"] || environment_github_token(context: context) if approve
+        approval_token = ENV["APPROVAL_GITHUB_TOKEN"] || environment_github_token(context: context)
         approve = "Auto-approved using the Toys pull request generator" if approve == true
+        if (labels || approve) && !approval_token
+          raise "Approval token required for labels or approval"
+        end
         impl = Impl.new context: context,
                         git_remote: git_remote,
                         branch_name: branch_name,
@@ -199,9 +202,7 @@ module PullRequestGenerator
         @context.exec ["git", "add", "."]
         @context.exec ["git", "commit", "-m", @commit_message]
         @context.exec ["git", "push", "-u", @git_remote, @branch_name]
-        cmd = ["gh", "pr", "create", "--title", @commit_message, "--body", @pr_body]
-        @labels.each { |label| cmd += ["--label", label] }
-        output = @context.capture cmd
+        output = @context.capture ["gh", "pr", "create", "--title", @commit_message, "--body", @pr_body]
         puts output
         pr_number = output.split("\n").last.split("/").last
         @context.logger.info "Created pull request"
@@ -209,7 +210,12 @@ module PullRequestGenerator
           old_token = ENV["GITHUB_TOKEN"]
           ENV["GITHUB_TOKEN"] = @approval_token
           begin
-            @context.exec ["gh", "pr", "review", pr_number, "--approve", "--body", @approval_message]
+            if @approval_message
+              @context.exec ["gh", "pr", "review", pr_number, "--approve", "--body", @approval_message]
+            end
+            unless @labels.empty?
+              @context.exec ["gh", "issue", "edit", pr_number, "--add-label", @labels.join(",")]
+            end
           ensure
             ENV["GITHUB_TOKEN"] = old_token
           end
