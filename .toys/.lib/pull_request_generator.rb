@@ -66,6 +66,7 @@ module PullRequestGenerator
       context.logger.info "Checking for PullRequestGenerator dependencies"
       ensure_gh_binary context: context
       ensure_git_binary context: context
+      ensure_git_config context: context
       @dependencies_checked = true
     end
 
@@ -75,6 +76,7 @@ module PullRequestGenerator
       repo = ::JSON.parse(context.capture(["gh", "repo", "view", "--json=name"]))["name"]
       owner = ::JSON.parse(context.capture(["gh", "api", "/user"]))["login"]
       context.exec ["gh", "repo", "sync", "#{owner}/#{repo}"]
+      context.exec ["gh", "auth", "setup-git"]
       git_remote
     end
 
@@ -113,6 +115,13 @@ module PullRequestGenerator
       end
       context.logger.info "git version #{version_str} found"
     end
+
+    def ensure_git_identity context:
+      return if context.exec(["git", "config", "--get", "user.name"], e: false).success? &&
+                context.exec(["git", "config", "--get", "user.email"], e: false).success?
+      context.exec ["git", "config", "--global", "user.email", "yoshi-automation@google.com"]
+      context.exec ["git", "config", "--global", "user.name", "Yoshi Automation Bot"]
+    end
   end
 
   class Impl
@@ -143,7 +152,6 @@ module PullRequestGenerator
       output = @context.capture(["git", "status", "-s"]).strip
       result = !output.empty?
       if result
-        ensure_git_identity
         @context.exec ["git", "add", "."]
         @context.exec ["git", "commit", "-m", @commit_message]
         @context.exec ["git", "push", "-u", @git_remote, @branch_name]
@@ -162,13 +170,6 @@ module PullRequestGenerator
     end
 
     private
-
-    def ensure_git_identity
-      return if @context.exec(["git", "config", "--get", "user.name"], e: false).success? &&
-                @context.exec(["git", "config", "--get", "user.email"], e: false).success?
-      @context.exec ["git", "config", "--global", "user.email", "yoshi-automation@google.com"]
-      @context.exec ["git", "config", "--global", "user.name", "Yoshi Automation Bot"]
-    end
 
     def generate_default_branch_name
       now = Time.now.utc.strftime "%Y%m%d-%H%M%S"
