@@ -38,7 +38,6 @@ module PullRequestGenerator
   end
 
   @dependencies_checked = false
-  @created_fork = false
 
   class << self
     def generate context:,
@@ -48,14 +47,10 @@ module PullRequestGenerator
                  pr_body: nil
       if git_remote
         ensure_dependencies context: context
-        created_fork_name = environment_fork_name context: context if @created_fork
-        github_token = environment_github_token context: context
         impl = Impl.new context: context,
                         git_remote: git_remote,
                         branch_name: branch_name,
                         commit_message: commit_message,
-                        created_fork_name: created_fork_name,
-                        github_token: github_token,
                         pr_body: pr_body
         impl.start
         yield
@@ -82,9 +77,15 @@ module PullRequestGenerator
       fork_name = environment_fork_name context: context
       context.exec ["gh", "repo", "fork", "--remote=false"]
       context.exec ["gh", "repo", "sync", fork_name]
-      unless context.exec(["git", "remote", "get-url", git_remote], e: false, out: :capture, err: :capture).success?
+      github_token = environment_github_token context: context
+      has_remote = context.exec(["git", "remote", "get-url", git_remote],
+                                e: false, out: :capture, err: :capture).success?
+      if !has_remote && github_token
+        username = fork_name.split("/").first
+        credential = Base64.encode64 "#{username}:#{github_token}"
+        context.exec ["git", "config", "--local", "--replace-all", "http.https://github.com/.extraheader",
+                      "AUTHORIZATION: basic #{credential}"]
         context.exec ["git", "remote", "add", git_remote, "https://github.com/#{fork_name}.git"]
-        @created_fork = true
       end
       git_remote
     end
@@ -154,16 +155,12 @@ module PullRequestGenerator
                    context:,
                    branch_name: nil,
                    commit_message: nil,
-                   created_fork_name: nil,
-                   github_token: nil,
                    pr_body: nil
       @git_remote = git_remote
       @context = context
       @branch_name = branch_name || generate_default_branch_name
       @commit_message = commit_message || generate_default_commit_message
       @pr_body = pr_body || generate_default_pr_body
-      @created_fork_name = created_fork_name
-      @github_token = github_token
     end
 
     def start
@@ -183,18 +180,7 @@ module PullRequestGenerator
       if result
         @context.exec ["git", "add", "."]
         @context.exec ["git", "commit", "-m", @commit_message]
-        log = ["git", "push", "-u", @git_remote, @branch_name]
-        cmd = ["git"]
-        if @github_token && @created_fork_name
-          username = @created_fork_name.split("/").first
-          credential = Base64.encode64 "#{username}:#{@github_token}"
-          cmd += [
-            "-c", "http.https://github.com/.extraheader=",
-            "-c", "http.https://github.com/#{@created_fork_name}.extraheader=AUTHORIZATION: basic #{credential}"
-          ]
-        end
-        cmd += ["push", "-u", @git_remote, @branch_name]
-        @context.exec cmd, log_cmd: "exec: #{log.inspect}"
+        @context.exec ["git", "push", "-u", @git_remote, @branch_name]
         @context.exec ["gh", "pr", "create",
                        "--title", @commit_message,
                        "--body", @pr_body]
