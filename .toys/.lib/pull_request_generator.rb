@@ -183,7 +183,8 @@ module PullRequestGenerator
       if result
         @context.exec ["git", "add", "."]
         @context.exec ["git", "commit", "-m", @commit_message]
-        log = cmd = ["git", "push", "-u", @git_remote, @branch_name]
+        log = ["git", "push", "-u", @git_remote, @branch_name]
+        cmd = ["git"]
         if @github_token && @created_fork_name
           username = @created_fork_name.split("/").first
           credential = Base64.encode64 "#{username}:#{@github_token}"
@@ -192,6 +193,7 @@ module PullRequestGenerator
             "-c", "http.https://github.com/#{@created_fork_name}.extraheader=AUTHORIZATION: basic #{credential}"
           ]
         end
+        cmd += ["push", "-u", @git_remote, @branch_name]
         @context.exec cmd, log_cmd: "exec: #{log.inspect}"
         @context.exec ["gh", "pr", "create",
                        "--title", @commit_message,
