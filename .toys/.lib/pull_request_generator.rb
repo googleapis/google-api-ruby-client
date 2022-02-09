@@ -205,7 +205,7 @@ module PullRequestGenerator
         puts output
         pr_number = output.split("\n").last.split("/").last
         @context.logger.info "Created pull request"
-        if approval_token
+        if @approval_token
           old_token = ENV["GITHUB_TOKEN"]
           ENV["GITHUB_TOKEN"] = @approval_token
           begin
