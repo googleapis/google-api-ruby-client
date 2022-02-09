@@ -143,6 +143,7 @@ module PullRequestGenerator
       output = @context.capture(["git", "status", "-s"]).strip
       result = !output.empty?
       if result
+        ensure_git_identity
         @context.exec ["git", "add", "."]
         @context.exec ["git", "commit", "-m", @commit_message]
         @context.exec ["git", "push", "-u", @git_remote, @branch_name]
@@ -161,6 +162,13 @@ module PullRequestGenerator
     end
 
     private
+
+    def ensure_git_identity
+      return if @context.exec(["git", "config", "--get", "user.name"], e: false).success? &&
+                @context.exec(["git", "config", "--get", "user.email"], e: false).success?
+      @context.exec ["git", "config", "--global", "user.email", "yoshi-automation@google.com"]
+      @context.exec ["git", "config", "--global", "user.name", "Yoshi Automation Bot"]
+    end
 
     def generate_default_branch_name
       now = Time.now.utc.strftime "%Y%m%d-%H%M%S"
