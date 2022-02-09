@@ -52,7 +52,7 @@ module PullRequestGenerator
                  approve: false
       if git_remote
         ensure_dependencies context: context
-        approval_token = ENV["APPROVAL_GITHUB_TOKEN"] || environment_fork_name(context: context) if approve
+        approval_token = ENV["APPROVAL_GITHUB_TOKEN"] || environment_github_token(context: context) if approve
         approve = "Auto-approved using the Toys pull request generator" if approve == true
         impl = Impl.new context: context,
                         git_remote: git_remote,
@@ -155,7 +155,7 @@ module PullRequestGenerator
       unless defined? @github_token
         @github_token = begin
           result = context.exec ["gh", "auth", "status", "-t"], e: false, out: :capture, err: [:child, :out]
-          Regexp.last_match[1] if unless result.success? && result.captured_out =~ /Token: (\w+)/
+          Regexp.last_match[1] if result.success? && result.captured_out =~ /Token: (\w+)/
         end
       end
       @github_token
