@@ -46,7 +46,8 @@ def run
 end
 
 def list_apis_versions
-  path = git_cache.get("https://github.com/googleapis/discovery-artifact-manager.git", path: "discoveries")
+  path = git_cache.find("https://github.com/googleapis/discovery-artifact-manager.git",
+                        path: "discoveries", update: true)
   apis_versions = Dir.children(path).map do |name|
     match = /^(\w+)\.(\w+)\.json$/.match name
     [match[1], match[2]] if match
