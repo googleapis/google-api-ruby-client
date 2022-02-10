@@ -1257,6 +1257,7 @@ module Google
       
           property :denominator_filter, as: 'denominatorFilter'
           property :duration, as: 'duration'
+          property :evaluation_missing_data, as: 'evaluationMissingData'
           property :filter, as: 'filter'
           property :threshold_value, as: 'thresholdValue'
           property :trigger, as: 'trigger', class: Google::Apis::MonitoringV3::Trigger, decorator: Google::Apis::MonitoringV3::Trigger::Representation
@@ -1297,6 +1298,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
+          property :evaluation_missing_data, as: 'evaluationMissingData'
           property :query, as: 'query'
           property :trigger, as: 'trigger', class: Google::Apis::MonitoringV3::Trigger, decorator: Google::Apis::MonitoringV3::Trigger::Representation
       

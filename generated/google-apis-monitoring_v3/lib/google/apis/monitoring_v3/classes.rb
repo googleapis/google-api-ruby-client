@@ -2589,6 +2589,12 @@ module Google
         # @return [String]
         attr_accessor :duration
       
+        # A condition control that determines how metric-threshold conditions are
+        # evaluated when data stops arriving.
+        # Corresponds to the JSON property `evaluationMissingData`
+        # @return [String]
+        attr_accessor :evaluation_missing_data
+      
         # Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that
         # identifies which time series should be compared with the threshold.The filter
         # is similar to the one that is specified in the ListTimeSeries request (https://
@@ -2623,6 +2629,7 @@ module Google
           @denominator_aggregations = args[:denominator_aggregations] if args.key?(:denominator_aggregations)
           @denominator_filter = args[:denominator_filter] if args.key?(:denominator_filter)
           @duration = args[:duration] if args.key?(:duration)
+          @evaluation_missing_data = args[:evaluation_missing_data] if args.key?(:evaluation_missing_data)
           @filter = args[:filter] if args.key?(:filter)
           @threshold_value = args[:threshold_value] if args.key?(:threshold_value)
           @trigger = args[:trigger] if args.key?(:trigger)
@@ -2789,6 +2796,12 @@ module Google
         # @return [String]
         attr_accessor :duration
       
+        # A condition control that determines how metric-threshold conditions are
+        # evaluated when data stops arriving.
+        # Corresponds to the JSON property `evaluationMissingData`
+        # @return [String]
+        attr_accessor :evaluation_missing_data
+      
         # Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that
         # outputs a boolean stream.
         # Corresponds to the JSON property `query`
@@ -2808,6 +2821,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @duration = args[:duration] if args.key?(:duration)
+          @evaluation_missing_data = args[:evaluation_missing_data] if args.key?(:evaluation_missing_data)
           @query = args[:query] if args.key?(:query)
           @trigger = args[:trigger] if args.key?(:trigger)
         end
