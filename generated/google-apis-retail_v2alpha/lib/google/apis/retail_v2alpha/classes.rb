@@ -851,7 +851,11 @@ module Google
         # Importing catalog data from Merchant Center](https://cloud.google.com/retail/
         # recommendations-ai/docs/upload-catalog#mc). Supported values for user events
         # imports: * `user_event` (default): One JSON UserEvent per line. * `
-        # user_event_ga360`: Using https://support.google.com/analytics/answer/3437719.
+        # user_event_ga360`: The schema is available here: https://support.google.com/
+        # analytics/answer/3437719. * `user_event_ga4`: This feature is in private
+        # preview. Please contact the support team for importing Google Analytics 4
+        # events. The schema is available here: https://support.google.com/analytics/
+        # answer/7029846.
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -873,10 +877,10 @@ module Google
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
         # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+        # DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `partitionDate`
         # @return [Google::Apis::RetailV2alpha::GoogleTypeDate]
         attr_accessor :partition_date
@@ -2053,9 +2057,9 @@ module Google
         attr_accessor :destinations
       
         # Language of the title/description and other string attributes. Use language
-        # tags defined by BCP 47. ISO 639-1. This specifies the language of offers in
-        # Merchant Center that will be accepted. If empty no language filtering will be
-        # performed.
+        # tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO
+        # 639-1. This specifies the language of offers in Merchant Center that will be
+        # accepted. If empty no language filtering will be performed.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -2068,9 +2072,9 @@ module Google
         attr_accessor :merchant_center_account_id
       
         # Region code of offers to accept. 2-letter Uppercase ISO 3166-1 alpha-2 code.
-        # List of values can be found here under the `region` tag. [https://www.iana.org/
-        # assignments/language-subtag-registry/language-subtag-registry]. If left blank
-        # no region filtering will be performed. Ex. `US`.
+        # List of values can be found [here](https://www.iana.org/assignments/language-
+        # subtag-registry/language-subtag-registry) under the `region` tag. If left
+        # blank no region filtering will be performed. Example value: `US`.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
@@ -5535,10 +5539,10 @@ module Google
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
       # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+      # DateTime * google.protobuf.Timestamp
       class GoogleTypeDate
         include Google::Apis::Core::Hashable
       
