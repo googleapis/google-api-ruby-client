@@ -1226,8 +1226,8 @@ module Google
       class MergeInfo
         include Google::Apis::Core::Hashable
       
-        # New alert ID. Reference the [google.apps.alertcenter.Alert] with this ID for
-        # the current state.
+        # Optional. New alert ID. Reference the [google.apps.alertcenter.Alert] with
+        # this ID for the current state.
         # Corresponds to the JSON property `newAlertId`
         # @return [String]
         attr_accessor :new_alert_id
