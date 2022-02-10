@@ -123,10 +123,10 @@ module Google
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
       # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+      # DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -477,10 +477,10 @@ module Google
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
         # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+        # DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `releaseDate`
         # @return [Google::Apis::ComposerV1::Date]
         attr_accessor :release_date
@@ -902,6 +902,14 @@ module Google
       class PrivateEnvironmentConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. When specified, the environment will use Private Service Connect
+        # instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the
+        # PSC endpoint in the Customer Project will use an IP address from this
+        # subnetwork.
+        # Corresponds to the JSON property `cloudComposerConnectionSubnetwork`
+        # @return [String]
+        attr_accessor :cloud_composer_connection_subnetwork
+      
         # Optional. The CIDR block from which IP range for Cloud Composer Network in
         # tenant project will be reserved. Needs to be disjoint from
         # private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block.
@@ -959,6 +967,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_composer_connection_subnetwork = args[:cloud_composer_connection_subnetwork] if args.key?(:cloud_composer_connection_subnetwork)
           @cloud_composer_network_ipv4_cidr_block = args[:cloud_composer_network_ipv4_cidr_block] if args.key?(:cloud_composer_network_ipv4_cidr_block)
           @cloud_composer_network_ipv4_reserved_range = args[:cloud_composer_network_ipv4_reserved_range] if args.key?(:cloud_composer_network_ipv4_reserved_range)
           @cloud_sql_ipv4_cidr_block = args[:cloud_sql_ipv4_cidr_block] if args.key?(:cloud_sql_ipv4_cidr_block)
