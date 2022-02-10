@@ -454,12 +454,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UserInvitation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CheckTransitiveMembershipResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1082,16 +1076,6 @@ module Google
           property :field_mask, as: 'fieldMask'
           property :membership_role, as: 'membershipRole', class: Google::Apis::CloudidentityV1::MembershipRole, decorator: Google::Apis::CloudidentityV1::MembershipRole::Representation
       
-        end
-      end
-      
-      class UserInvitation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :mails_sent_count, :numeric_string => true, as: 'mailsSentCount'
-          property :name, as: 'name'
-          property :state, as: 'state'
-          property :update_time, as: 'updateTime'
         end
       end
     end
