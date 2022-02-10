@@ -323,7 +323,7 @@ module Google
         
         # Updates the parameters of a single Group.
         # @param [String] name
-        #   The Group name.
+        #   Output only. The Group name.
         # @param [Google::Apis::VmmigrationV1alpha1::Group] group_object
         # @param [String] request_id
         #   A request ID to identify requests. Specify a unique request ID so that if you
@@ -976,6 +976,40 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Upgrades the appliance relate to this DatacenterConnector to the in-place
+        # updateable version.
+        # @param [String] datacenter_connector
+        #   Required. The DatacenterConnector name.
+        # @param [Google::Apis::VmmigrationV1alpha1::UpgradeApplianceRequest] upgrade_appliance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmmigrationV1alpha1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmmigrationV1alpha1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upgrade_datacenter_connector_appliance(datacenter_connector, upgrade_appliance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+datacenterConnector}:upgradeAppliance', options)
+          command.request_representation = Google::Apis::VmmigrationV1alpha1::UpgradeApplianceRequest::Representation
+          command.request_object = upgrade_appliance_request_object
+          command.response_representation = Google::Apis::VmmigrationV1alpha1::Operation::Representation
+          command.response_class = Google::Apis::VmmigrationV1alpha1::Operation
+          command.params['datacenterConnector'] = datacenter_connector unless datacenter_connector.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1999,7 +2033,7 @@ module Google
         # Updates the parameters of a single TargetProject. NOTE: TargetProject is a
         # global resource; hence the only supported value for location is `global`.
         # @param [String] name
-        #   The name of the target project.
+        #   Output only. The name of the target project.
         # @param [Google::Apis::VmmigrationV1alpha1::TargetProject] target_project_object
         # @param [String] request_id
         #   A request ID to identify requests. Specify a unique request ID so that if you

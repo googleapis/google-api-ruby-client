@@ -28,7 +28,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplianceVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppliedLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailableUpdates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,12 +94,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CycleStep
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DatacenterConnector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,12 +119,6 @@ module Google
       end
       
       class Group
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InitializingReplicationStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,19 +238,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PostProcessingStep
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RemoveGroupMigrationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReplicatingStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -316,6 +304,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeApplianceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UtilizationReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,11 +359,31 @@ module Google
         end
       end
       
+      class ApplianceVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :critical, as: 'critical'
+          property :release_notes_uri, as: 'releaseNotesUri'
+          property :uri, as: 'uri'
+          property :version, as: 'version'
+        end
+      end
+      
       class AppliedLicense
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :os_license, as: 'osLicense'
           property :type, as: 'type'
+        end
+      end
+      
+      class AvailableUpdates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :in_place_update, as: 'inPlaceUpdate', class: Google::Apis::VmmigrationV1alpha1::ApplianceVersion, decorator: Google::Apis::VmmigrationV1alpha1::ApplianceVersion::Representation
+      
+          property :new_deployable_appliance, as: 'newDeployableAppliance', class: Google::Apis::VmmigrationV1alpha1::ApplianceVersion, decorator: Google::Apis::VmmigrationV1alpha1::ApplianceVersion::Representation
+      
         end
       end
       
@@ -488,23 +508,13 @@ module Google
         end
       end
       
-      class CycleStep
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
-          property :initializing_replication, as: 'initializingReplication', class: Google::Apis::VmmigrationV1alpha1::InitializingReplicationStep, decorator: Google::Apis::VmmigrationV1alpha1::InitializingReplicationStep::Representation
-      
-          property :post_processing, as: 'postProcessing', class: Google::Apis::VmmigrationV1alpha1::PostProcessingStep, decorator: Google::Apis::VmmigrationV1alpha1::PostProcessingStep::Representation
-      
-          property :replicating, as: 'replicating', class: Google::Apis::VmmigrationV1alpha1::ReplicatingStep, decorator: Google::Apis::VmmigrationV1alpha1::ReplicatingStep::Representation
-      
-          property :start_time, as: 'startTime'
-        end
-      end
-      
       class DatacenterConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appliance_infrastructure_version, as: 'applianceInfrastructureVersion'
+          property :appliance_software_version, as: 'applianceSoftwareVersion'
+          property :available_versions, as: 'availableVersions', class: Google::Apis::VmmigrationV1alpha1::AvailableUpdates, decorator: Google::Apis::VmmigrationV1alpha1::AvailableUpdates::Representation
+      
           property :bucket, as: 'bucket'
           property :create_time, as: 'createTime'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
@@ -515,6 +525,8 @@ module Google
           property :state, as: 'state'
           property :state_time, as: 'stateTime'
           property :update_time, as: 'updateTime'
+          property :upgrade_status, as: 'upgradeStatus', class: Google::Apis::VmmigrationV1alpha1::UpgradeStatus, decorator: Google::Apis::VmmigrationV1alpha1::UpgradeStatus::Representation
+      
           property :version, as: 'version'
         end
       end
@@ -548,12 +560,6 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class InitializingReplicationStep
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -771,12 +777,6 @@ module Google
         end
       end
       
-      class PostProcessingStep
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class RemoveGroupMigrationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -784,25 +784,12 @@ module Google
         end
       end
       
-      class ReplicatingStep
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :last_thirty_minutes_average_bytes_per_second, :numeric_string => true, as: 'lastThirtyMinutesAverageBytesPerSecond'
-          property :last_two_minutes_average_bytes_per_second, :numeric_string => true, as: 'lastTwoMinutesAverageBytesPerSecond'
-          property :replicated_bytes, :numeric_string => true, as: 'replicatedBytes'
-          property :total_bytes, :numeric_string => true, as: 'totalBytes'
-        end
-      end
-      
       class ReplicationCycle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :end_time, as: 'endTime'
           property :progress, as: 'progress'
           property :progress_percent, as: 'progressPercent'
           property :start_time, as: 'startTime'
-          collection :steps, as: 'steps', class: Google::Apis::VmmigrationV1alpha1::CycleStep, decorator: Google::Apis::VmmigrationV1alpha1::CycleStep::Representation
-      
           property :total_pause_duration, as: 'totalPauseDuration'
         end
       end
@@ -905,6 +892,25 @@ module Google
           property :subnetwork, as: 'subnetwork'
           property :target_project, as: 'targetProject'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class UpgradeApplianceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class UpgradeStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::VmmigrationV1alpha1::Status, decorator: Google::Apis::VmmigrationV1alpha1::Status::Representation
+      
+          property :previous_version, as: 'previousVersion'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :version, as: 'version'
         end
       end
       
