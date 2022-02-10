@@ -44,6 +44,7 @@ include "yoshi-pr-generator"
 def run
   require "json"
 
+  yoshi_utils.git_ensure_identity
   if enable_fork
     set :git_remote, "pull-request-fork" unless git_remote
     yoshi_utils.gh_ensure_fork remote: git_remote
