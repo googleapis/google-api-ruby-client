@@ -790,6 +790,12 @@ module Google
         # @param [String] filter
         #   Search query. Search syntax is shared between this api and Admin Console
         #   printers pages.
+        # @param [String] order_by
+        #   The order to sort results by. Must be one of display_name, description,
+        #   make_and_model, or create_time. Default order is ascending, but descending
+        #   order can be returned by appending "desc" to the order_by field. For instance,
+        #   "description desc" will return the printers sorted by description in
+        #   descending order.
         # @param [String] org_unit_id
         #   Organization Unit that we want to list the printers for. When org_unit is not
         #   present in the request then all printers of the customer are returned (or
@@ -818,12 +824,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_customer_chrome_printers(parent, filter: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_customer_chrome_printers(parent, filter: nil, order_by: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/directory/v1/{+parent}/chrome/printers', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::ListPrintersResponse::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::ListPrintersResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
