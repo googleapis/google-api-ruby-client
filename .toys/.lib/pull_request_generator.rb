@@ -192,7 +192,6 @@ module PullRequestGenerator
       end
       @orig_branch_name = @context.capture(["git", "branch", "--show-current"]).strip
       @context.exec ["git", "switch", "-c", @branch_name]
-      @context.logger.info ""
     end
 
     def finish
