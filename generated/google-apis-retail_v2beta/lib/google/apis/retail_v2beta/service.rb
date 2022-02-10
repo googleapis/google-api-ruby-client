@@ -124,10 +124,7 @@ module Google
         end
         
         # Get which branch is currently default branch set by CatalogService.
-        # SetDefaultBranch method under a specified parent catalog. This feature is only
-        # available for users who have Retail Search enabled. Please submit a form [here]
-        # (https://cloud.google.com/contact) to contact cloud sales if you are
-        # interested in using Retail Search.
+        # SetDefaultBranch method under a specified parent catalog.
         # @param [String] catalog
         #   The parent catalog resource name, such as `projects/*/locations/global/
         #   catalogs/default_catalog`.
@@ -256,9 +253,7 @@ module Google
         # PredictionService will only return product IDs from branch `newBranch`. *
         # SearchService will only return product IDs from branch `newBranch` (if branch
         # is not explicitly set). * UserEventService will only join events with products
-        # from branch `newBranch`. This feature is only available for users who have
-        # Retail Search enabled. Please submit a form [here](https://cloud.google.com/
-        # contact) to contact cloud sales if you are interested in using Retail Search.
+        # from branch `newBranch`.
         # @param [String] catalog
         #   Full resource name of the catalog, such as `projects/*/locations/global/
         #   catalogs/default_catalog`.
