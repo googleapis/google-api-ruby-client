@@ -14,24 +14,11 @@
 
 expand :clean, paths: :gitignore
 
-mixin "yoshi-utils" do
-  def yoshi_utils
-    @yoshi_utils ||= begin
-      require "yoshi/utils"
-      ::Yoshi::Utils.new context: self
-    end
-  end
-end
-
-mixin "yoshi-pr-generator" do
-  on_include do
-    include "yoshi-utils" unless include? "yoshi-utils"
-  end
-
-  def yoshi_pr_generator
-    @yoshi_pr_generator ||= begin
-      require "yoshi/pr_generator"
-      ::Yoshi::PrGenerator.new yoshi_utils: yoshi_utils
-    end
-  end
+if ENV["RUBY_COMMON_TOOLS"]
+  common_tools_dir = File.expand_path ENV["RUBY_COMMON_TOOLS"]
+  load File.join(common_tools_dir, "toys", "yoshi")
+else
+  load_git remote: "https://github.com/googleapis/ruby-common-tools.git",
+           path: "toys/yoshi",
+           update: true
 end
