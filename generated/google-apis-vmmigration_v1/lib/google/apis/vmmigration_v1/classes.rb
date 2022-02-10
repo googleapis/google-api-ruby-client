@@ -41,6 +41,44 @@ module Google
         end
       end
       
+      # Describes an appliance version.
+      class ApplianceVersion
+        include Google::Apis::Core::Hashable
+      
+        # Determine whether it's critical to upgrade the appliance to this version.
+        # Corresponds to the JSON property `critical`
+        # @return [Boolean]
+        attr_accessor :critical
+        alias_method :critical?, :critical
+      
+        # Link to a page that contains the version release notes.
+        # Corresponds to the JSON property `releaseNotesUri`
+        # @return [String]
+        attr_accessor :release_notes_uri
+      
+        # A link for downloading the version.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # The appliance version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @critical = args[:critical] if args.key?(:critical)
+          @release_notes_uri = args[:release_notes_uri] if args.key?(:release_notes_uri)
+          @uri = args[:uri] if args.key?(:uri)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # AppliedLicense holds the license data returned by adaptation module report.
       class AppliedLicense
         include Google::Apis::Core::Hashable
@@ -63,6 +101,31 @@ module Google
         def update!(**args)
           @os_license = args[:os_license] if args.key?(:os_license)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Holds informatiom about the available versions for upgrade.
+      class AvailableUpdates
+        include Google::Apis::Core::Hashable
+      
+        # Describes an appliance version.
+        # Corresponds to the JSON property `inPlaceUpdate`
+        # @return [Google::Apis::VmmigrationV1::ApplianceVersion]
+        attr_accessor :in_place_update
+      
+        # Describes an appliance version.
+        # Corresponds to the JSON property `newDeployableAppliance`
+        # @return [Google::Apis::VmmigrationV1::ApplianceVersion]
+        attr_accessor :new_deployable_appliance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @in_place_update = args[:in_place_update] if args.key?(:in_place_update)
+          @new_deployable_appliance = args[:new_deployable_appliance] if args.key?(:new_deployable_appliance)
         end
       end
       
@@ -139,7 +202,7 @@ module Google
         # @return [Google::Apis::VmmigrationV1::Status]
         attr_accessor :error
       
-        # The name of the clone.
+        # Output only. The name of the clone.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -529,6 +592,24 @@ module Google
       class DatacenterConnector
         include Google::Apis::Core::Hashable
       
+        # Output only. Appliance OVA version. This is the OVA which is manually
+        # installed by the user and contains the infrastructure for the automatically
+        # updatable components on the appliance.
+        # Corresponds to the JSON property `applianceInfrastructureVersion`
+        # @return [String]
+        attr_accessor :appliance_infrastructure_version
+      
+        # Output only. Appliance last installed update bundle version. This is the
+        # version of the automatically updatable components on the appliance.
+        # Corresponds to the JSON property `applianceSoftwareVersion`
+        # @return [String]
+        attr_accessor :appliance_software_version
+      
+        # Holds informatiom about the available versions for upgrade.
+        # Corresponds to the JSON property `availableVersions`
+        # @return [Google::Apis::VmmigrationV1::AvailableUpdates]
+        attr_accessor :available_versions
+      
         # Output only. The communication channel between the datacenter connector and
         # GCP.
         # Corresponds to the JSON property `bucket`
@@ -584,6 +665,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # UpgradeStatus contains information about upgradeAppliance operation.
+        # Corresponds to the JSON property `upgradeStatus`
+        # @return [Google::Apis::VmmigrationV1::UpgradeStatus]
+        attr_accessor :upgrade_status
+      
         # The version running in the DatacenterConnector. This is supplied by the OVA
         # connector during the registration process and can not be modified.
         # Corresponds to the JSON property `version`
@@ -596,6 +682,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @appliance_infrastructure_version = args[:appliance_infrastructure_version] if args.key?(:appliance_infrastructure_version)
+          @appliance_software_version = args[:appliance_software_version] if args.key?(:appliance_software_version)
+          @available_versions = args[:available_versions] if args.key?(:available_versions)
           @bucket = args[:bucket] if args.key?(:bucket)
           @create_time = args[:create_time] if args.key?(:create_time)
           @error = args[:error] if args.key?(:error)
@@ -605,6 +694,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_time = args[:state_time] if args.key?(:state_time)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade_status = args[:upgrade_status] if args.key?(:upgrade_status)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -685,7 +775,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The Group name.
+        # Output only. The Group name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1724,7 +1814,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The name of the target project.
+        # Output only. The name of the target project.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1750,6 +1840,82 @@ module Google
           @name = args[:name] if args.key?(:name)
           @project = args[:project] if args.key?(:project)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for 'UpgradeAppliance' request.
+      class UpgradeApplianceRequest
+        include Google::Apis::Core::Hashable
+      
+        # A request ID to identify requests. Specify a unique request ID so that if you
+        # must retry your request, the server will know to ignore the request if it has
+        # already been completed. The server will guarantee that for at least 60 minutes
+        # after the first request. For example, consider a situation where you make an
+        # initial request and t he request times out. If you make the request again with
+        # the same request ID, the server can check if original operation with the same
+        # request ID was received, and if so, will ignore the second request. This
+        # prevents clients from accidentally creating duplicate commitments. The request
+        # ID must be a valid UUID with the exception that zero UUID is not supported (
+        # 00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # UpgradeStatus contains information about upgradeAppliance operation.
+      class UpgradeStatus
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VmmigrationV1::Status]
+        attr_accessor :error
+      
+        # The version from which we upgraded.
+        # Corresponds to the JSON property `previousVersion`
+        # @return [String]
+        attr_accessor :previous_version
+      
+        # The time the operation was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The state of the upgradeAppliance operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The version to upgrade to.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @previous_version = args[:previous_version] if args.key?(:previous_version)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -2010,8 +2176,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The VM's OS. See for example https://pubs.vmware.com/vi-sdk/visdk250/
-        # ReferenceGuide/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of
+        # The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-
+        # public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-
+        # 746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of
         # strings this might hold.
         # Corresponds to the JSON property `guestDescription`
         # @return [String]
