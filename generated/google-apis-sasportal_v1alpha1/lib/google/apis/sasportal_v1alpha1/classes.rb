@@ -441,6 +441,13 @@ module Google
         # @return [String]
         attr_accessor :interference_coordination_group
       
+        # Output only. Whether a CPI has validated to have coordinated with the National
+        # Quiet Zone office.
+        # Corresponds to the JSON property `nrqzValidated`
+        # @return [Boolean]
+        attr_accessor :nrqz_validated
+        alias_method :nrqz_validated?, :nrqz_validated
+      
         def initialize(**args)
            update!(**args)
         end
@@ -450,6 +457,7 @@ module Google
           @antenna_model = args[:antenna_model] if args.key?(:antenna_model)
           @common_channel_group = args[:common_channel_group] if args.key?(:common_channel_group)
           @interference_coordination_group = args[:interference_coordination_group] if args.key?(:interference_coordination_group)
+          @nrqz_validated = args[:nrqz_validated] if args.key?(:nrqz_validated)
         end
       end
       
