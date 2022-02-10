@@ -80,7 +80,7 @@ def pr_single_gem api, version, index, total
   result = yoshi_pr_generator.capture remote: git_remote,
                                       branch_name: branch_name,
                                       commit_message: commit_message,
-                                      labels: ["do not merge"],
+                                      labels: ["automerge"],
                                       auto_approve: approval_message,
                                       approval_token: approval_token do
     regen_single_gem api, version
@@ -106,7 +106,7 @@ def pr_clean_old_gems
   result = yoshi_pr_generator.capture remote: git_remote,
                                       branch_name: branch_name,
                                       commit_message: commit_message,
-                                      labels: ["do not merge"],
+                                      labels: ["automerge"],
                                       auto_approve: approval_message,
                                       approval_token: approval_token do
     clean_old_gems
