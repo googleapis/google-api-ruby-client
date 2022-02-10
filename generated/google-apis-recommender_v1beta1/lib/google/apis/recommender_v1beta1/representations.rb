@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecommenderV1beta1SustainabilityProjection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommenderV1beta1ValueMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -182,6 +188,8 @@ module Google
           property :cost_projection, as: 'costProjection', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1CostProjection, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1CostProjection::Representation
       
           property :security_projection, as: 'securityProjection', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SecurityProjection, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SecurityProjection::Representation
+      
+          property :sustainability_projection, as: 'sustainabilityProjection', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SustainabilityProjection, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SustainabilityProjection::Representation
       
         end
       end
@@ -390,6 +398,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :details, as: 'details'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1SustainabilityProjection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :kg_co2e, as: 'kgCO2e'
         end
       end
       

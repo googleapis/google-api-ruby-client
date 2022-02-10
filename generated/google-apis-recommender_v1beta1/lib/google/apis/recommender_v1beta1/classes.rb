@@ -66,6 +66,12 @@ module Google
         # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SecurityProjection]
         attr_accessor :security_projection
       
+        # Contains metadata about how much sustainability a recommendation can save or
+        # incur.
+        # Corresponds to the JSON property `sustainabilityProjection`
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SustainabilityProjection]
+        attr_accessor :sustainability_projection
+      
         def initialize(**args)
            update!(**args)
         end
@@ -75,6 +81,7 @@ module Google
           @category = args[:category] if args.key?(:category)
           @cost_projection = args[:cost_projection] if args.key?(:cost_projection)
           @security_projection = args[:security_projection] if args.key?(:security_projection)
+          @sustainability_projection = args[:sustainability_projection] if args.key?(:sustainability_projection)
         end
       end
       
@@ -855,6 +862,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
+        end
+      end
+      
+      # Contains metadata about how much sustainability a recommendation can save or
+      # incur.
+      class GoogleCloudRecommenderV1beta1SustainabilityProjection
+        include Google::Apis::Core::Hashable
+      
+        # Duration for which this sustanability applies.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Carbon Footprint generated in kg of CO2 equivalent. Chose kg_c_o2e so that the
+        # name renders correctly in camelCase (kgCO2e).
+        # Corresponds to the JSON property `kgCO2e`
+        # @return [Float]
+        attr_accessor :kg_co2e
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @kg_co2e = args[:kg_co2e] if args.key?(:kg_co2e)
         end
       end
       
