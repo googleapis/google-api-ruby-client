@@ -510,7 +510,7 @@ module Google
       class StoreEnvironmentStateResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :snapshot_location, as: 'snapshotLocation'
+          property :snapshot_path, as: 'snapshotPath'
         end
       end
       
