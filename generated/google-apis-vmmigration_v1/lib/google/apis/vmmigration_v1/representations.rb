@@ -28,7 +28,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplianceVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppliedLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailableUpdates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeApplianceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UtilizationReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,11 +353,31 @@ module Google
         end
       end
       
+      class ApplianceVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :critical, as: 'critical'
+          property :release_notes_uri, as: 'releaseNotesUri'
+          property :uri, as: 'uri'
+          property :version, as: 'version'
+        end
+      end
+      
       class AppliedLicense
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :os_license, as: 'osLicense'
           property :type, as: 'type'
+        end
+      end
+      
+      class AvailableUpdates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :in_place_update, as: 'inPlaceUpdate', class: Google::Apis::VmmigrationV1::ApplianceVersion, decorator: Google::Apis::VmmigrationV1::ApplianceVersion::Representation
+      
+          property :new_deployable_appliance, as: 'newDeployableAppliance', class: Google::Apis::VmmigrationV1::ApplianceVersion, decorator: Google::Apis::VmmigrationV1::ApplianceVersion::Representation
+      
         end
       end
       
@@ -451,6 +495,10 @@ module Google
       class DatacenterConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :appliance_infrastructure_version, as: 'applianceInfrastructureVersion'
+          property :appliance_software_version, as: 'applianceSoftwareVersion'
+          property :available_versions, as: 'availableVersions', class: Google::Apis::VmmigrationV1::AvailableUpdates, decorator: Google::Apis::VmmigrationV1::AvailableUpdates::Representation
+      
           property :bucket, as: 'bucket'
           property :create_time, as: 'createTime'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
@@ -461,6 +509,8 @@ module Google
           property :state, as: 'state'
           property :state_time, as: 'stateTime'
           property :update_time, as: 'updateTime'
+          property :upgrade_status, as: 'upgradeStatus', class: Google::Apis::VmmigrationV1::UpgradeStatus, decorator: Google::Apis::VmmigrationV1::UpgradeStatus::Representation
+      
           property :version, as: 'version'
         end
       end
@@ -788,6 +838,25 @@ module Google
           property :name, as: 'name'
           property :project, as: 'project'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UpgradeApplianceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class UpgradeStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
+      
+          property :previous_version, as: 'previousVersion'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :version, as: 'version'
         end
       end
       
