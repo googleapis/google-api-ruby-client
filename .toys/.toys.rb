@@ -13,3 +13,25 @@
 # limitations under the License.
 
 expand :clean, paths: :gitignore
+
+mixin "yoshi-utils" do
+  def yoshi_utils
+    @yoshi_utils ||= begin
+      require "yoshi/utils"
+      ::Yoshi::Utils.new context: self
+    end
+  end
+end
+
+mixin "yoshi-pr-generator" do
+  on_include do
+    include "yoshi-utils" unless include? "yoshi-utils"
+  end
+
+  def yoshi_pr_generator
+    @yoshi_pr_generator ||= begin
+      require "yoshi/pr_generator"
+      ::Yoshi::PrGenerator.new yoshi_utils: yoshi_utils
+    end
+  end
+end

@@ -20,6 +20,9 @@ end
 flag :enable_fork, "--fork" do
   desc "The github user for whom to create/use a fork"
 end
+flag :approval_token, "--approval-token" do
+  default ENV["APPROVAL_GITHUB_TOKEN"]
+end
 flag :all do
   desc "Generate all APIs"
 end
@@ -36,15 +39,14 @@ include :exec, e: true
 include :git_cache
 include :terminal
 
+include "yoshi-pr-generator"
+
 def run
   require "json"
-  require "pull_request_generator"
-  extend PullRequestGenerator
-  ensure_pull_request_generation_dependencies
 
   if enable_fork
-    new_remote = ensure_pull_request_generation_fork git_remote: git_remote
-    set :git_remote, new_remote
+    set :git_remote, "pull-request-fork" unless git_remote
+    yoshi_utils.gh_ensure_fork remote: git_remote
   end
 
   @timestamp = Time.now.utc.strftime("%Y%m%d-%H%M%S")
@@ -74,16 +76,17 @@ def pr_single_gem api, version, index, total
     return
   end
   approval_message = "Rubber-stamped client auto-generation!"
-  result = generate_pull_request git_remote: git_remote,
-                                 branch_name: branch_name,
-                                 commit_message: commit_message,
-                                 labels: ["automerge"],
-                                 approve: approval_message do
+  result = yoshi_pr_generator.capture remote: git_remote,
+                                      branch_name: branch_name,
+                                      commit_message: commit_message,
+                                      labels: ["do not merge"],
+                                      auto_approve: approval_message,
+                                      approval_token: approval_token do
     regen_single_gem api, version
   end
   case result
-  when :opened
-    puts "(#{index}/#{total}) Opened pull request for google-apis-#{api}_#{version}", :green, :bold
+  when Integer
+    puts "(#{index}/#{total}) Opened pull request #{result} for google-apis-#{api}_#{version}", :green, :bold
   when :unchanged
     puts "(#{index}/#{total}) No changes for google-apis-#{api}_#{version}", :magenta
   else
@@ -99,16 +102,17 @@ def pr_clean_old_gems
     return
   end
   approval_message = "Rubber-stamped cleanup of obsolete gems!"
-  result = generate_pull_request git_remote: git_remote,
-                                 branch_name: branch_name,
-                                 commit_message: commit_message,
-                                 labels: ["automerge"],
-                                 approve: approval_message do
+  result = yoshi_pr_generator.capture remote: git_remote,
+                                      branch_name: branch_name,
+                                      commit_message: commit_message,
+                                      labels: ["do not merge"],
+                                      auto_approve: approval_message,
+                                      approval_token: approval_token do
     clean_old_gems
   end
   case result
-  when :opened
-    puts "Opened pull request for cleaning obsolete gems", :green, :bold
+  when Integer
+    puts "Opened pull request #{result} for cleaning obsolete gems", :green, :bold
   when :unchanged
     puts "No obsolete gems to clean", :magenta
   end
@@ -116,8 +120,7 @@ end
 
 def open_pr_exists? title
   content = capture ["gh", "pr", "list", "--search", "\"#{title}\" in:title", "--state=open", "--json=number"]
-  result = JSON.parse content
-  !result.empty?
+  !JSON.parse(content).empty?
 end
 
 def regen_single_gem api, version
