@@ -1882,9 +1882,9 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # Output only. Provisioning ID of the entitlement. For Google Workspace, this
-        # would be the underlying Subscription ID. For Google Cloud Platform, this would
-        # be the Billing Account ID of the billing subaccount."
+        # Output only. Provisioning ID of the entitlement. For Google Workspace, this is
+        # the underlying Subscription ID. For Google Cloud Platform, this is the Billing
+        # Account ID of the billing subaccount."
         # Corresponds to the JSON property `provisioningId`
         # @return [String]
         attr_accessor :provisioning_id
@@ -2784,9 +2784,9 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # Output only. Provisioning ID of the entitlement. For Google Workspace, this
-        # would be the underlying Subscription ID. For Google Cloud Platform, this would
-        # be the Billing Account ID of the billing subaccount."
+        # Output only. Provisioning ID of the entitlement. For Google Workspace, this is
+        # the underlying Subscription ID. For Google Cloud Platform, this is the Billing
+        # Account ID of the billing subaccount."
         # Corresponds to the JSON property `provisioningId`
         # @return [String]
         attr_accessor :provisioning_id
