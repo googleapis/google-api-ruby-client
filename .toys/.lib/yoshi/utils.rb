@@ -97,9 +97,12 @@ module Yoshi
 
     def gh_cur_token
       if @gh_cur_token == :undefined
-        gh_verify_binary
-        result = @context.exec ["gh", "auth", "status", "-t"], e: false, out: :capture, err: [:child, :out]
-        @gh_cur_token = Regexp.last_match[1] if result.success? && result.captured_out =~ /Token: (\w+)/
+        @gh_cur_token = ENV["GITHUB_TOKEN"] || begin
+          gh_verify_binary
+          result = @context.exec ["gh", "auth", "status", "-t"], e: false, out: :capture, err: [:child, :out]
+          Regexp.last_match[1] if result.success? && result.captured_out =~ /Token: (\w+)/
+        end
+        @context.logger.info "gh_cur_token has length #{@gh_cur_token.to_s.size}"
       end
       @gh_cur_token
     end
@@ -169,13 +172,13 @@ module Yoshi
 
     def gh_with_token token
       old_cur_token = gh_cur_token
-      return yield if token == gh_cur_token
+      return yield if token == old_cur_token
       old_env_token = ::ENV["GITHUB_TOKEN"]
       old_username = @gh_username
       begin
         ::ENV["GITHUB_TOKEN"] = token
         @gh_cur_token = token
-        @gh_username = nil
+        @gh_username = :undefined
         yield
       ensure
         ::ENV["GITHUB_TOKEN"] = old_env_token
