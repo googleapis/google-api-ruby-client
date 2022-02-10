@@ -387,6 +387,7 @@ module Google
       class PrivateEnvironmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_composer_connection_subnetwork, as: 'cloudComposerConnectionSubnetwork'
           property :cloud_composer_network_ipv4_cidr_block, as: 'cloudComposerNetworkIpv4CidrBlock'
           property :cloud_composer_network_ipv4_reserved_range, as: 'cloudComposerNetworkIpv4ReservedRange'
           property :cloud_sql_ipv4_cidr_block, as: 'cloudSqlIpv4CidrBlock'
