@@ -102,7 +102,6 @@ module Yoshi
           result = @context.exec ["gh", "auth", "status", "-t"], e: false, out: :capture, err: [:child, :out]
           Regexp.last_match[1] if result.success? && result.captured_out =~ /Token: (\w+)/
         end
-        @context.logger.info "gh_cur_token has length #{@gh_cur_token.to_s.size}"
       end
       @gh_cur_token
     end
