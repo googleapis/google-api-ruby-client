@@ -180,10 +180,10 @@ module Google
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
       # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+      # DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -547,10 +547,10 @@ module Google
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
         # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+        # DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `releaseDate`
         # @return [Google::Apis::ComposerV1beta1::Date]
         attr_accessor :release_date
@@ -1306,12 +1306,12 @@ module Google
       class StoreEnvironmentStateResponse
         include Google::Apis::Core::Hashable
       
-        # The fully-resolved Cloud Storage location of the created snapshot, e.g.: "gs://
-        # my-bucket/snapshots/project_id/location/environment_uuid/timestamp". This
-        # field is populated only if the snapshot creation was successful.
-        # Corresponds to the JSON property `snapshotLocation`
+        # The fully-resolved Cloud Storage path of the created snapshot, e.g.: "gs://my-
+        # bucket/snapshots/project_location_environment_timestamp". This field is
+        # populated only if the snapshot creation was successful.
+        # Corresponds to the JSON property `snapshotPath`
         # @return [String]
-        attr_accessor :snapshot_location
+        attr_accessor :snapshot_path
       
         def initialize(**args)
            update!(**args)
@@ -1319,7 +1319,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @snapshot_location = args[:snapshot_location] if args.key?(:snapshot_location)
+          @snapshot_path = args[:snapshot_path] if args.key?(:snapshot_path)
         end
       end
       
