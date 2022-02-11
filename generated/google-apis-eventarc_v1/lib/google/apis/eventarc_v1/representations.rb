@@ -247,6 +247,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attribute, as: 'attribute'
+          property :operator, as: 'operator'
           property :value, as: 'value'
         end
       end

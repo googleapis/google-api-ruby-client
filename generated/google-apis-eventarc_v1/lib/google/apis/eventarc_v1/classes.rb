@@ -204,7 +204,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The Cloud Function resource name. Only Cloud Functions V2 is supported. Format:
-        # projects/`project`/locations/`location`/functions/`function`
+        # `projects/`project`/locations/`location`/functions/`function``
         # Corresponds to the JSON property `cloudFunction`
         # @return [String]
         attr_accessor :cloud_function
@@ -259,6 +259,14 @@ module Google
         # @return [String]
         attr_accessor :attribute
       
+        # Optional. The operator used for matching the events with the value of the
+        # filter. If not specified, only events that have an exact key-value pair
+        # specified in the filter are matched. The only allowed value is `match-path-
+        # pattern`.
+        # Corresponds to the JSON property `operator`
+        # @return [String]
+        attr_accessor :operator
+      
         # Required. The value for the attribute.
         # Corresponds to the JSON property `value`
         # @return [String]
@@ -271,6 +279,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attribute = args[:attribute] if args.key?(:attribute)
+          @operator = args[:operator] if args.key?(:operator)
           @value = args[:value] if args.key?(:value)
         end
       end
@@ -298,10 +307,10 @@ module Google
         attr_accessor :filtering_attributes
       
         # Output only. The full name of the event type (for example, "google.cloud.
-        # storage.object.v1.finalized"). In the form of `provider-id`.`resource`.`
-        # version`.`verb`. Types MUST be versioned and event schemas are guaranteed to
-        # remain backward compatible within one version. Note that event type versions
-        # and API versions do not need to match.
+        # storage.object.v1.finalized"). In the form of `provider-specific-prefix`.`
+        # resource`.`version`.`verb`. Types MUST be versioned and event schemas are
+        # guaranteed to remain backward compatible within one version. Note that event
+        # type versions and API versions do not need to match.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -906,8 +915,8 @@ module Google
         # @return [Array<Google::Apis::EventarcV1::EventType>]
         attr_accessor :event_types
       
-        # Output only. In `projects/`project`/locations/`location`/providers/`provider-
-        # id`` format.
+        # Output only. In `projects/`project`/locations/`location`/providers/`
+        # provider_id`` format.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
