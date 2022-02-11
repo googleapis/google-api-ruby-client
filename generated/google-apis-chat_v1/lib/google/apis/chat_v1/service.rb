@@ -683,8 +683,7 @@ module Google
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] update_mask
         #   Required. The field paths to be updated, comma separated if there are multiple.
-        #   Currently supported field paths: * text * cards *
-        #   gsuite_message_integration_render_data * attachment
+        #   Currently supported field paths: * text * cards * attachment
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
