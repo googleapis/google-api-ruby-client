@@ -349,6 +349,8 @@ module Google
       class GoogleChromePolicyV1ResolvedPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :added_source_key, as: 'addedSourceKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
+      
           property :source_key, as: 'sourceKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
       
           property :target_key, as: 'targetKey', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey::Representation
