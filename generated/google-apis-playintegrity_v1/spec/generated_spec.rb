@@ -21,7 +21,7 @@ RSpec.describe "Google::Apis::PlayintegrityV1" do
       require "google/apis/playintegrity_v1"
     end.not_to raise_error
     expect do
-      Google::Apis::PlayintegrityV1::PlayintegrityService.new
+      Google::Apis::PlayintegrityV1::PlayIntegrityService.new
     end.not_to raise_error
   end
 end

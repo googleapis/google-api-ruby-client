@@ -48,7 +48,7 @@ Once the gem is installed, you can load the client code and instantiate a client
 require "google/apis/playintegrity_v1"
 
 # Create a client object
-client = Google::Apis::PlayintegrityV1::PlayintegrityService.new
+client = Google::Apis::PlayintegrityV1::PlayIntegrityService.new
 
 # Authenticate calls
 client.authorization = # ... use the googleauth gem to create credentials
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Playintegrity service in particular.)
 
-For reference information on specific calls in the Google Play Integrity API, see the {Google::Apis::PlayintegrityV1::PlayintegrityService class reference docs}.
+For reference information on specific calls in the Google Play Integrity API, see the {Google::Apis::PlayintegrityV1::PlayIntegrityService class reference docs}.
 
 ## Which client should I use?
 

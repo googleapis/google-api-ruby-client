@@ -28,6 +28,9 @@ module Google
       # Version of the Google Play Integrity API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
+
+      # Private Service: https://www.googleapis.com/auth/playintegrity
+      AUTH_PLAYINTEGRITY = 'https://www.googleapis.com/auth/playintegrity'
     end
   end
 end
