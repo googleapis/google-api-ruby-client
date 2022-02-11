@@ -21,6 +21,125 @@ require 'google/apis/errors'
 module Google
   module Apis
     module PlayintegrityV1
+      
+      class AccountDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppIntegrity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DecodeIntegrityTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DecodeIntegrityTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceIntegrity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TokenPayloadExternal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_licensing_verdict, as: 'appLicensingVerdict'
+        end
+      end
+      
+      class AppIntegrity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_recognition_verdict, as: 'appRecognitionVerdict'
+          collection :certificate_sha256_digest, as: 'certificateSha256Digest'
+          property :package_name, as: 'packageName'
+          property :version_code, :numeric_string => true, as: 'versionCode'
+        end
+      end
+      
+      class DecodeIntegrityTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integrity_token, as: 'integrityToken'
+        end
+      end
+      
+      class DecodeIntegrityTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token_payload_external, as: 'tokenPayloadExternal', class: Google::Apis::PlayintegrityV1::TokenPayloadExternal, decorator: Google::Apis::PlayintegrityV1::TokenPayloadExternal::Representation
+      
+        end
+      end
+      
+      class DeviceIntegrity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_recognition_verdict, as: 'deviceRecognitionVerdict'
+        end
+      end
+      
+      class RequestDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nonce, as: 'nonce'
+          property :request_package_name, as: 'requestPackageName'
+          property :timestamp_millis, :numeric_string => true, as: 'timestampMillis'
+        end
+      end
+      
+      class TestingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_testing_response, as: 'isTestingResponse'
+        end
+      end
+      
+      class TokenPayloadExternal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_details, as: 'accountDetails', class: Google::Apis::PlayintegrityV1::AccountDetails, decorator: Google::Apis::PlayintegrityV1::AccountDetails::Representation
+      
+          property :app_integrity, as: 'appIntegrity', class: Google::Apis::PlayintegrityV1::AppIntegrity, decorator: Google::Apis::PlayintegrityV1::AppIntegrity::Representation
+      
+          property :device_integrity, as: 'deviceIntegrity', class: Google::Apis::PlayintegrityV1::DeviceIntegrity, decorator: Google::Apis::PlayintegrityV1::DeviceIntegrity::Representation
+      
+          property :request_details, as: 'requestDetails', class: Google::Apis::PlayintegrityV1::RequestDetails, decorator: Google::Apis::PlayintegrityV1::RequestDetails::Representation
+      
+          property :testing_details, as: 'testingDetails', class: Google::Apis::PlayintegrityV1::TestingDetails, decorator: Google::Apis::PlayintegrityV1::TestingDetails::Representation
+      
+        end
+      end
     end
   end
 end
