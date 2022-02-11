@@ -584,6 +584,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The key used to identify the target on which the policy will be applied.
+        # Corresponds to the JSON property `addedSourceKey`
+        # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
+        attr_accessor :added_source_key
+      
+        # The key used to identify the target on which the policy will be applied.
         # Corresponds to the JSON property `sourceKey`
         # @return [Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicyTargetKey]
         attr_accessor :source_key
@@ -604,6 +609,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @added_source_key = args[:added_source_key] if args.key?(:added_source_key)
           @source_key = args[:source_key] if args.key?(:source_key)
           @target_key = args[:target_key] if args.key?(:target_key)
           @value = args[:value] if args.key?(:value)
