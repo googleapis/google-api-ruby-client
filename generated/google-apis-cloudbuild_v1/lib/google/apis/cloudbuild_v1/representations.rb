@@ -280,12 +280,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleDevtoolsCloudbuildV2OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,18 +299,6 @@ module Google
       end
       
       class HttpBody
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HybridPoolConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HybridWorkerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1120,15 +1102,6 @@ module Google
         end
       end
       
-      class GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
-          property :memory_gb, as: 'memoryGb'
-          property :vcpu_count, as: 'vcpuCount'
-        end
-      end
-      
       class GoogleDevtoolsCloudbuildV2OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1163,24 +1136,6 @@ module Google
           property :content_type, as: 'contentType'
           property :data, :base64 => true, as: 'data'
           collection :extensions, as: 'extensions'
-        end
-      end
-      
-      class HybridPoolConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_worker_config, as: 'defaultWorkerConfig', class: Google::Apis::CloudbuildV1::HybridWorkerConfig, decorator: Google::Apis::CloudbuildV1::HybridWorkerConfig::Representation
-      
-          property :membership, as: 'membership'
-        end
-      end
-      
-      class HybridWorkerConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
-          property :memory_gb, as: 'memoryGb'
-          property :vcpu_count, as: 'vcpuCount'
         end
       end
       
@@ -1341,8 +1296,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
-          property :worker_config, as: 'workerConfig', class: Google::Apis::CloudbuildV1::GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig, decorator: Google::Apis::CloudbuildV1::GoogleDevtoolsCloudbuildV1BuildOptionsPoolOptionWorkerConfig::Representation
-      
         end
       end
       
@@ -1638,8 +1591,6 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
-          property :hybrid_pool_config, as: 'hybridPoolConfig', class: Google::Apis::CloudbuildV1::HybridPoolConfig, decorator: Google::Apis::CloudbuildV1::HybridPoolConfig::Representation
-      
           property :name, as: 'name'
           property :private_pool_v1_config, as: 'privatePoolV1Config', class: Google::Apis::CloudbuildV1::PrivatePoolV1Config, decorator: Google::Apis::CloudbuildV1::PrivatePoolV1Config::Representation
       
