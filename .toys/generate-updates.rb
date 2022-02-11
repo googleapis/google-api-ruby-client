@@ -22,6 +22,7 @@ flag :enable_fork, "--fork" do
 end
 flag :approval_token, "--approval-token" do
   default ENV["APPROVAL_GITHUB_TOKEN"]
+  desc "GitHub token for adding labels and approving pull requests"
 end
 flag :all do
   desc "Generate all APIs"
@@ -77,7 +78,8 @@ def pr_single_gem api, version, index, total
     return
   end
   approval_message = "Rubber-stamped client auto-generation!"
-  result = yoshi_pr_generator.capture remote: git_remote,
+  result = yoshi_pr_generator.capture enabled: !git_remote.nil?,
+                                      remote: git_remote,
                                       branch_name: branch_name,
                                       commit_message: commit_message,
                                       labels: ["automerge"],
@@ -103,7 +105,8 @@ def pr_clean_old_gems
     return
   end
   approval_message = "Rubber-stamped cleanup of obsolete gems!"
-  result = yoshi_pr_generator.capture remote: git_remote,
+  result = yoshi_pr_generator.capture enabled: !git_remote.nil?,
+                                      remote: git_remote,
                                       branch_name: branch_name,
                                       commit_message: commit_message,
                                       labels: ["automerge"],
