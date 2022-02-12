@@ -409,11 +409,11 @@ module Google
       class AgeRangeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The age range of an audience. We only support targeting a
-        # continuous age range of an audience. Thus, the age range represented in this
-        # field can be 1) targeted solely, or, 2) part of a larger continuous age range.
-        # The reach of a continuous age range targeting can be expanded by also
-        # targeting an audience of an unknown age.
+        # The age range of an audience. We only support targeting a continuous age range
+        # of an audience. Thus, the age range represented in this field can be 1)
+        # targeted solely, or, 2) part of a larger continuous age range. The reach of a
+        # continuous age range targeting can be expanded by also targeting an audience
+        # of an unknown age. Output only in v1. Required in v2.
         # Corresponds to the JSON property `ageRange`
         # @return [String]
         attr_accessor :age_range
@@ -1172,7 +1172,7 @@ module Google
       class AudioContentTypeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The audio content type.
+        # The audio content type. Output only in v1. Required in v2.
         # Corresponds to the JSON property `audioContentType`
         # @return [String]
         attr_accessor :audio_content_type
@@ -2820,7 +2820,8 @@ module Google
         # @return [String]
         attr_accessor :ad_type
       
-        # Output only. The content instream position for video or audio ads.
+        # The content instream position for video or audio ads. Output only in v1.
+        # Required in v2.
         # Corresponds to the JSON property `contentInstreamPosition`
         # @return [String]
         attr_accessor :content_instream_position
@@ -2882,7 +2883,7 @@ module Google
         # @return [String]
         attr_accessor :ad_type
       
-        # Output only. The content outstream position.
+        # The content outstream position. Output only in v1. Required in v2.
         # Corresponds to the JSON property `contentOutstreamPosition`
         # @return [String]
         attr_accessor :content_outstream_position
@@ -4010,7 +4011,7 @@ module Google
       class DeviceTypeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The display name of the device type.
+        # The display name of the device type. Output only in v1. Required in v2.
         # Corresponds to the JSON property `deviceType`
         # @return [String]
         attr_accessor :device_type
@@ -4399,7 +4400,7 @@ module Google
       class EnvironmentAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The serving environment.
+        # The serving environment. Output only in v1. Required in v2.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
@@ -4963,7 +4964,7 @@ module Google
       class GenderAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The gender of the audience.
+        # The gender of the audience. Output only in v1. Required in v2.
         # Corresponds to the JSON property `gender`
         # @return [String]
         attr_accessor :gender
@@ -7621,7 +7622,7 @@ module Google
       class NativeContentPositionAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The content position.
+        # The content position. Output only in v1. Required in v2.
         # Corresponds to the JSON property `contentPosition`
         # @return [String]
         attr_accessor :content_position
@@ -7833,7 +7834,8 @@ module Google
       class OmidAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The type of Open Measurement enabled inventory.
+        # The type of Open Measurement enabled inventory. Output only in v1. Required in
+        # v2.
         # Corresponds to the JSON property `omid`
         # @return [String]
         attr_accessor :omid
@@ -9180,7 +9182,8 @@ module Google
         # @return [String]
         attr_accessor :excluded_targeting_option_id
       
-        # Output only. An enum for the DV360 Sensitive category content classifier.
+        # An enum for the DV360 Sensitive category content classifier. Output only in v1.
+        # Required in v2.
         # Corresponds to the JSON property `sensitiveCategory`
         # @return [String]
         attr_accessor :sensitive_category
@@ -10026,7 +10029,7 @@ module Google
         # @return [String]
         attr_accessor :targeting_option_id
       
-        # Output only. The video player size.
+        # The video player size. Output only in v1. Required in v2.
         # Corresponds to the JSON property `videoPlayerSize`
         # @return [String]
         attr_accessor :video_player_size
@@ -10076,7 +10079,7 @@ module Google
         # @return [String]
         attr_accessor :targeting_option_id
       
-        # Output only. The predicted viewability percentage.
+        # The predicted viewability percentage. Output only in v1. Required in v2.
         # Corresponds to the JSON property `viewability`
         # @return [String]
         attr_accessor :viewability
