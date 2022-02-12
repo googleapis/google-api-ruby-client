@@ -260,6 +260,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Docker Registry to use for this deployment. If `docker_repository` field is
+        # specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If
+        # unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be
+        # overridden by the backend for eligible deployments.
+        # Corresponds to the JSON property `dockerRegistry`
+        # @return [String]
+        attr_accessor :docker_registry
+      
         # User managed repository created in Artifact Registry optionally with a
         # customer managed encryption key. If specified, deployments will use Artifact
         # Registry. If unspecified and the deployment is eligible to use Artifact
@@ -467,6 +475,7 @@ module Google
           @build_name = args[:build_name] if args.key?(:build_name)
           @build_worker_pool = args[:build_worker_pool] if args.key?(:build_worker_pool)
           @description = args[:description] if args.key?(:description)
+          @docker_registry = args[:docker_registry] if args.key?(:docker_registry)
           @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
           @entry_point = args[:entry_point] if args.key?(:entry_point)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
@@ -701,6 +710,306 @@ module Google
         # Update properties of this object
         def update!(**args)
           @upload_url = args[:upload_url] if args.key?(:upload_url)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudFunctionsV2alphaOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Identifies whether the user has requested cancellation of the operation.
+        # Operations that have successfully been cancelled have Operation.error value
+        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The original request that started the operation.
+        # Corresponds to the JSON property `requestResource`
+        # @return [Hash<String,Object>]
+        attr_accessor :request_resource
+      
+        # Mechanism for reporting in-progress stages
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2alphaStage>]
+        attr_accessor :stages
+      
+        # Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request_resource = args[:request_resource] if args.key?(:request_resource)
+          @stages = args[:stages] if args.key?(:stages)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Each Stage of the deployment process
+      class GoogleCloudFunctionsV2alphaStage
+        include Google::Apis::Core::Hashable
+      
+        # Message describing the Stage
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Name of the Stage. This will be unique for each Stage.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Resource of the Stage
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Link to the current Stage resource
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        # Current state of the Stage
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # State messages from the current Stage.
+        # Corresponds to the JSON property `stateMessages`
+        # @return [Array<Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2alphaStateMessage>]
+        attr_accessor :state_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @state = args[:state] if args.key?(:state)
+          @state_messages = args[:state_messages] if args.key?(:state_messages)
+        end
+      end
+      
+      # Informational messages about the state of the Cloud Function or Operation.
+      class GoogleCloudFunctionsV2alphaStateMessage
+        include Google::Apis::Core::Hashable
+      
+        # The message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Severity of the state message.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # One-word CamelCase type of the state message.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
+      class GoogleCloudFunctionsV2betaOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Identifies whether the user has requested cancellation of the operation.
+        # Operations that have successfully been cancelled have Operation.error value
+        # with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
+      
+        # The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The original request that started the operation.
+        # Corresponds to the JSON property `requestResource`
+        # @return [Hash<String,Object>]
+        attr_accessor :request_resource
+      
+        # Mechanism for reporting in-progress stages
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2betaStage>]
+        attr_accessor :stages
+      
+        # Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @request_resource = args[:request_resource] if args.key?(:request_resource)
+          @stages = args[:stages] if args.key?(:stages)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Each Stage of the deployment process
+      class GoogleCloudFunctionsV2betaStage
+        include Google::Apis::Core::Hashable
+      
+        # Message describing the Stage
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Name of the Stage. This will be unique for each Stage.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Resource of the Stage
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Link to the current Stage resource
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        # Current state of the Stage
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # State messages from the current Stage.
+        # Corresponds to the JSON property `stateMessages`
+        # @return [Array<Google::Apis::CloudfunctionsV1::GoogleCloudFunctionsV2betaStateMessage>]
+        attr_accessor :state_messages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @state = args[:state] if args.key?(:state)
+          @state_messages = args[:state_messages] if args.key?(:state_messages)
+        end
+      end
+      
+      # Informational messages about the state of the Cloud Function or Operation.
+      class GoogleCloudFunctionsV2betaStateMessage
+        include Google::Apis::Core::Hashable
+      
+        # The message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Severity of the state message.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # One-word CamelCase type of the state message.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
