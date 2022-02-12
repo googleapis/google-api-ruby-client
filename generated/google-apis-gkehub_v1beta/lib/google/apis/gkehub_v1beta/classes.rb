@@ -1513,12 +1513,23 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
+        # Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
         # Flag to denote if reverse proxy is used to connect to auth provider. This flag
         # should be set to true when provider is not reachable by Google Cloud Console.
         # Corresponds to the JSON property `deployCloudConsoleProxy`
         # @return [Boolean]
         attr_accessor :deploy_cloud_console_proxy
         alias_method :deploy_cloud_console_proxy?, :deploy_cloud_console_proxy
+      
+        # Output only. Encrypted OIDC Client secret
+        # Corresponds to the JSON property `encryptedClientSecret`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encrypted_client_secret
       
         # Comma-separated list of key-value pairs.
         # Corresponds to the JSON property `extraParams`
@@ -1570,7 +1581,9 @@ module Google
         def update!(**args)
           @certificate_authority_data = args[:certificate_authority_data] if args.key?(:certificate_authority_data)
           @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
           @deploy_cloud_console_proxy = args[:deploy_cloud_console_proxy] if args.key?(:deploy_cloud_console_proxy)
+          @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @extra_params = args[:extra_params] if args.key?(:extra_params)
           @group_prefix = args[:group_prefix] if args.key?(:group_prefix)
           @groups_claim = args[:groups_claim] if args.key?(:groups_claim)
@@ -1731,6 +1744,12 @@ module Google
         # @return [Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec]
         attr_accessor :identityservice
       
+        # **Policy Controller**: Configuration for a single cluster. Intended to
+        # parallel the PolicyController CR.
+        # Corresponds to the JSON property `policycontroller`
+        # @return [Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec]
+        attr_accessor :policycontroller
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1741,6 +1760,7 @@ module Google
           @cloudbuild = args[:cloudbuild] if args.key?(:cloudbuild)
           @configmanagement = args[:configmanagement] if args.key?(:configmanagement)
           @identityservice = args[:identityservice] if args.key?(:identityservice)
+          @policycontroller = args[:policycontroller] if args.key?(:policycontroller)
         end
       end
       
