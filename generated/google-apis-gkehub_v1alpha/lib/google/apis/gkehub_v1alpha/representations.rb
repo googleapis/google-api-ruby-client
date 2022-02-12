@@ -460,37 +460,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PolicycontrollerMembershipSpec
+      class PolicyControllerMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PolicycontrollerMembershipState
+      class PolicyControllerMembershipState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PolicycontrollerPolicyControllerHubConfig
+      class PolicyControllerPolicyControllerHubConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PolicycontrollerPolicyControllerHubState
+      class PolicyControllerPolicyControllerHubState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PolicycontrollerPolicyControllerHubVersion
+      class PolicyControllerPolicyControllerHubVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PolicycontrollerTemplateLibraryConfig
+      class PolicyControllerTemplateLibraryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1097,7 +1097,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_authority_data, as: 'certificateAuthorityData'
           property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
           property :deploy_cloud_console_proxy, as: 'deployCloudConsoleProxy'
+          property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :extra_params, as: 'extraParams'
           property :group_prefix, as: 'groupPrefix'
           property :groups_claim, as: 'groupsClaim'
@@ -1244,7 +1246,7 @@ module Google
       
           property :mesh, as: 'mesh', class: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ServiceMeshMembershipSpec::Representation
       
-          property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1alpha::PolicycontrollerMembershipSpec, decorator: Google::Apis::GkehubV1alpha::PolicycontrollerMembershipSpec::Representation
+          property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec::Representation
       
           property :workloadcertificate, as: 'workloadcertificate', class: Google::Apis::GkehubV1alpha::MembershipSpec, decorator: Google::Apis::GkehubV1alpha::MembershipSpec::Representation
       
@@ -1262,7 +1264,7 @@ module Google
       
           property :metering, as: 'metering', class: Google::Apis::GkehubV1alpha::MeteringMembershipState, decorator: Google::Apis::GkehubV1alpha::MeteringMembershipState::Representation
       
-          property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1alpha::PolicycontrollerMembershipState, decorator: Google::Apis::GkehubV1alpha::PolicycontrollerMembershipState::Representation
+          property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1alpha::PolicyControllerMembershipState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerMembershipState::Representation
       
           property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1alpha::ServiceMeshMembershipState, decorator: Google::Apis::GkehubV1alpha::ServiceMeshMembershipState::Representation
       
@@ -1355,28 +1357,28 @@ module Google
         end
       end
       
-      class PolicycontrollerMembershipSpec
+      class PolicyControllerMembershipSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy_controller_hub_config, as: 'policyControllerHubConfig', class: Google::Apis::GkehubV1alpha::PolicycontrollerPolicyControllerHubConfig, decorator: Google::Apis::GkehubV1alpha::PolicycontrollerPolicyControllerHubConfig::Representation
+          property :policy_controller_hub_config, as: 'policyControllerHubConfig', class: Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubConfig, decorator: Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubConfig::Representation
       
           property :version, as: 'version'
         end
       end
       
-      class PolicycontrollerMembershipState
+      class PolicyControllerMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_name, as: 'clusterName'
-          property :membership_spec, as: 'membershipSpec', class: Google::Apis::GkehubV1alpha::PolicycontrollerMembershipSpec, decorator: Google::Apis::GkehubV1alpha::PolicycontrollerMembershipSpec::Representation
+          property :membership_spec, as: 'membershipSpec', class: Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec::Representation
       
-          property :policy_controller_hub_state, as: 'policyControllerHubState', class: Google::Apis::GkehubV1alpha::PolicycontrollerPolicyControllerHubState, decorator: Google::Apis::GkehubV1alpha::PolicycontrollerPolicyControllerHubState::Representation
+          property :policy_controller_hub_state, as: 'policyControllerHubState', class: Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubState, decorator: Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubState::Representation
       
           property :state, as: 'state'
         end
       end
       
-      class PolicycontrollerPolicyControllerHubConfig
+      class PolicyControllerPolicyControllerHubConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audit_interval_seconds, :numeric_string => true, as: 'auditIntervalSeconds'
@@ -1385,28 +1387,28 @@ module Google
           property :log_denies_enabled, as: 'logDeniesEnabled'
           property :mutation_enabled, as: 'mutationEnabled'
           property :referential_rules_enabled, as: 'referentialRulesEnabled'
-          property :template_library_config, as: 'templateLibraryConfig', class: Google::Apis::GkehubV1alpha::PolicycontrollerTemplateLibraryConfig, decorator: Google::Apis::GkehubV1alpha::PolicycontrollerTemplateLibraryConfig::Representation
+          property :template_library_config, as: 'templateLibraryConfig', class: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig, decorator: Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig::Representation
       
         end
       end
       
-      class PolicycontrollerPolicyControllerHubState
+      class PolicyControllerPolicyControllerHubState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :deployment_states, as: 'deploymentStates'
-          property :version, as: 'version', class: Google::Apis::GkehubV1alpha::PolicycontrollerPolicyControllerHubVersion, decorator: Google::Apis::GkehubV1alpha::PolicycontrollerPolicyControllerHubVersion::Representation
+          property :version, as: 'version', class: Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubVersion, decorator: Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubVersion::Representation
       
         end
       end
       
-      class PolicycontrollerPolicyControllerHubVersion
+      class PolicyControllerPolicyControllerHubVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
         end
       end
       
-      class PolicycontrollerTemplateLibraryConfig
+      class PolicyControllerTemplateLibraryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :included, as: 'included'

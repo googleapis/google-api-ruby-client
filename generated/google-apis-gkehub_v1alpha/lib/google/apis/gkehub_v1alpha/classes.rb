@@ -1839,12 +1839,23 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
+        # Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
         # Flag to denote if reverse proxy is used to connect to auth provider. This flag
         # should be set to true when provider is not reachable by Google Cloud Console.
         # Corresponds to the JSON property `deployCloudConsoleProxy`
         # @return [Boolean]
         attr_accessor :deploy_cloud_console_proxy
         alias_method :deploy_cloud_console_proxy?, :deploy_cloud_console_proxy
+      
+        # Output only. Encrypted OIDC Client secret
+        # Corresponds to the JSON property `encryptedClientSecret`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encrypted_client_secret
       
         # Comma-separated list of key-value pairs.
         # Corresponds to the JSON property `extraParams`
@@ -1896,7 +1907,9 @@ module Google
         def update!(**args)
           @certificate_authority_data = args[:certificate_authority_data] if args.key?(:certificate_authority_data)
           @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
           @deploy_cloud_console_proxy = args[:deploy_cloud_console_proxy] if args.key?(:deploy_cloud_console_proxy)
+          @encrypted_client_secret = args[:encrypted_client_secret] if args.key?(:encrypted_client_secret)
           @extra_params = args[:extra_params] if args.key?(:extra_params)
           @group_prefix = args[:group_prefix] if args.key?(:group_prefix)
           @groups_claim = args[:groups_claim] if args.key?(:groups_claim)
@@ -2398,7 +2411,7 @@ module Google
         # **Policy Controller**: Configuration for a single cluster. Intended to
         # parallel the PolicyController CR.
         # Corresponds to the JSON property `policycontroller`
-        # @return [Google::Apis::GkehubV1alpha::PolicycontrollerMembershipSpec]
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec]
         attr_accessor :policycontroller
       
         # **Workload Certificate**: The membership-specific input for
@@ -2450,7 +2463,7 @@ module Google
       
         # **Policy Controller**: State for a single cluster.
         # Corresponds to the JSON property `policycontroller`
-        # @return [Google::Apis::GkehubV1alpha::PolicycontrollerMembershipState]
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerMembershipState]
         attr_accessor :policycontroller
       
         # **Service Mesh**: State for a single Membership, as analyzed by the Service
@@ -2861,12 +2874,12 @@ module Google
       
       # **Policy Controller**: Configuration for a single cluster. Intended to
       # parallel the PolicyController CR.
-      class PolicycontrollerMembershipSpec
+      class PolicyControllerMembershipSpec
         include Google::Apis::Core::Hashable
       
         # Configuration for Policy Controller
         # Corresponds to the JSON property `policyControllerHubConfig`
-        # @return [Google::Apis::GkehubV1alpha::PolicycontrollerPolicyControllerHubConfig]
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubConfig]
         attr_accessor :policy_controller_hub_config
       
         # Version of Policy Controller installed.
@@ -2886,7 +2899,7 @@ module Google
       end
       
       # **Policy Controller**: State for a single cluster.
-      class PolicycontrollerMembershipState
+      class PolicyControllerMembershipState
         include Google::Apis::Core::Hashable
       
         # The user-defined name for the cluster used by ClusterSelectors to group
@@ -2900,12 +2913,12 @@ module Google
         # **Policy Controller**: Configuration for a single cluster. Intended to
         # parallel the PolicyController CR.
         # Corresponds to the JSON property `membershipSpec`
-        # @return [Google::Apis::GkehubV1alpha::PolicycontrollerMembershipSpec]
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec]
         attr_accessor :membership_spec
       
         # State of the Policy Controller.
         # Corresponds to the JSON property `policyControllerHubState`
-        # @return [Google::Apis::GkehubV1alpha::PolicycontrollerPolicyControllerHubState]
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubState]
         attr_accessor :policy_controller_hub_state
       
         # The lifecycle state Policy Controller is in.
@@ -2927,7 +2940,7 @@ module Google
       end
       
       # Configuration for Policy Controller
-      class PolicycontrollerPolicyControllerHubConfig
+      class PolicyControllerPolicyControllerHubConfig
         include Google::Apis::Core::Hashable
       
         # Sets the interval for Policy Controller Audit Scans (in seconds). When set to
@@ -2971,7 +2984,7 @@ module Google
       
         # The config specifying which default library templates to install.
         # Corresponds to the JSON property `templateLibraryConfig`
-        # @return [Google::Apis::GkehubV1alpha::PolicycontrollerTemplateLibraryConfig]
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerTemplateLibraryConfig]
         attr_accessor :template_library_config
       
         def initialize(**args)
@@ -2991,7 +3004,7 @@ module Google
       end
       
       # State of the Policy Controller.
-      class PolicycontrollerPolicyControllerHubState
+      class PolicyControllerPolicyControllerHubState
         include Google::Apis::Core::Hashable
       
         # Map from deployment name to deployment state. Example deployments are
@@ -3003,7 +3016,7 @@ module Google
       
         # The build version of Gatekeeper that Policy Controller is using.
         # Corresponds to the JSON property `version`
-        # @return [Google::Apis::GkehubV1alpha::PolicycontrollerPolicyControllerHubVersion]
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubVersion]
         attr_accessor :version
       
         def initialize(**args)
@@ -3018,7 +3031,7 @@ module Google
       end
       
       # The build version of Gatekeeper that Policy Controller is using.
-      class PolicycontrollerPolicyControllerHubVersion
+      class PolicyControllerPolicyControllerHubVersion
         include Google::Apis::Core::Hashable
       
         # The gatekeeper image tag that is composed of ACM version, git tag, build
@@ -3038,7 +3051,7 @@ module Google
       end
       
       # The config specifying which default library templates to install.
-      class PolicycontrollerTemplateLibraryConfig
+      class PolicyControllerTemplateLibraryConfig
         include Google::Apis::Core::Hashable
       
         # Whether the standard template library should be installed or not.
