@@ -522,6 +522,16 @@ module Google
         # @return [String]
         attr_accessor :service
       
+        # Output only. Data Catalog entry name, if applicable.
+        # Corresponds to the JSON property `sourceEntry`
+        # @return [String]
+        attr_accessor :source_entry
+      
+        # Details the properties of the underlying storage.
+        # Corresponds to the JSON property `storageProperties`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1StorageProperties]
+        attr_accessor :storage_properties
+      
         def initialize(**args)
            update!(**args)
         end
@@ -530,6 +540,8 @@ module Google
         def update!(**args)
           @resource = args[:resource] if args.key?(:resource)
           @service = args[:service] if args.key?(:service)
+          @source_entry = args[:source_entry] if args.key?(:source_entry)
+          @storage_properties = args[:storage_properties] if args.key?(:storage_properties)
         end
       end
       
@@ -558,6 +570,11 @@ module Google
       class GoogleCloudDatacatalogV1DatabaseTableSpec
         include Google::Apis::Core::Hashable
       
+        # Entry specification for a Dataplex table.
+        # Corresponds to the JSON property `dataplexTable`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexTableSpec]
+        attr_accessor :dataplex_table
+      
         # Type of this table.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -569,7 +586,144 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dataplex_table = args[:dataplex_table] if args.key?(:dataplex_table)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # External table registered by Dataplex. Dataplex publishes data discovered from
+      # an asset into multiple other systems (BigQuery, DPMS) in form of tables. We
+      # call them "external tables". External tables are also synced into the Data
+      # Catalog. This message contains pointers to those external tables (fully
+      # qualified name, resource name et cetera) within the Data Catalog.
+      class GoogleCloudDatacatalogV1DataplexExternalTable
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Data Catalog entry representing the external table.
+        # Corresponds to the JSON property `dataCatalogEntry`
+        # @return [String]
+        attr_accessor :data_catalog_entry
+      
+        # Fully qualified name (FQN) of the external table.
+        # Corresponds to the JSON property `fullyQualifiedName`
+        # @return [String]
+        attr_accessor :fully_qualified_name
+      
+        # Google Cloud resource name of the external table.
+        # Corresponds to the JSON property `googleCloudResource`
+        # @return [String]
+        attr_accessor :google_cloud_resource
+      
+        # Service in which the external table is registered.
+        # Corresponds to the JSON property `system`
+        # @return [String]
+        attr_accessor :system
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_catalog_entry = args[:data_catalog_entry] if args.key?(:data_catalog_entry)
+          @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
+          @google_cloud_resource = args[:google_cloud_resource] if args.key?(:google_cloud_resource)
+          @system = args[:system] if args.key?(:system)
+        end
+      end
+      
+      # Entry specyfication for a Dataplex fileset.
+      class GoogleCloudDatacatalogV1DataplexFilesetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Common Dataplex fields.
+        # Corresponds to the JSON property `dataplexSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexSpec]
+        attr_accessor :dataplex_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataplex_spec = args[:dataplex_spec] if args.key?(:dataplex_spec)
+        end
+      end
+      
+      # Common Dataplex fields.
+      class GoogleCloudDatacatalogV1DataplexSpec
+        include Google::Apis::Core::Hashable
+      
+        # Fully qualified resource name of an asset in Dataplex, to which the underlying
+        # data source (Cloud Storage bucket or BigQuery dataset) of the entity is
+        # attached.
+        # Corresponds to the JSON property `asset`
+        # @return [String]
+        attr_accessor :asset
+      
+        # Compression format of the data, e.g., zip, gzip etc.
+        # Corresponds to the JSON property `compressionFormat`
+        # @return [String]
+        attr_accessor :compression_format
+      
+        # Native schema used by a resource represented as an entry. Used by query
+        # engines for deserializing and parsing source data.
+        # Corresponds to the JSON property `dataFormat`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchema]
+        attr_accessor :data_format
+      
+        # Project ID of the underlying Cloud Storage or BigQuery data. Note that this
+        # may not be the same project as the correspondingly Dataplex lake / zone /
+        # asset.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset = args[:asset] if args.key?(:asset)
+          @compression_format = args[:compression_format] if args.key?(:compression_format)
+          @data_format = args[:data_format] if args.key?(:data_format)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Entry specification for a Dataplex table.
+      class GoogleCloudDatacatalogV1DataplexTableSpec
+        include Google::Apis::Core::Hashable
+      
+        # Common Dataplex fields.
+        # Corresponds to the JSON property `dataplexSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexSpec]
+        attr_accessor :dataplex_spec
+      
+        # List of external tables registered by Dataplex in other systems based on the
+        # same underlying data. External tables allow to query this data in those
+        # systems.
+        # Corresponds to the JSON property `externalTables`
+        # @return [Array<Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexExternalTable>]
+        attr_accessor :external_tables
+      
+        # Indicates if the table schema is managed by the user or not.
+        # Corresponds to the JSON property `userManaged`
+        # @return [Boolean]
+        attr_accessor :user_managed
+        alias_method :user_managed?, :user_managed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataplex_spec = args[:dataplex_spec] if args.key?(:dataplex_spec)
+          @external_tables = args[:external_tables] if args.key?(:external_tables)
+          @user_managed = args[:user_managed] if args.key?(:user_managed)
         end
       end
       
@@ -633,6 +787,12 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Specification that applies to a fileset. Valid only for entries with the '
+        # FILESET' type.
+        # Corresponds to the JSON property `filesetSpec`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1FilesetSpec]
+        attr_accessor :fileset_spec
       
         # Fully qualified name (FQN) of the resource. Set automatically for entries
         # representing resources from synced systems. Settable only during creation and
@@ -755,6 +915,7 @@ module Google
           @database_table_spec = args[:database_table_spec] if args.key?(:database_table_spec)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @fileset_spec = args[:fileset_spec] if args.key?(:fileset_spec)
           @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
           @gcs_fileset_spec = args[:gcs_fileset_spec] if args.key?(:gcs_fileset_spec)
           @integrated_system = args[:integrated_system] if args.key?(:integrated_system)
@@ -923,6 +1084,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Specification that applies to a fileset. Valid only for entries with the '
+      # FILESET' type.
+      class GoogleCloudDatacatalogV1FilesetSpec
+        include Google::Apis::Core::Hashable
+      
+        # Entry specyfication for a Dataplex fileset.
+        # Corresponds to the JSON property `dataplexFileset`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexFilesetSpec]
+        attr_accessor :dataplex_fileset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataplex_fileset = args[:dataplex_fileset] if args.key?(:dataplex_fileset)
         end
       end
       
@@ -1253,6 +1434,152 @@ module Google
         def update!(**args)
           @star_time = args[:star_time] if args.key?(:star_time)
           @starred = args[:starred] if args.key?(:starred)
+        end
+      end
+      
+      # Native schema used by a resource represented as an entry. Used by query
+      # engines for deserializing and parsing source data.
+      class GoogleCloudDatacatalogV1PhysicalSchema
+        include Google::Apis::Core::Hashable
+      
+        # Schema in Avro JSON format.
+        # Corresponds to the JSON property `avro`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema]
+        attr_accessor :avro
+      
+        # Marks a CSV-encoded data source.
+        # Corresponds to the JSON property `csv`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema]
+        attr_accessor :csv
+      
+        # Marks an ORC-encoded data source.
+        # Corresponds to the JSON property `orc`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema]
+        attr_accessor :orc
+      
+        # Marks a Parquet-encoded data source.
+        # Corresponds to the JSON property `parquet`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema]
+        attr_accessor :parquet
+      
+        # Schema in protocol buffer format.
+        # Corresponds to the JSON property `protobuf`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema]
+        attr_accessor :protobuf
+      
+        # Schema in Thrift format.
+        # Corresponds to the JSON property `thrift`
+        # @return [Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema]
+        attr_accessor :thrift
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avro = args[:avro] if args.key?(:avro)
+          @csv = args[:csv] if args.key?(:csv)
+          @orc = args[:orc] if args.key?(:orc)
+          @parquet = args[:parquet] if args.key?(:parquet)
+          @protobuf = args[:protobuf] if args.key?(:protobuf)
+          @thrift = args[:thrift] if args.key?(:thrift)
+        end
+      end
+      
+      # Schema in Avro JSON format.
+      class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema
+        include Google::Apis::Core::Hashable
+      
+        # JSON source of the Avro schema.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Marks a CSV-encoded data source.
+      class GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Marks an ORC-encoded data source.
+      class GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Marks a Parquet-encoded data source.
+      class GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Schema in protocol buffer format.
+      class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema
+        include Google::Apis::Core::Hashable
+      
+        # Protocol buffer source of the schema.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Schema in Thrift format.
+      class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema
+        include Google::Apis::Core::Hashable
+      
+        # Thrift IDL source of the schema.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -1824,6 +2151,42 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Details the properties of the underlying storage.
+      class GoogleCloudDatacatalogV1StorageProperties
+        include Google::Apis::Core::Hashable
+      
+        # Patterns to identify a set of files for this fileset. Examples of a valid `
+        # file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `
+        # bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in
+        # the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/
+        # file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/?
+        # ?.txt`: matches files with two characters followed by `.txt` in `bucket_name` *
+        # `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel
+        # character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`:
+        # matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `
+        # bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name`
+        # that match the `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://
+        # another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+        # Corresponds to the JSON property `filePattern`
+        # @return [Array<String>]
+        attr_accessor :file_pattern
+      
+        # File type in MIME format, for example, `text/plain`.
+        # Corresponds to the JSON property `fileType`
+        # @return [String]
+        attr_accessor :file_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_pattern = args[:file_pattern] if args.key?(:file_pattern)
+          @file_type = args[:file_type] if args.key?(:file_type)
         end
       end
       
