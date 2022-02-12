@@ -1162,6 +1162,13 @@ module Google
         # @return [String]
         attr_accessor :span_id
       
+        # Additional information used to correlate multiple log entries. Used when a
+        # single LogEntry would exceed the Google Cloud Logging size limit and is split
+        # across multiple log entries.
+        # Corresponds to the JSON property `split`
+        # @return [Google::Apis::LoggingV2::LogSplit]
+        attr_accessor :split
+      
         # The log entry payload, represented as a Unicode string (UTF-8).
         # Corresponds to the JSON property `textPayload`
         # @return [String]
@@ -1218,6 +1225,7 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @source_location = args[:source_location] if args.key?(:source_location)
           @span_id = args[:span_id] if args.key?(:span_id)
+          @split = args[:split] if args.key?(:split)
           @text_payload = args[:text_payload] if args.key?(:text_payload)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @trace = args[:trace] if args.key?(:trace)
@@ -1672,6 +1680,42 @@ module Google
           @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
           @update_time = args[:update_time] if args.key?(:update_time)
           @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
+        end
+      end
+      
+      # Additional information used to correlate multiple log entries. Used when a
+      # single LogEntry would exceed the Google Cloud Logging size limit and is split
+      # across multiple log entries.
+      class LogSplit
+        include Google::Apis::Core::Hashable
+      
+        # The index of this LogEntry in the sequence of split log entries. Log entries
+        # are given |index| values 0, 1, ..., n-1 for a sequence of n log entries.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # The total number of log entries that the original LogEntry was split into.
+        # Corresponds to the JSON property `totalSplits`
+        # @return [Fixnum]
+        attr_accessor :total_splits
+      
+        # A globally unique identifier for all log entries in a sequence of split log
+        # entries. All log entries with the same |LogSplit.uid| are assumed to be part
+        # of the same sequence of split log entries.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index = args[:index] if args.key?(:index)
+          @total_splits = args[:total_splits] if args.key?(:total_splits)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       

@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogSplit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -603,6 +609,8 @@ module Google
           property :source_location, as: 'sourceLocation', class: Google::Apis::LoggingV2::LogEntrySourceLocation, decorator: Google::Apis::LoggingV2::LogEntrySourceLocation::Representation
       
           property :span_id, as: 'spanId'
+          property :split, as: 'split', class: Google::Apis::LoggingV2::LogSplit, decorator: Google::Apis::LoggingV2::LogSplit::Representation
+      
           property :text_payload, as: 'textPayload'
           property :timestamp, as: 'timestamp'
           property :trace, as: 'trace'
@@ -688,6 +696,15 @@ module Google
           property :output_version_format, as: 'outputVersionFormat'
           property :update_time, as: 'updateTime'
           property :writer_identity, as: 'writerIdentity'
+        end
+      end
+      
+      class LogSplit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index, as: 'index'
+          property :total_splits, as: 'totalSplits'
+          property :uid, as: 'uid'
         end
       end
       
