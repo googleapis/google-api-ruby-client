@@ -1695,10 +1695,12 @@ module Google
       class GoogleCloudRetailV2betaCustomAttribute
         include Google::Apis::Core::Hashable
       
-        # If true, custom attribute values are indexed, so that it can be filtered,
-        # faceted or boosted in SearchService.Search. This field is ignored in a
-        # UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and
-        # SearchRequest.boost_spec for more details.
+        # This field will only be used when AttributesConfig.attribute_config_level of
+        # the Catalog is 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG', if true, custom attribute
+        # values are indexed, so that it can be filtered, faceted or boosted in
+        # SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.
+        # filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more
+        # details.
         # Corresponds to the JSON property `indexable`
         # @return [Boolean]
         attr_accessor :indexable
@@ -1711,9 +1713,11 @@ module Google
         # @return [Array<Float>]
         attr_accessor :numbers
       
-        # If true, custom attribute values are searchable by text queries in
-        # SearchService.Search. This field is ignored in a UserEvent. Only set if type
-        # text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+        # This field will only be used when AttributesConfig.attribute_config_level of
+        # the Catalog is 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG', if true, custom attribute
+        # values are searchable by text queries in SearchService.Search. This field is
+        # ignored in a UserEvent. Only set if type text is set. Otherwise, a
+        # INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `searchable`
         # @return [Boolean]
         attr_accessor :searchable
@@ -2841,7 +2845,7 @@ module Google
       
         # The material of the product. For example, "leather", "wooden". A maximum of 20
         # values are allowed. Each value must be a UTF-8 encoded string with a length
-        # limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        # limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponding properties: Google Merchant Center property [material](https://
         # support.google.com/merchants/answer/6324410). Schema.org property [Product.
         # material](https://schema.org/material).
@@ -4020,6 +4024,14 @@ module Google
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>]
         attr_accessor :condition_boost_specs
       
+        # Whether to skip boostspec validation. If this field is set to true, invalid
+        # BoostSpec.condition_boost_specs will be ignored and valid BoostSpec.
+        # condition_boost_specs will still be applied.
+        # Corresponds to the JSON property `skipBoostSpecValidation`
+        # @return [Boolean]
+        attr_accessor :skip_boost_spec_validation
+        alias_method :skip_boost_spec_validation?, :skip_boost_spec_validation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4027,6 +4039,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @condition_boost_specs = args[:condition_boost_specs] if args.key?(:condition_boost_specs)
+          @skip_boost_spec_validation = args[:skip_boost_spec_validation] if args.key?(:skip_boost_spec_validation)
         end
       end
       
@@ -4324,6 +4337,12 @@ module Google
         # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchResponseFacet>]
         attr_accessor :facets
       
+        # The invalid SearchRequest.BoostSpec.condition_boost_specs that are not applied
+        # during serving.
+        # Corresponds to the JSON property `invalidConditionBoostSpecs`
+        # @return [Array<Google::Apis::RetailV2beta::GoogleCloudRetailV2betaSearchRequestBoostSpecConditionBoostSpec>]
+        attr_accessor :invalid_condition_boost_specs
+      
         # A token that can be sent as SearchRequest.page_token to retrieve the next page.
         # If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
@@ -4365,6 +4384,7 @@ module Google
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @corrected_query = args[:corrected_query] if args.key?(:corrected_query)
           @facets = args[:facets] if args.key?(:facets)
+          @invalid_condition_boost_specs = args[:invalid_condition_boost_specs] if args.key?(:invalid_condition_boost_specs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @query_expansion_info = args[:query_expansion_info] if args.key?(:query_expansion_info)
           @redirect_uri = args[:redirect_uri] if args.key?(:redirect_uri)
