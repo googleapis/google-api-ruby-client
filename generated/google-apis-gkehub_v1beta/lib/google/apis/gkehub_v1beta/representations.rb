@@ -836,7 +836,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_authority_data, as: 'certificateAuthorityData'
           property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
           property :deploy_cloud_console_proxy, as: 'deployCloudConsoleProxy'
+          property :encrypted_client_secret, :base64 => true, as: 'encryptedClientSecret'
           property :extra_params, as: 'extraParams'
           property :group_prefix, as: 'groupPrefix'
           property :groups_claim, as: 'groupsClaim'
@@ -896,6 +898,8 @@ module Google
           property :configmanagement, as: 'configmanagement', class: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1beta::ConfigManagementMembershipSpec::Representation
       
           property :identityservice, as: 'identityservice', class: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec, decorator: Google::Apis::GkehubV1beta::IdentityServiceMembershipSpec::Representation
+      
+          property :policycontroller, as: 'policycontroller', class: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec::Representation
       
         end
       end
