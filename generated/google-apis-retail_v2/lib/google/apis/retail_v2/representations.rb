@@ -1385,6 +1385,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :condition_boost_specs, as: 'conditionBoostSpecs', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec::Representation
       
+          property :skip_boost_spec_validation, as: 'skipBoostSpecValidation'
         end
       end
       
@@ -1450,6 +1451,8 @@ module Google
           property :attribution_token, as: 'attributionToken'
           property :corrected_query, as: 'correctedQuery'
           collection :facets, as: 'facets', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseFacet, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseFacet::Representation
+      
+          collection :invalid_condition_boost_specs, as: 'invalidConditionBoostSpecs', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec::Representation
       
           property :next_page_token, as: 'nextPageToken'
           property :query_expansion_info, as: 'queryExpansionInfo', class: Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseQueryExpansionInfo, decorator: Google::Apis::RetailV2::GoogleCloudRetailV2SearchResponseQueryExpansionInfo::Representation
