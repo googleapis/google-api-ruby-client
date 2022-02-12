@@ -2359,7 +2359,8 @@ module Google
       class SubjectAltNames
         include Google::Apis::Core::Hashable
       
-        # Contains additional subject alternative name values.
+        # Contains additional subject alternative name values. For each custom_san, the `
+        # value` field must contain an ASN.1 encoded UTF8String.
         # Corresponds to the JSON property `customSans`
         # @return [Array<Google::Apis::PrivatecaV1::X509Extension>]
         attr_accessor :custom_sans
