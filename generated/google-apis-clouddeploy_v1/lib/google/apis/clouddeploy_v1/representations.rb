@@ -414,6 +414,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
+          property :internal_ip, as: 'internalIp'
         end
       end
       
