@@ -26,9 +26,9 @@ module Google
       class AnthosCluster
         include Google::Apis::Core::Hashable
       
-        # Membership of the GKE Hub registered cluster that the Skaffold configuration
-        # should be applied to. Format is `projects/`project`/locations/`location`/
-        # memberships/`membership_name``.
+        # Membership of the GKE Hub-registered cluster to which to apply the Skaffold
+        # configuration. Format is `projects/`project`/locations/`location`/memberships/`
+        # membership_name``.
         # Corresponds to the JSON property `membership`
         # @return [String]
         attr_accessor :membership
@@ -293,10 +293,10 @@ module Google
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
       # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+      # DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -467,10 +467,10 @@ module Google
       class ExecutionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Cloud Storage location where execution outputs should be stored.
-        # This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs:/
-        # /my-bucket/my-dir"). If unspecified, a default bucket located in the same
-        # region will be used.
+        # Optional. Cloud Storage location in which to store execution outputs. This can
+        # either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-
+        # bucket/my-dir"). If unspecified, a default bucket located in the same region
+        # will be used.
         # Corresponds to the JSON property `artifactStorage`
         # @return [String]
         attr_accessor :artifact_storage
@@ -486,8 +486,8 @@ module Google
         attr_accessor :private_pool
       
         # Optional. Google service account to use for execution. If unspecified, the
-        # project execution service account (-compute@developer.gserviceaccount.com)
-        # will be used.
+        # project execution service account (-compute@developer.gserviceaccount.com) is
+        # used.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -583,6 +583,18 @@ module Google
         # @return [String]
         attr_accessor :cluster
       
+        # Optional. If true, `cluster` is accessed using the private IP address of the
+        # control plane endpoint. Otherwise, the default IP address of the control plane
+        # endpoint is used. The default IP address is the private IP address for
+        # clusters with private control-plane endpoints and the public IP address
+        # otherwise. Only specify this option when `cluster` is a [private GKE cluster](
+        # https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-
+        # concept).
+        # Corresponds to the JSON property `internalIp`
+        # @return [Boolean]
+        attr_accessor :internal_ip
+        alias_method :internal_ip?, :internal_ip
+      
         def initialize(**args)
            update!(**args)
         end
@@ -590,6 +602,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
+          @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
         end
       end
       
@@ -1477,10 +1490,10 @@ module Google
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
         # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+        # DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `supportEndDate`
         # @return [Google::Apis::ClouddeployV1::Date]
         attr_accessor :support_end_date
