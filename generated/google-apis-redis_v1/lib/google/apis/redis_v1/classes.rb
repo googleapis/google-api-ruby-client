@@ -249,7 +249,7 @@ module Google
         end
       end
       
-      # A Google Cloud Redis instance.
+      # A Memorystore for Redis instance.
       class Instance
         include Google::Apis::Core::Hashable
       
