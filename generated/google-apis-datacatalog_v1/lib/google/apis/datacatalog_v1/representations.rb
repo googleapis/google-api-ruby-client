@@ -130,6 +130,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1DataplexExternalTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1DataplexFilesetSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1DataplexSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1DataplexTableSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1Entry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +191,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1FilesetSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -245,6 +275,48 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1PersonalDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,6 +407,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1StarEntryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1StorageProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -580,6 +658,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource'
           property :service, as: 'service'
+          property :source_entry, as: 'sourceEntry'
+          property :storage_properties, as: 'storageProperties', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1StorageProperties, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1StorageProperties::Representation
+      
         end
       end
       
@@ -594,7 +675,49 @@ module Google
       class GoogleCloudDatacatalogV1DatabaseTableSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataplex_table, as: 'dataplexTable', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexTableSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexTableSpec::Representation
+      
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1DataplexExternalTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_catalog_entry, as: 'dataCatalogEntry'
+          property :fully_qualified_name, as: 'fullyQualifiedName'
+          property :google_cloud_resource, as: 'googleCloudResource'
+          property :system, as: 'system'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1DataplexFilesetSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataplex_spec, as: 'dataplexSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1DataplexSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset, as: 'asset'
+          property :compression_format, as: 'compressionFormat'
+          property :data_format, as: 'dataFormat', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchema::Representation
+      
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1DataplexTableSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataplex_spec, as: 'dataplexSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexSpec::Representation
+      
+          collection :external_tables, as: 'externalTables', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexExternalTable, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexExternalTable::Representation
+      
+          property :user_managed, as: 'userManaged'
         end
       end
       
@@ -615,6 +738,8 @@ module Google
       
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :fileset_spec, as: 'filesetSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1FilesetSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1FilesetSpec::Representation
+      
           property :fully_qualified_name, as: 'fullyQualifiedName'
           property :gcs_fileset_spec, as: 'gcsFilesetSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFilesetSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFilesetSpec::Representation
       
@@ -685,6 +810,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1FilesetSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataplex_fileset, as: 'dataplexFileset', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexFilesetSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1DataplexFilesetSpec::Representation
+      
         end
       end
       
@@ -799,6 +932,63 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :star_time, as: 'starTime'
           property :starred, as: 'starred'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avro, as: 'avro', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema::Representation
+      
+          property :csv, as: 'csv', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema::Representation
+      
+          property :orc, as: 'orc', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema::Representation
+      
+          property :parquet, as: 'parquet', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema::Representation
+      
+          property :protobuf, as: 'protobuf', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema::Representation
+      
+          property :thrift, as: 'thrift', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
         end
       end
       
@@ -947,6 +1137,14 @@ module Google
       class GoogleCloudDatacatalogV1StarEntryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1StorageProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :file_pattern, as: 'filePattern'
+          property :file_type, as: 'fileType'
         end
       end
       
