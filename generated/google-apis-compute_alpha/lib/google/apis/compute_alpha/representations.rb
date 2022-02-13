@@ -718,6 +718,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskAsyncReplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskAsyncReplicationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskInstantiationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,6 +755,18 @@ module Google
       end
       
       class DiskMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskResourceStatusAsyncReplicationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -840,6 +864,24 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksStartAsyncReplicationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksStopAsyncReplicationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisksStopGroupAsyncReplicationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2644,6 +2686,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocationPolicyLocationConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3929,6 +3977,24 @@ module Google
       end
       
       class RegionDisksResizeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionDisksStartAsyncReplicationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionDisksStopAsyncReplicationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionDisksStopGroupAsyncReplicationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6698,7 +6764,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::ComputeAlpha::AuditLogConfig, decorator: Google::Apis::ComputeAlpha::AuditLogConfig::Representation
       
-          collection :exempted_members, as: 'exemptedMembers'
           property :service, as: 'service'
         end
       end
@@ -7686,6 +7751,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :architecture, as: 'architecture'
+          property :async_primary_disk, as: 'asyncPrimaryDisk', class: Google::Apis::ComputeAlpha::DiskAsyncReplication, decorator: Google::Apis::ComputeAlpha::DiskAsyncReplication::Representation
+      
+          hash :async_secondary_disks, as: 'asyncSecondaryDisks', class: Google::Apis::ComputeAlpha::DiskAsyncReplicationList, decorator: Google::Apis::ComputeAlpha::DiskAsyncReplicationList::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
@@ -7712,10 +7781,14 @@ module Google
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
+          property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeAlpha::DiskResourceStatus, decorator: Google::Apis::ComputeAlpha::DiskResourceStatus::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :source_consistency_group_policy, as: 'sourceConsistencyGroupPolicy'
+          property :source_consistency_group_policy_id, as: 'sourceConsistencyGroupPolicyId'
           property :source_disk, as: 'sourceDisk'
           property :source_disk_id, as: 'sourceDiskId'
           property :source_image, as: 'sourceImage'
@@ -7771,6 +7844,22 @@ module Google
         end
       end
       
+      class DiskAsyncReplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk, as: 'disk'
+          property :disk_id, as: 'diskId'
+        end
+      end
+      
+      class DiskAsyncReplicationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_replication_disk, as: 'asyncReplicationDisk', class: Google::Apis::ComputeAlpha::DiskAsyncReplication, decorator: Google::Apis::ComputeAlpha::DiskAsyncReplication::Representation
+      
+        end
+      end
+      
       class DiskInstantiationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7818,6 +7907,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_zone, as: 'destinationZone'
           property :target_disk, as: 'targetDisk'
+        end
+      end
+      
+      class DiskResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_primary_disk, as: 'asyncPrimaryDisk', class: Google::Apis::ComputeAlpha::DiskResourceStatusAsyncReplicationStatus, decorator: Google::Apis::ComputeAlpha::DiskResourceStatusAsyncReplicationStatus::Representation
+      
+          hash :async_secondary_disks, as: 'asyncSecondaryDisks', class: Google::Apis::ComputeAlpha::DiskResourceStatusAsyncReplicationStatus, decorator: Google::Apis::ComputeAlpha::DiskResourceStatusAsyncReplicationStatus::Representation
+      
+        end
+      end
+      
+      class DiskResourceStatusAsyncReplicationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
@@ -7979,6 +8085,27 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class DisksStartAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_secondary_disk, as: 'asyncSecondaryDisk'
+        end
+      end
+      
+      class DisksStopAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_secondary_disk, as: 'asyncSecondaryDisk'
+        end
+      end
+      
+      class DisksStopGroupAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_policy, as: 'resourcePolicy'
         end
       end
       
@@ -8305,6 +8432,7 @@ module Google
           property :match, as: 'match', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcher, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcher::Representation
       
           property :priority, as: 'priority'
+          property :rule_name, as: 'ruleName'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
           collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag::Representation
@@ -9729,6 +9857,7 @@ module Google
       
           property :instance_template, as: 'instanceTemplate'
           property :kind, as: 'kind'
+          property :list_managed_instances_results, as: 'listManagedInstancesResults'
           property :name, as: 'name'
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeAlpha::NamedPort, decorator: Google::Apis::ComputeAlpha::NamedPort::Representation
       
@@ -11417,7 +11546,16 @@ module Google
       class LocationPolicyLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraints, as: 'constraints', class: Google::Apis::ComputeAlpha::LocationPolicyLocationConstraints, decorator: Google::Apis::ComputeAlpha::LocationPolicyLocationConstraints::Representation
+      
           property :preference, as: 'preference'
+        end
+      end
+      
+      class LocationPolicyLocationConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_count, as: 'maxCount'
         end
       end
       
@@ -13497,6 +13635,7 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :pdp_scope, as: 'pdpScope'
           collection :public_delegated_prefixs, as: 'publicDelegatedPrefixs', class: Google::Apis::ComputeAlpha::PublicAdvertisedPrefixPublicDelegatedPrefix, decorator: Google::Apis::ComputeAlpha::PublicAdvertisedPrefixPublicDelegatedPrefix::Representation
       
           property :self_link, as: 'selfLink'
@@ -13817,6 +13956,27 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+        end
+      end
+      
+      class RegionDisksStartAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_secondary_disk, as: 'asyncSecondaryDisk'
+        end
+      end
+      
+      class RegionDisksStopAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_secondary_disk, as: 'asyncSecondaryDisk'
+        end
+      end
+      
+      class RegionDisksStopGroupAsyncReplicationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_policy, as: 'resourcePolicy'
         end
       end
       
@@ -16284,6 +16444,7 @@ module Google
           property :flow_sampling, as: 'flowSampling'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'
+          property :internal_ipv6_prefix, as: 'internalIpv6Prefix'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_cidr_range, as: 'ipv6CidrRange'
