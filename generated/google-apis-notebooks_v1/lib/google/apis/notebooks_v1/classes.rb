@@ -392,6 +392,11 @@ module Google
       class Event
         include Google::Apis::Core::Hashable
       
+        # Optional. Event details. This field is used to pass event information.
+        # Corresponds to the JSON property `details`
+        # @return [Hash<String,String>]
+        attr_accessor :details
+      
         # Event report time.
         # Corresponds to the JSON property `reportTime`
         # @return [String]
@@ -408,6 +413,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @details = args[:details] if args.key?(:details)
           @report_time = args[:report_time] if args.key?(:report_time)
           @type = args[:type] if args.key?(:type)
         end
@@ -752,6 +758,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Email address of entity that sent original CreateInstance request.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
         # Specify a custom Cloud Storage path where the GPU driver is stored. If not
         # specified, we'll automatically choose from official GPU drivers.
         # Corresponds to the JSON property `customGpuDriverPath`
@@ -945,6 +956,7 @@ module Google
           @boot_disk_type = args[:boot_disk_type] if args.key?(:boot_disk_type)
           @container_image = args[:container_image] if args.key?(:container_image)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
           @custom_gpu_driver_path = args[:custom_gpu_driver_path] if args.key?(:custom_gpu_driver_path)
           @data_disk_size_gb = args[:data_disk_size_gb] if args.key?(:data_disk_size_gb)
           @data_disk_type = args[:data_disk_type] if args.key?(:data_disk_type)
@@ -1793,7 +1805,7 @@ module Google
         end
       end
       
-      # Request for reseting a notebook instance
+      # Request for resetting a notebook instance
       class ResetInstanceRequest
         include Google::Apis::Core::Hashable
       
@@ -1806,7 +1818,7 @@ module Google
         end
       end
       
-      # Request for reseting a Managed Notebook Runtime.
+      # Request for resetting a Managed Notebook Runtime.
       class ResetRuntimeRequest
         include Google::Apis::Core::Hashable
       
@@ -2116,6 +2128,13 @@ module Google
         # @return [String]
         attr_accessor :post_startup_script
       
+        # Output only. Bool indicating whether an newer image is available in an image
+        # family.
+        # Corresponds to the JSON property `upgradeable`
+        # @return [Boolean]
+        attr_accessor :upgradeable
+        alias_method :upgradeable?, :upgradeable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2130,6 +2149,7 @@ module Google
           @kernels = args[:kernels] if args.key?(:kernels)
           @notebook_upgrade_schedule = args[:notebook_upgrade_schedule] if args.key?(:notebook_upgrade_schedule)
           @post_startup_script = args[:post_startup_script] if args.key?(:post_startup_script)
+          @upgradeable = args[:upgradeable] if args.key?(:upgradeable)
         end
       end
       
@@ -2924,6 +2944,17 @@ module Google
         # @return [String]
         attr_accessor :nic_type
       
+        # Optional. Reserved IP Range name is used for VPC Peering. The subnetwork
+        # allocation will use the range *name* if it's assigned. Example: managed-
+        # notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud
+        # compute addresses create $PEERING_RANGE_NAME_3 \ --global \ --prefix-length=24
+        # \ --description="Google Cloud Managed Notebooks Range 24 c" \ --network=$
+        # NETWORK \ --addresses=192.168.0.0 \ --purpose=VPC_PEERING Field value will be:
+        # `managed-notebooks-range-c`
+        # Corresponds to the JSON property `reservedIpRange`
+        # @return [String]
+        attr_accessor :reserved_ip_range
+      
         # A set of Shielded Instance options. Check [Images using supported Shielded VM
         # features](https://cloud.google.com/compute/docs/instances/modifying-shielded-
         # vm). Not all combinations are valid.
@@ -2971,6 +3002,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @network = args[:network] if args.key?(:network)
           @nic_type = args[:nic_type] if args.key?(:nic_type)
+          @reserved_ip_range = args[:reserved_ip_range] if args.key?(:reserved_ip_range)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @subnet = args[:subnet] if args.key?(:subnet)
           @tags = args[:tags] if args.key?(:tags)
