@@ -543,6 +543,7 @@ module Google
       class Event
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :details, as: 'details'
           property :report_time, as: 'reportTime'
           property :type, as: 'type'
         end
@@ -622,6 +623,7 @@ module Google
           property :container_image, as: 'containerImage', class: Google::Apis::NotebooksV1::ContainerImage, decorator: Google::Apis::NotebooksV1::ContainerImage::Representation
       
           property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
           property :custom_gpu_driver_path, as: 'customGpuDriverPath'
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'
@@ -946,6 +948,7 @@ module Google
       
           property :notebook_upgrade_schedule, as: 'notebookUpgradeSchedule'
           property :post_startup_script, as: 'postStartupScript'
+          property :upgradeable, as: 'upgradeable'
         end
       end
       
@@ -1173,6 +1176,7 @@ module Google
           hash :metadata, as: 'metadata'
           property :network, as: 'network'
           property :nic_type, as: 'nicType'
+          property :reserved_ip_range, as: 'reservedIpRange'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::NotebooksV1::RuntimeShieldedInstanceConfig, decorator: Google::Apis::NotebooksV1::RuntimeShieldedInstanceConfig::Representation
       
           property :subnet, as: 'subnet'
