@@ -2128,7 +2128,8 @@ module Google
         attr_accessor :hostname
       
         # Required. A list of leaf server certificates used to authenticate HTTPS
-        # connections to the EKM replica.
+        # connections to the EKM replica. Currently, a maximum of 10 Certificate is
+        # supported.
         # Corresponds to the JSON property `serverCertificates`
         # @return [Array<Google::Apis::CloudkmsV1::Certificate>]
         attr_accessor :server_certificates
