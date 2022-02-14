@@ -22,6 +22,66 @@ module Google
   module Apis
     module BaremetalsolutionV2
       
+      # Represents an 'access point' for the share.
+      class AllowedClient
+        include Google::Apis::Core::Hashable
+      
+        # Allow dev flag. Which controls whether to allow creation of devices.
+        # Corresponds to the JSON property `allowDev`
+        # @return [Boolean]
+        attr_accessor :allow_dev
+        alias_method :allow_dev?, :allow_dev
+      
+        # Allow the setuid flag.
+        # Corresponds to the JSON property `allowSuid`
+        # @return [Boolean]
+        attr_accessor :allow_suid
+        alias_method :allow_suid?, :allow_suid
+      
+        # The subnet of IP addresses permitted to access the share.
+        # Corresponds to the JSON property `allowedClientsCidr`
+        # @return [String]
+        attr_accessor :allowed_clients_cidr
+      
+        # Mount permissions.
+        # Corresponds to the JSON property `mountPermissions`
+        # @return [String]
+        attr_accessor :mount_permissions
+      
+        # The network the access point sits on.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Disable root squashing, which is a feature of NFS. Root squash is a special
+        # mapping of the remote superuser (root) identity when using identity
+        # authentication.
+        # Corresponds to the JSON property `noRootSquash`
+        # @return [Boolean]
+        attr_accessor :no_root_squash
+        alias_method :no_root_squash?, :no_root_squash
+      
+        # The IP address of the share on this network.
+        # Corresponds to the JSON property `shareIp`
+        # @return [String]
+        attr_accessor :share_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_dev = args[:allow_dev] if args.key?(:allow_dev)
+          @allow_suid = args[:allow_suid] if args.key?(:allow_suid)
+          @allowed_clients_cidr = args[:allowed_clients_cidr] if args.key?(:allowed_clients_cidr)
+          @mount_permissions = args[:mount_permissions] if args.key?(:mount_permissions)
+          @network = args[:network] if args.key?(:network)
+          @no_root_squash = args[:no_root_squash] if args.key?(:no_root_squash)
+          @share_ip = args[:share_ip] if args.key?(:share_ip)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -126,6 +186,135 @@ module Google
         end
       end
       
+      # Configuration parameters for a new instance.
+      class InstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # A network.
+        # Corresponds to the JSON property `clientNetwork`
+        # @return [Google::Apis::BaremetalsolutionV2::NetworkAddress]
+        attr_accessor :client_network
+      
+        # Whether the instance should be provisioned with Hyperthreading enabled.
+        # Corresponds to the JSON property `hyperthreading`
+        # @return [Boolean]
+        attr_accessor :hyperthreading
+        alias_method :hyperthreading?, :hyperthreading
+      
+        # A transient unique identifier to idenfity an instance within an
+        # ProvisioningConfig request.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-
+        # planning#server_configurations)
+        # Corresponds to the JSON property `instanceType`
+        # @return [String]
+        attr_accessor :instance_type
+      
+        # Output only. The name of the instance config.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # OS image to initialize the instance. [Available images](https://cloud.google.
+        # com/bare-metal/docs/bms-planning#server_configurations)
+        # Corresponds to the JSON property `osImage`
+        # @return [String]
+        attr_accessor :os_image
+      
+        # A network.
+        # Corresponds to the JSON property `privateNetwork`
+        # @return [Google::Apis::BaremetalsolutionV2::NetworkAddress]
+        attr_accessor :private_network
+      
+        # User note field, it can be used by customers to add additional information for
+        # the BMS Ops team .
+        # Corresponds to the JSON property `userNote`
+        # @return [String]
+        attr_accessor :user_note
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_network = args[:client_network] if args.key?(:client_network)
+          @hyperthreading = args[:hyperthreading] if args.key?(:hyperthreading)
+          @id = args[:id] if args.key?(:id)
+          @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @name = args[:name] if args.key?(:name)
+          @os_image = args[:os_image] if args.key?(:os_image)
+          @private_network = args[:private_network] if args.key?(:private_network)
+          @user_note = args[:user_note] if args.key?(:user_note)
+        end
+      end
+      
+      # A resource budget.
+      class InstanceQuota
+        include Google::Apis::Core::Hashable
+      
+        # Number of machines than can be created for the given location and
+        # instance_type.
+        # Corresponds to the JSON property `availableMachineCount`
+        # @return [Fixnum]
+        attr_accessor :available_machine_count
+      
+        # Instance type.
+        # Corresponds to the JSON property `instanceType`
+        # @return [String]
+        attr_accessor :instance_type
+      
+        # Location where the quota applies.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. The name of the instance quota.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @available_machine_count = args[:available_machine_count] if args.key?(:available_machine_count)
+          @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A GCP vlan attachment.
+      class IntakeVlanAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Identifier of the VLAN attachment.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Attachment pairing key.
+        # Corresponds to the JSON property `pairingKey`
+        # @return [String]
+        attr_accessor :pairing_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
+        end
+      end
+      
       # Response message for the list of servers.
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
@@ -213,6 +402,25 @@ module Google
         end
       end
       
+      # Response with Networks with IPs
+      class ListNetworkUsageResponse
+        include Google::Apis::Core::Hashable
+      
+        # Networks with IPs.
+        # Corresponds to the JSON property `networks`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::NetworkUsage>]
+        attr_accessor :networks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @networks = args[:networks] if args.key?(:networks)
+        end
+      end
+      
       # Response message containing the list of networks.
       class ListNetworksResponse
         include Google::Apis::Core::Hashable
@@ -241,6 +449,63 @@ module Google
           @networks = args[:networks] if args.key?(:networks)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message containing the list of NFS shares.
+      class ListNfsSharesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results from the server.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of NFS shares.
+        # Corresponds to the JSON property `nfsShares`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::NfsShare>]
+        attr_accessor :nfs_shares
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @nfs_shares = args[:nfs_shares] if args.key?(:nfs_shares)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for the list of provisioning quotas.
+      class ListProvisioningQuotasResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The provisioning quotas registered in this project.
+        # Corresponds to the JSON property `provisioningQuotas`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::ProvisioningQuota>]
+        attr_accessor :provisioning_quotas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @provisioning_quotas = args[:provisioning_quotas] if args.key?(:provisioning_quotas)
         end
       end
       
@@ -455,6 +720,31 @@ module Google
         end
       end
       
+      # A LUN(Logical Unit Number) range.
+      class LunRange
+        include Google::Apis::Core::Hashable
+      
+        # Number of LUNs to create.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The requested size of each LUN, in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+        end
+      end
+      
       # A Network.
       class Network
         include Google::Apis::Core::Hashable
@@ -537,6 +827,236 @@ module Google
         end
       end
       
+      # A network.
+      class NetworkAddress
+        include Google::Apis::Core::Hashable
+      
+        # IPv4 address to be assigned to the server.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Name of the existing network to use.
+        # Corresponds to the JSON property `existingNetworkId`
+        # @return [String]
+        attr_accessor :existing_network_id
+      
+        # Id of the network to use, within the same ProvisioningConfig request.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @existing_network_id = args[:existing_network_id] if args.key?(:existing_network_id)
+          @network_id = args[:network_id] if args.key?(:network_id)
+        end
+      end
+      
+      # Configuration parameters for a new network.
+      class NetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Interconnect bandwidth. Set only when type is CLIENT.
+        # Corresponds to the JSON property `bandwidth`
+        # @return [String]
+        attr_accessor :bandwidth
+      
+        # CIDR range of the network.
+        # Corresponds to the JSON property `cidr`
+        # @return [String]
+        attr_accessor :cidr
+      
+        # A transient unique identifier to identify a volume within an
+        # ProvisioningConfig request.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The name of the network config.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Service CIDR, if any.
+        # Corresponds to the JSON property `serviceCidr`
+        # @return [String]
+        attr_accessor :service_cidr
+      
+        # The type of this network, either Client or Private.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # User note field, it can be used by customers to add additional information for
+        # the BMS Ops team (b/194021617).
+        # Corresponds to the JSON property `userNote`
+        # @return [String]
+        attr_accessor :user_note
+      
+        # List of VLAN attachments. As of now there are always 2 attachments, but it is
+        # going to change in the future (multi vlan).
+        # Corresponds to the JSON property `vlanAttachments`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::IntakeVlanAttachment>]
+        attr_accessor :vlan_attachments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
+          @cidr = args[:cidr] if args.key?(:cidr)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @service_cidr = args[:service_cidr] if args.key?(:service_cidr)
+          @type = args[:type] if args.key?(:type)
+          @user_note = args[:user_note] if args.key?(:user_note)
+          @vlan_attachments = args[:vlan_attachments] if args.key?(:vlan_attachments)
+        end
+      end
+      
+      # Network with all used IP addresses.
+      class NetworkUsage
+        include Google::Apis::Core::Hashable
+      
+        # A Network.
+        # Corresponds to the JSON property `network`
+        # @return [Google::Apis::BaremetalsolutionV2::Network]
+        attr_accessor :network
+      
+        # All used IP addresses in this network.
+        # Corresponds to the JSON property `usedIps`
+        # @return [Array<String>]
+        attr_accessor :used_ips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @used_ips = args[:used_ips] if args.key?(:used_ips)
+        end
+      end
+      
+      # A NFS export entry.
+      class NfsExport
+        include Google::Apis::Core::Hashable
+      
+        # Allow dev flag in NfsShare AllowedClientsRequest.
+        # Corresponds to the JSON property `allowDev`
+        # @return [Boolean]
+        attr_accessor :allow_dev
+        alias_method :allow_dev?, :allow_dev
+      
+        # Allow the setuid flag.
+        # Corresponds to the JSON property `allowSuid`
+        # @return [Boolean]
+        attr_accessor :allow_suid
+        alias_method :allow_suid?, :allow_suid
+      
+        # A CIDR range.
+        # Corresponds to the JSON property `cidr`
+        # @return [String]
+        attr_accessor :cidr
+      
+        # Either a single machine, identified by an ID, or a comma-separated list of
+        # machine IDs.
+        # Corresponds to the JSON property `machineId`
+        # @return [String]
+        attr_accessor :machine_id
+      
+        # Network to use to publish the export.
+        # Corresponds to the JSON property `networkId`
+        # @return [String]
+        attr_accessor :network_id
+      
+        # Disable root squashing, which is a feature of NFS. Root squash is a special
+        # mapping of the remote superuser (root) identity when using identity
+        # authentication.
+        # Corresponds to the JSON property `noRootSquash`
+        # @return [Boolean]
+        attr_accessor :no_root_squash
+        alias_method :no_root_squash?, :no_root_squash
+      
+        # Export permissions.
+        # Corresponds to the JSON property `permissions`
+        # @return [String]
+        attr_accessor :permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_dev = args[:allow_dev] if args.key?(:allow_dev)
+          @allow_suid = args[:allow_suid] if args.key?(:allow_suid)
+          @cidr = args[:cidr] if args.key?(:cidr)
+          @machine_id = args[:machine_id] if args.key?(:machine_id)
+          @network_id = args[:network_id] if args.key?(:network_id)
+          @no_root_squash = args[:no_root_squash] if args.key?(:no_root_squash)
+          @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # An NFS share.
+      class NfsShare
+        include Google::Apis::Core::Hashable
+      
+        # List of allowed access points.
+        # Corresponds to the JSON property `allowedClients`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::AllowedClient>]
+        attr_accessor :allowed_clients
+      
+        # Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The name of the NFS share.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. An identifier for the NFS share, generated by the backend.
+        # Corresponds to the JSON property `nfsShareId`
+        # @return [String]
+        attr_accessor :nfs_share_id
+      
+        # The state of the NFS share.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The volume containing the share.
+        # Corresponds to the JSON property `volume`
+        # @return [String]
+        attr_accessor :volume
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_clients = args[:allowed_clients] if args.key?(:allowed_clients)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @nfs_share_id = args[:nfs_share_id] if args.key?(:nfs_share_id)
+          @state = args[:state] if args.key?(:state)
+          @volume = args[:volume] if args.key?(:volume)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -596,6 +1116,105 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # A provisioning configuration.
+      class ProvisioningConfig
+        include Google::Apis::Core::Hashable
+      
+        # A service account to enable customers to access instance credentials upon
+        # handover.
+        # Corresponds to the JSON property `handoverServiceAccount`
+        # @return [String]
+        attr_accessor :handover_service_account
+      
+        # Instances to be created.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::InstanceConfig>]
+        attr_accessor :instances
+      
+        # Output only. The name of the provisioning config.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Networks to be created.
+        # Corresponds to the JSON property `networks`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::NetworkConfig>]
+        attr_accessor :networks
+      
+        # A generated buganizer id to track provisioning request.
+        # Corresponds to the JSON property `ticketId`
+        # @return [String]
+        attr_accessor :ticket_id
+      
+        # Volumes to be created.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::VolumeConfig>]
+        attr_accessor :volumes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @handover_service_account = args[:handover_service_account] if args.key?(:handover_service_account)
+          @instances = args[:instances] if args.key?(:instances)
+          @name = args[:name] if args.key?(:name)
+          @networks = args[:networks] if args.key?(:networks)
+          @ticket_id = args[:ticket_id] if args.key?(:ticket_id)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
+      # A provisioning quota for a given project.
+      class ProvisioningQuota
+        include Google::Apis::Core::Hashable
+      
+        # The asset type of this provisioning quota.
+        # Corresponds to the JSON property `assetType`
+        # @return [String]
+        attr_accessor :asset_type
+      
+        # The available count of the provisioning quota.
+        # Corresponds to the JSON property `availableCount`
+        # @return [Fixnum]
+        attr_accessor :available_count
+      
+        # The gcp service of the provisioning quota.
+        # Corresponds to the JSON property `gcpService`
+        # @return [String]
+        attr_accessor :gcp_service
+      
+        # A resource budget.
+        # Corresponds to the JSON property `instanceQuota`
+        # @return [Google::Apis::BaremetalsolutionV2::InstanceQuota]
+        attr_accessor :instance_quota
+      
+        # The specific location of the provisioining quota.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. The name of the provisioning quota.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_type = args[:asset_type] if args.key?(:asset_type)
+          @available_count = args[:available_count] if args.key?(:available_count)
+          @gcp_service = args[:gcp_service] if args.key?(:gcp_service)
+          @instance_quota = args[:instance_quota] if args.key?(:instance_quota)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -739,6 +1358,11 @@ module Google
         # @return [Array<Google::Apis::BaremetalsolutionV2::Schedule>]
         attr_accessor :schedules
       
+        # The state of the snapshot schedule policy.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -750,6 +1374,20 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @schedules = args[:schedules] if args.key?(:schedules)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Message requesting to start a server.
+      class StartInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -789,6 +1427,50 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Request for SubmitProvisioningConfig.
+      class SubmitProvisioningConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Email provided to send a confirmation with provisioning config to.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # A provisioning configuration.
+        # Corresponds to the JSON property `provisioningConfig`
+        # @return [Google::Apis::BaremetalsolutionV2::ProvisioningConfig]
+        attr_accessor :provisioning_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @provisioning_config = args[:provisioning_config] if args.key?(:provisioning_config)
+        end
+      end
+      
+      # Response for SubmitProvisioningConfig.
+      class SubmitProvisioningConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # A provisioning configuration.
+        # Corresponds to the JSON property `provisioningConfig`
+        # @return [Google::Apis::BaremetalsolutionV2::ProvisioningConfig]
+        attr_accessor :provisioning_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @provisioning_config = args[:provisioning_config] if args.key?(:provisioning_config)
         end
       end
       
@@ -949,6 +1631,82 @@ module Google
           @snapshot_schedule_policy = args[:snapshot_schedule_policy] if args.key?(:snapshot_schedule_policy)
           @state = args[:state] if args.key?(:state)
           @storage_type = args[:storage_type] if args.key?(:storage_type)
+        end
+      end
+      
+      # Configuration parameters for a new volume.
+      class VolumeConfig
+        include Google::Apis::Core::Hashable
+      
+        # A transient unique identifier to identify a volume within an
+        # ProvisioningConfig request.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
+        # Corresponds to the JSON property `lunRanges`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::LunRange>]
+        attr_accessor :lun_ranges
+      
+        # Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
+        # Corresponds to the JSON property `machineIds`
+        # @return [Array<String>]
+        attr_accessor :machine_ids
+      
+        # Output only. The name of the volume config.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # NFS exports. Set only when protocol is PROTOCOL_NFS.
+        # Corresponds to the JSON property `nfsExports`
+        # @return [Array<Google::Apis::BaremetalsolutionV2::NfsExport>]
+        attr_accessor :nfs_exports
+      
+        # Volume protocol.
+        # Corresponds to the JSON property `protocol`
+        # @return [String]
+        attr_accessor :protocol
+      
+        # The requested size of this volume, in GB.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # Whether snapshots should be enabled.
+        # Corresponds to the JSON property `snapshotsEnabled`
+        # @return [Boolean]
+        attr_accessor :snapshots_enabled
+        alias_method :snapshots_enabled?, :snapshots_enabled
+      
+        # The type of this Volume.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # User note field, it can be used by customers to add additional information for
+        # the BMS Ops team (b/194021617).
+        # Corresponds to the JSON property `userNote`
+        # @return [String]
+        attr_accessor :user_note
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @lun_ranges = args[:lun_ranges] if args.key?(:lun_ranges)
+          @machine_ids = args[:machine_ids] if args.key?(:machine_ids)
+          @name = args[:name] if args.key?(:name)
+          @nfs_exports = args[:nfs_exports] if args.key?(:nfs_exports)
+          @protocol = args[:protocol] if args.key?(:protocol)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @snapshots_enabled = args[:snapshots_enabled] if args.key?(:snapshots_enabled)
+          @type = args[:type] if args.key?(:type)
+          @user_note = args[:user_note] if args.key?(:user_note)
         end
       end
       

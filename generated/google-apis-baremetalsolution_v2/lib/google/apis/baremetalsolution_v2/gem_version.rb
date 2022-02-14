@@ -16,13 +16,13 @@ module Google
   module Apis
     module BaremetalsolutionV2
       # Version of the google-apis-baremetalsolution_v2 gem
-      GEM_VERSION = "0.6.0"
+      GEM_VERSION = "0.7.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220119"
+      REVISION = "20220209"
     end
   end
 end
