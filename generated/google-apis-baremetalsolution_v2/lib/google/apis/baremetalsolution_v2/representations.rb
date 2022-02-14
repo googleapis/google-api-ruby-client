@@ -22,6 +22,12 @@ module Google
   module Apis
     module BaremetalsolutionV2
       
+      class AllowedClient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +35,24 @@ module Google
       end
       
       class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceQuota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntakeVlanAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -52,7 +76,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListNetworkUsageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListNetworksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListNfsSharesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListProvisioningQuotasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,13 +130,61 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LunRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Network
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NfsExport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NfsShare
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProvisioningConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProvisioningQuota
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,7 +226,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubmitProvisioningConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubmitProvisioningConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,10 +268,29 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VolumeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VolumeSnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AllowedClient
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_dev, as: 'allowDev'
+          property :allow_suid, as: 'allowSuid'
+          property :allowed_clients_cidr, as: 'allowedClientsCidr'
+          property :mount_permissions, as: 'mountPermissions'
+          property :network, as: 'network'
+          property :no_root_squash, as: 'noRootSquash'
+          property :share_ip, as: 'shareIp'
+        end
       end
       
       class Empty
@@ -188,6 +315,40 @@ module Google
       
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class InstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_network, as: 'clientNetwork', class: Google::Apis::BaremetalsolutionV2::NetworkAddress, decorator: Google::Apis::BaremetalsolutionV2::NetworkAddress::Representation
+      
+          property :hyperthreading, as: 'hyperthreading'
+          property :id, as: 'id'
+          property :instance_type, as: 'instanceType'
+          property :name, as: 'name'
+          property :os_image, as: 'osImage'
+          property :private_network, as: 'privateNetwork', class: Google::Apis::BaremetalsolutionV2::NetworkAddress, decorator: Google::Apis::BaremetalsolutionV2::NetworkAddress::Representation
+      
+          property :user_note, as: 'userNote'
+        end
+      end
+      
+      class InstanceQuota
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_machine_count, as: 'availableMachineCount'
+          property :instance_type, as: 'instanceType'
+          property :location, as: 'location'
+          property :name, as: 'name'
+        end
+      end
+      
+      class IntakeVlanAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :pairing_key, as: 'pairingKey'
         end
       end
       
@@ -220,6 +381,14 @@ module Google
         end
       end
       
+      class ListNetworkUsageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::NetworkUsage, decorator: Google::Apis::BaremetalsolutionV2::NetworkUsage::Representation
+      
+        end
+      end
+      
       class ListNetworksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -227,6 +396,25 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListNfsSharesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :nfs_shares, as: 'nfsShares', class: Google::Apis::BaremetalsolutionV2::NfsShare, decorator: Google::Apis::BaremetalsolutionV2::NfsShare::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListProvisioningQuotasResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :provisioning_quotas, as: 'provisioningQuotas', class: Google::Apis::BaremetalsolutionV2::ProvisioningQuota, decorator: Google::Apis::BaremetalsolutionV2::ProvisioningQuota::Representation
+      
         end
       end
       
@@ -286,6 +474,14 @@ module Google
         end
       end
       
+      class LunRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :quantity, as: 'quantity'
+          property :size_gb, as: 'sizeGb'
+        end
+      end
+      
       class Network
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -304,6 +500,65 @@ module Google
         end
       end
       
+      class NetworkAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :existing_network_id, as: 'existingNetworkId'
+          property :network_id, as: 'networkId'
+        end
+      end
+      
+      class NetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bandwidth, as: 'bandwidth'
+          property :cidr, as: 'cidr'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :service_cidr, as: 'serviceCidr'
+          property :type, as: 'type'
+          property :user_note, as: 'userNote'
+          collection :vlan_attachments, as: 'vlanAttachments', class: Google::Apis::BaremetalsolutionV2::IntakeVlanAttachment, decorator: Google::Apis::BaremetalsolutionV2::IntakeVlanAttachment::Representation
+      
+        end
+      end
+      
+      class NetworkUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network', class: Google::Apis::BaremetalsolutionV2::Network, decorator: Google::Apis::BaremetalsolutionV2::Network::Representation
+      
+          collection :used_ips, as: 'usedIps'
+        end
+      end
+      
+      class NfsExport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_dev, as: 'allowDev'
+          property :allow_suid, as: 'allowSuid'
+          property :cidr, as: 'cidr'
+          property :machine_id, as: 'machineId'
+          property :network_id, as: 'networkId'
+          property :no_root_squash, as: 'noRootSquash'
+          property :permissions, as: 'permissions'
+        end
+      end
+      
+      class NfsShare
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_clients, as: 'allowedClients', class: Google::Apis::BaremetalsolutionV2::AllowedClient, decorator: Google::Apis::BaremetalsolutionV2::AllowedClient::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :nfs_share_id, as: 'nfsShareId'
+          property :state, as: 'state'
+          property :volume, as: 'volume'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -313,6 +568,34 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class ProvisioningConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :handover_service_account, as: 'handoverServiceAccount'
+          collection :instances, as: 'instances', class: Google::Apis::BaremetalsolutionV2::InstanceConfig, decorator: Google::Apis::BaremetalsolutionV2::InstanceConfig::Representation
+      
+          property :name, as: 'name'
+          collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::NetworkConfig, decorator: Google::Apis::BaremetalsolutionV2::NetworkConfig::Representation
+      
+          property :ticket_id, as: 'ticketId'
+          collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::VolumeConfig, decorator: Google::Apis::BaremetalsolutionV2::VolumeConfig::Representation
+      
+        end
+      end
+      
+      class ProvisioningQuota
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_type, as: 'assetType'
+          property :available_count, as: 'availableCount'
+          property :gcp_service, as: 'gcpService'
+          property :instance_quota, as: 'instanceQuota', class: Google::Apis::BaremetalsolutionV2::InstanceQuota, decorator: Google::Apis::BaremetalsolutionV2::InstanceQuota::Representation
+      
+          property :location, as: 'location'
+          property :name, as: 'name'
         end
       end
       
@@ -362,6 +645,13 @@ module Google
           property :name, as: 'name'
           collection :schedules, as: 'schedules', class: Google::Apis::BaremetalsolutionV2::Schedule, decorator: Google::Apis::BaremetalsolutionV2::Schedule::Representation
       
+          property :state, as: 'state'
+        end
+      end
+      
+      class StartInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -371,6 +661,23 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class SubmitProvisioningConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :provisioning_config, as: 'provisioningConfig', class: Google::Apis::BaremetalsolutionV2::ProvisioningConfig, decorator: Google::Apis::BaremetalsolutionV2::ProvisioningConfig::Representation
+      
+        end
+      end
+      
+      class SubmitProvisioningConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :provisioning_config, as: 'provisioningConfig', class: Google::Apis::BaremetalsolutionV2::ProvisioningConfig, decorator: Google::Apis::BaremetalsolutionV2::ProvisioningConfig::Representation
+      
         end
       end
       
@@ -411,6 +718,24 @@ module Google
           property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy'
           property :state, as: 'state'
           property :storage_type, as: 'storageType'
+        end
+      end
+      
+      class VolumeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :lun_ranges, as: 'lunRanges', class: Google::Apis::BaremetalsolutionV2::LunRange, decorator: Google::Apis::BaremetalsolutionV2::LunRange::Representation
+      
+          collection :machine_ids, as: 'machineIds'
+          property :name, as: 'name'
+          collection :nfs_exports, as: 'nfsExports', class: Google::Apis::BaremetalsolutionV2::NfsExport, decorator: Google::Apis::BaremetalsolutionV2::NfsExport::Representation
+      
+          property :protocol, as: 'protocol'
+          property :size_gb, as: 'sizeGb'
+          property :snapshots_enabled, as: 'snapshotsEnabled'
+          property :type, as: 'type'
+          property :user_note, as: 'userNote'
         end
       end
       
