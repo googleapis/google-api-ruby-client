@@ -1390,11 +1390,13 @@ module Google
       class GoogleCloudApigeeV1ApiProxy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_proxy_type, as: 'apiProxyType'
           hash :labels, as: 'labels'
           property :latest_revision_id, as: 'latestRevisionId'
           property :meta_data, as: 'metaData', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EntityMetadata, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EntityMetadata::Representation
       
           property :name, as: 'name'
+          property :read_only, as: 'readOnly'
           collection :revision, as: 'revision'
         end
       end
@@ -1402,6 +1404,7 @@ module Google
       class GoogleCloudApigeeV1ApiProxyRevision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive, as: 'archive'
           collection :basepaths, as: 'basepaths'
           property :configuration_version, as: 'configurationVersion', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConfigVersion, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ConfigVersion::Representation
       
