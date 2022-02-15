@@ -2971,7 +2971,8 @@ module Google
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperAppKey] google_cloud_apigee_v1_developer_app_key_object
         # @param [String] action
         #   Approve or revoke the consumer key by setting this value to `approve` or `
-        #   revoke`, respectively.
+        #   revoke`, respectively. The `Content-Type` header must be set to `application/
+        #   octet-stream`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
