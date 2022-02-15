@@ -50,7 +50,9 @@ module Google
         end
         
         # Creates a course. The user specified in `ownerId` is the owner of the created
-        # course and added as a teacher. This method returns the following error codes: *
+        # course and added as a teacher. A non-admin requesting user can only create a
+        # course with themselves as the owner. Domain admins can create courses owned by
+        # any user within their domain. This method returns the following error codes: *
         # `PERMISSION_DENIED` if the requesting user is not permitted to create courses
         # or for access errors. * `NOT_FOUND` if the primary teacher is not a valid user.
         # * `FAILED_PRECONDITION` if the course owner's account is disabled or for the
@@ -1746,11 +1748,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a teacher of a course. This method returns the following error codes: *
-        # `PERMISSION_DENIED` if the requesting user is not permitted to create
-        # teachers in this course or for access errors. * `NOT_FOUND` if the requested
-        # course ID does not exist. * `FAILED_PRECONDITION` if the requested user's
-        # account is disabled, for the following request errors: *
+        # Creates a teacher of a course. Domain administrators are permitted to [
+        # directly add](https://developers.google.com/classroom/guides/manage-users)
+        # users within their domain as teachers to courses within their domain. Non-
+        # admin users should send an Invitation instead. This method returns the
+        # following error codes: * `PERMISSION_DENIED` if the requesting user is not
+        # permitted to create teachers in this course or for access errors. * `NOT_FOUND`
+        # if the requested course ID does not exist. * `FAILED_PRECONDITION` if the
+        # requested user's account is disabled, for the following request errors: *
         # CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached *
         # UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if the user is already a
         # teacher or student in the course.
