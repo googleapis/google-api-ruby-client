@@ -548,6 +548,83 @@ module Google
         end
       end
       
+      # The metadata proto of ResyncDataset method.
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        # Returns the newly added document Cloud Storage prefix if the documents are
+        # founded in Cloud Storage while not in Document Service storage.
+        # Corresponds to the JSON property `newlyAddedDocuments`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument>]
+        attr_accessor :newly_added_documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+          @newly_added_documents = args[:newly_added_documents] if args.key?(:newly_added_documents)
+        end
+      end
+      
+      # The proto for updated document in resync pipeline.
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument
+        include Google::Apis::Core::Hashable
+      
+        # The prefix of cloud storage, identifies the destination document which should
+        # be updated by resync pipeline.
+        # Corresponds to the JSON property `destinationPrefix`
+        # @return [String]
+        attr_accessor :destination_prefix
+      
+        # The prefix of cloud storage, identifies the original document which should be
+        # updated by resync pipeline.
+        # Corresponds to the JSON property `sourcePrefix`
+        # @return [String]
+        attr_accessor :source_prefix
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_prefix = args[:destination_prefix] if args.key?(:destination_prefix)
+          @source_prefix = args[:source_prefix] if args.key?(:source_prefix)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The response proto of ResyncDataset method.
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The revision reference specifies which revision on the document to read.
       class GoogleCloudDocumentaiUiv1beta3RevisionReference
         include Google::Apis::Core::Hashable
@@ -1575,6 +1652,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance]
         attr_accessor :provenance
       
+        # A list of visually detected symbols on the page.
+        # Corresponds to the JSON property `symbols`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageSymbol>]
+        attr_accessor :symbols
+      
         # A list of visually detected tables on the page.
         # Corresponds to the JSON property `tables`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageTable>]
@@ -1613,6 +1695,7 @@ module Google
           @page_number = args[:page_number] if args.key?(:page_number)
           @paragraphs = args[:paragraphs] if args.key?(:paragraphs)
           @provenance = args[:provenance] if args.key?(:provenance)
+          @symbols = args[:symbols] if args.key?(:symbols)
           @tables = args[:tables] if args.key?(:tables)
           @tokens = args[:tokens] if args.key?(:tokens)
           @transforms = args[:transforms] if args.key?(:transforms)
@@ -1730,7 +1813,7 @@ module Google
         attr_accessor :confidence
       
         # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
-        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -2026,6 +2109,31 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @layout = args[:layout] if args.key?(:layout)
           @provenance = args[:provenance] if args.key?(:provenance)
+        end
+      end
+      
+      # A detected symbol.
+      class GoogleCloudDocumentaiV1DocumentPageSymbol
+        include Google::Apis::Core::Hashable
+      
+        # A list of detected languages together with confidence.
+        # Corresponds to the JSON property `detectedLanguages`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>]
+        attr_accessor :detected_languages
+      
+        # Visual element describing a layout unit on a page.
+        # Corresponds to the JSON property `layout`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout]
+        attr_accessor :layout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
+          @layout = args[:layout] if args.key?(:layout)
         end
       end
       
@@ -2577,7 +2685,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains the content of the text span so that users do not have to look it up
-        # in the text_segments.
+        # in the text_segments. It is always populated for formFields.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -3854,6 +3962,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance]
         attr_accessor :provenance
       
+        # A list of visually detected symbols on the page.
+        # Corresponds to the JSON property `symbols`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageSymbol>]
+        attr_accessor :symbols
+      
         # A list of visually detected tables on the page.
         # Corresponds to the JSON property `tables`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageTable>]
@@ -3892,6 +4005,7 @@ module Google
           @page_number = args[:page_number] if args.key?(:page_number)
           @paragraphs = args[:paragraphs] if args.key?(:paragraphs)
           @provenance = args[:provenance] if args.key?(:provenance)
+          @symbols = args[:symbols] if args.key?(:symbols)
           @tables = args[:tables] if args.key?(:tables)
           @tokens = args[:tokens] if args.key?(:tokens)
           @transforms = args[:transforms] if args.key?(:transforms)
@@ -4009,7 +4123,7 @@ module Google
         attr_accessor :confidence
       
         # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
-        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -4305,6 +4419,31 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @layout = args[:layout] if args.key?(:layout)
           @provenance = args[:provenance] if args.key?(:provenance)
+        end
+      end
+      
+      # A detected symbol.
+      class GoogleCloudDocumentaiV1beta1DocumentPageSymbol
+        include Google::Apis::Core::Hashable
+      
+        # A list of detected languages together with confidence.
+        # Corresponds to the JSON property `detectedLanguages`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>]
+        attr_accessor :detected_languages
+      
+        # Visual element describing a layout unit on a page.
+        # Corresponds to the JSON property `layout`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout]
+        attr_accessor :layout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
+          @layout = args[:layout] if args.key?(:layout)
         end
       end
       
@@ -4856,7 +4995,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains the content of the text span so that users do not have to look it up
-        # in the text_segments.
+        # in the text_segments. It is always populated for formFields.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -5618,6 +5757,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance]
         attr_accessor :provenance
       
+        # A list of visually detected symbols on the page.
+        # Corresponds to the JSON property `symbols`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageSymbol>]
+        attr_accessor :symbols
+      
         # A list of visually detected tables on the page.
         # Corresponds to the JSON property `tables`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageTable>]
@@ -5656,6 +5800,7 @@ module Google
           @page_number = args[:page_number] if args.key?(:page_number)
           @paragraphs = args[:paragraphs] if args.key?(:paragraphs)
           @provenance = args[:provenance] if args.key?(:provenance)
+          @symbols = args[:symbols] if args.key?(:symbols)
           @tables = args[:tables] if args.key?(:tables)
           @tokens = args[:tokens] if args.key?(:tokens)
           @transforms = args[:transforms] if args.key?(:transforms)
@@ -5773,7 +5918,7 @@ module Google
         attr_accessor :confidence
       
         # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
-        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -6069,6 +6214,31 @@ module Google
           @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
           @layout = args[:layout] if args.key?(:layout)
           @provenance = args[:provenance] if args.key?(:provenance)
+        end
+      end
+      
+      # A detected symbol.
+      class GoogleCloudDocumentaiV1beta2DocumentPageSymbol
+        include Google::Apis::Core::Hashable
+      
+        # A list of detected languages together with confidence.
+        # Corresponds to the JSON property `detectedLanguages`
+        # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>]
+        attr_accessor :detected_languages
+      
+        # Visual element describing a layout unit on a page.
+        # Corresponds to the JSON property `layout`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout]
+        attr_accessor :layout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_languages = args[:detected_languages] if args.key?(:detected_languages)
+          @layout = args[:layout] if args.key?(:layout)
         end
       end
       
@@ -6620,7 +6790,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains the content of the text span so that users do not have to look it up
-        # in the text_segments.
+        # in the text_segments. It is always populated for formFields.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content

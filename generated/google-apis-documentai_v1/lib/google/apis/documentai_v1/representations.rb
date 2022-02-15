@@ -172,6 +172,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3RevisionReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +449,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1DocumentPageParagraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentPageSymbol
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -820,6 +844,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta1DocumentPageSymbol
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta1DocumentPageTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1073,6 +1103,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta2DocumentPageParagraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageSymbol
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1608,6 +1644,32 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+          collection :newly_added_documents, as: 'newlyAddedDocuments', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadataUpdatedDocument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_prefix, as: 'destinationPrefix'
+          property :source_prefix, as: 'sourcePrefix'
+          property :status, as: 'status', class: Google::Apis::DocumentaiV1::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ResyncDatasetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3RevisionReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1940,6 +2002,8 @@ module Google
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance::Representation
       
+          collection :symbols, as: 'symbols', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageSymbol, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageSymbol::Representation
+      
           collection :tables, as: 'tables', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageTable, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageTable::Representation
       
           collection :tokens, as: 'tokens', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageToken, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageToken::Representation
@@ -2071,6 +2135,16 @@ module Google
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout::Representation
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentPageSymbol
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :detected_languages, as: 'detectedLanguages', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDetectedLanguage, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageDetectedLanguage::Representation
+      
+          property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageLayout::Representation
       
         end
       end
@@ -2613,6 +2687,8 @@ module Google
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance::Representation
       
+          collection :symbols, as: 'symbols', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageSymbol, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageSymbol::Representation
+      
           collection :tables, as: 'tables', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageTable, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageTable::Representation
       
           collection :tokens, as: 'tokens', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageToken, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageToken::Representation
@@ -2744,6 +2820,16 @@ module Google
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout::Representation
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentProvenance::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta1DocumentPageSymbol
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :detected_languages, as: 'detectedLanguages', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage::Representation
+      
+          property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPageLayout::Representation
       
         end
       end
@@ -3112,6 +3198,8 @@ module Google
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance::Representation
       
+          collection :symbols, as: 'symbols', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageSymbol, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageSymbol::Representation
+      
           collection :tables, as: 'tables', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageTable, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageTable::Representation
       
           collection :tokens, as: 'tokens', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageToken, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageToken::Representation
@@ -3243,6 +3331,16 @@ module Google
           property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout::Representation
       
           property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentProvenance::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentPageSymbol
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :detected_languages, as: 'detectedLanguages', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage::Representation
+      
+          property :layout, as: 'layout', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPageLayout::Representation
       
         end
       end
