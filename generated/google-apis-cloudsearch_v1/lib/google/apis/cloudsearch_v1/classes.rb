@@ -53,6 +53,41 @@ module Google
         end
       end
       
+      # Identifier of an App.
+      class AppId
+        include Google::Apis::Core::Hashable
+      
+        # Enum indicating the type of App this is.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
+        # Enum indicating which 1P App this is when app_type is GSUITE_APP. Determined &
+        # set by the 1P API as a convenience for all users of this identifier(Eg.
+        # clients, chime, backend etc.) to map to 1P properties.
+        # Corresponds to the JSON property `gsuiteAppType`
+        # @return [String]
+        attr_accessor :gsuite_app_type
+      
+        # Numeric identifier of the App. Set to Project number for 1/3P Apps. For
+        # Webhook, this is WebhookId. Determined & set by the 1P API from App
+        # credentials on the side channel.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_type = args[:app_type] if args.key?(:app_type)
+          @gsuite_app_type = args[:gsuite_app_type] if args.key?(:gsuite_app_type)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # Represents the settings for Cloud audit logging
       class AuditLoggingSettings
         include Google::Apis::Core::Hashable
@@ -95,6 +130,25 @@ module Google
           @log_data_read_actions = args[:log_data_read_actions] if args.key?(:log_data_read_actions)
           @log_data_write_actions = args[:log_data_write_actions] if args.key?(:log_data_write_actions)
           @project = args[:project] if args.key?(:project)
+        end
+      end
+      
+      # 
+      class AvatarInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `emoji`
+        # @return [Google::Apis::CloudsearchV1::Emoji]
+        attr_accessor :emoji
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @emoji = args[:emoji] if args.key?(:emoji)
         end
       end
       
@@ -220,6 +274,105 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Proto representation of a custom emoji. May be used in both APIs and in
+      # Spanner, but certain fields should be restricted to one or the other. See the
+      # per-field documentation for details. NEXT_TAG: 11
+      class CustomEmoji
+        include Google::Apis::Core::Hashable
+      
+        # ID for the underlying image data in Blobstore. This field should *only* be
+        # present in Spanner or within the server, but should not be exposed in public
+        # APIs.
+        # Corresponds to the JSON property `blobId`
+        # @return [String]
+        attr_accessor :blob_id
+      
+        # Time when the Emoji was created, in microseconds. This field may be present in
+        # Spanner, within the server, or in public APIs.
+        # Corresponds to the JSON property `createTimeMicros`
+        # @return [Fixnum]
+        attr_accessor :create_time_micros
+      
+        # Primary key for User resource.
+        # Corresponds to the JSON property `creatorUserId`
+        # @return [Google::Apis::CloudsearchV1::UserId]
+        attr_accessor :creator_user_id
+      
+        # Represents a GSuite customer ID. Obfuscated with CustomerIdObfuscator.
+        # Corresponds to the JSON property `ownerCustomerId`
+        # @return [Google::Apis::CloudsearchV1::CustomerId]
+        attr_accessor :owner_customer_id
+      
+        # Opaque token that clients use to construct the URL for accessing the custom
+        # emoji’s image data. This field is intended for API consumption, and should *
+        # never* be persisted to Spanner.
+        # Corresponds to the JSON property `readToken`
+        # @return [String]
+        attr_accessor :read_token
+      
+        # User-provided, human-readable ID for the custom emoji. Users are expected to
+        # observe this field in the UI instead of the UUID. This shortcode should be
+        # unique within an organization, but has no global uniqueness guarantees, unlike
+        # the UUID. This field should *never* be persisted to Spanner.
+        # Corresponds to the JSON property `shortcode`
+        # @return [String]
+        attr_accessor :shortcode
+      
+        # Snapshot of the current state of the emoji, which may differ from the source-
+        # of-truth in the CustomEmojis table. This field should *never* be persisted to
+        # Spanner.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # 
+        # Corresponds to the JSON property `updateTimeMicros`
+        # @return [Fixnum]
+        attr_accessor :update_time_micros
+      
+        # Unique key for a custom emoji resource. Required. This field is *always*
+        # populated.
+        # Corresponds to the JSON property `uuid`
+        # @return [String]
+        attr_accessor :uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @create_time_micros = args[:create_time_micros] if args.key?(:create_time_micros)
+          @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
+          @owner_customer_id = args[:owner_customer_id] if args.key?(:owner_customer_id)
+          @read_token = args[:read_token] if args.key?(:read_token)
+          @shortcode = args[:shortcode] if args.key?(:shortcode)
+          @state = args[:state] if args.key?(:state)
+          @update_time_micros = args[:update_time_micros] if args.key?(:update_time_micros)
+          @uuid = args[:uuid] if args.key?(:uuid)
+        end
+      end
+      
+      # Represents a GSuite customer ID. Obfuscated with CustomerIdObfuscator.
+      class CustomerId
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
         end
       end
       
@@ -755,6 +908,25 @@ module Google
         end
       end
       
+      # 
+      class DmId
+        include Google::Apis::Core::Hashable
+      
+        # Unique server assigned Id, per Direct Message Space.
+        # Corresponds to the JSON property `dmId`
+        # @return [String]
+        attr_accessor :dm_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dm_id = args[:dm_id] if args.key?(:dm_id)
+        end
+      end
+      
       # Used to provide a search operator for double properties. This is optional.
       # Search operators let users restrict the query to specific fields relevant to
       # the type of item being searched.
@@ -910,6 +1082,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @email_address = args[:email_address] if args.key?(:email_address)
+        end
+      end
+      
+      # 
+      class Emoji
+        include Google::Apis::Core::Hashable
+      
+        # Proto representation of a custom emoji. May be used in both APIs and in
+        # Spanner, but certain fields should be restricted to one or the other. See the
+        # per-field documentation for details. NEXT_TAG: 11
+        # Corresponds to the JSON property `customEmoji`
+        # @return [Google::Apis::CloudsearchV1::CustomEmoji]
+        attr_accessor :custom_emoji
+      
+        # A basic emoji represented by a unicode string.
+        # Corresponds to the JSON property `unicode`
+        # @return [String]
+        attr_accessor :unicode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_emoji = args[:custom_emoji] if args.key?(:custom_emoji)
+          @unicode = args[:unicode] if args.key?(:unicode)
         end
       end
       
@@ -1694,6 +1893,32 @@ module Google
           @encrypted_id = args[:encrypted_id] if args.key?(:encrypted_id)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @share_scope = args[:share_scope] if args.key?(:share_scope)
+        end
+      end
+      
+      # Id representing a group that could be a space, a chat, or a direct message
+      # space. Which ID is set here will determine which group
+      class GroupId
+        include Google::Apis::Core::Hashable
+      
+        # Unique, immutable ID of the Direct Message Space
+        # Corresponds to the JSON property `dmId`
+        # @return [Google::Apis::CloudsearchV1::DmId]
+        attr_accessor :dm_id
+      
+        # Primary key for Space resource.
+        # Corresponds to the JSON property `spaceId`
+        # @return [Google::Apis::CloudsearchV1::SpaceId]
+        attr_accessor :space_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dm_id = args[:dm_id] if args.key?(:dm_id)
+          @space_id = args[:space_id] if args.key?(:space_id)
         end
       end
       
@@ -4500,8 +4725,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # The raw query string. See supported search operators in the [Cloud search
-        # Cheat Sheet](https://support.google.com/a/users/answer/9299929)
+        # The raw query string. See supported search operators in the [Narrow your
+        # search with operators](https://support.google.com/cloudsearch/answer/6172299)
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -4907,6 +5132,75 @@ module Google
         # Update properties of this object
         def update!(**args)
           @source_importance = args[:source_importance] if args.key?(:source_importance)
+        end
+      end
+      
+      # Primary key for Space resource.
+      class SpaceId
+        include Google::Apis::Core::Hashable
+      
+        # Unique, immutable ID of the Space
+        # Corresponds to the JSON property `spaceId`
+        # @return [String]
+        attr_accessor :space_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space_id = args[:space_id] if args.key?(:space_id)
+        end
+      end
+      
+      # Defines the representation of a single matching space.
+      class SpaceInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `avatarInfo`
+        # @return [Google::Apis::CloudsearchV1::AvatarInfo]
+        attr_accessor :avatar_info
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Id representing a group that could be a space, a chat, or a direct message
+        # space. Which ID is set here will determine which group
+        # Corresponds to the JSON property `groupId`
+        # @return [Google::Apis::CloudsearchV1::GroupId]
+        attr_accessor :group_id
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `numMembers`
+        # @return [Fixnum]
+        attr_accessor :num_members
+      
+        # searching user's membership state in this space
+        # Corresponds to the JSON property `userMembershipState`
+        # @return [String]
+        attr_accessor :user_membership_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avatar_info = args[:avatar_info] if args.key?(:avatar_info)
+          @description = args[:description] if args.key?(:description)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @name = args[:name] if args.key?(:name)
+          @num_members = args[:num_members] if args.key?(:num_members)
+          @user_membership_state = args[:user_membership_state] if args.key?(:user_membership_state)
         end
       end
       
@@ -5458,6 +5752,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Primary key for User resource.
+      class UserId
+        include Google::Apis::Core::Hashable
+      
+        # Opaque, server-assigned ID of the User.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifier of an App.
+        # Corresponds to the JSON property `originAppId`
+        # @return [Google::Apis::CloudsearchV1::AppId]
+        attr_accessor :origin_app_id
+      
+        # Clients do not need to send UserType to Backend, but Backend will always send
+        # this field to clients per the following rule: 1. For HUMAN Ids, the field is
+        # empty but by default .getType() will return HUMAN. 2. For BOT Ids, the field
+        # is ALWAYS set to BOT.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @origin_app_id = args[:origin_app_id] if args.key?(:origin_app_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
