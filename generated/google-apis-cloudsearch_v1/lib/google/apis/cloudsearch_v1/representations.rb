@@ -28,7 +28,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditLoggingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvatarInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -59,6 +71,18 @@ module Google
       end
       
       class ContextAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomEmoji
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DmId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DoubleOperatorOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +233,12 @@ module Google
       end
       
       class EmailAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Emoji
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -353,6 +389,12 @@ module Google
       end
       
       class GoogleDocsResultInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GroupId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -880,6 +922,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpaceId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpaceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpellResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1000,6 +1054,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpcSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1033,6 +1093,15 @@ module Google
         end
       end
       
+      class AppId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_type, as: 'appType'
+          property :gsuite_app_type, as: 'gsuiteAppType'
+          property :id, :numeric_string => true, as: 'id'
+        end
+      end
+      
       class AuditLoggingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1040,6 +1109,14 @@ module Google
           property :log_data_read_actions, as: 'logDataReadActions'
           property :log_data_write_actions, as: 'logDataWriteActions'
           property :project, as: 'project'
+        end
+      end
+      
+      class AvatarInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :emoji, as: 'emoji', class: Google::Apis::CloudsearchV1::Emoji, decorator: Google::Apis::CloudsearchV1::Emoji::Representation
+      
         end
       end
       
@@ -1079,6 +1156,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           collection :values, as: 'values'
+        end
+      end
+      
+      class CustomEmoji
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_id, as: 'blobId'
+          property :create_time_micros, :numeric_string => true, as: 'createTimeMicros'
+          property :creator_user_id, as: 'creatorUserId', class: Google::Apis::CloudsearchV1::UserId, decorator: Google::Apis::CloudsearchV1::UserId::Representation
+      
+          property :owner_customer_id, as: 'ownerCustomerId', class: Google::Apis::CloudsearchV1::CustomerId, decorator: Google::Apis::CloudsearchV1::CustomerId::Representation
+      
+          property :read_token, as: 'readToken'
+          property :shortcode, as: 'shortcode'
+          property :state, as: 'state'
+          property :update_time_micros, :numeric_string => true, as: 'updateTimeMicros'
+          property :uuid, as: 'uuid'
+        end
+      end
+      
+      class CustomerId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_id, as: 'customerId'
         end
       end
       
@@ -1235,6 +1336,13 @@ module Google
         end
       end
       
+      class DmId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dm_id, as: 'dmId'
+        end
+      end
+      
       class DoubleOperatorOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1289,6 +1397,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email_address, as: 'emailAddress'
+        end
+      end
+      
+      class Emoji
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_emoji, as: 'customEmoji', class: Google::Apis::CloudsearchV1::CustomEmoji, decorator: Google::Apis::CloudsearchV1::CustomEmoji::Representation
+      
+          property :unicode, as: 'unicode'
         end
       end
       
@@ -1519,6 +1636,16 @@ module Google
           property :encrypted_id, as: 'encryptedId'
           property :mime_type, as: 'mimeType'
           property :share_scope, as: 'shareScope', class: Google::Apis::CloudsearchV1::ShareScope, decorator: Google::Apis::CloudsearchV1::ShareScope::Representation
+      
+        end
+      end
+      
+      class GroupId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dm_id, as: 'dmId', class: Google::Apis::CloudsearchV1::DmId, decorator: Google::Apis::CloudsearchV1::DmId::Representation
+      
+          property :space_id, as: 'spaceId', class: Google::Apis::CloudsearchV1::SpaceId, decorator: Google::Apis::CloudsearchV1::SpaceId::Representation
       
         end
       end
@@ -2449,6 +2576,27 @@ module Google
         end
       end
       
+      class SpaceId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space_id, as: 'spaceId'
+        end
+      end
+      
+      class SpaceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avatar_info, as: 'avatarInfo', class: Google::Apis::CloudsearchV1::AvatarInfo, decorator: Google::Apis::CloudsearchV1::AvatarInfo::Representation
+      
+          property :description, as: 'description'
+          property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
+      
+          property :name, as: 'name'
+          property :num_members, as: 'numMembers'
+          property :user_membership_state, as: 'userMembershipState'
+        end
+      end
+      
       class SpellResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2623,6 +2771,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class UserId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :origin_app_id, as: 'originAppId', class: Google::Apis::CloudsearchV1::AppId, decorator: Google::Apis::CloudsearchV1::AppId::Representation
+      
+          property :type, as: 'type'
         end
       end
       
