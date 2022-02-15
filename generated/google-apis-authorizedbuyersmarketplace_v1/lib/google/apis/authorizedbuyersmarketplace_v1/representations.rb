@@ -510,9 +510,12 @@ module Google
       class CreativeRequirements
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :creative_format, as: 'creativeFormat'
           property :creative_pre_approval_policy, as: 'creativePreApprovalPolicy'
           property :creative_safe_frame_compatibility, as: 'creativeSafeFrameCompatibility'
+          property :max_ad_duration_ms, :numeric_string => true, as: 'maxAdDurationMs'
           property :programmatic_creative_source, as: 'programmaticCreativeSource'
+          property :skippable_ad_type, as: 'skippableAdType'
         end
       end
       
