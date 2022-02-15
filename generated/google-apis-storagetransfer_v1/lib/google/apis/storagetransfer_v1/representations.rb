@@ -401,6 +401,7 @@ module Google
           property :storage_class, as: 'storageClass'
           property :symlink, as: 'symlink'
           property :temporary_hold, as: 'temporaryHold'
+          property :time_created, as: 'timeCreated'
           property :uid, as: 'uid'
         end
       end
