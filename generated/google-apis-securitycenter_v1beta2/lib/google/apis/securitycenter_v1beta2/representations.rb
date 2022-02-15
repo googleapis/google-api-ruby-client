@@ -261,6 +261,7 @@ module Google
           property :id, as: 'id'
           collection :references, as: 'references', class: Google::Apis::SecuritycenterV1beta2::Reference, decorator: Google::Apis::SecuritycenterV1beta2::Reference::Representation
       
+          property :upstream_fix_available, as: 'upstreamFixAvailable'
         end
       end
       

@@ -172,6 +172,12 @@ module Google
         # @return [Array<Google::Apis::SecuritycenterV1beta2::Reference>]
         attr_accessor :references
       
+        # Whether upstream fix is available for the CVE.
+        # Corresponds to the JSON property `upstreamFixAvailable`
+        # @return [Boolean]
+        attr_accessor :upstream_fix_available
+        alias_method :upstream_fix_available?, :upstream_fix_available
+      
         def initialize(**args)
            update!(**args)
         end
@@ -181,6 +187,7 @@ module Google
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @id = args[:id] if args.key?(:id)
           @references = args[:references] if args.key?(:references)
+          @upstream_fix_available = args[:upstream_fix_available] if args.key?(:upstream_fix_available)
         end
       end
       
