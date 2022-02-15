@@ -379,6 +379,12 @@ module Google
       class CreativeRequirements
         include Google::Apis::Core::Hashable
       
+        # Output only. The format of the creative, only applicable for programmatic
+        # guaranteed and preferred deals.
+        # Corresponds to the JSON property `creativeFormat`
+        # @return [String]
+        attr_accessor :creative_format
+      
         # Output only. Specifies the creative pre-approval policy.
         # Corresponds to the JSON property `creativePreApprovalPolicy`
         # @return [String]
@@ -389,6 +395,12 @@ module Google
         # @return [String]
         attr_accessor :creative_safe_frame_compatibility
       
+        # Output only. The max duration of the video creative in milliseconds. only
+        # applicable for deals with video creatives.
+        # Corresponds to the JSON property `maxAdDurationMs`
+        # @return [Fixnum]
+        attr_accessor :max_ad_duration_ms
+      
         # Output only. Specifies the creative source for programmatic deals. PUBLISHER
         # means creative is provided by seller and ADVERTISER means creative is provided
         # by the buyer.
@@ -396,15 +408,24 @@ module Google
         # @return [String]
         attr_accessor :programmatic_creative_source
       
+        # Output only. Skippable video ads allow viewers to skip ads after 5 seconds.
+        # Only applicable for deals with video creatives.
+        # Corresponds to the JSON property `skippableAdType`
+        # @return [String]
+        attr_accessor :skippable_ad_type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @creative_format = args[:creative_format] if args.key?(:creative_format)
           @creative_pre_approval_policy = args[:creative_pre_approval_policy] if args.key?(:creative_pre_approval_policy)
           @creative_safe_frame_compatibility = args[:creative_safe_frame_compatibility] if args.key?(:creative_safe_frame_compatibility)
+          @max_ad_duration_ms = args[:max_ad_duration_ms] if args.key?(:max_ad_duration_ms)
           @programmatic_creative_source = args[:programmatic_creative_source] if args.key?(:programmatic_creative_source)
+          @skippable_ad_type = args[:skippable_ad_type] if args.key?(:skippable_ad_type)
         end
       end
       
