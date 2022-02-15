@@ -357,7 +357,8 @@ module Google
         #   Optional. Only include resources that match the filter. Supported filter
         #   fields: - org_unit_id - serial_number
         # @param [Fixnum] page_size
-        #   Maximum number of results to return. Maximum and default are 100.
+        #   Maximum number of results to return. Default value is 100. Maximum value is
+        #   200.
         # @param [String] page_token
         #   Token to specify next page in the list.
         # @param [String] read_mask
