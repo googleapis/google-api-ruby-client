@@ -626,6 +626,13 @@ module Google
         # @return [String]
         attr_accessor :temporary_hold
       
+        # Specifies how each object's `timeCreated` metadata is preserved for transfers
+        # between Google Cloud Storage buckets. If unspecified, the default behavior is
+        # the same as TIME_CREATED_SKIP.
+        # Corresponds to the JSON property `timeCreated`
+        # @return [String]
+        attr_accessor :time_created
+      
         # Specifies how each file's POSIX user ID (UID) attribute should be handled by
         # the transfer. By default, UID is not preserved.
         # Corresponds to the JSON property `uid`
@@ -645,6 +652,7 @@ module Google
           @storage_class = args[:storage_class] if args.key?(:storage_class)
           @symlink = args[:symlink] if args.key?(:symlink)
           @temporary_hold = args[:temporary_hold] if args.key?(:temporary_hold)
+          @time_created = args[:time_created] if args.key?(:time_created)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
