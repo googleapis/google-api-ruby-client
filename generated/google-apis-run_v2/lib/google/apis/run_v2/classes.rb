@@ -861,7 +861,8 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # User-provided description of the Service.
+        # User-provided description of the Service. This field currently has a 512-
+        # character limit.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
