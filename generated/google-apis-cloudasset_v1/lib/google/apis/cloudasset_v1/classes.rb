@@ -449,6 +449,28 @@ module Google
         end
       end
       
+      # A response message for AssetService.BatchGetEffectiveIamPolicies.
+      class BatchGetEffectiveIamPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The effective policies for a batch of resources. Note that the results order
+        # is the same as the order of BatchGetEffectiveIamPoliciesRequest.names. When a
+        # resource does not have any effective IAM policies, its corresponding
+        # policy_result will contain empty EffectiveIamPolicy.policies.
+        # Corresponds to the JSON property `policyResults`
+        # @return [Array<Google::Apis::CloudassetV1::EffectiveIamPolicy>]
+        attr_accessor :policy_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_results = args[:policy_results] if args.key?(:policy_results)
+        end
+      end
+      
       # A BigQuery destination for exporting assets to.
       class BigQueryDestination
         include Google::Apis::Core::Hashable
@@ -698,6 +720,40 @@ module Google
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # The effective IAM policies on one resource.
+      class EffectiveIamPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The [full_resource_name] (https://cloud.google.com/asset-inventory/docs/
+        # resource-name-format) for which the policies are computed. This is one of the
+        # BatchGetEffectiveIamPoliciesRequest.names the caller provides in the request.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # The effective policies for the full_resource_name. These policies include the
+        # policy set on the full_resource_name and those set on its parents and
+        # ancestors up to the BatchGetEffectiveIamPoliciesRequest.scope. Note that these
+        # policies are not filtered according to the resource type of the
+        # full_resource_name. These policies are hierarchically ordered by PolicyInfo.
+        # attached_resource starting from full_resource_name itself to its parents and
+        # ancestors, such that policies[i]'s PolicyInfo.attached_resource is the child
+        # of policies[i+1]'s PolicyInfo.attached_resource, if policies[i+1] exists.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::CloudassetV1::PolicyInfo>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @policies = args[:policies] if args.key?(:policies)
         end
       end
       
@@ -3708,6 +3764,57 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The IAM policy and its attached resource.
+      class PolicyInfo
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name the policy is directly attached to.
+        # Corresponds to the JSON property `attachedResource`
+        # @return [String]
+        attr_accessor :attached_resource
+      
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members`, or principals, to a single `role`.
+        # Principals can be user accounts, service accounts, Google groups, and domains (
+        # such as G Suite). A `role` is a named list of permissions; each `role` can be
+        # an IAM predefined role or a user-created custom role. For some types of Google
+        # Cloud resources, a `binding` can also specify a `condition`, which is a
+        # logical expression that allows access to a resource only if the expression
+        # evaluates to `true`. A condition can add constraints based on attributes of
+        # the request, the resource, or both. To learn which resources support
+        # conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        # google.com/iam/help/conditions/resource-policies). **JSON example:** ` "
+        # bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members": [
+        # "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:**
+        # bindings: - members: - user:mike@example.com - group:admins@example.com -
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For
+        # a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::CloudassetV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attached_resource = args[:attached_resource] if args.key?(:attached_resource)
+          @policy = args[:policy] if args.key?(:policy)
         end
       end
       
