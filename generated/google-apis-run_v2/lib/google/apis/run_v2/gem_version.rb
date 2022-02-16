@@ -16,13 +16,13 @@ module Google
   module Apis
     module RunV2
       # Version of the google-apis-run_v2 gem
-      GEM_VERSION = "0.4.0"
+      GEM_VERSION = "0.5.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220128"
+      REVISION = "20220211"
     end
   end
 end
