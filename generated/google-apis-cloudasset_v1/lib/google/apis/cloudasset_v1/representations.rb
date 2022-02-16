@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchGetEffectiveIamPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EffectiveIamPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -514,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PubsubDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -775,6 +793,14 @@ module Google
         end
       end
       
+      class BatchGetEffectiveIamPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policy_results, as: 'policyResults', class: Google::Apis::CloudassetV1::EffectiveIamPolicy, decorator: Google::Apis::CloudassetV1::EffectiveIamPolicy::Representation
+      
+        end
+      end
+      
       class BigQueryDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -826,6 +852,15 @@ module Google
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class EffectiveIamPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+          collection :policies, as: 'policies', class: Google::Apis::CloudassetV1::PolicyInfo, decorator: Google::Apis::CloudassetV1::PolicyInfo::Representation
+      
         end
       end
       
@@ -1511,6 +1546,15 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PolicyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attached_resource, as: 'attachedResource'
+          property :policy, as: 'policy', class: Google::Apis::CloudassetV1::Policy, decorator: Google::Apis::CloudassetV1::Policy::Representation
+      
         end
       end
       

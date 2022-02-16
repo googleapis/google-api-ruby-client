@@ -131,6 +131,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets effective IAM policies for a batch of resources.
+        # @param [String] scope
+        #   Required. Only IAM policies on or below the scope will be returned. This can
+        #   only be an organization number (such as "organizations/123"), a folder number (
+        #   such as "folders/123"), a project ID (such as "projects/my-project-id"), or a
+        #   project number (such as "projects/12345"). To know how to get organization id,
+        #   visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        #   organization#retrieving_your_organization_id). To know how to get folder or
+        #   project id, visit [here ](https://cloud.google.com/resource-manager/docs/
+        #   creating-managing-folders#viewing_or_listing_folders_and_projects).
+        # @param [Array<String>, String] names
+        #   Required. The names refer to the [full_resource_names] (https://cloud.google.
+        #   com/asset-inventory/docs/resource-name-format) of [searchable asset types](
+        #   https://cloud.google.com/asset-inventory/docs/supported-asset-types#
+        #   searchable_asset_types). A maximum of 20 resources' effective policies can be
+        #   retrieved in a batch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::BatchGetEffectiveIamPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::BatchGetEffectiveIamPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_effective_iam_policy_get(scope, names: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+scope}/effectiveIamPolicies:batchGet', options)
+          command.response_representation = Google::Apis::CloudassetV1::BatchGetEffectiveIamPoliciesResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::BatchGetEffectiveIamPoliciesResponse
+          command.params['scope'] = scope unless scope.nil?
+          command.query['names'] = names unless names.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a feed in a parent project/folder/organization to listen to its asset
         # updates.
         # @param [String] parent
