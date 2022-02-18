@@ -3524,7 +3524,9 @@ module Google
       class CreativeConfig
         include Google::Apis::Core::Hashable
       
-        # The type of creative that can be assigned to the inventory source.
+        # The type of creative that can be assigned to the inventory source. Only the
+        # following types are supported: * `CREATIVE_TYPE_STANDARD` * `
+        # CREATIVE_TYPE_VIDEO`
         # Corresponds to the JSON property `creativeType`
         # @return [String]
         attr_accessor :creative_type
@@ -4915,8 +4917,9 @@ module Google
       class FrequencyCap
         include Google::Apis::Core::Hashable
       
-        # The maximum number of times a user may be shown with the same ad during this
-        # period. Must be greater than 0. Required when unlimited is `false`.
+        # The maximum number of times a user may be shown the same ad during this period.
+        # Must be greater than 0. Required when unlimited is `false` and max_views is
+        # not set.
         # Corresponds to the JSON property `maxImpressions`
         # @return [Fixnum]
         attr_accessor :max_impressions
