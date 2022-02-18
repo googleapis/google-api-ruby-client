@@ -1595,6 +1595,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AuditLogConfig>]
         attr_accessor :audit_log_configs
       
+        # This is deprecated and has no effect. Do not use.
+        # Corresponds to the JSON property `exemptedMembers`
+        # @return [Array<String>]
+        attr_accessor :exempted_members
+      
         # Specifies a service that will be enabled for audit logging. For example, `
         # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
         # value that covers all services.
@@ -1609,6 +1614,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
+          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @service = args[:service] if args.key?(:service)
         end
       end
@@ -3397,13 +3403,9 @@ module Google
         # @return [Google::Apis::ComputeBeta::Subsetting]
         attr_accessor :subsetting
       
-        # The backend service timeout has a different meaning depending on the type of
-        # load balancer. For more information see, Backend service settings The default
-        # is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647
-        # seconds. This value can be overridden in the PathMatcher configuration of the
-        # UrlMap that references this backend service. Not supported when the backend
-        # service is referenced by a URL map that is bound to target gRPC proxy that has
-        # validateForProxyless field set to true. Instead, use maxStreamDuration.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # Instead, use maxStreamDuration.
         # Corresponds to the JSON property `timeoutSec`
         # @return [Fixnum]
         attr_accessor :timeout_sec
@@ -4776,18 +4778,14 @@ module Google
         # @return [Google::Apis::ComputeBeta::Duration]
         attr_accessor :connect_timeout
       
-        # The maximum number of connections to the backend service. If not specified,
-        # there is no limit. Not supported when the backend service is referenced by a
-        # URL map that is bound to target gRPC proxy that has validateForProxyless field
-        # set to true.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `maxConnections`
         # @return [Fixnum]
         attr_accessor :max_connections
       
-        # The maximum number of pending requests allowed to the backend service. If not
-        # specified, there is no limit. Not supported when the backend service is
-        # referenced by a URL map that is bound to target gRPC proxy that has
-        # validateForProxyless field set to true.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `maxPendingRequests`
         # @return [Fixnum]
         attr_accessor :max_pending_requests
@@ -4798,20 +4796,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_requests
       
-        # Maximum requests for a single connection to the backend service. This
-        # parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not
-        # specified, there is no limit. Setting this parameter to 1 will effectively
-        # disable keep alive. Not supported when the backend service is referenced by a
-        # URL map that is bound to target gRPC proxy that has validateForProxyless field
-        # set to true.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `maxRequestsPerConnection`
         # @return [Fixnum]
         attr_accessor :max_requests_per_connection
       
-        # The maximum number of parallel retries allowed to the backend cluster. If not
-        # specified, the default is 1. Not supported when the backend service is
-        # referenced by a URL map that is bound to target gRPC proxy that has
-        # validateForProxyless field set to true.
+        # Not supported when the backend service is referenced by a URL map that is
+        # bound to target gRPC proxy that has validateForProxyless field set to true.
         # Corresponds to the JSON property `maxRetries`
         # @return [Fixnum]
         attr_accessor :max_retries
@@ -8069,14 +8061,6 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # [Output Only] URL of the region where the regional firewall policy resides.
-        # This field is not applicable to global firewall policies. You must specify
-        # this field as part of the HTTP request URL. It is not settable as a field in
-        # the request body.
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
         # [Output Only] Total count of all firewall policy rule tuples. A firewall
         # policy can not exceed a set number of tuples.
         # Corresponds to the JSON property `ruleTupleCount`
@@ -8128,7 +8112,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
-          @region = args[:region] if args.key?(:region)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -8364,18 +8347,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_resources
       
-        # A list of secure tags that controls which instances the firewall rule applies
-        # to. If targetSecureTag are specified, then the firewall rule applies only to
-        # instances in the VPC network that have one of those EFFECTIVE secure tags, if
-        # all the target_secure_tag are in INEFFECTIVE state, then this rule will be
-        # ignored. targetSecureTag may not be set at the same time as
-        # targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag
-        # are specified, the firewall rule applies to all instances on the specified
-        # network. Maximum number of target label tags allowed is 256.
-        # Corresponds to the JSON property `targetSecureTags`
-        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag>]
-        attr_accessor :target_secure_tags
-      
         # A list of service accounts indicating the sets of instances that are applied
         # with this rule.
         # Corresponds to the JSON property `targetServiceAccounts`
@@ -8398,7 +8369,6 @@ module Google
           @priority = args[:priority] if args.key?(:priority)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
-          @target_secure_tags = args[:target_secure_tags] if args.key?(:target_secure_tags)
           @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
         end
       end
@@ -8424,14 +8394,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
       
-        # List of secure tag values, which should be matched at the source of the
-        # traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there
-        # is no srcIpRange, this rule will be ignored. Maximum number of source tag
-        # values allowed is 256.
-        # Corresponds to the JSON property `srcSecureTags`
-        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRuleSecureTag>]
-        attr_accessor :src_secure_tags
-      
         def initialize(**args)
            update!(**args)
         end
@@ -8441,7 +8403,6 @@ module Google
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
-          @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
         end
       end
       
@@ -8473,32 +8434,6 @@ module Google
         def update!(**args)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @ports = args[:ports] if args.key?(:ports)
-        end
-      end
-      
-      # 
-      class FirewallPolicyRuleSecureTag
-        include Google::Apis::Core::Hashable
-      
-        # Name of the secure tag, created with TagManager's TagValue API.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A
-        # secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -9610,8 +9545,8 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC -
-        # SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information,
-        # see Enabling guest operating system features.
+        # SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling
+        # guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -13033,8 +12968,8 @@ module Google
         # Assigns a name to a port number. For example: `name: "http", port: 80` This
         # allows the system to reference ports by the assigned name instead of a port
         # number. Named ports can also contain multiple ports. For example: [`name: "
-        # app1", port: 8080`, `name: "app1", port: 8081`, `name: "app2", port: 8082`]
-        # Named ports apply to all instances in this instance group.
+        # http", port: 80`,`name: "http", port: 8080`] Named ports apply to all
+        # instances in this instance group.
         # Corresponds to the JSON property `namedPorts`
         # @return [Array<Google::Apis::ComputeBeta::NamedPort>]
         attr_accessor :named_ports
@@ -15932,8 +15867,7 @@ module Google
         # @return [String]
         attr_accessor :short_name
       
-        # [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
-        # NETWORK, NETWORK_REGIONAL.
+        # [Output Only] The type of the firewall policy.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -16619,9 +16553,10 @@ module Google
         # @return [String]
         attr_accessor :customer_router_ipv6_interface_id
       
-        # [Output Only] Dataplane version for this InterconnectAttachment. This field is
-        # only present for Dataplane version 2 and higher. Absence of this field in the
-        # API output indicates that the Dataplane is version 1.
+        # [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.
+        # ] Dataplane version for this InterconnectAttachment. This field is only
+        # present for Dataplane version 2 and higher. Absence of this field in the API
+        # output indicates that the Dataplane is version 1.
         # Corresponds to the JSON property `dataplaneVersion`
         # @return [Fixnum]
         attr_accessor :dataplane_version
@@ -19691,13 +19626,6 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Enable ULA internal ipv6 on this network. Enabling this feature will assign a /
-        # 48 from google defined ULA prefix fd20::/20. .
-        # Corresponds to the JSON property `enableUlaInternalIpv6`
-        # @return [Boolean]
-        attr_accessor :enable_ula_internal_ipv6
-        alias_method :enable_ula_internal_ipv6?, :enable_ula_internal_ipv6
-      
         # [Output Only] The gateway address for default routing out of the network,
         # selected by GCP.
         # Corresponds to the JSON property `gatewayIPv4`
@@ -19709,16 +19637,6 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
-      
-        # When enabling ula internal ipv6, caller optionally can specify the /48 range
-        # they want from the google defined ULA prefix fd20::/20. The input must be a
-        # valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
-        # fail if the speficied /48 is already in used by another resource. If the field
-        # is not speficied, then a /48 range will be randomly allocated from fd20::/20
-        # and returned via this field. .
-        # Corresponds to the JSON property `internalIpv6Range`
-        # @return [String]
-        attr_accessor :internal_ipv6_range
       
         # [Output Only] Type of the resource. Always compute#network for networks.
         # Corresponds to the JSON property `kind`
@@ -19741,13 +19659,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The network firewall policy enforcement order. Can be either
-        # AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to
-        # AFTER_CLASSIC_FIREWALL if the field is not specified.
-        # Corresponds to the JSON property `networkFirewallPolicyEnforcementOrder`
-        # @return [String]
-        attr_accessor :network_firewall_policy_enforcement_order
-      
         # [Output Only] A list of network peerings for the resource.
         # Corresponds to the JSON property `peerings`
         # @return [Array<Google::Apis::ComputeBeta::NetworkPeering>]
@@ -19765,11 +19676,6 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] Server-defined URL for this resource with the resource id.
-        # Corresponds to the JSON property `selfLinkWithId`
-        # @return [String]
-        attr_accessor :self_link_with_id
-      
         # [Output Only] Server-defined fully-qualified URLs for all subnetworks in this
         # VPC network.
         # Corresponds to the JSON property `subnetworks`
@@ -19786,18 +19692,14 @@ module Google
           @auto_create_subnetworks = args[:auto_create_subnetworks] if args.key?(:auto_create_subnetworks)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
-          @enable_ula_internal_ipv6 = args[:enable_ula_internal_ipv6] if args.key?(:enable_ula_internal_ipv6)
           @gateway_i_pv4 = args[:gateway_i_pv4] if args.key?(:gateway_i_pv4)
           @id = args[:id] if args.key?(:id)
-          @internal_ipv6_range = args[:internal_ipv6_range] if args.key?(:internal_ipv6_range)
           @kind = args[:kind] if args.key?(:kind)
           @mtu = args[:mtu] if args.key?(:mtu)
           @name = args[:name] if args.key?(:name)
-          @network_firewall_policy_enforcement_order = args[:network_firewall_policy_enforcement_order] if args.key?(:network_firewall_policy_enforcement_order)
           @peerings = args[:peerings] if args.key?(:peerings)
           @routing_config = args[:routing_config] if args.key?(:routing_config)
           @self_link = args[:self_link] if args.key?(:self_link)
-          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
         end
       end
@@ -19942,8 +19844,8 @@ module Google
         attr_accessor :network
       
         # Type of network endpoints in this network endpoint group. Can be one of
-        # GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,
-        # INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+        # GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT,
+        # SERVERLESS, PRIVATE_SERVICE_CONNECT.
         # Corresponds to the JSON property `networkEndpointType`
         # @return [String]
         attr_accessor :network_endpoint_type
@@ -20238,13 +20140,13 @@ module Google
         # @return [String]
         attr_accessor :tag
       
-        # A template to parse <service> and <tag> fields from a request URL. URL mask
-        # allows for routing to multiple Run services without having to create multiple
-        # network endpoint groups and backend services. For example, request URLs "foo1.
-        # domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same
-        # Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<
-        # service>". The URL mask will parse them to ` service="bar1", tag="foo1" ` and `
-        # service="bar2", tag="foo2" ` respectively.
+        # A template to parse service and tag fields from a request URL. URL mask allows
+        # for routing to multiple Run services without having to create multiple network
+        # endpoint groups and backend services. For example, request URLs "foo1.domain.
+        # com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless
+        # Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will
+        # parse them to ` service="bar1", tag="foo1" ` and ` service="bar2", tag="foo2" `
+        # respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
@@ -20816,11 +20718,6 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # The prefix length of the primary internal IPv6 range.
-        # Corresponds to the JSON property `internalIpv6PrefixLength`
-        # @return [Fixnum]
-        attr_accessor :internal_ipv6_prefix_length
-      
         # An array of IPv6 access configurations for this interface. Currently, only one
         # IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
         # specified, then this instance will have no external IPv6 Internet access.
@@ -20912,7 +20809,6 @@ module Google
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-          @internal_ipv6_prefix_length = args[:internal_ipv6_prefix_length] if args.key?(:internal_ipv6_prefix_length)
           @ipv6_access_configs = args[:ipv6_access_configs] if args.key?(:ipv6_access_configs)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
@@ -27689,69 +27585,6 @@ module Google
       end
       
       # 
-      class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Effective firewalls from firewall policy.
-        # Corresponds to the JSON property `firewallPolicys`
-        # @return [Array<Google::Apis::ComputeBeta::RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>]
-        attr_accessor :firewall_policys
-      
-        # Effective firewalls on the network.
-        # Corresponds to the JSON property `firewalls`
-        # @return [Array<Google::Apis::ComputeBeta::Firewall>]
-        attr_accessor :firewalls
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @firewall_policys = args[:firewall_policys] if args.key?(:firewall_policys)
-          @firewalls = args[:firewalls] if args.key?(:firewalls)
-        end
-      end
-      
-      # 
-      class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
-        include Google::Apis::Core::Hashable
-      
-        # [Output Only] The display name of the firewall policy.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # [Output Only] The name of the firewall policy.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The rules that apply to the network.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ComputeBeta::FirewallPolicyRule>]
-        attr_accessor :rules
-      
-        # [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
-        # NETWORK, NETWORK_REGIONAL.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @name = args[:name] if args.key?(:name)
-          @rules = args[:rules] if args.key?(:rules)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # 
       class RegionSetLabelsRequest
         include Google::Apis::Core::Hashable
       
@@ -28798,8 +28631,8 @@ module Google
       class ResourcePolicyDailyCycle
         include Google::Apis::Core::Hashable
       
-        # Defines a schedule with units measured in days. The value determines how many
-        # days pass between the start of each cycle.
+        # Defines a schedule with units measured in months. The value determines how
+        # many months pass between the start of each cycle.
         # Corresponds to the JSON property `daysInCycle`
         # @return [Fixnum]
         attr_accessor :days_in_cycle
@@ -30832,8 +30665,7 @@ module Google
         # @return [String]
         attr_accessor :router_appliance_instance
       
-        # The state of the BGP session. For a list of possible values for this field,
-        # see BGP session states.
+        # BGP state as specified in RFC1771.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -31772,10 +31604,10 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # The type indicates the intended use of the security policy. - CLOUD_ARMOR:
+        # The type indicates the intended use of the security policy. CLOUD_ARMOR -
         # Cloud Armor backend security policies can be configured to filter incoming
         # HTTP requests targeting backend services. They filter requests before they hit
-        # the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can
+        # the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can
         # be configured to filter incoming HTTP requests targeting backend services (
         # including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They
         # filter requests before the request is served from Google's cache.
@@ -32404,11 +32236,10 @@ module Google
         # present in the request, the key type defaults to ALL. - XFF_IP: The first IP
         # address (i.e. the originating client IP address) specified in the list of IPs
         # under X-Forwarded-For HTTP header. If no such header is present or the value
-        # is not a valid IP, the key defaults to the source IP address of the request i.
-        # e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is
-        # configured under "enforce_on_key_name". The key value is truncated to the
-        # first 128 bytes of the cookie value. If no such cookie is present in the
-        # request, the key type defaults to ALL.
+        # is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of
+        # the HTTP cookie whose name is configured under "enforce_on_key_name". The key
+        # value is truncated to the first 128 bytes of the cookie value. If no such
+        # cookie is present in the request, the key type defaults to ALL.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -32422,9 +32253,9 @@ module Google
       
         # Action to take for requests that are above the configured rate limit threshold,
         # to either deny with a specified HTTP response code, or redirect to a
-        # different endpoint. Valid options are "deny(status)", where valid values for
-        # status are 403, 404, 429, and 502, and "redirect" where the redirect
-        # parameters come from exceedRedirectOptions below.
+        # different endpoint. Valid options are "deny()" where valid values for status
+        # are 403, 404, 429, and 502, and "redirect" where the redirect parameters come
+        # from exceed_redirect_options below.
         # Corresponds to the JSON property `exceedAction`
         # @return [String]
         attr_accessor :exceed_action
@@ -35025,13 +34856,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # [Output Only] The range of internal IPv6 addresses that are owned by this
-        # subnetwork. Note this is for general VM to VM communication, not to be
-        # confused with the ipv6_cidr_range field.
-        # Corresponds to the JSON property `internalIpv6Prefix`
-        # @return [String]
-        attr_accessor :internal_ipv6_prefix
-      
         # The range of internal addresses that are owned by this subnetwork. Provide
         # this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.
         # 64.0.0/10. Ranges must be unique and non-overlapping within a network. Only
@@ -35170,7 +34994,6 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @gateway_address = args[:gateway_address] if args.key?(:gateway_address)
           @id = args[:id] if args.key?(:id)
-          @internal_ipv6_prefix = args[:internal_ipv6_prefix] if args.key?(:internal_ipv6_prefix)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_cidr_range = args[:ipv6_cidr_range] if args.key?(:ipv6_cidr_range)
@@ -35453,9 +35276,8 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Can only be specified if VPC flow logs for this subnetwork is enabled. The
-        # filter expression is used to define which VPC flow logs should be exported to
-        # Cloud Logging.
+        # Can only be specified if VPC flow logs for this subnetwork is enabled. Export
+        # filter used to define which VPC flow logs should be logged.
         # Corresponds to the JSON property `filterExpr`
         # @return [String]
         attr_accessor :filter_expr
