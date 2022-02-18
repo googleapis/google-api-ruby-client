@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CollapsibleGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Column
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -339,6 +345,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mode, as: 'mode'
+        end
+      end
+      
+      class CollapsibleGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collapsed, as: 'collapsed'
         end
       end
       
@@ -765,6 +778,8 @@ module Google
           property :alert_chart, as: 'alertChart', class: Google::Apis::MonitoringV1::AlertChart, decorator: Google::Apis::MonitoringV1::AlertChart::Representation
       
           property :blank, as: 'blank', class: Google::Apis::MonitoringV1::Empty, decorator: Google::Apis::MonitoringV1::Empty::Representation
+      
+          property :collapsible_group, as: 'collapsibleGroup', class: Google::Apis::MonitoringV1::CollapsibleGroup, decorator: Google::Apis::MonitoringV1::CollapsibleGroup::Representation
       
           property :logs_panel, as: 'logsPanel', class: Google::Apis::MonitoringV1::LogsPanel, decorator: Google::Apis::MonitoringV1::LogsPanel::Representation
       

@@ -180,6 +180,27 @@ module Google
         end
       end
       
+      # A widget that groups the other widgets. All widgets that are within the area
+      # spanned by the grouping widget are considered member widgets.
+      class CollapsibleGroup
+        include Google::Apis::Core::Hashable
+      
+        # The collapsed state of the widget on first page load.
+        # Corresponds to the JSON property `collapsed`
+        # @return [Boolean]
+        attr_accessor :collapsed
+        alias_method :collapsed?, :collapsed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collapsed = args[:collapsed] if args.key?(:collapsed)
+        end
+      end
+      
       # Defines the layout properties and content for a column.
       class Column
         include Google::Apis::Core::Hashable
@@ -1819,6 +1840,12 @@ module Google
         # @return [Google::Apis::MonitoringV1::Empty]
         attr_accessor :blank
       
+        # A widget that groups the other widgets. All widgets that are within the area
+        # spanned by the grouping widget are considered member widgets.
+        # Corresponds to the JSON property `collapsibleGroup`
+        # @return [Google::Apis::MonitoringV1::CollapsibleGroup]
+        attr_accessor :collapsible_group
+      
         # A widget that displays a stream of log.
         # Corresponds to the JSON property `logsPanel`
         # @return [Google::Apis::MonitoringV1::LogsPanel]
@@ -1858,6 +1885,7 @@ module Google
         def update!(**args)
           @alert_chart = args[:alert_chart] if args.key?(:alert_chart)
           @blank = args[:blank] if args.key?(:blank)
+          @collapsible_group = args[:collapsible_group] if args.key?(:collapsible_group)
           @logs_panel = args[:logs_panel] if args.key?(:logs_panel)
           @scorecard = args[:scorecard] if args.key?(:scorecard)
           @text = args[:text] if args.key?(:text)
