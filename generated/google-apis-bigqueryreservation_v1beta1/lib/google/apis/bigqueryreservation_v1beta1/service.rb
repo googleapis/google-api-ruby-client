@@ -180,8 +180,9 @@ module Google
         # @param [String] capacity_commitment_id
         #   The optional capacity commitment ID. Capacity commitment name will be
         #   generated automatically if this field is empty. This field must only contain
-        #   lower case alphanumeric characters or dash. Max length is 64 characters. NOTE:
-        #   this ID won't be kept if the capacity commitment is split or merged.
+        #   lower case alphanumeric characters or dashes. The first and last character
+        #   cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if
+        #   the capacity commitment is split or merged.
         # @param [Boolean] enforce_single_admin_project_per_org
         #   If true, fail the request if another project in the organization has a
         #   capacity commitment.
@@ -366,7 +367,9 @@ module Google
         # fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.
         # @param [String] name
         #   Output only. The resource name of the capacity commitment, e.g., `projects/
-        #   myproject/locations/US/capacityCommitments/123`
+        #   myproject/locations/US/capacityCommitments/123` For the commitment id, it must
+        #   only contain lower case alphanumeric characters or dashes.It must start with a
+        #   letter and must not end with a dash. Its maximum length is 64 characters.
         # @param [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment] capacity_commitment_object
         # @param [String] update_mask
         #   Standard field mask for the set of fields to be updated.
@@ -443,8 +446,9 @@ module Google
         #   Required. Project, location. E.g., `projects/myproject/locations/US`
         # @param [Google::Apis::BigqueryreservationV1beta1::Reservation] reservation_object
         # @param [String] reservation_id
-        #   The reservation ID. This field must only contain lower case alphanumeric
-        #   characters or dash. Max length is 64 characters.
+        #   The reservation ID. It must only contain lower case alphanumeric characters or
+        #   dashes.It must start with a letter and must not end with a dash. Its maximum
+        #   length is 64 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -584,7 +588,9 @@ module Google
         # Updates an existing reservation resource.
         # @param [String] name
         #   The resource name of the reservation, e.g., `projects/*/locations/*/
-        #   reservations/team1-prod`.
+        #   reservations/team1-prod`. For the reservation id, it must only contain lower
+        #   case alphanumeric characters or dashes.It must start with a letter and must
+        #   not end with a dash. Its maximum length is 64 characters.
         # @param [Google::Apis::BigqueryreservationV1beta1::Reservation] reservation_object
         # @param [String] update_mask
         #   Standard field mask for the set of fields to be updated.
@@ -645,7 +651,7 @@ module Google
         # @param [String] assignment_id
         #   The optional assignment ID. Assignment name will be generated automatically if
         #   this field is empty. This field must only contain lower case alphanumeric
-        #   characters or dash. Max length is 64 characters.
+        #   characters or dashes. Max length is 64 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -799,7 +805,9 @@ module Google
         # Updates an existing assignment. Only the `priority` field can be updated.
         # @param [String] name
         #   Output only. Name of the resource. E.g.: `projects/myproject/locations/US/
-        #   reservations/team1-prod/assignments/123`.
+        #   reservations/team1-prod/assignments/123`. For the assignment id, it must only
+        #   contain lower case alphanumeric characters or dashes and the max length is 64
+        #   characters.
         # @param [Google::Apis::BigqueryreservationV1beta1::Assignment] assignment_object
         # @param [String] update_mask
         #   Standard field mask for the set of fields to be updated.
