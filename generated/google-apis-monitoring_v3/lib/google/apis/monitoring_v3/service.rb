@@ -49,8 +49,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Lists time series that match a filter. This method does not require a
-        # Workspace.
+        # Lists time series that match a filter.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   , organization or folder on which to execute the request. The format is:
@@ -214,8 +213,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists time series that match a filter. This method does not require a
-        # Workspace.
+        # Lists time series that match a filter.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   , organization or folder on which to execute the request. The format is:
@@ -953,7 +951,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a single metric descriptor. This method does not require a Workspace.
+        # Gets a single metric descriptor.
         # @param [String] name
         #   Required. The metric descriptor on which to execute the request. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example
@@ -986,8 +984,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists metric descriptors that match a filter. This method does not require a
-        # Workspace.
+        # Lists metric descriptors that match a filter.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   on which to execute the request. The format is: projects/[
@@ -1035,8 +1032,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a single monitored resource descriptor. This method does not require a
-        # Workspace.
+        # Gets a single monitored resource descriptor.
         # @param [String] name
         #   Required. The monitored resource descriptor to get. The format is: projects/[
         #   PROJECT_ID_OR_NUMBER]/monitoredResourceDescriptors/[RESOURCE_TYPE] The [
@@ -1068,8 +1064,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists monitored resource descriptors that match a filter. This method does not
-        # require a Workspace.
+        # Lists monitored resource descriptors that match a filter.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   on which to execute the request. The format is: projects/[
@@ -1595,8 +1590,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists time series that match a filter. This method does not require a
-        # Workspace.
+        # Lists time series that match a filter.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   , organization or folder on which to execute the request. The format is:
@@ -1760,8 +1754,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Queries time series using Monitoring Query Language. This method does not
-        # require a Workspace.
+        # Queries time series using Monitoring Query Language.
         # @param [String] name
         #   Required. The project (https://cloud.google.com/monitoring/api/v3#project_name)
         #   on which to execute the request. The format is: projects/[
