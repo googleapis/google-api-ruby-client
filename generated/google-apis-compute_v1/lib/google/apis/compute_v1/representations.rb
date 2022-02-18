@@ -988,12 +988,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FirewallPolicyRuleSecureTag
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FixedOrPercent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1811,12 +1805,6 @@ module Google
       end
       
       class MoveInstanceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InstanceParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3462,18 +3450,6 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5721,6 +5697,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::ComputeV1::AuditLogConfig, decorator: Google::Apis::ComputeV1::AuditLogConfig::Representation
       
+          collection :exempted_members, as: 'exemptedMembers'
           property :service, as: 'service'
         end
       end
@@ -7154,7 +7131,6 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :parent, as: 'parent'
-          property :region, as: 'region'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
       
@@ -7220,8 +7196,6 @@ module Google
           property :priority, as: 'priority'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
-          collection :target_secure_tags, as: 'targetSecureTags', class: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag::Representation
-      
           collection :target_service_accounts, as: 'targetServiceAccounts'
         end
       end
@@ -7233,8 +7207,6 @@ module Google
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeV1::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleMatcherLayer4Config::Representation
       
           collection :src_ip_ranges, as: 'srcIpRanges'
-          collection :src_secure_tags, as: 'srcSecureTags', class: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag, decorator: Google::Apis::ComputeV1::FirewallPolicyRuleSecureTag::Representation
-      
         end
       end
       
@@ -7243,14 +7215,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'ipProtocol'
           collection :ports, as: 'ports'
-        end
-      end
-      
-      class FirewallPolicyRuleSecureTag
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :state, as: 'state'
         end
       end
       
@@ -8173,8 +8137,6 @@ module Google
       
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ComputeV1::NetworkPerformanceConfig, decorator: Google::Apis::ComputeV1::NetworkPerformanceConfig::Representation
       
-          property :params, as: 'params', class: Google::Apis::ComputeV1::InstanceParams, decorator: Google::Apis::ComputeV1::InstanceParams::Representation
-      
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
@@ -8850,13 +8812,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_zone, as: 'destinationZone'
           property :target_instance, as: 'targetInstance'
-        end
-      end
-      
-      class InstanceParams
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -9907,20 +9862,16 @@ module Google
           property :auto_create_subnetworks, as: 'autoCreateSubnetworks'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :enable_ula_internal_ipv6, as: 'enableUlaInternalIpv6'
           property :gateway_i_pv4, as: 'gatewayIPv4'
           property :id, :numeric_string => true, as: 'id'
-          property :internal_ipv6_range, as: 'internalIpv6Range'
           property :kind, as: 'kind'
           property :mtu, as: 'mtu'
           property :name, as: 'name'
-          property :network_firewall_policy_enforcement_order, as: 'networkFirewallPolicyEnforcementOrder'
           collection :peerings, as: 'peerings', class: Google::Apis::ComputeV1::NetworkPeering, decorator: Google::Apis::ComputeV1::NetworkPeering::Representation
       
           property :routing_config, as: 'routingConfig', class: Google::Apis::ComputeV1::NetworkRoutingConfig, decorator: Google::Apis::ComputeV1::NetworkRoutingConfig::Representation
       
           property :self_link, as: 'selfLink'
-          property :self_link_with_id, as: 'selfLinkWithId'
           collection :subnetworks, as: 'subnetworks'
         end
       end
@@ -10154,7 +10105,6 @@ module Google
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeV1::AliasIpRange, decorator: Google::Apis::ComputeV1::AliasIpRange::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
-          property :internal_ipv6_prefix_length, as: 'internalIpv6PrefixLength'
           collection :ipv6_access_configs, as: 'ipv6AccessConfigs', class: Google::Apis::ComputeV1::AccessConfig, decorator: Google::Apis::ComputeV1::AccessConfig::Representation
       
           property :ipv6_access_type, as: 'ipv6AccessType'
@@ -11868,27 +11818,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :firewall_policys, as: 'firewallPolicys', class: Google::Apis::ComputeV1::RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy, decorator: Google::Apis::ComputeV1::RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy::Representation
-      
-          collection :firewalls, as: 'firewalls', class: Google::Apis::ComputeV1::Firewall, decorator: Google::Apis::ComputeV1::Firewall::Representation
-      
-        end
-      end
-      
-      class RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :name, as: 'name'
-          collection :rules, as: 'rules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
-      
-          property :type, as: 'type'
         end
       end
       
@@ -13609,7 +13538,6 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'
-          property :internal_ipv6_prefix, as: 'internalIpv6Prefix'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_cidr_range, as: 'ipv6CidrRange'
@@ -14759,7 +14687,6 @@ module Google
       class ValidateUrlMapsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :load_balancing_schemes, as: 'loadBalancingSchemes'
           property :resource, as: 'resource', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMap::Representation
       
         end
