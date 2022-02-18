@@ -132,6 +132,7 @@ module Google
           property :commitment_start_time, as: 'commitmentStartTime'
           property :failure_status, as: 'failureStatus', class: Google::Apis::BigqueryreservationV1beta1::Status, decorator: Google::Apis::BigqueryreservationV1beta1::Status::Representation
       
+          property :multi_region_auxiliary, as: 'multiRegionAuxiliary'
           property :name, as: 'name'
           property :plan, as: 'plan'
           property :renewal_plan, as: 'renewalPlan'
@@ -192,6 +193,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_time, as: 'creationTime'
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
+          property :multi_region_auxiliary, as: 'multiRegionAuxiliary'
           property :name, as: 'name'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'
           property :update_time, as: 'updateTime'

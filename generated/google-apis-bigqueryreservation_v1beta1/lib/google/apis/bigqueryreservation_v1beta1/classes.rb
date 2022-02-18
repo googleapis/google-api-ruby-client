@@ -39,7 +39,9 @@ module Google
         attr_accessor :job_type
       
         # Output only. Name of the resource. E.g.: `projects/myproject/locations/US/
-        # reservations/team1-prod/assignments/123`.
+        # reservations/team1-prod/assignments/123`. For the assignment id, it must only
+        # contain lower case alphanumeric characters or dashes and the max length is 64
+        # characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -125,8 +127,20 @@ module Google
         # @return [Google::Apis::BigqueryreservationV1beta1::Status]
         attr_accessor :failure_status
       
+        # Applicable only for commitments located within one of the BigQuery multi-
+        # regions (US or EU). If set to true, this commitment is placed in the
+        # organization's secondary region which is designated for disaster recovery
+        # purposes. If false, this commitment is placed in the organization's default
+        # region.
+        # Corresponds to the JSON property `multiRegionAuxiliary`
+        # @return [Boolean]
+        attr_accessor :multi_region_auxiliary
+        alias_method :multi_region_auxiliary?, :multi_region_auxiliary
+      
         # Output only. The resource name of the capacity commitment, e.g., `projects/
-        # myproject/locations/US/capacityCommitments/123`
+        # myproject/locations/US/capacityCommitments/123` For the commitment id, it must
+        # only contain lower case alphanumeric characters or dashes.It must start with a
+        # letter and must not end with a dash. Its maximum length is 64 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -162,6 +176,7 @@ module Google
           @commitment_end_time = args[:commitment_end_time] if args.key?(:commitment_end_time)
           @commitment_start_time = args[:commitment_start_time] if args.key?(:commitment_start_time)
           @failure_status = args[:failure_status] if args.key?(:failure_status)
+          @multi_region_auxiliary = args[:multi_region_auxiliary] if args.key?(:multi_region_auxiliary)
           @name = args[:name] if args.key?(:name)
           @plan = args[:plan] if args.key?(:plan)
           @renewal_plan = args[:renewal_plan] if args.key?(:renewal_plan)
@@ -328,8 +343,20 @@ module Google
         attr_accessor :ignore_idle_slots
         alias_method :ignore_idle_slots?, :ignore_idle_slots
       
+        # Applicable only for reservations located within one of the BigQuery multi-
+        # regions (US or EU). If set to true, this reservation is placed in the
+        # organization's secondary region which is designated for disaster recovery
+        # purposes. If false, this reservation is placed in the organization's default
+        # region.
+        # Corresponds to the JSON property `multiRegionAuxiliary`
+        # @return [Boolean]
+        attr_accessor :multi_region_auxiliary
+        alias_method :multi_region_auxiliary?, :multi_region_auxiliary
+      
         # The resource name of the reservation, e.g., `projects/*/locations/*/
-        # reservations/team1-prod`.
+        # reservations/team1-prod`. For the reservation id, it must only contain lower
+        # case alphanumeric characters or dashes.It must start with a letter and must
+        # not end with a dash. Its maximum length is 64 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -360,6 +387,7 @@ module Google
         def update!(**args)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
+          @multi_region_auxiliary = args[:multi_region_auxiliary] if args.key?(:multi_region_auxiliary)
           @name = args[:name] if args.key?(:name)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
           @update_time = args[:update_time] if args.key?(:update_time)
