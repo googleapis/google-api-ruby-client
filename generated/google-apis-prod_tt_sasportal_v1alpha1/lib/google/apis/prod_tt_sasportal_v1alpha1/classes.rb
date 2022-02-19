@@ -448,12 +448,6 @@ module Google
         attr_accessor :nrqz_validated
         alias_method :nrqz_validated?, :nrqz_validated
       
-        # Information about National Radio Quiet Zone validation. The presence of the
-        # field indicates the device has been validated.
-        # Corresponds to the JSON property `nrqzValidation`
-        # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalNrqzValidation]
-        attr_accessor :nrqz_validation
-      
         def initialize(**args)
            update!(**args)
         end
@@ -464,7 +458,6 @@ module Google
           @common_channel_group = args[:common_channel_group] if args.key?(:common_channel_group)
           @interference_coordination_group = args[:interference_coordination_group] if args.key?(:interference_coordination_group)
           @nrqz_validated = args[:nrqz_validated] if args.key?(:nrqz_validated)
-          @nrqz_validation = args[:nrqz_validation] if args.key?(:nrqz_validation)
         end
       end
       
@@ -950,44 +943,6 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @sas_user_ids = args[:sas_user_ids] if args.key?(:sas_user_ids)
-        end
-      end
-      
-      # Information about National Radio Quiet Zone validation. The presence of the
-      # field indicates the device has been validated.
-      class SasPortalNrqzValidation
-        include Google::Apis::Core::Hashable
-      
-        # Validation case id.
-        # Corresponds to the JSON property `caseId`
-        # @return [String]
-        attr_accessor :case_id
-      
-        # CPI who signed the validation.
-        # Corresponds to the JSON property `cpiId`
-        # @return [String]
-        attr_accessor :cpi_id
-      
-        # Device latitude associated with the validation.
-        # Corresponds to the JSON property `latitude`
-        # @return [Float]
-        attr_accessor :latitude
-      
-        # Device longitude associated with the validation.
-        # Corresponds to the JSON property `longitude`
-        # @return [Float]
-        attr_accessor :longitude
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @case_id = args[:case_id] if args.key?(:case_id)
-          @cpi_id = args[:cpi_id] if args.key?(:cpi_id)
-          @latitude = args[:latitude] if args.key?(:latitude)
-          @longitude = args[:longitude] if args.key?(:longitude)
         end
       end
       
