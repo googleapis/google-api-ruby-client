@@ -332,6 +332,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_defined_name, as: 'consumerDefinedName'
           property :create_time, as: 'createTime'
+          property :instance_type, as: 'instanceType'
           hash :labels, as: 'labels'
           hash :maintenance_policy_names, as: 'maintenancePolicyNames'
           hash :maintenance_schedules, as: 'maintenanceSchedules', class: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule, decorator: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule::Representation
@@ -339,6 +340,7 @@ module Google
           property :maintenance_settings, as: 'maintenanceSettings', class: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings, decorator: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings::Representation
       
           property :name, as: 'name'
+          hash :notification_parameters, as: 'notificationParameters'
           hash :producer_metadata, as: 'producerMetadata'
           collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource, decorator: Google::Apis::MemcacheV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource::Representation
       
