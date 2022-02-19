@@ -833,6 +833,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_default_sink, as: 'disableDefaultSink'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :kms_service_account_id, as: 'kmsServiceAccountId'
           property :name, as: 'name'
           property :storage_location, as: 'storageLocation'
         end
