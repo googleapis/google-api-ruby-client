@@ -591,6 +591,13 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # The name of a Vertex AI [Tensorboard] resource to which this execution will
+        # upload Tensorboard logs. Format: `projects/`project`/locations/`location`/
+        # tensorboards/`tensorboard``
+        # Corresponds to the JSON property `tensorboard`
+        # @return [String]
+        attr_accessor :tensorboard
+      
         # Parameters used in Vertex AI JobType executions.
         # Corresponds to the JSON property `vertexAiParameters`
         # @return [Google::Apis::NotebooksV1::VertexAiParameters]
@@ -615,6 +622,7 @@ module Google
           @params_yaml_file = args[:params_yaml_file] if args.key?(:params_yaml_file)
           @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @tensorboard = args[:tensorboard] if args.key?(:tensorboard)
           @vertex_ai_parameters = args[:vertex_ai_parameters] if args.key?(:vertex_ai_parameters)
         end
       end
@@ -2103,7 +2111,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :idle_shutdown_timeout
       
-        # Install Nvidia Driver automatically.
+        # Install Nvidia Driver automatically. Default: True
         # Corresponds to the JSON property `installGpuDriver`
         # @return [Boolean]
         attr_accessor :install_gpu_driver
