@@ -304,6 +304,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class V1HttpRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1LogEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1LogEntryOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1LogEntrySourceLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocateInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -857,6 +881,68 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :truncated_byte_count, as: 'truncatedByteCount'
           property :value, as: 'value'
+        end
+      end
+      
+      class V1HttpRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_fill_bytes, :numeric_string => true, as: 'cacheFillBytes'
+          property :cache_hit, as: 'cacheHit'
+          property :cache_lookup, as: 'cacheLookup'
+          property :cache_validated_with_origin_server, as: 'cacheValidatedWithOriginServer'
+          property :latency, as: 'latency'
+          property :protocol, as: 'protocol'
+          property :referer, as: 'referer'
+          property :remote_ip, as: 'remoteIp'
+          property :request_method, as: 'requestMethod'
+          property :request_size, :numeric_string => true, as: 'requestSize'
+          property :request_url, as: 'requestUrl'
+          property :response_size, :numeric_string => true, as: 'responseSize'
+          property :server_ip, as: 'serverIp'
+          property :status, as: 'status'
+          property :user_agent, as: 'userAgent'
+        end
+      end
+      
+      class V1LogEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_request, as: 'httpRequest', class: Google::Apis::ServicecontrolV1::V1HttpRequest, decorator: Google::Apis::ServicecontrolV1::V1HttpRequest::Representation
+      
+          property :insert_id, as: 'insertId'
+          hash :labels, as: 'labels'
+          hash :monitored_resource_labels, as: 'monitoredResourceLabels'
+          property :name, as: 'name'
+          property :operation, as: 'operation', class: Google::Apis::ServicecontrolV1::V1LogEntryOperation, decorator: Google::Apis::ServicecontrolV1::V1LogEntryOperation::Representation
+      
+          hash :proto_payload, as: 'protoPayload'
+          property :severity, as: 'severity'
+          property :source_location, as: 'sourceLocation', class: Google::Apis::ServicecontrolV1::V1LogEntrySourceLocation, decorator: Google::Apis::ServicecontrolV1::V1LogEntrySourceLocation::Representation
+      
+          hash :struct_payload, as: 'structPayload'
+          property :text_payload, as: 'textPayload'
+          property :timestamp, as: 'timestamp'
+          property :trace, as: 'trace'
+        end
+      end
+      
+      class V1LogEntryOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first, as: 'first'
+          property :id, as: 'id'
+          property :last, as: 'last'
+          property :producer, as: 'producer'
+        end
+      end
+      
+      class V1LogEntrySourceLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file, as: 'file'
+          property :function, as: 'function'
+          property :line, :numeric_string => true, as: 'line'
         end
       end
     end
