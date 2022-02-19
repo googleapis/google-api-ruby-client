@@ -583,6 +583,7 @@ module Google
           property :params_yaml_file, as: 'paramsYamlFile'
           property :scale_tier, as: 'scaleTier'
           property :service_account, as: 'serviceAccount'
+          property :tensorboard, as: 'tensorboard'
           property :vertex_ai_parameters, as: 'vertexAiParameters', class: Google::Apis::NotebooksV1::VertexAiParameters, decorator: Google::Apis::NotebooksV1::VertexAiParameters::Representation
       
         end
