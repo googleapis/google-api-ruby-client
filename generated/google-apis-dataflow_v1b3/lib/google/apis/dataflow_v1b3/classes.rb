@@ -2865,6 +2865,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_limit_bytes
       
+        # Number of Out of Memory (OOM) events recorded since the previous measurement.
+        # Corresponds to the JSON property `currentOoms`
+        # @return [Fixnum]
+        attr_accessor :current_ooms
+      
         # Instantenous memory (RSS) size in bytes.
         # Corresponds to the JSON property `currentRssBytes`
         # @return [Fixnum]
@@ -2887,6 +2892,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @current_limit_bytes = args[:current_limit_bytes] if args.key?(:current_limit_bytes)
+          @current_ooms = args[:current_ooms] if args.key?(:current_ooms)
           @current_rss_bytes = args[:current_rss_bytes] if args.key?(:current_rss_bytes)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @total_gb_ms = args[:total_gb_ms] if args.key?(:total_gb_ms)

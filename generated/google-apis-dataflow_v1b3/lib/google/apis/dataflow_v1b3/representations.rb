@@ -1756,6 +1756,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_limit_bytes, :numeric_string => true, as: 'currentLimitBytes'
+          property :current_ooms, :numeric_string => true, as: 'currentOoms'
           property :current_rss_bytes, :numeric_string => true, as: 'currentRssBytes'
           property :timestamp, as: 'timestamp'
           property :total_gb_ms, :numeric_string => true, as: 'totalGbMs'
