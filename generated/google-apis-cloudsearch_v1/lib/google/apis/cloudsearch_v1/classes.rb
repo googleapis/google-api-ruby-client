@@ -5164,6 +5164,11 @@ module Google
         attr_accessor :avatar_info
       
         # 
+        # Corresponds to the JSON property `avatarUrl`
+        # @return [String]
+        attr_accessor :avatar_url
+      
+        # 
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -5196,6 +5201,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @avatar_info = args[:avatar_info] if args.key?(:avatar_info)
+          @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
           @description = args[:description] if args.key?(:description)
           @group_id = args[:group_id] if args.key?(:group_id)
           @name = args[:name] if args.key?(:name)
