@@ -1172,6 +1172,19 @@ module Google
         attr_accessor :detached
         alias_method :detached?, :detached
       
+        # If true, Pub/Sub provides the following guarantees for the delivery of a
+        # message with a given value of `message_id` on this subscription: * The message
+        # sent to a subscriber is guaranteed not to be resent before the message's
+        # acknowledgement deadline expires. * An acknowledged message will not be resent
+        # to a subscriber. Note that subscribers may still receive multiple copies of a
+        # message when `enable_exactly_once_delivery` is true if the message was
+        # published multiple times by a publisher client. These copies are considered
+        # distinct by Pub/Sub and have distinct `message_id` values.
+        # Corresponds to the JSON property `enableExactlyOnceDelivery`
+        # @return [Boolean]
+        attr_accessor :enable_exactly_once_delivery
+        alias_method :enable_exactly_once_delivery?, :enable_exactly_once_delivery
+      
         # If true, messages published with the same `ordering_key` in `PubsubMessage`
         # will be delivered to the subscribers in the order in which they are received
         # by the Pub/Sub system. Otherwise, they may be delivered in any order.
@@ -1277,6 +1290,7 @@ module Google
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
           @detached = args[:detached] if args.key?(:detached)
+          @enable_exactly_once_delivery = args[:enable_exactly_once_delivery] if args.key?(:enable_exactly_once_delivery)
           @enable_message_ordering = args[:enable_message_ordering] if args.key?(:enable_message_ordering)
           @expiration_policy = args[:expiration_policy] if args.key?(:expiration_policy)
           @filter = args[:filter] if args.key?(:filter)
