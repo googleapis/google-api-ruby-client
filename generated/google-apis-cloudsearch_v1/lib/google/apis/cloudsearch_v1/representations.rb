@@ -2588,6 +2588,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :avatar_info, as: 'avatarInfo', class: Google::Apis::CloudsearchV1::AvatarInfo, decorator: Google::Apis::CloudsearchV1::AvatarInfo::Representation
       
+          property :avatar_url, as: 'avatarUrl'
           property :description, as: 'description'
           property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
       

@@ -1169,8 +1169,8 @@ module Google
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
         # @param [Fixnum] page_size
-        #   Maximum number of datasources to fetch in a request. The max value is 100. The
-        #   default value is 10
+        #   Maximum number of datasources to fetch in a request. The max value is 1000.
+        #   The default value is 1000.
         # @param [String] page_token
         #   Starting index of the results.
         # @param [String] fields
