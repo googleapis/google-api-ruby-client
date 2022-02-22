@@ -2900,6 +2900,13 @@ module Google
         # @return [Google::Apis::ContainerV1::ShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
       
+        # Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible
+        # flag.
+        # Corresponds to the JSON property `spot`
+        # @return [Boolean]
+        attr_accessor :spot
+        alias_method :spot?, :spot
+      
         # The list of instance tags applied to all nodes. Tags are used to identify
         # valid sources or targets for network firewalls and are specified by the client
         # during cluster or node pool creation. Each tag within the list must comply
@@ -2949,6 +2956,7 @@ module Google
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @spot = args[:spot] if args.key?(:spot)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
