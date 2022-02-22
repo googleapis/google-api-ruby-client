@@ -567,6 +567,7 @@ module Google
           property :dead_letter_policy, as: 'deadLetterPolicy', class: Google::Apis::PubsubV1::DeadLetterPolicy, decorator: Google::Apis::PubsubV1::DeadLetterPolicy::Representation
       
           property :detached, as: 'detached'
+          property :enable_exactly_once_delivery, as: 'enableExactlyOnceDelivery'
           property :enable_message_ordering, as: 'enableMessageOrdering'
           property :expiration_policy, as: 'expirationPolicy', class: Google::Apis::PubsubV1::ExpirationPolicy, decorator: Google::Apis::PubsubV1::ExpirationPolicy::Representation
       
