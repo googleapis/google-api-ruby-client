@@ -16,13 +16,13 @@ module Google
   module Apis
     module ContainerV1
       # Version of the google-apis-container_v1 gem
-      GEM_VERSION = "0.23.0"
+      GEM_VERSION = "0.24.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220116"
+      REVISION = "20220209"
     end
   end
 end
