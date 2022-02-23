@@ -54,8 +54,8 @@ module Google
       class ActionResponse
         include Google::Apis::Core::Hashable
       
-        # Contains dialog if present as well as the ActionStatus for the request sent
-        # from user.
+        # Contains a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs)
+        # and request status code.
         # Corresponds to the JSON property `dialogAction`
         # @return [Google::Apis::ChatV1::DialogAction]
         attr_accessor :dialog_action
@@ -82,10 +82,7 @@ module Google
         end
       end
       
-      # ActionStatus represents status of a request from the bot developer's side. In
-      # specific, for each request a bot gets, the bot developer will set both fields
-      # below in relation to what the response status and message related to status
-      # should be.
+      # Represents the status of a request.
       class ActionStatus
         include Google::Apis::Core::Hashable
       
@@ -94,10 +91,8 @@ module Google
         # @return [String]
         attr_accessor :status_code
       
-        # This message will be the corresponding string to the above status_code. If
-        # unset, an appropriate generic message based on the status_code will be shown
-        # to the user. If this field is set then the message will be surfaced to the
-        # user for both successes and errors.
+        # The message to send users about the status of their request. If unset, a
+        # generic message based on the `status_code` is sent.
         # Corresponds to the JSON property `userFacingMessage`
         # @return [String]
         attr_accessor :user_facing_message
@@ -464,46 +459,57 @@ module Google
         end
       end
       
-      # Next available ID = 8
+      # Represents information about the user's client, such as locale, host app, and
+      # platform. For Chat apps, `CommonEventObject` includes data submitted by users
+      # interacting with cards, like data entered in [dialogs](https://developers.
+      # google.com/chat/how-tos/bot-dialogs).
       class CommonEventObject
         include Google::Apis::Core::Hashable
       
-        # The keys are the string IDs associated with the widget and the values are
-        # inputs with a widget in the card.
+        # A map containing the current values of the widgets in a card. The map keys are
+        # the string IDs assigned to each widget, and the values represent inputs to the
+        # widget. Depending on the input data type, a different object represents each
+        # input: For single-value widgets, `StringInput`. For multi-value widgets, an
+        # array of `StringInput` objects. For a date-time picker, a `DateTimeInput`. For
+        # a date-only picker, a `DateInput`. For a time-only picker, a `TimeInput`.
+        # Corresponds with the data entered by a user on a card in a [dialog](https://
+        # developers.google.com/chat/how-tos/bot-dialogs).
         # Corresponds to the JSON property `formInputs`
         # @return [Hash<String,Google::Apis::ChatV1::Inputs>]
         attr_accessor :form_inputs
       
-        # The hostApp enum which indicates the app the add-on is invoked from
+        # The hostApp enum which indicates the app the add-on is invoked from. Always `
+        # CHAT` for Chat apps.
         # Corresponds to the JSON property `hostApp`
         # @return [String]
         attr_accessor :host_app
       
-        # Name of the invoked function associated with the widget. This field is
-        # currently only set for chat.
+        # Name of the invoked function associated with the widget. Only set for Chat
+        # apps.
         # Corresponds to the JSON property `invokedFunction`
         # @return [String]
         attr_accessor :invoked_function
       
-        # Any additional parameters.
+        # Custom [parameters](/chat/api/reference/rest/v1/cards#ActionParameter) passed
+        # to the invoked function. Both keys and values must be strings.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
       
-        # The platform enum which indicates the platform where the add-on is running.
+        # The platform enum which indicates the platform where the event originates (`
+        # WEB`, `IOS`, or `ANDROID`). Not supported by Chat apps.
         # Corresponds to the JSON property `platform`
         # @return [String]
         attr_accessor :platform
       
-        # The timezone id and offset. The id is the tz database time zones such as "
-        # America/Toronto". The user timezone offset, in milliseconds, from Coordinated
-        # Universal Time (UTC).
+        # The timezone ID and offset from Coordinated Universal Time (UTC). Not
+        # supported by Chat apps.
         # Corresponds to the JSON property `timeZone`
         # @return [Google::Apis::ChatV1::TimeZone]
         attr_accessor :time_zone
       
         # The full locale.displayName in the format of [ISO 639 language code]-[ISO 3166
-        # country/region code] such as "en-US"
+        # country/region code] such as "en-US". Not supported by Chat apps.
         # Corresponds to the JSON property `userLocale`
         # @return [String]
         attr_accessor :user_locale
@@ -524,11 +530,11 @@ module Google
         end
       end
       
-      # Input Parameter for Date Picker widget.
+      # Date input values. Not supported by Chat apps.
       class DateInput
         include Google::Apis::Core::Hashable
       
-        # 
+        # Time since epoch time, in milliseconds.
         # Corresponds to the JSON property `msSinceEpoch`
         # @return [Fixnum]
         attr_accessor :ms_since_epoch
@@ -543,23 +549,23 @@ module Google
         end
       end
       
-      # Input Parameter for Date and Time Picker widget.
+      # Date and time input values. Not supported by Chat apps.
       class DateTimeInput
         include Google::Apis::Core::Hashable
       
-        # 
+        # Whether the `datetime` input includes a calendar date.
         # Corresponds to the JSON property `hasDate`
         # @return [Boolean]
         attr_accessor :has_date
         alias_method :has_date?, :has_date
       
-        # 
+        # Whether the `datetime` input includes a timestamp.
         # Corresponds to the JSON property `hasTime`
         # @return [Boolean]
         attr_accessor :has_time
         alias_method :has_time?, :has_time
       
-        # 
+        # Time since epoch time, in milliseconds.
         # Corresponds to the JSON property `msSinceEpoch`
         # @return [Fixnum]
         attr_accessor :ms_since_epoch
@@ -586,7 +592,10 @@ module Google
         # @return [Google::Apis::ChatV1::FormAction]
         attr_accessor :action
       
-        # Next available ID = 8
+        # Represents information about the user's client, such as locale, host app, and
+        # platform. For Chat apps, `CommonEventObject` includes data submitted by users
+        # interacting with cards, like data entered in [dialogs](https://developers.
+        # google.com/chat/how-tos/bot-dialogs).
         # Corresponds to the JSON property `common`
         # @return [Google::Apis::ChatV1::CommonEventObject]
         attr_accessor :common
@@ -599,7 +608,8 @@ module Google
         # @return [String]
         attr_accessor :config_complete_redirect_url
       
-        # The type of dialog event we have received.
+        # The type of [dialog](https://developers.google.com/chat/how-tos/bot-dialogs)
+        # event received.
         # Corresponds to the JSON property `dialogEventType`
         # @return [String]
         attr_accessor :dialog_event_type
@@ -609,8 +619,8 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Whether or not this event is related to dialogs request, submit or cancel.
-        # This will be set to true when we want a request/submit/cancel event.
+        # True when the event is related to [dialogs](https://developers.google.com/chat/
+        # how-tos/bot-dialogs).
         # Corresponds to the JSON property `isDialogEvent`
         # @return [Boolean]
         attr_accessor :is_dialog_event
@@ -708,15 +718,12 @@ module Google
         end
       end
       
-      # Contains dialog if present as well as the ActionStatus for the request sent
-      # from user.
+      # Contains a [dialog](https://developers.google.com/chat/how-tos/bot-dialogs)
+      # and request status code.
       class DialogAction
         include Google::Apis::Core::Hashable
       
-        # ActionStatus represents status of a request from the bot developer's side. In
-        # specific, for each request a bot gets, the bot developer will set both fields
-        # below in relation to what the response status and message related to status
-        # should be.
+        # Represents the status of a request.
         # Corresponds to the JSON property `actionStatus`
         # @return [Google::Apis::ChatV1::ActionStatus]
         attr_accessor :action_status
@@ -853,7 +860,8 @@ module Google
         # @return [String]
         attr_accessor :function
       
-        # 
+        # Specifies the loading indicator that the action displays while making the call
+        # to the action.
         # Corresponds to the JSON property `loadIndicator`
         # @return [String]
         attr_accessor :load_indicator
@@ -1054,7 +1062,7 @@ module Google
         # @return [Google::Apis::ChatV1::Color]
         attr_accessor :color
       
-        # If true, the button is displayed in a disabled state and doesn't respond to
+        # If `true`, the button is displayed in a disabled state and doesn't respond to
         # user actions.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
@@ -1066,7 +1074,7 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :icon
       
-        # The action to perform when the button is clicked.
+        # Represents the response to an `onClick` event.
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
         attr_accessor :on_click
@@ -1095,7 +1103,7 @@ module Google
       class GoogleAppsCardV1ButtonList
         include Google::Apis::Core::Hashable
       
-        # 
+        # An array of buttons.
         # Corresponds to the JSON property `buttons`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Button>]
         attr_accessor :buttons
@@ -1131,9 +1139,9 @@ module Google
       class GoogleAppsCardV1Card
         include Google::Apis::Core::Hashable
       
-        # The actions of this card. They are added to a card's generated toolbar menu.
+        # The card's actions. Actions are added to the card's generated toolbar menu.
         # For example, the following JSON constructs a card action menu with Settings
-        # and Send Feedback options: ``` "card_actions": [ ` "actionLabel": "Setting", "
+        # and Send Feedback options: ``` "card_actions": [ ` "actionLabel": "Settings", "
         # onClick": ` "action": ` "functionName": "goToView", "parameters": [ ` "key": "
         # viewType", "value": "SETTING" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` `
         # `, ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https:
@@ -1142,7 +1150,7 @@ module Google
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1CardAction>]
         attr_accessor :card_actions
       
-        # The display style for peekCardHeader.
+        # The display style for `peekCardHeader`.
         # Corresponds to the JSON property `displayStyle`
         # @return [String]
         attr_accessor :display_style
@@ -1152,20 +1160,17 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardFixedFooter]
         attr_accessor :fixed_footer
       
-        # The header of the card. A header usually contains a title and an image.
+        # Represents a card header.
         # Corresponds to the JSON property `header`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
         attr_accessor :header
       
-        # Name of the card, which is used as a identifier for the card in card
-        # navigation.
+        # Name of the card. Used as a card identifier in card navigation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # When displaying contextual content, the peek card header acts as a placeholder
-        # so that the user can navigate forward between the homepage cards and the
-        # contextual cards.
+        # Represents a card header.
         # Corresponds to the JSON property `peekCardHeader`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1CardHeader]
         attr_accessor :peek_card_header
@@ -1202,7 +1207,7 @@ module Google
         # @return [String]
         attr_accessor :action_label
       
-        # The onclick action for this action item.
+        # Represents the response to an `onClick` event.
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
         attr_accessor :on_click
@@ -1243,7 +1248,7 @@ module Google
         end
       end
       
-      # 
+      # Represents a card header.
       class GoogleAppsCardV1CardHeader
         include Google::Apis::Core::Hashable
       
@@ -1267,9 +1272,9 @@ module Google
         # @return [String]
         attr_accessor :subtitle
       
-        # The title of the card header. The title must be specified. The header has a
-        # fixed height: if both a title and subtitle are specified, each takes up one
-        # line. If only the title is specified, it takes up both lines.
+        # Required. The title of the card header. The header has a fixed height: if both
+        # a title and subtitle are specified, each takes up one line. If only the title
+        # is specified, it takes up both lines.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -1288,7 +1293,8 @@ module Google
         end
       end
       
-      # The widget that lets users to specify a date and time.
+      # The widget that lets users to specify a date and time. Not supported by Google
+      # Chat apps.
       class GoogleAppsCardV1DateTimePicker
         include Google::Apis::Core::Hashable
       
@@ -1297,7 +1303,7 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The name of the text input that's used in formInput, and uniquely identifies
+        # The name of the text input that's used in `formInput`, and uniquely identifies
         # this input.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1371,7 +1377,7 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :icon
       
-        # Only the top and bottom label and content region are clickable.
+        # Represents the response to an `onClick` event.
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
         attr_accessor :on_click
@@ -1381,7 +1387,7 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :start_icon
       
-        # A switch widget can be clicked to change its state or trigger an action.
+        # Either a toggle-style switch or a checkbox.
         # Corresponds to the JSON property `switchControl`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SwitchControl]
         attr_accessor :switch_control
@@ -1456,8 +1462,7 @@ module Google
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1GridItem>]
         attr_accessor :items
       
-        # This callback is reused by each individual grid item, but with the item's
-        # identifier and index in the items list added to the callback's parameters.
+        # Represents the response to an `onClick` event.
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
         attr_accessor :on_click
@@ -1491,7 +1496,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The image that displays in the grid item.
+        # Represents an image.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ImageComponent]
         attr_accessor :image
@@ -1552,7 +1557,7 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
-        # The icon specified by the string name of a list of known icons
+        # The icon specified by the string name of a list of known icons.
         # Corresponds to the JSON property `knownIcon`
         # @return [String]
         attr_accessor :known_icon
@@ -1570,7 +1575,7 @@ module Google
         end
       end
       
-      # An image that is specified by a URL and can have an onClick action.
+      # An image that is specified by a URL and can have an `onClick` action.
       class GoogleAppsCardV1Image
         include Google::Apis::Core::Hashable
       
@@ -1584,7 +1589,7 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
-        # 
+        # Represents the response to an `onClick` event.
         # Corresponds to the JSON property `onClick`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OnClick]
         attr_accessor :on_click
@@ -1601,7 +1606,7 @@ module Google
         end
       end
       
-      # 
+      # Represents an image.
       class GoogleAppsCardV1ImageComponent
         include Google::Apis::Core::Hashable
       
@@ -1663,7 +1668,7 @@ module Google
         end
       end
       
-      # 
+      # Represents the response to an `onClick` event.
       class GoogleAppsCardV1OnClick
         include Google::Apis::Core::Hashable
       
@@ -1701,7 +1706,7 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :open_dynamic_link_action
       
-        # If specified, this onClick triggers an open link action.
+        # Represents an `onClick` event that opens a hyperlink.
         # Corresponds to the JSON property `openLink`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1OpenLink]
         attr_accessor :open_link
@@ -1719,16 +1724,17 @@ module Google
         end
       end
       
-      # 
+      # Represents an `onClick` event that opens a hyperlink.
       class GoogleAppsCardV1OpenLink
         include Google::Apis::Core::Hashable
       
-        # 
+        # Whether the client forgets about a link after opening it, or observes it until
+        # the window closes. Not supported by Chat apps.
         # Corresponds to the JSON property `onClose`
         # @return [String]
         attr_accessor :on_close
       
-        # 
+        # How to open a link. Not supported by Chat apps.
         # Corresponds to the JSON property `openAs`
         # @return [String]
         attr_accessor :open_as
@@ -1769,9 +1775,9 @@ module Google
         attr_accessor :header
       
         # The number of uncollapsible widgets. For example, when a section contains five
-        # widgets and the `numUncollapsibleWidget` is set to `2`, the first two widgets
-        # are always shown and the last three are collapsed as default. The `
-        # numUncollapsibleWidget` is taken into account only when collapsible is set to `
+        # widgets and the `uncollapsibleWidgetsCount` is set to `2`, the first two
+        # widgets are always shown and the last three are collapsed as default. The `
+        # uncollapsibleWidgetsCount` is taken into account only when `collapsible` is `
         # true`.
         # Corresponds to the JSON property `uncollapsibleWidgetsCount`
         # @return [Fixnum]
@@ -1795,12 +1801,12 @@ module Google
         end
       end
       
-      # A widget that creates a UI item (for example, a drop-down list) with options
-      # for users to select.
+      # A widget that creates a UI item with options for users to select. For example,
+      # a dropdown menu.
       class GoogleAppsCardV1SelectionInput
         include Google::Apis::Core::Hashable
       
-        # 
+        # An array of the selected items.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1SelectionItem>]
         attr_accessor :items
@@ -1810,7 +1816,7 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The name of the text input which is used in formInput.
+        # The name of the text input which is used in `formInput`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1821,7 +1827,7 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
       
-        # 
+        # The type of the selection.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1840,8 +1846,7 @@ module Google
         end
       end
       
-      # The item in the switch control. A radio button, at most one of the items is
-      # selected.
+      # A selectable item in the switch control.
       class GoogleAppsCardV1SelectionItem
         include Google::Apis::Core::Hashable
       
@@ -1875,11 +1880,11 @@ module Google
         end
       end
       
-      # A suggestion item. Only supports text for now.
+      # A suggestion item.
       class GoogleAppsCardV1SuggestionItem
         include Google::Apis::Core::Hashable
       
-        # 
+        # The suggested autocomplete result.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -1899,7 +1904,7 @@ module Google
       class GoogleAppsCardV1Suggestions
         include Google::Apis::Core::Hashable
       
-        # A list of suggestions items which will be used in are used in autocomplete.
+        # A list of suggestions used for autocomplete recommendations.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1SuggestionItem>]
         attr_accessor :items
@@ -1914,7 +1919,7 @@ module Google
         end
       end
       
-      # 
+      # Either a toggle-style switch or a checkbox.
       class GoogleAppsCardV1SwitchControl
         include Google::Apis::Core::Hashable
       
@@ -1923,7 +1928,7 @@ module Google
         # @return [String]
         attr_accessor :control_type
       
-        # The name of the switch widget that's used in formInput.
+        # The name of the switch widget that's used in `formInput`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1986,7 +1991,7 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The name of the text input which is used in formInput.
+        # The name of the text input which is used in `formInput`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2053,7 +2058,8 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
       
-        # The widget that lets users to specify a date and time.
+        # The widget that lets users to specify a date and time. Not supported by Google
+        # Chat apps.
         # Corresponds to the JSON property `dateTimePicker`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1DateTimePicker]
         attr_accessor :date_time_picker
@@ -2080,13 +2086,13 @@ module Google
         # @return [String]
         attr_accessor :horizontal_alignment
       
-        # An image that is specified by a URL and can have an onClick action.
+        # An image that is specified by a URL and can have an `onClick` action.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Image]
         attr_accessor :image
       
-        # A widget that creates a UI item (for example, a drop-down list) with options
-        # for users to select.
+        # A widget that creates a UI item with options for users to select. For example,
+        # a dropdown menu.
         # Corresponds to the JSON property `selectionInput`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1SelectionInput]
         attr_accessor :selection_input
@@ -2194,28 +2200,28 @@ module Google
         end
       end
       
-      # The inputs with widgets.
+      # Types of data inputs for widgets. Users enter data with these inputs.
       class Inputs
         include Google::Apis::Core::Hashable
       
-        # Input Parameter for Date Picker widget.
+        # Date input values. Not supported by Chat apps.
         # Corresponds to the JSON property `dateInput`
         # @return [Google::Apis::ChatV1::DateInput]
         attr_accessor :date_input
       
-        # Input Parameter for Date and Time Picker widget.
+        # Date and time input values. Not supported by Chat apps.
         # Corresponds to the JSON property `dateTimeInput`
         # @return [Google::Apis::ChatV1::DateTimeInput]
         attr_accessor :date_time_input
       
-        # Input parameter for regular widgets. For single-valued widgets, it will be a
-        # single value list; for multi-valued widgets, such as checkbox, all the values
-        # are presented.
+        # Input parameter for regular widgets. For single-valued widgets, it is a single
+        # value list. For multi-valued widgets, such as checkbox, all the values are
+        # presented.
         # Corresponds to the JSON property `stringInputs`
         # @return [Google::Apis::ChatV1::StringInputs]
         attr_accessor :string_inputs
       
-        # Input Parameter for Time Picker widget.
+        # Time input values. Not supported by Chat apps.
         # Corresponds to the JSON property `timeInput`
         # @return [Google::Apis::ChatV1::TimeInput]
         attr_accessor :time_input
@@ -2500,7 +2506,8 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
       
-        # A Slash Command in Chat.
+        # A [slash command](https://developers.google.com/chat/how-tos/slash-commands)
+        # in Google Chat.
         # Corresponds to the JSON property `slashCommand`
         # @return [Google::Apis::ChatV1::SlashCommand]
         attr_accessor :slash_command
@@ -2618,7 +2625,8 @@ module Google
         end
       end
       
-      # A Slash Command in Chat.
+      # A [slash command](https://developers.google.com/chat/how-tos/slash-commands)
+      # in Google Chat.
       class SlashCommand
         include Google::Apis::Core::Hashable
       
@@ -2768,13 +2776,13 @@ module Google
         end
       end
       
-      # Input parameter for regular widgets. For single-valued widgets, it will be a
-      # single value list; for multi-valued widgets, such as checkbox, all the values
-      # are presented.
+      # Input parameter for regular widgets. For single-valued widgets, it is a single
+      # value list. For multi-valued widgets, such as checkbox, all the values are
+      # presented.
       class StringInputs
         include Google::Apis::Core::Hashable
       
-        # 
+        # An array of strings entered by the user.
         # Corresponds to the JSON property `value`
         # @return [Array<String>]
         attr_accessor :value
@@ -2853,16 +2861,16 @@ module Google
         end
       end
       
-      # Input Parameter for Time Picker widget.
+      # Time input values. Not supported by Chat apps.
       class TimeInput
         include Google::Apis::Core::Hashable
       
-        # 
+        # The hour on a 24-hour clock.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
       
-        # 
+        # The number of minutes past the hour. Valid values are 0 to 59.
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes
@@ -2878,18 +2886,19 @@ module Google
         end
       end
       
-      # The timezone id and offset. The id is the tz database time zones such as "
-      # America/Toronto". The user timezone offset, in milliseconds, from Coordinated
-      # Universal Time (UTC).
+      # The timezone ID and offset from Coordinated Universal Time (UTC). Not
+      # supported by Chat apps.
       class TimeZone
         include Google::Apis::Core::Hashable
       
-        # 
+        # The [IANA TZ](https://www.iana.org/time-zones) time zone database code, such
+        # as "America/Toronto".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # 
+        # The user timezone offset, in milliseconds, from Coordinated Universal Time (
+        # UTC).
         # Corresponds to the JSON property `offset`
         # @return [Fixnum]
         attr_accessor :offset
@@ -2925,9 +2934,9 @@ module Google
         attr_accessor :is_anonymous
         alias_method :is_anonymous?, :is_anonymous
       
-        # Resource name for a Google Chat user. Formatted as `users/AAAAAAAAAAA`.
-        # Represents a [person](https://developers.google.com/people/api/rest/v1/people#
-        # Person) in the People API.
+        # Resource name for a Google Chat user. Formatted as `users/`user``. Represents
+        # a [person](https://developers.google.com/people/api/rest/v1/people#Person) in
+        # the People API.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
