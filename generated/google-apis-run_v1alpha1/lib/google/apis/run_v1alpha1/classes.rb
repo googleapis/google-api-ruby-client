@@ -1459,14 +1459,15 @@ module Google
         attr_accessor :initial_delay_seconds
       
         # (Optional) How often (in seconds) to perform the probe. Default to 10 seconds.
-        # Minimum value is 1.
+        # Minimum value is 1. Maximum value is 3600. Must be greater or equal than
+        # timeout_seconds.
         # Corresponds to the JSON property `periodSeconds`
         # @return [Fixnum]
         attr_accessor :period_seconds
       
         # (Optional) Minimum consecutive successes for the probe to be considered
-        # successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum
-        # value is 1.
+        # successful after having failed. Defaults to 1. Must be 1 for liveness and
+        # startup Probes.
         # Corresponds to the JSON property `successThreshold`
         # @return [Fixnum]
         attr_accessor :success_threshold
@@ -1478,8 +1479,9 @@ module Google
         attr_accessor :tcp_socket
       
         # (Optional) Number of seconds after which the probe times out. Defaults to 1
-        # second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/
-        # workloads/pods/pod-lifecycle#container-probes
+        # second. Minimum value is 1. Maximum value is 3600. Must be smaller than
+        # period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/
+        # pod-lifecycle#container-probes
         # Corresponds to the JSON property `timeoutSeconds`
         # @return [Fixnum]
         attr_accessor :timeout_seconds
