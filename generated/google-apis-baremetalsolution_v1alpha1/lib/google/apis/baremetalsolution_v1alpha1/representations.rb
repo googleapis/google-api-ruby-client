@@ -140,6 +140,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
+          property :existing_network_id, as: 'existingNetworkId'
           property :network_id, as: 'networkId'
         end
       end
