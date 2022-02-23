@@ -803,6 +803,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer, as: 'customer'
+          property :remove_reset_lock, as: 'removeResetLock'
         end
       end
       
