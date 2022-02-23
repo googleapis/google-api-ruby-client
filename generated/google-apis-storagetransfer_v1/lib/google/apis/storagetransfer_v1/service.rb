@@ -530,7 +530,7 @@ module Google
         # Lists transfer operations. Operations are ordered by their creation time in
         # reverse chronological order.
         # @param [String] name
-        #   Not used.
+        #   Required. The name of the type being listed; must be `transferOperations`.
         # @param [String] filter
         #   Required. A list of query parameters specified as JSON text in the form of: ``"
         #   projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "
