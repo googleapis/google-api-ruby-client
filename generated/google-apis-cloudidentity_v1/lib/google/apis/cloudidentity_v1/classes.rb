@@ -1181,6 +1181,16 @@ module Google
         # @return [String]
         attr_accessor :customer
       
+        # Optional. Specifies if a user is able to factory reset a device after a Device
+        # Wipe. On iOS, this is called "Activation Lock", while on Android, this is
+        # known as "Factory Reset Protection". If true, this protection will be removed
+        # from the device, so that a user can successfully factory reset. If false, the
+        # setting is untouched on the device.
+        # Corresponds to the JSON property `removeResetLock`
+        # @return [Boolean]
+        attr_accessor :remove_reset_lock
+        alias_method :remove_reset_lock?, :remove_reset_lock
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1188,6 +1198,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer = args[:customer] if args.key?(:customer)
+          @remove_reset_lock = args[:remove_reset_lock] if args.key?(:remove_reset_lock)
         end
       end
       
