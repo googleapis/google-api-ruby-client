@@ -391,7 +391,7 @@ module Google
         # Optional. `etag` is used for optimistic concurrency control as a way to help
         # prevent simultaneous updates of an alert metadata from overwriting each other.
         # It is strongly suggested that systems make use of the `etag` in the read-
-        # modify-write cycle to perform metatdata updates in order to avoid race
+        # modify-write cycle to perform metadata updates in order to avoid race
         # conditions: An `etag` is returned in the response which contains alert
         # metadata, and systems are expected to put that etag in the request to update
         # alert metadata to ensure that their change will be applied to the same version
@@ -1019,6 +1019,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Customer domain for email template personalization.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
         # A header to display above the incident message. Typically used to attach a
         # localized notice on the timeline for followup comms translations.
         # Corresponds to the JSON property `header`
@@ -1039,6 +1044,7 @@ module Google
           @affected_user_emails = args[:affected_user_emails] if args.key?(:affected_user_emails)
           @attachment_data = args[:attachment_data] if args.key?(:attachment_data)
           @description = args[:description] if args.key?(:description)
+          @domain = args[:domain] if args.key?(:domain)
           @header = args[:header] if args.key?(:header)
           @title = args[:title] if args.key?(:title)
         end

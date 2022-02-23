@@ -611,6 +611,7 @@ module Google
           property :attachment_data, as: 'attachmentData', class: Google::Apis::AlertcenterV1beta1::Attachment, decorator: Google::Apis::AlertcenterV1beta1::Attachment::Representation
       
           property :description, as: 'description'
+          property :domain, as: 'domain'
           property :header, as: 'header'
           property :title, as: 'title'
         end
