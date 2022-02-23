@@ -248,6 +248,198 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a big query export.
+        # @param [String] parent
+        #   Required. Resource name of the new big query export's parent. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
+        # @param [String] big_query_export_id
+        #   Required. Unique identifier provided by the client within the parent scope. It
+        #   must consist of lower case letters, numbers, and hyphen, with the first
+        #   character a letter, the last a letter or a number, and a 63 character maximum.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_big_query_export(parent, google_cloud_securitycenter_v1_big_query_export_object = nil, big_query_export_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/bigQueryExports', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.request_object = google_cloud_securitycenter_v1_big_query_export_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bigQueryExportId'] = big_query_export_id unless big_query_export_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing big query export.
+        # @param [String] name
+        #   Required. Name of the big query export to delete. Its format is organizations/`
+        #   organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
+        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_big_query_export(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a big query export.
+        # @param [String] name
+        #   Required. Name of the big query export to retrieve. Its format is
+        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
+        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_big_query_export(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists BigQuery exports. Note that when requesting BigQuery exports at a given
+        # level all exports under that level are also returned e.g. if requesting
+        # BigQuery exports under a folder, then all BigQuery exports immediately under
+        # the folder plus the ones created under the projects within the folder are
+        # returned.
+        # @param [String] parent
+        #   Required. The parent, which owns the collection of BigQuery exports. Its
+        #   format is "organizations/[organization_id]", "folders/[folder_id]", "projects/[
+        #   project_id]".
+        # @param [Fixnum] page_size
+        #   The maximum number of configs to return. The service may return fewer than
+        #   this value. If unspecified, at most 10 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListBigQueryExports` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListBigQueryExports` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_big_query_exports(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/bigQueryExports', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a BigQuery export.
+        # @param [String] name
+        #   The relative resource name of this export. See: https://cloud.google.com/apis/
+        #   design/resource_names#relative_resource_name. Example format: "organizations/`
+        #   organization_id`/bigQueryExports/`export_id`" Example format: "folders/`
+        #   folder_id`/bigQueryExports/`export_id`" Example format: "projects/`project_id`/
+        #   bigQueryExports/`export_id`" This field is provided in responses, and is
+        #   ignored when provided in create requests.
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
+        # @param [String] update_mask
+        #   The list of fields to be updated. If empty all mutable fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_big_query_export(name, google_cloud_securitycenter_v1_big_query_export_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.request_object = google_cloud_securitycenter_v1_big_query_export_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Kicks off an LRO to bulk mute findings for a parent based on a filter. The
         # parent can be either an organization, folder or project. The findings matched
         # by the filter will be muted after the LRO is done.
@@ -1165,6 +1357,198 @@ module Google
           command.response_class = Google::Apis::SecuritycenterV1::SecurityMarks
           command.params['name'] = name unless name.nil?
           command.query['startTime'] = start_time unless start_time.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a big query export.
+        # @param [String] parent
+        #   Required. Resource name of the new big query export's parent. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
+        # @param [String] big_query_export_id
+        #   Required. Unique identifier provided by the client within the parent scope. It
+        #   must consist of lower case letters, numbers, and hyphen, with the first
+        #   character a letter, the last a letter or a number, and a 63 character maximum.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_big_query_export(parent, google_cloud_securitycenter_v1_big_query_export_object = nil, big_query_export_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/bigQueryExports', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.request_object = google_cloud_securitycenter_v1_big_query_export_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bigQueryExportId'] = big_query_export_id unless big_query_export_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing big query export.
+        # @param [String] name
+        #   Required. Name of the big query export to delete. Its format is organizations/`
+        #   organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
+        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_big_query_export(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a big query export.
+        # @param [String] name
+        #   Required. Name of the big query export to retrieve. Its format is
+        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
+        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_big_query_export(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists BigQuery exports. Note that when requesting BigQuery exports at a given
+        # level all exports under that level are also returned e.g. if requesting
+        # BigQuery exports under a folder, then all BigQuery exports immediately under
+        # the folder plus the ones created under the projects within the folder are
+        # returned.
+        # @param [String] parent
+        #   Required. The parent, which owns the collection of BigQuery exports. Its
+        #   format is "organizations/[organization_id]", "folders/[folder_id]", "projects/[
+        #   project_id]".
+        # @param [Fixnum] page_size
+        #   The maximum number of configs to return. The service may return fewer than
+        #   this value. If unspecified, at most 10 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListBigQueryExports` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListBigQueryExports` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_big_query_exports(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/bigQueryExports', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a BigQuery export.
+        # @param [String] name
+        #   The relative resource name of this export. See: https://cloud.google.com/apis/
+        #   design/resource_names#relative_resource_name. Example format: "organizations/`
+        #   organization_id`/bigQueryExports/`export_id`" Example format: "folders/`
+        #   folder_id`/bigQueryExports/`export_id`" Example format: "projects/`project_id`/
+        #   bigQueryExports/`export_id`" This field is provided in responses, and is
+        #   ignored when provided in create requests.
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
+        # @param [String] update_mask
+        #   The list of fields to be updated. If empty all mutable fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_big_query_export(name, google_cloud_securitycenter_v1_big_query_export_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.request_object = google_cloud_securitycenter_v1_big_query_export_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2556,6 +2940,198 @@ module Google
           command.response_class = Google::Apis::SecuritycenterV1::SecurityMarks
           command.params['name'] = name unless name.nil?
           command.query['startTime'] = start_time unless start_time.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a big query export.
+        # @param [String] parent
+        #   Required. Resource name of the new big query export's parent. Its format is "
+        #   organizations/[organization_id]", "folders/[folder_id]", or "projects/[
+        #   project_id]".
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
+        # @param [String] big_query_export_id
+        #   Required. Unique identifier provided by the client within the parent scope. It
+        #   must consist of lower case letters, numbers, and hyphen, with the first
+        #   character a letter, the last a letter or a number, and a 63 character maximum.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_big_query_export(parent, google_cloud_securitycenter_v1_big_query_export_object = nil, big_query_export_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/bigQueryExports', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.request_object = google_cloud_securitycenter_v1_big_query_export_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bigQueryExportId'] = big_query_export_id unless big_query_export_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing big query export.
+        # @param [String] name
+        #   Required. Name of the big query export to delete. Its format is organizations/`
+        #   organization`/bigQueryExports/`export_id`, folders/`folder`/bigQueryExports/`
+        #   export_id`, or projects/`project`/bigQueryExports/`export_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_big_query_export(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::Empty::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a big query export.
+        # @param [String] name
+        #   Required. Name of the big query export to retrieve. Its format is
+        #   organizations/`organization`/bigQueryExports/`export_id`, folders/`folder`/
+        #   bigQueryExports/`export_id`, or projects/`project`/bigQueryExports/`export_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_big_query_export(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists BigQuery exports. Note that when requesting BigQuery exports at a given
+        # level all exports under that level are also returned e.g. if requesting
+        # BigQuery exports under a folder, then all BigQuery exports immediately under
+        # the folder plus the ones created under the projects within the folder are
+        # returned.
+        # @param [String] parent
+        #   Required. The parent, which owns the collection of BigQuery exports. Its
+        #   format is "organizations/[organization_id]", "folders/[folder_id]", "projects/[
+        #   project_id]".
+        # @param [Fixnum] page_size
+        #   The maximum number of configs to return. The service may return fewer than
+        #   this value. If unspecified, at most 10 configs will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListBigQueryExports` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListBigQueryExports` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_big_query_exports(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/bigQueryExports', options)
+          command.response_representation = Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::ListBigQueryExportsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a BigQuery export.
+        # @param [String] name
+        #   The relative resource name of this export. See: https://cloud.google.com/apis/
+        #   design/resource_names#relative_resource_name. Example format: "organizations/`
+        #   organization_id`/bigQueryExports/`export_id`" Example format: "folders/`
+        #   folder_id`/bigQueryExports/`export_id`" Example format: "projects/`project_id`/
+        #   bigQueryExports/`export_id`" This field is provided in responses, and is
+        #   ignored when provided in create requests.
+        # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
+        # @param [String] update_mask
+        #   The list of fields to be updated. If empty all mutable fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_big_query_export(name, google_cloud_securitycenter_v1_big_query_export_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.request_object = google_cloud_securitycenter_v1_big_query_export_object
+          command.response_representation = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+          command.response_class = Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport
+          command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

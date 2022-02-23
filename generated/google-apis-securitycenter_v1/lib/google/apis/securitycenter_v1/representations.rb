@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1BigQueryExport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,12 @@ module Google
       end
       
       class ListAssetsResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBigQueryExportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -580,6 +592,20 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV1BigQueryExport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :dataset, as: 'dataset'
+          property :description, as: 'description'
+          property :filter, as: 'filter'
+          property :most_recent_editor, as: 'mostRecentEditor'
+          property :name, as: 'name'
+          property :principal, as: 'principal'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV1BulkMuteFindingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -806,6 +832,15 @@ module Google
           property :asset, as: 'asset', class: Google::Apis::SecuritycenterV1::Asset, decorator: Google::Apis::SecuritycenterV1::Asset::Representation
       
           property :state_change, as: 'stateChange'
+        end
+      end
+      
+      class ListBigQueryExportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :big_query_exports, as: 'bigQueryExports', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
