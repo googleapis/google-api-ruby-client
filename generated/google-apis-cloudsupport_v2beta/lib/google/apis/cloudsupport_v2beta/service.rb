@@ -265,7 +265,7 @@ module Google
         # @param [String] filter
         #   An expression written in the Cloud filter language. If non-empty, then only
         #   cases whose fields match the filter are returned. If empty, then no messages
-        #   are filtered out. Filter strings can use the following fields: - status (
+        #   are filtered out. Filter strings can use the following fields: - state (
         #   Accepted values: OPEN or CLOSED) - severity (Accepted values: S0, S1, S2, S3,
         #   or S4) - creator.email with the operators equals (=) and AND. Additionally, a
         #   global restriction (with no operator) can be used to search across displayName,
