@@ -1024,6 +1024,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ArticleSuggestionModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2AssistQueryParameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1096,6 +1102,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2CompleteConversationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1114,7 +1132,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ConversationDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2ConversationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ConversationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ConversationModel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ConversationModelEvaluation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1127,6 +1169,54 @@ module Google
       end
       
       class GoogleCloudDialogflowV2ConversationProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2CreateConversationModelOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2DeployConversationModelOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2DeployConversationModelRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1198,6 +1288,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2EvaluationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2EventInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1217,6 +1325,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2ExportDocumentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ExportOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1360,6 +1474,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ImportConversationDataOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ImportConversationDataOperationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ImportConversationDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2ImportDocumentTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1379,6 +1511,18 @@ module Google
       end
       
       class GoogleCloudDialogflowV2InputAudioConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2InputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2InputDataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1612,6 +1756,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ListConversationDatasetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ListConversationModelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2ListConversationProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1786,7 +1948,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2SmartReplyAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SmartReplyMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SmartReplyModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1876,6 +2068,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2UndeployConversationModelRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2ValidationError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1936,6 +2140,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1Context
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1972,7 +2182,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ExportOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1FaqAnswer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GcsDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2327,6 +2549,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SessionEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4114,6 +4342,13 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2ArticleSuggestionModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :training_model_type, as: 'trainingModelType'
+        end
+      end
+      
       class GoogleCloudDialogflowV2AssistQueryParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4219,6 +4454,24 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_profile, as: 'conversationProfile'
+          property :create_time, as: 'createTime'
+          property :participant_role, as: 'participantRole'
+          property :suggestion_feature_type, as: 'suggestionFeatureType'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :participant_role, as: 'participantRole'
+          property :suggestion_feature_type, as: 'suggestionFeatureType'
+        end
+      end
+      
       class GoogleCloudDialogflowV2CompleteConversationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4248,6 +4501,21 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2ConversationDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_count, :numeric_string => true, as: 'conversationCount'
+          property :conversation_info, as: 'conversationInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationInfo::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :input_config, as: 'inputConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputConfig::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDialogflowV2ConversationEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4257,6 +4525,43 @@ module Google
           property :new_message_payload, as: 'newMessagePayload', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Message, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Message::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ConversationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ConversationModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :article_suggestion_model_metadata, as: 'articleSuggestionModelMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ArticleSuggestionModelMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ArticleSuggestionModelMetadata::Representation
+      
+          property :create_time, as: 'createTime'
+          collection :datasets, as: 'datasets', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputDataset, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputDataset::Representation
+      
+          property :display_name, as: 'displayName'
+          property :language_code, as: 'languageCode'
+          property :name, as: 'name'
+          property :smart_reply_model_metadata, as: 'smartReplyModelMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyModelMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyModelMetadata::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ConversationModelEvaluation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :evaluation_config, as: 'evaluationConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EvaluationConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EvaluationConfig::Representation
+      
+          property :name, as: 'name'
+          property :smart_reply_metrics, as: 'smartReplyMetrics', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyMetrics, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyMetrics::Representation
+      
         end
       end
       
@@ -4291,6 +4596,67 @@ module Google
       
           property :time_zone, as: 'timeZone'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_model, as: 'conversationModel'
+          property :conversation_model_evaluation, as: 'conversationModelEvaluation'
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_model_evaluation, as: 'conversationModelEvaluation', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationModelEvaluation, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationModelEvaluation::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2CreateConversationModelOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_model, as: 'conversationModel'
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_model, as: 'conversationModel'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2DeployConversationModelOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_model, as: 'conversationModel'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2DeployConversationModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -4335,6 +4701,7 @@ module Google
           property :mime_type, as: 'mimeType'
           property :name, as: 'name'
           property :raw_content, :base64 => true, as: 'rawContent'
+          property :state, as: 'state'
         end
       end
       
@@ -4417,6 +4784,34 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2EvaluationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :datasets, as: 'datasets', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputDataset, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputDataset::Representation
+      
+          property :smart_compose_config, as: 'smartComposeConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig::Representation
+      
+          property :smart_reply_config, as: 'smartReplyConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowlist_document, as: 'allowlistDocument'
+          property :max_result_count, as: 'maxResultCount'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowlist_document, as: 'allowlistDocument'
+          property :max_result_count, as: 'maxResultCount'
+        end
+      end
+      
       class GoogleCloudDialogflowV2EventInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4448,6 +4843,14 @@ module Google
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GcsDestination, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GcsDestination::Representation
       
           property :smart_messaging_partial_update, as: 'smartMessagingPartialUpdate'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ExportOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exported_gcs_destination, as: 'exportedGcsDestination', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GcsDestination, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GcsDestination::Representation
+      
         end
       end
       
@@ -4669,6 +5072,32 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2ImportConversationDataOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_dataset, as: 'conversationDataset'
+          property :create_time, as: 'createTime'
+          collection :partial_failures, as: 'partialFailures', class: Google::Apis::DialogflowV2::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ImportConversationDataOperationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_dataset, as: 'conversationDataset'
+          property :import_count, as: 'importCount'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ImportConversationDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_config, as: 'inputConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2InputConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2ImportDocumentTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4711,6 +5140,21 @@ module Google
           property :single_utterance, as: 'singleUtterance'
           collection :speech_contexts, as: 'speechContexts', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechContext, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechContext::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowV2InputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GcsSources, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2GcsSources::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2InputDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
         end
       end
       
@@ -5095,6 +5539,8 @@ module Google
       class GoogleCloudDialogflowV2KnowledgeOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_operation_metadata, as: 'exportOperationMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ExportOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ExportOperationMetadata::Representation
+      
           property :knowledge_base, as: 'knowledgeBase'
           property :state, as: 'state'
         end
@@ -5113,6 +5559,33 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :contexts, as: 'contexts', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ListConversationDatasetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_datasets, as: 'conversationDatasets', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationDataset, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationDataset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_model_evaluations, as: 'conversationModelEvaluations', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationModelEvaluation, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationModelEvaluation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ListConversationModelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversation_models, as: 'conversationModels', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationModel, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ConversationModel::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -5411,12 +5884,56 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_profile, as: 'conversationProfile'
+          property :create_time, as: 'createTime'
+          property :participant_role, as: 'participantRole'
+          property :suggestion_feature_type, as: 'suggestionFeatureType'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :participant_role, as: 'participantRole'
+          property :suggestion_feature_config, as: 'suggestionFeatureConfig', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2SmartReplyAnswer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :answer_record, as: 'answerRecord'
           property :confidence, as: 'confidence'
           property :reply, as: 'reply'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SmartReplyMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowlist_coverage, as: 'allowlistCoverage'
+          property :conversation_count, :numeric_string => true, as: 'conversationCount'
+          collection :top_n_metrics, as: 'topNMetrics', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :n, as: 'n'
+          property :recall, as: 'recall'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SmartReplyModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :training_model_type, as: 'trainingModelType'
         end
       end
       
@@ -5553,6 +6070,20 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_model, as: 'conversationModel'
+          property :create_time, as: 'createTime'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2UndeployConversationModelRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDialogflowV2ValidationError
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5654,6 +6185,16 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_profile, as: 'conversationProfile'
+          property :create_time, as: 'createTime'
+          property :participant_role, as: 'participantRole'
+          property :suggestion_feature_type, as: 'suggestionFeatureType'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1Context
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5713,6 +6254,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ExportOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exported_gcs_destination, as: 'exportedGcsDestination', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1GcsDestination, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1GcsDestination::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1FaqAnswer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5722,6 +6271,13 @@ module Google
           hash :metadata, as: 'metadata'
           property :question, as: 'question'
           property :source, as: 'source'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
         end
       end
       
@@ -6262,6 +6818,8 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_operation_metadata, as: 'exportOperationMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ExportOperationMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ExportOperationMetadata::Representation
+      
           property :knowledge_base, as: 'knowledgeBase'
           property :state, as: 'state'
         end
@@ -6353,6 +6911,16 @@ module Google
       
           property :entity_override_mode, as: 'entityOverrideMode'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation_profile, as: 'conversationProfile'
+          property :create_time, as: 'createTime'
+          property :participant_role, as: 'participantRole'
+          property :suggestion_feature_type, as: 'suggestionFeatureType'
         end
       end
       
