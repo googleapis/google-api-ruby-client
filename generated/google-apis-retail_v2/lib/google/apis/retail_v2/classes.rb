@@ -719,8 +719,9 @@ module Google
         alias_method :searchable?, :searchable
       
         # The textual values of this custom attribute. For example, `["yellow", "green"]`
-        # when the key is "color". Exactly one of text or numbers should be set.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # when the key is "color". Empty string is not allowed. Otherwise, an
+        # INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be
+        # set. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -936,9 +937,9 @@ module Google
       class GoogleCloudRetailV2ImportErrorsConfig
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage path for import errors. This must be an empty, existing
-        # Cloud Storage bucket. Import errors will be written to a file in this bucket,
-        # one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Google Cloud Storage prefix for import errors. This must be an empty, existing
+        # Cloud Storage directory. Import errors will be written to sharded files in
+        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
@@ -1531,9 +1532,9 @@ module Google
         # be a UTF-8 encoded string with a length limit of 128 characters. * For
         # indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example,
         # `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400
-        # values are allowed. Empty values are not allowed. Each value must be a UTF-8
-        # encoded string with a length limit of 256 characters. * For number attributes,
-        # at most 400 values are allowed.
+        # values are allowed. Empty values are not allowed. Each value must be a non-
+        # empty UTF-8 encoded string with a length limit of 256 characters. * For number
+        # attributes, at most 400 values are allowed.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute>]
         attr_accessor :attributes
@@ -3045,10 +3046,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The final component of the resource name of a branch. This field must be one
-        # of "0", "1" or "2". Otherwise, an INVALID_ARGUMENT error is returned.
+        # of "0", "1" or "2". Otherwise, an INVALID_ARGUMENT error is returned. If there
+        # are no sufficient active products in the targeted branch and force is not set,
+        # a FAILED_PRECONDITION error is returned.
         # Corresponds to the JSON property `branchId`
         # @return [String]
         attr_accessor :branch_id
+      
+        # If set to true, it permits switching to a branch with branch_id even if it has
+        # no sufficient active products.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
       
         # Some note on this request, this can be retrieved by CatalogService.
         # GetDefaultBranch before next valid default branch set occurs. This field must
@@ -3065,6 +3075,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @branch_id = args[:branch_id] if args.key?(:branch_id)
+          @force = args[:force] if args.key?(:force)
           @note = args[:note] if args.key?(:note)
         end
       end
@@ -3681,9 +3692,9 @@ module Google
       class GoogleCloudRetailV2alphaImportErrorsConfig
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage path for import errors. This must be an empty, existing
-        # Cloud Storage bucket. Import errors will be written to a file in this bucket,
-        # one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Google Cloud Storage prefix for import errors. This must be an empty, existing
+        # Cloud Storage directory. Import errors will be written to sharded files in
+        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
@@ -4151,9 +4162,9 @@ module Google
       class GoogleCloudRetailV2betaImportErrorsConfig
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage path for import errors. This must be an empty, existing
-        # Cloud Storage bucket. Import errors will be written to a file in this bucket,
-        # one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Google Cloud Storage prefix for import errors. This must be an empty, existing
+        # Cloud Storage directory. Import errors will be written to sharded files in
+        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix

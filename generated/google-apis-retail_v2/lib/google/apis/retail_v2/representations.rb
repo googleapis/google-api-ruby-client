@@ -1508,6 +1508,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch_id, as: 'branchId'
+          property :force, as: 'force'
           property :note, as: 'note'
         end
       end
