@@ -1252,7 +1252,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity>]
         attr_accessor :entities
       
-        # Relationship among Document.entities.
+        # Placeholder. Relationship among Document.entities.
         # Corresponds to the JSON property `entityRelations`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityRelation>]
         attr_accessor :entity_relations
@@ -1279,7 +1279,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPage>]
         attr_accessor :pages
       
-        # Revision history of this document.
+        # Placeholder. Revision history of this document.
         # Corresponds to the JSON property `revisions`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentRevision>]
         attr_accessor :revisions
@@ -1295,14 +1295,14 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # A list of text corrections made to [Document.text]. This is usually used for
-        # annotating corrections to OCR mistakes. Text changes for a given revision may
-        # not overlap with each other.
+        # Placeholder. A list of text corrections made to [Document.text]. This is
+        # usually used for annotating corrections to OCR mistakes. Text changes for a
+        # given revision may not overlap with each other.
         # Corresponds to the JSON property `textChanges`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentTextChange>]
         attr_accessor :text_changes
       
-        # Styles for the Document.text.
+        # Placeholder. Styles for the Document.text.
         # Corresponds to the JSON property `textStyles`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentStyle>]
         attr_accessor :text_styles
@@ -3221,6 +3221,16 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # The KMS key name used for encryption.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # The KMS key version with which data is encrypted.
+        # Corresponds to the JSON property `kmsKeyVersionName`
+        # @return [String]
+        attr_accessor :kms_key_version_name
+      
         # The resource name of the processor version. Format: `projects/`project`/
         # locations/`location`/processors/`processor`/processorVersions/`
         # processor_version``
@@ -3241,6 +3251,8 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
         end
@@ -3601,7 +3613,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentEntity>]
         attr_accessor :entities
       
-        # Relationship among Document.entities.
+        # Placeholder. Relationship among Document.entities.
         # Corresponds to the JSON property `entityRelations`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentEntityRelation>]
         attr_accessor :entity_relations
@@ -3628,7 +3640,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentPage>]
         attr_accessor :pages
       
-        # Revision history of this document.
+        # Placeholder. Revision history of this document.
         # Corresponds to the JSON property `revisions`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentRevision>]
         attr_accessor :revisions
@@ -3644,14 +3656,14 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # A list of text corrections made to [Document.text]. This is usually used for
-        # annotating corrections to OCR mistakes. Text changes for a given revision may
-        # not overlap with each other.
+        # Placeholder. A list of text corrections made to [Document.text]. This is
+        # usually used for annotating corrections to OCR mistakes. Text changes for a
+        # given revision may not overlap with each other.
         # Corresponds to the JSON property `textChanges`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentTextChange>]
         attr_accessor :text_changes
       
-        # Styles for the Document.text.
+        # Placeholder. Styles for the Document.text.
         # Corresponds to the JSON property `textStyles`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta1DocumentStyle>]
         attr_accessor :text_styles
@@ -5353,7 +5365,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentEntity>]
         attr_accessor :entities
       
-        # Relationship among Document.entities.
+        # Placeholder. Relationship among Document.entities.
         # Corresponds to the JSON property `entityRelations`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentEntityRelation>]
         attr_accessor :entity_relations
@@ -5385,7 +5397,7 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentPage>]
         attr_accessor :pages
       
-        # Revision history of this document.
+        # Placeholder. Revision history of this document.
         # Corresponds to the JSON property `revisions`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentRevision>]
         attr_accessor :revisions
@@ -5401,14 +5413,14 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # A list of text corrections made to [Document.text]. This is usually used for
-        # annotating corrections to OCR mistakes. Text changes for a given revision may
-        # not overlap with each other.
+        # Placeholder. A list of text corrections made to [Document.text]. This is
+        # usually used for annotating corrections to OCR mistakes. Text changes for a
+        # given revision may not overlap with each other.
         # Corresponds to the JSON property `textChanges`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentTextChange>]
         attr_accessor :text_changes
       
-        # Styles for the Document.text.
+        # Placeholder. Styles for the Document.text.
         # Corresponds to the JSON property `textStyles`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta2DocumentStyle>]
         attr_accessor :text_styles
@@ -8099,8 +8111,8 @@ module Google
         attr_accessor :recipients
       
         # Required. CLDR region code of the country/region of the address. This is never
-        # inferred and it is up to the user to ensure the value is correct. See http://
-        # cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/
+        # inferred and it is up to the user to ensure the value is correct. See https://
+        # cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/
         # territory_information.html for details. Example: "CH" for Switzerland.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
