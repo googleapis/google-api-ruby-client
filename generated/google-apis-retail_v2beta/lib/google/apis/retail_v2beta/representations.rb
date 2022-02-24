@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaAddCatalogAttributeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaAddControlRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaAttributesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaAudience
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +353,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaCatalogAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -652,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaRemoveCatalogAttributeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaRemoveControlRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -671,6 +695,12 @@ module Google
       end
       
       class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaReplaceCatalogAttributeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1264,6 +1294,14 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaAddCatalogAttributeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_attribute, as: 'catalogAttribute', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttribute, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttribute::Representation
+      
+        end
+      end
+      
       class GoogleCloudRetailV2betaAddControlRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1290,6 +1328,16 @@ module Google
       class GoogleCloudRetailV2betaAddFulfillmentPlacesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaAttributesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_config_level, as: 'attributeConfigLevel'
+          hash :catalog_attributes, as: 'catalogAttributes', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttribute, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttribute::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -1321,6 +1369,18 @@ module Google
           property :name, as: 'name'
           property :product_level_config, as: 'productLevelConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductLevelConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductLevelConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2betaCatalogAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dynamic_facetable_option, as: 'dynamicFacetableOption'
+          property :in_use, as: 'inUse'
+          property :indexable_option, as: 'indexableOption'
+          property :key, as: 'key'
+          property :searchable_option, as: 'searchableOption'
+          property :type, as: 'type'
         end
       end
       
@@ -1833,6 +1893,13 @@ module Google
         end
       end
       
+      class GoogleCloudRetailV2betaRemoveCatalogAttributeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+        end
+      end
+      
       class GoogleCloudRetailV2betaRemoveControlRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1859,6 +1926,15 @@ module Google
       class GoogleCloudRetailV2betaRemoveFulfillmentPlacesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2betaReplaceCatalogAttributeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog_attribute, as: 'catalogAttribute', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttribute, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalogAttribute::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -2131,6 +2207,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch_id, as: 'branchId'
+          property :force, as: 'force'
           property :note, as: 'note'
         end
       end
