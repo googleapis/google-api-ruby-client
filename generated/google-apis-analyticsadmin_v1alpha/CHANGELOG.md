@@ -1,5 +1,9 @@
 # Release history for google-apis-analyticsadmin_v1alpha
 
+### v0.26.0 (2022-02-24)
+
+* Regenerated from discovery document revision 20220222
+
 ### v0.25.0 (2022-02-03)
 
 * Regenerated from discovery document revision 20220131
