@@ -682,7 +682,7 @@ module Google
         # CreateProduct or UpdateProduct request. If no inventory fields are set in
         # CreateProductRequest.product, then any pre-existing inventory information for
         # this product will be used. If no inventory fields are set in
-        # UpdateProductRequest.set_mask, then any existing inventory information will be
+        # SetInventoryRequest.set_mask, then any existing inventory information will be
         # preserved. Pre-existing inventory information can only be updated with
         # SetInventory, AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature
         # is only available for users who have Retail Search enabled. Please submit a
