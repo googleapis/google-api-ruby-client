@@ -1145,19 +1145,6 @@ module Google
         end
       end
       
-      # Operation payload for EnableService method.
-      class EnableServiceResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # `Endpoint` describes a network address of a service that serves a set of APIs.
       # It is commonly known as a service endpoint. A service may expose any number of
       # service endpoints, and all service endpoints share the same service definition,
@@ -3111,8 +3098,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # This field is deprecated and will be deleted. Please remove usage of this
-        # field.
+        # The user who created the Rollout. Readonly.
         # Corresponds to the JSON property `createdBy`
         # @return [String]
         attr_accessor :created_by
