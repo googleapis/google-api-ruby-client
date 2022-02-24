@@ -16,13 +16,13 @@ module Google
   module Apis
     module IamV1
       # Version of the google-apis-iam_v1 gem
-      GEM_VERSION = "0.20.0"
+      GEM_VERSION = "0.21.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.4.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20220209"
+      REVISION = "20220217"
     end
   end
 end
