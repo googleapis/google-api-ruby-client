@@ -333,9 +333,9 @@ module Google
       class GoogleCloudRetailV2ImportErrorsConfig
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage path for import errors. This must be an empty, existing
-        # Cloud Storage bucket. Import errors will be written to a file in this bucket,
-        # one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Google Cloud Storage prefix for import errors. This must be an empty, existing
+        # Cloud Storage directory. Import errors will be written to sharded files in
+        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
@@ -618,6 +618,26 @@ module Google
         end
       end
       
+      # Request for CatalogService.AddCatalogAttribute method.
+      class GoogleCloudRetailV2alphaAddCatalogAttributeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Catalog level attribute config for an attribute. For example, if customers
+        # want to enable/disable facet for a specific attribute.
+        # Corresponds to the JSON property `catalogAttribute`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttribute]
+        attr_accessor :catalog_attribute
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog_attribute = args[:catalog_attribute] if args.key?(:catalog_attribute)
+        end
+      end
+      
       # Request for AddControl method.
       class GoogleCloudRetailV2alphaAddControlRequest
         include Google::Apis::Core::Hashable
@@ -803,6 +823,42 @@ module Google
         end
       end
       
+      # Catalog level attribute config.
+      class GoogleCloudRetailV2alphaAttributesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The AttributeConfigLevel used for this catalog.
+        # Corresponds to the JSON property `attributeConfigLevel`
+        # @return [String]
+        attr_accessor :attribute_config_level
+      
+        # Enable attribute(s) config at catalog level. For example, indexable,
+        # dynamic_facetable, or searchable for each attribute. The key is catalog
+        # attribute's name. For example: `color`, `brands`, `attributes.custom_attribute`
+        # , such as `attributes.xyz`. The maximum number of catalog attributes allowed
+        # in a request is 1000.
+        # Corresponds to the JSON property `catalogAttributes`
+        # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttribute>]
+        attr_accessor :catalog_attributes
+      
+        # Required. Immutable. The fully qualified resource name of the attribute config.
+        # Format: "projects/*/locations/*/catalogs/*/attributesConfig"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_config_level = args[:attribute_config_level] if args.key?(:attribute_config_level)
+          @catalog_attributes = args[:catalog_attributes] if args.key?(:catalog_attributes)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # An intended audience of the Product for whom it's sold.
       class GoogleCloudRetailV2alphaAudience
         include Google::Apis::Core::Hashable
@@ -951,6 +1007,72 @@ module Google
           @merchant_center_linking_config = args[:merchant_center_linking_config] if args.key?(:merchant_center_linking_config)
           @name = args[:name] if args.key?(:name)
           @product_level_config = args[:product_level_config] if args.key?(:product_level_config)
+        end
+      end
+      
+      # Catalog level attribute config for an attribute. For example, if customers
+      # want to enable/disable facet for a specific attribute.
+      class GoogleCloudRetailV2alphaCatalogAttribute
+        include Google::Apis::Core::Hashable
+      
+        # If DYNAMIC_FACETABLE_ENABLED, attribute values are available for dynamic facet.
+        # Could only be DYNAMIC_FACETABLE_DISABLED if CatalogAttribute.indexable_option
+        # is INDEXABLE_DISABLED. Otherwise, an INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `dynamicFacetableOption`
+        # @return [String]
+        attr_accessor :dynamic_facetable_option
+      
+        # Output only. Indicates whether this attribute has been used by any products. `
+        # True` if at least one Product is using this attribute in Product.attributes.
+        # Otherwise, this field is `False`. CatalogAttribute can be pre-loaded by using
+        # AddCatalogAttribute, ImportCatalogAttributes, or UpdateAttributesConfig APIs.
+        # This field is `False` for pre-loaded CatalogAttributes. After catalog changes,
+        # it takes about 10 minutes for this field to update.
+        # Corresponds to the JSON property `inUse`
+        # @return [Boolean]
+        attr_accessor :in_use
+        alias_method :in_use?, :in_use
+      
+        # When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG,
+        # if INDEXABLE_ENABLED attribute values are indexed so that it can be filtered,
+        # faceted, or boosted in SearchService.Search.
+        # Corresponds to the JSON property `indexableOption`
+        # @return [String]
+        attr_accessor :indexable_option
+      
+        # Required. Attribute name. For example: `color`, `brands`, `attributes.
+        # custom_attribute`, such as `attributes.xyz`.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG,
+        # if SEARCHABLE_ENABLED, attribute values are searchable by text queries in
+        # SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical,
+        # attribute values will not be searchable by text queries in SearchService.
+        # Search, as there are no text values associated to numerical attributes.
+        # Corresponds to the JSON property `searchableOption`
+        # @return [String]
+        attr_accessor :searchable_option
+      
+        # Output only. The type of this attribute. This is derived from the attribute in
+        # Product.attributes.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dynamic_facetable_option = args[:dynamic_facetable_option] if args.key?(:dynamic_facetable_option)
+          @in_use = args[:in_use] if args.key?(:in_use)
+          @indexable_option = args[:indexable_option] if args.key?(:indexable_option)
+          @key = args[:key] if args.key?(:key)
+          @searchable_option = args[:searchable_option] if args.key?(:searchable_option)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1312,8 +1434,9 @@ module Google
         alias_method :searchable?, :searchable
       
         # The textual values of this custom attribute. For example, `["yellow", "green"]`
-        # when the key is "color". Exactly one of text or numbers should be set.
-        # Otherwise, an INVALID_ARGUMENT error is returned.
+        # when the key is "color". Empty string is not allowed. Otherwise, an
+        # INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be
+        # set. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `text`
         # @return [Array<String>]
         attr_accessor :text
@@ -1631,9 +1754,9 @@ module Google
       class GoogleCloudRetailV2alphaImportErrorsConfig
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage path for import errors. This must be an empty, existing
-        # Cloud Storage bucket. Import errors will be written to a file in this bucket,
-        # one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Google Cloud Storage prefix for import errors. This must be an empty, existing
+        # Cloud Storage directory. Import errors will be written to sharded files in
+        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
@@ -2406,9 +2529,9 @@ module Google
         # be a UTF-8 encoded string with a length limit of 128 characters. * For
         # indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example,
         # `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400
-        # values are allowed. Empty values are not allowed. Each value must be a UTF-8
-        # encoded string with a length limit of 256 characters. * For number attributes,
-        # at most 400 values are allowed.
+        # values are allowed. Empty values are not allowed. Each value must be a non-
+        # empty UTF-8 encoded string with a length limit of 256 characters. * For number
+        # attributes, at most 400 values are allowed.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute>]
         attr_accessor :attributes
@@ -3117,6 +3240,25 @@ module Google
         end
       end
       
+      # Request for CatalogService.RemoveCatalogAttribute method.
+      class GoogleCloudRetailV2alphaRemoveCatalogAttributeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The attribute name key of the CatalogAttribute to remove.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
       # Request for RemoveControl method.
       class GoogleCloudRetailV2alphaRemoveControlRequest
         include Google::Apis::Core::Hashable
@@ -3284,6 +3426,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for CatalogService.ReplaceCatalogAttribute method.
+      class GoogleCloudRetailV2alphaReplaceCatalogAttributeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Catalog level attribute config for an attribute. For example, if customers
+        # want to enable/disable facet for a specific attribute.
+        # Corresponds to the JSON property `catalogAttribute`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttribute]
+        attr_accessor :catalog_attribute
+      
+        # Indicates which fields in the provided CatalogAttribute to update. The
+        # following are NOT supported: * CatalogAttribute.key If not set, all supported
+        # fields are updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog_attribute = args[:catalog_attribute] if args.key?(:catalog_attribute)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -4347,7 +4517,7 @@ module Google
       
         # Condition boost specifications. If a product matches multiple conditions in
         # the specifications, boost scores from these specifications are all applied and
-        # combined in a non-linear way. Maximum number of specifications is 10. Notice
+        # combined in a non-linear way. Maximum number of specifications is 100. Notice
         # that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec]
         # are set, the boost conditions from both places are evaluated. If a search
         # request matches multiple boost conditions, the final boost score is equal to
@@ -4461,7 +4631,7 @@ module Google
         attr_accessor :price_reranking_level
       
         # Condition redirect specifications. Only the first triggered redirect action is
-        # applied, even if multiple apply. Maximum number of specifications is 100. Can
+        # applied, even if multiple apply. Maximum number of specifications is 1000. Can
         # only be set if solution_types is SOLUTION_TYPE_SEARCH.
         # Corresponds to the JSON property `redirectControlIds`
         # @return [Array<String>]
@@ -4520,10 +4690,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The final component of the resource name of a branch. This field must be one
-        # of "0", "1" or "2". Otherwise, an INVALID_ARGUMENT error is returned.
+        # of "0", "1" or "2". Otherwise, an INVALID_ARGUMENT error is returned. If there
+        # are no sufficient active products in the targeted branch and force is not set,
+        # a FAILED_PRECONDITION error is returned.
         # Corresponds to the JSON property `branchId`
         # @return [String]
         attr_accessor :branch_id
+      
+        # If set to true, it permits switching to a branch with branch_id even if it has
+        # no sufficient active products.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
       
         # Some note on this request, this can be retrieved by CatalogService.
         # GetDefaultBranch before next valid default branch set occurs. This field must
@@ -4540,6 +4719,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @branch_id = args[:branch_id] if args.key?(:branch_id)
+          @force = args[:force] if args.key?(:force)
           @note = args[:note] if args.key?(:note)
         end
       end
@@ -5127,9 +5307,9 @@ module Google
       class GoogleCloudRetailV2betaImportErrorsConfig
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage path for import errors. This must be an empty, existing
-        # Cloud Storage bucket. Import errors will be written to a file in this bucket,
-        # one per line, as a JSON-encoded `google.rpc.Status` message.
+        # Google Cloud Storage prefix for import errors. This must be an empty, existing
+        # Cloud Storage directory. Import errors will be written to sharded files in
+        # this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
         # Corresponds to the JSON property `gcsPrefix`
         # @return [String]
         attr_accessor :gcs_prefix
