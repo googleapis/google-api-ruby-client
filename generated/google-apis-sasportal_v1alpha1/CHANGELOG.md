@@ -1,5 +1,9 @@
 # Release history for google-apis-sasportal_v1alpha1
 
+### v0.17.0 (2022-02-25)
+
+* Regenerated from discovery document revision 20220224
+
 ### v0.16.0 (2022-02-10)
 
 * Regenerated from discovery document revision 20220208
