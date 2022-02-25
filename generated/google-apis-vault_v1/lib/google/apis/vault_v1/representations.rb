@@ -796,6 +796,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :export_format, as: 'exportFormat'
           property :show_confidential_mode_content, as: 'showConfidentialModeContent'
+          property :use_new_export, as: 'useNewExport'
         end
       end
       
