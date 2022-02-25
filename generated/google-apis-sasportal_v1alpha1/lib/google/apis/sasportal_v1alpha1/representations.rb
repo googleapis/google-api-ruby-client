@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalNrqzValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -355,6 +361,8 @@ module Google
           property :common_channel_group, as: 'commonChannelGroup'
           property :interference_coordination_group, as: 'interferenceCoordinationGroup'
           property :nrqz_validated, as: 'nrqzValidated'
+          property :nrqz_validation, as: 'nrqzValidation', class: Google::Apis::SasportalV1alpha1::SasPortalNrqzValidation, decorator: Google::Apis::SasportalV1alpha1::SasPortalNrqzValidation::Representation
+      
         end
       end
       
@@ -495,6 +503,16 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :sas_user_ids, as: 'sasUserIds'
+        end
+      end
+      
+      class SasPortalNrqzValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_id, as: 'caseId'
+          property :cpi_id, as: 'cpiId'
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
         end
       end
       
