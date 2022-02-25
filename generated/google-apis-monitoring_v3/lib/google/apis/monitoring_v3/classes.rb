@@ -746,8 +746,8 @@ module Google
       class ContentMatcher
         include Google::Apis::Core::Hashable
       
-        # String or regex content to match. Maximum 1024 bytes. An empty content string
-        # indicates no content matching is to be performed.
+        # String, regex or JSON content to match. Maximum 1024 bytes. An empty content
+        # string indicates no content matching is to be performed.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
