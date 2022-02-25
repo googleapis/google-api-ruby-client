@@ -1,5 +1,10 @@
 # Release history for google-apis-vault_v1
 
+### v0.11.0 (2022-02-25)
+
+* Regenerated from discovery document revision 20220222
+* Regenerated using generator version 0.4.1
+
 ### v0.10.0 (2021-12-14)
 
 * Unspecified changes

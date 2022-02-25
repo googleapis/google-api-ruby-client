@@ -1289,6 +1289,12 @@ module Google
         attr_accessor :show_confidential_mode_content
         alias_method :show_confidential_mode_content?, :show_confidential_mode_content
       
+        # To use the new export system, set to **true**.
+        # Corresponds to the JSON property `useNewExport`
+        # @return [Boolean]
+        attr_accessor :use_new_export
+        alias_method :use_new_export?, :use_new_export
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1297,6 +1303,7 @@ module Google
         def update!(**args)
           @export_format = args[:export_format] if args.key?(:export_format)
           @show_confidential_mode_content = args[:show_confidential_mode_content] if args.key?(:show_confidential_mode_content)
+          @use_new_export = args[:use_new_export] if args.key?(:use_new_export)
         end
       end
       
