@@ -217,7 +217,7 @@ module Google
       end
       
       # Describes a Cloud Function that contains user computation executed in response
-      # to an event. It encapsulate function and triggers configurations. Next tag: 36
+      # to an event. It encapsulate function and triggers configurations.
       class CloudFunction
         include Google::Apis::Core::Hashable
       
@@ -1410,8 +1410,7 @@ module Google
       
       # Configuration for a secret environment variable. It has the information
       # necessary to fetch the secret value from secret manager and expose it as an
-      # environment variable. Secret value is not a part of the configuration. Secret
-      # values are only fetched when a new clone starts.
+      # environment variable.
       class SecretEnvVar
         include Google::Apis::Core::Hashable
       
@@ -1435,7 +1434,7 @@ module Google
       
         # Version of the secret (version number or the string 'latest'). It is
         # recommended to use a numeric version for secret environment variables as any
-        # updates to the secret value is not reflected until new clones start.
+        # updates to the secret value is not reflected until new instances start.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
