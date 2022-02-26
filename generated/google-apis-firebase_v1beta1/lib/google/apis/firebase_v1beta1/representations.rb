@@ -267,6 +267,7 @@ module Google
       class AndroidApp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_id, as: 'apiKeyId'
           property :app_id, as: 'appId'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
@@ -333,6 +334,7 @@ module Google
       class IosApp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_id, as: 'apiKeyId'
           property :app_id, as: 'appId'
           property :app_store_id, as: 'appStoreId'
           property :bundle_id, as: 'bundleId'
@@ -507,6 +509,7 @@ module Google
       class WebApp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_id, as: 'apiKeyId'
           property :app_id, as: 'appId'
           collection :app_urls, as: 'appUrls'
           property :display_name, as: 'displayName'
