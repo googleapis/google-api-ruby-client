@@ -1988,7 +1988,7 @@ module Google
         end
       end
       
-      # Defines a job to be run by the Cloud Dataflow service. nextID: 26
+      # Defines a job to be run by the Cloud Dataflow service.
       class Job
         include Google::Apis::Core::Hashable
       
@@ -2566,7 +2566,7 @@ module Google
       class LaunchFlexTemplateResponse
         include Google::Apis::Core::Hashable
       
-        # Defines a job to be run by the Cloud Dataflow service. nextID: 26
+        # Defines a job to be run by the Cloud Dataflow service.
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::DataflowV1b3::Job]
         attr_accessor :job
@@ -2631,7 +2631,7 @@ module Google
       class LaunchTemplateResponse
         include Google::Apis::Core::Hashable
       
-        # Defines a job to be run by the Cloud Dataflow service. nextID: 26
+        # Defines a job to be run by the Cloud Dataflow service.
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::DataflowV1b3::Job]
         attr_accessor :job
