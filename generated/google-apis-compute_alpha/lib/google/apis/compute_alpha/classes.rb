@@ -611,6 +611,13 @@ module Google
         # @return [String]
         attr_accessor :ip_version
       
+        # The endpoint type of this address, which should be VM. This is used for
+        # deciding which endpoint this address will be assigned to during the IPv6
+        # external IP address reservation.
+        # Corresponds to the JSON property `ipv6EndpointType`
+        # @return [String]
+        attr_accessor :ipv6_endpoint_type
+      
         # [Output Only] Type of the resource. Always compute#address for addresses.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -734,6 +741,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @ip_version = args[:ip_version] if args.key?(:ip_version)
+          @ipv6_endpoint_type = args[:ipv6_endpoint_type] if args.key?(:ipv6_endpoint_type)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
@@ -3598,9 +3606,13 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Subsetting]
         attr_accessor :subsetting
       
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
-        # Instead, use maxStreamDuration.
+        # The backend service timeout has a different meaning depending on the type of
+        # load balancer. For more information see, Backend service settings The default
+        # is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647
+        # seconds. This value can be overridden in the PathMatcher configuration of the
+        # UrlMap that references this backend service. Not supported when the backend
+        # service is referenced by a URL map that is bound to target gRPC proxy that has
+        # validateForProxyless field set to true. Instead, use maxStreamDuration.
         # Corresponds to the JSON property `timeoutSec`
         # @return [Fixnum]
         attr_accessor :timeout_sec
@@ -5106,14 +5118,18 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Duration]
         attr_accessor :connect_timeout
       
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # The maximum number of connections to the backend service. If not specified,
+        # there is no limit. Not supported when the backend service is referenced by a
+        # URL map that is bound to target gRPC proxy that has validateForProxyless field
+        # set to true.
         # Corresponds to the JSON property `maxConnections`
         # @return [Fixnum]
         attr_accessor :max_connections
       
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # The maximum number of pending requests allowed to the backend service. If not
+        # specified, there is no limit. Not supported when the backend service is
+        # referenced by a URL map that is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `maxPendingRequests`
         # @return [Fixnum]
         attr_accessor :max_pending_requests
@@ -5124,14 +5140,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_requests
       
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # Maximum requests for a single connection to the backend service. This
+        # parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not
+        # specified, there is no limit. Setting this parameter to 1 will effectively
+        # disable keep alive. Not supported when the backend service is referenced by a
+        # URL map that is bound to target gRPC proxy that has validateForProxyless field
+        # set to true.
         # Corresponds to the JSON property `maxRequestsPerConnection`
         # @return [Fixnum]
         attr_accessor :max_requests_per_connection
       
-        # Not supported when the backend service is referenced by a URL map that is
-        # bound to target gRPC proxy that has validateForProxyless field set to true.
+        # The maximum number of parallel retries allowed to the backend cluster. If not
+        # specified, the default is 1. Not supported when the backend service is
+        # referenced by a URL map that is bound to target gRPC proxy that has
+        # validateForProxyless field set to true.
         # Corresponds to the JSON property `maxRetries`
         # @return [Fixnum]
         attr_accessor :max_retries
@@ -6095,6 +6117,16 @@ module Google
         # @return [String]
         attr_accessor :architecture
       
+        # Disk asynchronously replicated into this disk.
+        # Corresponds to the JSON property `asyncPrimaryDisk`
+        # @return [Google::Apis::ComputeAlpha::DiskAsyncReplication]
+        attr_accessor :async_primary_disk
+      
+        # [Output Only] A list of disks this disk is asynchronously replicated to.
+        # Corresponds to the JSON property `asyncSecondaryDisks`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::DiskAsyncReplicationList>]
+        attr_accessor :async_secondary_disks
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -6270,6 +6302,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
+        # [Output Only] Status information for the disk resource.
+        # Corresponds to the JSON property `resourceStatus`
+        # @return [Google::Apis::ComputeAlpha::DiskResourceStatus]
+        attr_accessor :resource_status
+      
         # [Output Only] Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -6294,6 +6331,18 @@ module Google
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
+      
+        # [Output Only] URL of the DiskConsistencyGroupPolicy for a secondary disk that
+        # was created using a consistency group.
+        # Corresponds to the JSON property `sourceConsistencyGroupPolicy`
+        # @return [String]
+        attr_accessor :source_consistency_group_policy
+      
+        # [Output Only] ID of the DiskConsistencyGroupPolicy for a secondary disk that
+        # was created using a consistency group.
+        # Corresponds to the JSON property `sourceConsistencyGroupPolicyId`
+        # @return [String]
+        attr_accessor :source_consistency_group_policy_id
       
         # The source disk used to create this disk. You can provide this as a partial or
         # full URL to the resource. For example, the following are valid values: - https:
@@ -6445,6 +6494,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @architecture = args[:architecture] if args.key?(:architecture)
+          @async_primary_disk = args[:async_primary_disk] if args.key?(:async_primary_disk)
+          @async_secondary_disks = args[:async_secondary_disks] if args.key?(:async_secondary_disks)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
@@ -6469,10 +6520,13 @@ module Google
           @region = args[:region] if args.key?(:region)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
+          @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @source_consistency_group_policy = args[:source_consistency_group_policy] if args.key?(:source_consistency_group_policy)
+          @source_consistency_group_policy_id = args[:source_consistency_group_policy_id] if args.key?(:source_consistency_group_policy_id)
           @source_disk = args[:source_disk] if args.key?(:source_disk)
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
           @source_image = args[:source_image] if args.key?(:source_image)
@@ -6614,6 +6668,59 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class DiskAsyncReplication
+        include Google::Apis::Core::Hashable
+      
+        # The other disk asynchronously replicated to or from the current disk. You can
+        # provide this as a partial or full URL to the resource. For example, the
+        # following are valid values: - https://www.googleapis.com/compute/v1/projects/
+        # project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk -
+        # zones/zone/disks/disk
+        # Corresponds to the JSON property `disk`
+        # @return [String]
+        attr_accessor :disk
+      
+        # [Output Only] The unique ID of the other disk asynchronously replicated to or
+        # from the current disk. This value identifies the exact disk that was used to
+        # create this replication. For example, if you started replicating the
+        # persistent disk from a disk that was later deleted and recreated under the
+        # same name, the disk ID would identify the exact version of the disk that was
+        # used.
+        # Corresponds to the JSON property `diskId`
+        # @return [String]
+        attr_accessor :disk_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk = args[:disk] if args.key?(:disk)
+          @disk_id = args[:disk_id] if args.key?(:disk_id)
+        end
+      end
+      
+      # 
+      class DiskAsyncReplicationList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `asyncReplicationDisk`
+        # @return [Google::Apis::ComputeAlpha::DiskAsyncReplication]
+        attr_accessor :async_replication_disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @async_replication_disk = args[:async_replication_disk] if args.key?(:async_replication_disk)
         end
       end
       
@@ -6812,6 +6919,50 @@ module Google
         def update!(**args)
           @destination_zone = args[:destination_zone] if args.key?(:destination_zone)
           @target_disk = args[:target_disk] if args.key?(:target_disk)
+        end
+      end
+      
+      # 
+      class DiskResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `asyncPrimaryDisk`
+        # @return [Google::Apis::ComputeAlpha::DiskResourceStatusAsyncReplicationStatus]
+        attr_accessor :async_primary_disk
+      
+        # Key: disk, value: AsyncReplicationStatus message
+        # Corresponds to the JSON property `asyncSecondaryDisks`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::DiskResourceStatusAsyncReplicationStatus>]
+        attr_accessor :async_secondary_disks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @async_primary_disk = args[:async_primary_disk] if args.key?(:async_primary_disk)
+          @async_secondary_disks = args[:async_secondary_disks] if args.key?(:async_secondary_disks)
+        end
+      end
+      
+      # 
+      class DiskResourceStatusAsyncReplicationStatus
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -7390,6 +7541,79 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class DisksStartAsyncReplicationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The secondary disk to start asynchronous replication to. You can provide this
+        # as a partial or full URL to the resource. For example, the following are valid
+        # values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /
+        # disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/
+        # region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/
+        # regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
+        # Corresponds to the JSON property `asyncSecondaryDisk`
+        # @return [String]
+        attr_accessor :async_secondary_disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @async_secondary_disk = args[:async_secondary_disk] if args.key?(:async_secondary_disk)
+        end
+      end
+      
+      # 
+      class DisksStopAsyncReplicationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The secondary disk to stop asynchronous replication to. Supplied if and only
+        # if the target disk is a primary disk in an asynchronously replicated pair. You
+        # can provide this as a partial or full URL to the resource. For example, the
+        # following are valid values: - https://www.googleapis.com/compute/v1/projects/
+        # project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /disks/disk - projects/project/zones/zone/
+        # disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/
+        # disk - regions/region/disks/disk
+        # Corresponds to the JSON property `asyncSecondaryDisk`
+        # @return [String]
+        attr_accessor :async_secondary_disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @async_secondary_disk = args[:async_secondary_disk] if args.key?(:async_secondary_disk)
+        end
+      end
+      
+      # 
+      class DisksStopGroupAsyncReplicationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the DiskConsistencyGroupPolicy for the group of disks to stop. This
+        # may be a full or partial URL, such as: - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /resourcePolicies/resourcePolicy - projects/
+        # project/regions/region/resourcePolicies/resourcePolicy - regions/region/
+        # resourcePolicies/resourcePolicy
+        # Corresponds to the JSON property `resourcePolicy`
+        # @return [String]
+        attr_accessor :resource_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_policy = args[:resource_policy] if args.key?(:resource_policy)
         end
       end
       
@@ -8795,6 +9019,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :priority
       
+        # An optional name for the rule. This field is not a unique identifier and can
+        # be updated.
+        # Corresponds to the JSON property `ruleName`
+        # @return [String]
+        attr_accessor :rule_name
+      
         # [Output Only] Calculation of the complexity of a single firewall policy rule.
         # Corresponds to the JSON property `ruleTupleCount`
         # @return [Fixnum]
@@ -8839,6 +9069,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @match = args[:match] if args.key?(:match)
           @priority = args[:priority] if args.key?(:priority)
+          @rule_name = args[:rule_name] if args.key?(:rule_name)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
           @target_secure_tags = args[:target_secure_tags] if args.key?(:target_secure_tags)
@@ -8877,6 +9108,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :dest_region_codes
       
+        # Names of Network Threat Intelligence lists. The IPs in these lists will be
+        # matched against traffic destination.
+        # Corresponds to the JSON property `destThreatIntelligences`
+        # @return [Array<String>]
+        attr_accessor :dest_threat_intelligences
+      
         # Pairs of IP protocols and ports that the rule should match.
         # Corresponds to the JSON property `layer4Configs`
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config>]
@@ -8914,6 +9151,12 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRuleSecureTag>]
         attr_accessor :src_secure_tags
       
+        # Names of Network Threat Intelligence lists. The IPs in these lists will be
+        # matched against traffic source.
+        # Corresponds to the JSON property `srcThreatIntelligences`
+        # @return [Array<String>]
+        attr_accessor :src_threat_intelligences
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8924,12 +9167,14 @@ module Google
           @dest_fqdns = args[:dest_fqdns] if args.key?(:dest_fqdns)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @dest_region_codes = args[:dest_region_codes] if args.key?(:dest_region_codes)
+          @dest_threat_intelligences = args[:dest_threat_intelligences] if args.key?(:dest_threat_intelligences)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_address_groups = args[:src_address_groups] if args.key?(:src_address_groups)
           @src_fqdns = args[:src_fqdns] if args.key?(:src_fqdns)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
           @src_region_codes = args[:src_region_codes] if args.key?(:src_region_codes)
           @src_secure_tags = args[:src_secure_tags] if args.key?(:src_secure_tags)
+          @src_threat_intelligences = args[:src_threat_intelligences] if args.key?(:src_threat_intelligences)
         end
       end
       
@@ -10720,8 +10965,8 @@ module Google
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
         # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC -
-        # SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling
-        # guest operating system features.
+        # SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information,
+        # see Enabling guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -14536,8 +14781,8 @@ module Google
         # Assigns a name to a port number. For example: `name: "http", port: 80` This
         # allows the system to reference ports by the assigned name instead of a port
         # number. Named ports can also contain multiple ports. For example: [`name: "
-        # http", port: 80`,`name: "http", port: 8080`] Named ports apply to all
-        # instances in this instance group.
+        # app1", port: 8080`, `name: "app1", port: 8081`, `name: "app2", port: 8082`]
+        # Named ports apply to all instances in this instance group.
         # Corresponds to the JSON property `namedPorts`
         # @return [Array<Google::Apis::ComputeAlpha::NamedPort>]
         attr_accessor :named_ports
@@ -14948,6 +15193,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Pagination behavior of listManagedInstances API method for this Managed
+        # Instance Group.
+        # Corresponds to the JSON property `listManagedInstancesResults`
+        # @return [String]
+        attr_accessor :list_managed_instances_results
+      
         # The name of the managed instance group. The name must be 1-63 characters long,
         # and comply with RFC1035.
         # Corresponds to the JSON property `name`
@@ -15072,6 +15323,7 @@ module Google
           @instance_lifecycle_policy = args[:instance_lifecycle_policy] if args.key?(:instance_lifecycle_policy)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @kind = args[:kind] if args.key?(:kind)
+          @list_managed_instances_results = args[:list_managed_instances_results] if args.key?(:list_managed_instances_results)
           @name = args[:name] if args.key?(:name)
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @region = args[:region] if args.key?(:region)
@@ -17803,7 +18055,8 @@ module Google
         # @return [String]
         attr_accessor :short_name
       
-        # [Output Only] The type of the firewall policy.
+        # [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
+        # NETWORK, NETWORK_REGIONAL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -18186,8 +18439,7 @@ module Google
         attr_accessor :disk_size_gb
       
         # Whether to attempt an application consistent instant snapshot by informing the
-        # OS to prepare for the snapshot process. Currently only supported on Windows
-        # instances using the Volume Shadow Copy Service (VSS).
+        # OS to prepare for the snapshot process.
         # Corresponds to the JSON property `guestFlush`
         # @return [Boolean]
         attr_accessor :guest_flush
@@ -19034,13 +19286,7 @@ module Google
         # @return [String]
         attr_accessor :bandwidth
       
-        # Up to 16 candidate prefixes that control the allocation of
-        # cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each
-        # prefix must be in the Global Unique Address (GUA) space. It is highly
-        # recommended that it be in a range owned by the requestor. A GUA in a range
-        # owned by Google will cause the request to fail. Google will select an
-        # available prefix from the supplied candidates or fail the request. If not
-        # supplied, a /125 from a Google-owned GUA block will be selected.
+        # This field is not available.
         # Corresponds to the JSON property `candidateIpv6Subnets`
         # @return [Array<String>]
         attr_accessor :candidate_ipv6_subnets
@@ -19068,10 +19314,7 @@ module Google
         # @return [String]
         attr_accessor :cloud_router_ipv6_address
       
-        # If supplied, the interface id (index within the subnet) to be used for the
-        # cloud router address. The id must be in the range of 1 to 6. If a subnet mask
-        # is supplied, it must be /125, and the subnet should either be 0 or match the
-        # selected subnet.
+        # This field is not available.
         # Corresponds to the JSON property `cloudRouterIpv6InterfaceId`
         # @return [String]
         attr_accessor :cloud_router_ipv6_interface_id
@@ -19093,18 +19336,14 @@ module Google
         # @return [String]
         attr_accessor :customer_router_ipv6_address
       
-        # If supplied, the interface id (index within the subnet) to be used for the
-        # customer router address. The id must be in the range of 1 to 6. If a subnet
-        # mask is supplied, it must be /125, and the subnet should either be 0 or match
-        # the selected subnet.
+        # This field is not available.
         # Corresponds to the JSON property `customerRouterIpv6InterfaceId`
         # @return [String]
         attr_accessor :customer_router_ipv6_interface_id
       
-        # [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.
-        # ] Dataplane version for this InterconnectAttachment. This field is only
-        # present for Dataplane version 2 and higher. Absence of this field in the API
-        # output indicates that the Dataplane is version 1.
+        # [Output Only] Dataplane version for this InterconnectAttachment. This field is
+        # only present for Dataplane version 2 and higher. Absence of this field in the
+        # API output indicates that the Dataplane is version 1.
         # Corresponds to the JSON property `dataplaneVersion`
         # @return [Fixnum]
         attr_accessor :dataplane_version
@@ -21490,6 +21729,11 @@ module Google
       class LocationPolicyLocation
         include Google::Apis::Core::Hashable
       
+        # Per-zone constraints on location policy for this zone.
+        # Corresponds to the JSON property `constraints`
+        # @return [Google::Apis::ComputeAlpha::LocationPolicyLocationConstraints]
+        attr_accessor :constraints
+      
         # Preference for a given location.
         # Corresponds to the JSON property `preference`
         # @return [String]
@@ -21501,7 +21745,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @constraints = args[:constraints] if args.key?(:constraints)
           @preference = args[:preference] if args.key?(:preference)
+        end
+      end
+      
+      # Per-zone constraints on location policy for this zone.
+      class LocationPolicyLocationConstraints
+        include Google::Apis::Core::Hashable
+      
+        # Maximum number of items that are allowed to be placed in this zone. The value
+        # must be non-negative.
+        # Corresponds to the JSON property `maxCount`
+        # @return [Fixnum]
+        attr_accessor :max_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_count = args[:max_count] if args.key?(:max_count)
         end
       end
       
@@ -21656,8 +21921,7 @@ module Google
         attr_accessor :description
       
         # [Input Only] Whether to attempt an application consistent machine image by
-        # informing the OS to prepare for the snapshot process. Currently only supported
-        # on Windows instances using the Volume Shadow Copy Service (VSS).
+        # informing the OS to prepare for the snapshot process.
         # Corresponds to the JSON property `guestFlush`
         # @return [Boolean]
         attr_accessor :guest_flush
@@ -22950,7 +23214,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # 
+        # The network firewall policy enforcement order. Can be either
+        # AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to
+        # AFTER_CLASSIC_FIREWALL if the field is not specified.
         # Corresponds to the JSON property `networkFirewallPolicyEnforcementOrder`
         # @return [String]
         attr_accessor :network_firewall_policy_enforcement_order
@@ -23467,8 +23733,8 @@ module Google
         attr_accessor :network
       
         # Type of network endpoints in this network endpoint group. Can be one of
-        # GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT,
-        # SERVERLESS, PRIVATE_SERVICE_CONNECT.
+        # GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,
+        # INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
         # Corresponds to the JSON property `networkEndpointType`
         # @return [String]
         attr_accessor :network_endpoint_type
@@ -23776,13 +24042,13 @@ module Google
         # @return [String]
         attr_accessor :tag
       
-        # A template to parse service and tag fields from a request URL. URL mask allows
-        # for routing to multiple Run services without having to create multiple network
-        # endpoint groups and backend services. For example, request URLs "foo1.domain.
-        # com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless
-        # Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will
-        # parse them to ` service="bar1", tag="foo1" ` and ` service="bar2", tag="foo2" `
-        # respectively.
+        # A template to parse <service> and <tag> fields from a request URL. URL mask
+        # allows for routing to multiple Run services without having to create multiple
+        # network endpoint groups and backend services. For example, request URLs "foo1.
+        # domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same
+        # Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<
+        # service>". The URL mask will parse them to ` service="bar1", tag="foo1" ` and `
+        # service="bar2", tag="foo2" ` respectively.
         # Corresponds to the JSON property `urlMask`
         # @return [String]
         attr_accessor :url_mask
@@ -29638,6 +29904,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Specifies how child public delegated prefix will be scoped. It could be one of
+        # following values: - `REGIONAL`: The public delegated prefix is regional only.
+        # The provisioning will take a few minutes. - `GLOBAL`: The public delegated
+        # prefix is global only. The provisioning will take ~4 weeks. - `
+        # GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1
+        # legacy prefix. This is output only value and no longer supported in BYOIP V2.
+        # Corresponds to the JSON property `pdpScope`
+        # @return [String]
+        attr_accessor :pdp_scope
+      
         # [Output Only] The list of public delegated prefixes that exist for this public
         # advertised prefix.
         # Corresponds to the JSON property `publicDelegatedPrefixs`
@@ -29684,6 +29960,7 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @pdp_scope = args[:pdp_scope] if args.key?(:pdp_scope)
           @public_delegated_prefixs = args[:public_delegated_prefixs] if args.key?(:public_delegated_prefixs)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -30884,6 +31161,79 @@ module Google
         end
       end
       
+      # 
+      class RegionDisksStartAsyncReplicationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The secondary disk to start asynchronous replication to. You can provide this
+        # as a partial or full URL to the resource. For example, the following are valid
+        # values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /
+        # disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/
+        # region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/
+        # regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
+        # Corresponds to the JSON property `asyncSecondaryDisk`
+        # @return [String]
+        attr_accessor :async_secondary_disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @async_secondary_disk = args[:async_secondary_disk] if args.key?(:async_secondary_disk)
+        end
+      end
+      
+      # 
+      class RegionDisksStopAsyncReplicationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The secondary disk to stop asynchronous replication to. Supplied if and only
+        # if the target disk is a primary disk in an asynchronously replicated pair. You
+        # can provide this as a partial or full URL to the resource. For example, the
+        # following are valid values: - https://www.googleapis.com/compute/v1/projects/
+        # project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /disks/disk - projects/project/zones/zone/
+        # disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/
+        # disk - regions/region/disks/disk
+        # Corresponds to the JSON property `asyncSecondaryDisk`
+        # @return [String]
+        attr_accessor :async_secondary_disk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @async_secondary_disk = args[:async_secondary_disk] if args.key?(:async_secondary_disk)
+        end
+      end
+      
+      # 
+      class RegionDisksStopGroupAsyncReplicationRequest
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the DiskConsistencyGroupPolicy for the group of disks to stop. This
+        # may be a full or partial URL, such as: - https://www.googleapis.com/compute/v1/
+        # projects/project/regions/region /resourcePolicies/resourcePolicy - projects/
+        # project/regions/region/resourcePolicies/resourcePolicy - regions/region/
+        # resourcePolicies/resourcePolicy
+        # Corresponds to the JSON property `resourcePolicy`
+        # @return [String]
+        attr_accessor :resource_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_policy = args[:resource_policy] if args.key?(:resource_policy)
+        end
+      end
+      
       # Contains a list of InstanceGroup resources.
       class RegionInstanceGroupList
         include Google::Apis::Core::Hashable
@@ -32059,7 +32409,8 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRule>]
         attr_accessor :rules
       
-        # [Output Only] The type of the firewall policy.
+        # [Output Only] The type of the firewall policy. Can be one of HIERARCHY,
+        # NETWORK, NETWORK_REGIONAL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -33142,8 +33493,8 @@ module Google
       class ResourcePolicyDailyCycle
         include Google::Apis::Core::Hashable
       
-        # Defines a schedule with units measured in months. The value determines how
-        # many months pass between the start of each cycle.
+        # Defines a schedule with units measured in days. The value determines how many
+        # days pass between the start of each cycle.
         # Corresponds to the JSON property `daysInCycle`
         # @return [Fixnum]
         attr_accessor :days_in_cycle
@@ -34800,7 +35151,7 @@ module Google
         # Cloud Router will initiate the BFD session for this BGP peer. If set to
         # PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD
         # session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP
-        # peer. The default is PASSIVE.
+        # peer. The default is DISABLED.
         # Corresponds to the JSON property `sessionInitializationMode`
         # @return [String]
         attr_accessor :session_initialization_mode
@@ -35101,6 +35452,12 @@ module Google
         attr_accessor :enable_endpoint_independent_mapping
         alias_method :enable_endpoint_independent_mapping?, :enable_endpoint_independent_mapping
       
+        # List of Natted endpoint types supported by the Nat Gateway. If the list is
+        # empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+        # Corresponds to the JSON property `endpointTypes`
+        # @return [Array<String>]
+        attr_accessor :endpoint_types
+      
         # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `icmpIdleTimeoutSec`
         # @return [Fixnum]
@@ -35214,6 +35571,7 @@ module Google
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
           @enable_dynamic_port_allocation = args[:enable_dynamic_port_allocation] if args.key?(:enable_dynamic_port_allocation)
           @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
+          @endpoint_types = args[:endpoint_types] if args.key?(:endpoint_types)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
           @max_ports_per_vm = args[:max_ports_per_vm] if args.key?(:max_ports_per_vm)
@@ -35501,7 +35859,8 @@ module Google
         # @return [String]
         attr_accessor :router_appliance_instance
       
-        # BGP state as specified in RFC1771.
+        # The state of the BGP session. For a list of possible values for this field,
+        # see BGP session states.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -36758,13 +37117,17 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # The type indicates the intended use of the security policy. CLOUD_ARMOR -
+        # The type indicates the intended use of the security policy. - CLOUD_ARMOR:
         # Cloud Armor backend security policies can be configured to filter incoming
         # HTTP requests targeting backend services. They filter requests before they hit
-        # the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can
+        # the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can
         # be configured to filter incoming HTTP requests targeting backend services (
         # including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They
-        # filter requests before the request is served from Google's cache.
+        # filter requests before the request is served from Google's cache. -
+        # CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be
+        # configured to filter HTTP requests targeting services managed by Traffic
+        # Director in a service mesh. They filter requests before the request is served
+        # from the application. This field can be set only at resource creation time.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -37204,6 +37567,11 @@ module Google
         # @return [String]
         attr_accessor :redirect_target
       
+        # [Output Only] The minimum managed protection tier required for this rule.
+        # Corresponds to the JSON property `ruleManagedProtectionTier`
+        # @return [String]
+        attr_accessor :rule_managed_protection_tier
+      
         # Identifier for the rule. This is only unique within the given security policy.
         # This can only be set during rule creation, if rule number is not specified it
         # will be generated by the server.
@@ -37249,6 +37617,7 @@ module Google
           @rate_limit_options = args[:rate_limit_options] if args.key?(:rate_limit_options)
           @redirect_options = args[:redirect_options] if args.key?(:redirect_options)
           @redirect_target = args[:redirect_target] if args.key?(:redirect_target)
+          @rule_managed_protection_tier = args[:rule_managed_protection_tier] if args.key?(:rule_managed_protection_tier)
           @rule_number = args[:rule_number] if args.key?(:rule_number)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
@@ -37490,10 +37859,11 @@ module Google
         # present in the request, the key type defaults to ALL. - XFF_IP: The first IP
         # address (i.e. the originating client IP address) specified in the list of IPs
         # under X-Forwarded-For HTTP header. If no such header is present or the value
-        # is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of
-        # the HTTP cookie whose name is configured under "enforce_on_key_name". The key
-        # value is truncated to the first 128 bytes of the cookie value. If no such
-        # cookie is present in the request, the key type defaults to ALL.
+        # is not a valid IP, the key defaults to the source IP address of the request i.
+        # e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is
+        # configured under "enforce_on_key_name". The key value is truncated to the
+        # first 128 bytes of the cookie value. If no such cookie is present in the
+        # request, the key type defaults to ALL.
         # Corresponds to the JSON property `enforceOnKey`
         # @return [String]
         attr_accessor :enforce_on_key
@@ -37507,9 +37877,9 @@ module Google
       
         # Action to take for requests that are above the configured rate limit threshold,
         # to either deny with a specified HTTP response code, or redirect to a
-        # different endpoint. Valid options are "deny()" where valid values for status
-        # are 403, 404, 429, and 502, and "redirect" where the redirect parameters come
-        # from exceed_redirect_options below.
+        # different endpoint. Valid options are "deny(status)", where valid values for
+        # status are 403, 404, 429, and 502, and "redirect" where the redirect
+        # parameters come from exceedRedirectOptions below.
         # Corresponds to the JSON property `exceedAction`
         # @return [String]
         attr_accessor :exceed_action
@@ -38735,8 +39105,7 @@ module Google
         attr_accessor :download_bytes
       
         # [Input Only] Whether to attempt an application consistent snapshot by
-        # informing the OS to prepare for the snapshot process. Currently only supported
-        # on Windows instances using the Volume Shadow Copy Service (VSS).
+        # informing the OS to prepare for the snapshot process.
         # Corresponds to the JSON property `guestFlush`
         # @return [Boolean]
         attr_accessor :guest_flush
@@ -40542,6 +40911,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # [Output Only] The range of internal IPv6 addresses that are owned by this
+        # subnetwork. Note this is for general VM to VM communication, not to be
+        # confused with the ipv6_cidr_range field.
+        # Corresponds to the JSON property `internalIpv6Prefix`
+        # @return [String]
+        attr_accessor :internal_ipv6_prefix
+      
         # The range of internal addresses that are owned by this subnetwork. Provide
         # this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.
         # 64.0.0/10. Ranges must be unique and non-overlapping within a network. Only
@@ -40677,9 +41053,10 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # The stack type for this subnet to identify whether the IPv6 feature is enabled
-        # or not. If not specified IPV4_ONLY will be used. This field can be both set at
-        # resource creation time and updated using patch.
+        # The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are
+        # assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can
+        # be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used.
+        # This field can be both set at resource creation time and updated using patch.
         # Corresponds to the JSON property `stackType`
         # @return [String]
         attr_accessor :stack_type
@@ -40720,6 +41097,7 @@ module Google
           @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
           @gateway_address = args[:gateway_address] if args.key?(:gateway_address)
           @id = args[:id] if args.key?(:id)
+          @internal_ipv6_prefix = args[:internal_ipv6_prefix] if args.key?(:internal_ipv6_prefix)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_cidr_range = args[:ipv6_cidr_range] if args.key?(:ipv6_cidr_range)
@@ -41007,8 +41385,9 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Can only be specified if VPC flow logs for this subnetwork is enabled. Export
-        # filter used to define which VPC flow logs should be logged.
+        # Can only be specified if VPC flow logs for this subnetwork is enabled. The
+        # filter expression is used to define which VPC flow logs should be exported to
+        # Cloud Logging.
         # Corresponds to the JSON property `filterExpr`
         # @return [String]
         attr_accessor :filter_expr
@@ -44034,6 +44413,12 @@ module Google
         # @return [String]
         attr_accessor :proxy_header
       
+        # [Output Only] URL of the region where the regional TCP proxy resides. This
+        # field is not applicable to global TCP proxy.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -44057,6 +44442,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @proxy_bind = args[:proxy_bind] if args.key?(:proxy_bind)
           @proxy_header = args[:proxy_header] if args.key?(:proxy_header)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @service = args[:service] if args.key?(:service)
         end
