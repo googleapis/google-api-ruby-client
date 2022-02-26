@@ -191,6 +191,15 @@ module Google
       class AndroidApp
         include Google::Apis::Core::Hashable
       
+        # The key_id of the GCP ApiKey associated with this App. If set must have no
+        # restrictions, or only have restrictions that are valid for the associated
+        # Firebase App. Cannot be set in create requests, instead an existing valid API
+        # Key will be chosen, or if no valid API Keys exist, one will be provisioned for
+        # you. Cannot be set to an empty value in update requests.
+        # Corresponds to the JSON property `apiKeyId`
+        # @return [String]
+        attr_accessor :api_key_id
+      
         # Immutable. The globally unique, Firebase-assigned identifier for the `
         # AndroidApp`. This identifier should be treated as an opaque token, as the data
         # format is not specified.
@@ -234,6 +243,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_key_id = args[:api_key_id] if args.key?(:api_key_id)
           @app_id = args[:app_id] if args.key?(:app_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
@@ -491,6 +501,15 @@ module Google
       class IosApp
         include Google::Apis::Core::Hashable
       
+        # The key_id of the GCP ApiKey associated with this App. If set must have no
+        # restrictions, or only have restrictions that are valid for the associated
+        # Firebase App. Cannot be set in create requests, instead an existing valid API
+        # Key will be chosen, or if no valid API Keys exist, one will be provisioned for
+        # you. Cannot be set to an empty value in update requests.
+        # Corresponds to the JSON property `apiKeyId`
+        # @return [String]
+        attr_accessor :api_key_id
+      
         # Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`.
         # This identifier should be treated as an opaque token, as the data format is
         # not specified.
@@ -545,6 +564,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_key_id = args[:api_key_id] if args.key?(:api_key_id)
           @app_id = args[:app_id] if args.key?(:app_id)
           @app_store_id = args[:app_store_id] if args.key?(:app_store_id)
           @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
@@ -1148,6 +1168,15 @@ module Google
       class WebApp
         include Google::Apis::Core::Hashable
       
+        # The key_id of the GCP ApiKey associated with this App. If set must have no
+        # restrictions, or only have restrictions that are valid for the associated
+        # Firebase App. Cannot be set in create requests, instead an existing valid API
+        # Key will be chosen, or if no valid API Keys exist, one will be provisioned for
+        # you. Cannot be set to an empty value in update requests.
+        # Corresponds to the JSON property `apiKeyId`
+        # @return [String]
+        attr_accessor :api_key_id
+      
         # Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`.
         # This identifier should be treated as an opaque token, as the data format is
         # not specified.
@@ -1199,6 +1228,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_key_id = args[:api_key_id] if args.key?(:api_key_id)
           @app_id = args[:app_id] if args.key?(:app_id)
           @app_urls = args[:app_urls] if args.key?(:app_urls)
           @display_name = args[:display_name] if args.key?(:display_name)
