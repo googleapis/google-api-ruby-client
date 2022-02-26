@@ -3279,6 +3279,14 @@ module Google
         # @return [Google::Apis::BigqueryV2::ParquetOptions]
         attr_accessor :parquet_options
       
+        # [Optional] Preserves the embedded ASCII control characters (the first 32
+        # characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV.
+        # Only applicable to CSV, ignored for other formats.
+        # Corresponds to the JSON property `preserveAsciiControlCharacters`
+        # @return [Boolean]
+        attr_accessor :preserve_ascii_control_characters
+        alias_method :preserve_ascii_control_characters?, :preserve_ascii_control_characters
+      
         # If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity
         # properties to load into BigQuery from a Cloud Datastore backup. Property names
         # are case sensitive and must be top-level properties. If no properties are
@@ -3411,6 +3419,7 @@ module Google
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
           @null_marker = args[:null_marker] if args.key?(:null_marker)
           @parquet_options = args[:parquet_options] if args.key?(:parquet_options)
+          @preserve_ascii_control_characters = args[:preserve_ascii_control_characters] if args.key?(:preserve_ascii_control_characters)
           @projection_fields = args[:projection_fields] if args.key?(:projection_fields)
           @quote = args[:quote] if args.key?(:quote)
           @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
