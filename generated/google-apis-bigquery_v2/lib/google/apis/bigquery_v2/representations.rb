@@ -1656,6 +1656,7 @@ module Google
           property :null_marker, as: 'nullMarker'
           property :parquet_options, as: 'parquetOptions', class: Google::Apis::BigqueryV2::ParquetOptions, decorator: Google::Apis::BigqueryV2::ParquetOptions::Representation
       
+          property :preserve_ascii_control_characters, as: 'preserveAsciiControlCharacters'
           collection :projection_fields, as: 'projectionFields'
           property :quote, as: 'quote'
           property :range_partitioning, as: 'rangePartitioning', class: Google::Apis::BigqueryV2::RangePartitioning, decorator: Google::Apis::BigqueryV2::RangePartitioning::Representation
