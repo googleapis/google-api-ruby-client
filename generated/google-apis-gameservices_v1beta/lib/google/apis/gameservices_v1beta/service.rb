@@ -128,10 +128,10 @@ module Google
         # Creates a new game server deployment in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name, in the following form: `projects/`project`/
-        #   locations/`location``.
+        #   locations/`locationId``.
         # @param [Google::Apis::GameservicesV1beta::GameServerDeployment] game_server_deployment_object
         # @param [String] deployment_id
-        #   Required. The ID of the game server delpoyment resource to be created.
+        #   Required. The ID of the game server deployment resource to create.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -164,9 +164,9 @@ module Google
         
         # Deletes a single game server deployment.
         # @param [String] name
-        #   Required. The name of the game server delpoyment to delete, in the following
-        #   form: `projects/`project`/locations/`location`/gameServerDeployments/`
-        #   deployment``.
+        #   Required. The name of the game server deployment to delete, in the following
+        #   form: `projects/`project`/locations/`locationId`/gameServerDeployments/`
+        #   deploymentId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -198,8 +198,9 @@ module Google
         # Gathers all the Agones fleets and Agones autoscalers, including fleets running
         # an older version of the game server deployment.
         # @param [String] name
-        #   Required. The name of the game server delpoyment, in the following form: `
-        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
+        #   Required. The name of the game server deployment, in the following form: `
+        #   projects/`project`/locations/`locationId`/gameServerDeployments/`deploymentId``
+        #   .
         # @param [Google::Apis::GameservicesV1beta::FetchDeploymentStateRequest] fetch_deployment_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -232,9 +233,9 @@ module Google
         
         # Gets details of a single game server deployment.
         # @param [String] name
-        #   Required. The name of the game server delpoyment to retrieve, in the following
-        #   form: `projects/`project`/locations/`location`/gameServerDeployments/`
-        #   deployment``.
+        #   Required. The name of the game server deployment to retrieve, in the following
+        #   form: `projects/`project`/locations/`locationId`/gameServerDeployments/`
+        #   deploymentId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -306,11 +307,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details a single game server deployment rollout.
+        # Gets details of a single game server deployment rollout.
         # @param [String] name
-        #   Required. The name of the game server delpoyment to retrieve, in the following
-        #   form: `projects/`project`/locations/`location`/gameServerDeployments/`
-        #   deployment`/rollout`.
+        #   Required. The name of the game server deployment rollout to retrieve, in the
+        #   following form: `projects/`project`/locations/`locationId`/
+        #   gameServerDeployments/`deploymentId`/rollout`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -341,19 +342,20 @@ module Google
         # Lists game server deployments in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name, in the following form: `projects/`project`/
-        #   locations/`location``.
+        #   locations/`locationId``.
         # @param [String] filter
-        #   Optional. The filter to apply to list results.
+        #   Optional. The filter to apply to list results (see [Filtering](https://google.
+        #   aip.dev/160)).
         # @param [String] order_by
-        #   Optional. Specifies the ordering of results following syntax at https://cloud.
-        #   google.com/apis/design/design_patterns#sorting_order.
+        #   Optional. Specifies the ordering of results following [Cloud API syntax](https:
+        #   //cloud.google.com/apis/design/design_patterns#sorting_order).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, the server
-        #   will pick an appropriate default. The server may return fewer items than
-        #   requested. A caller should only rely on response's next_page_token to
-        #   determine if there are more GameServerDeployments left to be queried.
+        #   picks an appropriate default. The server may return fewer items than requested.
+        #   A caller should only rely on the response's next_page_token to determine if
+        #   there are more GameServerDeployments left to be queried.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous List request, if
+        #   Optional. The next_page_token value returned from a previous list request, if
         #   any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -389,14 +391,15 @@ module Google
         # Patches a game server deployment.
         # @param [String] name
         #   The resource name of the game server deployment, in the following form: `
-        #   projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
-        #   For example, `projects/my-project/locations/global/gameServerDeployments/my-
+        #   projects/`project`/locations/`locationId`/gameServerDeployments/`deploymentId``
+        #   . For example, `projects/my-project/locations/global/gameServerDeployments/my-
         #   deployment`.
         # @param [Google::Apis::GameservicesV1beta::GameServerDeployment] game_server_deployment_object
         # @param [String] update_mask
-        #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https://developers.google.com/
-        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
+        #   Required. The update mask to apply to the resource. At least one path must be
+        #   supplied in this field. For more information, see the [`FieldMask` definition](
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -431,17 +434,18 @@ module Google
         # rollout resource.
         # @param [String] name
         #   The resource name of the game server deployment rollout, in the following form:
-        #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
-        #   rollout`. For example, `projects/my-project/locations/global/
+        #   `projects/`project`/locations/`locationId`/gameServerDeployments/`
+        #   deploymentId`/rollout`. For example, `projects/my-project/locations/global/
         #   gameServerDeployments/my-deployment/rollout`.
         # @param [Google::Apis::GameservicesV1beta::GameServerDeploymentRollout] game_server_deployment_rollout_object
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview. Defaults to the
         #   immediately after the proposed rollout completes.
         # @param [String] update_mask
-        #   Optional. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https://developers.google.com/
-        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
+        #   Optional. The update mask to apply to the resource. At least one path must be
+        #   supplied in this field. For more information, see the [`FieldMask` definition](
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -548,20 +552,21 @@ module Google
         end
         
         # Patches a single game server deployment rollout. The method will not return an
-        # error if the update does not affect any existing realms. For example - if the
-        # default_game_server_config is changed but all existing realms use the override,
-        # that is valid. Similarly, if a non existing realm is explicitly called out in
-        # game_server_config_overrides field, that will also not result in an error.
+        # error if the update does not affect any existing realms. For example, the
+        # following cases will not return an error: * The default_game_server_config is
+        # changed but all existing realms use the override. * A non-existing realm is
+        # explicitly called out in the game_server_config_overrides field.
         # @param [String] name
         #   The resource name of the game server deployment rollout, in the following form:
-        #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
-        #   rollout`. For example, `projects/my-project/locations/global/
+        #   `projects/`project`/locations/`locationId`/gameServerDeployments/`
+        #   deploymentId`/rollout`. For example, `projects/my-project/locations/global/
         #   gameServerDeployments/my-deployment/rollout`.
         # @param [Google::Apis::GameservicesV1beta::GameServerDeploymentRollout] game_server_deployment_rollout_object
         # @param [String] update_mask
-        #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https://developers.google.com/
-        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
+        #   Required. The update mask to apply to the resource. At least one path must be
+        #   supplied in this field. For more information, see the [`FieldMask` definition](
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -597,10 +602,10 @@ module Google
         # referenced in the game server deployment rollout resource.
         # @param [String] parent
         #   Required. The parent resource name, in the following form: `projects/`project`/
-        #   locations/`location`/gameServerDeployments/`deployment`/`.
+        #   locations/`locationId`/gameServerDeployments/`deploymentId`/`.
         # @param [Google::Apis::GameservicesV1beta::GameServerConfig] game_server_config_object
         # @param [String] config_id
-        #   Required. The ID of the game server config resource to be created.
+        #   Required. The ID of the game server config resource to create.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -631,12 +636,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single game server config. The deletion will fail if the game server
+        # Deletes a single game server config. The deletion fails if the game server
         # config is referenced in a game server deployment rollout.
         # @param [String] name
         #   Required. The name of the game server config to delete, in the following form:
-        #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
-        #   configs/`config``.
+        #   `projects/`project`/locations/`locationId`/gameServerDeployments/`deploymentId`
+        #   /configs/`configId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -667,8 +672,8 @@ module Google
         # Gets details of a single game server config.
         # @param [String] name
         #   Required. The name of the game server config to retrieve, in the following
-        #   form: `projects/`project`/locations/`location`/gameServerDeployments/`
-        #   deployment`/configs/`config``.
+        #   form: `projects/`project`/locations/`locationId`/gameServerDeployments/`
+        #   deploymentId`/configs/`configId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -700,16 +705,17 @@ module Google
         # deployment.
         # @param [String] parent
         #   Required. The parent resource name, in the following form: `projects/`project`/
-        #   locations/`location`/gameServerDeployments/`deployment`/configs/*`.
+        #   locations/`locationId`/gameServerDeployments/`deploymentId`/configs/*`.
         # @param [String] filter
-        #   Optional. The filter to apply to list results.
+        #   Optional. The filter to apply to list results (see [Filtering](https://google.
+        #   aip.dev/160)).
         # @param [String] order_by
-        #   Optional. Specifies the ordering of results following syntax at https://cloud.
-        #   google.com/apis/design/design_patterns#sorting_order.
+        #   Optional. Specifies the ordering of results following [Cloud API syntax](https:
+        #   //cloud.google.com/apis/design/design_patterns#sorting_order).
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return. If unspecified, server will
-        #   pick an appropriate default. Server may return fewer items than requested. A
-        #   caller should only rely on response's next_page_token to determine if there
+        #   Optional. The maximum number of items to return. If unspecified, the server
+        #   picks an appropriate default. The server may return fewer items than requested.
+        #   A caller should only rely on response's next_page_token to determine if there
         #   are more GameServerConfigs left to be queried.
         # @param [String] page_token
         #   Optional. The next_page_token value returned from a previous list request, if
@@ -898,10 +904,10 @@ module Google
         # Creates a new realm in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name, in the following form: `projects/`project`/
-        #   locations/`location``.
+        #   locations/`locationId``.
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
         # @param [String] realm_id
-        #   Required. The ID of the realm resource to be created.
+        #   Required. The ID of the realm resource to create.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -935,7 +941,7 @@ module Google
         # Deletes a single realm.
         # @param [String] name
         #   Required. The name of the realm to delete, in the following form: `projects/`
-        #   project`/locations/`location`/realms/`realm``.
+        #   project`/locations/`locationId`/realms/`realmId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -966,7 +972,7 @@ module Google
         # Gets details of a single realm.
         # @param [String] name
         #   Required. The name of the realm to retrieve, in the following form: `projects/`
-        #   project`/locations/`location`/realms/`realm``.
+        #   project`/locations/`locationId`/realms/`realmId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -997,19 +1003,20 @@ module Google
         # Lists realms in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name, in the following form: `projects/`project`/
-        #   locations/`location``.
+        #   locations/`locationId``.
         # @param [String] filter
-        #   Optional. The filter to apply to list results.
+        #   Optional. The filter to apply to list results (see [Filtering](https://google.
+        #   aip.dev/160)).
         # @param [String] order_by
-        #   Optional. Specifies the ordering of results following syntax at https://cloud.
-        #   google.com/apis/design/design_patterns#sorting_order.
+        #   Optional. Specifies the ordering of results following [Cloud API syntax](https:
+        #   //cloud.google.com/apis/design/design_patterns#sorting_order).
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return. If unspecified, server will
-        #   pick an appropriate default. Server may return fewer items than requested. A
-        #   caller should only rely on response's next_page_token to determine if there
-        #   are more realms left to be queried.
+        #   Optional. The maximum number of items to return. If unspecified, the server
+        #   picks an appropriate default. The server may return fewer items than requested.
+        #   A caller should only rely on the response's next_page_token to determine if
+        #   there are more realms left to be queried.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous List request, if
+        #   Optional. The next_page_token value returned from a previous list request, if
         #   any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1045,13 +1052,13 @@ module Google
         # Patches a single realm.
         # @param [String] name
         #   The resource name of the realm, in the following form: `projects/`project`/
-        #   locations/`location`/realms/`realm``. For example, `projects/my-project/
-        #   locations/`location`/realms/my-realm`.
+        #   locations/`locationId`/realms/`realmId``. For example, `projects/my-project/
+        #   locations/global/realms/my-realm`.
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
         # @param [String] update_mask
-        #   Required. The update mask applies to the resource. For the `FieldMask`
-        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
-        #   google.protobuf#fieldmask
+        #   Required. The update mask to apply to the resource. For more information, see
+        #   the [`FieldMask` definition](https://developers.google.com/protocol-buffers/
+        #   docs/reference/google.protobuf#fieldmask).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1085,15 +1092,15 @@ module Google
         # Previews patches to a single realm.
         # @param [String] name
         #   The resource name of the realm, in the following form: `projects/`project`/
-        #   locations/`location`/realms/`realm``. For example, `projects/my-project/
-        #   locations/`location`/realms/my-realm`.
+        #   locations/`locationId`/realms/`realmId``. For example, `projects/my-project/
+        #   locations/global/realms/my-realm`.
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview.
         # @param [String] update_mask
-        #   Required. The update mask applies to the resource. For the `FieldMask`
-        #   definition, see https://developers.google.com/protocol-buffers/docs/reference/
-        #   google.protobuf#fieldmask
+        #   Required. The update mask to apply to the resource. For more information, see
+        #   the [`FieldMask` definition](https://developers.google.com/protocol-buffers/
+        #   docs/reference/google.protobuf#fieldmask).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1128,10 +1135,10 @@ module Google
         # Creates a new game server cluster in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name, in the following form: `projects/`project`/
-        #   locations/`location`/realms/`realm-id``.
+        #   locations/`locationId`/realms/`realmId``.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
         # @param [String] game_server_cluster_id
-        #   Required. The ID of the game server cluster resource to be created.
+        #   Required. The ID of the game server cluster resource to create.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1165,7 +1172,8 @@ module Google
         # Deletes a single game server cluster.
         # @param [String] name
         #   Required. The name of the game server cluster to delete, in the following form:
-        #   `projects/`project`/locations/`location`/gameServerClusters/`cluster``.
+        #   `projects/`project`/locations/`locationId`/gameServerClusters/`
+        #   gameServerClusterId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1196,15 +1204,15 @@ module Google
         # Gets details of a single game server cluster.
         # @param [String] name
         #   Required. The name of the game server cluster to retrieve, in the following
-        #   form: `projects/`project`/locations/`location`/realms/`realm-id`/
-        #   gameServerClusters/`cluster``.
+        #   form: `projects/`project`/locations/`locationId`/realms/`realmId`/
+        #   gameServerClusters/`gameServerClusterId``.
         # @param [String] view
         #   Optional. View for the returned GameServerCluster objects. When `FULL` is
         #   specified, the `cluster_state` field is also returned in the GameServerCluster
         #   object, which includes the state of the referenced Kubernetes cluster such as
-        #   versions and provider info. The default/unset value is
-        #   GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not return the
-        #   `cluster_state` field.
+        #   versions and provider info. The default/unset value is `
+        #   GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED`, the same as `BASIC`, which does not
+        #   return the `cluster_state` field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1235,28 +1243,29 @@ module Google
         
         # Lists game server clusters in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource name, in the following form: "projects/`project`/
-        #   locations/`location`/realms/`realm`".
+        #   Required. The parent resource name, in the following form: `projects/`project`/
+        #   locations/`locationId`/realms/`realmId``.
         # @param [String] filter
-        #   Optional. The filter to apply to list results.
+        #   Optional. The filter to apply to list results (see [Filtering](https://google.
+        #   aip.dev/160)).
         # @param [String] order_by
-        #   Optional. Specifies the ordering of results following syntax at https://cloud.
-        #   google.com/apis/design/design_patterns#sorting_order.
+        #   Optional. Specifies the ordering of results following [Cloud API syntax](https:
+        #   //cloud.google.com/apis/design/design_patterns#sorting_order).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, the server
-        #   will pick an appropriate default. The server may return fewer items than
-        #   requested. A caller should only rely on response's next_page_token to
-        #   determine if there are more GameServerClusters left to be queried.
+        #   picks an appropriate default. The server may return fewer items than requested.
+        #   A caller should only rely on response's next_page_token to determine if there
+        #   are more GameServerClusters left to be queried.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous List request, if
+        #   Optional. The next_page_token value returned from a previous list request, if
         #   any.
         # @param [String] view
         #   Optional. View for the returned GameServerCluster objects. When `FULL` is
         #   specified, the `cluster_state` field is also returned in the GameServerCluster
         #   object, which includes the state of the referenced Kubernetes cluster such as
-        #   versions and provider info. The default/unset value is
-        #   GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not return the
-        #   `cluster_state` field.
+        #   versions and provider info. The default/unset value is `
+        #   GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED`, the same as `BASIC`, which does not
+        #   return the `cluster_state` field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1292,14 +1301,15 @@ module Google
         # Patches a single game server cluster.
         # @param [String] name
         #   Required. The resource name of the game server cluster, in the following form:
-        #   `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
-        #   cluster``. For example, `projects/my-project/locations/`location`/realms/
-        #   zanzibar/gameServerClusters/my-onprem-cluster`.
+        #   `projects/`project`/locations/`locationId`/realms/`realmId`/gameServerClusters/
+        #   `gameServerClusterId``. For example, `projects/my-project/locations/global/
+        #   realms/zanzibar/gameServerClusters/my-gke-cluster`.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
         # @param [String] update_mask
-        #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https://developers.google.com/
-        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
+        #   Required. The update mask to apply to the resource. At least one path must be
+        #   supplied in this field. For more information, see the [`FieldMask` definition](
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1333,14 +1343,14 @@ module Google
         # Previews creation of a new game server cluster in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name, in the following form: `projects/`project`/
-        #   locations/`location`/realms/`realm``.
+        #   locations/`locationId`/realms/`realmId``.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
         # @param [String] game_server_cluster_id
-        #   Required. The ID of the game server cluster resource to be created.
+        #   Required. The ID of the game server cluster resource to create.
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview.
         # @param [String] view
-        #   Optional. This field is deprecated, preview will always return
+        #   Optional. This field is deprecated. Preview will always return
         #   KubernetesClusterState.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1377,7 +1387,8 @@ module Google
         # Previews deletion of a single game server cluster.
         # @param [String] name
         #   Required. The name of the game server cluster to delete, in the following form:
-        #   `projects/`project`/locations/`location`/gameServerClusters/`cluster``.
+        #   `projects/`project`/locations/`locationId`/gameServerClusters/`
+        #   gameServerClusterId``.
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview.
         # @param [String] fields
@@ -1411,16 +1422,17 @@ module Google
         # Previews updating a GameServerCluster.
         # @param [String] name
         #   Required. The resource name of the game server cluster, in the following form:
-        #   `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
-        #   cluster``. For example, `projects/my-project/locations/`location`/realms/
-        #   zanzibar/gameServerClusters/my-onprem-cluster`.
+        #   `projects/`project`/locations/`locationId`/realms/`realmId`/gameServerClusters/
+        #   `gameServerClusterId``. For example, `projects/my-project/locations/global/
+        #   realms/zanzibar/gameServerClusters/my-gke-cluster`.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview.
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. For the `FieldMask` definition, see https://developers.google.com/
-        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
+        #   field. For more information, see the [`FieldMask` definition](https://
+        #   developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
