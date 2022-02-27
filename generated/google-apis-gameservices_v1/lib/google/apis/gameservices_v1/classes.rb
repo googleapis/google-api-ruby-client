@@ -412,8 +412,8 @@ module Google
         # @return [Google::Apis::GameservicesV1::SpecSource]
         attr_accessor :spec_source
       
-        # DeployedFleetStatus has details about the Agones fleets such as how many are
-        # running, how many allocated, and so on.
+        # DeployedFleetStatus has details about the Agones fleets, such as how many are
+        # running, how many are allocated, and so on.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::GameservicesV1::DeployedFleetStatus]
         attr_accessor :status
@@ -487,8 +487,8 @@ module Google
         end
       end
       
-      # DeployedFleetStatus has details about the Agones fleets such as how many are
-      # running, how many allocated, and so on.
+      # DeployedFleetStatus has details about the Agones fleets, such as how many are
+      # running, how many are allocated, and so on.
       class DeployedFleetStatus
         include Google::Apis::Core::Hashable
       
@@ -640,8 +640,8 @@ module Google
       class FleetConfig
         include Google::Apis::Core::Hashable
       
-        # Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/
-        # `.
+        # Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/
+        # fleet/)).
         # Corresponds to the JSON property `fleetSpec`
         # @return [String]
         attr_accessor :fleet_spec
@@ -686,7 +686,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # ETag of the resource.
+        # Used to perform consistent read-modify-write updates. If not set, a blind "
+        # overwrite" update happens.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -698,9 +699,9 @@ module Google
         attr_accessor :labels
       
         # Required. The resource name of the game server cluster, in the following form:
-        # `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
-        # cluster``. For example, `projects/my-project/locations/`location`/realms/
-        # zanzibar/gameServerClusters/my-onprem-cluster`.
+        # `projects/`project`/locations/`locationId`/realms/`realmId`/gameServerClusters/
+        # `gameServerClusterId``. For example, `projects/my-project/locations/global/
+        # realms/zanzibar/gameServerClusters/my-gke-cluster`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -781,8 +782,8 @@ module Google
         attr_accessor :labels
       
         # The resource name of the game server config, in the following form: `projects/`
-        # project`/locations/`location`/gameServerDeployments/`deployment`/configs/`
-        # config``. For example, `projects/my-project/locations/global/
+        # project`/locations/`locationId`/gameServerDeployments/`deploymentId`/configs/`
+        # configId``. For example, `projects/my-project/locations/global/
         # gameServerDeployments/my-game/configs/my-config`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -848,12 +849,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Human readable description of the game server delpoyment.
+        # Human readable description of the game server deployment.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # ETag of the resource.
+        # Used to perform consistent read-modify-write updates. If not set, a blind "
+        # overwrite" update happens.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -865,8 +867,8 @@ module Google
         attr_accessor :labels
       
         # The resource name of the game server deployment, in the following form: `
-        # projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
-        # For example, `projects/my-project/locations/global/gameServerDeployments/my-
+        # projects/`project`/locations/`locationId`/gameServerDeployments/`deploymentId``
+        # . For example, `projects/my-project/locations/global/gameServerDeployments/my-
         # deployment`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -921,8 +923,8 @@ module Google
         attr_accessor :game_server_config_overrides
       
         # The resource name of the game server deployment rollout, in the following form:
-        # `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
-        # rollout`. For example, `projects/my-project/locations/global/
+        # `projects/`project`/locations/`locationId`/gameServerDeployments/`
+        # deploymentId`/rollout`. For example, `projects/my-project/locations/global/
         # gameServerDeployments/my-deployment/rollout`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -953,8 +955,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The full or partial name of a GKE cluster, using one of the following forms: *
-        # `projects/`project`/locations/`location`/clusters/`cluster`` * `locations/`
-        # location`/clusters/`cluster`` * ``cluster`` If project and location are not
+        # `projects/`project`/locations/`locationId`/clusters/`cluster`` * `locations/`
+        # locationId`/clusters/`cluster`` * ``cluster`` If project and location are not
         # specified, the project and location of the GameServerCluster resource are used
         # to generate the full name of the GKE cluster.
         # Corresponds to the JSON property `cluster`
@@ -998,7 +1000,7 @@ module Google
         # @return [String]
         attr_accessor :kubernetes_version_installed
       
-        # Output only. The cloud provider type reported by the first node's providerID
+        # Output only. The cloud provider type reported by the first node's `providerID`
         # in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that
         # support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
         # Corresponds to the JSON property `provider`
@@ -1739,7 +1741,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # ETag of the resource.
+        # Used to perform consistent read-modify-write updates. If not set, a blind "
+        # overwrite" update happens.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1750,15 +1753,15 @@ module Google
         attr_accessor :labels
       
         # The resource name of the realm, in the following form: `projects/`project`/
-        # locations/`location`/realms/`realm``. For example, `projects/my-project/
-        # locations/`location`/realms/my-realm`.
+        # locations/`locationId`/realms/`realmId``. For example, `projects/my-project/
+        # locations/global/realms/my-realm`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. Time zone where all policies targeting this realm are evaluated. The
-        # value of this field must be from the IANA time zone database: https://www.iana.
-        # org/time-zones.
+        # value of this field must be from the [IANA time zone database](https://www.
+        # iana.org/time-zones).
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -1870,18 +1873,18 @@ module Google
       class ScalingConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/
-        # docs/reference/fleetautoscaler/
+        # Required. Agones fleet autoscaler spec (see [example spec](https://agones.dev/
+        # site/docs/reference/fleetautoscaler/)).
         # Corresponds to the JSON property `fleetAutoscalerSpec`
         # @return [String]
         attr_accessor :fleet_autoscaler_spec
       
-        # Required. The name of the Scaling Config
+        # Required. The name of the scaling config.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The schedules to which this Scaling Config applies.
+        # The schedules to which this scaling config applies.
         # Corresponds to the JSON property `schedules`
         # @return [Array<Google::Apis::GameservicesV1::Schedule>]
         attr_accessor :schedules
@@ -1908,11 +1911,11 @@ module Google
       
       # The schedule of a recurring or one time event. The event's time span is
       # specified by start_time and end_time. If the scheduled event's timespan is
-      # larger than the cron_spec + cron_job_duration, the event will be recurring. If
-      # only cron_spec + cron_job_duration are specified, the event is effective
-      # starting at the local time specified by cron_spec, and is recurring. ```
-      # start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time
-      # cron job: cron spec start time + duration ```
+      # larger than cron_spec added with cron_job_duration, the event is recurring. If
+      # only cron_spec and cron_job_duration are specified, the event starts at the
+      # local time specified by cron_spec, and is recurring. ``` start_time|-------[
+      # cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec
+      # start time + duration ```
       class Schedule
         include Google::Apis::Core::Hashable
       
@@ -1923,7 +1926,7 @@ module Google
         attr_accessor :cron_job_duration
       
         # The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/
-        # Cron. Cron spec specifies the local time as defined by the realm.
+        # Cron. The cron spec specifies the local time as defined by the realm.
         # Corresponds to the JSON property `cronSpec`
         # @return [String]
         attr_accessor :cron_spec
@@ -2009,13 +2012,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The game server config resource. Uses the form: `projects/`project`/locations/`
-        # location`/gameServerDeployments/`deployment_id`/configs/`config_id``.
+        # locationId`/gameServerDeployments/`deploymentId`/configs/`configId``.
         # Corresponds to the JSON property `gameServerConfigName`
         # @return [String]
         attr_accessor :game_server_config_name
       
-        # The name of the Agones leet config or Agones scaling config used to derive the
-        # Agones fleet or Agones autoscaler spec.
+        # The name of the Agones fleet config or Agones scaling config used to derive
+        # the Agones fleet or Agones autoscaler spec.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2080,13 +2083,13 @@ module Google
         attr_accessor :fleet_details
       
         # The game server cluster name. Uses the form: `projects/`project`/locations/`
-        # location`/realms/`realm`/gameServerClusters/`cluster``.
+        # locationId`/realms/`realmId`/gameServerClusters/`gameServerClusterId``.
         # Corresponds to the JSON property `gameServerClusterName`
         # @return [String]
         attr_accessor :game_server_cluster_name
       
         # The game server deployment name. Uses the form: `projects/`project`/locations/`
-        # location`/gameServerDeployments/`deployment_id``.
+        # locationId`/gameServerDeployments/`deploymentId``.
         # Corresponds to the JSON property `gameServerDeploymentName`
         # @return [String]
         attr_accessor :game_server_deployment_name
