@@ -44,6 +44,63 @@ module Google
         end
       end
       
+      # Represents a Managed Microsoft Identities backup.
+      class Backup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the backups was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Resource labels to represent user provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The unique name of the Backup in the form of `projects/`
+        # project_id`/locations/global/domains/`domain_name`/backups/`name``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of the backup.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Additional information about the current status of this backup,
+        # if available.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Indicates whether it’s an on-demand backup or scheduled.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -202,10 +259,10 @@ module Google
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
       # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+      # DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -248,10 +305,10 @@ module Google
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
         # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+        # DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::ManagedidentitiesV1::Date]
         attr_accessor :end_date
@@ -260,10 +317,10 @@ module Google
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
         # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+        # DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::ManagedidentitiesV1::Date]
         attr_accessor :start_date
@@ -665,6 +722,15 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. The instance_type of this instance of format: projects/`project_id`/
+        # locations/`location_id`/instanceTypes/`instance_type_id`. Instance Type
+        # represents a high-level tier or SKU of the service that this instance belong
+        # to. When enabled(eg: Maintenance Rollout), Rollout uses 'instance_type' along
+        # with 'software_versions' to determine whether instance needs an update or not.
+        # Corresponds to the JSON property `instanceType`
+        # @return [String]
+        attr_accessor :instance_type
+      
         # Optional. Resource labels to represent user provided metadata. Each label is a
         # key-value pair, where both the key and the value are arbitrary strings
         # provided by the user.
@@ -699,6 +765,13 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. notification_parameters are information that service producers may
+        # like to include that is not relevant to Rollout. This parameter will only be
+        # passed to Gamma and Cloud Logging for notification/logging purpose.
+        # Corresponds to the JSON property `notificationParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :notification_parameters
       
         # Output only. Custom string attributes used primarily to expose producer-
         # specific information in monitoring dashboards. See go/get-instance-metadata.
@@ -757,11 +830,13 @@ module Google
         def update!(**args)
           @consumer_defined_name = args[:consumer_defined_name] if args.key?(:consumer_defined_name)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @instance_type = args[:instance_type] if args.key?(:instance_type)
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_policy_names = args[:maintenance_policy_names] if args.key?(:maintenance_policy_names)
           @maintenance_schedules = args[:maintenance_schedules] if args.key?(:maintenance_schedules)
           @maintenance_settings = args[:maintenance_settings] if args.key?(:maintenance_settings)
           @name = args[:name] if args.key?(:name)
+          @notification_parameters = args[:notification_parameters] if args.key?(:notification_parameters)
           @producer_metadata = args[:producer_metadata] if args.key?(:producer_metadata)
           @provisioned_resources = args[:provisioned_resources] if args.key?(:provisioned_resources)
           @slm_instance_template = args[:slm_instance_template] if args.key?(:slm_instance_template)
@@ -1092,6 +1167,38 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # ListBackupsResponse is the response message for ListBackups method.
+      class ListBackupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of Cloud AD backups in the domain.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::ManagedidentitiesV1::Backup>]
+        attr_accessor :backups
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1711,6 +1818,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @password = args[:password] if args.key?(:password)
+        end
+      end
+      
+      # RestoreDomainRequest is the request received by RestoreDomain rpc
+      class RestoreDomainRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. ID of the backup to be restored
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
         end
       end
       
