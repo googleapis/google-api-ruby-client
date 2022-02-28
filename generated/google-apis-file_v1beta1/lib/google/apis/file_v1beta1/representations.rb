@@ -314,6 +314,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_defined_name, as: 'consumerDefinedName'
           property :create_time, as: 'createTime'
+          property :instance_type, as: 'instanceType'
           hash :labels, as: 'labels'
           hash :maintenance_policy_names, as: 'maintenancePolicyNames'
           hash :maintenance_schedules, as: 'maintenanceSchedules', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule::Representation
@@ -321,6 +322,7 @@ module Google
           property :maintenance_settings, as: 'maintenanceSettings', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings::Representation
       
           property :name, as: 'name'
+          hash :notification_parameters, as: 'notificationParameters'
           hash :producer_metadata, as: 'producerMetadata'
           collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource, decorator: Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource::Representation
       
@@ -410,6 +412,7 @@ module Google
       
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
+          property :max_share_count, :numeric_string => true, as: 'maxShareCount'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
       
