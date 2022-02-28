@@ -859,8 +859,7 @@ module Google
         #   Required. The domain resource name using the form: `projects/`project_id`/
         #   locations/global/domains/`domain_name``
         # @param [String] filter
-        #   Optional. Filter specifying constraints of a list operation. For example, `
-        #   backup.location ="us-west1-a"`.
+        #   Optional. Filter specifying constraints of a list operation.
         # @param [String] order_by
         #   Optional. Specifies the ordering of results following syntax at https://cloud.
         #   google.com/apis/design/design_patterns#sorting_order.
