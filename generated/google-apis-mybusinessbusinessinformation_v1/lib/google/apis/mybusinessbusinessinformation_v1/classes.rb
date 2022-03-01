@@ -1000,6 +1000,14 @@ module Google
         attr_accessor :has_pending_edits
         alias_method :has_pending_edits?, :has_pending_edits
       
+        # Output only. Indicates if the listing has Voice of Merchant. If this boolean
+        # is false, you should call the locations.getVoiceOfMerchantState API to get
+        # details as to why they do not have Voice of Merchant.
+        # Corresponds to the JSON property `hasVoiceOfMerchant`
+        # @return [Boolean]
+        attr_accessor :has_voice_of_merchant
+        alias_method :has_voice_of_merchant?, :has_voice_of_merchant
+      
         # Output only. A link to the location on Maps.
         # Corresponds to the JSON property `mapsUri`
         # @return [String]
@@ -1034,6 +1042,7 @@ module Google
           @duplicate_location = args[:duplicate_location] if args.key?(:duplicate_location)
           @has_google_updated = args[:has_google_updated] if args.key?(:has_google_updated)
           @has_pending_edits = args[:has_pending_edits] if args.key?(:has_pending_edits)
+          @has_voice_of_merchant = args[:has_voice_of_merchant] if args.key?(:has_voice_of_merchant)
           @maps_uri = args[:maps_uri] if args.key?(:maps_uri)
           @new_review_uri = args[:new_review_uri] if args.key?(:new_review_uri)
           @place_id = args[:place_id] if args.key?(:place_id)
