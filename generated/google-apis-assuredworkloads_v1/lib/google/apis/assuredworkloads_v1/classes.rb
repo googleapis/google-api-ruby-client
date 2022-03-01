@@ -265,7 +265,9 @@ module Google
         attr_accessor :display_name
       
         # Resource identifier. For a project this represents project_id. If the project
-        # is already taken, the workload creation will fail.
+        # is already taken, the workload creation will fail. For KeyRing, this
+        # represents the keyring_id. For a folder, don't set this value as folder_id is
+        # assigned by Google.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id
@@ -638,7 +640,9 @@ module Google
         attr_accessor :display_name
       
         # Resource identifier. For a project this represents project_id. If the project
-        # is already taken, the workload creation will fail.
+        # is already taken, the workload creation will fail. For KeyRing, this
+        # represents the keyring_id. For a folder, don't set this value as folder_id is
+        # assigned by Google.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id
@@ -1011,7 +1015,9 @@ module Google
         attr_accessor :display_name
       
         # Resource identifier. For a project this represents project_id. If the project
-        # is already taken, the workload creation will fail.
+        # is already taken, the workload creation will fail. For KeyRing, this
+        # represents the keyring_id. For a folder, don't set this value as folder_id is
+        # assigned by Google.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id
