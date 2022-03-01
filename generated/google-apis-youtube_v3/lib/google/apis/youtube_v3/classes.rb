@@ -904,7 +904,7 @@ module Google
         # @return [String]
         attr_accessor :frame_rate
       
-        # Describes information necessary for ingesting an RTMP or an HTTP stream.
+        # Describes information necessary for ingesting an RTMP, HTTP, or SRT stream.
         # Corresponds to the JSON property `ingestionInfo`
         # @return [Google::Apis::YoutubeV3::IngestionInfo]
         attr_accessor :ingestion_info
@@ -3290,7 +3290,7 @@ module Google
         end
       end
       
-      # Describes information necessary for ingesting an RTMP or an HTTP stream.
+      # Describes information necessary for ingesting an RTMP, HTTP, or SRT stream.
       class IngestionInfo
         include Google::Apis::Core::Hashable
       
@@ -3322,7 +3322,7 @@ module Google
         # @return [String]
         attr_accessor :rtmps_ingestion_address
       
-        # The HTTP or RTMP stream name that YouTube assigns to the video stream.
+        # The stream name that YouTube assigns to the video stream.
         # Corresponds to the JSON property `streamName`
         # @return [String]
         attr_accessor :stream_name
