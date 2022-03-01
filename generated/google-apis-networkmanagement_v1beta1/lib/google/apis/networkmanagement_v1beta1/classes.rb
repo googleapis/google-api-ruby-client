@@ -47,6 +47,43 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with an App Engine version.
+      class AppEngineVersionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of an App Engine version.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # App Engine execution environment for a version.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # Runtime of the App Engine version.
+        # Corresponds to the JSON property `runtime`
+        # @return [String]
+        attr_accessor :runtime
+      
+        # URI of an App Engine version.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @environment = args[:environment] if args.key?(:environment)
+          @runtime = args[:runtime] if args.key?(:runtime)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -218,6 +255,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # For display only. Metadata associated with a Cloud function.
+      class CloudFunctionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a Cloud function.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Location in which the Cloud function is deployed.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URI of a Cloud function.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        # Latest successfully deployed version id of the Cloud function.
+        # Corresponds to the JSON property `versionId`
+        # @return [Fixnum]
+        attr_accessor :version_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @uri = args[:uri] if args.key?(:uri)
+          @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
       
@@ -1680,11 +1754,21 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::AbortInfo]
         attr_accessor :abort
       
+        # For display only. Metadata associated with an App Engine version.
+        # Corresponds to the JSON property `appEngineVersionInfo`
+        # @return [Google::Apis::NetworkmanagementV1beta1::AppEngineVersionInfo]
+        attr_accessor :app_engine_version_info
+      
         # This is a step that leads to the final state Drop.
         # Corresponds to the JSON property `causesDrop`
         # @return [Boolean]
         attr_accessor :causes_drop
         alias_method :causes_drop?, :causes_drop
+      
+        # For display only. Metadata associated with a Cloud function.
+        # Corresponds to the JSON property `cloudFunction`
+        # @return [Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo]
+        attr_accessor :cloud_function
       
         # For display only. Metadata associated with a Cloud SQL instance.
         # Corresponds to the JSON property `cloudSqlInstance`
@@ -1765,6 +1849,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # For display only. Metadata associated with a VPC connector.
+        # Corresponds to the JSON property `vpcConnector`
+        # @return [Google::Apis::NetworkmanagementV1beta1::VpcConnectorInfo]
+        attr_accessor :vpc_connector
+      
         # For display only. Metadata associated with a Compute Engine VPN gateway.
         # Corresponds to the JSON property `vpnGateway`
         # @return [Google::Apis::NetworkmanagementV1beta1::VpnGatewayInfo]
@@ -1782,7 +1871,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @abort = args[:abort] if args.key?(:abort)
+          @app_engine_version_info = args[:app_engine_version_info] if args.key?(:app_engine_version_info)
           @causes_drop = args[:causes_drop] if args.key?(:causes_drop)
+          @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_sql_instance = args[:cloud_sql_instance] if args.key?(:cloud_sql_instance)
           @deliver = args[:deliver] if args.key?(:deliver)
           @description = args[:description] if args.key?(:description)
@@ -1798,6 +1889,7 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @route = args[:route] if args.key?(:route)
           @state = args[:state] if args.key?(:state)
+          @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
           @vpn_gateway = args[:vpn_gateway] if args.key?(:vpn_gateway)
           @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)
         end
@@ -1876,6 +1968,37 @@ module Google
         def update!(**args)
           @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
           @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # For display only. Metadata associated with a VPC connector.
+      class VpcConnectorInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of a VPC connector.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Location in which the VPC connector is deployed.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URI of a VPC connector.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
