@@ -3109,7 +3109,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.
+        # The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list
+        # of processors types, see FetchProcessorTypes.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
