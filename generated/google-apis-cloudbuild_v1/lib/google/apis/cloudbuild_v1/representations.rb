@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunWorkflowCustomOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SmtpDelivery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1042,6 +1048,8 @@ module Google
       class GitFileSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_config, as: 'bitbucketServerConfig'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
           property :path, as: 'path'
           property :repo_type, as: 'repoType'
           property :revision, as: 'revision'
@@ -1096,6 +1104,8 @@ module Google
       class GitRepoSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bitbucket_server_config, as: 'bitbucketServerConfig'
+          property :github_enterprise_config, as: 'githubEnterpriseConfig'
           property :ref, as: 'ref'
           property :repo_type, as: 'repoType'
           property :uri, as: 'uri'
@@ -1404,6 +1414,19 @@ module Google
           property :source, as: 'source', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation
       
           property :trigger_id, as: 'triggerId'
+        end
+      end
+      
+      class RunWorkflowCustomOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :pipeline_run_id, as: 'pipelineRunId'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
