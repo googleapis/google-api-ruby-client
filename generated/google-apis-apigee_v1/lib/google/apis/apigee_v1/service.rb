@@ -3471,13 +3471,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an EndpointAttachment. **Note:** Not supported for Apigee hybrid.
+        # Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
         # @param [String] parent
-        #   Required. The Organization this EndpointAttachment will be created in.
+        #   Required. Organization the endpoint attachment will be created in.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment] google_cloud_apigee_v1_endpoint_attachment_object
         # @param [String] endpoint_attachment_id
-        #   The ID to use for the endpoint attachment. ID must be a 1-20 characters string
-        #   with lowercase letters and numbers and must start with a letter.
+        #   ID to use for the endpoint attachment. The ID can contain lowercase letters
+        #   and numbers, must start with a letter, and must be 1-20 characters in length.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3510,8 +3510,8 @@ module Google
         
         # Deletes an endpoint attachment.
         # @param [String] name
-        #   Required. Name of the Endpoint Attachment in the following format: `
-        #   organizations/`organization`/endpointAttachments/`endpoint_attachment``.
+        #   Required. Name of the endpoint attachment. Use the following structure in your
+        #   request: `organizations/`org`/endpointAttachments/`endpoint_attachment``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3539,10 +3539,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified EndpointAttachment.
+        # Gets the endpoint attachment.
         # @param [String] name
-        #   Required. Name of the Endpoint Attachment in the following format: `
-        #   organizations/`organization`/endpointAttachments/`endpoint_attachment``.
+        #   Required. Name of the endpoint attachment. Use the following structure in your
+        #   request: `organizations/`org`/endpointAttachments/`endpoint_attachment``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3570,15 +3570,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the EndpointAttachments in the specified Organization.
+        # Lists the endpoint attachments in an organization.
         # @param [String] parent
-        #   Required. Name of the Organization for which to list Endpoint Attachments in
-        #   the format: `organizations/`organization``.
+        #   Required. Name of the organization for which to list endpoint attachments. Use
+        #   the following structure in your request: `organizations/`org``
         # @param [Fixnum] page_size
-        #   Optional. Maximum number of Endpoint Attachments to return. If unspecified, at
+        #   Optional. Maximum number of endpoint attachments to return. If unspecified, at
         #   most 25 attachments will be returned.
         # @param [String] page_token
-        #   Optional. Page token, returned from a previous ListEndpointAttachments call,
+        #   Optional. Page token, returned from a previous `ListEndpointAttachments` call,
         #   that you can use to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
