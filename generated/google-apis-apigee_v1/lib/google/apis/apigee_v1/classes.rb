@@ -2933,12 +2933,13 @@ module Google
         end
       end
       
-      # Apigee Endpoint Attachment.
+      # Apigee endpoint attachment. For more information, see Southbound networking
+      # patterns.
       class GoogleCloudApigeeV1EndpointAttachment
         include Google::Apis::Core::Hashable
       
-        # Output only. Host that can be used in either HTTP Target Endpoint directly, or
-        # as the host in Target Server.
+        # Output only. Host that can be used in either the HTTP target endpoint directly
+        # or as the host in target server.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -2948,8 +2949,8 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # Name of the Endpoint Attachment in the following format: `organizations/`
-        # organization`/endpointAttachments/`endpoint_attachment``.
+        # Name of the endpoint attachment. Use the following structure in your request: `
+        # organizations/`org`/endpointAttachments/`endpoint_attachment``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4457,12 +4458,12 @@ module Google
       class GoogleCloudApigeeV1ListEndpointAttachmentsResponse
         include Google::Apis::Core::Hashable
       
-        # Endpoint Attachments in the specified organization.
+        # Endpoint attachments in the specified organization.
         # Corresponds to the JSON property `endpointAttachments`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1EndpointAttachment>]
         attr_accessor :endpoint_attachments
       
-        # Page token that you can include in a ListEndpointAttachments request to
+        # Page token that you can include in an `ListEndpointAttachments` request to
         # retrieve the next page. If omitted, no subsequent pages exist.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
