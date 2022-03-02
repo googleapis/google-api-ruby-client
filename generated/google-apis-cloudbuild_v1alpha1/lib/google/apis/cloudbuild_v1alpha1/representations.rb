@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RunWorkflowCustomOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SmtpDelivery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -887,6 +893,19 @@ module Google
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1alpha1::BuiltImage, decorator: Google::Apis::CloudbuildV1alpha1::BuiltImage::Representation
       
           property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
+        end
+      end
+      
+      class RunWorkflowCustomOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :pipeline_run_id, as: 'pipelineRunId'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
