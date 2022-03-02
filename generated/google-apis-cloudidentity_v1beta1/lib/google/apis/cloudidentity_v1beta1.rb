@@ -29,8 +29,14 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1beta1'
 
+      # Private Service: https://www.googleapis.com/auth/cloud-identity.devices
+      AUTH_CLOUD_IDENTITY_DEVICES = 'https://www.googleapis.com/auth/cloud-identity.devices'
+
       # See your device details
       AUTH_CLOUD_IDENTITY_DEVICES_LOOKUP = 'https://www.googleapis.com/auth/cloud-identity.devices.lookup'
+
+      # Private Service: https://www.googleapis.com/auth/cloud-identity.devices.readonly
+      AUTH_CLOUD_IDENTITY_DEVICES_READONLY = 'https://www.googleapis.com/auth/cloud-identity.devices.readonly'
 
       # See, change, create, and delete any of the Cloud Identity Groups that you can access, including the members of each group
       AUTH_CLOUD_IDENTITY_GROUPS = 'https://www.googleapis.com/auth/cloud-identity.groups'
