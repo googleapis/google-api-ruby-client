@@ -329,6 +329,14 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
+        # Maximum number of queries that are allowed to run concurrently in this
+        # reservation. This is a soft limit due to asynchronous nature of the system and
+        # various optimizations for small queries. Default value is 0 which means that
+        # concurrency will be automatically set based on the reservation size.
+        # Corresponds to the JSON property `concurrency`
+        # @return [Fixnum]
+        attr_accessor :concurrency
+      
         # Output only. Creation time of the reservation.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
@@ -385,6 +393,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrency = args[:concurrency] if args.key?(:concurrency)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
           @multi_region_auxiliary = args[:multi_region_auxiliary] if args.key?(:multi_region_auxiliary)
