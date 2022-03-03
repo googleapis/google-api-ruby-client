@@ -1878,8 +1878,6 @@ module Google
       class SearchResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_body, as: 'requestBody', class: Google::Apis::HealthcareV1::HttpBody, decorator: Google::Apis::HealthcareV1::HttpBody::Representation
-      
           property :resource_type, as: 'resourceType'
         end
       end
