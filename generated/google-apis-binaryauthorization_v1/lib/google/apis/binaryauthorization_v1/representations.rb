@@ -173,6 +173,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :user_owned_grafeas_note, as: 'userOwnedGrafeasNote', class: Google::Apis::BinaryauthorizationV1::UserOwnedGrafeasNote, decorator: Google::Apis::BinaryauthorizationV1::UserOwnedGrafeasNote::Representation
@@ -261,6 +262,7 @@ module Google
           property :default_admission_rule, as: 'defaultAdmissionRule', class: Google::Apis::BinaryauthorizationV1::AdmissionRule, decorator: Google::Apis::BinaryauthorizationV1::AdmissionRule::Representation
       
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :global_policy_evaluation_mode, as: 'globalPolicyEvaluationMode'
           hash :istio_service_identity_admission_rules, as: 'istioServiceIdentityAdmissionRules', class: Google::Apis::BinaryauthorizationV1::AdmissionRule, decorator: Google::Apis::BinaryauthorizationV1::AdmissionRule::Representation
       
