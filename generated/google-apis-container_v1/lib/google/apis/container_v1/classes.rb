@@ -264,13 +264,14 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeManagement]
         attr_accessor :management
       
-        # Minimum CPU platform to be used for NAP created node pools. The instance may
-        # be scheduled on the specified or newer CPU platform. Applicable values are the
-        # friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or
-        # minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify
-        # min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-
-        # cpu-platform) To unset the min cpu platform field pass "automatic" as field
-        # value.
+        # Deprecated. Minimum CPU platform to be used for NAP created node pools. The
+        # instance may be scheduled on the specified or newer CPU platform. Applicable
+        # values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
+        # Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how
+        # to specify min CPU platform](https://cloud.google.com/compute/docs/instances/
+        # specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be
+        # specified using cloud.google.com/requested-min-cpu-platform label selector on
+        # the pod. To unset the min cpu platform field pass "automatic" as field value.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -774,6 +775,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_ipv4_cidr_size
       
+        # Node pool configs that apply to all auto-provisioned node pools in autopilot
+        # clusters and node auto-provisioning enabled clusters.
+        # Corresponds to the JSON property `nodePoolAutoConfig`
+        # @return [Google::Apis::ContainerV1::NodePoolAutoConfig]
+        attr_accessor :node_pool_auto_config
+      
         # Subset of Nodepool message that has defaults.
         # Corresponds to the JSON property `nodePoolDefaults`
         # @return [Google::Apis::ContainerV1::NodePoolDefaults]
@@ -924,6 +931,7 @@ module Google
           @network_policy = args[:network_policy] if args.key?(:network_policy)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
+          @node_pool_auto_config = args[:node_pool_auto_config] if args.key?(:node_pool_auto_config)
           @node_pool_defaults = args[:node_pool_defaults] if args.key?(:node_pool_defaults)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
@@ -1137,6 +1145,12 @@ module Google
         # @return [String]
         attr_accessor :desired_monitoring_service
       
+        # Collection of Compute Engine network tags that can be applied to a node's
+        # underlying VM instance.
+        # Corresponds to the JSON property `desiredNodePoolAutoConfigNetworkTags`
+        # @return [Google::Apis::ContainerV1::NetworkTags]
+        attr_accessor :desired_node_pool_auto_config_network_tags
+      
         # NodePoolAutoscaling contains information required by cluster autoscaler to
         # adjust the size of the node pool to the current cluster usage.
         # Corresponds to the JSON property `desiredNodePoolAutoscaling`
@@ -1238,6 +1252,7 @@ module Google
           @desired_mesh_certificates = args[:desired_mesh_certificates] if args.key?(:desired_mesh_certificates)
           @desired_monitoring_config = args[:desired_monitoring_config] if args.key?(:desired_monitoring_config)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
+          @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
@@ -2731,6 +2746,26 @@ module Google
         end
       end
       
+      # Collection of Compute Engine network tags that can be applied to a node's
+      # underlying VM instance.
+      class NetworkTags
+        include Google::Apis::Core::Hashable
+      
+        # List of network tags.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # Parameters that describe the nodes in a cluster.
       class NodeConfig
         include Google::Apis::Core::Hashable
@@ -3253,6 +3288,27 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Node pool configs that apply to all auto-provisioned node pools in autopilot
+      # clusters and node auto-provisioning enabled clusters.
+      class NodePoolAutoConfig
+        include Google::Apis::Core::Hashable
+      
+        # Collection of Compute Engine network tags that can be applied to a node's
+        # underlying VM instance.
+        # Corresponds to the JSON property `networkTags`
+        # @return [Google::Apis::ContainerV1::NetworkTags]
+        attr_accessor :network_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_tags = args[:network_tags] if args.key?(:network_tags)
         end
       end
       
