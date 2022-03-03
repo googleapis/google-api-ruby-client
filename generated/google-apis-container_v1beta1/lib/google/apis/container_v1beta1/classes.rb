@@ -282,13 +282,14 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeManagement]
         attr_accessor :management
       
-        # Minimum CPU platform to be used by this instance. The instance may be
-        # scheduled on the specified or newer CPU platform. Applicable values are the
-        # friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `
-        # minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to
-        # specify min CPU platform](https://cloud.google.com/compute/docs/instances/
-        # specify-min-cpu-platform) To unset the min cpu platform field pass "automatic"
-        # as field value.
+        # Deprecated. Minimum CPU platform to be used for NAP created node pools. The
+        # instance may be scheduled on the specified or newer CPU platform. Applicable
+        # values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
+        # Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how
+        # to specify min CPU platform](https://cloud.google.com/compute/docs/instances/
+        # specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be
+        # specified using cloud.google.com/requested-min-cpu-platform label selector on
+        # the pod. To unset the min cpu platform field pass "automatic" as field value.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -834,6 +835,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_ipv4_cidr_size
       
+        # node pool configs that apply to all auto-provisioned node pools in autopilot
+        # clusters and node auto-provisioning enabled clusters
+        # Corresponds to the JSON property `nodePoolAutoConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodePoolAutoConfig]
+        attr_accessor :node_pool_auto_config
+      
         # Subset of Nodepool message that has defaults.
         # Corresponds to the JSON property `nodePoolDefaults`
         # @return [Google::Apis::ContainerV1beta1::NodePoolDefaults]
@@ -943,6 +950,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
         attr_accessor :vertical_pod_autoscaling
       
+        # Configuration for direct-path (via ALTS) with workload identity.
+        # Corresponds to the JSON property `workloadAltsConfig`
+        # @return [Google::Apis::ContainerV1beta1::WorkloadAltsConfig]
+        attr_accessor :workload_alts_config
+      
         # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         # Corresponds to the JSON property `workloadCertificates`
         # @return [Google::Apis::ContainerV1beta1::WorkloadCertificates]
@@ -1012,6 +1024,7 @@ module Google
           @network_policy = args[:network_policy] if args.key?(:network_policy)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
+          @node_pool_auto_config = args[:node_pool_auto_config] if args.key?(:node_pool_auto_config)
           @node_pool_defaults = args[:node_pool_defaults] if args.key?(:node_pool_defaults)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
@@ -1030,6 +1043,7 @@ module Google
           @tpu_config = args[:tpu_config] if args.key?(:tpu_config)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
+          @workload_alts_config = args[:workload_alts_config] if args.key?(:workload_alts_config)
           @workload_certificates = args[:workload_certificates] if args.key?(:workload_certificates)
           @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
           @zone = args[:zone] if args.key?(:zone)
@@ -1257,6 +1271,13 @@ module Google
         # @return [String]
         attr_accessor :desired_monitoring_service
       
+        # Collection of Compute Engine network tags that can be applied to a node's
+        # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
+        # docs/reference/rest/v1/NodeConfig)).
+        # Corresponds to the JSON property `desiredNodePoolAutoConfigNetworkTags`
+        # @return [Google::Apis::ContainerV1beta1::NetworkTags]
+        attr_accessor :desired_node_pool_auto_config_network_tags
+      
         # NodePoolAutoscaling contains information required by cluster autoscaler to
         # adjust the size of the node pool to the current cluster usage.
         # Corresponds to the JSON property `desiredNodePoolAutoscaling`
@@ -1337,6 +1358,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::VerticalPodAutoscaling]
         attr_accessor :desired_vertical_pod_autoscaling
       
+        # Configuration for direct-path (via ALTS) with workload identity.
+        # Corresponds to the JSON property `desiredWorkloadAltsConfig`
+        # @return [Google::Apis::ContainerV1beta1::WorkloadAltsConfig]
+        attr_accessor :desired_workload_alts_config
+      
         # Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         # Corresponds to the JSON property `desiredWorkloadCertificates`
         # @return [Google::Apis::ContainerV1beta1::WorkloadCertificates]
@@ -1376,6 +1402,7 @@ module Google
           @desired_mesh_certificates = args[:desired_mesh_certificates] if args.key?(:desired_mesh_certificates)
           @desired_monitoring_config = args[:desired_monitoring_config] if args.key?(:desired_monitoring_config)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
+          @desired_node_pool_auto_config_network_tags = args[:desired_node_pool_auto_config_network_tags] if args.key?(:desired_node_pool_auto_config_network_tags)
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
@@ -1389,6 +1416,7 @@ module Google
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_tpu_config = args[:desired_tpu_config] if args.key?(:desired_tpu_config)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
+          @desired_workload_alts_config = args[:desired_workload_alts_config] if args.key?(:desired_workload_alts_config)
           @desired_workload_certificates = args[:desired_workload_certificates] if args.key?(:desired_workload_certificates)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
         end
@@ -1696,10 +1724,10 @@ module Google
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
       # following: * A full date, with non-zero year, month, and day values * A month
-      # and day value, with a zero year, such as an anniversary * A year on its own,
-      # with zero month and day values * A year and month value, with a zero day, such
-      # as a credit card expiration date Related types are google.type.TimeOfDay and `
-      # google.protobuf.Timestamp`.
+      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+      # DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -3699,6 +3727,28 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # node pool configs that apply to all auto-provisioned node pools in autopilot
+      # clusters and node auto-provisioning enabled clusters
+      class NodePoolAutoConfig
+        include Google::Apis::Core::Hashable
+      
+        # Collection of Compute Engine network tags that can be applied to a node's
+        # underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/
+        # docs/reference/rest/v1/NodeConfig)).
+        # Corresponds to the JSON property `networkTags`
+        # @return [Google::Apis::ContainerV1beta1::NetworkTags]
+        attr_accessor :network_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_tags = args[:network_tags] if args.key?(:network_tags)
         end
       end
       
@@ -5989,10 +6039,10 @@ module Google
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
         # following: * A full date, with non-zero year, month, and day values * A month
-        # and day value, with a zero year, such as an anniversary * A year on its own,
-        # with zero month and day values * A year and month value, with a zero day, such
-        # as a credit card expiration date Related types are google.type.TimeOfDay and `
-        # google.protobuf.Timestamp`.
+        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
+        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
+        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
+        # DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `supportEndDate`
         # @return [Google::Apis::ContainerV1beta1::Date]
         attr_accessor :support_end_date
@@ -6025,6 +6075,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @windows_versions = args[:windows_versions] if args.key?(:windows_versions)
+        end
+      end
+      
+      # Configuration for direct-path (via ALTS) with workload identity.
+      class WorkloadAltsConfig
+        include Google::Apis::Core::Hashable
+      
+        # enable_alts controls whether the alts handshaker should be enabled or not for
+        # direct-path. Requires Workload Identity (workload_pool must be non-empty).
+        # Corresponds to the JSON property `enableAlts`
+        # @return [Boolean]
+        attr_accessor :enable_alts
+        alias_method :enable_alts?, :enable_alts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_alts = args[:enable_alts] if args.key?(:enable_alts)
         end
       end
       
