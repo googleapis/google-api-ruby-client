@@ -2422,7 +2422,7 @@ module Google
         # Indicates whether tags created with this template are public. Public tags do
         # not require tag template access to appear in ListTags API response.
         # Additionally, you can search for a public tag by value with a simple search
-        # query instead of using a ``tag:`` predicate.
+        # query in addition to using a ``tag:`` predicate.
         # Corresponds to the JSON property `isPubliclyReadable`
         # @return [Boolean]
         attr_accessor :is_publicly_readable
