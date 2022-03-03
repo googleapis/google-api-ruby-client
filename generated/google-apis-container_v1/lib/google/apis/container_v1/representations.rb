@@ -406,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkTags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +443,12 @@ module Google
       end
       
       class NodePool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodePoolAutoConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -938,6 +950,8 @@ module Google
           property :node_config, as: 'nodeConfig', class: Google::Apis::ContainerV1::NodeConfig, decorator: Google::Apis::ContainerV1::NodeConfig::Representation
       
           property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
+          property :node_pool_auto_config, as: 'nodePoolAutoConfig', class: Google::Apis::ContainerV1::NodePoolAutoConfig, decorator: Google::Apis::ContainerV1::NodePoolAutoConfig::Representation
+      
           property :node_pool_defaults, as: 'nodePoolDefaults', class: Google::Apis::ContainerV1::NodePoolDefaults, decorator: Google::Apis::ContainerV1::NodePoolDefaults::Representation
       
           collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1::NodePool, decorator: Google::Apis::ContainerV1::NodePool::Representation
@@ -1019,6 +1033,8 @@ module Google
           property :desired_monitoring_config, as: 'desiredMonitoringConfig', class: Google::Apis::ContainerV1::MonitoringConfig, decorator: Google::Apis::ContainerV1::MonitoringConfig::Representation
       
           property :desired_monitoring_service, as: 'desiredMonitoringService'
+          property :desired_node_pool_auto_config_network_tags, as: 'desiredNodePoolAutoConfigNetworkTags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
+      
           property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1::NodePoolAutoscaling::Representation
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
@@ -1466,6 +1482,13 @@ module Google
         end
       end
       
+      class NetworkTags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tags, as: 'tags'
+        end
+      end
+      
       class NodeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1571,6 +1594,14 @@ module Google
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1::UpgradeSettings, decorator: Google::Apis::ContainerV1::UpgradeSettings::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class NodePoolAutoConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_tags, as: 'networkTags', class: Google::Apis::ContainerV1::NetworkTags, decorator: Google::Apis::ContainerV1::NetworkTags::Representation
+      
         end
       end
       
