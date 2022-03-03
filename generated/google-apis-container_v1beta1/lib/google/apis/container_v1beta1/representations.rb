@@ -520,6 +520,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodePoolAutoConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodePoolAutoscaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -844,6 +850,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadAltsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadCertificates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1077,6 +1089,8 @@ module Google
           property :node_config, as: 'nodeConfig', class: Google::Apis::ContainerV1beta1::NodeConfig, decorator: Google::Apis::ContainerV1beta1::NodeConfig::Representation
       
           property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
+          property :node_pool_auto_config, as: 'nodePoolAutoConfig', class: Google::Apis::ContainerV1beta1::NodePoolAutoConfig, decorator: Google::Apis::ContainerV1beta1::NodePoolAutoConfig::Representation
+      
           property :node_pool_defaults, as: 'nodePoolDefaults', class: Google::Apis::ContainerV1beta1::NodePoolDefaults, decorator: Google::Apis::ContainerV1beta1::NodePoolDefaults::Representation
       
           collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1beta1::NodePool, decorator: Google::Apis::ContainerV1beta1::NodePool::Representation
@@ -1104,6 +1118,8 @@ module Google
       
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :vertical_pod_autoscaling, as: 'verticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
+      
+          property :workload_alts_config, as: 'workloadAltsConfig', class: Google::Apis::ContainerV1beta1::WorkloadAltsConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadAltsConfig::Representation
       
           property :workload_certificates, as: 'workloadCertificates', class: Google::Apis::ContainerV1beta1::WorkloadCertificates, decorator: Google::Apis::ContainerV1beta1::WorkloadCertificates::Representation
       
@@ -1176,6 +1192,8 @@ module Google
           property :desired_monitoring_config, as: 'desiredMonitoringConfig', class: Google::Apis::ContainerV1beta1::MonitoringConfig, decorator: Google::Apis::ContainerV1beta1::MonitoringConfig::Representation
       
           property :desired_monitoring_service, as: 'desiredMonitoringService'
+          property :desired_node_pool_auto_config_network_tags, as: 'desiredNodePoolAutoConfigNetworkTags', class: Google::Apis::ContainerV1beta1::NetworkTags, decorator: Google::Apis::ContainerV1beta1::NetworkTags::Representation
+      
           property :desired_node_pool_autoscaling, as: 'desiredNodePoolAutoscaling', class: Google::Apis::ContainerV1beta1::NodePoolAutoscaling, decorator: Google::Apis::ContainerV1beta1::NodePoolAutoscaling::Representation
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
@@ -1198,6 +1216,8 @@ module Google
           property :desired_tpu_config, as: 'desiredTpuConfig', class: Google::Apis::ContainerV1beta1::TpuConfig, decorator: Google::Apis::ContainerV1beta1::TpuConfig::Representation
       
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
+      
+          property :desired_workload_alts_config, as: 'desiredWorkloadAltsConfig', class: Google::Apis::ContainerV1beta1::WorkloadAltsConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadAltsConfig::Representation
       
           property :desired_workload_certificates, as: 'desiredWorkloadCertificates', class: Google::Apis::ContainerV1beta1::WorkloadCertificates, decorator: Google::Apis::ContainerV1beta1::WorkloadCertificates::Representation
       
@@ -1827,6 +1847,14 @@ module Google
         end
       end
       
+      class NodePoolAutoConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_tags, as: 'networkTags', class: Google::Apis::ContainerV1beta1::NetworkTags, decorator: Google::Apis::ContainerV1beta1::NetworkTags::Representation
+      
+        end
+      end
+      
       class NodePoolAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2409,6 +2437,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :windows_versions, as: 'windowsVersions', class: Google::Apis::ContainerV1beta1::WindowsVersion, decorator: Google::Apis::ContainerV1beta1::WindowsVersion::Representation
       
+        end
+      end
+      
+      class WorkloadAltsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_alts, as: 'enableAlts'
         end
       end
       
