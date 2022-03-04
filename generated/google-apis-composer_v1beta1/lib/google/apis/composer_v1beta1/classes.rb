@@ -657,8 +657,8 @@ module Google
         end
       end
       
-      # Load environment state response.
-      class LoadEnvironmentStateResponse
+      # Response to LoadSnapshotRequest.
+      class LoadSnapshotResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1136,6 +1136,27 @@ module Google
         end
       end
       
+      # Response to SaveSnapshotRequest.
+      class SaveSnapshotResponse
+        include Google::Apis::Core::Hashable
+      
+        # The fully-resolved Cloud Storage path of the created snapshot, e.g.: "gs://my-
+        # bucket/snapshots/project_location_environment_timestamp". This field is
+        # populated only if the snapshot creation was successful.
+        # Corresponds to the JSON property `snapshotPath`
+        # @return [String]
+        attr_accessor :snapshot_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot_path = args[:snapshot_path] if args.key?(:snapshot_path)
+        end
+      end
+      
       # Configuration for resources used by Airflow schedulers.
       class SchedulerResource
         include Google::Apis::Core::Hashable
@@ -1299,27 +1320,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # Store environment state response.
-      class StoreEnvironmentStateResponse
-        include Google::Apis::Core::Hashable
-      
-        # The fully-resolved Cloud Storage path of the created snapshot, e.g.: "gs://my-
-        # bucket/snapshots/project_location_environment_timestamp". This field is
-        # populated only if the snapshot creation was successful.
-        # Corresponds to the JSON property `snapshotPath`
-        # @return [String]
-        attr_accessor :snapshot_path
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @snapshot_path = args[:snapshot_path] if args.key?(:snapshot_path)
         end
       end
       
