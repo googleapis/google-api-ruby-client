@@ -50,14 +50,6 @@ module Google
         attr_accessor :google_support
         alias_method :google_support?, :google_support
       
-        # Output only. An ID representing the user that was authenticated when the
-        # corresponding action was taken. This will be an email address, if one is
-        # available, or some other unique ID. See https://cloud.google.com/docs/
-        # authentication for more information on types of authentication.
-        # Corresponds to the JSON property `principalId`
-        # @return [String]
-        attr_accessor :principal_id
-      
         def initialize(**args)
            update!(**args)
         end
@@ -67,7 +59,6 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
           @google_support = args[:google_support] if args.key?(:google_support)
-          @principal_id = args[:principal_id] if args.key?(:principal_id)
         end
       end
       
@@ -692,27 +683,11 @@ module Google
       class Escalation
         include Google::Apis::Core::Hashable
       
-        # An object containing information about the effective user and authenticated
-        # principal responsible for an action.
-        # Corresponds to the JSON property `actor`
-        # @return [Google::Apis::CloudsupportV2beta::Actor]
-        attr_accessor :actor
-      
-        # Output only. The time when this escalation event was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
         # Required. A free text description to accompany the `reason` field above.
         # Provides additional context on why the case is being escalated.
         # Corresponds to the JSON property `justification`
         # @return [String]
         attr_accessor :justification
-      
-        # Output only. The resource name for the escalation event.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
       
         # Required. The reason why the Case is being escalated.
         # Corresponds to the JSON property `reason`
@@ -725,10 +700,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @actor = args[:actor] if args.key?(:actor)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @justification = args[:justification] if args.key?(:justification)
-          @name = args[:name] if args.key?(:name)
           @reason = args[:reason] if args.key?(:reason)
         end
       end
