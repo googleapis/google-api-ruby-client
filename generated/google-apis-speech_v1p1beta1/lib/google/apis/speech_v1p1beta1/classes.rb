@@ -1077,7 +1077,10 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Transcript text representing the words that the user spoke.
+        # Transcript text representing the words that the user spoke. In languages that
+        # use spaces to separate words, the transcript might have a leading space if it
+        # isn't the first result. You can concatenate each result to obtain the full
+        # transcript without using a separator.
         # Corresponds to the JSON property `transcript`
         # @return [String]
         attr_accessor :transcript
