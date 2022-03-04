@@ -4335,7 +4335,9 @@ module Google
         #   Required. The ID of the owner advertiser of the updated
         #   FirstAndThirdPartyAudience.
         # @param [String] update_mask
-        #   Required. The mask to control which fields to update.
+        #   Required. The mask to control which fields to update. Updates are only
+        #   supported for the following fields: * `displayName` * `description` * `
+        #   membershipDurationDays`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

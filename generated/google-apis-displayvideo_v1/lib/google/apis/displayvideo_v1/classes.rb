@@ -3793,11 +3793,11 @@ module Google
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-      # DateTime * google.protobuf.Timestamp
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -3838,11 +3838,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::DisplayvideoV1::Date]
         attr_accessor :end_date
@@ -3850,11 +3850,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::DisplayvideoV1::Date]
         attr_accessor :start_date
@@ -6000,11 +6000,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `dueDate`
         # @return [Google::Apis::DisplayvideoV1::Date]
         attr_accessor :due_date
@@ -6022,11 +6022,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `issueDate`
         # @return [Google::Apis::DisplayvideoV1::Date]
         attr_accessor :issue_date
@@ -7482,6 +7482,12 @@ module Google
         # @return [String]
         attr_accessor :performance_goal_type
       
+        # Controls whether the strategy takes deal floor prices into account.
+        # Corresponds to the JSON property `raiseBidForDeals`
+        # @return [Boolean]
+        attr_accessor :raise_bid_for_deals
+        alias_method :raise_bid_for_deals?, :raise_bid_for_deals
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7491,6 +7497,7 @@ module Google
           @custom_bidding_algorithm_id = args[:custom_bidding_algorithm_id] if args.key?(:custom_bidding_algorithm_id)
           @max_average_cpm_bid_amount_micros = args[:max_average_cpm_bid_amount_micros] if args.key?(:max_average_cpm_bid_amount_micros)
           @performance_goal_type = args[:performance_goal_type] if args.key?(:performance_goal_type)
+          @raise_bid_for_deals = args[:raise_bid_for_deals] if args.key?(:raise_bid_for_deals)
         end
       end
       
