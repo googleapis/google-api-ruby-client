@@ -3636,6 +3636,7 @@ module Google
           property :custom_bidding_algorithm_id, :numeric_string => true, as: 'customBiddingAlgorithmId'
           property :max_average_cpm_bid_amount_micros, :numeric_string => true, as: 'maxAverageCpmBidAmountMicros'
           property :performance_goal_type, as: 'performanceGoalType'
+          property :raise_bid_for_deals, as: 'raiseBidForDeals'
         end
       end
       
