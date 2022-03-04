@@ -508,8 +508,8 @@ module Google
         # @return [Google::Apis::ChatV1::TimeZone]
         attr_accessor :time_zone
       
-        # The full locale.displayName in the format of [ISO 639 language code]-[ISO 3166
-        # country/region code] such as "en-US". Not supported by Chat apps.
+        # The full `locale.displayName` in the format of [ISO 639 language code]-[ISO
+        # 3166 country/region code] such as "en-US". Not supported by Chat apps.
         # Corresponds to the JSON property `userLocale`
         # @return [String]
         attr_accessor :user_locale
@@ -690,20 +690,20 @@ module Google
         # For more information, see Cards . For example, the following JSON creates a
         # card that has a header with the name, position, icons, and link for a contact,
         # followed by a section with contact information like email and phone number. ```
-        # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
-        # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
-        # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
-        # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
-        # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
-        # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
-        # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
-        # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
-        # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
-        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
-        # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
-        # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
-        # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+        # ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageStyle":
+        # "ImageStyle.AVATAR", "imageUrl": "https://example.com/sasha.png", "
+        # imageAltText": "Avatar for Sasha" `, "sections" : [ ` "header": "Contact Info",
+        # "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "EMAIL" `, "content"
+        # : "sasha@example.com" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "PERSON"
+        # `, "content": "Online" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "
+        # PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "buttons": [ ` "textButton": `
+        # "text": "Share", `, "onClick": ` "openLink": ` "url": "https://example.com/
+        # share" ` ` `, ` "textButton": ` "text": "Edit", `, "onClick": ` "action": ` "
+        # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" ` ]
+        # , "loadIndicator": "LoadIndicator.SPINNER" ` ` ` ] ` ], "collapsible": true, "
+        # uncollapsibleWidgetsCount": 3 ` ], "cardActions": [ ` "actionLabel": "Send
+        # Feedback", "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` `
+        # ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
         # Corresponds to the JSON property `body`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :body
@@ -1122,20 +1122,20 @@ module Google
       # For more information, see Cards . For example, the following JSON creates a
       # card that has a header with the name, position, icons, and link for a contact,
       # followed by a section with contact information like email and phone number. ```
-      # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
-      # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
-      # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
-      # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
-      # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
-      # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
-      # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
-      # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
-      # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
-      # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-      # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
-      # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
-      # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
-      # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+      # ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageStyle":
+      # "ImageStyle.AVATAR", "imageUrl": "https://example.com/sasha.png", "
+      # imageAltText": "Avatar for Sasha" `, "sections" : [ ` "header": "Contact Info",
+      # "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "EMAIL" `, "content"
+      # : "sasha@example.com" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "PERSON"
+      # `, "content": "Online" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "
+      # PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "buttons": [ ` "textButton": `
+      # "text": "Share", `, "onClick": ` "openLink": ` "url": "https://example.com/
+      # share" ` ` `, ` "textButton": ` "text": "Edit", `, "onClick": ` "action": ` "
+      # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" ` ]
+      # , "loadIndicator": "LoadIndicator.SPINNER" ` ` ` ] ` ], "collapsible": true, "
+      # uncollapsibleWidgetsCount": 3 ` ], "cardActions": [ ` "actionLabel": "Send
+      # Feedback", "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` `
+      # ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
       class GoogleAppsCardV1Card
         include Google::Apis::Core::Hashable
       
@@ -1682,20 +1682,20 @@ module Google
         # For more information, see Cards . For example, the following JSON creates a
         # card that has a header with the name, position, icons, and link for a contact,
         # followed by a section with contact information like email and phone number. ```
-        # ` "header": ` "title": "Heba Salam", "subtitle": "Software Engineer", "
-        # imageStyle": "ImageStyle.AVATAR", "imageUrl": "https://example.com/heba_salam.
-        # png", "imageAltText": "Avatar for Heba Salam" `, "sections" : [ ` "header": "
-        # Contact Info", "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "
-        # EMAIL" `, "content": "heba.salam@example.com" ` `, ` "decoratedText": ` "icon":
-        # ` "knownIcon": "PERSON" `, "content": "Online" ` `, ` "decoratedText": ` "
-        # icon": ` "knownIcon": "PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "
-        # buttons": [ ` "textButton": ` "text": "Share", `, "onClick": ` "openLink": ` "
-        # url": "https://example.com/share" ` ` `, ` "textButton": ` "text": "Edit", `, "
-        # onClick": ` "action": ` "function": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "EDIT" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` ` `
-        # ] ` ], "collapsible": true, "uncollapsibleWidgetsCount": 3 ` ], "cardActions":
-        # [ ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https://
-        # example.com/feedback" ` ` ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
+        # ` "header": ` "title": "Sasha", "subtitle": "Software Engineer", "imageStyle":
+        # "ImageStyle.AVATAR", "imageUrl": "https://example.com/sasha.png", "
+        # imageAltText": "Avatar for Sasha" `, "sections" : [ ` "header": "Contact Info",
+        # "widgets": [ ` "decorated_text": ` "icon": ` "knownIcon": "EMAIL" `, "content"
+        # : "sasha@example.com" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "PERSON"
+        # `, "content": "Online" ` `, ` "decoratedText": ` "icon": ` "knownIcon": "
+        # PHONE" `, "content": "+1 (555) 555-1234" ` `, ` "buttons": [ ` "textButton": `
+        # "text": "Share", `, "onClick": ` "openLink": ` "url": "https://example.com/
+        # share" ` ` `, ` "textButton": ` "text": "Edit", `, "onClick": ` "action": ` "
+        # function": "goToView", "parameters": [ ` "key": "viewType", "value": "EDIT" ` ]
+        # , "loadIndicator": "LoadIndicator.SPINNER" ` ` ` ] ` ], "collapsible": true, "
+        # uncollapsibleWidgetsCount": 3 ` ], "cardActions": [ ` "actionLabel": "Send
+        # Feedback", "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` `
+        # ` ], "name": "contact-card-K3wB6arF2H9L" ` ```
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Card]
         attr_accessor :card
@@ -2934,9 +2934,10 @@ module Google
         attr_accessor :is_anonymous
         alias_method :is_anonymous?, :is_anonymous
       
-        # Resource name for a Google Chat user. Formatted as `users/`user``. Represents
-        # a [person](https://developers.google.com/people/api/rest/v1/people#Person) in
-        # the People API.
+        # Resource name for a Google Chat user. Represents a [person](https://developers.
+        # google.com/people/api/rest/v1/people#Person) in the People API or a [user](
+        # https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in
+        # the Admin SDK Directory API. Formatted as: `users/`user``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

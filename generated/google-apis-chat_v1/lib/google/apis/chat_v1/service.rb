@@ -58,9 +58,8 @@ module Google
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
-        #   Optional. A unique request ID for this message. If a message has already been
-        #   created in the space with this request ID, the subsequent request will return
-        #   the existing message and no new message will be created.
+        #   Optional. A unique request ID for this message. Specifying an existing request
+        #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -107,9 +106,8 @@ module Google
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
-        #   Optional. A unique request ID for this message. If a message has already been
-        #   created in the space with this request ID, the subsequent request will return
-        #   the existing message and no new message will be created.
+        #   Optional. A unique request ID for this message. Specifying an existing request
+        #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -156,9 +154,8 @@ module Google
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
-        #   Optional. A unique request ID for this message. If a message has already been
-        #   created in the space with this request ID, the subsequent request will return
-        #   the existing message and no new message will be created.
+        #   Optional. A unique request ID for this message. Specifying an existing request
+        #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -243,9 +240,8 @@ module Google
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
-        #   Optional. A unique request ID for this message. If a message has already been
-        #   created in the space with this request ID, the subsequent request will return
-        #   the existing message and no new message will be created.
+        #   Optional. A unique request ID for this message. Specifying an existing request
+        #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -292,9 +288,8 @@ module Google
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
-        #   Optional. A unique request ID for this message. If a message has already been
-        #   created in the space with this request ID, the subsequent request will return
-        #   the existing message and no new message will be created.
+        #   Optional. A unique request ID for this message. Specifying an existing request
+        #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -341,9 +336,8 @@ module Google
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
-        #   Optional. A unique request ID for this message. If a message has already been
-        #   created in the space with this request ID, the subsequent request will return
-        #   the existing message and no new message will be created.
+        #   Optional. A unique request ID for this message. Specifying an existing request
+        #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -455,9 +449,8 @@ module Google
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
-        #   Optional. A unique request ID for this message. If a message has already been
-        #   created in the space with this request ID, the subsequent request will return
-        #   the existing message and no new message will be created.
+        #   Optional. A unique request ID for this message. Specifying an existing request
+        #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
@@ -572,9 +565,8 @@ module Google
         #   AAAAAAAAAAA
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] request_id
-        #   Optional. A unique request ID for this message. If a message has already been
-        #   created in the space with this request ID, the subsequent request will return
-        #   the existing message and no new message will be created.
+        #   Optional. A unique request ID for this message. Specifying an existing request
+        #   ID returns the message created with that ID instead of creating a new message.
         # @param [String] thread_key
         #   Optional. Opaque thread identifier string that can be specified to group
         #   messages into a single thread. If this is the first message with a given
