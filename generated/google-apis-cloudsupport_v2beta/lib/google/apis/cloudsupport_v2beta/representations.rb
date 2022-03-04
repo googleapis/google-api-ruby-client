@@ -184,7 +184,6 @@ module Google
           property :display_name, as: 'displayName'
           property :email, as: 'email'
           property :google_support, as: 'googleSupport'
-          property :principal_id, as: 'principalId'
         end
       end
       
@@ -366,11 +365,7 @@ module Google
       class Escalation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :actor, as: 'actor', class: Google::Apis::CloudsupportV2beta::Actor, decorator: Google::Apis::CloudsupportV2beta::Actor::Representation
-      
-          property :create_time, as: 'createTime'
           property :justification, as: 'justification'
-          property :name, as: 'name'
           property :reason, as: 'reason'
         end
       end
