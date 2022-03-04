@@ -2115,7 +2115,8 @@ module Google
         # @return [Google::Apis::FirestoreV1::StructuredQuery]
         attr_accessor :structured_query
       
-        # Reads documents in a transaction.
+        # Run the query within an already active transaction. The value here is the
+        # opaque transaction ID to execute the query in.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
