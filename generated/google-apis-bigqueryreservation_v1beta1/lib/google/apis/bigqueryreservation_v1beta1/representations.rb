@@ -191,6 +191,7 @@ module Google
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency, :numeric_string => true, as: 'concurrency'
           property :creation_time, as: 'creationTime'
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
           property :multi_region_auxiliary, as: 'multiRegionAuxiliary'
