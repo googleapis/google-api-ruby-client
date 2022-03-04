@@ -112,7 +112,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LoadEnvironmentStateResponse
+      class LoadSnapshotResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SaveSnapshotResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchedulerResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,12 +185,6 @@ module Google
       end
       
       class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StoreEnvironmentStateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -379,7 +379,7 @@ module Google
         end
       end
       
-      class LoadEnvironmentStateResponse
+      class LoadSnapshotResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -476,6 +476,13 @@ module Google
         end
       end
       
+      class SaveSnapshotResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_path, as: 'snapshotPath'
+        end
+      end
+      
       class SchedulerResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -504,13 +511,6 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class StoreEnvironmentStateResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :snapshot_path, as: 'snapshotPath'
         end
       end
       
