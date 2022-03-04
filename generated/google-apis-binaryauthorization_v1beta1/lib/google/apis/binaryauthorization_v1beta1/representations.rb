@@ -173,6 +173,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :user_owned_drydock_note, as: 'userOwnedDrydockNote', class: Google::Apis::BinaryauthorizationV1beta1::UserOwnedDrydockNote, decorator: Google::Apis::BinaryauthorizationV1beta1::UserOwnedDrydockNote::Representation
@@ -261,6 +262,7 @@ module Google
           property :default_admission_rule, as: 'defaultAdmissionRule', class: Google::Apis::BinaryauthorizationV1beta1::AdmissionRule, decorator: Google::Apis::BinaryauthorizationV1beta1::AdmissionRule::Representation
       
           property :description, as: 'description'
+          property :etag, as: 'etag'
           property :global_policy_evaluation_mode, as: 'globalPolicyEvaluationMode'
           hash :istio_service_identity_admission_rules, as: 'istioServiceIdentityAdmissionRules', class: Google::Apis::BinaryauthorizationV1beta1::AdmissionRule, decorator: Google::Apis::BinaryauthorizationV1beta1::AdmissionRule::Representation
       

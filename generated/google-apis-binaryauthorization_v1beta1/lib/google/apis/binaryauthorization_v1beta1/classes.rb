@@ -144,6 +144,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Used to prevent updating the attestor when another request has
+        # updated it since it was retrieved.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Required. The resource name, in the format: `projects/*/attestors/*`. This
         # field may not be updated.
         # Corresponds to the JSON property `name`
@@ -168,6 +174,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_owned_drydock_note = args[:user_owned_drydock_note] if args.key?(:user_owned_drydock_note)
@@ -567,6 +574,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Used to prevent updating the policy when another request has updated
+        # it since it was retrieved.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Optional. Controls the evaluation of a Google-maintained global admission
         # policy for common system-level images. Images not covered by the global policy
         # will be subject to the project admission policy. This setting has no effect
@@ -615,6 +628,7 @@ module Google
           @cluster_admission_rules = args[:cluster_admission_rules] if args.key?(:cluster_admission_rules)
           @default_admission_rule = args[:default_admission_rule] if args.key?(:default_admission_rule)
           @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
           @global_policy_evaluation_mode = args[:global_policy_evaluation_mode] if args.key?(:global_policy_evaluation_mode)
           @istio_service_identity_admission_rules = args[:istio_service_identity_admission_rules] if args.key?(:istio_service_identity_admission_rules)
           @kubernetes_namespace_admission_rules = args[:kubernetes_namespace_admission_rules] if args.key?(:kubernetes_namespace_admission_rules)
