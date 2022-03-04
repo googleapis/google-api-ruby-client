@@ -1302,7 +1302,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
-          collection :target_types, as: 'target_types'
+          collection :target_types, as: 'targetTypes'
         end
       end
       

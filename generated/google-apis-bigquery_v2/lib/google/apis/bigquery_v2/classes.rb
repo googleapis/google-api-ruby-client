@@ -1779,7 +1779,7 @@ module Google
         attr_accessor :dataset
       
         # 
-        # Corresponds to the JSON property `target_types`
+        # Corresponds to the JSON property `targetTypes`
         # @return [Array<String>]
         attr_accessor :target_types
       
