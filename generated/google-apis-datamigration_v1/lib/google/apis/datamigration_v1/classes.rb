@@ -466,6 +466,50 @@ module Google
         end
       end
       
+      # Dump flag definition.
+      class DumpFlag
+        include Google::Apis::Core::Hashable
+      
+        # The name of the flag
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The value of the flag.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Dump flags definition.
+      class DumpFlags
+        include Google::Apis::Core::Hashable
+      
+        # The flags for the initial dump.
+        # Corresponds to the JSON property `dumpFlags`
+        # @return [Array<Google::Apis::DatamigrationV1::DumpFlag>]
+        attr_accessor :dump_flags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dump_flags = args[:dump_flags] if args.key?(:dump_flags)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -820,8 +864,14 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Dump flags definition.
+        # Corresponds to the JSON property `dumpFlags`
+        # @return [Google::Apis::DatamigrationV1::DumpFlags]
+        attr_accessor :dump_flags
+      
         # The path to the dump file in Google Cloud Storage, in the format: (gs://[
-        # BUCKET_NAME]/[OBJECT_NAME]).
+        # BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are
+        # mutually exclusive.
         # Corresponds to the JSON property `dumpPath`
         # @return [String]
         attr_accessor :dump_path
@@ -928,6 +978,7 @@ module Google
           @destination = args[:destination] if args.key?(:destination)
           @destination_database = args[:destination_database] if args.key?(:destination_database)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @dump_flags = args[:dump_flags] if args.key?(:dump_flags)
           @dump_path = args[:dump_path] if args.key?(:dump_path)
           @duration = args[:duration] if args.key?(:duration)
           @end_time = args[:end_time] if args.key?(:end_time)
