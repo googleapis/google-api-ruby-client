@@ -26,7 +26,7 @@ module Google
       class Annotation
         include Google::Apis::Core::Hashable
       
-        # A set of attributes, each in the format `[KEY]:[VALUE]`.
+        # A set of attributes as key-value pairs.
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::CloudtraceV2::Attributes]
         attr_accessor :attributes
@@ -47,7 +47,7 @@ module Google
         end
       end
       
-      # The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.
+      # The allowed types for `[VALUE]` in a `[KEY]:[VALUE]` attribute.
       class AttributeValue
         include Google::Apis::Core::Hashable
       
@@ -79,13 +79,13 @@ module Google
         end
       end
       
-      # A set of attributes, each in the format `[KEY]:[VALUE]`.
+      # A set of attributes as key-value pairs.
       class Attributes
         include Google::Apis::Core::Hashable
       
-        # The set of attributes. Each attribute's key can be up to 128 bytes long. The
-        # value can be a string up to 256 bytes, a signed 64-bit integer, or the Boolean
-        # values `true` and `false`. For example: "/instance_id": ` "string_value": ` "
+        # A set of attributes. Each attribute's key can be up to 128 bytes long. The
+        # value can be a string up to 256 bytes, a signed 64-bit integer, or the boolean
+        # values `true` or `false`. For example: "/instance_id": ` "string_value": ` "
         # value": "my-instance" ` ` "/http/request_bytes": ` "int_value": 300 ` "abc.com/
         # myattribute": ` "bool_value": false `
         # Corresponds to the JSON property `attributeMap`
@@ -115,7 +115,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A list of new spans. The span names must not match existing spans,
-        # or the results are undefined.
+        # otherwise the results are undefined.
         # Corresponds to the JSON property `spans`
         # @return [Array<Google::Apis::CloudtraceV2::Span>]
         attr_accessor :spans
@@ -154,17 +154,17 @@ module Google
       class Link
         include Google::Apis::Core::Hashable
       
-        # A set of attributes, each in the format `[KEY]:[VALUE]`.
+        # A set of attributes as key-value pairs.
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::CloudtraceV2::Attributes]
         attr_accessor :attributes
       
-        # The [SPAN_ID] for a span within a trace.
+        # The `[SPAN_ID]` for a span within a trace.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
       
-        # The [TRACE_ID] for a trace within a project.
+        # The `[TRACE_ID]` for a trace within a project.
         # Corresponds to the JSON property `traceId`
         # @return [String]
         attr_accessor :trace_id
@@ -218,14 +218,14 @@ module Google
       class MessageEvent
         include Google::Apis::Core::Hashable
       
-        # The number of compressed bytes sent or received. If missing assumed to be the
-        # same size as uncompressed.
+        # The number of compressed bytes sent or received. If missing, the compressed
+        # size is assumed to be the same size as the uncompressed size.
         # Corresponds to the JSON property `compressedSizeBytes`
         # @return [Fixnum]
         attr_accessor :compressed_size_bytes
       
-        # An identifier for the MessageEvent's message that can be used to match SENT
-        # and RECEIVED MessageEvents. It is recommended to be unique within a Span.
+        # An identifier for the MessageEvent's message that can be used to match `SENT`
+        # and `RECEIVED` MessageEvents.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -282,11 +282,11 @@ module Google
       # form a trace tree. Often, a trace contains a root span that describes the end-
       # to-end latency, and one or more subspans for its sub-operations. A trace can
       # also contain multiple root spans, or none at all. Spans do not need to be
-      # contiguous—there may be gaps or overlaps between spans in a trace.
+      # contiguous—there might be gaps or overlaps between spans in a trace.
       class Span
         include Google::Apis::Core::Hashable
       
-        # A set of attributes, each in the format `[KEY]:[VALUE]`.
+        # A set of attributes as key-value pairs.
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::CloudtraceV2::Attributes]
         attr_accessor :attributes
@@ -315,16 +315,17 @@ module Google
         # @return [Google::Apis::CloudtraceV2::Links]
         attr_accessor :links
       
-        # Required. The resource name of the span in the following format: projects/[
-        # PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace
-        # within a project; it is a 32-character hexadecimal encoding of a 16-byte array.
-        # [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-
-        # character hexadecimal encoding of an 8-byte array. It should not be zero.
+        # Required. The resource name of the span in the following format: * `projects/[
+        # PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique
+        # identifier for a trace within a project; it is a 32-character hexadecimal
+        # encoding of a 16-byte array. It should not be zero. `[SPAN_ID]` is a unique
+        # identifier for a span within a trace; it is a 16-character hexadecimal
+        # encoding of an 8-byte array. It should not be zero. .
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The [SPAN_ID] of this span's parent span. If this is a root span, then this
+        # The `[SPAN_ID]` of this span's parent span. If this is a root span, then this
         # field must be empty.
         # Corresponds to the JSON property `parentSpanId`
         # @return [String]
@@ -338,7 +339,7 @@ module Google
         attr_accessor :same_process_as_parent_span
         alias_method :same_process_as_parent_span?, :same_process_as_parent_span
       
-        # Required. The [SPAN_ID] portion of the span's resource name.
+        # Required. The `[SPAN_ID]` portion of the span's resource name.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
