@@ -26,7 +26,7 @@ module Google
       #  collected for all App Engine applications by default. Trace data from other
       #  applications can be provided using this API. This library is used to interact
       #  with the Cloud Trace API directly. If you are looking to instrument your
-      #  application for Cloud Trace, we recommend using OpenCensus.
+      #  application for Cloud Trace, we recommend using OpenTelemetry.
       #
       # @example
       #    require 'google/apis/cloudtrace_v1'
@@ -123,7 +123,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns of a list of traces that match the specified filter conditions.
+        # Returns a list of traces that match the specified filter conditions.
         # @param [String] project_id
         #   Required. ID of the Cloud project where the trace data is stored.
         # @param [String] end_time
