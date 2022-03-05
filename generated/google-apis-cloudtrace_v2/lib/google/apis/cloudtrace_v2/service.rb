@@ -26,7 +26,7 @@ module Google
       #  collected for all App Engine applications by default. Trace data from other
       #  applications can be provided using this API. This library is used to interact
       #  with the Cloud Trace API directly. If you are looking to instrument your
-      #  application for Cloud Trace, we recommend using OpenCensus.
+      #  application for Cloud Trace, we recommend using OpenTelemetry.
       #
       # @example
       #    require 'google/apis/cloudtrace_v2'
@@ -53,7 +53,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Sends new spans to new or existing traces. You cannot update existing spans.
+        # Batch writes new spans to new or existing traces. You cannot update existing
+        # spans.
         # @param [String] name
         #   Required. The name of the project where the spans belong. The format is `
         #   projects/[PROJECT_ID]`.
@@ -89,11 +90,12 @@ module Google
         
         # Creates a new span.
         # @param [String] name
-        #   Required. The resource name of the span in the following format: projects/[
-        #   PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace
-        #   within a project; it is a 32-character hexadecimal encoding of a 16-byte array.
-        #   [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-
-        #   character hexadecimal encoding of an 8-byte array. It should not be zero.
+        #   Required. The resource name of the span in the following format: * `projects/[
+        #   PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique
+        #   identifier for a trace within a project; it is a 32-character hexadecimal
+        #   encoding of a 16-byte array. It should not be zero. `[SPAN_ID]` is a unique
+        #   identifier for a span within a trace; it is a 16-character hexadecimal
+        #   encoding of an 8-byte array. It should not be zero. .
         # @param [Google::Apis::CloudtraceV2::Span] span_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
