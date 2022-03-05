@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DumpFlag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DumpFlags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +382,22 @@ module Google
         end
       end
       
+      class DumpFlag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
+      class DumpFlags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dump_flags, as: 'dumpFlags', class: Google::Apis::DatamigrationV1::DumpFlag, decorator: Google::Apis::DatamigrationV1::DumpFlag::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -468,6 +496,8 @@ module Google
           property :destination_database, as: 'destinationDatabase', class: Google::Apis::DatamigrationV1::DatabaseType, decorator: Google::Apis::DatamigrationV1::DatabaseType::Representation
       
           property :display_name, as: 'displayName'
+          property :dump_flags, as: 'dumpFlags', class: Google::Apis::DatamigrationV1::DumpFlags, decorator: Google::Apis::DatamigrationV1::DumpFlags::Representation
+      
           property :dump_path, as: 'dumpPath'
           property :duration, as: 'duration'
           property :end_time, as: 'endTime'
