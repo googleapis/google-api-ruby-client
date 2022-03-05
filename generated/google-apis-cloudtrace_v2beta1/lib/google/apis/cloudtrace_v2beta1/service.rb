@@ -26,7 +26,7 @@ module Google
       #  collected for all App Engine applications by default. Trace data from other
       #  applications can be provided using this API. This library is used to interact
       #  with the Cloud Trace API directly. If you are looking to instrument your
-      #  application for Cloud Trace, we recommend using OpenCensus.
+      #  application for Cloud Trace, we recommend using OpenTelemetry.
       #
       # @example
       #    require 'google/apis/cloudtrace_v2beta1'
@@ -160,13 +160,13 @@ module Google
         #   project parent resources are supported): "projects/[PROJECT_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
-        #   positive values are ignored. The presence of `nextPageToken` in the response
+        #   positive values are ignored. The presence of `next_page_token` in the response
         #   indicates that more results might be available.
         # @param [String] page_token
         #   Optional. If present, then retrieve the next batch of results from the
-        #   preceding call to this method. `pageToken` must be the value of `nextPageToken`
-        #   from the previous response. The values of other method parameters should be
-        #   identical to those in the previous call.
+        #   preceding call to this method. `page_token` must be the value of `
+        #   next_page_token` from the previous response. The values of other method
+        #   parameters should be identical to those in the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -207,8 +207,8 @@ module Google
         # @param [String] update_mask
         #   Required. Field mask that specifies the fields in `trace_sink` that are to be
         #   updated. A sink field is overwritten if, and only if, it is in the update mask.
-        #   `name` and `writer_identity` fields cannot be updated. An empty updateMask is
-        #   considered an error. For a detailed `FieldMask` definition, see https://
+        #   `name` and `writer_identity` fields cannot be updated. An empty `update_mask`
+        #   is considered an error. For a detailed `FieldMask` definition, see https://
         #   developers.google.com/protocol-buffers/docs/reference/google.protobuf#
         #   fieldmask Example: `updateMask=output_config`.
         # @param [String] fields
