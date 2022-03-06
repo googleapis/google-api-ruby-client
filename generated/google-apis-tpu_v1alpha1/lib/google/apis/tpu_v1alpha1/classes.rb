@@ -489,45 +489,43 @@ module Google
         end
       end
       
-      # Represents the metadata of the long-running operation.
+      # Metadata describing an Operation
       class OperationMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. API version used to start the operation.
+        # API version.
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
       
-        # Output only. Identifies whether the user has requested cancellation of the
-        # operation. Operations that have been cancelled successfully have Operation.
-        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
-        # CANCELLED`.
+        # Specifies if cancellation was requested for the operation.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
         alias_method :cancel_requested?, :cancel_requested
       
-        # Output only. The time the operation was created.
+        # The time the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. The time the operation finished running.
+        # The time the operation finished running.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Output only. Human-readable status of the operation, if any.
+        # Human-readable status of the operation, if any.
         # Corresponds to the JSON property `statusDetail`
         # @return [String]
         attr_accessor :status_detail
       
-        # Output only. Server-defined resource path for the target of the operation.
+        # Target of the operation - for example projects/project-1/connectivityTests/
+        # test-1
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
       
-        # Output only. Name of the verb executed by the operation.
+        # Name of the verb executed by the operation.
         # Corresponds to the JSON property `verb`
         # @return [String]
         attr_accessor :verb
