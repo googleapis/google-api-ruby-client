@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BootImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,6 +478,12 @@ module Google
         end
       end
       
+      class BootImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -621,6 +633,7 @@ module Google
       
           property :boot_disk_size_gb, :numeric_string => true, as: 'bootDiskSizeGb'
           property :boot_disk_type, as: 'bootDiskType'
+          property :can_ip_forward, as: 'canIpForward'
           property :container_image, as: 'containerImage', class: Google::Apis::NotebooksV1::ContainerImage, decorator: Google::Apis::NotebooksV1::ContainerImage::Representation
       
           property :create_time, as: 'createTime'
@@ -1163,6 +1176,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::NotebooksV1::RuntimeAcceleratorConfig, decorator: Google::Apis::NotebooksV1::RuntimeAcceleratorConfig::Representation
+      
+          property :boot_image, as: 'bootImage', class: Google::Apis::NotebooksV1::BootImage, decorator: Google::Apis::NotebooksV1::BootImage::Representation
       
           collection :container_images, as: 'containerImages', class: Google::Apis::NotebooksV1::ContainerImage, decorator: Google::Apis::NotebooksV1::ContainerImage::Representation
       

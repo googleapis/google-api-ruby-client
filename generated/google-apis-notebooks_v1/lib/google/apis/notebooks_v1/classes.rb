@@ -120,6 +120,20 @@ module Google
         end
       end
       
+      # Definition of the boot image used by the Runtime. Used to facilitate runtime
+      # upgradeability.
+      class BootImage
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -755,6 +769,13 @@ module Google
         # @return [String]
         attr_accessor :boot_disk_type
       
+        # Optional. Flag to enable ip forwarding or not, default false/off. https://
+        # cloud.google.com/vpc/docs/using-routes#canipforward
+        # Corresponds to the JSON property `canIpForward`
+        # @return [Boolean]
+        attr_accessor :can_ip_forward
+        alias_method :can_ip_forward?, :can_ip_forward
+      
         # Definition of a container image for starting a notebook instance with the
         # environment installed in a container.
         # Corresponds to the JSON property `containerImage`
@@ -962,6 +983,7 @@ module Google
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
           @boot_disk_type = args[:boot_disk_type] if args.key?(:boot_disk_type)
+          @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @container_image = args[:container_image] if args.key?(:container_image)
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
@@ -2876,6 +2898,12 @@ module Google
         # @return [Google::Apis::NotebooksV1::RuntimeAcceleratorConfig]
         attr_accessor :accelerator_config
       
+        # Definition of the boot image used by the Runtime. Used to facilitate runtime
+        # upgradeability.
+        # Corresponds to the JSON property `bootImage`
+        # @return [Google::Apis::NotebooksV1::BootImage]
+        attr_accessor :boot_image
+      
         # Optional. Use a list of container images to use as Kernels in the notebook
         # instance.
         # Corresponds to the JSON property `containerImages`
@@ -3000,6 +3028,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
+          @boot_image = args[:boot_image] if args.key?(:boot_image)
           @container_images = args[:container_images] if args.key?(:container_images)
           @data_disk = args[:data_disk] if args.key?(:data_disk)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
