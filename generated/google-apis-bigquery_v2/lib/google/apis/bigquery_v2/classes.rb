@@ -1207,6 +1207,32 @@ module Google
         end
       end
       
+      # 
+      class CloneDefinition
+        include Google::Apis::Core::Hashable
+      
+        # [Required] Reference describing the ID of the table that was cloned.
+        # Corresponds to the JSON property `baseTableReference`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :base_table_reference
+      
+        # [Required] The time at which the base table was cloned. This value is reported
+        # in the JSON response using RFC3339 format.
+        # Corresponds to the JSON property `cloneTime`
+        # @return [DateTime]
+        attr_accessor :clone_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_table_reference = args[:base_table_reference] if args.key?(:base_table_reference)
+          @clone_time = args[:clone_time] if args.key?(:clone_time)
+        end
+      end
+      
       # Message containing the information about one cluster.
       class Cluster
         include Google::Apis::Core::Hashable
@@ -1469,6 +1495,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :evaluation_table
       
+        # Table reference of the test data after split.
+        # Corresponds to the JSON property `testTable`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :test_table
+      
         # Table reference of the training data after split.
         # Corresponds to the JSON property `trainingTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
@@ -1481,6 +1512,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @evaluation_table = args[:evaluation_table] if args.key?(:evaluation_table)
+          @test_table = args[:test_table] if args.key?(:test_table)
           @training_table = args[:training_table] if args.key?(:training_table)
         end
       end
@@ -1958,6 +1990,25 @@ module Google
         end
       end
       
+      # Model evaluation metrics for dimensionality reduction models.
+      class DimensionalityReductionMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Total percentage of variance explained by the selected principal components.
+        # Corresponds to the JSON property `totalExplainedVarianceRatio`
+        # @return [Float]
+        attr_accessor :total_explained_variance_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_explained_variance_ratio = args[:total_explained_variance_ratio] if args.key?(:total_explained_variance_ratio)
+        end
+      end
+      
       # 
       class DmlStatistics
         include Google::Apis::Core::Hashable
@@ -1986,6 +2037,75 @@ module Google
           @deleted_row_count = args[:deleted_row_count] if args.key?(:deleted_row_count)
           @inserted_row_count = args[:inserted_row_count] if args.key?(:inserted_row_count)
           @updated_row_count = args[:updated_row_count] if args.key?(:updated_row_count)
+        end
+      end
+      
+      # Discrete candidates of a double hyperparameter.
+      class DoubleCandidates
+        include Google::Apis::Core::Hashable
+      
+        # Candidates for the double parameter in increasing order.
+        # Corresponds to the JSON property `candidates`
+        # @return [Array<Float>]
+        attr_accessor :candidates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+        end
+      end
+      
+      # Search space for a double hyperparameter.
+      class DoubleHparamSearchSpace
+        include Google::Apis::Core::Hashable
+      
+        # Discrete candidates of a double hyperparameter.
+        # Corresponds to the JSON property `candidates`
+        # @return [Google::Apis::BigqueryV2::DoubleCandidates]
+        attr_accessor :candidates
+      
+        # Range of a double hyperparameter.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::BigqueryV2::DoubleRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Range of a double hyperparameter.
+      class DoubleRange
+        include Google::Apis::Core::Hashable
+      
+        # Max value of the double parameter.
+        # Corresponds to the JSON property `max`
+        # @return [Float]
+        attr_accessor :max
+      
+        # Min value of the double parameter.
+        # Corresponds to the JSON property `min`
+        # @return [Float]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
         end
       end
       
@@ -2095,6 +2215,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::ClusteringMetrics]
         attr_accessor :clustering_metrics
       
+        # Model evaluation metrics for dimensionality reduction models.
+        # Corresponds to the JSON property `dimensionalityReductionMetrics`
+        # @return [Google::Apis::BigqueryV2::DimensionalityReductionMetrics]
+        attr_accessor :dimensionality_reduction_metrics
+      
         # Evaluation metrics for multi-class classification/classifier models.
         # Corresponds to the JSON property `multiClassClassificationMetrics`
         # @return [Google::Apis::BigqueryV2::MultiClassClassificationMetrics]
@@ -2121,6 +2246,7 @@ module Google
           @arima_forecasting_metrics = args[:arima_forecasting_metrics] if args.key?(:arima_forecasting_metrics)
           @binary_classification_metrics = args[:binary_classification_metrics] if args.key?(:binary_classification_metrics)
           @clustering_metrics = args[:clustering_metrics] if args.key?(:clustering_metrics)
+          @dimensionality_reduction_metrics = args[:dimensionality_reduction_metrics] if args.key?(:dimensionality_reduction_metrics)
           @multi_class_classification_metrics = args[:multi_class_classification_metrics] if args.key?(:multi_class_classification_metrics)
           @ranking_metrics = args[:ranking_metrics] if args.key?(:ranking_metrics)
           @regression_metrics = args[:regression_metrics] if args.key?(:regression_metrics)
@@ -2343,6 +2469,32 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @substeps = args[:substeps] if args.key?(:substeps)
+        end
+      end
+      
+      # Explanation for a single feature.
+      class Explanation
+        include Google::Apis::Core::Hashable
+      
+        # Attribution of feature.
+        # Corresponds to the JSON property `attribution`
+        # @return [Float]
+        attr_accessor :attribution
+      
+        # Full name of the feature. For non-numerical features, will be formatted like ..
+        # Overall size of feature name will always be truncated to first 120 characters.
+        # Corresponds to the JSON property `featureName`
+        # @return [String]
+        attr_accessor :feature_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution = args[:attribution] if args.key?(:attribution)
+          @feature_name = args[:feature_name] if args.key?(:feature_name)
         end
       end
       
@@ -2753,6 +2905,34 @@ module Google
         end
       end
       
+      # Global explanations containing the top most important features after training.
+      class GlobalExplanation
+        include Google::Apis::Core::Hashable
+      
+        # Class label for this set of global explanations. Will be empty/null for binary
+        # logistic and linear regression models. Sorted alphabetically in descending
+        # order.
+        # Corresponds to the JSON property `classLabel`
+        # @return [String]
+        attr_accessor :class_label
+      
+        # A list of the top global explanations. Sorted by absolute value of attribution
+        # in descending order.
+        # Corresponds to the JSON property `explanations`
+        # @return [Array<Google::Apis::BigqueryV2::Explanation>]
+        attr_accessor :explanations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @class_label = args[:class_label] if args.key?(:class_label)
+          @explanations = args[:explanations] if args.key?(:explanations)
+        end
+      end
+      
       # 
       class GoogleSheetsOptions
         include Google::Apis::Core::Hashable
@@ -2837,6 +3017,335 @@ module Google
           @mode = args[:mode] if args.key?(:mode)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @source_uri_prefix = args[:source_uri_prefix] if args.key?(:source_uri_prefix)
+        end
+      end
+      
+      # Hyperparameter search spaces. These should be a subset of training_options.
+      class HparamSearchSpaces
+        include Google::Apis::Core::Hashable
+      
+        # Search space for string and enum.
+        # Corresponds to the JSON property `activationFn`
+        # @return [Google::Apis::BigqueryV2::StringHparamSearchSpace]
+        attr_accessor :activation_fn
+      
+        # Search space for an int hyperparameter.
+        # Corresponds to the JSON property `batchSize`
+        # @return [Google::Apis::BigqueryV2::IntHparamSearchSpace]
+        attr_accessor :batch_size
+      
+        # Search space for string and enum.
+        # Corresponds to the JSON property `boosterType`
+        # @return [Google::Apis::BigqueryV2::StringHparamSearchSpace]
+        attr_accessor :booster_type
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `colsampleBylevel`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :colsample_bylevel
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `colsampleBynode`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :colsample_bynode
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `colsampleBytree`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :colsample_bytree
+      
+        # Search space for string and enum.
+        # Corresponds to the JSON property `dartNormalizeType`
+        # @return [Google::Apis::BigqueryV2::StringHparamSearchSpace]
+        attr_accessor :dart_normalize_type
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `dropout`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :dropout
+      
+        # Search space for int array.
+        # Corresponds to the JSON property `hiddenUnits`
+        # @return [Google::Apis::BigqueryV2::IntArrayHparamSearchSpace]
+        attr_accessor :hidden_units
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `l1Reg`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :l1_reg
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `l2Reg`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :l2_reg
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `learnRate`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :learn_rate
+      
+        # Search space for an int hyperparameter.
+        # Corresponds to the JSON property `maxTreeDepth`
+        # @return [Google::Apis::BigqueryV2::IntHparamSearchSpace]
+        attr_accessor :max_tree_depth
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `minSplitLoss`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :min_split_loss
+      
+        # Search space for an int hyperparameter.
+        # Corresponds to the JSON property `minTreeChildWeight`
+        # @return [Google::Apis::BigqueryV2::IntHparamSearchSpace]
+        attr_accessor :min_tree_child_weight
+      
+        # Search space for an int hyperparameter.
+        # Corresponds to the JSON property `numClusters`
+        # @return [Google::Apis::BigqueryV2::IntHparamSearchSpace]
+        attr_accessor :num_clusters
+      
+        # Search space for an int hyperparameter.
+        # Corresponds to the JSON property `numFactors`
+        # @return [Google::Apis::BigqueryV2::IntHparamSearchSpace]
+        attr_accessor :num_factors
+      
+        # Search space for an int hyperparameter.
+        # Corresponds to the JSON property `numParallelTree`
+        # @return [Google::Apis::BigqueryV2::IntHparamSearchSpace]
+        attr_accessor :num_parallel_tree
+      
+        # Search space for string and enum.
+        # Corresponds to the JSON property `optimizer`
+        # @return [Google::Apis::BigqueryV2::StringHparamSearchSpace]
+        attr_accessor :optimizer
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `subsample`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :subsample
+      
+        # Search space for string and enum.
+        # Corresponds to the JSON property `treeMethod`
+        # @return [Google::Apis::BigqueryV2::StringHparamSearchSpace]
+        attr_accessor :tree_method
+      
+        # Search space for a double hyperparameter.
+        # Corresponds to the JSON property `walsAlpha`
+        # @return [Google::Apis::BigqueryV2::DoubleHparamSearchSpace]
+        attr_accessor :wals_alpha
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activation_fn = args[:activation_fn] if args.key?(:activation_fn)
+          @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @booster_type = args[:booster_type] if args.key?(:booster_type)
+          @colsample_bylevel = args[:colsample_bylevel] if args.key?(:colsample_bylevel)
+          @colsample_bynode = args[:colsample_bynode] if args.key?(:colsample_bynode)
+          @colsample_bytree = args[:colsample_bytree] if args.key?(:colsample_bytree)
+          @dart_normalize_type = args[:dart_normalize_type] if args.key?(:dart_normalize_type)
+          @dropout = args[:dropout] if args.key?(:dropout)
+          @hidden_units = args[:hidden_units] if args.key?(:hidden_units)
+          @l1_reg = args[:l1_reg] if args.key?(:l1_reg)
+          @l2_reg = args[:l2_reg] if args.key?(:l2_reg)
+          @learn_rate = args[:learn_rate] if args.key?(:learn_rate)
+          @max_tree_depth = args[:max_tree_depth] if args.key?(:max_tree_depth)
+          @min_split_loss = args[:min_split_loss] if args.key?(:min_split_loss)
+          @min_tree_child_weight = args[:min_tree_child_weight] if args.key?(:min_tree_child_weight)
+          @num_clusters = args[:num_clusters] if args.key?(:num_clusters)
+          @num_factors = args[:num_factors] if args.key?(:num_factors)
+          @num_parallel_tree = args[:num_parallel_tree] if args.key?(:num_parallel_tree)
+          @optimizer = args[:optimizer] if args.key?(:optimizer)
+          @subsample = args[:subsample] if args.key?(:subsample)
+          @tree_method = args[:tree_method] if args.key?(:tree_method)
+          @wals_alpha = args[:wals_alpha] if args.key?(:wals_alpha)
+        end
+      end
+      
+      # Training info of a trial in hyperparameter tuning.
+      class HparamTuningTrial
+        include Google::Apis::Core::Hashable
+      
+        # Ending time of the trial.
+        # Corresponds to the JSON property `endTimeMs`
+        # @return [Fixnum]
+        attr_accessor :end_time_ms
+      
+        # Error message for FAILED and INFEASIBLE trial.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Loss computed on the eval data at the end of trial.
+        # Corresponds to the JSON property `evalLoss`
+        # @return [Float]
+        attr_accessor :eval_loss
+      
+        # Evaluation metrics of a model. These are either computed on all training data
+        # or just the eval data based on whether eval data was used during training.
+        # These are not present for imported models.
+        # Corresponds to the JSON property `evaluationMetrics`
+        # @return [Google::Apis::BigqueryV2::EvaluationMetrics]
+        attr_accessor :evaluation_metrics
+      
+        # Evaluation metrics of a model. These are either computed on all training data
+        # or just the eval data based on whether eval data was used during training.
+        # These are not present for imported models.
+        # Corresponds to the JSON property `hparamTuningEvaluationMetrics`
+        # @return [Google::Apis::BigqueryV2::EvaluationMetrics]
+        attr_accessor :hparam_tuning_evaluation_metrics
+      
+        # Options used in model training.
+        # Corresponds to the JSON property `hparams`
+        # @return [Google::Apis::BigqueryV2::TrainingOptions]
+        attr_accessor :hparams
+      
+        # Starting time of the trial.
+        # Corresponds to the JSON property `startTimeMs`
+        # @return [Fixnum]
+        attr_accessor :start_time_ms
+      
+        # The status of the trial.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Loss computed on the training data at the end of trial.
+        # Corresponds to the JSON property `trainingLoss`
+        # @return [Float]
+        attr_accessor :training_loss
+      
+        # 1-based index of the trial.
+        # Corresponds to the JSON property `trialId`
+        # @return [Fixnum]
+        attr_accessor :trial_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time_ms = args[:end_time_ms] if args.key?(:end_time_ms)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @eval_loss = args[:eval_loss] if args.key?(:eval_loss)
+          @evaluation_metrics = args[:evaluation_metrics] if args.key?(:evaluation_metrics)
+          @hparam_tuning_evaluation_metrics = args[:hparam_tuning_evaluation_metrics] if args.key?(:hparam_tuning_evaluation_metrics)
+          @hparams = args[:hparams] if args.key?(:hparams)
+          @start_time_ms = args[:start_time_ms] if args.key?(:start_time_ms)
+          @status = args[:status] if args.key?(:status)
+          @training_loss = args[:training_loss] if args.key?(:training_loss)
+          @trial_id = args[:trial_id] if args.key?(:trial_id)
+        end
+      end
+      
+      # An array of int.
+      class IntArray
+        include Google::Apis::Core::Hashable
+      
+        # Elements in the int array.
+        # Corresponds to the JSON property `elements`
+        # @return [Array<Fixnum>]
+        attr_accessor :elements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @elements = args[:elements] if args.key?(:elements)
+        end
+      end
+      
+      # Search space for int array.
+      class IntArrayHparamSearchSpace
+        include Google::Apis::Core::Hashable
+      
+        # Candidates for the int array parameter.
+        # Corresponds to the JSON property `candidates`
+        # @return [Array<Google::Apis::BigqueryV2::IntArray>]
+        attr_accessor :candidates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+        end
+      end
+      
+      # Discrete candidates of an int hyperparameter.
+      class IntCandidates
+        include Google::Apis::Core::Hashable
+      
+        # Candidates for the int parameter in increasing order.
+        # Corresponds to the JSON property `candidates`
+        # @return [Array<Fixnum>]
+        attr_accessor :candidates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+        end
+      end
+      
+      # Search space for an int hyperparameter.
+      class IntHparamSearchSpace
+        include Google::Apis::Core::Hashable
+      
+        # Discrete candidates of an int hyperparameter.
+        # Corresponds to the JSON property `candidates`
+        # @return [Google::Apis::BigqueryV2::IntCandidates]
+        attr_accessor :candidates
+      
+        # Range of an int hyperparameter.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::BigqueryV2::IntRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Range of an int hyperparameter.
+      class IntRange
+        include Google::Apis::Core::Hashable
+      
+        # Max value of the int parameter.
+        # Corresponds to the JSON property `max`
+        # @return [Fixnum]
+        attr_accessor :max
+      
+        # Min value of the int parameter.
+        # Corresponds to the JSON property `min`
+        # @return [Fixnum]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
         end
       end
       
@@ -4572,6 +5081,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :creation_time
       
+        # Output only. The default trial_id to use in TVFs when the trial_id is not
+        # passed in. For single-objective hyperparameter tuning, this is the best trial
+        # id. For multi-objective hyperparameter tuning, this is the smallest trial id
+        # among all Pareto optimal trials.
+        # Corresponds to the JSON property `defaultTrialId`
+        # @return [Fixnum]
+        attr_accessor :default_trial_id
+      
         # Optional. A user-friendly description of this model.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -4608,6 +5125,16 @@ module Google
         # Corresponds to the JSON property `friendlyName`
         # @return [String]
         attr_accessor :friendly_name
+      
+        # Hyperparameter search spaces. These should be a subset of training_options.
+        # Corresponds to the JSON property `hparamSearchSpaces`
+        # @return [Google::Apis::BigqueryV2::HparamSearchSpaces]
+        attr_accessor :hparam_search_spaces
+      
+        # Output only. Trials of a hyperparameter tuning model sorted by trial_id.
+        # Corresponds to the JSON property `hparamTrials`
+        # @return [Array<Google::Apis::BigqueryV2::HparamTuningTrial>]
+        attr_accessor :hparam_trials
       
         # Output only. Label columns that were used to train this model. The output of
         # the model will have a "predicted_" prefix to these columns.
@@ -4646,6 +5173,13 @@ module Google
         # @return [String]
         attr_accessor :model_type
       
+        # Output only. For single-objective hyperparameter tuning, it only contains the
+        # best trial. For multi-objective hyperparameter tuning, it contains all Pareto
+        # optimal trials sorted by trial_id.
+        # Corresponds to the JSON property `optimalTrialIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :optimal_trial_ids
+      
         # Output only. Information for all training runs in increasing order of
         # start_time.
         # Corresponds to the JSON property `trainingRuns`
@@ -4660,18 +5194,22 @@ module Google
         def update!(**args)
           @best_trial_id = args[:best_trial_id] if args.key?(:best_trial_id)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @default_trial_id = args[:default_trial_id] if args.key?(:default_trial_id)
           @description = args[:description] if args.key?(:description)
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @etag = args[:etag] if args.key?(:etag)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @feature_columns = args[:feature_columns] if args.key?(:feature_columns)
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
+          @hparam_search_spaces = args[:hparam_search_spaces] if args.key?(:hparam_search_spaces)
+          @hparam_trials = args[:hparam_trials] if args.key?(:hparam_trials)
           @label_columns = args[:label_columns] if args.key?(:label_columns)
           @labels = args[:labels] if args.key?(:labels)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
           @location = args[:location] if args.key?(:location)
           @model_reference = args[:model_reference] if args.key?(:model_reference)
           @model_type = args[:model_type] if args.key?(:model_type)
+          @optimal_trial_ids = args[:optimal_trial_ids] if args.key?(:optimal_trial_ids)
           @training_runs = args[:training_runs] if args.key?(:training_runs)
         end
       end
@@ -4921,6 +5459,45 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Principal component infos, used only for eigen decomposition based models, e.g.
+      # , PCA. Ordered by explained_variance in the descending order.
+      class PrincipalComponentInfo
+        include Google::Apis::Core::Hashable
+      
+        # The explained_variance is pre-ordered in the descending order to compute the
+        # cumulative explained variance ratio.
+        # Corresponds to the JSON property `cumulativeExplainedVarianceRatio`
+        # @return [Float]
+        attr_accessor :cumulative_explained_variance_ratio
+      
+        # Explained variance by this principal component, which is simply the eigenvalue.
+        # Corresponds to the JSON property `explainedVariance`
+        # @return [Float]
+        attr_accessor :explained_variance
+      
+        # Explained_variance over the total explained variance.
+        # Corresponds to the JSON property `explainedVarianceRatio`
+        # @return [Float]
+        attr_accessor :explained_variance_ratio
+      
+        # Id of the principal component.
+        # Corresponds to the JSON property `principalComponentId`
+        # @return [Fixnum]
+        attr_accessor :principal_component_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cumulative_explained_variance_ratio = args[:cumulative_explained_variance_ratio] if args.key?(:cumulative_explained_variance_ratio)
+          @explained_variance = args[:explained_variance] if args.key?(:explained_variance)
+          @explained_variance_ratio = args[:explained_variance_ratio] if args.key?(:explained_variance_ratio)
+          @principal_component_id = args[:principal_component_id] if args.key?(:principal_component_id)
         end
       end
       
@@ -6228,9 +6805,33 @@ module Google
         end
       end
       
+      # Search space for string and enum.
+      class StringHparamSearchSpace
+        include Google::Apis::Core::Hashable
+      
+        # Canididates for the string or enum parameter in lower case.
+        # Corresponds to the JSON property `candidates`
+        # @return [Array<String>]
+        attr_accessor :candidates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates = args[:candidates] if args.key?(:candidates)
+        end
+      end
+      
       # 
       class Table
         include Google::Apis::Core::Hashable
+      
+        # [Output-only] Clone definition.
+        # Corresponds to the JSON property `cloneDefinition`
+        # @return [Google::Apis::BigqueryV2::CloneDefinition]
+        attr_accessor :clone_definition
       
         # [Beta] Clustering specification for the table. Must be specified with
         # partitioning, data in the table will be first partitioned and subsequently
@@ -6424,6 +7025,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @clone_definition = args[:clone_definition] if args.key?(:clone_definition)
           @clustering = args[:clustering] if args.key?(:clustering)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @default_collation = args[:default_collation] if args.key?(:default_collation)
@@ -7138,6 +7740,13 @@ module Google
         # @return [String]
         attr_accessor :booster_type
       
+        # Whether or not p-value test should be computed for this model. Only available
+        # for linear and logistic regression models.
+        # Corresponds to the JSON property `calculatePValues`
+        # @return [Boolean]
+        attr_accessor :calculate_p_values
+        alias_method :calculate_p_values?, :calculate_p_values
+      
         # If true, clean spikes and dips in the input time series.
         # Corresponds to the JSON property `cleanSpikesAndDips`
         # @return [Boolean]
@@ -7217,6 +7826,12 @@ module Google
         attr_accessor :early_stop
         alias_method :early_stop?, :early_stop
       
+        # If true, enable global explanation during training.
+        # Corresponds to the JSON property `enableGlobalExplain`
+        # @return [Boolean]
+        attr_accessor :enable_global_explain
+        alias_method :enable_global_explain?, :enable_global_explain
+      
         # Feedback type that specifies which algorithm to run for matrix factorization.
         # Corresponds to the JSON property `feedbackType`
         # @return [String]
@@ -7239,6 +7854,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :horizon
       
+        # The target evaluation metrics to optimize the hyperparameters for.
+        # Corresponds to the JSON property `hparamTuningObjectives`
+        # @return [Array<String>]
+        attr_accessor :hparam_tuning_objectives
+      
         # Include drift when fitting an ARIMA model.
         # Corresponds to the JSON property `includeDrift`
         # @return [Boolean]
@@ -7254,6 +7874,11 @@ module Google
         # Corresponds to the JSON property `inputLabelColumns`
         # @return [Array<String>]
         attr_accessor :input_label_columns
+      
+        # Number of integral steps for the integrated gradients explain method.
+        # Corresponds to the JSON property `integratedGradientsNumSteps`
+        # @return [Fixnum]
+        attr_accessor :integrated_gradients_num_steps
       
         # Item column specified for matrix factorization models.
         # Corresponds to the JSON property `itemColumn`
@@ -7308,6 +7933,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_iterations
       
+        # Maximum number of trials to run in parallel.
+        # Corresponds to the JSON property `maxParallelTrials`
+        # @return [Fixnum]
+        attr_accessor :max_parallel_trials
+      
         # Maximum depth of a tree for boosted tree models.
         # Corresponds to the JSON property `maxTreeDepth`
         # @return [Fixnum]
@@ -7356,6 +7986,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_parallel_tree
       
+        # Number of trials to run this hyperparameter tuning job.
+        # Corresponds to the JSON property `numTrials`
+        # @return [Fixnum]
+        attr_accessor :num_trials
+      
         # Optimization strategy for training linear regression models.
         # Corresponds to the JSON property `optimizationStrategy`
         # @return [String]
@@ -7368,6 +8003,11 @@ module Google
         # @return [Boolean]
         attr_accessor :preserve_input_structs
         alias_method :preserve_input_structs?, :preserve_input_structs
+      
+        # Number of paths for the sampled shapley explain method.
+        # Corresponds to the JSON property `sampledShapleyNumPaths`
+        # @return [Fixnum]
+        attr_accessor :sampled_shapley_num_paths
       
         # Subsample fraction of the training data to grow tree to prevent overfitting
         # for boosted tree models.
@@ -7427,6 +8067,7 @@ module Google
           @auto_arima_max_order = args[:auto_arima_max_order] if args.key?(:auto_arima_max_order)
           @batch_size = args[:batch_size] if args.key?(:batch_size)
           @booster_type = args[:booster_type] if args.key?(:booster_type)
+          @calculate_p_values = args[:calculate_p_values] if args.key?(:calculate_p_values)
           @clean_spikes_and_dips = args[:clean_spikes_and_dips] if args.key?(:clean_spikes_and_dips)
           @colsample_bylevel = args[:colsample_bylevel] if args.key?(:colsample_bylevel)
           @colsample_bynode = args[:colsample_bynode] if args.key?(:colsample_bynode)
@@ -7440,13 +8081,16 @@ module Google
           @distance_type = args[:distance_type] if args.key?(:distance_type)
           @dropout = args[:dropout] if args.key?(:dropout)
           @early_stop = args[:early_stop] if args.key?(:early_stop)
+          @enable_global_explain = args[:enable_global_explain] if args.key?(:enable_global_explain)
           @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
           @hidden_units = args[:hidden_units] if args.key?(:hidden_units)
           @holiday_region = args[:holiday_region] if args.key?(:holiday_region)
           @horizon = args[:horizon] if args.key?(:horizon)
+          @hparam_tuning_objectives = args[:hparam_tuning_objectives] if args.key?(:hparam_tuning_objectives)
           @include_drift = args[:include_drift] if args.key?(:include_drift)
           @initial_learn_rate = args[:initial_learn_rate] if args.key?(:initial_learn_rate)
           @input_label_columns = args[:input_label_columns] if args.key?(:input_label_columns)
+          @integrated_gradients_num_steps = args[:integrated_gradients_num_steps] if args.key?(:integrated_gradients_num_steps)
           @item_column = args[:item_column] if args.key?(:item_column)
           @kmeans_initialization_column = args[:kmeans_initialization_column] if args.key?(:kmeans_initialization_column)
           @kmeans_initialization_method = args[:kmeans_initialization_method] if args.key?(:kmeans_initialization_method)
@@ -7457,6 +8101,7 @@ module Google
           @learn_rate_strategy = args[:learn_rate_strategy] if args.key?(:learn_rate_strategy)
           @loss_type = args[:loss_type] if args.key?(:loss_type)
           @max_iterations = args[:max_iterations] if args.key?(:max_iterations)
+          @max_parallel_trials = args[:max_parallel_trials] if args.key?(:max_parallel_trials)
           @max_tree_depth = args[:max_tree_depth] if args.key?(:max_tree_depth)
           @min_relative_progress = args[:min_relative_progress] if args.key?(:min_relative_progress)
           @min_split_loss = args[:min_split_loss] if args.key?(:min_split_loss)
@@ -7466,8 +8111,10 @@ module Google
           @num_clusters = args[:num_clusters] if args.key?(:num_clusters)
           @num_factors = args[:num_factors] if args.key?(:num_factors)
           @num_parallel_tree = args[:num_parallel_tree] if args.key?(:num_parallel_tree)
+          @num_trials = args[:num_trials] if args.key?(:num_trials)
           @optimization_strategy = args[:optimization_strategy] if args.key?(:optimization_strategy)
           @preserve_input_structs = args[:preserve_input_structs] if args.key?(:preserve_input_structs)
+          @sampled_shapley_num_paths = args[:sampled_shapley_num_paths] if args.key?(:sampled_shapley_num_paths)
           @subsample = args[:subsample] if args.key?(:subsample)
           @time_series_data_column = args[:time_series_data_column] if args.key?(:time_series_data_column)
           @time_series_id_column = args[:time_series_id_column] if args.key?(:time_series_id_column)
@@ -7484,6 +8131,12 @@ module Google
       class TrainingRun
         include Google::Apis::Core::Hashable
       
+        # Global explanation contains the explanation of top features on the class level.
+        # Applies to classification models only.
+        # Corresponds to the JSON property `classLevelGlobalExplanations`
+        # @return [Array<Google::Apis::BigqueryV2::GlobalExplanation>]
+        attr_accessor :class_level_global_explanations
+      
         # Data split result. This contains references to the training and evaluation
         # data tables that were used to train the model.
         # Corresponds to the JSON property `dataSplitResult`
@@ -7496,6 +8149,11 @@ module Google
         # Corresponds to the JSON property `evaluationMetrics`
         # @return [Google::Apis::BigqueryV2::EvaluationMetrics]
         attr_accessor :evaluation_metrics
+      
+        # Global explanations containing the top most important features after training.
+        # Corresponds to the JSON property `modelLevelGlobalExplanation`
+        # @return [Google::Apis::BigqueryV2::GlobalExplanation]
+        attr_accessor :model_level_global_explanation
       
         # Output of each iteration run, results.size() <= max_iterations.
         # Corresponds to the JSON property `results`
@@ -7518,8 +8176,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @class_level_global_explanations = args[:class_level_global_explanations] if args.key?(:class_level_global_explanations)
           @data_split_result = args[:data_split_result] if args.key?(:data_split_result)
           @evaluation_metrics = args[:evaluation_metrics] if args.key?(:evaluation_metrics)
+          @model_level_global_explanation = args[:model_level_global_explanation] if args.key?(:model_level_global_explanation)
           @results = args[:results] if args.key?(:results)
           @start_time = args[:start_time] if args.key?(:start_time)
           @training_options = args[:training_options] if args.key?(:training_options)
