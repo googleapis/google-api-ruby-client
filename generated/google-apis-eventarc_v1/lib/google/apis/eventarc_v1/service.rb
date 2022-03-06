@@ -744,6 +744,10 @@ module Google
         # List triggers.
         # @param [String] parent
         #   Required. The parent collection to list triggers on.
+        # @param [String] filter
+        #   Filter field. Used to filter the Triggers to be listed. Possible filters are
+        #   described in https://google.aip.dev/160. For example, using "?filter=
+        #   destination:gke" would list only Triggers with a gke destination.
         # @param [String] order_by
         #   The sorting order of the resources returned. Value should be a comma-separated
         #   list of fields. The default sorting order is ascending. To specify descending
@@ -774,11 +778,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_triggers(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_triggers(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/triggers', options)
           command.response_representation = Google::Apis::EventarcV1::ListTriggersResponse::Representation
           command.response_class = Google::Apis::EventarcV1::ListTriggersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
