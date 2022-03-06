@@ -2314,8 +2314,8 @@ module Google
         #   Required. The resource name of the entity: projects/`project_number`/locations/
         #   `location_id`/lakes/`lake_id`/zones/`zone_id`/entities/`entity_id`.
         # @param [String] etag
-        #   Required. The etag associated with the partition if it was previously
-        #   retrieved.
+        #   Required. The etag associated with the entity, which can be retrieved with a
+        #   GetEntity request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2387,8 +2387,8 @@ module Google
         #   Optional. The following filter parameters can be added to the URL to limit the
         #   entities returned by the API: Entity ID: ?filter="id=entityID" Asset ID: ?
         #   filter="asset=assetID" Data path ?filter="data_path=gs://my-bucket" Is HIVE
-        #   compatible: ?filter=”hive_compatible=true” Is BigQuery compatible: ?filter=”
-        #   bigquery_compatible=true”
+        #   compatible: ?filter="hive_compatible=true" Is BigQuery compatible: ?filter="
+        #   bigquery_compatible=true"
         # @param [Fixnum] page_size
         #   Optional. Maximum number of entities to return. The service may return fewer
         #   than this value. If unspecified, 100 entities will be returned by default. The
@@ -2515,8 +2515,7 @@ module Google
         #   of an ordered sequence of partition values separated by "/". All values must
         #   be provided.
         # @param [String] etag
-        #   Optional. The etag associated with the partition if it was previously
-        #   retrieved.
+        #   Optional. The etag associated with the partition.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2584,10 +2583,10 @@ module Google
         #   Required. The resource name of the parent entity: projects/`project_number`/
         #   locations/`location_id`/lakes/`lake_id`/zones/`zone_id`/entities/`entity_id`.
         # @param [String] filter
-        #   Optional. Filter the partitions returned to the caller using a key vslue pair
-        #   expression. The filter expression supports: logical operators: AND, OR
+        #   Optional. Filter the partitions returned to the caller using a key value pair
+        #   expression. Supported operators and syntax: logic operators: AND, OR
         #   comparison operators: <, >, >=, <= ,=, != LIKE operators: The right hand of a
-        #   LIKE operator supports “.” and “*” for wildcard searches, for example "value1
+        #   LIKE operator supports "." and "*" for wildcard searches, for example "value1
         #   LIKE ".*oo.*" parenthetical grouping: ( )Sample filter expression: `?filter="
         #   key1 < value1 OR key2 > value2"Notes: Keys to the left of operators are case
         #   insensitive. Partition results are sorted first by creation time, then by
