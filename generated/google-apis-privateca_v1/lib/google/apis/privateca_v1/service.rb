@@ -602,6 +602,8 @@ module Google
         #   request. This prevents clients from accidentally creating duplicate
         #   commitments. The request ID must be a valid UUID with the exception that zero
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] skip_grace_period
+        #   Optional. This field sets the CA to have a pending delete duration of 0.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -619,13 +621,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_ca_pool_certificate_authority(name, ignore_active_certificates: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_ca_pool_certificate_authority(name, ignore_active_certificates: nil, request_id: nil, skip_grace_period: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::PrivatecaV1::Operation::Representation
           command.response_class = Google::Apis::PrivatecaV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['ignoreActiveCertificates'] = ignore_active_certificates unless ignore_active_certificates.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['skipGracePeriod'] = skip_grace_period unless skip_grace_period.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
