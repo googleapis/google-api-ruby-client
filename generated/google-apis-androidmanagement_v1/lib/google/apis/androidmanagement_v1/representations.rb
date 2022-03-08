@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Application
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -518,17 +524,45 @@ module Google
         end
       end
       
+      class AppVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :production, as: 'production'
+          collection :track_ids, as: 'trackIds'
+          property :version_code, as: 'versionCode'
+          property :version_string, as: 'versionString'
+        end
+      end
+      
       class Application
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_pricing, as: 'appPricing'
           collection :app_tracks, as: 'appTracks', class: Google::Apis::AndroidmanagementV1::AppTrackInfo, decorator: Google::Apis::AndroidmanagementV1::AppTrackInfo::Representation
       
+          collection :app_versions, as: 'appVersions', class: Google::Apis::AndroidmanagementV1::AppVersion, decorator: Google::Apis::AndroidmanagementV1::AppVersion::Representation
+      
+          property :author, as: 'author'
+          collection :available_countries, as: 'availableCountries'
+          property :category, as: 'category'
+          property :content_rating, as: 'contentRating'
+          property :description, as: 'description'
+          property :distribution_channel, as: 'distributionChannel'
+          collection :features, as: 'features'
+          property :full_description, as: 'fullDescription'
+          property :icon_url, as: 'iconUrl'
           collection :managed_properties, as: 'managedProperties', class: Google::Apis::AndroidmanagementV1::ManagedProperty, decorator: Google::Apis::AndroidmanagementV1::ManagedProperty::Representation
       
+          property :min_android_sdk_version, as: 'minAndroidSdkVersion'
           property :name, as: 'name'
           collection :permissions, as: 'permissions', class: Google::Apis::AndroidmanagementV1::ApplicationPermission, decorator: Google::Apis::AndroidmanagementV1::ApplicationPermission::Representation
       
+          property :play_store_url, as: 'playStoreUrl'
+          property :recent_changes, as: 'recentChanges'
+          collection :screenshot_urls, as: 'screenshotUrls'
+          property :small_icon_url, as: 'smallIconUrl'
           property :title, as: 'title'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1079,6 +1113,7 @@ module Google
           property :password_quality, as: 'passwordQuality'
           property :password_scope, as: 'passwordScope'
           property :require_password_unlock, as: 'requirePasswordUnlock'
+          property :unified_lock_settings, as: 'unifiedLockSettings'
         end
       end
       
