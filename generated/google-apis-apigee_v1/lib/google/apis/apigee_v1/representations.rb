@@ -484,6 +484,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseUrlInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1GetSyncAuthorizationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2128,6 +2140,23 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :urls, as: 'urls', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseUrlInfo, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseUrlInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseUrlInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :md5, as: 'md5'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudApigeeV1GetSyncAuthorizationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2179,6 +2208,7 @@ module Google
       class GoogleCloudApigeeV1Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consumer_accept_list, as: 'consumerAcceptList'
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :description, as: 'description'
           property :disk_encryption_key_name, as: 'diskEncryptionKeyName'
@@ -2191,6 +2221,7 @@ module Google
           property :peering_cidr_range, as: 'peeringCidrRange'
           property :port, as: 'port'
           property :runtime_version, as: 'runtimeVersion'
+          property :service_attachment, as: 'serviceAttachment'
           property :state, as: 'state'
         end
       end
