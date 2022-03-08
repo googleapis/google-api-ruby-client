@@ -22,6 +22,12 @@ module Google
   module Apis
     module AccessapprovalV1
       
+      class AccessApprovalServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessApprovalSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,12 +100,29 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SignatureInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessApprovalServiceAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_email, as: 'accountEmail'
+          property :name, as: 'name'
+        end
+      end
+      
       class AccessApprovalSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_key_version, as: 'activeKeyVersion'
+          property :ancestor_has_active_key_version, as: 'ancestorHasActiveKeyVersion'
           property :enrolled_ancestor, as: 'enrolledAncestor'
           collection :enrolled_services, as: 'enrolledServices', class: Google::Apis::AccessapprovalV1::EnrolledService, decorator: Google::Apis::AccessapprovalV1::EnrolledService::Representation
       
+          property :invalid_key_version, as: 'invalidKeyVersion'
           property :name, as: 'name'
           collection :notification_emails, as: 'notificationEmails'
         end
@@ -152,7 +175,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :approve_time, as: 'approveTime'
+          property :auto_approved, as: 'autoApproved'
           property :expire_time, as: 'expireTime'
+          property :signature_info, as: 'signatureInfo', class: Google::Apis::AccessapprovalV1::SignatureInfo, decorator: Google::Apis::AccessapprovalV1::SignatureInfo::Representation
+      
         end
       end
       
@@ -197,6 +223,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :excludes_descendants, as: 'excludesDescendants'
+        end
+      end
+      
+      class SignatureInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_kms_key_version, as: 'customerKmsKeyVersion'
+          property :google_public_key_pem, as: 'googlePublicKeyPem'
+          property :signature, :base64 => true, as: 'signature'
         end
       end
     end

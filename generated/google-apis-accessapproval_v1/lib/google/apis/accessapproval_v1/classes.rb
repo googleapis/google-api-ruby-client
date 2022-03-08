@@ -22,9 +22,54 @@ module Google
   module Apis
     module AccessapprovalV1
       
+      # Access Approval service account related to a project/folder/organization.
+      class AccessApprovalServiceAccount
+        include Google::Apis::Core::Hashable
+      
+        # Email address of the service account.
+        # Corresponds to the JSON property `accountEmail`
+        # @return [String]
+        attr_accessor :account_email
+      
+        # The resource name of the Access Approval service account. Format is one of: * "
+        # projects/`project`/serviceAccount" * "folders/`folder`/serviceAccount" * "
+        # organizations/`organization`/serviceAccount"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_email = args[:account_email] if args.key?(:account_email)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Settings on a Project/Folder/Organization related to Access Approval.
       class AccessApprovalSettings
         include Google::Apis::Core::Hashable
+      
+        # The asymmetric crypto key version to use for signing approval requests. Empty
+        # active_key_version indicates that a Google-managed key should be used for
+        # signing. This property will be ignored if set by an ancestor of this resource,
+        # and new non-empty values may not be set.
+        # Corresponds to the JSON property `activeKeyVersion`
+        # @return [String]
+        attr_accessor :active_key_version
+      
+        # Output only. This field is read only (not settable via
+        # UpdateAccessApprovalSettings method). If the field is true, that indicates
+        # that an ancestor of this Project or Folder has set active_key_version (this
+        # field will always be unset for the organization since organizations do not
+        # have ancestors).
+        # Corresponds to the JSON property `ancestorHasActiveKeyVersion`
+        # @return [Boolean]
+        attr_accessor :ancestor_has_active_key_version
+        alias_method :ancestor_has_active_key_version?, :ancestor_has_active_key_version
       
         # Output only. This field is read only (not settable via
         # UpdateAccessApprovalSettings method). If the field is true, that indicates
@@ -49,6 +94,18 @@ module Google
         # @return [Array<Google::Apis::AccessapprovalV1::EnrolledService>]
         attr_accessor :enrolled_services
       
+        # Output only. This field is read only (not settable via
+        # UpdateAccessApprovalSettings method). If the field is true, that indicates
+        # that there is some configuration issue with the active_key_version configured
+        # at this level in the resource hierarchy (e.g. it doesn't exist or the Access
+        # Approval service account doesn't have the correct permissions on it, etc.)
+        # This key version is not necessarily the effective key version at this level,
+        # as key versions are inherited top-down.
+        # Corresponds to the JSON property `invalidKeyVersion`
+        # @return [Boolean]
+        attr_accessor :invalid_key_version
+        alias_method :invalid_key_version?, :invalid_key_version
+      
         # The resource name of the settings. Format is one of: * "projects/`project`/
         # accessApprovalSettings" * "folders/`folder`/accessApprovalSettings" * "
         # organizations/`organization`/accessApprovalSettings"
@@ -70,8 +127,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_key_version = args[:active_key_version] if args.key?(:active_key_version)
+          @ancestor_has_active_key_version = args[:ancestor_has_active_key_version] if args.key?(:ancestor_has_active_key_version)
           @enrolled_ancestor = args[:enrolled_ancestor] if args.key?(:enrolled_ancestor)
           @enrolled_services = args[:enrolled_services] if args.key?(:enrolled_services)
+          @invalid_key_version = args[:invalid_key_version] if args.key?(:invalid_key_version)
           @name = args[:name] if args.key?(:name)
           @notification_emails = args[:notification_emails] if args.key?(:notification_emails)
         end
@@ -238,10 +298,21 @@ module Google
         # @return [String]
         attr_accessor :approve_time
       
+        # True when the request has been auto-approved.
+        # Corresponds to the JSON property `autoApproved`
+        # @return [Boolean]
+        attr_accessor :auto_approved
+        alias_method :auto_approved?, :auto_approved
+      
         # The time at which the approval expires.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
+      
+        # Information about the digital signature of the resource.
+        # Corresponds to the JSON property `signatureInfo`
+        # @return [Google::Apis::AccessapprovalV1::SignatureInfo]
+        attr_accessor :signature_info
       
         def initialize(**args)
            update!(**args)
@@ -250,7 +321,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @approve_time = args[:approve_time] if args.key?(:approve_time)
+          @auto_approved = args[:auto_approved] if args.key?(:auto_approved)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @signature_info = args[:signature_info] if args.key?(:signature_info)
         end
       end
       
@@ -398,6 +471,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @excludes_descendants = args[:excludes_descendants] if args.key?(:excludes_descendants)
+        end
+      end
+      
+      # Information about the digital signature of the resource.
+      class SignatureInfo
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the customer CryptoKeyVersion used for signing.
+        # Corresponds to the JSON property `customerKmsKeyVersion`
+        # @return [String]
+        attr_accessor :customer_kms_key_version
+      
+        # The public key for the Google default signing, encoded in PEM format. The
+        # signature was created using a private key which may be verified using this
+        # public key.
+        # Corresponds to the JSON property `googlePublicKeyPem`
+        # @return [String]
+        attr_accessor :google_public_key_pem
+      
+        # The digital signature.
+        # Corresponds to the JSON property `signature`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_kms_key_version = args[:customer_kms_key_version] if args.key?(:customer_kms_key_version)
+          @google_public_key_pem = args[:google_public_key_pem] if args.key?(:google_public_key_pem)
+          @signature = args[:signature] if args.key?(:signature)
         end
       end
     end
