@@ -157,19 +157,123 @@ module Google
         end
       end
       
+      # This represents a single version of the app.
+      class AppVersion
+        include Google::Apis::Core::Hashable
+      
+        # True if this version is a production track.
+        # Corresponds to the JSON property `production`
+        # @return [Boolean]
+        attr_accessor :production
+        alias_method :production?, :production
+      
+        # Track ids that the app version is published in. This doesn't include the
+        # production track (see production instead).
+        # Corresponds to the JSON property `trackIds`
+        # @return [Array<String>]
+        attr_accessor :track_ids
+      
+        # Unique increasing identifier for the app version.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        # The string used in the Play store by the app developer to identify the version.
+        # The string is not necessarily unique or localized (for example, the string
+        # could be "1.4").
+        # Corresponds to the JSON property `versionString`
+        # @return [String]
+        attr_accessor :version_string
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @production = args[:production] if args.key?(:production)
+          @track_ids = args[:track_ids] if args.key?(:track_ids)
+          @version_code = args[:version_code] if args.key?(:version_code)
+          @version_string = args[:version_string] if args.key?(:version_string)
+        end
+      end
+      
       # Information about an app.
       class Application
         include Google::Apis::Core::Hashable
+      
+        # Whether this app is free, free with in-app purchases, or paid. If the pricing
+        # is unspecified, this means the app is not generally available anymore (even
+        # though it might still be available to people who own it).
+        # Corresponds to the JSON property `appPricing`
+        # @return [String]
+        attr_accessor :app_pricing
       
         # Application tracks visible to the enterprise.
         # Corresponds to the JSON property `appTracks`
         # @return [Array<Google::Apis::AndroidmanagementV1::AppTrackInfo>]
         attr_accessor :app_tracks
       
+        # Versions currently available for this app.
+        # Corresponds to the JSON property `appVersions`
+        # @return [Array<Google::Apis::AndroidmanagementV1::AppVersion>]
+        attr_accessor :app_versions
+      
+        # The name of the author of the apps (for example, the app developer).
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # The countries which this app is available in as per ISO 3166-1 alpha-2.
+        # Corresponds to the JSON property `availableCountries`
+        # @return [Array<String>]
+        attr_accessor :available_countries
+      
+        # The app category (e.g. RACING, SOCIAL, etc.)
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # The content rating for this app.
+        # Corresponds to the JSON property `contentRating`
+        # @return [String]
+        attr_accessor :content_rating
+      
+        # The localized promotional description, if available.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # How and to whom the package is made available.
+        # Corresponds to the JSON property `distributionChannel`
+        # @return [String]
+        attr_accessor :distribution_channel
+      
+        # Noteworthy features (if any) of this app.
+        # Corresponds to the JSON property `features`
+        # @return [Array<String>]
+        attr_accessor :features
+      
+        # Full app description, if available.
+        # Corresponds to the JSON property `fullDescription`
+        # @return [String]
+        attr_accessor :full_description
+      
+        # A link to an image that can be used as an icon for the app. This image is
+        # suitable for use at up to 512px x 512px
+        # Corresponds to the JSON property `iconUrl`
+        # @return [String]
+        attr_accessor :icon_url
+      
         # The set of managed properties available to be pre-configured for the app.
         # Corresponds to the JSON property `managedProperties`
         # @return [Array<Google::Apis::AndroidmanagementV1::ManagedProperty>]
         attr_accessor :managed_properties
+      
+        # The minimum Android SDK necessary to run the app.
+        # Corresponds to the JSON property `minAndroidSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :min_android_sdk_version
       
         # The name of the app in the form enterprises/`enterprise`/applications/`
         # package_name`.
@@ -182,10 +286,36 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPermission>]
         attr_accessor :permissions
       
+        # A link to the (consumer) Google Play details page for the app.
+        # Corresponds to the JSON property `playStoreUrl`
+        # @return [String]
+        attr_accessor :play_store_url
+      
+        # A localised description of the recent changes made to the app.
+        # Corresponds to the JSON property `recentChanges`
+        # @return [String]
+        attr_accessor :recent_changes
+      
+        # A list of screenshot links representing the app.
+        # Corresponds to the JSON property `screenshotUrls`
+        # @return [Array<String>]
+        attr_accessor :screenshot_urls
+      
+        # A link to a smaller image that can be used as an icon for the app. This image
+        # is suitable for use at up to 128px x 128px.
+        # Corresponds to the JSON property `smallIconUrl`
+        # @return [String]
+        attr_accessor :small_icon_url
+      
         # The title of the app. Localized.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
+      
+        # Output only. The approximate time (within 7 days) the app was last published.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
       
         def initialize(**args)
            update!(**args)
@@ -193,11 +323,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_pricing = args[:app_pricing] if args.key?(:app_pricing)
           @app_tracks = args[:app_tracks] if args.key?(:app_tracks)
+          @app_versions = args[:app_versions] if args.key?(:app_versions)
+          @author = args[:author] if args.key?(:author)
+          @available_countries = args[:available_countries] if args.key?(:available_countries)
+          @category = args[:category] if args.key?(:category)
+          @content_rating = args[:content_rating] if args.key?(:content_rating)
+          @description = args[:description] if args.key?(:description)
+          @distribution_channel = args[:distribution_channel] if args.key?(:distribution_channel)
+          @features = args[:features] if args.key?(:features)
+          @full_description = args[:full_description] if args.key?(:full_description)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
           @managed_properties = args[:managed_properties] if args.key?(:managed_properties)
+          @min_android_sdk_version = args[:min_android_sdk_version] if args.key?(:min_android_sdk_version)
           @name = args[:name] if args.key?(:name)
           @permissions = args[:permissions] if args.key?(:permissions)
+          @play_store_url = args[:play_store_url] if args.key?(:play_store_url)
+          @recent_changes = args[:recent_changes] if args.key?(:recent_changes)
+          @screenshot_urls = args[:screenshot_urls] if args.key?(:screenshot_urls)
+          @small_icon_url = args[:small_icon_url] if args.key?(:small_icon_url)
           @title = args[:title] if args.key?(:title)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2496,6 +2643,16 @@ module Google
         # @return [String]
         attr_accessor :require_password_unlock
       
+        # Controls whether a unified lock is allowed for the device and the work profile,
+        # on devices running Android 9 and above with a work profile. This has no
+        # effect on other devices. This can be set only if password_scope is set to
+        # SCOPE_PROFILE, the policy will be rejected otherwise. If user has not set a
+        # separate work lock and this field is set to REQUIRE_SEPARATE_WORK_LOCK, a
+        # NonComplianceDetail is reported with nonComplianceReason set to USER_ACTION.
+        # Corresponds to the JSON property `unifiedLockSettings`
+        # @return [String]
+        attr_accessor :unified_lock_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2515,6 +2672,7 @@ module Google
           @password_quality = args[:password_quality] if args.key?(:password_quality)
           @password_scope = args[:password_scope] if args.key?(:password_scope)
           @require_password_unlock = args[:require_password_unlock] if args.key?(:require_password_unlock)
+          @unified_lock_settings = args[:unified_lock_settings] if args.key?(:unified_lock_settings)
         end
       end
       
@@ -2767,7 +2925,12 @@ module Google
         # @return [String]
         attr_accessor :camera_access
       
-        # Whether all cameras on the device are disabled.
+        # If camera_access is set to any value other than CAMERA_ACCESS_UNSPECIFIED,
+        # this has no effect. Otherwise this field controls whether cameras are disabled:
+        # If true, all cameras are disabled, otherwise they are available. For fully
+        # managed devices this field applies for all apps on the device. For work
+        # profiles, this field applies only to apps in the work profile, and the camera
+        # access of apps outside the work profile is unaffected.
         # Corresponds to the JSON property `cameraDisabled`
         # @return [Boolean]
         attr_accessor :camera_disabled
@@ -3103,7 +3266,7 @@ module Google
         attr_accessor :set_wallpaper_disabled
         alias_method :set_wallpaper_disabled?, :set_wallpaper_disabled
       
-        # Actions to take during the setup process.
+        # Action to take during the setup process. At most one action may be specified.
         # Corresponds to the JSON property `setupActions`
         # @return [Array<Google::Apis::AndroidmanagementV1::SetupAction>]
         attr_accessor :setup_actions
@@ -3172,7 +3335,11 @@ module Google
         attr_accessor :uninstall_apps_disabled
         alias_method :uninstall_apps_disabled?, :uninstall_apps_disabled
       
-        # Whether the microphone is muted and adjusting microphone volume is disabled.
+        # If microphone_access is set to any value other than
+        # MICROPHONE_ACCESS_UNSPECIFIED, this has no effect. Otherwise this field
+        # controls whether microphones are disabled: If true, all microphones are
+        # disabled, otherwise they are available. This is available only on fully
+        # managed devices.
         # Corresponds to the JSON property `unmuteMicrophoneDisabled`
         # @return [Boolean]
         attr_accessor :unmute_microphone_disabled
