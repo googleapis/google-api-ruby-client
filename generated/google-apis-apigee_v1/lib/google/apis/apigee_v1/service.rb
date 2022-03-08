@@ -6062,6 +6062,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # After the query is completed, use this API to retrieve the results. If the
+        # request succeeds, and there is a non-zero result set, the result is sent to
+        # the client as a list of urls to JSON files.
+        # @param [String] name
+        #   Required. Name of the asynchronous query result to get. Must be of the form `
+        #   organizations/`org`/environments/`env`/queries/`queryId`/resulturl`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_query_resulturl(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Return a list of Asynchronous Queries
         # @param [String] parent
         #   Required. The parent resource name. Must be of the form `organizations/`org`/
