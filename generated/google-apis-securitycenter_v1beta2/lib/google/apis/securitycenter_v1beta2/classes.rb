@@ -687,10 +687,10 @@ module Google
         # @return [String]
         attr_accessor :external_uid
       
-        # External System Name e.g. jira, demisto, etc. e.g.: organizations/1234/sources/
-        # 5678/findings/123456/externalSystems/jira folders/1234/sources/5678/findings/
-        # 123456/externalSystems/jira projects/1234/sources/5678/findings/123456/
-        # externalSystems/jira
+        # External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/
+        # sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/
+        # findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/
+        # 123456/externalSystems/jira`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1288,9 +1288,9 @@ module Google
         # The MITRE ATT&CK technique most closely represented by this finding, if any.
         # primary_techniques is a repeated field because there are multiple levels of
         # MITRE ATT&CK techniques. If the technique most closely represented by this
-        # finding is a sub-technique (e.g. SCANNING_IP_BLOCKS), both the sub-technique
-        # and its parent technique(s) will be listed (e.g. SCANNING_IP_BLOCKS,
-        # ACTIVE_SCANNING).
+        # finding is a sub-technique (e.g. `SCANNING_IP_BLOCKS`), both the sub-technique
+        # and its parent technique(s) will be listed (e.g. `SCANNING_IP_BLOCKS`, `
+        # ACTIVE_SCANNING`).
         # Corresponds to the JSON property `primaryTechniques`
         # @return [Array<String>]
         attr_accessor :primary_techniques
