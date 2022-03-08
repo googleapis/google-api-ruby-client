@@ -1066,6 +1066,50 @@ module Google
         end
       end
       
+      # This is the proto for holding space level scoring information. This data is
+      # used for logging in query-api server and for testing purposes.
+      class DynamiteSpacesScoringInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `finalScore`
+        # @return [Float]
+        attr_accessor :final_score
+      
+        # 
+        # Corresponds to the JSON property `freshnessScore`
+        # @return [Float]
+        attr_accessor :freshness_score
+      
+        # 
+        # Corresponds to the JSON property `messageScore`
+        # @return [Float]
+        attr_accessor :message_score
+      
+        # 
+        # Corresponds to the JSON property `spaceAgeInDays`
+        # @return [Float]
+        attr_accessor :space_age_in_days
+      
+        # 
+        # Corresponds to the JSON property `topicalityScore`
+        # @return [Float]
+        attr_accessor :topicality_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @final_score = args[:final_score] if args.key?(:final_score)
+          @freshness_score = args[:freshness_score] if args.key?(:freshness_score)
+          @message_score = args[:message_score] if args.key?(:message_score)
+          @space_age_in_days = args[:space_age_in_days] if args.key?(:space_age_in_days)
+          @topicality_score = args[:topicality_score] if args.key?(:topicality_score)
+        end
+      end
+      
       # A person's email address.
       class EmailAddress
         include Google::Apis::Core::Hashable
@@ -5179,6 +5223,12 @@ module Google
         # @return [Google::Apis::CloudsearchV1::GroupId]
         attr_accessor :group_id
       
+        # Whether this is an external space outside of user's organization
+        # Corresponds to the JSON property `isExternal`
+        # @return [Boolean]
+        attr_accessor :is_external
+        alias_method :is_external?, :is_external
+      
         # 
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5204,6 +5254,7 @@ module Google
           @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
           @description = args[:description] if args.key?(:description)
           @group_id = args[:group_id] if args.key?(:group_id)
+          @is_external = args[:is_external] if args.key?(:is_external)
           @name = args[:name] if args.key?(:name)
           @num_members = args[:num_members] if args.key?(:num_members)
           @user_membership_state = args[:user_membership_state] if args.key?(:user_membership_state)
