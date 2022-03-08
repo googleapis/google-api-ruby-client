@@ -1021,10 +1021,10 @@ module Google
         
         # Updates external system. This is for a given finding.
         # @param [String] name
-        #   External System Name e.g. jira, demisto, etc. e.g.: organizations/1234/sources/
-        #   5678/findings/123456/externalSystems/jira folders/1234/sources/5678/findings/
-        #   123456/externalSystems/jira projects/1234/sources/5678/findings/123456/
-        #   externalSystems/jira
+        #   External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/
+        #   sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/
+        #   findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/
+        #   123456/externalSystems/jira`
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem] google_cloud_securitycenter_v1_external_system_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the external system resource. If empty all
@@ -2710,10 +2710,10 @@ module Google
         
         # Updates external system. This is for a given finding.
         # @param [String] name
-        #   External System Name e.g. jira, demisto, etc. e.g.: organizations/1234/sources/
-        #   5678/findings/123456/externalSystems/jira folders/1234/sources/5678/findings/
-        #   123456/externalSystems/jira projects/1234/sources/5678/findings/123456/
-        #   externalSystems/jira
+        #   External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/
+        #   sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/
+        #   findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/
+        #   123456/externalSystems/jira`
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem] google_cloud_securitycenter_v1_external_system_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the external system resource. If empty all
@@ -3719,10 +3719,10 @@ module Google
         
         # Updates external system. This is for a given finding.
         # @param [String] name
-        #   External System Name e.g. jira, demisto, etc. e.g.: organizations/1234/sources/
-        #   5678/findings/123456/externalSystems/jira folders/1234/sources/5678/findings/
-        #   123456/externalSystems/jira projects/1234/sources/5678/findings/123456/
-        #   externalSystems/jira
+        #   External System Name e.g. jira, demisto, etc. e.g.: `organizations/1234/
+        #   sources/5678/findings/123456/externalSystems/jira` `folders/1234/sources/5678/
+        #   findings/123456/externalSystems/jira` `projects/1234/sources/5678/findings/
+        #   123456/externalSystems/jira`
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem] google_cloud_securitycenter_v1_external_system_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the external system resource. If empty all
