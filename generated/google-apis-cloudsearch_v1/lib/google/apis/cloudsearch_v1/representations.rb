@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DynamiteSpacesScoringInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EmailAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1390,6 +1396,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class DynamiteSpacesScoringInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :final_score, as: 'finalScore'
+          property :freshness_score, as: 'freshnessScore'
+          property :message_score, as: 'messageScore'
+          property :space_age_in_days, as: 'spaceAgeInDays'
+          property :topicality_score, as: 'topicalityScore'
         end
       end
       
@@ -2592,6 +2609,7 @@ module Google
           property :description, as: 'description'
           property :group_id, as: 'groupId', class: Google::Apis::CloudsearchV1::GroupId, decorator: Google::Apis::CloudsearchV1::GroupId::Representation
       
+          property :is_external, as: 'isExternal'
           property :name, as: 'name'
           property :num_members, as: 'numMembers'
           property :user_membership_state, as: 'userMembershipState'
