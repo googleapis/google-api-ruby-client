@@ -2340,8 +2340,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Immediately and permanently deletes the specified thread. This operation
-        # cannot be undone. Prefer `threads.trash` instead.
+        # Immediately and permanently deletes the specified thread. Any messages that
+        # belong to the thread are also deleted. This operation cannot be undone. Prefer
+        # `threads.trash` instead.
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2501,7 +2502,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves the specified thread to the trash.
+        # Moves the specified thread to the trash. Any messages that belong to the
+        # thread are also moved to the trash.
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2535,7 +2537,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes the specified thread from the trash.
+        # Removes the specified thread from the trash. Any messages that belong to the
+        # thread are also removed from the trash.
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
