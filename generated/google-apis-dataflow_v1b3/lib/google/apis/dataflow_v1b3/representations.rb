@@ -2075,6 +2075,7 @@ module Google
       class SdkHarnessContainerImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :capabilities, as: 'capabilities'
           property :container_image, as: 'containerImage'
           property :environment_id, as: 'environmentId'
           property :use_single_core_per_container, as: 'useSingleCorePerContainer'
@@ -2095,6 +2096,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :component_id, as: 'componentId'
           property :data, as: 'data'
+          property :data_format, as: 'dataFormat'
           property :location, as: 'location'
           property :worker_id, as: 'workerId'
         end

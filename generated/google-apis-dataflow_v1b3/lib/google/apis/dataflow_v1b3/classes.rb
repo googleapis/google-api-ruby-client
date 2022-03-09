@@ -4038,6 +4038,13 @@ module Google
       class SdkHarnessContainerImage
         include Google::Apis::Core::Hashable
       
+        # The set of capabilities enumerated in the above Environment proto. See also
+        # https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/
+        # beam_runner_api.proto
+        # Corresponds to the JSON property `capabilities`
+        # @return [Array<String>]
+        attr_accessor :capabilities
+      
         # A docker container image that resides in Google Container Registry.
         # Corresponds to the JSON property `containerImage`
         # @return [String]
@@ -4064,6 +4071,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
           @container_image = args[:container_image] if args.key?(:container_image)
           @environment_id = args[:environment_id] if args.key?(:environment_id)
           @use_single_core_per_container = args[:use_single_core_per_container] if args.key?(:use_single_core_per_container)
@@ -4101,7 +4109,7 @@ module Google
         end
       end
       
-      # Request to send encoded debug information.
+      # Request to send encoded debug information. Next ID: 8
       class SendDebugCaptureRequest
         include Google::Apis::Core::Hashable
       
@@ -4114,6 +4122,11 @@ module Google
         # Corresponds to the JSON property `data`
         # @return [String]
         attr_accessor :data
+      
+        # Format for the data field above (id=5).
+        # Corresponds to the JSON property `dataFormat`
+        # @return [String]
+        attr_accessor :data_format
       
         # The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
         # regional-endpoints) that contains the job specified by job_id.
@@ -4134,6 +4147,7 @@ module Google
         def update!(**args)
           @component_id = args[:component_id] if args.key?(:component_id)
           @data = args[:data] if args.key?(:data)
+          @data_format = args[:data_format] if args.key?(:data_format)
           @location = args[:location] if args.key?(:location)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
         end
