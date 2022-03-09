@@ -1203,6 +1203,32 @@ module Google
         end
       end
       
+      # Alert Created by the MSA team for communications necessary for continued use
+      # of Google Workspace Products.
+      class MandatoryServiceAnnouncement
+        include Google::Apis::Core::Hashable
+      
+        # Detailed, freeform text describing the announcement
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # One line summary of the announcement
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Proto that contains match information from the condition part of the rule.
       class MatchInfo
         include Google::Apis::Core::Hashable
