@@ -182,6 +182,7 @@ module Google
       class ComplyWithGuidelines
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :recommendation_reason, as: 'recommendationReason'
         end
       end
       

@@ -101,10 +101,14 @@ module Google
       end
       
       # Indicates that the location fails to comply with our [guidelines](https://
-      # support.google.com/business/answer/3038177). To fix this issue, consult the [
-      # Help Center Article](https://support.google.com/business/answer/4569145).
+      # support.google.com/business/answer/3038177).
       class ComplyWithGuidelines
         include Google::Apis::Core::Hashable
+      
+        # The reason why the location is being recommended to comply with guidelines.
+        # Corresponds to the JSON property `recommendationReason`
+        # @return [String]
+        attr_accessor :recommendation_reason
       
         def initialize(**args)
            update!(**args)
@@ -112,6 +116,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @recommendation_reason = args[:recommendation_reason] if args.key?(:recommendation_reason)
         end
       end
       
@@ -713,8 +718,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Indicates that the location fails to comply with our [guidelines](https://
-        # support.google.com/business/answer/3038177). To fix this issue, consult the [
-        # Help Center Article](https://support.google.com/business/answer/4569145).
+        # support.google.com/business/answer/3038177).
         # Corresponds to the JSON property `complyWithGuidelines`
         # @return [Google::Apis::MybusinessverificationsV1::ComplyWithGuidelines]
         attr_accessor :comply_with_guidelines
