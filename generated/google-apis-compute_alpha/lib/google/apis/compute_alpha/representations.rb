@@ -6705,6 +6705,7 @@ module Google
       class AttachedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
           property :auto_delete, as: 'autoDelete'
           property :boot, as: 'boot'
           property :device_name, as: 'deviceName'
@@ -11675,6 +11676,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeAlpha::MachineType::Accelerator, decorator: Google::Apis::ComputeAlpha::MachineType::Accelerator::Representation
       
+          property :architecture, as: 'architecture'
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeAlpha::DeprecationStatus, decorator: Google::Apis::ComputeAlpha::DeprecationStatus::Representation
       
@@ -16034,6 +16036,8 @@ module Google
           property :source_disk_id, as: 'sourceDiskId'
           property :source_instant_snapshot, as: 'sourceInstantSnapshot'
           property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
+          property :source_snapshot_schedule_policy, as: 'sourceSnapshotSchedulePolicy'
+          property :source_snapshot_schedule_policy_id, as: 'sourceSnapshotSchedulePolicyId'
           property :status, as: 'status'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
