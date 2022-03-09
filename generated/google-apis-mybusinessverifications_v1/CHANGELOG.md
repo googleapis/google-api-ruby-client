@@ -1,5 +1,9 @@
 # Release history for google-apis-mybusinessverifications_v1
 
+### v0.5.0 (2022-03-09)
+
+* Regenerated from discovery document revision 20220307
+
 ### v0.4.0 (2022-02-16)
 
 * Regenerated from discovery document revision 20220215
