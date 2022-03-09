@@ -324,7 +324,7 @@ module Google
         #   158 for more.
         # @param [String] parent
         #   The parent of the collection of `Builds`. Format: `projects/`project`/
-        #   locations/location`
+        #   locations/`location``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1079,7 +1079,7 @@ module Google
         # progress, or may have finished successfully or unsuccessfully.
         # @param [String] parent
         #   The parent of the collection of `Builds`. Format: `projects/`project`/
-        #   locations/location`
+        #   locations/`location``
         # @param [String] filter
         #   The raw filter text to constrain the results.
         # @param [Fixnum] page_size
