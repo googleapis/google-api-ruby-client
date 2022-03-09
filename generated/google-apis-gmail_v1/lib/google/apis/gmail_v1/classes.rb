@@ -1124,12 +1124,14 @@ module Google
       class ModifyMessageRequest
         include Google::Apis::Core::Hashable
       
-        # A list of IDs of labels to add to this message.
+        # A list of IDs of labels to add to this message. You can add up to 100 labels
+        # with each update.
         # Corresponds to the JSON property `addLabelIds`
         # @return [Array<String>]
         attr_accessor :add_label_ids
       
-        # A list IDs of labels to remove from this message.
+        # A list IDs of labels to remove from this message. You can remove up to 100
+        # labels with each update.
         # Corresponds to the JSON property `removeLabelIds`
         # @return [Array<String>]
         attr_accessor :remove_label_ids
@@ -1149,12 +1151,14 @@ module Google
       class ModifyThreadRequest
         include Google::Apis::Core::Hashable
       
-        # A list of IDs of labels to add to this thread.
+        # A list of IDs of labels to add to this thread. You can add up to 100 labels
+        # with each update.
         # Corresponds to the JSON property `addLabelIds`
         # @return [Array<String>]
         attr_accessor :add_label_ids
       
-        # A list of IDs of labels to remove from this thread.
+        # A list of IDs of labels to remove from this thread. You can remove up to 100
+        # labels with each update.
         # Corresponds to the JSON property `removeLabelIds`
         # @return [Array<String>]
         attr_accessor :remove_label_ids
