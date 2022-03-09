@@ -22,7 +22,7 @@ module Google
     module ChatV1
       # Google Chat API
       #
-      # Enables bots to fetch information and perform actions in Google Chat.
+      # Enables apps to fetch information and perform actions in Google Chat.
       #  Authentication using a service account is a prerequisite for using the Google
       #  Chat REST API.
       #
@@ -709,8 +709,8 @@ module Google
         # Gets the metadata of a message attachment. The attachment data is fetched
         # using the media API.
         # @param [String] name
-        #   Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*
-        #   ".
+        #   Required. Resource name of the attachment, in the form "spaces/*/messages/*/
+        #   attachments/*".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

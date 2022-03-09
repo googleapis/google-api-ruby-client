@@ -2700,7 +2700,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of the space, in the form "spaces/*". Example: spaces/
+        # Optional. Resource name of the space, in the form "spaces/*". Example: spaces/
         # AAAAAAAAAAAA
         # Corresponds to the JSON property `name`
         # @return [String]
