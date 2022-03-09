@@ -5663,6 +5663,7 @@ module Google
       class AllocationSpecificSkuReservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assured_count, :numeric_string => true, as: 'assuredCount'
           property :count, :numeric_string => true, as: 'count'
           property :in_use_count, :numeric_string => true, as: 'inUseCount'
           property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties, decorator: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties::Representation

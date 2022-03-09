@@ -1185,6 +1185,11 @@ module Google
       class AllocationSpecificSkuReservation
         include Google::Apis::Core::Hashable
       
+        # [Output Only] Indicates how many instances are actually usable currently.
+        # Corresponds to the JSON property `assuredCount`
+        # @return [Fixnum]
+        attr_accessor :assured_count
+      
         # Specifies the number of resources that are allocated.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
@@ -1206,6 +1211,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assured_count = args[:assured_count] if args.key?(:assured_count)
           @count = args[:count] if args.key?(:count)
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
