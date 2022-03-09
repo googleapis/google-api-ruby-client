@@ -1055,6 +1055,11 @@ module Google
       class ExecutionStatus
         include Google::Apis::Core::Hashable
       
+        # Optional. The number of tasks which reached phase Cancelled. +optional
+        # Corresponds to the JSON property `cancelledCount`
+        # @return [Fixnum]
+        attr_accessor :cancelled_count
+      
         # Optional. Represents time when the execution was completed. It is not
         # guaranteed to be set in happens-before order across separate operations. It is
         # represented in RFC3339 form and is in UTC. +optional
@@ -1085,6 +1090,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :observed_generation
       
+        # Optional. The number of tasks which have retried at least once. +optional
+        # Corresponds to the JSON property `retriedCount`
+        # @return [Fixnum]
+        attr_accessor :retried_count
+      
         # Optional. The number of actively running tasks. +optional
         # Corresponds to the JSON property `runningCount`
         # @return [Fixnum]
@@ -1108,11 +1118,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cancelled_count = args[:cancelled_count] if args.key?(:cancelled_count)
           @completion_time = args[:completion_time] if args.key?(:completion_time)
           @conditions = args[:conditions] if args.key?(:conditions)
           @failed_count = args[:failed_count] if args.key?(:failed_count)
           @log_uri = args[:log_uri] if args.key?(:log_uri)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @retried_count = args[:retried_count] if args.key?(:retried_count)
           @running_count = args[:running_count] if args.key?(:running_count)
           @start_time = args[:start_time] if args.key?(:start_time)
           @succeeded_count = args[:succeeded_count] if args.key?(:succeeded_count)

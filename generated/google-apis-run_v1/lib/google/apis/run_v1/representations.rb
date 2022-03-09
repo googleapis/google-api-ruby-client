@@ -791,12 +791,14 @@ module Google
       class ExecutionStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancelled_count, as: 'cancelledCount'
           property :completion_time, as: 'completionTime'
           collection :conditions, as: 'conditions', class: Google::Apis::RunV1::GoogleCloudRunV1Condition, decorator: Google::Apis::RunV1::GoogleCloudRunV1Condition::Representation
       
           property :failed_count, as: 'failedCount'
           property :log_uri, as: 'logUri'
           property :observed_generation, as: 'observedGeneration'
+          property :retried_count, as: 'retriedCount'
           property :running_count, as: 'runningCount'
           property :start_time, as: 'startTime'
           property :succeeded_count, as: 'succeededCount'
