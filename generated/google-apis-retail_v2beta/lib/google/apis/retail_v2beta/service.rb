@@ -72,10 +72,12 @@ module Google
         #   `UNKNOWN_DEVICE_TYPE` * `DESKTOP` * `MOBILE` * A customized string starts with
         #   `OTHER_`, e.g. `OTHER_IPHONE`.
         # @param [Array<String>, String] language_codes
-        #   The list of languages of the query. This is the BCP-47 language code, such as "
-        #   en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages]
-        #   (https://tools.ietf.org/html/bcp47). The maximum number of allowed characters
-        #   is 255. Only "en-US" is currently supported.
+        #   The language filters applied to the output suggestions. If set, it should
+        #   contain the language of the query. If not set, suggestions are returned
+        #   without considering language restrictions. This is the BCP-47 language code,
+        #   such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying
+        #   Languages](https://tools.ietf.org/html/bcp47). The maximum number of language
+        #   codes is 3.
         # @param [Fixnum] max_suggestions
         #   Completion max suggestions. If left unset or set to 0, then will fallback to
         #   the configured value CompletionConfig.max_suggestions. The maximum allowed max
