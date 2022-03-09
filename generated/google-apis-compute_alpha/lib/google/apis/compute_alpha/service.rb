@@ -13310,7 +13310,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs a reset on the instance. This is a hard reset the VM does not do a
+        # Performs a reset on the instance. This is a hard reset. The VM does not do a
         # graceful shutdown. For more information, see Resetting an instance.
         # @param [String] project
         #   Project ID for this request.
@@ -25338,8 +25338,7 @@ module Google
         # @param [Google::Apis::ComputeAlpha::Snapshot] snapshot_object
         # @param [Boolean] guest_flush
         #   [Input Only] Specifies to create an application consistent snapshot by
-        #   informing the OS to prepare for the snapshot process. Currently only supported
-        #   on Windows instances using the Volume Shadow Copy Service (VSS).
+        #   informing the OS to prepare for the snapshot process.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the

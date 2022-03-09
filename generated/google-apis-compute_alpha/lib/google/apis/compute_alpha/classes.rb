@@ -1306,6 +1306,12 @@ module Google
       class AttachedDisk
         include Google::Apis::Core::Hashable
       
+        # [Output Only] The architecture of the attached disk. Valid values are ARM64 or
+        # X86_64.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # Specifies whether the disk will be auto-deleted when the instance is deleted (
         # but not when the disk is detached from the instance).
         # Corresponds to the JSON property `autoDelete`
@@ -1464,6 +1470,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
           @boot = args[:boot] if args.key?(:boot)
           @device_name = args[:device_name] if args.key?(:device_name)
@@ -10025,7 +10032,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # 
+        # [Output Only] Type of the resource. Always compute#futureReservation for
+        # future reservations.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -10227,7 +10235,9 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::FutureReservationsScopedList>]
         attr_accessor :items
       
-        # 
+        # [Output Only] Type of resource. Always compute#
+        # futureReservationsAggregatedListResponse for future resevation aggregated list
+        # response.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -10357,7 +10367,8 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::FutureReservation>]
         attr_accessor :items
       
-        # 
+        # [Output Only] Type of resource.Always compute#FutureReservationsListResponse
+        # for lists of reservations
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -22184,6 +22195,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::MachineType::Accelerator>]
         attr_accessor :accelerators
       
+        # [Output Only] The architecture of the machine type.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -22267,6 +22283,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @architecture = args[:architecture] if args.key?(:architecture)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
@@ -23316,7 +23333,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # 
+        # [Output only] Type of the resource. Always compute#networkEdgeSecurityService
+        # for NetworkEdgeSecurityServices
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -23392,7 +23410,9 @@ module Google
         # @return [Hash<String,Google::Apis::ComputeAlpha::NetworkEdgeSecurityServicesScopedList>]
         attr_accessor :items
       
-        # 
+        # [Output Only] Type of resource. Always compute#
+        # networkEdgeSecurityServiceAggregatedList for lists of Network Edge Security
+        # Services.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -39247,6 +39267,16 @@ module Google
         # @return [String]
         attr_accessor :source_instant_snapshot_id
       
+        # [Output Only] URL of the resource policy which created this scheduled snapshot.
+        # Corresponds to the JSON property `sourceSnapshotSchedulePolicy`
+        # @return [String]
+        attr_accessor :source_snapshot_schedule_policy
+      
+        # [Output Only] ID of the resource policy which created this scheduled snapshot.
+        # Corresponds to the JSON property `sourceSnapshotSchedulePolicyId`
+        # @return [String]
+        attr_accessor :source_snapshot_schedule_policy_id
+      
         # [Output Only] The status of the snapshot. This can be CREATING, DELETING,
         # FAILED, READY, or UPLOADING.
         # Corresponds to the JSON property `status`
@@ -39312,6 +39342,8 @@ module Google
           @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
+          @source_snapshot_schedule_policy = args[:source_snapshot_schedule_policy] if args.key?(:source_snapshot_schedule_policy)
+          @source_snapshot_schedule_policy_id = args[:source_snapshot_schedule_policy_id] if args.key?(:source_snapshot_schedule_policy_id)
           @status = args[:status] if args.key?(:status)
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
           @storage_bytes_status = args[:storage_bytes_status] if args.key?(:storage_bytes_status)
