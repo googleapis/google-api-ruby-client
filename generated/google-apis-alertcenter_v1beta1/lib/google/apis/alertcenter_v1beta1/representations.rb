@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MandatoryServiceAnnouncement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MatchInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -663,6 +669,14 @@ module Google
           property :entity, as: 'entity', class: Google::Apis::AlertcenterV1beta1::User, decorator: Google::Apis::AlertcenterV1beta1::User::Representation
       
           property :from_header, as: 'fromHeader'
+        end
+      end
+      
+      class MandatoryServiceAnnouncement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :title, as: 'title'
         end
       end
       
