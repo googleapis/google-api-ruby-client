@@ -1098,6 +1098,11 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::ImageConfig]
         attr_accessor :image
       
+        # Details about the work the de-identify operation performed.
+        # Corresponds to the JSON property `operationMetadata`
+        # @return [Google::Apis::HealthcareV1beta1::DeidentifyOperationMetadata]
+        attr_accessor :operation_metadata
+      
         # Configures de-identification of text wherever it is found in the
         # source_dataset.
         # Corresponds to the JSON property `text`
@@ -1114,6 +1119,7 @@ module Google
           @dicom = args[:dicom] if args.key?(:dicom)
           @fhir = args[:fhir] if args.key?(:fhir)
           @image = args[:image] if args.key?(:image)
+          @operation_metadata = args[:operation_metadata] if args.key?(:operation_metadata)
           @text = args[:text] if args.key?(:text)
         end
       end
@@ -1223,6 +1229,25 @@ module Google
           @config = args[:config] if args.key?(:config)
           @destination_store = args[:destination_store] if args.key?(:destination_store)
           @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
+        end
+      end
+      
+      # Details about the work the de-identify operation performed.
+      class DeidentifyOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Details about the FHIR store to write the output to.
+        # Corresponds to the JSON property `fhirOutput`
+        # @return [Google::Apis::HealthcareV1beta1::FhirOutput]
+        attr_accessor :fhir_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fhir_output = args[:fhir_output] if args.key?(:fhir_output)
         end
       end
       
@@ -2005,6 +2030,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Details about the FHIR store to write the output to.
+      class FhirOutput
+        include Google::Apis::Core::Hashable
+      
+        # Name of the output FHIR store, which must already exist. You must grant the
+        # healthcare.fhirResources.update permission on the destination store to your
+        # project's **Cloud Healthcare Service Agent** [service account](https://cloud.
+        # google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#
+        # the_cloud_healthcare_service_agent). The destination store must set `
+        # enable_update_create` to true. The destination store must use FHIR version R4.
+        # Writing these resources will consume FHIR operations quota from the project
+        # containing the source data. De-identify operation metadata is only generated
+        # for DICOM de-identification operations.
+        # Corresponds to the JSON property `fhirStore`
+        # @return [String]
+        attr_accessor :fhir_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
         end
       end
       

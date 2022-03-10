@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeidentifyOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeidentifySummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +377,12 @@ module Google
       end
       
       class FhirFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FhirOutput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1291,6 +1303,8 @@ module Google
       
           property :image, as: 'image', class: Google::Apis::HealthcareV1beta1::ImageConfig, decorator: Google::Apis::HealthcareV1beta1::ImageConfig::Representation
       
+          property :operation_metadata, as: 'operationMetadata', class: Google::Apis::HealthcareV1beta1::DeidentifyOperationMetadata, decorator: Google::Apis::HealthcareV1beta1::DeidentifyOperationMetadata::Representation
+      
           property :text, as: 'text', class: Google::Apis::HealthcareV1beta1::TextConfig, decorator: Google::Apis::HealthcareV1beta1::TextConfig::Representation
       
         end
@@ -1323,6 +1337,14 @@ module Google
       
           property :destination_store, as: 'destinationStore'
           property :resource_filter, as: 'resourceFilter', class: Google::Apis::HealthcareV1beta1::FhirFilter, decorator: Google::Apis::HealthcareV1beta1::FhirFilter::Representation
+      
+        end
+      end
+      
+      class DeidentifyOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fhir_output, as: 'fhirOutput', class: Google::Apis::HealthcareV1beta1::FhirOutput, decorator: Google::Apis::HealthcareV1beta1::FhirOutput::Representation
       
         end
       end
@@ -1551,6 +1573,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resources, as: 'resources', class: Google::Apis::HealthcareV1beta1::Resources, decorator: Google::Apis::HealthcareV1beta1::Resources::Representation
       
+        end
+      end
+      
+      class FhirOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fhir_store, as: 'fhirStore'
         end
       end
       
