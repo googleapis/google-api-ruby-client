@@ -70,18 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ImportGooGetArtifactsGcsSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ImportGooGetArtifactsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ImportYumArtifactsGcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,18 +196,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UploadGooGetArtifactMediaResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UploadGooGetArtifactRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UploadYumArtifactMediaResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,22 +286,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::ArtifactregistryV1::ImportAptArtifactsGcsSource, decorator: Google::Apis::ArtifactregistryV1::ImportAptArtifactsGcsSource::Representation
-      
-        end
-      end
-      
-      class ImportGooGetArtifactsGcsSource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :uris, as: 'uris'
-          property :use_wildcards, as: 'useWildcards'
-        end
-      end
-      
-      class ImportGooGetArtifactsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gcs_source, as: 'gcsSource', class: Google::Apis::ArtifactregistryV1::ImportGooGetArtifactsGcsSource, decorator: Google::Apis::ArtifactregistryV1::ImportGooGetArtifactsGcsSource::Representation
       
         end
       end
@@ -511,20 +471,6 @@ module Google
       end
       
       class UploadAptArtifactRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class UploadGooGetArtifactMediaResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :operation, as: 'operation', class: Google::Apis::ArtifactregistryV1::Operation, decorator: Google::Apis::ArtifactregistryV1::Operation::Representation
-      
-        end
-      end
-      
-      class UploadGooGetArtifactRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
