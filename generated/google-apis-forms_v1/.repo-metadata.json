@@ -1,0 +1,7 @@
+{
+    "api_id": "forms:v1",
+    "name_pretty": "Google Forms API",
+    "distribution_name": "google-apis-forms_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}
