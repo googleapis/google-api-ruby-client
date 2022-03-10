@@ -1435,6 +1435,20 @@ module Google
       class ExportResourcesRequest
         include Google::Apis::Core::Hashable
       
+        # If provided, only resources updated after this time are exported. The time
+        # uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:
+        # 17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified to the
+        # second and include a time zone.
+        # Corresponds to the JSON property `_since`
+        # @return [String]
+        attr_accessor :_since
+      
+        # String of comma-delimited FHIR resource types. If provided, only resources of
+        # the specified resource type(s) are exported.
+        # Corresponds to the JSON property `_type`
+        # @return [String]
+        attr_accessor :_type
+      
         # The configuration for exporting to BigQuery.
         # Corresponds to the JSON property `bigqueryDestination`
         # @return [Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirBigQueryDestination]
@@ -1451,6 +1465,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @_since = args[:_since] if args.key?(:_since)
+          @_type = args[:_type] if args.key?(:_type)
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
