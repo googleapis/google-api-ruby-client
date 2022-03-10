@@ -1199,6 +1199,8 @@ module Google
       class ExportResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :_since, as: '_since'
+          property :_type, as: '_type'
           property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirBigQueryDestination, decorator: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirBigQueryDestination::Representation
       
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirGcsDestination, decorator: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1FhirGcsDestination::Representation
