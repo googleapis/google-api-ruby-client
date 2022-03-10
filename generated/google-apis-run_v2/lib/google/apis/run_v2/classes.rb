@@ -23,7 +23,7 @@ module Google
     module RunV2
       
       # Settings for Binary Authorization feature.
-      class GoogleCloudRunOpV2BinaryAuthorization
+      class GoogleCloudRunV2BinaryAuthorization
         include Google::Apis::Core::Hashable
       
         # If present, indicates to use Breakglass using this justification. If
@@ -53,7 +53,7 @@ module Google
       end
       
       # Represents a specific Cloud SQL instance.
-      class GoogleCloudRunOpV2CloudSqlInstance
+      class GoogleCloudRunV2CloudSqlInstance
         include Google::Apis::Core::Hashable
       
         # The Cloud SQL instance connection names, as can be found in https://console.
@@ -75,7 +75,7 @@ module Google
       end
       
       # Defines a status condition for a resource.
-      class GoogleCloudRunOpV2Condition
+      class GoogleCloudRunV2Condition
         include Google::Apis::Core::Hashable
       
         # A reason for the domain mapping condition.
@@ -153,7 +153,7 @@ module Google
       # A single application container. This specifies both the container to run, the
       # command to run in the container and the arguments to supply to it. Note that
       # additional arguments may be supplied by the system to the container at runtime.
-      class GoogleCloudRunOpV2Container
+      class GoogleCloudRunV2Container
         include Google::Apis::Core::Hashable
       
         # Arguments to the entrypoint. The docker image's CMD is used if this is not
@@ -182,7 +182,7 @@ module Google
       
         # List of environment variables to set in the container.
         # Corresponds to the JSON property `env`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2EnvVar>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2EnvVar>]
         attr_accessor :env
       
         # Required. URL of the Container image in Google Container Registry or Docker
@@ -202,17 +202,17 @@ module Google
         # chosen and passed to the container through the PORT environment variable for
         # the container to listen on.
         # Corresponds to the JSON property `ports`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2ContainerPort>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerPort>]
         attr_accessor :ports
       
         # ResourceRequirements describes the compute resource requirements.
         # Corresponds to the JSON property `resources`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2ResourceRequirements]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements]
         attr_accessor :resources
       
         # Volume to mount into the container's filesystem.
         # Corresponds to the JSON property `volumeMounts`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2VolumeMount>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2VolumeMount>]
         attr_accessor :volume_mounts
       
         def initialize(**args)
@@ -233,7 +233,7 @@ module Google
       end
       
       # ContainerPort represents a network port in a single container.
-      class GoogleCloudRunOpV2ContainerPort
+      class GoogleCloudRunV2ContainerPort
         include Google::Apis::Core::Hashable
       
         # Port number the container listens on. This must be a valid TCP port number, 0 <
@@ -260,7 +260,7 @@ module Google
       end
       
       # EnvVar represents an environment variable present in a Container.
-      class GoogleCloudRunOpV2EnvVar
+      class GoogleCloudRunV2EnvVar
         include Google::Apis::Core::Hashable
       
         # Required. Name of the environment variable. Must be a C_IDENTIFIER, and mnay
@@ -282,7 +282,7 @@ module Google
       
         # EnvVarSource represents a source for the value of an EnvVar.
         # Corresponds to the JSON property `valueSource`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2EnvVarSource]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2EnvVarSource]
         attr_accessor :value_source
       
         def initialize(**args)
@@ -298,12 +298,12 @@ module Google
       end
       
       # EnvVarSource represents a source for the value of an EnvVar.
-      class GoogleCloudRunOpV2EnvVarSource
+      class GoogleCloudRunV2EnvVarSource
         include Google::Apis::Core::Hashable
       
         # SecretEnvVarSource represents a source for the value of an EnvVar.
         # Corresponds to the JSON property `secretKeyRef`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2SecretKeySelector]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SecretKeySelector]
         attr_accessor :secret_key_ref
       
         def initialize(**args)
@@ -317,7 +317,7 @@ module Google
       end
       
       # Response message containing a list of Revisions.
-      class GoogleCloudRunOpV2ListRevisionsResponse
+      class GoogleCloudRunV2ListRevisionsResponse
         include Google::Apis::Core::Hashable
       
         # A token indicating there are more items than page_size. Use it in the next
@@ -328,7 +328,7 @@ module Google
       
         # The resulting list of Revisions.
         # Corresponds to the JSON property `revisions`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2Revision>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Revision>]
         attr_accessor :revisions
       
         def initialize(**args)
@@ -343,7 +343,7 @@ module Google
       end
       
       # Response message containing a list of Services.
-      class GoogleCloudRunOpV2ListServicesResponse
+      class GoogleCloudRunV2ListServicesResponse
         include Google::Apis::Core::Hashable
       
         # A token indicating there are more items than page_size. Use it in the next
@@ -354,7 +354,7 @@ module Google
       
         # The resulting list of Services.
         # Corresponds to the JSON property `services`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2Service>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Service>]
         attr_accessor :services
       
         def initialize(**args)
@@ -369,7 +369,7 @@ module Google
       end
       
       # ResourceRequirements describes the compute resource requirements.
-      class GoogleCloudRunOpV2ResourceRequirements
+      class GoogleCloudRunV2ResourceRequirements
         include Google::Apis::Core::Hashable
       
         # Determines whether CPU should be throttled or not outside of requests.
@@ -401,7 +401,7 @@ module Google
       # A Revision is an immutable snapshot of code and configuration. A Revision
       # references a container image. Revisions are only created by updates to its
       # parent Service.
-      class GoogleCloudRunOpV2Revision
+      class GoogleCloudRunV2Revision
         include Google::Apis::Core::Hashable
       
         # KRM-style annotations for the resource.
@@ -412,7 +412,7 @@ module Google
         # Output only. The Condition of this Revision, containing its readiness status,
         # and detailed error information in case it did not reach a serving state.
         # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2Condition>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
         attr_accessor :conditions
       
         # Indicates whether Confidential Cloud Run is enabled in this Revision.
@@ -429,7 +429,7 @@ module Google
         # Holds the single container that defines the unit of execution for this
         # Revision.
         # Corresponds to the JSON property `containers`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2Container>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
         attr_accessor :containers
       
         # Output only. The creation time.
@@ -519,7 +519,7 @@ module Google
       
         # Settings for revision-level scaling settings.
         # Corresponds to the JSON property `scaling`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2RevisionScaling]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling]
         attr_accessor :scaling
       
         # Output only. The name of the parent service.
@@ -553,7 +553,7 @@ module Google
       
         # A list of Volumes to make available to containers.
         # Corresponds to the JSON property `volumes`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2Volume>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
         attr_accessor :volumes
       
         # VPC Access settings. For more information on creating a VPC Connector, visit
@@ -561,7 +561,7 @@ module Google
         # information on how to configure Cloud Run with an existing VPC Connector,
         # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
         # Corresponds to the JSON property `vpcAccess`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2VpcAccess]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
         def initialize(**args)
@@ -600,7 +600,7 @@ module Google
       end
       
       # Settings for revision-level scaling settings.
-      class GoogleCloudRunOpV2RevisionScaling
+      class GoogleCloudRunV2RevisionScaling
         include Google::Apis::Core::Hashable
       
         # Maximum number of serving instances that this resource should have.
@@ -626,7 +626,7 @@ module Google
       
       # RevisionTemplate describes the data a revision should have when created from a
       # template.
-      class GoogleCloudRunOpV2RevisionTemplate
+      class GoogleCloudRunV2RevisionTemplate
         include Google::Apis::Core::Hashable
       
         # KRM-style annotations for the resource.
@@ -648,7 +648,7 @@ module Google
         # Holds the single container that defines the unit of execution for this
         # Revision.
         # Corresponds to the JSON property `containers`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2Container>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
         attr_accessor :containers
       
         # A reference to a customer managed encryption key (CMEK) to use to encrypt this
@@ -676,7 +676,7 @@ module Google
       
         # Settings for revision-level scaling settings.
         # Corresponds to the JSON property `scaling`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2RevisionScaling]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling]
         attr_accessor :scaling
       
         # Email address of the IAM service account associated with the revision of the
@@ -694,7 +694,7 @@ module Google
       
         # A list of Volumes to make available to containers.
         # Corresponds to the JSON property `volumes`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2Volume>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
         attr_accessor :volumes
       
         # VPC Access settings. For more information on creating a VPC Connector, visit
@@ -702,7 +702,7 @@ module Google
         # information on how to configure Cloud Run with an existing VPC Connector,
         # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
         # Corresponds to the JSON property `vpcAccess`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2VpcAccess]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
         def initialize(**args)
@@ -728,7 +728,7 @@ module Google
       end
       
       # SecretEnvVarSource represents a source for the value of an EnvVar.
-      class GoogleCloudRunOpV2SecretKeySelector
+      class GoogleCloudRunV2SecretKeySelector
         include Google::Apis::Core::Hashable
       
         # Required. The name of the secret in Cloud Secret Manager. Format: `secret_name`
@@ -758,7 +758,7 @@ module Google
       # The secret's value will be presented as the content of a file whose name is
       # defined in the item path. If no items are defined, the name of the file is the
       # secret.
-      class GoogleCloudRunOpV2SecretVolumeSource
+      class GoogleCloudRunV2SecretVolumeSource
         include Google::Apis::Core::Hashable
       
         # Integer representation of mode bits to use on created files by default. Must
@@ -783,7 +783,7 @@ module Google
         # the file exposed in the volume. When items are defined, they must specify a
         # path and a version.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2VersionToPath>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2VersionToPath>]
         attr_accessor :items
       
         # Required. The name of the secret in Cloud Secret Manager. Format: `secret` if
@@ -810,7 +810,7 @@ module Google
       # provide a singular abstraction which can be access controlled, reasoned about,
       # and which encapsulates software lifecycle decisions such as rollout policy and
       # team resource ownership.
-      class GoogleCloudRunOpV2Service
+      class GoogleCloudRunV2Service
         include Google::Apis::Core::Hashable
       
         # Unstructured key value map that may be set by external tools to store and
@@ -825,7 +825,7 @@ module Google
       
         # Settings for Binary Authorization feature.
         # Corresponds to the JSON property `binaryAuthorization`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2BinaryAuthorization]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization]
         attr_accessor :binary_authorization
       
         # Arbitrary identifier for the API client.
@@ -843,7 +843,7 @@ module Google
         # its Serving state. See comments in `reconciling` for additional information on
         # reconciliation process in Cloud Run.
         # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2Condition>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
         attr_accessor :conditions
       
         # Output only. The creation time.
@@ -969,26 +969,26 @@ module Google
         # RevisionTemplate describes the data a revision should have when created from a
         # template.
         # Corresponds to the JSON property `template`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2RevisionTemplate]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionTemplate]
         attr_accessor :template
       
         # Defines a status condition for a resource.
         # Corresponds to the JSON property `terminalCondition`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2Condition]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
         attr_accessor :terminal_condition
       
         # Specifies how to distribute traffic over a collection of Revisions belonging
         # to the Service. If traffic is empty or not provided, defaults to 100% traffic
         # to the latest `Ready` Revision.
         # Corresponds to the JSON property `traffic`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2TrafficTarget>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2TrafficTarget>]
         attr_accessor :traffic
       
         # Output only. Detailed status information for corresponding traffic targets.
         # See comments in `reconciling` for additional information on reconciliation
         # process in Cloud Run.
         # Corresponds to the JSON property `trafficStatuses`
-        # @return [Array<Google::Apis::RunV2::GoogleCloudRunOpV2TrafficTargetStatus>]
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2TrafficTargetStatus>]
         attr_accessor :traffic_statuses
       
         # Output only. Server assigned unique identifier for the trigger. The value is a
@@ -1046,7 +1046,7 @@ module Google
       
       # Holds a single traffic routing entry for the Service. Allocations can be done
       # to a specific Revision name, or pointing to the latest Ready Revision.
-      class GoogleCloudRunOpV2TrafficTarget
+      class GoogleCloudRunV2TrafficTarget
         include Google::Apis::Core::Hashable
       
         # Specifies percent of the traffic to this Revision. This defaults to zero if
@@ -1085,7 +1085,7 @@ module Google
       end
       
       # Represents the observed state of a single `TrafficTarget` entry.
-      class GoogleCloudRunOpV2TrafficTargetStatus
+      class GoogleCloudRunV2TrafficTargetStatus
         include Google::Apis::Core::Hashable
       
         # Specifies percent of the traffic to this Revision.
@@ -1129,7 +1129,7 @@ module Google
       
       # VersionToPath maps a specific version of a secret to a relative file to mount
       # to, relative to VolumeMount's mount_path.
-      class GoogleCloudRunOpV2VersionToPath
+      class GoogleCloudRunV2VersionToPath
         include Google::Apis::Core::Hashable
       
         # Integer octal mode bits to use on this file, must be a value between 01 and
@@ -1170,12 +1170,12 @@ module Google
       end
       
       # Volume represents a named volume in a container.
-      class GoogleCloudRunOpV2Volume
+      class GoogleCloudRunV2Volume
         include Google::Apis::Core::Hashable
       
         # Represents a specific Cloud SQL instance.
         # Corresponds to the JSON property `cloudSqlInstance`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2CloudSqlInstance]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudSqlInstance]
         attr_accessor :cloud_sql_instance
       
         # Required. Volume's name.
@@ -1187,7 +1187,7 @@ module Google
         # defined in the item path. If no items are defined, the name of the file is the
         # secret.
         # Corresponds to the JSON property `secret`
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2SecretVolumeSource]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SecretVolumeSource]
         attr_accessor :secret
       
         def initialize(**args)
@@ -1203,7 +1203,7 @@ module Google
       end
       
       # VolumeMount describes a mounting of a Volume within a container.
-      class GoogleCloudRunOpV2VolumeMount
+      class GoogleCloudRunV2VolumeMount
         include Google::Apis::Core::Hashable
       
         # Required. Path within the container at which the volume should be mounted.
@@ -1235,7 +1235,7 @@ module Google
       # https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
       # information on how to configure Cloud Run with an existing VPC Connector,
       # visit https://cloud.google.com/run/docs/configuring/connecting-vpc
-      class GoogleCloudRunOpV2VpcAccess
+      class GoogleCloudRunV2VpcAccess
         include Google::Apis::Core::Hashable
       
         # VPC Access connector name. Format: projects/`project`/locations/`location`/
