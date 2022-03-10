@@ -172,7 +172,7 @@ module Google
         # @param [String] parent
         #   Required. The location and project in which this service should be created.
         #   Format: projects/`projectnumber`/locations/`location`
-        # @param [Google::Apis::RunV2::GoogleCloudRunOpV2Service] google_cloud_run_op_v2_service_object
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2Service] google_cloud_run_v2_service_object
         # @param [String] service_id
         #   Required. The unique identifier for the Service. The name of the service
         #   becomes `parent`/services/`service_id`.
@@ -196,10 +196,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_service(parent, google_cloud_run_op_v2_service_object = nil, service_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_service(parent, google_cloud_run_v2_service_object = nil, service_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/{+parent}/services', options)
-          command.request_representation = Google::Apis::RunV2::GoogleCloudRunOpV2Service::Representation
-          command.request_object = google_cloud_run_op_v2_service_object
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2Service::Representation
+          command.request_object = google_cloud_run_v2_service_object
           command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
@@ -263,18 +263,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunOpV2Service] parsed result object
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2Service] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2Service]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Service]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_service(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::RunV2::GoogleCloudRunOpV2Service::Representation
-          command.response_class = Google::Apis::RunV2::GoogleCloudRunOpV2Service
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2Service::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2Service
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -346,18 +346,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunOpV2ListServicesResponse] parsed result object
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2ListServicesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2ListServicesResponse]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ListServicesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_services(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/services', options)
-          command.response_representation = Google::Apis::RunV2::GoogleCloudRunOpV2ListServicesResponse::Representation
-          command.response_class = Google::Apis::RunV2::GoogleCloudRunOpV2ListServicesResponse
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2ListServicesResponse::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2ListServicesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -373,7 +373,7 @@ module Google
         #   is ignored, and instead composed from CreateServiceRequest.parent and
         #   CreateServiceRequest.service_id. Format: projects/`project`/locations/`
         #   location`/services/`service_id`
-        # @param [Google::Apis::RunV2::GoogleCloudRunOpV2Service] google_cloud_run_op_v2_service_object
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2Service] google_cloud_run_v2_service_object
         # @param [Boolean] allow_missing
         #   If set to true, and if the Service does not exist, it will create a new one.
         #   Caller must have both create and update permissions for this call if this is
@@ -400,10 +400,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_service(name, google_cloud_run_op_v2_service_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_service(name, google_cloud_run_v2_service_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
-          command.request_representation = Google::Apis::RunV2::GoogleCloudRunOpV2Service::Representation
-          command.request_object = google_cloud_run_op_v2_service_object
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2Service::Representation
+          command.request_object = google_cloud_run_v2_service_object
           command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
@@ -537,18 +537,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunOpV2Revision] parsed result object
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2Revision] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2Revision]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Revision]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_location_service_revision(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}', options)
-          command.response_representation = Google::Apis::RunV2::GoogleCloudRunOpV2Revision::Representation
-          command.response_class = Google::Apis::RunV2::GoogleCloudRunOpV2Revision
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2Revision::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2Revision
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -576,18 +576,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunOpV2ListRevisionsResponse] parsed result object
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2ListRevisionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV2::GoogleCloudRunOpV2ListRevisionsResponse]
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ListRevisionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_service_revisions(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/revisions', options)
-          command.response_representation = Google::Apis::RunV2::GoogleCloudRunOpV2ListRevisionsResponse::Representation
-          command.response_class = Google::Apis::RunV2::GoogleCloudRunOpV2ListRevisionsResponse
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2ListRevisionsResponse::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2ListRevisionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
