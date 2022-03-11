@@ -1617,7 +1617,11 @@ module Google
       
         # Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
         # URI to export the agent to. The format of this URI must be `gs:///`. If left
-        # unspecified, the serialized agent is returned inline.
+        # unspecified, the serialized agent is returned inline. Dialogflow performs a
+        # write operation for the Cloud Storage object on the caller's behalf, so your
+        # request authentication must have write permissions for the object. For more
+        # information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
         # Corresponds to the JSON property `agentUri`
         # @return [String]
         attr_accessor :agent_uri
@@ -1672,7 +1676,11 @@ module Google
       
         # Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
         # URI to export the flow to. The format of this URI must be `gs:///`. If left
-        # unspecified, the serialized flow is returned inline.
+        # unspecified, the serialized flow is returned inline. Dialogflow performs a
+        # write operation for the Cloud Storage object on the caller's behalf, so your
+        # request authentication must have write permissions for the object. For more
+        # information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
         # Corresponds to the JSON property `flowUri`
         # @return [String]
         attr_accessor :flow_uri
@@ -1755,7 +1763,11 @@ module Google
       
         # The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
         # export the test cases to. The format of this URI must be `gs:///`. If
-        # unspecified, the serialized test cases is returned inline.
+        # unspecified, the serialized test cases is returned inline. Dialogflow performs
+        # a write operation for the Cloud Storage object on the caller's behalf, so your
+        # request authentication must have write permissions for the object. For more
+        # information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
@@ -2375,7 +2387,11 @@ module Google
         attr_accessor :flow_content
       
         # The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-        # import flow from. The format of this URI must be `gs:///`.
+        # import flow from. The format of this URI must be `gs:///`. Dialogflow performs
+        # a read operation for the Cloud Storage object on the caller's behalf, so your
+        # request authentication must have read permissions for the object. For more
+        # information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
         # Corresponds to the JSON property `flowUri`
         # @return [String]
         attr_accessor :flow_uri
@@ -2447,7 +2463,11 @@ module Google
         attr_accessor :content
       
         # The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-        # import test cases from. The format of this URI must be `gs:///`.
+        # import test cases from. The format of this URI must be `gs:///`. Dialogflow
+        # performs a read operation for the Cloud Storage object on the caller's behalf,
+        # so your request authentication must have read permissions for the object. For
+        # more information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
@@ -4483,7 +4503,11 @@ module Google
         attr_accessor :agent_content
       
         # The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-        # restore agent from. The format of this URI must be `gs:///`.
+        # restore agent from. The format of this URI must be `gs:///`. Dialogflow
+        # performs a read operation for the Cloud Storage object on the caller's behalf,
+        # so your request authentication must have read permissions for the object. For
+        # more information, see [Dialogflow access control](https://cloud.google.com/
+        # dialogflow/cx/docs/concept/access-control#storage).
         # Corresponds to the JSON property `agentUri`
         # @return [String]
         attr_accessor :agent_uri
@@ -5186,11 +5210,23 @@ module Google
       class GoogleCloudDialogflowCxV3TestConfig
         include Google::Apis::Core::Hashable
       
-        # Flow name. If not set, default start flow is assumed. Format: `projects//
-        # locations//agents//flows/`.
+        # Flow name to start the test case with. Format: `projects//locations//agents//
+        # flows/`. Only one of `flow` and `page` should be set to indicate the starting
+        # point of the test case. If both are set, `page` takes precedence over `flow`.
+        # If neither is set, the test case will start with start page on the default
+        # start flow.
         # Corresponds to the JSON property `flow`
         # @return [String]
         attr_accessor :flow
+      
+        # The page to start the test case with. Format: `projects//locations//agents//
+        # flows//pages/`. Only one of `flow` and `page` should be set to indicate the
+        # starting point of the test case. If both are set, `page` takes precedence over
+        # `flow`. If neither is set, the test case will start with start page on the
+        # default start flow.
+        # Corresponds to the JSON property `page`
+        # @return [String]
+        attr_accessor :page
       
         # Session parameters to be compared when calculating differences.
         # Corresponds to the JSON property `trackingParameters`
@@ -5204,6 +5240,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @flow = args[:flow] if args.key?(:flow)
+          @page = args[:page] if args.key?(:page)
           @tracking_parameters = args[:tracking_parameters] if args.key?(:tracking_parameters)
         end
       end
@@ -8586,11 +8623,23 @@ module Google
       class GoogleCloudDialogflowCxV3beta1TestConfig
         include Google::Apis::Core::Hashable
       
-        # Flow name. If not set, default start flow is assumed. Format: `projects//
-        # locations//agents//flows/`.
+        # Flow name to start the test case with. Format: `projects//locations//agents//
+        # flows/`. Only one of `flow` and `page` should be set to indicate the starting
+        # point of the test case. If both are set, `page` takes precedence over `flow`.
+        # If neither is set, the test case will start with start page on the default
+        # start flow.
         # Corresponds to the JSON property `flow`
         # @return [String]
         attr_accessor :flow
+      
+        # The page to start the test case with. Format: `projects//locations//agents//
+        # flows//pages/`. Only one of `flow` and `page` should be set to indicate the
+        # starting point of the test case. If both are set, `page` takes precedence over
+        # `flow`. If neither is set, the test case will start with start page on the
+        # default start flow.
+        # Corresponds to the JSON property `page`
+        # @return [String]
+        attr_accessor :page
       
         # Session parameters to be compared when calculating differences.
         # Corresponds to the JSON property `trackingParameters`
@@ -8604,6 +8653,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @flow = args[:flow] if args.key?(:flow)
+          @page = args[:page] if args.key?(:page)
           @tracking_parameters = args[:tracking_parameters] if args.key?(:tracking_parameters)
         end
       end
@@ -9679,7 +9729,9 @@ module Google
         # Required. The language of this query. See [Language Support](https://cloud.
         # google.com/dialogflow/docs/reference/language) for a list of the currently
         # supported language codes. Note that queries in the same session do not
-        # necessarily need to specify the same language.
+        # necessarily need to specify the same language. This field is ignored when used
+        # in the context of a WebhookResponse.followup_event_input field, because the
+        # language was already defined in the originating detect intent request.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -12416,7 +12468,9 @@ module Google
         # Required. The language of this query. See [Language Support](https://cloud.
         # google.com/dialogflow/docs/reference/language) for a list of the currently
         # supported language codes. Note that queries in the same session do not
-        # necessarily need to specify the same language.
+        # necessarily need to specify the same language. This field is ignored when used
+        # in the context of a WebhookResponse.followup_event_input field, because the
+        # language was already defined in the originating detect intent request.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code

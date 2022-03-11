@@ -3990,6 +3990,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :flow, as: 'flow'
+          property :page, as: 'page'
           collection :tracking_parameters, as: 'trackingParameters'
         end
       end
@@ -4946,6 +4947,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :flow, as: 'flow'
+          property :page, as: 'page'
           collection :tracking_parameters, as: 'trackingParameters'
         end
       end
