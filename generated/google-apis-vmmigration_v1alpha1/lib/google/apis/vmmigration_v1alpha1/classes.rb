@@ -627,6 +627,49 @@ module Google
         end
       end
       
+      # CycleStep hold information about a step progress.
+      class CycleStep
+        include Google::Apis::Core::Hashable
+      
+        # The time the cycle step has ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # InitializingReplicationStep contains specific step details.
+        # Corresponds to the JSON property `initializingReplication`
+        # @return [Google::Apis::VmmigrationV1alpha1::InitializingReplicationStep]
+        attr_accessor :initializing_replication
+      
+        # PostProcessingStep contains specific step details.
+        # Corresponds to the JSON property `postProcessing`
+        # @return [Google::Apis::VmmigrationV1alpha1::PostProcessingStep]
+        attr_accessor :post_processing
+      
+        # ReplicatingStep contains specific step details.
+        # Corresponds to the JSON property `replicating`
+        # @return [Google::Apis::VmmigrationV1alpha1::ReplicatingStep]
+        attr_accessor :replicating
+      
+        # The time the cycle step has started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @initializing_replication = args[:initializing_replication] if args.key?(:initializing_replication)
+          @post_processing = args[:post_processing] if args.key?(:post_processing)
+          @replicating = args[:replicating] if args.key?(:replicating)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # DatacenterConnector message describes a connector between the Source and GCP,
       # which is installed on a vmware datacenter (an OVA vm installed by the user) to
       # connect the Datacenter to GCP and support vm migration data transfer.
@@ -837,6 +880,19 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # InitializingReplicationStep contains specific step details.
+      class InitializingReplicationStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1612,6 +1668,19 @@ module Google
         end
       end
       
+      # PostProcessingStep contains specific step details.
+      class PostProcessingStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for 'RemoveMigration' request.
       class RemoveGroupMigrationRequest
         include Google::Apis::Core::Hashable
@@ -1628,6 +1697,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @migrating_vm = args[:migrating_vm] if args.key?(:migrating_vm)
+        end
+      end
+      
+      # ReplicatingStep contains specific step details.
+      class ReplicatingStep
+        include Google::Apis::Core::Hashable
+      
+        # The source disks replication rate for the last 30 minutes in bytes per second.
+        # Corresponds to the JSON property `lastThirtyMinutesAverageBytesPerSecond`
+        # @return [Fixnum]
+        attr_accessor :last_thirty_minutes_average_bytes_per_second
+      
+        # The source disks replication rate for the last 2 minutes in bytes per second.
+        # Corresponds to the JSON property `lastTwoMinutesAverageBytesPerSecond`
+        # @return [Fixnum]
+        attr_accessor :last_two_minutes_average_bytes_per_second
+      
+        # Replicated bytes in the step.
+        # Corresponds to the JSON property `replicatedBytes`
+        # @return [Fixnum]
+        attr_accessor :replicated_bytes
+      
+        # Total bytes to be handled in the step.
+        # Corresponds to the JSON property `totalBytes`
+        # @return [Fixnum]
+        attr_accessor :total_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_thirty_minutes_average_bytes_per_second = args[:last_thirty_minutes_average_bytes_per_second] if args.key?(:last_thirty_minutes_average_bytes_per_second)
+          @last_two_minutes_average_bytes_per_second = args[:last_two_minutes_average_bytes_per_second] if args.key?(:last_two_minutes_average_bytes_per_second)
+          @replicated_bytes = args[:replicated_bytes] if args.key?(:replicated_bytes)
+          @total_bytes = args[:total_bytes] if args.key?(:total_bytes)
         end
       end
       
@@ -1651,6 +1757,11 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The cycle's steps list reflecting its progress.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::VmmigrationV1alpha1::CycleStep>]
+        attr_accessor :steps
+      
         # The accumulated duration the replication cycle was paused.
         # Corresponds to the JSON property `totalPauseDuration`
         # @return [String]
@@ -1665,6 +1776,7 @@ module Google
           @progress = args[:progress] if args.key?(:progress)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @steps = args[:steps] if args.key?(:steps)
           @total_pause_duration = args[:total_pause_duration] if args.key?(:total_pause_duration)
         end
       end
