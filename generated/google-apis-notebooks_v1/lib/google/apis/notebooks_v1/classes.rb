@@ -1852,12 +1852,18 @@ module Google
       class ResetRuntimeRequest
         include Google::Apis::Core::Hashable
       
+        # Idempotent request UUID.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
@@ -2466,12 +2472,18 @@ module Google
       class StartRuntimeRequest
         include Google::Apis::Core::Hashable
       
+        # Idempotent request UUID.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
@@ -2531,12 +2543,18 @@ module Google
       class StopRuntimeRequest
         include Google::Apis::Core::Hashable
       
+        # Idempotent request UUID.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       
@@ -2559,6 +2577,11 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Idempotent request UUID.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2567,6 +2590,7 @@ module Google
         def update!(**args)
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       

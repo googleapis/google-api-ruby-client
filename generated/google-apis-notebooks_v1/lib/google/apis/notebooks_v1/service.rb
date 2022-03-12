@@ -1356,6 +1356,8 @@ module Google
         # @param [String] parent
         #   Required. Format: `parent=projects/`project_id`/locations/`location``
         # @param [Google::Apis::NotebooksV1::Runtime] runtime_object
+        # @param [String] request_id
+        #   Idempotent request UUID.
         # @param [String] runtime_id
         #   Required. User-defined unique ID of this Runtime.
         # @param [String] fields
@@ -1375,13 +1377,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_runtime(parent, runtime_object = nil, runtime_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_runtime(parent, runtime_object = nil, request_id: nil, runtime_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/runtimes', options)
           command.request_representation = Google::Apis::NotebooksV1::Runtime::Representation
           command.request_object = runtime_object
           command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
           command.response_class = Google::Apis::NotebooksV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['runtimeId'] = runtime_id unless runtime_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1392,6 +1395,8 @@ module Google
         # @param [String] name
         #   Required. Format: `projects/`project_id`/locations/`location`/runtimes/`
         #   runtime_id``
+        # @param [String] request_id
+        #   Idempotent request UUID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1409,11 +1414,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_runtime(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_runtime(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NotebooksV1::Operation::Representation
           command.response_class = Google::Apis::NotebooksV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
