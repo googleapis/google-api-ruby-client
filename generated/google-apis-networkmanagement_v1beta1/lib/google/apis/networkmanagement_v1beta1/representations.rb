@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EdgeLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -416,6 +422,13 @@ module Google
         end
       end
       
+      class EdgeLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metropolitan_area, as: 'metropolitanArea'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -651,6 +664,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :abort_cause, as: 'abortCause'
+          property :destination_egress_location, as: 'destinationEgressLocation', class: Google::Apis::NetworkmanagementV1beta1::EdgeLocation, decorator: Google::Apis::NetworkmanagementV1beta1::EdgeLocation::Representation
+      
           property :endpoint_info, as: 'endpointInfo', class: Google::Apis::NetworkmanagementV1beta1::EndpointInfo, decorator: Google::Apis::NetworkmanagementV1beta1::EndpointInfo::Representation
       
           property :error, as: 'error', class: Google::Apis::NetworkmanagementV1beta1::Status, decorator: Google::Apis::NetworkmanagementV1beta1::Status::Representation
