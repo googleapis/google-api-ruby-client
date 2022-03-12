@@ -4385,6 +4385,11 @@ module Google
         # @return [Float]
         attr_accessor :completion_ratio
       
+        # [Output-only] Statistics for a copy job.
+        # Corresponds to the JSON property `copy`
+        # @return [Google::Apis::BigqueryV2::JobStatistics5]
+        attr_accessor :copy
+      
         # [Output-only] Creation time of this job, in milliseconds since the epoch. This
         # field will be present on all jobs.
         # Corresponds to the JSON property `creationTime`
@@ -4486,6 +4491,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @completion_ratio = args[:completion_ratio] if args.key?(:completion_ratio)
+          @copy = args[:copy] if args.key?(:copy)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @extract = args[:extract] if args.key?(:extract)
@@ -4861,6 +4867,31 @@ module Google
         def update!(**args)
           @destination_uri_file_counts = args[:destination_uri_file_counts] if args.key?(:destination_uri_file_counts)
           @input_bytes = args[:input_bytes] if args.key?(:input_bytes)
+        end
+      end
+      
+      # 
+      class JobStatistics5
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] Number of logical bytes copied to the destination table.
+        # Corresponds to the JSON property `copied_logical_bytes`
+        # @return [Fixnum]
+        attr_accessor :copied_logical_bytes
+      
+        # [Output-only] Number of rows copied to the destination table.
+        # Corresponds to the JSON property `copied_rows`
+        # @return [Fixnum]
+        attr_accessor :copied_rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @copied_logical_bytes = args[:copied_logical_bytes] if args.key?(:copied_logical_bytes)
+          @copied_rows = args[:copied_rows] if args.key?(:copied_rows)
         end
       end
       

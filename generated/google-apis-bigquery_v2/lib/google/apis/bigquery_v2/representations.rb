@@ -556,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JobStatistics5
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JobStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2046,6 +2052,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :completion_ratio, as: 'completionRatio'
+          property :copy, as: 'copy', class: Google::Apis::BigqueryV2::JobStatistics5, decorator: Google::Apis::BigqueryV2::JobStatistics5::Representation
+      
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :end_time, :numeric_string => true, as: 'endTime'
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobStatistics4, decorator: Google::Apis::BigqueryV2::JobStatistics4::Representation
@@ -2158,6 +2166,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :destination_uri_file_counts, as: 'destinationUriFileCounts'
           property :input_bytes, :numeric_string => true, as: 'inputBytes'
+        end
+      end
+      
+      class JobStatistics5
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :copied_logical_bytes, :numeric_string => true, as: 'copied_logical_bytes'
+          property :copied_rows, :numeric_string => true, as: 'copied_rows'
         end
       end
       
