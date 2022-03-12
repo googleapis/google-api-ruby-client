@@ -22,6 +22,25 @@ module Google
   module Apis
     module GkehubV1alpha
       
+      # **Anthos Observability**: Spec
+      class AnthosObservabilityFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # **Anthosobservability**: Per-Membership Feature spec.
+        # Corresponds to the JSON property `defaultMembershipSpec`
+        # @return [Google::Apis::GkehubV1alpha::AnthosObservabilityMembershipSpec]
+        attr_accessor :default_membership_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_membership_spec = args[:default_membership_spec] if args.key?(:default_membership_spec)
+        end
+      end
+      
       # **Anthosobservability**: Per-Membership Feature spec.
       class AnthosObservabilityMembershipSpec
         include Google::Apis::Core::Hashable
@@ -41,6 +60,11 @@ module Google
         attr_accessor :enable_stackdriver_on_applications
         alias_method :enable_stackdriver_on_applications?, :enable_stackdriver_on_applications
       
+        # the version of stackdriver operator used by this feature
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -49,6 +73,7 @@ module Google
         def update!(**args)
           @do_not_optimize_metrics = args[:do_not_optimize_metrics] if args.key?(:do_not_optimize_metrics)
           @enable_stackdriver_on_applications = args[:enable_stackdriver_on_applications] if args.key?(:enable_stackdriver_on_applications)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -345,6 +370,11 @@ module Google
       class CommonFeatureSpec
         include Google::Apis::Core::Hashable
       
+        # **Anthos Observability**: Spec
+        # Corresponds to the JSON property `anthosobservability`
+        # @return [Google::Apis::GkehubV1alpha::AnthosObservabilityFeatureSpec]
+        attr_accessor :anthosobservability
+      
         # Spec for App Dev Experience Feature.
         # Corresponds to the JSON property `appdevexperience`
         # @return [Google::Apis::GkehubV1alpha::AppDevExperienceFeatureSpec]
@@ -373,6 +403,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @anthosobservability = args[:anthosobservability] if args.key?(:anthosobservability)
           @appdevexperience = args[:appdevexperience] if args.key?(:appdevexperience)
           @cloudauditlogging = args[:cloudauditlogging] if args.key?(:cloudauditlogging)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
@@ -2091,6 +2122,32 @@ module Google
         end
       end
       
+      # Response message for the `GkeHub.ListFleetsResponse` method.
+      class ListFleetsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of matching fleets.
+        # Corresponds to the JSON property `fleets`
+        # @return [Array<Google::Apis::GkehubV1alpha::Fleet>]
+        attr_accessor :fleets
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fleets = args[:fleets] if args.key?(:fleets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -2872,75 +2929,8 @@ module Google
         end
       end
       
-      # **Policy Controller**: Configuration for a single cluster. Intended to
-      # parallel the PolicyController CR.
-      class PolicyControllerMembershipSpec
-        include Google::Apis::Core::Hashable
-      
-        # Configuration for Policy Controller
-        # Corresponds to the JSON property `policyControllerHubConfig`
-        # @return [Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubConfig]
-        attr_accessor :policy_controller_hub_config
-      
-        # Version of Policy Controller installed.
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy_controller_hub_config = args[:policy_controller_hub_config] if args.key?(:policy_controller_hub_config)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # **Policy Controller**: State for a single cluster.
-      class PolicyControllerMembershipState
-        include Google::Apis::Core::Hashable
-      
-        # The user-defined name for the cluster used by ClusterSelectors to group
-        # clusters together. This should match Membership's membership_name, unless the
-        # user installed PC on the cluster manually prior to enabling the PC hub feature.
-        # Unique within a Policy Controller installation.
-        # Corresponds to the JSON property `clusterName`
-        # @return [String]
-        attr_accessor :cluster_name
-      
-        # **Policy Controller**: Configuration for a single cluster. Intended to
-        # parallel the PolicyController CR.
-        # Corresponds to the JSON property `membershipSpec`
-        # @return [Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec]
-        attr_accessor :membership_spec
-      
-        # State of the Policy Controller.
-        # Corresponds to the JSON property `policyControllerHubState`
-        # @return [Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubState]
-        attr_accessor :policy_controller_hub_state
-      
-        # The lifecycle state Policy Controller is in.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
-          @membership_spec = args[:membership_spec] if args.key?(:membership_spec)
-          @policy_controller_hub_state = args[:policy_controller_hub_state] if args.key?(:policy_controller_hub_state)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
       # Configuration for Policy Controller
-      class PolicyControllerPolicyControllerHubConfig
+      class PolicyControllerHubConfig
         include Google::Apis::Core::Hashable
       
         # Sets the interval for Policy Controller Audit Scans (in seconds). When set to
@@ -3004,7 +2994,7 @@ module Google
       end
       
       # State of the Policy Controller.
-      class PolicyControllerPolicyControllerHubState
+      class PolicyControllerHubState
         include Google::Apis::Core::Hashable
       
         # Map from deployment name to deployment state. Example deployments are
@@ -3016,7 +3006,7 @@ module Google
       
         # The build version of Gatekeeper that Policy Controller is using.
         # Corresponds to the JSON property `version`
-        # @return [Google::Apis::GkehubV1alpha::PolicyControllerPolicyControllerHubVersion]
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerHubVersion]
         attr_accessor :version
       
         def initialize(**args)
@@ -3031,7 +3021,7 @@ module Google
       end
       
       # The build version of Gatekeeper that Policy Controller is using.
-      class PolicyControllerPolicyControllerHubVersion
+      class PolicyControllerHubVersion
         include Google::Apis::Core::Hashable
       
         # The gatekeeper image tag that is composed of ACM version, git tag, build
@@ -3047,6 +3037,73 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # **Policy Controller**: Configuration for a single cluster. Intended to
+      # parallel the PolicyController CR.
+      class PolicyControllerMembershipSpec
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Policy Controller
+        # Corresponds to the JSON property `policyControllerHubConfig`
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerHubConfig]
+        attr_accessor :policy_controller_hub_config
+      
+        # Version of Policy Controller installed.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy_controller_hub_config = args[:policy_controller_hub_config] if args.key?(:policy_controller_hub_config)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # **Policy Controller**: State for a single cluster.
+      class PolicyControllerMembershipState
+        include Google::Apis::Core::Hashable
+      
+        # The user-defined name for the cluster used by ClusterSelectors to group
+        # clusters together. This should match Membership's membership_name, unless the
+        # user installed PC on the cluster manually prior to enabling the PC hub feature.
+        # Unique within a Policy Controller installation.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # **Policy Controller**: Configuration for a single cluster. Intended to
+        # parallel the PolicyController CR.
+        # Corresponds to the JSON property `membershipSpec`
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerMembershipSpec]
+        attr_accessor :membership_spec
+      
+        # State of the Policy Controller.
+        # Corresponds to the JSON property `policyControllerHubState`
+        # @return [Google::Apis::GkehubV1alpha::PolicyControllerHubState]
+        attr_accessor :policy_controller_hub_state
+      
+        # The lifecycle state Policy Controller is in.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @membership_spec = args[:membership_spec] if args.key?(:membership_spec)
+          @policy_controller_hub_state = args[:policy_controller_hub_state] if args.key?(:policy_controller_hub_state)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
