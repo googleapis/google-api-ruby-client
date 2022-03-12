@@ -284,28 +284,28 @@ module Google
         #   individual environment variables. * `config.softwareConfig.imageVersion` *
         #   Upgrade the version of the environment in-place. Refer to `SoftwareConfig.
         #   image_version` for information on how to format the new image version.
-        #   Additionally, the new image version cannot effect a version downgrade and must
-        #   match the current image version's Composer major version and Airflow major and
-        #   minor versions. Consult the [Cloud Composer Version List](https://cloud.google.
-        #   com/composer/docs/concepts/versioning/composer-versions) for valid values. * `
-        #   config.softwareConfig.schedulerCount` * Horizontally scale the number of
-        #   schedulers in Airflow. A positive integer not greater than the number of nodes
-        #   must be provided in the `config.softwareConfig.schedulerCount` field.
-        #   Supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.
-        #   *.*. * `config.databaseConfig.machineType` * Cloud SQL machine type used by
-        #   Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-
-        #   n1-standard-8 or db-n1-standard-16. Supported for Cloud Composer environments
-        #   in versions composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.
-        #   machineType` * Machine type on which Airflow web server is running. It has to
-        #   be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-
-        #   webserver-8. Supported for Cloud Composer environments in versions composer-1.*
-        #   .*-airflow-*.*.*. * `config.maintenanceWindow` * Maintenance window during
-        #   which Cloud Composer components may be under maintenance. * `config.
-        #   workloadsConfig` * The workloads configuration settings for the GKE cluster
-        #   associated with the Cloud Composer environment. Supported for Cloud Composer
-        #   environments in versions composer-2.*.*-airflow-*.*.* and newer. * `config.
-        #   environmentSize` * The size of the Cloud Composer environment. Supported for
-        #   Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        #   Additionally, the new image version cannot effect a version downgrade, and
+        #   must match the current image version's Composer and Airflow major versions.
+        #   Consult the [Cloud Composer version list](/composer/docs/concepts/versioning/
+        #   composer-versions) for valid values. * `config.softwareConfig.schedulerCount` *
+        #   Horizontally scale the number of schedulers in Airflow. A positive integer
+        #   not greater than the number of nodes must be provided in the `config.
+        #   softwareConfig.schedulerCount` field. Supported for Cloud Composer
+        #   environments in versions composer-1.*.*-airflow-2.*.*. * `config.
+        #   databaseConfig.machineType` * Cloud SQL machine type used by Airflow database.
+        #   It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or
+        #   db-n1-standard-16. Supported for Cloud Composer environments in versions
+        #   composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.machineType` * Machine
+        #   type on which Airflow web server is running. It has to be one of: composer-n1-
+        #   webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. Supported for
+        #   Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. * `
+        #   config.maintenanceWindow` * Maintenance window during which Cloud Composer
+        #   components may be under maintenance. * `config.workloadsConfig` * The
+        #   workloads configuration settings for the GKE cluster associated with the Cloud
+        #   Composer environment. Supported for Cloud Composer environments in versions
+        #   composer-2.*.*-airflow-*.*.* and newer. * `config.environmentSize` * The size
+        #   of the Cloud Composer environment. Supported for Cloud Composer environments
+        #   in versions composer-2.*.*-airflow-*.*.* and newer.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
