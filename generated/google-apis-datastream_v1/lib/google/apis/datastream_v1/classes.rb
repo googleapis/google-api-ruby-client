@@ -1064,7 +1064,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # MySQL columns in the database. When unspecified as part of include/exclude
-        # lists, includes/excludes everything.
+        # objects, includes/excludes everything.
         # Corresponds to the JSON property `mysqlColumns`
         # @return [Array<Google::Apis::DatastreamV1::MysqlColumn>]
         attr_accessor :mysql_columns
@@ -1428,8 +1428,8 @@ module Google
       class OracleTable
         include Google::Apis::Core::Hashable
       
-        # Oracle columns in the schema. When unspecified as part of inclue/exclude lists,
-        # includes/excludes everything.
+        # Oracle columns in the schema. When unspecified as part of include/exclude
+        # objects, includes/excludes everything.
         # Corresponds to the JSON property `oracleColumns`
         # @return [Array<Google::Apis::DatastreamV1::OracleColumn>]
         attr_accessor :oracle_columns
