@@ -483,6 +483,26 @@ module Google
         end
       end
       
+      # Representation of a network edge location as per https://cloud.google.com/vpc/
+      # docs/edge-locations.
+      class EdgeLocation
+        include Google::Apis::Core::Hashable
+      
+        # Name of the metropolitan area.
+        # Corresponds to the JSON property `metropolitanArea`
+        # @return [String]
+        attr_accessor :metropolitan_area
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metropolitan_area = args[:metropolitan_area] if args.key?(:metropolitan_area)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1467,6 +1487,12 @@ module Google
         # @return [String]
         attr_accessor :abort_cause
       
+        # Representation of a network edge location as per https://cloud.google.com/vpc/
+        # docs/edge-locations.
+        # Corresponds to the JSON property `destinationEgressLocation`
+        # @return [Google::Apis::NetworkmanagementV1beta1::EdgeLocation]
+        attr_accessor :destination_egress_location
+      
         # For display only. The specification of the endpoints for the test.
         # EndpointInfo is derived from source and destination Endpoint and validated by
         # the backend data plane model.
@@ -1516,6 +1542,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @abort_cause = args[:abort_cause] if args.key?(:abort_cause)
+          @destination_egress_location = args[:destination_egress_location] if args.key?(:destination_egress_location)
           @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
           @error = args[:error] if args.key?(:error)
           @probing_latency = args[:probing_latency] if args.key?(:probing_latency)
