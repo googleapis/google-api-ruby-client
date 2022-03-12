@@ -22,6 +22,12 @@ module Google
   module Apis
     module GkehubV1beta
       
+      class AnthosObservabilityFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnthosObservabilityMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +358,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyControllerHubConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyControllerHubState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyControllerHubVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PolicyControllerMembershipSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -359,24 +383,6 @@ module Google
       end
       
       class PolicyControllerMembershipState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PolicyControllerPolicyControllerHubConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PolicyControllerPolicyControllerHubState
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PolicyControllerPolicyControllerHubVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -412,11 +418,20 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AnthosObservabilityFeatureSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_membership_spec, as: 'defaultMembershipSpec', class: Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec, decorator: Google::Apis::GkehubV1beta::AnthosObservabilityMembershipSpec::Representation
+      
+        end
+      end
+      
       class AnthosObservabilityMembershipSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :do_not_optimize_metrics, as: 'doNotOptimizeMetrics'
           property :enable_stackdriver_on_applications, as: 'enableStackdriverOnApplications'
+          property :version, as: 'version'
         end
       end
       
@@ -470,6 +485,8 @@ module Google
       class CommonFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :anthosobservability, as: 'anthosobservability', class: Google::Apis::GkehubV1beta::AnthosObservabilityFeatureSpec, decorator: Google::Apis::GkehubV1beta::AnthosObservabilityFeatureSpec::Representation
+      
           property :appdevexperience, as: 'appdevexperience', class: Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec, decorator: Google::Apis::GkehubV1beta::AppDevExperienceFeatureSpec::Representation
       
           property :multiclusteringress, as: 'multiclusteringress', class: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec, decorator: Google::Apis::GkehubV1beta::MultiClusterIngressFeatureSpec::Representation
@@ -983,28 +1000,7 @@ module Google
         end
       end
       
-      class PolicyControllerMembershipSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy_controller_hub_config, as: 'policyControllerHubConfig', class: Google::Apis::GkehubV1beta::PolicyControllerPolicyControllerHubConfig, decorator: Google::Apis::GkehubV1beta::PolicyControllerPolicyControllerHubConfig::Representation
-      
-          property :version, as: 'version'
-        end
-      end
-      
-      class PolicyControllerMembershipState
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cluster_name, as: 'clusterName'
-          property :membership_spec, as: 'membershipSpec', class: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec::Representation
-      
-          property :policy_controller_hub_state, as: 'policyControllerHubState', class: Google::Apis::GkehubV1beta::PolicyControllerPolicyControllerHubState, decorator: Google::Apis::GkehubV1beta::PolicyControllerPolicyControllerHubState::Representation
-      
-          property :state, as: 'state'
-        end
-      end
-      
-      class PolicyControllerPolicyControllerHubConfig
+      class PolicyControllerHubConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audit_interval_seconds, :numeric_string => true, as: 'auditIntervalSeconds'
@@ -1017,19 +1013,40 @@ module Google
         end
       end
       
-      class PolicyControllerPolicyControllerHubState
+      class PolicyControllerHubState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :deployment_states, as: 'deploymentStates'
-          property :version, as: 'version', class: Google::Apis::GkehubV1beta::PolicyControllerPolicyControllerHubVersion, decorator: Google::Apis::GkehubV1beta::PolicyControllerPolicyControllerHubVersion::Representation
+          property :version, as: 'version', class: Google::Apis::GkehubV1beta::PolicyControllerHubVersion, decorator: Google::Apis::GkehubV1beta::PolicyControllerHubVersion::Representation
       
         end
       end
       
-      class PolicyControllerPolicyControllerHubVersion
+      class PolicyControllerHubVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version, as: 'version'
+        end
+      end
+      
+      class PolicyControllerMembershipSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_controller_hub_config, as: 'policyControllerHubConfig', class: Google::Apis::GkehubV1beta::PolicyControllerHubConfig, decorator: Google::Apis::GkehubV1beta::PolicyControllerHubConfig::Representation
+      
+          property :version, as: 'version'
+        end
+      end
+      
+      class PolicyControllerMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_name, as: 'clusterName'
+          property :membership_spec, as: 'membershipSpec', class: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec, decorator: Google::Apis::GkehubV1beta::PolicyControllerMembershipSpec::Representation
+      
+          property :policy_controller_hub_state, as: 'policyControllerHubState', class: Google::Apis::GkehubV1beta::PolicyControllerHubState, decorator: Google::Apis::GkehubV1beta::PolicyControllerHubState::Representation
+      
+          property :state, as: 'state'
         end
       end
       
