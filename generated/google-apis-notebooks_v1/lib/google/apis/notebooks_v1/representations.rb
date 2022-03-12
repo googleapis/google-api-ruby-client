@@ -881,6 +881,7 @@ module Google
       class ResetRuntimeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
         end
       end
       
@@ -1040,6 +1041,7 @@ module Google
       class StartRuntimeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
         end
       end
       
@@ -1061,6 +1063,7 @@ module Google
       class StopRuntimeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
         end
       end
       
@@ -1070,6 +1073,7 @@ module Google
           property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::NotebooksV1::RuntimeAcceleratorConfig, decorator: Google::Apis::NotebooksV1::RuntimeAcceleratorConfig::Representation
       
           property :machine_type, as: 'machineType'
+          property :request_id, as: 'requestId'
         end
       end
       
