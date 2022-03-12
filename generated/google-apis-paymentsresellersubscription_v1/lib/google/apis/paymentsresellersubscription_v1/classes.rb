@@ -502,15 +502,15 @@ module Google
         # @return [String]
         attr_accessor :processing_state
       
-        # Required. Resource name that identifies one or more subscription products. The
+        # Required. Required. Resource name that identifies the purchased products. The
         # format will be 'partners/`partner_id`/products/`product_id`'.
         # Corresponds to the JSON property `products`
         # @return [Array<String>]
         attr_accessor :products
       
-        # Optional. Resource name that identifies one or more promotions that can be
-        # applied on the product. A typical promotion for a subscription is Free trial.
-        # The format will be 'partners/`partner_id`/promotions/`promotion_id`'.
+        # Optional. Optional. Resource name that identifies one or more promotions that
+        # can be applied on the product. A typical promotion for a subscription is Free
+        # trial. The format will be 'partners/`partner_id`/promotions/`promotion_id`'.
         # Corresponds to the JSON property `promotions`
         # @return [Array<String>]
         attr_accessor :promotions
