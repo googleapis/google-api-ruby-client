@@ -541,9 +541,8 @@ module Google
         attr_accessor :audience
       
         # [Service account email](https://cloud.google.com/iam/docs/service-accounts) to
-        # be used for generating the OIDC token. The caller (for CreateSubscription,
-        # UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.
-        # serviceAccounts.actAs permission for the service account.
+        # be used for generating the OIDC token. See [Setting up push authentication](/
+        # pubsub/docs/push#setting_up_for_push_authentication) for more details.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
@@ -945,6 +944,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The timestamp that the revision was created.
+        # Corresponds to the JSON property `revisionCreateTime`
+        # @return [String]
+        attr_accessor :revision_create_time
+      
+        # Output only. Immutable. The revision ID of the schema.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
         # The type of the schema definition.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -958,6 +967,8 @@ module Google
         def update!(**args)
           @definition = args[:definition] if args.key?(:definition)
           @name = args[:name] if args.key?(:name)
+          @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
           @type = args[:type] if args.key?(:type)
         end
       end

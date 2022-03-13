@@ -516,6 +516,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :definition, as: 'definition'
           property :name, as: 'name'
+          property :revision_create_time, as: 'revisionCreateTime'
+          property :revision_id, as: 'revisionId'
           property :type, as: 'type'
         end
       end
