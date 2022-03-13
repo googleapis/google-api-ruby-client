@@ -22,12 +22,6 @@ module Google
   module Apis
     module BaremetalsolutionV2
       
-      class AllowedClient
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,12 +77,6 @@ module Google
       end
       
       class ListNetworksResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListNfsSharesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,12 +149,6 @@ module Google
       end
       
       class NfsExport
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class NfsShare
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,19 +262,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AllowedClient
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allow_dev, as: 'allowDev'
-          property :allow_suid, as: 'allowSuid'
-          property :allowed_clients_cidr, as: 'allowedClientsCidr'
-          property :mount_permissions, as: 'mountPermissions'
-          property :network, as: 'network'
-          property :no_root_squash, as: 'noRootSquash'
-          property :share_ip, as: 'shareIp'
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -395,16 +364,6 @@ module Google
           collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::Network, decorator: Google::Apis::BaremetalsolutionV2::Network::Representation
       
           property :next_page_token, as: 'nextPageToken'
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
-      class ListNfsSharesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :nfs_shares, as: 'nfsShares', class: Google::Apis::BaremetalsolutionV2::NfsShare, decorator: Google::Apis::BaremetalsolutionV2::NfsShare::Representation
-      
           collection :unreachable, as: 'unreachable'
         end
       end
@@ -514,6 +473,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bandwidth, as: 'bandwidth'
           property :cidr, as: 'cidr'
+          property :gcp_service, as: 'gcpService'
           property :id, as: 'id'
           property :name, as: 'name'
           property :service_cidr, as: 'serviceCidr'
@@ -521,6 +481,7 @@ module Google
           property :user_note, as: 'userNote'
           collection :vlan_attachments, as: 'vlanAttachments', class: Google::Apis::BaremetalsolutionV2::IntakeVlanAttachment, decorator: Google::Apis::BaremetalsolutionV2::IntakeVlanAttachment::Representation
       
+          property :vlan_same_project, as: 'vlanSameProject'
         end
       end
       
@@ -546,19 +507,6 @@ module Google
         end
       end
       
-      class NfsShare
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allowed_clients, as: 'allowedClients', class: Google::Apis::BaremetalsolutionV2::AllowedClient, decorator: Google::Apis::BaremetalsolutionV2::AllowedClient::Representation
-      
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :nfs_share_id, as: 'nfsShareId'
-          property :state, as: 'state'
-          property :volume, as: 'volume'
-        end
-      end
-      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -574,13 +522,18 @@ module Google
       class ProvisioningConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_console_uri, as: 'cloudConsoleUri'
+          property :email, as: 'email'
           property :handover_service_account, as: 'handoverServiceAccount'
           collection :instances, as: 'instances', class: Google::Apis::BaremetalsolutionV2::InstanceConfig, decorator: Google::Apis::BaremetalsolutionV2::InstanceConfig::Representation
       
+          property :location, as: 'location'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::NetworkConfig, decorator: Google::Apis::BaremetalsolutionV2::NetworkConfig::Representation
       
+          property :state, as: 'state'
           property :ticket_id, as: 'ticketId'
+          property :update_time, as: 'updateTime'
           collection :volumes, as: 'volumes', class: Google::Apis::BaremetalsolutionV2::VolumeConfig, decorator: Google::Apis::BaremetalsolutionV2::VolumeConfig::Representation
       
         end
@@ -631,6 +584,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reserved_space_gib, :numeric_string => true, as: 'reservedSpaceGib'
+          property :reserved_space_percent, as: 'reservedSpacePercent'
           property :reserved_space_remaining_gib, :numeric_string => true, as: 'reservedSpaceRemainingGib'
           property :reserved_space_used_percent, as: 'reservedSpaceUsedPercent'
         end
@@ -713,6 +667,7 @@ module Google
           property :remaining_space_gib, :numeric_string => true, as: 'remainingSpaceGib'
           property :requested_size_gib, :numeric_string => true, as: 'requestedSizeGib'
           property :snapshot_auto_delete_behavior, as: 'snapshotAutoDeleteBehavior'
+          property :snapshot_enabled, as: 'snapshotEnabled'
           property :snapshot_reservation_detail, as: 'snapshotReservationDetail', class: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail, decorator: Google::Apis::BaremetalsolutionV2::SnapshotReservationDetail::Representation
       
           property :snapshot_schedule_policy, as: 'snapshotSchedulePolicy'
@@ -724,6 +679,7 @@ module Google
       class VolumeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_service, as: 'gcpService'
           property :id, as: 'id'
           collection :lun_ranges, as: 'lunRanges', class: Google::Apis::BaremetalsolutionV2::LunRange, decorator: Google::Apis::BaremetalsolutionV2::LunRange::Representation
       
