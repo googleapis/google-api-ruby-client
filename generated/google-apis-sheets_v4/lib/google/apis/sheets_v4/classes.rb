@@ -528,16 +528,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -620,16 +620,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -1374,16 +1374,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -1513,9 +1513,10 @@ module Google
       class BatchClearValuesByDataFilterResponse
         include Google::Apis::Core::Hashable
       
-        # The ranges that were cleared, in A1 notation. If the requests are for an
-        # unbounded range or a ranger larger than the bounds of the sheet, this is the
-        # actual ranges that were cleared, bounded to the sheet's limits.
+        # The ranges that were cleared, in [A1 notation](/sheets/api/guides/concepts#
+        # cell). If the requests are for an unbounded range or a ranger larger than the
+        # bounds of the sheet, this is the actual ranges that were cleared, bounded to
+        # the sheet's limits.
         # Corresponds to the JSON property `clearedRanges`
         # @return [Array<String>]
         attr_accessor :cleared_ranges
@@ -1540,7 +1541,8 @@ module Google
       class BatchClearValuesRequest
         include Google::Apis::Core::Hashable
       
-        # The ranges to clear, in A1 or R1C1 notation.
+        # The ranges to clear, in [A1 notation or R1C1 notation](/sheets/api/guides/
+        # concepts#cell).
         # Corresponds to the JSON property `ranges`
         # @return [Array<String>]
         attr_accessor :ranges
@@ -3417,16 +3419,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `destination`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :destination
@@ -3444,16 +3446,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
@@ -3560,16 +3562,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
@@ -3656,16 +3658,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `gridRange`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :grid_range
@@ -3991,16 +3993,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -4587,16 +4589,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -4714,16 +4716,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -5613,16 +5615,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -5691,16 +5693,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -5991,16 +5993,16 @@ module Google
       # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
       # the start index is inclusive and the end index is exclusive -- [start_index,
       # end_index). Missing indexes indicate the range is unbounded on that side. For
-      # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-      # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-      # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-      # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-      # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-      # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-      # sheet_id:0` The start index must always be less than or equal to the end index.
-      # If the start index equals the end index, then the range is empty. Empty
-      # ranges are typically not meaningful and are usually rendered in the UI as `#
-      # REF!`.
+      # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+      # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+      # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+      # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+      # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+      # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+      # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+      # equal to the end index. If the start index equals the end index, then the
+      # range is empty. Empty ranges are typically not meaningful and are usually
+      # rendered in the UI as `#REF!`.
       class GridRange
         include Google::Apis::Core::Hashable
       
@@ -6268,16 +6270,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -6640,16 +6642,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -6717,16 +6719,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -7472,16 +7474,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
@@ -7626,16 +7628,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -7689,16 +7691,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -7839,16 +7841,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -8642,16 +8644,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -9002,16 +9004,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `dataRange`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :data_range
@@ -9063,16 +9065,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -9256,16 +9258,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
@@ -9643,16 +9645,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
@@ -10131,16 +10133,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -10181,16 +10183,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -10264,16 +10266,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -10318,16 +10320,16 @@ module Google
         # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
         # the start index is inclusive and the end index is exclusive -- [start_index,
         # end_index). Missing indexes indicate the range is unbounded on that side. For
-        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
-        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
-        # sheet_id:0` The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty. Empty
-        # ranges are typically not meaningful and are usually rendered in the UI as `#
-        # REF!`.
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -10934,7 +10936,8 @@ module Google
         # @return [Google::Apis::SheetsV4::ValueRange]
         attr_accessor :updated_data
       
-        # The range (in A1 notation) that updates were applied to.
+        # The range (in [A1 notation](/sheets/api/guides/concepts#cell)) that updates
+        # were applied to.
         # Corresponds to the JSON property `updatedRange`
         # @return [String]
         attr_accessor :updated_range
@@ -11023,10 +11026,11 @@ module Google
         # @return [String]
         attr_accessor :major_dimension
       
-        # The range the values cover, in A1 notation. For output, this range indicates
-        # the entire requested range, even though the values will exclude trailing rows
-        # and columns. When appending values, this field represents the range to search
-        # for a table, after which values will be appended.
+        # The range the values cover, in [A1 notation](/sheets/api/guides/concepts#cell).
+        # For output, this range indicates the entire requested range, even though the
+        # values will exclude trailing rows and columns. When appending values, this
+        # field represents the range to search for a table, after which values will be
+        # appended.
         # Corresponds to the JSON property `range`
         # @return [String]
         attr_accessor :range
