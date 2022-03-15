@@ -3282,6 +3282,11 @@ module Google
         # @return [String]
         attr_accessor :environment
       
+        # Output only. ID of the environment group.
+        # Corresponds to the JSON property `environmentGroupId`
+        # @return [String]
+        attr_accessor :environment_group_id
+      
         # ID of the environment group attachment.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3295,6 +3300,7 @@ module Google
         def update!(**args)
           @created_at = args[:created_at] if args.key?(:created_at)
           @environment = args[:environment] if args.key?(:environment)
+          @environment_group_id = args[:environment_group_id] if args.key?(:environment_group_id)
           @name = args[:name] if args.key?(:name)
         end
       end

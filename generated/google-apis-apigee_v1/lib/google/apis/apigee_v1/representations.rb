@@ -2045,6 +2045,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :environment, as: 'environment'
+          property :environment_group_id, as: 'environmentGroupId'
           property :name, as: 'name'
         end
       end
