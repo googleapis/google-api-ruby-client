@@ -140,6 +140,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fraction, as: 'fraction'
+          property :fraction_group, :numeric_string => true, as: 'fractionGroup'
           property :name, as: 'name'
           property :serving, as: 'serving', class: Google::Apis::VersionhistoryV1::Interval, decorator: Google::Apis::VersionhistoryV1::Interval::Representation
       
