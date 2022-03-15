@@ -68,6 +68,11 @@ module Google
         # @return [String]
         attr_accessor :dest_dataset_type
       
+        # The destination dataset split type.
+        # Corresponds to the JSON property `destSplitType`
+        # @return [String]
+        attr_accessor :dest_split_type
+      
         # The list of response details of each document.
         # Corresponds to the JSON property `individualBatchMoveStatuses`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus>]
@@ -81,6 +86,7 @@ module Google
         def update!(**args)
           @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
           @dest_dataset_type = args[:dest_dataset_type] if args.key?(:dest_dataset_type)
+          @dest_split_type = args[:dest_split_type] if args.key?(:dest_split_type)
           @individual_batch_move_statuses = args[:individual_batch_move_statuses] if args.key?(:individual_batch_move_statuses)
         end
       end
