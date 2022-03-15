@@ -1906,7 +1906,7 @@ module Google
         # Updates a measurement protocol secret.
         # @param [String] name
         #   Output only. Resource name of this secret. This secret may be a child of any
-        #   type of stream. Format: properties/`property`/webDataStreams/`webDataStream`/
+        #   type of stream. Format: properties/`property`/dataStreams/`dataStream`/
         #   measurementProtocolSecrets/`measurementProtocolSecret`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret] google_analytics_admin_v1alpha_measurement_protocol_secret_object
         # @param [String] update_mask
