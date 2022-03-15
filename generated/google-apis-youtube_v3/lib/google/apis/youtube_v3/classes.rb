@@ -4059,6 +4059,43 @@ module Google
       end
       
       # 
+      class LiveChatGiftMembershipReceivedDetails
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the membership gifting message that is related to this gift
+        # membership. This ID will always refer to a message whose type is '
+        # membershipGiftingEvent'.
+        # Corresponds to the JSON property `associatedMembershipGiftingMessageId`
+        # @return [String]
+        attr_accessor :associated_membership_gifting_message_id
+      
+        # The ID of the user that made the membership gifting purchase. This matches the
+        # `snippet.authorChannelId` of the associated membership gifting message.
+        # Corresponds to the JSON property `gifterChannelId`
+        # @return [String]
+        attr_accessor :gifter_channel_id
+      
+        # The name of the Level at which the viewer is a member. This matches the `
+        # snippet.membershipGiftingDetails.giftMembershipsLevelName` of the associated
+        # membership gifting message. The Level names are defined by the YouTube channel
+        # offering the Membership. In some situations this field isn't filled.
+        # Corresponds to the JSON property `memberLevelName`
+        # @return [String]
+        attr_accessor :member_level_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_membership_gifting_message_id = args[:associated_membership_gifting_message_id] if args.key?(:associated_membership_gifting_message_id)
+          @gifter_channel_id = args[:gifter_channel_id] if args.key?(:gifter_channel_id)
+          @member_level_name = args[:member_level_name] if args.key?(:member_level_name)
+        end
+      end
+      
+      # 
       class LiveChatMemberMilestoneChatDetails
         include Google::Apis::Core::Hashable
       
@@ -4094,6 +4131,33 @@ module Google
         end
       end
       
+      # 
+      class LiveChatMembershipGiftingDetails
+        include Google::Apis::Core::Hashable
+      
+        # The number of gift memberships purchased by the user.
+        # Corresponds to the JSON property `giftMembershipsCount`
+        # @return [Fixnum]
+        attr_accessor :gift_memberships_count
+      
+        # The name of the level of the gift memberships purchased by the user. The Level
+        # names are defined by the YouTube channel offering the Membership. In some
+        # situations this field isn't filled.
+        # Corresponds to the JSON property `giftMembershipsLevelName`
+        # @return [String]
+        attr_accessor :gift_memberships_level_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gift_memberships_count = args[:gift_memberships_count] if args.key?(:gift_memberships_count)
+          @gift_memberships_level_name = args[:gift_memberships_level_name] if args.key?(:gift_memberships_level_name)
+        end
+      end
+      
       # A *liveChatMessage* resource represents a chat message in a YouTube Live Chat.
       class LiveChatMessage
         include Google::Apis::Core::Hashable
@@ -4120,7 +4184,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Next ID: 31
+        # Next ID: 33
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageSnippet]
         attr_accessor :snippet
@@ -4317,7 +4381,7 @@ module Google
         end
       end
       
-      # Next ID: 31
+      # Next ID: 33
       class LiveChatMessageSnippet
         include Google::Apis::Core::Hashable
       
@@ -4325,6 +4389,8 @@ module Google
         # textMessageEvent - the user that wrote the message fanFundingEvent - the user
         # that funded the broadcast newSponsorEvent - the user that just became a
         # sponsor memberMilestoneChatEvent - the member that sent the message
+        # membershipGiftingEvent - the user that made the purchase
+        # giftMembershipReceivedEvent - the user that received the gift membership
         # messageDeletedEvent - the moderator that took the action messageRetractedEvent
         # - the author that retracted their message userBannedEvent - the moderator that
         # took the action superChatEvent - the user that made the purchase
@@ -4346,6 +4412,12 @@ module Google
         # @return [Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails]
         attr_accessor :fan_funding_event_details
       
+        # Details about the Gift Membership Received event, this is only set if the type
+        # is 'giftMembershipReceivedEvent'.
+        # Corresponds to the JSON property `giftMembershipReceivedDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatGiftMembershipReceivedDetails]
+        attr_accessor :gift_membership_received_details
+      
         # Whether the message has display content that should be displayed to users.
         # Corresponds to the JSON property `hasDisplayContent`
         # @return [Boolean]
@@ -4362,6 +4434,12 @@ module Google
         # Corresponds to the JSON property `memberMilestoneChatDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatMemberMilestoneChatDetails]
         attr_accessor :member_milestone_chat_details
+      
+        # Details about the Membership Gifting event, this is only set if the type is '
+        # membershipGiftingEvent'.
+        # Corresponds to the JSON property `membershipGiftingDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatMembershipGiftingDetails]
+        attr_accessor :membership_gifting_details
       
         # 
         # Corresponds to the JSON property `messageDeletedDetails`
@@ -4422,9 +4500,11 @@ module Google
           @author_channel_id = args[:author_channel_id] if args.key?(:author_channel_id)
           @display_message = args[:display_message] if args.key?(:display_message)
           @fan_funding_event_details = args[:fan_funding_event_details] if args.key?(:fan_funding_event_details)
+          @gift_membership_received_details = args[:gift_membership_received_details] if args.key?(:gift_membership_received_details)
           @has_display_content = args[:has_display_content] if args.key?(:has_display_content)
           @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
           @member_milestone_chat_details = args[:member_milestone_chat_details] if args.key?(:member_milestone_chat_details)
+          @membership_gifting_details = args[:membership_gifting_details] if args.key?(:membership_gifting_details)
           @message_deleted_details = args[:message_deleted_details] if args.key?(:message_deleted_details)
           @message_retracted_details = args[:message_retracted_details] if args.key?(:message_retracted_details)
           @new_sponsor_details = args[:new_sponsor_details] if args.key?(:new_sponsor_details)
