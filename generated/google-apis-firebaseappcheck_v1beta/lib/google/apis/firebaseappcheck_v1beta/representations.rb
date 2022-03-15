@@ -22,13 +22,13 @@ module Google
   module Apis
     module FirebaseappcheckV1beta
       
-      class GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse
+      class GoogleFirebaseAppcheckV1betaAppAttestConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirebaseAppcheckV1betaAppAttestConfig
+      class GoogleFirebaseAppcheckV1betaAppCheckToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +155,12 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,19 +226,20 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :challenge, :base64 => true, as: 'challenge'
-          property :ttl, as: 'ttl'
-        end
-      end
-      
       class GoogleFirebaseAppcheckV1betaAppAttestConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaAppCheckToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_token, as: 'attestationToken'
+          property :token, as: 'token'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -336,6 +349,8 @@ module Google
       class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_check_token, as: 'appCheckToken', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppCheckToken, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppCheckToken::Representation
+      
           property :artifact, :base64 => true, as: 'artifact'
           property :attestation_token, as: 'attestationToken', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAttestationTokenResponse, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAttestationTokenResponse::Representation
       
@@ -377,6 +392,13 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recaptcha_v3_token, as: 'recaptchaV3Token'
+        end
+      end
+      
       class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -387,6 +409,14 @@ module Google
       class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :challenge, :base64 => true, as: 'challenge'
+          property :ttl, as: 'ttl'
         end
       end
       
