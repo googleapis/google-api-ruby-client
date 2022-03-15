@@ -21,8 +21,8 @@ module Google
   module Apis
     # Google Keep API
     #
-    # This API is an enterprise-only API used to create and manage the Keep notes
-    # within your domain, including resolving issues identified by CASB software.
+    # The Google Keep API is used in an enterprise environment to manage Google Keep
+    # content and resolve issues identified by cloud security software.
     #
     # @see https://developers.google.com/keep/api
     module KeepV1
