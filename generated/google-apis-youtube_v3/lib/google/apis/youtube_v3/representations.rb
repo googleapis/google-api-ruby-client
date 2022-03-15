@@ -496,7 +496,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LiveChatGiftMembershipReceivedDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiveChatMemberMilestoneChatDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatMembershipGiftingDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2154,12 +2166,29 @@ module Google
         end
       end
       
+      class LiveChatGiftMembershipReceivedDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :associated_membership_gifting_message_id, as: 'associatedMembershipGiftingMessageId'
+          property :gifter_channel_id, as: 'gifterChannelId'
+          property :member_level_name, as: 'memberLevelName'
+        end
+      end
+      
       class LiveChatMemberMilestoneChatDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :member_level_name, as: 'memberLevelName'
           property :member_month, as: 'memberMonth'
           property :user_comment, as: 'userComment'
+        end
+      end
+      
+      class LiveChatMembershipGiftingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gift_memberships_count, as: 'giftMembershipsCount'
+          property :gift_memberships_level_name, as: 'giftMembershipsLevelName'
         end
       end
       
@@ -2231,9 +2260,13 @@ module Google
           property :display_message, as: 'displayMessage'
           property :fan_funding_event_details, as: 'fanFundingEventDetails', class: Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails, decorator: Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails::Representation
       
+          property :gift_membership_received_details, as: 'giftMembershipReceivedDetails', class: Google::Apis::YoutubeV3::LiveChatGiftMembershipReceivedDetails, decorator: Google::Apis::YoutubeV3::LiveChatGiftMembershipReceivedDetails::Representation
+      
           property :has_display_content, as: 'hasDisplayContent'
           property :live_chat_id, as: 'liveChatId'
           property :member_milestone_chat_details, as: 'memberMilestoneChatDetails', class: Google::Apis::YoutubeV3::LiveChatMemberMilestoneChatDetails, decorator: Google::Apis::YoutubeV3::LiveChatMemberMilestoneChatDetails::Representation
+      
+          property :membership_gifting_details, as: 'membershipGiftingDetails', class: Google::Apis::YoutubeV3::LiveChatMembershipGiftingDetails, decorator: Google::Apis::YoutubeV3::LiveChatMembershipGiftingDetails::Representation
       
           property :message_deleted_details, as: 'messageDeletedDetails', class: Google::Apis::YoutubeV3::LiveChatMessageDeletedDetails, decorator: Google::Apis::YoutubeV3::LiveChatMessageDeletedDetails::Representation
       
