@@ -22,34 +22,6 @@ module Google
   module Apis
     module FirebaseappcheckV1beta
       
-      # Response message for the GenerateAppAttestChallenge method.
-      class GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse
-        include Google::Apis::Core::Hashable
-      
-        # A one-time use challenge for the client to pass to the App Attest API.
-        # Corresponds to the JSON property `challenge`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :challenge
-      
-        # The duration from the time this challenge is minted until its expiration. This
-        # field is intended to ease client-side token management, since the client may
-        # have clock skew, but is still able to accurately measure a duration.
-        # Corresponds to the JSON property `ttl`
-        # @return [String]
-        attr_accessor :ttl
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @challenge = args[:challenge] if args.key?(:challenge)
-          @ttl = args[:ttl] if args.key?(:ttl)
-        end
-      end
-      
       # An app's App Attest configuration object. This configuration controls certain
       # properties of the App Check token returned by ExchangeAppAttestAttestation and
       # ExchangeAppAttestAssertion, such as its ttl. Note that the Team ID registered
@@ -81,6 +53,44 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
+        end
+      end
+      
+      # Encapsulates an *App Check token*, which are used to access Firebase services
+      # protected by App Check.
+      class GoogleFirebaseAppcheckV1betaAppCheckToken
+        include Google::Apis::Core::Hashable
+      
+        # An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/
+        # html/rfc7519) containing claims that identify the attested app and Firebase
+        # project. This token is used to access Firebase services protected by App Check.
+        # Corresponds to the JSON property `attestationToken`
+        # @return [String]
+        attr_accessor :attestation_token
+      
+        # An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/
+        # html/rfc7519) containing claims that identify the attested app and Firebase
+        # project. This token is used to access Firebase services protected by App Check.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # The duration from the time this token is minted until its expiration. This
+        # field is intended to ease client-side token management, since the client may
+        # have clock skew, but is still able to accurately measure a duration.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_token = args[:attestation_token] if args.key?(:attestation_token)
+          @token = args[:token] if args.key?(:token)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -432,6 +442,12 @@ module Google
       class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse
         include Google::Apis::Core::Hashable
       
+        # Encapsulates an *App Check token*, which are used to access Firebase services
+        # protected by App Check.
+        # Corresponds to the JSON property `appCheckToken`
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAppCheckToken]
+        attr_accessor :app_check_token
+      
         # An artifact that can be used in future calls to ExchangeAppAttestAssertion.
         # Corresponds to the JSON property `artifact`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -450,6 +466,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_check_token = args[:app_check_token] if args.key?(:app_check_token)
           @artifact = args[:artifact] if args.key?(:artifact)
           @attestation_token = args[:attestation_token] if args.key?(:attestation_token)
         end
@@ -557,6 +574,26 @@ module Google
         end
       end
       
+      # Request message for the ExchangeRecaptchaV3Token method.
+      class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The reCAPTCHA token as returned by the [reCAPTCHA v3 JavaScript API](
+        # https://developers.google.com/recaptcha/docs/v3).
+        # Corresponds to the JSON property `recaptchaV3Token`
+        # @return [String]
+        attr_accessor :recaptcha_v3_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recaptcha_v3_token = args[:recaptcha_v3_token] if args.key?(:recaptcha_v3_token)
+        end
+      end
+      
       # Request message for the ExchangeSafetyNetToken method.
       class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest
         include Google::Apis::Core::Hashable
@@ -587,6 +624,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Response message for the GenerateAppAttestChallenge method.
+      class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse
+        include Google::Apis::Core::Hashable
+      
+        # A one-time use challenge for the client to pass to the App Attest API.
+        # Corresponds to the JSON property `challenge`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :challenge
+      
+        # The duration from the time this challenge is minted until its expiration. This
+        # field is intended to ease client-side token management, since the client may
+        # have clock skew, but is still able to accurately measure a duration.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @challenge = args[:challenge] if args.key?(:challenge)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
