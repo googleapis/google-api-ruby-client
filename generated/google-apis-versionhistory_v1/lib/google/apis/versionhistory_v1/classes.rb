@@ -225,6 +225,13 @@ module Google
         # @return [Float]
         attr_accessor :fraction
       
+        # Rollout fraction group. Only fractions with the same fraction_group are
+        # statistically comparable: there may be non-fractional differences between
+        # different fraction groups.
+        # Corresponds to the JSON property `fractionGroup`
+        # @return [Fixnum]
+        attr_accessor :fraction_group
+      
         # Release name. Format is "`product`/platforms/`platform`/channels/`channel`/
         # versions/`version`/releases/`release`"
         # Corresponds to the JSON property `name`
@@ -251,6 +258,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fraction = args[:fraction] if args.key?(:fraction)
+          @fraction_group = args[:fraction_group] if args.key?(:fraction_group)
           @name = args[:name] if args.key?(:name)
           @serving = args[:serving] if args.key?(:serving)
           @version = args[:version] if args.key?(:version)
