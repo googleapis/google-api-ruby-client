@@ -598,11 +598,7 @@ module Google
         # all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning
         # substring matching, for strings. The supported value types are: * string
         # literals in quotes. * integer literals without quotes. * boolean literals `
-        # true` and `false` without quotes. Please see the proto documentation in the
-        # finding (https://source.corp.google.com/piper///depot/google3/google/cloud/
-        # securitycenter/v1/finding.proto) and in the ListFindingsRequest for valid
-        # filter syntax. (https://source.corp.google.com/piper///depot/google3/google/
-        # cloud/securitycenter/v1/securitycenter_service.proto).
+        # true` and `false` without quotes.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
