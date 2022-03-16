@@ -1382,6 +1382,14 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRule]
         attr_accessor :rule
       
+        # Required. Specifies the use case for the control. Affects what condition
+        # fields can be set. Only settable by search controls. Will default to
+        # SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one
+        # search_solution_use_case per control.
+        # Corresponds to the JSON property `searchSolutionUseCase`
+        # @return [Array<String>]
+        attr_accessor :search_solution_use_case
+      
         # Required. Immutable. The solution types that the serving config is used for.
         # Currently we support setting only one type of solution at creation time. Only `
         # SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is
@@ -1401,6 +1409,7 @@ module Google
           @facet_spec = args[:facet_spec] if args.key?(:facet_spec)
           @name = args[:name] if args.key?(:name)
           @rule = args[:rule] if args.key?(:rule)
+          @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
         end
       end
@@ -1668,7 +1677,10 @@ module Google
         end
       end
       
-      # Product thumbnail/detail image.
+      # Product image. Recommendations AI and Retail Search do not use product images
+      # to improve prediction and search results. However, product images can be
+      # returned in results, and are shown in prediction or search previews in the
+      # console.
       class GoogleCloudRetailV2alphaImage
         include Google::Apis::Core::Hashable
       
@@ -2133,10 +2145,10 @@ module Google
         # key must be a UTF-8 encoded string with a length limit of 32 characters. * The
         # key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or
         # KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or
-        # number). * The max number of values per attribute is 10. * For text values,
-        # the length limit is 256 UTF-8 characters. * The attribute does not support
-        # search. The `searchable` field should be unset or set to false. * The max
-        # summed total bytes of custom attribute keys and values per product is 5MiB.
+        # number). * Only 1 value is allowed for each attribute. * For text values, the
+        # length limit is 256 UTF-8 characters. * The attribute does not support search.
+        # The `searchable` field should be unset or set to false. * The max summed total
+        # bytes of custom attribute keys and values per product is 5MiB.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute>]
         attr_accessor :attributes
@@ -2260,9 +2272,11 @@ module Google
         # do not have a stockState value of OUT_OF_STOCK. Examples: * tag=("Red" OR "
         # Blue") tag="New-Arrival" tag=(NOT "promotional") * filterOutOfStockItems tag=(-
         # "promotional") * filterOutOfStockItems If your filter blocks all prediction
-        # results, nothing will be returned. If you want generic (unfiltered) popular
-        # products to be returned instead, set `strictFiltering` to false in `
-        # PredictRequest.params`.
+        # results, the API will return generic (unfiltered) popular products. If you
+        # only want results strictly matching the filters, set `strictFiltering` to True
+        # in `PredictRequest.params` to receive empty results instead. Note that the API
+        # will never return items with storageStatus of "EXPIRED" or "DELETED"
+        # regardless of filter choices.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2669,7 +2683,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Product images for the product.Highly recommended to put the main image to the
+        # Product images for the product. We highly recommend putting the main image
         # first. A maximum of 300 images are allowed. Corresponding properties: Google
         # Merchant Center property [image_link](https://support.google.com/merchants/
         # answer/6324350). Schema.org property [Product.image](https://schema.org/image).
@@ -3090,6 +3104,115 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata related to the progress of the PurgeProducts operation. This will be
+      # returned by the google.longrunning.Operation.metadata field.
+      class GoogleCloudRetailV2alphaPurgeProductsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Operation create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Count of entries that encountered errors while processing.
+        # Corresponds to the JSON property `failureCount`
+        # @return [Fixnum]
+        attr_accessor :failure_count
+      
+        # Count of entries that were deleted successfully.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for PurgeProducts method.
+      class GoogleCloudRetailV2alphaPurgeProductsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The filter string to specify the products to be deleted with a
+        # length limit of 5,000 characters. Empty string filter is not allowed. "*"
+        # implies delete all items in a branch. The eligible fields for filtering are: *
+        # `availability`: Double quoted Product.availability string. * `create_time` :
+        # in ISO 8601 "zulu" format. Supported syntax: * Comparators (">", "<", ">=", "<=
+        # ", "="). Examples: * create_time <= "2015-02-13T17:05:46Z" * availability = "
+        # IN_STOCK” * Conjunctions ("AND") Examples: * create_time <= "2015-02-13T17:05:
+        # 46Z" AND availability = "PREORDER" * Disjunctions ("OR") Examples: *
+        # create_time <= "2015-02-13T17:05:46Z" OR availability = "IN_STOCK" * Can
+        # support nested queries. Examples: * (create_time <= "2015-02-13T17:05:46Z" AND
+        # availability = "PREORDER") OR (create_time >= "2015-02-14T13:03:32Z" AND
+        # availability = "IN_STOCK") * Filter Limits: * Filter should not contain more
+        # than 6 conditions. * Max nesting depth should not exceed 2 levels. Examples
+        # queries: * Delete back order products created before a timestamp. create_time <
+        # = "2015-02-13T17:05:46Z" OR availability = "BACKORDER”
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Actually perform the purge. If `force` is set to false, the method will return
+        # the expected purge count without deleting any products.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @force = args[:force] if args.key?(:force)
+        end
+      end
+      
+      # Response of the PurgeProductsRequest. If the long running operation is
+      # successfully done, then this message is returned by the google.longrunning.
+      # Operations.response field.
+      class GoogleCloudRetailV2alphaPurgeProductsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total count of products purged as a result of the operation.
+        # Corresponds to the JSON property `purgeCount`
+        # @return [Fixnum]
+        attr_accessor :purge_count
+      
+        # A sample of the product names that will be deleted. Only populated if `force`
+        # is set to false. A max of 100 names will be returned and the names are chosen
+        # at random.
+        # Corresponds to the JSON property `purgeSample`
+        # @return [Array<String>]
+        attr_accessor :purge_sample
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @purge_count = args[:purge_count] if args.key?(:purge_count)
+          @purge_sample = args[:purge_sample] if args.key?(:purge_sample)
         end
       end
       
@@ -3804,12 +3927,13 @@ module Google
         # @return [String]
         attr_accessor :branch
       
-        # The filter applied to every search request when quality improvement such as
-        # query expansion is needed. For example, if a query does not have enough
-        # results, an expanded query with SearchRequest.canonical_filter will be
-        # returned as a supplement of the original query. This field is strongly
-        # recommended to achieve high search quality. See SearchRequest.filter for more
-        # details about filter syntax.
+        # The default filter that is applied when a user performs a search without
+        # checking any filters on the search page. The filter applied to every search
+        # request when quality improvement such as query expansion is needed. For
+        # example, if a query does not have enough results, an expanded query with
+        # SearchRequest.canonical_filter will be returned as a supplement of the
+        # original query. This field is strongly recommended to achieve high search
+        # quality. See SearchRequest.filter for more details about filter syntax.
         # Corresponds to the JSON property `canonicalFilter`
         # @return [String]
         attr_accessor :canonical_filter
@@ -4808,15 +4932,21 @@ module Google
       class GoogleCloudRetailV2alphaUserEvent
         include Google::Apis::Core::Hashable
       
-        # Extra user event features to include in the recommendation model. This field
-        # needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is
-        # returned: * The key must be a UTF-8 encoded string with a length limit of 5,
-        # 000 characters. * For text attributes, at most 400 values are allowed. Empty
-        # values are not allowed. Each value must be a UTF-8 encoded string with a
-        # length limit of 256 characters. * For number attributes, at most 400 values
-        # are allowed. For product recommendation, an example of extra user information
-        # is traffic_channel, i.e. how user arrives at the site. Users can arrive at the
-        # site by coming to the site directly, or coming through Google search, and etc.
+        # Extra user event features to include in the recommendation model. If you
+        # provide custom attributes for ingested user events, also include them in the
+        # user events that you associate with prediction requests. Custom attribute
+        # formatting must be consistent between imported events and events provided with
+        # prediction requests. This lets the Retail API use those custom attributes when
+        # training models and serving predictions, which helps improve recommendation
+        # quality. This field needs to pass all below criteria, otherwise an
+        # INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded string
+        # with a length limit of 5,000 characters. * For text attributes, at most 400
+        # values are allowed. Empty values are not allowed. Each value must be a UTF-8
+        # encoded string with a length limit of 256 characters. * For number attributes,
+        # at most 400 values are allowed. For product recommendations, an example of
+        # extra user information is traffic_channel, which is how a user arrives at the
+        # site. Users can arrive at the site by coming to the site directly, coming
+        # through Google search, or in other ways.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute>]
         attr_accessor :attributes
