@@ -86,12 +86,12 @@ module Google
         #   Required. The query used to generate suggestions. The maximum number of
         #   allowed characters is 255.
         # @param [String] visitor_id
-        #   A unique identifier for tracking visitors. For example, this could be
-        #   implemented with an HTTP cookie, which should be able to uniquely identify a
-        #   visitor on a single device. This unique identifier should not change if the
-        #   visitor logs in or out of the website. The field must be a UTF-8 encoded
-        #   string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
-        #   error is returned.
+        #   Required field. A unique identifier for tracking visitors. For example, this
+        #   could be implemented with an HTTP cookie, which should be able to uniquely
+        #   identify a visitor on a single device. This unique identifier should not
+        #   change if the visitor logs in or out of the website. The field must be a UTF-8
+        #   encoded string with a length limit of 128 characters. Otherwise, an
+        #   INVALID_ARGUMENT error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1671,13 +1671,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Triggers a user event rejoin operation with latest product catalog. Events
-        # will not be annotated with detailed product information if product is missing
-        # from the catalog at the time the user event is ingested, and these events are
+        # Starts a user event rejoin operation with latest product catalog. Events will
+        # not be annotated with detailed product information if product is missing from
+        # the catalog at the time the user event is ingested, and these events are
         # stored as unjoined events with a limited usage on training and serving. This
-        # API can be used to trigger a 'join' operation on specified events with latest
+        # method can be used to start a join operation on specified events with latest
         # version of product catalog. It can also be used to correct events joined with
-        # wrong product catalog.
+        # the wrong product catalog. A rejoin operation can take hours or days to
+        # complete.
         # @param [String] parent
         #   Required. The parent catalog resource name, such as `projects/1234/locations/
         #   global/catalogs/default_catalog`.
