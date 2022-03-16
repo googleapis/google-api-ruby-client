@@ -21,7 +21,7 @@ module Google
   module Apis
     # Authorized Buyers Marketplace API
     #
-    # The Authorized Buyers Marketplace API allows buyers programmatically discover
+    # The Authorized Buyers Marketplace API lets buyers programmatically discover
     # inventory; propose, retrieve and negotiate deals with publishers.
     #
     # @see https://developers.google.com/authorized-buyers/apis/marketplace/reference/rest/
