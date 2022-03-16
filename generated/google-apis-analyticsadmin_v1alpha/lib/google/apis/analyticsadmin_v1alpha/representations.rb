@@ -924,6 +924,7 @@ module Google
           property :industry_category, as: 'industryCategory'
           property :name, as: 'name'
           property :parent, as: 'parent'
+          property :property_type, as: 'propertyType'
           property :service_level, as: 'serviceLevel'
           property :time_zone, as: 'timeZone'
           property :update_time, as: 'updateTime'
@@ -934,7 +935,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :parent, as: 'parent'
           property :property, as: 'property'
+          property :property_type, as: 'propertyType'
         end
       end
       
