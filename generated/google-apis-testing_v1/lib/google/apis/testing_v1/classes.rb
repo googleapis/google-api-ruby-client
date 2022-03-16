@@ -410,6 +410,17 @@ module Google
         # @return [String]
         attr_accessor :app_package_id
       
+        # The max depth of the traversal stack Robo can explore. Needs to be at least 2
+        # to make Robo explore the app beyond the first activity. Default is 50.
+        # Corresponds to the JSON property `maxDepth`
+        # @return [Fixnum]
+        attr_accessor :max_depth
+      
+        # The max number of steps Robo can execute. Default is no limit.
+        # Corresponds to the JSON property `maxSteps`
+        # @return [Fixnum]
+        attr_accessor :max_steps
+      
         # A set of directives Robo should apply during the crawl. This allows users to
         # customize the crawl. For example, the username and password for a test account
         # can be provided.
@@ -445,6 +456,8 @@ module Google
           @app_bundle = args[:app_bundle] if args.key?(:app_bundle)
           @app_initial_activity = args[:app_initial_activity] if args.key?(:app_initial_activity)
           @app_package_id = args[:app_package_id] if args.key?(:app_package_id)
+          @max_depth = args[:max_depth] if args.key?(:max_depth)
+          @max_steps = args[:max_steps] if args.key?(:max_steps)
           @robo_directives = args[:robo_directives] if args.key?(:robo_directives)
           @robo_mode = args[:robo_mode] if args.key?(:robo_mode)
           @robo_script = args[:robo_script] if args.key?(:robo_script)
