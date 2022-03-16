@@ -1072,6 +1072,21 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `affinityScore`
+        # @return [Float]
+        attr_accessor :affinity_score
+      
+        # 
+        # Corresponds to the JSON property `commonContactCountAffinityScore`
+        # @return [Float]
+        attr_accessor :common_contact_count_affinity_score
+      
+        # 
+        # Corresponds to the JSON property `contactsIntersectionCount`
+        # @return [Float]
+        attr_accessor :contacts_intersection_count
+      
+        # 
         # Corresponds to the JSON property `finalScore`
         # @return [Float]
         attr_accessor :final_score
@@ -1082,9 +1097,24 @@ module Google
         attr_accessor :freshness_score
       
         # 
+        # Corresponds to the JSON property `joinedSpacesAffinityScore`
+        # @return [Float]
+        attr_accessor :joined_spaces_affinity_score
+      
+        # 
         # Corresponds to the JSON property `messageScore`
         # @return [Float]
         attr_accessor :message_score
+      
+        # 
+        # Corresponds to the JSON property `smallContactListAffinityScore`
+        # @return [Float]
+        attr_accessor :small_contact_list_affinity_score
+      
+        # 
+        # Corresponds to the JSON property `smallUnjoinedSpacesAffinityScore`
+        # @return [Float]
+        attr_accessor :small_unjoined_spaces_affinity_score
       
         # 
         # Corresponds to the JSON property `spaceAgeInDays`
@@ -1102,9 +1132,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @affinity_score = args[:affinity_score] if args.key?(:affinity_score)
+          @common_contact_count_affinity_score = args[:common_contact_count_affinity_score] if args.key?(:common_contact_count_affinity_score)
+          @contacts_intersection_count = args[:contacts_intersection_count] if args.key?(:contacts_intersection_count)
           @final_score = args[:final_score] if args.key?(:final_score)
           @freshness_score = args[:freshness_score] if args.key?(:freshness_score)
+          @joined_spaces_affinity_score = args[:joined_spaces_affinity_score] if args.key?(:joined_spaces_affinity_score)
           @message_score = args[:message_score] if args.key?(:message_score)
+          @small_contact_list_affinity_score = args[:small_contact_list_affinity_score] if args.key?(:small_contact_list_affinity_score)
+          @small_unjoined_spaces_affinity_score = args[:small_unjoined_spaces_affinity_score] if args.key?(:small_unjoined_spaces_affinity_score)
           @space_age_in_days = args[:space_age_in_days] if args.key?(:space_age_in_days)
           @topicality_score = args[:topicality_score] if args.key?(:topicality_score)
         end
@@ -5223,7 +5259,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::GroupId]
         attr_accessor :group_id
       
-        # Whether this is an external space outside of user's organization
+        # Whether this is a space that enables guest access
         # Corresponds to the JSON property `isExternal`
         # @return [Boolean]
         attr_accessor :is_external
