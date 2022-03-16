@@ -1874,11 +1874,19 @@ module Google
         attr_accessor :name
       
         # Immutable. Resource name of this property's logical parent. Note: The Property-
-        # Moving UI can be used to change the parent. Format: accounts/`account` Example:
-        # "accounts/100"
+        # Moving UI can be used to change the parent. Format: accounts/`account`,
+        # properties/`property` Example: "accounts/100", "properties/101"
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
+      
+        # Immutable. The property type for this Property resource. When creating a
+        # property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY"
+        # will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY" types cannot yet be
+        # created via Google Analytics Admin API.
+        # Corresponds to the JSON property `propertyType`
+        # @return [String]
+        attr_accessor :property_type
       
         # Output only. The Google Analytics service level that applies to this property.
         # Corresponds to the JSON property `serviceLevel`
@@ -1914,6 +1922,7 @@ module Google
           @industry_category = args[:industry_category] if args.key?(:industry_category)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
+          @property_type = args[:property_type] if args.key?(:property_type)
           @service_level = args[:service_level] if args.key?(:service_level)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1929,11 +1938,23 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Resource name of this property's logical parent. Note: The Property-Moving UI
+        # can be used to change the parent. Format: accounts/`account`, properties/`
+        # property` Example: "accounts/100", "properties/200"
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
         # Resource name of property referred to by this property summary Format:
         # properties/`property_id` Example: "properties/1000"
         # Corresponds to the JSON property `property`
         # @return [String]
         attr_accessor :property
+      
+        # The property's property type.
+        # Corresponds to the JSON property `propertyType`
+        # @return [String]
+        attr_accessor :property_type
       
         def initialize(**args)
            update!(**args)
@@ -1942,7 +1963,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @parent = args[:parent] if args.key?(:parent)
           @property = args[:property] if args.key?(:property)
+          @property_type = args[:property_type] if args.key?(:property_type)
         end
       end
       
