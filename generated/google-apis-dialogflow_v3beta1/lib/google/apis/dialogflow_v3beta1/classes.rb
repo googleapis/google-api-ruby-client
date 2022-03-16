@@ -6153,12 +6153,12 @@ module Google
         # The collection of parameters extracted from the query. Depending on your
         # protocol or client library language, this is a map, associative array, symbol
         # table, dictionary, or JSON object composed of a collection of (MapKey,
-        # MapValue) pairs: - MapKey type: string - MapKey value: parameter name -
-        # MapValue type: - If parameter's entity type is a composite entity: map - Else:
-        # depending on parameter value type, could be one of string, number, boolean,
-        # null, list or map - MapValue value: - If parameter's entity type is a
-        # composite entity: map from composite entity property names to property values -
-        # Else: parameter value
+        # MapValue) pairs: * MapKey type: string * MapKey value: parameter name *
+        # MapValue type: If parameter's entity type is a composite entity then use map,
+        # otherwise, depending on the parameter value type, it could be one of string,
+        # number, boolean, null, list or map. * MapValue value: If parameter's entity
+        # type is a composite entity then use map from composite entity property names
+        # to property values, otherwise, use parameter value.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -6656,12 +6656,13 @@ module Google
         # You can reference the session parameters in the agent with the following
         # format: $session.params.parameter-id. Depending on your protocol or client
         # library language, this is a map, associative array, symbol table, dictionary,
-        # or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey
-        # type: string - MapKey value: parameter name - MapValue type: - If parameter's
-        # entity type is a composite entity: map - Else: depending on parameter value
-        # type, could be one of string, number, boolean, null, list or map - MapValue
-        # value: - If parameter's entity type is a composite entity: map from composite
-        # entity property names to property values - Else: parameter value
+        # or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey
+        # type: string * MapKey value: parameter name * MapValue type: If parameter's
+        # entity type is a composite entity then use map, otherwise, depending on the
+        # parameter value type, it could be one of string, number, boolean, null, list
+        # or map. * MapValue value: If parameter's entity type is a composite entity
+        # then use map from composite entity property names to property values,
+        # otherwise, use parameter value.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -6784,12 +6785,13 @@ module Google
       
         # The collected session parameters. Depending on your protocol or client library
         # language, this is a map, associative array, symbol table, dictionary, or JSON
-        # object composed of a collection of (MapKey, MapValue) pairs: - MapKey type:
-        # string - MapKey value: parameter name - MapValue type: - If parameter's entity
-        # type is a composite entity: map - Else: depending on parameter value type,
-        # could be one of string, number, boolean, null, list or map - MapValue value: -
-        # If parameter's entity type is a composite entity: map from composite entity
-        # property names to property values - Else: parameter value
+        # object composed of a collection of (MapKey, MapValue) pairs: * MapKey type:
+        # string * MapKey value: parameter name * MapValue type: If parameter's entity
+        # type is a composite entity then use map, otherwise, depending on the parameter
+        # value type, it could be one of string, number, boolean, null, list or map. *
+        # MapValue value: If parameter's entity type is a composite entity then use map
+        # from composite entity property names to property values, otherwise, use
+        # parameter value.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -8758,9 +8760,9 @@ module Google
         # empty or unspecified, Dialogflow will use Google's default trust store to
         # verify certificates. N.B. Make sure the HTTPS server certificates are signed
         # with "subject alt name". For instance a certificate can be self-signed using
-        # the following command, openssl x509 -req -days 200 -in example.com.csr \ -
+        # the following command, ``` openssl x509 -req -days 200 -in example.com.csr \ -
         # signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\
-        # nsubjectAltName='DNS:www.example.com'")
+        # nsubjectAltName='DNS:www.example.com'") ```
         # Corresponds to the JSON property `allowedCaCerts`
         # @return [Array<String>]
         attr_accessor :allowed_ca_certs
