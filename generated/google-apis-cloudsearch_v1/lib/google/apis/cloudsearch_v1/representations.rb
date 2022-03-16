@@ -1402,9 +1402,15 @@ module Google
       class DynamiteSpacesScoringInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :affinity_score, as: 'affinityScore'
+          property :common_contact_count_affinity_score, as: 'commonContactCountAffinityScore'
+          property :contacts_intersection_count, as: 'contactsIntersectionCount'
           property :final_score, as: 'finalScore'
           property :freshness_score, as: 'freshnessScore'
+          property :joined_spaces_affinity_score, as: 'joinedSpacesAffinityScore'
           property :message_score, as: 'messageScore'
+          property :small_contact_list_affinity_score, as: 'smallContactListAffinityScore'
+          property :small_unjoined_spaces_affinity_score, as: 'smallUnjoinedSpacesAffinityScore'
           property :space_age_in_days, as: 'spaceAgeInDays'
           property :topicality_score, as: 'topicalityScore'
         end
