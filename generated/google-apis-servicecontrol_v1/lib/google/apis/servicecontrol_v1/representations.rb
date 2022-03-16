@@ -190,7 +190,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrgPolicyViolationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Peer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyViolationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ViolationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocateInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -387,6 +405,8 @@ module Google
           hash :metadata, as: 'metadata'
           property :method_name, as: 'methodName'
           property :num_response_items, :numeric_string => true, as: 'numResponseItems'
+          property :policy_violation_info, as: 'policyViolationInfo', class: Google::Apis::ServicecontrolV1::PolicyViolationInfo, decorator: Google::Apis::ServicecontrolV1::PolicyViolationInfo::Representation
+      
           hash :request, as: 'request'
           property :request_metadata, as: 'requestMetadata', class: Google::Apis::ServicecontrolV1::RequestMetadata, decorator: Google::Apis::ServicecontrolV1::RequestMetadata::Representation
       
@@ -675,6 +695,17 @@ module Google
         end
       end
       
+      class OrgPolicyViolationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :payload, as: 'payload'
+          hash :resource_tags, as: 'resourceTags'
+          property :resource_type, as: 'resourceType'
+          collection :violation_info, as: 'violationInfo', class: Google::Apis::ServicecontrolV1::ViolationInfo, decorator: Google::Apis::ServicecontrolV1::ViolationInfo::Representation
+      
+        end
+      end
+      
       class Peer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -683,6 +714,14 @@ module Google
           property :port, :numeric_string => true, as: 'port'
           property :principal, as: 'principal'
           property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class PolicyViolationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :org_policy_violation_info, as: 'orgPolicyViolationInfo', class: Google::Apis::ServicecontrolV1::OrgPolicyViolationInfo, decorator: Google::Apis::ServicecontrolV1::OrgPolicyViolationInfo::Representation
+      
         end
       end
       
@@ -943,6 +982,16 @@ module Google
           property :file, as: 'file'
           property :function, as: 'function'
           property :line, :numeric_string => true, as: 'line'
+        end
+      end
+      
+      class ViolationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :checked_value, as: 'checkedValue'
+          property :constraint, as: 'constraint'
+          property :error_message, as: 'errorMessage'
+          property :policy_type, as: 'policyType'
         end
       end
     end
