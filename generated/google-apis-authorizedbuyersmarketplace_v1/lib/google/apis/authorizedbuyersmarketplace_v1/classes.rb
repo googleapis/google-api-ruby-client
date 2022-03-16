@@ -613,8 +613,8 @@ module Google
       
         # Proposed flight start time of the deal. This will generally be stored in the
         # granularity of one second since deal serving starts at seconds boundary. Any
-        # time specified with more granularity (e.g., in milliseconds) will be truncated
-        # towards the start of time in seconds.
+        # time specified with more granularity (for example, in milliseconds) will be
+        # truncated towards the start of time in seconds.
         # Corresponds to the JSON property `flightStartTime`
         # @return [String]
         attr_accessor :flight_start_time
@@ -742,7 +742,7 @@ module Google
       class DeliveryControl
         include Google::Apis::Core::Hashable
       
-        # Output only. Specifies roadblocking in a master companion lineitem.
+        # Output only. Specifies roadblocking in a main companion lineitem.
         # Corresponds to the JSON property `companionDeliveryType`
         # @return [String]
         attr_accessor :companion_delivery_type
@@ -803,10 +803,10 @@ module Google
       # A finalized deal is a snapshot of the deal when both buyer and seller accept
       # the deal. The buyer or seller can update the deal after it's been finalized
       # and renegotiate on the deal targeting, terms and other fields, while at the
-      # same time the finalized snapshot of the deal can still be retrieved via this
+      # same time the finalized snapshot of the deal can still be retrieved using this
       # API. The finalized deal contains a copy of the deal as it existed when most
       # recently finalized, as well as fields related to deal serving such as pause/
-      # resume status, RTB metrics, etc.
+      # resume status, RTB metrics, and more.
       class FinalizedDeal
         include Google::Apis::Core::Hashable
       
@@ -1153,9 +1153,9 @@ module Google
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::InventorySizeTargeting]
         attr_accessor :inventory_size_targeting
       
-        # Represents targeting about where the ads can appear, e.g., certain sites or
-        # mobile applications. Different placement targeting types will be logically OR'
-        # ed.
+        # Represents targeting about where the ads can appear, for example, certain
+        # sites or mobile applications. Different placement targeting types will be
+        # logically OR'ed.
         # Corresponds to the JSON property `placementTargeting`
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::PlacementTargeting]
         attr_accessor :placement_targeting
@@ -1333,9 +1333,9 @@ module Google
         end
       end
       
-      # Represents targeting about where the ads can appear, e.g., certain sites or
-      # mobile applications. Different placement targeting types will be logically OR'
-      # ed.
+      # Represents targeting about where the ads can appear, for example, certain
+      # sites or mobile applications. Different placement targeting types will be
+      # logically OR'ed.
       class PlacementTargeting
         include Google::Apis::Core::Hashable
       
@@ -1344,7 +1344,7 @@ module Google
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::MobileApplicationTargeting]
         attr_accessor :mobile_application_targeting
       
-        # Represents a list of targeted and excluded URLs (e.g., google.com). For
+        # Represents a list of targeted and excluded URLs (for example, google.com). For
         # Private Auction Deals, URLs are either included or excluded. For Programmatic
         # Guaranteed and Preferred Deals, this doesn't apply.
         # Corresponds to the JSON property `uriTargeting`
@@ -1758,7 +1758,7 @@ module Google
         # @return [String]
         attr_accessor :sample_page_url
       
-        # Up to three key metrics and rankings. For example "#1 Mobile News Site for 20
+        # Up to three key metrics and rankings. For example, "#1 Mobile News Site for 20
         # Straight Months".
         # Corresponds to the JSON property `topHeadlines`
         # @return [Array<String>]
@@ -2176,8 +2176,8 @@ module Google
         # List of fields to be updated. If empty or unspecified, the service will update
         # all fields populated in the update request excluding the output only fields
         # and primitive fields with default value. Note that explicit field mask is
-        # required in order to reset a primitive field back to its default value, e.g.
-        # false for boolean fields, 0 for integer fields. A special field mask
+        # required in order to reset a primitive field back to its default value, for
+        # example, false for boolean fields, 0 for integer fields. A special field mask
         # consisting of a single path "*" can be used to indicate full replacement(the
         # equivalent of PUT method), updatable fields unset or unspecified in the input
         # will be cleared or set to default value. Output only fields will be ignored
@@ -2197,7 +2197,7 @@ module Google
         end
       end
       
-      # Represents a list of targeted and excluded URLs (e.g., google.com). For
+      # Represents a list of targeted and excluded URLs (for example, google.com). For
       # Private Auction Deals, URLs are either included or excluded. For Programmatic
       # Guaranteed and Preferred Deals, this doesn't apply.
       class UriTargeting
