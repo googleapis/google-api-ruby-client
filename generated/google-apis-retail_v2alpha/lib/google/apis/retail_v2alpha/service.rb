@@ -86,12 +86,12 @@ module Google
         #   Required. The query used to generate suggestions. The maximum number of
         #   allowed characters is 255.
         # @param [String] visitor_id
-        #   A unique identifier for tracking visitors. For example, this could be
-        #   implemented with an HTTP cookie, which should be able to uniquely identify a
-        #   visitor on a single device. This unique identifier should not change if the
-        #   visitor logs in or out of the website. The field must be a UTF-8 encoded
-        #   string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
-        #   error is returned.
+        #   Required field. A unique identifier for tracking visitors. For example, this
+        #   could be implemented with an HTTP cookie, which should be able to uniquely
+        #   identify a visitor on a single device. This unique identifier should not
+        #   change if the visitor logs in or out of the website. The field must be a UTF-8
+        #   encoded string with a length limit of 128 characters. Otherwise, an
+        #   INVALID_ARGUMENT error is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -855,6 +855,47 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes all selected Products under a branch. This process is
+        # asynchronous. If the request is valid, the removal will be enqueued and
+        # processed offline. Depending on the number of Products, this operation could
+        # take hours to complete. Before the operation completes, some Products may
+        # still be returned by GetProduct or ListProducts. Depending on the number of
+        # Products, this operation could take hours to complete. To get a sample of
+        # Products that would be deleted, set PurgeProductsRequest.force to false.
+        # @param [String] parent
+        #   Required. The resource name of the branch under which the products are created.
+        #   The format is `projects/$`projectId`/locations/global/catalogs/$`catalogId`/
+        #   branches/$`branchId``
+        # @param [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPurgeProductsRequest] google_cloud_retail_v2alpha_purge_products_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_catalog_branch_product(parent, google_cloud_retail_v2alpha_purge_products_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2alpha/{+parent}/products:purge', options)
+          command.request_representation = Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPurgeProductsRequest::Representation
+          command.request_object = google_cloud_retail_v2alpha_purge_products_request_object
+          command.response_representation = Google::Apis::RetailV2alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RetailV2alpha::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1766,13 +1807,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Triggers a user event rejoin operation with latest product catalog. Events
-        # will not be annotated with detailed product information if product is missing
-        # from the catalog at the time the user event is ingested, and these events are
+        # Starts a user event rejoin operation with latest product catalog. Events will
+        # not be annotated with detailed product information if product is missing from
+        # the catalog at the time the user event is ingested, and these events are
         # stored as unjoined events with a limited usage on training and serving. This
-        # API can be used to trigger a 'join' operation on specified events with latest
+        # method can be used to start a join operation on specified events with latest
         # version of product catalog. It can also be used to correct events joined with
-        # wrong product catalog.
+        # the wrong product catalog. A rejoin operation can take hours or days to
+        # complete.
         # @param [String] parent
         #   Required. The parent catalog resource name, such as `projects/1234/locations/
         #   global/catalogs/default_catalog`.

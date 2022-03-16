@@ -526,6 +526,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaPurgeProductsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaPurgeProductsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2alphaPurgeProductsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaPurgeUserEventsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1349,6 +1367,7 @@ module Google
           property :name, as: 'name'
           property :rule, as: 'rule', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRule, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaRule::Representation
       
+          collection :search_solution_use_case, as: 'searchSolutionUseCase'
           collection :solution_types, as: 'solutionTypes'
         end
       end
@@ -1754,6 +1773,32 @@ module Google
       class GoogleCloudRetailV2alphaPurgeMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaPurgeProductsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :failure_count, :numeric_string => true, as: 'failureCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaPurgeProductsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :force, as: 'force'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaPurgeProductsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :purge_count, :numeric_string => true, as: 'purgeCount'
+          collection :purge_sample, as: 'purgeSample'
         end
       end
       
