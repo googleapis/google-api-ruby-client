@@ -513,7 +513,6 @@ module Google
           property :cpi_id, as: 'cpiId'
           property :latitude, as: 'latitude'
           property :longitude, as: 'longitude'
-          property :state, as: 'state'
         end
       end
       
