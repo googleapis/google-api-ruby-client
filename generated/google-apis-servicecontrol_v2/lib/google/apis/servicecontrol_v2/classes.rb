@@ -188,6 +188,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_response_items
       
+        # Information related to policy violations for this request.
+        # Corresponds to the JSON property `policyViolationInfo`
+        # @return [Google::Apis::ServicecontrolV2::PolicyViolationInfo]
+        attr_accessor :policy_violation_info
+      
         # The operation request. This may not include all request parameters, such as
         # those that are too large, privacy-sensitive, or duplicated elsewhere in the
         # log record. It should never include user-generated data, such as file contents.
@@ -267,6 +272,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @method_name = args[:method_name] if args.key?(:method_name)
           @num_response_items = args[:num_response_items] if args.key?(:num_response_items)
+          @policy_violation_info = args[:policy_violation_info] if args.key?(:policy_violation_info)
           @request = args[:request] if args.key?(:request)
           @request_metadata = args[:request_metadata] if args.key?(:request_metadata)
           @resource_location = args[:resource_location] if args.key?(:resource_location)
@@ -561,6 +567,50 @@ module Google
         end
       end
       
+      # Represents OrgPolicy Violation information.
+      class OrgPolicyViolationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource payload that is currently in scope and is subjected to
+        # orgpolicy conditions. This payload may be the subset of the actual Resource
+        # that may come in the request. This payload should not contain any core content.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # Optional. Tags referenced on the resource at the time of evaluation. These
+        # also include the federated tags, if they are supplied in the CheckOrgPolicy or
+        # CheckCustomConstraints Requests. Optional field as of now. These tags are the
+        # Cloud tags that are available on the resource during the policy evaluation and
+        # will be available as part of the OrgPolicy check response for logging purposes.
+        # Corresponds to the JSON property `resourceTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_tags
+      
+        # Optional. Resource type that the orgpolicy is checked against. Example:
+        # compute.googleapis.com/Instance, store.googleapis.com/bucket
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Optional. Policy violations
+        # Corresponds to the JSON property `violationInfo`
+        # @return [Array<Google::Apis::ServicecontrolV2::ViolationInfo>]
+        attr_accessor :violation_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @resource_tags = args[:resource_tags] if args.key?(:resource_tags)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @violation_info = args[:violation_info] if args.key?(:violation_info)
+        end
+      end
+      
       # This message defines attributes for a node that handles a network request. The
       # node can be either a service or an application that sends, forwards, or
       # receives the request. Service peers should fill in `principal` and `labels` as
@@ -608,6 +658,25 @@ module Google
           @port = args[:port] if args.key?(:port)
           @principal = args[:principal] if args.key?(:principal)
           @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Information related to policy violations for this request.
+      class PolicyViolationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents OrgPolicy Violation information.
+        # Corresponds to the JSON property `orgPolicyViolationInfo`
+        # @return [Google::Apis::ServicecontrolV2::OrgPolicyViolationInfo]
+        attr_accessor :org_policy_violation_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @org_policy_violation_info = args[:org_policy_violation_info] if args.key?(:org_policy_violation_info)
         end
       end
       
@@ -1484,6 +1553,45 @@ module Google
           @file = args[:file] if args.key?(:file)
           @function = args[:function] if args.key?(:function)
           @line = args[:line] if args.key?(:line)
+        end
+      end
+      
+      # Provides information about the Policy violation info for this request.
+      class ViolationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Value that is being checked for the policy. This could be in
+        # encrypted form (if pii sensitive). This field will only be emitted in
+        # LIST_POLICY types
+        # Corresponds to the JSON property `checkedValue`
+        # @return [String]
+        attr_accessor :checked_value
+      
+        # Optional. Constraint name
+        # Corresponds to the JSON property `constraint`
+        # @return [String]
+        attr_accessor :constraint
+      
+        # Optional. Error message that policy is indicating.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Optional. Indicates the type of the policy.
+        # Corresponds to the JSON property `policyType`
+        # @return [String]
+        attr_accessor :policy_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @checked_value = args[:checked_value] if args.key?(:checked_value)
+          @constraint = args[:constraint] if args.key?(:constraint)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @policy_type = args[:policy_type] if args.key?(:policy_type)
         end
       end
     end
