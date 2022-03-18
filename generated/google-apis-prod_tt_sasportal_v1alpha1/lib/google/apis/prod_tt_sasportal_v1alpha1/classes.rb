@@ -448,8 +448,7 @@ module Google
         attr_accessor :nrqz_validated
         alias_method :nrqz_validated?, :nrqz_validated
       
-        # Information about National Radio Quiet Zone validation. The presence of the
-        # field indicates the device has been validated.
+        # Information about National Radio Quiet Zone validation.
         # Corresponds to the JSON property `nrqzValidation`
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalNrqzValidation]
         attr_accessor :nrqz_validation
@@ -953,8 +952,7 @@ module Google
         end
       end
       
-      # Information about National Radio Quiet Zone validation. The presence of the
-      # field indicates the device has been validated.
+      # Information about National Radio Quiet Zone validation.
       class SasPortalNrqzValidation
         include Google::Apis::Core::Hashable
       
@@ -978,6 +976,11 @@ module Google
         # @return [Float]
         attr_accessor :longitude
       
+        # State of the NRQZ validation info.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -988,6 +991,7 @@ module Google
           @cpi_id = args[:cpi_id] if args.key?(:cpi_id)
           @latitude = args[:latitude] if args.key?(:latitude)
           @longitude = args[:longitude] if args.key?(:longitude)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
