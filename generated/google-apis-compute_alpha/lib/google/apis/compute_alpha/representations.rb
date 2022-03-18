@@ -8513,6 +8513,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_tier, as: 'networkTier'
+          property :no_automate_dns_zone, as: 'noAutomateDnsZone'
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
