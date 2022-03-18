@@ -53,8 +53,9 @@ module Google
         attr_accessor :custom_class
       
         # Required. The ID to use for the custom class, which will become the final
-        # component of the custom class' resource name. This value should be 4-63
-        # characters, and valid characters are /a-z-/.
+        # component of the custom class' resource name. This value should restrict to
+        # letters, numbers, and hyphens, with the first character a letter, the last a
+        # letter or a number, and be 4-63 characters.
         # Corresponds to the JSON property `customClassId`
         # @return [String]
         attr_accessor :custom_class_id
@@ -81,8 +82,9 @@ module Google
         attr_accessor :phrase_set
       
         # Required. The ID to use for the phrase set, which will become the final
-        # component of the phrase set's resource name. This value should be 4-63
-        # characters, and valid characters are /a-z-/.
+        # component of the phrase set's resource name. This value should restrict to
+        # letters, numbers, and hyphens, with the first character a letter, the last a
+        # letter or a number, and be 4-63 characters.
         # Corresponds to the JSON property `phraseSetId`
         # @return [String]
         attr_accessor :phrase_set_id
