@@ -2434,6 +2434,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkEdgeSecurityService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEdgeSecurityServiceAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEdgeSecurityServicesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4090,8 +4132,44 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityPoliciesAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPoliciesListPreconfiguredExpressionSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPoliciesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4127,6 +4205,12 @@ module Google
       end
       
       class SecurityPolicyAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyDdosProtectionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10235,6 +10319,84 @@ module Google
         end
       end
       
+      class NetworkEdgeSecurityService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :security_policy, as: 'securityPolicy'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class NetworkEdgeSecurityServiceAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::NetworkEdgeSecurityServicesScopedList, decorator: Google::Apis::ComputeBeta::NetworkEdgeSecurityServicesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::NetworkEdgeSecurityServiceAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::NetworkEdgeSecurityServiceAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::NetworkEdgeSecurityServiceAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::NetworkEdgeSecurityServiceAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NetworkEdgeSecurityServicesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_edge_security_services, as: 'networkEdgeSecurityServices', class: Google::Apis::ComputeBeta::NetworkEdgeSecurityService, decorator: Google::Apis::ComputeBeta::NetworkEdgeSecurityService::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::NetworkEdgeSecurityServicesScopedList::Warning, decorator: Google::Apis::ComputeBeta::NetworkEdgeSecurityServicesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::NetworkEdgeSecurityServicesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::NetworkEdgeSecurityServicesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class NetworkEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12764,6 +12926,7 @@ module Google
           property :next_hop_peering, as: 'nextHopPeering'
           property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
           property :priority, as: 'priority'
+          property :route_status, as: 'routeStatus'
           property :route_type, as: 'routeType'
           property :self_link, as: 'selfLink'
           collection :tags, as: 'tags'
@@ -13260,11 +13423,73 @@ module Google
         end
       end
       
+      class SecurityPoliciesAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeBeta::SecurityPoliciesScopedList, decorator: Google::Apis::ComputeBeta::SecurityPoliciesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::SecurityPoliciesAggregatedList::Warning, decorator: Google::Apis::ComputeBeta::SecurityPoliciesAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::SecurityPoliciesAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::SecurityPoliciesAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class SecurityPoliciesListPreconfiguredExpressionSetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preconfigured_expression_sets, as: 'preconfiguredExpressionSets', class: Google::Apis::ComputeBeta::SecurityPoliciesWafConfig, decorator: Google::Apis::ComputeBeta::SecurityPoliciesWafConfig::Representation
       
+        end
+      end
+      
+      class SecurityPoliciesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :security_policies, as: 'securityPolicies', class: Google::Apis::ComputeBeta::SecurityPolicy, decorator: Google::Apis::ComputeBeta::SecurityPolicy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::SecurityPoliciesScopedList::Warning, decorator: Google::Apis::ComputeBeta::SecurityPoliciesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::SecurityPoliciesScopedList::Warning::Datum, decorator: Google::Apis::ComputeBeta::SecurityPoliciesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -13286,6 +13511,8 @@ module Google
           collection :associations, as: 'associations', class: Google::Apis::ComputeBeta::SecurityPolicyAssociation, decorator: Google::Apis::ComputeBeta::SecurityPolicyAssociation::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          property :ddos_protection_config, as: 'ddosProtectionConfig', class: Google::Apis::ComputeBeta::SecurityPolicyDdosProtectionConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyDdosProtectionConfig::Representation
+      
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -13297,6 +13524,7 @@ module Google
           property :parent, as: 'parent'
           property :recaptcha_options_config, as: 'recaptchaOptionsConfig', class: Google::Apis::ComputeBeta::SecurityPolicyRecaptchaOptionsConfig, decorator: Google::Apis::ComputeBeta::SecurityPolicyRecaptchaOptionsConfig::Representation
       
+          property :region, as: 'region'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::SecurityPolicyRule, decorator: Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
       
@@ -13337,6 +13565,13 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :security_policy_id, as: 'securityPolicyId'
+        end
+      end
+      
+      class SecurityPolicyDdosProtectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ddos_protection, as: 'ddosProtection'
         end
       end
       
