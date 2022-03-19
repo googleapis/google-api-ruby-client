@@ -499,7 +499,22 @@ module Google
         #   error:*)` - Returns operations where: * The operation's metadata type is
         #   CreateBackupMetadata. * The backup name contains the string "howl". * The
         #   operation started before 2018-03-28T14:50:00Z. * The operation resulted in an
-        #   error.
+        #   error. * `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.
+        #   CopyBackupMetadata) AND` \ `(metadata.source_backup:test) AND` \ `(metadata.
+        #   progress.start_time < \"2022-01-18T14:50:00Z\") AND` \ `(error:*)` - Returns
+        #   operations where: * The operation's metadata type is CopyBackupMetadata. * The
+        #   source backup of the copied backup name contains the string "test". * The
+        #   operation started before 2022-01-18T14:50:00Z. * The operation resulted in an
+        #   error. * `((metadata.@type=type.googleapis.com/google.spanner.admin.database.
+        #   v1.CreateBackupMetadata) AND` \ `(metadata.database:test_db)) OR` \ `((
+        #   metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.
+        #   CopyBackupMetadata) AND` \ `(metadata.source_backup:test_bkp)) AND` \ `(error:*
+        #   )` - Returns operations where: * The operation's metadata matches either of
+        #   criteria: * The operation's metadata type is CreateBackupMetadata AND the
+        #   database the backup was taken from has name containing string "test_db" * The
+        #   operation's metadata type is CopyBackupMetadata AND the backup the backup was
+        #   copied from has name containing string "test_bkp" * The operation resulted in
+        #   an error.
         # @param [Fixnum] page_size
         #   Number of operations to be returned in the response. If 0 or less, defaults to
         #   the server's maximum allowed page size.
@@ -531,6 +546,46 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts copying a Cloud Spanner Backup. The returned backup long-running
+        # operation will have a name of the format `projects//instances//backups//
+        # operations/` and can be used to track copying of the backup. The operation is
+        # associated with the destination backup. The metadata field type is
+        # CopyBackupMetadata. The response field type is Backup, if successful.
+        # Cancelling the returned operation will stop the copying and delete the backup.
+        # Concurrent CopyBackup requests can run on the same source backup.
+        # @param [String] parent
+        #   Required. The name of the destination instance that will contain the backup
+        #   copy. Values are of the form: `projects//instances/`.
+        # @param [Google::Apis::SpannerV1::CopyBackupRequest] copy_backup_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def copy_backup(parent, copy_backup_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/backups:copy', options)
+          command.request_representation = Google::Apis::SpannerV1::CopyBackupRequest::Representation
+          command.request_object = copy_backup_request_object
+          command.response_representation = Google::Apis::SpannerV1::Operation::Representation
+          command.response_class = Google::Apis::SpannerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

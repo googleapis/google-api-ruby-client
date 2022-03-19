@@ -59,6 +59,15 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Output only. The max allowed expiration time of the backup, with microseconds
+        # granularity. A backup's expiration time can be configured in multiple APIs:
+        # CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing
+        # backup, the expiration time specified must be less than `Backup.
+        # max_expire_time`.
+        # Corresponds to the JSON property `maxExpireTime`
+        # @return [String]
+        attr_accessor :max_expire_time
+      
         # Output only for the CreateBackup operation. Required for the UpdateBackup
         # operation. A globally unique identifier for the backup which cannot be changed.
         # Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final
@@ -69,6 +78,16 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The names of the destination backups being created by copying
+        # this source backup. The backup names are of the form `projects//instances//
+        # backups/`. Referencing backups may exist in different instances. The existence
+        # of any referencing backup prevents the backup from being deleted. When the
+        # copy operation is done (either successfully completed or cancelled or the
+        # destination backup is deleted), the reference to the backup is removed.
+        # Corresponds to the JSON property `referencingBackups`
+        # @return [Array<String>]
+        attr_accessor :referencing_backups
       
         # Output only. The names of the restored databases that reference the backup.
         # The database names are of the form `projects//instances//databases/`.
@@ -108,7 +127,9 @@ module Google
           @database_dialect = args[:database_dialect] if args.key?(:database_dialect)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @max_expire_time = args[:max_expire_time] if args.key?(:max_expire_time)
           @name = args[:name] if args.key?(:name)
+          @referencing_backups = args[:referencing_backups] if args.key?(:referencing_backups)
           @referencing_databases = args[:referencing_databases] if args.key?(:referencing_databases)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
@@ -790,6 +811,125 @@ module Google
           @severity = args[:severity] if args.key?(:severity)
           @unit = args[:unit] if args.key?(:unit)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Encryption configuration for the copied backup.
+      class CopyBackupEncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The encryption type of the backup.
+        # Corresponds to the JSON property `encryptionType`
+        # @return [String]
+        attr_accessor :encryption_type
+      
+        # Optional. The Cloud KMS key that will be used to protect the backup. This
+        # field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`.
+        # Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
+      # Metadata type for the google.longrunning.Operation returned by CopyBackup.
+      class CopyBackupMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which cancellation of CopyBackup operation was received.
+        # Operations.CancelOperation starts asynchronous cancellation on a long-running
+        # operation. The server makes a best effort to cancel the operation, but success
+        # is not guaranteed. Clients can use Operations.GetOperation or other methods to
+        # check whether the cancellation succeeded or whether the operation completed
+        # despite cancellation. On successful cancellation, the operation is not deleted;
+        # instead, it becomes an operation with an Operation.error value with a google.
+        # rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # The name of the backup being created through the copy operation. Values are of
+        # the form `projects//instances//backups/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Encapsulates progress related information for a Cloud Spanner long running
+        # operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::SpannerV1::OperationProgress]
+        attr_accessor :progress
+      
+        # The name of the source backup that is being copied. Values are of the form `
+        # projects//instances//backups/`.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @name = args[:name] if args.key?(:name)
+          @progress = args[:progress] if args.key?(:progress)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
+        end
+      end
+      
+      # The request for CopyBackup.
+      class CopyBackupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The id of the backup copy. The `backup_id` appended to `parent`
+        # forms the full backup_uri of the form `projects//instances//backups/`.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
+        # Encryption configuration for the copied backup.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::SpannerV1::CopyBackupEncryptionConfig]
+        attr_accessor :encryption_config
+      
+        # Required. The expiration time of the backup in microsecond granularity. The
+        # expiration time must be at least 6 hours and at most 366 days from the `
+        # create_time` of the source backup. Once the `expire_time` has passed, the
+        # backup is eligible to be automatically deleted by Cloud Spanner to free the
+        # resources used by the backup.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Required. The source backup to be copied. The source backup needs to be in
+        # READY state for it to be copied. Once CopyBackup is in progress, the source
+        # backup cannot be deleted or cleaned up on expiration until CopyBackup is
+        # finished. Values are of the form: `projects//instances//backups/`.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
         end
       end
       
@@ -1657,6 +1797,11 @@ module Google
         # @return [String]
         attr_accessor :config
       
+        # Output only. The time at which the instance was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Required. The descriptive name for this instance as it appears in UIs. Must be
         # unique per project and between 4 and 30 characters in length.
         # Corresponds to the JSON property `displayName`
@@ -1721,6 +1866,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The time at which the instance was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1728,6 +1878,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @endpoint_uris = args[:endpoint_uris] if args.key?(:endpoint_uris)
           @labels = args[:labels] if args.key?(:labels)
@@ -1735,6 +1886,7 @@ module Google
           @node_count = args[:node_count] if args.key?(:node_count)
           @processing_units = args[:processing_units] if args.key?(:processing_units)
           @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
