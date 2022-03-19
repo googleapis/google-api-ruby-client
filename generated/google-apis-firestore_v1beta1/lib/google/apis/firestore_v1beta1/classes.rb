@@ -1735,6 +1735,13 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::Document]
         attr_accessor :document
       
+        # If present, Firestore has completely finished the request and no more
+        # documents will be returned.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
         # The time at which the document was read. This may be monotonically increasing;
         # in this case, the previous documents in the result stream are guaranteed not
         # to have changed between their `read_time` and this one. If the query returns
@@ -1765,6 +1772,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document = args[:document] if args.key?(:document)
+          @done = args[:done] if args.key?(:done)
           @read_time = args[:read_time] if args.key?(:read_time)
           @skipped_results = args[:skipped_results] if args.key?(:skipped_results)
           @transaction = args[:transaction] if args.key?(:transaction)
