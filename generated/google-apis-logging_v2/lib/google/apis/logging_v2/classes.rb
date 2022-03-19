@@ -156,6 +156,17 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
+        # The CryptoKeyVersion resource name for the configured Cloud KMS key.KMS key
+        # name format: "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/
+        # cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]" For example:"projects/my-project/
+        # locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+        # This is a read-only field used to convey the specific configured
+        # CryptoKeyVersion of kms_key that has been configured. It will be populated in
+        # cases where the CMEK settings are bound to a single key version.
+        # Corresponds to the JSON property `kmsKeyVersionName`
+        # @return [String]
+        attr_accessor :kms_key_version_name
+      
         # Output only. The resource name of the CMEK settings.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -178,6 +189,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
           @service_account_id = args[:service_account_id] if args.key?(:service_account_id)
         end
