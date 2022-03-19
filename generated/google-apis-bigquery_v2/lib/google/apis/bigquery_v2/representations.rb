@@ -3003,6 +3003,8 @@ module Google
           property :start_time, as: 'startTime'
           property :training_options, as: 'trainingOptions', class: Google::Apis::BigqueryV2::TrainingOptions, decorator: Google::Apis::BigqueryV2::TrainingOptions::Representation
       
+          property :vertex_ai_model_id, as: 'vertexAiModelId'
+          property :vertex_ai_model_version, as: 'vertexAiModelVersion'
         end
       end
       

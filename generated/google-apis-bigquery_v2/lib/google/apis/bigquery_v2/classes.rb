@@ -8201,6 +8201,16 @@ module Google
         # @return [Google::Apis::BigqueryV2::TrainingOptions]
         attr_accessor :training_options
       
+        # The model id in Vertex AI Model Registry for this training run
+        # Corresponds to the JSON property `vertexAiModelId`
+        # @return [String]
+        attr_accessor :vertex_ai_model_id
+      
+        # The model version in Vertex AI Model Registry for this training run
+        # Corresponds to the JSON property `vertexAiModelVersion`
+        # @return [String]
+        attr_accessor :vertex_ai_model_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8214,6 +8224,8 @@ module Google
           @results = args[:results] if args.key?(:results)
           @start_time = args[:start_time] if args.key?(:start_time)
           @training_options = args[:training_options] if args.key?(:training_options)
+          @vertex_ai_model_id = args[:vertex_ai_model_id] if args.key?(:vertex_ai_model_id)
+          @vertex_ai_model_version = args[:vertex_ai_model_version] if args.key?(:vertex_ai_model_version)
         end
       end
       
