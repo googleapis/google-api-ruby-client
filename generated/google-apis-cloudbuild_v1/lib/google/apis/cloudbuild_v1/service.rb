@@ -1752,7 +1752,7 @@ module Google
         # Deletes a `WorkerPool`.
         # @param [String] name
         #   Required. The name of the `WorkerPool` to delete. Format: `projects/`project`/
-        #   locations/`workerPool`/workerPools/`workerPool``.
+        #   locations/`location`/workerPools/`workerPool``.
         # @param [Boolean] allow_missing
         #   If set to true, and the `WorkerPool` is not found, the request will succeed
         #   but no action will be taken on the server.
