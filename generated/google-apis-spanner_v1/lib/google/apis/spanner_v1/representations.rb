@@ -88,6 +88,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CopyBackupEncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopyBackupMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CopyBackupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateBackupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -643,7 +661,9 @@ module Google
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::SpannerV1::EncryptionInfo, decorator: Google::Apis::SpannerV1::EncryptionInfo::Representation
       
           property :expire_time, as: 'expireTime'
+          property :max_expire_time, as: 'maxExpireTime'
           property :name, as: 'name'
+          collection :referencing_backups, as: 'referencingBackups'
           collection :referencing_databases, as: 'referencingDatabases'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
@@ -745,6 +765,36 @@ module Google
           property :severity, as: 'severity'
           property :unit, as: 'unit'
           property :value, as: 'value'
+        end
+      end
+      
+      class CopyBackupEncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_type, as: 'encryptionType'
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class CopyBackupMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_time, as: 'cancelTime'
+          property :name, as: 'name'
+          property :progress, as: 'progress', class: Google::Apis::SpannerV1::OperationProgress, decorator: Google::Apis::SpannerV1::OperationProgress::Representation
+      
+          property :source_backup, as: 'sourceBackup'
+        end
+      end
+      
+      class CopyBackupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_id, as: 'backupId'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::SpannerV1::CopyBackupEncryptionConfig, decorator: Google::Apis::SpannerV1::CopyBackupEncryptionConfig::Representation
+      
+          property :expire_time, as: 'expireTime'
+          property :source_backup, as: 'sourceBackup'
         end
       end
       
@@ -983,6 +1033,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config'
+          property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           collection :endpoint_uris, as: 'endpointUris'
           hash :labels, as: 'labels'
@@ -990,6 +1041,7 @@ module Google
           property :node_count, as: 'nodeCount'
           property :processing_units, as: 'processingUnits'
           property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
