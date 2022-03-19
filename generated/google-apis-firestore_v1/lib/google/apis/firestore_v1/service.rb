@@ -874,6 +874,71 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists documents.
+        # @param [String] parent
+        #   Required. The parent resource name. In the format: `projects/`project_id`/
+        #   databases/`database_id`/documents` or `projects/`project_id`/databases/`
+        #   database_id`/documents/`document_path``. For example: `projects/my-project/
+        #   databases/my-database/documents` or `projects/my-project/databases/my-database/
+        #   documents/chatrooms/my-chatroom`
+        # @param [String] collection_id
+        #   Required. The collection ID, relative to `parent`, to list. For example: `
+        #   chatrooms` or `messages`.
+        # @param [Array<String>, String] mask_field_paths
+        #   The list of field paths in the mask. See Document.fields for a field path
+        #   syntax reference.
+        # @param [String] order_by
+        #   The order to sort results by. For example: `priority desc, name`.
+        # @param [Fixnum] page_size
+        #   The maximum number of documents to return.
+        # @param [String] page_token
+        #   The `next_page_token` value returned from a previous List request, if any.
+        # @param [String] read_time
+        #   Reads documents as they were at the given time. This may not be older than 270
+        #   seconds.
+        # @param [Boolean] show_missing
+        #   If the list should show missing documents. A missing document is a document
+        #   that does not exist but has sub-documents. These documents will be returned
+        #   with a key but will not have fields, Document.create_time, or Document.
+        #   update_time set. Requests with `show_missing` may not specify `where` or `
+        #   order_by`.
+        # @param [String] transaction
+        #   Reads documents in a transaction.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::ListDocumentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::ListDocumentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_database_document_documents(parent, collection_id, mask_field_paths: nil, order_by: nil, page_size: nil, page_token: nil, read_time: nil, show_missing: nil, transaction: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/{collectionId}', options)
+          command.response_representation = Google::Apis::FirestoreV1::ListDocumentsResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1::ListDocumentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.params['collectionId'] = collection_id unless collection_id.nil?
+          command.query['mask.fieldPaths'] = mask_field_paths unless mask_field_paths.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readTime'] = read_time unless read_time.nil?
+          command.query['showMissing'] = show_missing unless show_missing.nil?
+          command.query['transaction'] = transaction unless transaction.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Listens to changes.
         # @param [String] database
         #   Required. The database name. In the format: `projects/`project_id`/databases/`

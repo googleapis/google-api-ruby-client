@@ -727,8 +727,10 @@ module Google
       class GoogleFirestoreAdminV1Database
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_engine_integration_mode, as: 'appEngineIntegrationMode'
           property :concurrency_mode, as: 'concurrencyMode'
           property :etag, as: 'etag'
+          property :key_prefix, as: 'keyPrefix'
           property :location_id, as: 'locationId'
           property :name, as: 'name'
           property :type, as: 'type'
@@ -1119,6 +1121,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document, as: 'document', class: Google::Apis::FirestoreV1::Document, decorator: Google::Apis::FirestoreV1::Document::Representation
       
+          property :done, as: 'done'
           property :read_time, as: 'readTime'
           property :skipped_results, as: 'skippedResults'
           property :transaction, :base64 => true, as: 'transaction'
