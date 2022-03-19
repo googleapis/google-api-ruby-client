@@ -780,6 +780,11 @@ module Google
       class GoogleFirestoreAdminV1Database
         include Google::Apis::Core::Hashable
       
+        # The App Engine integration mode to use for this database.
+        # Corresponds to the JSON property `appEngineIntegrationMode`
+        # @return [String]
+        attr_accessor :app_engine_integration_mode
+      
         # The concurrency control mode to use for this database.
         # Corresponds to the JSON property `concurrencyMode`
         # @return [String]
@@ -791,6 +796,15 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # Output only. The key_prefix for this database. This key_prefix is used, in
+        # combination with the project id ("~") to construct the application id that is
+        # returned from the Cloud Datastore APIs in Google App Engine first generation
+        # runtimes. This value may be empty in which case the appid to use for URL-
+        # encoded keys is the project_id (eg: foo instead of v~foo).
+        # Corresponds to the JSON property `keyPrefix`
+        # @return [String]
+        attr_accessor :key_prefix
       
         # The location of the database. Available databases are listed at https://cloud.
         # google.com/firestore/docs/locations.
@@ -816,8 +830,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_engine_integration_mode = args[:app_engine_integration_mode] if args.key?(:app_engine_integration_mode)
           @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
           @etag = args[:etag] if args.key?(:etag)
+          @key_prefix = args[:key_prefix] if args.key?(:key_prefix)
           @location_id = args[:location_id] if args.key?(:location_id)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
@@ -2144,6 +2160,13 @@ module Google
         # @return [Google::Apis::FirestoreV1::Document]
         attr_accessor :document
       
+        # If present, Firestore has completely finished the request and no more
+        # documents will be returned.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
         # The time at which the document was read. This may be monotonically increasing;
         # in this case, the previous documents in the result stream are guaranteed not
         # to have changed between their `read_time` and this one. If the query returns
@@ -2174,6 +2197,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @document = args[:document] if args.key?(:document)
+          @done = args[:done] if args.key?(:done)
           @read_time = args[:read_time] if args.key?(:read_time)
           @skipped_results = args[:skipped_results] if args.key?(:skipped_results)
           @transaction = args[:transaction] if args.key?(:transaction)
