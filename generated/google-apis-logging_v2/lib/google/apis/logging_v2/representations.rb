@@ -364,6 +364,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
+          property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :name, as: 'name'
           property :service_account_id, as: 'serviceAccountId'
         end
