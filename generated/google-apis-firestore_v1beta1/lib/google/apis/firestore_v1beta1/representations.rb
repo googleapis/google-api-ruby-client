@@ -943,6 +943,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :document, as: 'document', class: Google::Apis::FirestoreV1beta1::Document, decorator: Google::Apis::FirestoreV1beta1::Document::Representation
       
+          property :done, as: 'done'
           property :read_time, as: 'readTime'
           property :skipped_results, as: 'skippedResults'
           property :transaction, :base64 => true, as: 'transaction'
