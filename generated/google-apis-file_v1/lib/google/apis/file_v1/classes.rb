@@ -762,7 +762,7 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # Output only. field indicates all the reasons the instance is in "SUSPENDED"
+        # Output only. Field indicates all the reasons the instance is in "SUSPENDED"
         # state.
         # Corresponds to the JSON property `suspensionReasons`
         # @return [Array<String>]
