@@ -439,10 +439,118 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get details of a single NFS share.
+        # @param [String] name
+        #   Required. Name of the resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::NfsShare] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::NfsShare]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_nfs_share(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::BaremetalsolutionV2::NfsShare::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::NfsShare
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List NFS shares.
+        # @param [String] parent
+        #   Required. Parent value for ListNfsSharesRequest.
+        # @param [String] filter
+        #   List filter.
+        # @param [Fixnum] page_size
+        #   Requested page size. The server might return fewer items than requested. If
+        #   unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   A token identifying a page of results from the server.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::ListNfsSharesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::ListNfsSharesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_nfs_shares(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/nfsShares', options)
+          command.response_representation = Google::Apis::BaremetalsolutionV2::ListNfsSharesResponse::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::ListNfsSharesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update details of a single NFS share.
+        # @param [String] name
+        #   Output only. The name of the NFS share.
+        # @param [Google::Apis::BaremetalsolutionV2::NfsShare] nfs_share_object
+        # @param [String] update_mask
+        #   The list of fields to update. The only currently supported fields are: `labels`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BaremetalsolutionV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BaremetalsolutionV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_nfs_share(name, nfs_share_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::BaremetalsolutionV2::NfsShare::Representation
+          command.request_object = nfs_share_object
+          command.response_representation = Google::Apis::BaremetalsolutionV2::Operation::Representation
+          command.response_class = Google::Apis::BaremetalsolutionV2::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create new ProvisioningConfig.
         # @param [String] parent
         #   Required. The parent project and location containing the ProvisioningConfig.
         # @param [Google::Apis::BaremetalsolutionV2::ProvisioningConfig] provisioning_config_object
+        # @param [String] email
+        #   Optional. Email provided to send a confirmation with provisioning config to.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -460,13 +568,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_provisioning_config(parent, provisioning_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_provisioning_config(parent, provisioning_config_object = nil, email: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/{+parent}/provisioningConfigs', options)
           command.request_representation = Google::Apis::BaremetalsolutionV2::ProvisioningConfig::Representation
           command.request_object = provisioning_config_object
           command.response_representation = Google::Apis::BaremetalsolutionV2::ProvisioningConfig::Representation
           command.response_class = Google::Apis::BaremetalsolutionV2::ProvisioningConfig
           command.params['parent'] = parent unless parent.nil?
+          command.query['email'] = email unless email.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -506,6 +615,8 @@ module Google
         # @param [String] name
         #   Output only. The name of the provisioning config.
         # @param [Google::Apis::BaremetalsolutionV2::ProvisioningConfig] provisioning_config_object
+        # @param [String] email
+        #   Optional. Email provided to send a confirmation with provisioning config to.
         # @param [String] update_mask
         #   Required. The list of fields to update.
         # @param [String] fields
@@ -525,13 +636,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_provisioning_config(name, provisioning_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_provisioning_config(name, provisioning_config_object = nil, email: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::BaremetalsolutionV2::ProvisioningConfig::Representation
           command.request_object = provisioning_config_object
           command.response_representation = Google::Apis::BaremetalsolutionV2::ProvisioningConfig::Representation
           command.response_class = Google::Apis::BaremetalsolutionV2::ProvisioningConfig
           command.params['name'] = name unless name.nil?
+          command.query['email'] = email unless email.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

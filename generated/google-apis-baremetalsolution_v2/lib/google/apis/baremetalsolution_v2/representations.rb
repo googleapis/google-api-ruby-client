@@ -22,6 +22,12 @@ module Google
   module Apis
     module BaremetalsolutionV2
       
+      class AllowedClient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +83,12 @@ module Google
       end
       
       class ListNetworksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListNfsSharesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +161,12 @@ module Google
       end
       
       class NfsExport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NfsShare
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +280,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllowedClient
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_dev, as: 'allowDev'
+          property :allow_suid, as: 'allowSuid'
+          property :allowed_clients_cidr, as: 'allowedClientsCidr'
+          property :mount_permissions, as: 'mountPermissions'
+          property :network, as: 'network'
+          property :no_root_squash, as: 'noRootSquash'
+          property :share_ip, as: 'shareIp'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -290,6 +321,7 @@ module Google
       class InstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_networks_enabled, as: 'accountNetworksEnabled'
           property :client_network, as: 'clientNetwork', class: Google::Apis::BaremetalsolutionV2::NetworkAddress, decorator: Google::Apis::BaremetalsolutionV2::NetworkAddress::Representation
       
           property :hyperthreading, as: 'hyperthreading'
@@ -364,6 +396,16 @@ module Google
           collection :networks, as: 'networks', class: Google::Apis::BaremetalsolutionV2::Network, decorator: Google::Apis::BaremetalsolutionV2::Network::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListNfsSharesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :nfs_shares, as: 'nfsShares', class: Google::Apis::BaremetalsolutionV2::NfsShare, decorator: Google::Apis::BaremetalsolutionV2::NfsShare::Representation
+      
           collection :unreachable, as: 'unreachable'
         end
       end
@@ -504,6 +546,19 @@ module Google
           property :network_id, as: 'networkId'
           property :no_root_squash, as: 'noRootSquash'
           property :permissions, as: 'permissions'
+        end
+      end
+      
+      class NfsShare
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_clients, as: 'allowedClients', class: Google::Apis::BaremetalsolutionV2::AllowedClient, decorator: Google::Apis::BaremetalsolutionV2::AllowedClient::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :nfs_share_id, as: 'nfsShareId'
+          property :state, as: 'state'
+          property :volume, as: 'volume'
         end
       end
       
