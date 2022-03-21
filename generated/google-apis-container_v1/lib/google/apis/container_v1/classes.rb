@@ -763,7 +763,9 @@ module Google
         # @return [Google::Apis::ContainerV1::NetworkPolicy]
         attr_accessor :network_policy
       
-        # Parameters that describe the nodes in a cluster.
+        # Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot
+        # clusters do not recognize parameters in `NodeConfig`. Use
+        # AutoprovisioningNodePoolDefaults instead.
         # Corresponds to the JSON property `nodeConfig`
         # @return [Google::Apis::ContainerV1::NodeConfig]
         attr_accessor :node_config
@@ -2766,7 +2768,9 @@ module Google
         end
       end
       
-      # Parameters that describe the nodes in a cluster.
+      # Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot
+      # clusters do not recognize parameters in `NodeConfig`. Use
+      # AutoprovisioningNodePoolDefaults instead.
       class NodeConfig
         include Google::Apis::Core::Hashable
       
@@ -3171,7 +3175,9 @@ module Google
         # @return [Array<Google::Apis::ContainerV1::StatusCondition>]
         attr_accessor :conditions
       
-        # Parameters that describe the nodes in a cluster.
+        # Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot
+        # clusters do not recognize parameters in `NodeConfig`. Use
+        # AutoprovisioningNodePoolDefaults instead.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::ContainerV1::NodeConfig]
         attr_accessor :config
