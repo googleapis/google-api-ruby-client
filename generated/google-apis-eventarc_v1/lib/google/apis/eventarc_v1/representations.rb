@@ -234,6 +234,7 @@ module Google
       
           property :gke, as: 'gke', class: Google::Apis::EventarcV1::Gke, decorator: Google::Apis::EventarcV1::Gke::Representation
       
+          property :workflow, as: 'workflow'
         end
       end
       
