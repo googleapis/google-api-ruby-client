@@ -219,6 +219,13 @@ module Google
         # @return [Google::Apis::EventarcV1::Gke]
         attr_accessor :gke
       
+        # The resource name of the Workflow whose Executions are triggered by the events.
+        # The Workflow resource should be deployed in the same project as the trigger.
+        # Format: `projects/`project`/locations/`location`/workflows/`workflow``
+        # Corresponds to the JSON property `workflow`
+        # @return [String]
+        attr_accessor :workflow
+      
         def initialize(**args)
            update!(**args)
         end
@@ -228,6 +235,7 @@ module Google
           @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
           @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @gke = args[:gke] if args.key?(:gke)
+          @workflow = args[:workflow] if args.key?(:workflow)
         end
       end
       
