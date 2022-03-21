@@ -269,13 +269,16 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
-        #   3. Requests specifying an invalid value will be rejected. Requests for
-        #   policies with any conditional bindings must specify version 3. Policies
-        #   without any conditional bindings may specify any valid value or leave the
-        #   field unset. To learn which resources support conditions in their IAM policies,
-        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        #   resource-policies).
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -539,7 +542,7 @@ module Google
         # Add DNS peering on the given resource.
         # @param [String] parent
         #   Required. The resource on which DNS peering will be created.
-        # @param [Google::Apis::DatafusionV1beta1::AddDnsPeeringRequest] add_dns_peering_request_object
+        # @param [Google::Apis::DatafusionV1beta1::DnsPeering] dns_peering_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -549,21 +552,52 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DatafusionV1beta1::AddDnsPeeringResponse] parsed result object
+        # @yieldparam result [Google::Apis::DatafusionV1beta1::DnsPeering] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DatafusionV1beta1::AddDnsPeeringResponse]
+        # @return [Google::Apis::DatafusionV1beta1::DnsPeering]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_dns_peering(parent, add_dns_peering_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+parent}/dnsPeerings:add', options)
-          command.request_representation = Google::Apis::DatafusionV1beta1::AddDnsPeeringRequest::Representation
-          command.request_object = add_dns_peering_request_object
-          command.response_representation = Google::Apis::DatafusionV1beta1::AddDnsPeeringResponse::Representation
-          command.response_class = Google::Apis::DatafusionV1beta1::AddDnsPeeringResponse
+        def create_project_location_instance_dns_peering(parent, dns_peering_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/dnsPeerings', options)
+          command.request_representation = Google::Apis::DatafusionV1beta1::DnsPeering::Representation
+          command.request_object = dns_peering_object
+          command.response_representation = Google::Apis::DatafusionV1beta1::DnsPeering::Representation
+          command.response_class = Google::Apis::DatafusionV1beta1::DnsPeering
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Remove DNS peering on the given resource.
+        # @param [String] name
+        #   Required. The name of the DNS peering zone to delete. Format: projects/`
+        #   project`/locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatafusionV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatafusionV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_instance_dns_peering(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::DatafusionV1beta1::Empty::Representation
+          command.response_class = Google::Apis::DatafusionV1beta1::Empty
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -571,12 +605,16 @@ module Google
         
         # List DNS peering for a given resource.
         # @param [String] parent
-        #   Required. The resource on which dns peering will be listed.
+        #   Required. The parent, which owns this collection of dns peerings. Format:
+        #   projects/`project`/locations/`location`/instances/`instance`
         # @param [Fixnum] page_size
-        #   The maximum number of items to return.
+        #   The maximum number of dns peerings to return. The service may return fewer
+        #   than this value. If unspecified, at most 10 dns peerings will be returned. The
+        #   maximum value is 50; values above 50 will be coerced to 50.
         # @param [String] page_token
-        #   The next_page_token value to use if there are additional results to retrieve
-        #   for this list request.
+        #   A page token, received from a previous `ListDnsPeerings` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListDnsPeerings` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -595,45 +633,12 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_location_instance_dns_peerings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta1/{+parent}/dnsPeerings:list', options)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/dnsPeerings', options)
           command.response_representation = Google::Apis::DatafusionV1beta1::ListDnsPeeringsResponse::Representation
           command.response_class = Google::Apis::DatafusionV1beta1::ListDnsPeeringsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Remove DNS peering on the given resource.
-        # @param [String] parent
-        #   Required. The resource on which DNS peering will be removed.
-        # @param [Google::Apis::DatafusionV1beta1::RemoveDnsPeeringRequest] remove_dns_peering_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DatafusionV1beta1::RemoveDnsPeeringResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DatafusionV1beta1::RemoveDnsPeeringResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_dns_peering(parent, remove_dns_peering_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+parent}/dnsPeerings:remove', options)
-          command.request_representation = Google::Apis::DatafusionV1beta1::RemoveDnsPeeringRequest::Representation
-          command.request_object = remove_dns_peering_request_object
-          command.response_representation = Google::Apis::DatafusionV1beta1::RemoveDnsPeeringResponse::Representation
-          command.response_class = Google::Apis::DatafusionV1beta1::RemoveDnsPeeringResponse
-          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -645,13 +650,16 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
-        #   3. Requests specifying an invalid value will be rejected. Requests for
-        #   policies with any conditional bindings must specify version 3. Policies
-        #   without any conditional bindings may specify any valid value or leave the
-        #   field unset. To learn which resources support conditions in their IAM policies,
-        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
-        #   resource-policies).
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

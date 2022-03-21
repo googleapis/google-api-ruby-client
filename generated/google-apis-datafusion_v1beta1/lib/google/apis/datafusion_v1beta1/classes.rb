@@ -41,39 +41,6 @@ module Google
         end
       end
       
-      # Request message to create dns peering.
-      class AddDnsPeeringRequest
-        include Google::Apis::Core::Hashable
-      
-        # DNS peering configuration. These configurations are used to create DNS peering
-        # with the customer Cloud DNS.
-        # Corresponds to the JSON property `dnsPeering`
-        # @return [Google::Apis::DatafusionV1beta1::DnsPeering]
-        attr_accessor :dns_peering
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dns_peering = args[:dns_peering] if args.key?(:dns_peering)
-        end
-      end
-      
-      # Response message for set dns peering method.
-      class AddDnsPeeringResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -261,10 +228,16 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Required. Name of the dns.
+        # Required. The dns name suffix of the zone.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
+      
+        # Required. The resource name of the dns peering zone. Format: projects/`project`
+        # /locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         # Optional. Optional target network to which dns peering should happen.
         # Corresponds to the JSON property `targetNetwork`
@@ -276,11 +249,6 @@ module Google
         # @return [String]
         attr_accessor :target_project
       
-        # Required. Name of the zone.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
         def initialize(**args)
            update!(**args)
         end
@@ -289,9 +257,9 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @domain = args[:domain] if args.key?(:domain)
+          @name = args[:name] if args.key?(:name)
           @target_network = args[:target_network] if args.key?(:target_network)
           @target_project = args[:target_project] if args.key?(:target_project)
-          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -654,17 +622,17 @@ module Google
         end
       end
       
-      # List dns peering response.
+      # Response message for list DNS peerings.
       class ListDnsPeeringsResponse
         include Google::Apis::Core::Hashable
       
-        # List of dns peering configs.
+        # List of dns peering.
         # Corresponds to the JSON property `dnsPeerings`
         # @return [Array<Google::Apis::DatafusionV1beta1::DnsPeering>]
         attr_accessor :dns_peerings
       
-        # Token to retrieve the next page of results or empty if there are no more
-        # results in the list.
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1108,38 +1076,6 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Request message to remove dns peering.
-      class RemoveDnsPeeringRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The zone to be removed.
-        # Corresponds to the JSON property `zone`
-        # @return [String]
-        attr_accessor :zone
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @zone = args[:zone] if args.key?(:zone)
-        end
-      end
-      
-      # Response message for set dns peering method.
-      class RemoveDnsPeeringResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
