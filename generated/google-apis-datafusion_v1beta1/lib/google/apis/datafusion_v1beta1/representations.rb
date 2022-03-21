@@ -28,18 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AddDnsPeeringRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AddDnsPeeringResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,18 +160,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RemoveDnsPeeringRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RemoveDnsPeeringResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RemoveIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,20 +221,6 @@ module Google
         end
       end
       
-      class AddDnsPeeringRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dns_peering, as: 'dnsPeering', class: Google::Apis::DatafusionV1beta1::DnsPeering, decorator: Google::Apis::DatafusionV1beta1::DnsPeering::Representation
-      
-        end
-      end
-      
-      class AddDnsPeeringResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -304,9 +266,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :domain, as: 'domain'
+          property :name, as: 'name'
           property :target_network, as: 'targetNetwork'
           property :target_project, as: 'targetProject'
-          property :zone, as: 'zone'
         end
       end
       
@@ -491,19 +453,6 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
-        end
-      end
-      
-      class RemoveDnsPeeringRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :zone, as: 'zone'
-        end
-      end
-      
-      class RemoveDnsPeeringResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
