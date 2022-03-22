@@ -379,6 +379,11 @@ module Google
         # @return [String]
         attr_accessor :grant_id
       
+        # The transmit expiration time of the last heartbeat.
+        # Corresponds to the JSON property `lastHeartbeatTransmitExpireTime`
+        # @return [String]
+        attr_accessor :last_heartbeat_transmit_expire_time
+      
         # Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the grant.
         # The maximum EIRP is in units of dBm/MHz. The value of `maxEirp` represents the
         # average (RMS) EIRP that would be measured by the procedure defined in FCC part
@@ -412,6 +417,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @frequency_range = args[:frequency_range] if args.key?(:frequency_range)
           @grant_id = args[:grant_id] if args.key?(:grant_id)
+          @last_heartbeat_transmit_expire_time = args[:last_heartbeat_transmit_expire_time] if args.key?(:last_heartbeat_transmit_expire_time)
           @max_eirp = args[:max_eirp] if args.key?(:max_eirp)
           @move_list = args[:move_list] if args.key?(:move_list)
           @state = args[:state] if args.key?(:state)
@@ -538,8 +544,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class SasPortalEmpty
         include Google::Apis::Core::Hashable
       
