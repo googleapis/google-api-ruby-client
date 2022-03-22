@@ -823,7 +823,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkPolicy]
         attr_accessor :network_policy
       
-        # Parameters that describe the nodes in a cluster.
+        # Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot
+        # clusters do not recognize parameters in `NodeConfig`. Use
+        # AutoprovisioningNodePoolDefaults instead.
         # Corresponds to the JSON property `nodeConfig`
         # @return [Google::Apis::ContainerV1beta1::NodeConfig]
         attr_accessor :node_config
@@ -1723,11 +1725,11 @@ module Google
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-      # DateTime * google.protobuf.Timestamp
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -3179,7 +3181,9 @@ module Google
         end
       end
       
-      # Parameters that describe the nodes in a cluster.
+      # Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot
+      # clusters do not recognize parameters in `NodeConfig`. Use
+      # AutoprovisioningNodePoolDefaults instead.
       class NodeConfig
         include Google::Apis::Core::Hashable
       
@@ -3202,6 +3206,12 @@ module Google
         # Corresponds to the JSON property `bootDiskKmsKey`
         # @return [String]
         attr_accessor :boot_disk_kms_key
+      
+        # ConfidentialNodes is configuration for the confidential nodes feature, which
+        # makes nodes run on confidential VMs.
+        # Corresponds to the JSON property `confidentialNodes`
+        # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
+        attr_accessor :confidential_nodes
       
         # Size of the disk attached to each node, specified in GB. The smallest allowed
         # disk size is 10GB. If unspecified, the default disk size is 100GB.
@@ -3390,6 +3400,7 @@ module Google
           @accelerators = args[:accelerators] if args.key?(:accelerators)
           @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
+          @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @ephemeral_storage_config = args[:ephemeral_storage_config] if args.key?(:ephemeral_storage_config)
@@ -3617,7 +3628,9 @@ module Google
         # @return [Array<Google::Apis::ContainerV1beta1::StatusCondition>]
         attr_accessor :conditions
       
-        # Parameters that describe the nodes in a cluster.
+        # Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot
+        # clusters do not recognize parameters in `NodeConfig`. Use
+        # AutoprovisioningNodePoolDefaults instead.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::ContainerV1beta1::NodeConfig]
         attr_accessor :config
@@ -5646,6 +5659,12 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
+        # ConfidentialNodes is configuration for the confidential nodes feature, which
+        # makes nodes run on confidential VMs.
+        # Corresponds to the JSON property `confidentialNodes`
+        # @return [Google::Apis::ContainerV1beta1::ConfidentialNodes]
+        attr_accessor :confidential_nodes
+      
         # GcfsConfig contains configurations of Google Container File System.
         # Corresponds to the JSON property `gcfsConfig`
         # @return [Google::Apis::ContainerV1beta1::GcfsConfig]
@@ -5754,6 +5773,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @confidential_nodes = args[:confidential_nodes] if args.key?(:confidential_nodes)
           @gcfs_config = args[:gcfs_config] if args.key?(:gcfs_config)
           @gvnic = args[:gvnic] if args.key?(:gvnic)
           @image_type = args[:image_type] if args.key?(:image_type)
@@ -6038,11 +6058,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `supportEndDate`
         # @return [Google::Apis::ContainerV1beta1::Date]
         attr_accessor :support_end_date
