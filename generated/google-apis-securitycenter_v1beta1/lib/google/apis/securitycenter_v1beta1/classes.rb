@@ -434,8 +434,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -577,9 +576,9 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta1::MitreAttack]
         attr_accessor :mitre_attack
       
-        # Indicates the mute state of a finding (either unspecified, muted, unmuted or
-        # undefined). Unlike other attributes of a finding, a finding provider shouldn't
-        # set the value of mute.
+        # Indicates the mute state of a finding (either muted, unmuted or undefined).
+        # Unlike other attributes of a finding, a finding provider shouldn't set the
+        # value of mute.
         # Corresponds to the JSON property `mute`
         # @return [String]
         attr_accessor :mute
@@ -1063,7 +1062,7 @@ module Google
         # @return [String]
         attr_accessor :project
       
-        # The project id that the resource belongs to.
+        # The project ID that the resource belongs to.
         # Corresponds to the JSON property `projectDisplayName`
         # @return [String]
         attr_accessor :project_display_name
