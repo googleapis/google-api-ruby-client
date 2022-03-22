@@ -9427,13 +9427,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # A list of labels to apply for this resource. Each label key & value must
-        # comply with RFC1035. Specifically, the name must be 1-63 characters long and
-        # match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
-        # first character must be a lowercase letter, and all following characters must
-        # be a dash, lowercase letter, or digit, except the last character, which cannot
-        # be a dash. For example, "webserver-frontend": "images". A label value can also
-        # be empty (e.g. "my-label": "").
+        # A list of labels to apply for this resource. Each label must comply with the
+        # requirements for labels. For example, "webserver-frontend": "images". A label
+        # value can also be empty (e.g. "my-label": "").
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -9616,9 +9612,9 @@ module Google
       
         # The ID of a supported feature. To add multiple values, use commas to separate
         # values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE -
-        # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC -
-        # SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information,
-        # see Enabling guest operating system features.
+        # WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE -
+        # SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling
+        # guest operating system features.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -20794,10 +20790,8 @@ module Google
       class NetworkEndpointGroupServerlessDeployment
         include Google::Apis::Core::Hashable
       
-        # The platform of the backend target(s) of this NEG. Possible values include: 1.
-        # API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com
-        # 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.
-        # com
+        # The platform of the backend target(s) of this NEG. The only supported value is
+        # API Gateway: apigateway.googleapis.com.
         # Corresponds to the JSON property `platform`
         # @return [String]
         attr_accessor :platform
