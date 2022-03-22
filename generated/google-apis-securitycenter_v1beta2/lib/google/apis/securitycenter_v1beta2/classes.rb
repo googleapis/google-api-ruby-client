@@ -416,9 +416,9 @@ module Google
         # @return [Google::Apis::SecuritycenterV1beta2::MitreAttack]
         attr_accessor :mitre_attack
       
-        # Indicates the mute state of a finding (either unspecified, muted, unmuted or
-        # undefined). Unlike other attributes of a finding, a finding provider shouldn't
-        # set the value of mute.
+        # Indicates the mute state of a finding (either muted, unmuted or undefined).
+        # Unlike other attributes of a finding, a finding provider shouldn't set the
+        # value of mute.
         # Corresponds to the JSON property `mute`
         # @return [String]
         attr_accessor :mute
@@ -855,7 +855,7 @@ module Google
         # @return [String]
         attr_accessor :project
       
-        # The project id that the resource belongs to.
+        # The project ID that the resource belongs to.
         # Corresponds to the JSON property `projectDisplayName`
         # @return [String]
         attr_accessor :project_display_name
