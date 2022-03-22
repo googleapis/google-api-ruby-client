@@ -1,5 +1,9 @@
 # Release history for google-apis-mybusinessaccountmanagement_v1
 
+### v0.11.0 (2022-03-22)
+
+* Regenerated from discovery document revision 20220319
+
 ### v0.10.0 (2022-02-16)
 
 * Regenerated from discovery document revision 20220215
