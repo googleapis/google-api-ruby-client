@@ -1664,6 +1664,7 @@ module Google
       class ChannelToStoreLinkDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :store_name, as: 'storeName'
           property :store_url, as: 'storeUrl'
         end

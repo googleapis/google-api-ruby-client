@@ -1911,6 +1911,11 @@ module Google
       class ChannelToStoreLinkDetails
         include Google::Apis::Core::Hashable
       
+        # Google Merchant Center id of the store.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
         # Name of the store.
         # Corresponds to the JSON property `storeName`
         # @return [String]
@@ -1927,6 +1932,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @store_name = args[:store_name] if args.key?(:store_name)
           @store_url = args[:store_url] if args.key?(:store_url)
         end
