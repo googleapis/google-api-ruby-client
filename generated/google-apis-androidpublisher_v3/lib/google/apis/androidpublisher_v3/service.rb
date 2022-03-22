@@ -1177,7 +1177,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets testers.
+        # Gets testers. Note: Testers resource does not support email lists.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] edit_id
@@ -1213,7 +1213,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches testers.
+        # Patches testers. Note: Testers resource does not support email lists.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] edit_id
@@ -1252,7 +1252,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates testers.
+        # Updates testers. Note: Testers resource does not support email lists.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] edit_id
