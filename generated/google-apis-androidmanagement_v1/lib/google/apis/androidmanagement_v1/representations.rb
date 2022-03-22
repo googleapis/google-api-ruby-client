@@ -587,6 +587,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accessible_track_ids, as: 'accessibleTrackIds'
+          property :always_on_vpn_lockdown_exemption, as: 'alwaysOnVpnLockdownExemption'
           property :auto_update_mode, as: 'autoUpdateMode'
           property :connected_work_and_personal_app, as: 'connectedWorkAndPersonalApp'
           property :default_permission_policy, as: 'defaultPermissionPolicy'
@@ -1113,7 +1114,6 @@ module Google
           property :password_quality, as: 'passwordQuality'
           property :password_scope, as: 'passwordScope'
           property :require_password_unlock, as: 'requirePasswordUnlock'
-          property :unified_lock_settings, as: 'unifiedLockSettings'
         end
       end
       
