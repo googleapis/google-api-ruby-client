@@ -188,6 +188,7 @@ module Google
       class V2Key
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
