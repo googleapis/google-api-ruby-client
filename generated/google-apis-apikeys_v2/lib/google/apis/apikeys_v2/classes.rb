@@ -288,6 +288,13 @@ module Google
       class V2Key
         include Google::Apis::Core::Hashable
       
+        # Annotations is an unstructured key-value map stored with a policy that may be
+        # set by external tools to store and retrieve arbitrary metadata. They are not
+        # queryable and should be preserved when modifying objects.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # Output only. A timestamp identifying the time this key was originally created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -348,6 +355,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
