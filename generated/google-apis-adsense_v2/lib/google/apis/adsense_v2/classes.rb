@@ -152,13 +152,14 @@ module Google
         # @return [Google::Apis::AdsenseV2::ContentAdsSettings]
         attr_accessor :content_ads_settings
       
-        # Display name of the ad unit, as provided when the ad unit was created.
+        # Required. Display name of the ad unit, as provided when the ad unit was
+        # created.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of the ad unit. Format: accounts/`account`/adclients/`adclient`/
-        # adunits/`adunit`
+        # Required. Resource name of the ad unit. Format: accounts/`account`/adclients/`
+        # adclient`/adunits/`adunit`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
