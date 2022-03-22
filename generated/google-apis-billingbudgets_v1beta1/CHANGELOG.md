@@ -1,5 +1,9 @@
 # Release history for google-apis-billingbudgets_v1beta1
 
+### v0.16.0 (2022-03-22)
+
+* Regenerated from discovery document revision 20220319
+
 ### v0.15.0 (2022-03-08)
 
 * Regenerated from discovery document revision 20220305
