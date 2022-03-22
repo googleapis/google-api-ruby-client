@@ -299,8 +299,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -549,6 +548,32 @@ module Google
         def update!(**args)
           @identity_aware_proxy_clients = args[:identity_aware_proxy_clients] if args.key?(:identity_aware_proxy_clients)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response from ListTunnelDestGroups.
+      class ListTunnelDestGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be send as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # TunnelDestGroup existing in the project.
+        # Corresponds to the JSON property `tunnelDestGroups`
+        # @return [Array<Google::Apis::IapV1::TunnelDestGroup>]
+        attr_accessor :tunnel_dest_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tunnel_dest_groups = args[:tunnel_dest_groups] if args.key?(:tunnel_dest_groups)
         end
       end
       
@@ -942,6 +967,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A TunnelDestGroup.
+      class TunnelDestGroup
+        include Google::Apis::Core::Hashable
+      
+        # null List of CIDRs that this group applies to.
+        # Corresponds to the JSON property `cidrs`
+        # @return [Array<String>]
+        attr_accessor :cidrs
+      
+        # null List of FQDNs that this group applies to.
+        # Corresponds to the JSON property `fqdns`
+        # @return [Array<String>]
+        attr_accessor :fqdns
+      
+        # Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within
+        # the project.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cidrs = args[:cidrs] if args.key?(:cidrs)
+          @fqdns = args[:fqdns] if args.key?(:fqdns)
+          @name = args[:name] if args.key?(:name)
         end
       end
     end

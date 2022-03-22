@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTunnelDestGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OAuthSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TunnelDestGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -323,6 +335,15 @@ module Google
         end
       end
       
+      class ListTunnelDestGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tunnel_dest_groups, as: 'tunnelDestGroups', class: Google::Apis::IapV1::TunnelDestGroup, decorator: Google::Apis::IapV1::TunnelDestGroup::Representation
+      
+        end
+      end
+      
       class OAuthSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -405,6 +426,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TunnelDestGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cidrs, as: 'cidrs'
+          collection :fqdns, as: 'fqdns'
+          property :name, as: 'name'
         end
       end
     end
