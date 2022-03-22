@@ -418,6 +418,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :accessible_track_ids
       
+        # Specifies whether the app is allowed networking when the VPN is not connected
+        # and alwaysOnVpnPackage.lockdownEnabled is enabled. If set to
+        # VPN_LOCKDOWN_ENFORCED, the app is not allowed networking, and if set to
+        # VPN_LOCKDOWN_EXEMPTION, the app is allowed networking. Only supported on
+        # devices running Android 10 and above. If this is not supported by the device,
+        # the device will contain a NonComplianceDetail with non_compliance_reason set
+        # to API_LEVEL and a fieldPath. If this is not applicable to the app, the device
+        # will contain a NonComplianceDetail with non_compliance_reason set to
+        # UNSUPPORTED and a fieldPath. The fieldPath is set to applications[i].
+        # alwaysOnVpnLockdownExemption, where i is the index of the package in the
+        # applications policy.
+        # Corresponds to the JSON property `alwaysOnVpnLockdownExemption`
+        # @return [String]
+        attr_accessor :always_on_vpn_lockdown_exemption
+      
         # Controls the auto-update mode for the app.
         # Corresponds to the JSON property `autoUpdateMode`
         # @return [String]
@@ -511,6 +526,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accessible_track_ids = args[:accessible_track_ids] if args.key?(:accessible_track_ids)
+          @always_on_vpn_lockdown_exemption = args[:always_on_vpn_lockdown_exemption] if args.key?(:always_on_vpn_lockdown_exemption)
           @auto_update_mode = args[:auto_update_mode] if args.key?(:auto_update_mode)
           @connected_work_and_personal_app = args[:connected_work_and_personal_app] if args.key?(:connected_work_and_personal_app)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
@@ -2643,16 +2659,6 @@ module Google
         # @return [String]
         attr_accessor :require_password_unlock
       
-        # Controls whether a unified lock is allowed for the device and the work profile,
-        # on devices running Android 9 and above with a work profile. This has no
-        # effect on other devices. This can be set only if password_scope is set to
-        # SCOPE_PROFILE, the policy will be rejected otherwise. If user has not set a
-        # separate work lock and this field is set to REQUIRE_SEPARATE_WORK_LOCK, a
-        # NonComplianceDetail is reported with nonComplianceReason set to USER_ACTION.
-        # Corresponds to the JSON property `unifiedLockSettings`
-        # @return [String]
-        attr_accessor :unified_lock_settings
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2672,7 +2678,6 @@ module Google
           @password_quality = args[:password_quality] if args.key?(:password_quality)
           @password_scope = args[:password_scope] if args.key?(:password_scope)
           @require_password_unlock = args[:require_password_unlock] if args.key?(:require_password_unlock)
-          @unified_lock_settings = args[:unified_lock_settings] if args.key?(:unified_lock_settings)
         end
       end
       
