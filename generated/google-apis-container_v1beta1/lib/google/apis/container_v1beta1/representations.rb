@@ -1736,6 +1736,8 @@ module Google
           property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ContainerV1beta1::AdvancedMachineFeatures, decorator: Google::Apis::ContainerV1beta1::AdvancedMachineFeatures::Representation
       
           property :boot_disk_kms_key, as: 'bootDiskKmsKey'
+          property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation
+      
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :ephemeral_storage_config, as: 'ephemeralStorageConfig', class: Google::Apis::ContainerV1beta1::EphemeralStorageConfig, decorator: Google::Apis::ContainerV1beta1::EphemeralStorageConfig::Representation
@@ -2326,6 +2328,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
+          property :confidential_nodes, as: 'confidentialNodes', class: Google::Apis::ContainerV1beta1::ConfidentialNodes, decorator: Google::Apis::ContainerV1beta1::ConfidentialNodes::Representation
+      
           property :gcfs_config, as: 'gcfsConfig', class: Google::Apis::ContainerV1beta1::GcfsConfig, decorator: Google::Apis::ContainerV1beta1::GcfsConfig::Representation
       
           property :gvnic, as: 'gvnic', class: Google::Apis::ContainerV1beta1::VirtualNic, decorator: Google::Apis::ContainerV1beta1::VirtualNic::Representation
