@@ -346,6 +346,7 @@ module Google
           property :frequency_range, as: 'frequencyRange', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange::Representation
       
           property :grant_id, as: 'grantId'
+          property :last_heartbeat_transmit_expire_time, as: 'lastHeartbeatTransmitExpireTime'
           property :max_eirp, as: 'maxEirp'
           collection :move_list, as: 'moveList', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDpaMoveList, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDpaMoveList::Representation
       
