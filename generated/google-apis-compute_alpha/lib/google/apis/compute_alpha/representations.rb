@@ -12372,6 +12372,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :peer_mtu, as: 'peerMtu'
+          property :stack_type, as: 'stackType'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
         end
@@ -14807,6 +14808,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain, as: 'availabilityDomain'
+          property :termination_timestamp, as: 'terminationTimestamp'
         end
       end
       
