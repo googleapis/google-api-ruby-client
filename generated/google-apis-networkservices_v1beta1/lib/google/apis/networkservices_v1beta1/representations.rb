@@ -70,13 +70,211 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Gateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteFaultInjectionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteFaultInjectionPolicyAbort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteFaultInjectionPolicyDelay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteHeaderMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteMethodMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteRetryPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteRouteAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteRouteMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrpcRouteRouteRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteCorsPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteFaultInjectionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteFaultInjectionPolicyAbort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteFaultInjectionPolicyDelay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteHeaderMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteHeaderMatchIntegerRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteHeaderModifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteQueryParameterMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteRedirect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteRequestMirrorPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteRetryPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteRouteAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteRouteMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteRouteRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpRouteUrlRewrite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEndpointPoliciesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListGatewaysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListGrpcRoutesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListHttpRoutesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListMeshesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,7 +292,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTcpRoutesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTlsRoutesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Mesh
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +364,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TcpRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TcpRouteRouteAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TcpRouteRouteDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TcpRouteRouteMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TcpRouteRouteRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +401,36 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TlsRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TlsRouteRouteAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TlsRouteRouteDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TlsRouteRouteMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TlsRouteRouteRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -242,6 +518,327 @@ module Google
         end
       end
       
+      class Gateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :ports, as: 'ports'
+          property :scope, as: 'scope'
+          property :self_link, as: 'selfLink'
+          property :server_tls_policy, as: 'serverTlsPolicy'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GrpcRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :gateways, as: 'gateways'
+          collection :hostnames, as: 'hostnames'
+          hash :labels, as: 'labels'
+          collection :meshes, as: 'meshes'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteRule, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteRule::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GrpcRouteDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_name, as: 'serviceName'
+          property :weight, as: 'weight'
+        end
+      end
+      
+      class GrpcRouteFaultInjectionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abort, as: 'abort', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicyAbort, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicyAbort::Representation
+      
+          property :delay, as: 'delay', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicyDelay, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicyDelay::Representation
+      
+        end
+      end
+      
+      class GrpcRouteFaultInjectionPolicyAbort
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_status, as: 'httpStatus'
+          property :percentage, as: 'percentage'
+        end
+      end
+      
+      class GrpcRouteFaultInjectionPolicyDelay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fixed_delay, as: 'fixedDelay'
+          property :percentage, as: 'percentage'
+        end
+      end
+      
+      class GrpcRouteHeaderMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :type, as: 'type'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GrpcRouteMethodMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :case_sensitive, as: 'caseSensitive'
+          property :grpc_method, as: 'grpcMethod'
+          property :grpc_service, as: 'grpcService'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GrpcRouteRetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_retries, as: 'numRetries'
+          collection :retry_conditions, as: 'retryConditions'
+        end
+      end
+      
+      class GrpcRouteRouteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destinations, as: 'destinations', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteDestination, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteDestination::Representation
+      
+          property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicy, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicy::Representation
+      
+          property :retry_policy, as: 'retryPolicy', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteRetryPolicy, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteRetryPolicy::Representation
+      
+          property :timeout, as: 'timeout'
+        end
+      end
+      
+      class GrpcRouteRouteMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :headers, as: 'headers', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteHeaderMatch, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteHeaderMatch::Representation
+      
+          property :method_prop, as: 'method', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteMethodMatch, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteMethodMatch::Representation
+      
+        end
+      end
+      
+      class GrpcRouteRouteRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteAction, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteAction::Representation
+      
+          collection :matches, as: 'matches', class: Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteMatch, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteMatch::Representation
+      
+        end
+      end
+      
+      class HttpRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :gateways, as: 'gateways'
+          collection :hostnames, as: 'hostnames'
+          hash :labels, as: 'labels'
+          collection :meshes, as: 'meshes'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::NetworkservicesV1beta1::HttpRouteRouteRule, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteRouteRule::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class HttpRouteCorsPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_credentials, as: 'allowCredentials'
+          collection :allow_headers, as: 'allowHeaders'
+          collection :allow_methods, as: 'allowMethods'
+          collection :allow_origin_regexes, as: 'allowOriginRegexes'
+          collection :allow_origins, as: 'allowOrigins'
+          property :disabled, as: 'disabled'
+          collection :expose_headers, as: 'exposeHeaders'
+          property :max_age, as: 'maxAge'
+        end
+      end
+      
+      class HttpRouteDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_name, as: 'serviceName'
+          property :weight, as: 'weight'
+        end
+      end
+      
+      class HttpRouteFaultInjectionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abort, as: 'abort', class: Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicyAbort, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicyAbort::Representation
+      
+          property :delay, as: 'delay', class: Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicyDelay, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicyDelay::Representation
+      
+        end
+      end
+      
+      class HttpRouteFaultInjectionPolicyAbort
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_status, as: 'httpStatus'
+          property :percentage, as: 'percentage'
+        end
+      end
+      
+      class HttpRouteFaultInjectionPolicyDelay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fixed_delay, as: 'fixedDelay'
+          property :percentage, as: 'percentage'
+        end
+      end
+      
+      class HttpRouteHeaderMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exact_match, as: 'exactMatch'
+          property :header, as: 'header'
+          property :invert_match, as: 'invertMatch'
+          property :prefix_match, as: 'prefixMatch'
+          property :present_match, as: 'presentMatch'
+          property :range_match, as: 'rangeMatch', class: Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderMatchIntegerRange, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderMatchIntegerRange::Representation
+      
+          property :regex_match, as: 'regexMatch'
+          property :suffix_match, as: 'suffixMatch'
+        end
+      end
+      
+      class HttpRouteHeaderMatchIntegerRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :start, as: 'start'
+        end
+      end
+      
+      class HttpRouteHeaderModifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :add, as: 'add'
+          collection :remove, as: 'remove'
+          hash :set, as: 'set'
+        end
+      end
+      
+      class HttpRouteQueryParameterMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exact_match, as: 'exactMatch'
+          property :present_match, as: 'presentMatch'
+          property :query_parameter, as: 'queryParameter'
+          property :regex_match, as: 'regexMatch'
+        end
+      end
+      
+      class HttpRouteRedirect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_redirect, as: 'hostRedirect'
+          property :https_redirect, as: 'httpsRedirect'
+          property :path_redirect, as: 'pathRedirect'
+          property :port_redirect, as: 'portRedirect'
+          property :prefix_rewrite, as: 'prefixRewrite'
+          property :response_code, as: 'responseCode'
+          property :strip_query, as: 'stripQuery'
+        end
+      end
+      
+      class HttpRouteRequestMirrorPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination', class: Google::Apis::NetworkservicesV1beta1::HttpRouteDestination, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteDestination::Representation
+      
+        end
+      end
+      
+      class HttpRouteRetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_retries, as: 'numRetries'
+          property :per_try_timeout, as: 'perTryTimeout'
+          collection :retry_conditions, as: 'retryConditions'
+        end
+      end
+      
+      class HttpRouteRouteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cors_policy, as: 'corsPolicy', class: Google::Apis::NetworkservicesV1beta1::HttpRouteCorsPolicy, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteCorsPolicy::Representation
+      
+          collection :destinations, as: 'destinations', class: Google::Apis::NetworkservicesV1beta1::HttpRouteDestination, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteDestination::Representation
+      
+          property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicy, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicy::Representation
+      
+          property :redirect, as: 'redirect', class: Google::Apis::NetworkservicesV1beta1::HttpRouteRedirect, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteRedirect::Representation
+      
+          property :request_header_modifier, as: 'requestHeaderModifier', class: Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderModifier, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderModifier::Representation
+      
+          property :request_mirror_policy, as: 'requestMirrorPolicy', class: Google::Apis::NetworkservicesV1beta1::HttpRouteRequestMirrorPolicy, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteRequestMirrorPolicy::Representation
+      
+          property :response_header_modifier, as: 'responseHeaderModifier', class: Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderModifier, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderModifier::Representation
+      
+          property :retry_policy, as: 'retryPolicy', class: Google::Apis::NetworkservicesV1beta1::HttpRouteRetryPolicy, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteRetryPolicy::Representation
+      
+          property :timeout, as: 'timeout'
+          property :url_rewrite, as: 'urlRewrite', class: Google::Apis::NetworkservicesV1beta1::HttpRouteUrlRewrite, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteUrlRewrite::Representation
+      
+        end
+      end
+      
+      class HttpRouteRouteMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_path_match, as: 'fullPathMatch'
+          collection :headers, as: 'headers', class: Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderMatch, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderMatch::Representation
+      
+          property :ignore_case, as: 'ignoreCase'
+          property :prefix_match, as: 'prefixMatch'
+          collection :query_parameters, as: 'queryParameters', class: Google::Apis::NetworkservicesV1beta1::HttpRouteQueryParameterMatch, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteQueryParameterMatch::Representation
+      
+          property :regex_match, as: 'regexMatch'
+        end
+      end
+      
+      class HttpRouteRouteRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::NetworkservicesV1beta1::HttpRouteRouteAction, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteRouteAction::Representation
+      
+          collection :matches, as: 'matches', class: Google::Apis::NetworkservicesV1beta1::HttpRouteRouteMatch, decorator: Google::Apis::NetworkservicesV1beta1::HttpRouteRouteMatch::Representation
+      
+        end
+      end
+      
+      class HttpRouteUrlRewrite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_rewrite, as: 'hostRewrite'
+          property :path_prefix_rewrite, as: 'pathPrefixRewrite'
+        end
+      end
+      
       class ListEndpointPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -251,10 +848,46 @@ module Google
         end
       end
       
+      class ListGatewaysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateways, as: 'gateways', class: Google::Apis::NetworkservicesV1beta1::Gateway, decorator: Google::Apis::NetworkservicesV1beta1::Gateway::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListGrpcRoutesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :grpc_routes, as: 'grpcRoutes', class: Google::Apis::NetworkservicesV1beta1::GrpcRoute, decorator: Google::Apis::NetworkservicesV1beta1::GrpcRoute::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListHttpRoutesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :http_routes, as: 'httpRoutes', class: Google::Apis::NetworkservicesV1beta1::HttpRoute, decorator: Google::Apis::NetworkservicesV1beta1::HttpRoute::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :locations, as: 'locations', class: Google::Apis::NetworkservicesV1beta1::Location, decorator: Google::Apis::NetworkservicesV1beta1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListMeshesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :meshes, as: 'meshes', class: Google::Apis::NetworkservicesV1beta1::Mesh, decorator: Google::Apis::NetworkservicesV1beta1::Mesh::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -278,6 +911,24 @@ module Google
         end
       end
       
+      class ListTcpRoutesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tcp_routes, as: 'tcpRoutes', class: Google::Apis::NetworkservicesV1beta1::TcpRoute, decorator: Google::Apis::NetworkservicesV1beta1::TcpRoute::Representation
+      
+        end
+      end
+      
+      class ListTlsRoutesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :tls_routes, as: 'tlsRoutes', class: Google::Apis::NetworkservicesV1beta1::TlsRoute, decorator: Google::Apis::NetworkservicesV1beta1::TlsRoute::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -286,6 +937,19 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class Mesh
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :interception_port, as: 'interceptionPort'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -374,6 +1038,57 @@ module Google
         end
       end
       
+      class TcpRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :gateways, as: 'gateways'
+          hash :labels, as: 'labels'
+          collection :meshes, as: 'meshes'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::NetworkservicesV1beta1::TcpRouteRouteRule, decorator: Google::Apis::NetworkservicesV1beta1::TcpRouteRouteRule::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TcpRouteRouteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destinations, as: 'destinations', class: Google::Apis::NetworkservicesV1beta1::TcpRouteRouteDestination, decorator: Google::Apis::NetworkservicesV1beta1::TcpRouteRouteDestination::Representation
+      
+          property :original_destination, as: 'originalDestination'
+        end
+      end
+      
+      class TcpRouteRouteDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_name, as: 'serviceName'
+          property :weight, as: 'weight'
+        end
+      end
+      
+      class TcpRouteRouteMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :port, as: 'port'
+        end
+      end
+      
+      class TcpRouteRouteRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::NetworkservicesV1beta1::TcpRouteRouteAction, decorator: Google::Apis::NetworkservicesV1beta1::TcpRouteRouteAction::Representation
+      
+          collection :matches, as: 'matches', class: Google::Apis::NetworkservicesV1beta1::TcpRouteRouteMatch, decorator: Google::Apis::NetworkservicesV1beta1::TcpRouteRouteMatch::Representation
+      
+        end
+      end
+      
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -385,6 +1100,55 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TlsRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :gateways, as: 'gateways'
+          collection :meshes, as: 'meshes'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteRule, decorator: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteRule::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TlsRouteRouteAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destinations, as: 'destinations', class: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteDestination, decorator: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteDestination::Representation
+      
+        end
+      end
+      
+      class TlsRouteRouteDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_name, as: 'serviceName'
+          property :weight, as: 'weight'
+        end
+      end
+      
+      class TlsRouteRouteMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alpn, as: 'alpn'
+          collection :sni_host, as: 'sniHost'
+        end
+      end
+      
+      class TlsRouteRouteRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteAction, decorator: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteAction::Representation
+      
+          collection :matches, as: 'matches', class: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteMatch, decorator: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteMatch::Representation
+      
         end
       end
       
