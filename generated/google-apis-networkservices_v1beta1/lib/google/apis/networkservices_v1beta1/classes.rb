@@ -365,6 +365,1316 @@ module Google
         end
       end
       
+      # Gateway represents the configuration for a proxy, typically a load balancer.
+      # It captures the ip:port over which the services are exposed by the proxy,
+      # along with any policy configurations. Routes have reference to to Gateways to
+      # dictate how requests should be routed by this Gateway.
+      class Gateway
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Set of label tags associated with the Gateway resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Name of the Gateway resource. It matches pattern `projects/*/
+        # locations/global/gateways/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. One or more ports that the Gateway must receive traffic on. The
+        # proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports
+        # specified below.
+        # Corresponds to the JSON property `ports`
+        # @return [Array<Fixnum>]
+        attr_accessor :ports
+      
+        # Required. Immutable. Scope determines how configuration across multiple
+        # Gateway instances are merged. The configuration for multiple Gateway instances
+        # with the same scope will be merged as presented as a single coniguration to
+        # the proxy/load balancer. Max length 64 characters. Scope should start with a
+        # letter and can only have letters, numbers, hyphens.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Output only. Server-defined URL of this resource
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS
+        # traffic is terminated. If empty, TLS termination is disabled.
+        # Corresponds to the JSON property `serverTlsPolicy`
+        # @return [String]
+        attr_accessor :server_tls_policy
+      
+        # Immutable. The type of the customer managed gateway.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @ports = args[:ports] if args.key?(:ports)
+          @scope = args[:scope] if args.key?(:scope)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # GrpcRoute is the resource defining how gRPC traffic routed by a Mesh or
+      # Gateway resource is routed.
+      class GrpcRoute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Gateways defines a list of gateways this GrpcRoute is attached to,
+        # as one of the routing rules to route the requests served by the gateway. Each
+        # gateway reference should match the pattern: `projects/*/locations/global/
+        # gateways/`
+        # Corresponds to the JSON property `gateways`
+        # @return [Array<String>]
+        attr_accessor :gateways
+      
+        # Required. Service hostnames with an optional port for which this route
+        # describes traffic. Format: [:] Hostname is the fully qualified domain name of
+        # a network host. This matches the RFC 1123 definition of a hostname with 2
+        # notable exceptions: - IPs are not allowed. - A hostname may be prefixed with a
+        # wildcard label (*.). The wildcard label must appear by itself as the first
+        # label. Hostname can be "precise" which is a domain name without the
+        # terminating dot of a network host (e.g. "foo.example.com") or "wildcard",
+        # which is a domain name prefixed with a single wildcard label (e.g. *.example.
+        # com). Note that as per RFC1035 and RFC1123, a label must consist of lower case
+        # alphanumeric characters or '-', and must start and end with an alphanumeric
+        # character. No other punctuation is allowed. The routes associated with a Mesh
+        # or Gateway must have unique hostnames. If you attempt to attach multiple
+        # routes with conflicting hostnames, the configuration will be rejected. For
+        # example, while it is acceptable for routes for the hostnames "*.foo.bar.com"
+        # and "*.bar.com" to be associated with the same route, it is not possible to
+        # associate two routes both with "*.bar.com" or both with "bar.com". If a port
+        # is specified, then gRPC clients must use the channel URI with the port to
+        # match this rule (i.e. "xds:///service:123"), otherwise they must supply the
+        # URI without a port (i.e. "xds:///service").
+        # Corresponds to the JSON property `hostnames`
+        # @return [Array<String>]
+        attr_accessor :hostnames
+      
+        # Optional. Set of label tags associated with the GrpcRoute resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Meshes defines a list of meshes this GrpcRoute is attached to, as
+        # one of the routing rules to route the requests served by the mesh. Each mesh
+        # reference should match the pattern: `projects/*/locations/global/meshes/`
+        # Corresponds to the JSON property `meshes`
+        # @return [Array<String>]
+        attr_accessor :meshes
+      
+        # Required. Name of the GrpcRoute resource. It matches pattern `projects/*/
+        # locations/global/grpcRoutes/`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. A list of detailed rules defining how to route traffic. Within a
+        # single GrpcRoute, the GrpcRoute.RouteAction associated with the first matching
+        # GrpcRoute.RouteRule will be executed. At least one rule must be supplied.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteRule>]
+        attr_accessor :rules
+      
+        # Output only. Server-defined URL of this resource
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @gateways = args[:gateways] if args.key?(:gateways)
+          @hostnames = args[:hostnames] if args.key?(:hostnames)
+          @labels = args[:labels] if args.key?(:labels)
+          @meshes = args[:meshes] if args.key?(:meshes)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The destination to which traffic will be routed.
+      class GrpcRouteDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URL of a destination service to which to route traffic. Must
+        # refer to either a BackendService or ServiceDirectoryService.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # Optional. Specifies the proportion of requests forwarded to the backend
+        # referenced by the serviceName field. This is computed as: weight/Sum(weights
+        # in this destination list). For non-zero values, there may be some epsilon from
+        # the exact proportion defined here depending on the precision an implementation
+        # supports. If only one serviceName is specified and it has a weight greater
+        # than 0, 100% of the traffic is forwarded to that backend. If weights are
+        # specified for any one service name, they need to be specified for all of them.
+        # If weights are unspecified for all services, then, traffic is distributed in
+        # equal proportions to all of them.
+        # Corresponds to the JSON property `weight`
+        # @return [Fixnum]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
+      # The specification for fault injection introduced into traffic to test the
+      # resiliency of clients to destination service failure. As part of fault
+      # injection, when clients send requests to a destination, delays can be
+      # introduced on a percentage of requests before sending those requests to the
+      # destination service. Similarly requests from clients can be aborted by for a
+      # percentage of requests.
+      class GrpcRouteFaultInjectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specification of how client requests are aborted as part of fault injection
+        # before being sent to a destination.
+        # Corresponds to the JSON property `abort`
+        # @return [Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicyAbort]
+        attr_accessor :abort
+      
+        # Specification of how client requests are delayed as part of fault injection
+        # before being sent to a destination.
+        # Corresponds to the JSON property `delay`
+        # @return [Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicyDelay]
+        attr_accessor :delay
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abort = args[:abort] if args.key?(:abort)
+          @delay = args[:delay] if args.key?(:delay)
+        end
+      end
+      
+      # Specification of how client requests are aborted as part of fault injection
+      # before being sent to a destination.
+      class GrpcRouteFaultInjectionPolicyAbort
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code used to abort the request. The value must be between 200
+        # and 599 inclusive.
+        # Corresponds to the JSON property `httpStatus`
+        # @return [Fixnum]
+        attr_accessor :http_status
+      
+        # The percentage of traffic which will be aborted. The value must be between [0,
+        # 100]
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_status = args[:http_status] if args.key?(:http_status)
+          @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
+      # Specification of how client requests are delayed as part of fault injection
+      # before being sent to a destination.
+      class GrpcRouteFaultInjectionPolicyDelay
+        include Google::Apis::Core::Hashable
+      
+        # Specify a fixed delay before forwarding the request.
+        # Corresponds to the JSON property `fixedDelay`
+        # @return [String]
+        attr_accessor :fixed_delay
+      
+        # The percentage of traffic on which delay will be injected. The value must be
+        # between [0, 100]
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixed_delay = args[:fixed_delay] if args.key?(:fixed_delay)
+          @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
+      # A match against a collection of headers.
+      class GrpcRouteHeaderMatch
+        include Google::Apis::Core::Hashable
+      
+        # Required. The key of the header.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Specifies how to match against the value of the header. If not
+        # specified, a default value of EXACT is used.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Required. The value of the header.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Specifies a match against a method.
+      class GrpcRouteMethodMatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies that matches are case sensitive. The default value is true.
+        # case_sensitive must not be used with a type of REGULAR_EXPRESSION.
+        # Corresponds to the JSON property `caseSensitive`
+        # @return [Boolean]
+        attr_accessor :case_sensitive
+        alias_method :case_sensitive?, :case_sensitive
+      
+        # Required. Name of the method to match against. If unspecified, will match all
+        # methods.
+        # Corresponds to the JSON property `grpcMethod`
+        # @return [String]
+        attr_accessor :grpc_method
+      
+        # Required. Name of the service to match against. If unspecified, will match all
+        # services.
+        # Corresponds to the JSON property `grpcService`
+        # @return [String]
+        attr_accessor :grpc_service
+      
+        # Optional. Specifies how to match against the name. If not specified, a default
+        # value of "EXACT" is used.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @case_sensitive = args[:case_sensitive] if args.key?(:case_sensitive)
+          @grpc_method = args[:grpc_method] if args.key?(:grpc_method)
+          @grpc_service = args[:grpc_service] if args.key?(:grpc_service)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The specifications for retries.
+      class GrpcRouteRetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the allowed number of retries. This number must be > 0. If not
+        # specpfied, default to 1.
+        # Corresponds to the JSON property `numRetries`
+        # @return [Fixnum]
+        attr_accessor :num_retries
+      
+        # - connect-failure: Router will retry on failures connecting to Backend
+        # Services, for example due to connection timeouts. - refused-stream: Router
+        # will retry if the backend service resets the stream with a REFUSED_STREAM
+        # error code. This reset type indicates that it is safe to retry. - cancelled:
+        # Router will retry if the gRPC status code in the response header is set to
+        # cancelled - deadline-exceeded: Router will retry if the gRPC status code in
+        # the response header is set to deadline-exceeded - resource-exhausted: Router
+        # will retry if the gRPC status code in the response header is set to resource-
+        # exhausted - unavailable: Router will retry if the gRPC status code in the
+        # response header is set to unavailable
+        # Corresponds to the JSON property `retryConditions`
+        # @return [Array<String>]
+        attr_accessor :retry_conditions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_retries = args[:num_retries] if args.key?(:num_retries)
+          @retry_conditions = args[:retry_conditions] if args.key?(:retry_conditions)
+        end
+      end
+      
+      # Specifies how to route matched traffic.
+      class GrpcRouteRouteAction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The destination services to which traffic should be forwarded. If
+        # multiple destinations are specified, traffic will be split between Backend
+        # Service(s) according to the weight field of these destinations.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::GrpcRouteDestination>]
+        attr_accessor :destinations
+      
+        # The specification for fault injection introduced into traffic to test the
+        # resiliency of clients to destination service failure. As part of fault
+        # injection, when clients send requests to a destination, delays can be
+        # introduced on a percentage of requests before sending those requests to the
+        # destination service. Similarly requests from clients can be aborted by for a
+        # percentage of requests.
+        # Corresponds to the JSON property `faultInjectionPolicy`
+        # @return [Google::Apis::NetworkservicesV1beta1::GrpcRouteFaultInjectionPolicy]
+        attr_accessor :fault_injection_policy
+      
+        # The specifications for retries.
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [Google::Apis::NetworkservicesV1beta1::GrpcRouteRetryPolicy]
+        attr_accessor :retry_policy
+      
+        # Optional. Specifies the timeout for selected route. Timeout is computed from
+        # the time the request has been fully processed (i.e. end of stream) up until
+        # the response has been completely processed. Timeout includes all retries.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @timeout = args[:timeout] if args.key?(:timeout)
+        end
+      end
+      
+      # Criteria for matching traffic. A RouteMatch will be considered to match when
+      # all supplied fields match.
+      class GrpcRouteRouteMatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies a collection of headers to match.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::GrpcRouteHeaderMatch>]
+        attr_accessor :headers
+      
+        # Specifies a match against a method.
+        # Corresponds to the JSON property `method`
+        # @return [Google::Apis::NetworkservicesV1beta1::GrpcRouteMethodMatch]
+        attr_accessor :method_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+        end
+      end
+      
+      # Describes how to route traffic.
+      class GrpcRouteRouteRule
+        include Google::Apis::Core::Hashable
+      
+        # Specifies how to route matched traffic.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteAction]
+        attr_accessor :action
+      
+        # Optional. Matches define conditions used for matching the rule against
+        # incoming gRPC requests. Each match is independent, i.e. this rule will be
+        # matched if ANY one of the matches is satisfied. If no matches field is
+        # specified, this rule will unconditionally match traffic.
+        # Corresponds to the JSON property `matches`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::GrpcRouteRouteMatch>]
+        attr_accessor :matches
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @matches = args[:matches] if args.key?(:matches)
+        end
+      end
+      
+      # HttpRoute is the resource defining how HTTP traffic should be routed by a Mesh
+      # or Gateway resource.
+      class HttpRoute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Gateways defines a list of gateways this HttpRoute is attached to,
+        # as one of the routing rules to route the requests served by the gateway. Each
+        # gateway reference should match the pattern: `projects/*/locations/global/
+        # gateways/`
+        # Corresponds to the JSON property `gateways`
+        # @return [Array<String>]
+        attr_accessor :gateways
+      
+        # Required. Hostnames define a set of hosts that should match against the HTTP
+        # host header to select a HttpRoute to process the request. Hostname is the
+        # fully qualified domain name of a network host, as defined by RFC 1123 with the
+        # exception that: - IPs are not allowed. - A hostname may be prefixed with a
+        # wildcard label (*.). The wildcard label must appear by itself as the first
+        # label. Hostname can be "precise" which is a domain name without the
+        # terminating dot of a network host (e.g. "foo.example.com") or "wildcard",
+        # which is a domain name prefixed with a single wildcard label (e.g. *.example.
+        # com). Note that as per RFC1035 and RFC1123, a label must consist of lower case
+        # alphanumeric characters or '-', and must start and end with an alphanumeric
+        # character. No other punctuation is allowed. The routes associated with a Mesh
+        # or Gateways must have unique hostnames. If you attempt to attach multiple
+        # routes with conflicting hostnames, the configuration will be rejected. For
+        # example, while it is acceptable for routes for the hostnames "*.foo.bar.com"
+        # and "*.bar.com" to be associated with the same Mesh (or Gateways under the
+        # same scope), it is not possible to associate two routes both with "*.bar.com"
+        # or both with "bar.com".
+        # Corresponds to the JSON property `hostnames`
+        # @return [Array<String>]
+        attr_accessor :hostnames
+      
+        # Optional. Set of label tags associated with the HttpRoute resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Meshes defines a list of meshes this HttpRoute is attached to, as
+        # one of the routing rules to route the requests served by the mesh. Each mesh
+        # reference should match the pattern: `projects/*/locations/global/meshes/` The
+        # attached Mesh should be of a type SIDECAR
+        # Corresponds to the JSON property `meshes`
+        # @return [Array<String>]
+        attr_accessor :meshes
+      
+        # Required. Name of the HttpRoute resource. It matches pattern `projects/*/
+        # locations/global/httpRoutes/http_route_name>`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Rules that define how traffic is routed and handled. Rules will be
+        # matched sequentially based on the RouteMatch specified for the rule.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::HttpRouteRouteRule>]
+        attr_accessor :rules
+      
+        # Output only. Server-defined URL of this resource
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @gateways = args[:gateways] if args.key?(:gateways)
+          @hostnames = args[:hostnames] if args.key?(:hostnames)
+          @labels = args[:labels] if args.key?(:labels)
+          @meshes = args[:meshes] if args.key?(:meshes)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The Specification for allowing client side cross-origin requests.
+      class HttpRouteCorsPolicy
+        include Google::Apis::Core::Hashable
+      
+        # In response to a preflight request, setting this to true indicates that the
+        # actual request can include user credentials. This translates to the Access-
+        # Control-Allow-Credentials header. Default value is false.
+        # Corresponds to the JSON property `allowCredentials`
+        # @return [Boolean]
+        attr_accessor :allow_credentials
+        alias_method :allow_credentials?, :allow_credentials
+      
+        # Specifies the content for Access-Control-Allow-Headers header.
+        # Corresponds to the JSON property `allowHeaders`
+        # @return [Array<String>]
+        attr_accessor :allow_headers
+      
+        # Specifies the content for Access-Control-Allow-Methods header.
+        # Corresponds to the JSON property `allowMethods`
+        # @return [Array<String>]
+        attr_accessor :allow_methods
+      
+        # Specifies the regular expression patterns that match allowed origins. For
+        # regular expression grammar, please see https://github.com/google/re2/wiki/
+        # Syntax.
+        # Corresponds to the JSON property `allowOriginRegexes`
+        # @return [Array<String>]
+        attr_accessor :allow_origin_regexes
+      
+        # Specifies the list of origins that will be allowed to do CORS requests. An
+        # origin is allowed if it matches either an item in allow_origins or an item in
+        # allow_origin_regexes.
+        # Corresponds to the JSON property `allowOrigins`
+        # @return [Array<String>]
+        attr_accessor :allow_origins
+      
+        # If true, the CORS policy is disabled. The default value is false, which
+        # indicates that the CORS policy is in effect.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Specifies the content for Access-Control-Expose-Headers header.
+        # Corresponds to the JSON property `exposeHeaders`
+        # @return [Array<String>]
+        attr_accessor :expose_headers
+      
+        # Specifies how long result of a preflight request can be cached in seconds.
+        # This translates to the Access-Control-Max-Age header.
+        # Corresponds to the JSON property `maxAge`
+        # @return [String]
+        attr_accessor :max_age
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_credentials = args[:allow_credentials] if args.key?(:allow_credentials)
+          @allow_headers = args[:allow_headers] if args.key?(:allow_headers)
+          @allow_methods = args[:allow_methods] if args.key?(:allow_methods)
+          @allow_origin_regexes = args[:allow_origin_regexes] if args.key?(:allow_origin_regexes)
+          @allow_origins = args[:allow_origins] if args.key?(:allow_origins)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @expose_headers = args[:expose_headers] if args.key?(:expose_headers)
+          @max_age = args[:max_age] if args.key?(:max_age)
+        end
+      end
+      
+      # Specifications of a destination to which the request should be routed to.
+      class HttpRouteDestination
+        include Google::Apis::Core::Hashable
+      
+        # The URL of a BackendService to route traffic to.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # Specifies the proportion of requests forwarded to the backend referenced by
+        # the serviceName field. This is computed as: weight/Sum(weights in this
+        # destination list). For non-zero values, there may be some epsilon from the
+        # exact proportion defined here depending on the precision an implementation
+        # supports. If only one serviceName is specified and it has a weight greater
+        # than 0, 100% of the traffic is forwarded to that backend. If weights are
+        # specified for any one service name, they need to be specified for all of them.
+        # If weights are unspecified for all services, then, traffic is distributed in
+        # equal proportions to all of them.
+        # Corresponds to the JSON property `weight`
+        # @return [Fixnum]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
+      # The specification for fault injection introduced into traffic to test the
+      # resiliency of clients to destination service failure. As part of fault
+      # injection, when clients send requests to a destination, delays can be
+      # introduced by client proxy on a percentage of requests before sending those
+      # requests to the destination service. Similarly requests can be aborted by
+      # client proxy for a percentage of requests.
+      class HttpRouteFaultInjectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specification of how client requests are aborted as part of fault injection
+        # before being sent to a destination.
+        # Corresponds to the JSON property `abort`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicyAbort]
+        attr_accessor :abort
+      
+        # Specification of how client requests are delayed as part of fault injection
+        # before being sent to a destination.
+        # Corresponds to the JSON property `delay`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicyDelay]
+        attr_accessor :delay
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abort = args[:abort] if args.key?(:abort)
+          @delay = args[:delay] if args.key?(:delay)
+        end
+      end
+      
+      # Specification of how client requests are aborted as part of fault injection
+      # before being sent to a destination.
+      class HttpRouteFaultInjectionPolicyAbort
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code used to abort the request. The value must be between 200
+        # and 599 inclusive.
+        # Corresponds to the JSON property `httpStatus`
+        # @return [Fixnum]
+        attr_accessor :http_status
+      
+        # The percentage of traffic which will be aborted. The value must be between [0,
+        # 100]
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_status = args[:http_status] if args.key?(:http_status)
+          @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
+      # Specification of how client requests are delayed as part of fault injection
+      # before being sent to a destination.
+      class HttpRouteFaultInjectionPolicyDelay
+        include Google::Apis::Core::Hashable
+      
+        # Specify a fixed delay before forwarding the request.
+        # Corresponds to the JSON property `fixedDelay`
+        # @return [String]
+        attr_accessor :fixed_delay
+      
+        # The percentage of traffic on which delay will be injected. The value must be
+        # between [0, 100]
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixed_delay = args[:fixed_delay] if args.key?(:fixed_delay)
+          @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
+      # Specifies how to select a route rule based on HTTP request headers.
+      class HttpRouteHeaderMatch
+        include Google::Apis::Core::Hashable
+      
+        # The value of the header should match exactly the content of exact_match.
+        # Corresponds to the JSON property `exactMatch`
+        # @return [String]
+        attr_accessor :exact_match
+      
+        # The name of the HTTP header to match against.
+        # Corresponds to the JSON property `header`
+        # @return [String]
+        attr_accessor :header
+      
+        # If specified, the match result will be inverted before checking. Default value
+        # is set to false.
+        # Corresponds to the JSON property `invertMatch`
+        # @return [Boolean]
+        attr_accessor :invert_match
+        alias_method :invert_match?, :invert_match
+      
+        # The value of the header must start with the contents of prefix_match.
+        # Corresponds to the JSON property `prefixMatch`
+        # @return [String]
+        attr_accessor :prefix_match
+      
+        # A header with header_name must exist. The match takes place whether or not the
+        # header has a value.
+        # Corresponds to the JSON property `presentMatch`
+        # @return [Boolean]
+        attr_accessor :present_match
+        alias_method :present_match?, :present_match
+      
+        # Represents an integer value range.
+        # Corresponds to the JSON property `rangeMatch`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderMatchIntegerRange]
+        attr_accessor :range_match
+      
+        # The value of the header must match the regular expression specified in
+        # regex_match. For regular expression grammar, please see: https://github.com/
+        # google/re2/wiki/Syntax
+        # Corresponds to the JSON property `regexMatch`
+        # @return [String]
+        attr_accessor :regex_match
+      
+        # The value of the header must end with the contents of suffix_match.
+        # Corresponds to the JSON property `suffixMatch`
+        # @return [String]
+        attr_accessor :suffix_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @header = args[:header] if args.key?(:header)
+          @invert_match = args[:invert_match] if args.key?(:invert_match)
+          @prefix_match = args[:prefix_match] if args.key?(:prefix_match)
+          @present_match = args[:present_match] if args.key?(:present_match)
+          @range_match = args[:range_match] if args.key?(:range_match)
+          @regex_match = args[:regex_match] if args.key?(:regex_match)
+          @suffix_match = args[:suffix_match] if args.key?(:suffix_match)
+        end
+      end
+      
+      # Represents an integer value range.
+      class HttpRouteHeaderMatchIntegerRange
+        include Google::Apis::Core::Hashable
+      
+        # End of the range (exclusive)
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
+        # Start of the range (inclusive)
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
+      # The specification for modifying HTTP header in HTTP request and HTTP response.
+      class HttpRouteHeaderModifier
+        include Google::Apis::Core::Hashable
+      
+        # Add the headers with given map where key is the name of the header, value is
+        # the value of the header.
+        # Corresponds to the JSON property `add`
+        # @return [Hash<String,String>]
+        attr_accessor :add
+      
+        # Remove headers (matching by header names) specified in the list.
+        # Corresponds to the JSON property `remove`
+        # @return [Array<String>]
+        attr_accessor :remove
+      
+        # Completely overwrite/replace the headers with given map where key is the name
+        # of the header, value is the value of the header.
+        # Corresponds to the JSON property `set`
+        # @return [Hash<String,String>]
+        attr_accessor :set
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add = args[:add] if args.key?(:add)
+          @remove = args[:remove] if args.key?(:remove)
+          @set = args[:set] if args.key?(:set)
+        end
+      end
+      
+      # Specifications to match a query parameter in the request.
+      class HttpRouteQueryParameterMatch
+        include Google::Apis::Core::Hashable
+      
+        # The value of the query parameter must exactly match the contents of
+        # exact_match. Only one of exact_match, regex_match, or present_match must be
+        # set.
+        # Corresponds to the JSON property `exactMatch`
+        # @return [String]
+        attr_accessor :exact_match
+      
+        # Specifies that the QueryParameterMatcher matches if request contains query
+        # parameter, irrespective of whether the parameter has a value or not. Only one
+        # of exact_match, regex_match, or present_match must be set.
+        # Corresponds to the JSON property `presentMatch`
+        # @return [Boolean]
+        attr_accessor :present_match
+        alias_method :present_match?, :present_match
+      
+        # The name of the query parameter to match.
+        # Corresponds to the JSON property `queryParameter`
+        # @return [String]
+        attr_accessor :query_parameter
+      
+        # The value of the query parameter must match the regular expression specified
+        # by regex_match. For regular expression grammar, please see https://github.com/
+        # google/re2/wiki/Syntax Only one of exact_match, regex_match, or present_match
+        # must be set.
+        # Corresponds to the JSON property `regexMatch`
+        # @return [String]
+        attr_accessor :regex_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @present_match = args[:present_match] if args.key?(:present_match)
+          @query_parameter = args[:query_parameter] if args.key?(:query_parameter)
+          @regex_match = args[:regex_match] if args.key?(:regex_match)
+        end
+      end
+      
+      # The specification for redirecting traffic.
+      class HttpRouteRedirect
+        include Google::Apis::Core::Hashable
+      
+        # The host that will be used in the redirect response instead of the one that
+        # was supplied in the request.
+        # Corresponds to the JSON property `hostRedirect`
+        # @return [String]
+        attr_accessor :host_redirect
+      
+        # If set to true, the URL scheme in the redirected request is set to https. If
+        # set to false, the URL scheme of the redirected request will remain the same as
+        # that of the request. The default is set to false.
+        # Corresponds to the JSON property `httpsRedirect`
+        # @return [Boolean]
+        attr_accessor :https_redirect
+        alias_method :https_redirect?, :https_redirect
+      
+        # The path that will be used in the redirect response instead of the one that
+        # was supplied in the request. path_redirect can not be supplied together with
+        # prefix_redirect. Supply one alone or neither. If neither is supplied, the path
+        # of the original request will be used for the redirect.
+        # Corresponds to the JSON property `pathRedirect`
+        # @return [String]
+        attr_accessor :path_redirect
+      
+        # The port that will be used in the redirected request instead of the one that
+        # was supplied in the request.
+        # Corresponds to the JSON property `portRedirect`
+        # @return [Fixnum]
+        attr_accessor :port_redirect
+      
+        # Indicates that during redirection, the matched prefix (or path) should be
+        # swapped with this value. This option allows URLs be dynamically created based
+        # on the request.
+        # Corresponds to the JSON property `prefixRewrite`
+        # @return [String]
+        attr_accessor :prefix_rewrite
+      
+        # The HTTP Status code to use for the redirect.
+        # Corresponds to the JSON property `responseCode`
+        # @return [String]
+        attr_accessor :response_code
+      
+        # if set to true, any accompanying query portion of the original URL is removed
+        # prior to redirecting the request. If set to false, the query portion of the
+        # original URL is retained. The default is set to false.
+        # Corresponds to the JSON property `stripQuery`
+        # @return [Boolean]
+        attr_accessor :strip_query
+        alias_method :strip_query?, :strip_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_redirect = args[:host_redirect] if args.key?(:host_redirect)
+          @https_redirect = args[:https_redirect] if args.key?(:https_redirect)
+          @path_redirect = args[:path_redirect] if args.key?(:path_redirect)
+          @port_redirect = args[:port_redirect] if args.key?(:port_redirect)
+          @prefix_rewrite = args[:prefix_rewrite] if args.key?(:prefix_rewrite)
+          @response_code = args[:response_code] if args.key?(:response_code)
+          @strip_query = args[:strip_query] if args.key?(:strip_query)
+        end
+      end
+      
+      # Specifies the policy on how requests are shadowed to a separate mirrored
+      # destination service. The proxy does not wait for responses from the shadow
+      # service. Prior to sending traffic to the shadow service, the host/authority
+      # header is suffixed with -shadow.
+      class HttpRouteRequestMirrorPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifications of a destination to which the request should be routed to.
+        # Corresponds to the JSON property `destination`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteDestination]
+        attr_accessor :destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+        end
+      end
+      
+      # The specifications for retries.
+      class HttpRouteRetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the allowed number of retries. This number must be > 0. If not
+        # specified, default to 1.
+        # Corresponds to the JSON property `numRetries`
+        # @return [Fixnum]
+        attr_accessor :num_retries
+      
+        # Specifies a non-zero timeout per retry attempt.
+        # Corresponds to the JSON property `perTryTimeout`
+        # @return [String]
+        attr_accessor :per_try_timeout
+      
+        # Specifies one or more conditions when this retry policy applies. Valid values
+        # are: 5xx: Proxy will attempt a retry if the destination service responds with
+        # any 5xx response code, of if the destination service does not respond at all,
+        # example: disconnect, reset, read timeout, connection failure and refused
+        # streams. gateway-error: Similar to 5xx, but only applies to response codes 502,
+        # 503, 504. reset: Proxy will attempt a retry if the destination service does
+        # not respond at all (disconnect/reset/read timeout) connect-failure: Proxy will
+        # retry on failures connecting to destination for example due to connection
+        # timeouts. retriable-4xx: Proxy will retry fro retriable 4xx response codes.
+        # Currently the only retriable error supported is 409. refused-stream: Proxy
+        # will retry if the destination resets the stream with a REFUSED_STREAM error
+        # code. This reset type indicates that it is safe to retry.
+        # Corresponds to the JSON property `retryConditions`
+        # @return [Array<String>]
+        attr_accessor :retry_conditions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_retries = args[:num_retries] if args.key?(:num_retries)
+          @per_try_timeout = args[:per_try_timeout] if args.key?(:per_try_timeout)
+          @retry_conditions = args[:retry_conditions] if args.key?(:retry_conditions)
+        end
+      end
+      
+      # The specifications for routing traffic and applying associated policies.
+      class HttpRouteRouteAction
+        include Google::Apis::Core::Hashable
+      
+        # The Specification for allowing client side cross-origin requests.
+        # Corresponds to the JSON property `corsPolicy`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteCorsPolicy]
+        attr_accessor :cors_policy
+      
+        # The destination to which traffic should be forwarded.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::HttpRouteDestination>]
+        attr_accessor :destinations
+      
+        # The specification for fault injection introduced into traffic to test the
+        # resiliency of clients to destination service failure. As part of fault
+        # injection, when clients send requests to a destination, delays can be
+        # introduced by client proxy on a percentage of requests before sending those
+        # requests to the destination service. Similarly requests can be aborted by
+        # client proxy for a percentage of requests.
+        # Corresponds to the JSON property `faultInjectionPolicy`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteFaultInjectionPolicy]
+        attr_accessor :fault_injection_policy
+      
+        # The specification for redirecting traffic.
+        # Corresponds to the JSON property `redirect`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteRedirect]
+        attr_accessor :redirect
+      
+        # The specification for modifying HTTP header in HTTP request and HTTP response.
+        # Corresponds to the JSON property `requestHeaderModifier`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderModifier]
+        attr_accessor :request_header_modifier
+      
+        # Specifies the policy on how requests are shadowed to a separate mirrored
+        # destination service. The proxy does not wait for responses from the shadow
+        # service. Prior to sending traffic to the shadow service, the host/authority
+        # header is suffixed with -shadow.
+        # Corresponds to the JSON property `requestMirrorPolicy`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteRequestMirrorPolicy]
+        attr_accessor :request_mirror_policy
+      
+        # The specification for modifying HTTP header in HTTP request and HTTP response.
+        # Corresponds to the JSON property `responseHeaderModifier`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderModifier]
+        attr_accessor :response_header_modifier
+      
+        # The specifications for retries.
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteRetryPolicy]
+        attr_accessor :retry_policy
+      
+        # Specifies the timeout for selected route. Timeout is computed from the time
+        # the request has been fully processed (i.e. end of stream) up until the
+        # response has been completely processed. Timeout includes all retries.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        # The specification for modifying the URL of the request, prior to forwarding
+        # the request to the destination.
+        # Corresponds to the JSON property `urlRewrite`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteUrlRewrite]
+        attr_accessor :url_rewrite
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @redirect = args[:redirect] if args.key?(:redirect)
+          @request_header_modifier = args[:request_header_modifier] if args.key?(:request_header_modifier)
+          @request_mirror_policy = args[:request_mirror_policy] if args.key?(:request_mirror_policy)
+          @response_header_modifier = args[:response_header_modifier] if args.key?(:response_header_modifier)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @url_rewrite = args[:url_rewrite] if args.key?(:url_rewrite)
+        end
+      end
+      
+      # RouteMatch defines specifications used to match requests. If multiple match
+      # types are set, this RouteMatch will match if ALL type of matches are matched.
+      class HttpRouteRouteMatch
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP request path value should exactly match this value. Only one of
+        # full_path_match, prefix_match, or regex_match should be used.
+        # Corresponds to the JSON property `fullPathMatch`
+        # @return [String]
+        attr_accessor :full_path_match
+      
+        # Specifies a list of HTTP request headers to match against. ALL of the supplied
+        # headers must be matched.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::HttpRouteHeaderMatch>]
+        attr_accessor :headers
+      
+        # Specifies if prefix_match and full_path_match matches are case sensitive. The
+        # default value is false.
+        # Corresponds to the JSON property `ignoreCase`
+        # @return [Boolean]
+        attr_accessor :ignore_case
+        alias_method :ignore_case?, :ignore_case
+      
+        # The HTTP request path value must begin with specified prefix_match.
+        # prefix_match must begin with a /. Only one of full_path_match, prefix_match,
+        # or regex_match should be used.
+        # Corresponds to the JSON property `prefixMatch`
+        # @return [String]
+        attr_accessor :prefix_match
+      
+        # Specifies a list of query parameters to match against. ALL of the query
+        # parameters must be matched.
+        # Corresponds to the JSON property `queryParameters`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::HttpRouteQueryParameterMatch>]
+        attr_accessor :query_parameters
+      
+        # The HTTP request path value must satisfy the regular expression specified by
+        # regex_match after removing any query parameters and anchor supplied with the
+        # original URL. For regular expression grammar, please see https://github.com/
+        # google/re2/wiki/Syntax Only one of full_path_match, prefix_match, or
+        # regex_match should be used.
+        # Corresponds to the JSON property `regexMatch`
+        # @return [String]
+        attr_accessor :regex_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_path_match = args[:full_path_match] if args.key?(:full_path_match)
+          @headers = args[:headers] if args.key?(:headers)
+          @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
+          @prefix_match = args[:prefix_match] if args.key?(:prefix_match)
+          @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
+          @regex_match = args[:regex_match] if args.key?(:regex_match)
+        end
+      end
+      
+      # Specifies how to match traffic and how to route traffic when traffic is
+      # matched.
+      class HttpRouteRouteRule
+        include Google::Apis::Core::Hashable
+      
+        # The specifications for routing traffic and applying associated policies.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::NetworkservicesV1beta1::HttpRouteRouteAction]
+        attr_accessor :action
+      
+        # A list of matches define conditions used for matching the rule against
+        # incoming HTTP requests. Each match is independent, i.e. this rule will be
+        # matched if ANY one of the matches is satisfied. If no matches field is
+        # specified, this rule will unconditionally match traffic. If a default rule is
+        # desired to be configured, add a rule with no matches specified to the end of
+        # the rules list.
+        # Corresponds to the JSON property `matches`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::HttpRouteRouteMatch>]
+        attr_accessor :matches
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @matches = args[:matches] if args.key?(:matches)
+        end
+      end
+      
+      # The specification for modifying the URL of the request, prior to forwarding
+      # the request to the destination.
+      class HttpRouteUrlRewrite
+        include Google::Apis::Core::Hashable
+      
+        # Prior to forwarding the request to the selected destination, the requests host
+        # header is replaced by this value.
+        # Corresponds to the JSON property `hostRewrite`
+        # @return [String]
+        attr_accessor :host_rewrite
+      
+        # Prior to forwarding the request to the selected destination, the matching
+        # portion of the requests path is replaced by this value.
+        # Corresponds to the JSON property `pathPrefixRewrite`
+        # @return [String]
+        attr_accessor :path_prefix_rewrite
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_rewrite = args[:host_rewrite] if args.key?(:host_rewrite)
+          @path_prefix_rewrite = args[:path_prefix_rewrite] if args.key?(:path_prefix_rewrite)
+        end
+      end
+      
       # Response returned by the ListEndpointPolicies method.
       class ListEndpointPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -392,6 +1702,87 @@ module Google
         end
       end
       
+      # Response returned by the ListGateways method.
+      class ListGatewaysResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Gateway resources.
+        # Corresponds to the JSON property `gateways`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::Gateway>]
+        attr_accessor :gateways
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateways = args[:gateways] if args.key?(:gateways)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response returned by the ListGrpcRoutes method.
+      class ListGrpcRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of GrpcRoute resources.
+        # Corresponds to the JSON property `grpcRoutes`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::GrpcRoute>]
+        attr_accessor :grpc_routes
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grpc_routes = args[:grpc_routes] if args.key?(:grpc_routes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response returned by the ListHttpRoutes method.
+      class ListHttpRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of HttpRoute resources.
+        # Corresponds to the JSON property `httpRoutes`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::HttpRoute>]
+        attr_accessor :http_routes
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_routes = args[:http_routes] if args.key?(:http_routes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -413,6 +1804,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response returned by the ListMeshes method.
+      class ListMeshesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Mesh resources.
+        # Corresponds to the JSON property `meshes`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::Mesh>]
+        attr_accessor :meshes
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @meshes = args[:meshes] if args.key?(:meshes)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -469,6 +1887,60 @@ module Google
         end
       end
       
+      # Response returned by the ListTcpRoutes method.
+      class ListTcpRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of TcpRoute resources.
+        # Corresponds to the JSON property `tcpRoutes`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TcpRoute>]
+        attr_accessor :tcp_routes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tcp_routes = args[:tcp_routes] if args.key?(:tcp_routes)
+        end
+      end
+      
+      # Response returned by the ListTlsRoutes method.
+      class ListTlsRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of TlsRoute resources.
+        # Corresponds to the JSON property `tlsRoutes`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TlsRoute>]
+        attr_accessor :tls_routes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @tls_routes = args[:tls_routes] if args.key?(:tls_routes)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable
@@ -513,6 +1985,68 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Mesh represents a logical configuration grouping for workload to workload
+      # communication within a service mesh. Routes that point to mesh dictate how
+      # requests are routed within this logical mesh boundary.
+      class Mesh
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to
+        # listen on the specified port of localhost (127.0.0.1) address. The SIDECAR
+        # proxy will expect all traffic to be redirected to this port regardless of its
+        # actual ip:port destination. If unset, a port '15001' is used as the
+        # interception port. This will is applicable only for sidecar proxy deployments.
+        # Corresponds to the JSON property `interceptionPort`
+        # @return [Fixnum]
+        attr_accessor :interception_port
+      
+        # Optional. Set of label tags associated with the Mesh resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Name of the Mesh resource. It matches pattern `projects/*/locations/
+        # global/meshes/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Server-defined URL of this resource
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @interception_port = args[:interception_port] if args.key?(:interception_port)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -949,6 +2483,204 @@ module Google
         end
       end
       
+      # TcpRoute is the resource defining how TCP traffic should be routed by a Mesh/
+      # Gateway resource.
+      class TcpRoute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Gateways defines a list of gateways this TcpRoute is attached to, as
+        # one of the routing rules to route the requests served by the gateway. Each
+        # gateway reference should match the pattern: `projects/*/locations/global/
+        # gateways/`
+        # Corresponds to the JSON property `gateways`
+        # @return [Array<String>]
+        attr_accessor :gateways
+      
+        # Optional. Set of label tags associated with the TcpRoute resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one
+        # of the routing rules to route the requests served by the mesh. Each mesh
+        # reference should match the pattern: `projects/*/locations/global/meshes/` The
+        # attached Mesh should be of a type SIDECAR
+        # Corresponds to the JSON property `meshes`
+        # @return [Array<String>]
+        attr_accessor :meshes
+      
+        # Required. Name of the TcpRoute resource. It matches pattern `projects/*/
+        # locations/global/tcpRoutes/tcp_route_name>`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Rules that define how traffic is routed and handled. At least one
+        # RouteRule must be supplied. If there are multiple rules then the action taken
+        # will be the first rule to match.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TcpRouteRouteRule>]
+        attr_accessor :rules
+      
+        # Output only. Server-defined URL of this resource
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @gateways = args[:gateways] if args.key?(:gateways)
+          @labels = args[:labels] if args.key?(:labels)
+          @meshes = args[:meshes] if args.key?(:meshes)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The specifications for routing traffic and applying associated policies.
+      class TcpRouteRouteAction
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The destination services to which traffic should be forwarded. At
+        # least one destination service is required.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TcpRouteRouteDestination>]
+        attr_accessor :destinations
+      
+        # Optional. If true, Router will use the destination IP and port of the original
+        # connection as the destination of the request. Default is false.
+        # Corresponds to the JSON property `originalDestination`
+        # @return [Boolean]
+        attr_accessor :original_destination
+        alias_method :original_destination?, :original_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @original_destination = args[:original_destination] if args.key?(:original_destination)
+        end
+      end
+      
+      # Describe the destination for traffic to be routed to.
+      class TcpRouteRouteDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URL of a BackendService to route traffic to.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # Optional. Specifies the proportion of requests forwarded to the backend
+        # referenced by the serviceName field. This is computed as: weight/Sum(weights
+        # in this destination list). For non-zero values, there may be some epsilon from
+        # the exact proportion defined here depending on the precision an implementation
+        # supports. If only one serviceName is specified and it has a weight greater
+        # than 0, 100% of the traffic is forwarded to that backend. If weights are
+        # specified for any one service name, they need to be specified for all of them.
+        # If weights are unspecified for all services, then, traffic is distributed in
+        # equal proportions to all of them.
+        # Corresponds to the JSON property `weight`
+        # @return [Fixnum]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
+      # RouteMatch defines the predicate used to match requests to a given action.
+      # Multiple match types are "OR"ed for evaluation. If no routeMatch field is
+      # specified, this rule will unconditionally match traffic.
+      class TcpRouteRouteMatch
+        include Google::Apis::Core::Hashable
+      
+        # Required. Must be specified in the CIDR range format. A CIDR range consists of
+        # an IP Address and a prefix length to construct the subnet mask. By default,
+        # the prefix length is 32 (i.e. matches a single IP address). Only IPV4
+        # addresses are supported. Examples: "10.0.0.1" - matches against this exact IP
+        # address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0
+        # subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Required. Specifies the destination port to match against.
+        # Corresponds to the JSON property `port`
+        # @return [String]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # Specifies how to match traffic and how to route traffic when traffic is
+      # matched.
+      class TcpRouteRouteRule
+        include Google::Apis::Core::Hashable
+      
+        # The specifications for routing traffic and applying associated policies.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::NetworkservicesV1beta1::TcpRouteRouteAction]
+        attr_accessor :action
+      
+        # Optional. RouteMatch defines the predicate used to match requests to a given
+        # action. Multiple match types are "OR"ed for evaluation. If no routeMatch field
+        # is specified, this rule will unconditionally match traffic.
+        # Corresponds to the JSON property `matches`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TcpRouteRouteMatch>]
+        attr_accessor :matches
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @matches = args[:matches] if args.key?(:matches)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -986,6 +2718,184 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # TlsRoute defines how traffic should be routed based on SNI and other matching
+      # L3 attributes.
+      class TlsRoute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Gateways defines a list of gateways this TlsRoute is attached to, as
+        # one of the routing rules to route the requests served by the gateway. Each
+        # gateway reference should match the pattern: `projects/*/locations/global/
+        # gateways/`
+        # Corresponds to the JSON property `gateways`
+        # @return [Array<String>]
+        attr_accessor :gateways
+      
+        # Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one
+        # of the routing rules to route the requests served by the mesh. Each mesh
+        # reference should match the pattern: `projects/*/locations/global/meshes/` The
+        # attached Mesh should be of a type SIDECAR
+        # Corresponds to the JSON property `meshes`
+        # @return [Array<String>]
+        attr_accessor :meshes
+      
+        # Required. Name of the TlsRoute resource. It matches pattern `projects/*/
+        # locations/global/tlsRoutes/tls_route_name>`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Rules that define how traffic is routed and handled. At least one
+        # RouteRule must be supplied. If there are multiple rules then the action taken
+        # will be the first rule to match.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TlsRouteRouteRule>]
+        attr_accessor :rules
+      
+        # Output only. Server-defined URL of this resource
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @gateways = args[:gateways] if args.key?(:gateways)
+          @meshes = args[:meshes] if args.key?(:meshes)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The specifications for routing traffic and applying associated policies.
+      class TlsRouteRouteAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. The destination services to which traffic should be forwarded. At
+        # least one destination service is required.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TlsRouteRouteDestination>]
+        attr_accessor :destinations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+        end
+      end
+      
+      # Describe the destination for traffic to be routed to.
+      class TlsRouteRouteDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URL of a BackendService to route traffic to.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # Optional. Specifies the proportion of requests forwareded to the backend
+        # referenced by the service_name field. This is computed as: weight/Sum(weights
+        # in destinations) Weights in all destinations does not need to sum up to 100.
+        # Corresponds to the JSON property `weight`
+        # @return [Fixnum]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
+      # RouteMatch defines the predicate used to match requests to a given action.
+      # Multiple match types are “AND”ed for evaluation. If no routeMatch field is
+      # specified, this rule will unconditionally match traffic.
+      class TlsRouteRouteMatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. ALPN (Application-Layer Protocol Negotiation) to match against.
+        # Examples: "http/1.1", "h2". At least one of sni_host and alpn is required. Up
+        # to 5 alpns across all matches can be set.
+        # Corresponds to the JSON property `alpn`
+        # @return [Array<String>]
+        attr_accessor :alpn
+      
+        # Optional. SNI (server name indicator) to match against. SNI will be matched
+        # against all wildcard domains, i.e. www.example.com will be first matched
+        # against www.example.com, then *.example.com, then *.com. Partial wildcards are
+        # not supported, and values like *w.example.com are invalid. At least one of
+        # sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+        # Corresponds to the JSON property `sniHost`
+        # @return [Array<String>]
+        attr_accessor :sni_host
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alpn = args[:alpn] if args.key?(:alpn)
+          @sni_host = args[:sni_host] if args.key?(:sni_host)
+        end
+      end
+      
+      # Specifies how to match traffic and how to route traffic when traffic is
+      # matched.
+      class TlsRouteRouteRule
+        include Google::Apis::Core::Hashable
+      
+        # The specifications for routing traffic and applying associated policies.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::NetworkservicesV1beta1::TlsRouteRouteAction]
+        attr_accessor :action
+      
+        # Required. RouteMatch defines the predicate used to match requests to a given
+        # action. Multiple match types are “OR”ed for evaluation.
+        # Corresponds to the JSON property `matches`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TlsRouteRouteMatch>]
+        attr_accessor :matches
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @matches = args[:matches] if args.key?(:matches)
         end
       end
       
