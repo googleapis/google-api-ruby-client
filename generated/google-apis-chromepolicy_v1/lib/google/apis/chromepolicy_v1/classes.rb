@@ -372,6 +372,12 @@ module Google
         # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDescription>]
         attr_accessor :nested_field_descriptions
       
+        # Output only. Provides a list of fields that are required to be set if this
+        # field has a certain value.
+        # Corresponds to the JSON property `requiredItems`
+        # @return [Array<Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaRequiredItems>]
+        attr_accessor :required_items
+      
         def initialize(**args)
            update!(**args)
         end
@@ -384,6 +390,7 @@ module Google
           @input_constraint = args[:input_constraint] if args.key?(:input_constraint)
           @known_value_descriptions = args[:known_value_descriptions] if args.key?(:known_value_descriptions)
           @nested_field_descriptions = args[:nested_field_descriptions] if args.key?(:nested_field_descriptions)
+          @required_items = args[:required_items] if args.key?(:required_items)
         end
       end
       
@@ -453,6 +460,33 @@ module Google
           @field = args[:field] if args.key?(:field)
           @notice_message = args[:notice_message] if args.key?(:notice_message)
           @notice_value = args[:notice_value] if args.key?(:notice_value)
+        end
+      end
+      
+      # The fields that will become required based on the value of this field.
+      class GoogleChromePolicyV1PolicySchemaRequiredItems
+        include Google::Apis::Core::Hashable
+      
+        # The value(s) of the field that provoke required field enforcement. An empty
+        # field_conditions implies that any value assigned to this field will provoke
+        # required field enforcement.
+        # Corresponds to the JSON property `fieldConditions`
+        # @return [Array<String>]
+        attr_accessor :field_conditions
+      
+        # The fields that are required as a consequence of the field conditions.
+        # Corresponds to the JSON property `requiredFields`
+        # @return [Array<String>]
+        attr_accessor :required_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_conditions = args[:field_conditions] if args.key?(:field_conditions)
+          @required_fields = args[:required_fields] if args.key?(:required_fields)
         end
       end
       
@@ -659,8 +693,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class GoogleProtobufEmpty
         include Google::Apis::Core::Hashable
       
