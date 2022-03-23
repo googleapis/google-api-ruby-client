@@ -1380,6 +1380,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket, as: 'bucket'
           property :kind, as: 'kind'
+          property :retention_interval, as: 'retentionInterval'
+          property :upload_interval, as: 'uploadInterval'
         end
       end
       
