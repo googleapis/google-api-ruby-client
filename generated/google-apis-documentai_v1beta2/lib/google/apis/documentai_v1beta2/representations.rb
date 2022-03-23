@@ -1667,6 +1667,7 @@ module Google
           property :id, as: 'id'
           property :mention_id, as: 'mentionId'
           property :mention_text, as: 'mentionText'
+          property :non_present, as: 'nonPresent'
           property :normalized_value, as: 'normalizedValue', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue::Representation
       
           property :page_anchor, as: 'pageAnchor', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageAnchor, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageAnchor::Representation
@@ -2184,6 +2185,7 @@ module Google
           property :id, as: 'id'
           property :mention_id, as: 'mentionId'
           property :mention_text, as: 'mentionText'
+          property :non_present, as: 'nonPresent'
           property :normalized_value, as: 'normalizedValue', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue::Representation
       
           property :page_anchor, as: 'pageAnchor', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageAnchor, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageAnchor::Representation
