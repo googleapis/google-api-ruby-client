@@ -920,6 +920,12 @@ module Google
       class ComplianceVersion
         include Google::Apis::Core::Hashable
       
+        # The name of the document that defines this benchmark, e.g. "CIS Container-
+        # Optimized OS".
+        # Corresponds to the JSON property `benchmarkDocument`
+        # @return [String]
+        attr_accessor :benchmark_document
+      
         # The CPE URI (https://cpe.mitre.org/specification/) this benchmark is
         # applicable to.
         # Corresponds to the JSON property `cpeUri`
@@ -938,6 +944,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @benchmark_document = args[:benchmark_document] if args.key?(:benchmark_document)
           @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
           @version = args[:version] if args.key?(:version)
         end
@@ -2570,8 +2577,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
