@@ -973,6 +973,7 @@ module Google
       class ComplianceVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :benchmark_document, as: 'benchmarkDocument'
           property :cpe_uri, as: 'cpeUri'
           property :version, as: 'version'
         end
