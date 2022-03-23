@@ -379,6 +379,11 @@ module Google
         # @return [String]
         attr_accessor :grant_id
       
+        # The transmit expiration time of the last heartbeat.
+        # Corresponds to the JSON property `lastHeartbeatTransmitExpireTime`
+        # @return [String]
+        attr_accessor :last_heartbeat_transmit_expire_time
+      
         # Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the grant.
         # The maximum EIRP is in units of dBm/MHz. The value of `maxEirp` represents the
         # average (RMS) EIRP that would be measured by the procedure defined in FCC part
@@ -412,6 +417,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @frequency_range = args[:frequency_range] if args.key?(:frequency_range)
           @grant_id = args[:grant_id] if args.key?(:grant_id)
+          @last_heartbeat_transmit_expire_time = args[:last_heartbeat_transmit_expire_time] if args.key?(:last_heartbeat_transmit_expire_time)
           @max_eirp = args[:max_eirp] if args.key?(:max_eirp)
           @move_list = args[:move_list] if args.key?(:move_list)
           @state = args[:state] if args.key?(:state)
@@ -448,8 +454,7 @@ module Google
         attr_accessor :nrqz_validated
         alias_method :nrqz_validated?, :nrqz_validated
       
-        # Information about National Radio Quiet Zone validation. The presence of the
-        # field indicates the device has been validated.
+        # Information about National Radio Quiet Zone validation.
         # Corresponds to the JSON property `nrqzValidation`
         # @return [Google::Apis::SasportalV1alpha1::SasPortalNrqzValidation]
         attr_accessor :nrqz_validation
@@ -539,8 +544,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class SasPortalEmpty
         include Google::Apis::Core::Hashable
       
@@ -953,8 +957,7 @@ module Google
         end
       end
       
-      # Information about National Radio Quiet Zone validation. The presence of the
-      # field indicates the device has been validated.
+      # Information about National Radio Quiet Zone validation.
       class SasPortalNrqzValidation
         include Google::Apis::Core::Hashable
       
@@ -978,6 +981,11 @@ module Google
         # @return [Float]
         attr_accessor :longitude
       
+        # State of the NRQZ validation info.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -988,6 +996,7 @@ module Google
           @cpi_id = args[:cpi_id] if args.key?(:cpi_id)
           @latitude = args[:latitude] if args.key?(:latitude)
           @longitude = args[:longitude] if args.key?(:longitude)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
