@@ -1409,10 +1409,10 @@ module Google
         end
       end
       
-      # Document represents the canonical document resource in Document Understanding
-      # AI. It is an interchange format that provides insights into documents and
-      # allows for collaboration between users and Document Understanding AI to
-      # iterate and optimize for quality.
+      # Document represents the canonical document resource in Document AI. It is an
+      # interchange format that provides insights into documents and allows for
+      # collaboration between users and Document AI to iterate and optimize for
+      # quality.
       class GoogleCloudDocumentaiV1beta1Document
         include Google::Apis::Core::Hashable
       
@@ -1542,6 +1542,15 @@ module Google
         # @return [String]
         attr_accessor :mention_text
       
+        # Optional. This attribute indicates that the processing didn't actually
+        # identify this entity, but a confidence score was assigned that represent the
+        # potential that this could be a false negative. A non-present entity should
+        # have an empty mention_text and text_anchor.
+        # Corresponds to the JSON property `nonPresent`
+        # @return [Boolean]
+        attr_accessor :non_present
+        alias_method :non_present?, :non_present
+      
         # Parsed and normalized entity value.
         # Corresponds to the JSON property `normalizedValue`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue]
@@ -1592,6 +1601,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
+          @non_present = args[:non_present] if args.key?(:non_present)
           @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
           @page_anchor = args[:page_anchor] if args.key?(:page_anchor)
           @properties = args[:properties] if args.key?(:properties)
@@ -3161,10 +3171,10 @@ module Google
         end
       end
       
-      # Document represents the canonical document resource in Document Understanding
-      # AI. It is an interchange format that provides insights into documents and
-      # allows for collaboration between users and Document Understanding AI to
-      # iterate and optimize for quality.
+      # Document represents the canonical document resource in Document AI. It is an
+      # interchange format that provides insights into documents and allows for
+      # collaboration between users and Document AI to iterate and optimize for
+      # quality.
       class GoogleCloudDocumentaiV1beta2Document
         include Google::Apis::Core::Hashable
       
@@ -3300,6 +3310,15 @@ module Google
         # @return [String]
         attr_accessor :mention_text
       
+        # Optional. This attribute indicates that the processing didn't actually
+        # identify this entity, but a confidence score was assigned that represent the
+        # potential that this could be a false negative. A non-present entity should
+        # have an empty mention_text and text_anchor.
+        # Corresponds to the JSON property `nonPresent`
+        # @return [Boolean]
+        attr_accessor :non_present
+        alias_method :non_present?, :non_present
+      
         # Parsed and normalized entity value.
         # Corresponds to the JSON property `normalizedValue`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue]
@@ -3350,6 +3369,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
+          @non_present = args[:non_present] if args.key?(:non_present)
           @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
           @page_anchor = args[:page_anchor] if args.key?(:page_anchor)
           @properties = args[:properties] if args.key?(:properties)
@@ -5347,10 +5367,10 @@ module Google
         end
       end
       
-      # Document represents the canonical document resource in Document Understanding
-      # AI. It is an interchange format that provides insights into documents and
-      # allows for collaboration between users and Document Understanding AI to
-      # iterate and optimize for quality.
+      # Document represents the canonical document resource in Document AI. It is an
+      # interchange format that provides insights into documents and allows for
+      # collaboration between users and Document AI to iterate and optimize for
+      # quality.
       class GoogleCloudDocumentaiV1beta3Document
         include Google::Apis::Core::Hashable
       
@@ -5480,6 +5500,15 @@ module Google
         # @return [String]
         attr_accessor :mention_text
       
+        # Optional. This attribute indicates that the processing didn't actually
+        # identify this entity, but a confidence score was assigned that represent the
+        # potential that this could be a false negative. A non-present entity should
+        # have an empty mention_text and text_anchor.
+        # Corresponds to the JSON property `nonPresent`
+        # @return [Boolean]
+        attr_accessor :non_present
+        alias_method :non_present?, :non_present
+      
         # Parsed and normalized entity value.
         # Corresponds to the JSON property `normalizedValue`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue]
@@ -5530,6 +5559,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
+          @non_present = args[:non_present] if args.key?(:non_present)
           @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
           @page_anchor = args[:page_anchor] if args.key?(:page_anchor)
           @properties = args[:properties] if args.key?(:properties)
@@ -7122,18 +7152,18 @@ module Google
       class GoogleCloudDocumentaiV1beta3ProcessRequest
         include Google::Apis::Core::Hashable
       
-        # Document represents the canonical document resource in Document Understanding
-        # AI. It is an interchange format that provides insights into documents and
-        # allows for collaboration between users and Document Understanding AI to
-        # iterate and optimize for quality.
+        # Document represents the canonical document resource in Document AI. It is an
+        # interchange format that provides insights into documents and allows for
+        # collaboration between users and Document AI to iterate and optimize for
+        # quality.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
         attr_accessor :document
       
-        # Document represents the canonical document resource in Document Understanding
-        # AI. It is an interchange format that provides insights into documents and
-        # allows for collaboration between users and Document Understanding AI to
-        # iterate and optimize for quality.
+        # Document represents the canonical document resource in Document AI. It is an
+        # interchange format that provides insights into documents and allows for
+        # collaboration between users and Document AI to iterate and optimize for
+        # quality.
         # Corresponds to the JSON property `inlineDocument`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
         attr_accessor :inline_document
@@ -7167,10 +7197,10 @@ module Google
       class GoogleCloudDocumentaiV1beta3ProcessResponse
         include Google::Apis::Core::Hashable
       
-        # Document represents the canonical document resource in Document Understanding
-        # AI. It is an interchange format that provides insights into documents and
-        # allows for collaboration between users and Document Understanding AI to
-        # iterate and optimize for quality.
+        # Document represents the canonical document resource in Document AI. It is an
+        # interchange format that provides insights into documents and allows for
+        # collaboration between users and Document AI to iterate and optimize for
+        # quality.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
         attr_accessor :document
@@ -7473,10 +7503,10 @@ module Google
       class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest
         include Google::Apis::Core::Hashable
       
-        # Document represents the canonical document resource in Document Understanding
-        # AI. It is an interchange format that provides insights into documents and
-        # allows for collaboration between users and Document Understanding AI to
-        # iterate and optimize for quality.
+        # Document represents the canonical document resource in Document AI. It is an
+        # interchange format that provides insights into documents and allows for
+        # collaboration between users and Document AI to iterate and optimize for
+        # quality.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
         attr_accessor :document
@@ -7487,10 +7517,10 @@ module Google
         attr_accessor :enable_schema_validation
         alias_method :enable_schema_validation?, :enable_schema_validation
       
-        # Document represents the canonical document resource in Document Understanding
-        # AI. It is an interchange format that provides insights into documents and
-        # allows for collaboration between users and Document Understanding AI to
-        # iterate and optimize for quality.
+        # Document represents the canonical document resource in Document AI. It is an
+        # interchange format that provides insights into documents and allows for
+        # collaboration between users and Document AI to iterate and optimize for
+        # quality.
         # Corresponds to the JSON property `inlineDocument`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document]
         attr_accessor :inline_document
@@ -7816,8 +7846,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class GoogleProtobufEmpty
         include Google::Apis::Core::Hashable
       
