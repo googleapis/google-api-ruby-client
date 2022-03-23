@@ -3180,6 +3180,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # How long to keep generated audit files.
+        # Corresponds to the JSON property `retentionInterval`
+        # @return [String]
+        attr_accessor :retention_interval
+      
+        # How often to upload generated audit files.
+        # Corresponds to the JSON property `uploadInterval`
+        # @return [String]
+        attr_accessor :upload_interval
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3188,6 +3198,8 @@ module Google
         def update!(**args)
           @bucket = args[:bucket] if args.key?(:bucket)
           @kind = args[:kind] if args.key?(:kind)
+          @retention_interval = args[:retention_interval] if args.key?(:retention_interval)
+          @upload_interval = args[:upload_interval] if args.key?(:upload_interval)
         end
       end
       
