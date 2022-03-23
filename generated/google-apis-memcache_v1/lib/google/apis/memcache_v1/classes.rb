@@ -93,11 +93,11 @@ module Google
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
-      # following: * A full date, with non-zero year, month, and day values * A month
-      # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-      # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-      # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-      # DateTime * google.protobuf.Timestamp
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
       class Date
         include Google::Apis::Core::Hashable
       
@@ -139,11 +139,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::MemcacheV1::Date]
         attr_accessor :end_date
@@ -151,11 +151,11 @@ module Google
         # Represents a whole or partial calendar date, such as a birthday. The time of
         # day and time zone are either specified elsewhere or are insignificant. The
         # date is relative to the Gregorian Calendar. This can represent one of the
-        # following: * A full date, with non-zero year, month, and day values * A month
-        # and day, with a zero year (e.g., an anniversary) * A year on its own, with a
-        # zero month and a zero day * A year and month, with a zero day (e.g., a credit
-        # card expiration date) Related types: * google.type.TimeOfDay * google.type.
-        # DateTime * google.protobuf.Timestamp
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::MemcacheV1::Date]
         attr_accessor :start_date
@@ -214,6 +214,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_zones = args[:available_zones] if args.key?(:available_zones)
+        end
+      end
+      
+      # Maintenance policy per instance.
+      class GoogleCloudMemcacheV1MaintenancePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the policy was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Description of what this policy is for. Create/Update methods return
+        # INVALID_ARGUMENT if the length is greater than 512.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The time when the policy was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Required. Maintenance window that is applied to resources covered by this
+        # policy. Minimum 1. For the current version, the maximum number of
+        # weekly_maintenance_windows is expected to be one.
+        # Corresponds to the JSON property `weeklyMaintenanceWindow`
+        # @return [Array<Google::Apis::MemcacheV1::WeeklyMaintenanceWindow>]
+        attr_accessor :weekly_maintenance_window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @weekly_maintenance_window = args[:weekly_maintenance_window] if args.key?(:weekly_maintenance_window)
         end
       end
       
@@ -723,6 +763,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Maintenance policy per instance.
+        # Corresponds to the JSON property `maintenancePolicy`
+        # @return [Google::Apis::MemcacheV1::GoogleCloudMemcacheV1MaintenancePolicy]
+        attr_accessor :maintenance_policy
+      
+        # Upcoming maintenance schedule.
+        # Corresponds to the JSON property `maintenanceSchedule`
+        # @return [Google::Apis::MemcacheV1::MaintenanceSchedule]
+        attr_accessor :maintenance_schedule
+      
         # Output only. The full version of memcached server running on this instance.
         # System automatically determines the full memcached version for an instance
         # based on the input MemcacheVersion. The full version format will be "memcached-
@@ -798,6 +848,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @instance_messages = args[:instance_messages] if args.key?(:instance_messages)
           @labels = args[:labels] if args.key?(:labels)
+          @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @memcache_full_version = args[:memcache_full_version] if args.key?(:memcache_full_version)
           @memcache_nodes = args[:memcache_nodes] if args.key?(:memcache_nodes)
           @memcache_version = args[:memcache_version] if args.key?(:memcache_version)
@@ -1048,6 +1100,40 @@ module Google
           @state = args[:state] if args.key?(:state)
           @update_policy = args[:update_policy] if args.key?(:update_policy)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Upcoming maintenance schedule.
+      class MaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The end time of any upcoming scheduled maintenance for this
+        # instance.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The deadline that the maintenance schedule start time can not go
+        # beyond, including reschedule.
+        # Corresponds to the JSON property `scheduleDeadlineTime`
+        # @return [String]
+        attr_accessor :schedule_deadline_time
+      
+        # Output only. The start time of any upcoming scheduled maintenance for this
+        # instance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @schedule_deadline_time = args[:schedule_deadline_time] if args.key?(:schedule_deadline_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -1489,6 +1575,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @schedule = args[:schedule] if args.key?(:schedule)
+        end
+      end
+      
+      # Time window specified for weekly operations.
+      class WeeklyMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. Allows to define schedule that runs specified day of the week.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Required. Duration of the time window.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::MemcacheV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @duration = args[:duration] if args.key?(:duration)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
