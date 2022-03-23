@@ -562,7 +562,8 @@ module Google
         # @return [String]
         attr_accessor :matter_id
       
-        # The export name.
+        # The export name. Don't use special characters (~!$'(),;@:/?) in the name, they
+        # can prevent you from downloading exports.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
