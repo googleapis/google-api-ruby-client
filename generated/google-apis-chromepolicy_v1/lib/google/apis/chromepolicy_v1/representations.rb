@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromePolicyV1PolicySchemaRequiredItems
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromePolicyV1PolicyTargetKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -289,6 +295,8 @@ module Google
       
           collection :nested_field_descriptions, as: 'nestedFieldDescriptions', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDescription, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaFieldDescription::Representation
       
+          collection :required_items, as: 'requiredItems', class: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaRequiredItems, decorator: Google::Apis::ChromepolicyV1::GoogleChromePolicyV1PolicySchemaRequiredItems::Representation
+      
         end
       end
       
@@ -307,6 +315,14 @@ module Google
           property :field, as: 'field'
           property :notice_message, as: 'noticeMessage'
           property :notice_value, as: 'noticeValue'
+        end
+      end
+      
+      class GoogleChromePolicyV1PolicySchemaRequiredItems
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_conditions, as: 'fieldConditions'
+          collection :required_fields, as: 'requiredFields'
         end
       end
       
