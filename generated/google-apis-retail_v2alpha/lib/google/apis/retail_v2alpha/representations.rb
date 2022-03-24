@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaCompletionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaCompletionDataInputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1311,6 +1317,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :recent_search, as: 'recentSearch'
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaCompletionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowlist_input_config, as: 'allowlistInputConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig::Representation
+      
+          property :auto_learning, as: 'autoLearning'
+          property :denylist_input_config, as: 'denylistInputConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig::Representation
+      
+          property :last_allowlist_import_operation, as: 'lastAllowlistImportOperation'
+          property :last_denylist_import_operation, as: 'lastDenylistImportOperation'
+          property :last_suggestions_import_operation, as: 'lastSuggestionsImportOperation'
+          property :matching_order, as: 'matchingOrder'
+          property :max_suggestions, as: 'maxSuggestions'
+          property :min_prefix_length, as: 'minPrefixLength'
+          property :name, as: 'name'
+          property :suggestions_input_config, as: 'suggestionsInputConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig::Representation
+      
         end
       end
       
