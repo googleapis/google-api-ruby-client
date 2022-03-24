@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2betaCompletionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2betaCompletionDataInputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +569,18 @@ module Google
       end
       
       class GoogleCloudRetailV2betaListServingConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaMerchantCenterLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRetailV2betaMerchantCenterLinkingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1396,6 +1414,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :merchant_center_linking_config, as: 'merchantCenterLinkingConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterLinkingConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterLinkingConfig::Representation
+      
           property :name, as: 'name'
           property :product_level_config, as: 'productLevelConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductLevelConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaProductLevelConfig::Representation
       
@@ -1446,6 +1466,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :recent_search, as: 'recentSearch'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaCompletionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowlist_input_config, as: 'allowlistInputConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDataInputConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDataInputConfig::Representation
+      
+          property :auto_learning, as: 'autoLearning'
+          property :denylist_input_config, as: 'denylistInputConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDataInputConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDataInputConfig::Representation
+      
+          property :last_allowlist_import_operation, as: 'lastAllowlistImportOperation'
+          property :last_denylist_import_operation, as: 'lastDenylistImportOperation'
+          property :last_suggestions_import_operation, as: 'lastSuggestionsImportOperation'
+          property :matching_order, as: 'matchingOrder'
+          property :max_suggestions, as: 'maxSuggestions'
+          property :min_prefix_length, as: 'minPrefixLength'
+          property :name, as: 'name'
+          property :suggestions_input_config, as: 'suggestionsInputConfig', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDataInputConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionDataInputConfig::Representation
+      
         end
       end
       
@@ -1710,6 +1750,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :serving_configs, as: 'servingConfigs', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaServingConfig, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaServingConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRetailV2betaMerchantCenterLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_id, as: 'branchId'
+          collection :destinations, as: 'destinations'
+          property :language_code, as: 'languageCode'
+          property :merchant_center_account_id, :numeric_string => true, as: 'merchantCenterAccountId'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class GoogleCloudRetailV2betaMerchantCenterLinkingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterLink, decorator: Google::Apis::RetailV2beta::GoogleCloudRetailV2betaMerchantCenterLink::Representation
       
         end
       end
