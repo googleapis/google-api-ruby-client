@@ -690,6 +690,10 @@ module Google
         #   s ID.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
+        # @param [String] player_id_consistency_token
+        #   Consistency token of the player id. The call returns a 'not found' result when
+        #   the token is present and invalid. Empty value is ignored. See also
+        #   GlobalPlayerIdConsistencyTokenProto
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -707,12 +711,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_player(player_id, language: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_player(player_id, language: nil, player_id_consistency_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'games/v1/players/{playerId}', options)
           command.response_representation = Google::Apis::GamesV1::Player::Representation
           command.response_class = Google::Apis::GamesV1::Player
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['language'] = language unless language.nil?
+          command.query['playerIdConsistencyToken'] = player_id_consistency_token unless player_id_consistency_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
