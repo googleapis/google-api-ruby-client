@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PubsubMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StackTrace
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class StackTraceElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TriggerPubsubExecutionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -114,6 +126,17 @@ module Google
         end
       end
       
+      class PubsubMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes'
+          property :data, :base64 => true, as: 'data'
+          property :message_id, as: 'messageId'
+          property :ordering_key, as: 'orderingKey'
+          property :publish_time, as: 'publishTime'
+        end
+      end
+      
       class StackTrace
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -129,6 +152,16 @@ module Google
       
           property :routine, as: 'routine'
           property :step, as: 'step'
+        end
+      end
+      
+      class TriggerPubsubExecutionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_cloud_events_mode, as: 'GCPCloudEventsMode'
+          property :message, as: 'message', class: Google::Apis::WorkflowexecutionsV1::PubsubMessage, decorator: Google::Apis::WorkflowexecutionsV1::PubsubMessage::Representation
+      
+          property :subscription, as: 'subscription'
         end
       end
     end

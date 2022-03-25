@@ -49,6 +49,41 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Triggers a new execution using the latest revision of the given workflow by a
+        # Pub/Sub push notification.
+        # @param [String] workflow
+        #   Required. Name of the workflow for which an execution should be created.
+        #   Format: projects/`project`/locations/`location`/workflows/`workflow`
+        # @param [Google::Apis::WorkflowexecutionsV1::TriggerPubsubExecutionRequest] trigger_pubsub_execution_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkflowexecutionsV1::Execution] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkflowexecutionsV1::Execution]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def trigger_workflow_pubsub_execution(workflow, trigger_pubsub_execution_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+workflow}:triggerPubsubExecution', options)
+          command.request_representation = Google::Apis::WorkflowexecutionsV1::TriggerPubsubExecutionRequest::Representation
+          command.request_object = trigger_pubsub_execution_request_object
+          command.response_representation = Google::Apis::WorkflowexecutionsV1::Execution::Representation
+          command.response_class = Google::Apis::WorkflowexecutionsV1::Execution
+          command.params['workflow'] = workflow unless workflow.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cancels an execution of the given name.
         # @param [String] name
         #   Required. Name of the execution to be cancelled. Format: projects/`project`/
