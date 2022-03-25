@@ -285,6 +285,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attribute, as: 'attribute'
+          property :operator, as: 'operator'
           property :value, as: 'value'
         end
       end
@@ -555,6 +556,7 @@ module Google
           property :ingress_settings, as: 'ingressSettings'
           property :max_instance_count, as: 'maxInstanceCount'
           property :min_instance_count, as: 'minInstanceCount'
+          property :revision, as: 'revision'
           property :service, as: 'service'
           property :service_account_email, as: 'serviceAccountEmail'
           property :timeout_seconds, as: 'timeoutSeconds'
